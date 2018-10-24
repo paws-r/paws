@@ -1,0 +1,200 @@
+#' Creates an AWS Mobile Hub project
+#'
+#' Creates an AWS Mobile Hub project.
+#'
+#' @param name Name of the project.
+#' @param region Default region where project resources should be created.
+#' @param contents ZIP or YAML file which contains configuration settings to be used when creating the project. This may be the contents of the file downloaded from the URL provided in an export project operation.
+#' @param snapshotId Unique identifier for an exported snapshot of project configuration. This snapshot identifier is included in the share URL when a project is exported.
+#'
+#' @examples
+#'
+#' @export
+create_project <- function (name = NULL, region = NULL, contents = NULL, 
+    snapshotId = NULL) 
+{
+    op <- Operation(name = "CreateProject", http_method = "POST", 
+        http_path = "/projects", paginator = list())
+    input <- create_project_input(name = name, region = region, 
+        contents = contents, snapshotId = snapshotId)
+    output <- create_project_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Delets a project in AWS Mobile Hub
+#'
+#' Delets a project in AWS Mobile Hub.
+#'
+#' @param projectId Unique project identifier.
+#'
+#' @examples
+#'
+#' @export
+delete_project <- function (projectId) 
+{
+    op <- Operation(name = "DeleteProject", http_method = "DELETE", 
+        http_path = "/projects/{projectId}", paginator = list())
+    input <- delete_project_input(projectId = projectId)
+    output <- delete_project_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Get the bundle details for the requested bundle id
+#'
+#' Get the bundle details for the requested bundle id.
+#'
+#' @param bundleId Unique bundle identifier.
+#'
+#' @examples
+#'
+#' @export
+describe_bundle <- function (bundleId) 
+{
+    op <- Operation(name = "DescribeBundle", http_method = "GET", 
+        http_path = "/bundles/{bundleId}", paginator = list())
+    input <- describe_bundle_input(bundleId = bundleId)
+    output <- describe_bundle_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets details about a project in AWS Mobile Hub
+#'
+#' Gets details about a project in AWS Mobile Hub.
+#'
+#' @param projectId Unique project identifier.
+#' @param syncFromResources If set to true, causes AWS Mobile Hub to synchronize information from other services, e.g., update state of AWS CloudFormation stacks in the AWS Mobile Hub project.
+#'
+#' @examples
+#'
+#' @export
+describe_project <- function (projectId, syncFromResources = NULL) 
+{
+    op <- Operation(name = "DescribeProject", http_method = "GET", 
+        http_path = "/project", paginator = list())
+    input <- describe_project_input(projectId = projectId, syncFromResources = syncFromResources)
+    output <- describe_project_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Generates customized software development kit (SDK) and or tool packages used to integrate mobile web or mobile app clients with backend AWS resources
+#'
+#' Generates customized software development kit (SDK) and or tool packages used to integrate mobile web or mobile app clients with backend AWS resources.
+#'
+#' @param bundleId Unique bundle identifier.
+#' @param projectId Unique project identifier.
+#' @param platform Developer desktop or target application platform.
+#'
+#' @examples
+#'
+#' @export
+export_bundle <- function (bundleId, projectId = NULL, platform = NULL) 
+{
+    op <- Operation(name = "ExportBundle", http_method = "POST", 
+        http_path = "/bundles/{bundleId}", paginator = list())
+    input <- export_bundle_input(bundleId = bundleId, projectId = projectId, 
+        platform = platform)
+    output <- export_bundle_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Exports project configuration to a snapshot which can be downloaded and shared
+#'
+#' Exports project configuration to a snapshot which can be downloaded and shared. Note that mobile app push credentials are encrypted in exported projects, so they can only be shared successfully within the same AWS account.
+#'
+#' @param projectId Unique project identifier.
+#'
+#' @examples
+#'
+#' @export
+export_project <- function (projectId) 
+{
+    op <- Operation(name = "ExportProject", http_method = "POST", 
+        http_path = "/exports/{projectId}", paginator = list())
+    input <- export_project_input(projectId = projectId)
+    output <- export_project_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' List all available bundles
+#'
+#' List all available bundles.
+#'
+#' @param maxResults Maximum number of records to list in a single response.
+#' @param nextToken Pagination token. Set to null to start listing bundles from start. If non-null pagination token is returned in a result, then pass its value in here in another request to list more bundles.
+#'
+#' @examples
+#'
+#' @export
+list_bundles <- function (maxResults = NULL, nextToken = NULL) 
+{
+    op <- Operation(name = "ListBundles", http_method = "GET", 
+        http_path = "/bundles", paginator = list())
+    input <- list_bundles_input(maxResults = maxResults, nextToken = nextToken)
+    output <- list_bundles_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists projects in AWS Mobile Hub
+#'
+#' Lists projects in AWS Mobile Hub.
+#'
+#' @param maxResults Maximum number of records to list in a single response.
+#' @param nextToken Pagination token. Set to null to start listing projects from start. If non-null pagination token is returned in a result, then pass its value in here in another request to list more projects.
+#'
+#' @examples
+#'
+#' @export
+list_projects <- function (maxResults = NULL, nextToken = NULL) 
+{
+    op <- Operation(name = "ListProjects", http_method = "GET", 
+        http_path = "/projects", paginator = list())
+    input <- list_projects_input(maxResults = maxResults, nextToken = nextToken)
+    output <- list_projects_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Update an existing project
+#'
+#' Update an existing project.
+#'
+#' @param projectId Unique project identifier.
+#' @param contents ZIP or YAML file which contains project configuration to be updated. This should be the contents of the file downloaded from the URL provided in an export project operation.
+#'
+#' @examples
+#'
+#' @export
+update_project <- function (projectId, contents = NULL) 
+{
+    op <- Operation(name = "UpdateProject", http_method = "POST", 
+        http_path = "/update", paginator = list())
+    input <- update_project_input(projectId = projectId, contents = contents)
+    output <- update_project_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

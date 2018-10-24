@@ -1,0 +1,3179 @@
+#' Adds or overwrites one or more tags for the specified resource
+#'
+#' Adds or overwrites one or more tags for the specified resource. Tags are metadata that you can assign to your documents, managed instances, Maintenance Windows, Parameter Store parameters, and patch baselines. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment. Each tag consists of a key and an optional value, both of which you define. For example, you could define a set of tags for your account\'s managed instances that helps you track each instance\'s owner and stack level. For example: Key=Owner and Value=DbAdmin, SysAdmin, or Dev. Or Key=Stack and Value=Production, Pre-Production, or Test.
+#' 
+#' Each resource can have a maximum of 50 tags.
+#' 
+#' We recommend that you devise a set of tag keys that meets your needs for each resource type. Using a consistent set of tag keys makes it easier for you to manage your resources. You can search and filter the resources based on the tags you add. Tags don\'t have any semantic meaning to Amazon EC2 and are interpreted strictly as a string of characters.
+#' 
+#' For more information about tags, see [Tagging Your Amazon EC2 Resources](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in the *Amazon EC2 User Guide*.
+#'
+#' @param ResourceType Specifies the type of resource you are tagging.
+#' 
+#' The ManagedInstance type for this API action is for on-premises managed instances. You must specify the the name of the managed instance in the following format: mi-ID\_number. For example, mi-1a2b3c4d5e6f.
+#' @param ResourceId The resource ID you want to tag.
+#' 
+#' Use the ID of the resource. Here are some examples:
+#' 
+#' ManagedInstance: mi-012345abcde
+#' 
+#' MaintenanceWindow: mw-012345abcde
+#' 
+#' PatchBaseline: pb-012345abcde
+#' 
+#' For the Document and Parameter values, use the name of the resource.
+#' 
+#' The ManagedInstance type for this API action is only for on-premises managed instances. You must specify the the name of the managed instance in the following format: mi-ID\_number. For example, mi-1a2b3c4d5e6f.
+#' @param Tags One or more tags. The value parameter is required, but if you don\'t want the tag to have a value, specify the parameter with no value, and we set the value to an empty string.
+#' 
+#' Do not enter personally identifiable information in this field.
+#'
+#' @examples
+#'
+#' @export
+add_tags_to_resource <- function (ResourceType, ResourceId, Tags) 
+{
+    op <- Operation(name = "AddTagsToResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- add_tags_to_resource_input(ResourceType = ResourceType, 
+        ResourceId = ResourceId, Tags = Tags)
+    output <- add_tags_to_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Attempts to cancel the command specified by the Command ID
+#'
+#' Attempts to cancel the command specified by the Command ID. There is no guarantee that the command will be terminated and the underlying process stopped.
+#'
+#' @param CommandId The ID of the command you want to cancel.
+#' @param InstanceIds (Optional) A list of instance IDs on which you want to cancel the command. If not provided, the command is canceled on every instance on which it was requested.
+#'
+#' @examples
+#'
+#' @export
+cancel_command <- function (CommandId, InstanceIds = NULL) 
+{
+    op <- Operation(name = "CancelCommand", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- cancel_command_input(CommandId = CommandId, InstanceIds = InstanceIds)
+    output <- cancel_command_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Stops a Maintenance Window execution that is already in progress and cancels any tasks in the window that have not already starting running
+#'
+#' Stops a Maintenance Window execution that is already in progress and cancels any tasks in the window that have not already starting running. (Tasks already in progress will continue to completion.)
+#'
+#' @param WindowExecutionId The ID of the Maintenance Window execution to stop.
+#'
+#' @examples
+#'
+#' @export
+cancel_maintenance_window_execution <- function (WindowExecutionId) 
+{
+    op <- Operation(name = "CancelMaintenanceWindowExecution", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- cancel_maintenance_window_execution_input(WindowExecutionId = WindowExecutionId)
+    output <- cancel_maintenance_window_execution_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Registers your on-premises server or virtual machine with Amazon EC2 so that you can manage these resources using Run Command
+#'
+#' Registers your on-premises server or virtual machine with Amazon EC2 so that you can manage these resources using Run Command. An on-premises server or virtual machine that has been registered with EC2 is called a managed instance. For more information about activations, see [Setting Up Systems Manager in Hybrid Environments](http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html).
+#'
+#' @param IamRole The Amazon Identity and Access Management (IAM) role that you want to assign to the managed instance.
+#' @param Description A user-defined description of the resource that you want to register with Amazon EC2.
+#' 
+#' Do not enter personally identifiable information in this field.
+#' @param DefaultInstanceName The name of the registered, managed instance as it will appear in the Amazon EC2 console or when you use the AWS command line tools to list EC2 resources.
+#' 
+#' Do not enter personally identifiable information in this field.
+#' @param RegistrationLimit Specify the maximum number of managed instances you want to register. The default value is 1 instance.
+#' @param ExpirationDate The date by which this activation request should expire. The default value is 24 hours.
+#'
+#' @examples
+#'
+#' @export
+create_activation <- function (IamRole, Description = NULL, DefaultInstanceName = NULL, 
+    RegistrationLimit = NULL, ExpirationDate = NULL) 
+{
+    op <- Operation(name = "CreateActivation", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_activation_input(IamRole = IamRole, Description = Description, 
+        DefaultInstanceName = DefaultInstanceName, RegistrationLimit = RegistrationLimit, 
+        ExpirationDate = ExpirationDate)
+    output <- create_activation_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Associates the specified Systems Manager document with the specified instances or targets
+#'
+#' Associates the specified Systems Manager document with the specified instances or targets.
+#' 
+#' When you associate a document with one or more instances using instance IDs or tags, SSM Agent running on the instance processes the document and configures the instance as specified.
+#' 
+#' If you associate a document with an instance that already has an associated document, the system throws the AssociationAlreadyExists exception.
+#'
+#' @param Name The name of the Systems Manager document.
+#' @param DocumentVersion The document version you want to associate with the target(s). Can be a specific version or the default version.
+#' @param InstanceId The instance ID.
+#' @param Parameters The parameters for the documents runtime configuration.
+#' @param Targets The targets (either instances or tags) for the association.
+#' @param ScheduleExpression A cron expression when the association will be applied to the target(s).
+#' @param OutputLocation An Amazon S3 bucket where you want to store the output details of the request.
+#' @param AssociationName Specify a descriptive name for the association.
+#'
+#' @examples
+#'
+#' @export
+create_association <- function (Name, DocumentVersion = NULL, 
+    InstanceId = NULL, Parameters = NULL, Targets = NULL, ScheduleExpression = NULL, 
+    OutputLocation = NULL, AssociationName = NULL) 
+{
+    op <- Operation(name = "CreateAssociation", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_association_input(Name = Name, DocumentVersion = DocumentVersion, 
+        InstanceId = InstanceId, Parameters = Parameters, Targets = Targets, 
+        ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, 
+        AssociationName = AssociationName)
+    output <- create_association_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Associates the specified Systems Manager document with the specified instances or targets
+#'
+#' Associates the specified Systems Manager document with the specified instances or targets.
+#' 
+#' When you associate a document with one or more instances using instance IDs or tags, SSM Agent running on the instance processes the document and configures the instance as specified.
+#' 
+#' If you associate a document with an instance that already has an associated document, the system throws the AssociationAlreadyExists exception.
+#'
+#' @param Entries One or more associations.
+#'
+#' @examples
+#'
+#' @export
+create_association_batch <- function (Entries) 
+{
+    op <- Operation(name = "CreateAssociationBatch", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_association_batch_input(Entries = Entries)
+    output <- create_association_batch_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a Systems Manager document
+#'
+#' Creates a Systems Manager document.
+#' 
+#' After you create a document, you can use CreateAssociation to associate it with one or more running instances.
+#'
+#' @param Content A valid JSON or YAML string.
+#' @param Name A name for the Systems Manager document.
+#' 
+#' Do not use the following to begin the names of documents you create. They are reserved by AWS for use as document prefixes:
+#' 
+#' -   `aws`
+#' 
+#' -   `amazon`
+#' 
+#' -   `amzn`
+#' @param DocumentType The type of document to create. Valid document types include: Policy, Automation, and Command.
+#' @param DocumentFormat Specify the document format for the request. The document format can be either JSON or YAML. JSON is the default format.
+#' @param TargetType Specify a target type to define the kinds of resources the document can run on. For example, to run a document on EC2 instances, specify the following value: /AWS::EC2::Instance. If you specify a value of \'/\' the document can run on all types of resources. If you don\'t specify a value, the document can\'t run on any resources. For a list of valid resource types, see [AWS Resource Types Reference](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html) in the *AWS CloudFormation User Guide*.
+#'
+#' @examples
+#'
+#' @export
+create_document <- function (Content, Name, DocumentType = NULL, 
+    DocumentFormat = NULL, TargetType = NULL) 
+{
+    op <- Operation(name = "CreateDocument", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_document_input(Content = Content, Name = Name, 
+        DocumentType = DocumentType, DocumentFormat = DocumentFormat, 
+        TargetType = TargetType)
+    output <- create_document_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a new Maintenance Window
+#'
+#' Creates a new Maintenance Window.
+#'
+#' @param Name The name of the Maintenance Window.
+#' @param Schedule The schedule of the Maintenance Window in the form of a cron or rate expression.
+#' @param Duration The duration of the Maintenance Window in hours.
+#' @param Cutoff The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.
+#' @param AllowUnassociatedTargets Enables a Maintenance Window task to execute on managed instances, even if you have not registered those instances as targets. If enabled, then you must specify the unregistered instances (by instance ID) when you register a task with the Maintenance Window
+#' 
+#' If you don\'t enable this option, then you must specify previously-registered targets when you register a task with the Maintenance Window.
+#' @param Description An optional description for the Maintenance Window. We recommend specifying a description to help you organize your Maintenance Windows.
+#' @param StartDate The date and time, in ISO-8601 Extended format, for when you want the Maintenance Window to become active. StartDate allows you to delay activation of the Maintenance Window until the specified future date.
+#' @param EndDate The date and time, in ISO-8601 Extended format, for when you want the Maintenance Window to become inactive. EndDate allows you to set a date and time in the future when the Maintenance Window will no longer run.
+#' @param ScheduleTimezone The time zone that the scheduled Maintenance Window executions are based on, in Internet Assigned Numbers Authority (IANA) format. For example: \"America/Los\_Angeles\", \"etc/UTC\", or \"Asia/Seoul\". For more information, see the [Time Zone Database](https://www.iana.org/time-zones) on the IANA website.
+#' @param ClientToken User-provided idempotency token.
+#'
+#' @examples
+#'
+#' @export
+create_maintenance_window <- function (Name, Schedule, Duration, 
+    Cutoff, AllowUnassociatedTargets, Description = NULL, StartDate = NULL, 
+    EndDate = NULL, ScheduleTimezone = NULL, ClientToken = NULL) 
+{
+    op <- Operation(name = "CreateMaintenanceWindow", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_maintenance_window_input(Name = Name, Schedule = Schedule, 
+        Duration = Duration, Cutoff = Cutoff, AllowUnassociatedTargets = AllowUnassociatedTargets, 
+        Description = Description, StartDate = StartDate, EndDate = EndDate, 
+        ScheduleTimezone = ScheduleTimezone, ClientToken = ClientToken)
+    output <- create_maintenance_window_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a patch baseline
+#'
+#' Creates a patch baseline.
+#' 
+#' For information about valid key and value pairs in `PatchFilters` for each supported operating system type, see [PatchFilter](http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html).
+#'
+#' @param Name The name of the patch baseline.
+#' @param OperatingSystem Defines the operating system the patch baseline applies to. The Default value is WINDOWS.
+#' @param GlobalFilters A set of global filters used to exclude patches from the baseline.
+#' @param ApprovalRules A set of rules used to include patches in the baseline.
+#' @param ApprovedPatches A list of explicitly approved patches for the baseline.
+#' 
+#' For information about accepted formats for lists of approved patches and rejected patches, see [Package Name Formats for Approved and Rejected Patch Lists](http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html) in the *AWS Systems Manager User Guide*.
+#' @param ApprovedPatchesComplianceLevel Defines the compliance level for approved patches. This means that if an approved patch is reported as missing, this is the severity of the compliance violation. The default value is UNSPECIFIED.
+#' @param ApprovedPatchesEnableNonSecurity Indicates whether the list of approved patches includes non-security updates that should be applied to the instances. The default value is \'false\'. Applies to Linux instances only.
+#' @param RejectedPatches A list of explicitly rejected patches for the baseline.
+#' 
+#' For information about accepted formats for lists of approved patches and rejected patches, see [Package Name Formats for Approved and Rejected Patch Lists](http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html) in the *AWS Systems Manager User Guide*.
+#' @param RejectedPatchesAction The action for Patch Manager to take on patches included in the RejectedPackages list.
+#' 
+#' -   **ALLOW\_AS\_DEPENDENCY**: A package in the Rejected patches list is installed only if it is a dependency of another package. It is considered compliant with the patch baseline, and its status is reported as *InstalledOther*. This is the default action if no option is specified.
+#' 
+#' -   **BLOCK**: Packages in the RejectedPatches list, and packages that include them as dependencies, are not installed under any circumstances. If a package was installed before it was added to the Rejected patches list, it is considered non-compliant with the patch baseline, and its status is reported as *InstalledRejected*.
+#' @param Description A description of the patch baseline.
+#' @param Sources Information about the patches to use to update the instances, including target operating systems and source repositories. Applies to Linux instances only.
+#' @param ClientToken User-provided idempotency token.
+#'
+#' @examples
+#'
+#' @export
+create_patch_baseline <- function (Name, OperatingSystem = NULL, 
+    GlobalFilters = NULL, ApprovalRules = NULL, ApprovedPatches = NULL, 
+    ApprovedPatchesComplianceLevel = NULL, ApprovedPatchesEnableNonSecurity = NULL, 
+    RejectedPatches = NULL, RejectedPatchesAction = NULL, Description = NULL, 
+    Sources = NULL, ClientToken = NULL) 
+{
+    op <- Operation(name = "CreatePatchBaseline", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_patch_baseline_input(Name = Name, OperatingSystem = OperatingSystem, 
+        GlobalFilters = GlobalFilters, ApprovalRules = ApprovalRules, 
+        ApprovedPatches = ApprovedPatches, ApprovedPatchesComplianceLevel = ApprovedPatchesComplianceLevel, 
+        ApprovedPatchesEnableNonSecurity = ApprovedPatchesEnableNonSecurity, 
+        RejectedPatches = RejectedPatches, RejectedPatchesAction = RejectedPatchesAction, 
+        Description = Description, Sources = Sources, ClientToken = ClientToken)
+    output <- create_patch_baseline_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a resource data sync configuration to a single bucket in Amazon S3
+#'
+#' Creates a resource data sync configuration to a single bucket in Amazon S3. This is an asynchronous operation that returns immediately. After a successful initial sync is completed, the system continuously syncs data to the Amazon S3 bucket. To check the status of the sync, use the ListResourceDataSync.
+#' 
+#' By default, data is not encrypted in Amazon S3. We strongly recommend that you enable encryption in Amazon S3 to ensure secure data storage. We also recommend that you secure access to the Amazon S3 bucket by creating a restrictive bucket policy. To view an example of a restrictive Amazon S3 bucket policy for Resource Data Sync, see [Create a Resource Data Sync for Inventory](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync-create.html) in the *AWS Systems Manager User Guide*.
+#'
+#' @param SyncName A name for the configuration.
+#' @param S3Destination Amazon S3 configuration details for the sync.
+#'
+#' @examples
+#'
+#' @export
+create_resource_data_sync <- function (SyncName, S3Destination) 
+{
+    op <- Operation(name = "CreateResourceDataSync", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_resource_data_sync_input(SyncName = SyncName, 
+        S3Destination = S3Destination)
+    output <- create_resource_data_sync_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes an activation
+#'
+#' Deletes an activation. You are not required to delete an activation. If you delete an activation, you can no longer use it to register additional managed instances. Deleting an activation does not de-register managed instances. You must manually de-register managed instances.
+#'
+#' @param ActivationId The ID of the activation that you want to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_activation <- function (ActivationId) 
+{
+    op <- Operation(name = "DeleteActivation", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_activation_input(ActivationId = ActivationId)
+    output <- delete_activation_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Disassociates the specified Systems Manager document from the specified instance
+#'
+#' Disassociates the specified Systems Manager document from the specified instance.
+#' 
+#' When you disassociate a document from an instance, it does not change the configuration of the instance. To change the configuration state of an instance after you disassociate a document, you must create a new document with the desired configuration and associate it with the instance.
+#'
+#' @param Name The name of the Systems Manager document.
+#' @param InstanceId The ID of the instance.
+#' @param AssociationId The association ID that you want to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_association <- function (Name = NULL, InstanceId = NULL, 
+    AssociationId = NULL) 
+{
+    op <- Operation(name = "DeleteAssociation", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_association_input(Name = Name, InstanceId = InstanceId, 
+        AssociationId = AssociationId)
+    output <- delete_association_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the Systems Manager document and all instance associations to the document
+#'
+#' Deletes the Systems Manager document and all instance associations to the document.
+#' 
+#' Before you delete the document, we recommend that you use DeleteAssociation to disassociate all instances that are associated with the document.
+#'
+#' @param Name The name of the document.
+#'
+#' @examples
+#'
+#' @export
+delete_document <- function (Name) 
+{
+    op <- Operation(name = "DeleteDocument", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_document_input(Name = Name)
+    output <- delete_document_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Delete a custom inventory type, or the data associated with a custom Inventory type
+#'
+#' Delete a custom inventory type, or the data associated with a custom Inventory type. Deleting a custom inventory type is also referred to as deleting a custom inventory schema.
+#'
+#' @param TypeName The name of the custom inventory type for which you want to delete either all previously collected data, or the inventory type itself.
+#' @param SchemaDeleteOption Use the `SchemaDeleteOption` to delete a custom inventory type (schema). If you don\'t choose this option, the system only deletes existing inventory data associated with the custom inventory type. Choose one of the following options:
+#' 
+#' DisableSchema: If you choose this option, the system ignores all inventory data for the specified version, and any earlier versions. To enable this schema again, you must call the `PutInventory` action for a version greater than the disbled version.
+#' 
+#' DeleteSchema: This option deletes the specified custom type from the Inventory service. You can recreate the schema later, if you want.
+#' @param DryRun Use this option to view a summary of the deletion request without deleting any data or the data type. This option is useful when you only want to understand what will be deleted. Once you validate that the data to be deleted is what you intend to delete, you can run the same command without specifying the `DryRun` option.
+#' @param ClientToken User-provided idempotency token.
+#'
+#' @examples
+#'
+#' @export
+delete_inventory <- function (TypeName, SchemaDeleteOption = NULL, 
+    DryRun = NULL, ClientToken = NULL) 
+{
+    op <- Operation(name = "DeleteInventory", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_inventory_input(TypeName = TypeName, SchemaDeleteOption = SchemaDeleteOption, 
+        DryRun = DryRun, ClientToken = ClientToken)
+    output <- delete_inventory_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a Maintenance Window
+#'
+#' Deletes a Maintenance Window.
+#'
+#' @param WindowId The ID of the Maintenance Window to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_maintenance_window <- function (WindowId) 
+{
+    op <- Operation(name = "DeleteMaintenanceWindow", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_maintenance_window_input(WindowId = WindowId)
+    output <- delete_maintenance_window_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Delete a parameter from the system
+#'
+#' Delete a parameter from the system.
+#'
+#' @param Name The name of the parameter to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_parameter <- function (Name) 
+{
+    op <- Operation(name = "DeleteParameter", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_parameter_input(Name = Name)
+    output <- delete_parameter_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Delete a list of parameters
+#'
+#' Delete a list of parameters. This API is used to delete parameters by using the Amazon EC2 console.
+#'
+#' @param Names The names of the parameters to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_parameters <- function (Names) 
+{
+    op <- Operation(name = "DeleteParameters", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_parameters_input(Names = Names)
+    output <- delete_parameters_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a patch baseline
+#'
+#' Deletes a patch baseline.
+#'
+#' @param BaselineId The ID of the patch baseline to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_patch_baseline <- function (BaselineId) 
+{
+    op <- Operation(name = "DeletePatchBaseline", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_patch_baseline_input(BaselineId = BaselineId)
+    output <- delete_patch_baseline_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a Resource Data Sync configuration
+#'
+#' Deletes a Resource Data Sync configuration. After the configuration is deleted, changes to inventory data on managed instances are no longer synced with the target Amazon S3 bucket. Deleting a sync configuration does not delete data in the target Amazon S3 bucket.
+#'
+#' @param SyncName The name of the configuration to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_resource_data_sync <- function (SyncName) 
+{
+    op <- Operation(name = "DeleteResourceDataSync", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_resource_data_sync_input(SyncName = SyncName)
+    output <- delete_resource_data_sync_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes the server or virtual machine from the list of registered servers
+#'
+#' Removes the server or virtual machine from the list of registered servers. You can reregister the instance again at any time. If you don\'t plan to use Run Command on the server, we suggest uninstalling SSM Agent first.
+#'
+#' @param InstanceId The ID assigned to the managed instance when you registered it using the activation process.
+#'
+#' @examples
+#'
+#' @export
+deregister_managed_instance <- function (InstanceId) 
+{
+    op <- Operation(name = "DeregisterManagedInstance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- deregister_managed_instance_input(InstanceId = InstanceId)
+    output <- deregister_managed_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes a patch group from a patch baseline
+#'
+#' Removes a patch group from a patch baseline.
+#'
+#' @param BaselineId The ID of the patch baseline to deregister the patch group from.
+#' @param PatchGroup The name of the patch group that should be deregistered from the patch baseline.
+#'
+#' @examples
+#'
+#' @export
+deregister_patch_baseline_for_patch_group <- function (BaselineId, 
+    PatchGroup) 
+{
+    op <- Operation(name = "DeregisterPatchBaselineForPatchGroup", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- deregister_patch_baseline_for_patch_group_input(BaselineId = BaselineId, 
+        PatchGroup = PatchGroup)
+    output <- deregister_patch_baseline_for_patch_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes a target from a Maintenance Window
+#'
+#' Removes a target from a Maintenance Window.
+#'
+#' @param WindowId The ID of the Maintenance Window the target should be removed from.
+#' @param WindowTargetId The ID of the target definition to remove.
+#' @param Safe The system checks if the target is being referenced by a task. If the target is being referenced, the system returns an error and does not deregister the target from the Maintenance Window.
+#'
+#' @examples
+#'
+#' @export
+deregister_target_from_maintenance_window <- function (WindowId, 
+    WindowTargetId, Safe = NULL) 
+{
+    op <- Operation(name = "DeregisterTargetFromMaintenanceWindow", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- deregister_target_from_maintenance_window_input(WindowId = WindowId, 
+        WindowTargetId = WindowTargetId, Safe = Safe)
+    output <- deregister_target_from_maintenance_window_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes a task from a Maintenance Window
+#'
+#' Removes a task from a Maintenance Window.
+#'
+#' @param WindowId The ID of the Maintenance Window the task should be removed from.
+#' @param WindowTaskId The ID of the task to remove from the Maintenance Window.
+#'
+#' @examples
+#'
+#' @export
+deregister_task_from_maintenance_window <- function (WindowId, 
+    WindowTaskId) 
+{
+    op <- Operation(name = "DeregisterTaskFromMaintenanceWindow", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- deregister_task_from_maintenance_window_input(WindowId = WindowId, 
+        WindowTaskId = WindowTaskId)
+    output <- deregister_task_from_maintenance_window_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Details about the activation, including: the date and time the activation was created, the expiration date, the IAM role assigned to the instances in the activation, and the number of instances activated by this registration
+#'
+#' Details about the activation, including: the date and time the activation was created, the expiration date, the IAM role assigned to the instances in the activation, and the number of instances activated by this registration.
+#'
+#' @param Filters A filter to view information about your activations.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken A token to start the list. Use this token to get the next set of results.
+#'
+#' @examples
+#'
+#' @export
+describe_activations <- function (Filters = NULL, MaxResults = NULL, 
+    NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeActivations", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_activations_input(Filters = Filters, MaxResults = MaxResults, 
+        NextToken = NextToken)
+    output <- describe_activations_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the association for the specified target or instance
+#'
+#' Describes the association for the specified target or instance. If you created the association by using the `Targets` parameter, then you must retrieve the association by using the association ID. If you created the association by specifying an instance ID and a Systems Manager document, then you retrieve the association by specifying the document name and the instance ID.
+#'
+#' @param Name The name of the Systems Manager document.
+#' @param InstanceId The instance ID.
+#' @param AssociationId The association ID for which you want information.
+#' @param AssociationVersion Specify the association version to retrieve. To view the latest version, either specify `$LATEST` for this parameter, or omit this parameter. To view a list of all associations for an instance, use ListInstanceAssociations. To get a list of versions for a specific association, use ListAssociationVersions.
+#'
+#' @examples
+#'
+#' @export
+describe_association <- function (Name = NULL, InstanceId = NULL, 
+    AssociationId = NULL, AssociationVersion = NULL) 
+{
+    op <- Operation(name = "DescribeAssociation", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_association_input(Name = Name, InstanceId = InstanceId, 
+        AssociationId = AssociationId, AssociationVersion = AssociationVersion)
+    output <- describe_association_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Use this API action to view information about a specific execution of a specific association
+#'
+#' Use this API action to view information about a specific execution of a specific association.
+#'
+#' @param AssociationId The association ID that includes the execution for which you want to view details.
+#' @param ExecutionId The execution ID for which you want to view details.
+#' @param Filters Filters for the request. You can specify the following filters and values.
+#' 
+#' Status (EQUAL)
+#' 
+#' ResourceId (EQUAL)
+#' 
+#' ResourceType (EQUAL)
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken A token to start the list. Use this token to get the next set of results.
+#'
+#' @examples
+#'
+#' @export
+describe_association_execution_targets <- function (AssociationId, 
+    ExecutionId, Filters = NULL, MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeAssociationExecutionTargets", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_association_execution_targets_input(AssociationId = AssociationId, 
+        ExecutionId = ExecutionId, Filters = Filters, MaxResults = MaxResults, 
+        NextToken = NextToken)
+    output <- describe_association_execution_targets_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Use this API action to view all executions for a specific association ID
+#'
+#' Use this API action to view all executions for a specific association ID.
+#'
+#' @param AssociationId The association ID for which you want to view execution history details.
+#' @param Filters Filters for the request. You can specify the following filters and values.
+#' 
+#' ExecutionId (EQUAL)
+#' 
+#' Status (EQUAL)
+#' 
+#' CreatedTime (EQUAL, GREATER\_THAN, LESS\_THAN)
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken A token to start the list. Use this token to get the next set of results.
+#'
+#' @examples
+#'
+#' @export
+describe_association_executions <- function (AssociationId, Filters = NULL, 
+    MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeAssociationExecutions", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_association_executions_input(AssociationId = AssociationId, 
+        Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+    output <- describe_association_executions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Provides details about all active and terminated Automation executions
+#'
+#' Provides details about all active and terminated Automation executions.
+#'
+#' @param Filters Filters used to limit the scope of executions that are requested.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#'
+#' @export
+describe_automation_executions <- function (Filters = NULL, MaxResults = NULL, 
+    NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeAutomationExecutions", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_automation_executions_input(Filters = Filters, 
+        MaxResults = MaxResults, NextToken = NextToken)
+    output <- describe_automation_executions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Information about all active and terminated step executions in an Automation workflow
+#'
+#' Information about all active and terminated step executions in an Automation workflow.
+#'
+#' @param AutomationExecutionId The Automation execution ID for which you want step execution descriptions.
+#' @param Filters One or more filters to limit the number of step executions returned by the request.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param ReverseOrder A boolean that indicates whether to list step executions in reverse order by start time. The default value is false.
+#'
+#' @examples
+#'
+#' @export
+describe_automation_step_executions <- function (AutomationExecutionId, 
+    Filters = NULL, NextToken = NULL, MaxResults = NULL, ReverseOrder = NULL) 
+{
+    op <- Operation(name = "DescribeAutomationStepExecutions", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_automation_step_executions_input(AutomationExecutionId = AutomationExecutionId, 
+        Filters = Filters, NextToken = NextToken, MaxResults = MaxResults, 
+        ReverseOrder = ReverseOrder)
+    output <- describe_automation_step_executions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists all patches that could possibly be included in a patch baseline
+#'
+#' Lists all patches that could possibly be included in a patch baseline.
+#'
+#' @param Filters Filters used to scope down the returned patches.
+#' @param MaxResults The maximum number of patches to return (per page).
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#'
+#' @export
+describe_available_patches <- function (Filters = NULL, MaxResults = NULL, 
+    NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeAvailablePatches", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_available_patches_input(Filters = Filters, 
+        MaxResults = MaxResults, NextToken = NextToken)
+    output <- describe_available_patches_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the specified Systems Manager document
+#'
+#' Describes the specified Systems Manager document.
+#'
+#' @param Name The name of the Systems Manager document.
+#' @param DocumentVersion The document version for which you want information. Can be a specific version or the default version.
+#'
+#' @examples
+#'
+#' @export
+describe_document <- function (Name, DocumentVersion = NULL) 
+{
+    op <- Operation(name = "DescribeDocument", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_document_input(Name = Name, DocumentVersion = DocumentVersion)
+    output <- describe_document_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the permissions for a Systems Manager document
+#'
+#' Describes the permissions for a Systems Manager document. If you created the document, you are the owner. If a document is shared, it can either be shared privately (by specifying a user\'s AWS account ID) or publicly (*All*).
+#'
+#' @param Name The name of the document for which you are the owner.
+#' @param PermissionType The permission type for the document. The permission type can be *Share*.
+#'
+#' @examples
+#'
+#' @export
+describe_document_permission <- function (Name, PermissionType) 
+{
+    op <- Operation(name = "DescribeDocumentPermission", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_document_permission_input(Name = Name, 
+        PermissionType = PermissionType)
+    output <- describe_document_permission_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' All associations for the instance(s)
+#'
+#' All associations for the instance(s).
+#'
+#' @param InstanceId The instance ID for which you want to view all associations.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#'
+#' @export
+describe_effective_instance_associations <- function (InstanceId, 
+    MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeEffectiveInstanceAssociations", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_effective_instance_associations_input(InstanceId = InstanceId, 
+        MaxResults = MaxResults, NextToken = NextToken)
+    output <- describe_effective_instance_associations_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the current effective patches (the patch and the approval state) for the specified patch baseline
+#'
+#' Retrieves the current effective patches (the patch and the approval state) for the specified patch baseline. Note that this API applies only to Windows patch baselines.
+#'
+#' @param BaselineId The ID of the patch baseline to retrieve the effective patches for.
+#' @param MaxResults The maximum number of patches to return (per page).
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#'
+#' @export
+describe_effective_patches_for_patch_baseline <- function (BaselineId, 
+    MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeEffectivePatchesForPatchBaseline", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_effective_patches_for_patch_baseline_input(BaselineId = BaselineId, 
+        MaxResults = MaxResults, NextToken = NextToken)
+    output <- describe_effective_patches_for_patch_baseline_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' The status of the associations for the instance(s)
+#'
+#' The status of the associations for the instance(s).
+#'
+#' @param InstanceId The instance IDs for which you want association status information.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#'
+#' @export
+describe_instance_associations_status <- function (InstanceId, 
+    MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeInstanceAssociationsStatus", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_instance_associations_status_input(InstanceId = InstanceId, 
+        MaxResults = MaxResults, NextToken = NextToken)
+    output <- describe_instance_associations_status_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes one or more of your instances
+#'
+#' Describes one or more of your instances. You can use this to get information about instances like the operating system platform, the SSM Agent version (Linux), status etc. If you specify one or more instance IDs, it returns information for those instances. If you do not specify instance IDs, it returns information for all your instances. If you specify an instance ID that is not valid or an instance that you do not own, you receive an error.
+#' 
+#' The IamRole field for this API action is the Amazon Identity and Access Management (IAM) role assigned to on-premises instances. This call does not return the IAM role for Amazon EC2 instances.
+#'
+#' @param InstanceInformationFilterList This is a legacy method. We recommend that you don\'t use this method. Instead, use the InstanceInformationFilter action. The `InstanceInformationFilter` action enables you to return instance information by using tags that are specified as a key-value mapping.
+#' 
+#' If you do use this method, then you can\'t use the `InstanceInformationFilter` action. Using this method and the `InstanceInformationFilter` action causes an exception error.
+#' @param Filters One or more filters. Use a filter to return a more specific list of instances.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#'
+#' @export
+describe_instance_information <- function (InstanceInformationFilterList = NULL, 
+    Filters = NULL, MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeInstanceInformation", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_instance_information_input(InstanceInformationFilterList = InstanceInformationFilterList, 
+        Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+    output <- describe_instance_information_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the high-level patch state of one or more instances
+#'
+#' Retrieves the high-level patch state of one or more instances.
+#'
+#' @param InstanceIds The ID of the instance whose patch state information should be retrieved.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#' @param MaxResults The maximum number of instances to return (per page).
+#'
+#' @examples
+#'
+#' @export
+describe_instance_patch_states <- function (InstanceIds, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- Operation(name = "DescribeInstancePatchStates", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_instance_patch_states_input(InstanceIds = InstanceIds, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- describe_instance_patch_states_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the high-level patch state for the instances in the specified patch group
+#'
+#' Retrieves the high-level patch state for the instances in the specified patch group.
+#'
+#' @param PatchGroup The name of the patch group for which the patch state information should be retrieved.
+#' @param Filters Each entry in the array is a structure containing:
+#' 
+#' Key (string between 1 and 200 characters)
+#' 
+#' Values (array containing a single string)
+#' 
+#' Type (string \"Equal\", \"NotEqual\", \"LessThan\", \"GreaterThan\")
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#' @param MaxResults The maximum number of patches to return (per page).
+#'
+#' @examples
+#'
+#' @export
+describe_instance_patch_states_for_patch_group <- function (PatchGroup, 
+    Filters = NULL, NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "DescribeInstancePatchStatesForPatchGroup", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_instance_patch_states_for_patch_group_input(PatchGroup = PatchGroup, 
+        Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+    output <- describe_instance_patch_states_for_patch_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves information about the patches on the specified instance and their state relative to the patch baseline being used for the instance
+#'
+#' Retrieves information about the patches on the specified instance and their state relative to the patch baseline being used for the instance.
+#'
+#' @param InstanceId The ID of the instance whose patch state information should be retrieved.
+#' @param Filters Each entry in the array is a structure containing:
+#' 
+#' Key (string, between 1 and 128 characters)
+#' 
+#' Values (array of strings, each string between 1 and 256 characters)
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#' @param MaxResults The maximum number of patches to return (per page).
+#'
+#' @examples
+#'
+#' @export
+describe_instance_patches <- function (InstanceId, Filters = NULL, 
+    NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "DescribeInstancePatches", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_instance_patches_input(InstanceId = InstanceId, 
+        Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+    output <- describe_instance_patches_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes a specific delete inventory operation
+#'
+#' Describes a specific delete inventory operation.
+#'
+#' @param DeletionId Specify the delete inventory ID for which you want information. This ID was returned by the `DeleteInventory` action.
+#' @param NextToken A token to start the list. Use this token to get the next set of results.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#'
+#' @examples
+#'
+#' @export
+describe_inventory_deletions <- function (DeletionId = NULL, 
+    NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "DescribeInventoryDeletions", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_inventory_deletions_input(DeletionId = DeletionId, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- describe_inventory_deletions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the individual task executions (one per target) for a particular task executed as part of a Maintenance Window execution
+#'
+#' Retrieves the individual task executions (one per target) for a particular task executed as part of a Maintenance Window execution.
+#'
+#' @param WindowExecutionId The ID of the Maintenance Window execution the task is part of.
+#' @param TaskId The ID of the specific task in the Maintenance Window task that should be retrieved.
+#' @param Filters Optional filters used to scope down the returned task invocations. The supported filter key is STATUS with the corresponding values PENDING, IN\_PROGRESS, SUCCESS, FAILED, TIMED\_OUT, CANCELLING, and CANCELLED.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#'
+#' @export
+describe_maintenance_window_execution_task_invocations <- function (WindowExecutionId, 
+    TaskId, Filters = NULL, MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeMaintenanceWindowExecutionTaskInvocations", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_maintenance_window_execution_task_invocations_input(WindowExecutionId = WindowExecutionId, 
+        TaskId = TaskId, Filters = Filters, MaxResults = MaxResults, 
+        NextToken = NextToken)
+    output <- describe_maintenance_window_execution_task_invocations_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' For a given Maintenance Window execution, lists the tasks that were executed
+#'
+#' For a given Maintenance Window execution, lists the tasks that were executed.
+#'
+#' @param WindowExecutionId The ID of the Maintenance Window execution whose task executions should be retrieved.
+#' @param Filters Optional filters used to scope down the returned tasks. The supported filter key is STATUS with the corresponding values PENDING, IN\_PROGRESS, SUCCESS, FAILED, TIMED\_OUT, CANCELLING, and CANCELLED.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#'
+#' @export
+describe_maintenance_window_execution_tasks <- function (WindowExecutionId, 
+    Filters = NULL, MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeMaintenanceWindowExecutionTasks", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_maintenance_window_execution_tasks_input(WindowExecutionId = WindowExecutionId, 
+        Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+    output <- describe_maintenance_window_execution_tasks_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the executions of a Maintenance Window
+#'
+#' Lists the executions of a Maintenance Window. This includes information about when the Maintenance Window was scheduled to be active, and information about tasks registered and run with the Maintenance Window.
+#'
+#' @param WindowId The ID of the Maintenance Window whose executions should be retrieved.
+#' @param Filters Each entry in the array is a structure containing:
+#' 
+#' Key (string, between 1 and 128 characters)
+#' 
+#' Values (array of strings, each string is between 1 and 256 characters)
+#' 
+#' The supported Keys are ExecutedBefore and ExecutedAfter with the value being a date/time string such as 2016-11-04T05:00:00Z.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#'
+#' @export
+describe_maintenance_window_executions <- function (WindowId, 
+    Filters = NULL, MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeMaintenanceWindowExecutions", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_maintenance_window_executions_input(WindowId = WindowId, 
+        Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+    output <- describe_maintenance_window_executions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves information about upcoming executions of a Maintenance Window
+#'
+#' Retrieves information about upcoming executions of a Maintenance Window.
+#'
+#' @param WindowId The ID of the Maintenance Window to retrieve information about.
+#' @param Targets The instance ID or key/value pair to retrieve information about.
+#' @param ResourceType The type of resource you want to retrieve information about. For example, \"INSTANCE\".
+#' @param Filters Filters used to limit the range of results. For example, you can limit Maintenance Window executions to only those scheduled before or after a certain date and time.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#'
+#' @export
+describe_maintenance_window_schedule <- function (WindowId = NULL, 
+    Targets = NULL, ResourceType = NULL, Filters = NULL, MaxResults = NULL, 
+    NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeMaintenanceWindowSchedule", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_maintenance_window_schedule_input(WindowId = WindowId, 
+        Targets = Targets, ResourceType = ResourceType, Filters = Filters, 
+        MaxResults = MaxResults, NextToken = NextToken)
+    output <- describe_maintenance_window_schedule_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the targets registered with the Maintenance Window
+#'
+#' Lists the targets registered with the Maintenance Window.
+#'
+#' @param WindowId The ID of the Maintenance Window whose targets should be retrieved.
+#' @param Filters Optional filters that can be used to narrow down the scope of the returned window targets. The supported filter keys are Type, WindowTargetId and OwnerInformation.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#'
+#' @export
+describe_maintenance_window_targets <- function (WindowId, Filters = NULL, 
+    MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeMaintenanceWindowTargets", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_maintenance_window_targets_input(WindowId = WindowId, 
+        Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+    output <- describe_maintenance_window_targets_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the tasks in a Maintenance Window
+#'
+#' Lists the tasks in a Maintenance Window.
+#'
+#' @param WindowId The ID of the Maintenance Window whose tasks should be retrieved.
+#' @param Filters Optional filters used to narrow down the scope of the returned tasks. The supported filter keys are WindowTaskId, TaskArn, Priority, and TaskType.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#'
+#' @export
+describe_maintenance_window_tasks <- function (WindowId, Filters = NULL, 
+    MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeMaintenanceWindowTasks", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_maintenance_window_tasks_input(WindowId = WindowId, 
+        Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+    output <- describe_maintenance_window_tasks_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the Maintenance Windows in an AWS account
+#'
+#' Retrieves the Maintenance Windows in an AWS account.
+#'
+#' @param Filters Optional filters used to narrow down the scope of the returned Maintenance Windows. Supported filter keys are Name and Enabled.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#'
+#' @export
+describe_maintenance_windows <- function (Filters = NULL, MaxResults = NULL, 
+    NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeMaintenanceWindows", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_maintenance_windows_input(Filters = Filters, 
+        MaxResults = MaxResults, NextToken = NextToken)
+    output <- describe_maintenance_windows_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves information about the Maintenance Windows targets or tasks that an instance is associated with
+#'
+#' Retrieves information about the Maintenance Windows targets or tasks that an instance is associated with.
+#'
+#' @param Targets The instance ID or key/value pair to retrieve information about.
+#' @param ResourceType The type of resource you want to retrieve information about. For example, \"INSTANCE\".
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#'
+#' @export
+describe_maintenance_windows_for_target <- function (Targets, 
+    ResourceType, MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeMaintenanceWindowsForTarget", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_maintenance_windows_for_target_input(Targets = Targets, 
+        ResourceType = ResourceType, MaxResults = MaxResults, 
+        NextToken = NextToken)
+    output <- describe_maintenance_windows_for_target_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Get information about a parameter
+#'
+#' Get information about a parameter.
+#' 
+#' Request results are returned on a best-effort basis. If you specify `MaxResults` in the request, the response includes information up to the limit specified. The number of items returned, however, can be between zero and the value of `MaxResults`. If the service reaches an internal limit while processing the results, it stops the operation and returns the matching values up to that point and a `NextToken`. You can specify the `NextToken` in a subsequent call to get the next set of results.
+#'
+#' @param Filters One or more filters. Use a filter to return a more specific list of results.
+#' @param ParameterFilters Filters to limit the request results.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#'
+#' @export
+describe_parameters <- function (Filters = NULL, ParameterFilters = NULL, 
+    MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeParameters", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_parameters_input(Filters = Filters, ParameterFilters = ParameterFilters, 
+        MaxResults = MaxResults, NextToken = NextToken)
+    output <- describe_parameters_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the patch baselines in your AWS account
+#'
+#' Lists the patch baselines in your AWS account.
+#'
+#' @param Filters Each element in the array is a structure containing:
+#' 
+#' Key: (string, \"NAME\_PREFIX\" or \"OWNER\")
+#' 
+#' Value: (array of strings, exactly 1 entry, between 1 and 255 characters)
+#' @param MaxResults The maximum number of patch baselines to return (per page).
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#'
+#' @export
+describe_patch_baselines <- function (Filters = NULL, MaxResults = NULL, 
+    NextToken = NULL) 
+{
+    op <- Operation(name = "DescribePatchBaselines", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_patch_baselines_input(Filters = Filters, 
+        MaxResults = MaxResults, NextToken = NextToken)
+    output <- describe_patch_baselines_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns high-level aggregated patch compliance state for a patch group
+#'
+#' Returns high-level aggregated patch compliance state for a patch group.
+#'
+#' @param PatchGroup The name of the patch group whose patch snapshot should be retrieved.
+#'
+#' @examples
+#'
+#' @export
+describe_patch_group_state <- function (PatchGroup) 
+{
+    op <- Operation(name = "DescribePatchGroupState", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_patch_group_state_input(PatchGroup = PatchGroup)
+    output <- describe_patch_group_state_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists all patch groups that have been registered with patch baselines
+#'
+#' Lists all patch groups that have been registered with patch baselines.
+#'
+#' @param MaxResults The maximum number of patch groups to return (per page).
+#' @param Filters One or more filters. Use a filter to return a more specific list of results.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#'
+#' @export
+describe_patch_groups <- function (MaxResults = NULL, Filters = NULL, 
+    NextToken = NULL) 
+{
+    op <- Operation(name = "DescribePatchGroups", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_patch_groups_input(MaxResults = MaxResults, 
+        Filters = Filters, NextToken = NextToken)
+    output <- describe_patch_groups_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a list of all active sessions (both connected and disconnected) or terminated sessions from the past 30 days
+#'
+#' Retrieves a list of all active sessions (both connected and disconnected) or terminated sessions from the past 30 days.
+#'
+#' @param State The session status to retrieve a list of sessions for. For example, \"Active\".
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#' @param Filters One or more filters to limit the type of sessions returned by the request.
+#'
+#' @examples
+#'
+#' @export
+describe_sessions <- function (State, MaxResults = NULL, NextToken = NULL, 
+    Filters = NULL) 
+{
+    op <- Operation(name = "DescribeSessions", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_sessions_input(State = State, MaxResults = MaxResults, 
+        NextToken = NextToken, Filters = Filters)
+    output <- describe_sessions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Get detailed information about a particular Automation execution
+#'
+#' Get detailed information about a particular Automation execution.
+#'
+#' @param AutomationExecutionId The unique identifier for an existing automation execution to examine. The execution ID is returned by StartAutomationExecution when the execution of an Automation document is initiated.
+#'
+#' @examples
+#'
+#' @export
+get_automation_execution <- function (AutomationExecutionId) 
+{
+    op <- Operation(name = "GetAutomationExecution", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_automation_execution_input(AutomationExecutionId = AutomationExecutionId)
+    output <- get_automation_execution_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns detailed information about command execution for an invocation or plugin
+#'
+#' Returns detailed information about command execution for an invocation or plugin.
+#'
+#' @param CommandId (Required) The parent command ID of the invocation plugin.
+#' @param InstanceId (Required) The ID of the managed instance targeted by the command. A managed instance can be an Amazon EC2 instance or an instance in your hybrid environment that is configured for Systems Manager.
+#' @param PluginName (Optional) The name of the plugin for which you want detailed results. If the document contains only one plugin, the name can be omitted and the details will be returned.
+#'
+#' @examples
+#'
+#' @export
+get_command_invocation <- function (CommandId, InstanceId, PluginName = NULL) 
+{
+    op <- Operation(name = "GetCommandInvocation", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_command_invocation_input(CommandId = CommandId, 
+        InstanceId = InstanceId, PluginName = PluginName)
+    output <- get_command_invocation_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the Session Manager connection status for an instance to determine whether it is connected and ready to receive Session Manager connections
+#'
+#' Retrieves the Session Manager connection status for an instance to determine whether it is connected and ready to receive Session Manager connections.
+#'
+#' @param Target The ID of the instance.
+#'
+#' @examples
+#'
+#' @export
+get_connection_status <- function (Target) 
+{
+    op <- Operation(name = "GetConnectionStatus", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_connection_status_input(Target = Target)
+    output <- get_connection_status_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the default patch baseline
+#'
+#' Retrieves the default patch baseline. Note that Systems Manager supports creating multiple default patch baselines. For example, you can create a default patch baseline for each operating system.
+#' 
+#' If you do not specify an operating system value, the default patch baseline for Windows is returned.
+#'
+#' @param OperatingSystem Returns the default patch baseline for the specified operating system.
+#'
+#' @examples
+#'
+#' @export
+get_default_patch_baseline <- function (OperatingSystem = NULL) 
+{
+    op <- Operation(name = "GetDefaultPatchBaseline", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_default_patch_baseline_input(OperatingSystem = OperatingSystem)
+    output <- get_default_patch_baseline_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the current snapshot for the patch baseline the instance uses
+#'
+#' Retrieves the current snapshot for the patch baseline the instance uses. This API is primarily used by the AWS-RunPatchBaseline Systems Manager document.
+#'
+#' @param InstanceId The ID of the instance for which the appropriate patch snapshot should be retrieved.
+#' @param SnapshotId The user-defined snapshot ID.
+#'
+#' @examples
+#'
+#' @export
+get_deployable_patch_snapshot_for_instance <- function (InstanceId, 
+    SnapshotId) 
+{
+    op <- Operation(name = "GetDeployablePatchSnapshotForInstance", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- get_deployable_patch_snapshot_for_instance_input(InstanceId = InstanceId, 
+        SnapshotId = SnapshotId)
+    output <- get_deployable_patch_snapshot_for_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets the contents of the specified Systems Manager document
+#'
+#' Gets the contents of the specified Systems Manager document.
+#'
+#' @param Name The name of the Systems Manager document.
+#' @param DocumentVersion The document version for which you want information.
+#' @param DocumentFormat Returns the document in the specified format. The document format can be either JSON or YAML. JSON is the default format.
+#'
+#' @examples
+#'
+#' @export
+get_document <- function (Name, DocumentVersion = NULL, DocumentFormat = NULL) 
+{
+    op <- Operation(name = "GetDocument", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_document_input(Name = Name, DocumentVersion = DocumentVersion, 
+        DocumentFormat = DocumentFormat)
+    output <- get_document_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Query inventory information
+#'
+#' Query inventory information.
+#'
+#' @param Filters One or more filters. Use a filter to return a more specific list of results.
+#' @param Aggregators Returns counts of inventory types based on one or more expressions. For example, if you aggregate by using an expression that uses the `AWS:InstanceInformation.PlatformType` type, you can see a count of how many Windows and Linux instances exist in your inventoried fleet.
+#' @param ResultAttributes The list of inventory item types to return.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#'
+#' @examples
+#'
+#' @export
+get_inventory <- function (Filters = NULL, Aggregators = NULL, 
+    ResultAttributes = NULL, NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "GetInventory", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_inventory_input(Filters = Filters, Aggregators = Aggregators, 
+        ResultAttributes = ResultAttributes, NextToken = NextToken, 
+        MaxResults = MaxResults)
+    output <- get_inventory_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Return a list of inventory type names for the account, or return a list of attribute names for a specific Inventory item type
+#'
+#' Return a list of inventory type names for the account, or return a list of attribute names for a specific Inventory item type.
+#'
+#' @param TypeName The type of inventory item to return.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param Aggregator Returns inventory schemas that support aggregation. For example, this call returns the `AWS:InstanceInformation` type, because it supports aggregation based on the `PlatformName`, `PlatformType`, and `PlatformVersion` attributes.
+#' @param SubType Returns the sub-type schema for a specified inventory type.
+#'
+#' @examples
+#'
+#' @export
+get_inventory_schema <- function (TypeName = NULL, NextToken = NULL, 
+    MaxResults = NULL, Aggregator = NULL, SubType = NULL) 
+{
+    op <- Operation(name = "GetInventorySchema", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_inventory_schema_input(TypeName = TypeName, 
+        NextToken = NextToken, MaxResults = MaxResults, Aggregator = Aggregator, 
+        SubType = SubType)
+    output <- get_inventory_schema_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a Maintenance Window
+#'
+#' Retrieves a Maintenance Window.
+#'
+#' @param WindowId The ID of the desired Maintenance Window.
+#'
+#' @examples
+#'
+#' @export
+get_maintenance_window <- function (WindowId) 
+{
+    op <- Operation(name = "GetMaintenanceWindow", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_maintenance_window_input(WindowId = WindowId)
+    output <- get_maintenance_window_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves details about a specific task executed as part of a Maintenance Window execution
+#'
+#' Retrieves details about a specific task executed as part of a Maintenance Window execution.
+#'
+#' @param WindowExecutionId The ID of the Maintenance Window execution that includes the task.
+#'
+#' @examples
+#'
+#' @export
+get_maintenance_window_execution <- function (WindowExecutionId) 
+{
+    op <- Operation(name = "GetMaintenanceWindowExecution", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_maintenance_window_execution_input(WindowExecutionId = WindowExecutionId)
+    output <- get_maintenance_window_execution_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the details about a specific task executed as part of a Maintenance Window execution
+#'
+#' Retrieves the details about a specific task executed as part of a Maintenance Window execution.
+#'
+#' @param WindowExecutionId The ID of the Maintenance Window execution that includes the task.
+#' @param TaskId The ID of the specific task execution in the Maintenance Window task that should be retrieved.
+#'
+#' @examples
+#'
+#' @export
+get_maintenance_window_execution_task <- function (WindowExecutionId, 
+    TaskId) 
+{
+    op <- Operation(name = "GetMaintenanceWindowExecutionTask", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- get_maintenance_window_execution_task_input(WindowExecutionId = WindowExecutionId, 
+        TaskId = TaskId)
+    output <- get_maintenance_window_execution_task_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a task invocation
+#'
+#' Retrieves a task invocation. A task invocation is a specific task executing on a specific target. Maintenance Windows report status for all invocations.
+#'
+#' @param WindowExecutionId The ID of the Maintenance Window execution for which the task is a part.
+#' @param TaskId The ID of the specific task in the Maintenance Window task that should be retrieved.
+#' @param InvocationId The invocation ID to retrieve.
+#'
+#' @examples
+#'
+#' @export
+get_maintenance_window_execution_task_invocation <- function (WindowExecutionId, 
+    TaskId, InvocationId) 
+{
+    op <- Operation(name = "GetMaintenanceWindowExecutionTaskInvocation", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- get_maintenance_window_execution_task_invocation_input(WindowExecutionId = WindowExecutionId, 
+        TaskId = TaskId, InvocationId = InvocationId)
+    output <- get_maintenance_window_execution_task_invocation_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the tasks in a Maintenance Window
+#'
+#' Lists the tasks in a Maintenance Window.
+#'
+#' @param WindowId The Maintenance Window ID that includes the task to retrieve.
+#' @param WindowTaskId The Maintenance Window task ID to retrieve.
+#'
+#' @examples
+#'
+#' @export
+get_maintenance_window_task <- function (WindowId, WindowTaskId) 
+{
+    op <- Operation(name = "GetMaintenanceWindowTask", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_maintenance_window_task_input(WindowId = WindowId, 
+        WindowTaskId = WindowTaskId)
+    output <- get_maintenance_window_task_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Get information about a parameter by using the parameter name
+#'
+#' Get information about a parameter by using the parameter name. Don\'t confuse this API action with the GetParameters API action.
+#'
+#' @param Name The name of the parameter you want to query.
+#' @param WithDecryption Return decrypted values for secure string parameters. This flag is ignored for String and StringList parameter types.
+#'
+#' @examples
+#'
+#' @export
+get_parameter <- function (Name, WithDecryption = NULL) 
+{
+    op <- Operation(name = "GetParameter", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_parameter_input(Name = Name, WithDecryption = WithDecryption)
+    output <- get_parameter_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Query a list of all parameters used by the AWS account
+#'
+#' Query a list of all parameters used by the AWS account.
+#'
+#' @param Name The name of a parameter you want to query.
+#' @param WithDecryption Return decrypted values for secure string parameters. This flag is ignored for String and StringList parameter types.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#'
+#' @export
+get_parameter_history <- function (Name, WithDecryption = NULL, 
+    MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "GetParameterHistory", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_parameter_history_input(Name = Name, WithDecryption = WithDecryption, 
+        MaxResults = MaxResults, NextToken = NextToken)
+    output <- get_parameter_history_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Get details of a parameter
+#'
+#' Get details of a parameter. Don\'t confuse this API action with the GetParameter API action.
+#'
+#' @param Names Names of the parameters for which you want to query information.
+#' @param WithDecryption Return decrypted secure string value. Return decrypted values for secure string parameters. This flag is ignored for String and StringList parameter types.
+#'
+#' @examples
+#'
+#' @export
+get_parameters <- function (Names, WithDecryption = NULL) 
+{
+    op <- Operation(name = "GetParameters", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_parameters_input(Names = Names, WithDecryption = WithDecryption)
+    output <- get_parameters_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieve parameters in a specific hierarchy
+#'
+#' Retrieve parameters in a specific hierarchy. For more information, see [Working with Systems Manager Parameters](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working.html) in the *AWS Systems Manager User Guide*.
+#' 
+#' Request results are returned on a best-effort basis. If you specify `MaxResults` in the request, the response includes information up to the limit specified. The number of items returned, however, can be between zero and the value of `MaxResults`. If the service reaches an internal limit while processing the results, it stops the operation and returns the matching values up to that point and a `NextToken`. You can specify the `NextToken` in a subsequent call to get the next set of results.
+#' 
+#' This API action doesn\'t support filtering by tags.
+#'
+#' @param Path The hierarchy for the parameter. Hierarchies start with a forward slash (/) and end with the parameter name. A parameter name hierarchy can have a maximum of 15 levels. Here is an example of a hierarchy: `/Finance/Prod/IAD/WinServ2016/license33`
+#' @param Recursive Retrieve all parameters within a hierarchy.
+#' 
+#' If a user has access to a path, then the user can access all levels of that path. For example, if a user has permission to access path /a, then the user can also access /a/b. Even if a user has explicitly been denied access in IAM for parameter /a, they can still call the GetParametersByPath API action recursively and view /a/b.
+#' @param ParameterFilters Filters to limit the request results.
+#' 
+#' You can\'t filter using the parameter name.
+#' @param WithDecryption Retrieve all parameters in a hierarchy with their value decrypted.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken A token to start the list. Use this token to get the next set of results.
+#'
+#' @examples
+#'
+#' @export
+get_parameters_by_path <- function (Path, Recursive = NULL, ParameterFilters = NULL, 
+    WithDecryption = NULL, MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "GetParametersByPath", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_parameters_by_path_input(Path = Path, Recursive = Recursive, 
+        ParameterFilters = ParameterFilters, WithDecryption = WithDecryption, 
+        MaxResults = MaxResults, NextToken = NextToken)
+    output <- get_parameters_by_path_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves information about a patch baseline
+#'
+#' Retrieves information about a patch baseline.
+#'
+#' @param BaselineId The ID of the patch baseline to retrieve.
+#'
+#' @examples
+#'
+#' @export
+get_patch_baseline <- function (BaselineId) 
+{
+    op <- Operation(name = "GetPatchBaseline", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_patch_baseline_input(BaselineId = BaselineId)
+    output <- get_patch_baseline_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the patch baseline that should be used for the specified patch group
+#'
+#' Retrieves the patch baseline that should be used for the specified patch group.
+#'
+#' @param PatchGroup The name of the patch group whose patch baseline should be retrieved.
+#' @param OperatingSystem Returns he operating system rule specified for patch groups using the patch baseline.
+#'
+#' @examples
+#'
+#' @export
+get_patch_baseline_for_patch_group <- function (PatchGroup, OperatingSystem = NULL) 
+{
+    op <- Operation(name = "GetPatchBaselineForPatchGroup", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_patch_baseline_for_patch_group_input(PatchGroup = PatchGroup, 
+        OperatingSystem = OperatingSystem)
+    output <- get_patch_baseline_for_patch_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' A parameter label is a user-defined alias to help you manage different versions of a parameter
+#'
+#' A parameter label is a user-defined alias to help you manage different versions of a parameter. When you modify a parameter, Systems Manager automatically saves a new version and increments the version number by one. A label can help you remember the purpose of a parameter when there are multiple versions.
+#' 
+#' Parameter labels have the following requirements and restrictions.
+#' 
+#' -   A version of a parameter can have a maximum of 10 labels.
+#' 
+#' -   You can\'t attach the same label to different versions of the same parameter. For example, if version 1 has the label Production, then you can\'t attach Production to version 2.
+#' 
+#' -   You can move a label from one version of a parameter to another.
+#' 
+#' -   You can\'t create a label when you create a new parameter. You must attach a label to a specific version of a parameter.
+#' 
+#' -   You can\'t delete a parameter label. If you no longer want to use a parameter label, then you must move it to a different version of a parameter.
+#' 
+#' -   A label can have a maximum of 100 characters.
+#' 
+#' -   Labels can contain letters (case sensitive), numbers, periods (.), hyphens (-), or underscores (\_).
+#' 
+#' -   Labels can\'t begin with a number, \"aws,\" or \"ssm\" (not case sensitive). If a label fails to meet these requirements, then the label is not associated with a parameter and the system displays it in the list of InvalidLabels.
+#'
+#' @param Name The parameter name on which you want to attach one or more labels.
+#' @param Labels One or more labels to attach to the specified parameter version.
+#' @param ParameterVersion The specific version of the parameter on which you want to attach one or more labels. If no version is specified, the system attaches the label to the latest version.)
+#'
+#' @examples
+#'
+#' @export
+label_parameter_version <- function (Name, Labels, ParameterVersion = NULL) 
+{
+    op <- Operation(name = "LabelParameterVersion", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- label_parameter_version_input(Name = Name, Labels = Labels, 
+        ParameterVersion = ParameterVersion)
+    output <- label_parameter_version_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves all versions of an association for a specific association ID
+#'
+#' Retrieves all versions of an association for a specific association ID.
+#'
+#' @param AssociationId The association ID for which you want to view all versions.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken A token to start the list. Use this token to get the next set of results.
+#'
+#' @examples
+#'
+#' @export
+list_association_versions <- function (AssociationId, MaxResults = NULL, 
+    NextToken = NULL) 
+{
+    op <- Operation(name = "ListAssociationVersions", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_association_versions_input(AssociationId = AssociationId, 
+        MaxResults = MaxResults, NextToken = NextToken)
+    output <- list_association_versions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the associations for the specified Systems Manager document or instance
+#'
+#' Lists the associations for the specified Systems Manager document or instance.
+#'
+#' @param AssociationFilterList One or more filters. Use a filter to return a more specific list of results.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#'
+#' @export
+list_associations <- function (AssociationFilterList = NULL, 
+    MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "ListAssociations", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_associations_input(AssociationFilterList = AssociationFilterList, 
+        MaxResults = MaxResults, NextToken = NextToken)
+    output <- list_associations_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' An invocation is copy of a command sent to a specific instance
+#'
+#' An invocation is copy of a command sent to a specific instance. A command can apply to one or more instances. A command invocation applies to one instance. For example, if a user executes SendCommand against three instances, then a command invocation is created for each requested instance ID. ListCommandInvocations provide status about command execution.
+#'
+#' @param CommandId (Optional) The invocations for a specific command ID.
+#' @param InstanceId (Optional) The command execution details for a specific instance ID.
+#' @param MaxResults (Optional) The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken (Optional) The token for the next set of items to return. (You received this token from a previous call.)
+#' @param Filters (Optional) One or more filters. Use a filter to return a more specific list of results.
+#' @param Details (Optional) If set this returns the response of the command executions and any command output. By default this is set to False.
+#'
+#' @examples
+#'
+#' @export
+list_command_invocations <- function (CommandId = NULL, InstanceId = NULL, 
+    MaxResults = NULL, NextToken = NULL, Filters = NULL, Details = NULL) 
+{
+    op <- Operation(name = "ListCommandInvocations", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_command_invocations_input(CommandId = CommandId, 
+        InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken, 
+        Filters = Filters, Details = Details)
+    output <- list_command_invocations_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the commands requested by users of the AWS account
+#'
+#' Lists the commands requested by users of the AWS account.
+#'
+#' @param CommandId (Optional) If provided, lists only the specified command.
+#' @param InstanceId (Optional) Lists commands issued against this instance ID.
+#' @param MaxResults (Optional) The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken (Optional) The token for the next set of items to return. (You received this token from a previous call.)
+#' @param Filters (Optional) One or more filters. Use a filter to return a more specific list of results.
+#'
+#' @examples
+#'
+#' @export
+list_commands <- function (CommandId = NULL, InstanceId = NULL, 
+    MaxResults = NULL, NextToken = NULL, Filters = NULL) 
+{
+    op <- Operation(name = "ListCommands", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_commands_input(CommandId = CommandId, InstanceId = InstanceId, 
+        MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
+    output <- list_commands_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' For a specified resource ID, this API action returns a list of compliance statuses for different resource types
+#'
+#' For a specified resource ID, this API action returns a list of compliance statuses for different resource types. Currently, you can only specify one resource ID per call. List results depend on the criteria specified in the filter.
+#'
+#' @param Filters One or more compliance filters. Use a filter to return a more specific list of results.
+#' @param ResourceIds The ID for the resources from which to get compliance information. Currently, you can only specify one resource ID.
+#' @param ResourceTypes The type of resource from which to get compliance information. Currently, the only supported resource type is `ManagedInstance`.
+#' @param NextToken A token to start the list. Use this token to get the next set of results.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#'
+#' @examples
+#'
+#' @export
+list_compliance_items <- function (Filters = NULL, ResourceIds = NULL, 
+    ResourceTypes = NULL, NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "ListComplianceItems", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_compliance_items_input(Filters = Filters, ResourceIds = ResourceIds, 
+        ResourceTypes = ResourceTypes, NextToken = NextToken, 
+        MaxResults = MaxResults)
+    output <- list_compliance_items_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a summary count of compliant and non-compliant resources for a compliance type
+#'
+#' Returns a summary count of compliant and non-compliant resources for a compliance type. For example, this call can return State Manager associations, patches, or custom compliance types according to the filter criteria that you specify.
+#'
+#' @param Filters One or more compliance or inventory filters. Use a filter to return a more specific list of results.
+#' @param NextToken A token to start the list. Use this token to get the next set of results.
+#' @param MaxResults The maximum number of items to return for this call. Currently, you can specify null or 50. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#'
+#' @examples
+#'
+#' @export
+list_compliance_summaries <- function (Filters = NULL, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- Operation(name = "ListComplianceSummaries", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_compliance_summaries_input(Filters = Filters, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_compliance_summaries_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' List all versions for a document
+#'
+#' List all versions for a document.
+#'
+#' @param Name The name of the document about which you want version information.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#'
+#' @export
+list_document_versions <- function (Name, MaxResults = NULL, 
+    NextToken = NULL) 
+{
+    op <- Operation(name = "ListDocumentVersions", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_document_versions_input(Name = Name, MaxResults = MaxResults, 
+        NextToken = NextToken)
+    output <- list_document_versions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes one or more of your Systems Manager documents
+#'
+#' Describes one or more of your Systems Manager documents.
+#'
+#' @param DocumentFilterList One or more filters. Use a filter to return a more specific list of results.
+#' @param Filters One or more filters. Use a filter to return a more specific list of results.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#'
+#' @export
+list_documents <- function (DocumentFilterList = NULL, Filters = NULL, 
+    MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "ListDocuments", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_documents_input(DocumentFilterList = DocumentFilterList, 
+        Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+    output <- list_documents_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' A list of inventory items returned by the request
+#'
+#' A list of inventory items returned by the request.
+#'
+#' @param InstanceId The instance ID for which you want inventory information.
+#' @param TypeName The type of inventory item for which you want information.
+#' @param Filters One or more filters. Use a filter to return a more specific list of results.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#'
+#' @examples
+#'
+#' @export
+list_inventory_entries <- function (InstanceId, TypeName, Filters = NULL, 
+    NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "ListInventoryEntries", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_inventory_entries_input(InstanceId = InstanceId, 
+        TypeName = TypeName, Filters = Filters, NextToken = NextToken, 
+        MaxResults = MaxResults)
+    output <- list_inventory_entries_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a resource-level summary count
+#'
+#' Returns a resource-level summary count. The summary includes information about compliant and non-compliant statuses and detailed compliance-item severity counts, according to the filter criteria you specify.
+#'
+#' @param Filters One or more filters. Use a filter to return a more specific list of results.
+#' @param NextToken A token to start the list. Use this token to get the next set of results.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#'
+#' @examples
+#'
+#' @export
+list_resource_compliance_summaries <- function (Filters = NULL, 
+    NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "ListResourceComplianceSummaries", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- list_resource_compliance_summaries_input(Filters = Filters, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_resource_compliance_summaries_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists your resource data sync configurations
+#'
+#' Lists your resource data sync configurations. Includes information about the last time a sync attempted to start, the last sync status, and the last time a sync successfully completed.
+#' 
+#' The number of sync configurations might be too large to return using a single call to `ListResourceDataSync`. You can limit the number of sync configurations returned by using the `MaxResults` parameter. To determine whether there are more sync configurations to list, check the value of `NextToken` in the output. If there are more sync configurations to list, you can request them by specifying the `NextToken` returned in the call to the parameter of a subsequent call.
+#'
+#' @param NextToken A token to start the list. Use this token to get the next set of results.
+#' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+#'
+#' @examples
+#'
+#' @export
+list_resource_data_sync <- function (NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "ListResourceDataSync", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_resource_data_sync_input(NextToken = NextToken, 
+        MaxResults = MaxResults)
+    output <- list_resource_data_sync_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of the tags assigned to the specified resource
+#'
+#' Returns a list of the tags assigned to the specified resource.
+#'
+#' @param ResourceType Returns a list of tags for a specific resource type.
+#' @param ResourceId The resource ID for which you want to see a list of tags.
+#'
+#' @examples
+#'
+#' @export
+list_tags_for_resource <- function (ResourceType, ResourceId) 
+{
+    op <- Operation(name = "ListTagsForResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_tags_for_resource_input(ResourceType = ResourceType, 
+        ResourceId = ResourceId)
+    output <- list_tags_for_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Shares a Systems Manager document publicly or privately
+#'
+#' Shares a Systems Manager document publicly or privately. If you share a document privately, you must specify the AWS user account IDs for those people who can use the document. If you share a document publicly, you must specify *All* as the account ID.
+#'
+#' @param Name The name of the document that you want to share.
+#' @param PermissionType The permission type for the document. The permission type can be *Share*.
+#' @param AccountIdsToAdd The AWS user accounts that should have access to the document. The account IDs can either be a group of account IDs or *All*.
+#' @param AccountIdsToRemove The AWS user accounts that should no longer have access to the document. The AWS user account can either be a group of account IDs or *All*. This action has a higher priority than *AccountIdsToAdd*. If you specify an account ID to add and the same ID to remove, the system removes access to the document.
+#'
+#' @examples
+#'
+#' @export
+modify_document_permission <- function (Name, PermissionType, 
+    AccountIdsToAdd = NULL, AccountIdsToRemove = NULL) 
+{
+    op <- Operation(name = "ModifyDocumentPermission", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- modify_document_permission_input(Name = Name, PermissionType = PermissionType, 
+        AccountIdsToAdd = AccountIdsToAdd, AccountIdsToRemove = AccountIdsToRemove)
+    output <- modify_document_permission_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Registers a compliance type and other compliance details on a designated resource
+#'
+#' Registers a compliance type and other compliance details on a designated resource. This action lets you register custom compliance details with a resource. This call overwrites existing compliance information on the resource, so you must provide a full list of compliance items each time that you send the request.
+#' 
+#' ComplianceType can be one of the following:
+#' 
+#' -   ExecutionId: The execution ID when the patch, association, or custom compliance item was applied.
+#' 
+#' -   ExecutionType: Specify patch, association, or Custom:`string`.
+#' 
+#' -   ExecutionTime. The time the patch, association, or custom compliance item was applied to the instance.
+#' 
+#' -   Id: The patch, association, or custom compliance ID.
+#' 
+#' -   Title: A title.
+#' 
+#' -   Status: The status of the compliance item. For example, `approved` for patches, or `Failed` for associations.
+#' 
+#' -   Severity: A patch severity. For example, `critical`.
+#' 
+#' -   DocumentName: A SSM document name. For example, AWS-RunPatchBaseline.
+#' 
+#' -   DocumentVersion: An SSM document version number. For example, 4.
+#' 
+#' -   Classification: A patch classification. For example, `security updates`.
+#' 
+#' -   PatchBaselineId: A patch baseline ID.
+#' 
+#' -   PatchSeverity: A patch severity. For example, `Critical`.
+#' 
+#' -   PatchState: A patch state. For example, `InstancesWithFailedPatches`.
+#' 
+#' -   PatchGroup: The name of a patch group.
+#' 
+#' -   InstalledTime: The time the association, patch, or custom compliance item was applied to the resource. Specify the time by using the following format: yyyy-MM-dd\'T\'HH:mm:ss\'Z\'
+#'
+#' @param ResourceId Specify an ID for this resource. For a managed instance, this is the instance ID.
+#' @param ResourceType Specify the type of resource. `ManagedInstance` is currently the only supported resource type.
+#' @param ComplianceType Specify the compliance type. For example, specify Association (for a State Manager association), Patch, or Custom:`string`.
+#' @param ExecutionSummary A summary of the call execution that includes an execution ID, the type of execution (for example, `Command`), and the date/time of the execution using a datetime object that is saved in the following format: yyyy-MM-dd\'T\'HH:mm:ss\'Z\'.
+#' @param Items Information about the compliance as defined by the resource type. For example, for a patch compliance type, `Items` includes information about the PatchSeverity, Classification, etc.
+#' @param ItemContentHash MD5 or SHA-256 content hash. The content hash is used to determine if existing information should be overwritten or ignored. If the content hashes match, the request to put compliance information is ignored.
+#'
+#' @examples
+#'
+#' @export
+put_compliance_items <- function (ResourceId, ResourceType, ComplianceType, 
+    ExecutionSummary, Items, ItemContentHash = NULL) 
+{
+    op <- Operation(name = "PutComplianceItems", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- put_compliance_items_input(ResourceId = ResourceId, 
+        ResourceType = ResourceType, ComplianceType = ComplianceType, 
+        ExecutionSummary = ExecutionSummary, Items = Items, ItemContentHash = ItemContentHash)
+    output <- put_compliance_items_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Bulk update custom inventory items on one more instance
+#'
+#' Bulk update custom inventory items on one more instance. The request adds an inventory item, if it doesn\'t already exist, or updates an inventory item, if it does exist.
+#'
+#' @param InstanceId One or more instance IDs where you want to add or update inventory items.
+#' @param Items The inventory items that you want to add or update on instances.
+#'
+#' @examples
+#'
+#' @export
+put_inventory <- function (InstanceId, Items) 
+{
+    op <- Operation(name = "PutInventory", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- put_inventory_input(InstanceId = InstanceId, Items = Items)
+    output <- put_inventory_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Add a parameter to the system
+#'
+#' Add a parameter to the system.
+#'
+#' @param Name The fully qualified name of the parameter that you want to add to the system. The fully qualified name includes the complete hierarchy of the parameter path and name. For example: `/Dev/DBServer/MySQL/db-string13`
+#' 
+#' Naming Constraints:
+#' 
+#' -   Parameter names are case sensitive.
+#' 
+#' -   A parameter name must be unique within an AWS Region
+#' 
+#' -   A parameter name can\'t be prefixed with \"aws\" or \"ssm\" (case-insensitive).
+#' 
+#' -   Parameter names can include only the following symbols and letters: `a-zA-Z0-9_.-/`
+#' 
+#' -   A parameter name can\'t include spaces.
+#' 
+#' -   Parameter hierarchies are limited to a maximum depth of fifteen levels.
+#' 
+#' For additional information about valid values for parameter names, see [Requirements and Constraints for Parameter Names](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-parameter-name-constraints.html) in the *AWS Systems Manager User Guide*.
+#' 
+#' The maximum length constraint listed below includes capacity for additional system attributes that are not part of the name. The maximum length for the fully qualified parameter name is 1011 characters.
+#' @param Value The parameter value that you want to add to the system.
+#' @param Type The type of parameter that you want to add to the system.
+#' 
+#' Items in a `StringList` must be separated by a comma (,). You can\'t use other punctuation or special character to escape items in the list. If you have a parameter value that requires a comma, then use the `String` data type.
+#' 
+#' `SecureString` is not currently supported for AWS CloudFormation templates or in the China Regions.
+#' @param Description Information about the parameter that you want to add to the system. Optional but recommended.
+#' 
+#' Do not enter personally identifiable information in this field.
+#' @param KeyId The KMS Key ID that you want to use to encrypt a parameter. Either the default AWS Key Management Service (AWS KMS) key automatically assigned to your AWS account or a custom key. Required for parameters that use the `SecureString` data type.
+#' 
+#' If you don\'t specify a key ID, the system uses the default key associated with your AWS account.
+#' 
+#' -   To use your default AWS KMS key, choose the `SecureString` data type, and do *not* specify the `Key ID` when you create the parameter. The system automatically populates `Key ID` with your default KMS key.
+#' 
+#' -   To use a custom KMS key, choose the `SecureString` data type with the `Key ID` parameter.
+#' @param Overwrite Overwrite an existing parameter. If not specified, will default to \"false\".
+#' @param AllowedPattern A regular expression used to validate the parameter value. For example, for String types with values restricted to numbers, you can specify the following: AllowedPattern=\^\\d+\$
+#'
+#' @examples
+#'
+#' @export
+put_parameter <- function (Name, Value, Type, Description = NULL, 
+    KeyId = NULL, Overwrite = NULL, AllowedPattern = NULL) 
+{
+    op <- Operation(name = "PutParameter", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- put_parameter_input(Name = Name, Value = Value, 
+        Type = Type, Description = Description, KeyId = KeyId, 
+        Overwrite = Overwrite, AllowedPattern = AllowedPattern)
+    output <- put_parameter_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Defines the default patch baseline
+#'
+#' Defines the default patch baseline.
+#'
+#' @param BaselineId The ID of the patch baseline that should be the default patch baseline.
+#'
+#' @examples
+#'
+#' @export
+register_default_patch_baseline <- function (BaselineId) 
+{
+    op <- Operation(name = "RegisterDefaultPatchBaseline", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- register_default_patch_baseline_input(BaselineId = BaselineId)
+    output <- register_default_patch_baseline_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Registers a patch baseline for a patch group
+#'
+#' Registers a patch baseline for a patch group.
+#'
+#' @param BaselineId The ID of the patch baseline to register the patch group with.
+#' @param PatchGroup The name of the patch group that should be registered with the patch baseline.
+#'
+#' @examples
+#'
+#' @export
+register_patch_baseline_for_patch_group <- function (BaselineId, 
+    PatchGroup) 
+{
+    op <- Operation(name = "RegisterPatchBaselineForPatchGroup", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- register_patch_baseline_for_patch_group_input(BaselineId = BaselineId, 
+        PatchGroup = PatchGroup)
+    output <- register_patch_baseline_for_patch_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Registers a target with a Maintenance Window
+#'
+#' Registers a target with a Maintenance Window.
+#'
+#' @param WindowId The ID of the Maintenance Window the target should be registered with.
+#' @param ResourceType The type of target being registered with the Maintenance Window.
+#' @param Targets The targets (either instances or tags).
+#' 
+#' Specify instances using the following format:
+#' 
+#' `Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>`
+#' 
+#' Specify tags using either of the following formats:
+#' 
+#' `Key=tag:<tag-key>,Values=<tag-value-1>,<tag-value-2>`
+#' 
+#' `Key=tag-key,Values=<tag-key-1>,<tag-key-2>`
+#' @param OwnerInformation User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.
+#' @param Name An optional name for the target.
+#' @param Description An optional description for the target.
+#' @param ClientToken User-provided idempotency token.
+#'
+#' @examples
+#'
+#' @export
+register_target_with_maintenance_window <- function (WindowId, 
+    ResourceType, Targets, OwnerInformation = NULL, Name = NULL, 
+    Description = NULL, ClientToken = NULL) 
+{
+    op <- Operation(name = "RegisterTargetWithMaintenanceWindow", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- register_target_with_maintenance_window_input(WindowId = WindowId, 
+        ResourceType = ResourceType, Targets = Targets, OwnerInformation = OwnerInformation, 
+        Name = Name, Description = Description, ClientToken = ClientToken)
+    output <- register_target_with_maintenance_window_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Adds a new task to a Maintenance Window
+#'
+#' Adds a new task to a Maintenance Window.
+#'
+#' @param WindowId The ID of the Maintenance Window the task should be added to.
+#' @param Targets The targets (either instances or Maintenance Window targets).
+#' 
+#' Specify instances using the following format:
+#' 
+#' `Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>`
+#' 
+#' Specify Maintenance Window targets using the following format:
+#' 
+#' `Key=<WindowTargetIds>,Values=<window-target-id-1>,<window-target-id-2>`
+#' @param TaskArn The ARN of the task to execute
+#' @param TaskType The type of task being registered.
+#' @param MaxConcurrency The maximum number of targets this task can be run for in parallel.
+#' @param MaxErrors The maximum number of errors allowed before this task stops being scheduled.
+#' @param ServiceRoleArn The role to assume when running the Maintenance Window task.
+#' 
+#' If you do not specify a service role ARN, Systems Manager will use your account\'s service-linked role for Systems Manager by default. If no service-linked role for Systems Manager exists in your account, it will be created when you run `RegisterTaskWithMaintenanceWindow` without specifying a service role ARN.
+#' 
+#' For more information, see [Service-Linked Role Permissions for Systems Manager](http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions) and [Should I Use a Service-Linked Role or a Custom Service Role to Run Maintenance Window Tasks?](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role) in the *AWS Systems Manager User Guide*.
+#' @param TaskParameters The parameters that should be passed to the task when it is executed.
+#' 
+#' `TaskParameters` has been deprecated. To specify parameters to pass to a task when it runs, instead use the `Parameters` option in the `TaskInvocationParameters` structure. For information about how Systems Manager handles these options for the supported Maintenance Window task types, see MaintenanceWindowTaskInvocationParameters.
+#' @param TaskInvocationParameters The parameters that the task should use during execution. Populate only the fields that match the task type. All other fields should be empty.
+#' @param Priority The priority of the task in the Maintenance Window, the lower the number the higher the priority. Tasks in a Maintenance Window are scheduled in priority order with tasks that have the same priority scheduled in parallel.
+#' @param LoggingInfo A structure containing information about an Amazon S3 bucket to write instance-level logs to.
+#' 
+#' `LoggingInfo` has been deprecated. To specify an S3 bucket to contain logs, instead use the `OutputS3BucketName` and `OutputS3KeyPrefix` options in the `TaskInvocationParameters` structure. For information about how Systems Manager handles these options for the supported Maintenance Window task types, see MaintenanceWindowTaskInvocationParameters.
+#' @param Name An optional name for the task.
+#' @param Description An optional description for the task.
+#' @param ClientToken User-provided idempotency token.
+#'
+#' @examples
+#'
+#' @export
+register_task_with_maintenance_window <- function (WindowId, 
+    Targets, TaskArn, TaskType, MaxConcurrency, MaxErrors, ServiceRoleArn = NULL, 
+    TaskParameters = NULL, TaskInvocationParameters = NULL, Priority = NULL, 
+    LoggingInfo = NULL, Name = NULL, Description = NULL, ClientToken = NULL) 
+{
+    op <- Operation(name = "RegisterTaskWithMaintenanceWindow", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- register_task_with_maintenance_window_input(WindowId = WindowId, 
+        Targets = Targets, TaskArn = TaskArn, TaskType = TaskType, 
+        MaxConcurrency = MaxConcurrency, MaxErrors = MaxErrors, 
+        ServiceRoleArn = ServiceRoleArn, TaskParameters = TaskParameters, 
+        TaskInvocationParameters = TaskInvocationParameters, 
+        Priority = Priority, LoggingInfo = LoggingInfo, Name = Name, 
+        Description = Description, ClientToken = ClientToken)
+    output <- register_task_with_maintenance_window_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes all tags from the specified resource
+#'
+#' Removes all tags from the specified resource.
+#'
+#' @param ResourceType The type of resource of which you want to remove a tag.
+#' 
+#' The ManagedInstance type for this API action is only for on-premises managed instances. You must specify the the name of the managed instance in the following format: mi-ID\_number. For example, mi-1a2b3c4d5e6f.
+#' @param ResourceId The resource ID for which you want to remove tags. Use the ID of the resource. Here are some examples:
+#' 
+#' ManagedInstance: mi-012345abcde
+#' 
+#' MaintenanceWindow: mw-012345abcde
+#' 
+#' PatchBaseline: pb-012345abcde
+#' 
+#' For the Document and Parameter values, use the name of the resource.
+#' 
+#' The ManagedInstance type for this API action is only for on-premises managed instances. You must specify the the name of the managed instance in the following format: mi-ID\_number. For example, mi-1a2b3c4d5e6f.
+#' @param TagKeys Tag keys that you want to remove from the specified resource.
+#'
+#' @examples
+#'
+#' @export
+remove_tags_from_resource <- function (ResourceType, ResourceId, 
+    TagKeys) 
+{
+    op <- Operation(name = "RemoveTagsFromResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- remove_tags_from_resource_input(ResourceType = ResourceType, 
+        ResourceId = ResourceId, TagKeys = TagKeys)
+    output <- remove_tags_from_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Reconnects a session to an instance after it has been disconnected
+#'
+#' Reconnects a session to an instance after it has been disconnected. Connections can be resumed for disconnected sessions, but not terminated sessions.
+#' 
+#' This command is primarily for use by client machines to automatically reconnect during intermittent network issues. It is not intended for any other use.
+#'
+#' @param SessionId The ID of the disconnected session to resume.
+#'
+#' @examples
+#'
+#' @export
+resume_session <- function (SessionId) 
+{
+    op <- Operation(name = "ResumeSession", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- resume_session_input(SessionId = SessionId)
+    output <- resume_session_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Sends a signal to an Automation execution to change the current behavior or status of the execution
+#'
+#' Sends a signal to an Automation execution to change the current behavior or status of the execution.
+#'
+#' @param AutomationExecutionId The unique identifier for an existing Automation execution that you want to send the signal to.
+#' @param SignalType The type of signal. Valid signal types include the following: Approve and Reject
+#' @param Payload The data sent with the signal. The data schema depends on the type of signal used in the request.
+#'
+#' @examples
+#'
+#' @export
+send_automation_signal <- function (AutomationExecutionId, SignalType, 
+    Payload = NULL) 
+{
+    op <- Operation(name = "SendAutomationSignal", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- send_automation_signal_input(AutomationExecutionId = AutomationExecutionId, 
+        SignalType = SignalType, Payload = Payload)
+    output <- send_automation_signal_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Executes commands on one or more managed instances
+#'
+#' Executes commands on one or more managed instances.
+#'
+#' @param DocumentName Required. The name of the Systems Manager document to execute. This can be a public document or a custom document.
+#' @param InstanceIds The instance IDs where the command should execute. You can specify a maximum of 50 IDs. If you prefer not to list individual instance IDs, you can instead send commands to a fleet of instances using the Targets parameter, which accepts EC2 tags. For more information about how to use targets, see [Sending Commands to a Fleet](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html) in the *AWS Systems Manager User Guide*.
+#' @param Targets (Optional) An array of search criteria that targets instances using a Key,Value combination that you specify. Targets is required if you don\'t provide one or more instance IDs in the call. For more information about how to use targets, see [Sending Commands to a Fleet](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html) in the *AWS Systems Manager User Guide*.
+#' @param DocumentVersion The SSM document version to use in the request. You can specify \$DEFAULT, \$LATEST, or a specific version number. If you execute commands by using the AWS CLI, then you must escape the first two options by using a backslash. If you specify a version number, then you don\'t need to use the backslash. For example:
+#' 
+#' \--document-version \"\\\$DEFAULT\"
+#' 
+#' \--document-version \"\\\$LATEST\"
+#' 
+#' \--document-version \"3\"
+#' @param DocumentHash The Sha256 or Sha1 hash created by the system when the document was created.
+#' 
+#' Sha1 hashes have been deprecated.
+#' @param DocumentHashType Sha256 or Sha1.
+#' 
+#' Sha1 hashes have been deprecated.
+#' @param TimeoutSeconds If this time is reached and the command has not already started executing, it will not run.
+#' @param Comment User-specified information about the command, such as a brief description of what the command should do.
+#' @param Parameters The required and optional parameters specified in the document being executed.
+#' @param OutputS3Region (Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Amazon S3 bucket region.
+#' @param OutputS3BucketName The name of the S3 bucket where command execution responses should be stored.
+#' @param OutputS3KeyPrefix The directory structure within the S3 bucket where the responses should be stored.
+#' @param MaxConcurrency (Optional) The maximum number of instances that are allowed to execute the command at the same time. You can specify a number such as 10 or a percentage such as 10%. The default value is 50. For more information about how to use MaxConcurrency, see [Using Concurrency Controls](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-velocity) in the *AWS Systems Manager User Guide*.
+#' @param MaxErrors The maximum number of errors allowed without the command failing. When the command fails one more time beyond the value of MaxErrors, the systems stops sending the command to additional targets. You can specify a number like 10 or a percentage like 10%. The default value is 0. For more information about how to use MaxErrors, see [Using Error Controls](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-maxerrors) in the *AWS Systems Manager User Guide*.
+#' @param ServiceRoleArn The IAM role that Systems Manager uses to send notifications.
+#' @param NotificationConfig Configurations for sending notifications.
+#' @param CloudWatchOutputConfig Enables Systems Manager to send Run Command output to Amazon CloudWatch Logs.
+#'
+#' @examples
+#'
+#' @export
+send_command <- function (DocumentName, InstanceIds = NULL, Targets = NULL, 
+    DocumentVersion = NULL, DocumentHash = NULL, DocumentHashType = NULL, 
+    TimeoutSeconds = NULL, Comment = NULL, Parameters = NULL, 
+    OutputS3Region = NULL, OutputS3BucketName = NULL, OutputS3KeyPrefix = NULL, 
+    MaxConcurrency = NULL, MaxErrors = NULL, ServiceRoleArn = NULL, 
+    NotificationConfig = NULL, CloudWatchOutputConfig = NULL) 
+{
+    op <- Operation(name = "SendCommand", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- send_command_input(DocumentName = DocumentName, 
+        InstanceIds = InstanceIds, Targets = Targets, DocumentVersion = DocumentVersion, 
+        DocumentHash = DocumentHash, DocumentHashType = DocumentHashType, 
+        TimeoutSeconds = TimeoutSeconds, Comment = Comment, Parameters = Parameters, 
+        OutputS3Region = OutputS3Region, OutputS3BucketName = OutputS3BucketName, 
+        OutputS3KeyPrefix = OutputS3KeyPrefix, MaxConcurrency = MaxConcurrency, 
+        MaxErrors = MaxErrors, ServiceRoleArn = ServiceRoleArn, 
+        NotificationConfig = NotificationConfig, CloudWatchOutputConfig = CloudWatchOutputConfig)
+    output <- send_command_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Use this API action to execute an association immediately and only one time
+#'
+#' Use this API action to execute an association immediately and only one time. This action can be helpful when troubleshooting associations.
+#'
+#' @param AssociationIds The association IDs that you want to execute immediately and only one time.
+#'
+#' @examples
+#'
+#' @export
+start_associations_once <- function (AssociationIds) 
+{
+    op <- Operation(name = "StartAssociationsOnce", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- start_associations_once_input(AssociationIds = AssociationIds)
+    output <- start_associations_once_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Initiates execution of an Automation document
+#'
+#' Initiates execution of an Automation document.
+#'
+#' @param DocumentName The name of the Automation document to use for this execution.
+#' @param DocumentVersion The version of the Automation document to use for this execution.
+#' @param Parameters A key-value map of execution parameters, which match the declared parameters in the Automation document.
+#' @param ClientToken User-provided idempotency token. The token must be unique, is case insensitive, enforces the UUID format, and can\'t be reused.
+#' @param Mode The execution mode of the automation. Valid modes include the following: Auto and Interactive. The default mode is Auto.
+#' @param TargetParameterName The name of the parameter used as the target resource for the rate-controlled execution. Required if you specify targets.
+#' @param Targets A key-value mapping to target resources. Required if you specify TargetParameterName.
+#' @param TargetMaps A key-value mapping of document parameters to target resources. Both Targets and TargetMaps cannot be specified together.
+#' @param MaxConcurrency The maximum number of targets allowed to run this task in parallel. You can specify a number, such as 10, or a percentage, such as 10%. The default value is 10.
+#' @param MaxErrors The number of errors that are allowed before the system stops running the automation on additional targets. You can specify either an absolute number of errors, for example 10, or a percentage of the target set, for example 10%. If you specify 3, for example, the system stops running the automation when the fourth error is received. If you specify 0, then the system stops running the automation on additional targets after the first error result is returned. If you run an automation on 50 resources and set max-errors to 10%, then the system stops running the automation on additional targets when the sixth error is received.
+#' 
+#' Executions that are already running an automation when max-errors is reached are allowed to complete, but some of these executions may fail as well. If you need to ensure that there won\'t be more than max-errors failed executions, set max-concurrency to 1 so the executions proceed one at a time.
+#'
+#' @examples
+#'
+#' @export
+start_automation_execution <- function (DocumentName, DocumentVersion = NULL, 
+    Parameters = NULL, ClientToken = NULL, Mode = NULL, TargetParameterName = NULL, 
+    Targets = NULL, TargetMaps = NULL, MaxConcurrency = NULL, 
+    MaxErrors = NULL) 
+{
+    op <- Operation(name = "StartAutomationExecution", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- start_automation_execution_input(DocumentName = DocumentName, 
+        DocumentVersion = DocumentVersion, Parameters = Parameters, 
+        ClientToken = ClientToken, Mode = Mode, TargetParameterName = TargetParameterName, 
+        Targets = Targets, TargetMaps = TargetMaps, MaxConcurrency = MaxConcurrency, 
+        MaxErrors = MaxErrors)
+    output <- start_automation_execution_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Initiates a connection to a target (for example, an instance) for a Session Manager session
+#'
+#' Initiates a connection to a target (for example, an instance) for a Session Manager session. Returns a URL and token that can be used to open a WebSocket connection for sending input and receiving outputs.
+#' 
+#' AWS CLI usage: `start-session` is an interactive command that requires the Session Manager plugin to be installed on the client machine making the call. For information, see [Install the Session Manager Plugin for the AWS CLI](http://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html) in the *AWS Systems Manager User Guide*.
+#'
+#' @param Target The instance to connect to for the session.
+#' @param DocumentName The name of the SSM document to define the parameters and plugin settings for the session. For example, `SSM-SessionManagerRunShell`. If no document name is provided, a shell to the instance is launched by default.
+#' @param Parameters Reserved for future use.
+#'
+#' @examples
+#'
+#' @export
+start_session <- function (Target, DocumentName = NULL, Parameters = NULL) 
+{
+    op <- Operation(name = "StartSession", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- start_session_input(Target = Target, DocumentName = DocumentName, 
+        Parameters = Parameters)
+    output <- start_session_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Stop an Automation that is currently executing
+#'
+#' Stop an Automation that is currently executing.
+#'
+#' @param AutomationExecutionId The execution ID of the Automation to stop.
+#' @param Type The stop request type. Valid types include the following: Cancel and Complete. The default type is Cancel.
+#'
+#' @examples
+#'
+#' @export
+stop_automation_execution <- function (AutomationExecutionId, 
+    Type = NULL) 
+{
+    op <- Operation(name = "StopAutomationExecution", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- stop_automation_execution_input(AutomationExecutionId = AutomationExecutionId, 
+        Type = Type)
+    output <- stop_automation_execution_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Permanently ends a session and closes the data connection between the Session Manager client and SSM Agent on the instance
+#'
+#' Permanently ends a session and closes the data connection between the Session Manager client and SSM Agent on the instance. A terminated session cannot be resumed.
+#'
+#' @param SessionId The ID of the session to terminate.
+#'
+#' @examples
+#'
+#' @export
+terminate_session <- function (SessionId) 
+{
+    op <- Operation(name = "TerminateSession", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- terminate_session_input(SessionId = SessionId)
+    output <- terminate_session_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates an association
+#'
+#' Updates an association. You can update the association name and version, the document version, schedule, parameters, and Amazon S3 output.
+#'
+#' @param AssociationId The ID of the association you want to update.
+#' @param Parameters The parameters you want to update for the association. If you create a parameter using Parameter Store, you can reference the parameter using {{ssm:parameter-name}}
+#' @param DocumentVersion The document version you want update for the association.
+#' @param ScheduleExpression The cron expression used to schedule the association that you want to update.
+#' @param OutputLocation An Amazon S3 bucket where you want to store the results of this request.
+#' @param Name The name of the association document.
+#' @param Targets The targets of the association.
+#' @param AssociationName The name of the association that you want to update.
+#' @param AssociationVersion This parameter is provided for concurrency control purposes. You must specify the latest association version in the service. If you want to ensure that this request succeeds, either specify `$LATEST`, or omit this parameter.
+#'
+#' @examples
+#'
+#' @export
+update_association <- function (AssociationId, Parameters = NULL, 
+    DocumentVersion = NULL, ScheduleExpression = NULL, OutputLocation = NULL, 
+    Name = NULL, Targets = NULL, AssociationName = NULL, AssociationVersion = NULL) 
+{
+    op <- Operation(name = "UpdateAssociation", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_association_input(AssociationId = AssociationId, 
+        Parameters = Parameters, DocumentVersion = DocumentVersion, 
+        ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, 
+        Name = Name, Targets = Targets, AssociationName = AssociationName, 
+        AssociationVersion = AssociationVersion)
+    output <- update_association_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the status of the Systems Manager document associated with the specified instance
+#'
+#' Updates the status of the Systems Manager document associated with the specified instance.
+#'
+#' @param Name The name of the Systems Manager document.
+#' @param InstanceId The ID of the instance.
+#' @param AssociationStatus The association status.
+#'
+#' @examples
+#'
+#' @export
+update_association_status <- function (Name, InstanceId, AssociationStatus) 
+{
+    op <- Operation(name = "UpdateAssociationStatus", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_association_status_input(Name = Name, InstanceId = InstanceId, 
+        AssociationStatus = AssociationStatus)
+    output <- update_association_status_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' The document you want to update
+#'
+#' The document you want to update.
+#'
+#' @param Content The content in a document that you want to update.
+#' @param Name The name of the document that you want to update.
+#' @param DocumentVersion The version of the document that you want to update.
+#' @param DocumentFormat Specify the document format for the new document version. Systems Manager supports JSON and YAML documents. JSON is the default format.
+#' @param TargetType Specify a new target type for the document.
+#'
+#' @examples
+#'
+#' @export
+update_document <- function (Content, Name, DocumentVersion = NULL, 
+    DocumentFormat = NULL, TargetType = NULL) 
+{
+    op <- Operation(name = "UpdateDocument", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_document_input(Content = Content, Name = Name, 
+        DocumentVersion = DocumentVersion, DocumentFormat = DocumentFormat, 
+        TargetType = TargetType)
+    output <- update_document_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Set the default version of a document
+#'
+#' Set the default version of a document.
+#'
+#' @param Name The name of a custom document that you want to set as the default version.
+#' @param DocumentVersion The version of a custom document that you want to set as the default version.
+#'
+#' @examples
+#'
+#' @export
+update_document_default_version <- function (Name, DocumentVersion) 
+{
+    op <- Operation(name = "UpdateDocumentDefaultVersion", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_document_default_version_input(Name = Name, 
+        DocumentVersion = DocumentVersion)
+    output <- update_document_default_version_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates an existing Maintenance Window
+#'
+#' Updates an existing Maintenance Window. Only specified parameters are modified.
+#'
+#' @param WindowId The ID of the Maintenance Window to update.
+#' @param Name The name of the Maintenance Window.
+#' @param Description An optional description for the update request.
+#' @param StartDate The time zone that the scheduled Maintenance Window executions are based on, in Internet Assigned Numbers Authority (IANA) format. For example: \"America/Los\_Angeles\", \"etc/UTC\", or \"Asia/Seoul\". For more information, see the [Time Zone Database](https://www.iana.org/time-zones) on the IANA website.
+#' @param EndDate The date and time, in ISO-8601 Extended format, for when you want the Maintenance Window to become inactive. EndDate allows you to set a date and time in the future when the Maintenance Window will no longer run.
+#' @param Schedule The schedule of the Maintenance Window in the form of a cron or rate expression.
+#' @param ScheduleTimezone The time zone that the scheduled Maintenance Window executions are based on, in Internet Assigned Numbers Authority (IANA) format. For example: \"America/Los\_Angeles\", \"etc/UTC\", or \"Asia/Seoul\". For more information, see the [Time Zone Database](https://www.iana.org/time-zones) on the IANA website.
+#' @param Duration The duration of the Maintenance Window in hours.
+#' @param Cutoff The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.
+#' @param AllowUnassociatedTargets Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.
+#' @param Enabled Whether the Maintenance Window is enabled.
+#' @param Replace If True, then all fields that are required by the CreateMaintenanceWindow action are also required for this API request. Optional fields that are not specified are set to null.
+#'
+#' @examples
+#'
+#' @export
+update_maintenance_window <- function (WindowId, Name = NULL, 
+    Description = NULL, StartDate = NULL, EndDate = NULL, Schedule = NULL, 
+    ScheduleTimezone = NULL, Duration = NULL, Cutoff = NULL, 
+    AllowUnassociatedTargets = NULL, Enabled = NULL, Replace = NULL) 
+{
+    op <- Operation(name = "UpdateMaintenanceWindow", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_maintenance_window_input(WindowId = WindowId, 
+        Name = Name, Description = Description, StartDate = StartDate, 
+        EndDate = EndDate, Schedule = Schedule, ScheduleTimezone = ScheduleTimezone, 
+        Duration = Duration, Cutoff = Cutoff, AllowUnassociatedTargets = AllowUnassociatedTargets, 
+        Enabled = Enabled, Replace = Replace)
+    output <- update_maintenance_window_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Modifies the target of an existing Maintenance Window
+#'
+#' Modifies the target of an existing Maintenance Window. You can\'t change the target type, but you can change the following:
+#' 
+#' The target from being an ID target to a Tag target, or a Tag target to an ID target.
+#' 
+#' IDs for an ID target.
+#' 
+#' Tags for a Tag target.
+#' 
+#' Owner.
+#' 
+#' Name.
+#' 
+#' Description.
+#' 
+#' If a parameter is null, then the corresponding field is not modified.
+#'
+#' @param WindowId The Maintenance Window ID with which to modify the target.
+#' @param WindowTargetId The target ID to modify.
+#' @param Targets The targets to add or replace.
+#' @param OwnerInformation User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.
+#' @param Name A name for the update.
+#' @param Description An optional description for the update.
+#' @param Replace If True, then all fields that are required by the RegisterTargetWithMaintenanceWindow action are also required for this API request. Optional fields that are not specified are set to null.
+#'
+#' @examples
+#'
+#' @export
+update_maintenance_window_target <- function (WindowId, WindowTargetId, 
+    Targets = NULL, OwnerInformation = NULL, Name = NULL, Description = NULL, 
+    Replace = NULL) 
+{
+    op <- Operation(name = "UpdateMaintenanceWindowTarget", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_maintenance_window_target_input(WindowId = WindowId, 
+        WindowTargetId = WindowTargetId, Targets = Targets, OwnerInformation = OwnerInformation, 
+        Name = Name, Description = Description, Replace = Replace)
+    output <- update_maintenance_window_target_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Modifies a task assigned to a Maintenance Window
+#'
+#' Modifies a task assigned to a Maintenance Window. You can\'t change the task type, but you can change the following values:
+#' 
+#' -   TaskARN. For example, you can change a RUN\_COMMAND task from AWS-RunPowerShellScript to AWS-RunShellScript.
+#' 
+#' -   ServiceRoleArn
+#' 
+#' -   TaskInvocationParameters
+#' 
+#' -   Priority
+#' 
+#' -   MaxConcurrency
+#' 
+#' -   MaxErrors
+#' 
+#' If a parameter is null, then the corresponding field is not modified. Also, if you set Replace to true, then all fields required by the RegisterTaskWithMaintenanceWindow action are required for this request. Optional fields that aren\'t specified are set to null.
+#'
+#' @param WindowId The Maintenance Window ID that contains the task to modify.
+#' @param WindowTaskId The task ID to modify.
+#' @param Targets The targets (either instances or tags) to modify. Instances are specified using Key=instanceids,Values=instanceID\_1,instanceID\_2. Tags are specified using Key=tag\_name,Values=tag\_value.
+#' @param TaskArn The task ARN to modify.
+#' @param ServiceRoleArn The IAM service role ARN to modify. The system assumes this role during task execution.
+#' 
+#' If you do not specify a service role ARN, Systems Manager will use your account\'s service-linked role for Systems Manager by default. If no service-linked role for Systems Manager exists in your account, it will be created when you run `RegisterTaskWithMaintenanceWindow` without specifying a service role ARN.
+#' 
+#' For more information, see [Service-Linked Role Permissions for Systems Manager](http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions) and [Should I Use a Service-Linked Role or a Custom Service Role to Run Maintenance Window Tasks?](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role) in the *AWS Systems Manager User Guide*.
+#' @param TaskParameters The parameters to modify.
+#' 
+#' `TaskParameters` has been deprecated. To specify parameters to pass to a task when it runs, instead use the `Parameters` option in the `TaskInvocationParameters` structure. For information about how Systems Manager handles these options for the supported Maintenance Window task types, see MaintenanceWindowTaskInvocationParameters.
+#' 
+#' The map has the following format:
+#' 
+#' Key: string, between 1 and 255 characters
+#' 
+#' Value: an array of strings, each string is between 1 and 255 characters
+#' @param TaskInvocationParameters The parameters that the task should use during execution. Populate only the fields that match the task type. All other fields should be empty.
+#' @param Priority The new task priority to specify. The lower the number, the higher the priority. Tasks that have the same priority are scheduled in parallel.
+#' @param MaxConcurrency The new `MaxConcurrency` value you want to specify. `MaxConcurrency` is the number of targets that are allowed to run this task in parallel.
+#' @param MaxErrors The new `MaxErrors` value to specify. `MaxErrors` is the maximum number of errors that are allowed before the task stops being scheduled.
+#' @param LoggingInfo The new logging location in Amazon S3 to specify.
+#' 
+#' `LoggingInfo` has been deprecated. To specify an S3 bucket to contain logs, instead use the `OutputS3BucketName` and `OutputS3KeyPrefix` options in the `TaskInvocationParameters` structure. For information about how Systems Manager handles these options for the supported Maintenance Window task types, see MaintenanceWindowTaskInvocationParameters.
+#' @param Name The new task name to specify.
+#' @param Description The new task description to specify.
+#' @param Replace If True, then all fields that are required by the RegisterTaskWithMaintenanceWndow action are also required for this API request. Optional fields that are not specified are set to null.
+#'
+#' @examples
+#'
+#' @export
+update_maintenance_window_task <- function (WindowId, WindowTaskId, 
+    Targets = NULL, TaskArn = NULL, ServiceRoleArn = NULL, TaskParameters = NULL, 
+    TaskInvocationParameters = NULL, Priority = NULL, MaxConcurrency = NULL, 
+    MaxErrors = NULL, LoggingInfo = NULL, Name = NULL, Description = NULL, 
+    Replace = NULL) 
+{
+    op <- Operation(name = "UpdateMaintenanceWindowTask", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_maintenance_window_task_input(WindowId = WindowId, 
+        WindowTaskId = WindowTaskId, Targets = Targets, TaskArn = TaskArn, 
+        ServiceRoleArn = ServiceRoleArn, TaskParameters = TaskParameters, 
+        TaskInvocationParameters = TaskInvocationParameters, 
+        Priority = Priority, MaxConcurrency = MaxConcurrency, 
+        MaxErrors = MaxErrors, LoggingInfo = LoggingInfo, Name = Name, 
+        Description = Description, Replace = Replace)
+    output <- update_maintenance_window_task_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Assigns or changes an Amazon Identity and Access Management (IAM) role to the managed instance
+#'
+#' Assigns or changes an Amazon Identity and Access Management (IAM) role to the managed instance.
+#'
+#' @param InstanceId The ID of the managed instance where you want to update the role.
+#' @param IamRole The IAM role you want to assign or change.
+#'
+#' @examples
+#'
+#' @export
+update_managed_instance_role <- function (InstanceId, IamRole) 
+{
+    op <- Operation(name = "UpdateManagedInstanceRole", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_managed_instance_role_input(InstanceId = InstanceId, 
+        IamRole = IamRole)
+    output <- update_managed_instance_role_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Modifies an existing patch baseline
+#'
+#' Modifies an existing patch baseline. Fields not specified in the request are left unchanged.
+#' 
+#' For information about valid key and value pairs in `PatchFilters` for each supported operating system type, see [PatchFilter](http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html).
+#'
+#' @param BaselineId The ID of the patch baseline to update.
+#' @param Name The name of the patch baseline.
+#' @param GlobalFilters A set of global filters used to exclude patches from the baseline.
+#' @param ApprovalRules A set of rules used to include patches in the baseline.
+#' @param ApprovedPatches A list of explicitly approved patches for the baseline.
+#' 
+#' For information about accepted formats for lists of approved patches and rejected patches, see [Package Name Formats for Approved and Rejected Patch Lists](http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html) in the *AWS Systems Manager User Guide*.
+#' @param ApprovedPatchesComplianceLevel Assigns a new compliance severity level to an existing patch baseline.
+#' @param ApprovedPatchesEnableNonSecurity Indicates whether the list of approved patches includes non-security updates that should be applied to the instances. The default value is \'false\'. Applies to Linux instances only.
+#' @param RejectedPatches A list of explicitly rejected patches for the baseline.
+#' 
+#' For information about accepted formats for lists of approved patches and rejected patches, see [Package Name Formats for Approved and Rejected Patch Lists](http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html) in the *AWS Systems Manager User Guide*.
+#' @param RejectedPatchesAction The action for Patch Manager to take on patches included in the RejectedPackages list.
+#' 
+#' -   **ALLOW\_AS\_DEPENDENCY**: A package in the Rejected patches list is installed only if it is a dependency of another package. It is considered compliant with the patch baseline, and its status is reported as *InstalledOther*. This is the default action if no option is specified.
+#' 
+#' -   **BLOCK**: Packages in the RejectedPatches list, and packages that include them as dependencies, are not installed under any circumstances. If a package was installed before it was added to the Rejected patches list, it is considered non-compliant with the patch baseline, and its status is reported as *InstalledRejected*.
+#' @param Description A description of the patch baseline.
+#' @param Sources Information about the patches to use to update the instances, including target operating systems and source repositories. Applies to Linux instances only.
+#' @param Replace If True, then all fields that are required by the CreatePatchBaseline action are also required for this API request. Optional fields that are not specified are set to null.
+#'
+#' @examples
+#'
+#' @export
+update_patch_baseline <- function (BaselineId, Name = NULL, GlobalFilters = NULL, 
+    ApprovalRules = NULL, ApprovedPatches = NULL, ApprovedPatchesComplianceLevel = NULL, 
+    ApprovedPatchesEnableNonSecurity = NULL, RejectedPatches = NULL, 
+    RejectedPatchesAction = NULL, Description = NULL, Sources = NULL, 
+    Replace = NULL) 
+{
+    op <- Operation(name = "UpdatePatchBaseline", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_patch_baseline_input(BaselineId = BaselineId, 
+        Name = Name, GlobalFilters = GlobalFilters, ApprovalRules = ApprovalRules, 
+        ApprovedPatches = ApprovedPatches, ApprovedPatchesComplianceLevel = ApprovedPatchesComplianceLevel, 
+        ApprovedPatchesEnableNonSecurity = ApprovedPatchesEnableNonSecurity, 
+        RejectedPatches = RejectedPatches, RejectedPatchesAction = RejectedPatchesAction, 
+        Description = Description, Sources = Sources, Replace = Replace)
+    output <- update_patch_baseline_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

@@ -1,0 +1,1282 @@
+#' Adds a permission to the resource policy associated with the specified AWS Lambda function
+#'
+#' Adds a permission to the resource policy associated with the specified AWS Lambda function. You use resource policies to grant permissions to event sources that use the *push* model. In a *push* model, event sources (such as Amazon S3 and custom applications) invoke your Lambda function. Each permission you add to the resource policy allows an event source permission to invoke the Lambda function.
+#' 
+#' Permissions apply to the Amazon Resource Name (ARN) used to invoke the function, which can be unqualified (the unpublished version of the function), or include a version or alias. If a client uses a version or alias to invoke a function, use the `Qualifier` parameter to apply permissions to that ARN. For more information about versioning, see [AWS Lambda Function Versioning and Aliases](http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+#' 
+#' This operation requires permission for the `lambda:AddPermission` action.
+#'
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param StatementId A unique statement identifier.
+#' @param Action The AWS Lambda action you want to allow in this statement. Each Lambda action is a string starting with `lambda:` followed by the API name . For example, `lambda:CreateFunction`. You can use wildcard (`lambda:*`) to grant permission for all AWS Lambda actions.
+#' @param Principal The principal who is getting this permission. The principal can be an AWS service (e.g. `s3.amazonaws.com` or `sns.amazonaws.com`) for service triggers, or an account ID for cross-account access. If you specify a service as a principal, use the `SourceArn` parameter to limit who can invoke the function through that service.
+#' @param SourceArn The Amazon Resource Name of the invoker.
+#' 
+#' If you add a permission to a service principal without providing the source ARN, any AWS account that creates a mapping to your function ARN can invoke your Lambda function.
+#' @param SourceAccount This parameter is used for S3 and SES. The AWS account ID (without a hyphen) of the source owner. For example, if the `SourceArn` identifies a bucket, then this is the bucket owner\'s account ID. You can use this additional condition to ensure the bucket you specify is owned by a specific account (it is possible the bucket owner deleted the bucket and some other AWS account created the bucket). You can also use this condition to specify all sources (that is, you don\'t specify the `SourceArn`) owned by a specific account.
+#' @param EventSourceToken A unique token that must be supplied by the principal invoking the function. This is currently only used for Alexa Smart Home functions.
+#' @param Qualifier Specify a version or alias to add permissions to a published version of the function.
+#' @param RevisionId An optional value you can use to ensure you are updating the latest update of the function version or alias. If the `RevisionID` you pass doesn\'t match the latest `RevisionId` of the function or alias, it will fail with an error message, advising you to retrieve the latest function version or alias `RevisionID` using either GetFunction or GetAlias
+#'
+#' @examples
+#' # This example adds a permission for an S3 bucket to invoke a Lambda
+#' # function.
+#' add_permission(
+#'   Action = "lambda:InvokeFunction",
+#'   FunctionName = "MyFunction",
+#'   Principal = "s3.amazonaws.com",
+#'   SourceAccount = "123456789012",
+#'   SourceArn = "arn:aws:s3:::examplebucket/*",
+#'   StatementId = "ID-1"
+#' )
+#'
+#' @export
+add_permission <- function (FunctionName, StatementId, Action, 
+    Principal, SourceArn = NULL, SourceAccount = NULL, EventSourceToken = NULL, 
+    Qualifier = NULL, RevisionId = NULL) 
+{
+    op <- Operation(name = "AddPermission", http_method = "POST", 
+        http_path = "/2015-03-31/functions/{FunctionName}/policy", 
+        paginator = list())
+    input <- add_permission_input(FunctionName = FunctionName, 
+        StatementId = StatementId, Action = Action, Principal = Principal, 
+        SourceArn = SourceArn, SourceAccount = SourceAccount, 
+        EventSourceToken = EventSourceToken, Qualifier = Qualifier, 
+        RevisionId = RevisionId)
+    output <- add_permission_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates an alias that points to the specified Lambda function version
+#'
+#' Creates an alias that points to the specified Lambda function version. For more information, see [Introduction to AWS Lambda Aliases](http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html).
+#' 
+#' Alias names are unique for a given function. This requires permission for the lambda:CreateAlias action.
+#'
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param Name Name for the alias you are creating.
+#' @param FunctionVersion Lambda function version for which you are creating the alias.
+#' @param Description Description of the alias.
+#' @param RoutingConfig Specifies an additional version your alias can point to, allowing you to dictate what percentage of traffic will invoke each version. For more information, see [Traffic Shifting Using Aliases](http://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html).
+#'
+#' @examples
+#'
+#' @export
+create_alias <- function (FunctionName, Name, FunctionVersion, 
+    Description = NULL, RoutingConfig = NULL) 
+{
+    op <- Operation(name = "CreateAlias", http_method = "POST", 
+        http_path = "/2015-03-31/functions/{FunctionName}/aliases", 
+        paginator = list())
+    input <- create_alias_input(FunctionName = FunctionName, 
+        Name = Name, FunctionVersion = FunctionVersion, Description = Description, 
+        RoutingConfig = RoutingConfig)
+    output <- create_alias_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Identifies a poll-based event source for a Lambda function
+#'
+#' Identifies a poll-based event source for a Lambda function. It can be either an Amazon Kinesis or DynamoDB stream. AWS Lambda invokes the specified function when records are posted to the event source.
+#' 
+#' This association between a poll-based source and a Lambda function is called the event source mapping.
+#' 
+#' You provide mapping information (for example, which stream or SQS queue to read from and which Lambda function to invoke) in the request body.
+#' 
+#' Amazon Kinesis or DynamoDB stream event sources can be associated with multiple AWS Lambda functions and a given Lambda function can be associated with multiple AWS event sources. For Amazon SQS, you can configure multiple queues as event sources for a single Lambda function, but an SQS queue can be mapped only to a single Lambda function.
+#' 
+#' You can configure an SQS queue in an account separate from your Lambda function\'s account. Also the queue needs to reside in the same AWS region as your function.
+#' 
+#' If you are using versioning, you can specify a specific function version or an alias via the function name parameter. For more information about versioning, see [AWS Lambda Function Versioning and Aliases](http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+#' 
+#' This operation requires permission for the `lambda:CreateEventSourceMapping` action.
+#'
+#' @param EventSourceArn The Amazon Resource Name (ARN) of the event source.
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Version or Alias ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param Enabled Set to false to disable the event source upon creation.
+#' @param BatchSize The largest number of records that AWS Lambda will retrieve from your event source at the time of invoking your function. Your function receives an event with all the retrieved records. The default for Amazon Kinesis and Amazon DynamoDB is 100 records. Both the default and maximum for Amazon SQS are 10 messages.
+#' @param StartingPosition The position in the DynamoDB or Kinesis stream where AWS Lambda should start reading. For more information, see [GetShardIterator](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType) in the *Amazon Kinesis API Reference Guide* or [GetShardIterator](http://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_streams_GetShardIterator.html) in the *Amazon DynamoDB API Reference Guide*. The `AT_TIMESTAMP` value is supported only for [Kinesis streams](http://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html).
+#' @param StartingPositionTimestamp The timestamp of the data record from which to start reading. Used with [shard iterator type](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType) AT\_TIMESTAMP. If a record with this exact timestamp does not exist, the iterator returned is for the next (later) record. If the timestamp is older than the current trim horizon, the iterator returned is for the oldest untrimmed data record (TRIM\_HORIZON). Valid only for [Kinesis streams](http://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html).
+#'
+#' @examples
+#'
+#' @export
+create_event_source_mapping <- function (EventSourceArn, FunctionName, 
+    Enabled = NULL, BatchSize = NULL, StartingPosition = NULL, 
+    StartingPositionTimestamp = NULL) 
+{
+    op <- Operation(name = "CreateEventSourceMapping", http_method = "POST", 
+        http_path = "/2015-03-31/event-source-mappings/", paginator = list())
+    input <- create_event_source_mapping_input(EventSourceArn = EventSourceArn, 
+        FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, 
+        StartingPosition = StartingPosition, StartingPositionTimestamp = StartingPositionTimestamp)
+    output <- create_event_source_mapping_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a new Lambda function
+#'
+#' Creates a new Lambda function. The function configuration is created from the request parameters, and the code for the function is provided by a .zip file. The function name is case-sensitive.
+#' 
+#' This operation requires permission for the `lambda:CreateFunction` action.
+#'
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param Runtime The runtime version for the function.
+#' @param Role The Amazon Resource Name (ARN) of the function\'s [execution role](http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role).
+#' @param Handler The name of the method within your code that Lambda calls to execute your function. For more information, see [Programming Model](http://docs.aws.amazon.com/lambda/latest/dg/programming-model-v2.html).
+#' @param Code The code for the function.
+#' @param Description A description of the function.
+#' @param Timeout The amount of time that Lambda allows a function to run before terminating it. The default is 3 seconds. The maximum allowed value is 900 seconds.
+#' @param MemorySize The amount of memory that your function has access to. Increasing the function\'s memory also increases it\'s CPU allocation. The default value is 128 MB. The value must be a multiple of 64 MB.
+#' @param Publish Set to true to publish the first version of the function during creation.
+#' @param VpcConfig If your Lambda function accesses resources in a VPC, you provide this parameter identifying the list of security group IDs and subnet IDs. These must belong to the same VPC. You must provide at least one security group and one subnet ID.
+#' @param DeadLetterConfig A dead letter queue configuration that specifies the queue or topic where Lambda sends asynchronous events when they fail processing. For more information, see [Dead Letter Queues](http://docs.aws.amazon.com/lambda/latest/dg/dlq.html).
+#' @param Environment Environment variables that are accessible from function code during execution.
+#' @param KMSKeyArn The ARN of the KMS key used to encrypt your function\'s environment variables. If not provided, AWS Lambda will use a default service key.
+#' @param TracingConfig Set `Mode` to `Active` to sample and trace a subset of incoming requests with AWS X-Ray.
+#' @param Tags The list of tags (key-value pairs) assigned to the new function. For more information, see [Tagging Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the **AWS Lambda Developer Guide**.
+#'
+#' @examples
+#' # This example creates a Lambda function.
+#' create_function(
+#'   Code = structure(
+#'     list(),
+#'     .Names = character(
+#'       0
+#'     )
+#'   ),
+#'   Description = "",
+#'   FunctionName = "MyFunction",
+#'   Handler = "souce_file.handler_name",
+#'   MemorySize = 128L,
+#'   Publish = TRUE,
+#'   Role = "arn:aws:iam::123456789012:role/service-role/role-name",
+#'   Runtime = "nodejs4.3",
+#'   Timeout = 15L,
+#'   VpcConfig = structure(
+#'     list(),
+#'     .Names = character(
+#'       0
+#'     )
+#'   )
+#' )
+#'
+#' @export
+create_function <- function (FunctionName, Runtime, Role, Handler, 
+    Code, Description = NULL, Timeout = NULL, MemorySize = NULL, 
+    Publish = NULL, VpcConfig = NULL, DeadLetterConfig = NULL, 
+    Environment = NULL, KMSKeyArn = NULL, TracingConfig = NULL, 
+    Tags = NULL) 
+{
+    op <- Operation(name = "CreateFunction", http_method = "POST", 
+        http_path = "/2015-03-31/functions", paginator = list())
+    input <- create_function_input(FunctionName = FunctionName, 
+        Runtime = Runtime, Role = Role, Handler = Handler, Code = Code, 
+        Description = Description, Timeout = Timeout, MemorySize = MemorySize, 
+        Publish = Publish, VpcConfig = VpcConfig, DeadLetterConfig = DeadLetterConfig, 
+        Environment = Environment, KMSKeyArn = KMSKeyArn, TracingConfig = TracingConfig, 
+        Tags = Tags)
+    output <- create_function_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified Lambda function alias
+#'
+#' Deletes the specified Lambda function alias. For more information, see [Introduction to AWS Lambda Aliases](http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html).
+#' 
+#' This requires permission for the lambda:DeleteAlias action.
+#'
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param Name Name of the alias to delete.
+#'
+#' @examples
+#' # This operation deletes a Lambda function alias
+#' delete_alias(
+#'   FunctionName = "myFunction",
+#'   Name = "alias"
+#' )
+#'
+#' @export
+delete_alias <- function (FunctionName, Name) 
+{
+    op <- Operation(name = "DeleteAlias", http_method = "DELETE", 
+        http_path = "/2015-03-31/functions/{FunctionName}/aliases/{Name}", 
+        paginator = list())
+    input <- delete_alias_input(FunctionName = FunctionName, 
+        Name = Name)
+    output <- delete_alias_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes an event source mapping
+#'
+#' Removes an event source mapping. This means AWS Lambda will no longer invoke the function for events in the associated source.
+#' 
+#' This operation requires permission for the `lambda:DeleteEventSourceMapping` action.
+#'
+#' @param UUID The event source mapping ID.
+#'
+#' @examples
+#' # This operation deletes a Lambda function event source mapping
+#' delete_event_source_mapping(
+#'   UUID = "12345kxodurf3443"
+#' )
+#'
+#' @export
+delete_event_source_mapping <- function (UUID) 
+{
+    op <- Operation(name = "DeleteEventSourceMapping", http_method = "DELETE", 
+        http_path = "/2015-03-31/event-source-mappings/{UUID}", 
+        paginator = list())
+    input <- delete_event_source_mapping_input(UUID = UUID)
+    output <- delete_event_source_mapping_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a Lambda function
+#'
+#' Deletes a Lambda function. To delete a specific function version, use the `Qualifier` parameter. Otherwise, all versions and aliases are deleted. Event source mappings are not deleted.
+#' 
+#' This operation requires permission for the `lambda:DeleteFunction` action.
+#'
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param Qualifier Specify a version to delete. You cannot delete a version that is referenced by an alias.
+#'
+#' @examples
+#' # This operation deletes a Lambda function
+#' delete_function(
+#'   FunctionName = "myFunction",
+#'   Qualifier = "1"
+#' )
+#'
+#' @export
+delete_function <- function (FunctionName, Qualifier = NULL) 
+{
+    op <- Operation(name = "DeleteFunction", http_method = "DELETE", 
+        http_path = "/2015-03-31/functions/{FunctionName}", paginator = list())
+    input <- delete_function_input(FunctionName = FunctionName, 
+        Qualifier = Qualifier)
+    output <- delete_function_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes concurrent execution limits from this function
+#'
+#' Removes concurrent execution limits from this function. For more information, see [Managing Concurrency](http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html).
+#'
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#'
+#' @examples
+#'
+#' @export
+delete_function_concurrency <- function (FunctionName) 
+{
+    op <- Operation(name = "DeleteFunctionConcurrency", http_method = "DELETE", 
+        http_path = "/2017-10-31/functions/{FunctionName}/concurrency", 
+        paginator = list())
+    input <- delete_function_concurrency_input(FunctionName = FunctionName)
+    output <- delete_function_concurrency_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves details about your account\'s [limits](http://docs
+#'
+#' Retrieves details about your account\'s [limits](http://docs.aws.amazon.com/lambda/latest/dg/limits.html) and usage in a region.
+#'
+#' @examples
+#' # This operation retrieves a Lambda customer's account settings
+#' get_account_settings()
+#'
+#' @export
+get_account_settings <- function () 
+{
+    op <- Operation(name = "GetAccountSettings", http_method = "GET", 
+        http_path = "/2016-08-19/account-settings/", paginator = list())
+    input <- get_account_settings_input()
+    output <- get_account_settings_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns the specified alias information such as the alias ARN, description, and function version it is pointing to
+#'
+#' Returns the specified alias information such as the alias ARN, description, and function version it is pointing to. For more information, see [Introduction to AWS Lambda Aliases](http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html).
+#' 
+#' This requires permission for the `lambda:GetAlias` action.
+#'
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param Name Name of the alias for which you want to retrieve information.
+#'
+#' @examples
+#' # This operation retrieves a Lambda function alias
+#' get_alias(
+#'   FunctionName = "myFunction",
+#'   Name = "myFunctionAlias"
+#' )
+#'
+#' @export
+get_alias <- function (FunctionName, Name) 
+{
+    op <- Operation(name = "GetAlias", http_method = "GET", http_path = "/2015-03-31/functions/{FunctionName}/aliases/{Name}", 
+        paginator = list())
+    input <- get_alias_input(FunctionName = FunctionName, Name = Name)
+    output <- get_alias_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns configuration information for the specified event source mapping (see CreateEventSourceMapping)
+#'
+#' Returns configuration information for the specified event source mapping (see CreateEventSourceMapping).
+#' 
+#' This operation requires permission for the `lambda:GetEventSourceMapping` action.
+#'
+#' @param UUID The AWS Lambda assigned ID of the event source mapping.
+#'
+#' @examples
+#' # This operation retrieves a Lambda function's event source mapping
+#' get_event_source_mapping(
+#'   UUID = "123489-xxxxx-kdla8d89d7"
+#' )
+#'
+#' @export
+get_event_source_mapping <- function (UUID) 
+{
+    op <- Operation(name = "GetEventSourceMapping", http_method = "GET", 
+        http_path = "/2015-03-31/event-source-mappings/{UUID}", 
+        paginator = list())
+    input <- get_event_source_mapping_input(UUID = UUID)
+    output <- get_event_source_mapping_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns the configuration information of the Lambda function and a presigned URL link to the 
+#'
+#' Returns the configuration information of the Lambda function and a presigned URL link to the .zip file you uploaded with CreateFunction so you can download the .zip file. Note that the URL is valid for up to 10 minutes. The configuration information is the same information you provided as parameters when uploading the function.
+#' 
+#' Use the `Qualifier` parameter to retrieve a published version of the function. Otherwise, returns the unpublished version (`$LATEST`). For more information, see [AWS Lambda Function Versioning and Aliases](http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+#' 
+#' This operation requires permission for the `lambda:GetFunction` action.
+#'
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param Qualifier Specify a version or alias to get details about a published version of the function.
+#'
+#' @examples
+#' # This operation retrieves a Lambda function's event source mapping
+#' get_function(
+#'   FunctionName = "myFunction",
+#'   Qualifier = "1"
+#' )
+#'
+#' @export
+get_function <- function (FunctionName, Qualifier = NULL) 
+{
+    op <- Operation(name = "GetFunction", http_method = "GET", 
+        http_path = "/2015-03-31/functions/{FunctionName}", paginator = list())
+    input <- get_function_input(FunctionName = FunctionName, 
+        Qualifier = Qualifier)
+    output <- get_function_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns the configuration information of the Lambda function
+#'
+#' Returns the configuration information of the Lambda function. This the same information you provided as parameters when uploading the function by using CreateFunction.
+#' 
+#' If you are using the versioning feature, you can retrieve this information for a specific function version by using the optional `Qualifier` parameter and specifying the function version or alias that points to it. If you don\'t provide it, the API returns information about the \$LATEST version of the function. For more information about versioning, see [AWS Lambda Function Versioning and Aliases](http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+#' 
+#' This operation requires permission for the `lambda:GetFunctionConfiguration` operation.
+#'
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param Qualifier Specify a version or alias to get details about a published version of the function.
+#'
+#' @examples
+#' # This operation retrieves a Lambda function's event source mapping
+#' get_function_configuration(
+#'   FunctionName = "myFunction",
+#'   Qualifier = "1"
+#' )
+#'
+#' @export
+get_function_configuration <- function (FunctionName, Qualifier = NULL) 
+{
+    op <- Operation(name = "GetFunctionConfiguration", http_method = "GET", 
+        http_path = "/2015-03-31/functions/{FunctionName}/configuration", 
+        paginator = list())
+    input <- get_function_configuration_input(FunctionName = FunctionName, 
+        Qualifier = Qualifier)
+    output <- get_function_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns the resource policy associated with the specified Lambda function
+#'
+#' Returns the resource policy associated with the specified Lambda function.
+#' 
+#' This action requires permission for the `lambda:GetPolicy action.`
+#'
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param Qualifier You can specify this optional query parameter to specify a function version or an alias name in which case this API will return all permissions associated with the specific qualified ARN. If you don\'t provide this parameter, the API will return permissions that apply to the unqualified function ARN.
+#'
+#' @examples
+#' # This operation retrieves a Lambda function policy
+#' get_policy(
+#'   FunctionName = "myFunction",
+#'   Qualifier = "1"
+#' )
+#'
+#' @export
+get_policy <- function (FunctionName, Qualifier = NULL) 
+{
+    op <- Operation(name = "GetPolicy", http_method = "GET", 
+        http_path = "/2015-03-31/functions/{FunctionName}/policy", 
+        paginator = list())
+    input <- get_policy_input(FunctionName = FunctionName, Qualifier = Qualifier)
+    output <- get_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Invokes a Lambda function
+#'
+#' Invokes a Lambda function. For an example, see [Create the Lambda Function and Test It Manually](http://docs.aws.amazon.com/lambda/latest/dg/with-dynamodb-create-function.html#with-dbb-invoke-manually).
+#' 
+#' Specify just a function name to invoke the latest version of the function. To invoke a published version, use the `Qualifier` parameter to specify a [version or alias](http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+#' 
+#' If you use the `RequestResponse` (synchronous) invocation option, the function will be invoked only once. If you use the `Event` (asynchronous) invocation option, the function will be invoked at least once in response to an event and the function must be idempotent to handle this.
+#' 
+#' For functions with a long timeout, your client may be disconnected during synchronous invocation while it waits for a response. Configure your HTTP client, SDK, firewall, proxy, or operating system to allow for long connections with timeout or keep-alive settings.
+#' 
+#' This operation requires permission for the `lambda:InvokeFunction` action.
+#' 
+#' The `TooManyRequestsException` noted below will return the following: `ConcurrentInvocationLimitExceeded` will be returned if you have no functions with reserved concurrency and have exceeded your account concurrent limit or if a function without reserved concurrency exceeds the account\'s unreserved concurrency limit. `ReservedFunctionConcurrentInvocationLimitExceeded` will be returned when a function with reserved concurrency exceeds its configured concurrency limit.
+#'
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param InvocationType Choose from the following options.
+#' 
+#' -   `RequestResponse` (default) - Invoke the function synchronously. Keep the connection open until the function returns a response or times out.
+#' 
+#' -   `Event` - Invoke the function asynchronously. Send events that fail multiple times to the function\'s dead-letter queue (if configured).
+#' 
+#' -   `DryRun` - Validate parameter values and verify that the user or role has permission to invoke the function.
+#' @param LogType You can set this optional parameter to `Tail` in the request only if you specify the `InvocationType` parameter with value `RequestResponse`. In this case, AWS Lambda returns the base64-encoded last 4 KB of log data produced by your Lambda function in the `x-amz-log-result` header.
+#' @param ClientContext Using the `ClientContext` you can pass client-specific information to the Lambda function you are invoking. You can then process the client information in your Lambda function as you choose through the context variable. For an example of a `ClientContext` JSON, see [PutEvents](http://docs.aws.amazon.com/mobileanalytics/latest/ug/PutEvents.html) in the *Amazon Mobile Analytics API Reference and User Guide*.
+#' 
+#' The ClientContext JSON must be base64-encoded and has a maximum size of 3583 bytes.
+#' 
+#' `ClientContext` information is returned only if you use the synchronous (`RequestResponse`) invocation type.
+#' @param Payload JSON that you want to provide to your Lambda function as input.
+#' @param Qualifier Specify a version or alias to invoke a published version of the function.
+#'
+#' @examples
+#' # This operation invokes a Lambda function
+#' invoke(
+#'   ClientContext = "MyApp",
+#'   FunctionName = "MyFunction",
+#'   InvocationType = "Event",
+#'   LogType = "Tail",
+#'   Payload = "fileb://file-path/input.json",
+#'   Qualifier = "1"
+#' )
+#'
+#' @export
+invoke <- function (FunctionName, InvocationType = NULL, LogType = NULL, 
+    ClientContext = NULL, Payload = NULL, Qualifier = NULL) 
+{
+    op <- Operation(name = "Invoke", http_method = "POST", http_path = "/2015-03-31/functions/{FunctionName}/invocations", 
+        paginator = list())
+    input <- invoke_input(FunctionName = FunctionName, InvocationType = InvocationType, 
+        LogType = LogType, ClientContext = ClientContext, Payload = Payload, 
+        Qualifier = Qualifier)
+    output <- invoke_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' For asynchronous function invocation, use Invoke
+#'
+#' For asynchronous function invocation, use Invoke.
+#' 
+#' Submits an invocation request to AWS Lambda. Upon receiving the request, Lambda executes the specified function asynchronously. To see the logs generated by the Lambda function execution, see the CloudWatch Logs console.
+#' 
+#' This operation requires permission for the `lambda:InvokeFunction` action.
+#'
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param InvokeArgs JSON that you want to provide to your Lambda function as input.
+#'
+#' @examples
+#' # This operation invokes a Lambda function asynchronously
+#' invoke_async(
+#'   FunctionName = "myFunction",
+#'   InvokeArgs = "fileb://file-path/input.json"
+#' )
+#'
+#' @export
+invoke_async <- function (FunctionName, InvokeArgs) 
+{
+    op <- Operation(name = "InvokeAsync", http_method = "POST", 
+        http_path = "/2014-11-13/functions/{FunctionName}/invoke-async/", 
+        paginator = list())
+    input <- invoke_async_input(FunctionName = FunctionName, 
+        InvokeArgs = InvokeArgs)
+    output <- invoke_async_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns list of aliases created for a Lambda function
+#'
+#' Returns list of aliases created for a Lambda function. For each alias, the response includes information such as the alias ARN, description, alias name, and the function version to which it points. For more information, see [Introduction to AWS Lambda Aliases](http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html).
+#' 
+#' This requires permission for the lambda:ListAliases action.
+#'
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param FunctionVersion If you specify this optional parameter, the API returns only the aliases that are pointing to the specific Lambda function version, otherwise the API returns all of the aliases created for the Lambda function.
+#' @param Marker Optional string. An opaque pagination token returned from a previous `ListAliases` operation. If present, indicates where to continue the listing.
+#' @param MaxItems Optional integer. Specifies the maximum number of aliases to return in response. This parameter value must be greater than 0.
+#'
+#' @examples
+#' # This operation retrieves a Lambda function's aliases
+#' list_aliases(
+#'   FunctionName = "myFunction",
+#'   FunctionVersion = "1",
+#'   Marker = "",
+#'   MaxItems = 123L
+#' )
+#'
+#' @export
+list_aliases <- function (FunctionName, FunctionVersion = NULL, 
+    Marker = NULL, MaxItems = NULL) 
+{
+    op <- Operation(name = "ListAliases", http_method = "GET", 
+        http_path = "/2015-03-31/functions/{FunctionName}/aliases", 
+        paginator = list())
+    input <- list_aliases_input(FunctionName = FunctionName, 
+        FunctionVersion = FunctionVersion, Marker = Marker, MaxItems = MaxItems)
+    output <- list_aliases_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of event source mappings you created using the `CreateEventSourceMapping` (see CreateEventSourceMapping)
+#'
+#' Returns a list of event source mappings you created using the `CreateEventSourceMapping` (see CreateEventSourceMapping).
+#' 
+#' For each mapping, the API returns configuration information. You can optionally specify filters to retrieve specific event source mappings.
+#' 
+#' This operation requires permission for the `lambda:ListEventSourceMappings` action.
+#'
+#' @param EventSourceArn The Amazon Resource Name (ARN) of the Amazon Kinesis or DynamoDB stream. (This parameter is optional.)
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Version or Alias ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param Marker Optional string. An opaque pagination token returned from a previous `ListEventSourceMappings` operation. If present, specifies to continue the list from where the returning call left off.
+#' @param MaxItems Optional integer. Specifies the maximum number of event sources to return in response. This value must be greater than 0.
+#'
+#' @examples
+#'
+#' @export
+list_event_source_mappings <- function (EventSourceArn = NULL, 
+    FunctionName = NULL, Marker = NULL, MaxItems = NULL) 
+{
+    op <- Operation(name = "ListEventSourceMappings", http_method = "GET", 
+        http_path = "/2015-03-31/event-source-mappings/", paginator = list())
+    input <- list_event_source_mappings_input(EventSourceArn = EventSourceArn, 
+        FunctionName = FunctionName, Marker = Marker, MaxItems = MaxItems)
+    output <- list_event_source_mappings_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of your Lambda functions
+#'
+#' Returns a list of your Lambda functions. For each function, the response includes the function configuration information. You must use GetFunction to retrieve the code for your function.
+#' 
+#' This operation requires permission for the `lambda:ListFunctions` action.
+#' 
+#' If you are using the versioning feature, you can list all of your functions or only `$LATEST` versions. For information about the versioning feature, see [AWS Lambda Function Versioning and Aliases](http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+#'
+#' @param MasterRegion Specify a region (e.g. `us-east-2`) to only list functions that were created in that region, or `ALL` to include functions replicated from any region. If specified, you also must specify the `FunctionVersion`.
+#' @param FunctionVersion Set to `ALL` to list all published versions. If not specified, only the latest unpublished version ARN is returned.
+#' @param Marker Optional string. An opaque pagination token returned from a previous `ListFunctions` operation. If present, indicates where to continue the listing.
+#' @param MaxItems Optional integer. Specifies the maximum number of AWS Lambda functions to return in response. This parameter value must be greater than 0. The absolute maximum of AWS Lambda functions that can be returned is 50.
+#'
+#' @examples
+#' # This operation retrieves a Lambda functions
+#' list_functions(
+#'   Marker = "",
+#'   MaxItems = 123L
+#' )
+#'
+#' @export
+list_functions <- function (MasterRegion = NULL, FunctionVersion = NULL, 
+    Marker = NULL, MaxItems = NULL) 
+{
+    op <- Operation(name = "ListFunctions", http_method = "GET", 
+        http_path = "/2015-03-31/functions/", paginator = list())
+    input <- list_functions_input(MasterRegion = MasterRegion, 
+        FunctionVersion = FunctionVersion, Marker = Marker, MaxItems = MaxItems)
+    output <- list_functions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of tags assigned to a function when supplied the function ARN (Amazon Resource Name)
+#'
+#' Returns a list of tags assigned to a function when supplied the function ARN (Amazon Resource Name). For more information on Tagging, see [Tagging Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the **AWS Lambda Developer Guide**.
+#'
+#' @param Resource The ARN (Amazon Resource Name) of the function. For more information, see [Tagging Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the **AWS Lambda Developer Guide**.
+#'
+#' @examples
+#'
+#' @export
+list_tags <- function (Resource) 
+{
+    op <- Operation(name = "ListTags", http_method = "GET", http_path = "/2017-03-31/tags/{ARN}", 
+        paginator = list())
+    input <- list_tags_input(Resource = Resource)
+    output <- list_tags_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists all versions of a function
+#'
+#' Lists all versions of a function. For information about versioning, see [AWS Lambda Function Versioning and Aliases](http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+#'
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param Marker Optional string. An opaque pagination token returned from a previous `ListVersionsByFunction` operation. If present, indicates where to continue the listing.
+#' @param MaxItems Optional integer. Specifies the maximum number of AWS Lambda function versions to return in response. This parameter value must be greater than 0.
+#'
+#' @examples
+#' # This operation retrieves a Lambda function versions
+#' list_versions_by_function(
+#'   FunctionName = "myFunction",
+#'   Marker = "",
+#'   MaxItems = 123L
+#' )
+#'
+#' @export
+list_versions_by_function <- function (FunctionName, Marker = NULL, 
+    MaxItems = NULL) 
+{
+    op <- Operation(name = "ListVersionsByFunction", http_method = "GET", 
+        http_path = "/2015-03-31/functions/{FunctionName}/versions", 
+        paginator = list())
+    input <- list_versions_by_function_input(FunctionName = FunctionName, 
+        Marker = Marker, MaxItems = MaxItems)
+    output <- list_versions_by_function_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Publishes a version of your function from the current snapshot of \$LATEST
+#'
+#' Publishes a version of your function from the current snapshot of \$LATEST. That is, AWS Lambda takes a snapshot of the function code and configuration information from \$LATEST and publishes a new version. The code and configuration cannot be modified after publication. For information about the versioning feature, see [AWS Lambda Function Versioning and Aliases](http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+#'
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param CodeSha256 The SHA256 hash of the deployment package you want to publish. This provides validation on the code you are publishing. If you provide this parameter, the value must match the SHA256 of the \$LATEST version for the publication to succeed. You can use the **DryRun** parameter of UpdateFunctionCode to verify the hash value that will be returned before publishing your new version.
+#' @param Description The description for the version you are publishing. If not provided, AWS Lambda copies the description from the \$LATEST version.
+#' @param RevisionId An optional value you can use to ensure you are updating the latest update of the function version or alias. If the `RevisionID` you pass doesn\'t match the latest `RevisionId` of the function or alias, it will fail with an error message, advising you retrieve the latest function version or alias `RevisionID` using either GetFunction or GetAlias.
+#'
+#' @examples
+#' # This operation publishes a version of a Lambda function
+#' publish_version(
+#'   CodeSha256 = "",
+#'   Description = "",
+#'   FunctionName = "myFunction"
+#' )
+#'
+#' @export
+publish_version <- function (FunctionName, CodeSha256 = NULL, 
+    Description = NULL, RevisionId = NULL) 
+{
+    op <- Operation(name = "PublishVersion", http_method = "POST", 
+        http_path = "/2015-03-31/functions/{FunctionName}/versions", 
+        paginator = list())
+    input <- publish_version_input(FunctionName = FunctionName, 
+        CodeSha256 = CodeSha256, Description = Description, RevisionId = RevisionId)
+    output <- publish_version_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Sets a limit on the number of concurrent executions available to this function
+#'
+#' Sets a limit on the number of concurrent executions available to this function. It is a subset of your account\'s total concurrent execution limit per region. Note that Lambda automatically reserves a buffer of 100 concurrent executions for functions without any reserved concurrency limit. This means if your account limit is 1000, you have a total of 900 available to allocate to individual functions. For more information, see [Managing Concurrency](http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html).
+#'
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param ReservedConcurrentExecutions The concurrent execution limit reserved for this function.
+#'
+#' @examples
+#'
+#' @export
+put_function_concurrency <- function (FunctionName, ReservedConcurrentExecutions) 
+{
+    op <- Operation(name = "PutFunctionConcurrency", http_method = "PUT", 
+        http_path = "/2017-10-31/functions/{FunctionName}/concurrency", 
+        paginator = list())
+    input <- put_function_concurrency_input(FunctionName = FunctionName, 
+        ReservedConcurrentExecutions = ReservedConcurrentExecutions)
+    output <- put_function_concurrency_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes permissions from a function
+#'
+#' Removes permissions from a function. You can remove individual permissions from an resource policy associated with a Lambda function by providing a statement ID that you provided when you added the permission. When you remove permissions, disable the event source mapping or trigger configuration first to avoid errors.
+#' 
+#' Permissions apply to the Amazon Resource Name (ARN) used to invoke the function, which can be unqualified (the unpublished version of the function), or include a version or alias. If a client uses a version or alias to invoke a function, use the `Qualifier` parameter to apply permissions to that ARN. For more information about versioning, see [AWS Lambda Function Versioning and Aliases](http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+#' 
+#' You need permission for the `lambda:RemovePermission` action.
+#'
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param StatementId Statement ID of the permission to remove.
+#' @param Qualifier Specify a version or alias to remove permissions from a published version of the function.
+#' @param RevisionId An optional value you can use to ensure you are updating the latest update of the function version or alias. If the `RevisionID` you pass doesn\'t match the latest `RevisionId` of the function or alias, it will fail with an error message, advising you to retrieve the latest function version or alias `RevisionID` using either GetFunction or GetAlias.
+#'
+#' @examples
+#' # This operation removes a Lambda function's permissions
+#' remove_permission(
+#'   FunctionName = "myFunction",
+#'   Qualifier = "1",
+#'   StatementId = "role-statement-id"
+#' )
+#'
+#' @export
+remove_permission <- function (FunctionName, StatementId, Qualifier = NULL, 
+    RevisionId = NULL) 
+{
+    op <- Operation(name = "RemovePermission", http_method = "DELETE", 
+        http_path = "/2015-03-31/functions/{FunctionName}/policy/{StatementId}", 
+        paginator = list())
+    input <- remove_permission_input(FunctionName = FunctionName, 
+        StatementId = StatementId, Qualifier = Qualifier, RevisionId = RevisionId)
+    output <- remove_permission_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a list of tags (key-value pairs) on the Lambda function
+#'
+#' Creates a list of tags (key-value pairs) on the Lambda function. Requires the Lambda function ARN (Amazon Resource Name). If a key is specified without a value, Lambda creates a tag with the specified key and a value of null. For more information, see [Tagging Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the **AWS Lambda Developer Guide**.
+#'
+#' @param Resource The ARN (Amazon Resource Name) of the Lambda function. For more information, see [Tagging Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the **AWS Lambda Developer Guide**.
+#' @param Tags The list of tags (key-value pairs) you are assigning to the Lambda function. For more information, see [Tagging Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the **AWS Lambda Developer Guide**.
+#'
+#' @examples
+#'
+#' @export
+tag_resource <- function (Resource, Tags) 
+{
+    op <- Operation(name = "TagResource", http_method = "POST", 
+        http_path = "/2017-03-31/tags/{ARN}", paginator = list())
+    input <- tag_resource_input(Resource = Resource, Tags = Tags)
+    output <- tag_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes tags from a Lambda function
+#'
+#' Removes tags from a Lambda function. Requires the function ARN (Amazon Resource Name). For more information, see [Tagging Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the **AWS Lambda Developer Guide**.
+#'
+#' @param Resource The ARN (Amazon Resource Name) of the function. For more information, see [Tagging Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the **AWS Lambda Developer Guide**.
+#' @param TagKeys The list of tag keys to be deleted from the function. For more information, see [Tagging Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the **AWS Lambda Developer Guide**.
+#'
+#' @examples
+#'
+#' @export
+untag_resource <- function (Resource, TagKeys) 
+{
+    op <- Operation(name = "UntagResource", http_method = "DELETE", 
+        http_path = "/2017-03-31/tags/{ARN}", paginator = list())
+    input <- untag_resource_input(Resource = Resource, TagKeys = TagKeys)
+    output <- untag_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Using this API you can update the function version to which the alias points and the alias description
+#'
+#' Using this API you can update the function version to which the alias points and the alias description. For more information, see [Introduction to AWS Lambda Aliases](http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html).
+#' 
+#' This requires permission for the lambda:UpdateAlias action.
+#'
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param Name The alias name.
+#' @param FunctionVersion Using this parameter you can change the Lambda function version to which the alias points.
+#' @param Description You can change the description of the alias using this parameter.
+#' @param RoutingConfig Specifies an additional version your alias can point to, allowing you to dictate what percentage of traffic will invoke each version. For more information, see [Traffic Shifting Using Aliases](http://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html).
+#' @param RevisionId An optional value you can use to ensure you are updating the latest update of the function version or alias. If the `RevisionID` you pass doesn\'t match the latest `RevisionId` of the function or alias, it will fail with an error message, advising you retrieve the latest function version or alias `RevisionID` using either GetFunction or GetAlias.
+#'
+#' @examples
+#' # This operation updates a Lambda function alias
+#' update_alias(
+#'   Description = "",
+#'   FunctionName = "myFunction",
+#'   FunctionVersion = "1",
+#'   Name = "functionAlias"
+#' )
+#'
+#' @export
+update_alias <- function (FunctionName, Name, FunctionVersion = NULL, 
+    Description = NULL, RoutingConfig = NULL, RevisionId = NULL) 
+{
+    op <- Operation(name = "UpdateAlias", http_method = "PUT", 
+        http_path = "/2015-03-31/functions/{FunctionName}/aliases/{Name}", 
+        paginator = list())
+    input <- update_alias_input(FunctionName = FunctionName, 
+        Name = Name, FunctionVersion = FunctionVersion, Description = Description, 
+        RoutingConfig = RoutingConfig, RevisionId = RevisionId)
+    output <- update_alias_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' You can update an event source mapping
+#'
+#' You can update an event source mapping. This is useful if you want to change the parameters of the existing mapping without losing your position in the stream. You can change which function will receive the stream records, but to change the stream itself, you must create a new mapping.
+#' 
+#' If you disable the event source mapping, AWS Lambda stops polling. If you enable again, it will resume polling from the time it had stopped polling, so you don\'t lose processing of any records. However, if you delete event source mapping and create it again, it will reset.
+#' 
+#' This operation requires permission for the `lambda:UpdateEventSourceMapping` action.
+#'
+#' @param UUID The event source mapping identifier.
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Version or Alias ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param Enabled Specifies whether AWS Lambda should actively poll the stream or not. If disabled, AWS Lambda will not poll the stream.
+#' @param BatchSize The largest number of records that AWS Lambda will retrieve from your event source at the time of invoking your function. Your function receives an event with all the retrieved records.
+#'
+#' @examples
+#' # This operation updates a Lambda function event source mapping
+#' update_event_source_mapping(
+#'   BatchSize = 123L,
+#'   Enabled = TRUE,
+#'   FunctionName = "myFunction",
+#'   UUID = "1234xCy789012"
+#' )
+#'
+#' @export
+update_event_source_mapping <- function (UUID, FunctionName = NULL, 
+    Enabled = NULL, BatchSize = NULL) 
+{
+    op <- Operation(name = "UpdateEventSourceMapping", http_method = "PUT", 
+        http_path = "/2015-03-31/event-source-mappings/{UUID}", 
+        paginator = list())
+    input <- update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, 
+        Enabled = Enabled, BatchSize = BatchSize)
+    output <- update_event_source_mapping_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the code for the specified Lambda function
+#'
+#' Updates the code for the specified Lambda function. This operation must only be used on an existing Lambda function and cannot be used to update the function configuration.
+#' 
+#' If you are using the versioning feature, note this API will always update the \$LATEST version of your Lambda function. For information about the versioning feature, see [AWS Lambda Function Versioning and Aliases](http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+#' 
+#' This operation requires permission for the `lambda:UpdateFunctionCode` action.
+#'
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param ZipFile The contents of your zip file containing your deployment package. If you are using the web API directly, the contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the encoding for you. For more information about creating a .zip file, see [Execution Permissions](http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html).
+#' @param S3Bucket Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must reside in the same AWS Region where you are creating the Lambda function.
+#' @param S3Key The Amazon S3 object (the deployment package) key name you want to upload.
+#' @param S3ObjectVersion The Amazon S3 object (the deployment package) version you want to upload.
+#' @param Publish This boolean parameter can be used to request AWS Lambda to update the Lambda function and publish a version as an atomic operation.
+#' @param DryRun This boolean parameter can be used to test your request to AWS Lambda to update the Lambda function and publish a version as an atomic operation. It will do all necessary computation and validation of your code but will not upload it or a publish a version. Each time this operation is invoked, the `CodeSha256` hash value of the provided code will also be computed and returned in the response.
+#' @param RevisionId An optional value you can use to ensure you are updating the latest update of the function version or alias. If the `RevisionID` you pass doesn\'t match the latest `RevisionId` of the function or alias, it will fail with an error message, advising you to retrieve the latest function version or alias `RevisionID` using either using using either GetFunction or GetAlias.
+#'
+#' @examples
+#' # This operation updates a Lambda function's code
+#' update_function_code(
+#'   FunctionName = "myFunction",
+#'   Publish = TRUE,
+#'   S3Bucket = "myBucket",
+#'   S3Key = "myKey",
+#'   S3ObjectVersion = "1",
+#'   ZipFile = "fileb://file-path/file.zip"
+#' )
+#'
+#' @export
+update_function_code <- function (FunctionName, ZipFile = NULL, 
+    S3Bucket = NULL, S3Key = NULL, S3ObjectVersion = NULL, Publish = NULL, 
+    DryRun = NULL, RevisionId = NULL) 
+{
+    op <- Operation(name = "UpdateFunctionCode", http_method = "PUT", 
+        http_path = "/2015-03-31/functions/{FunctionName}/code", 
+        paginator = list())
+    input <- update_function_code_input(FunctionName = FunctionName, 
+        ZipFile = ZipFile, S3Bucket = S3Bucket, S3Key = S3Key, 
+        S3ObjectVersion = S3ObjectVersion, Publish = Publish, 
+        DryRun = DryRun, RevisionId = RevisionId)
+    output <- update_function_code_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the configuration parameters for the specified Lambda function by using the values provided in the request
+#'
+#' Updates the configuration parameters for the specified Lambda function by using the values provided in the request. You provide only the parameters you want to change. This operation must only be used on an existing Lambda function and cannot be used to update the function\'s code.
+#' 
+#' If you are using the versioning feature, note this API will always update the \$LATEST version of your Lambda function. For information about the versioning feature, see [AWS Lambda Function Versioning and Aliases](http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+#' 
+#' This operation requires permission for the `lambda:UpdateFunctionConfiguration` action.
+#'
+#' @param FunctionName The name of the lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** - `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
+#' @param Role The Amazon Resource Name (ARN) of the IAM role that Lambda will assume when it executes your function.
+#' @param Handler The function that Lambda calls to begin executing your function. For Node.js, it is the `module-name.export` value in your function.
+#' @param Description A short user-defined function description. AWS Lambda does not use this value. Assign a meaningful description as you see fit.
+#' @param Timeout The amount of time that Lambda allows a function to run before terminating it. The default is 3 seconds. The maximum allowed value is 900 seconds.
+#' @param MemorySize The amount of memory, in MB, your Lambda function is given. AWS Lambda uses this memory size to infer the amount of CPU allocated to your function. Your function use-case determines your CPU and memory requirements. For example, a database operation might need less memory compared to an image processing function. The default value is 128 MB. The value must be a multiple of 64 MB.
+#' @param VpcConfig Specify security groups and subnets in a VPC to which your Lambda function needs access.
+#' @param Environment The parent object that contains your environment\'s configuration settings.
+#' @param Runtime The runtime version for the function.
+#' @param DeadLetterConfig A dead letter queue configuration that specifies the queue or topic where Lambda sends asynchronous events when they fail processing. For more information, see [Dead Letter Queues](http://docs.aws.amazon.com/lambda/latest/dg/dlq.html).
+#' @param KMSKeyArn The Amazon Resource Name (ARN) of the KMS key used to encrypt your function\'s environment variables. If you elect to use the AWS Lambda default service key, pass in an empty string (\"\") for this parameter.
+#' @param TracingConfig Set `Mode` to `Active` to sample and trace a subset of incoming requests with AWS X-Ray.
+#' @param RevisionId An optional value you can use to ensure you are updating the latest update of the function version or alias. If the `RevisionID` you pass doesn\'t match the latest `RevisionId` of the function or alias, it will fail with an error message, advising you to retrieve the latest function version or alias `RevisionID` using either GetFunction or GetAlias.
+#'
+#' @examples
+#' # This operation updates a Lambda function's configuration
+#' update_function_configuration(
+#'   Description = "",
+#'   FunctionName = "myFunction",
+#'   Handler = "index.handler",
+#'   MemorySize = 128L,
+#'   Role = "arn:aws:iam::123456789012:role/lambda_basic_execution",
+#'   Runtime = "python2.7",
+#'   Timeout = 123L,
+#'   VpcConfig = structure(
+#'     list(),
+#'     .Names = character(
+#'       0
+#'     )
+#'   )
+#' )
+#'
+#' @export
+update_function_configuration <- function (FunctionName, Role = NULL, 
+    Handler = NULL, Description = NULL, Timeout = NULL, MemorySize = NULL, 
+    VpcConfig = NULL, Environment = NULL, Runtime = NULL, DeadLetterConfig = NULL, 
+    KMSKeyArn = NULL, TracingConfig = NULL, RevisionId = NULL) 
+{
+    op <- Operation(name = "UpdateFunctionConfiguration", http_method = "PUT", 
+        http_path = "/2015-03-31/functions/{FunctionName}/configuration", 
+        paginator = list())
+    input <- update_function_configuration_input(FunctionName = FunctionName, 
+        Role = Role, Handler = Handler, Description = Description, 
+        Timeout = Timeout, MemorySize = MemorySize, VpcConfig = VpcConfig, 
+        Environment = Environment, Runtime = Runtime, DeadLetterConfig = DeadLetterConfig, 
+        KMSKeyArn = KMSKeyArn, TracingConfig = TracingConfig, 
+        RevisionId = RevisionId)
+    output <- update_function_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

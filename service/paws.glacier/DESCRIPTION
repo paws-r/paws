@@ -1,0 +1,65 @@
+Package: paws.glacier
+Title: Amazon Glacier
+Version: 0.0.0.9000
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut"))
+Description: Amazon Glacier is an extremely low-cost storage
+    service that provides secure, durable, and easy-to-use storage for
+    data backup and archival. With Amazon Glacier, customers can store
+    their data cost effectively for months, years, or decades. Amazon
+    Glacier also enables customers to offload the administrative burdens
+    of operating and scaling storage to AWS, so they don\'t have to worry
+    about capacity planning, hardware provisioning, data replication,
+    hardware failure and recovery, or time-consuming hardware migrations.
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.5.1)
+Imports: 
+    digest,
+    httr,
+    jsonlite,
+    xml2,
+    ini
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1
+Collate: 
+    'struct.R'
+    'handlers.R'
+    'url.R'
+    'net.R'
+    'credential_providers.R'
+    'credentials.R'
+    'client.R'
+    'config.R'
+    'convert.R'
+    'dateutil.R'
+    'defaults.R'
+    'error.R'
+    'handlers_core.R'
+    'handlers_ec2query.R'
+    'handlers_jsonrpc.R'
+    'handlers_query.R'
+    'handlers_rest.R'
+    'handlers_restjson.R'
+    'idempotency.R'
+    'jsonutil.R'
+    'paws.glacier_interfaces.R'
+    'paws.glacier_operations.R'
+    'paws.glacier_package.R'
+    'paws.glacier_service.R'
+    'populate.R'
+    'populateutil.R'
+    'type.R'
+    'queryutil.R'
+    'request.R'
+    'signer_v4.R'
+    'time.R'
+    'xmlutil.R'

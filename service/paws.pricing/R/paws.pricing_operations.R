@@ -1,0 +1,115 @@
+#' Returns the metadata for one service or a list of the metadata for all services
+#'
+#' Returns the metadata for one service or a list of the metadata for all services. Use this without a service code to get the service codes for all services. Use it with a service code, such as `AmazonEC2`, to get information specific to that service, such as the attribute names available for that service. For example, some of the attribute names available for EC2 are `volumeType`, `maxIopsVolume`, `operation`, `locationType`, and `instanceCapacity10xlarge`.
+#'
+#' @param ServiceCode The code for the service whose information you want to retrieve, such as `AmazonEC2`. You can use the `ServiceCode` to filter the results in a `GetProducts` call. To retrieve a list of all services, leave this blank.
+#' @param FormatVersion The format version that you want the response to be in.
+#' 
+#' Valid values are: `aws_v1`
+#' @param NextToken The pagination token that indicates the next set of results that you want to retrieve.
+#' @param MaxResults The maximum number of results that you want returned in the response.
+#'
+#' @examples
+#' #
+#' describe_services(
+#'   FormatVersion = "aws_v1",
+#'   MaxResults = 1L,
+#'   ServiceCode = "AmazonEC2"
+#' )
+#'
+#' @export
+describe_services <- function (ServiceCode = NULL, FormatVersion = NULL, 
+    NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "DescribeServices", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_services_input(ServiceCode = ServiceCode, 
+        FormatVersion = FormatVersion, NextToken = NextToken, 
+        MaxResults = MaxResults)
+    output <- describe_services_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of attribute values
+#'
+#' Returns a list of attribute values. Attibutes are similar to the details in a Price List API offer file. For a list of available attributes, see [Offer File Definitions](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/reading-an-offer.html#pps-defs) in the [AWS Billing and Cost Management User Guide](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html).
+#'
+#' @param ServiceCode The service code for the service whose attributes you want to retrieve. For example, if you want the retrieve an EC2 attribute, use `AmazonEC2`.
+#' @param AttributeName The name of the attribute that you want to retrieve the values for, such as `volumeType`.
+#' @param NextToken The pagination token that indicates the next set of results that you want to retrieve.
+#' @param MaxResults The maximum number of results to return in response.
+#'
+#' @examples
+#' # This operation returns a list of values available for the given
+#' # attribute.
+#' get_attribute_values(
+#'   AttributeName = "volumeType",
+#'   MaxResults = 2L,
+#'   ServiceCode = "AmazonEC2"
+#' )
+#'
+#' @export
+get_attribute_values <- function (ServiceCode, AttributeName, 
+    NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "GetAttributeValues", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_attribute_values_input(ServiceCode = ServiceCode, 
+        AttributeName = AttributeName, NextToken = NextToken, 
+        MaxResults = MaxResults)
+    output <- get_attribute_values_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of all products that match the filter criteria
+#'
+#' Returns a list of all products that match the filter criteria.
+#'
+#' @param ServiceCode The code for the service whose products you want to retrieve.
+#' @param Filters The list of filters that limit the returned products. only products that match all filters are returned.
+#' @param FormatVersion The format version that you want the response to be in.
+#' 
+#' Valid values are: `aws_v1`
+#' @param NextToken The pagination token that indicates the next set of results that you want to retrieve.
+#' @param MaxResults The maximum number of results to return in the response.
+#'
+#' @examples
+#' # This operation returns a list of products that match the given criteria.
+#' get_products(
+#'   Filters = list(
+#'     list(
+#'       Field = "ServiceCode",
+#'       Type = "TERM_MATCH",
+#'       Value = "AmazonEC2"
+#'     ),
+#'     list(
+#'       Field = "volumeType",
+#'       Type = "TERM_MATCH",
+#'       Value = "Provisioned IOPS"
+#'     )
+#'   ),
+#'   FormatVersion = "aws_v1",
+#'   MaxResults = 1L
+#' )
+#'
+#' @export
+get_products <- function (ServiceCode = NULL, Filters = NULL, 
+    FormatVersion = NULL, NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "GetProducts", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_products_input(ServiceCode = ServiceCode, Filters = Filters, 
+        FormatVersion = FormatVersion, NextToken = NextToken, 
+        MaxResults = MaxResults)
+    output <- get_products_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

@@ -1,0 +1,66 @@
+Package: paws.pricing
+Title: AWS Price List Service
+Version: 0.0.0.9000
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut"))
+Description: AWS Price List Service API (AWS Price List Service)
+    is a centralized and convenient way to programmatically query Amazon
+    Web Services for services, products, and pricing information. The AWS
+    Price List Service uses standardized product attributes such as
+    `Location`, `Storage Class`, and `Operating System`, and provides
+    prices at the SKU level. You can use the AWS Price List Service to
+    build cost control and scenario planning tools, reconcile billing
+    data, forecast future spend for budgeting purposes, and provide cost
+    benefit analysis that compare your internal workloads with AWS.
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.5.1)
+Imports: 
+    digest,
+    httr,
+    jsonlite,
+    xml2,
+    ini
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1
+Collate: 
+    'struct.R'
+    'handlers.R'
+    'url.R'
+    'net.R'
+    'credential_providers.R'
+    'credentials.R'
+    'client.R'
+    'config.R'
+    'convert.R'
+    'dateutil.R'
+    'defaults.R'
+    'error.R'
+    'handlers_core.R'
+    'handlers_ec2query.R'
+    'handlers_jsonrpc.R'
+    'handlers_query.R'
+    'handlers_rest.R'
+    'handlers_restjson.R'
+    'idempotency.R'
+    'jsonutil.R'
+    'paws.pricing_interfaces.R'
+    'paws.pricing_operations.R'
+    'paws.pricing_package.R'
+    'paws.pricing_service.R'
+    'populate.R'
+    'populateutil.R'
+    'type.R'
+    'queryutil.R'
+    'request.R'
+    'signer_v4.R'
+    'time.R'
+    'xmlutil.R'

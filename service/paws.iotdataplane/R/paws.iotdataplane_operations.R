@@ -1,0 +1,95 @@
+#' Deletes the thing shadow for the specified thing
+#'
+#' Deletes the thing shadow for the specified thing.
+#' 
+#' For more information, see [DeleteThingShadow](http://docs.aws.amazon.com/iot/latest/developerguide/API_DeleteThingShadow.html) in the *AWS IoT Developer Guide*.
+#'
+#' @param thingName The name of the thing.
+#'
+#' @examples
+#'
+#' @export
+delete_thing_shadow <- function (thingName) 
+{
+    op <- Operation(name = "DeleteThingShadow", http_method = "DELETE", 
+        http_path = "/things/{thingName}/shadow", paginator = list())
+    input <- delete_thing_shadow_input(thingName = thingName)
+    output <- delete_thing_shadow_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets the thing shadow for the specified thing
+#'
+#' Gets the thing shadow for the specified thing.
+#' 
+#' For more information, see [GetThingShadow](http://docs.aws.amazon.com/iot/latest/developerguide/API_GetThingShadow.html) in the *AWS IoT Developer Guide*.
+#'
+#' @param thingName The name of the thing.
+#'
+#' @examples
+#'
+#' @export
+get_thing_shadow <- function (thingName) 
+{
+    op <- Operation(name = "GetThingShadow", http_method = "GET", 
+        http_path = "/things/{thingName}/shadow", paginator = list())
+    input <- get_thing_shadow_input(thingName = thingName)
+    output <- get_thing_shadow_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Publishes state information
+#'
+#' Publishes state information.
+#' 
+#' For more information, see [HTTP Protocol](http://docs.aws.amazon.com/iot/latest/developerguide/protocols.html#http) in the *AWS IoT Developer Guide*.
+#'
+#' @param topic The name of the MQTT topic.
+#' @param qos The Quality of Service (QoS) level.
+#' @param payload The state information, in JSON format.
+#'
+#' @examples
+#'
+#' @export
+publish <- function (topic, qos = NULL, payload = NULL) 
+{
+    op <- Operation(name = "Publish", http_method = "POST", http_path = "/topics/{topic}", 
+        paginator = list())
+    input <- publish_input(topic = topic, qos = qos, payload = payload)
+    output <- publish_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the thing shadow for the specified thing
+#'
+#' Updates the thing shadow for the specified thing.
+#' 
+#' For more information, see [UpdateThingShadow](http://docs.aws.amazon.com/iot/latest/developerguide/API_UpdateThingShadow.html) in the *AWS IoT Developer Guide*.
+#'
+#' @param thingName The name of the thing.
+#' @param payload The state information, in JSON format.
+#'
+#' @examples
+#'
+#' @export
+update_thing_shadow <- function (thingName, payload) 
+{
+    op <- Operation(name = "UpdateThingShadow", http_method = "POST", 
+        http_path = "/things/{thingName}/shadow", paginator = list())
+    input <- update_thing_shadow_input(thingName = thingName, 
+        payload = payload)
+    output <- update_thing_shadow_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

@@ -1,0 +1,39 @@
+test_that("list_dominant_language_detection_jobs", {
+    expect_error(list_dominant_language_detection_jobs(), NA)
+})
+
+test_that("list_dominant_language_detection_jobs", {
+    expect_error(list_dominant_language_detection_jobs(MaxResults = 20), NA)
+})
+
+test_that("list_entities_detection_jobs", {
+    expect_error(list_entities_detection_jobs(), NA)
+})
+
+test_that("list_entities_detection_jobs", {
+    expect_error(list_entities_detection_jobs(MaxResults = 20), NA)
+})
+
+test_that("list_key_phrases_detection_jobs", {
+    expect_error(list_key_phrases_detection_jobs(), NA)
+})
+
+test_that("list_key_phrases_detection_jobs", {
+    expect_error(list_key_phrases_detection_jobs(MaxResults = 20), NA)
+})
+
+test_that("list_sentiment_detection_jobs", {
+    expect_error(list_sentiment_detection_jobs(), NA)
+})
+
+test_that("list_sentiment_detection_jobs", {
+    expect_error(list_sentiment_detection_jobs(MaxResults = 20), NA)
+})
+
+test_that("list_topics_detection_jobs", {
+    expect_error(list_topics_detection_jobs(), NA)
+})
+
+test_that("list_topics_detection_jobs", {
+    expect_error(list_topics_detection_jobs(MaxResults = 20), NA)
+})

@@ -1,0 +1,1161 @@
+#' Deprecated
+#'
+#' Deprecated. Use AllocateHostedConnection instead.
+#' 
+#' Creates a hosted connection on an interconnect.
+#' 
+#' Allocates a VLAN number and a specified amount of bandwidth for use by a hosted connection on the specified interconnect.
+#' 
+#' Intended for use by AWS Direct Connect partners only.
+#'
+#' @param bandwidth The bandwidth of the connection, in Mbps. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, and 500Mbps.
+#' @param connectionName The name of the provisioned connection.
+#' @param ownerAccount The ID of the AWS account of the customer for whom the connection will be provisioned.
+#' @param interconnectId The ID of the interconnect on which the connection will be provisioned. For example, dxcon-456abc78.
+#' @param vlan The dedicated VLAN provisioned to the connection.
+#'
+#' @examples
+#'
+#' @export
+allocate_connection_on_interconnect <- function (bandwidth, connectionName, 
+    ownerAccount, interconnectId, vlan) 
+{
+    op <- Operation(name = "AllocateConnectionOnInterconnect", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- allocate_connection_on_interconnect_input(bandwidth = bandwidth, 
+        connectionName = connectionName, ownerAccount = ownerAccount, 
+        interconnectId = interconnectId, vlan = vlan)
+    output <- allocate_connection_on_interconnect_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a hosted connection on the specified interconnect or a link aggregation group (LAG)
+#'
+#' Creates a hosted connection on the specified interconnect or a link aggregation group (LAG).
+#' 
+#' Allocates a VLAN number and a specified amount of bandwidth for use by a hosted connection on the specified interconnect or LAG.
+#' 
+#' Intended for use by AWS Direct Connect partners only.
+#'
+#' @param connectionId The ID of the interconnect or LAG.
+#' @param ownerAccount The ID of the AWS account ID of the customer for the connection.
+#' @param bandwidth The bandwidth of the hosted connection, in Mbps. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, and 500Mbps.
+#' @param connectionName The name of the hosted connection.
+#' @param vlan The dedicated VLAN provisioned to the hosted connection.
+#'
+#' @examples
+#'
+#' @export
+allocate_hosted_connection <- function (connectionId, ownerAccount, 
+    bandwidth, connectionName, vlan) 
+{
+    op <- Operation(name = "AllocateHostedConnection", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- allocate_hosted_connection_input(connectionId = connectionId, 
+        ownerAccount = ownerAccount, bandwidth = bandwidth, connectionName = connectionName, 
+        vlan = vlan)
+    output <- allocate_hosted_connection_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Provisions a private virtual interface to be owned by the specified AWS account
+#'
+#' Provisions a private virtual interface to be owned by the specified AWS account.
+#' 
+#' Virtual interfaces created using this action must be confirmed by the owner using ConfirmPrivateVirtualInterface. Until then, the virtual interface is in the `Confirming` state and is not available to handle traffic.
+#'
+#' @param connectionId The ID of the connection on which the private virtual interface is provisioned.
+#' @param ownerAccount The ID of the AWS account that owns the virtual private interface.
+#' @param newPrivateVirtualInterfaceAllocation Information about the private virtual interface.
+#'
+#' @examples
+#'
+#' @export
+allocate_private_virtual_interface <- function (connectionId, 
+    ownerAccount, newPrivateVirtualInterfaceAllocation) 
+{
+    op <- Operation(name = "AllocatePrivateVirtualInterface", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- allocate_private_virtual_interface_input(connectionId = connectionId, 
+        ownerAccount = ownerAccount, newPrivateVirtualInterfaceAllocation = newPrivateVirtualInterfaceAllocation)
+    output <- allocate_private_virtual_interface_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Provisions a public virtual interface to be owned by the specified AWS account
+#'
+#' Provisions a public virtual interface to be owned by the specified AWS account.
+#' 
+#' The owner of a connection calls this function to provision a public virtual interface to be owned by the specified AWS account.
+#' 
+#' Virtual interfaces created using this function must be confirmed by the owner using ConfirmPublicVirtualInterface. Until this step has been completed, the virtual interface is in the `confirming` state and is not available to handle traffic.
+#' 
+#' When creating an IPv6 public virtual interface, omit the Amazon address and customer address. IPv6 addresses are automatically assigned from the Amazon pool of IPv6 addresses; you cannot specify custom IPv6 addresses.
+#'
+#' @param connectionId The ID of the connection on which the public virtual interface is provisioned.
+#' @param ownerAccount The ID of the AWS account that owns the public virtual interface.
+#' @param newPublicVirtualInterfaceAllocation Information about the public virtual interface.
+#'
+#' @examples
+#'
+#' @export
+allocate_public_virtual_interface <- function (connectionId, 
+    ownerAccount, newPublicVirtualInterfaceAllocation) 
+{
+    op <- Operation(name = "AllocatePublicVirtualInterface", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- allocate_public_virtual_interface_input(connectionId = connectionId, 
+        ownerAccount = ownerAccount, newPublicVirtualInterfaceAllocation = newPublicVirtualInterfaceAllocation)
+    output <- allocate_public_virtual_interface_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Associates an existing connection with a link aggregation group (LAG)
+#'
+#' Associates an existing connection with a link aggregation group (LAG). The connection is interrupted and re-established as a member of the LAG (connectivity to AWS is interrupted). The connection must be hosted on the same AWS Direct Connect endpoint as the LAG, and its bandwidth must match the bandwidth for the LAG. You can re-associate a connection that\'s currently associated with a different LAG; however, if removing the connection would cause the original LAG to fall below its setting for minimum number of operational connections, the request fails.
+#' 
+#' Any virtual interfaces that are directly associated with the connection are automatically re-associated with the LAG. If the connection was originally associated with a different LAG, the virtual interfaces remain associated with the original LAG.
+#' 
+#' For interconnects, any hosted connections are automatically re-associated with the LAG. If the interconnect was originally associated with a different LAG, the hosted connections remain associated with the original LAG.
+#'
+#' @param connectionId The ID of the connection. For example, dxcon-abc123.
+#' @param lagId The ID of the LAG with which to associate the connection. For example, dxlag-abc123.
+#'
+#' @examples
+#'
+#' @export
+associate_connection_with_lag <- function (connectionId, lagId) 
+{
+    op <- Operation(name = "AssociateConnectionWithLag", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- associate_connection_with_lag_input(connectionId = connectionId, 
+        lagId = lagId)
+    output <- associate_connection_with_lag_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Associates a hosted connection and its virtual interfaces with a link aggregation group (LAG) or interconnect
+#'
+#' Associates a hosted connection and its virtual interfaces with a link aggregation group (LAG) or interconnect. If the target interconnect or LAG has an existing hosted connection with a conflicting VLAN number or IP address, the operation fails. This action temporarily interrupts the hosted connection\'s connectivity to AWS as it is being migrated.
+#' 
+#' Intended for use by AWS Direct Connect partners only.
+#'
+#' @param connectionId The ID of the hosted connection.
+#' @param parentConnectionId The ID of the interconnect or the LAG.
+#'
+#' @examples
+#'
+#' @export
+associate_hosted_connection <- function (connectionId, parentConnectionId) 
+{
+    op <- Operation(name = "AssociateHostedConnection", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- associate_hosted_connection_input(connectionId = connectionId, 
+        parentConnectionId = parentConnectionId)
+    output <- associate_hosted_connection_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Associates a virtual interface with a specified link aggregation group (LAG) or connection
+#'
+#' Associates a virtual interface with a specified link aggregation group (LAG) or connection. Connectivity to AWS is temporarily interrupted as the virtual interface is being migrated. If the target connection or LAG has an associated virtual interface with a conflicting VLAN number or a conflicting IP address, the operation fails.
+#' 
+#' Virtual interfaces associated with a hosted connection cannot be associated with a LAG; hosted connections must be migrated along with their virtual interfaces using AssociateHostedConnection.
+#' 
+#' To reassociate a virtual interface to a new connection or LAG, the requester must own either the virtual interface itself or the connection to which the virtual interface is currently associated. Additionally, the requester must own the connection or LAG for the association.
+#'
+#' @param virtualInterfaceId The ID of the virtual interface.
+#' @param connectionId The ID of the LAG or connection.
+#'
+#' @examples
+#'
+#' @export
+associate_virtual_interface <- function (virtualInterfaceId, 
+    connectionId) 
+{
+    op <- Operation(name = "AssociateVirtualInterface", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- associate_virtual_interface_input(virtualInterfaceId = virtualInterfaceId, 
+        connectionId = connectionId)
+    output <- associate_virtual_interface_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Confirms the creation of the specified hosted connection on an interconnect
+#'
+#' Confirms the creation of the specified hosted connection on an interconnect.
+#' 
+#' Upon creation, the hosted connection is initially in the `Ordering` state, and remains in this state until the owner confirms creation of the hosted connection.
+#'
+#' @param connectionId The ID of the hosted connection.
+#'
+#' @examples
+#'
+#' @export
+confirm_connection <- function (connectionId) 
+{
+    op <- Operation(name = "ConfirmConnection", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- confirm_connection_input(connectionId = connectionId)
+    output <- confirm_connection_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Accepts ownership of a private virtual interface created by another AWS account
+#'
+#' Accepts ownership of a private virtual interface created by another AWS account.
+#' 
+#' After the virtual interface owner makes this call, the virtual interface is created and attached to the specified virtual private gateway or Direct Connect gateway, and is made available to handle traffic.
+#'
+#' @param virtualInterfaceId The ID of the virtual interface.
+#' @param virtualGatewayId The ID of the virtual private gateway.
+#' @param directConnectGatewayId The ID of the Direct Connect gateway.
+#'
+#' @examples
+#'
+#' @export
+confirm_private_virtual_interface <- function (virtualInterfaceId, 
+    virtualGatewayId = NULL, directConnectGatewayId = NULL) 
+{
+    op <- Operation(name = "ConfirmPrivateVirtualInterface", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- confirm_private_virtual_interface_input(virtualInterfaceId = virtualInterfaceId, 
+        virtualGatewayId = virtualGatewayId, directConnectGatewayId = directConnectGatewayId)
+    output <- confirm_private_virtual_interface_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Accepts ownership of a public virtual interface created by another AWS account
+#'
+#' Accepts ownership of a public virtual interface created by another AWS account.
+#' 
+#' After the virtual interface owner makes this call, the specified virtual interface is created and made available to handle traffic.
+#'
+#' @param virtualInterfaceId The ID of the virtual interface.
+#'
+#' @examples
+#'
+#' @export
+confirm_public_virtual_interface <- function (virtualInterfaceId) 
+{
+    op <- Operation(name = "ConfirmPublicVirtualInterface", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- confirm_public_virtual_interface_input(virtualInterfaceId = virtualInterfaceId)
+    output <- confirm_public_virtual_interface_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a BGP peer on the specified virtual interface
+#'
+#' Creates a BGP peer on the specified virtual interface.
+#' 
+#' The BGP peer cannot be in the same address family (IPv4/IPv6) of an existing BGP peer on the virtual interface.
+#' 
+#' You must create a BGP peer for the corresponding address family in order to access AWS resources that also use that address family.
+#' 
+#' When creating a IPv6 BGP peer, omit the Amazon address and customer address. IPv6 addresses are automatically assigned from the Amazon pool of IPv6 addresses; you cannot specify custom IPv6 addresses.
+#' 
+#' For a public virtual interface, the Autonomous System Number (ASN) must be private or already whitelisted for the virtual interface.
+#'
+#' @param virtualInterfaceId The ID of the virtual interface.
+#' @param newBGPPeer Information about the BGP peer.
+#'
+#' @examples
+#'
+#' @export
+create_bgp_peer <- function (virtualInterfaceId = NULL, newBGPPeer = NULL) 
+{
+    op <- Operation(name = "CreateBGPPeer", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_bgp_peer_input(virtualInterfaceId = virtualInterfaceId, 
+        newBGPPeer = newBGPPeer)
+    output <- create_bgp_peer_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a connection between a customer network and a specific AWS Direct Connect location
+#'
+#' Creates a connection between a customer network and a specific AWS Direct Connect location.
+#' 
+#' A connection links your internal network to an AWS Direct Connect location over a standard Ethernet fiber-optic cable. One end of the cable is connected to your router, the other to an AWS Direct Connect router.
+#' 
+#' To find the locations for your Region, use DescribeLocations.
+#' 
+#' You can automatically add the new connection to a link aggregation group (LAG) by specifying a LAG ID in the request. This ensures that the new connection is allocated on the same AWS Direct Connect endpoint that hosts the specified LAG. If there are no available ports on the endpoint, the request fails and no connection is created.
+#'
+#' @param location The location of the connection.
+#' @param bandwidth The bandwidth of the connection.
+#' @param connectionName The name of the connection.
+#' @param lagId The ID of the LAG.
+#'
+#' @examples
+#'
+#' @export
+create_connection <- function (location, bandwidth, connectionName, 
+    lagId = NULL) 
+{
+    op <- Operation(name = "CreateConnection", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_connection_input(location = location, bandwidth = bandwidth, 
+        connectionName = connectionName, lagId = lagId)
+    output <- create_connection_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a Direct Connect gateway, which is an intermediate object that enables you to connect a set of virtual interfaces and virtual private gateways
+#'
+#' Creates a Direct Connect gateway, which is an intermediate object that enables you to connect a set of virtual interfaces and virtual private gateways. A Direct Connect gateway is global and visible in any AWS Region after it is created. The virtual interfaces and virtual private gateways that are connected through a Direct Connect gateway can be in different AWS Regions. This enables you to connect to a VPC in any Region, regardless of the Region in which the virtual interfaces are located, and pass traffic between them.
+#'
+#' @param directConnectGatewayName The name of the Direct Connect gateway.
+#' @param amazonSideAsn The autonomous system number (ASN) for Border Gateway Protocol (BGP) to be configured on the Amazon side of the connection. The ASN must be in the private range of 64,512 to 65,534 or 4,200,000,000 to 4,294,967,294. The default is 64512.
+#'
+#' @examples
+#'
+#' @export
+create_direct_connect_gateway <- function (directConnectGatewayName, 
+    amazonSideAsn = NULL) 
+{
+    op <- Operation(name = "CreateDirectConnectGateway", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_direct_connect_gateway_input(directConnectGatewayName = directConnectGatewayName, 
+        amazonSideAsn = amazonSideAsn)
+    output <- create_direct_connect_gateway_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates an association between a Direct Connect gateway and a virtual private gateway
+#'
+#' Creates an association between a Direct Connect gateway and a virtual private gateway. The virtual private gateway must be attached to a VPC and must not be associated with another Direct Connect gateway.
+#'
+#' @param directConnectGatewayId The ID of the Direct Connect gateway.
+#' @param virtualGatewayId The ID of the virtual private gateway.
+#'
+#' @examples
+#'
+#' @export
+create_direct_connect_gateway_association <- function (directConnectGatewayId, 
+    virtualGatewayId) 
+{
+    op <- Operation(name = "CreateDirectConnectGatewayAssociation", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- create_direct_connect_gateway_association_input(directConnectGatewayId = directConnectGatewayId, 
+        virtualGatewayId = virtualGatewayId)
+    output <- create_direct_connect_gateway_association_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates an interconnect between an AWS Direct Connect partner\'s network and a specific AWS Direct Connect location
+#'
+#' Creates an interconnect between an AWS Direct Connect partner\'s network and a specific AWS Direct Connect location.
+#' 
+#' An interconnect is a connection which is capable of hosting other connections. The partner can use an interconnect to provide sub-1Gbps AWS Direct Connect service to tier 2 customers who do not have their own connections. Like a standard connection, an interconnect links the partner\'s network to an AWS Direct Connect location over a standard Ethernet fiber-optic cable. One end is connected to the partner\'s router, the other to an AWS Direct Connect router.
+#' 
+#' You can automatically add the new interconnect to a link aggregation group (LAG) by specifying a LAG ID in the request. This ensures that the new interconnect is allocated on the same AWS Direct Connect endpoint that hosts the specified LAG. If there are no available ports on the endpoint, the request fails and no interconnect is created.
+#' 
+#' For each end customer, the AWS Direct Connect partner provisions a connection on their interconnect by calling AllocateConnectionOnInterconnect. The end customer can then connect to AWS resources by creating a virtual interface on their connection, using the VLAN assigned to them by the partner.
+#' 
+#' Intended for use by AWS Direct Connect partners only.
+#'
+#' @param interconnectName The name of the interconnect.
+#' @param bandwidth The port bandwidth, in Gbps. The possible values are 1 and 10.
+#' @param location The location of the interconnect.
+#' @param lagId The ID of the LAG.
+#'
+#' @examples
+#'
+#' @export
+create_interconnect <- function (interconnectName, bandwidth, 
+    location, lagId = NULL) 
+{
+    op <- Operation(name = "CreateInterconnect", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_interconnect_input(interconnectName = interconnectName, 
+        bandwidth = bandwidth, location = location, lagId = lagId)
+    output <- create_interconnect_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a link aggregation group (LAG) with the specified number of bundled physical connections between the customer network and a specific AWS Direct Connect location
+#'
+#' Creates a link aggregation group (LAG) with the specified number of bundled physical connections between the customer network and a specific AWS Direct Connect location. A LAG is a logical interface that uses the Link Aggregation Control Protocol (LACP) to aggregate multiple interfaces, enabling you to treat them as a single interface.
+#' 
+#' All connections in a LAG must use the same bandwidth and must terminate at the same AWS Direct Connect endpoint.
+#' 
+#' You can have up to 10 connections per LAG. Regardless of this limit, if you request more connections for the LAG than AWS Direct Connect can allocate on a single endpoint, no LAG is created.
+#' 
+#' You can specify an existing physical connection or interconnect to include in the LAG (which counts towards the total number of connections). Doing so interrupts the current physical connection or hosted connections, and re-establishes them as a member of the LAG. The LAG will be created on the same AWS Direct Connect endpoint to which the connection terminates. Any virtual interfaces associated with the connection are automatically disassociated and re-associated with the LAG. The connection ID does not change.
+#' 
+#' If the AWS account used to create a LAG is a registered AWS Direct Connect partner, the LAG is automatically enabled to host sub-connections. For a LAG owned by a partner, any associated virtual interfaces cannot be directly configured.
+#'
+#' @param numberOfConnections The number of physical connections initially provisioned and bundled by the LAG.
+#' @param location The location for the LAG.
+#' @param connectionsBandwidth The bandwidth of the individual physical connections bundled by the LAG. The possible values are 1Gbps and 10Gbps.
+#' @param lagName The name of the LAG.
+#' @param connectionId The ID of an existing connection to migrate to the LAG.
+#'
+#' @examples
+#'
+#' @export
+create_lag <- function (numberOfConnections, location, connectionsBandwidth, 
+    lagName, connectionId = NULL) 
+{
+    op <- Operation(name = "CreateLag", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_lag_input(numberOfConnections = numberOfConnections, 
+        location = location, connectionsBandwidth = connectionsBandwidth, 
+        lagName = lagName, connectionId = connectionId)
+    output <- create_lag_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a private virtual interface
+#'
+#' Creates a private virtual interface. A virtual interface is the VLAN that transports AWS Direct Connect traffic. A private virtual interface can be connected to either a Direct Connect gateway or a Virtual Private Gateway (VGW). Connecting the private virtual interface to a Direct Connect gateway enables the possibility for connecting to multiple VPCs, including VPCs in different AWS Regions. Connecting the private virtual interface to a VGW only provides access to a single VPC within the same Region.
+#'
+#' @param connectionId The ID of the connection.
+#' @param newPrivateVirtualInterface Information about the private virtual interface.
+#'
+#' @examples
+#'
+#' @export
+create_private_virtual_interface <- function (connectionId, newPrivateVirtualInterface) 
+{
+    op <- Operation(name = "CreatePrivateVirtualInterface", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_private_virtual_interface_input(connectionId = connectionId, 
+        newPrivateVirtualInterface = newPrivateVirtualInterface)
+    output <- create_private_virtual_interface_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a public virtual interface
+#'
+#' Creates a public virtual interface. A virtual interface is the VLAN that transports AWS Direct Connect traffic. A public virtual interface supports sending traffic to public services of AWS such as Amazon S3.
+#' 
+#' When creating an IPv6 public virtual interface (`addressFamily` is `ipv6`), leave the `customer` and `amazon` address fields blank to use auto-assigned IPv6 space. Custom IPv6 addresses are not supported.
+#'
+#' @param connectionId The ID of the connection.
+#' @param newPublicVirtualInterface Information about the public virtual interface.
+#'
+#' @examples
+#'
+#' @export
+create_public_virtual_interface <- function (connectionId, newPublicVirtualInterface) 
+{
+    op <- Operation(name = "CreatePublicVirtualInterface", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_public_virtual_interface_input(connectionId = connectionId, 
+        newPublicVirtualInterface = newPublicVirtualInterface)
+    output <- create_public_virtual_interface_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the BGP peer on the specified virtual interface with the specified customer address and ASN
+#'
+#' Deletes the BGP peer on the specified virtual interface with the specified customer address and ASN.
+#' 
+#' You cannot delete the last BGP peer from a virtual interface.
+#'
+#' @param virtualInterfaceId The ID of the virtual interface.
+#' @param asn The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
+#' @param customerAddress The IP address assigned to the customer interface.
+#'
+#' @examples
+#'
+#' @export
+delete_bgp_peer <- function (virtualInterfaceId = NULL, asn = NULL, 
+    customerAddress = NULL) 
+{
+    op <- Operation(name = "DeleteBGPPeer", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_bgp_peer_input(virtualInterfaceId = virtualInterfaceId, 
+        asn = asn, customerAddress = customerAddress)
+    output <- delete_bgp_peer_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified connection
+#'
+#' Deletes the specified connection.
+#' 
+#' Deleting a connection only stops the AWS Direct Connect port hour and data transfer charges. If you are partnering with any third parties to connect with the AWS Direct Connect location, you must cancel your service with them separately.
+#'
+#' @param connectionId The ID of the connection.
+#'
+#' @examples
+#'
+#' @export
+delete_connection <- function (connectionId) 
+{
+    op <- Operation(name = "DeleteConnection", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_connection_input(connectionId = connectionId)
+    output <- delete_connection_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified Direct Connect gateway
+#'
+#' Deletes the specified Direct Connect gateway. You must first delete all virtual interfaces that are attached to the Direct Connect gateway and disassociate all virtual private gateways that are associated with the Direct Connect gateway.
+#'
+#' @param directConnectGatewayId The ID of the Direct Connect gateway.
+#'
+#' @examples
+#'
+#' @export
+delete_direct_connect_gateway <- function (directConnectGatewayId) 
+{
+    op <- Operation(name = "DeleteDirectConnectGateway", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_direct_connect_gateway_input(directConnectGatewayId = directConnectGatewayId)
+    output <- delete_direct_connect_gateway_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the association between the specified Direct Connect gateway and virtual private gateway
+#'
+#' Deletes the association between the specified Direct Connect gateway and virtual private gateway.
+#'
+#' @param directConnectGatewayId The ID of the Direct Connect gateway.
+#' @param virtualGatewayId The ID of the virtual private gateway.
+#'
+#' @examples
+#'
+#' @export
+delete_direct_connect_gateway_association <- function (directConnectGatewayId, 
+    virtualGatewayId) 
+{
+    op <- Operation(name = "DeleteDirectConnectGatewayAssociation", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- delete_direct_connect_gateway_association_input(directConnectGatewayId = directConnectGatewayId, 
+        virtualGatewayId = virtualGatewayId)
+    output <- delete_direct_connect_gateway_association_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified interconnect
+#'
+#' Deletes the specified interconnect.
+#' 
+#' Intended for use by AWS Direct Connect partners only.
+#'
+#' @param interconnectId The ID of the interconnect.
+#'
+#' @examples
+#'
+#' @export
+delete_interconnect <- function (interconnectId) 
+{
+    op <- Operation(name = "DeleteInterconnect", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_interconnect_input(interconnectId = interconnectId)
+    output <- delete_interconnect_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified link aggregation group (LAG)
+#'
+#' Deletes the specified link aggregation group (LAG). You cannot delete a LAG if it has active virtual interfaces or hosted connections.
+#'
+#' @param lagId The ID of the LAG.
+#'
+#' @examples
+#'
+#' @export
+delete_lag <- function (lagId) 
+{
+    op <- Operation(name = "DeleteLag", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_lag_input(lagId = lagId)
+    output <- delete_lag_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a virtual interface
+#'
+#' Deletes a virtual interface.
+#'
+#' @param virtualInterfaceId The ID of the virtual interface.
+#'
+#' @examples
+#'
+#' @export
+delete_virtual_interface <- function (virtualInterfaceId) 
+{
+    op <- Operation(name = "DeleteVirtualInterface", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_virtual_interface_input(virtualInterfaceId = virtualInterfaceId)
+    output <- delete_virtual_interface_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deprecated
+#'
+#' Deprecated. Use DescribeLoa instead.
+#' 
+#' Gets the LOA-CFA for a connection.
+#' 
+#' The Letter of Authorization - Connecting Facility Assignment (LOA-CFA) is a document that your APN partner or service provider uses when establishing your cross connect to AWS at the colocation facility. For more information, see [Requesting Cross Connects at AWS Direct Connect Locations](http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html) in the *AWS Direct Connect User Guide*.
+#'
+#' @param connectionId The ID of the connection.
+#' @param providerName The name of the APN partner or service provider who establishes connectivity on your behalf. If you specify this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.
+#' @param loaContentType The standard media type for the LOA-CFA document. The only supported value is application/pdf.
+#'
+#' @examples
+#'
+#' @export
+describe_connection_loa <- function (connectionId, providerName = NULL, 
+    loaContentType = NULL) 
+{
+    op <- Operation(name = "DescribeConnectionLoa", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_connection_loa_input(connectionId = connectionId, 
+        providerName = providerName, loaContentType = loaContentType)
+    output <- describe_connection_loa_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Displays the specified connection or all connections in this Region
+#'
+#' Displays the specified connection or all connections in this Region.
+#'
+#' @param connectionId The ID of the connection.
+#'
+#' @examples
+#'
+#' @export
+describe_connections <- function (connectionId = NULL) 
+{
+    op <- Operation(name = "DescribeConnections", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_connections_input(connectionId = connectionId)
+    output <- describe_connections_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deprecated
+#'
+#' Deprecated. Use DescribeHostedConnections instead.
+#' 
+#' Lists the connections that have been provisioned on the specified interconnect.
+#' 
+#' Intended for use by AWS Direct Connect partners only.
+#'
+#' @param interconnectId The ID of the interconnect.
+#'
+#' @examples
+#'
+#' @export
+describe_connections_on_interconnect <- function (interconnectId) 
+{
+    op <- Operation(name = "DescribeConnectionsOnInterconnect", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_connections_on_interconnect_input(interconnectId = interconnectId)
+    output <- describe_connections_on_interconnect_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the associations between your Direct Connect gateways and virtual private gateways
+#'
+#' Lists the associations between your Direct Connect gateways and virtual private gateways. You must specify a Direct Connect gateway, a virtual private gateway, or both. If you specify a Direct Connect gateway, the response contains all virtual private gateways associated with the Direct Connect gateway. If you specify a virtual private gateway, the response contains all Direct Connect gateways associated with the virtual private gateway. If you specify both, the response contains the association between the Direct Connect gateway and the virtual private gateway.
+#'
+#' @param directConnectGatewayId The ID of the Direct Connect gateway.
+#' @param virtualGatewayId The ID of the virtual private gateway.
+#' @param maxResults The maximum number of associations to return per page.
+#' @param nextToken The token provided in the previous call to retrieve the next page.
+#'
+#' @examples
+#'
+#' @export
+describe_direct_connect_gateway_associations <- function (directConnectGatewayId = NULL, 
+    virtualGatewayId = NULL, maxResults = NULL, nextToken = NULL) 
+{
+    op <- Operation(name = "DescribeDirectConnectGatewayAssociations", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_direct_connect_gateway_associations_input(directConnectGatewayId = directConnectGatewayId, 
+        virtualGatewayId = virtualGatewayId, maxResults = maxResults, 
+        nextToken = nextToken)
+    output <- describe_direct_connect_gateway_associations_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the attachments between your Direct Connect gateways and virtual interfaces
+#'
+#' Lists the attachments between your Direct Connect gateways and virtual interfaces. You must specify a Direct Connect gateway, a virtual interface, or both. If you specify a Direct Connect gateway, the response contains all virtual interfaces attached to the Direct Connect gateway. If you specify a virtual interface, the response contains all Direct Connect gateways attached to the virtual interface. If you specify both, the response contains the attachment between the Direct Connect gateway and the virtual interface.
+#'
+#' @param directConnectGatewayId The ID of the Direct Connect gateway.
+#' @param virtualInterfaceId The ID of the virtual interface.
+#' @param maxResults The maximum number of attachments to return per page.
+#' @param nextToken The token provided in the previous call to retrieve the next page.
+#'
+#' @examples
+#'
+#' @export
+describe_direct_connect_gateway_attachments <- function (directConnectGatewayId = NULL, 
+    virtualInterfaceId = NULL, maxResults = NULL, nextToken = NULL) 
+{
+    op <- Operation(name = "DescribeDirectConnectGatewayAttachments", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_direct_connect_gateway_attachments_input(directConnectGatewayId = directConnectGatewayId, 
+        virtualInterfaceId = virtualInterfaceId, maxResults = maxResults, 
+        nextToken = nextToken)
+    output <- describe_direct_connect_gateway_attachments_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists all your Direct Connect gateways or only the specified Direct Connect gateway
+#'
+#' Lists all your Direct Connect gateways or only the specified Direct Connect gateway. Deleted Direct Connect gateways are not returned.
+#'
+#' @param directConnectGatewayId The ID of the Direct Connect gateway.
+#' @param maxResults The maximum number of Direct Connect gateways to return per page.
+#' @param nextToken The token provided in the previous call to retrieve the next page.
+#'
+#' @examples
+#'
+#' @export
+describe_direct_connect_gateways <- function (directConnectGatewayId = NULL, 
+    maxResults = NULL, nextToken = NULL) 
+{
+    op <- Operation(name = "DescribeDirectConnectGateways", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_direct_connect_gateways_input(directConnectGatewayId = directConnectGatewayId, 
+        maxResults = maxResults, nextToken = nextToken)
+    output <- describe_direct_connect_gateways_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the hosted connections that have been provisioned on the specified interconnect or link aggregation group (LAG)
+#'
+#' Lists the hosted connections that have been provisioned on the specified interconnect or link aggregation group (LAG).
+#' 
+#' Intended for use by AWS Direct Connect partners only.
+#'
+#' @param connectionId The ID of the interconnect or LAG.
+#'
+#' @examples
+#'
+#' @export
+describe_hosted_connections <- function (connectionId) 
+{
+    op <- Operation(name = "DescribeHostedConnections", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_hosted_connections_input(connectionId = connectionId)
+    output <- describe_hosted_connections_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deprecated
+#'
+#' Deprecated. Use DescribeLoa instead.
+#' 
+#' Gets the LOA-CFA for the specified interconnect.
+#' 
+#' The Letter of Authorization - Connecting Facility Assignment (LOA-CFA) is a document that is used when establishing your cross connect to AWS at the colocation facility. For more information, see [Requesting Cross Connects at AWS Direct Connect Locations](http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html) in the *AWS Direct Connect User Guide*.
+#'
+#' @param interconnectId The ID of the interconnect.
+#' @param providerName The name of the service provider who establishes connectivity on your behalf. If you supply this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.
+#' @param loaContentType The standard media type for the LOA-CFA document. The only supported value is application/pdf.
+#'
+#' @examples
+#'
+#' @export
+describe_interconnect_loa <- function (interconnectId, providerName = NULL, 
+    loaContentType = NULL) 
+{
+    op <- Operation(name = "DescribeInterconnectLoa", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_interconnect_loa_input(interconnectId = interconnectId, 
+        providerName = providerName, loaContentType = loaContentType)
+    output <- describe_interconnect_loa_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the interconnects owned by the AWS account or only the specified interconnect
+#'
+#' Lists the interconnects owned by the AWS account or only the specified interconnect.
+#'
+#' @param interconnectId The ID of the interconnect.
+#'
+#' @examples
+#'
+#' @export
+describe_interconnects <- function (interconnectId = NULL) 
+{
+    op <- Operation(name = "DescribeInterconnects", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_interconnects_input(interconnectId = interconnectId)
+    output <- describe_interconnects_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes all your link aggregation groups (LAG) or the specified LAG
+#'
+#' Describes all your link aggregation groups (LAG) or the specified LAG.
+#'
+#' @param lagId The ID of the LAG.
+#'
+#' @examples
+#'
+#' @export
+describe_lags <- function (lagId = NULL) 
+{
+    op <- Operation(name = "DescribeLags", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_lags_input(lagId = lagId)
+    output <- describe_lags_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets the LOA-CFA for a connection, interconnect, or link aggregation group (LAG)
+#'
+#' Gets the LOA-CFA for a connection, interconnect, or link aggregation group (LAG).
+#' 
+#' The Letter of Authorization - Connecting Facility Assignment (LOA-CFA) is a document that is used when establishing your cross connect to AWS at the colocation facility. For more information, see [Requesting Cross Connects at AWS Direct Connect Locations](http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html) in the *AWS Direct Connect User Guide*.
+#'
+#' @param connectionId The ID of a connection, LAG, or interconnect.
+#' @param providerName The name of the service provider who establishes connectivity on your behalf. If you specify this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.
+#' @param loaContentType The standard media type for the LOA-CFA document. The only supported value is application/pdf.
+#'
+#' @examples
+#'
+#' @export
+describe_loa <- function (connectionId, providerName = NULL, 
+    loaContentType = NULL) 
+{
+    op <- Operation(name = "DescribeLoa", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_loa_input(connectionId = connectionId, 
+        providerName = providerName, loaContentType = loaContentType)
+    output <- describe_loa_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the AWS Direct Connect locations in the current AWS Region
+#'
+#' Lists the AWS Direct Connect locations in the current AWS Region. These are the locations that can be selected when calling CreateConnection or CreateInterconnect.
+#'
+
+#'
+#' @examples
+#'
+#' @export
+describe_locations <- function () 
+{
+    op <- Operation(name = "DescribeLocations", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_locations_input()
+    output <- describe_locations_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the tags associated with the specified AWS Direct Connect resources
+#'
+#' Describes the tags associated with the specified AWS Direct Connect resources.
+#'
+#' @param resourceArns The Amazon Resource Names (ARNs) of the resources.
+#'
+#' @examples
+#'
+#' @export
+describe_tags <- function (resourceArns) 
+{
+    op <- Operation(name = "DescribeTags", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_tags_input(resourceArns = resourceArns)
+    output <- describe_tags_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the virtual private gateways owned by the AWS account
+#'
+#' Lists the virtual private gateways owned by the AWS account.
+#' 
+#' You can create one or more AWS Direct Connect private virtual interfaces linked to a virtual private gateway.
+#'
+
+#'
+#' @examples
+#'
+#' @export
+describe_virtual_gateways <- function () 
+{
+    op <- Operation(name = "DescribeVirtualGateways", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_virtual_gateways_input()
+    output <- describe_virtual_gateways_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Displays all virtual interfaces for an AWS account
+#'
+#' Displays all virtual interfaces for an AWS account. Virtual interfaces deleted fewer than 15 minutes before you make the request are also returned. If you specify a connection ID, only the virtual interfaces associated with the connection are returned. If you specify a virtual interface ID, then only a single virtual interface is returned.
+#' 
+#' A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer network.
+#'
+#' @param connectionId The ID of the connection.
+#' @param virtualInterfaceId The ID of the virtual interface.
+#'
+#' @examples
+#'
+#' @export
+describe_virtual_interfaces <- function (connectionId = NULL, 
+    virtualInterfaceId = NULL) 
+{
+    op <- Operation(name = "DescribeVirtualInterfaces", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_virtual_interfaces_input(connectionId = connectionId, 
+        virtualInterfaceId = virtualInterfaceId)
+    output <- describe_virtual_interfaces_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Disassociates a connection from a link aggregation group (LAG)
+#'
+#' Disassociates a connection from a link aggregation group (LAG). The connection is interrupted and re-established as a standalone connection (the connection is not deleted; to delete the connection, use the DeleteConnection request). If the LAG has associated virtual interfaces or hosted connections, they remain associated with the LAG. A disassociated connection owned by an AWS Direct Connect partner is automatically converted to an interconnect.
+#' 
+#' If disassociating the connection would cause the LAG to fall below its setting for minimum number of operational connections, the request fails, except when it\'s the last member of the LAG. If all connections are disassociated, the LAG continues to exist as an empty LAG with no physical connections.
+#'
+#' @param connectionId The ID of the connection. For example, dxcon-abc123.
+#' @param lagId The ID of the LAG. For example, dxlag-abc123.
+#'
+#' @examples
+#'
+#' @export
+disassociate_connection_from_lag <- function (connectionId, lagId) 
+{
+    op <- Operation(name = "DisassociateConnectionFromLag", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- disassociate_connection_from_lag_input(connectionId = connectionId, 
+        lagId = lagId)
+    output <- disassociate_connection_from_lag_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Adds the specified tags to the specified AWS Direct Connect resource
+#'
+#' Adds the specified tags to the specified AWS Direct Connect resource. Each resource can have a maximum of 50 tags.
+#' 
+#' Each tag consists of a key and an optional value. If a tag with the same key is already associated with the resource, this action updates its value.
+#'
+#' @param resourceArn The Amazon Resource Name (ARN) of the resource.
+#' @param tags The tags to add.
+#'
+#' @examples
+#'
+#' @export
+tag_resource <- function (resourceArn, tags) 
+{
+    op <- Operation(name = "TagResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- tag_resource_input(resourceArn = resourceArn, tags = tags)
+    output <- tag_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes one or more tags from the specified AWS Direct Connect resource
+#'
+#' Removes one or more tags from the specified AWS Direct Connect resource.
+#'
+#' @param resourceArn The Amazon Resource Name (ARN) of the resource.
+#' @param tagKeys The tag keys of the tags to remove.
+#'
+#' @examples
+#'
+#' @export
+untag_resource <- function (resourceArn, tagKeys) 
+{
+    op <- Operation(name = "UntagResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- untag_resource_input(resourceArn = resourceArn, 
+        tagKeys = tagKeys)
+    output <- untag_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the attributes of the specified link aggregation group (LAG)
+#'
+#' Updates the attributes of the specified link aggregation group (LAG).
+#' 
+#' You can update the following attributes:
+#' 
+#' -   The name of the LAG.
+#' 
+#' -   The value for the minimum number of connections that must be operational for the LAG itself to be operational.
+#' 
+#' When you create a LAG, the default value for the minimum number of operational connections is zero (0). If you update this value and the number of operational connections falls below the specified value, the LAG automatically goes down to avoid over-utilization of the remaining connections. Adjust this value with care, as it could force the LAG down if it is set higher than the current number of operational connections.
+#'
+#' @param lagId The ID of the LAG.
+#' @param lagName The name of the LAG.
+#' @param minimumLinks The minimum number of physical connections that must be operational for the LAG itself to be operational.
+#'
+#' @examples
+#'
+#' @export
+update_lag <- function (lagId, lagName = NULL, minimumLinks = NULL) 
+{
+    op <- Operation(name = "UpdateLag", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_lag_input(lagId = lagId, lagName = lagName, 
+        minimumLinks = minimumLinks)
+    output <- update_lag_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the specified attributes of the specified virtual private interface
+#'
+#' Updates the specified attributes of the specified virtual private interface.
+#' 
+#' Setting the MTU of a virtual interface to 9001 (jumbo frames) can cause an update to the underlying physical connection if it wasn\'t updated to support jumbo frames. Updating the connection disrupts network connectivity for all virtual interfaces associated with the connection for up to 30 seconds. To check whether your connection supports jumbo frames, call DescribeConnections. To check whether your virtual interface supports jumbo frames, call DescribeVirtualInterfaces.
+#'
+#' @param virtualInterfaceId The ID of the virtual private interface.
+#' @param mtu The maximum transmission unit (MTU), in bytes. The supported values are 1500 and 9001. The default value is 1500.
+#'
+#' @examples
+#'
+#' @export
+update_virtual_interface_attributes <- function (virtualInterfaceId, 
+    mtu = NULL) 
+{
+    op <- Operation(name = "UpdateVirtualInterfaceAttributes", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- update_virtual_interface_attributes_input(virtualInterfaceId = virtualInterfaceId, 
+        mtu = mtu)
+    output <- update_virtual_interface_attributes_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

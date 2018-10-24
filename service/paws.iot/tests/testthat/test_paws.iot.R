@@ -1,0 +1,95 @@
+test_that("describe_account_audit_configuration", {
+    expect_error(describe_account_audit_configuration(), NA)
+})
+
+test_that("describe_default_authorizer", {
+    expect_error(describe_default_authorizer(), NA)
+})
+
+test_that("describe_endpoint", {
+    expect_error(describe_endpoint(), NA)
+})
+
+test_that("describe_event_configurations", {
+    expect_error(describe_event_configurations(), NA)
+})
+
+test_that("list_active_violations", {
+    expect_error(list_active_violations(), NA)
+})
+
+test_that("list_audit_findings", {
+    expect_error(list_audit_findings(), NA)
+})
+
+test_that("list_authorizers", {
+    expect_error(list_authorizers(), NA)
+})
+
+test_that("list_ca_certificates", {
+    expect_error(list_ca_certificates(), NA)
+})
+
+test_that("list_certificates", {
+    expect_error(list_certificates(), NA)
+})
+
+test_that("list_indices", {
+    expect_error(list_indices(), NA)
+})
+
+test_that("list_jobs", {
+    expect_error(list_jobs(), NA)
+})
+
+test_that("list_ota_updates", {
+    expect_error(list_ota_updates(), NA)
+})
+
+test_that("list_outgoing_certificates", {
+    expect_error(list_outgoing_certificates(), NA)
+})
+
+test_that("list_policies", {
+    expect_error(list_policies(), NA)
+})
+
+test_that("list_role_aliases", {
+    expect_error(list_role_aliases(), NA)
+})
+
+test_that("list_scheduled_audits", {
+    expect_error(list_scheduled_audits(), NA)
+})
+
+test_that("list_security_profiles", {
+    expect_error(list_security_profiles(), NA)
+})
+
+test_that("list_streams", {
+    expect_error(list_streams(), NA)
+})
+
+test_that("list_thing_groups", {
+    expect_error(list_thing_groups(), NA)
+})
+
+test_that("list_thing_registration_tasks", {
+    expect_error(list_thing_registration_tasks(), NA)
+})
+
+test_that("list_thing_types", {
+    expect_error(list_thing_types(), NA)
+})
+
+test_that("list_things", {
+    expect_error(list_things(), NA)
+})
+
+test_that("list_topic_rules", {
+    expect_error(list_topic_rules(), NA)
+})
+
+test_that("list_v2_logging_levels", {
+    expect_error(list_v2_logging_levels(), NA)
+})

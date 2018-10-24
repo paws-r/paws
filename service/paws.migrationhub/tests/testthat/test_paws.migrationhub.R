@@ -1,0 +1,15 @@
+test_that("list_migration_tasks", {
+    expect_error(list_migration_tasks(), NA)
+})
+
+test_that("list_migration_tasks", {
+    expect_error(list_migration_tasks(MaxResults = 20), NA)
+})
+
+test_that("list_progress_update_streams", {
+    expect_error(list_progress_update_streams(), NA)
+})
+
+test_that("list_progress_update_streams", {
+    expect_error(list_progress_update_streams(MaxResults = 20), NA)
+})

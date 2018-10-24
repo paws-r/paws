@@ -1,0 +1,7 @@
+test_that("describe_domains", {
+    expect_error(describe_domains(), NA)
+})
+
+test_that("list_domain_names", {
+    expect_error(list_domain_names(), NA)
+})

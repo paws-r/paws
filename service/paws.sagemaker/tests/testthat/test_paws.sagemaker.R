@@ -1,0 +1,63 @@
+test_that("list_endpoint_configs", {
+    expect_error(list_endpoint_configs(), NA)
+})
+
+test_that("list_endpoint_configs", {
+    expect_error(list_endpoint_configs(MaxResults = 20), NA)
+})
+
+test_that("list_endpoints", {
+    expect_error(list_endpoints(), NA)
+})
+
+test_that("list_endpoints", {
+    expect_error(list_endpoints(MaxResults = 20), NA)
+})
+
+test_that("list_hyper_parameter_tuning_jobs", {
+    expect_error(list_hyper_parameter_tuning_jobs(), NA)
+})
+
+test_that("list_hyper_parameter_tuning_jobs", {
+    expect_error(list_hyper_parameter_tuning_jobs(MaxResults = 20), NA)
+})
+
+test_that("list_models", {
+    expect_error(list_models(), NA)
+})
+
+test_that("list_models", {
+    expect_error(list_models(MaxResults = 20), NA)
+})
+
+test_that("list_notebook_instance_lifecycle_configs", {
+    expect_error(list_notebook_instance_lifecycle_configs(), NA)
+})
+
+test_that("list_notebook_instance_lifecycle_configs", {
+    expect_error(list_notebook_instance_lifecycle_configs(MaxResults = 20), NA)
+})
+
+test_that("list_notebook_instances", {
+    expect_error(list_notebook_instances(), NA)
+})
+
+test_that("list_notebook_instances", {
+    expect_error(list_notebook_instances(MaxResults = 20), NA)
+})
+
+test_that("list_training_jobs", {
+    expect_error(list_training_jobs(), NA)
+})
+
+test_that("list_training_jobs", {
+    expect_error(list_training_jobs(MaxResults = 20), NA)
+})
+
+test_that("list_transform_jobs", {
+    expect_error(list_transform_jobs(), NA)
+})
+
+test_that("list_transform_jobs", {
+    expect_error(list_transform_jobs(MaxResults = 20), NA)
+})

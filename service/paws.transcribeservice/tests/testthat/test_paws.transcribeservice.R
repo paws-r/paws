@@ -1,0 +1,15 @@
+test_that("list_transcription_jobs", {
+    expect_error(list_transcription_jobs(), NA)
+})
+
+test_that("list_transcription_jobs", {
+    expect_error(list_transcription_jobs(MaxResults = 20), NA)
+})
+
+test_that("list_vocabularies", {
+    expect_error(list_vocabularies(), NA)
+})
+
+test_that("list_vocabularies", {
+    expect_error(list_vocabularies(MaxResults = 20), NA)
+})

@@ -1,0 +1,156 @@
+#' @include struct.R
+NULL
+
+# A handler list is a list of functions to apply to a request at a given stage
+# of a service request (e.g. validate, build, etc.).
+HandlerList <- function(..., after_each_fn = NULL) {
+  args <- list(...)
+  arg_refs <- substitute(list(...))[-1]
+
+  handlers <- lapply(seq_along(args), function(i) {
+    arg <- args[[i]]
+    arg_ref <- arg_refs[[i]]
+    Handler(arg, ifelse(is.name(arg_ref), deparse(arg_ref), "anonymous"))
+  })
+
+  if (!is.null(after_each_fn)) {
+    after_each_fn <- Handler(after_each_fn)
+  }
+
+  l <- list(
+    list = handlers,
+    after_each_fn = after_each_fn
+  )
+  return(l)
+}
+
+Handler <- function(fn, name = NULL) {
+  handler <- list(
+    fn = fn,
+    name = name
+  )
+  return(handler)
+}
+
+# A handlers object stores the handler lists for each stage of handling a
+# service request.
+Handlers <- struct(
+  validate = HandlerList(),
+  build = HandlerList(),
+  sign = HandlerList(),
+  send = HandlerList(),
+  validate_response = HandlerList(),
+  unmarshal = HandlerList(),
+  unmarshal_meta = HandlerList(),
+  unmarshal_error = HandlerList(),
+  retry = HandlerList(),
+  after_retry = HandlerList(),
+  complete = HandlerList()
+)
+
+#-------------------------------------------------------------------------------
+
+# Add a list of functions to an existing HandlerList.
+add_handlers <- function(existing, ...) {
+  h <- existing
+  n <- HandlerList(...)
+  h$list <- c(h$list, n$list)
+  return(h)
+}
+
+# Return a populated Handlers object with custom build, sign, etc. handlers.
+# TODO: Use the function name passed into handlers when calling add_handlers.
+handlers <- function(build = NULL, sign = NULL, unmarshal = NULL,
+                     unmarshal_meta = NULL, unmarshal_error = NULL,
+                     unmarshal_stream = NULL) {
+  args <- as.list(environment())
+  h <- default_handlers()
+  for (name in names(args)) {
+    fn <- args[[name]]
+    if (!is.null(fn)) {
+      h[[name]] <- add_handlers(h[[name]], fn)
+    }
+  }
+  return(h)
+}
+
+#-------------------------------------------------------------------------------
+
+# Run all request handlers of the given handler type (e.g. build) with a given
+# request object.
+run <- function(request, handler_type) {
+  handler_type <- deparse(substitute(handler_type))
+  handler_list <- request$handlers[[handler_type]]
+  for (handler in handler_list$list) {
+    request <- handler$fn(request)
+    if (!is.null(handler_list$after_each_fn)) {
+      if (handler_list$after_each_fn(request)) {
+        next
+      }
+    }
+  }
+  return(request)
+}
+
+# Validate a request.
+validate <- function(request) {
+  request <- run(request, validate)
+  return(request)
+}
+
+# Build the request's object so it can be signed and sent to the service.
+build <- function(request) {
+  if (!request$built) {
+    request <- run(request, validate)
+    request <- run(request, build)
+    request$built <- TRUE
+  }
+  return(request)
+}
+
+# Sign a request.
+sign <- function(request) {
+  request <- build(request)
+  request <- run(request, sign)
+  return(request)
+}
+
+send <- function(request) {
+  request <- run(request, send)
+  return(request)
+}
+
+validate_response <- function(request) {
+  request <- run(request, validate_response)
+  return(request)
+}
+
+unmarshal <- function(request) {
+  request <- run(request, unmarshal)
+  return(request)
+}
+
+unmarshal_meta <- function(request) {
+  request <- run(request, unmarshal_meta)
+  return(request)
+}
+
+unmarshal_error <- function(request) {
+  request <- run(request, unmarshal_error)
+  return(request)
+}
+
+retry <- function(request) {
+  request <- run(request, retry)
+  return(request)
+}
+
+after_retry <- function(request) {
+  request <- run(request, after_retry)
+  return(request)
+}
+
+complete <- function(request) {
+  request <- run(request, complete)
+  return(request)
+}

@@ -1,0 +1,19 @@
+test_that("describe_destinations", {
+    expect_error(describe_destinations(), NA)
+})
+
+test_that("describe_export_tasks", {
+    expect_error(describe_export_tasks(), NA)
+})
+
+test_that("describe_log_groups", {
+    expect_error(describe_log_groups(), NA)
+})
+
+test_that("describe_metric_filters", {
+    expect_error(describe_metric_filters(), NA)
+})
+
+test_that("describe_resource_policies", {
+    expect_error(describe_resource_policies(), NA)
+})

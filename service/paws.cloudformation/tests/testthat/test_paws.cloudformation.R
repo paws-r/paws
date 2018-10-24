@@ -1,0 +1,31 @@
+test_that("describe_account_limits", {
+    expect_error(describe_account_limits(), NA)
+})
+
+test_that("describe_stack_events", {
+    expect_error(describe_stack_events(), NA)
+})
+
+test_that("describe_stack_resources", {
+    expect_error(describe_stack_resources(), NA)
+})
+
+test_that("describe_stacks", {
+    expect_error(describe_stacks(), NA)
+})
+
+test_that("list_exports", {
+    expect_error(list_exports(), NA)
+})
+
+test_that("list_stack_sets", {
+    expect_error(list_stack_sets(), NA)
+})
+
+test_that("list_stack_sets", {
+    expect_error(list_stack_sets(MaxResults = 20), NA)
+})
+
+test_that("list_stacks", {
+    expect_error(list_stacks(), NA)
+})

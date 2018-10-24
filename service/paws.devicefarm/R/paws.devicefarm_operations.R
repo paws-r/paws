@@ -1,0 +1,1876 @@
+#' Creates a device pool
+#'
+#' Creates a device pool.
+#'
+#' @param projectArn The ARN of the project for the device pool.
+#' @param name The device pool\'s name.
+#' @param rules The device pool\'s rules.
+#' @param description The device pool\'s description.
+#'
+#' @examples
+#' # The following example creates a new device pool named MyDevicePool
+#' # inside an existing project.
+#' create_device_pool(
+#'   name = "MyDevicePool",
+#'   description = "My Android devices",
+#'   projectArn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
+#'   rules = list()
+#' )
+#'
+#' @export
+create_device_pool <- function (projectArn, name, rules, description = NULL) 
+{
+    op <- Operation(name = "CreateDevicePool", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_device_pool_input(projectArn = projectArn, 
+        name = name, rules = rules, description = description)
+    output <- create_device_pool_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a profile that can be applied to one or more private fleet device instances
+#'
+#' Creates a profile that can be applied to one or more private fleet device instances.
+#'
+#' @param name The name of your instance profile.
+#' @param description The description of your instance profile.
+#' @param packageCleanup When set to `true`, Device Farm will remove app packages after a test run. The default value is `false` for private devices.
+#' @param excludeAppPackagesFromCleanup An array of strings specifying the list of app packages that should not be cleaned up from the device after a test run is over.
+#' 
+#' The list of packages is only considered if you set `packageCleanup` to `true`.
+#' @param rebootAfterUse When set to `true`, Device Farm will reboot the instance after a test run. The default value is `true`.
+#'
+#' @examples
+#'
+#' @export
+create_instance_profile <- function (name, description = NULL, 
+    packageCleanup = NULL, excludeAppPackagesFromCleanup = NULL, 
+    rebootAfterUse = NULL) 
+{
+    op <- Operation(name = "CreateInstanceProfile", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_instance_profile_input(name = name, description = description, 
+        packageCleanup = packageCleanup, excludeAppPackagesFromCleanup = excludeAppPackagesFromCleanup, 
+        rebootAfterUse = rebootAfterUse)
+    output <- create_instance_profile_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a network profile
+#'
+#' Creates a network profile.
+#'
+#' @param projectArn The Amazon Resource Name (ARN) of the project for which you want to create a network profile.
+#' @param name The name you wish to specify for the new network profile.
+#' @param description The description of the network profile.
+#' @param type The type of network profile you wish to create. Valid values are listed below.
+#' @param uplinkBandwidthBits The data throughput rate in bits per second, as an integer from 0 to 104857600.
+#' @param downlinkBandwidthBits The data throughput rate in bits per second, as an integer from 0 to 104857600.
+#' @param uplinkDelayMs Delay time for all packets to destination in milliseconds as an integer from 0 to 2000.
+#' @param downlinkDelayMs Delay time for all packets to destination in milliseconds as an integer from 0 to 2000.
+#' @param uplinkJitterMs Time variation in the delay of received packets in milliseconds as an integer from 0 to 2000.
+#' @param downlinkJitterMs Time variation in the delay of received packets in milliseconds as an integer from 0 to 2000.
+#' @param uplinkLossPercent Proportion of transmitted packets that fail to arrive from 0 to 100 percent.
+#' @param downlinkLossPercent Proportion of received packets that fail to arrive from 0 to 100 percent.
+#'
+#' @examples
+#'
+#' @export
+create_network_profile <- function (projectArn, name, description = NULL, 
+    type = NULL, uplinkBandwidthBits = NULL, downlinkBandwidthBits = NULL, 
+    uplinkDelayMs = NULL, downlinkDelayMs = NULL, uplinkJitterMs = NULL, 
+    downlinkJitterMs = NULL, uplinkLossPercent = NULL, downlinkLossPercent = NULL) 
+{
+    op <- Operation(name = "CreateNetworkProfile", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_network_profile_input(projectArn = projectArn, 
+        name = name, description = description, type = type, 
+        uplinkBandwidthBits = uplinkBandwidthBits, downlinkBandwidthBits = downlinkBandwidthBits, 
+        uplinkDelayMs = uplinkDelayMs, downlinkDelayMs = downlinkDelayMs, 
+        uplinkJitterMs = uplinkJitterMs, downlinkJitterMs = downlinkJitterMs, 
+        uplinkLossPercent = uplinkLossPercent, downlinkLossPercent = downlinkLossPercent)
+    output <- create_network_profile_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a new project
+#'
+#' Creates a new project.
+#'
+#' @param name The project\'s name.
+#' @param defaultJobTimeoutMinutes Sets the execution timeout value (in minutes) for a project. All test runs in this project will use the specified execution timeout value unless overridden when scheduling a run.
+#'
+#' @examples
+#' # The following example creates a new project named MyProject.
+#' create_project(
+#'   name = "MyProject"
+#' )
+#'
+#' @export
+create_project <- function (name, defaultJobTimeoutMinutes = NULL) 
+{
+    op <- Operation(name = "CreateProject", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_project_input(name = name, defaultJobTimeoutMinutes = defaultJobTimeoutMinutes)
+    output <- create_project_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Specifies and starts a remote access session
+#'
+#' Specifies and starts a remote access session.
+#'
+#' @param projectArn The Amazon Resource Name (ARN) of the project for which you want to create a remote access session.
+#' @param deviceArn The Amazon Resource Name (ARN) of the device for which you want to create a remote access session.
+#' @param instanceArn The Amazon Resource Name (ARN) of the device instance for which you want to create a remote access session.
+#' @param sshPublicKey The public key of the `ssh` key pair you want to use for connecting to remote devices in your remote debugging session. This is only required if `remoteDebugEnabled` is set to `true`.
+#' @param remoteDebugEnabled Set to `true` if you want to access devices remotely for debugging in your remote access session.
+#' @param remoteRecordEnabled Set to `true` to enable remote recording for the remote access session.
+#' @param remoteRecordAppArn The Amazon Resource Name (ARN) for the app to be recorded in the remote access session.
+#' @param name The name of the remote access session that you wish to create.
+#' @param clientId Unique identifier for the client. If you want access to multiple devices on the same client, you should pass the same `clientId` value in each call to `CreateRemoteAccessSession`. This is required only if `remoteDebugEnabled` is set to `true`.
+#' @param configuration The configuration information for the remote access session request.
+#' @param interactionMode The interaction mode of the remote access session. Valid values are:
+#' 
+#' -   INTERACTIVE: You can interact with the iOS device by viewing, touching, and rotating the screen. You **cannot** run XCUITest framework-based tests in this mode.
+#' 
+#' -   NO\_VIDEO: You are connected to the device but cannot interact with it or view the screen. This mode has the fastest test execution speed. You **can** run XCUITest framework-based tests in this mode.
+#' 
+#' -   VIDEO\_ONLY: You can view the screen but cannot touch or rotate it. You **can** run XCUITest framework-based tests and watch the screen in this mode.
+#' @param skipAppResign When set to `true`, for private devices, Device Farm will not sign your app again. For public devices, Device Farm always signs your apps again and this parameter has no effect.
+#' 
+#' For more information about how Device Farm re-signs your app(s), see [Do you modify my app?](https://aws.amazon.com/device-farm/faq/) in the *AWS Device Farm FAQs*.
+#'
+#' @examples
+#' # The following example creates a remote access session named MySession.
+#' create_remote_access_session(
+#'   name = "MySession",
+#'   configuration = list(
+#'     billingMethod = "METERED"
+#'   ),
+#'   deviceArn = "arn:aws:devicefarm:us-west-2::device:123EXAMPLE",
+#'   projectArn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
+#' )
+#'
+#' @export
+create_remote_access_session <- function (projectArn, deviceArn, 
+    instanceArn = NULL, sshPublicKey = NULL, remoteDebugEnabled = NULL, 
+    remoteRecordEnabled = NULL, remoteRecordAppArn = NULL, name = NULL, 
+    clientId = NULL, configuration = NULL, interactionMode = NULL, 
+    skipAppResign = NULL) 
+{
+    op <- Operation(name = "CreateRemoteAccessSession", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_remote_access_session_input(projectArn = projectArn, 
+        deviceArn = deviceArn, instanceArn = instanceArn, sshPublicKey = sshPublicKey, 
+        remoteDebugEnabled = remoteDebugEnabled, remoteRecordEnabled = remoteRecordEnabled, 
+        remoteRecordAppArn = remoteRecordAppArn, name = name, 
+        clientId = clientId, configuration = configuration, interactionMode = interactionMode, 
+        skipAppResign = skipAppResign)
+    output <- create_remote_access_session_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Uploads an app or test scripts
+#'
+#' Uploads an app or test scripts.
+#'
+#' @param projectArn The ARN of the project for the upload.
+#' @param name The upload\'s file name. The name should not contain the \'/\' character. If uploading an iOS app, the file name needs to end with the `.ipa` extension. If uploading an Android app, the file name needs to end with the `.apk` extension. For all others, the file name must end with the `.zip` file extension.
+#' @param type The upload\'s upload type.
+#' 
+#' Must be one of the following values:
+#' 
+#' -   ANDROID\_APP: An Android upload.
+#' 
+#' -   IOS\_APP: An iOS upload.
+#' 
+#' -   WEB\_APP: A web application upload.
+#' 
+#' -   EXTERNAL\_DATA: An external data upload.
+#' 
+#' -   APPIUM\_JAVA\_JUNIT\_TEST\_PACKAGE: An Appium Java JUnit test package upload.
+#' 
+#' -   APPIUM\_JAVA\_TESTNG\_TEST\_PACKAGE: An Appium Java TestNG test package upload.
+#' 
+#' -   APPIUM\_PYTHON\_TEST\_PACKAGE: An Appium Python test package upload.
+#' 
+#' -   APPIUM\_WEB\_JAVA\_JUNIT\_TEST\_PACKAGE: An Appium Java JUnit test package upload.
+#' 
+#' -   APPIUM\_WEB\_JAVA\_TESTNG\_TEST\_PACKAGE: An Appium Java TestNG test package upload.
+#' 
+#' -   APPIUM\_WEB\_PYTHON\_TEST\_PACKAGE: An Appium Python test package upload.
+#' 
+#' -   CALABASH\_TEST\_PACKAGE: A Calabash test package upload.
+#' 
+#' -   INSTRUMENTATION\_TEST\_PACKAGE: An instrumentation upload.
+#' 
+#' -   UIAUTOMATION\_TEST\_PACKAGE: A uiautomation test package upload.
+#' 
+#' -   UIAUTOMATOR\_TEST\_PACKAGE: A uiautomator test package upload.
+#' 
+#' -   XCTEST\_TEST\_PACKAGE: An XCode test package upload.
+#' 
+#' -   XCTEST\_UI\_TEST\_PACKAGE: An XCode UI test package upload.
+#' 
+#' **Note** If you call `CreateUpload` with `WEB_APP` specified, AWS Device Farm throws an `ArgumentException` error.
+#' @param contentType The upload\'s content type (for example, \"application/octet-stream\").
+#'
+#' @examples
+#' # The following example creates a new Appium Python test package upload
+#' # inside an existing project.
+#' create_upload(
+#'   name = "MyAppiumPythonUpload",
+#'   type = "APPIUM_PYTHON_TEST_PACKAGE",
+#'   projectArn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
+#' )
+#'
+#' @export
+create_upload <- function (projectArn, name, type, contentType = NULL) 
+{
+    op <- Operation(name = "CreateUpload", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_upload_input(projectArn = projectArn, name = name, 
+        type = type, contentType = contentType)
+    output <- create_upload_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a configuration record in Device Farm for your Amazon Virtual Private Cloud (VPC) endpoint
+#'
+#' Creates a configuration record in Device Farm for your Amazon Virtual Private Cloud (VPC) endpoint.
+#'
+#' @param vpceConfigurationName The friendly name you give to your VPC endpoint configuration, to manage your configurations more easily.
+#' @param vpceServiceName The name of the VPC endpoint service running inside your AWS account that you want Device Farm to test.
+#' @param serviceDnsName The DNS name of the service running in your VPC that you want Device Farm to test.
+#' @param vpceConfigurationDescription An optional description, providing more details about your VPC endpoint configuration.
+#'
+#' @examples
+#'
+#' @export
+create_vpce_configuration <- function (vpceConfigurationName, 
+    vpceServiceName, serviceDnsName, vpceConfigurationDescription = NULL) 
+{
+    op <- Operation(name = "CreateVPCEConfiguration", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_vpce_configuration_input(vpceConfigurationName = vpceConfigurationName, 
+        vpceServiceName = vpceServiceName, serviceDnsName = serviceDnsName, 
+        vpceConfigurationDescription = vpceConfigurationDescription)
+    output <- create_vpce_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a device pool given the pool ARN
+#'
+#' Deletes a device pool given the pool ARN. Does not allow deletion of curated pools owned by the system.
+#'
+#' @param arn Represents the Amazon Resource Name (ARN) of the Device Farm device pool you wish to delete.
+#'
+#' @examples
+#' # The following example deletes a specific device pool.
+#' delete_device_pool(
+#'   arn = "arn:aws:devicefarm:us-west-2::devicepool:123-456-EXAMPLE-GUID"
+#' )
+#'
+#' @export
+delete_device_pool <- function (arn) 
+{
+    op <- Operation(name = "DeleteDevicePool", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_device_pool_input(arn = arn)
+    output <- delete_device_pool_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a profile that can be applied to one or more private device instances
+#'
+#' Deletes a profile that can be applied to one or more private device instances.
+#'
+#' @param arn The Amazon Resource Name (ARN) of the instance profile you are requesting to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_instance_profile <- function (arn) 
+{
+    op <- Operation(name = "DeleteInstanceProfile", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_instance_profile_input(arn = arn)
+    output <- delete_instance_profile_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a network profile
+#'
+#' Deletes a network profile.
+#'
+#' @param arn The Amazon Resource Name (ARN) of the network profile you want to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_network_profile <- function (arn) 
+{
+    op <- Operation(name = "DeleteNetworkProfile", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_network_profile_input(arn = arn)
+    output <- delete_network_profile_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes an AWS Device Farm project, given the project ARN
+#'
+#' Deletes an AWS Device Farm project, given the project ARN.
+#' 
+#' **Note** Deleting this resource does not stop an in-progress run.
+#'
+#' @param arn Represents the Amazon Resource Name (ARN) of the Device Farm project you wish to delete.
+#'
+#' @examples
+#' # The following example deletes a specific project.
+#' delete_project(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
+#' )
+#'
+#' @export
+delete_project <- function (arn) 
+{
+    op <- Operation(name = "DeleteProject", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_project_input(arn = arn)
+    output <- delete_project_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a completed remote access session and its results
+#'
+#' Deletes a completed remote access session and its results.
+#'
+#' @param arn The Amazon Resource Name (ARN) of the sesssion for which you want to delete remote access.
+#'
+#' @examples
+#' # The following example deletes a specific remote access session.
+#' delete_remote_access_session(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456"
+#' )
+#'
+#' @export
+delete_remote_access_session <- function (arn) 
+{
+    op <- Operation(name = "DeleteRemoteAccessSession", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_remote_access_session_input(arn = arn)
+    output <- delete_remote_access_session_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the run, given the run ARN
+#'
+#' Deletes the run, given the run ARN.
+#' 
+#' **Note** Deleting this resource does not stop an in-progress run.
+#'
+#' @param arn The Amazon Resource Name (ARN) for the run you wish to delete.
+#'
+#' @examples
+#' # The following example deletes a specific test run.
+#' delete_run(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456"
+#' )
+#'
+#' @export
+delete_run <- function (arn) 
+{
+    op <- Operation(name = "DeleteRun", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_run_input(arn = arn)
+    output <- delete_run_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes an upload given the upload ARN
+#'
+#' Deletes an upload given the upload ARN.
+#'
+#' @param arn Represents the Amazon Resource Name (ARN) of the Device Farm upload you wish to delete.
+#'
+#' @examples
+#' # The following example deletes a specific upload.
+#' delete_upload(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:upload:EXAMPLE-GUID-123-456"
+#' )
+#'
+#' @export
+delete_upload <- function (arn) 
+{
+    op <- Operation(name = "DeleteUpload", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_upload_input(arn = arn)
+    output <- delete_upload_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a configuration for your Amazon Virtual Private Cloud (VPC) endpoint
+#'
+#' Deletes a configuration for your Amazon Virtual Private Cloud (VPC) endpoint.
+#'
+#' @param arn The Amazon Resource Name (ARN) of the VPC endpoint configuration you want to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_vpce_configuration <- function (arn) 
+{
+    op <- Operation(name = "DeleteVPCEConfiguration", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_vpce_configuration_input(arn = arn)
+    output <- delete_vpce_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns the number of unmetered iOS and/or unmetered Android devices that have been purchased by the account
+#'
+#' Returns the number of unmetered iOS and/or unmetered Android devices that have been purchased by the account.
+#'
+#' @examples
+#' # The following example returns information about your Device Farm account
+#' # settings.
+#' get_account_settings()
+#'
+#' @export
+get_account_settings <- function () 
+{
+    op <- Operation(name = "GetAccountSettings", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_account_settings_input()
+    output <- get_account_settings_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about a unique device type
+#'
+#' Gets information about a unique device type.
+#'
+#' @param arn The device type\'s ARN.
+#'
+#' @examples
+#' # The following example returns information about a specific device.
+#' get_device(
+#'   arn = "arn:aws:devicefarm:us-west-2::device:123EXAMPLE"
+#' )
+#'
+#' @export
+get_device <- function (arn) 
+{
+    op <- Operation(name = "GetDevice", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_device_input(arn = arn)
+    output <- get_device_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns information about a device instance belonging to a private device fleet
+#'
+#' Returns information about a device instance belonging to a private device fleet.
+#'
+#' @param arn The Amazon Resource Name (ARN) of the instance you\'re requesting information about.
+#'
+#' @examples
+#'
+#' @export
+get_device_instance <- function (arn) 
+{
+    op <- Operation(name = "GetDeviceInstance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_device_instance_input(arn = arn)
+    output <- get_device_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about a device pool
+#'
+#' Gets information about a device pool.
+#'
+#' @param arn The device pool\'s ARN.
+#'
+#' @examples
+#' # The following example returns information about a specific device pool,
+#' # given a project ARN.
+#' get_device_pool(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
+#' )
+#'
+#' @export
+get_device_pool <- function (arn) 
+{
+    op <- Operation(name = "GetDevicePool", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_device_pool_input(arn = arn)
+    output <- get_device_pool_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about compatibility with a device pool
+#'
+#' Gets information about compatibility with a device pool.
+#'
+#' @param devicePoolArn The device pool\'s ARN.
+#' @param appArn The ARN of the app that is associated with the specified device pool.
+#' @param testType The test type for the specified device pool.
+#' 
+#' Allowed values include the following:
+#' 
+#' -   BUILTIN\_FUZZ: The built-in fuzz type.
+#' 
+#' -   BUILTIN\_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and capturing screenshots at the same time.
+#' 
+#' -   APPIUM\_JAVA\_JUNIT: The Appium Java JUnit type.
+#' 
+#' -   APPIUM\_JAVA\_TESTNG: The Appium Java TestNG type.
+#' 
+#' -   APPIUM\_PYTHON: The Appium Python type.
+#' 
+#' -   APPIUM\_WEB\_JAVA\_JUNIT: The Appium Java JUnit type for Web apps.
+#' 
+#' -   APPIUM\_WEB\_JAVA\_TESTNG: The Appium Java TestNG type for Web apps.
+#' 
+#' -   APPIUM\_WEB\_PYTHON: The Appium Python type for Web apps.
+#' 
+#' -   CALABASH: The Calabash type.
+#' 
+#' -   INSTRUMENTATION: The Instrumentation type.
+#' 
+#' -   UIAUTOMATION: The uiautomation type.
+#' 
+#' -   UIAUTOMATOR: The uiautomator type.
+#' 
+#' -   XCTEST: The XCode test type.
+#' 
+#' -   XCTEST\_UI: The XCode UI test type.
+#' @param test Information about the uploaded test to be run against the device pool.
+#' @param configuration An object containing information about the settings for a run.
+#'
+#' @examples
+#' # The following example returns information about the compatibility of a
+#' # specific device pool, given its ARN.
+#' get_device_pool_compatibility(
+#'   appArn = "arn:aws:devicefarm:us-west-2::app:123-456-EXAMPLE-GUID",
+#'   devicePoolArn = "arn:aws:devicefarm:us-west-2::devicepool:123-456-EXAMPLE-GUID",
+#'   testType = "APPIUM_PYTHON"
+#' )
+#'
+#' @export
+get_device_pool_compatibility <- function (devicePoolArn, appArn = NULL, 
+    testType = NULL, test = NULL, configuration = NULL) 
+{
+    op <- Operation(name = "GetDevicePoolCompatibility", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_device_pool_compatibility_input(devicePoolArn = devicePoolArn, 
+        appArn = appArn, testType = testType, test = test, configuration = configuration)
+    output <- get_device_pool_compatibility_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns information about the specified instance profile
+#'
+#' Returns information about the specified instance profile.
+#'
+#' @param arn The Amazon Resource Name (ARN) of your instance profile.
+#'
+#' @examples
+#'
+#' @export
+get_instance_profile <- function (arn) 
+{
+    op <- Operation(name = "GetInstanceProfile", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_instance_profile_input(arn = arn)
+    output <- get_instance_profile_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about a job
+#'
+#' Gets information about a job.
+#'
+#' @param arn The job\'s ARN.
+#'
+#' @examples
+#' # The following example returns information about a specific job.
+#' get_job(
+#'   arn = "arn:aws:devicefarm:us-west-2::job:123-456-EXAMPLE-GUID"
+#' )
+#'
+#' @export
+get_job <- function (arn) 
+{
+    op <- Operation(name = "GetJob", http_method = "POST", http_path = "/", 
+        paginator = list())
+    input <- get_job_input(arn = arn)
+    output <- get_job_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns information about a network profile
+#'
+#' Returns information about a network profile.
+#'
+#' @param arn The Amazon Resource Name (ARN) of the network profile you want to return information about.
+#'
+#' @examples
+#'
+#' @export
+get_network_profile <- function (arn) 
+{
+    op <- Operation(name = "GetNetworkProfile", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_network_profile_input(arn = arn)
+    output <- get_network_profile_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets the current status and future status of all offerings purchased by an AWS account
+#'
+#' Gets the current status and future status of all offerings purchased by an AWS account. The response indicates how many offerings are currently available and the offerings that will be available in the next period. The API returns a `NotEligible` error if the user is not permitted to invoke the operation. Please contact <aws-devicefarm-support@amazon.com> if you believe that you should be able to invoke this operation.
+#'
+#' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#'
+#' @examples
+#' # The following example returns information about Device Farm offerings
+#' # available to your account.
+#' get_offering_status(
+#'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
+#' )
+#'
+#' @export
+get_offering_status <- function (nextToken = NULL) 
+{
+    op <- Operation(name = "GetOfferingStatus", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_offering_status_input(nextToken = nextToken)
+    output <- get_offering_status_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about a project
+#'
+#' Gets information about a project.
+#'
+#' @param arn The project\'s ARN.
+#'
+#' @examples
+#' # The following example gets information about a specific project.
+#' get_project(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:5e01a8c7-c861-4c0a-b1d5-12345EXAMPLE"
+#' )
+#'
+#' @export
+get_project <- function (arn) 
+{
+    op <- Operation(name = "GetProject", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_project_input(arn = arn)
+    output <- get_project_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a link to a currently running remote access session
+#'
+#' Returns a link to a currently running remote access session.
+#'
+#' @param arn The Amazon Resource Name (ARN) of the remote access session about which you want to get session information.
+#'
+#' @examples
+#' # The following example gets a specific remote access session.
+#' get_remote_access_session(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456"
+#' )
+#'
+#' @export
+get_remote_access_session <- function (arn) 
+{
+    op <- Operation(name = "GetRemoteAccessSession", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_remote_access_session_input(arn = arn)
+    output <- get_remote_access_session_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about a run
+#'
+#' Gets information about a run.
+#'
+#' @param arn The run\'s ARN.
+#'
+#' @examples
+#' # The following example gets information about a specific test run.
+#' get_run(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b1d5-5ec6e6c6dd23/0fcac17b-6122-44d7-ae5a-12345EXAMPLE"
+#' )
+#'
+#' @export
+get_run <- function (arn) 
+{
+    op <- Operation(name = "GetRun", http_method = "POST", http_path = "/", 
+        paginator = list())
+    input <- get_run_input(arn = arn)
+    output <- get_run_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about a suite
+#'
+#' Gets information about a suite.
+#'
+#' @param arn The suite\'s ARN.
+#'
+#' @examples
+#' # The following example gets information about a specific test suite.
+#' get_suite(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:suite:EXAMPLE-GUID-123-456"
+#' )
+#'
+#' @export
+get_suite <- function (arn) 
+{
+    op <- Operation(name = "GetSuite", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_suite_input(arn = arn)
+    output <- get_suite_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about a test
+#'
+#' Gets information about a test.
+#'
+#' @param arn The test\'s ARN.
+#'
+#' @examples
+#' # The following example gets information about a specific test.
+#' get_test(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:test:EXAMPLE-GUID-123-456"
+#' )
+#'
+#' @export
+get_test <- function (arn) 
+{
+    op <- Operation(name = "GetTest", http_method = "POST", http_path = "/", 
+        paginator = list())
+    input <- get_test_input(arn = arn)
+    output <- get_test_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about an upload
+#'
+#' Gets information about an upload.
+#'
+#' @param arn The upload\'s ARN.
+#'
+#' @examples
+#' # The following example gets information about a specific upload.
+#' get_upload(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:upload:EXAMPLE-GUID-123-456"
+#' )
+#'
+#' @export
+get_upload <- function (arn) 
+{
+    op <- Operation(name = "GetUpload", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_upload_input(arn = arn)
+    output <- get_upload_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns information about the configuration settings for your Amazon Virtual Private Cloud (VPC) endpoint
+#'
+#' Returns information about the configuration settings for your Amazon Virtual Private Cloud (VPC) endpoint.
+#'
+#' @param arn The Amazon Resource Name (ARN) of the VPC endpoint configuration you want to describe.
+#'
+#' @examples
+#'
+#' @export
+get_vpce_configuration <- function (arn) 
+{
+    op <- Operation(name = "GetVPCEConfiguration", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_vpce_configuration_input(arn = arn)
+    output <- get_vpce_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Installs an application to the device in a remote access session
+#'
+#' Installs an application to the device in a remote access session. For Android applications, the file must be in .apk format. For iOS applications, the file must be in .ipa format.
+#'
+#' @param remoteAccessSessionArn The Amazon Resource Name (ARN) of the remote access session about which you are requesting information.
+#' @param appArn The Amazon Resource Name (ARN) of the app about which you are requesting information.
+#'
+#' @examples
+#' # The following example installs a specific app to a device in a specific
+#' # remote access session.
+#' install_to_remote_access_session(
+#'   appArn = "arn:aws:devicefarm:us-west-2:123456789101:app:EXAMPLE-GUID-123-456",
+#'   remoteAccessSessionArn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456"
+#' )
+#'
+#' @export
+install_to_remote_access_session <- function (remoteAccessSessionArn, 
+    appArn) 
+{
+    op <- Operation(name = "InstallToRemoteAccessSession", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- install_to_remote_access_session_input(remoteAccessSessionArn = remoteAccessSessionArn, 
+        appArn = appArn)
+    output <- install_to_remote_access_session_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about artifacts
+#'
+#' Gets information about artifacts.
+#'
+#' @param arn The Run, Job, Suite, or Test ARN.
+#' @param type The artifacts\' type.
+#' 
+#' Allowed values include:
+#' 
+#' -   FILE: The artifacts are files.
+#' 
+#' -   LOG: The artifacts are logs.
+#' 
+#' -   SCREENSHOT: The artifacts are screenshots.
+#' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#'
+#' @examples
+#' # The following example lists screenshot artifacts for a specific run.
+#' list_artifacts(
+#'   type = "SCREENSHOT",
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456"
+#' )
+#'
+#' @export
+list_artifacts <- function (arn, type, nextToken = NULL) 
+{
+    op <- Operation(name = "ListArtifacts", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_artifacts_input(arn = arn, type = type, nextToken = nextToken)
+    output <- list_artifacts_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns information about the private device instances associated with one or more AWS accounts
+#'
+#' Returns information about the private device instances associated with one or more AWS accounts.
+#'
+#' @param maxResults An integer specifying the maximum number of items you want to return in the API response.
+#' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#'
+#' @examples
+#'
+#' @export
+list_device_instances <- function (maxResults = NULL, nextToken = NULL) 
+{
+    op <- Operation(name = "ListDeviceInstances", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_device_instances_input(maxResults = maxResults, 
+        nextToken = nextToken)
+    output <- list_device_instances_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about device pools
+#'
+#' Gets information about device pools.
+#'
+#' @param arn The project ARN.
+#' @param type The device pools\' type.
+#' 
+#' Allowed values include:
+#' 
+#' -   CURATED: A device pool that is created and managed by AWS Device Farm.
+#' 
+#' -   PRIVATE: A device pool that is created and managed by the device pool developer.
+#' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#'
+#' @examples
+#' # The following example returns information about the private device pools
+#' # in a specific project.
+#' list_device_pools(
+#'   type = "PRIVATE",
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
+#' )
+#'
+#' @export
+list_device_pools <- function (arn, type = NULL, nextToken = NULL) 
+{
+    op <- Operation(name = "ListDevicePools", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_device_pools_input(arn = arn, type = type, 
+        nextToken = nextToken)
+    output <- list_device_pools_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about unique device types
+#'
+#' Gets information about unique device types.
+#'
+#' @param arn The Amazon Resource Name (ARN) of the project.
+#' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#'
+#' @examples
+#' # The following example returns information about the available devices in
+#' # a specific project.
+#' list_devices(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
+#' )
+#'
+#' @export
+list_devices <- function (arn = NULL, nextToken = NULL) 
+{
+    op <- Operation(name = "ListDevices", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_devices_input(arn = arn, nextToken = nextToken)
+    output <- list_devices_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns information about all the instance profiles in an AWS account
+#'
+#' Returns information about all the instance profiles in an AWS account.
+#'
+#' @param maxResults An integer specifying the maximum number of items you want to return in the API response.
+#' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#'
+#' @examples
+#'
+#' @export
+list_instance_profiles <- function (maxResults = NULL, nextToken = NULL) 
+{
+    op <- Operation(name = "ListInstanceProfiles", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_instance_profiles_input(maxResults = maxResults, 
+        nextToken = nextToken)
+    output <- list_instance_profiles_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about jobs for a given test run
+#'
+#' Gets information about jobs for a given test run.
+#'
+#' @param arn The run\'s Amazon Resource Name (ARN).
+#' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#'
+#' @examples
+#' # The following example returns information about jobs in a specific
+#' # project.
+#' list_jobs(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
+#' )
+#'
+#' @export
+list_jobs <- function (arn, nextToken = NULL) 
+{
+    op <- Operation(name = "ListJobs", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_jobs_input(arn = arn, nextToken = nextToken)
+    output <- list_jobs_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns the list of available network profiles
+#'
+#' Returns the list of available network profiles.
+#'
+#' @param arn The Amazon Resource Name (ARN) of the project for which you want to list network profiles.
+#' @param type The type of network profile you wish to return information about. Valid values are listed below.
+#' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#'
+#' @examples
+#'
+#' @export
+list_network_profiles <- function (arn, type = NULL, nextToken = NULL) 
+{
+    op <- Operation(name = "ListNetworkProfiles", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_network_profiles_input(arn = arn, type = type, 
+        nextToken = nextToken)
+    output <- list_network_profiles_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of offering promotions
+#'
+#' Returns a list of offering promotions. Each offering promotion record contains the ID and description of the promotion. The API returns a `NotEligible` error if the caller is not permitted to invoke the operation. Contact <aws-devicefarm-support@amazon.com> if you believe that you should be able to invoke this operation.
+#'
+#' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#'
+#' @examples
+#'
+#' @export
+list_offering_promotions <- function (nextToken = NULL) 
+{
+    op <- Operation(name = "ListOfferingPromotions", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_offering_promotions_input(nextToken = nextToken)
+    output <- list_offering_promotions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of all historical purchases, renewals, and system renewal transactions for an AWS account
+#'
+#' Returns a list of all historical purchases, renewals, and system renewal transactions for an AWS account. The list is paginated and ordered by a descending timestamp (most recent transactions are first). The API returns a `NotEligible` error if the user is not permitted to invoke the operation. Please contact <aws-devicefarm-support@amazon.com> if you believe that you should be able to invoke this operation.
+#'
+#' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#'
+#' @examples
+#' # The following example returns information about Device Farm offering
+#' # transactions.
+#' list_offering_transactions(
+#'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
+#' )
+#'
+#' @export
+list_offering_transactions <- function (nextToken = NULL) 
+{
+    op <- Operation(name = "ListOfferingTransactions", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_offering_transactions_input(nextToken = nextToken)
+    output <- list_offering_transactions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of products or offerings that the user can manage through the API
+#'
+#' Returns a list of products or offerings that the user can manage through the API. Each offering record indicates the recurring price per unit and the frequency for that offering. The API returns a `NotEligible` error if the user is not permitted to invoke the operation. Please contact <aws-devicefarm-support@amazon.com> if you believe that you should be able to invoke this operation.
+#'
+#' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#'
+#' @examples
+#' # The following example returns information about available device
+#' # offerings.
+#' list_offerings(
+#'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
+#' )
+#'
+#' @export
+list_offerings <- function (nextToken = NULL) 
+{
+    op <- Operation(name = "ListOfferings", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_offerings_input(nextToken = nextToken)
+    output <- list_offerings_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about projects
+#'
+#' Gets information about projects.
+#'
+#' @param arn Optional. If no Amazon Resource Name (ARN) is specified, then AWS Device Farm returns a list of all projects for the AWS account. You can also specify a project ARN.
+#' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#'
+#' @examples
+#' # The following example returns information about the specified project in
+#' # Device Farm.
+#' list_projects(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:7ad300ed-8183-41a7-bf94-12345EXAMPLE",
+#'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
+#' )
+#'
+#' @export
+list_projects <- function (arn = NULL, nextToken = NULL) 
+{
+    op <- Operation(name = "ListProjects", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_projects_input(arn = arn, nextToken = nextToken)
+    output <- list_projects_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of all currently running remote access sessions
+#'
+#' Returns a list of all currently running remote access sessions.
+#'
+#' @param arn The Amazon Resource Name (ARN) of the remote access session about which you are requesting information.
+#' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#'
+#' @examples
+#' # The following example returns information about a specific Device Farm
+#' # remote access session.
+#' list_remote_access_sessions(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456",
+#'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
+#' )
+#'
+#' @export
+list_remote_access_sessions <- function (arn, nextToken = NULL) 
+{
+    op <- Operation(name = "ListRemoteAccessSessions", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_remote_access_sessions_input(arn = arn, nextToken = nextToken)
+    output <- list_remote_access_sessions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about runs, given an AWS Device Farm project ARN
+#'
+#' Gets information about runs, given an AWS Device Farm project ARN.
+#'
+#' @param arn The Amazon Resource Name (ARN) of the project for which you want to list runs.
+#' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#'
+#' @examples
+#' # The following example returns information about a specific test run.
+#' list_runs(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b1d5-5ec6e6c6dd23/0fcac17b-6122-44d7-ae5a-12345EXAMPLE",
+#'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
+#' )
+#'
+#' @export
+list_runs <- function (arn, nextToken = NULL) 
+{
+    op <- Operation(name = "ListRuns", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_runs_input(arn = arn, nextToken = nextToken)
+    output <- list_runs_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about samples, given an AWS Device Farm project ARN
+#'
+#' Gets information about samples, given an AWS Device Farm project ARN
+#'
+#' @param arn The Amazon Resource Name (ARN) of the project for which you want to list samples.
+#' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#'
+#' @examples
+#' # The following example returns information about samples, given a
+#' # specific Device Farm project.
+#' list_samples(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
+#'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
+#' )
+#'
+#' @export
+list_samples <- function (arn, nextToken = NULL) 
+{
+    op <- Operation(name = "ListSamples", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_samples_input(arn = arn, nextToken = nextToken)
+    output <- list_samples_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about test suites for a given job
+#'
+#' Gets information about test suites for a given job.
+#'
+#' @param arn The job\'s Amazon Resource Name (ARN).
+#' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#'
+#' @examples
+#' # The following example returns information about suites, given a specific
+#' # Device Farm project.
+#' list_suites(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
+#'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
+#' )
+#'
+#' @export
+list_suites <- function (arn, nextToken = NULL) 
+{
+    op <- Operation(name = "ListSuites", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_suites_input(arn = arn, nextToken = nextToken)
+    output <- list_suites_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about tests in a given test suite
+#'
+#' Gets information about tests in a given test suite.
+#'
+#' @param arn The test suite\'s Amazon Resource Name (ARN).
+#' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#'
+#' @examples
+#' # The following example returns information about tests, given a specific
+#' # Device Farm project.
+#' list_tests(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
+#'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
+#' )
+#'
+#' @export
+list_tests <- function (arn, nextToken = NULL) 
+{
+    op <- Operation(name = "ListTests", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_tests_input(arn = arn, nextToken = nextToken)
+    output <- list_tests_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about unique problems
+#'
+#' Gets information about unique problems.
+#'
+#' @param arn The unique problems\' ARNs.
+#' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#'
+#' @examples
+#' # The following example returns information about unique problems, given a
+#' # specific Device Farm project.
+#' list_unique_problems(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
+#'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
+#' )
+#'
+#' @export
+list_unique_problems <- function (arn, nextToken = NULL) 
+{
+    op <- Operation(name = "ListUniqueProblems", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_unique_problems_input(arn = arn, nextToken = nextToken)
+    output <- list_unique_problems_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about uploads, given an AWS Device Farm project ARN
+#'
+#' Gets information about uploads, given an AWS Device Farm project ARN.
+#'
+#' @param arn The Amazon Resource Name (ARN) of the project for which you want to list uploads.
+#' @param type The type of upload.
+#' 
+#' Must be one of the following values:
+#' 
+#' -   ANDROID\_APP: An Android upload.
+#' 
+#' -   IOS\_APP: An iOS upload.
+#' 
+#' -   WEB\_APP: A web appliction upload.
+#' 
+#' -   EXTERNAL\_DATA: An external data upload.
+#' 
+#' -   APPIUM\_JAVA\_JUNIT\_TEST\_PACKAGE: An Appium Java JUnit test package upload.
+#' 
+#' -   APPIUM\_JAVA\_TESTNG\_TEST\_PACKAGE: An Appium Java TestNG test package upload.
+#' 
+#' -   APPIUM\_PYTHON\_TEST\_PACKAGE: An Appium Python test package upload.
+#' 
+#' -   APPIUM\_WEB\_JAVA\_JUNIT\_TEST\_PACKAGE: An Appium Java JUnit test package upload.
+#' 
+#' -   APPIUM\_WEB\_JAVA\_TESTNG\_TEST\_PACKAGE: An Appium Java TestNG test package upload.
+#' 
+#' -   APPIUM\_WEB\_PYTHON\_TEST\_PACKAGE: An Appium Python test package upload.
+#' 
+#' -   CALABASH\_TEST\_PACKAGE: A Calabash test package upload.
+#' 
+#' -   INSTRUMENTATION\_TEST\_PACKAGE: An instrumentation upload.
+#' 
+#' -   UIAUTOMATION\_TEST\_PACKAGE: A uiautomation test package upload.
+#' 
+#' -   UIAUTOMATOR\_TEST\_PACKAGE: A uiautomator test package upload.
+#' 
+#' -   XCTEST\_TEST\_PACKAGE: An XCode test package upload.
+#' 
+#' -   XCTEST\_UI\_TEST\_PACKAGE: An XCode UI test package upload.
+#' 
+#' -   APPIUM\_JAVA\_JUNIT\_TEST\_SPEC: An Appium Java JUnit test spec upload.
+#' 
+#' -   APPIUM\_JAVA\_TESTNG\_TEST\_SPEC: An Appium Java TestNG test spec upload.
+#' 
+#' -   APPIUM\_PYTHON\_TEST\_SPEC: An Appium Python test spec upload.
+#' 
+#' -   APPIUM\_WEB\_JAVA\_JUNIT\_TEST\_SPEC: An Appium Java JUnit test spec upload.
+#' 
+#' -   APPIUM\_WEB\_JAVA\_TESTNG\_TEST\_SPEC: An Appium Java TestNG test spec upload.
+#' 
+#' -   APPIUM\_WEB\_PYTHON\_TEST\_SPEC: An Appium Python test spec upload.
+#' 
+#' -   INSTRUMENTATION\_TEST\_SPEC: An instrumentation test spec upload.
+#' 
+#' -   XCTEST\_UI\_TEST\_SPEC: An XCode UI test spec upload.
+#' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#'
+#' @examples
+#' # The following example returns information about uploads, given a
+#' # specific Device Farm project.
+#' list_uploads(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
+#'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
+#' )
+#'
+#' @export
+list_uploads <- function (arn, type = NULL, nextToken = NULL) 
+{
+    op <- Operation(name = "ListUploads", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_uploads_input(arn = arn, type = type, nextToken = nextToken)
+    output <- list_uploads_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns information about all Amazon Virtual Private Cloud (VPC) endpoint configurations in the AWS account
+#'
+#' Returns information about all Amazon Virtual Private Cloud (VPC) endpoint configurations in the AWS account.
+#'
+#' @param maxResults An integer specifying the maximum number of items you want to return in the API response.
+#' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#'
+#' @examples
+#'
+#' @export
+list_vpce_configurations <- function (maxResults = NULL, nextToken = NULL) 
+{
+    op <- Operation(name = "ListVPCEConfigurations", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_vpce_configurations_input(maxResults = maxResults, 
+        nextToken = nextToken)
+    output <- list_vpce_configurations_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Immediately purchases offerings for an AWS account
+#'
+#' Immediately purchases offerings for an AWS account. Offerings renew with the latest total purchased quantity for an offering, unless the renewal was overridden. The API returns a `NotEligible` error if the user is not permitted to invoke the operation. Please contact <aws-devicefarm-support@amazon.com> if you believe that you should be able to invoke this operation.
+#'
+#' @param offeringId The ID of the offering.
+#' @param quantity The number of device slots you wish to purchase in an offering request.
+#' @param offeringPromotionId The ID of the offering promotion to be applied to the purchase.
+#'
+#' @examples
+#' # The following example purchases a specific device slot offering.
+#' purchase_offering(
+#'   offeringId = "D68B3C05-1BA6-4360-BC69-12345EXAMPLE",
+#'   quantity = 1L
+#' )
+#'
+#' @export
+purchase_offering <- function (offeringId = NULL, quantity = NULL, 
+    offeringPromotionId = NULL) 
+{
+    op <- Operation(name = "PurchaseOffering", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- purchase_offering_input(offeringId = offeringId, 
+        quantity = quantity, offeringPromotionId = offeringPromotionId)
+    output <- purchase_offering_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Explicitly sets the quantity of devices to renew for an offering, starting from the `effectiveDate` of the next period
+#'
+#' Explicitly sets the quantity of devices to renew for an offering, starting from the `effectiveDate` of the next period. The API returns a `NotEligible` error if the user is not permitted to invoke the operation. Please contact <aws-devicefarm-support@amazon.com> if you believe that you should be able to invoke this operation.
+#'
+#' @param offeringId The ID of a request to renew an offering.
+#' @param quantity The quantity requested in an offering renewal.
+#'
+#' @examples
+#' # The following example renews a specific device slot offering.
+#' renew_offering(
+#'   offeringId = "D68B3C05-1BA6-4360-BC69-12345EXAMPLE",
+#'   quantity = 1L
+#' )
+#'
+#' @export
+renew_offering <- function (offeringId = NULL, quantity = NULL) 
+{
+    op <- Operation(name = "RenewOffering", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- renew_offering_input(offeringId = offeringId, quantity = quantity)
+    output <- renew_offering_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Schedules a run
+#'
+#' Schedules a run.
+#'
+#' @param projectArn The ARN of the project for the run to be scheduled.
+#' @param devicePoolArn The ARN of the device pool for the run to be scheduled.
+#' @param test Information about the test for the run to be scheduled.
+#' @param appArn The ARN of the app to schedule a run.
+#' @param name The name for the run to be scheduled.
+#' @param configuration Information about the settings for the run to be scheduled.
+#' @param executionConfiguration Specifies configuration information about a test run, such as the execution timeout (in minutes).
+#'
+#' @examples
+#' # The following example schedules a test run named MyRun.
+#' schedule_run(
+#'   name = "MyRun",
+#'   devicePoolArn = "arn:aws:devicefarm:us-west-2:123456789101:pool:EXAMPLE-GUID-123-456",
+#'   projectArn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
+#'   test = list(
+#'     type = "APPIUM_JAVA_JUNIT",
+#'     testPackageArn = "arn:aws:devicefarm:us-west-2:123456789101:test:EXAMPLE-GUID-123-456"
+#'   )
+#' )
+#'
+#' @export
+schedule_run <- function (projectArn, devicePoolArn, test, appArn = NULL, 
+    name = NULL, configuration = NULL, executionConfiguration = NULL) 
+{
+    op <- Operation(name = "ScheduleRun", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- schedule_run_input(projectArn = projectArn, devicePoolArn = devicePoolArn, 
+        test = test, appArn = appArn, name = name, configuration = configuration, 
+        executionConfiguration = executionConfiguration)
+    output <- schedule_run_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Initiates a stop request for the current job
+#'
+#' Initiates a stop request for the current job. AWS Device Farm will immediately stop the job on the device where tests have not started executing, and you will not be billed for this device. On the device where tests have started executing, Setup Suite and Teardown Suite tests will run to completion before stopping execution on the device. You will be billed for Setup, Teardown, and any tests that were in progress or already completed.
+#'
+#' @param arn Represents the Amazon Resource Name (ARN) of the Device Farm job you wish to stop.
+#'
+#' @examples
+#'
+#' @export
+stop_job <- function (arn) 
+{
+    op <- Operation(name = "StopJob", http_method = "POST", http_path = "/", 
+        paginator = list())
+    input <- stop_job_input(arn = arn)
+    output <- stop_job_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Ends a specified remote access session
+#'
+#' Ends a specified remote access session.
+#'
+#' @param arn The Amazon Resource Name (ARN) of the remote access session you wish to stop.
+#'
+#' @examples
+#'
+#' @export
+stop_remote_access_session <- function (arn) 
+{
+    op <- Operation(name = "StopRemoteAccessSession", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- stop_remote_access_session_input(arn = arn)
+    output <- stop_remote_access_session_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Initiates a stop request for the current test run
+#'
+#' Initiates a stop request for the current test run. AWS Device Farm will immediately stop the run on devices where tests have not started executing, and you will not be billed for these devices. On devices where tests have started executing, Setup Suite and Teardown Suite tests will run to completion before stopping execution on those devices. You will be billed for Setup, Teardown, and any tests that were in progress or already completed.
+#'
+#' @param arn Represents the Amazon Resource Name (ARN) of the Device Farm run you wish to stop.
+#'
+#' @examples
+#' # The following example stops a specific test run.
+#' stop_run(
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456"
+#' )
+#'
+#' @export
+stop_run <- function (arn) 
+{
+    op <- Operation(name = "StopRun", http_method = "POST", http_path = "/", 
+        paginator = list())
+    input <- stop_run_input(arn = arn)
+    output <- stop_run_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates information about an existing private device instance
+#'
+#' Updates information about an existing private device instance.
+#'
+#' @param arn The Amazon Resource Name (ARN) of the device instance.
+#' @param profileArn The Amazon Resource Name (ARN) of the profile that you want to associate with the device instance.
+#' @param labels An array of strings that you want to associate with the device instance.
+#'
+#' @examples
+#'
+#' @export
+update_device_instance <- function (arn, profileArn = NULL, labels = NULL) 
+{
+    op <- Operation(name = "UpdateDeviceInstance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_device_instance_input(arn = arn, profileArn = profileArn, 
+        labels = labels)
+    output <- update_device_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Modifies the name, description, and rules in a device pool given the attributes and the pool ARN
+#'
+#' Modifies the name, description, and rules in a device pool given the attributes and the pool ARN. Rule updates are all-or-nothing, meaning they can only be updated as a whole (or not at all).
+#'
+#' @param arn The Amazon Resourc Name (ARN) of the Device Farm device pool you wish to update.
+#' @param name A string representing the name of the device pool you wish to update.
+#' @param description A description of the device pool you wish to update.
+#' @param rules Represents the rules you wish to modify for the device pool. Updating rules is optional; however, if you choose to update rules for your request, the update will replace the existing rules.
+#'
+#' @examples
+#' # The following example updates the specified device pool with a new name
+#' # and description. It also enables remote access of devices in the device
+#' # pool.
+#' update_device_pool(
+#'   name = "NewName",
+#'   arn = "arn:aws:devicefarm:us-west-2::devicepool:082d10e5-d7d7-48a5-ba5c-12345EXAMPLE",
+#'   description = "NewDescription",
+#'   rules = list(
+#'     list(
+#'       value = "True",
+#'       attribute = "REMOTE_ACCESS_ENABLED",
+#'       operator = "EQUALS"
+#'     )
+#'   )
+#' )
+#'
+#' @export
+update_device_pool <- function (arn, name = NULL, description = NULL, 
+    rules = NULL) 
+{
+    op <- Operation(name = "UpdateDevicePool", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_device_pool_input(arn = arn, name = name, 
+        description = description, rules = rules)
+    output <- update_device_pool_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates information about an existing private device instance profile
+#'
+#' Updates information about an existing private device instance profile.
+#'
+#' @param arn The Amazon Resource Name (ARN) of the instance profile.
+#' @param name The updated name for your instance profile.
+#' @param description The updated description for your instance profile.
+#' @param packageCleanup The updated choice for whether you want to specify package cleanup. The default value is `false` for private devices.
+#' @param excludeAppPackagesFromCleanup An array of strings specifying the list of app packages that should not be cleaned up from the device after a test run is over.
+#' 
+#' The list of packages is only considered if you set `packageCleanup` to `true`.
+#' @param rebootAfterUse The updated choice for whether you want to reboot the device after use. The default value is `true`.
+#'
+#' @examples
+#'
+#' @export
+update_instance_profile <- function (arn, name = NULL, description = NULL, 
+    packageCleanup = NULL, excludeAppPackagesFromCleanup = NULL, 
+    rebootAfterUse = NULL) 
+{
+    op <- Operation(name = "UpdateInstanceProfile", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_instance_profile_input(arn = arn, name = name, 
+        description = description, packageCleanup = packageCleanup, 
+        excludeAppPackagesFromCleanup = excludeAppPackagesFromCleanup, 
+        rebootAfterUse = rebootAfterUse)
+    output <- update_instance_profile_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the network profile with specific settings
+#'
+#' Updates the network profile with specific settings.
+#'
+#' @param arn The Amazon Resource Name (ARN) of the project for which you want to update network profile settings.
+#' @param name The name of the network profile about which you are returning information.
+#' @param description The descriptoin of the network profile about which you are returning information.
+#' @param type The type of network profile you wish to return information about. Valid values are listed below.
+#' @param uplinkBandwidthBits The data throughput rate in bits per second, as an integer from 0 to 104857600.
+#' @param downlinkBandwidthBits The data throughput rate in bits per second, as an integer from 0 to 104857600.
+#' @param uplinkDelayMs Delay time for all packets to destination in milliseconds as an integer from 0 to 2000.
+#' @param downlinkDelayMs Delay time for all packets to destination in milliseconds as an integer from 0 to 2000.
+#' @param uplinkJitterMs Time variation in the delay of received packets in milliseconds as an integer from 0 to 2000.
+#' @param downlinkJitterMs Time variation in the delay of received packets in milliseconds as an integer from 0 to 2000.
+#' @param uplinkLossPercent Proportion of transmitted packets that fail to arrive from 0 to 100 percent.
+#' @param downlinkLossPercent Proportion of received packets that fail to arrive from 0 to 100 percent.
+#'
+#' @examples
+#'
+#' @export
+update_network_profile <- function (arn, name = NULL, description = NULL, 
+    type = NULL, uplinkBandwidthBits = NULL, downlinkBandwidthBits = NULL, 
+    uplinkDelayMs = NULL, downlinkDelayMs = NULL, uplinkJitterMs = NULL, 
+    downlinkJitterMs = NULL, uplinkLossPercent = NULL, downlinkLossPercent = NULL) 
+{
+    op <- Operation(name = "UpdateNetworkProfile", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_network_profile_input(arn = arn, name = name, 
+        description = description, type = type, uplinkBandwidthBits = uplinkBandwidthBits, 
+        downlinkBandwidthBits = downlinkBandwidthBits, uplinkDelayMs = uplinkDelayMs, 
+        downlinkDelayMs = downlinkDelayMs, uplinkJitterMs = uplinkJitterMs, 
+        downlinkJitterMs = downlinkJitterMs, uplinkLossPercent = uplinkLossPercent, 
+        downlinkLossPercent = downlinkLossPercent)
+    output <- update_network_profile_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Modifies the specified project name, given the project ARN and a new name
+#'
+#' Modifies the specified project name, given the project ARN and a new name.
+#'
+#' @param arn The Amazon Resource Name (ARN) of the project whose name you wish to update.
+#' @param name A string representing the new name of the project that you are updating.
+#' @param defaultJobTimeoutMinutes The number of minutes a test run in the project will execute before it times out.
+#'
+#' @examples
+#' # The following example updates the specified project with a new name.
+#' update_project(
+#'   name = "NewName",
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:8f75187d-101e-4625-accc-12345EXAMPLE"
+#' )
+#'
+#' @export
+update_project <- function (arn, name = NULL, defaultJobTimeoutMinutes = NULL) 
+{
+    op <- Operation(name = "UpdateProject", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_project_input(arn = arn, name = name, defaultJobTimeoutMinutes = defaultJobTimeoutMinutes)
+    output <- update_project_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Update an uploaded test specification (test spec)
+#'
+#' Update an uploaded test specification (test spec).
+#'
+#' @param arn The Amazon Resource Name (ARN) of the uploaded test spec.
+#' @param name The upload\'s test spec file name. The name should not contain the \'/\' character. The test spec file name must end with the `.yaml` or `.yml` file extension.
+#' @param contentType The upload\'s content type (for example, \"application/x-yaml\").
+#' @param editContent Set to true if the YAML file has changed and needs to be updated; otherwise, set to false.
+#'
+#' @examples
+#'
+#' @export
+update_upload <- function (arn, name = NULL, contentType = NULL, 
+    editContent = NULL) 
+{
+    op <- Operation(name = "UpdateUpload", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_upload_input(arn = arn, name = name, contentType = contentType, 
+        editContent = editContent)
+    output <- update_upload_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates information about an existing Amazon Virtual Private Cloud (VPC) endpoint configuration
+#'
+#' Updates information about an existing Amazon Virtual Private Cloud (VPC) endpoint configuration.
+#'
+#' @param arn The Amazon Resource Name (ARN) of the VPC endpoint configuration you want to update.
+#' @param vpceConfigurationName The friendly name you give to your VPC endpoint configuration, to manage your configurations more easily.
+#' @param vpceServiceName The name of the VPC endpoint service running inside your AWS account that you want Device Farm to test.
+#' @param serviceDnsName The DNS (domain) name used to connect to your private service in your Amazon VPC. The DNS name must not already be in use on the Internet.
+#' @param vpceConfigurationDescription An optional description, providing more details about your VPC endpoint configuration.
+#'
+#' @examples
+#'
+#' @export
+update_vpce_configuration <- function (arn, vpceConfigurationName = NULL, 
+    vpceServiceName = NULL, serviceDnsName = NULL, vpceConfigurationDescription = NULL) 
+{
+    op <- Operation(name = "UpdateVPCEConfiguration", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_vpce_configuration_input(arn = arn, vpceConfigurationName = vpceConfigurationName, 
+        vpceServiceName = vpceServiceName, serviceDnsName = serviceDnsName, 
+        vpceConfigurationDescription = vpceConfigurationDescription)
+    output <- update_vpce_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

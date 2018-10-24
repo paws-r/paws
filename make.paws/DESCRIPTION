@@ -1,0 +1,69 @@
+Package: make.paws
+Type: Package
+Title: Make Paws AWS SDKs for R
+Version: 0.1.0
+Authors@R: c(
+  	person("David", "Kretch", email = "david.kretch@gmail.com", role = c("aut", "cre")),
+    person("Adam", "Banker", role = "aut")
+  )
+Description: Make AWS SDKs for R
+License: Apache License (>= 2.0)
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    digest,
+    httr,
+    ini,
+    jsonlite,
+    xml2
+Imports:
+    desc,
+    devtools,
+    formatR,
+    glue,
+    jsonlite,
+    rlang,
+    rmarkdown,
+    roxygen2,
+    stringr,
+    testthat,
+    xml2
+RoxygenNote: 6.0.1
+Collate: 
+    'struct.R'
+    'handlers.R'
+    'url.R'
+    'net.R'
+    'credential_providers.R'
+    'credentials.R'
+    'client.R'
+    'config.R'
+    'convert.R'
+    'dateutil.R'
+    'defaults.R'
+    'error.R'
+    'handlers_core.R'
+    'handlers_ec2query.R'
+    'handlers_jsonrpc.R'
+    'handlers_query.R'
+    'handlers_rest.R'
+    'handlers_restjson.R'
+    'idempotency.R'
+    'jsonutil.R'
+    'make_docs.R'
+    'make_function.R'
+    'make_interface.R'
+    'make_names.R'
+    'make_operation.R'
+    'make_package.R'
+    'make_service.R'
+    'make_tests.R'
+    'make_utils.R'
+    'populate.R'
+    'populateutil.R'
+    'type.R'
+    'queryutil.R'
+    'request.R'
+    'signer_v4.R'
+    'time.R'
+    'xmlutil.R'

@@ -1,0 +1,274 @@
+#' Creates a group with a specified name, description, and resource query
+#'
+#' Creates a group with a specified name, description, and resource query.
+#'
+#' @param Name The name of the group, which is the identifier of the group in other operations. A resource group name cannot be updated after it is created. A resource group name can have a maximum of 128 characters, including letters, numbers, hyphens, dots, and underscores. The name cannot start with `AWS` or `aws`; these are reserved. A resource group name must be unique within your account.
+#' @param ResourceQuery The resource query that determines which AWS resources are members of this group.
+#' @param Description The description of the resource group. Descriptions can have a maximum of 511 characters, including letters, numbers, hyphens, underscores, punctuation, and spaces.
+#' @param Tags The tags to add to the group. A tag is a string-to-string map of key-value pairs. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.
+#'
+#' @examples
+#'
+#' @export
+create_group <- function (Name, ResourceQuery, Description = NULL, 
+    Tags = NULL) 
+{
+    op <- Operation(name = "CreateGroup", http_method = "POST", 
+        http_path = "/groups", paginator = list())
+    input <- create_group_input(Name = Name, ResourceQuery = ResourceQuery, 
+        Description = Description, Tags = Tags)
+    output <- create_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a specified resource group
+#'
+#' Deletes a specified resource group. Deleting a resource group does not delete resources that are members of the group; it only deletes the group structure.
+#'
+#' @param GroupName The name of the resource group to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_group <- function (GroupName) 
+{
+    op <- Operation(name = "DeleteGroup", http_method = "DELETE", 
+        http_path = "/groups/{GroupName}", paginator = list())
+    input <- delete_group_input(GroupName = GroupName)
+    output <- delete_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns information about a specified resource group
+#'
+#' Returns information about a specified resource group.
+#'
+#' @param GroupName The name of the resource group.
+#'
+#' @examples
+#'
+#' @export
+get_group <- function (GroupName) 
+{
+    op <- Operation(name = "GetGroup", http_method = "GET", http_path = "/groups/{GroupName}", 
+        paginator = list())
+    input <- get_group_input(GroupName = GroupName)
+    output <- get_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns the resource query associated with the specified resource group
+#'
+#' Returns the resource query associated with the specified resource group.
+#'
+#' @param GroupName The name of the resource group.
+#'
+#' @examples
+#'
+#' @export
+get_group_query <- function (GroupName) 
+{
+    op <- Operation(name = "GetGroupQuery", http_method = "GET", 
+        http_path = "/groups/{GroupName}/query", paginator = list())
+    input <- get_group_query_input(GroupName = GroupName)
+    output <- get_group_query_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of tags that are associated with a resource, specified by an ARN
+#'
+#' Returns a list of tags that are associated with a resource, specified by an ARN.
+#'
+#' @param Arn The ARN of the resource for which you want a list of tags. The resource must exist within the account you are using.
+#'
+#' @examples
+#'
+#' @export
+get_tags <- function (Arn) 
+{
+    op <- Operation(name = "GetTags", http_method = "GET", http_path = "/resources/{Arn}/tags", 
+        paginator = list())
+    input <- get_tags_input(Arn = Arn)
+    output <- get_tags_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of ARNs of resources that are members of a specified resource group
+#'
+#' Returns a list of ARNs of resources that are members of a specified resource group.
+#'
+#' @param GroupName The name of the resource group.
+#' @param Filters Filters, formatted as ResourceFilter objects, that you want to apply to a ListGroupResources operation.
+#' 
+#' -   `resource-type` - Filter resources by their type. Specify up to five resource types in the format AWS::ServiceCode::ResourceType. For example, AWS::EC2::Instance, or AWS::S3::Bucket.
+#' @param MaxResults The maximum number of group member ARNs that are returned in a single call by ListGroupResources, in paginated output. By default, this number is 50.
+#' @param NextToken The NextToken value that is returned in a paginated ListGroupResources request. To get the next page of results, run the call again, add the NextToken parameter, and specify the NextToken value.
+#'
+#' @examples
+#'
+#' @export
+list_group_resources <- function (GroupName, Filters = NULL, 
+    MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "ListGroupResources", http_method = "POST", 
+        http_path = "/groups/{GroupName}/resource-identifiers-list", 
+        paginator = list())
+    input <- list_group_resources_input(GroupName = GroupName, 
+        Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+    output <- list_group_resources_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of existing resource groups in your account
+#'
+#' Returns a list of existing resource groups in your account.
+#'
+#' @param MaxResults The maximum number of resource group results that are returned by ListGroups in paginated output. By default, this number is 50.
+#' @param NextToken The NextToken value that is returned in a paginated `ListGroups` request. To get the next page of results, run the call again, add the NextToken parameter, and specify the NextToken value.
+#'
+#' @examples
+#'
+#' @export
+list_groups <- function (MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "ListGroups", http_method = "POST", 
+        http_path = "/groups-list", paginator = list())
+    input <- list_groups_input(MaxResults = MaxResults, NextToken = NextToken)
+    output <- list_groups_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of AWS resource identifiers that matches a specified query
+#'
+#' Returns a list of AWS resource identifiers that matches a specified query. The query uses the same format as a resource query in a CreateGroup or UpdateGroupQuery operation.
+#'
+#' @param ResourceQuery The search query, using the same formats that are supported for resource group definition.
+#' @param MaxResults The maximum number of group member ARNs returned by `SearchResources` in paginated output. By default, this number is 50.
+#' @param NextToken The NextToken value that is returned in a paginated `SearchResources` request. To get the next page of results, run the call again, add the NextToken parameter, and specify the NextToken value.
+#'
+#' @examples
+#'
+#' @export
+search_resources <- function (ResourceQuery, MaxResults = NULL, 
+    NextToken = NULL) 
+{
+    op <- Operation(name = "SearchResources", http_method = "POST", 
+        http_path = "/resources/search", paginator = list())
+    input <- search_resources_input(ResourceQuery = ResourceQuery, 
+        MaxResults = MaxResults, NextToken = NextToken)
+    output <- search_resources_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Adds specified tags to a resource with the specified ARN
+#'
+#' Adds specified tags to a resource with the specified ARN. Existing tags on a resource are not changed if they are not specified in the request parameters.
+#'
+#' @param Arn The ARN of the resource to which to add tags.
+#' @param Tags The tags to add to the specified resource. A tag is a string-to-string map of key-value pairs. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.
+#'
+#' @examples
+#'
+#' @export
+tag <- function (Arn, Tags) 
+{
+    op <- Operation(name = "Tag", http_method = "PUT", http_path = "/resources/{Arn}/tags", 
+        paginator = list())
+    input <- tag_input(Arn = Arn, Tags = Tags)
+    output <- tag_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes specified tags from a specified resource
+#'
+#' Deletes specified tags from a specified resource.
+#'
+#' @param Arn The ARN of the resource from which to remove tags.
+#' @param Keys The keys of the tags to be removed.
+#'
+#' @examples
+#'
+#' @export
+untag <- function (Arn, Keys) 
+{
+    op <- Operation(name = "Untag", http_method = "PATCH", http_path = "/resources/{Arn}/tags", 
+        paginator = list())
+    input <- untag_input(Arn = Arn, Keys = Keys)
+    output <- untag_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates an existing group with a new or changed description
+#'
+#' Updates an existing group with a new or changed description. You cannot update the name of a resource group.
+#'
+#' @param GroupName The name of the resource group for which you want to update its description.
+#' @param Description The description of the resource group. Descriptions can have a maximum of 511 characters, including letters, numbers, hyphens, underscores, punctuation, and spaces.
+#'
+#' @examples
+#'
+#' @export
+update_group <- function (GroupName, Description = NULL) 
+{
+    op <- Operation(name = "UpdateGroup", http_method = "PUT", 
+        http_path = "/groups/{GroupName}", paginator = list())
+    input <- update_group_input(GroupName = GroupName, Description = Description)
+    output <- update_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the resource query of a group
+#'
+#' Updates the resource query of a group.
+#'
+#' @param GroupName The name of the resource group for which you want to edit the query.
+#' @param ResourceQuery The resource query that determines which AWS resources are members of the resource group.
+#'
+#' @examples
+#'
+#' @export
+update_group_query <- function (GroupName, ResourceQuery) 
+{
+    op <- Operation(name = "UpdateGroupQuery", http_method = "PUT", 
+        http_path = "/groups/{GroupName}/query", paginator = list())
+    input <- update_group_query_input(GroupName = GroupName, 
+        ResourceQuery = ResourceQuery)
+    output <- update_group_query_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

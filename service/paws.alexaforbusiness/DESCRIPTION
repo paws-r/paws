@@ -1,0 +1,66 @@
+Package: paws.alexaforbusiness
+Title: Alexa For Business
+Version: 0.0.0.9000
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut"))
+Description: Alexa for Business makes it easy for you to use
+    Alexa in your organization. Alexa for Business gives you the tools you
+    need for managing Alexa devices, enroll your users, and assign skills,
+    at scale. You can build your own context-aware voice skills using the
+    Alexa Skills Kit and the Alexa for Business API operations. You can
+    make also these available as private skills for your organization.
+    Alexa for Business makes it easy to voice-enable your products and
+    services, providing context-aware voice experiences for your
+    customers.
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.5.1)
+Imports: 
+    digest,
+    httr,
+    jsonlite,
+    xml2,
+    ini
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1
+Collate: 
+    'struct.R'
+    'handlers.R'
+    'url.R'
+    'net.R'
+    'credential_providers.R'
+    'credentials.R'
+    'client.R'
+    'config.R'
+    'convert.R'
+    'dateutil.R'
+    'defaults.R'
+    'error.R'
+    'handlers_core.R'
+    'handlers_ec2query.R'
+    'handlers_jsonrpc.R'
+    'handlers_query.R'
+    'handlers_rest.R'
+    'handlers_restjson.R'
+    'idempotency.R'
+    'jsonutil.R'
+    'paws.alexaforbusiness_interfaces.R'
+    'paws.alexaforbusiness_operations.R'
+    'paws.alexaforbusiness_package.R'
+    'paws.alexaforbusiness_service.R'
+    'populate.R'
+    'populateutil.R'
+    'type.R'
+    'queryutil.R'
+    'request.R'
+    'signer_v4.R'
+    'time.R'
+    'xmlutil.R'

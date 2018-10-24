@@ -1,0 +1,94 @@
+#' Deletes the configuration for the specified name
+#'
+#' Deletes the configuration for the specified name.
+#'
+#' @param Name The identifier for the configuration.
+#'
+#' @examples
+#'
+#' @export
+delete_playback_configuration <- function (Name) 
+{
+    op <- Operation(name = "DeletePlaybackConfiguration", http_method = "DELETE", 
+        http_path = "/playbackConfiguration/{Name}", paginator = list())
+    input <- delete_playback_configuration_input(Name = Name)
+    output <- delete_playback_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns the configuration for the specified name
+#'
+#' Returns the configuration for the specified name.
+#'
+#' @param Name The identifier for the configuration.
+#'
+#' @examples
+#'
+#' @export
+get_playback_configuration <- function (Name) 
+{
+    op <- Operation(name = "GetPlaybackConfiguration", http_method = "GET", 
+        http_path = "/playbackConfiguration/{Name}", paginator = list())
+    input <- get_playback_configuration_input(Name = Name)
+    output <- get_playback_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of the configurations defined in AWS Elemental MediaTailor
+#'
+#' Returns a list of the configurations defined in AWS Elemental MediaTailor. You can specify a max number of configurations to return at a time. The default max is 50. Results are returned in pagefuls. If AWS Elemental MediaTailor has more configurations than the specified max, it provides parameters in the response that you can use to retrieve the next pageful.
+#'
+#' @param MaxResults Maximum number of records to return.
+#' @param NextToken Pagination token returned by the GET list request when results overrun the meximum allowed. Use the token to fetch the next page of results.
+#'
+#' @examples
+#'
+#' @export
+list_playback_configurations <- function (MaxResults = NULL, 
+    NextToken = NULL) 
+{
+    op <- Operation(name = "ListPlaybackConfigurations", http_method = "GET", 
+        http_path = "/playbackConfigurations", paginator = list())
+    input <- list_playback_configurations_input(MaxResults = MaxResults, 
+        NextToken = NextToken)
+    output <- list_playback_configurations_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Adds a new configuration to AWS Elemental MediaTailor
+#'
+#' Adds a new configuration to AWS Elemental MediaTailor.
+#'
+#' @param AdDecisionServerUrl The URL for the ad decision server (ADS). This includes the specification of static parameters and placeholders for dynamic parameters. AWS Elemental MediaTailor substitutes player-specific and session-specific parameters as needed when calling the ADS. Alternately, for testing you can provide a static VAST URL. The maximum length is 25000 characters.
+#' @param CdnConfiguration The configuration for using a content delivery network (CDN), like Amazon CloudFront, for content and ad segment management.
+#' @param Name The identifier for the configuration.
+#' @param SlateAdUrl The URL for a high-quality video asset to transcode and use to fill in time that\'s not used by ads. AWS Elemental MediaTailor shows the slate to fill in gaps in media content. Configuring the slate is optional for non-VPAID configurations. For VPAID, the slate is required because AWS Elemental MediaTailor provides it in the slots that are designated for dynamic ad content. The slate must be a high-quality asset that contains both audio and video.
+#' @param VideoContentSourceUrl The URL prefix for the master playlist for the stream, minus the asset ID. The maximum length is 512 characters.
+#'
+#' @examples
+#'
+#' @export
+put_playback_configuration <- function (AdDecisionServerUrl = NULL, 
+    CdnConfiguration = NULL, Name = NULL, SlateAdUrl = NULL, 
+    VideoContentSourceUrl = NULL) 
+{
+    op <- Operation(name = "PutPlaybackConfiguration", http_method = "PUT", 
+        http_path = "/playbackConfiguration", paginator = list())
+    input <- put_playback_configuration_input(AdDecisionServerUrl = AdDecisionServerUrl, 
+        CdnConfiguration = CdnConfiguration, Name = Name, SlateAdUrl = SlateAdUrl, 
+        VideoContentSourceUrl = VideoContentSourceUrl)
+    output <- put_playback_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

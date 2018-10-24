@@ -1,0 +1,59 @@
+Package: paws.budgets
+Title: AWS Budgets
+Version: 0.0.0.9000
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut"))
+Description: - Cost budgets allow you to say how much you
+    want to spend on a service.
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.5.1)
+Imports: 
+    digest,
+    httr,
+    jsonlite,
+    xml2,
+    ini
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1
+Collate: 
+    'struct.R'
+    'handlers.R'
+    'url.R'
+    'net.R'
+    'credential_providers.R'
+    'credentials.R'
+    'client.R'
+    'config.R'
+    'convert.R'
+    'dateutil.R'
+    'defaults.R'
+    'error.R'
+    'handlers_core.R'
+    'handlers_ec2query.R'
+    'handlers_jsonrpc.R'
+    'handlers_query.R'
+    'handlers_rest.R'
+    'handlers_restjson.R'
+    'idempotency.R'
+    'jsonutil.R'
+    'paws.budgets_interfaces.R'
+    'paws.budgets_operations.R'
+    'paws.budgets_package.R'
+    'paws.budgets_service.R'
+    'populate.R'
+    'populateutil.R'
+    'type.R'
+    'queryutil.R'
+    'request.R'
+    'signer_v4.R'
+    'time.R'
+    'xmlutil.R'

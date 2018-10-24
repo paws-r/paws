@@ -1,0 +1,557 @@
+#' This is documentation for **AWS CloudHSM Classic**
+#'
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM Classic User Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+#' 
+#' **For information about the current version of AWS CloudHSM**, see [AWS CloudHSM](http://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the [AWS CloudHSM API Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+#' 
+#' Adds or overwrites one or more tags for the specified AWS CloudHSM resource.
+#' 
+#' Each tag consists of a key and a value. Tag keys must be unique to each resource.
+#'
+#' @param ResourceArn The Amazon Resource Name (ARN) of the AWS CloudHSM resource to tag.
+#' @param TagList One or more tags.
+#'
+#' @examples
+#'
+#' @export
+add_tags_to_resource <- function (ResourceArn, TagList) 
+{
+    op <- Operation(name = "AddTagsToResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- add_tags_to_resource_input(ResourceArn = ResourceArn, 
+        TagList = TagList)
+    output <- add_tags_to_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' This is documentation for **AWS CloudHSM Classic**
+#'
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM Classic User Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+#' 
+#' **For information about the current version of AWS CloudHSM**, see [AWS CloudHSM](http://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the [AWS CloudHSM API Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+#' 
+#' Creates a high-availability partition group. A high-availability partition group is a group of partitions that spans multiple physical HSMs.
+#'
+#' @param Label The label of the new high-availability partition group.
+#'
+#' @examples
+#'
+#' @export
+create_hapg <- function (Label) 
+{
+    op <- Operation(name = "CreateHapg", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_hapg_input(Label = Label)
+    output <- create_hapg_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' This is documentation for **AWS CloudHSM Classic**
+#'
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM Classic User Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+#' 
+#' **For information about the current version of AWS CloudHSM**, see [AWS CloudHSM](http://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the [AWS CloudHSM API Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+#' 
+#' Creates an uninitialized HSM instance.
+#' 
+#' There is an upfront fee charged for each HSM instance that you create with the `CreateHsm` operation. If you accidentally provision an HSM and want to request a refund, delete the instance using the DeleteHsm operation, go to the [AWS Support Center](https://console.aws.amazon.com/support/home), create a new case, and select **Account and Billing Support**.
+#' 
+#' It can take up to 20 minutes to create and provision an HSM. You can monitor the status of the HSM with the DescribeHsm operation. The HSM is ready to be initialized when the status changes to `RUNNING`.
+#'
+#' @param SubnetId The identifier of the subnet in your VPC in which to place the HSM.
+#' @param SshKey The SSH public key to install on the HSM.
+#' @param IamRoleArn The ARN of an IAM role to enable the AWS CloudHSM service to allocate an ENI on your behalf.
+#' @param SubscriptionType 
+#' @param EniIp The IP address to assign to the HSM\'s ENI.
+#' 
+#' If an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the subnet.
+#' @param ExternalId The external ID from `IamRoleArn`, if present.
+#' @param ClientToken A user-defined token to ensure idempotence. Subsequent calls to this operation with the same token will be ignored.
+#' @param SyslogIp The IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog monitoring server.
+#'
+#' @examples
+#'
+#' @export
+create_hsm <- function (SubnetId, SshKey, IamRoleArn, SubscriptionType, 
+    EniIp = NULL, ExternalId = NULL, ClientToken = NULL, SyslogIp = NULL) 
+{
+    op <- Operation(name = "CreateHsm", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_hsm_input(SubnetId = SubnetId, SshKey = SshKey, 
+        IamRoleArn = IamRoleArn, SubscriptionType = SubscriptionType, 
+        EniIp = EniIp, ExternalId = ExternalId, ClientToken = ClientToken, 
+        SyslogIp = SyslogIp)
+    output <- create_hsm_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' This is documentation for **AWS CloudHSM Classic**
+#'
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM Classic User Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+#' 
+#' **For information about the current version of AWS CloudHSM**, see [AWS CloudHSM](http://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the [AWS CloudHSM API Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+#' 
+#' Creates an HSM client.
+#'
+#' @param Certificate The contents of a Base64-Encoded X.509 v3 certificate to be installed on the HSMs used by this client.
+#' @param Label The label for the client.
+#'
+#' @examples
+#'
+#' @export
+create_luna_client <- function (Certificate, Label = NULL) 
+{
+    op <- Operation(name = "CreateLunaClient", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_luna_client_input(Certificate = Certificate, 
+        Label = Label)
+    output <- create_luna_client_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' This is documentation for **AWS CloudHSM Classic**
+#'
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM Classic User Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+#' 
+#' **For information about the current version of AWS CloudHSM**, see [AWS CloudHSM](http://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the [AWS CloudHSM API Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+#' 
+#' Deletes a high-availability partition group.
+#'
+#' @param HapgArn The ARN of the high-availability partition group to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_hapg <- function (HapgArn) 
+{
+    op <- Operation(name = "DeleteHapg", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_hapg_input(HapgArn = HapgArn)
+    output <- delete_hapg_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' This is documentation for **AWS CloudHSM Classic**
+#'
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM Classic User Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+#' 
+#' **For information about the current version of AWS CloudHSM**, see [AWS CloudHSM](http://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the [AWS CloudHSM API Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+#' 
+#' Deletes an HSM. After completion, this operation cannot be undone and your key material cannot be recovered.
+#'
+#' @param HsmArn The ARN of the HSM to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_hsm <- function (HsmArn) 
+{
+    op <- Operation(name = "DeleteHsm", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_hsm_input(HsmArn = HsmArn)
+    output <- delete_hsm_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' This is documentation for **AWS CloudHSM Classic**
+#'
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM Classic User Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+#' 
+#' **For information about the current version of AWS CloudHSM**, see [AWS CloudHSM](http://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the [AWS CloudHSM API Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+#' 
+#' Deletes a client.
+#'
+#' @param ClientArn The ARN of the client to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_luna_client <- function (ClientArn) 
+{
+    op <- Operation(name = "DeleteLunaClient", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_luna_client_input(ClientArn = ClientArn)
+    output <- delete_luna_client_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' This is documentation for **AWS CloudHSM Classic**
+#'
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM Classic User Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+#' 
+#' **For information about the current version of AWS CloudHSM**, see [AWS CloudHSM](http://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the [AWS CloudHSM API Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+#' 
+#' Retrieves information about a high-availability partition group.
+#'
+#' @param HapgArn The ARN of the high-availability partition group to describe.
+#'
+#' @examples
+#'
+#' @export
+describe_hapg <- function (HapgArn) 
+{
+    op <- Operation(name = "DescribeHapg", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_hapg_input(HapgArn = HapgArn)
+    output <- describe_hapg_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' This is documentation for **AWS CloudHSM Classic**
+#'
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM Classic User Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+#' 
+#' **For information about the current version of AWS CloudHSM**, see [AWS CloudHSM](http://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the [AWS CloudHSM API Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+#' 
+#' Retrieves information about an HSM. You can identify the HSM by its ARN or its serial number.
+#'
+#' @param HsmArn The ARN of the HSM. Either the `HsmArn` or the `SerialNumber` parameter must be specified.
+#' @param HsmSerialNumber The serial number of the HSM. Either the `HsmArn` or the `HsmSerialNumber` parameter must be specified.
+#'
+#' @examples
+#'
+#' @export
+describe_hsm <- function (HsmArn = NULL, HsmSerialNumber = NULL) 
+{
+    op <- Operation(name = "DescribeHsm", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_hsm_input(HsmArn = HsmArn, HsmSerialNumber = HsmSerialNumber)
+    output <- describe_hsm_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' This is documentation for **AWS CloudHSM Classic**
+#'
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM Classic User Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+#' 
+#' **For information about the current version of AWS CloudHSM**, see [AWS CloudHSM](http://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the [AWS CloudHSM API Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+#' 
+#' Retrieves information about an HSM client.
+#'
+#' @param ClientArn The ARN of the client.
+#' @param CertificateFingerprint The certificate fingerprint.
+#'
+#' @examples
+#'
+#' @export
+describe_luna_client <- function (ClientArn = NULL, CertificateFingerprint = NULL) 
+{
+    op <- Operation(name = "DescribeLunaClient", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_luna_client_input(ClientArn = ClientArn, 
+        CertificateFingerprint = CertificateFingerprint)
+    output <- describe_luna_client_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' This is documentation for **AWS CloudHSM Classic**
+#'
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM Classic User Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+#' 
+#' **For information about the current version of AWS CloudHSM**, see [AWS CloudHSM](http://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the [AWS CloudHSM API Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+#' 
+#' Gets the configuration files necessary to connect to all high availability partition groups the client is associated with.
+#'
+#' @param ClientArn The ARN of the client.
+#' @param ClientVersion The client version.
+#' @param HapgList A list of ARNs that identify the high-availability partition groups that are associated with the client.
+#'
+#' @examples
+#'
+#' @export
+get_config <- function (ClientArn, ClientVersion, HapgList) 
+{
+    op <- Operation(name = "GetConfig", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_config_input(ClientArn = ClientArn, ClientVersion = ClientVersion, 
+        HapgList = HapgList)
+    output <- get_config_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' This is documentation for **AWS CloudHSM Classic**
+#'
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM Classic User Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+#' 
+#' **For information about the current version of AWS CloudHSM**, see [AWS CloudHSM](http://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the [AWS CloudHSM API Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+#' 
+#' Lists the Availability Zones that have available AWS CloudHSM capacity.
+#'
+#' @examples
+#'
+#' @export
+list_available_zones <- function () 
+{
+    op <- Operation(name = "ListAvailableZones", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_available_zones_input()
+    output <- list_available_zones_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' This is documentation for **AWS CloudHSM Classic**
+#'
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM Classic User Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+#' 
+#' **For information about the current version of AWS CloudHSM**, see [AWS CloudHSM](http://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the [AWS CloudHSM API Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+#' 
+#' Lists the high-availability partition groups for the account.
+#' 
+#' This operation supports pagination with the use of the `NextToken` member. If more results are available, the `NextToken` member of the response contains a token that you pass in the next call to `ListHapgs` to retrieve the next set of items.
+#'
+#' @param NextToken The `NextToken` value from a previous call to `ListHapgs`. Pass null if this is the first call.
+#'
+#' @examples
+#'
+#' @export
+list_hapgs <- function (NextToken = NULL) 
+{
+    op <- Operation(name = "ListHapgs", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_hapgs_input(NextToken = NextToken)
+    output <- list_hapgs_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' This is documentation for **AWS CloudHSM Classic**
+#'
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM Classic User Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+#' 
+#' **For information about the current version of AWS CloudHSM**, see [AWS CloudHSM](http://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the [AWS CloudHSM API Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+#' 
+#' Retrieves the identifiers of all of the HSMs provisioned for the current customer.
+#' 
+#' This operation supports pagination with the use of the `NextToken` member. If more results are available, the `NextToken` member of the response contains a token that you pass in the next call to `ListHsms` to retrieve the next set of items.
+#'
+#' @param NextToken The `NextToken` value from a previous call to `ListHsms`. Pass null if this is the first call.
+#'
+#' @examples
+#'
+#' @export
+list_hsms <- function (NextToken = NULL) 
+{
+    op <- Operation(name = "ListHsms", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_hsms_input(NextToken = NextToken)
+    output <- list_hsms_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' This is documentation for **AWS CloudHSM Classic**
+#'
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM Classic User Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+#' 
+#' **For information about the current version of AWS CloudHSM**, see [AWS CloudHSM](http://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the [AWS CloudHSM API Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+#' 
+#' Lists all of the clients.
+#' 
+#' This operation supports pagination with the use of the `NextToken` member. If more results are available, the `NextToken` member of the response contains a token that you pass in the next call to `ListLunaClients` to retrieve the next set of items.
+#'
+#' @param NextToken The `NextToken` value from a previous call to `ListLunaClients`. Pass null if this is the first call.
+#'
+#' @examples
+#'
+#' @export
+list_luna_clients <- function (NextToken = NULL) 
+{
+    op <- Operation(name = "ListLunaClients", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_luna_clients_input(NextToken = NextToken)
+    output <- list_luna_clients_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' This is documentation for **AWS CloudHSM Classic**
+#'
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM Classic User Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+#' 
+#' **For information about the current version of AWS CloudHSM**, see [AWS CloudHSM](http://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the [AWS CloudHSM API Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+#' 
+#' Returns a list of all tags for the specified AWS CloudHSM resource.
+#'
+#' @param ResourceArn The Amazon Resource Name (ARN) of the AWS CloudHSM resource.
+#'
+#' @examples
+#'
+#' @export
+list_tags_for_resource <- function (ResourceArn) 
+{
+    op <- Operation(name = "ListTagsForResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_tags_for_resource_input(ResourceArn = ResourceArn)
+    output <- list_tags_for_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' This is documentation for **AWS CloudHSM Classic**
+#'
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM Classic User Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+#' 
+#' **For information about the current version of AWS CloudHSM**, see [AWS CloudHSM](http://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the [AWS CloudHSM API Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+#' 
+#' Modifies an existing high-availability partition group.
+#'
+#' @param HapgArn The ARN of the high-availability partition group to modify.
+#' @param Label The new label for the high-availability partition group.
+#' @param PartitionSerialList The list of partition serial numbers to make members of the high-availability partition group.
+#'
+#' @examples
+#'
+#' @export
+modify_hapg <- function (HapgArn, Label = NULL, PartitionSerialList = NULL) 
+{
+    op <- Operation(name = "ModifyHapg", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- modify_hapg_input(HapgArn = HapgArn, Label = Label, 
+        PartitionSerialList = PartitionSerialList)
+    output <- modify_hapg_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' This is documentation for **AWS CloudHSM Classic**
+#'
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM Classic User Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+#' 
+#' **For information about the current version of AWS CloudHSM**, see [AWS CloudHSM](http://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the [AWS CloudHSM API Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+#' 
+#' Modifies an HSM.
+#' 
+#' This operation can result in the HSM being offline for up to 15 minutes while the AWS CloudHSM service is reconfigured. If you are modifying a production HSM, you should ensure that your AWS CloudHSM service is configured for high availability, and consider executing this operation during a maintenance window.
+#'
+#' @param HsmArn The ARN of the HSM to modify.
+#' @param SubnetId The new identifier of the subnet that the HSM is in. The new subnet must be in the same Availability Zone as the current subnet.
+#' @param EniIp The new IP address for the elastic network interface (ENI) attached to the HSM.
+#' 
+#' If the HSM is moved to a different subnet, and an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the new subnet.
+#' @param IamRoleArn The new IAM role ARN.
+#' @param ExternalId The new external ID.
+#' @param SyslogIp The new IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog monitoring server.
+#'
+#' @examples
+#'
+#' @export
+modify_hsm <- function (HsmArn, SubnetId = NULL, EniIp = NULL, 
+    IamRoleArn = NULL, ExternalId = NULL, SyslogIp = NULL) 
+{
+    op <- Operation(name = "ModifyHsm", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- modify_hsm_input(HsmArn = HsmArn, SubnetId = SubnetId, 
+        EniIp = EniIp, IamRoleArn = IamRoleArn, ExternalId = ExternalId, 
+        SyslogIp = SyslogIp)
+    output <- modify_hsm_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' This is documentation for **AWS CloudHSM Classic**
+#'
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM Classic User Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+#' 
+#' **For information about the current version of AWS CloudHSM**, see [AWS CloudHSM](http://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the [AWS CloudHSM API Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+#' 
+#' Modifies the certificate used by the client.
+#' 
+#' This action can potentially start a workflow to install the new certificate on the client\'s HSMs.
+#'
+#' @param ClientArn The ARN of the client.
+#' @param Certificate The new certificate for the client.
+#'
+#' @examples
+#'
+#' @export
+modify_luna_client <- function (ClientArn, Certificate) 
+{
+    op <- Operation(name = "ModifyLunaClient", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- modify_luna_client_input(ClientArn = ClientArn, 
+        Certificate = Certificate)
+    output <- modify_luna_client_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' This is documentation for **AWS CloudHSM Classic**
+#'
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM Classic User Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+#' 
+#' **For information about the current version of AWS CloudHSM**, see [AWS CloudHSM](http://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the [AWS CloudHSM API Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+#' 
+#' Removes one or more tags from the specified AWS CloudHSM resource.
+#' 
+#' To remove a tag, specify only the tag key to remove (not the value). To overwrite the value for an existing tag, use AddTagsToResource.
+#'
+#' @param ResourceArn The Amazon Resource Name (ARN) of the AWS CloudHSM resource.
+#' @param TagKeyList The tag key or keys to remove.
+#' 
+#' Specify only the tag key to remove (not the value). To overwrite the value for an existing tag, use AddTagsToResource.
+#'
+#' @examples
+#'
+#' @export
+remove_tags_from_resource <- function (ResourceArn, TagKeyList) 
+{
+    op <- Operation(name = "RemoveTagsFromResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- remove_tags_from_resource_input(ResourceArn = ResourceArn, 
+        TagKeyList = TagKeyList)
+    output <- remove_tags_from_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

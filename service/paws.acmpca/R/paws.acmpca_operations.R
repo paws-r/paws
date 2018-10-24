@@ -1,0 +1,474 @@
+#' Creates a private subordinate certificate authority (CA)
+#'
+#' Creates a private subordinate certificate authority (CA). You must specify the CA configuration, the revocation configuration, the CA type, and an optional idempotency token. The CA configuration specifies the name of the algorithm and key size to be used to create the CA private key, the type of signing algorithm that the CA uses to sign, and X.500 subject information. The CRL (certificate revocation list) configuration specifies the CRL expiration period in days (the validity period of the CRL), the Amazon S3 bucket that will contain the CRL, and a CNAME alias for the S3 bucket that is included in certificates issued by the CA. If successful, this operation returns the Amazon Resource Name (ARN) of the CA.
+#'
+#' @param CertificateAuthorityConfiguration Name and bit size of the private key algorithm, the name of the signing algorithm, and X.500 certificate subject information.
+#' @param CertificateAuthorityType The type of the certificate authority. Currently, this must be **SUBORDINATE**.
+#' @param RevocationConfiguration Contains a Boolean value that you can use to enable a certification revocation list (CRL) for the CA, the name of the S3 bucket to which ACM PCA will write the CRL, and an optional CNAME alias that you can use to hide the name of your bucket in the **CRL Distribution Points** extension of your CA certificate. For more information, see the CrlConfiguration structure.
+#' @param IdempotencyToken Alphanumeric string that can be used to distinguish between calls to **CreateCertificateAuthority**. Idempotency tokens time out after five minutes. Therefore, if you call **CreateCertificateAuthority** multiple times with the same idempotency token within a five minute period, ACM PCA recognizes that you are requesting only one certificate. As a result, ACM PCA issues only one. If you change the idempotency token for each call, however, ACM PCA recognizes that you are requesting multiple certificates.
+#'
+#' @examples
+#'
+#' @export
+create_certificate_authority <- function (CertificateAuthorityConfiguration, 
+    CertificateAuthorityType, RevocationConfiguration = NULL, 
+    IdempotencyToken = NULL) 
+{
+    op <- Operation(name = "CreateCertificateAuthority", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_certificate_authority_input(CertificateAuthorityConfiguration = CertificateAuthorityConfiguration, 
+        CertificateAuthorityType = CertificateAuthorityType, 
+        RevocationConfiguration = RevocationConfiguration, IdempotencyToken = IdempotencyToken)
+    output <- create_certificate_authority_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates an audit report that lists every time that the your CA private key is used
+#'
+#' Creates an audit report that lists every time that the your CA private key is used. The report is saved in the Amazon S3 bucket that you specify on input. The IssueCertificate and RevokeCertificate operations use the private key. You can generate a new report every 30 minutes.
+#'
+#' @param CertificateAuthorityArn Amazon Resource Name (ARN) of the CA to be audited. This is of the form:
+#' 
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
+#' @param S3BucketName Name of the S3 bucket that will contain the audit report.
+#' @param AuditReportResponseFormat Format in which to create the report. This can be either **JSON** or **CSV**.
+#'
+#' @examples
+#'
+#' @export
+create_certificate_authority_audit_report <- function (CertificateAuthorityArn, 
+    S3BucketName, AuditReportResponseFormat) 
+{
+    op <- Operation(name = "CreateCertificateAuthorityAuditReport", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- create_certificate_authority_audit_report_input(CertificateAuthorityArn = CertificateAuthorityArn, 
+        S3BucketName = S3BucketName, AuditReportResponseFormat = AuditReportResponseFormat)
+    output <- create_certificate_authority_audit_report_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a private certificate authority (CA)
+#'
+#' Deletes a private certificate authority (CA). You must provide the ARN (Amazon Resource Name) of the private CA that you want to delete. You can find the ARN by calling the ListCertificateAuthorities operation. Before you can delete a CA, you must disable it. Call the UpdateCertificateAuthority operation and set the **CertificateAuthorityStatus** parameter to `DISABLED`.
+#' 
+#' Additionally, you can delete a CA if you are waiting for it to be created (the **Status** field of the CertificateAuthority is `CREATING`). You can also delete it if the CA has been created but you haven\'t yet imported the signed certificate (the **Status** is `PENDING_CERTIFICATE`) into ACM PCA.
+#' 
+#' If the CA is in one of the aforementioned states and you call DeleteCertificateAuthority, the CA\'s status changes to `DELETED`. However, the CA won\'t be permentantly deleted until the restoration period has passed. By default, if you do not set the `PermanentDeletionTimeInDays` parameter, the CA remains restorable for 30 days. You can set the parameter from 7 to 30 days. The DescribeCertificateAuthority operation returns the time remaining in the restoration window of a Private CA in the `DELETED` state. To restore an eligable CA, call the RestoreCertificateAuthority operation.
+#'
+#' @param CertificateAuthorityArn The Amazon Resource Name (ARN) that was returned when you called CreateCertificateAuthority. This must have the following form:
+#' 
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
+#' @param PermanentDeletionTimeInDays The number of days to make a CA restorable after it has been deleted. This can be anywhere from 7 to 30 days, with 30 being the default.
+#'
+#' @examples
+#'
+#' @export
+delete_certificate_authority <- function (CertificateAuthorityArn, 
+    PermanentDeletionTimeInDays = NULL) 
+{
+    op <- Operation(name = "DeleteCertificateAuthority", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn, 
+        PermanentDeletionTimeInDays = PermanentDeletionTimeInDays)
+    output <- delete_certificate_authority_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists information about your private certificate authority (CA)
+#'
+#' Lists information about your private certificate authority (CA). You specify the private CA on input by its ARN (Amazon Resource Name). The output contains the status of your CA. This can be any of the following:
+#' 
+#' -   `CREATING` - ACM PCA is creating your private certificate authority.
+#' 
+#' -   `PENDING_CERTIFICATE` - The certificate is pending. You must use your on-premises root or subordinate CA to sign your private CA CSR and then import it into PCA.
+#' 
+#' -   `ACTIVE` - Your private CA is active.
+#' 
+#' -   `DISABLED` - Your private CA has been disabled.
+#' 
+#' -   `EXPIRED` - Your private CA certificate has expired.
+#' 
+#' -   `FAILED` - Your private CA has failed. Your CA can fail because of problems such a network outage or backend AWS failure or other errors. A failed CA can never return to the pending state. You must create a new CA.
+#' 
+#' -   `DELETED` - Your private CA is within the restoration period, after which it will be permanently deleted. The length of time remaining in the CA\'s restoration period will also be included in this operation\'s output.
+#'
+#' @param CertificateAuthorityArn The Amazon Resource Name (ARN) that was returned when you called CreateCertificateAuthority. This must be of the form:
+#' 
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
+#'
+#' @examples
+#'
+#' @export
+describe_certificate_authority <- function (CertificateAuthorityArn) 
+{
+    op <- Operation(name = "DescribeCertificateAuthority", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn)
+    output <- describe_certificate_authority_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists information about a specific audit report created by calling the CreateCertificateAuthorityAuditReport operation
+#'
+#' Lists information about a specific audit report created by calling the CreateCertificateAuthorityAuditReport operation. Audit information is created every time the certificate authority (CA) private key is used. The private key is used when you call the IssueCertificate operation or the RevokeCertificate operation.
+#'
+#' @param CertificateAuthorityArn The Amazon Resource Name (ARN) of the private CA. This must be of the form:
+#' 
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
+#' @param AuditReportId The report ID returned by calling the CreateCertificateAuthorityAuditReport operation.
+#'
+#' @examples
+#'
+#' @export
+describe_certificate_authority_audit_report <- function (CertificateAuthorityArn, 
+    AuditReportId) 
+{
+    op <- Operation(name = "DescribeCertificateAuthorityAuditReport", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_certificate_authority_audit_report_input(CertificateAuthorityArn = CertificateAuthorityArn, 
+        AuditReportId = AuditReportId)
+    output <- describe_certificate_authority_audit_report_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a certificate from your private CA
+#'
+#' Retrieves a certificate from your private CA. The ARN of the certificate is returned when you call the IssueCertificate operation. You must specify both the ARN of your private CA and the ARN of the issued certificate when calling the **GetCertificate** operation. You can retrieve the certificate if it is in the **ISSUED** state. You can call the CreateCertificateAuthorityAuditReport operation to create a report that contains information about all of the certificates issued and revoked by your private CA.
+#'
+#' @param CertificateAuthorityArn The Amazon Resource Name (ARN) that was returned when you called CreateCertificateAuthority. This must be of the form:
+#' 
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
+#' @param CertificateArn The ARN of the issued certificate. The ARN contains the certificate serial number and must be in the following form:
+#' 
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012/certificate/286535153982981100925020015808220737245 region:account:certificate-authority/12345678-1234-1234-1234-123456789012/certificate/286535153982981100925020015808220737245 `
+#'
+#' @examples
+#'
+#' @export
+get_certificate <- function (CertificateAuthorityArn, CertificateArn) 
+{
+    op <- Operation(name = "GetCertificate", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_certificate_input(CertificateAuthorityArn = CertificateAuthorityArn, 
+        CertificateArn = CertificateArn)
+    output <- get_certificate_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the certificate and certificate chain for your private certificate authority (CA)
+#'
+#' Retrieves the certificate and certificate chain for your private certificate authority (CA). Both the certificate and the chain are base64 PEM-encoded. The chain does not include the CA certificate. Each certificate in the chain signs the one before it.
+#'
+#' @param CertificateAuthorityArn The Amazon Resource Name (ARN) of your private CA. This is of the form:
+#' 
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
+#'
+#' @examples
+#'
+#' @export
+get_certificate_authority_certificate <- function (CertificateAuthorityArn) 
+{
+    op <- Operation(name = "GetCertificateAuthorityCertificate", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- get_certificate_authority_certificate_input(CertificateAuthorityArn = CertificateAuthorityArn)
+    output <- get_certificate_authority_certificate_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the certificate signing request (CSR) for your private certificate authority (CA)
+#'
+#' Retrieves the certificate signing request (CSR) for your private certificate authority (CA). The CSR is created when you call the CreateCertificateAuthority operation. Take the CSR to your on-premises X.509 infrastructure and sign it by using your root or a subordinate CA. Then import the signed certificate back into ACM PCA by calling the ImportCertificateAuthorityCertificate operation. The CSR is returned as a base64 PEM-encoded string.
+#'
+#' @param CertificateAuthorityArn The Amazon Resource Name (ARN) that was returned when you called the CreateCertificateAuthority operation. This must be of the form:
+#' 
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
+#'
+#' @examples
+#'
+#' @export
+get_certificate_authority_csr <- function (CertificateAuthorityArn) 
+{
+    op <- Operation(name = "GetCertificateAuthorityCsr", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_certificate_authority_csr_input(CertificateAuthorityArn = CertificateAuthorityArn)
+    output <- get_certificate_authority_csr_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Imports your signed private CA certificate into ACM PCA
+#'
+#' Imports your signed private CA certificate into ACM PCA. Before you can call this operation, you must create the private certificate authority by calling the CreateCertificateAuthority operation. You must then generate a certificate signing request (CSR) by calling the GetCertificateAuthorityCsr operation. Take the CSR to your on-premises CA and use the root certificate or a subordinate certificate to sign it. Create a certificate chain and copy the signed certificate and the certificate chain to your working directory.
+#' 
+#' Your certificate chain must not include the private CA certificate that you are importing.
+#' 
+#' Your on-premises CA certificate must be the last certificate in your chain. The subordinate certificate, if any, that your root CA signed must be next to last. The subordinate certificate signed by the preceding subordinate CA must come next, and so on until your chain is built.
+#' 
+#' The chain must be PEM-encoded.
+#'
+#' @param CertificateAuthorityArn The Amazon Resource Name (ARN) that was returned when you called CreateCertificateAuthority. This must be of the form:
+#' 
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
+#' @param Certificate The PEM-encoded certificate for your private CA. This must be signed by using your on-premises CA.
+#' @param CertificateChain A PEM-encoded file that contains all of your certificates, other than the certificate you\'re importing, chaining up to your root CA. Your on-premises root certificate is the last in the chain, and each certificate in the chain signs the one preceding.
+#'
+#' @examples
+#'
+#' @export
+import_certificate_authority_certificate <- function (CertificateAuthorityArn, 
+    Certificate, CertificateChain) 
+{
+    op <- Operation(name = "ImportCertificateAuthorityCertificate", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- import_certificate_authority_certificate_input(CertificateAuthorityArn = CertificateAuthorityArn, 
+        Certificate = Certificate, CertificateChain = CertificateChain)
+    output <- import_certificate_authority_certificate_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Uses your private certificate authority (CA) to issue a client certificate
+#'
+#' Uses your private certificate authority (CA) to issue a client certificate. This operation returns the Amazon Resource Name (ARN) of the certificate. You can retrieve the certificate by calling the GetCertificate operation and specifying the ARN.
+#' 
+#' You cannot use the ACM **ListCertificateAuthorities** operation to retrieve the ARNs of the certificates that you issue by using ACM PCA.
+#'
+#' @param CertificateAuthorityArn The Amazon Resource Name (ARN) that was returned when you called CreateCertificateAuthority. This must be of the form:
+#' 
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
+#' @param Csr The certificate signing request (CSR) for the certificate you want to issue. You can use the following OpenSSL command to create the CSR and a 2048 bit RSA private key.
+#' 
+#' `openssl req -new -newkey rsa:2048 -days 365 -keyout private/test_cert_priv_key.pem -out csr/test_cert_.csr`
+#' 
+#' If you have a configuration file, you can use the following OpenSSL command. The `usr_cert` block in the configuration file contains your X509 version 3 extensions.
+#' 
+#' `openssl req -new -config openssl_rsa.cnf -extensions usr_cert -newkey rsa:2048 -days -365 -keyout private/test_cert_priv_key.pem -out csr/test_cert_.csr`
+#' @param SigningAlgorithm The name of the algorithm that will be used to sign the certificate to be issued.
+#' @param Validity The type of the validity period.
+#' @param IdempotencyToken Custom string that can be used to distinguish between calls to the **IssueCertificate** operation. Idempotency tokens time out after one hour. Therefore, if you call **IssueCertificate** multiple times with the same idempotency token within 5 minutes, ACM PCA recognizes that you are requesting only one certificate and will issue only one. If you change the idempotency token for each call, PCA recognizes that you are requesting multiple certificates.
+#'
+#' @examples
+#'
+#' @export
+issue_certificate <- function (CertificateAuthorityArn, Csr, 
+    SigningAlgorithm, Validity, IdempotencyToken = NULL) 
+{
+    op <- Operation(name = "IssueCertificate", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- issue_certificate_input(CertificateAuthorityArn = CertificateAuthorityArn, 
+        Csr = Csr, SigningAlgorithm = SigningAlgorithm, Validity = Validity, 
+        IdempotencyToken = IdempotencyToken)
+    output <- issue_certificate_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the private certificate authorities that you created by using the CreateCertificateAuthority operation
+#'
+#' Lists the private certificate authorities that you created by using the CreateCertificateAuthority operation.
+#'
+#' @param NextToken Use this parameter when paginating results in a subsequent request after you receive a response with truncated results. Set it to the value of the `NextToken` parameter from the response you just received.
+#' @param MaxResults Use this parameter when paginating results to specify the maximum number of items to return in the response on each page. If additional items exist beyond the number you specify, the `NextToken` element is sent in the response. Use this `NextToken` value in a subsequent request to retrieve additional items.
+#'
+#' @examples
+#'
+#' @export
+list_certificate_authorities <- function (NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "ListCertificateAuthorities", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_certificate_authorities_input(NextToken = NextToken, 
+        MaxResults = MaxResults)
+    output <- list_certificate_authorities_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the tags, if any, that are associated with your private CA
+#'
+#' Lists the tags, if any, that are associated with your private CA. Tags are labels that you can use to identify and organize your CAs. Each tag consists of a key and an optional value. Call the TagCertificateAuthority operation to add one or more tags to your CA. Call the UntagCertificateAuthority operation to remove tags.
+#'
+#' @param CertificateAuthorityArn The Amazon Resource Name (ARN) that was returned when you called the CreateCertificateAuthority operation. This must be of the form:
+#' 
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
+#' @param NextToken Use this parameter when paginating results in a subsequent request after you receive a response with truncated results. Set it to the value of **NextToken** from the response you just received.
+#' @param MaxResults Use this parameter when paginating results to specify the maximum number of items to return in the response. If additional items exist beyond the number you specify, the **NextToken** element is sent in the response. Use this **NextToken** value in a subsequent request to retrieve additional items.
+#'
+#' @examples
+#'
+#' @export
+list_tags <- function (CertificateAuthorityArn, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- Operation(name = "ListTags", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_tags_input(CertificateAuthorityArn = CertificateAuthorityArn, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_tags_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Restores a certificate authority (CA) that is in the `DELETED` state
+#'
+#' Restores a certificate authority (CA) that is in the `DELETED` state. You can restore a CA during the period that you defined in the **PermanentDeletionTimeInDays** parameter of the DeleteCertificateAuthority operation. Currently, you can specify 7 to 30 days. If you did not specify a **PermanentDeletionTimeInDays** value, by default you can restore the CA at any time in a 30 day period. You can check the time remaining in the restoration period of a private CA in the `DELETED` state by calling the DescribeCertificateAuthority or ListCertificateAuthorities operations. The status of a restored CA is set to its pre-deletion status when the **RestoreCertificateAuthority** operation returns. To change its status to `ACTIVE`, call the UpdateCertificateAuthority operation. If the private CA was in the `PENDING_CERTIFICATE` state at deletion, you must use the ImportCertificateAuthorityCertificate operation to import a certificate authority into the private CA before it can be activated. You cannot restore a CA after the restoration period has ended.
+#'
+#' @param CertificateAuthorityArn The Amazon Resource Name (ARN) that was returned when you called the CreateCertificateAuthority operation. This must be of the form:
+#' 
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
+#'
+#' @examples
+#'
+#' @export
+restore_certificate_authority <- function (CertificateAuthorityArn) 
+{
+    op <- Operation(name = "RestoreCertificateAuthority", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- restore_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn)
+    output <- restore_certificate_authority_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Revokes a certificate that you issued by calling the IssueCertificate operation
+#'
+#' Revokes a certificate that you issued by calling the IssueCertificate operation. If you enable a certificate revocation list (CRL) when you create or update your private CA, information about the revoked certificates will be included in the CRL. ACM PCA writes the CRL to an S3 bucket that you specify. For more information about revocation, see the CrlConfiguration structure. ACM PCA also writes revocation information to the audit report. For more information, see CreateCertificateAuthorityAuditReport.
+#'
+#' @param CertificateAuthorityArn Amazon Resource Name (ARN) of the private CA that issued the certificate to be revoked. This must be of the form:
+#' 
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
+#' @param CertificateSerial Serial number of the certificate to be revoked. This must be in hexadecimal format. You can retrieve the serial number by calling GetCertificate with the Amazon Resource Name (ARN) of the certificate you want and the ARN of your private CA. The **GetCertificate** operation retrieves the certificate in the PEM format. You can use the following OpenSSL command to list the certificate in text format and copy the hexadecimal serial number.
+#' 
+#' `openssl x509 -in file_path -text -nooutfile_path -text -noout`
+#' 
+#' You can also copy the serial number from the console or use the [DescribeCertificate](https://docs.aws.amazon.com/acm/latest/APIReference/API_DescribeCertificate.html) operation in the *AWS Certificate Manager API Reference*.
+#' @param RevocationReason Specifies why you revoked the certificate.
+#'
+#' @examples
+#'
+#' @export
+revoke_certificate <- function (CertificateAuthorityArn, CertificateSerial, 
+    RevocationReason) 
+{
+    op <- Operation(name = "RevokeCertificate", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- revoke_certificate_input(CertificateAuthorityArn = CertificateAuthorityArn, 
+        CertificateSerial = CertificateSerial, RevocationReason = RevocationReason)
+    output <- revoke_certificate_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Adds one or more tags to your private CA
+#'
+#' Adds one or more tags to your private CA. Tags are labels that you can use to identify and organize your AWS resources. Each tag consists of a key and an optional value. You specify the private CA on input by its Amazon Resource Name (ARN). You specify the tag by using a key-value pair. You can apply a tag to just one private CA if you want to identify a specific characteristic of that CA, or you can apply the same tag to multiple private CAs if you want to filter for a common relationship among those CAs. To remove one or more tags, use the UntagCertificateAuthority operation. Call the ListTags operation to see what tags are associated with your CA.
+#'
+#' @param CertificateAuthorityArn The Amazon Resource Name (ARN) that was returned when you called CreateCertificateAuthority. This must be of the form:
+#' 
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
+#' @param Tags List of tags to be associated with the CA.
+#'
+#' @examples
+#'
+#' @export
+tag_certificate_authority <- function (CertificateAuthorityArn, 
+    Tags) 
+{
+    op <- Operation(name = "TagCertificateAuthority", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- tag_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn, 
+        Tags = Tags)
+    output <- tag_certificate_authority_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Remove one or more tags from your private CA
+#'
+#' Remove one or more tags from your private CA. A tag consists of a key-value pair. If you do not specify the value portion of the tag when calling this operation, the tag will be removed regardless of value. If you specify a value, the tag is removed only if it is associated with the specified value. To add tags to a private CA, use the TagCertificateAuthority. Call the ListTags operation to see what tags are associated with your CA.
+#'
+#' @param CertificateAuthorityArn The Amazon Resource Name (ARN) that was returned when you called CreateCertificateAuthority. This must be of the form:
+#' 
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
+#' @param Tags List of tags to be removed from the CA.
+#'
+#' @examples
+#'
+#' @export
+untag_certificate_authority <- function (CertificateAuthorityArn, 
+    Tags) 
+{
+    op <- Operation(name = "UntagCertificateAuthority", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- untag_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn, 
+        Tags = Tags)
+    output <- untag_certificate_authority_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the status or configuration of a private certificate authority (CA)
+#'
+#' Updates the status or configuration of a private certificate authority (CA). Your private CA must be in the `ACTIVE` or `DISABLED` state before you can update it. You can disable a private CA that is in the `ACTIVE` state or make a CA that is in the `DISABLED` state active again.
+#'
+#' @param CertificateAuthorityArn Amazon Resource Name (ARN) of the private CA that issued the certificate to be revoked. This must be of the form:
+#' 
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
+#' @param RevocationConfiguration Revocation information for your private CA.
+#' @param Status Status of your private CA.
+#'
+#' @examples
+#'
+#' @export
+update_certificate_authority <- function (CertificateAuthorityArn, 
+    RevocationConfiguration = NULL, Status = NULL) 
+{
+    op <- Operation(name = "UpdateCertificateAuthority", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn, 
+        RevocationConfiguration = RevocationConfiguration, Status = Status)
+    output <- update_certificate_authority_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

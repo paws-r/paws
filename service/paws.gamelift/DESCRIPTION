@@ -1,0 +1,64 @@
+Package: paws.gamelift
+Title: Amazon GameLift
+Version: 0.0.0.9000
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut"))
+Description: Amazon GameLift is a managed service for developers
+    who need a scalable, dedicated server solution for their multiplayer
+    games. Use Amazon GameLift for these tasks: (1) set up computing
+    resources and deploy your game servers, (2) run game sessions and get
+    players into games, (3) automatically scale your resources to meet
+    player demand and manage costs, and (4) track in-depth metrics on game
+    server performance and player usage.
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.5.1)
+Imports: 
+    digest,
+    httr,
+    jsonlite,
+    xml2,
+    ini
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1
+Collate: 
+    'struct.R'
+    'handlers.R'
+    'url.R'
+    'net.R'
+    'credential_providers.R'
+    'credentials.R'
+    'client.R'
+    'config.R'
+    'convert.R'
+    'dateutil.R'
+    'defaults.R'
+    'error.R'
+    'handlers_core.R'
+    'handlers_ec2query.R'
+    'handlers_jsonrpc.R'
+    'handlers_query.R'
+    'handlers_rest.R'
+    'handlers_restjson.R'
+    'idempotency.R'
+    'jsonutil.R'
+    'paws.gamelift_interfaces.R'
+    'paws.gamelift_operations.R'
+    'paws.gamelift_package.R'
+    'paws.gamelift_service.R'
+    'populate.R'
+    'populateutil.R'
+    'type.R'
+    'queryutil.R'
+    'request.R'
+    'signer_v4.R'
+    'time.R'
+    'xmlutil.R'

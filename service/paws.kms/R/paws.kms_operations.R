@@ -1,0 +1,1609 @@
+#' Cancels the deletion of a customer master key (CMK)
+#'
+#' Cancels the deletion of a customer master key (CMK). When this operation is successful, the CMK is set to the `Disabled` state. To enable a CMK, use EnableKey. You cannot perform this operation on a CMK in a different AWS account.
+#' 
+#' For more information about scheduling and canceling deletion of a CMK, see [Deleting Customer Master Keys](http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html) in the *AWS Key Management Service Developer Guide*.
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @param KeyId The unique identifier for the customer master key (CMK) for which to cancel deletion.
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#'
+#' @examples
+#' # The following example cancels deletion of the specified CMK.
+#' cancel_key_deletion(
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' )
+#'
+#' @export
+cancel_key_deletion <- function (KeyId) 
+{
+    op <- Operation(name = "CancelKeyDeletion", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- cancel_key_deletion_input(KeyId = KeyId)
+    output <- cancel_key_deletion_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a display name for a customer-managed customer master key (CMK)
+#'
+#' Creates a display name for a customer-managed customer master key (CMK). You can use an alias to identify a CMK in selected operations, such as Encrypt and GenerateDataKey.
+#' 
+#' Each CMK can have multiple aliases, but each alias points to only one CMK. The alias name must be unique in the AWS account and region. To simplify code that runs in multiple regions, use the same alias name, but point it to a different CMK in each region.
+#' 
+#' Because an alias is not a property of a CMK, you can delete and change the aliases of a CMK without affecting the CMK. Also, aliases do not appear in the response from the DescribeKey operation. To get the aliases of all CMKs, use the ListAliases operation.
+#' 
+#' The alias name can contain only alphanumeric characters, forward slashes (/), underscores (\_), and dashes (-). Alias names cannot begin with **aws/**. That alias name prefix is reserved for AWS managed CMKs.
+#' 
+#' The alias and the CMK it is mapped to must be in the same AWS account and the same region. You cannot perform this operation on an alias in a different AWS account.
+#' 
+#' To map an existing alias to a different CMK, call UpdateAlias.
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @param AliasName Specifies the alias name. This value must begin with `alias/` followed by the alias name, such as `alias/ExampleAlias`. The alias name cannot begin with `aws/`. The `alias/aws/` prefix is reserved for AWS managed CMKs.
+#' @param TargetKeyId Identifies the CMK for which you are creating the alias. This value cannot be an alias.
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#'
+#' @examples
+#' # The following example creates an alias for the specified customer master
+#' # key (CMK).
+#' create_alias(
+#'   AliasName = "alias/ExampleAlias",
+#'   TargetKeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' )
+#'
+#' @export
+create_alias <- function (AliasName, TargetKeyId) 
+{
+    op <- Operation(name = "CreateAlias", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_alias_input(AliasName = AliasName, TargetKeyId = TargetKeyId)
+    output <- create_alias_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Adds a grant to a customer master key (CMK)
+#'
+#' Adds a grant to a customer master key (CMK). The grant specifies who can use the CMK and under what conditions. When setting permissions, grants are an alternative to key policies.
+#' 
+#' To perform this operation on a CMK in a different AWS account, specify the key ARN in the value of the `KeyId` parameter. For more information about grants, see [Grants](http://docs.aws.amazon.com/kms/latest/developerguide/grants.html) in the *AWS Key Management Service Developer Guide*.
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @param KeyId The unique identifier for the customer master key (CMK) that the grant applies to.
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#' @param GranteePrincipal The principal that is given permission to perform the operations that the grant permits.
+#' 
+#' To specify the principal, use the [Amazon Resource Name (ARN)](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) of an AWS principal. Valid AWS principals include AWS accounts (root), IAM users, IAM roles, federated users, and assumed role users. For examples of the ARN syntax to use for specifying a principal, see [AWS Identity and Access Management (IAM)](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam) in the Example ARNs section of the *AWS General Reference*.
+#' @param Operations A list of operations that the grant permits.
+#' @param RetiringPrincipal The principal that is given permission to retire the grant by using RetireGrant operation.
+#' 
+#' To specify the principal, use the [Amazon Resource Name (ARN)](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) of an AWS principal. Valid AWS principals include AWS accounts (root), IAM users, federated users, and assumed role users. For examples of the ARN syntax to use for specifying a principal, see [AWS Identity and Access Management (IAM)](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam) in the Example ARNs section of the *AWS General Reference*.
+#' @param Constraints A structure that you can use to allow certain operations in the grant only when the desired encryption context is present. For more information about encryption context, see [Encryption Context](http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html) in the *AWS Key Management Service Developer Guide*.
+#' @param GrantTokens A list of grant tokens.
+#' 
+#' For more information, see [Grant Tokens](http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token) in the *AWS Key Management Service Developer Guide*.
+#' @param Name A friendly name for identifying the grant. Use this value to prevent the unintended creation of duplicate grants when retrying this request.
+#' 
+#' When this value is absent, all `CreateGrant` requests result in a new grant with a unique `GrantId` even if all the supplied parameters are identical. This can result in unintended duplicates when you retry the `CreateGrant` request.
+#' 
+#' When this value is present, you can retry a `CreateGrant` request with identical parameters; if the grant already exists, the original `GrantId` is returned without creating a new grant. Note that the returned grant token is unique with every `CreateGrant` request, even when a duplicate `GrantId` is returned. All grant tokens obtained in this way can be used interchangeably.
+#'
+#' @examples
+#' # The following example creates a grant that allows the specified IAM role
+#' # to encrypt data with the specified customer master key (CMK).
+#' create_grant(
+#'   GranteePrincipal = "arn:aws:iam::111122223333:role/ExampleRole",
+#'   KeyId = "arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab",
+#'   Operations = list(
+#'     "Encrypt",
+#'     "Decrypt"
+#'   )
+#' )
+#'
+#' @export
+create_grant <- function (KeyId, GranteePrincipal, Operations, 
+    RetiringPrincipal = NULL, Constraints = NULL, GrantTokens = NULL, 
+    Name = NULL) 
+{
+    op <- Operation(name = "CreateGrant", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_grant_input(KeyId = KeyId, GranteePrincipal = GranteePrincipal, 
+        Operations = Operations, RetiringPrincipal = RetiringPrincipal, 
+        Constraints = Constraints, GrantTokens = GrantTokens, 
+        Name = Name)
+    output <- create_grant_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a customer master key (CMK) in the caller\'s AWS account
+#'
+#' Creates a customer master key (CMK) in the caller\'s AWS account.
+#' 
+#' You can use a CMK to encrypt small amounts of data (4 KiB or less) directly. But CMKs are more commonly used to encrypt data encryption keys (DEKs), which are used to encrypt raw data. For more information about DEKs and the difference between CMKs and DEKs, see the following:
+#' 
+#' -   The GenerateDataKey operation
+#' 
+#' -   [AWS Key Management Service Concepts](http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html) in the *AWS Key Management Service Developer Guide*
+#' 
+#' You cannot use this operation to create a CMK in a different AWS account.
+#'
+#' @param Policy The key policy to attach to the CMK.
+#' 
+#' If you provide a key policy, it must meet the following criteria:
+#' 
+#' -   If you don\'t set `BypassPolicyLockoutSafetyCheck` to true, the key policy must allow the principal that is making the `CreateKey` request to make a subsequent PutKeyPolicy request on the CMK. This reduces the risk that the CMK becomes unmanageable. For more information, refer to the scenario in the [Default Key Policy](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section of the *AWS Key Management Service Developer Guide*.
+#' 
+#' -   Each statement in the key policy must contain one or more principals. The principals in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before including the new principal in a key policy. The reason for this is that the new principal might not be immediately visible to AWS KMS. For more information, see [Changes that I make are not always immediately visible](http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency) in the *AWS Identity and Access Management User Guide*.
+#' 
+#' If you do not provide a key policy, AWS KMS attaches a default key policy to the CMK. For more information, see [Default Key Policy](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default) in the *AWS Key Management Service Developer Guide*.
+#' 
+#' The key policy size limit is 32 kilobytes (32768 bytes).
+#' @param Description A description of the CMK.
+#' 
+#' Use a description that helps you decide whether the CMK is appropriate for a task.
+#' @param KeyUsage The intended use of the CMK.
+#' 
+#' You can use CMKs only for symmetric encryption and decryption.
+#' @param Origin The source of the CMK\'s key material.
+#' 
+#' The default is `AWS_KMS`, which means AWS KMS creates the key material. When this parameter is set to `EXTERNAL`, the request creates a CMK without key material so that you can import key material from your existing key management infrastructure. For more information about importing key material into AWS KMS, see [Importing Key Material](http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html) in the *AWS Key Management Service Developer Guide*.
+#' 
+#' The CMK\'s `Origin` is immutable and is set when the CMK is created.
+#' @param BypassPolicyLockoutSafetyCheck A flag to indicate whether to bypass the key policy lockout safety check.
+#' 
+#' Setting this value to true increases the risk that the CMK becomes unmanageable. Do not set this value to true indiscriminately.
+#' 
+#' For more information, refer to the scenario in the [Default Key Policy](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section in the *AWS Key Management Service Developer Guide*.
+#' 
+#' Use this parameter only when you include a policy in the request and you intend to prevent the principal that is making the request from making a subsequent PutKeyPolicy request on the CMK.
+#' 
+#' The default value is false.
+#' @param Tags One or more tags. Each tag consists of a tag key and a tag value. Tag keys and tag values are both required, but tag values can be empty (null) strings.
+#' 
+#' Use this parameter to tag the CMK when it is created. Alternately, you can omit this parameter and instead tag the CMK after it is created using TagResource.
+#'
+#' @examples
+#' # The following example creates a CMK.
+#' create_key(
+#'   Tags = list(
+#'     list(
+#'       TagKey = "CreatedBy",
+#'       TagValue = "ExampleUser"
+#'     )
+#'   )
+#' )
+#'
+#' @export
+create_key <- function (Policy = NULL, Description = NULL, KeyUsage = NULL, 
+    Origin = NULL, BypassPolicyLockoutSafetyCheck = NULL, Tags = NULL) 
+{
+    op <- Operation(name = "CreateKey", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_key_input(Policy = Policy, Description = Description, 
+        KeyUsage = KeyUsage, Origin = Origin, BypassPolicyLockoutSafetyCheck = BypassPolicyLockoutSafetyCheck, 
+        Tags = Tags)
+    output <- create_key_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Decrypts ciphertext
+#'
+#' Decrypts ciphertext. Ciphertext is plaintext that has been previously encrypted by using any of the following operations:
+#' 
+#' -   GenerateDataKey
+#' 
+#' -   GenerateDataKeyWithoutPlaintext
+#' 
+#' -   Encrypt
+#' 
+#' Whenever possible, use key policies to give users permission to call the Decrypt operation on the CMK, instead of IAM policies. Otherwise, you might create an IAM user policy that gives the user Decrypt permission on all CMKs. This user could decrypt ciphertext that was encrypted by CMKs in other accounts if the key policy for the cross-account CMK permits it. If you must use an IAM policy for `Decrypt` permissions, limit the user to particular CMKs or particular trusted accounts.
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @param CiphertextBlob Ciphertext to be decrypted. The blob includes metadata.
+#' @param EncryptionContext The encryption context. If this was specified in the Encrypt function, it must be specified here or the decryption operation will fail. For more information, see [Encryption Context](http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html).
+#' @param GrantTokens A list of grant tokens.
+#' 
+#' For more information, see [Grant Tokens](http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @examples
+#' # The following example decrypts data that was encrypted with a customer
+#' # master key (CMK) in AWS KMS.
+#' decrypt(
+#'   CiphertextBlob = "<binary data>"
+#' )
+#'
+#' @export
+decrypt <- function (CiphertextBlob, EncryptionContext = NULL, 
+    GrantTokens = NULL) 
+{
+    op <- Operation(name = "Decrypt", http_method = "POST", http_path = "/", 
+        paginator = list())
+    input <- decrypt_input(CiphertextBlob = CiphertextBlob, EncryptionContext = EncryptionContext, 
+        GrantTokens = GrantTokens)
+    output <- decrypt_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified alias
+#'
+#' Deletes the specified alias. You cannot perform this operation on an alias in a different AWS account.
+#' 
+#' Because an alias is not a property of a CMK, you can delete and change the aliases of a CMK without affecting the CMK. Also, aliases do not appear in the response from the DescribeKey operation. To get the aliases of all CMKs, use the ListAliases operation.
+#' 
+#' Each CMK can have multiple aliases. To change the alias of a CMK, use DeleteAlias to delete the current alias and CreateAlias to create a new alias. To associate an existing alias with a different customer master key (CMK), call UpdateAlias.
+#'
+#' @param AliasName The alias to be deleted. The name must start with the word \"alias\" followed by a forward slash (alias/). Aliases that begin with \"alias/aws\" are reserved.
+#'
+#' @examples
+#' # The following example deletes the specified alias.
+#' delete_alias(
+#'   AliasName = "alias/ExampleAlias"
+#' )
+#'
+#' @export
+delete_alias <- function (AliasName) 
+{
+    op <- Operation(name = "DeleteAlias", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_alias_input(AliasName = AliasName)
+    output <- delete_alias_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes key material that you previously imported
+#'
+#' Deletes key material that you previously imported. This operation makes the specified customer master key (CMK) unusable. For more information about importing key material into AWS KMS, see [Importing Key Material](http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html) in the *AWS Key Management Service Developer Guide*. You cannot perform this operation on a CMK in a different AWS account.
+#' 
+#' When the specified CMK is in the `PendingDeletion` state, this operation does not change the CMK\'s state. Otherwise, it changes the CMK\'s state to `PendingImport`.
+#' 
+#' After you delete key material, you can use ImportKeyMaterial to reimport the same key material into the CMK.
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @param KeyId The identifier of the CMK whose key material to delete. The CMK\'s `Origin` must be `EXTERNAL`.
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#'
+#' @examples
+#' # The following example deletes the imported key material from the
+#' # specified customer master key (CMK).
+#' delete_imported_key_material(
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' )
+#'
+#' @export
+delete_imported_key_material <- function (KeyId) 
+{
+    op <- Operation(name = "DeleteImportedKeyMaterial", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_imported_key_material_input(KeyId = KeyId)
+    output <- delete_imported_key_material_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Provides detailed information about the specified customer master key (CMK)
+#'
+#' Provides detailed information about the specified customer master key (CMK).
+#' 
+#' You can use `DescribeKey` on a predefined AWS alias, that is, an AWS alias with no key ID. When you do, AWS KMS associates the alias with an [AWS managed CMK](http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys) and returns its `KeyId` and `Arn` in the response.
+#' 
+#' To perform this operation on a CMK in a different AWS account, specify the key ARN or alias ARN in the value of the KeyId parameter.
+#'
+#' @param KeyId Describes the specified customer master key (CMK).
+#' 
+#' If you specify a predefined AWS alias (an AWS alias with no key ID), KMS associates the alias with an [AWS managed CMK](http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys) and returns its `KeyId` and `Arn` in the response.
+#' 
+#' To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Alias name: `alias/ExampleAlias`
+#' 
+#' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey. To get the alias name and alias ARN, use ListAliases.
+#' @param GrantTokens A list of grant tokens.
+#' 
+#' For more information, see [Grant Tokens](http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @examples
+#' # The following example returns information (metadata) about the specified
+#' # CMK.
+#' describe_key(
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' )
+#'
+#' @export
+describe_key <- function (KeyId, GrantTokens = NULL) 
+{
+    op <- Operation(name = "DescribeKey", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_key_input(KeyId = KeyId, GrantTokens = GrantTokens)
+    output <- describe_key_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Sets the state of a customer master key (CMK) to disabled, thereby preventing its use for cryptographic operations
+#'
+#' Sets the state of a customer master key (CMK) to disabled, thereby preventing its use for cryptographic operations. You cannot perform this operation on a CMK in a different AWS account.
+#' 
+#' For more information about how key state affects the use of a CMK, see [How Key State Affects the Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @param KeyId A unique identifier for the customer master key (CMK).
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#'
+#' @examples
+#' # The following example disables the specified CMK.
+#' disable_key(
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' )
+#'
+#' @export
+disable_key <- function (KeyId) 
+{
+    op <- Operation(name = "DisableKey", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- disable_key_input(KeyId = KeyId)
+    output <- disable_key_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Disables [automatic rotation of the key material](http://docs
+#'
+#' Disables [automatic rotation of the key material](http://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html) for the specified customer master key (CMK). You cannot perform this operation on a CMK in a different AWS account.
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @param KeyId A unique identifier for the customer master key (CMK).
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#'
+#' @examples
+#' # The following example disables automatic annual rotation of the key
+#' # material for the specified CMK.
+#' disable_key_rotation(
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' )
+#'
+#' @export
+disable_key_rotation <- function (KeyId) 
+{
+    op <- Operation(name = "DisableKeyRotation", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- disable_key_rotation_input(KeyId = KeyId)
+    output <- disable_key_rotation_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Sets the state of a customer master key (CMK) to enabled, thereby permitting its use for cryptographic operations
+#'
+#' Sets the state of a customer master key (CMK) to enabled, thereby permitting its use for cryptographic operations. You cannot perform this operation on a CMK in a different AWS account.
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @param KeyId A unique identifier for the customer master key (CMK).
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#'
+#' @examples
+#' # The following example enables the specified CMK.
+#' enable_key(
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' )
+#'
+#' @export
+enable_key <- function (KeyId) 
+{
+    op <- Operation(name = "EnableKey", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- enable_key_input(KeyId = KeyId)
+    output <- enable_key_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Enables [automatic rotation of the key material](http://docs
+#'
+#' Enables [automatic rotation of the key material](http://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html) for the specified customer master key (CMK). You cannot perform this operation on a CMK in a different AWS account.
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @param KeyId A unique identifier for the customer master key (CMK).
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#'
+#' @examples
+#' # The following example enables automatic annual rotation of the key
+#' # material for the specified CMK.
+#' enable_key_rotation(
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' )
+#'
+#' @export
+enable_key_rotation <- function (KeyId) 
+{
+    op <- Operation(name = "EnableKeyRotation", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- enable_key_rotation_input(KeyId = KeyId)
+    output <- enable_key_rotation_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Encrypts plaintext into ciphertext by using a customer master key (CMK)
+#'
+#' Encrypts plaintext into ciphertext by using a customer master key (CMK). The `Encrypt` operation has two primary use cases:
+#' 
+#' -   You can encrypt up to 4 kilobytes (4096 bytes) of arbitrary data such as an RSA key, a database password, or other sensitive information.
+#' 
+#' -   You can use the `Encrypt` operation to move encrypted data from one AWS region to another. In the first region, generate a data key and use the plaintext key to encrypt the data. Then, in the new region, call the `Encrypt` method on same plaintext data key. Now, you can safely move the encrypted data and encrypted data key to the new region, and decrypt in the new region when necessary.
+#' 
+#' You don\'t need use this operation to encrypt a data key within a region. The GenerateDataKey and GenerateDataKeyWithoutPlaintext operations return an encrypted data key.
+#' 
+#' Also, you don\'t need to use this operation to encrypt data in your application. You can use the plaintext and encrypted data keys that the `GenerateDataKey` operation returns.
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#' 
+#' To perform this operation on a CMK in a different AWS account, specify the key ARN or alias ARN in the value of the KeyId parameter.
+#'
+#' @param KeyId A unique identifier for the customer master key (CMK).
+#' 
+#' To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Alias name: `alias/ExampleAlias`
+#' 
+#' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey. To get the alias name and alias ARN, use ListAliases.
+#' @param Plaintext Data to be encrypted.
+#' @param EncryptionContext Name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the `Decrypt` API or decryption will fail. For more information, see [Encryption Context](http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html).
+#' @param GrantTokens A list of grant tokens.
+#' 
+#' For more information, see [Grant Tokens](http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @examples
+#' # The following example encrypts data with the specified customer master
+#' # key (CMK).
+#' encrypt(
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
+#'   Plaintext = "<binary data>"
+#' )
+#'
+#' @export
+encrypt <- function (KeyId, Plaintext, EncryptionContext = NULL, 
+    GrantTokens = NULL) 
+{
+    op <- Operation(name = "Encrypt", http_method = "POST", http_path = "/", 
+        paginator = list())
+    input <- encrypt_input(KeyId = KeyId, Plaintext = Plaintext, 
+        EncryptionContext = EncryptionContext, GrantTokens = GrantTokens)
+    output <- encrypt_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a data encryption key that you can use in your application to encrypt data locally
+#'
+#' Returns a data encryption key that you can use in your application to encrypt data locally.
+#' 
+#' You must specify the customer master key (CMK) under which to generate the data key. You must also specify the length of the data key using either the `KeySpec` or `NumberOfBytes` field. You must specify one field or the other, but not both. For common key lengths (128-bit and 256-bit symmetric keys), we recommend that you use `KeySpec`. To perform this operation on a CMK in a different AWS account, specify the key ARN or alias ARN in the value of the KeyId parameter.
+#' 
+#' This operation returns a plaintext copy of the data key in the `Plaintext` field of the response, and an encrypted copy of the data key in the `CiphertextBlob` field. The data key is encrypted under the CMK specified in the `KeyId` field of the request.
+#' 
+#' We recommend that you use the following pattern to encrypt data locally in your application:
+#' 
+#' 1.  Use this operation (`GenerateDataKey`) to get a data encryption key.
+#' 
+#' 2.  Use the plaintext data encryption key (returned in the `Plaintext` field of the response) to encrypt data locally, then erase the plaintext data key from memory.
+#' 
+#' 3.  Store the encrypted data key (returned in the `CiphertextBlob` field of the response) alongside the locally encrypted data.
+#' 
+#' To decrypt data locally:
+#' 
+#' 1.  Use the Decrypt operation to decrypt the encrypted data key into a plaintext copy of the data key.
+#' 
+#' 2.  Use the plaintext data key to decrypt data locally, then erase the plaintext data key from memory.
+#' 
+#' To return only an encrypted copy of the data key, use GenerateDataKeyWithoutPlaintext. To return a random byte string that is cryptographically secure, use GenerateRandom.
+#' 
+#' If you use the optional `EncryptionContext` field, you must store at least enough information to be able to reconstruct the full encryption context when you later send the ciphertext to the Decrypt operation. It is a good practice to choose an encryption context that you can reconstruct on the fly to better secure the ciphertext. For more information, see [Encryption Context](http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html) in the *AWS Key Management Service Developer Guide*.
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @param KeyId The identifier of the CMK under which to generate and encrypt the data encryption key.
+#' 
+#' To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Alias name: `alias/ExampleAlias`
+#' 
+#' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey. To get the alias name and alias ARN, use ListAliases.
+#' @param EncryptionContext A set of key-value pairs that represents additional authenticated data.
+#' 
+#' For more information, see [Encryption Context](http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html) in the *AWS Key Management Service Developer Guide*.
+#' @param NumberOfBytes The length of the data encryption key in bytes. For example, use the value 64 to generate a 512-bit data key (64 bytes is 512 bits). For common key lengths (128-bit and 256-bit symmetric keys), we recommend that you use the `KeySpec` field instead of this one.
+#' @param KeySpec The length of the data encryption key. Use `AES_128` to generate a 128-bit symmetric key, or `AES_256` to generate a 256-bit symmetric key.
+#' @param GrantTokens A list of grant tokens.
+#' 
+#' For more information, see [Grant Tokens](http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @examples
+#' # The following example generates a 256-bit symmetric data encryption key
+#' # (data key) in two formats. One is the unencrypted (plainext) data key,
+#' # and the other is the data key encrypted with the specified customer
+#' # master key (CMK).
+#' generate_data_key(
+#'   KeyId = "alias/ExampleAlias",
+#'   KeySpec = "AES_256"
+#' )
+#'
+#' @export
+generate_data_key <- function (KeyId, EncryptionContext = NULL, 
+    NumberOfBytes = NULL, KeySpec = NULL, GrantTokens = NULL) 
+{
+    op <- Operation(name = "GenerateDataKey", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- generate_data_key_input(KeyId = KeyId, EncryptionContext = EncryptionContext, 
+        NumberOfBytes = NumberOfBytes, KeySpec = KeySpec, GrantTokens = GrantTokens)
+    output <- generate_data_key_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a data encryption key encrypted under a customer master key (CMK)
+#'
+#' Returns a data encryption key encrypted under a customer master key (CMK). This operation is identical to GenerateDataKey but returns only the encrypted copy of the data key.
+#' 
+#' To perform this operation on a CMK in a different AWS account, specify the key ARN or alias ARN in the value of the KeyId parameter.
+#' 
+#' This operation is useful in a system that has multiple components with different degrees of trust. For example, consider a system that stores encrypted data in containers. Each container stores the encrypted data and an encrypted copy of the data key. One component of the system, called the *control plane*, creates new containers. When it creates a new container, it uses this operation (`GenerateDataKeyWithoutPlaintext`) to get an encrypted data key and then stores it in the container. Later, a different component of the system, called the *data plane*, puts encrypted data into the containers. To do this, it passes the encrypted data key to the Decrypt operation. It then uses the returned plaintext data key to encrypt data and finally stores the encrypted data in the container. In this system, the control plane never sees the plaintext data key.
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @param KeyId The identifier of the customer master key (CMK) under which to generate and encrypt the data encryption key.
+#' 
+#' To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Alias name: `alias/ExampleAlias`
+#' 
+#' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey. To get the alias name and alias ARN, use ListAliases.
+#' @param EncryptionContext A set of key-value pairs that represents additional authenticated data.
+#' 
+#' For more information, see [Encryption Context](http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html) in the *AWS Key Management Service Developer Guide*.
+#' @param KeySpec The length of the data encryption key. Use `AES_128` to generate a 128-bit symmetric key, or `AES_256` to generate a 256-bit symmetric key.
+#' @param NumberOfBytes The length of the data encryption key in bytes. For example, use the value 64 to generate a 512-bit data key (64 bytes is 512 bits). For common key lengths (128-bit and 256-bit symmetric keys), we recommend that you use the `KeySpec` field instead of this one.
+#' @param GrantTokens A list of grant tokens.
+#' 
+#' For more information, see [Grant Tokens](http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @examples
+#' # The following example generates an encrypted copy of a 256-bit symmetric
+#' # data encryption key (data key). The data key is encrypted with the
+#' # specified customer master key (CMK).
+#' generate_data_key_without_plaintext(
+#'   KeyId = "alias/ExampleAlias",
+#'   KeySpec = "AES_256"
+#' )
+#'
+#' @export
+generate_data_key_without_plaintext <- function (KeyId, EncryptionContext = NULL, 
+    KeySpec = NULL, NumberOfBytes = NULL, GrantTokens = NULL) 
+{
+    op <- Operation(name = "GenerateDataKeyWithoutPlaintext", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- generate_data_key_without_plaintext_input(KeyId = KeyId, 
+        EncryptionContext = EncryptionContext, KeySpec = KeySpec, 
+        NumberOfBytes = NumberOfBytes, GrantTokens = GrantTokens)
+    output <- generate_data_key_without_plaintext_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a random byte string that is cryptographically secure
+#'
+#' Returns a random byte string that is cryptographically secure.
+#' 
+#' For more information about entropy and random number generation, see the [AWS Key Management Service Cryptographic Details](https://d0.awsstatic.com/whitepapers/KMS-Cryptographic-Details.pdf) whitepaper.
+#'
+#' @param NumberOfBytes The length of the byte string.
+#'
+#' @examples
+#' # The following example uses AWS KMS to generate 32 bytes of random data.
+#' generate_random(
+#'   NumberOfBytes = 32L
+#' )
+#'
+#' @export
+generate_random <- function (NumberOfBytes = NULL) 
+{
+    op <- Operation(name = "GenerateRandom", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- generate_random_input(NumberOfBytes = NumberOfBytes)
+    output <- generate_random_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets a key policy attached to the specified customer master key (CMK)
+#'
+#' Gets a key policy attached to the specified customer master key (CMK). You cannot perform this operation on a CMK in a different AWS account.
+#'
+#' @param KeyId A unique identifier for the customer master key (CMK).
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#' @param PolicyName Specifies the name of the key policy. The only valid name is `default`. To get the names of key policies, use ListKeyPolicies.
+#'
+#' @examples
+#' # The following example retrieves the key policy for the specified
+#' # customer master key (CMK).
+#' get_key_policy(
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
+#'   PolicyName = "default"
+#' )
+#'
+#' @export
+get_key_policy <- function (KeyId, PolicyName) 
+{
+    op <- Operation(name = "GetKeyPolicy", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_key_policy_input(KeyId = KeyId, PolicyName = PolicyName)
+    output <- get_key_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets a Boolean value that indicates whether [automatic rotation of the key material](http://docs
+#'
+#' Gets a Boolean value that indicates whether [automatic rotation of the key material](http://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html) is enabled for the specified customer master key (CMK).
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#' 
+#' -   Disabled: The key rotation status does not change when you disable a CMK. However, while the CMK is disabled, AWS KMS does not rotate the backing key.
+#' 
+#' -   Pending deletion: While a CMK is pending deletion, its key rotation status is `false` and AWS KMS does not rotate the backing key. If you cancel the deletion, the original key rotation status is restored.
+#' 
+#' To perform this operation on a CMK in a different AWS account, specify the key ARN in the value of the `KeyId` parameter.
+#'
+#' @param KeyId A unique identifier for the customer master key (CMK).
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#'
+#' @examples
+#' # The following example retrieves the status of automatic annual rotation
+#' # of the key material for the specified CMK.
+#' get_key_rotation_status(
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' )
+#'
+#' @export
+get_key_rotation_status <- function (KeyId) 
+{
+    op <- Operation(name = "GetKeyRotationStatus", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_key_rotation_status_input(KeyId = KeyId)
+    output <- get_key_rotation_status_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns the items you need in order to import key material into AWS KMS from your existing key management infrastructure
+#'
+#' Returns the items you need in order to import key material into AWS KMS from your existing key management infrastructure. For more information about importing key material into AWS KMS, see [Importing Key Material](http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html) in the *AWS Key Management Service Developer Guide*.
+#' 
+#' You must specify the key ID of the customer master key (CMK) into which you will import key material. This CMK\'s `Origin` must be `EXTERNAL`. You must also specify the wrapping algorithm and type of wrapping key (public key) that you will use to encrypt the key material. You cannot perform this operation on a CMK in a different AWS account.
+#' 
+#' This operation returns a public key and an import token. Use the public key to encrypt the key material. Store the import token to send with a subsequent ImportKeyMaterial request. The public key and import token from the same response must be used together. These items are valid for 24 hours. When they expire, they cannot be used for a subsequent ImportKeyMaterial request. To get new ones, send another `GetParametersForImport` request.
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @param KeyId The identifier of the CMK into which you will import key material. The CMK\'s `Origin` must be `EXTERNAL`.
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#' @param WrappingAlgorithm The algorithm you use to encrypt the key material before importing it with ImportKeyMaterial. For more information, see [Encrypt the Key Material](http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html) in the *AWS Key Management Service Developer Guide*.
+#' @param WrappingKeySpec The type of wrapping key (public key) to return in the response. Only 2048-bit RSA public keys are supported.
+#'
+#' @examples
+#' # The following example retrieves the public key and import token for the
+#' # specified CMK.
+#' get_parameters_for_import(
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
+#'   WrappingAlgorithm = "RSAES_OAEP_SHA_1",
+#'   WrappingKeySpec = "RSA_2048"
+#' )
+#'
+#' @export
+get_parameters_for_import <- function (KeyId, WrappingAlgorithm, 
+    WrappingKeySpec) 
+{
+    op <- Operation(name = "GetParametersForImport", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_parameters_for_import_input(KeyId = KeyId, WrappingAlgorithm = WrappingAlgorithm, 
+        WrappingKeySpec = WrappingKeySpec)
+    output <- get_parameters_for_import_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Imports key material into an existing AWS KMS customer master key (CMK) that was created without key material
+#'
+#' Imports key material into an existing AWS KMS customer master key (CMK) that was created without key material. You cannot perform this operation on a CMK in a different AWS account. For more information about creating CMKs with no key material and then importing key material, see [Importing Key Material](http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html) in the *AWS Key Management Service Developer Guide*.
+#' 
+#' Before using this operation, call GetParametersForImport. Its response includes a public key and an import token. Use the public key to encrypt the key material. Then, submit the import token from the same `GetParametersForImport` response.
+#' 
+#' When calling this operation, you must specify the following values:
+#' 
+#' -   The key ID or key ARN of a CMK with no key material. Its `Origin` must be `EXTERNAL`.
+#' 
+#'     To create a CMK with no key material, call CreateKey and set the value of its `Origin` parameter to `EXTERNAL`. To get the `Origin` of a CMK, call DescribeKey.)
+#' 
+#' -   The encrypted key material. To get the public key to encrypt the key material, call GetParametersForImport.
+#' 
+#' -   The import token that GetParametersForImport returned. This token and the public key used to encrypt the key material must have come from the same response.
+#' 
+#' -   Whether the key material expires and if so, when. If you set an expiration date, you can change it only by reimporting the same key material and specifying a new expiration date. If the key material expires, AWS KMS deletes the key material and the CMK becomes unusable. To use the CMK again, you must reimport the same key material.
+#' 
+#' When this operation is successful, the CMK\'s key state changes from `PendingImport` to `Enabled`, and you can use the CMK. After you successfully import key material into a CMK, you can reimport the same key material into that CMK, but you cannot import different key material.
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @param KeyId The identifier of the CMK to import the key material into. The CMK\'s `Origin` must be `EXTERNAL`.
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#' @param ImportToken The import token that you received in the response to a previous GetParametersForImport request. It must be from the same response that contained the public key that you used to encrypt the key material.
+#' @param EncryptedKeyMaterial The encrypted key material to import. It must be encrypted with the public key that you received in the response to a previous GetParametersForImport request, using the wrapping algorithm that you specified in that request.
+#' @param ValidTo The time at which the imported key material expires. When the key material expires, AWS KMS deletes the key material and the CMK becomes unusable. You must omit this parameter when the `ExpirationModel` parameter is set to `KEY_MATERIAL_DOES_NOT_EXPIRE`. Otherwise it is required.
+#' @param ExpirationModel Specifies whether the key material expires. The default is `KEY_MATERIAL_EXPIRES`, in which case you must include the `ValidTo` parameter. When this parameter is set to `KEY_MATERIAL_DOES_NOT_EXPIRE`, you must omit the `ValidTo` parameter.
+#'
+#' @examples
+#' # The following example imports key material into the specified CMK.
+#' import_key_material(
+#'   EncryptedKeyMaterial = "<binary data>",
+#'   ExpirationModel = "KEY_MATERIAL_DOES_NOT_EXPIRE",
+#'   ImportToken = "<binary data>",
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' )
+#'
+#' @export
+import_key_material <- function (KeyId, ImportToken, EncryptedKeyMaterial, 
+    ValidTo = NULL, ExpirationModel = NULL) 
+{
+    op <- Operation(name = "ImportKeyMaterial", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- import_key_material_input(KeyId = KeyId, ImportToken = ImportToken, 
+        EncryptedKeyMaterial = EncryptedKeyMaterial, ValidTo = ValidTo, 
+        ExpirationModel = ExpirationModel)
+    output <- import_key_material_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets a list of aliases in the caller\'s AWS account and region
+#'
+#' Gets a list of aliases in the caller\'s AWS account and region. You cannot list aliases in other accounts. For more information about aliases, see CreateAlias.
+#' 
+#' By default, the ListAliases command returns all aliases in the account and region. To get only the aliases that point to a particular customer master key (CMK), use the `KeyId` parameter.
+#' 
+#' The `ListAliases` response can include aliases that you created and associated with your customer managed CMKs, and aliases that AWS created and associated with AWS managed CMKs in your account. You can recognize AWS aliases because their names have the format `aws/<service-name>`, such as `aws/dynamodb`.
+#' 
+#' The response might also include aliases that have no `TargetKeyId` field. These are predefined aliases that AWS has created but has not yet associated with a CMK. Aliases that AWS creates in your account, including predefined aliases, do not count against your [AWS KMS aliases limit](http://docs.aws.amazon.com/kms/latest/developerguide/limits.html#aliases-limit).
+#'
+#' @param KeyId Lists only aliases that refer to the specified CMK. The value of this parameter can be the ID or Amazon Resource Name (ARN) of a CMK in the caller\'s account and region. You cannot use an alias name or alias ARN in this value.
+#' 
+#' This parameter is optional. If you omit it, `ListAliases` returns all aliases in the account and region.
+#' @param Limit Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.
+#' 
+#' This value is optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a value, it defaults to 50.
+#' @param Marker Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of `NextMarker` from the truncated response you just received.
+#'
+#' @examples
+#' # The following example lists aliases.
+#' list_aliases()
+#'
+#' @export
+list_aliases <- function (KeyId = NULL, Limit = NULL, Marker = NULL) 
+{
+    op <- Operation(name = "ListAliases", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_aliases_input(KeyId = KeyId, Limit = Limit, 
+        Marker = Marker)
+    output <- list_aliases_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets a list of all grants for the specified customer master key (CMK)
+#'
+#' Gets a list of all grants for the specified customer master key (CMK).
+#' 
+#' To perform this operation on a CMK in a different AWS account, specify the key ARN in the value of the `KeyId` parameter.
+#'
+#' @param KeyId A unique identifier for the customer master key (CMK).
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#' @param Limit Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.
+#' 
+#' This value is optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a value, it defaults to 50.
+#' @param Marker Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of `NextMarker` from the truncated response you just received.
+#'
+#' @examples
+#' # The following example lists grants for the specified CMK.
+#' list_grants(
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' )
+#'
+#' @export
+list_grants <- function (KeyId, Limit = NULL, Marker = NULL) 
+{
+    op <- Operation(name = "ListGrants", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_grants_input(KeyId = KeyId, Limit = Limit, 
+        Marker = Marker)
+    output <- list_grants_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets the names of the key policies that are attached to a customer master key (CMK)
+#'
+#' Gets the names of the key policies that are attached to a customer master key (CMK). This operation is designed to get policy names that you can use in a GetKeyPolicy operation. However, the only valid policy name is `default`. You cannot perform this operation on a CMK in a different AWS account.
+#'
+#' @param KeyId A unique identifier for the customer master key (CMK).
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#' @param Limit Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.
+#' 
+#' This value is optional. If you include a value, it must be between 1 and 1000, inclusive. If you do not include a value, it defaults to 100.
+#' 
+#' Currently only 1 policy can be attached to a key.
+#' @param Marker Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of `NextMarker` from the truncated response you just received.
+#'
+#' @examples
+#' # The following example lists key policies for the specified CMK.
+#' list_key_policies(
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' )
+#'
+#' @export
+list_key_policies <- function (KeyId, Limit = NULL, Marker = NULL) 
+{
+    op <- Operation(name = "ListKeyPolicies", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_key_policies_input(KeyId = KeyId, Limit = Limit, 
+        Marker = Marker)
+    output <- list_key_policies_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets a list of all customer master keys (CMKs) in the caller\'s AWS account and region
+#'
+#' Gets a list of all customer master keys (CMKs) in the caller\'s AWS account and region.
+#'
+#' @param Limit Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.
+#' 
+#' This value is optional. If you include a value, it must be between 1 and 1000, inclusive. If you do not include a value, it defaults to 100.
+#' @param Marker Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of `NextMarker` from the truncated response you just received.
+#'
+#' @examples
+#' # The following example lists CMKs.
+#' list_keys()
+#'
+#' @export
+list_keys <- function (Limit = NULL, Marker = NULL) 
+{
+    op <- Operation(name = "ListKeys", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_keys_input(Limit = Limit, Marker = Marker)
+    output <- list_keys_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of all tags for the specified customer master key (CMK)
+#'
+#' Returns a list of all tags for the specified customer master key (CMK).
+#' 
+#' You cannot perform this operation on a CMK in a different AWS account.
+#'
+#' @param KeyId A unique identifier for the customer master key (CMK).
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#' @param Limit Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.
+#' 
+#' This value is optional. If you include a value, it must be between 1 and 50, inclusive. If you do not include a value, it defaults to 50.
+#' @param Marker Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of `NextMarker` from the truncated response you just received.
+#' 
+#' Do not attempt to construct this value. Use only the value of `NextMarker` from the truncated response you just received.
+#'
+#' @examples
+#' # The following example lists tags for a CMK.
+#' list_resource_tags(
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' )
+#'
+#' @export
+list_resource_tags <- function (KeyId, Limit = NULL, Marker = NULL) 
+{
+    op <- Operation(name = "ListResourceTags", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_resource_tags_input(KeyId = KeyId, Limit = Limit, 
+        Marker = Marker)
+    output <- list_resource_tags_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of all grants for which the grant\'s `RetiringPrincipal` matches the one specified
+#'
+#' Returns a list of all grants for which the grant\'s `RetiringPrincipal` matches the one specified.
+#' 
+#' A typical use is to list all grants that you are able to retire. To retire a grant, use RetireGrant.
+#'
+#' @param RetiringPrincipal The retiring principal for which to list grants.
+#' 
+#' To specify the retiring principal, use the [Amazon Resource Name (ARN)](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) of an AWS principal. Valid AWS principals include AWS accounts (root), IAM users, federated users, and assumed role users. For examples of the ARN syntax for specifying a principal, see [AWS Identity and Access Management (IAM)](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam) in the Example ARNs section of the *Amazon Web Services General Reference*.
+#' @param Limit Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.
+#' 
+#' This value is optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a value, it defaults to 50.
+#' @param Marker Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of `NextMarker` from the truncated response you just received.
+#'
+#' @examples
+#' # The following example lists the grants that the specified principal
+#' # (identity) can retire.
+#' list_retirable_grants(
+#'   RetiringPrincipal = "arn:aws:iam::111122223333:role/ExampleRole"
+#' )
+#'
+#' @export
+list_retirable_grants <- function (RetiringPrincipal, Limit = NULL, 
+    Marker = NULL) 
+{
+    op <- Operation(name = "ListRetirableGrants", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_retirable_grants_input(RetiringPrincipal = RetiringPrincipal, 
+        Limit = Limit, Marker = Marker)
+    output <- list_retirable_grants_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Attaches a key policy to the specified customer master key (CMK)
+#'
+#' Attaches a key policy to the specified customer master key (CMK). You cannot perform this operation on a CMK in a different AWS account.
+#' 
+#' For more information about key policies, see [Key Policies](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @param KeyId A unique identifier for the customer master key (CMK).
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#' @param PolicyName The name of the key policy. The only valid value is `default`.
+#' @param Policy The key policy to attach to the CMK.
+#' 
+#' The key policy must meet the following criteria:
+#' 
+#' -   If you don\'t set `BypassPolicyLockoutSafetyCheck` to true, the key policy must allow the principal that is making the `PutKeyPolicy` request to make a subsequent `PutKeyPolicy` request on the CMK. This reduces the risk that the CMK becomes unmanageable. For more information, refer to the scenario in the [Default Key Policy](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section of the *AWS Key Management Service Developer Guide*.
+#' 
+#' -   Each statement in the key policy must contain one or more principals. The principals in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before including the new principal in a key policy. The reason for this is that the new principal might not be immediately visible to AWS KMS. For more information, see [Changes that I make are not always immediately visible](http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency) in the *AWS Identity and Access Management User Guide*.
+#' 
+#' The key policy size limit is 32 kilobytes (32768 bytes).
+#' @param BypassPolicyLockoutSafetyCheck A flag to indicate whether to bypass the key policy lockout safety check.
+#' 
+#' Setting this value to true increases the risk that the CMK becomes unmanageable. Do not set this value to true indiscriminately.
+#' 
+#' For more information, refer to the scenario in the [Default Key Policy](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section in the *AWS Key Management Service Developer Guide*.
+#' 
+#' Use this parameter only when you intend to prevent the principal that is making the request from making a subsequent `PutKeyPolicy` request on the CMK.
+#' 
+#' The default value is false.
+#'
+#' @examples
+#' # The following example attaches a key policy to the specified CMK.
+#' put_key_policy(
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
+#'   Policy = "{\n    \"Version\": \"2012-10-17\",\n    \"Id\": \"custom-policy-2016-12-07\",\n    \"Statement\": [\n        {\n            \"Sid\": \"Enable IAM User Permissions\",\n            \"Effect\": \"Allow\",\n            \"Principal\": {\n                \"AWS\": \"arn:aws:iam::111122223333:root\"\n            },\n            \"Action\": \"kms:*\",\n            \"Resource\": \"*\"\n        },\n        {\n            \"Sid\": \"Allow access for Key Administrators\",\n            \"Effect\": \"Allow\",\n            \"Principal\": {\n                \"AWS\": [\n                    \"arn:aws:iam::111122223333:user/ExampleAdminUser\",\n                    \"arn:aws:iam::111122223333:role/ExampleAdminRole\"\n                ]\n            },\n            \"Action\": [\n                \"kms:Create*\",\n                \"kms:Describe*\",\n                \"kms:Enable*\",\n                \"kms:List*\",\n                \"kms:Put*\",\n                \"kms:Update*\",\n                \"kms:Revoke*\",\n                \"kms:Disable*\",\n                \"kms:Get*\",\n                \"kms:Delete*\",\n                \"kms:ScheduleKeyDeletion\",\n                \"kms:CancelKeyDeletion\"\n            ],\n            \"Resource\": \"*\"\n        },\n        {\n            \"Sid\": \"Allow use of the key\",\n            \"Effect\": \"Allow\",\n            \"Principal\": {\n                \"AWS\": \"arn:aws:iam::111122223333:role/ExamplePowerUserRole\"\n            },\n            \"Action\": [\n                \"kms:Encrypt\",\n                \"kms:Decrypt\",\n                \"kms:ReEncrypt*\",\n                \"kms:GenerateDataKey*\",\n                \"kms:DescribeKey\"\n            ],\n            \"Resource\": \"*\"\n        },\n        {\n            \"Sid\": \"Allow attachment of persistent resources\",\n            \"Effect\": \"Allow\",\n            \"Principal\": {\n                \"AWS\": \"arn:aws:iam::111122223333:role/ExamplePowerUserRole\"\n            },\n            \"Action\": [\n                \"kms:CreateGrant\",\n                \"kms:ListGrants\",\n                \"kms:RevokeGrant\"\n            ],\n            \"Resource\": \"*\",\n            \"Condition\": {\n                \"Bool\": {\n                    \"kms:GrantIsForAWSResource\": \"true\"\n                }\n            }\n        }\n    ]\n}\n",
+#'   PolicyName = "default"
+#' )
+#'
+#' @export
+put_key_policy <- function (KeyId, PolicyName, Policy, BypassPolicyLockoutSafetyCheck = NULL) 
+{
+    op <- Operation(name = "PutKeyPolicy", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- put_key_policy_input(KeyId = KeyId, PolicyName = PolicyName, 
+        Policy = Policy, BypassPolicyLockoutSafetyCheck = BypassPolicyLockoutSafetyCheck)
+    output <- put_key_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Encrypts data on the server side with a new customer master key (CMK) without exposing the plaintext of the data on the client side
+#'
+#' Encrypts data on the server side with a new customer master key (CMK) without exposing the plaintext of the data on the client side. The data is first decrypted and then reencrypted. You can also use this operation to change the encryption context of a ciphertext.
+#' 
+#' You can reencrypt data using CMKs in different AWS accounts.
+#' 
+#' Unlike other operations, `ReEncrypt` is authorized twice, once as `ReEncryptFrom` on the source CMK and once as `ReEncryptTo` on the destination CMK. We recommend that you include the `"kms:ReEncrypt*"` permission in your [key policies](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html) to permit reencryption from or to the CMK. This permission is automatically included in the key policy when you create a CMK through the console. But you must include it manually when you create a CMK programmatically or when you set a key policy with the PutKeyPolicy operation.
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @param CiphertextBlob Ciphertext of the data to reencrypt.
+#' @param DestinationKeyId A unique identifier for the CMK that is used to reencrypt the data.
+#' 
+#' To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Alias name: `alias/ExampleAlias`
+#' 
+#' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey. To get the alias name and alias ARN, use ListAliases.
+#' @param SourceEncryptionContext Encryption context used to encrypt and decrypt the data specified in the `CiphertextBlob` parameter.
+#' @param DestinationEncryptionContext Encryption context to use when the data is reencrypted.
+#' @param GrantTokens A list of grant tokens.
+#' 
+#' For more information, see [Grant Tokens](http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @examples
+#' # The following example reencrypts data with the specified CMK.
+#' re_encrypt(
+#'   CiphertextBlob = "<binary data>",
+#'   DestinationKeyId = "0987dcba-09fe-87dc-65ba-ab0987654321"
+#' )
+#'
+#' @export
+re_encrypt <- function (CiphertextBlob, DestinationKeyId, SourceEncryptionContext = NULL, 
+    DestinationEncryptionContext = NULL, GrantTokens = NULL) 
+{
+    op <- Operation(name = "ReEncrypt", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- re_encrypt_input(CiphertextBlob = CiphertextBlob, 
+        DestinationKeyId = DestinationKeyId, SourceEncryptionContext = SourceEncryptionContext, 
+        DestinationEncryptionContext = DestinationEncryptionContext, 
+        GrantTokens = GrantTokens)
+    output <- re_encrypt_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retires a grant
+#'
+#' Retires a grant. To clean up, you can retire a grant when you\'re done using it. You should revoke a grant when you intend to actively deny operations that depend on it. The following are permitted to call this API:
+#' 
+#' -   The AWS account (root user) under which the grant was created
+#' 
+#' -   The `RetiringPrincipal`, if present in the grant
+#' 
+#' -   The `GranteePrincipal`, if `RetireGrant` is an operation specified in the grant
+#' 
+#' You must identify the grant to retire by its grant token or by a combination of the grant ID and the Amazon Resource Name (ARN) of the customer master key (CMK). A grant token is a unique variable-length base64-encoded string. A grant ID is a 64 character unique identifier of a grant. The CreateGrant operation returns both.
+#'
+#' @param GrantToken Token that identifies the grant to be retired.
+#' @param KeyId The Amazon Resource Name (ARN) of the CMK associated with the grant.
+#' 
+#' For example: `arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' @param GrantId Unique identifier of the grant to retire. The grant ID is returned in the response to a `CreateGrant` operation.
+#' 
+#' -   Grant ID Example - 0123456789012345678901234567890123456789012345678901234567890123
+#'
+#' @examples
+#' # The following example retires a grant.
+#' retire_grant(
+#'   GrantId = "0c237476b39f8bc44e45212e08498fbe3151305030726c0590dd8d3e9f3d6a60",
+#'   KeyId = "arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+#' )
+#'
+#' @export
+retire_grant <- function (GrantToken = NULL, KeyId = NULL, GrantId = NULL) 
+{
+    op <- Operation(name = "RetireGrant", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- retire_grant_input(GrantToken = GrantToken, KeyId = KeyId, 
+        GrantId = GrantId)
+    output <- retire_grant_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Revokes the specified grant for the specified customer master key (CMK)
+#'
+#' Revokes the specified grant for the specified customer master key (CMK). You can revoke a grant to actively deny operations that depend on it.
+#' 
+#' To perform this operation on a CMK in a different AWS account, specify the key ARN in the value of the `KeyId` parameter.
+#'
+#' @param KeyId A unique identifier for the customer master key associated with the grant.
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#' @param GrantId Identifier of the grant to be revoked.
+#'
+#' @examples
+#' # The following example revokes a grant.
+#' revoke_grant(
+#'   GrantId = "0c237476b39f8bc44e45212e08498fbe3151305030726c0590dd8d3e9f3d6a60",
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' )
+#'
+#' @export
+revoke_grant <- function (KeyId, GrantId) 
+{
+    op <- Operation(name = "RevokeGrant", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- revoke_grant_input(KeyId = KeyId, GrantId = GrantId)
+    output <- revoke_grant_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Schedules the deletion of a customer master key (CMK)
+#'
+#' Schedules the deletion of a customer master key (CMK). You may provide a waiting period, specified in days, before deletion occurs. If you do not provide a waiting period, the default period of 30 days is used. When this operation is successful, the state of the CMK changes to `PendingDeletion`. Before the waiting period ends, you can use CancelKeyDeletion to cancel the deletion of the CMK. After the waiting period ends, AWS KMS deletes the CMK and all AWS KMS data associated with it, including all aliases that refer to it.
+#' 
+#' You cannot perform this operation on a CMK in a different AWS account.
+#' 
+#' Deleting a CMK is a destructive and potentially dangerous operation. When a CMK is deleted, all data that was encrypted under the CMK is rendered unrecoverable. To restrict the use of a CMK without deleting it, use DisableKey.
+#' 
+#' For more information about scheduling a CMK for deletion, see [Deleting Customer Master Keys](http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html) in the *AWS Key Management Service Developer Guide*.
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @param KeyId The unique identifier of the customer master key (CMK) to delete.
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#' @param PendingWindowInDays The waiting period, specified in number of days. After the waiting period ends, AWS KMS deletes the customer master key (CMK).
+#' 
+#' This value is optional. If you include a value, it must be between 7 and 30, inclusive. If you do not include a value, it defaults to 30.
+#'
+#' @examples
+#' # The following example schedules the specified CMK for deletion.
+#' schedule_key_deletion(
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
+#'   PendingWindowInDays = 7L
+#' )
+#'
+#' @export
+schedule_key_deletion <- function (KeyId, PendingWindowInDays = NULL) 
+{
+    op <- Operation(name = "ScheduleKeyDeletion", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- schedule_key_deletion_input(KeyId = KeyId, PendingWindowInDays = PendingWindowInDays)
+    output <- schedule_key_deletion_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Adds or edits tags for a customer master key (CMK)
+#'
+#' Adds or edits tags for a customer master key (CMK). You cannot perform this operation on a CMK in a different AWS account.
+#' 
+#' Each tag consists of a tag key and a tag value. Tag keys and tag values are both required, but tag values can be empty (null) strings.
+#' 
+#' You can only use a tag key once for each CMK. If you use the tag key again, AWS KMS replaces the current tag value with the specified value.
+#' 
+#' For information about the rules that apply to tag keys and tag values, see [User-Defined Tag Restrictions](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html) in the *AWS Billing and Cost Management User Guide*.
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @param KeyId A unique identifier for the CMK you are tagging.
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#' @param Tags One or more tags. Each tag consists of a tag key and a tag value.
+#'
+#' @examples
+#' # The following example tags a CMK.
+#' tag_resource(
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
+#'   Tags = list(
+#'     list(
+#'       TagKey = "Purpose",
+#'       TagValue = "Test"
+#'     )
+#'   )
+#' )
+#'
+#' @export
+tag_resource <- function (KeyId, Tags) 
+{
+    op <- Operation(name = "TagResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- tag_resource_input(KeyId = KeyId, Tags = Tags)
+    output <- tag_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes the specified tags from the specified customer master key (CMK)
+#'
+#' Removes the specified tags from the specified customer master key (CMK). You cannot perform this operation on a CMK in a different AWS account.
+#' 
+#' To remove a tag, specify the tag key. To change the tag value of an existing tag key, use TagResource.
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @param KeyId A unique identifier for the CMK from which you are removing tags.
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#' @param TagKeys One or more tag keys. Specify only the tag keys, not the tag values.
+#'
+#' @examples
+#' # The following example removes tags from a CMK.
+#' untag_resource(
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
+#'   TagKeys = list(
+#'     "Purpose",
+#'     "CostCenter"
+#'   )
+#' )
+#'
+#' @export
+untag_resource <- function (KeyId, TagKeys) 
+{
+    op <- Operation(name = "UntagResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- untag_resource_input(KeyId = KeyId, TagKeys = TagKeys)
+    output <- untag_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Associates an existing alias with a different customer master key (CMK)
+#'
+#' Associates an existing alias with a different customer master key (CMK). Each CMK can have multiple aliases, but the aliases must be unique within the account and region. You cannot perform this operation on an alias in a different AWS account.
+#' 
+#' This operation works only on existing aliases. To change the alias of a CMK to a new value, use CreateAlias to create a new alias and DeleteAlias to delete the old alias.
+#' 
+#' Because an alias is not a property of a CMK, you can create, update, and delete the aliases of a CMK without affecting the CMK. Also, aliases do not appear in the response from the DescribeKey operation. To get the aliases of all CMKs in the account, use the ListAliases operation.
+#' 
+#' An alias name can contain only alphanumeric characters, forward slashes (/), underscores (\_), and dashes (-). An alias must start with the word `alias` followed by a forward slash (`alias/`). The alias name can contain only alphanumeric characters, forward slashes (/), underscores (\_), and dashes (-). Alias names cannot begin with `aws`; that alias name prefix is reserved by Amazon Web Services (AWS).
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @param AliasName String that contains the name of the alias to be modified. The name must start with the word \"alias\" followed by a forward slash (alias/). Aliases that begin with \"alias/aws\" are reserved.
+#' @param TargetKeyId Unique identifier of the customer master key to be mapped to the alias.
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#' 
+#' To verify that the alias is mapped to the correct CMK, use ListAliases.
+#'
+#' @examples
+#' # The following example updates the specified alias to refer to the
+#' # specified customer master key (CMK).
+#' update_alias(
+#'   AliasName = "alias/ExampleAlias",
+#'   TargetKeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' )
+#'
+#' @export
+update_alias <- function (AliasName, TargetKeyId) 
+{
+    op <- Operation(name = "UpdateAlias", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_alias_input(AliasName = AliasName, TargetKeyId = TargetKeyId)
+    output <- update_alias_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the description of a customer master key (CMK)
+#'
+#' Updates the description of a customer master key (CMK). To see the description of a CMK, use DescribeKey.
+#' 
+#' You cannot perform this operation on a CMK in a different AWS account.
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @param KeyId A unique identifier for the customer master key (CMK).
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+#' @param Description New description for the CMK.
+#'
+#' @examples
+#' # The following example updates the description of the specified CMK.
+#' update_key_description(
+#'   Description = "Example description that indicates the intended use of this CMK.",
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' )
+#'
+#' @export
+update_key_description <- function (KeyId, Description) 
+{
+    op <- Operation(name = "UpdateKeyDescription", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_key_description_input(KeyId = KeyId, Description = Description)
+    output <- update_key_description_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

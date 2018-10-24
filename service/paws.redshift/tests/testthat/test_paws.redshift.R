@@ -1,0 +1,75 @@
+test_that("describe_cluster_db_revisions", {
+    expect_error(describe_cluster_db_revisions(), NA)
+})
+
+test_that("describe_cluster_parameter_groups", {
+    expect_error(describe_cluster_parameter_groups(), NA)
+})
+
+test_that("describe_cluster_security_groups", {
+    expect_error(describe_cluster_security_groups(), NA)
+})
+
+test_that("describe_cluster_snapshots", {
+    expect_error(describe_cluster_snapshots(), NA)
+})
+
+test_that("describe_cluster_subnet_groups", {
+    expect_error(describe_cluster_subnet_groups(), NA)
+})
+
+test_that("describe_cluster_tracks", {
+    expect_error(describe_cluster_tracks(), NA)
+})
+
+test_that("describe_cluster_versions", {
+    expect_error(describe_cluster_versions(), NA)
+})
+
+test_that("describe_clusters", {
+    expect_error(describe_clusters(), NA)
+})
+
+test_that("describe_event_categories", {
+    expect_error(describe_event_categories(), NA)
+})
+
+test_that("describe_event_subscriptions", {
+    expect_error(describe_event_subscriptions(), NA)
+})
+
+test_that("describe_events", {
+    expect_error(describe_events(), NA)
+})
+
+test_that("describe_hsm_client_certificates", {
+    expect_error(describe_hsm_client_certificates(), NA)
+})
+
+test_that("describe_hsm_configurations", {
+    expect_error(describe_hsm_configurations(), NA)
+})
+
+test_that("describe_orderable_cluster_options", {
+    expect_error(describe_orderable_cluster_options(), NA)
+})
+
+test_that("describe_reserved_node_offerings", {
+    expect_error(describe_reserved_node_offerings(), NA)
+})
+
+test_that("describe_reserved_nodes", {
+    expect_error(describe_reserved_nodes(), NA)
+})
+
+test_that("describe_snapshot_copy_grants", {
+    expect_error(describe_snapshot_copy_grants(), NA)
+})
+
+test_that("describe_table_restore_status", {
+    expect_error(describe_table_restore_status(), NA)
+})
+
+test_that("describe_tags", {
+    expect_error(describe_tags(), NA)
+})

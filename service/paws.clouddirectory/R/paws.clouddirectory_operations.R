@@ -1,0 +1,1742 @@
+#' Adds a new Facet to an object
+#'
+#' Adds a new Facet to an object. An object can have more than one facet applied on it.
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.
+#' @param SchemaFacet Identifiers for the facet that you are adding to the object. See SchemaFacet for details.
+#' @param ObjectReference A reference to the object you are adding the specified facet to.
+#' @param ObjectAttributeList Attributes on the facet that you are adding to the object.
+#'
+#' @examples
+#'
+#' @export
+add_facet_to_object <- function (DirectoryArn, SchemaFacet, ObjectReference, 
+    ObjectAttributeList = NULL) 
+{
+    op <- Operation(name = "AddFacetToObject", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/object/facets", 
+        paginator = list())
+    input <- add_facet_to_object_input(DirectoryArn = DirectoryArn, 
+        SchemaFacet = SchemaFacet, ObjectReference = ObjectReference, 
+        ObjectAttributeList = ObjectAttributeList)
+    output <- add_facet_to_object_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Copies the input published schema, at the specified version, into the Directory with the same name and version as that of the published schema
+#'
+#' Copies the input published schema, at the specified version, into the Directory with the same name and version as that of the published schema.
+#'
+#' @param PublishedSchemaArn Published schema Amazon Resource Name (ARN) that needs to be copied. For more information, see arns.
+#' @param DirectoryArn The Amazon Resource Name (ARN) that is associated with the Directory into which the schema is copied. For more information, see arns.
+#'
+#' @examples
+#'
+#' @export
+apply_schema <- function (PublishedSchemaArn, DirectoryArn) 
+{
+    op <- Operation(name = "ApplySchema", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/schema/apply", 
+        paginator = list())
+    input <- apply_schema_input(PublishedSchemaArn = PublishedSchemaArn, 
+        DirectoryArn = DirectoryArn)
+    output <- apply_schema_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Attaches an existing object to another object
+#'
+#' Attaches an existing object to another object. An object can be accessed in two ways:
+#' 
+#' 1.  Using the path
+#' 
+#' 2.  Using `ObjectIdentifier`
+#'
+#' @param DirectoryArn Amazon Resource Name (ARN) that is associated with the Directory where both objects reside. For more information, see arns.
+#' @param ParentReference The parent object reference.
+#' @param ChildReference The child object reference to be attached to the object.
+#' @param LinkName The link name with which the child object is attached to the parent.
+#'
+#' @examples
+#'
+#' @export
+attach_object <- function (DirectoryArn, ParentReference, ChildReference, 
+    LinkName) 
+{
+    op <- Operation(name = "AttachObject", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/object/attach", 
+        paginator = list())
+    input <- attach_object_input(DirectoryArn = DirectoryArn, 
+        ParentReference = ParentReference, ChildReference = ChildReference, 
+        LinkName = LinkName)
+    output <- attach_object_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Attaches a policy object to a regular object
+#'
+#' Attaches a policy object to a regular object. An object can have a limited number of attached policies.
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) that is associated with the Directory where both objects reside. For more information, see arns.
+#' @param PolicyReference The reference that is associated with the policy object.
+#' @param ObjectReference The reference that identifies the object to which the policy will be attached.
+#'
+#' @examples
+#'
+#' @export
+attach_policy <- function (DirectoryArn, PolicyReference, ObjectReference) 
+{
+    op <- Operation(name = "AttachPolicy", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/policy/attach", 
+        paginator = list())
+    input <- attach_policy_input(DirectoryArn = DirectoryArn, 
+        PolicyReference = PolicyReference, ObjectReference = ObjectReference)
+    output <- attach_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Attaches the specified object to the specified index
+#'
+#' Attaches the specified object to the specified index.
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) of the directory where the object and index exist.
+#' @param IndexReference A reference to the index that you are attaching the object to.
+#' @param TargetReference A reference to the object that you are attaching to the index.
+#'
+#' @examples
+#'
+#' @export
+attach_to_index <- function (DirectoryArn, IndexReference, TargetReference) 
+{
+    op <- Operation(name = "AttachToIndex", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/index/attach", 
+        paginator = list())
+    input <- attach_to_index_input(DirectoryArn = DirectoryArn, 
+        IndexReference = IndexReference, TargetReference = TargetReference)
+    output <- attach_to_index_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Attaches a typed link to a specified source and target object
+#'
+#' Attaches a typed link to a specified source and target object. For more information, see [Typed link](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) of the directory where you want to attach the typed link.
+#' @param SourceObjectReference Identifies the source object that the typed link will attach to.
+#' @param TargetObjectReference Identifies the target object that the typed link will attach to.
+#' @param TypedLinkFacet Identifies the typed link facet that is associated with the typed link.
+#' @param Attributes A set of attributes that are associated with the typed link.
+#'
+#' @examples
+#'
+#' @export
+attach_typed_link <- function (DirectoryArn, SourceObjectReference, 
+    TargetObjectReference, TypedLinkFacet, Attributes) 
+{
+    op <- Operation(name = "AttachTypedLink", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/typedlink/attach", 
+        paginator = list())
+    input <- attach_typed_link_input(DirectoryArn = DirectoryArn, 
+        SourceObjectReference = SourceObjectReference, TargetObjectReference = TargetObjectReference, 
+        TypedLinkFacet = TypedLinkFacet, Attributes = Attributes)
+    output <- attach_typed_link_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Performs all the read operations in a batch
+#'
+#' Performs all the read operations in a batch.
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) that is associated with the Directory. For more information, see arns.
+#' @param Operations A list of operations that are part of the batch.
+#' @param ConsistencyLevel Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.
+#'
+#' @examples
+#'
+#' @export
+batch_read <- function (DirectoryArn, Operations, ConsistencyLevel = NULL) 
+{
+    op <- Operation(name = "BatchRead", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/batchread", 
+        paginator = list())
+    input <- batch_read_input(DirectoryArn = DirectoryArn, Operations = Operations, 
+        ConsistencyLevel = ConsistencyLevel)
+    output <- batch_read_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Performs all the write operations in a batch
+#'
+#' Performs all the write operations in a batch. Either all the operations succeed or none.
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) that is associated with the Directory. For more information, see arns.
+#' @param Operations A list of operations that are part of the batch.
+#'
+#' @examples
+#'
+#' @export
+batch_write <- function (DirectoryArn, Operations) 
+{
+    op <- Operation(name = "BatchWrite", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/batchwrite", 
+        paginator = list())
+    input <- batch_write_input(DirectoryArn = DirectoryArn, Operations = Operations)
+    output <- batch_write_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a Directory by copying the published schema into the directory
+#'
+#' Creates a Directory by copying the published schema into the directory. A directory cannot be created without a schema.
+#'
+#' @param Name The name of the Directory. Should be unique per account, per region.
+#' @param SchemaArn The Amazon Resource Name (ARN) of the published schema that will be copied into the data Directory. For more information, see arns.
+#'
+#' @examples
+#'
+#' @export
+create_directory <- function (Name, SchemaArn) 
+{
+    op <- Operation(name = "CreateDirectory", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/directory/create", 
+        paginator = list())
+    input <- create_directory_input(Name = Name, SchemaArn = SchemaArn)
+    output <- create_directory_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a new Facet in a schema
+#'
+#' Creates a new Facet in a schema. Facet creation is allowed only in development or applied schemas.
+#'
+#' @param SchemaArn The schema ARN in which the new Facet will be created. For more information, see arns.
+#' @param Name The name of the Facet, which is unique for a given schema.
+#' @param Attributes The attributes that are associated with the Facet.
+#' @param ObjectType Specifies whether a given object created from this facet is of type node, leaf node, policy or index.
+#' 
+#' -   Node: Can have multiple children but one parent.
+#' 
+#' 
+#' -   Leaf node: Cannot have children but can have multiple parents.
+#' 
+#' 
+#' -   Policy: Allows you to store a policy document and policy type. For more information, see [Policies](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies).
+#' 
+#' 
+#' -   Index: Can be created with the Index API.
+#' @param FacetStyle There are two different styles that you can define on any given facet, `Static` and `Dynamic`. For static facets, all attributes must be defined in the schema. For dynamic facets, attributes can be defined during data plane operations.
+#'
+#' @examples
+#'
+#' @export
+create_facet <- function (SchemaArn, Name, Attributes = NULL, 
+    ObjectType = NULL, FacetStyle = NULL) 
+{
+    op <- Operation(name = "CreateFacet", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/facet/create", 
+        paginator = list())
+    input <- create_facet_input(SchemaArn = SchemaArn, Name = Name, 
+        Attributes = Attributes, ObjectType = ObjectType, FacetStyle = FacetStyle)
+    output <- create_facet_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates an index object
+#'
+#' Creates an index object. See [Indexing](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_indexing.html) for more information.
+#'
+#' @param DirectoryArn The ARN of the directory where the index should be created.
+#' @param OrderedIndexedAttributeList Specifies the attributes that should be indexed on. Currently only a single attribute is supported.
+#' @param IsUnique Indicates whether the attribute that is being indexed has unique values or not.
+#' @param ParentReference A reference to the parent object that contains the index object.
+#' @param LinkName The name of the link between the parent object and the index object.
+#'
+#' @examples
+#'
+#' @export
+create_index <- function (DirectoryArn, OrderedIndexedAttributeList, 
+    IsUnique, ParentReference = NULL, LinkName = NULL) 
+{
+    op <- Operation(name = "CreateIndex", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/index", 
+        paginator = list())
+    input <- create_index_input(DirectoryArn = DirectoryArn, 
+        OrderedIndexedAttributeList = OrderedIndexedAttributeList, 
+        IsUnique = IsUnique, ParentReference = ParentReference, 
+        LinkName = LinkName)
+    output <- create_index_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates an object in a Directory
+#'
+#' Creates an object in a Directory. Additionally attaches the object to a parent, if a parent reference and `LinkName` is specified. An object is simply a collection of Facet attributes. You can also use this API call to create a policy object, if the facet from which you create the object is a policy facet.
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) that is associated with the Directory in which the object will be created. For more information, see arns.
+#' @param SchemaFacets A list of schema facets to be associated with the object. Do not provide minor version components. See SchemaFacet for details.
+#' @param ObjectAttributeList The attribute map whose attribute ARN contains the key and attribute value as the map value.
+#' @param ParentReference If specified, the parent reference to which this object will be attached.
+#' @param LinkName The name of link that is used to attach this object to a parent.
+#'
+#' @examples
+#'
+#' @export
+create_object <- function (DirectoryArn, SchemaFacets, ObjectAttributeList = NULL, 
+    ParentReference = NULL, LinkName = NULL) 
+{
+    op <- Operation(name = "CreateObject", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/object", 
+        paginator = list())
+    input <- create_object_input(DirectoryArn = DirectoryArn, 
+        SchemaFacets = SchemaFacets, ObjectAttributeList = ObjectAttributeList, 
+        ParentReference = ParentReference, LinkName = LinkName)
+    output <- create_object_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a new schema in a development state
+#'
+#' Creates a new schema in a development state. A schema can exist in three phases:
+#' 
+#' -   *Development:* This is a mutable phase of the schema. All new schemas are in the development phase. Once the schema is finalized, it can be published.
+#' 
+#' -   *Published:* Published schemas are immutable and have a version associated with them.
+#' 
+#' -   *Applied:* Applied schemas are mutable in a way that allows you to add new schema facets. You can also add new, nonrequired attributes to existing schema facets. You can apply only published schemas to directories.
+#'
+#' @param Name The name that is associated with the schema. This is unique to each account and in each region.
+#'
+#' @examples
+#'
+#' @export
+create_schema <- function (Name) 
+{
+    op <- Operation(name = "CreateSchema", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/schema/create", 
+        paginator = list())
+    input <- create_schema_input(Name = Name)
+    output <- create_schema_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a TypedLinkFacet
+#'
+#' Creates a TypedLinkFacet. For more information, see [Typed link](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+#'
+#' @param SchemaArn The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.
+#' @param Facet Facet structure that is associated with the typed link facet.
+#'
+#' @examples
+#'
+#' @export
+create_typed_link_facet <- function (SchemaArn, Facet) 
+{
+    op <- Operation(name = "CreateTypedLinkFacet", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/typedlink/facet/create", 
+        paginator = list())
+    input <- create_typed_link_facet_input(SchemaArn = SchemaArn, 
+        Facet = Facet)
+    output <- create_typed_link_facet_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a directory
+#'
+#' Deletes a directory. Only disabled directories can be deleted. A deleted directory cannot be undone. Exercise extreme caution when deleting directories.
+#'
+#' @param DirectoryArn The ARN of the directory to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_directory <- function (DirectoryArn) 
+{
+    op <- Operation(name = "DeleteDirectory", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/directory", 
+        paginator = list())
+    input <- delete_directory_input(DirectoryArn = DirectoryArn)
+    output <- delete_directory_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a given Facet
+#'
+#' Deletes a given Facet. All attributes and Rules that are associated with the facet will be deleted. Only development schema facets are allowed deletion.
+#'
+#' @param SchemaArn The Amazon Resource Name (ARN) that is associated with the Facet. For more information, see arns.
+#' @param Name The name of the facet to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_facet <- function (SchemaArn, Name) 
+{
+    op <- Operation(name = "DeleteFacet", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/facet/delete", 
+        paginator = list())
+    input <- delete_facet_input(SchemaArn = SchemaArn, Name = Name)
+    output <- delete_facet_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes an object and its associated attributes
+#'
+#' Deletes an object and its associated attributes. Only objects with no children and no parents can be deleted.
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.
+#' @param ObjectReference A reference that identifies the object.
+#'
+#' @examples
+#'
+#' @export
+delete_object <- function (DirectoryArn, ObjectReference) 
+{
+    op <- Operation(name = "DeleteObject", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/object/delete", 
+        paginator = list())
+    input <- delete_object_input(DirectoryArn = DirectoryArn, 
+        ObjectReference = ObjectReference)
+    output <- delete_object_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a given schema
+#'
+#' Deletes a given schema. Schemas in a development and published state can only be deleted.
+#'
+#' @param SchemaArn The Amazon Resource Name (ARN) of the development schema. For more information, see arns.
+#'
+#' @examples
+#'
+#' @export
+delete_schema <- function (SchemaArn) 
+{
+    op <- Operation(name = "DeleteSchema", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/schema", 
+        paginator = list())
+    input <- delete_schema_input(SchemaArn = SchemaArn)
+    output <- delete_schema_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a TypedLinkFacet
+#'
+#' Deletes a TypedLinkFacet. For more information, see [Typed link](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+#'
+#' @param SchemaArn The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.
+#' @param Name The unique name of the typed link facet.
+#'
+#' @examples
+#'
+#' @export
+delete_typed_link_facet <- function (SchemaArn, Name) 
+{
+    op <- Operation(name = "DeleteTypedLinkFacet", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/typedlink/facet/delete", 
+        paginator = list())
+    input <- delete_typed_link_facet_input(SchemaArn = SchemaArn, 
+        Name = Name)
+    output <- delete_typed_link_facet_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Detaches the specified object from the specified index
+#'
+#' Detaches the specified object from the specified index.
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) of the directory the index and object exist in.
+#' @param IndexReference A reference to the index object.
+#' @param TargetReference A reference to the object being detached from the index.
+#'
+#' @examples
+#'
+#' @export
+detach_from_index <- function (DirectoryArn, IndexReference, 
+    TargetReference) 
+{
+    op <- Operation(name = "DetachFromIndex", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/index/detach", 
+        paginator = list())
+    input <- detach_from_index_input(DirectoryArn = DirectoryArn, 
+        IndexReference = IndexReference, TargetReference = TargetReference)
+    output <- detach_from_index_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Detaches a given object from the parent object
+#'
+#' Detaches a given object from the parent object. The object that is to be detached from the parent is specified by the link name.
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) that is associated with the Directory where objects reside. For more information, see arns.
+#' @param ParentReference The parent reference from which the object with the specified link name is detached.
+#' @param LinkName The link name associated with the object that needs to be detached.
+#'
+#' @examples
+#'
+#' @export
+detach_object <- function (DirectoryArn, ParentReference, LinkName) 
+{
+    op <- Operation(name = "DetachObject", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/object/detach", 
+        paginator = list())
+    input <- detach_object_input(DirectoryArn = DirectoryArn, 
+        ParentReference = ParentReference, LinkName = LinkName)
+    output <- detach_object_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Detaches a policy from an object
+#'
+#' Detaches a policy from an object.
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) that is associated with the Directory where both objects reside. For more information, see arns.
+#' @param PolicyReference Reference that identifies the policy object.
+#' @param ObjectReference Reference that identifies the object whose policy object will be detached.
+#'
+#' @examples
+#'
+#' @export
+detach_policy <- function (DirectoryArn, PolicyReference, ObjectReference) 
+{
+    op <- Operation(name = "DetachPolicy", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/policy/detach", 
+        paginator = list())
+    input <- detach_policy_input(DirectoryArn = DirectoryArn, 
+        PolicyReference = PolicyReference, ObjectReference = ObjectReference)
+    output <- detach_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Detaches a typed link from a specified source and target object
+#'
+#' Detaches a typed link from a specified source and target object. For more information, see [Typed link](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) of the directory where you want to detach the typed link.
+#' @param TypedLinkSpecifier Used to accept a typed link specifier as input.
+#'
+#' @examples
+#'
+#' @export
+detach_typed_link <- function (DirectoryArn, TypedLinkSpecifier) 
+{
+    op <- Operation(name = "DetachTypedLink", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/typedlink/detach", 
+        paginator = list())
+    input <- detach_typed_link_input(DirectoryArn = DirectoryArn, 
+        TypedLinkSpecifier = TypedLinkSpecifier)
+    output <- detach_typed_link_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Disables the specified directory
+#'
+#' Disables the specified directory. Disabled directories cannot be read or written to. Only enabled directories can be disabled. Disabled directories may be reenabled.
+#'
+#' @param DirectoryArn The ARN of the directory to disable.
+#'
+#' @examples
+#'
+#' @export
+disable_directory <- function (DirectoryArn) 
+{
+    op <- Operation(name = "DisableDirectory", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/directory/disable", 
+        paginator = list())
+    input <- disable_directory_input(DirectoryArn = DirectoryArn)
+    output <- disable_directory_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Enables the specified directory
+#'
+#' Enables the specified directory. Only disabled directories can be enabled. Once enabled, the directory can then be read and written to.
+#'
+#' @param DirectoryArn The ARN of the directory to enable.
+#'
+#' @examples
+#'
+#' @export
+enable_directory <- function (DirectoryArn) 
+{
+    op <- Operation(name = "EnableDirectory", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/directory/enable", 
+        paginator = list())
+    input <- enable_directory_input(DirectoryArn = DirectoryArn)
+    output <- enable_directory_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns current applied schema version ARN, including the minor version in use
+#'
+#' Returns current applied schema version ARN, including the minor version in use.
+#'
+#' @param SchemaArn The ARN of the applied schema.
+#'
+#' @examples
+#'
+#' @export
+get_applied_schema_version <- function (SchemaArn) 
+{
+    op <- Operation(name = "GetAppliedSchemaVersion", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/schema/getappliedschema", 
+        paginator = list())
+    input <- get_applied_schema_version_input(SchemaArn = SchemaArn)
+    output <- get_applied_schema_version_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves metadata about a directory
+#'
+#' Retrieves metadata about a directory.
+#'
+#' @param DirectoryArn The ARN of the directory.
+#'
+#' @examples
+#'
+#' @export
+get_directory <- function (DirectoryArn) 
+{
+    op <- Operation(name = "GetDirectory", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/directory/get", 
+        paginator = list())
+    input <- get_directory_input(DirectoryArn = DirectoryArn)
+    output <- get_directory_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets details of the Facet, such as facet name, attributes, Rules, or `ObjectType`
+#'
+#' Gets details of the Facet, such as facet name, attributes, Rules, or `ObjectType`. You can call this on all kinds of schema facets \-- published, development, or applied.
+#'
+#' @param SchemaArn The Amazon Resource Name (ARN) that is associated with the Facet. For more information, see arns.
+#' @param Name The name of the facet to retrieve.
+#'
+#' @examples
+#'
+#' @export
+get_facet <- function (SchemaArn, Name) 
+{
+    op <- Operation(name = "GetFacet", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/facet", 
+        paginator = list())
+    input <- get_facet_input(SchemaArn = SchemaArn, Name = Name)
+    output <- get_facet_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves attributes that are associated with a typed link
+#'
+#' Retrieves attributes that are associated with a typed link.
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) that is associated with the Directory where the typed link resides. For more information, see arns or [Typed link](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+#' @param TypedLinkSpecifier Allows a typed link specifier to be accepted as input.
+#' @param AttributeNames A list of attribute names whose values will be retrieved.
+#' @param ConsistencyLevel The consistency level at which to retrieve the attributes on a typed link.
+#'
+#' @examples
+#'
+#' @export
+get_link_attributes <- function (DirectoryArn, TypedLinkSpecifier, 
+    AttributeNames, ConsistencyLevel = NULL) 
+{
+    op <- Operation(name = "GetLinkAttributes", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/typedlink/attributes/get", 
+        paginator = list())
+    input <- get_link_attributes_input(DirectoryArn = DirectoryArn, 
+        TypedLinkSpecifier = TypedLinkSpecifier, AttributeNames = AttributeNames, 
+        ConsistencyLevel = ConsistencyLevel)
+    output <- get_link_attributes_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves attributes within a facet that are associated with an object
+#'
+#' Retrieves attributes within a facet that are associated with an object.
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) that is associated with the Directory where the object resides.
+#' @param ObjectReference Reference that identifies the object whose attributes will be retrieved.
+#' @param SchemaFacet Identifier for the facet whose attributes will be retrieved. See SchemaFacet for details.
+#' @param AttributeNames List of attribute names whose values will be retrieved.
+#' @param ConsistencyLevel The consistency level at which to retrieve the attributes on an object.
+#'
+#' @examples
+#'
+#' @export
+get_object_attributes <- function (DirectoryArn, ObjectReference, 
+    SchemaFacet, AttributeNames, ConsistencyLevel = NULL) 
+{
+    op <- Operation(name = "GetObjectAttributes", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/object/attributes/get", 
+        paginator = list())
+    input <- get_object_attributes_input(DirectoryArn = DirectoryArn, 
+        ObjectReference = ObjectReference, SchemaFacet = SchemaFacet, 
+        AttributeNames = AttributeNames, ConsistencyLevel = ConsistencyLevel)
+    output <- get_object_attributes_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves metadata about an object
+#'
+#' Retrieves metadata about an object.
+#'
+#' @param DirectoryArn The ARN of the directory being retrieved.
+#' @param ObjectReference A reference to the object.
+#' @param ConsistencyLevel The consistency level at which to retrieve the object information.
+#'
+#' @examples
+#'
+#' @export
+get_object_information <- function (DirectoryArn, ObjectReference, 
+    ConsistencyLevel = NULL) 
+{
+    op <- Operation(name = "GetObjectInformation", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/object/information", 
+        paginator = list())
+    input <- get_object_information_input(DirectoryArn = DirectoryArn, 
+        ObjectReference = ObjectReference, ConsistencyLevel = ConsistencyLevel)
+    output <- get_object_information_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a JSON representation of the schema
+#'
+#' Retrieves a JSON representation of the schema. See [JSON Schema Format](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_schemas.html#jsonformat) for more information.
+#'
+#' @param SchemaArn The ARN of the schema to retrieve.
+#'
+#' @examples
+#'
+#' @export
+get_schema_as_json <- function (SchemaArn) 
+{
+    op <- Operation(name = "GetSchemaAsJson", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/schema/json", 
+        paginator = list())
+    input <- get_schema_as_json_input(SchemaArn = SchemaArn)
+    output <- get_schema_as_json_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns the identity attribute order for a specific TypedLinkFacet
+#'
+#' Returns the identity attribute order for a specific TypedLinkFacet. For more information, see [Typed link](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+#'
+#' @param SchemaArn The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.
+#' @param Name The unique name of the typed link facet.
+#'
+#' @examples
+#'
+#' @export
+get_typed_link_facet_information <- function (SchemaArn, Name) 
+{
+    op <- Operation(name = "GetTypedLinkFacetInformation", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/typedlink/facet/get", 
+        paginator = list())
+    input <- get_typed_link_facet_information_input(SchemaArn = SchemaArn, 
+        Name = Name)
+    output <- get_typed_link_facet_information_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists schema major versions applied to a directory
+#'
+#' Lists schema major versions applied to a directory. If `SchemaArn` is provided, lists the minor version.
+#'
+#' @param DirectoryArn The ARN of the directory you are listing.
+#' @param SchemaArn The response for `ListAppliedSchemaArns` when this parameter is used will list all minor version ARNs for a major version.
+#' @param NextToken The pagination token.
+#' @param MaxResults The maximum number of results to retrieve.
+#'
+#' @examples
+#'
+#' @export
+list_applied_schema_arns <- function (DirectoryArn, SchemaArn = NULL, 
+    NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "ListAppliedSchemaArns", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/schema/applied", 
+        paginator = list())
+    input <- list_applied_schema_arns_input(DirectoryArn = DirectoryArn, 
+        SchemaArn = SchemaArn, NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_applied_schema_arns_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists indices attached to the specified object
+#'
+#' Lists indices attached to the specified object.
+#'
+#' @param DirectoryArn The ARN of the directory.
+#' @param TargetReference A reference to the object that has indices attached.
+#' @param NextToken The pagination token.
+#' @param MaxResults The maximum number of results to retrieve.
+#' @param ConsistencyLevel The consistency level to use for this operation.
+#'
+#' @examples
+#'
+#' @export
+list_attached_indices <- function (DirectoryArn, TargetReference, 
+    NextToken = NULL, MaxResults = NULL, ConsistencyLevel = NULL) 
+{
+    op <- Operation(name = "ListAttachedIndices", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/object/indices", 
+        paginator = list())
+    input <- list_attached_indices_input(DirectoryArn = DirectoryArn, 
+        TargetReference = TargetReference, NextToken = NextToken, 
+        MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel)
+    output <- list_attached_indices_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves each Amazon Resource Name (ARN) of schemas in the development state
+#'
+#' Retrieves each Amazon Resource Name (ARN) of schemas in the development state.
+#'
+#' @param NextToken The pagination token.
+#' @param MaxResults The maximum number of results to retrieve.
+#'
+#' @examples
+#'
+#' @export
+list_development_schema_arns <- function (NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "ListDevelopmentSchemaArns", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/schema/development", 
+        paginator = list())
+    input <- list_development_schema_arns_input(NextToken = NextToken, 
+        MaxResults = MaxResults)
+    output <- list_development_schema_arns_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists directories created within an account
+#'
+#' Lists directories created within an account.
+#'
+#' @param NextToken The pagination token.
+#' @param MaxResults The maximum number of results to retrieve.
+#' @param state The state of the directories in the list. Can be either Enabled, Disabled, or Deleted.
+#'
+#' @examples
+#'
+#' @export
+list_directories <- function (NextToken = NULL, MaxResults = NULL, 
+    state = NULL) 
+{
+    op <- Operation(name = "ListDirectories", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/directory/list", 
+        paginator = list())
+    input <- list_directories_input(NextToken = NextToken, MaxResults = MaxResults, 
+        state = state)
+    output <- list_directories_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves attributes attached to the facet
+#'
+#' Retrieves attributes attached to the facet.
+#'
+#' @param SchemaArn The ARN of the schema where the facet resides.
+#' @param Name The name of the facet whose attributes will be retrieved.
+#' @param NextToken The pagination token.
+#' @param MaxResults The maximum number of results to retrieve.
+#'
+#' @examples
+#'
+#' @export
+list_facet_attributes <- function (SchemaArn, Name, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- Operation(name = "ListFacetAttributes", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/facet/attributes", 
+        paginator = list())
+    input <- list_facet_attributes_input(SchemaArn = SchemaArn, 
+        Name = Name, NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_facet_attributes_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the names of facets that exist in a schema
+#'
+#' Retrieves the names of facets that exist in a schema.
+#'
+#' @param SchemaArn The Amazon Resource Name (ARN) to retrieve facet names from.
+#' @param NextToken The pagination token.
+#' @param MaxResults The maximum number of results to retrieve.
+#'
+#' @examples
+#'
+#' @export
+list_facet_names <- function (SchemaArn, NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "ListFacetNames", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/facet/list", 
+        paginator = list())
+    input <- list_facet_names_input(SchemaArn = SchemaArn, NextToken = NextToken, 
+        MaxResults = MaxResults)
+    output <- list_facet_names_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a paginated list of all the incoming TypedLinkSpecifier information for an object
+#'
+#' Returns a paginated list of all the incoming TypedLinkSpecifier information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see [Typed link](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) of the directory where you want to list the typed links.
+#' @param ObjectReference Reference that identifies the object whose attributes will be listed.
+#' @param FilterAttributeRanges Provides range filters for multiple attributes. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range.
+#' @param FilterTypedLink Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls.
+#' @param NextToken The pagination token.
+#' @param MaxResults The maximum number of results to retrieve.
+#' @param ConsistencyLevel The consistency level to execute the request at.
+#'
+#' @examples
+#'
+#' @export
+list_incoming_typed_links <- function (DirectoryArn, ObjectReference, 
+    FilterAttributeRanges = NULL, FilterTypedLink = NULL, NextToken = NULL, 
+    MaxResults = NULL, ConsistencyLevel = NULL) 
+{
+    op <- Operation(name = "ListIncomingTypedLinks", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/typedlink/incoming", 
+        paginator = list())
+    input <- list_incoming_typed_links_input(DirectoryArn = DirectoryArn, 
+        ObjectReference = ObjectReference, FilterAttributeRanges = FilterAttributeRanges, 
+        FilterTypedLink = FilterTypedLink, NextToken = NextToken, 
+        MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel)
+    output <- list_incoming_typed_links_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists objects attached to the specified index
+#'
+#' Lists objects attached to the specified index.
+#'
+#' @param DirectoryArn The ARN of the directory that the index exists in.
+#' @param IndexReference The reference to the index to list.
+#' @param RangesOnIndexedValues Specifies the ranges of indexed values that you want to query.
+#' @param MaxResults The maximum number of objects in a single page to retrieve from the index during a request. For more information, see [AWS Directory Service Limits](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/limits.html#limits_cd).
+#' @param NextToken The pagination token.
+#' @param ConsistencyLevel The consistency level to execute the request at.
+#'
+#' @examples
+#'
+#' @export
+list_index <- function (DirectoryArn, IndexReference, RangesOnIndexedValues = NULL, 
+    MaxResults = NULL, NextToken = NULL, ConsistencyLevel = NULL) 
+{
+    op <- Operation(name = "ListIndex", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/index/targets", 
+        paginator = list())
+    input <- list_index_input(DirectoryArn = DirectoryArn, IndexReference = IndexReference, 
+        RangesOnIndexedValues = RangesOnIndexedValues, MaxResults = MaxResults, 
+        NextToken = NextToken, ConsistencyLevel = ConsistencyLevel)
+    output <- list_index_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the major version families of each managed schema
+#'
+#' Lists the major version families of each managed schema. If a major version ARN is provided as SchemaArn, the minor version revisions in that family are listed instead.
+#'
+#' @param SchemaArn The response for ListManagedSchemaArns. When this parameter is used, all minor version ARNs for a major version are listed.
+#' @param NextToken The pagination token.
+#' @param MaxResults The maximum number of results to retrieve.
+#'
+#' @examples
+#'
+#' @export
+list_managed_schema_arns <- function (SchemaArn = NULL, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- Operation(name = "ListManagedSchemaArns", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/schema/managed", 
+        paginator = list())
+    input <- list_managed_schema_arns_input(SchemaArn = SchemaArn, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_managed_schema_arns_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists all attributes that are associated with an object
+#'
+#' Lists all attributes that are associated with an object.
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.
+#' @param ObjectReference The reference that identifies the object whose attributes will be listed.
+#' @param NextToken The pagination token.
+#' @param MaxResults The maximum number of items to be retrieved in a single call. This is an approximate number.
+#' @param ConsistencyLevel Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.
+#' @param FacetFilter Used to filter the list of object attributes that are associated with a certain facet.
+#'
+#' @examples
+#'
+#' @export
+list_object_attributes <- function (DirectoryArn, ObjectReference, 
+    NextToken = NULL, MaxResults = NULL, ConsistencyLevel = NULL, 
+    FacetFilter = NULL) 
+{
+    op <- Operation(name = "ListObjectAttributes", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/object/attributes", 
+        paginator = list())
+    input <- list_object_attributes_input(DirectoryArn = DirectoryArn, 
+        ObjectReference = ObjectReference, NextToken = NextToken, 
+        MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel, 
+        FacetFilter = FacetFilter)
+    output <- list_object_attributes_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a paginated list of child objects that are associated with a given object
+#'
+#' Returns a paginated list of child objects that are associated with a given object.
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.
+#' @param ObjectReference The reference that identifies the object for which child objects are being listed.
+#' @param NextToken The pagination token.
+#' @param MaxResults The maximum number of items to be retrieved in a single call. This is an approximate number.
+#' @param ConsistencyLevel Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.
+#'
+#' @examples
+#'
+#' @export
+list_object_children <- function (DirectoryArn, ObjectReference, 
+    NextToken = NULL, MaxResults = NULL, ConsistencyLevel = NULL) 
+{
+    op <- Operation(name = "ListObjectChildren", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/object/children", 
+        paginator = list())
+    input <- list_object_children_input(DirectoryArn = DirectoryArn, 
+        ObjectReference = ObjectReference, NextToken = NextToken, 
+        MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel)
+    output <- list_object_children_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves all available parent paths for any object type such as node, leaf node, policy node, and index node objects
+#'
+#' Retrieves all available parent paths for any object type such as node, leaf node, policy node, and index node objects. For more information about objects, see [Directory Structure](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#dirstructure).
+#' 
+#' Use this API to evaluate all parents for an object. The call returns all objects from the root of the directory up to the requested object. The API returns the number of paths based on user-defined `MaxResults`, in case there are multiple paths to the parent. The order of the paths and nodes returned is consistent among multiple API calls unless the objects are deleted or moved. Paths not leading to the directory root are ignored from the target object.
+#'
+#' @param DirectoryArn The ARN of the directory to which the parent path applies.
+#' @param ObjectReference The reference that identifies the object whose parent paths are listed.
+#' @param NextToken The pagination token.
+#' @param MaxResults The maximum number of items to be retrieved in a single call. This is an approximate number.
+#'
+#' @examples
+#'
+#' @export
+list_object_parent_paths <- function (DirectoryArn, ObjectReference, 
+    NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "ListObjectParentPaths", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/object/parentpaths", 
+        paginator = list())
+    input <- list_object_parent_paths_input(DirectoryArn = DirectoryArn, 
+        ObjectReference = ObjectReference, NextToken = NextToken, 
+        MaxResults = MaxResults)
+    output <- list_object_parent_paths_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists parent objects that are associated with a given object in pagination fashion
+#'
+#' Lists parent objects that are associated with a given object in pagination fashion.
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.
+#' @param ObjectReference The reference that identifies the object for which parent objects are being listed.
+#' @param NextToken The pagination token.
+#' @param MaxResults The maximum number of items to be retrieved in a single call. This is an approximate number.
+#' @param ConsistencyLevel Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.
+#'
+#' @examples
+#'
+#' @export
+list_object_parents <- function (DirectoryArn, ObjectReference, 
+    NextToken = NULL, MaxResults = NULL, ConsistencyLevel = NULL) 
+{
+    op <- Operation(name = "ListObjectParents", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/object/parent", 
+        paginator = list())
+    input <- list_object_parents_input(DirectoryArn = DirectoryArn, 
+        ObjectReference = ObjectReference, NextToken = NextToken, 
+        MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel)
+    output <- list_object_parents_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns policies attached to an object in pagination fashion
+#'
+#' Returns policies attached to an object in pagination fashion.
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) that is associated with the Directory where objects reside. For more information, see arns.
+#' @param ObjectReference Reference that identifies the object for which policies will be listed.
+#' @param NextToken The pagination token.
+#' @param MaxResults The maximum number of items to be retrieved in a single call. This is an approximate number.
+#' @param ConsistencyLevel Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.
+#'
+#' @examples
+#'
+#' @export
+list_object_policies <- function (DirectoryArn, ObjectReference, 
+    NextToken = NULL, MaxResults = NULL, ConsistencyLevel = NULL) 
+{
+    op <- Operation(name = "ListObjectPolicies", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/object/policy", 
+        paginator = list())
+    input <- list_object_policies_input(DirectoryArn = DirectoryArn, 
+        ObjectReference = ObjectReference, NextToken = NextToken, 
+        MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel)
+    output <- list_object_policies_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a paginated list of all the outgoing TypedLinkSpecifier information for an object
+#'
+#' Returns a paginated list of all the outgoing TypedLinkSpecifier information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see [Typed link](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) of the directory where you want to list the typed links.
+#' @param ObjectReference A reference that identifies the object whose attributes will be listed.
+#' @param FilterAttributeRanges Provides range filters for multiple attributes. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range.
+#' @param FilterTypedLink Filters are interpreted in the order of the attributes defined on the typed link facet, not the order they are supplied to any API calls.
+#' @param NextToken The pagination token.
+#' @param MaxResults The maximum number of results to retrieve.
+#' @param ConsistencyLevel The consistency level to execute the request at.
+#'
+#' @examples
+#'
+#' @export
+list_outgoing_typed_links <- function (DirectoryArn, ObjectReference, 
+    FilterAttributeRanges = NULL, FilterTypedLink = NULL, NextToken = NULL, 
+    MaxResults = NULL, ConsistencyLevel = NULL) 
+{
+    op <- Operation(name = "ListOutgoingTypedLinks", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/typedlink/outgoing", 
+        paginator = list())
+    input <- list_outgoing_typed_links_input(DirectoryArn = DirectoryArn, 
+        ObjectReference = ObjectReference, FilterAttributeRanges = FilterAttributeRanges, 
+        FilterTypedLink = FilterTypedLink, NextToken = NextToken, 
+        MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel)
+    output <- list_outgoing_typed_links_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns all of the `ObjectIdentifiers` to which a given policy is attached
+#'
+#' Returns all of the `ObjectIdentifiers` to which a given policy is attached.
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) that is associated with the Directory where objects reside. For more information, see arns.
+#' @param PolicyReference The reference that identifies the policy object.
+#' @param NextToken The pagination token.
+#' @param MaxResults The maximum number of items to be retrieved in a single call. This is an approximate number.
+#' @param ConsistencyLevel Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.
+#'
+#' @examples
+#'
+#' @export
+list_policy_attachments <- function (DirectoryArn, PolicyReference, 
+    NextToken = NULL, MaxResults = NULL, ConsistencyLevel = NULL) 
+{
+    op <- Operation(name = "ListPolicyAttachments", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/policy/attachment", 
+        paginator = list())
+    input <- list_policy_attachments_input(DirectoryArn = DirectoryArn, 
+        PolicyReference = PolicyReference, NextToken = NextToken, 
+        MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel)
+    output <- list_policy_attachments_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the major version families of each published schema
+#'
+#' Lists the major version families of each published schema. If a major version ARN is provided as `SchemaArn`, the minor version revisions in that family are listed instead.
+#'
+#' @param SchemaArn The response for `ListPublishedSchemaArns` when this parameter is used will list all minor version ARNs for a major version.
+#' @param NextToken The pagination token.
+#' @param MaxResults The maximum number of results to retrieve.
+#'
+#' @examples
+#'
+#' @export
+list_published_schema_arns <- function (SchemaArn = NULL, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- Operation(name = "ListPublishedSchemaArns", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/schema/published", 
+        paginator = list())
+    input <- list_published_schema_arns_input(SchemaArn = SchemaArn, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_published_schema_arns_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns tags for a resource
+#'
+#' Returns tags for a resource. Tagging is currently supported only for directories with a limit of 50 tags per directory. All 50 tags are returned for a given directory with this API call.
+#'
+#' @param ResourceArn The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.
+#' @param NextToken The pagination token. This is for future use. Currently pagination is not supported for tagging.
+#' @param MaxResults The `MaxResults` parameter sets the maximum number of results returned in a single page. This is for future use and is not supported currently.
+#'
+#' @examples
+#'
+#' @export
+list_tags_for_resource <- function (ResourceArn, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- Operation(name = "ListTagsForResource", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/tags", 
+        paginator = list())
+    input <- list_tags_for_resource_input(ResourceArn = ResourceArn, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_tags_for_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a paginated list of all attribute definitions for a particular TypedLinkFacet
+#'
+#' Returns a paginated list of all attribute definitions for a particular TypedLinkFacet. For more information, see [Typed link](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+#'
+#' @param SchemaArn The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.
+#' @param Name The unique name of the typed link facet.
+#' @param NextToken The pagination token.
+#' @param MaxResults The maximum number of results to retrieve.
+#'
+#' @examples
+#'
+#' @export
+list_typed_link_facet_attributes <- function (SchemaArn, Name, 
+    NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "ListTypedLinkFacetAttributes", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/typedlink/facet/attributes", 
+        paginator = list())
+    input <- list_typed_link_facet_attributes_input(SchemaArn = SchemaArn, 
+        Name = Name, NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_typed_link_facet_attributes_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a paginated list of `TypedLink` facet names for a particular schema
+#'
+#' Returns a paginated list of `TypedLink` facet names for a particular schema. For more information, see [Typed link](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+#'
+#' @param SchemaArn The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.
+#' @param NextToken The pagination token.
+#' @param MaxResults The maximum number of results to retrieve.
+#'
+#' @examples
+#'
+#' @export
+list_typed_link_facet_names <- function (SchemaArn, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- Operation(name = "ListTypedLinkFacetNames", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/typedlink/facet/list", 
+        paginator = list())
+    input <- list_typed_link_facet_names_input(SchemaArn = SchemaArn, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_typed_link_facet_names_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists all policies from the root of the Directory to the object specified
+#'
+#' Lists all policies from the root of the Directory to the object specified. If there are no policies present, an empty list is returned. If policies are present, and if some objects don\'t have the policies attached, it returns the `ObjectIdentifier` for such objects. If policies are present, it returns `ObjectIdentifier`, `policyId`, and `policyType`. Paths that don\'t lead to the root from the target object are ignored. For more information, see [Policies](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies).
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) that is associated with the Directory. For more information, see arns.
+#' @param ObjectReference Reference that identifies the object whose policies will be looked up.
+#' @param NextToken The token to request the next page of results.
+#' @param MaxResults The maximum number of items to be retrieved in a single call. This is an approximate number.
+#'
+#' @examples
+#'
+#' @export
+lookup_policy <- function (DirectoryArn, ObjectReference, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- Operation(name = "LookupPolicy", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/policy/lookup", 
+        paginator = list())
+    input <- lookup_policy_input(DirectoryArn = DirectoryArn, 
+        ObjectReference = ObjectReference, NextToken = NextToken, 
+        MaxResults = MaxResults)
+    output <- lookup_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Publishes a development schema with a major version and a recommended minor version
+#'
+#' Publishes a development schema with a major version and a recommended minor version.
+#'
+#' @param DevelopmentSchemaArn The Amazon Resource Name (ARN) that is associated with the development schema. For more information, see arns.
+#' @param Version The major version under which the schema will be published. Schemas have both a major and minor version associated with them.
+#' @param MinorVersion The minor version under which the schema will be published. This parameter is recommended. Schemas have both a major and minor version associated with them.
+#' @param Name The new name under which the schema will be published. If this is not provided, the development schema is considered.
+#'
+#' @examples
+#'
+#' @export
+publish_schema <- function (DevelopmentSchemaArn, Version, MinorVersion = NULL, 
+    Name = NULL) 
+{
+    op <- Operation(name = "PublishSchema", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/schema/publish", 
+        paginator = list())
+    input <- publish_schema_input(DevelopmentSchemaArn = DevelopmentSchemaArn, 
+        Version = Version, MinorVersion = MinorVersion, Name = Name)
+    output <- publish_schema_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Allows a schema to be updated using JSON upload
+#'
+#' Allows a schema to be updated using JSON upload. Only available for development schemas. See [JSON Schema Format](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_schemas.html#jsonformat) for more information.
+#'
+#' @param SchemaArn The ARN of the schema to update.
+#' @param Document The replacement JSON schema.
+#'
+#' @examples
+#'
+#' @export
+put_schema_from_json <- function (SchemaArn, Document) 
+{
+    op <- Operation(name = "PutSchemaFromJson", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/schema/json", 
+        paginator = list())
+    input <- put_schema_from_json_input(SchemaArn = SchemaArn, 
+        Document = Document)
+    output <- put_schema_from_json_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes the specified facet from the specified object
+#'
+#' Removes the specified facet from the specified object.
+#'
+#' @param DirectoryArn The ARN of the directory in which the object resides.
+#' @param SchemaFacet The facet to remove. See SchemaFacet for details.
+#' @param ObjectReference A reference to the object to remove the facet from.
+#'
+#' @examples
+#'
+#' @export
+remove_facet_from_object <- function (DirectoryArn, SchemaFacet, 
+    ObjectReference) 
+{
+    op <- Operation(name = "RemoveFacetFromObject", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/object/facets/delete", 
+        paginator = list())
+    input <- remove_facet_from_object_input(DirectoryArn = DirectoryArn, 
+        SchemaFacet = SchemaFacet, ObjectReference = ObjectReference)
+    output <- remove_facet_from_object_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' An API operation for adding tags to a resource
+#'
+#' An API operation for adding tags to a resource.
+#'
+#' @param ResourceArn The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.
+#' @param Tags A list of tag key-value pairs.
+#'
+#' @examples
+#'
+#' @export
+tag_resource <- function (ResourceArn, Tags) 
+{
+    op <- Operation(name = "TagResource", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/tags/add", 
+        paginator = list())
+    input <- tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+    output <- tag_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' An API operation for removing tags from a resource
+#'
+#' An API operation for removing tags from a resource.
+#'
+#' @param ResourceArn The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.
+#' @param TagKeys Keys of the tag that need to be removed from the resource.
+#'
+#' @examples
+#'
+#' @export
+untag_resource <- function (ResourceArn, TagKeys) 
+{
+    op <- Operation(name = "UntagResource", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/tags/remove", 
+        paginator = list())
+    input <- untag_resource_input(ResourceArn = ResourceArn, 
+        TagKeys = TagKeys)
+    output <- untag_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Does the following:
+#'
+#' Does the following:
+#' 
+#' 1.  Adds new `Attributes`, `Rules`, or `ObjectTypes`.
+#' 
+#' 2.  Updates existing `Attributes`, `Rules`, or `ObjectTypes`.
+#' 
+#' 3.  Deletes existing `Attributes`, `Rules`, or `ObjectTypes`.
+#'
+#' @param SchemaArn The Amazon Resource Name (ARN) that is associated with the Facet. For more information, see arns.
+#' @param Name The name of the facet.
+#' @param AttributeUpdates List of attributes that need to be updated in a given schema Facet. Each attribute is followed by `AttributeAction`, which specifies the type of update operation to perform.
+#' @param ObjectType The object type that is associated with the facet. See CreateFacetRequest\$ObjectType for more details.
+#'
+#' @examples
+#'
+#' @export
+update_facet <- function (SchemaArn, Name, AttributeUpdates = NULL, 
+    ObjectType = NULL) 
+{
+    op <- Operation(name = "UpdateFacet", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/facet", 
+        paginator = list())
+    input <- update_facet_input(SchemaArn = SchemaArn, Name = Name, 
+        AttributeUpdates = AttributeUpdates, ObjectType = ObjectType)
+    output <- update_facet_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates a given typed link's attributes
+#'
+#' Updates a given typed link's attributes. Attributes to be updated must not contribute to the typed link's identity, as defined by its `IdentityAttributeOrder`.
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) that is associated with the Directory where the updated typed link resides. For more information, see arns or [Typed link](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+#' @param TypedLinkSpecifier Allows a typed link specifier to be accepted as input.
+#' @param AttributeUpdates The attributes update structure.
+#'
+#' @examples
+#'
+#' @export
+update_link_attributes <- function (DirectoryArn, TypedLinkSpecifier, 
+    AttributeUpdates) 
+{
+    op <- Operation(name = "UpdateLinkAttributes", http_method = "POST", 
+        http_path = "/amazonclouddirectory/2017-01-11/typedlink/attributes/update", 
+        paginator = list())
+    input <- update_link_attributes_input(DirectoryArn = DirectoryArn, 
+        TypedLinkSpecifier = TypedLinkSpecifier, AttributeUpdates = AttributeUpdates)
+    output <- update_link_attributes_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates a given object\'s attributes
+#'
+#' Updates a given object\'s attributes.
+#'
+#' @param DirectoryArn The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.
+#' @param ObjectReference The reference that identifies the object.
+#' @param AttributeUpdates The attributes update structure.
+#'
+#' @examples
+#'
+#' @export
+update_object_attributes <- function (DirectoryArn, ObjectReference, 
+    AttributeUpdates) 
+{
+    op <- Operation(name = "UpdateObjectAttributes", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/object/update", 
+        paginator = list())
+    input <- update_object_attributes_input(DirectoryArn = DirectoryArn, 
+        ObjectReference = ObjectReference, AttributeUpdates = AttributeUpdates)
+    output <- update_object_attributes_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the schema name with a new name
+#'
+#' Updates the schema name with a new name. Only development schema names can be updated.
+#'
+#' @param SchemaArn The Amazon Resource Name (ARN) of the development schema. For more information, see arns.
+#' @param Name The name of the schema.
+#'
+#' @examples
+#'
+#' @export
+update_schema <- function (SchemaArn, Name) 
+{
+    op <- Operation(name = "UpdateSchema", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/schema/update", 
+        paginator = list())
+    input <- update_schema_input(SchemaArn = SchemaArn, Name = Name)
+    output <- update_schema_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates a TypedLinkFacet
+#'
+#' Updates a TypedLinkFacet. For more information, see [Typed link](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+#'
+#' @param SchemaArn The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.
+#' @param Name The unique name of the typed link facet.
+#' @param AttributeUpdates Attributes update structure.
+#' @param IdentityAttributeOrder The order of identity attributes for the facet, from most significant to least significant. The ability to filter typed links considers the order that the attributes are defined on the typed link facet. When providing ranges to a typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range. Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls. For more information about identity attributes, see [Typed link](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+#'
+#' @examples
+#'
+#' @export
+update_typed_link_facet <- function (SchemaArn, Name, AttributeUpdates, 
+    IdentityAttributeOrder) 
+{
+    op <- Operation(name = "UpdateTypedLinkFacet", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/typedlink/facet", 
+        paginator = list())
+    input <- update_typed_link_facet_input(SchemaArn = SchemaArn, 
+        Name = Name, AttributeUpdates = AttributeUpdates, IdentityAttributeOrder = IdentityAttributeOrder)
+    output <- update_typed_link_facet_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Upgrades a single directory in-place using the `PublishedSchemaArn` with schema updates found in `MinorVersion`
+#'
+#' Upgrades a single directory in-place using the `PublishedSchemaArn` with schema updates found in `MinorVersion`. Backwards-compatible minor version upgrades are instantaneously available for readers on all objects in the directory. Note: This is a synchronous API call and upgrades only one schema on a given directory per call. To upgrade multiple directories from one schema, you would need to call this API on each directory.
+#'
+#' @param PublishedSchemaArn The revision of the published schema to upgrade the directory to.
+#' @param DirectoryArn The ARN for the directory to which the upgraded schema will be applied.
+#' @param DryRun Used for testing whether the major version schemas are backward compatible or not. If schema compatibility fails, an exception would be thrown else the call would succeed but no changes will be saved. This parameter is optional.
+#'
+#' @examples
+#'
+#' @export
+upgrade_applied_schema <- function (PublishedSchemaArn, DirectoryArn, 
+    DryRun = NULL) 
+{
+    op <- Operation(name = "UpgradeAppliedSchema", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/schema/upgradeapplied", 
+        paginator = list())
+    input <- upgrade_applied_schema_input(PublishedSchemaArn = PublishedSchemaArn, 
+        DirectoryArn = DirectoryArn, DryRun = DryRun)
+    output <- upgrade_applied_schema_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Upgrades a published schema under a new minor version revision using the current contents of `DevelopmentSchemaArn`
+#'
+#' Upgrades a published schema under a new minor version revision using the current contents of `DevelopmentSchemaArn`.
+#'
+#' @param DevelopmentSchemaArn The ARN of the development schema with the changes used for the upgrade.
+#' @param PublishedSchemaArn The ARN of the published schema to be upgraded.
+#' @param MinorVersion Identifies the minor version of the published schema that will be created. This parameter is NOT optional.
+#' @param DryRun Used for testing whether the Development schema provided is backwards compatible, or not, with the publish schema provided by the user to be upgraded. If schema compatibility fails, an exception would be thrown else the call would succeed. This parameter is optional and defaults to false.
+#'
+#' @examples
+#'
+#' @export
+upgrade_published_schema <- function (DevelopmentSchemaArn, PublishedSchemaArn, 
+    MinorVersion, DryRun = NULL) 
+{
+    op <- Operation(name = "UpgradePublishedSchema", http_method = "PUT", 
+        http_path = "/amazonclouddirectory/2017-01-11/schema/upgradepublished", 
+        paginator = list())
+    input <- upgrade_published_schema_input(DevelopmentSchemaArn = DevelopmentSchemaArn, 
+        PublishedSchemaArn = PublishedSchemaArn, MinorVersion = MinorVersion, 
+        DryRun = DryRun)
+    output <- upgrade_published_schema_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

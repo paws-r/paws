@@ -1,0 +1,67 @@
+Package: paws.snowball
+Title: Amazon Import/Export Snowball
+Version: 0.0.0.9000
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut"))
+Description: AWS Snowball is a petabyte-scale data transport
+    solution that uses secure devices to transfer large amounts of data
+    between your on-premises data centers and Amazon Simple Storage
+    Service (Amazon S3). The Snowball commands described here provide
+    access to the same functionality that is available in the AWS Snowball
+    Management Console, which enables you to create and manage jobs for
+    Snowball. To transfer data locally with a Snowball device, you\'ll
+    need to use the Snowball client or the Amazon S3 API adapter for
+    Snowball. For more information, see the [User
+    Guide](http://docs.aws.amazon.com/AWSImportExport/latest/ug/api-reference.html).
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.5.1)
+Imports: 
+    digest,
+    httr,
+    jsonlite,
+    xml2,
+    ini
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1
+Collate: 
+    'struct.R'
+    'handlers.R'
+    'url.R'
+    'net.R'
+    'credential_providers.R'
+    'credentials.R'
+    'client.R'
+    'config.R'
+    'convert.R'
+    'dateutil.R'
+    'defaults.R'
+    'error.R'
+    'handlers_core.R'
+    'handlers_ec2query.R'
+    'handlers_jsonrpc.R'
+    'handlers_query.R'
+    'handlers_rest.R'
+    'handlers_restjson.R'
+    'idempotency.R'
+    'jsonutil.R'
+    'paws.snowball_interfaces.R'
+    'paws.snowball_operations.R'
+    'paws.snowball_package.R'
+    'paws.snowball_service.R'
+    'populate.R'
+    'populateutil.R'
+    'type.R'
+    'queryutil.R'
+    'request.R'
+    'signer_v4.R'
+    'time.R'
+    'xmlutil.R'

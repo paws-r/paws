@@ -1,0 +1,25 @@
+#' GetEntitlements retrieves entitlement values for a given product
+#'
+#' GetEntitlements retrieves entitlement values for a given product. The results can be filtered based on customer identifier or product dimensions.
+#'
+#' @param ProductCode Product code is used to uniquely identify a product in AWS Marketplace. The product code will be provided by AWS Marketplace when the product listing is created.
+#' @param Filter Filter is used to return entitlements for a specific customer or for a specific dimension. Filters are described as keys mapped to a lists of values. Filtered requests are *unioned* for each value in the value list, and then *intersected* for each filter key.
+#' @param NextToken For paginated calls to GetEntitlements, pass the NextToken from the previous GetEntitlementsResult.
+#' @param MaxResults The maximum number of items to retrieve from the GetEntitlements operation. For pagination, use the NextToken field in subsequent calls to GetEntitlements.
+#'
+#' @examples
+#'
+#' @export
+get_entitlements <- function (ProductCode, Filter = NULL, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- Operation(name = "GetEntitlements", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_entitlements_input(ProductCode = ProductCode, 
+        Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
+    output <- get_entitlements_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

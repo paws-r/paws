@@ -1,0 +1,1572 @@
+#' Sends a response to the originator of a handshake agreeing to the action proposed by the handshake request
+#'
+#' Sends a response to the originator of a handshake agreeing to the action proposed by the handshake request.
+#' 
+#' This operation can be called only by the following principals when they also have the relevant IAM permissions:
+#' 
+#' -   **Invitation to join** or **Approve all features request** handshakes: only a principal from the member account.
+#' 
+#'     The user who calls the API for an invitation to join must have the `organizations:AcceptHandshake` permission. If you enabled all features in the organization, then the user must also have the `iam:CreateServiceLinkedRole` permission so that Organizations can create the required service-linked role named *AWSServiceRoleForOrganizations*. For more information, see [AWS Organizations and Service-Linked Roles](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integration_services.html#orgs_integration_service-linked-roles) in the *AWS Organizations User Guide*.
+#' 
+#' -   **Enable all features final confirmation** handshake: only a principal from the master account.
+#' 
+#'     For more information about invitations, see [Inviting an AWS Account to Join Your Organization](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_invites.html) in the *AWS Organizations User Guide*. For more information about requests to enable all features in the organization, see [Enabling All Features in Your Organization](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html) in the *AWS Organizations User Guide*.
+#' 
+#' After you accept a handshake, it continues to appear in the results of relevant APIs for only 30 days. After that it is deleted.
+#'
+#' @param HandshakeId The unique identifier (ID) of the handshake that you want to accept.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for handshake ID string requires \"h-\" followed by from 8 to 32 lower-case letters or digits.
+#'
+#' @examples
+#' # Bill is the owner of an organization, and he invites Juan's account
+#' # (222222222222) to join his organization. The following example shows
+#' # Juan's account accepting the handshake and thus agreeing to the
+#' # invitation.
+#' accept_handshake(
+#'   HandshakeId = "h-examplehandshakeid111"
+#' )
+#'
+#' @export
+accept_handshake <- function (HandshakeId) 
+{
+    op <- Operation(name = "AcceptHandshake", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- accept_handshake_input(HandshakeId = HandshakeId)
+    output <- accept_handshake_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Attaches a policy to a root, an organizational unit (OU), or an individual account
+#'
+#' Attaches a policy to a root, an organizational unit (OU), or an individual account. How the policy affects accounts depends on the type of policy:
+#' 
+#' -   **Service control policy (SCP)** - An SCP specifies what permissions can be delegated to users in affected member accounts. The scope of influence for a policy depends on what you attach the policy to:
+#' 
+#'     -   If you attach an SCP to a root, it affects all accounts in the organization.
+#' 
+#'     -   If you attach an SCP to an OU, it affects all accounts in that OU and in any child OUs.
+#' 
+#'     -   If you attach the policy directly to an account, then it affects only that account.
+#' 
+#'     SCPs essentially are permission \"filters\". When you attach one SCP to a higher level root or OU, and you also attach a different SCP to a child OU or to an account, the child policy can further restrict only the permissions that pass through the parent filter and are available to the child. An SCP that is attached to a child cannot grant a permission that is not already granted by the parent. For example, imagine that the parent SCP allows permissions A, B, C, D, and E. The child SCP allows C, D, E, F, and G. The result is that the accounts affected by the child SCP are allowed to use only C, D, and E. They cannot use A or B because they were filtered out by the child OU. They also cannot use F and G because they were filtered out by the parent OU. They cannot be granted back by the child SCP; child SCPs can only filter the permissions they receive from the parent SCP.
+#' 
+#'     AWS Organizations attaches a default SCP named `\"FullAWSAccess` to every root, OU, and account. This default SCP allows all services and actions, enabling any new child OU or account to inherit the permissions of the parent root or OU. If you detach the default policy, you must replace it with a policy that specifies the permissions that you want to allow in that OU or account.
+#' 
+#'     For more information about how Organizations policies permissions work, see [Using Service Control Policies](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html) in the *AWS Organizations User Guide*.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param PolicyId The unique identifier (ID) of the policy that you want to attach to the target. You can get the ID for the policy by calling the ListPolicies operation.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for a policy ID string requires \"p-\" followed by from 8 to 128 lower-case letters or digits.
+#' @param TargetId The unique identifier (ID) of the root, OU, or account that you want to attach the policy to. You can get the ID by calling the ListRoots, ListOrganizationalUnitsForParent, or ListAccounts operations.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for a target ID string requires one of the following:
+#' 
+#' -   Root: a string that begins with \"r-\" followed by from 4 to 32 lower-case letters or digits.
+#' 
+#' -   Account: a string that consists of exactly 12 digits.
+#' 
+#' -   Organizational unit (OU): a string that begins with \"ou-\" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second \"-\" dash and from 8 to 32 additional lower-case letters or digits.
+#'
+#' @examples
+#' # The following example shows how to attach a service control policy (SCP)
+#' # to an OU:
+#' # 
+#' attach_policy(
+#'   PolicyId = "p-examplepolicyid111",
+#'   TargetId = "ou-examplerootid111-exampleouid111"
+#' )
+#' 
+#' # The following example shows how to attach a service control policy (SCP)
+#' # to an account:
+#' # 
+#' attach_policy(
+#'   PolicyId = "p-examplepolicyid111",
+#'   TargetId = "333333333333"
+#' )
+#'
+#' @export
+attach_policy <- function (PolicyId, TargetId) 
+{
+    op <- Operation(name = "AttachPolicy", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- attach_policy_input(PolicyId = PolicyId, TargetId = TargetId)
+    output <- attach_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Cancels a handshake
+#'
+#' Cancels a handshake. Canceling a handshake sets the handshake state to `CANCELED`.
+#' 
+#' This operation can be called only from the account that originated the handshake. The recipient of the handshake can\'t cancel it, but can use DeclineHandshake instead. After a handshake is canceled, the recipient can no longer respond to that handshake.
+#' 
+#' After you cancel a handshake, it continues to appear in the results of relevant APIs for only 30 days. After that it is deleted.
+#'
+#' @param HandshakeId The unique identifier (ID) of the handshake that you want to cancel. You can get the ID from the ListHandshakesForOrganization operation.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for handshake ID string requires \"h-\" followed by from 8 to 32 lower-case letters or digits.
+#'
+#' @examples
+#' # Bill previously sent an invitation to Susan's account to join his
+#' # organization. He changes his mind and decides to cancel the invitation
+#' # before Susan accepts it. The following example shows Bill's
+#' # cancellation:
+#' # 
+#' cancel_handshake(
+#'   HandshakeId = "h-examplehandshakeid111"
+#' )
+#'
+#' @export
+cancel_handshake <- function (HandshakeId) 
+{
+    op <- Operation(name = "CancelHandshake", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- cancel_handshake_input(HandshakeId = HandshakeId)
+    output <- cancel_handshake_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates an AWS account that is automatically a member of the organization whose credentials made the request
+#'
+#' Creates an AWS account that is automatically a member of the organization whose credentials made the request. This is an asynchronous request that AWS performs in the background. Because `CreateAccount` operates asynchronously, it can return a successful completion message even though account initialization might still be in progress. You might need to wait a few minutes before you can successfully access the account. To check the status of the request, do one of the following:
+#' 
+#' -   Use the `OperationId` response element from this operation to provide as a parameter to the DescribeCreateAccountStatus operation.
+#' 
+#' -   Check the AWS CloudTrail log for the `CreateAccountResult` event. For information on using AWS CloudTrail with Organizations, see [Monitoring the Activity in Your Organization](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html) in the *AWS Organizations User Guide*.
+#' 
+#' The user who calls the API to create an account must have the `organizations:CreateAccount` permission. If you enabled all features in the organization, AWS Organizations will create the required service-linked role named `AWSServiceRoleForOrganizations`. For more information, see [AWS Organizations and Service-Linked Roles](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html#orgs_integrate_services-using_slrs) in the *AWS Organizations User Guide*.
+#' 
+#' AWS Organizations preconfigures the new member account with a role (named `OrganizationAccountAccessRole` by default) that grants users in the master account administrator permissions in the new member account. Principals in the master account can assume the role. AWS Organizations clones the company name and address information for the new account from the organization\'s master account.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#' 
+#' For more information about creating accounts, see [Creating an AWS Account in Your Organization](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html) in the *AWS Organizations User Guide*.
+#' 
+#' -   When you create an account in an organization using the AWS Organizations console, API, or CLI commands, the information required for the account to operate as a standalone account, such as a payment method and signing the end user license agreement (EULA) is *not* automatically collected. If you must remove an account from your organization later, you can do so only after you provide the missing information. Follow the steps at [To leave an organization as a member account](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info) in the *AWS Organizations User Guide*.
+#' 
+#' -   If you get an exception that indicates that you exceeded your account limits for the organization, contact [AWS Support](https://console.aws.amazon.com/support/home#/).
+#' 
+#' -   If you get an exception that indicates that the operation failed because your organization is still initializing, wait one hour and then try again. If the error persists, contact [AWS Support](https://console.aws.amazon.com/support/home#/).
+#' 
+#' When you create a member account with this operation, you can choose whether to create the account with the **IAM User and Role Access to Billing Information** switch enabled. If you enable it, IAM users and roles that have appropriate permissions can view billing information for the account. If you disable it, only the account root user can access billing information. For information about how to disable this switch for an account, see [Granting Access to Your Billing Information and Tools](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html).
+#'
+#' @param Email The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account. You must use a valid email address to complete account creation. You can\'t access the root user of the account or remove an account that was created with an invalid email address.
+#' @param AccountName The friendly name of the member account.
+#' @param RoleName (Optional)
+#' 
+#' The name of an IAM role that AWS Organizations automatically preconfigures in the new member account. This role trusts the master account, allowing users in the master account to assume the role, as permitted by the master account administrator. The role has administrator permissions in the new member account.
+#' 
+#' If you don\'t specify this parameter, the role name defaults to `OrganizationAccountAccessRole`.
+#' 
+#' For more information about how to use this role to access the member account, see [Accessing and Administering the Member Accounts in Your Organization](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role) in the *AWS Organizations User Guide*, and steps 2 and 3 in [Tutorial: Delegate Access Across AWS Accounts Using IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html) in the *IAM User Guide*.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) that is used to validate this parameter is a string of characters that can consist of uppercase letters, lowercase letters, digits with no spaces, and any of the following characters: =,.@-
+#' @param IamUserAccessToBilling If set to `ALLOW`, the new account enables IAM users to access account billing information *if* they have the required permissions. If set to `DENY`, only the root user of the new account can access account billing information. For more information, see [Activating Access to the Billing and Cost Management Console](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate) in the *AWS Billing and Cost Management User Guide*.
+#' 
+#' If you don\'t specify this parameter, the value defaults to `ALLOW`, and IAM users and roles with the required permissions can access billing information for the new account.
+#'
+#' @examples
+#' # The owner of an organization creates a member account in the
+#' # organization. The following example shows that when the organization
+#' # owner creates the member account, the account is preconfigured with the
+#' # name "Production Account" and an owner email address of
+#' # susan@example.com.  An IAM role is automatically created using the
+#' # default name because the roleName parameter is not used. AWS
+#' # Organizations sends Susan a "Welcome to AWS" email:
+#' # 
+#' # 
+#' create_account(
+#'   AccountName = "Production Account",
+#'   Email = "susan@example.com"
+#' )
+#'
+#' @export
+create_account <- function (Email, AccountName, RoleName = NULL, 
+    IamUserAccessToBilling = NULL) 
+{
+    op <- Operation(name = "CreateAccount", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_account_input(Email = Email, AccountName = AccountName, 
+        RoleName = RoleName, IamUserAccessToBilling = IamUserAccessToBilling)
+    output <- create_account_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates an AWS organization
+#'
+#' Creates an AWS organization. The account whose user is calling the CreateOrganization operation automatically becomes the [master account](http://docs.aws.amazon.com/IAM/latest/UserGuide/orgs_getting-started_concepts.html#account) of the new organization.
+#' 
+#' This operation must be called using credentials from the account that is to become the new organization\'s master account. The principal must also have the relevant IAM permissions.
+#' 
+#' By default (or if you set the `FeatureSet` parameter to `ALL`), the new organization is created with all features enabled and service control policies automatically enabled in the root. If you instead choose to create the organization supporting only the consolidated billing features by setting the `FeatureSet` parameter to `CONSOLIDATED_BILLING\"`, then no policy types are enabled by default and you cannot use organization policies.
+#'
+#' @param FeatureSet Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.
+#' 
+#' -   *CONSOLIDATED\_BILLING*: All member accounts have their bills consolidated to and paid by the master account. For more information, see [Consolidated Billing](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only) in the *AWS Organizations User Guide*.
+#' 
+#' -   *ALL*: In addition to all the features supported by the consolidated billing feature set, the master account can also apply any type of policy to any member account in the organization. For more information, see [All features](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all) in the *AWS Organizations User Guide*.
+#'
+#' @examples
+#' # Bill wants to create an organization using credentials from account
+#' # 111111111111. The following example shows that the account becomes the
+#' # master account in the new organization. Because he does not specify a
+#' # feature set, the new organization defaults to all features enabled and
+#' # service control policies enabled on the root:
+#' # 
+#' # 
+#' create_organization()
+#' 
+#' # In the following example, Bill creates an organization using credentials
+#' # from account 111111111111, and configures the organization to support
+#' # only the consolidated billing feature set:
+#' # 
+#' # 
+#' create_organization(
+#'   FeatureSet = "CONSOLIDATED_BILLING"
+#' )
+#'
+#' @export
+create_organization <- function (FeatureSet = NULL) 
+{
+    op <- Operation(name = "CreateOrganization", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_organization_input(FeatureSet = FeatureSet)
+    output <- create_organization_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates an organizational unit (OU) within a root or parent OU
+#'
+#' Creates an organizational unit (OU) within a root or parent OU. An OU is a container for accounts that enables you to organize your accounts to apply policies according to your business requirements. The number of levels deep that you can nest OUs is dependent upon the policy types enabled for that root. For service control policies, the limit is five.
+#' 
+#' For more information about OUs, see [Managing Organizational Units](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_ous.html) in the *AWS Organizations User Guide*.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param ParentId The unique identifier (ID) of the parent root or OU in which you want to create the new OU.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for a parent ID string requires one of the following:
+#' 
+#' -   Root: a string that begins with \"r-\" followed by from 4 to 32 lower-case letters or digits.
+#' 
+#' -   Organizational unit (OU): a string that begins with \"ou-\" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second \"-\" dash and from 8 to 32 additional lower-case letters or digits.
+#' @param Name The friendly name to assign to the new OU.
+#'
+#' @examples
+#' # The following example shows how to create an OU that is named
+#' # AccountingOU. The new OU is directly under the root.:
+#' # 
+#' # 
+#' create_organizational_unit(
+#'   Name = "AccountingOU",
+#'   ParentId = "r-examplerootid111"
+#' )
+#'
+#' @export
+create_organizational_unit <- function (ParentId, Name) 
+{
+    op <- Operation(name = "CreateOrganizationalUnit", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_organizational_unit_input(ParentId = ParentId, 
+        Name = Name)
+    output <- create_organizational_unit_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a policy of a specified type that you can attach to a root, an organizational unit (OU), or an individual AWS account
+#'
+#' Creates a policy of a specified type that you can attach to a root, an organizational unit (OU), or an individual AWS account.
+#' 
+#' For more information about policies and their use, see [Managing Organization Policies](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html).
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param Content The policy content to add to the new policy. For example, if you create a [service control policy](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html) (SCP), this string must be JSON text that specifies the permissions that admins in attached accounts can delegate to their users, groups, and roles. For more information about the SCP syntax, see [Service Control Policy Syntax](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html) in the *AWS Organizations User Guide*.
+#' @param Description An optional description to assign to the policy.
+#' @param Name The friendly name to assign to the policy.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) that is used to validate this parameter is a string of any of the characters in the ASCII character range.
+#' @param Type The type of policy to create.
+#' 
+#' In the current release, the only type of policy that you can create is a service control policy (SCP).
+#'
+#' @examples
+#' # The following example shows how to create a service control policy (SCP)
+#' # that is named AllowAllS3Actions. The JSON string in the content
+#' # parameter specifies the content in the policy. The parameter string is
+#' # escaped with backslashes to ensure that the embedded double quotes in
+#' # the JSON policy are treated as literals in the parameter, which itself
+#' # is surrounded by double quotes:
+#' # 
+#' # 
+#' create_policy(
+#'   Content = "{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":{\\\"Effect\\\":\\\"Allow\\\",\\\"Action\\\":\\\"s3:*\\\"}}",
+#'   Description = "Enables admins of attached accounts to delegate all S3 permissions",
+#'   Name = "AllowAllS3Actions",
+#'   Type = "SERVICE_CONTROL_POLICY"
+#' )
+#'
+#' @export
+create_policy <- function (Content, Description, Name, Type) 
+{
+    op <- Operation(name = "CreatePolicy", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_policy_input(Content = Content, Description = Description, 
+        Name = Name, Type = Type)
+    output <- create_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Declines a handshake request
+#'
+#' Declines a handshake request. This sets the handshake state to `DECLINED` and effectively deactivates the request.
+#' 
+#' This operation can be called only from the account that received the handshake. The originator of the handshake can use CancelHandshake instead. The originator can\'t reactivate a declined request, but can re-initiate the process with a new handshake request.
+#' 
+#' After you decline a handshake, it continues to appear in the results of relevant APIs for only 30 days. After that it is deleted.
+#'
+#' @param HandshakeId The unique identifier (ID) of the handshake that you want to decline. You can get the ID from the ListHandshakesForAccount operation.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for handshake ID string requires \"h-\" followed by from 8 to 32 lower-case letters or digits.
+#'
+#' @examples
+#' # The following example shows Susan declining an invitation to join Bill's
+#' # organization. The DeclineHandshake operation returns a handshake object,
+#' # showing that the state is now DECLINED:
+#' decline_handshake(
+#'   HandshakeId = "h-examplehandshakeid111"
+#' )
+#'
+#' @export
+decline_handshake <- function (HandshakeId) 
+{
+    op <- Operation(name = "DeclineHandshake", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- decline_handshake_input(HandshakeId = HandshakeId)
+    output <- decline_handshake_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the organization
+#'
+#' Deletes the organization. You can delete an organization only by using credentials from the master account. The organization must be empty of member accounts.
+#'
+
+#'
+#' @examples
+#'
+#' @export
+delete_organization <- function () 
+{
+    op <- Operation(name = "DeleteOrganization", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_organization_input()
+    output <- delete_organization_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes an organizational unit (OU) from a root or another OU
+#'
+#' Deletes an organizational unit (OU) from a root or another OU. You must first remove all accounts and child OUs from the OU that you want to delete.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param OrganizationalUnitId The unique identifier (ID) of the organizational unit that you want to delete. You can get the ID from the ListOrganizationalUnitsForParent operation.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for an organizational unit ID string requires \"ou-\" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second \"-\" dash and from 8 to 32 additional lower-case letters or digits.
+#'
+#' @examples
+#' # The following example shows how to delete an OU. The example assumes
+#' # that you previously removed all accounts and other OUs from the OU:
+#' # 
+#' # 
+#' delete_organizational_unit(
+#'   OrganizationalUnitId = "ou-examplerootid111-exampleouid111"
+#' )
+#'
+#' @export
+delete_organizational_unit <- function (OrganizationalUnitId) 
+{
+    op <- Operation(name = "DeleteOrganizationalUnit", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_organizational_unit_input(OrganizationalUnitId = OrganizationalUnitId)
+    output <- delete_organizational_unit_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified policy from your organization
+#'
+#' Deletes the specified policy from your organization. Before you perform this operation, you must first detach the policy from all organizational units (OUs), roots, and accounts.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param PolicyId The unique identifier (ID) of the policy that you want to delete. You can get the ID from the ListPolicies or ListPoliciesForTarget operations.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for a policy ID string requires \"p-\" followed by from 8 to 128 lower-case letters or digits.
+#'
+#' @examples
+#' # The following example shows how to delete a policy from an organization.
+#' # The example assumes that you previously detached the policy from all
+#' # entities:
+#' # 
+#' # 
+#' delete_policy(
+#'   PolicyId = "p-examplepolicyid111"
+#' )
+#'
+#' @export
+delete_policy <- function (PolicyId) 
+{
+    op <- Operation(name = "DeletePolicy", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_policy_input(PolicyId = PolicyId)
+    output <- delete_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves Organizations-related information about the specified account
+#'
+#' Retrieves Organizations-related information about the specified account.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param AccountId The unique identifier (ID) of the AWS account that you want information about. You can get the ID from the ListAccounts or ListAccountsForParent operations.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for an account ID string requires exactly 12 digits.
+#'
+#' @examples
+#' # The following example shows a user in the master account (111111111111)
+#' # asking for details about account 555555555555:
+#' describe_account(
+#'   AccountId = "555555555555"
+#' )
+#'
+#' @export
+describe_account <- function (AccountId) 
+{
+    op <- Operation(name = "DescribeAccount", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_account_input(AccountId = AccountId)
+    output <- describe_account_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the current status of an asynchronous request to create an account
+#'
+#' Retrieves the current status of an asynchronous request to create an account.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param CreateAccountRequestId Specifies the `operationId` that uniquely identifies the request. You can get the ID from the response to an earlier CreateAccount request, or from the ListCreateAccountStatus operation.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for an create account request ID string requires \"car-\" followed by from 8 to 32 lower-case letters or digits.
+#'
+#' @examples
+#' # The following example shows how to request the status about a previous
+#' # request to create an account in an organization. This operation can be
+#' # called only by a principal from the organization's master account. In
+#' # the example, the specified "createAccountRequestId" comes from the
+#' # response of the original call to "CreateAccount":
+#' describe_create_account_status(
+#'   CreateAccountRequestId = "car-exampleaccountcreationrequestid"
+#' )
+#'
+#' @export
+describe_create_account_status <- function (CreateAccountRequestId) 
+{
+    op <- Operation(name = "DescribeCreateAccountStatus", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_create_account_status_input(CreateAccountRequestId = CreateAccountRequestId)
+    output <- describe_create_account_status_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves information about a previously requested handshake
+#'
+#' Retrieves information about a previously requested handshake. The handshake ID comes from the response to the original InviteAccountToOrganization operation that generated the handshake.
+#' 
+#' You can access handshakes that are ACCEPTED, DECLINED, or CANCELED for only 30 days after they change to that state. They are then deleted and no longer accessible.
+#' 
+#' This operation can be called from any account in the organization.
+#'
+#' @param HandshakeId The unique identifier (ID) of the handshake that you want information about. You can get the ID from the original call to InviteAccountToOrganization, or from a call to ListHandshakesForAccount or ListHandshakesForOrganization.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for handshake ID string requires \"h-\" followed by from 8 to 32 lower-case letters or digits.
+#'
+#' @examples
+#' # The following example shows you how to request details about a
+#' # handshake. The handshake ID comes either from the original call to
+#' # "InviteAccountToOrganization", or from a call to
+#' # "ListHandshakesForAccount" or "ListHandshakesForOrganization":
+#' describe_handshake(
+#'   HandshakeId = "h-examplehandshakeid111"
+#' )
+#'
+#' @export
+describe_handshake <- function (HandshakeId) 
+{
+    op <- Operation(name = "DescribeHandshake", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_handshake_input(HandshakeId = HandshakeId)
+    output <- describe_handshake_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves information about the organization that the user\'s account belongs to
+#'
+#' Retrieves information about the organization that the user\'s account belongs to.
+#' 
+#' This operation can be called from any account in the organization.
+#' 
+#' Even if a policy type is shown as available in the organization, it can be disabled separately at the root level with DisablePolicyType. Use ListRoots to see the status of policy types for a specified root.
+#'
+
+#'
+#' @examples
+#' # The following example shows how to request information about the current
+#' # user's organization:/n/n
+#' describe_organization()
+#'
+#' @export
+describe_organization <- function () 
+{
+    op <- Operation(name = "DescribeOrganization", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_organization_input()
+    output <- describe_organization_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves information about an organizational unit (OU)
+#'
+#' Retrieves information about an organizational unit (OU).
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param OrganizationalUnitId The unique identifier (ID) of the organizational unit that you want details about. You can get the ID from the ListOrganizationalUnitsForParent operation.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for an organizational unit ID string requires \"ou-\" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second \"-\" dash and from 8 to 32 additional lower-case letters or digits.
+#'
+#' @examples
+#' # The following example shows how to request details about an OU:/n/n
+#' describe_organizational_unit(
+#'   OrganizationalUnitId = "ou-examplerootid111-exampleouid111"
+#' )
+#'
+#' @export
+describe_organizational_unit <- function (OrganizationalUnitId) 
+{
+    op <- Operation(name = "DescribeOrganizationalUnit", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_organizational_unit_input(OrganizationalUnitId = OrganizationalUnitId)
+    output <- describe_organizational_unit_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves information about a policy
+#'
+#' Retrieves information about a policy.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param PolicyId The unique identifier (ID) of the policy that you want details about. You can get the ID from the ListPolicies or ListPoliciesForTarget operations.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for a policy ID string requires \"p-\" followed by from 8 to 128 lower-case letters or digits.
+#'
+#' @examples
+#' # The following example shows how to request information about a
+#' # policy:/n/n
+#' describe_policy(
+#'   PolicyId = "p-examplepolicyid111"
+#' )
+#'
+#' @export
+describe_policy <- function (PolicyId) 
+{
+    op <- Operation(name = "DescribePolicy", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_policy_input(PolicyId = PolicyId)
+    output <- describe_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Detaches a policy from a target root, organizational unit (OU), or account
+#'
+#' Detaches a policy from a target root, organizational unit (OU), or account. If the policy being detached is a service control policy (SCP), the changes to permissions for IAM users and roles in affected accounts are immediate.
+#' 
+#' **Note:** Every root, OU, and account must have at least one SCP attached. If you want to replace the default `FullAWSAccess` policy with one that limits the permissions that can be delegated, then you must attach the replacement policy before you can remove the default one. This is the authorization strategy of [whitelisting](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_whitelist). If you instead attach a second SCP and leave the `FullAWSAccess` SCP still attached, and specify `"Effect": "Deny"` in the second SCP to override the `"Effect": "Allow"` in the `FullAWSAccess` policy (or any other attached SCP), then you are using the authorization strategy of [blacklisting](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_blacklist).
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param PolicyId The unique identifier (ID) of the policy you want to detach. You can get the ID from the ListPolicies or ListPoliciesForTarget operations.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for a policy ID string requires \"p-\" followed by from 8 to 128 lower-case letters or digits.
+#' @param TargetId The unique identifier (ID) of the root, OU, or account from which you want to detach the policy. You can get the ID from the ListRoots, ListOrganizationalUnitsForParent, or ListAccounts operations.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for a target ID string requires one of the following:
+#' 
+#' -   Root: a string that begins with \"r-\" followed by from 4 to 32 lower-case letters or digits.
+#' 
+#' -   Account: a string that consists of exactly 12 digits.
+#' 
+#' -   Organizational unit (OU): a string that begins with \"ou-\" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second \"-\" dash and from 8 to 32 additional lower-case letters or digits.
+#'
+#' @examples
+#' # The following example shows how to detach a policy from an OU:/n/n
+#' detach_policy(
+#'   PolicyId = "p-examplepolicyid111",
+#'   TargetId = "ou-examplerootid111-exampleouid111"
+#' )
+#'
+#' @export
+detach_policy <- function (PolicyId, TargetId) 
+{
+    op <- Operation(name = "DetachPolicy", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- detach_policy_input(PolicyId = PolicyId, TargetId = TargetId)
+    output <- detach_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Disables the integration of an AWS service (the service that is specified by `ServicePrincipal`) with AWS Organizations
+#'
+#' Disables the integration of an AWS service (the service that is specified by `ServicePrincipal`) with AWS Organizations. When you disable integration, the specified service no longer can create a [service-linked role](http://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html) in *new* accounts in your organization. This means the service can\'t perform operations on your behalf on any new accounts in your organization. The service can still perform operations in older accounts until the service completes its clean-up from AWS Organizations.
+#' 
+#' We recommend that you disable integration between AWS Organizations and the specified AWS service by using the console or commands that are provided by the specified service. Doing so ensures that the other service is aware that it can clean up any resources that are required only for the integration. How the service cleans up its resources in the organization\'s accounts depends on that service. For more information, see the documentation for the other AWS service.
+#' 
+#' After you perform the `DisableAWSServiceAccess` operation, the specified service can no longer perform operations in your organization\'s accounts unless the operations are explicitly permitted by the IAM policies that are attached to your roles.
+#' 
+#' For more information about integrating other services with AWS Organizations, including the list of services that work with Organizations, see [Integrating AWS Organizations with Other AWS Services](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html) in the *AWS Organizations User Guide*.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param ServicePrincipal The service principal name of the AWS service for which you want to disable integration with your organization. This is typically in the form of a URL, such as ` service-abbreviation.amazonaws.comservice-abbreviation.amazonaws.com`.
+#'
+#' @examples
+#'
+#' @export
+disable_aws_service_access <- function (ServicePrincipal) 
+{
+    op <- Operation(name = "DisableAWSServiceAccess", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- disable_aws_service_access_input(ServicePrincipal = ServicePrincipal)
+    output <- disable_aws_service_access_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Disables an organizational control policy type in a root
+#'
+#' Disables an organizational control policy type in a root. A policy of a certain type can be attached to entities in a root only if that type is enabled in the root. After you perform this operation, you no longer can attach policies of the specified type to that root or to any organizational unit (OU) or account in that root. You can undo this by using the EnablePolicyType operation.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#' 
+#' If you disable a policy type for a root, it still shows as enabled for the organization if all features are enabled in that organization. Use ListRoots to see the status of policy types for a specified root. Use DescribeOrganization to see the status of policy types in the organization.
+#'
+#' @param RootId The unique identifier (ID) of the root in which you want to disable a policy type. You can get the ID from the ListRoots operation.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for a root ID string requires \"r-\" followed by from 4 to 32 lower-case letters or digits.
+#' @param PolicyType The policy type that you want to disable in this root.
+#'
+#' @examples
+#' # The following example shows how to disable the service control policy
+#' # (SCP) policy type in a root. The response shows that the PolicyTypes
+#' # response element no longer includes SERVICE_CONTROL_POLICY:/n/n
+#' disable_policy_type(
+#'   PolicyType = "SERVICE_CONTROL_POLICY",
+#'   RootId = "r-examplerootid111"
+#' )
+#'
+#' @export
+disable_policy_type <- function (RootId, PolicyType) 
+{
+    op <- Operation(name = "DisablePolicyType", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- disable_policy_type_input(RootId = RootId, PolicyType = PolicyType)
+    output <- disable_policy_type_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Enables the integration of an AWS service (the service that is specified by `ServicePrincipal`) with AWS Organizations
+#'
+#' Enables the integration of an AWS service (the service that is specified by `ServicePrincipal`) with AWS Organizations. When you enable integration, you allow the specified service to create a [service-linked role](http://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html) in all the accounts in your organization. This allows the service to perform operations on your behalf in your organization and its accounts.
+#' 
+#' We recommend that you enable integration between AWS Organizations and the specified AWS service by using the console or commands that are provided by the specified service. Doing so ensures that the service is aware that it can create the resources that are required for the integration. How the service creates those resources in the organization\'s accounts depends on that service. For more information, see the documentation for the other AWS service.
+#' 
+#' For more information about enabling services to integrate with AWS Organizations, see [Integrating AWS Organizations with Other AWS Services](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html) in the *AWS Organizations User Guide*.
+#' 
+#' This operation can be called only from the organization\'s master account and only if the organization has [enabled all features](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html).
+#'
+#' @param ServicePrincipal The service principal name of the AWS service for which you want to enable integration with your organization. This is typically in the form of a URL, such as ` service-abbreviation.amazonaws.comservice-abbreviation.amazonaws.com`.
+#'
+#' @examples
+#'
+#' @export
+enable_aws_service_access <- function (ServicePrincipal) 
+{
+    op <- Operation(name = "EnableAWSServiceAccess", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- enable_aws_service_access_input(ServicePrincipal = ServicePrincipal)
+    output <- enable_aws_service_access_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Enables all features in an organization
+#'
+#' Enables all features in an organization. This enables the use of organization policies that can restrict the services and actions that can be called in each account. Until you enable all features, you have access only to consolidated billing, and you can\'t use any of the advanced account administration features that AWS Organizations supports. For more information, see [Enabling All Features in Your Organization](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html) in the *AWS Organizations User Guide*.
+#' 
+#' This operation is required only for organizations that were created explicitly with only the consolidated billing features enabled. Calling this operation sends a handshake to every invited account in the organization. The feature set change can be finalized and the additional features enabled only after all administrators in the invited accounts approve the change by accepting the handshake.
+#' 
+#' After you enable all features, you can separately enable or disable individual policy types in a root using EnablePolicyType and DisablePolicyType. To see the status of policy types in a root, use ListRoots.
+#' 
+#' After all invited member accounts accept the handshake, you finalize the feature set change by accepting the handshake that contains `"Action": "ENABLE_ALL_FEATURES"`. This completes the change.
+#' 
+#' After you enable all features in your organization, the master account in the organization can apply policies on all member accounts. These policies can restrict what users and even administrators in those accounts can do. The master account can apply policies that prevent accounts from leaving the organization. Ensure that your account administrators are aware of this.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @examples
+#' # This example shows the administrator asking all the invited accounts in
+#' # the organization to approve enabling all features in the organization.
+#' # AWS Organizations sends an email to the address that is registered with
+#' # every invited member account asking the owner to approve the change by
+#' # accepting the handshake that is sent. After all invited member accounts
+#' # accept the handshake, the organization administrator can finalize the
+#' # change to enable all features, and those with appropriate permissions
+#' # can create policies and apply them to roots, OUs, and accounts:/n/n
+#' enable_all_features()
+#'
+#' @export
+enable_all_features <- function () 
+{
+    op <- Operation(name = "EnableAllFeatures", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- enable_all_features_input()
+    output <- enable_all_features_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Enables a policy type in a root
+#'
+#' Enables a policy type in a root. After you enable a policy type in a root, you can attach policies of that type to the root, any organizational unit (OU), or account in that root. You can undo this by using the DisablePolicyType operation.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#' 
+#' You can enable a policy type in a root only if that policy type is available in the organization. Use DescribeOrganization to view the status of available policy types in the organization.
+#' 
+#' To view the status of policy type in a root, use ListRoots.
+#'
+#' @param RootId The unique identifier (ID) of the root in which you want to enable a policy type. You can get the ID from the ListRoots operation.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for a root ID string requires \"r-\" followed by from 4 to 32 lower-case letters or digits.
+#' @param PolicyType The policy type that you want to enable.
+#'
+#' @examples
+#' # The following example shows how to enable the service control policy
+#' # (SCP) policy type in a root. The output shows a root object with a
+#' # PolicyTypes response element showing that SCPs are now enabled:/n/n
+#' enable_policy_type(
+#'   PolicyType = "SERVICE_CONTROL_POLICY",
+#'   RootId = "r-examplerootid111"
+#' )
+#'
+#' @export
+enable_policy_type <- function (RootId, PolicyType) 
+{
+    op <- Operation(name = "EnablePolicyType", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- enable_policy_type_input(RootId = RootId, PolicyType = PolicyType)
+    output <- enable_policy_type_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Sends an invitation to another account to join your organization as a member account
+#'
+#' Sends an invitation to another account to join your organization as a member account. Organizations sends email on your behalf to the email address that is associated with the other account\'s owner. The invitation is implemented as a Handshake whose details are in the response.
+#' 
+#' -   You can invite AWS accounts only from the same seller as the master account. For example, if your organization\'s master account was created by Amazon Internet Services Pvt. Ltd (AISPL), an AWS seller in India, then you can only invite other AISPL accounts to your organization. You can\'t combine accounts from AISPL and AWS, or any other AWS seller. For more information, see [Consolidated Billing in India](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilliing-India.html).
+#' 
+#' -   If you receive an exception that indicates that you exceeded your account limits for the organization or that the operation failed because your organization is still initializing, wait one hour and then try again. If the error persists after an hour, then contact [AWS Customer Support](https://console.aws.amazon.com/support/home#/).
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param Target The identifier (ID) of the AWS account that you want to invite to join your organization. This is a JSON object that contains the following elements:
+#' 
+#' `{ "Type": "ACCOUNT", "Id": "< account id number >" } account id number >" }`
+#' 
+#' If you use the AWS CLI, you can submit this as a single string, similar to the following example:
+#' 
+#' `--target Id=123456789012,Type=ACCOUNT`
+#' 
+#' If you specify `"Type": "ACCOUNT"`, then you must provide the AWS account ID number as the `Id`. If you specify `"Type": "EMAIL"`, then you must specify the email address that is associated with the account.
+#' 
+#' `--target Id=diego@example.com,Type=EMAIL`
+#' @param Notes Additional information that you want to include in the generated email to the recipient account owner.
+#'
+#' @examples
+#' # The following example shows the admin of the master account owned by
+#' # bill@example.com inviting the account owned by juan@example.com to join
+#' # an organization.
+#' invite_account_to_organization(
+#'   Notes = "This is a request for Juan's account to join Bill's organization",
+#'   Target = list(
+#'     Id = "juan@example.com",
+#'     Type = "EMAIL"
+#'   )
+#' )
+#'
+#' @export
+invite_account_to_organization <- function (Target, Notes = NULL) 
+{
+    op <- Operation(name = "InviteAccountToOrganization", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- invite_account_to_organization_input(Target = Target, 
+        Notes = Notes)
+    output <- invite_account_to_organization_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes a member account from its parent organization
+#'
+#' Removes a member account from its parent organization. This version of the operation is performed by the account that wants to leave. To remove a member account as a user in the master account, use RemoveAccountFromOrganization instead.
+#' 
+#' This operation can be called only from a member account in the organization.
+#' 
+#' -   The master account in an organization with all features enabled can set service control policies (SCPs) that can restrict what administrators of member accounts can do, including preventing them from successfully calling `LeaveOrganization` and leaving the organization.
+#' 
+#' -   You can leave an organization as a member account only if the account is configured with the information required to operate as a standalone account. When you create an account in an organization using the AWS Organizations console, API, or CLI commands, the information required of standalone accounts is *not* automatically collected. For each account that you want to make standalone, you must accept the End User License Agreement (EULA), choose a support plan, provide and verify the required contact information, and provide a current payment method. AWS uses the payment method to charge for any billable (not free tier) AWS activity that occurs while the account is not attached to an organization. Follow the steps at [To leave an organization when all required account information has not yet been provided](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info) in the *AWS Organizations User Guide*.
+#' 
+#' -   You can leave an organization only after you enable IAM user access to billing in your account. For more information, see [Activating Access to the Billing and Cost Management Console](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate) in the *AWS Billing and Cost Management User Guide*.
+#'
+
+#'
+#' @examples
+#' # TThe following example shows how to remove your member account from an
+#' # organization:
+#' leave_organization()
+#'
+#' @export
+leave_organization <- function () 
+{
+    op <- Operation(name = "LeaveOrganization", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- leave_organization_input()
+    output <- leave_organization_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of the AWS services that you enabled to integrate with your organization
+#'
+#' Returns a list of the AWS services that you enabled to integrate with your organization. After a service on this list creates the resources that it requires for the integration, it can perform operations on your organization and its accounts.
+#' 
+#' For more information about integrating other services with AWS Organizations, including the list of services that currently work with Organizations, see [Integrating AWS Organizations with Other AWS Services](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html) in the *AWS Organizations User Guide*.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param NextToken Use this parameter if you receive a `NextToken` response in a previous request that indicates that there is more output available. Set it to the value of the previous call\'s `NextToken` response to indicate where the output should continue from.
+#' @param MaxResults (Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+#'
+#' @examples
+#'
+#' @export
+list_aws_service_access_for_organization <- function (NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- Operation(name = "ListAWSServiceAccessForOrganization", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- list_aws_service_access_for_organization_input(NextToken = NextToken, 
+        MaxResults = MaxResults)
+    output <- list_aws_service_access_for_organization_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists all the accounts in the organization
+#'
+#' Lists all the accounts in the organization. To request only the accounts in a specified root or organizational unit (OU), use the ListAccountsForParent operation instead.
+#' 
+#' Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param NextToken Use this parameter if you receive a `NextToken` response in a previous request that indicates that there is more output available. Set it to the value of the previous call\'s `NextToken` response to indicate where the output should continue from.
+#' @param MaxResults (Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+#'
+#' @examples
+#' # The following example shows you how to request a list of the accounts in
+#' # an organization:
+#' list_accounts()
+#'
+#' @export
+list_accounts <- function (NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "ListAccounts", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_accounts_input(NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_accounts_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the accounts in an organization that are contained by the specified target root or organizational unit (OU)
+#'
+#' Lists the accounts in an organization that are contained by the specified target root or organizational unit (OU). If you specify the root, you get a list of all the accounts that are not in any OU. If you specify an OU, you get a list of all the accounts in only that OU, and not in any child OUs. To get a list of all accounts in the organization, use the ListAccounts operation.
+#' 
+#' Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param ParentId The unique identifier (ID) for the parent root or organization unit (OU) whose accounts you want to list.
+#' @param NextToken Use this parameter if you receive a `NextToken` response in a previous request that indicates that there is more output available. Set it to the value of the previous call\'s `NextToken` response to indicate where the output should continue from.
+#' @param MaxResults (Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+#'
+#' @examples
+#' # The following example shows how to request a list of the accounts in an
+#' # OU:/n/n
+#' list_accounts_for_parent(
+#'   ParentId = "ou-examplerootid111-exampleouid111"
+#' )
+#'
+#' @export
+list_accounts_for_parent <- function (ParentId, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- Operation(name = "ListAccountsForParent", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_accounts_for_parent_input(ParentId = ParentId, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_accounts_for_parent_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists all of the organizational units (OUs) or accounts that are contained in the specified parent OU or root
+#'
+#' Lists all of the organizational units (OUs) or accounts that are contained in the specified parent OU or root. This operation, along with ListParents enables you to traverse the tree structure that makes up this root.
+#' 
+#' Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param ParentId The unique identifier (ID) for the parent root or OU whose children you want to list.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for a parent ID string requires one of the following:
+#' 
+#' -   Root: a string that begins with \"r-\" followed by from 4 to 32 lower-case letters or digits.
+#' 
+#' -   Organizational unit (OU): a string that begins with \"ou-\" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second \"-\" dash and from 8 to 32 additional lower-case letters or digits.
+#' @param ChildType Filters the output to include only the specified child type.
+#' @param NextToken Use this parameter if you receive a `NextToken` response in a previous request that indicates that there is more output available. Set it to the value of the previous call\'s `NextToken` response to indicate where the output should continue from.
+#' @param MaxResults (Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+#'
+#' @examples
+#' # The following example shows how to request a list of the child OUs in a
+#' # parent root or OU:/n/n
+#' list_children(
+#'   ChildType = "ORGANIZATIONAL_UNIT",
+#'   ParentId = "ou-examplerootid111-exampleouid111"
+#' )
+#'
+#' @export
+list_children <- function (ParentId, ChildType, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- Operation(name = "ListChildren", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_children_input(ParentId = ParentId, ChildType = ChildType, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_children_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the account creation requests that match the specified status that is currently being tracked for the organization
+#'
+#' Lists the account creation requests that match the specified status that is currently being tracked for the organization.
+#' 
+#' Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param States A list of one or more states that you want included in the response. If this parameter is not present, then all requests are included in the response.
+#' @param NextToken Use this parameter if you receive a `NextToken` response in a previous request that indicates that there is more output available. Set it to the value of the previous call\'s `NextToken` response to indicate where the output should continue from.
+#' @param MaxResults (Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+#'
+#' @examples
+#' # The following example shows a user requesting a list of only the
+#' # completed account creation requests made for the current organization:
+#' list_create_account_status(
+#'   States = list(
+#'     "SUCCEEDED"
+#'   )
+#' )
+#' 
+#' # The following example shows a user requesting a list of only the
+#' # in-progress account creation requests made for the current organization:
+#' list_create_account_status(
+#'   States = list(
+#'     "IN_PROGRESS"
+#'   )
+#' )
+#'
+#' @export
+list_create_account_status <- function (States = NULL, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- Operation(name = "ListCreateAccountStatus", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_create_account_status_input(States = States, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_create_account_status_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the current handshakes that are associated with the account of the requesting user
+#'
+#' Lists the current handshakes that are associated with the account of the requesting user.
+#' 
+#' Handshakes that are ACCEPTED, DECLINED, or CANCELED appear in the results of this API for only 30 days after changing to that state. After that they are deleted and no longer accessible.
+#' 
+#' Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
+#' 
+#' This operation can be called from any account in the organization.
+#'
+#' @param Filter Filters the handshakes that you want included in the response. The default is all types. Use the `ActionType` element to limit the output to only a specified type, such as `INVITE`, `ENABLE-FULL-CONTROL`, or `APPROVE-FULL-CONTROL`. Alternatively, for the `ENABLE-FULL-CONTROL` handshake that generates a separate child handshake for each member account, you can specify `ParentHandshakeId` to see only the handshakes that were generated by that parent request.
+#' @param NextToken Use this parameter if you receive a `NextToken` response in a previous request that indicates that there is more output available. Set it to the value of the previous call\'s `NextToken` response to indicate where the output should continue from.
+#' @param MaxResults (Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+#'
+#' @examples
+#' # The following example shows you how to get a list of handshakes that are
+#' # associated with the account of the credentials used to call the
+#' # operation:
+#' list_handshakes_for_account()
+#'
+#' @export
+list_handshakes_for_account <- function (Filter = NULL, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- Operation(name = "ListHandshakesForAccount", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_handshakes_for_account_input(Filter = Filter, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_handshakes_for_account_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the handshakes that are associated with the organization that the requesting user is part of
+#'
+#' Lists the handshakes that are associated with the organization that the requesting user is part of. The `ListHandshakesForOrganization` operation returns a list of handshake structures. Each structure contains details and status about a handshake.
+#' 
+#' Handshakes that are ACCEPTED, DECLINED, or CANCELED appear in the results of this API for only 30 days after changing to that state. After that they are deleted and no longer accessible.
+#' 
+#' Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param Filter A filter of the handshakes that you want included in the response. The default is all types. Use the `ActionType` element to limit the output to only a specified type, such as `INVITE`, `ENABLE-ALL-FEATURES`, or `APPROVE-ALL-FEATURES`. Alternatively, for the `ENABLE-ALL-FEATURES` handshake that generates a separate child handshake for each member account, you can specify the `ParentHandshakeId` to see only the handshakes that were generated by that parent request.
+#' @param NextToken Use this parameter if you receive a `NextToken` response in a previous request that indicates that there is more output available. Set it to the value of the previous call\'s `NextToken` response to indicate where the output should continue from.
+#' @param MaxResults (Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+#'
+#' @examples
+#' # The following example shows you how to get a list of handshakes
+#' # associated with the current organization:
+#' list_handshakes_for_organization()
+#'
+#' @export
+list_handshakes_for_organization <- function (Filter = NULL, 
+    NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "ListHandshakesForOrganization", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_handshakes_for_organization_input(Filter = Filter, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_handshakes_for_organization_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the organizational units (OUs) in a parent organizational unit or root
+#'
+#' Lists the organizational units (OUs) in a parent organizational unit or root.
+#' 
+#' Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param ParentId The unique identifier (ID) of the root or OU whose child OUs you want to list.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for a parent ID string requires one of the following:
+#' 
+#' -   Root: a string that begins with \"r-\" followed by from 4 to 32 lower-case letters or digits.
+#' 
+#' -   Organizational unit (OU): a string that begins with \"ou-\" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second \"-\" dash and from 8 to 32 additional lower-case letters or digits.
+#' @param NextToken Use this parameter if you receive a `NextToken` response in a previous request that indicates that there is more output available. Set it to the value of the previous call\'s `NextToken` response to indicate where the output should continue from.
+#' @param MaxResults (Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+#'
+#' @examples
+#' # The following example shows how to get a list of OUs in a specified
+#' # root:/n/n
+#' list_organizational_units_for_parent(
+#'   ParentId = "r-examplerootid111"
+#' )
+#'
+#' @export
+list_organizational_units_for_parent <- function (ParentId, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- Operation(name = "ListOrganizationalUnitsForParent", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- list_organizational_units_for_parent_input(ParentId = ParentId, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_organizational_units_for_parent_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the root or organizational units (OUs) that serve as the immediate parent of the specified child OU or account
+#'
+#' Lists the root or organizational units (OUs) that serve as the immediate parent of the specified child OU or account. This operation, along with ListChildren enables you to traverse the tree structure that makes up this root.
+#' 
+#' Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#' 
+#' In the current release, a child can have only a single parent.
+#'
+#' @param ChildId The unique identifier (ID) of the OU or account whose parent containers you want to list. Do not specify a root.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for a child ID string requires one of the following:
+#' 
+#' -   Account: a string that consists of exactly 12 digits.
+#' 
+#' -   Organizational unit (OU): a string that begins with \"ou-\" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second \"-\" dash and from 8 to 32 additional lower-case letters or digits.
+#' @param NextToken Use this parameter if you receive a `NextToken` response in a previous request that indicates that there is more output available. Set it to the value of the previous call\'s `NextToken` response to indicate where the output should continue from.
+#' @param MaxResults (Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+#'
+#' @examples
+#' # The following example shows how to list the root or OUs that contain
+#' # account 444444444444:/n/n
+#' list_parents(
+#'   ChildId = "444444444444"
+#' )
+#'
+#' @export
+list_parents <- function (ChildId, NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "ListParents", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_parents_input(ChildId = ChildId, NextToken = NextToken, 
+        MaxResults = MaxResults)
+    output <- list_parents_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the list of all policies in an organization of a specified type
+#'
+#' Retrieves the list of all policies in an organization of a specified type.
+#' 
+#' Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param Filter Specifies the type of policy that you want to include in the response.
+#' @param NextToken Use this parameter if you receive a `NextToken` response in a previous request that indicates that there is more output available. Set it to the value of the previous call\'s `NextToken` response to indicate where the output should continue from.
+#' @param MaxResults (Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+#'
+#' @examples
+#' # The following example shows how to get a list of service control
+#' # policies (SCPs):/n/n
+#' list_policies(
+#'   Filter = "SERVICE_CONTROL_POLICY"
+#' )
+#'
+#' @export
+list_policies <- function (Filter, NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "ListPolicies", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_policies_input(Filter = Filter, NextToken = NextToken, 
+        MaxResults = MaxResults)
+    output <- list_policies_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the policies that are directly attached to the specified target root, organizational unit (OU), or account
+#'
+#' Lists the policies that are directly attached to the specified target root, organizational unit (OU), or account. You must specify the policy type that you want included in the returned list.
+#' 
+#' Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param TargetId The unique identifier (ID) of the root, organizational unit, or account whose policies you want to list.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for a target ID string requires one of the following:
+#' 
+#' -   Root: a string that begins with \"r-\" followed by from 4 to 32 lower-case letters or digits.
+#' 
+#' -   Account: a string that consists of exactly 12 digits.
+#' 
+#' -   Organizational unit (OU): a string that begins with \"ou-\" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second \"-\" dash and from 8 to 32 additional lower-case letters or digits.
+#' @param Filter The type of policy that you want to include in the returned list.
+#' @param NextToken Use this parameter if you receive a `NextToken` response in a previous request that indicates that there is more output available. Set it to the value of the previous call\'s `NextToken` response to indicate where the output should continue from.
+#' @param MaxResults (Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+#'
+#' @examples
+#' # The following example shows how to get a list of all service control
+#' # policies (SCPs) of the type specified by the Filter parameter, that are
+#' # directly attached to an account. The returned list does not include
+#' # policies that apply to the account because of inheritance from its
+#' # location in an OU hierarchy:/n/n
+#' list_policies_for_target(
+#'   Filter = "SERVICE_CONTROL_POLICY",
+#'   TargetId = "444444444444"
+#' )
+#'
+#' @export
+list_policies_for_target <- function (TargetId, Filter, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- Operation(name = "ListPoliciesForTarget", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_policies_for_target_input(TargetId = TargetId, 
+        Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_policies_for_target_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the roots that are defined in the current organization
+#'
+#' Lists the roots that are defined in the current organization.
+#' 
+#' Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#' 
+#' Policy types can be enabled and disabled in roots. This is distinct from whether they are available in the organization. When you enable all features, you make policy types available for use in that organization. Individual policy types can then be enabled and disabled in a root. To see the availability of a policy type in an organization, use DescribeOrganization.
+#'
+#' @param NextToken Use this parameter if you receive a `NextToken` response in a previous request that indicates that there is more output available. Set it to the value of the previous call\'s `NextToken` response to indicate where the output should continue from.
+#' @param MaxResults (Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+#'
+#' @examples
+#' # The following example shows how to get the list of the roots in the
+#' # current organization:/n/n
+#' list_roots()
+#'
+#' @export
+list_roots <- function (NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "ListRoots", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_roots_input(NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_roots_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists all the roots, organizaitonal units (OUs), and accounts to which the specified policy is attached
+#'
+#' Lists all the roots, organizaitonal units (OUs), and accounts to which the specified policy is attached.
+#' 
+#' Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param PolicyId The unique identifier (ID) of the policy for which you want to know its attachments.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for a policy ID string requires \"p-\" followed by from 8 to 128 lower-case letters or digits.
+#' @param NextToken Use this parameter if you receive a `NextToken` response in a previous request that indicates that there is more output available. Set it to the value of the previous call\'s `NextToken` response to indicate where the output should continue from.
+#' @param MaxResults (Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+#'
+#' @examples
+#' # The following example shows how to get the list of roots, OUs, and
+#' # accounts to which the specified policy is attached:/n/n
+#' list_targets_for_policy(
+#'   PolicyId = "p-FullAWSAccess"
+#' )
+#'
+#' @export
+list_targets_for_policy <- function (PolicyId, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- Operation(name = "ListTargetsForPolicy", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_targets_for_policy_input(PolicyId = PolicyId, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_targets_for_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Moves an account from its current source parent root or organizational unit (OU) to the specified destination parent root or OU
+#'
+#' Moves an account from its current source parent root or organizational unit (OU) to the specified destination parent root or OU.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param AccountId The unique identifier (ID) of the account that you want to move.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for an account ID string requires exactly 12 digits.
+#' @param SourceParentId The unique identifier (ID) of the root or organizational unit that you want to move the account from.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for a parent ID string requires one of the following:
+#' 
+#' -   Root: a string that begins with \"r-\" followed by from 4 to 32 lower-case letters or digits.
+#' 
+#' -   Organizational unit (OU): a string that begins with \"ou-\" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second \"-\" dash and from 8 to 32 additional lower-case letters or digits.
+#' @param DestinationParentId The unique identifier (ID) of the root or organizational unit that you want to move the account to.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for a parent ID string requires one of the following:
+#' 
+#' -   Root: a string that begins with \"r-\" followed by from 4 to 32 lower-case letters or digits.
+#' 
+#' -   Organizational unit (OU): a string that begins with \"ou-\" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second \"-\" dash and from 8 to 32 additional lower-case letters or digits.
+#'
+#' @examples
+#' # The following example shows how to move a member account from the root
+#' # to an OU:/n/n
+#' move_account(
+#'   AccountId = "333333333333",
+#'   DestinationParentId = "ou-examplerootid111-exampleouid111",
+#'   SourceParentId = "r-examplerootid111"
+#' )
+#'
+#' @export
+move_account <- function (AccountId, SourceParentId, DestinationParentId) 
+{
+    op <- Operation(name = "MoveAccount", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- move_account_input(AccountId = AccountId, SourceParentId = SourceParentId, 
+        DestinationParentId = DestinationParentId)
+    output <- move_account_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes the specified account from the organization
+#'
+#' Removes the specified account from the organization.
+#' 
+#' The removed account becomes a stand-alone account that is not a member of any organization. It is no longer subject to any policies and is responsible for its own bill payments. The organization\'s master account is no longer charged for any expenses accrued by the member account after it is removed from the organization.
+#' 
+#' This operation can be called only from the organization\'s master account. Member accounts can remove themselves with LeaveOrganization instead.
+#' 
+#' You can remove an account from your organization only if the account is configured with the information required to operate as a standalone account. When you create an account in an organization using the AWS Organizations console, API, or CLI commands, the information required of standalone accounts is *not* automatically collected. For an account that you want to make standalone, you must accept the End User License Agreement (EULA), choose a support plan, provide and verify the required contact information, and provide a current payment method. AWS uses the payment method to charge for any billable (not free tier) AWS activity that occurs while the account is not attached to an organization. To remove an account that does not yet have this information, you must sign in as the member account and follow the steps at [To leave an organization when all required account information has not yet been provided](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info) in the *AWS Organizations User Guide*.
+#'
+#' @param AccountId The unique identifier (ID) of the member account that you want to remove from the organization.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for an account ID string requires exactly 12 digits.
+#'
+#' @examples
+#' # The following example shows you how to remove an account from an
+#' # organization:
+#' remove_account_from_organization(
+#'   AccountId = "333333333333"
+#' )
+#'
+#' @export
+remove_account_from_organization <- function (AccountId) 
+{
+    op <- Operation(name = "RemoveAccountFromOrganization", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- remove_account_from_organization_input(AccountId = AccountId)
+    output <- remove_account_from_organization_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Renames the specified organizational unit (OU)
+#'
+#' Renames the specified organizational unit (OU). The ID and ARN do not change. The child OUs and accounts remain in place, and any attached policies of the OU remain attached.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param OrganizationalUnitId The unique identifier (ID) of the OU that you want to rename. You can get the ID from the ListOrganizationalUnitsForParent operation.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for an organizational unit ID string requires \"ou-\" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second \"-\" dash and from 8 to 32 additional lower-case letters or digits.
+#' @param Name The new name that you want to assign to the OU.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) that is used to validate this parameter is a string of any of the characters in the ASCII character range.
+#'
+#' @examples
+#' # The following example shows how to rename an OU. The output confirms the
+#' # new name:/n/n
+#' update_organizational_unit(
+#'   Name = "AccountingOU",
+#'   OrganizationalUnitId = "ou-examplerootid111-exampleouid111"
+#' )
+#'
+#' @export
+update_organizational_unit <- function (OrganizationalUnitId, 
+    Name = NULL) 
+{
+    op <- Operation(name = "UpdateOrganizationalUnit", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_organizational_unit_input(OrganizationalUnitId = OrganizationalUnitId, 
+        Name = Name)
+    output <- update_organizational_unit_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates an existing policy with a new name, description, or content
+#'
+#' Updates an existing policy with a new name, description, or content. If any parameter is not supplied, that value remains unchanged. Note that you cannot change a policy\'s type.
+#' 
+#' This operation can be called only from the organization\'s master account.
+#'
+#' @param PolicyId The unique identifier (ID) of the policy that you want to update.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) for a policy ID string requires \"p-\" followed by from 8 to 128 lower-case letters or digits.
+#' @param Name If provided, the new name for the policy.
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) that is used to validate this parameter is a string of any of the characters in the ASCII character range.
+#' @param Description If provided, the new description for the policy.
+#' @param Content If provided, the new content for the policy. The text must be correctly formatted JSON that complies with the syntax for the policy\'s type. For more information, see [Service Control Policy Syntax](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html) in the *AWS Organizations User Guide*.
+#'
+#' @examples
+#' # The following example shows how to rename a policy and give it a new
+#' # description and new content. The output confirms the new name and
+#' # description text:/n/n
+#' update_policy(
+#'   Description = "This description replaces the original.",
+#'   Name = "Renamed-Policy",
+#'   PolicyId = "p-examplepolicyid111"
+#' )
+#' 
+#' # The following example shows how to replace the JSON text of the SCP from
+#' # the preceding example with a new JSON policy text string that allows S3
+#' # actions instead of EC2 actions:/n/n
+#' update_policy(
+#'   Content = "{ \\\"Version\\\": \\\"2012-10-17\\\", \\\"Statement\\\": {\\\"Effect\\\": \\\"Allow\\\", \\\"Action\\\": \\\"s3:*\\\", \\\"Resource\\\": \\\"*\\\" } }",
+#'   PolicyId = "p-examplepolicyid111"
+#' )
+#'
+#' @export
+update_policy <- function (PolicyId, Name = NULL, Description = NULL, 
+    Content = NULL) 
+{
+    op <- Operation(name = "UpdatePolicy", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_policy_input(PolicyId = PolicyId, Name = Name, 
+        Description = Description, Content = Content)
+    output <- update_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

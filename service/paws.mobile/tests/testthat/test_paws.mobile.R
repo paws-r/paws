@@ -1,0 +1,7 @@
+test_that("list_bundles", {
+    expect_error(list_bundles(), NA)
+})
+
+test_that("list_projects", {
+    expect_error(list_projects(), NA)
+})

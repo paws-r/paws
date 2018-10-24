@@ -1,0 +1,793 @@
+#' Sends messages to a channel
+#'
+#' Sends messages to a channel.
+#'
+#' @param channelName The name of the channel where the messages are sent.
+#' @param messages The list of messages to be sent. Each message has format: \'{ \"messageId\": \"string\", \"payload\": \"string\"}\'.
+#'
+#' @examples
+#'
+#' @export
+batch_put_message <- function (channelName, messages) 
+{
+    op <- Operation(name = "BatchPutMessage", http_method = "POST", 
+        http_path = "/messages/batch", paginator = list())
+    input <- batch_put_message_input(channelName = channelName, 
+        messages = messages)
+    output <- batch_put_message_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Cancels the reprocessing of data through the pipeline
+#'
+#' Cancels the reprocessing of data through the pipeline.
+#'
+#' @param pipelineName The name of pipeline for which data reprocessing is canceled.
+#' @param reprocessingId The ID of the reprocessing task (returned by \"StartPipelineReprocessing\").
+#'
+#' @examples
+#'
+#' @export
+cancel_pipeline_reprocessing <- function (pipelineName, reprocessingId) 
+{
+    op <- Operation(name = "CancelPipelineReprocessing", http_method = "DELETE", 
+        http_path = "/pipelines/{pipelineName}/reprocessing/{reprocessingId}", 
+        paginator = list())
+    input <- cancel_pipeline_reprocessing_input(pipelineName = pipelineName, 
+        reprocessingId = reprocessingId)
+    output <- cancel_pipeline_reprocessing_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a channel
+#'
+#' Creates a channel. A channel collects data from an MQTT topic and archives the raw, unprocessed messages before publishing the data to a pipeline.
+#'
+#' @param channelName The name of the channel.
+#' @param retentionPeriod How long, in days, message data is kept for the channel.
+#' @param tags Metadata which can be used to manage the channel.
+#'
+#' @examples
+#'
+#' @export
+create_channel <- function (channelName, retentionPeriod = NULL, 
+    tags = NULL) 
+{
+    op <- Operation(name = "CreateChannel", http_method = "POST", 
+        http_path = "/channels", paginator = list())
+    input <- create_channel_input(channelName = channelName, 
+        retentionPeriod = retentionPeriod, tags = tags)
+    output <- create_channel_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a data set
+#'
+#' Creates a data set. A data set stores data retrieved from a data store by applying a \"queryAction\" (a SQL query) or a \"containerAction\" (executing a containerized application). This operation creates the skeleton of a data set. The data set can be populated manually by calling \"CreateDatasetContent\" or automatically according to a \"trigger\" you specify.
+#'
+#' @param datasetName The name of the data set.
+#' @param actions A list of actions that create the data set contents.
+#' @param triggers A list of triggers. A trigger causes data set contents to be populated at a specified time interval or when another data set\'s contents are created. The list of triggers can be empty or contain up to five **DataSetTrigger** objects.
+#' @param retentionPeriod &#91;Optional&#93; How long, in days, message data is kept for the data set. If not given or set to null, the latest version of the dataset content plus the latest succeeded version (if they are different) are retained for at most 90 days.
+#' @param tags Metadata which can be used to manage the data set.
+#'
+#' @examples
+#'
+#' @export
+create_dataset <- function (datasetName, actions, triggers = NULL, 
+    retentionPeriod = NULL, tags = NULL) 
+{
+    op <- Operation(name = "CreateDataset", http_method = "POST", 
+        http_path = "/datasets", paginator = list())
+    input <- create_dataset_input(datasetName = datasetName, 
+        actions = actions, triggers = triggers, retentionPeriod = retentionPeriod, 
+        tags = tags)
+    output <- create_dataset_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates the content of a data set by applying a SQL action
+#'
+#' Creates the content of a data set by applying a SQL action.
+#'
+#' @param datasetName The name of the data set.
+#'
+#' @examples
+#'
+#' @export
+create_dataset_content <- function (datasetName) 
+{
+    op <- Operation(name = "CreateDatasetContent", http_method = "POST", 
+        http_path = "/datasets/{datasetName}/content", paginator = list())
+    input <- create_dataset_content_input(datasetName = datasetName)
+    output <- create_dataset_content_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a data store, which is a repository for messages
+#'
+#' Creates a data store, which is a repository for messages.
+#'
+#' @param datastoreName The name of the data store.
+#' @param retentionPeriod How long, in days, message data is kept for the data store.
+#' @param tags Metadata which can be used to manage the data store.
+#'
+#' @examples
+#'
+#' @export
+create_datastore <- function (datastoreName, retentionPeriod = NULL, 
+    tags = NULL) 
+{
+    op <- Operation(name = "CreateDatastore", http_method = "POST", 
+        http_path = "/datastores", paginator = list())
+    input <- create_datastore_input(datastoreName = datastoreName, 
+        retentionPeriod = retentionPeriod, tags = tags)
+    output <- create_datastore_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a pipeline
+#'
+#' Creates a pipeline. A pipeline consumes messages from one or more channels and allows you to process the messages before storing them in a data store.
+#'
+#' @param pipelineName The name of the pipeline.
+#' @param pipelineActivities A list of pipeline activities.
+#' 
+#' The list can be 1-25 **PipelineActivity** objects. Activities perform transformations on your messages, such as removing, renaming, or adding message attributes; filtering messages based on attribute values; invoking your Lambda functions on messages for advanced processing; or performing mathematical transformations to normalize device data.
+#' @param tags Metadata which can be used to manage the pipeline.
+#'
+#' @examples
+#'
+#' @export
+create_pipeline <- function (pipelineName, pipelineActivities, 
+    tags = NULL) 
+{
+    op <- Operation(name = "CreatePipeline", http_method = "POST", 
+        http_path = "/pipelines", paginator = list())
+    input <- create_pipeline_input(pipelineName = pipelineName, 
+        pipelineActivities = pipelineActivities, tags = tags)
+    output <- create_pipeline_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified channel
+#'
+#' Deletes the specified channel.
+#'
+#' @param channelName The name of the channel to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_channel <- function (channelName) 
+{
+    op <- Operation(name = "DeleteChannel", http_method = "DELETE", 
+        http_path = "/channels/{channelName}", paginator = list())
+    input <- delete_channel_input(channelName = channelName)
+    output <- delete_channel_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified data set
+#'
+#' Deletes the specified data set.
+#' 
+#' You do not have to delete the content of the data set before you perform this operation.
+#'
+#' @param datasetName The name of the data set to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_dataset <- function (datasetName) 
+{
+    op <- Operation(name = "DeleteDataset", http_method = "DELETE", 
+        http_path = "/datasets/{datasetName}", paginator = list())
+    input <- delete_dataset_input(datasetName = datasetName)
+    output <- delete_dataset_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the content of the specified data set
+#'
+#' Deletes the content of the specified data set.
+#'
+#' @param datasetName The name of the data set whose content is deleted.
+#' @param versionId The version of the data set whose content is deleted. You can also use the strings \"\$LATEST\" or \"\$LATEST\_SUCCEEDED\" to delete the latest or latest successfully completed data set. If not specified, \"\$LATEST\_SUCCEEDED\" is the default.
+#'
+#' @examples
+#'
+#' @export
+delete_dataset_content <- function (datasetName, versionId = NULL) 
+{
+    op <- Operation(name = "DeleteDatasetContent", http_method = "DELETE", 
+        http_path = "/datasets/{datasetName}/content", paginator = list())
+    input <- delete_dataset_content_input(datasetName = datasetName, 
+        versionId = versionId)
+    output <- delete_dataset_content_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified data store
+#'
+#' Deletes the specified data store.
+#'
+#' @param datastoreName The name of the data store to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_datastore <- function (datastoreName) 
+{
+    op <- Operation(name = "DeleteDatastore", http_method = "DELETE", 
+        http_path = "/datastores/{datastoreName}", paginator = list())
+    input <- delete_datastore_input(datastoreName = datastoreName)
+    output <- delete_datastore_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified pipeline
+#'
+#' Deletes the specified pipeline.
+#'
+#' @param pipelineName The name of the pipeline to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_pipeline <- function (pipelineName) 
+{
+    op <- Operation(name = "DeletePipeline", http_method = "DELETE", 
+        http_path = "/pipelines/{pipelineName}", paginator = list())
+    input <- delete_pipeline_input(pipelineName = pipelineName)
+    output <- delete_pipeline_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves information about a channel
+#'
+#' Retrieves information about a channel.
+#'
+#' @param channelName The name of the channel whose information is retrieved.
+#' @param includeStatistics If true, additional statistical information about the channel is included in the response.
+#'
+#' @examples
+#'
+#' @export
+describe_channel <- function (channelName, includeStatistics = NULL) 
+{
+    op <- Operation(name = "DescribeChannel", http_method = "GET", 
+        http_path = "/channels/{channelName}", paginator = list())
+    input <- describe_channel_input(channelName = channelName, 
+        includeStatistics = includeStatistics)
+    output <- describe_channel_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves information about a data set
+#'
+#' Retrieves information about a data set.
+#'
+#' @param datasetName The name of the data set whose information is retrieved.
+#'
+#' @examples
+#'
+#' @export
+describe_dataset <- function (datasetName) 
+{
+    op <- Operation(name = "DescribeDataset", http_method = "GET", 
+        http_path = "/datasets/{datasetName}", paginator = list())
+    input <- describe_dataset_input(datasetName = datasetName)
+    output <- describe_dataset_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves information about a data store
+#'
+#' Retrieves information about a data store.
+#'
+#' @param datastoreName The name of the data store
+#' @param includeStatistics If true, additional statistical information about the datastore is included in the response.
+#'
+#' @examples
+#'
+#' @export
+describe_datastore <- function (datastoreName, includeStatistics = NULL) 
+{
+    op <- Operation(name = "DescribeDatastore", http_method = "GET", 
+        http_path = "/datastores/{datastoreName}", paginator = list())
+    input <- describe_datastore_input(datastoreName = datastoreName, 
+        includeStatistics = includeStatistics)
+    output <- describe_datastore_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the current settings of the AWS IoT Analytics logging options
+#'
+#' Retrieves the current settings of the AWS IoT Analytics logging options.
+#'
+#' @examples
+#'
+#' @export
+describe_logging_options <- function () 
+{
+    op <- Operation(name = "DescribeLoggingOptions", http_method = "GET", 
+        http_path = "/logging", paginator = list())
+    input <- describe_logging_options_input()
+    output <- describe_logging_options_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves information about a pipeline
+#'
+#' Retrieves information about a pipeline.
+#'
+#' @param pipelineName The name of the pipeline whose information is retrieved.
+#'
+#' @examples
+#'
+#' @export
+describe_pipeline <- function (pipelineName) 
+{
+    op <- Operation(name = "DescribePipeline", http_method = "GET", 
+        http_path = "/pipelines/{pipelineName}", paginator = list())
+    input <- describe_pipeline_input(pipelineName = pipelineName)
+    output <- describe_pipeline_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the contents of a data set as pre-signed URIs
+#'
+#' Retrieves the contents of a data set as pre-signed URIs.
+#'
+#' @param datasetName The name of the data set whose contents are retrieved.
+#' @param versionId The version of the data set whose contents are retrieved. You can also use the strings \"\$LATEST\" or \"\$LATEST\_SUCCEEDED\" to retrieve the contents of the latest or latest successfully completed data set. If not specified, \"\$LATEST\_SUCCEEDED\" is the default.
+#'
+#' @examples
+#'
+#' @export
+get_dataset_content <- function (datasetName, versionId = NULL) 
+{
+    op <- Operation(name = "GetDatasetContent", http_method = "GET", 
+        http_path = "/datasets/{datasetName}/content", paginator = list())
+    input <- get_dataset_content_input(datasetName = datasetName, 
+        versionId = versionId)
+    output <- get_dataset_content_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a list of channels
+#'
+#' Retrieves a list of channels.
+#'
+#' @param nextToken The token for the next set of results.
+#' @param maxResults The maximum number of results to return in this request.
+#' 
+#' The default value is 100.
+#'
+#' @examples
+#'
+#' @export
+list_channels <- function (nextToken = NULL, maxResults = NULL) 
+{
+    op <- Operation(name = "ListChannels", http_method = "GET", 
+        http_path = "/channels", paginator = list())
+    input <- list_channels_input(nextToken = nextToken, maxResults = maxResults)
+    output <- list_channels_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists information about data set contents that have been created
+#'
+#' Lists information about data set contents that have been created.
+#'
+#' @param datasetName The name of the data set whose contents information you want to list.
+#' @param nextToken The token for the next set of results.
+#' @param maxResults The maximum number of results to return in this request.
+#'
+#' @examples
+#'
+#' @export
+list_dataset_contents <- function (datasetName, nextToken = NULL, 
+    maxResults = NULL) 
+{
+    op <- Operation(name = "ListDatasetContents", http_method = "GET", 
+        http_path = "/datasets/{datasetName}/contents", paginator = list())
+    input <- list_dataset_contents_input(datasetName = datasetName, 
+        nextToken = nextToken, maxResults = maxResults)
+    output <- list_dataset_contents_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves information about data sets
+#'
+#' Retrieves information about data sets.
+#'
+#' @param nextToken The token for the next set of results.
+#' @param maxResults The maximum number of results to return in this request.
+#' 
+#' The default value is 100.
+#'
+#' @examples
+#'
+#' @export
+list_datasets <- function (nextToken = NULL, maxResults = NULL) 
+{
+    op <- Operation(name = "ListDatasets", http_method = "GET", 
+        http_path = "/datasets", paginator = list())
+    input <- list_datasets_input(nextToken = nextToken, maxResults = maxResults)
+    output <- list_datasets_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a list of data stores
+#'
+#' Retrieves a list of data stores.
+#'
+#' @param nextToken The token for the next set of results.
+#' @param maxResults The maximum number of results to return in this request.
+#' 
+#' The default value is 100.
+#'
+#' @examples
+#'
+#' @export
+list_datastores <- function (nextToken = NULL, maxResults = NULL) 
+{
+    op <- Operation(name = "ListDatastores", http_method = "GET", 
+        http_path = "/datastores", paginator = list())
+    input <- list_datastores_input(nextToken = nextToken, maxResults = maxResults)
+    output <- list_datastores_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a list of pipelines
+#'
+#' Retrieves a list of pipelines.
+#'
+#' @param nextToken The token for the next set of results.
+#' @param maxResults The maximum number of results to return in this request.
+#' 
+#' The default value is 100.
+#'
+#' @examples
+#'
+#' @export
+list_pipelines <- function (nextToken = NULL, maxResults = NULL) 
+{
+    op <- Operation(name = "ListPipelines", http_method = "GET", 
+        http_path = "/pipelines", paginator = list())
+    input <- list_pipelines_input(nextToken = nextToken, maxResults = maxResults)
+    output <- list_pipelines_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the tags (metadata) which you have assigned to the resource
+#'
+#' Lists the tags (metadata) which you have assigned to the resource.
+#'
+#' @param resourceArn The ARN of the resource whose tags you want to list.
+#'
+#' @examples
+#'
+#' @export
+list_tags_for_resource <- function (resourceArn) 
+{
+    op <- Operation(name = "ListTagsForResource", http_method = "GET", 
+        http_path = "/tags", paginator = list())
+    input <- list_tags_for_resource_input(resourceArn = resourceArn)
+    output <- list_tags_for_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Sets or updates the AWS IoT Analytics logging options
+#'
+#' Sets or updates the AWS IoT Analytics logging options.
+#' 
+#' Note that if you update the value of any `loggingOptions` field, it takes up to one minute for the change to take effect. Also, if you change the policy attached to the role you specified in the roleArn field (for example, to correct an invalid policy) it takes up to 5 minutes for that change to take effect.
+#'
+#' @param loggingOptions The new values of the AWS IoT Analytics logging options.
+#'
+#' @examples
+#'
+#' @export
+put_logging_options <- function (loggingOptions) 
+{
+    op <- Operation(name = "PutLoggingOptions", http_method = "PUT", 
+        http_path = "/logging", paginator = list())
+    input <- put_logging_options_input(loggingOptions = loggingOptions)
+    output <- put_logging_options_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Simulates the results of running a pipeline activity on a message payload
+#'
+#' Simulates the results of running a pipeline activity on a message payload.
+#'
+#' @param pipelineActivity The pipeline activity that is run. This must not be a \'channel\' activity or a \'datastore\' activity because these activities are used in a pipeline only to load the original message and to store the (possibly) transformed message. If a \'lambda\' activity is specified, only short-running Lambda functions (those with a timeout of less than 30 seconds or less) can be used.
+#' @param payloads The sample message payloads on which the pipeline activity is run.
+#'
+#' @examples
+#'
+#' @export
+run_pipeline_activity <- function (pipelineActivity, payloads) 
+{
+    op <- Operation(name = "RunPipelineActivity", http_method = "POST", 
+        http_path = "/pipelineactivities/run", paginator = list())
+    input <- run_pipeline_activity_input(pipelineActivity = pipelineActivity, 
+        payloads = payloads)
+    output <- run_pipeline_activity_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a sample of messages from the specified channel ingested during the specified timeframe
+#'
+#' Retrieves a sample of messages from the specified channel ingested during the specified timeframe. Up to 10 messages can be retrieved.
+#'
+#' @param channelName The name of the channel whose message samples are retrieved.
+#' @param maxMessages The number of sample messages to be retrieved. The limit is 10, the default is also 10.
+#' @param startTime The start of the time window from which sample messages are retrieved.
+#' @param endTime The end of the time window from which sample messages are retrieved.
+#'
+#' @examples
+#'
+#' @export
+sample_channel_data <- function (channelName, maxMessages = NULL, 
+    startTime = NULL, endTime = NULL) 
+{
+    op <- Operation(name = "SampleChannelData", http_method = "GET", 
+        http_path = "/channels/{channelName}/sample", paginator = list())
+    input <- sample_channel_data_input(channelName = channelName, 
+        maxMessages = maxMessages, startTime = startTime, endTime = endTime)
+    output <- sample_channel_data_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Starts the reprocessing of raw message data through the pipeline
+#'
+#' Starts the reprocessing of raw message data through the pipeline.
+#'
+#' @param pipelineName The name of the pipeline on which to start reprocessing.
+#' @param startTime The start time (inclusive) of raw message data that is reprocessed.
+#' @param endTime The end time (exclusive) of raw message data that is reprocessed.
+#'
+#' @examples
+#'
+#' @export
+start_pipeline_reprocessing <- function (pipelineName, startTime = NULL, 
+    endTime = NULL) 
+{
+    op <- Operation(name = "StartPipelineReprocessing", http_method = "POST", 
+        http_path = "/pipelines/{pipelineName}/reprocessing", 
+        paginator = list())
+    input <- start_pipeline_reprocessing_input(pipelineName = pipelineName, 
+        startTime = startTime, endTime = endTime)
+    output <- start_pipeline_reprocessing_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Adds to or modifies the tags of the given resource
+#'
+#' Adds to or modifies the tags of the given resource. Tags are metadata which can be used to manage a resource.
+#'
+#' @param resourceArn The ARN of the resource whose tags will be modified.
+#' @param tags The new or modified tags for the resource.
+#'
+#' @examples
+#'
+#' @export
+tag_resource <- function (resourceArn, tags) 
+{
+    op <- Operation(name = "TagResource", http_method = "POST", 
+        http_path = "/tags", paginator = list())
+    input <- tag_resource_input(resourceArn = resourceArn, tags = tags)
+    output <- tag_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes the given tags (metadata) from the resource
+#'
+#' Removes the given tags (metadata) from the resource.
+#'
+#' @param resourceArn The ARN of the resource whose tags will be removed.
+#' @param tagKeys The keys of those tags which will be removed.
+#'
+#' @examples
+#'
+#' @export
+untag_resource <- function (resourceArn, tagKeys) 
+{
+    op <- Operation(name = "UntagResource", http_method = "DELETE", 
+        http_path = "/tags", paginator = list())
+    input <- untag_resource_input(resourceArn = resourceArn, 
+        tagKeys = tagKeys)
+    output <- untag_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the settings of a channel
+#'
+#' Updates the settings of a channel.
+#'
+#' @param channelName The name of the channel to be updated.
+#' @param retentionPeriod How long, in days, message data is kept for the channel.
+#'
+#' @examples
+#'
+#' @export
+update_channel <- function (channelName, retentionPeriod = NULL) 
+{
+    op <- Operation(name = "UpdateChannel", http_method = "PUT", 
+        http_path = "/channels/{channelName}", paginator = list())
+    input <- update_channel_input(channelName = channelName, 
+        retentionPeriod = retentionPeriod)
+    output <- update_channel_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the settings of a data set
+#'
+#' Updates the settings of a data set.
+#'
+#' @param datasetName The name of the data set to update.
+#' @param actions A list of \"DatasetAction\" objects.
+#' @param triggers A list of \"DatasetTrigger\" objects. The list can be empty or can contain up to five **DataSetTrigger** objects.
+#' @param retentionPeriod How long, in days, message data is kept for the data set.
+#'
+#' @examples
+#'
+#' @export
+update_dataset <- function (datasetName, actions, triggers = NULL, 
+    retentionPeriod = NULL) 
+{
+    op <- Operation(name = "UpdateDataset", http_method = "PUT", 
+        http_path = "/datasets/{datasetName}", paginator = list())
+    input <- update_dataset_input(datasetName = datasetName, 
+        actions = actions, triggers = triggers, retentionPeriod = retentionPeriod)
+    output <- update_dataset_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the settings of a data store
+#'
+#' Updates the settings of a data store.
+#'
+#' @param datastoreName The name of the data store to be updated.
+#' @param retentionPeriod How long, in days, message data is kept for the data store.
+#'
+#' @examples
+#'
+#' @export
+update_datastore <- function (datastoreName, retentionPeriod = NULL) 
+{
+    op <- Operation(name = "UpdateDatastore", http_method = "PUT", 
+        http_path = "/datastores/{datastoreName}", paginator = list())
+    input <- update_datastore_input(datastoreName = datastoreName, 
+        retentionPeriod = retentionPeriod)
+    output <- update_datastore_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the settings of a pipeline
+#'
+#' Updates the settings of a pipeline.
+#'
+#' @param pipelineName The name of the pipeline to update.
+#' @param pipelineActivities A list of \"PipelineActivity\" objects.
+#' 
+#' The list can be 1-25 **PipelineActivity** objects. Activities perform transformations on your messages, such as removing, renaming or adding message attributes; filtering messages based on attribute values; invoking your Lambda functions on messages for advanced processing; or performing mathematical transformations to normalize device data.
+#'
+#' @examples
+#'
+#' @export
+update_pipeline <- function (pipelineName, pipelineActivities) 
+{
+    op <- Operation(name = "UpdatePipeline", http_method = "PUT", 
+        http_path = "/pipelines/{pipelineName}", paginator = list())
+    input <- update_pipeline_input(pipelineName = pipelineName, 
+        pipelineActivities = pipelineActivities)
+    output <- update_pipeline_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

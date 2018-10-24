@@ -1,0 +1,15 @@
+service <- function () 
+{
+    cfg <- client_config("iot", list(`*` = "iot.{region}.amazonaws.com", 
+        `cn-*` = "iot.{region}.amazonaws.com.cn"))
+    client_info <- ClientInfo(service_name = "iot", service_id = "IoT", 
+        api_version = "2015-05-28", signing_name = "execute-api", 
+        signing_region = cfg$signing_region, endpoint = cfg$endpoint, 
+        json_version = NULL, target_prefix = NULL)
+    handlers <- handlers(build = restjson_build, sign = v4_sign_request_handler, 
+        unmarshal = restjson_unmarshal, unmarshal_meta = restjson_unmarshal_meta, 
+        unmarshal_error = restjson_unmarshal_error)
+    svc <- Client(config = cfg$config, client_info = client_info, 
+        handlers = handlers)
+    return(svc)
+}

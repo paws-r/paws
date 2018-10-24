@@ -1,0 +1,67 @@
+Package: paws.configservice
+Title: AWS Config
+Version: 0.0.0.9000
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut"))
+Description: AWS Config provides a way to keep track of the
+    configurations of all the AWS resources associated with your AWS
+    account. You can use AWS Config to get the current and historical
+    configurations of each AWS resource and also to get information about
+    the relationship between the resources. An AWS resource can be an
+    Amazon Compute Cloud (Amazon EC2) instance, an Elastic Block Store
+    (EBS) volume, an elastic network Interface (ENI), or a security group.
+    For a complete list of resources currently supported by AWS Config,
+    see [Supported AWS
+    Resources](http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources).
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.5.1)
+Imports: 
+    digest,
+    httr,
+    jsonlite,
+    xml2,
+    ini
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1
+Collate: 
+    'struct.R'
+    'handlers.R'
+    'url.R'
+    'net.R'
+    'credential_providers.R'
+    'credentials.R'
+    'client.R'
+    'config.R'
+    'convert.R'
+    'dateutil.R'
+    'defaults.R'
+    'error.R'
+    'handlers_core.R'
+    'handlers_ec2query.R'
+    'handlers_jsonrpc.R'
+    'handlers_query.R'
+    'handlers_rest.R'
+    'handlers_restjson.R'
+    'idempotency.R'
+    'jsonutil.R'
+    'paws.configservice_interfaces.R'
+    'paws.configservice_operations.R'
+    'paws.configservice_package.R'
+    'paws.configservice_service.R'
+    'populate.R'
+    'populateutil.R'
+    'type.R'
+    'queryutil.R'
+    'request.R'
+    'signer_v4.R'
+    'time.R'
+    'xmlutil.R'

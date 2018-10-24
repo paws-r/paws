@@ -1,0 +1,559 @@
+#' Associates one or more configuration items with an application
+#'
+#' Associates one or more configuration items with an application.
+#'
+#' @param applicationConfigurationId The configuration ID of an application with which items are to be associated.
+#' @param configurationIds The ID of each configuration item to be associated with an application.
+#'
+#' @examples
+#'
+#' @export
+associate_configuration_items_to_application <- function (applicationConfigurationId, 
+    configurationIds) 
+{
+    op <- Operation(name = "AssociateConfigurationItemsToApplication", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- associate_configuration_items_to_application_input(applicationConfigurationId = applicationConfigurationId, 
+        configurationIds = configurationIds)
+    output <- associate_configuration_items_to_application_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates an application with the given name and description
+#'
+#' Creates an application with the given name and description.
+#'
+#' @param name Name of the application to be created.
+#' @param description Description of the application to be created.
+#'
+#' @examples
+#'
+#' @export
+create_application <- function (name, description = NULL) 
+{
+    op <- Operation(name = "CreateApplication", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_application_input(name = name, description = description)
+    output <- create_application_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates one or more tags for configuration items
+#'
+#' Creates one or more tags for configuration items. Tags are metadata that help you categorize IT assets. This API accepts a list of multiple configuration items.
+#'
+#' @param configurationIds A list of configuration items that you want to tag.
+#' @param tags Tags that you want to associate with one or more configuration items. Specify the tags that you want to create in a *key*-*value* format. For example:
+#' 
+#' `{"key": "serverType", "value": "webServer"}`
+#'
+#' @examples
+#'
+#' @export
+create_tags <- function (configurationIds, tags) 
+{
+    op <- Operation(name = "CreateTags", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_tags_input(configurationIds = configurationIds, 
+        tags = tags)
+    output <- create_tags_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a list of applications and their associations with configuration items
+#'
+#' Deletes a list of applications and their associations with configuration items.
+#'
+#' @param configurationIds Configuration ID of an application to be deleted.
+#'
+#' @examples
+#'
+#' @export
+delete_applications <- function (configurationIds) 
+{
+    op <- Operation(name = "DeleteApplications", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_applications_input(configurationIds = configurationIds)
+    output <- delete_applications_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the association between configuration items and one or more tags
+#'
+#' Deletes the association between configuration items and one or more tags. This API accepts a list of multiple configuration items.
+#'
+#' @param configurationIds A list of configuration items with tags that you want to delete.
+#' @param tags Tags that you want to delete from one or more configuration items. Specify the tags that you want to delete in a *key*-*value* format. For example:
+#' 
+#' `{"key": "serverType", "value": "webServer"}`
+#'
+#' @examples
+#'
+#' @export
+delete_tags <- function (configurationIds, tags = NULL) 
+{
+    op <- Operation(name = "DeleteTags", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_tags_input(configurationIds = configurationIds, 
+        tags = tags)
+    output <- delete_tags_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists agents or connectors as specified by ID or other filters
+#'
+#' Lists agents or connectors as specified by ID or other filters. All agents/connectors associated with your user account can be listed if you call `DescribeAgents` as is without passing any parameters.
+#'
+#' @param agentIds The agent or the Connector IDs for which you want information. If you specify no IDs, the system returns information about all agents/Connectors associated with your AWS user account.
+#' @param filters You can filter the request using various logical operators and a *key*-*value* format. For example:
+#' 
+#' `{"key": "collectionStatus", "value": "STARTED"}`
+#' @param maxResults The total number of agents/Connectors to return in a single page of output. The maximum value is 100.
+#' @param nextToken Token to retrieve the next set of results. For example, if you previously specified 100 IDs for `DescribeAgentsRequest$agentIds` but set `DescribeAgentsRequest$maxResults` to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.
+#'
+#' @examples
+#'
+#' @export
+describe_agents <- function (agentIds = NULL, filters = NULL, 
+    maxResults = NULL, nextToken = NULL) 
+{
+    op <- Operation(name = "DescribeAgents", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_agents_input(agentIds = agentIds, filters = filters, 
+        maxResults = maxResults, nextToken = nextToken)
+    output <- describe_agents_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves attributes for a list of configuration item IDs
+#'
+#' Retrieves attributes for a list of configuration item IDs.
+#' 
+#' All of the supplied IDs must be for the same asset type from one of the follwoing:
+#' 
+#' -   server
+#' 
+#' -   application
+#' 
+#' -   process
+#' 
+#' -   connection
+#' 
+#' Output fields are specific to the asset type specified. For example, the output for a *server* configuration item includes a list of attributes about the server, such as host name, operating system, number of network cards, etc.
+#' 
+#' For a complete list of outputs for each asset type, see [Using the DescribeConfigurations Action](http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#DescribeConfigurations).
+#'
+#' @param configurationIds One or more configuration IDs.
+#'
+#' @examples
+#'
+#' @export
+describe_configurations <- function (configurationIds) 
+{
+    op <- Operation(name = "DescribeConfigurations", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_configurations_input(configurationIds = configurationIds)
+    output <- describe_configurations_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists exports as specified by ID
+#'
+#' Lists exports as specified by ID. All continuous exports associated with your user account can be listed if you call `DescribeContinuousExports` as is without passing any parameters.
+#'
+#' @param exportIds The unique IDs assigned to the exports.
+#' @param maxResults A number between 1 and 100 specifying the maximum number of continuous export descriptions returned.
+#' @param nextToken The token from the previous call to `DescribeExportTasks`.
+#'
+#' @examples
+#'
+#' @export
+describe_continuous_exports <- function (exportIds = NULL, maxResults = NULL, 
+    nextToken = NULL) 
+{
+    op <- Operation(name = "DescribeContinuousExports", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_continuous_exports_input(exportIds = exportIds, 
+        maxResults = maxResults, nextToken = nextToken)
+    output <- describe_continuous_exports_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' `DescribeExportConfigurations` is deprecated
+#'
+#' `DescribeExportConfigurations` is deprecated.
+#' 
+#' Use instead [`DescribeExportTasks`](http://docs.aws.amazon.com/application-discovery/latest/APIReference/API_DescribeExportTasks.html).
+#'
+#' @param exportIds A list of continuous export ids to search for.
+#' @param maxResults A number between 1 and 100 specifying the maximum number of continuous export descriptions returned.
+#' @param nextToken The token from the previous call to describe-export-tasks.
+#'
+#' @examples
+#'
+#' @export
+describe_export_configurations <- function (exportIds = NULL, 
+    maxResults = NULL, nextToken = NULL) 
+{
+    op <- Operation(name = "DescribeExportConfigurations", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_export_configurations_input(exportIds = exportIds, 
+        maxResults = maxResults, nextToken = nextToken)
+    output <- describe_export_configurations_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieve status of one or more export tasks
+#'
+#' Retrieve status of one or more export tasks. You can retrieve the status of up to 100 export tasks.
+#'
+#' @param exportIds One or more unique identifiers used to query the status of an export request.
+#' @param filters One or more filters.
+#' 
+#' -   `AgentId` - ID of the agent whose collected data will be exported
+#' @param maxResults The maximum number of volume results returned by `DescribeExportTasks` in paginated output. When this parameter is used, `DescribeExportTasks` only returns `maxResults` results in a single page along with a `nextToken` response element.
+#' @param nextToken The `nextToken` value returned from a previous paginated `DescribeExportTasks` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value. This value is null when there are no more results to return.
+#'
+#' @examples
+#'
+#' @export
+describe_export_tasks <- function (exportIds = NULL, filters = NULL, 
+    maxResults = NULL, nextToken = NULL) 
+{
+    op <- Operation(name = "DescribeExportTasks", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_export_tasks_input(exportIds = exportIds, 
+        filters = filters, maxResults = maxResults, nextToken = nextToken)
+    output <- describe_export_tasks_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a list of configuration items that have tags as specified by the key-value pairs, name and value, passed to the optional parameter `filters`
+#'
+#' Retrieves a list of configuration items that have tags as specified by the key-value pairs, name and value, passed to the optional parameter `filters`.
+#' 
+#' There are three valid tag filter names:
+#' 
+#' -   tagKey
+#' 
+#' -   tagValue
+#' 
+#' -   configurationId
+#' 
+#' Also, all configuration items associated with your user account that have tags can be listed if you call `DescribeTags` as is without passing any parameters.
+#'
+#' @param filters You can filter the list using a *key*-*value* format. You can separate these items by using logical operators. Allowed filters include `tagKey`, `tagValue`, and `configurationId`.
+#' @param maxResults The total number of items to return in a single page of output. The maximum value is 100.
+#' @param nextToken A token to start the list. Use this token to get the next set of results.
+#'
+#' @examples
+#'
+#' @export
+describe_tags <- function (filters = NULL, maxResults = NULL, 
+    nextToken = NULL) 
+{
+    op <- Operation(name = "DescribeTags", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_tags_input(filters = filters, maxResults = maxResults, 
+        nextToken = nextToken)
+    output <- describe_tags_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Disassociates one or more configuration items from an application
+#'
+#' Disassociates one or more configuration items from an application.
+#'
+#' @param applicationConfigurationId Configuration ID of an application from which each item is disassociated.
+#' @param configurationIds Configuration ID of each item to be disassociated from an application.
+#'
+#' @examples
+#'
+#' @export
+disassociate_configuration_items_from_application <- function (applicationConfigurationId, 
+    configurationIds) 
+{
+    op <- Operation(name = "DisassociateConfigurationItemsFromApplication", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- disassociate_configuration_items_from_application_input(applicationConfigurationId = applicationConfigurationId, 
+        configurationIds = configurationIds)
+    output <- disassociate_configuration_items_from_application_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deprecated
+#'
+#' Deprecated. Use `StartExportTask` instead.
+#' 
+#' Exports all discovered configuration data to an Amazon S3 bucket or an application that enables you to view and evaluate the data. Data includes tags and tag associations, processes, connections, servers, and system performance. This API returns an export ID that you can query using the *DescribeExportConfigurations* API. The system imposes a limit of two configuration exports in six hours.
+#'
+
+#'
+#' @examples
+#'
+#' @export
+export_configurations <- function () 
+{
+    op <- Operation(name = "ExportConfigurations", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- export_configurations_input()
+    output <- export_configurations_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a short summary of discovered assets
+#'
+#' Retrieves a short summary of discovered assets.
+#' 
+#' This API operation takes no request parameters and is called as is at the command prompt as shown in the example.
+#'
+#' @examples
+#'
+#' @export
+get_discovery_summary <- function () 
+{
+    op <- Operation(name = "GetDiscoverySummary", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_discovery_summary_input()
+    output <- get_discovery_summary_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a list of configuration items as specified by the value passed to the required paramater `configurationType`
+#'
+#' Retrieves a list of configuration items as specified by the value passed to the required paramater `configurationType`. Optional filtering may be applied to refine search results.
+#'
+#' @param configurationType A valid configuration identified by Application Discovery Service.
+#' @param filters You can filter the request using various logical operators and a *key*-*value* format. For example:
+#' 
+#' `{"key": "serverType", "value": "webServer"}`
+#' 
+#' For a complete list of filter options and guidance about using them with this action, see [Querying Discovered Configuration Items](http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations).
+#' @param maxResults The total number of items to return. The maximum value is 100.
+#' @param nextToken Token to retrieve the next set of results. For example, if a previous call to ListConfigurations returned 100 items, but you set `ListConfigurationsRequest$maxResults` to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.
+#' @param orderBy Certain filter criteria return output that can be sorted in ascending or descending order. For a list of output characteristics for each filter, see [Using the ListConfigurations Action](http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations).
+#'
+#' @examples
+#'
+#' @export
+list_configurations <- function (configurationType, filters = NULL, 
+    maxResults = NULL, nextToken = NULL, orderBy = NULL) 
+{
+    op <- Operation(name = "ListConfigurations", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_configurations_input(configurationType = configurationType, 
+        filters = filters, maxResults = maxResults, nextToken = nextToken, 
+        orderBy = orderBy)
+    output <- list_configurations_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a list of servers that are one network hop away from a specified server
+#'
+#' Retrieves a list of servers that are one network hop away from a specified server.
+#'
+#' @param configurationId Configuration ID of the server for which neighbors are being listed.
+#' @param portInformationNeeded Flag to indicate if port and protocol information is needed as part of the response.
+#' @param neighborConfigurationIds List of configuration IDs to test for one-hop-away.
+#' @param maxResults Maximum number of results to return in a single page of output.
+#' @param nextToken Token to retrieve the next set of results. For example, if you previously specified 100 IDs for `ListServerNeighborsRequest$neighborConfigurationIds` but set `ListServerNeighborsRequest$maxResults` to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.
+#'
+#' @examples
+#'
+#' @export
+list_server_neighbors <- function (configurationId, portInformationNeeded = NULL, 
+    neighborConfigurationIds = NULL, maxResults = NULL, nextToken = NULL) 
+{
+    op <- Operation(name = "ListServerNeighbors", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_server_neighbors_input(configurationId = configurationId, 
+        portInformationNeeded = portInformationNeeded, neighborConfigurationIds = neighborConfigurationIds, 
+        maxResults = maxResults, nextToken = nextToken)
+    output <- list_server_neighbors_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Start the continuous flow of agent\'s discovered data into Amazon Athena
+#'
+#' Start the continuous flow of agent\'s discovered data into Amazon Athena.
+#'
+#' @examples
+#'
+#' @export
+start_continuous_export <- function () 
+{
+    op <- Operation(name = "StartContinuousExport", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- start_continuous_export_input()
+    output <- start_continuous_export_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Instructs the specified agents or connectors to start collecting data
+#'
+#' Instructs the specified agents or connectors to start collecting data.
+#'
+#' @param agentIds The IDs of the agents or connectors from which to start collecting data. If you send a request to an agent/connector ID that you do not have permission to contact, according to your AWS account, the service does not throw an exception. Instead, it returns the error in the *Description* field. If you send a request to multiple agents/connectors and you do not have permission to contact some of those agents/connectors, the system does not throw an exception. Instead, the system shows `Failed` in the *Description* field.
+#'
+#' @examples
+#'
+#' @export
+start_data_collection_by_agent_ids <- function (agentIds) 
+{
+    op <- Operation(name = "StartDataCollectionByAgentIds", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- start_data_collection_by_agent_ids_input(agentIds = agentIds)
+    output <- start_data_collection_by_agent_ids_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Begins the export of discovered data to an S3 bucket
+#'
+#' Begins the export of discovered data to an S3 bucket.
+#' 
+#' If you specify `agentIds` in a filter, the task exports up to 72 hours of detailed data collected by the identified Application Discovery Agent, including network, process, and performance details. A time range for exported agent data may be set by using `startTime` and `endTime`. Export of detailed agent data is limited to five concurrently running exports.
+#' 
+#' If you do not include an `agentIds` filter, summary data is exported that includes both AWS Agentless Discovery Connector data and summary data from AWS Discovery Agents. Export of summary data is limited to two exports per day.
+#'
+#' @param exportDataFormat The file format for the returned export data. Default value is `CSV`. **Note:** *The* `GRAPHML` *option has been deprecated.*
+#' @param filters If a filter is present, it selects the single `agentId` of the Application Discovery Agent for which data is exported. The `agentId` can be found in the results of the `DescribeAgents` API or CLI. If no filter is present, `startTime` and `endTime` are ignored and exported data includes both Agentless Discovery Connector data and summary data from Application Discovery agents.
+#' @param startTime The start timestamp for exported data from the single Application Discovery Agent selected in the filters. If no value is specified, data is exported starting from the first data collected by the agent.
+#' @param endTime The end timestamp for exported data from the single Application Discovery Agent selected in the filters. If no value is specified, exported data includes the most recent data collected by the agent.
+#'
+#' @examples
+#'
+#' @export
+start_export_task <- function (exportDataFormat = NULL, filters = NULL, 
+    startTime = NULL, endTime = NULL) 
+{
+    op <- Operation(name = "StartExportTask", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- start_export_task_input(exportDataFormat = exportDataFormat, 
+        filters = filters, startTime = startTime, endTime = endTime)
+    output <- start_export_task_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Stop the continuous flow of agent\'s discovered data into Amazon Athena
+#'
+#' Stop the continuous flow of agent\'s discovered data into Amazon Athena.
+#'
+#' @param exportId The unique ID assigned to this export.
+#'
+#' @examples
+#'
+#' @export
+stop_continuous_export <- function (exportId) 
+{
+    op <- Operation(name = "StopContinuousExport", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- stop_continuous_export_input(exportId = exportId)
+    output <- stop_continuous_export_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Instructs the specified agents or connectors to stop collecting data
+#'
+#' Instructs the specified agents or connectors to stop collecting data.
+#'
+#' @param agentIds The IDs of the agents or connectors from which to stop collecting data.
+#'
+#' @examples
+#'
+#' @export
+stop_data_collection_by_agent_ids <- function (agentIds) 
+{
+    op <- Operation(name = "StopDataCollectionByAgentIds", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- stop_data_collection_by_agent_ids_input(agentIds = agentIds)
+    output <- stop_data_collection_by_agent_ids_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates metadata about an application
+#'
+#' Updates metadata about an application.
+#'
+#' @param configurationId Configuration ID of the application to be updated.
+#' @param name New name of the application to be updated.
+#' @param description New description of the application to be updated.
+#'
+#' @examples
+#'
+#' @export
+update_application <- function (configurationId, name = NULL, 
+    description = NULL) 
+{
+    op <- Operation(name = "UpdateApplication", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_application_input(configurationId = configurationId, 
+        name = name, description = description)
+    output <- update_application_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

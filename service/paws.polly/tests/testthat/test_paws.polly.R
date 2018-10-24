@@ -1,0 +1,15 @@
+test_that("describe_voices", {
+    expect_error(describe_voices(), NA)
+})
+
+test_that("list_lexicons", {
+    expect_error(list_lexicons(), NA)
+})
+
+test_that("list_speech_synthesis_tasks", {
+    expect_error(list_speech_synthesis_tasks(), NA)
+})
+
+test_that("list_speech_synthesis_tasks", {
+    expect_error(list_speech_synthesis_tasks(MaxResults = 20), NA)
+})

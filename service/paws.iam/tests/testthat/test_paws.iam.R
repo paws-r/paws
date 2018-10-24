@@ -1,0 +1,59 @@
+test_that("list_access_keys", {
+    expect_error(list_access_keys(), NA)
+})
+
+test_that("list_account_aliases", {
+    expect_error(list_account_aliases(), NA)
+})
+
+test_that("list_groups", {
+    expect_error(list_groups(), NA)
+})
+
+test_that("list_instance_profiles", {
+    expect_error(list_instance_profiles(), NA)
+})
+
+test_that("list_mfa_devices", {
+    expect_error(list_mfa_devices(), NA)
+})
+
+test_that("list_open_id_connect_providers", {
+    expect_error(list_open_id_connect_providers(), NA)
+})
+
+test_that("list_policies", {
+    expect_error(list_policies(), NA)
+})
+
+test_that("list_roles", {
+    expect_error(list_roles(), NA)
+})
+
+test_that("list_saml_providers", {
+    expect_error(list_saml_providers(), NA)
+})
+
+test_that("list_ssh_public_keys", {
+    expect_error(list_ssh_public_keys(), NA)
+})
+
+test_that("list_server_certificates", {
+    expect_error(list_server_certificates(), NA)
+})
+
+test_that("list_service_specific_credentials", {
+    expect_error(list_service_specific_credentials(), NA)
+})
+
+test_that("list_signing_certificates", {
+    expect_error(list_signing_certificates(), NA)
+})
+
+test_that("list_users", {
+    expect_error(list_users(), NA)
+})
+
+test_that("list_virtual_mfa_devices", {
+    expect_error(list_virtual_mfa_devices(), NA)
+})

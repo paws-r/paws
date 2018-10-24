@@ -1,0 +1,2412 @@
+#' Assign a registered instance to a layer
+#'
+#' Assign a registered instance to a layer.
+#' 
+#' -   You can assign registered on-premises instances to any layer type.
+#' 
+#' -   You can assign registered Amazon EC2 instances only to custom layers.
+#' 
+#' -   You cannot use this action with instances that were created with AWS OpsWorks Stacks.
+#' 
+#' **Required Permissions**: To use this action, an AWS Identity and Access Management (IAM) user must have a Manage permissions level for the stack or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param InstanceId The instance ID.
+#' @param LayerIds The layer ID, which must correspond to a custom layer. You cannot assign a registered instance to a built-in layer.
+#'
+#' @examples
+#'
+#' @export
+assign_instance <- function (InstanceId, LayerIds) 
+{
+    op <- Operation(name = "AssignInstance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- assign_instance_input(InstanceId = InstanceId, LayerIds = LayerIds)
+    output <- assign_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Assigns one of the stack\'s registered Amazon EBS volumes to a specified instance
+#'
+#' Assigns one of the stack\'s registered Amazon EBS volumes to a specified instance. The volume must first be registered with the stack by calling RegisterVolume. After you register the volume, you must call UpdateVolume to specify a mount point before calling `AssignVolume`. For more information, see [Resource Management](http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param VolumeId The volume ID.
+#' @param InstanceId The instance ID.
+#'
+#' @examples
+#'
+#' @export
+assign_volume <- function (VolumeId, InstanceId = NULL) 
+{
+    op <- Operation(name = "AssignVolume", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- assign_volume_input(VolumeId = VolumeId, InstanceId = InstanceId)
+    output <- assign_volume_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Associates one of the stack\'s registered Elastic IP addresses with a specified instance
+#'
+#' Associates one of the stack\'s registered Elastic IP addresses with a specified instance. The address must first be registered with the stack by calling RegisterElasticIp. For more information, see [Resource Management](http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param ElasticIp The Elastic IP address.
+#' @param InstanceId The instance ID.
+#'
+#' @examples
+#'
+#' @export
+associate_elastic_ip <- function (ElasticIp, InstanceId = NULL) 
+{
+    op <- Operation(name = "AssociateElasticIp", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- associate_elastic_ip_input(ElasticIp = ElasticIp, 
+        InstanceId = InstanceId)
+    output <- associate_elastic_ip_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Attaches an Elastic Load Balancing load balancer to a specified layer
+#'
+#' Attaches an Elastic Load Balancing load balancer to a specified layer. AWS OpsWorks Stacks does not support Application Load Balancer. You can only use Classic Load Balancer with AWS OpsWorks Stacks. For more information, see [Elastic Load Balancing](http://docs.aws.amazon.com/opsworks/latest/userguide/layers-elb.html).
+#' 
+#' You must create the Elastic Load Balancing instance separately, by using the Elastic Load Balancing console, API, or CLI. For more information, see [Elastic Load Balancing Developer Guide](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/Welcome.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param ElasticLoadBalancerName The Elastic Load Balancing instance\'s name.
+#' @param LayerId The ID of the layer to which the Elastic Load Balancing instance is to be attached.
+#'
+#' @examples
+#'
+#' @export
+attach_elastic_load_balancer <- function (ElasticLoadBalancerName, 
+    LayerId) 
+{
+    op <- Operation(name = "AttachElasticLoadBalancer", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- attach_elastic_load_balancer_input(ElasticLoadBalancerName = ElasticLoadBalancerName, 
+        LayerId = LayerId)
+    output <- attach_elastic_load_balancer_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a clone of a specified stack
+#'
+#' Creates a clone of a specified stack. For more information, see [Clone a Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-cloning.html). By default, all parameters are set to the values used by the parent stack.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param SourceStackId The source stack ID.
+#' @param ServiceRoleArn The stack AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role. If you create a stack by using the AWS OpsWorks Stacks console, it creates the role for you. You can obtain an existing stack\'s IAM ARN programmatically by calling DescribePermissions. For more information about IAM ARNs, see [Using Identifiers](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' 
+#' You must set this parameter to a valid service role ARN or the action will fail; there is no default value. You can specify the source stack\'s service role ARN, if you prefer, but you must do so explicitly.
+#' @param Name The cloned stack name.
+#' @param Region The cloned stack AWS region, such as \"ap-northeast-2\". For more information about AWS regions, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html).
+#' @param VpcId The ID of the VPC that the cloned stack is to be launched into. It must be in the specified region. All instances are launched into this VPC, and you cannot change the ID later.
+#' 
+#' -   If your account supports EC2 Classic, the default value is no VPC.
+#' 
+#' -   If your account does not support EC2 Classic, the default value is the default VPC for the specified region.
+#' 
+#' If the VPC ID corresponds to a default VPC and you have specified either the `DefaultAvailabilityZone` or the `DefaultSubnetId` parameter only, AWS OpsWorks Stacks infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone for the specified region and the corresponding default VPC subnet ID, respectively.
+#' 
+#' If you specify a nondefault VPC ID, note the following:
+#' 
+#' -   It must belong to a VPC in your account that is in the specified region.
+#' 
+#' -   You must specify a value for `DefaultSubnetId`.
+#' 
+#' For more information about how to use AWS OpsWorks Stacks with a VPC, see [Running a Stack in a VPC](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html). For more information about default VPC and EC2 Classic, see [Supported Platforms](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
+#' @param Attributes A list of stack attributes and values as key/value pairs to be added to the cloned stack.
+#' @param DefaultInstanceProfileArn The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack\'s EC2 instances. For more information about IAM ARNs, see [Using Identifiers](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' @param DefaultOs The stack\'s operating system, which must be set to one of the following.
+#' 
+#' -   A supported Linux operating system: An Amazon Linux version, such as `Amazon Linux 2017.09`, `Amazon Linux 2017.03`, `Amazon Linux 2016.09`, `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or `Amazon Linux 2015.03`.
+#' 
+#' -   A supported Ubuntu operating system, such as `Ubuntu 16.04 LTS`, `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
+#' 
+#' -   `CentOS Linux 7`
+#' 
+#' -   `Red Hat Enterprise Linux 7`
+#' 
+#' -   `Microsoft Windows Server 2012 R2 Base`, `Microsoft Windows Server 2012 R2 with SQL Server Express`, `Microsoft Windows Server 2012 R2 with SQL Server Standard`, or `Microsoft Windows Server 2012 R2 with SQL Server Web`.
+#' 
+#' -   A custom AMI: `Custom`. You specify the custom AMI you want to use when you create instances. For more information about how to use custom AMIs with OpsWorks, see [Using Custom AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+#' 
+#' The default option is the parent stack\'s operating system. For more information about supported operating systems, see [AWS OpsWorks Stacks Operating Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+#' 
+#' You can specify a different Linux operating system for the cloned stack, but you cannot change from Linux to Windows or Windows to Linux.
+#' @param HostnameTheme The stack\'s host name theme, with spaces are replaced by underscores. The theme is used to generate host names for the stack\'s instances. By default, `HostnameTheme` is set to `Layer_Dependent`, which creates host names by appending integers to the layer\'s short name. The other themes are:
+#' 
+#' -   `Baked_Goods`
+#' 
+#' -   `Clouds`
+#' 
+#' -   `Europe_Cities`
+#' 
+#' -   `Fruits`
+#' 
+#' -   `Greek_Deities`
+#' 
+#' -   `Legendary_creatures_from_Japan`
+#' 
+#' -   `Planets_and_Moons`
+#' 
+#' -   `Roman_Deities`
+#' 
+#' -   `Scottish_Islands`
+#' 
+#' -   `US_Cities`
+#' 
+#' -   `Wild_Cats`
+#' 
+#' To obtain a generated host name, call `GetHostNameSuggestion`, which returns a host name based on the current theme.
+#' @param DefaultAvailabilityZone The cloned stack\'s default Availability Zone, which must be in the specified region. For more information, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html). If you also specify a value for `DefaultSubnetId`, the subnet must be in the same zone. For more information, see the `VpcId` parameter description.
+#' @param DefaultSubnetId The stack\'s default VPC subnet ID. This parameter is required if you specify a value for the `VpcId` parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for `DefaultAvailabilityZone`, the subnet must be in that zone. For information on default values and when this parameter is required, see the `VpcId` parameter description.
+#' @param CustomJson A string that contains user-defined, custom JSON. It is used to override the corresponding default stack configuration JSON values. The string should be in the following format:
+#' 
+#' `"{\"key1\": \"value1\", \"key2\": \"value2\",...}"`
+#' 
+#' For more information about custom JSON, see [Use Custom JSON to Modify the Stack Configuration Attributes](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html)
+#' @param ConfigurationManager The configuration manager. When you clone a stack we recommend that you use the configuration manager to specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is currently 12.
+#' @param ChefConfiguration A `ChefConfiguration` object that specifies whether to enable Berkshelf and the Berkshelf version on Chef 11.10 stacks. For more information, see [Create a New Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
+#' @param UseCustomCookbooks Whether to use custom cookbooks.
+#' @param UseOpsworksSecurityGroups Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack\'s layers.
+#' 
+#' AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are associated with layers by default. With `UseOpsworksSecurityGroups` you can instead provide your own custom security groups. `UseOpsworksSecurityGroups` has the following settings:
+#' 
+#' -   True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each layer (default setting). You can associate additional security groups with a layer after you create it but you cannot delete the built-in security group.
+#' 
+#' -   False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create appropriate Amazon Elastic Compute Cloud (Amazon EC2) security groups and associate a security group with each layer that you create. However, you can still manually associate a built-in security group with a layer on creation; custom security groups are required only for those layers that need custom settings.
+#' 
+#' For more information, see [Create a New Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
+#' @param CustomCookbooksSource 
+#' @param DefaultSshKeyName A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see [Using SSH to Communicate with an Instance](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html) and [Managing SSH Access](http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html). You can override this setting by specifying a different key pair, or no key pair, when you [create an instance](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html).
+#' @param ClonePermissions Whether to clone the source stack\'s permissions.
+#' @param CloneAppIds A list of source stack app IDs to be included in the cloned stack.
+#' @param DefaultRootDeviceType The default root device type. This value is used by default for all instances in the cloned stack, but you can override it when you create an instance. For more information, see [Storage for the Root Device](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
+#' @param AgentVersion The default AWS OpsWorks Stacks agent version. You have the following options:
+#' 
+#' -   Auto-update - Set this parameter to `LATEST`. AWS OpsWorks Stacks automatically installs new agent versions on the stack\'s instances as soon as they are available.
+#' 
+#' -   Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the stack\'s instances.
+#' 
+#' The default setting is `LATEST`. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call DescribeAgentVersions. AgentVersion cannot be set to Chef 12.2.
+#' 
+#' You can also specify an agent version when you create or update an instance, which overrides the stack\'s default setting.
+#'
+#' @examples
+#'
+#' @export
+clone_stack <- function (SourceStackId, ServiceRoleArn, Name = NULL, 
+    Region = NULL, VpcId = NULL, Attributes = NULL, DefaultInstanceProfileArn = NULL, 
+    DefaultOs = NULL, HostnameTheme = NULL, DefaultAvailabilityZone = NULL, 
+    DefaultSubnetId = NULL, CustomJson = NULL, ConfigurationManager = NULL, 
+    ChefConfiguration = NULL, UseCustomCookbooks = NULL, UseOpsworksSecurityGroups = NULL, 
+    CustomCookbooksSource = NULL, DefaultSshKeyName = NULL, ClonePermissions = NULL, 
+    CloneAppIds = NULL, DefaultRootDeviceType = NULL, AgentVersion = NULL) 
+{
+    op <- Operation(name = "CloneStack", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- clone_stack_input(SourceStackId = SourceStackId, 
+        ServiceRoleArn = ServiceRoleArn, Name = Name, Region = Region, 
+        VpcId = VpcId, Attributes = Attributes, DefaultInstanceProfileArn = DefaultInstanceProfileArn, 
+        DefaultOs = DefaultOs, HostnameTheme = HostnameTheme, 
+        DefaultAvailabilityZone = DefaultAvailabilityZone, DefaultSubnetId = DefaultSubnetId, 
+        CustomJson = CustomJson, ConfigurationManager = ConfigurationManager, 
+        ChefConfiguration = ChefConfiguration, UseCustomCookbooks = UseCustomCookbooks, 
+        UseOpsworksSecurityGroups = UseOpsworksSecurityGroups, 
+        CustomCookbooksSource = CustomCookbooksSource, DefaultSshKeyName = DefaultSshKeyName, 
+        ClonePermissions = ClonePermissions, CloneAppIds = CloneAppIds, 
+        DefaultRootDeviceType = DefaultRootDeviceType, AgentVersion = AgentVersion)
+    output <- clone_stack_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates an app for a specified stack
+#'
+#' Creates an app for a specified stack. For more information, see [Creating Apps](http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param StackId The stack ID.
+#' @param Name The app name.
+#' @param Type The app type. Each supported type is associated with a particular layer. For example, PHP applications are associated with a PHP layer. AWS OpsWorks Stacks deploys an application to those instances that are members of the corresponding layer. If your app isn\'t one of the standard types, or you prefer to implement your own Deploy recipes, specify `other`.
+#' @param Shortname The app\'s short name.
+#' @param Description A description of the app.
+#' @param DataSources The app\'s data source.
+#' @param AppSource A `Source` object that specifies the app repository.
+#' @param Domains The app virtual host settings, with multiple domains separated by commas. For example: `'www.example.com, example.com'`
+#' @param EnableSsl Whether to enable SSL for the app.
+#' @param SslConfiguration An `SslConfiguration` object with the SSL configuration.
+#' @param Attributes One or more user-defined key/value pairs to be added to the stack attributes.
+#' @param Environment An array of `EnvironmentVariable` objects that specify environment variables to be associated with the app. After you deploy the app, these variables are defined on the associated app server instance. For more information, see [Environment Variables](http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment).
+#' 
+#' There is no specific limit on the number of environment variables. However, the size of the associated data structure - which includes the variables\' names, values, and protected flag values - cannot exceed 10 KB (10240 Bytes). This limit should accommodate most if not all use cases. Exceeding it will cause an exception with the message, \"Environment: is too large (maximum is 10KB).\"
+#' 
+#' This parameter is supported only by Chef 11.10 stacks. If you have specified one or more environment variables, you cannot modify the stack\'s Chef version.
+#'
+#' @examples
+#'
+#' @export
+create_app <- function (StackId, Name, Type, Shortname = NULL, 
+    Description = NULL, DataSources = NULL, AppSource = NULL, 
+    Domains = NULL, EnableSsl = NULL, SslConfiguration = NULL, 
+    Attributes = NULL, Environment = NULL) 
+{
+    op <- Operation(name = "CreateApp", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_app_input(StackId = StackId, Name = Name, 
+        Type = Type, Shortname = Shortname, Description = Description, 
+        DataSources = DataSources, AppSource = AppSource, Domains = Domains, 
+        EnableSsl = EnableSsl, SslConfiguration = SslConfiguration, 
+        Attributes = Attributes, Environment = Environment)
+    output <- create_app_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Runs deployment or stack commands
+#'
+#' Runs deployment or stack commands. For more information, see [Deploying Apps](http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-deploying.html) and [Run Stack Commands](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-commands.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Deploy or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param StackId The stack ID.
+#' @param Command A `DeploymentCommand` object that specifies the deployment command and any associated arguments.
+#' @param AppId The app ID. This parameter is required for app deployments, but not for other deployment commands.
+#' @param InstanceIds The instance IDs for the deployment targets.
+#' @param LayerIds The layer IDs for the deployment targets.
+#' @param Comment A user-defined comment.
+#' @param CustomJson A string that contains user-defined, custom JSON. It is used to override the corresponding default stack configuration JSON values. The string should be in the following format:
+#' 
+#' `"{\"key1\": \"value1\", \"key2\": \"value2\",...}"`
+#' 
+#' For more information about custom JSON, see [Use Custom JSON to Modify the Stack Configuration Attributes](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
+#'
+#' @examples
+#'
+#' @export
+create_deployment <- function (StackId, Command, AppId = NULL, 
+    InstanceIds = NULL, LayerIds = NULL, Comment = NULL, CustomJson = NULL) 
+{
+    op <- Operation(name = "CreateDeployment", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_deployment_input(StackId = StackId, Command = Command, 
+        AppId = AppId, InstanceIds = InstanceIds, LayerIds = LayerIds, 
+        Comment = Comment, CustomJson = CustomJson)
+    output <- create_deployment_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates an instance in a specified stack
+#'
+#' Creates an instance in a specified stack. For more information, see [Adding an Instance to a Layer](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param StackId The stack ID.
+#' @param LayerIds An array that contains the instance\'s layer IDs.
+#' @param InstanceType The instance type, such as `t2.micro`. For a list of supported instance types, open the stack in the console, choose **Instances**, and choose **+ Instance**. The **Size** list contains the currently supported types. For more information, see [Instance Families and Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html). The parameter values that you use to specify the various types are in the **API Name** column of the **Available Instance Types** table.
+#' @param AutoScalingType For load-based or time-based instances, the type. Windows stacks can use only time-based instances.
+#' @param Hostname The instance host name.
+#' @param Os The instance\'s operating system, which must be set to one of the following.
+#' 
+#' -   A supported Linux operating system: An Amazon Linux version, such as `Amazon Linux 2017.09`, `Amazon Linux 2017.03`, `Amazon Linux 2016.09`, `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or `Amazon Linux 2015.03`.
+#' 
+#' -   A supported Ubuntu operating system, such as `Ubuntu 16.04 LTS`, `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
+#' 
+#' -   `CentOS Linux 7`
+#' 
+#' -   `Red Hat Enterprise Linux 7`
+#' 
+#' -   A supported Windows operating system, such as `Microsoft Windows Server 2012 R2 Base`, `Microsoft Windows Server 2012 R2 with SQL Server Express`, `Microsoft Windows Server 2012 R2 with SQL Server Standard`, or `Microsoft Windows Server 2012 R2 with SQL Server Web`.
+#' 
+#' -   A custom AMI: `Custom`.
+#' 
+#' For more information about the supported operating systems, see [AWS OpsWorks Stacks Operating Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+#' 
+#' The default option is the current Amazon Linux version. If you set this parameter to `Custom`, you must use the CreateInstance action\'s AmiId parameter to specify the custom AMI that you want to use. Block device mappings are not supported if the value is `Custom`. For more information about supported operating systems, see [Operating Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html)For more information about how to use custom AMIs with AWS OpsWorks Stacks, see [Using Custom AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+#' @param AmiId A custom AMI ID to be used to create the instance. The AMI should be based on one of the supported operating systems. For more information, see [Using Custom AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+#' 
+#' If you specify a custom AMI, you must set `Os` to `Custom`.
+#' @param SshKeyName The instance\'s Amazon EC2 key-pair name.
+#' @param AvailabilityZone The instance Availability Zone. For more information, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html).
+#' @param VirtualizationType The instance\'s virtualization type, `paravirtual` or `hvm`.
+#' @param SubnetId The ID of the instance\'s subnet. If the stack is running in a VPC, you can use this parameter to override the stack\'s default subnet ID value and direct AWS OpsWorks Stacks to launch the instance in a different subnet.
+#' @param Architecture The instance architecture. The default option is `x86_64`. Instance types do not necessarily support both architectures. For a list of the architectures that are supported by the different instance types, see [Instance Families and Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
+#' @param RootDeviceType The instance root device type. For more information, see [Storage for the Root Device](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
+#' @param BlockDeviceMappings An array of `BlockDeviceMapping` objects that specify the instance\'s block devices. For more information, see [Block Device Mapping](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html). Note that block device mappings are not supported for custom AMIs.
+#' @param InstallUpdatesOnBoot Whether to install operating system and package updates when the instance boots. The default value is `true`. To control when updates are installed, set this value to `false`. You must then update your instances manually by using CreateDeployment to run the `update_dependencies` stack command or by manually running `yum` (Amazon Linux) or `apt-get` (Ubuntu) on the instances.
+#' 
+#' We strongly recommend using the default value of `true` to ensure that your instances have the latest security updates.
+#' @param EbsOptimized Whether to create an Amazon EBS-optimized instance.
+#' @param AgentVersion The default AWS OpsWorks Stacks agent version. You have the following options:
+#' 
+#' -   `INHERIT` - Use the stack\'s default agent version setting.
+#' 
+#' -   *version\_number* - Use the specified agent version. This value overrides the stack\'s default setting. To update the agent version, edit the instance configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the instance.
+#' 
+#' The default setting is `INHERIT`. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call DescribeAgentVersions. AgentVersion cannot be set to Chef 12.2.
+#' @param Tenancy The instance\'s tenancy option. The default option is no tenancy, or if the instance is running in a VPC, inherit tenancy settings from the VPC. The following are valid values for this parameter: `dedicated`, `default`, or `host`. Because there are costs associated with changes in tenancy options, we recommend that you research tenancy options before choosing them for your instances. For more information about dedicated hosts, see [Dedicated Hosts Overview](http://aws.amazon.com/ec2/dedicated-hosts/) and [Amazon EC2 Dedicated Hosts](http://aws.amazon.com/ec2/dedicated-hosts/). For more information about dedicated instances, see [Dedicated Instances](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/dedicated-instance.html) and [Amazon EC2 Dedicated Instances](http://aws.amazon.com/ec2/purchasing-options/dedicated-instances/).
+#'
+#' @examples
+#'
+#' @export
+create_instance <- function (StackId, LayerIds, InstanceType, 
+    AutoScalingType = NULL, Hostname = NULL, Os = NULL, AmiId = NULL, 
+    SshKeyName = NULL, AvailabilityZone = NULL, VirtualizationType = NULL, 
+    SubnetId = NULL, Architecture = NULL, RootDeviceType = NULL, 
+    BlockDeviceMappings = NULL, InstallUpdatesOnBoot = NULL, 
+    EbsOptimized = NULL, AgentVersion = NULL, Tenancy = NULL) 
+{
+    op <- Operation(name = "CreateInstance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_instance_input(StackId = StackId, LayerIds = LayerIds, 
+        InstanceType = InstanceType, AutoScalingType = AutoScalingType, 
+        Hostname = Hostname, Os = Os, AmiId = AmiId, SshKeyName = SshKeyName, 
+        AvailabilityZone = AvailabilityZone, VirtualizationType = VirtualizationType, 
+        SubnetId = SubnetId, Architecture = Architecture, RootDeviceType = RootDeviceType, 
+        BlockDeviceMappings = BlockDeviceMappings, InstallUpdatesOnBoot = InstallUpdatesOnBoot, 
+        EbsOptimized = EbsOptimized, AgentVersion = AgentVersion, 
+        Tenancy = Tenancy)
+    output <- create_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a layer
+#'
+#' Creates a layer. For more information, see [How to Create a Layer](http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html).
+#' 
+#' You should use **CreateLayer** for noncustom layer types such as PHP App Server only if the stack does not have an existing layer of that type. A stack can have at most one instance of each noncustom layer; if you attempt to create a second instance, **CreateLayer** fails. A stack can have an arbitrary number of custom layers, so you can call **CreateLayer** as many times as you like for that layer type.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param StackId The layer stack ID.
+#' @param Type The layer type. A stack cannot have more than one built-in layer of the same type. It can have any number of custom layers. Built-in layers are not available in Chef 12 stacks.
+#' @param Name The layer name, which is used by the console.
+#' @param Shortname For custom layers only, use this parameter to specify the layer\'s short name, which is used internally by AWS OpsWorks Stacks and by Chef recipes. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters, which are limited to the alphanumeric characters, \'-\', \'\_\', and \'.\'.
+#' 
+#' The built-in layers\' short names are defined by AWS OpsWorks Stacks. For more information, see the [Layer Reference](http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html).
+#' @param Attributes One or more user-defined key-value pairs to be added to the stack attributes.
+#' 
+#' To create a cluster layer, set the `EcsClusterArn` attribute to the cluster\'s ARN.
+#' @param CloudWatchLogsConfiguration Specifies CloudWatch Logs configuration options for the layer. For more information, see CloudWatchLogsLogStream.
+#' @param CustomInstanceProfileArn The ARN of an IAM profile to be used for the layer\'s EC2 instances. For more information about IAM ARNs, see [Using Identifiers](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' @param CustomJson A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer\'s instances. For more information, see [Using Custom JSON](http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html). This feature is supported as of version 1.7.42 of the AWS CLI.
+#' @param CustomSecurityGroupIds An array containing the layer custom security group IDs.
+#' @param Packages An array of `Package` objects that describes the layer packages.
+#' @param VolumeConfigurations A `VolumeConfigurations` object that describes the layer\'s Amazon EBS volumes.
+#' @param EnableAutoHealing Whether to disable auto healing for the layer.
+#' @param AutoAssignElasticIps Whether to automatically assign an [Elastic IP address](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) to the layer\'s instances. For more information, see [How to Edit a Layer](http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
+#' @param AutoAssignPublicIps For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer\'s instances. For more information, see [How to Edit a Layer](http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
+#' @param CustomRecipes A `LayerCustomRecipes` object that specifies the layer custom recipes.
+#' @param InstallUpdatesOnBoot Whether to install operating system and package updates when the instance boots. The default value is `true`. To control when updates are installed, set this value to `false`. You must then update your instances manually by using CreateDeployment to run the `update_dependencies` stack command or by manually running `yum` (Amazon Linux) or `apt-get` (Ubuntu) on the instances.
+#' 
+#' To ensure that your instances have the latest security updates, we strongly recommend using the default value of `true`.
+#' @param UseEbsOptimizedInstances Whether to use Amazon EBS-optimized instances.
+#' @param LifecycleEventConfiguration A `LifeCycleEventConfiguration` object that you can use to configure the Shutdown event to specify an execution timeout and enable or disable Elastic Load Balancer connection draining.
+#'
+#' @examples
+#'
+#' @export
+create_layer <- function (StackId, Type, Name, Shortname, Attributes = NULL, 
+    CloudWatchLogsConfiguration = NULL, CustomInstanceProfileArn = NULL, 
+    CustomJson = NULL, CustomSecurityGroupIds = NULL, Packages = NULL, 
+    VolumeConfigurations = NULL, EnableAutoHealing = NULL, AutoAssignElasticIps = NULL, 
+    AutoAssignPublicIps = NULL, CustomRecipes = NULL, InstallUpdatesOnBoot = NULL, 
+    UseEbsOptimizedInstances = NULL, LifecycleEventConfiguration = NULL) 
+{
+    op <- Operation(name = "CreateLayer", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_layer_input(StackId = StackId, Type = Type, 
+        Name = Name, Shortname = Shortname, Attributes = Attributes, 
+        CloudWatchLogsConfiguration = CloudWatchLogsConfiguration, 
+        CustomInstanceProfileArn = CustomInstanceProfileArn, 
+        CustomJson = CustomJson, CustomSecurityGroupIds = CustomSecurityGroupIds, 
+        Packages = Packages, VolumeConfigurations = VolumeConfigurations, 
+        EnableAutoHealing = EnableAutoHealing, AutoAssignElasticIps = AutoAssignElasticIps, 
+        AutoAssignPublicIps = AutoAssignPublicIps, CustomRecipes = CustomRecipes, 
+        InstallUpdatesOnBoot = InstallUpdatesOnBoot, UseEbsOptimizedInstances = UseEbsOptimizedInstances, 
+        LifecycleEventConfiguration = LifecycleEventConfiguration)
+    output <- create_layer_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a new stack
+#'
+#' Creates a new stack. For more information, see [Create a New Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-edit.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param Name The stack name.
+#' @param Region The stack\'s AWS region, such as `ap-south-1`. For more information about Amazon regions, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html).
+#' 
+#' In the AWS CLI, this API maps to the `--stack-region` parameter. If the `--stack-region` parameter and the AWS CLI common parameter `--region` are set to the same value, the stack uses a *regional* endpoint. If the `--stack-region` parameter is not set, but the AWS CLI `--region` parameter is, this also results in a stack with a *regional* endpoint. However, if the `--region` parameter is set to `us-east-1`, and the `--stack-region` parameter is set to one of the following, then the stack uses a legacy or *classic* region: `us-west-1, us-west-2, sa-east-1, eu-central-1, eu-west-1, ap-northeast-1, ap-southeast-1, ap-southeast-2`. In this case, the actual API endpoint of the stack is in `us-east-1`. Only the preceding regions are supported as classic regions in the `us-east-1` API endpoint. Because it is a best practice to choose the regional endpoint that is closest to where you manage AWS, we recommend that you use regional endpoints for new stacks. The AWS CLI common `--region` parameter always specifies a regional API endpoint; it cannot be used to specify a classic AWS OpsWorks Stacks region.
+#' @param ServiceRoleArn The stack\'s AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role. For more information about IAM ARNs, see [Using Identifiers](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' @param DefaultInstanceProfileArn The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack\'s EC2 instances. For more information about IAM ARNs, see [Using Identifiers](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' @param VpcId The ID of the VPC that the stack is to be launched into. The VPC must be in the stack\'s region. All instances are launched into this VPC. You cannot change the ID later.
+#' 
+#' -   If your account supports EC2-Classic, the default value is `no VPC`.
+#' 
+#' -   If your account does not support EC2-Classic, the default value is the default VPC for the specified region.
+#' 
+#' If the VPC ID corresponds to a default VPC and you have specified either the `DefaultAvailabilityZone` or the `DefaultSubnetId` parameter only, AWS OpsWorks Stacks infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone for the specified region and the corresponding default VPC subnet ID, respectively.
+#' 
+#' If you specify a nondefault VPC ID, note the following:
+#' 
+#' -   It must belong to a VPC in your account that is in the specified region.
+#' 
+#' -   You must specify a value for `DefaultSubnetId`.
+#' 
+#' For more information about how to use AWS OpsWorks Stacks with a VPC, see [Running a Stack in a VPC](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html). For more information about default VPC and EC2-Classic, see [Supported Platforms](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
+#' @param Attributes One or more user-defined key-value pairs to be added to the stack attributes.
+#' @param DefaultOs The stack\'s default operating system, which is installed on every instance unless you specify a different operating system when you create the instance. You can specify one of the following.
+#' 
+#' -   A supported Linux operating system: An Amazon Linux version, such as `Amazon Linux 2017.09`, `Amazon Linux 2017.03`, `Amazon Linux 2016.09`, `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or `Amazon Linux 2015.03`.
+#' 
+#' -   A supported Ubuntu operating system, such as `Ubuntu 16.04 LTS`, `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
+#' 
+#' -   `CentOS Linux 7`
+#' 
+#' -   `Red Hat Enterprise Linux 7`
+#' 
+#' -   A supported Windows operating system, such as `Microsoft Windows Server 2012 R2 Base`, `Microsoft Windows Server 2012 R2 with SQL Server Express`, `Microsoft Windows Server 2012 R2 with SQL Server Standard`, or `Microsoft Windows Server 2012 R2 with SQL Server Web`.
+#' 
+#' -   A custom AMI: `Custom`. You specify the custom AMI you want to use when you create instances. For more information, see [Using Custom AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+#' 
+#' The default option is the current Amazon Linux version. For more information about supported operating systems, see [AWS OpsWorks Stacks Operating Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+#' @param HostnameTheme The stack\'s host name theme, with spaces replaced by underscores. The theme is used to generate host names for the stack\'s instances. By default, `HostnameTheme` is set to `Layer_Dependent`, which creates host names by appending integers to the layer\'s short name. The other themes are:
+#' 
+#' -   `Baked_Goods`
+#' 
+#' -   `Clouds`
+#' 
+#' -   `Europe_Cities`
+#' 
+#' -   `Fruits`
+#' 
+#' -   `Greek_Deities`
+#' 
+#' -   `Legendary_creatures_from_Japan`
+#' 
+#' -   `Planets_and_Moons`
+#' 
+#' -   `Roman_Deities`
+#' 
+#' -   `Scottish_Islands`
+#' 
+#' -   `US_Cities`
+#' 
+#' -   `Wild_Cats`
+#' 
+#' To obtain a generated host name, call `GetHostNameSuggestion`, which returns a host name based on the current theme.
+#' @param DefaultAvailabilityZone The stack\'s default Availability Zone, which must be in the specified region. For more information, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html). If you also specify a value for `DefaultSubnetId`, the subnet must be in the same zone. For more information, see the `VpcId` parameter description.
+#' @param DefaultSubnetId The stack\'s default VPC subnet ID. This parameter is required if you specify a value for the `VpcId` parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for `DefaultAvailabilityZone`, the subnet must be in that zone. For information on default values and when this parameter is required, see the `VpcId` parameter description.
+#' @param CustomJson A string that contains user-defined, custom JSON. It can be used to override the corresponding default stack configuration attribute values or to pass data to recipes. The string should be in the following format:
+#' 
+#' `"{\"key1\": \"value1\", \"key2\": \"value2\",...}"`
+#' 
+#' For more information about custom JSON, see [Use Custom JSON to Modify the Stack Configuration Attributes](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
+#' @param ConfigurationManager The configuration manager. When you create a stack we recommend that you use the configuration manager to specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is currently 12.
+#' @param ChefConfiguration A `ChefConfiguration` object that specifies whether to enable Berkshelf and the Berkshelf version on Chef 11.10 stacks. For more information, see [Create a New Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
+#' @param UseCustomCookbooks Whether the stack uses custom cookbooks.
+#' @param UseOpsworksSecurityGroups Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack\'s layers.
+#' 
+#' AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are associated with layers by default. With `UseOpsworksSecurityGroups` you can instead provide your own custom security groups. `UseOpsworksSecurityGroups` has the following settings:
+#' 
+#' -   True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each layer (default setting). You can associate additional security groups with a layer after you create it, but you cannot delete the built-in security group.
+#' 
+#' -   False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create appropriate EC2 security groups and associate a security group with each layer that you create. However, you can still manually associate a built-in security group with a layer on creation; custom security groups are required only for those layers that need custom settings.
+#' 
+#' For more information, see [Create a New Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
+#' @param CustomCookbooksSource 
+#' @param DefaultSshKeyName A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see [Using SSH to Communicate with an Instance](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html) and [Managing SSH Access](http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html). You can override this setting by specifying a different key pair, or no key pair, when you [create an instance](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html).
+#' @param DefaultRootDeviceType The default root device type. This value is the default for all instances in the stack, but you can override it when you create an instance. The default option is `instance-store`. For more information, see [Storage for the Root Device](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
+#' @param AgentVersion The default AWS OpsWorks Stacks agent version. You have the following options:
+#' 
+#' -   Auto-update - Set this parameter to `LATEST`. AWS OpsWorks Stacks automatically installs new agent versions on the stack\'s instances as soon as they are available.
+#' 
+#' -   Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the stack\'s instances.
+#' 
+#' The default setting is the most recent release of the agent. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call DescribeAgentVersions. AgentVersion cannot be set to Chef 12.2.
+#' 
+#' You can also specify an agent version when you create or update an instance, which overrides the stack\'s default setting.
+#'
+#' @examples
+#'
+#' @export
+create_stack <- function (Name, Region, ServiceRoleArn, DefaultInstanceProfileArn, 
+    VpcId = NULL, Attributes = NULL, DefaultOs = NULL, HostnameTheme = NULL, 
+    DefaultAvailabilityZone = NULL, DefaultSubnetId = NULL, CustomJson = NULL, 
+    ConfigurationManager = NULL, ChefConfiguration = NULL, UseCustomCookbooks = NULL, 
+    UseOpsworksSecurityGroups = NULL, CustomCookbooksSource = NULL, 
+    DefaultSshKeyName = NULL, DefaultRootDeviceType = NULL, AgentVersion = NULL) 
+{
+    op <- Operation(name = "CreateStack", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_stack_input(Name = Name, Region = Region, 
+        ServiceRoleArn = ServiceRoleArn, DefaultInstanceProfileArn = DefaultInstanceProfileArn, 
+        VpcId = VpcId, Attributes = Attributes, DefaultOs = DefaultOs, 
+        HostnameTheme = HostnameTheme, DefaultAvailabilityZone = DefaultAvailabilityZone, 
+        DefaultSubnetId = DefaultSubnetId, CustomJson = CustomJson, 
+        ConfigurationManager = ConfigurationManager, ChefConfiguration = ChefConfiguration, 
+        UseCustomCookbooks = UseCustomCookbooks, UseOpsworksSecurityGroups = UseOpsworksSecurityGroups, 
+        CustomCookbooksSource = CustomCookbooksSource, DefaultSshKeyName = DefaultSshKeyName, 
+        DefaultRootDeviceType = DefaultRootDeviceType, AgentVersion = AgentVersion)
+    output <- create_stack_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a new user profile
+#'
+#' Creates a new user profile.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param IamUserArn The user\'s IAM ARN; this can also be a federated user\'s ARN.
+#' @param SshUsername The user\'s SSH user name. The allowable characters are &#91;a-z&#93;, &#91;A-Z&#93;, &#91;0-9&#93;, \'-\', and \'\_\'. If the specified name includes other punctuation marks, AWS OpsWorks Stacks removes them. For example, `my.name` will be changed to `myname`. If you do not specify an SSH user name, AWS OpsWorks Stacks generates one from the IAM user name.
+#' @param SshPublicKey The user\'s public SSH key.
+#' @param AllowSelfManagement Whether users can specify their own SSH public key through the My Settings page. For more information, see [Setting an IAM User\'s Public SSH Key](http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html).
+#'
+#' @examples
+#'
+#' @export
+create_user_profile <- function (IamUserArn, SshUsername = NULL, 
+    SshPublicKey = NULL, AllowSelfManagement = NULL) 
+{
+    op <- Operation(name = "CreateUserProfile", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_user_profile_input(IamUserArn = IamUserArn, 
+        SshUsername = SshUsername, SshPublicKey = SshPublicKey, 
+        AllowSelfManagement = AllowSelfManagement)
+    output <- create_user_profile_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a specified app
+#'
+#' Deletes a specified app.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param AppId The app ID.
+#'
+#' @examples
+#'
+#' @export
+delete_app <- function (AppId) 
+{
+    op <- Operation(name = "DeleteApp", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_app_input(AppId = AppId)
+    output <- delete_app_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a specified instance, which terminates the associated Amazon EC2 instance
+#'
+#' Deletes a specified instance, which terminates the associated Amazon EC2 instance. You must stop an instance before you can delete it.
+#' 
+#' For more information, see [Deleting Instances](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-delete.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param InstanceId The instance ID.
+#' @param DeleteElasticIp Whether to delete the instance Elastic IP address.
+#' @param DeleteVolumes Whether to delete the instance\'s Amazon EBS volumes.
+#'
+#' @examples
+#'
+#' @export
+delete_instance <- function (InstanceId, DeleteElasticIp = NULL, 
+    DeleteVolumes = NULL) 
+{
+    op <- Operation(name = "DeleteInstance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_instance_input(InstanceId = InstanceId, DeleteElasticIp = DeleteElasticIp, 
+        DeleteVolumes = DeleteVolumes)
+    output <- delete_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a specified layer
+#'
+#' Deletes a specified layer. You must first stop and then delete all associated instances or unassign registered instances. For more information, see [How to Delete a Layer](http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-delete.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param LayerId The layer ID.
+#'
+#' @examples
+#'
+#' @export
+delete_layer <- function (LayerId) 
+{
+    op <- Operation(name = "DeleteLayer", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_layer_input(LayerId = LayerId)
+    output <- delete_layer_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a specified stack
+#'
+#' Deletes a specified stack. You must first delete all instances, layers, and apps or deregister registered instances. For more information, see [Shut Down a Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-shutting.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param StackId The stack ID.
+#'
+#' @examples
+#'
+#' @export
+delete_stack <- function (StackId) 
+{
+    op <- Operation(name = "DeleteStack", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_stack_input(StackId = StackId)
+    output <- delete_stack_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a user profile
+#'
+#' Deletes a user profile.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param IamUserArn The user\'s IAM ARN. This can also be a federated user\'s ARN.
+#'
+#' @examples
+#'
+#' @export
+delete_user_profile <- function (IamUserArn) 
+{
+    op <- Operation(name = "DeleteUserProfile", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_user_profile_input(IamUserArn = IamUserArn)
+    output <- delete_user_profile_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deregisters a specified Amazon ECS cluster from a stack
+#'
+#' Deregisters a specified Amazon ECS cluster from a stack. For more information, see [Resource Management](http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html#workinglayers-ecscluster-delete).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack or an attached policy that explicitly grants permissions. For more information on user permissions, see <http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html>.
+#'
+#' @param EcsClusterArn The cluster\'s Amazon Resource Number (ARN).
+#'
+#' @examples
+#'
+#' @export
+deregister_ecs_cluster <- function (EcsClusterArn) 
+{
+    op <- Operation(name = "DeregisterEcsCluster", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- deregister_ecs_cluster_input(EcsClusterArn = EcsClusterArn)
+    output <- deregister_ecs_cluster_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deregisters a specified Elastic IP address
+#'
+#' Deregisters a specified Elastic IP address. The address can then be registered by another stack. For more information, see [Resource Management](http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param ElasticIp The Elastic IP address.
+#'
+#' @examples
+#'
+#' @export
+deregister_elastic_ip <- function (ElasticIp) 
+{
+    op <- Operation(name = "DeregisterElasticIp", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- deregister_elastic_ip_input(ElasticIp = ElasticIp)
+    output <- deregister_elastic_ip_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deregister a registered Amazon EC2 or on-premises instance
+#'
+#' Deregister a registered Amazon EC2 or on-premises instance. This action removes the instance from the stack and returns it to your control. This action cannot be used with instances that were created with AWS OpsWorks Stacks.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param InstanceId The instance ID.
+#'
+#' @examples
+#'
+#' @export
+deregister_instance <- function (InstanceId) 
+{
+    op <- Operation(name = "DeregisterInstance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- deregister_instance_input(InstanceId = InstanceId)
+    output <- deregister_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deregisters an Amazon RDS instance
+#'
+#' Deregisters an Amazon RDS instance.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param RdsDbInstanceArn The Amazon RDS instance\'s ARN.
+#'
+#' @examples
+#'
+#' @export
+deregister_rds_db_instance <- function (RdsDbInstanceArn) 
+{
+    op <- Operation(name = "DeregisterRdsDbInstance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- deregister_rds_db_instance_input(RdsDbInstanceArn = RdsDbInstanceArn)
+    output <- deregister_rds_db_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deregisters an Amazon EBS volume
+#'
+#' Deregisters an Amazon EBS volume. The volume can then be registered by another stack. For more information, see [Resource Management](http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param VolumeId The AWS OpsWorks Stacks volume ID, which is the GUID that AWS OpsWorks Stacks assigned to the instance when you registered the volume with the stack, not the Amazon EC2 volume ID.
+#'
+#' @examples
+#'
+#' @export
+deregister_volume <- function (VolumeId) 
+{
+    op <- Operation(name = "DeregisterVolume", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- deregister_volume_input(VolumeId = VolumeId)
+    output <- deregister_volume_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the available AWS OpsWorks Stacks agent versions
+#'
+#' Describes the available AWS OpsWorks Stacks agent versions. You must specify a stack ID or a configuration manager. `DescribeAgentVersions` returns a list of available agent versions for the specified stack or configuration manager.
+#'
+#' @param StackId The stack ID.
+#' @param ConfigurationManager The configuration manager.
+#'
+#' @examples
+#'
+#' @export
+describe_agent_versions <- function (StackId = NULL, ConfigurationManager = NULL) 
+{
+    op <- Operation(name = "DescribeAgentVersions", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_agent_versions_input(StackId = StackId, 
+        ConfigurationManager = ConfigurationManager)
+    output <- describe_agent_versions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Requests a description of a specified set of apps
+#'
+#' Requests a description of a specified set of apps.
+#' 
+#' This call accepts only one resource-identifying parameter.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param StackId The app stack ID. If you use this parameter, `DescribeApps` returns a description of the apps in the specified stack.
+#' @param AppIds An array of app IDs for the apps to be described. If you use this parameter, `DescribeApps` returns a description of the specified apps. Otherwise, it returns a description of every app.
+#'
+#' @examples
+#'
+#' @export
+describe_apps <- function (StackId = NULL, AppIds = NULL) 
+{
+    op <- Operation(name = "DescribeApps", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_apps_input(StackId = StackId, AppIds = AppIds)
+    output <- describe_apps_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the results of specified commands
+#'
+#' Describes the results of specified commands.
+#' 
+#' This call accepts only one resource-identifying parameter.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param DeploymentId The deployment ID. If you include this parameter, `DescribeCommands` returns a description of the commands associated with the specified deployment.
+#' @param InstanceId The instance ID. If you include this parameter, `DescribeCommands` returns a description of the commands associated with the specified instance.
+#' @param CommandIds An array of command IDs. If you include this parameter, `DescribeCommands` returns a description of the specified commands. Otherwise, it returns a description of every command.
+#'
+#' @examples
+#'
+#' @export
+describe_commands <- function (DeploymentId = NULL, InstanceId = NULL, 
+    CommandIds = NULL) 
+{
+    op <- Operation(name = "DescribeCommands", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_commands_input(DeploymentId = DeploymentId, 
+        InstanceId = InstanceId, CommandIds = CommandIds)
+    output <- describe_commands_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Requests a description of a specified set of deployments
+#'
+#' Requests a description of a specified set of deployments.
+#' 
+#' This call accepts only one resource-identifying parameter.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param StackId The stack ID. If you include this parameter, the command returns a description of the commands associated with the specified stack.
+#' @param AppId The app ID. If you include this parameter, the command returns a description of the commands associated with the specified app.
+#' @param DeploymentIds An array of deployment IDs to be described. If you include this parameter, the command returns a description of the specified deployments. Otherwise, it returns a description of every deployment.
+#'
+#' @examples
+#'
+#' @export
+describe_deployments <- function (StackId = NULL, AppId = NULL, 
+    DeploymentIds = NULL) 
+{
+    op <- Operation(name = "DescribeDeployments", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_deployments_input(StackId = StackId, AppId = AppId, 
+        DeploymentIds = DeploymentIds)
+    output <- describe_deployments_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes Amazon ECS clusters that are registered with a stack
+#'
+#' Describes Amazon ECS clusters that are registered with a stack. If you specify only a stack ID, you can use the `MaxResults` and `NextToken` parameters to paginate the response. However, AWS OpsWorks Stacks currently supports only one cluster per layer, so the result set has a maximum of one element.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack or an attached policy that explicitly grants permission. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' 
+#' This call accepts only one resource-identifying parameter.
+#'
+#' @param EcsClusterArns A list of ARNs, one for each cluster to be described.
+#' @param StackId A stack ID. `DescribeEcsClusters` returns a description of the cluster that is registered with the stack.
+#' @param NextToken If the previous paginated request did not return all of the remaining results, the response object\'s`NextToken` parameter value is set to a token. To retrieve the next set of results, call `DescribeEcsClusters` again and assign that token to the request object\'s `NextToken` parameter. If there are no remaining results, the previous response object\'s `NextToken` parameter is set to `null`.
+#' @param MaxResults To receive a paginated response, use this parameter to specify the maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a `NextToken` value that you can assign to the `NextToken` request parameter to get the next set of results.
+#'
+#' @examples
+#'
+#' @export
+describe_ecs_clusters <- function (EcsClusterArns = NULL, StackId = NULL, 
+    NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "DescribeEcsClusters", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_ecs_clusters_input(EcsClusterArns = EcsClusterArns, 
+        StackId = StackId, NextToken = NextToken, MaxResults = MaxResults)
+    output <- describe_ecs_clusters_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes [Elastic IP addresses](http://docs
+#'
+#' Describes [Elastic IP addresses](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html).
+#' 
+#' This call accepts only one resource-identifying parameter.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param InstanceId The instance ID. If you include this parameter, `DescribeElasticIps` returns a description of the Elastic IP addresses associated with the specified instance.
+#' @param StackId A stack ID. If you include this parameter, `DescribeElasticIps` returns a description of the Elastic IP addresses that are registered with the specified stack.
+#' @param Ips An array of Elastic IP addresses to be described. If you include this parameter, `DescribeElasticIps` returns a description of the specified Elastic IP addresses. Otherwise, it returns a description of every Elastic IP address.
+#'
+#' @examples
+#'
+#' @export
+describe_elastic_ips <- function (InstanceId = NULL, StackId = NULL, 
+    Ips = NULL) 
+{
+    op <- Operation(name = "DescribeElasticIps", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_elastic_ips_input(InstanceId = InstanceId, 
+        StackId = StackId, Ips = Ips)
+    output <- describe_elastic_ips_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes a stack\'s Elastic Load Balancing instances
+#'
+#' Describes a stack\'s Elastic Load Balancing instances.
+#' 
+#' This call accepts only one resource-identifying parameter.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param StackId A stack ID. The action describes the stack\'s Elastic Load Balancing instances.
+#' @param LayerIds A list of layer IDs. The action describes the Elastic Load Balancing instances for the specified layers.
+#'
+#' @examples
+#'
+#' @export
+describe_elastic_load_balancers <- function (StackId = NULL, 
+    LayerIds = NULL) 
+{
+    op <- Operation(name = "DescribeElasticLoadBalancers", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_elastic_load_balancers_input(StackId = StackId, 
+        LayerIds = LayerIds)
+    output <- describe_elastic_load_balancers_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Requests a description of a set of instances
+#'
+#' Requests a description of a set of instances.
+#' 
+#' This call accepts only one resource-identifying parameter.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param StackId A stack ID. If you use this parameter, `DescribeInstances` returns descriptions of the instances associated with the specified stack.
+#' @param LayerId A layer ID. If you use this parameter, `DescribeInstances` returns descriptions of the instances associated with the specified layer.
+#' @param InstanceIds An array of instance IDs to be described. If you use this parameter, `DescribeInstances` returns a description of the specified instances. Otherwise, it returns a description of every instance.
+#'
+#' @examples
+#'
+#' @export
+describe_instances <- function (StackId = NULL, LayerId = NULL, 
+    InstanceIds = NULL) 
+{
+    op <- Operation(name = "DescribeInstances", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_instances_input(StackId = StackId, LayerId = LayerId, 
+        InstanceIds = InstanceIds)
+    output <- describe_instances_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Requests a description of one or more layers in a specified stack
+#'
+#' Requests a description of one or more layers in a specified stack.
+#' 
+#' This call accepts only one resource-identifying parameter.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param StackId The stack ID.
+#' @param LayerIds An array of layer IDs that specify the layers to be described. If you omit this parameter, `DescribeLayers` returns a description of every layer in the specified stack.
+#'
+#' @examples
+#'
+#' @export
+describe_layers <- function (StackId = NULL, LayerIds = NULL) 
+{
+    op <- Operation(name = "DescribeLayers", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_layers_input(StackId = StackId, LayerIds = LayerIds)
+    output <- describe_layers_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes load-based auto scaling configurations for specified layers
+#'
+#' Describes load-based auto scaling configurations for specified layers.
+#' 
+#' You must specify at least one of the parameters.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param LayerIds An array of layer IDs.
+#'
+#' @examples
+#'
+#' @export
+describe_load_based_auto_scaling <- function (LayerIds) 
+{
+    op <- Operation(name = "DescribeLoadBasedAutoScaling", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_load_based_auto_scaling_input(LayerIds = LayerIds)
+    output <- describe_load_based_auto_scaling_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes a user\'s SSH information
+#'
+#' Describes a user\'s SSH information.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have self-management enabled or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+
+#'
+#' @examples
+#'
+#' @export
+describe_my_user_profile <- function () 
+{
+    op <- Operation(name = "DescribeMyUserProfile", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_my_user_profile_input()
+    output <- describe_my_user_profile_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the operating systems that are supported by AWS OpsWorks Stacks
+#'
+#' Describes the operating systems that are supported by AWS OpsWorks Stacks.
+#'
+
+#'
+#' @examples
+#'
+#' @export
+describe_operating_systems <- function () 
+{
+    op <- Operation(name = "DescribeOperatingSystems", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_operating_systems_input()
+    output <- describe_operating_systems_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the permissions for a specified stack
+#'
+#' Describes the permissions for a specified stack.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param IamUserArn The user\'s IAM ARN. This can also be a federated user\'s ARN. For more information about IAM ARNs, see [Using Identifiers](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' @param StackId The stack ID.
+#'
+#' @examples
+#'
+#' @export
+describe_permissions <- function (IamUserArn = NULL, StackId = NULL) 
+{
+    op <- Operation(name = "DescribePermissions", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_permissions_input(IamUserArn = IamUserArn, 
+        StackId = StackId)
+    output <- describe_permissions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describe an instance\'s RAID arrays
+#'
+#' Describe an instance\'s RAID arrays.
+#' 
+#' This call accepts only one resource-identifying parameter.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param InstanceId The instance ID. If you use this parameter, `DescribeRaidArrays` returns descriptions of the RAID arrays associated with the specified instance.
+#' @param StackId The stack ID.
+#' @param RaidArrayIds An array of RAID array IDs. If you use this parameter, `DescribeRaidArrays` returns descriptions of the specified arrays. Otherwise, it returns a description of every array.
+#'
+#' @examples
+#'
+#' @export
+describe_raid_arrays <- function (InstanceId = NULL, StackId = NULL, 
+    RaidArrayIds = NULL) 
+{
+    op <- Operation(name = "DescribeRaidArrays", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_raid_arrays_input(InstanceId = InstanceId, 
+        StackId = StackId, RaidArrayIds = RaidArrayIds)
+    output <- describe_raid_arrays_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes Amazon RDS instances
+#'
+#' Describes Amazon RDS instances.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' 
+#' This call accepts only one resource-identifying parameter.
+#'
+#' @param StackId The ID of the stack with which the instances are registered. The operation returns descriptions of all registered Amazon RDS instances.
+#' @param RdsDbInstanceArns An array containing the ARNs of the instances to be described.
+#'
+#' @examples
+#'
+#' @export
+describe_rds_db_instances <- function (StackId, RdsDbInstanceArns = NULL) 
+{
+    op <- Operation(name = "DescribeRdsDbInstances", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_rds_db_instances_input(StackId = StackId, 
+        RdsDbInstanceArns = RdsDbInstanceArns)
+    output <- describe_rds_db_instances_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes AWS OpsWorks Stacks service errors
+#'
+#' Describes AWS OpsWorks Stacks service errors.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' 
+#' This call accepts only one resource-identifying parameter.
+#'
+#' @param StackId The stack ID. If you use this parameter, `DescribeServiceErrors` returns descriptions of the errors associated with the specified stack.
+#' @param InstanceId The instance ID. If you use this parameter, `DescribeServiceErrors` returns descriptions of the errors associated with the specified instance.
+#' @param ServiceErrorIds An array of service error IDs. If you use this parameter, `DescribeServiceErrors` returns descriptions of the specified errors. Otherwise, it returns a description of every error.
+#'
+#' @examples
+#'
+#' @export
+describe_service_errors <- function (StackId = NULL, InstanceId = NULL, 
+    ServiceErrorIds = NULL) 
+{
+    op <- Operation(name = "DescribeServiceErrors", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_service_errors_input(StackId = StackId, 
+        InstanceId = InstanceId, ServiceErrorIds = ServiceErrorIds)
+    output <- describe_service_errors_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Requests a description of a stack\'s provisioning parameters
+#'
+#' Requests a description of a stack\'s provisioning parameters.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param StackId The stack ID.
+#'
+#' @examples
+#'
+#' @export
+describe_stack_provisioning_parameters <- function (StackId) 
+{
+    op <- Operation(name = "DescribeStackProvisioningParameters", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_stack_provisioning_parameters_input(StackId = StackId)
+    output <- describe_stack_provisioning_parameters_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the number of layers and apps in a specified stack, and the number of instances in each state, such as `running_setup` or `online`
+#'
+#' Describes the number of layers and apps in a specified stack, and the number of instances in each state, such as `running_setup` or `online`.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param StackId The stack ID.
+#'
+#' @examples
+#'
+#' @export
+describe_stack_summary <- function (StackId) 
+{
+    op <- Operation(name = "DescribeStackSummary", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_stack_summary_input(StackId = StackId)
+    output <- describe_stack_summary_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Requests a description of one or more stacks
+#'
+#' Requests a description of one or more stacks.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param StackIds An array of stack IDs that specify the stacks to be described. If you omit this parameter, `DescribeStacks` returns a description of every stack.
+#'
+#' @examples
+#'
+#' @export
+describe_stacks <- function (StackIds = NULL) 
+{
+    op <- Operation(name = "DescribeStacks", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_stacks_input(StackIds = StackIds)
+    output <- describe_stacks_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes time-based auto scaling configurations for specified instances
+#'
+#' Describes time-based auto scaling configurations for specified instances.
+#' 
+#' You must specify at least one of the parameters.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param InstanceIds An array of instance IDs.
+#'
+#' @examples
+#'
+#' @export
+describe_time_based_auto_scaling <- function (InstanceIds) 
+{
+    op <- Operation(name = "DescribeTimeBasedAutoScaling", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_time_based_auto_scaling_input(InstanceIds = InstanceIds)
+    output <- describe_time_based_auto_scaling_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describe specified users
+#'
+#' Describe specified users.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param IamUserArns An array of IAM or federated user ARNs that identify the users to be described.
+#'
+#' @examples
+#'
+#' @export
+describe_user_profiles <- function (IamUserArns = NULL) 
+{
+    op <- Operation(name = "DescribeUserProfiles", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_user_profiles_input(IamUserArns = IamUserArns)
+    output <- describe_user_profiles_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes an instance\'s Amazon EBS volumes
+#'
+#' Describes an instance\'s Amazon EBS volumes.
+#' 
+#' This call accepts only one resource-identifying parameter.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param InstanceId The instance ID. If you use this parameter, `DescribeVolumes` returns descriptions of the volumes associated with the specified instance.
+#' @param StackId A stack ID. The action describes the stack\'s registered Amazon EBS volumes.
+#' @param RaidArrayId The RAID array ID. If you use this parameter, `DescribeVolumes` returns descriptions of the volumes associated with the specified RAID array.
+#' @param VolumeIds Am array of volume IDs. If you use this parameter, `DescribeVolumes` returns descriptions of the specified volumes. Otherwise, it returns a description of every volume.
+#'
+#' @examples
+#'
+#' @export
+describe_volumes <- function (InstanceId = NULL, StackId = NULL, 
+    RaidArrayId = NULL, VolumeIds = NULL) 
+{
+    op <- Operation(name = "DescribeVolumes", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_volumes_input(InstanceId = InstanceId, 
+        StackId = StackId, RaidArrayId = RaidArrayId, VolumeIds = VolumeIds)
+    output <- describe_volumes_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Detaches a specified Elastic Load Balancing instance from its layer
+#'
+#' Detaches a specified Elastic Load Balancing instance from its layer.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param ElasticLoadBalancerName The Elastic Load Balancing instance\'s name.
+#' @param LayerId The ID of the layer that the Elastic Load Balancing instance is attached to.
+#'
+#' @examples
+#'
+#' @export
+detach_elastic_load_balancer <- function (ElasticLoadBalancerName, 
+    LayerId) 
+{
+    op <- Operation(name = "DetachElasticLoadBalancer", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- detach_elastic_load_balancer_input(ElasticLoadBalancerName = ElasticLoadBalancerName, 
+        LayerId = LayerId)
+    output <- detach_elastic_load_balancer_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Disassociates an Elastic IP address from its instance
+#'
+#' Disassociates an Elastic IP address from its instance. The address remains registered with the stack. For more information, see [Resource Management](http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param ElasticIp The Elastic IP address.
+#'
+#' @examples
+#'
+#' @export
+disassociate_elastic_ip <- function (ElasticIp) 
+{
+    op <- Operation(name = "DisassociateElasticIp", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- disassociate_elastic_ip_input(ElasticIp = ElasticIp)
+    output <- disassociate_elastic_ip_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets a generated host name for the specified layer, based on the current host name theme
+#'
+#' Gets a generated host name for the specified layer, based on the current host name theme.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param LayerId The layer ID.
+#'
+#' @examples
+#'
+#' @export
+get_hostname_suggestion <- function (LayerId) 
+{
+    op <- Operation(name = "GetHostnameSuggestion", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_hostname_suggestion_input(LayerId = LayerId)
+    output <- get_hostname_suggestion_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' This action can be used only with Windows stacks
+#'
+#' This action can be used only with Windows stacks.
+#' 
+#' Grants RDP access to a Windows instance for a specified time period.
+#'
+#' @param InstanceId The instance\'s AWS OpsWorks Stacks ID.
+#' @param ValidForInMinutes The length of time (in minutes) that the grant is valid. When the grant expires at the end of this period, the user will no longer be able to use the credentials to log in. If the user is logged in at the time, he or she automatically will be logged out.
+#'
+#' @examples
+#'
+#' @export
+grant_access <- function (InstanceId, ValidForInMinutes = NULL) 
+{
+    op <- Operation(name = "GrantAccess", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- grant_access_input(InstanceId = InstanceId, ValidForInMinutes = ValidForInMinutes)
+    output <- grant_access_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of tags that are applied to the specified stack or layer
+#'
+#' Returns a list of tags that are applied to the specified stack or layer.
+#'
+#' @param ResourceArn The stack or layer\'s Amazon Resource Number (ARN).
+#' @param MaxResults Do not use. A validation exception occurs if you add a `MaxResults` parameter to a `ListTagsRequest` call.
+#' @param NextToken Do not use. A validation exception occurs if you add a `NextToken` parameter to a `ListTagsRequest` call.
+#'
+#' @examples
+#'
+#' @export
+list_tags <- function (ResourceArn, MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "ListTags", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_tags_input(ResourceArn = ResourceArn, MaxResults = MaxResults, 
+        NextToken = NextToken)
+    output <- list_tags_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Reboots a specified instance
+#'
+#' Reboots a specified instance. For more information, see [Starting, Stopping, and Rebooting Instances](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param InstanceId The instance ID.
+#'
+#' @examples
+#'
+#' @export
+reboot_instance <- function (InstanceId) 
+{
+    op <- Operation(name = "RebootInstance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- reboot_instance_input(InstanceId = InstanceId)
+    output <- reboot_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Registers a specified Amazon ECS cluster with a stack
+#'
+#' Registers a specified Amazon ECS cluster with a stack. You can register only one cluster with a stack. A cluster can be registered with only one stack. For more information, see [Resource Management](http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param EcsClusterArn The cluster\'s ARN.
+#' @param StackId The stack ID.
+#'
+#' @examples
+#'
+#' @export
+register_ecs_cluster <- function (EcsClusterArn, StackId) 
+{
+    op <- Operation(name = "RegisterEcsCluster", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- register_ecs_cluster_input(EcsClusterArn = EcsClusterArn, 
+        StackId = StackId)
+    output <- register_ecs_cluster_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Registers an Elastic IP address with a specified stack
+#'
+#' Registers an Elastic IP address with a specified stack. An address can be registered with only one stack at a time. If the address is already registered, you must first deregister it by calling DeregisterElasticIp. For more information, see [Resource Management](http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param ElasticIp The Elastic IP address.
+#' @param StackId The stack ID.
+#'
+#' @examples
+#'
+#' @export
+register_elastic_ip <- function (ElasticIp, StackId) 
+{
+    op <- Operation(name = "RegisterElasticIp", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- register_elastic_ip_input(ElasticIp = ElasticIp, 
+        StackId = StackId)
+    output <- register_elastic_ip_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Registers instances that were created outside of AWS OpsWorks Stacks with a specified stack
+#'
+#' Registers instances that were created outside of AWS OpsWorks Stacks with a specified stack.
+#' 
+#' We do not recommend using this action to register instances. The complete registration operation includes two tasks: installing the AWS OpsWorks Stacks agent on the instance, and registering the instance with the stack. `RegisterInstance` handles only the second step. You should instead use the AWS CLI `register` command, which performs the entire registration operation. For more information, see [Registering an Instance with an AWS OpsWorks Stacks Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register.html).
+#' 
+#' Registered instances have the same requirements as instances that are created by using the CreateInstance API. For example, registered instances must be running a supported Linux-based operating system, and they must have a supported instance type. For more information about requirements for instances that you want to register, see [Preparing the Instance](http://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register-registering-preparer.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param StackId The ID of the stack that the instance is to be registered with.
+#' @param Hostname The instance\'s hostname.
+#' @param PublicIp The instance\'s public IP address.
+#' @param PrivateIp The instance\'s private IP address.
+#' @param RsaPublicKey The instances public RSA key. This key is used to encrypt communication between the instance and the service.
+#' @param RsaPublicKeyFingerprint The instances public RSA key fingerprint.
+#' @param InstanceIdentity An InstanceIdentity object that contains the instance\'s identity.
+#'
+#' @examples
+#'
+#' @export
+register_instance <- function (StackId, Hostname = NULL, PublicIp = NULL, 
+    PrivateIp = NULL, RsaPublicKey = NULL, RsaPublicKeyFingerprint = NULL, 
+    InstanceIdentity = NULL) 
+{
+    op <- Operation(name = "RegisterInstance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- register_instance_input(StackId = StackId, Hostname = Hostname, 
+        PublicIp = PublicIp, PrivateIp = PrivateIp, RsaPublicKey = RsaPublicKey, 
+        RsaPublicKeyFingerprint = RsaPublicKeyFingerprint, InstanceIdentity = InstanceIdentity)
+    output <- register_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Registers an Amazon RDS instance with a stack
+#'
+#' Registers an Amazon RDS instance with a stack.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param StackId The stack ID.
+#' @param RdsDbInstanceArn The Amazon RDS instance\'s ARN.
+#' @param DbUser The database\'s master user name.
+#' @param DbPassword The database password.
+#'
+#' @examples
+#'
+#' @export
+register_rds_db_instance <- function (StackId, RdsDbInstanceArn, 
+    DbUser, DbPassword) 
+{
+    op <- Operation(name = "RegisterRdsDbInstance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- register_rds_db_instance_input(StackId = StackId, 
+        RdsDbInstanceArn = RdsDbInstanceArn, DbUser = DbUser, 
+        DbPassword = DbPassword)
+    output <- register_rds_db_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Registers an Amazon EBS volume with a specified stack
+#'
+#' Registers an Amazon EBS volume with a specified stack. A volume can be registered with only one stack at a time. If the volume is already registered, you must first deregister it by calling DeregisterVolume. For more information, see [Resource Management](http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param StackId The stack ID.
+#' @param Ec2VolumeId The Amazon EBS volume ID.
+#'
+#' @examples
+#'
+#' @export
+register_volume <- function (StackId, Ec2VolumeId = NULL) 
+{
+    op <- Operation(name = "RegisterVolume", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- register_volume_input(StackId = StackId, Ec2VolumeId = Ec2VolumeId)
+    output <- register_volume_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Specify the load-based auto scaling configuration for a specified layer
+#'
+#' Specify the load-based auto scaling configuration for a specified layer. For more information, see [Managing Load with Time-based and Load-based Instances](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html).
+#' 
+#' To use load-based auto scaling, you must create a set of load-based auto scaling instances. Load-based auto scaling operates only on the instances from that set, so you must ensure that you have created enough instances to handle the maximum anticipated load.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param LayerId The layer ID.
+#' @param Enable Enables load-based auto scaling for the layer.
+#' @param UpScaling An `AutoScalingThresholds` object with the upscaling threshold configuration. If the load exceeds these thresholds for a specified amount of time, AWS OpsWorks Stacks starts a specified number of instances.
+#' @param DownScaling An `AutoScalingThresholds` object with the downscaling threshold configuration. If the load falls below these thresholds for a specified amount of time, AWS OpsWorks Stacks stops a specified number of instances.
+#'
+#' @examples
+#'
+#' @export
+set_load_based_auto_scaling <- function (LayerId, Enable = NULL, 
+    UpScaling = NULL, DownScaling = NULL) 
+{
+    op <- Operation(name = "SetLoadBasedAutoScaling", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- set_load_based_auto_scaling_input(LayerId = LayerId, 
+        Enable = Enable, UpScaling = UpScaling, DownScaling = DownScaling)
+    output <- set_load_based_auto_scaling_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Specifies a user\'s permissions
+#'
+#' Specifies a user\'s permissions. For more information, see [Security and Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param StackId The stack ID.
+#' @param IamUserArn The user\'s IAM ARN. This can also be a federated user\'s ARN.
+#' @param AllowSsh The user is allowed to use SSH to communicate with the instance.
+#' @param AllowSudo The user is allowed to use **sudo** to elevate privileges.
+#' @param Level The user\'s permission level, which must be set to one of the following strings. You cannot set your own permissions level.
+#' 
+#' -   `deny`
+#' 
+#' -   `show`
+#' 
+#' -   `deploy`
+#' 
+#' -   `manage`
+#' 
+#' -   `iam_only`
+#' 
+#' For more information about the permissions associated with these levels, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @examples
+#'
+#' @export
+set_permission <- function (StackId, IamUserArn, AllowSsh = NULL, 
+    AllowSudo = NULL, Level = NULL) 
+{
+    op <- Operation(name = "SetPermission", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- set_permission_input(StackId = StackId, IamUserArn = IamUserArn, 
+        AllowSsh = AllowSsh, AllowSudo = AllowSudo, Level = Level)
+    output <- set_permission_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Specify the time-based auto scaling configuration for a specified instance
+#'
+#' Specify the time-based auto scaling configuration for a specified instance. For more information, see [Managing Load with Time-based and Load-based Instances](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param InstanceId The instance ID.
+#' @param AutoScalingSchedule An `AutoScalingSchedule` with the instance schedule.
+#'
+#' @examples
+#'
+#' @export
+set_time_based_auto_scaling <- function (InstanceId, AutoScalingSchedule = NULL) 
+{
+    op <- Operation(name = "SetTimeBasedAutoScaling", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- set_time_based_auto_scaling_input(InstanceId = InstanceId, 
+        AutoScalingSchedule = AutoScalingSchedule)
+    output <- set_time_based_auto_scaling_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Starts a specified instance
+#'
+#' Starts a specified instance. For more information, see [Starting, Stopping, and Rebooting Instances](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param InstanceId The instance ID.
+#'
+#' @examples
+#'
+#' @export
+start_instance <- function (InstanceId) 
+{
+    op <- Operation(name = "StartInstance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- start_instance_input(InstanceId = InstanceId)
+    output <- start_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Starts a stack\'s instances
+#'
+#' Starts a stack\'s instances.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param StackId The stack ID.
+#'
+#' @examples
+#'
+#' @export
+start_stack <- function (StackId) 
+{
+    op <- Operation(name = "StartStack", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- start_stack_input(StackId = StackId)
+    output <- start_stack_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Stops a specified instance
+#'
+#' Stops a specified instance. When you stop a standard instance, the data disappears and must be reinstalled when you restart the instance. You can stop an Amazon EBS-backed instance without losing data. For more information, see [Starting, Stopping, and Rebooting Instances](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param InstanceId The instance ID.
+#' @param Force Specifies whether to force an instance to stop.
+#'
+#' @examples
+#'
+#' @export
+stop_instance <- function (InstanceId, Force = NULL) 
+{
+    op <- Operation(name = "StopInstance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- stop_instance_input(InstanceId = InstanceId, Force = Force)
+    output <- stop_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Stops a specified stack
+#'
+#' Stops a specified stack.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param StackId The stack ID.
+#'
+#' @examples
+#'
+#' @export
+stop_stack <- function (StackId) 
+{
+    op <- Operation(name = "StopStack", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- stop_stack_input(StackId = StackId)
+    output <- stop_stack_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Apply cost-allocation tags to a specified stack or layer in AWS OpsWorks Stacks
+#'
+#' Apply cost-allocation tags to a specified stack or layer in AWS OpsWorks Stacks. For more information about how tagging works, see [Tags](http://docs.aws.amazon.com/opsworks/latest/userguide/tagging.html) in the AWS OpsWorks User Guide.
+#'
+#' @param ResourceArn The stack or layer\'s Amazon Resource Number (ARN).
+#' @param Tags A map that contains tag keys and tag values that are attached to a stack or layer.
+#' 
+#' -   The key cannot be empty.
+#' 
+#' -   The key can be a maximum of 127 characters, and can contain only Unicode letters, numbers, or separators, or the following special characters: `+ - = . _ : /`
+#' 
+#' -   The value can be a maximum 255 characters, and contain only Unicode letters, numbers, or separators, or the following special characters: `+ - = . _ : /`
+#' 
+#' -   Leading and trailing white spaces are trimmed from both the key and value.
+#' 
+#' -   A maximum of 40 tags is allowed for any resource.
+#'
+#' @examples
+#'
+#' @export
+tag_resource <- function (ResourceArn, Tags) 
+{
+    op <- Operation(name = "TagResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+    output <- tag_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Unassigns a registered instance from all layers that are using the instance
+#'
+#' Unassigns a registered instance from all layers that are using the instance. The instance remains in the stack as an unassigned instance, and can be assigned to another layer as needed. You cannot use this action with instances that were created with AWS OpsWorks Stacks.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param InstanceId The instance ID.
+#'
+#' @examples
+#'
+#' @export
+unassign_instance <- function (InstanceId) 
+{
+    op <- Operation(name = "UnassignInstance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- unassign_instance_input(InstanceId = InstanceId)
+    output <- unassign_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Unassigns an assigned Amazon EBS volume
+#'
+#' Unassigns an assigned Amazon EBS volume. The volume remains registered with the stack. For more information, see [Resource Management](http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param VolumeId The volume ID.
+#'
+#' @examples
+#'
+#' @export
+unassign_volume <- function (VolumeId) 
+{
+    op <- Operation(name = "UnassignVolume", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- unassign_volume_input(VolumeId = VolumeId)
+    output <- unassign_volume_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes tags from a specified stack or layer
+#'
+#' Removes tags from a specified stack or layer.
+#'
+#' @param ResourceArn The stack or layer\'s Amazon Resource Number (ARN).
+#' @param TagKeys A list of the keys of tags to be removed from a stack or layer.
+#'
+#' @examples
+#'
+#' @export
+untag_resource <- function (ResourceArn, TagKeys) 
+{
+    op <- Operation(name = "UntagResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- untag_resource_input(ResourceArn = ResourceArn, 
+        TagKeys = TagKeys)
+    output <- untag_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates a specified app
+#'
+#' Updates a specified app.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Deploy or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param AppId The app ID.
+#' @param Name The app name.
+#' @param Description A description of the app.
+#' @param DataSources The app\'s data sources.
+#' @param Type The app type.
+#' @param AppSource A `Source` object that specifies the app repository.
+#' @param Domains The app\'s virtual host settings, with multiple domains separated by commas. For example: `'www.example.com, example.com'`
+#' @param EnableSsl Whether SSL is enabled for the app.
+#' @param SslConfiguration An `SslConfiguration` object with the SSL configuration.
+#' @param Attributes One or more user-defined key/value pairs to be added to the stack attributes.
+#' @param Environment An array of `EnvironmentVariable` objects that specify environment variables to be associated with the app. After you deploy the app, these variables are defined on the associated app server instances.For more information, see [Environment Variables](http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment).
+#' 
+#' There is no specific limit on the number of environment variables. However, the size of the associated data structure - which includes the variables\' names, values, and protected flag values - cannot exceed 10 KB (10240 Bytes). This limit should accommodate most if not all use cases. Exceeding it will cause an exception with the message, \"Environment: is too large (maximum is 10KB).\"
+#' 
+#' This parameter is supported only by Chef 11.10 stacks. If you have specified one or more environment variables, you cannot modify the stack\'s Chef version.
+#'
+#' @examples
+#'
+#' @export
+update_app <- function (AppId, Name = NULL, Description = NULL, 
+    DataSources = NULL, Type = NULL, AppSource = NULL, Domains = NULL, 
+    EnableSsl = NULL, SslConfiguration = NULL, Attributes = NULL, 
+    Environment = NULL) 
+{
+    op <- Operation(name = "UpdateApp", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_app_input(AppId = AppId, Name = Name, Description = Description, 
+        DataSources = DataSources, Type = Type, AppSource = AppSource, 
+        Domains = Domains, EnableSsl = EnableSsl, SslConfiguration = SslConfiguration, 
+        Attributes = Attributes, Environment = Environment)
+    output <- update_app_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates a registered Elastic IP address\'s name
+#'
+#' Updates a registered Elastic IP address\'s name. For more information, see [Resource Management](http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param ElasticIp The IP address for which you want to update the name.
+#' @param Name The new name.
+#'
+#' @examples
+#'
+#' @export
+update_elastic_ip <- function (ElasticIp, Name = NULL) 
+{
+    op <- Operation(name = "UpdateElasticIp", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_elastic_ip_input(ElasticIp = ElasticIp, Name = Name)
+    output <- update_elastic_ip_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates a specified instance
+#'
+#' Updates a specified instance.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param InstanceId The instance ID.
+#' @param LayerIds The instance\'s layer IDs.
+#' @param InstanceType The instance type, such as `t2.micro`. For a list of supported instance types, open the stack in the console, choose **Instances**, and choose **+ Instance**. The **Size** list contains the currently supported types. For more information, see [Instance Families and Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html). The parameter values that you use to specify the various types are in the **API Name** column of the **Available Instance Types** table.
+#' @param AutoScalingType For load-based or time-based instances, the type. Windows stacks can use only time-based instances.
+#' @param Hostname The instance host name.
+#' @param Os The instance\'s operating system, which must be set to one of the following. You cannot update an instance that is using a custom AMI.
+#' 
+#' -   A supported Linux operating system: An Amazon Linux version, such as `Amazon Linux 2017.09`, `Amazon Linux 2017.03`, `Amazon Linux 2016.09`, `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or `Amazon Linux 2015.03`.
+#' 
+#' -   A supported Ubuntu operating system, such as `Ubuntu 16.04 LTS`, `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
+#' 
+#' -   `CentOS Linux 7`
+#' 
+#' -   `Red Hat Enterprise Linux 7`
+#' 
+#' -   A supported Windows operating system, such as `Microsoft Windows Server 2012 R2 Base`, `Microsoft Windows Server 2012 R2 with SQL Server Express`, `Microsoft Windows Server 2012 R2 with SQL Server Standard`, or `Microsoft Windows Server 2012 R2 with SQL Server Web`.
+#' 
+#' For more information about supported operating systems, see [AWS OpsWorks Stacks Operating Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+#' 
+#' The default option is the current Amazon Linux version. If you set this parameter to `Custom`, you must use the AmiId parameter to specify the custom AMI that you want to use. For more information about supported operating systems, see [Operating Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html). For more information about how to use custom AMIs with OpsWorks, see [Using Custom AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+#' 
+#' You can specify a different Linux operating system for the updated stack, but you cannot change from Linux to Windows or Windows to Linux.
+#' @param AmiId The ID of the AMI that was used to create the instance. The value of this parameter must be the same AMI ID that the instance is already using. You cannot apply a new AMI to an instance by running UpdateInstance. UpdateInstance does not work on instances that are using custom AMIs.
+#' @param SshKeyName The instance\'s Amazon EC2 key name.
+#' @param Architecture The instance architecture. Instance types do not necessarily support both architectures. For a list of the architectures that are supported by the different instance types, see [Instance Families and Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
+#' @param InstallUpdatesOnBoot Whether to install operating system and package updates when the instance boots. The default value is `true`. To control when updates are installed, set this value to `false`. You must then update your instances manually by using CreateDeployment to run the `update_dependencies` stack command or by manually running `yum` (Amazon Linux) or `apt-get` (Ubuntu) on the instances.
+#' 
+#' We strongly recommend using the default value of `true`, to ensure that your instances have the latest security updates.
+#' @param EbsOptimized This property cannot be updated.
+#' @param AgentVersion The default AWS OpsWorks Stacks agent version. You have the following options:
+#' 
+#' -   `INHERIT` - Use the stack\'s default agent version setting.
+#' 
+#' -   *version\_number* - Use the specified agent version. This value overrides the stack\'s default setting. To update the agent version, you must edit the instance configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the instance.
+#' 
+#' The default setting is `INHERIT`. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call DescribeAgentVersions.
+#' 
+#' AgentVersion cannot be set to Chef 12.2.
+#'
+#' @examples
+#'
+#' @export
+update_instance <- function (InstanceId, LayerIds = NULL, InstanceType = NULL, 
+    AutoScalingType = NULL, Hostname = NULL, Os = NULL, AmiId = NULL, 
+    SshKeyName = NULL, Architecture = NULL, InstallUpdatesOnBoot = NULL, 
+    EbsOptimized = NULL, AgentVersion = NULL) 
+{
+    op <- Operation(name = "UpdateInstance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_instance_input(InstanceId = InstanceId, LayerIds = LayerIds, 
+        InstanceType = InstanceType, AutoScalingType = AutoScalingType, 
+        Hostname = Hostname, Os = Os, AmiId = AmiId, SshKeyName = SshKeyName, 
+        Architecture = Architecture, InstallUpdatesOnBoot = InstallUpdatesOnBoot, 
+        EbsOptimized = EbsOptimized, AgentVersion = AgentVersion)
+    output <- update_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates a specified layer
+#'
+#' Updates a specified layer.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param LayerId The layer ID.
+#' @param Name The layer name, which is used by the console.
+#' @param Shortname For custom layers only, use this parameter to specify the layer\'s short name, which is used internally by AWS OpsWorks Stacks and by Chef. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters and must be in the following format: /\\A&#91;a-z0-9\\-\\\_\\.&#93;+\\Z/.
+#' 
+#' The built-in layers\' short names are defined by AWS OpsWorks Stacks. For more information, see the [Layer Reference](http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html)
+#' @param Attributes One or more user-defined key/value pairs to be added to the stack attributes.
+#' @param CloudWatchLogsConfiguration Specifies CloudWatch Logs configuration options for the layer. For more information, see CloudWatchLogsLogStream.
+#' @param CustomInstanceProfileArn The ARN of an IAM profile to be used for all of the layer\'s EC2 instances. For more information about IAM ARNs, see [Using Identifiers](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' @param CustomJson A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer\'s instances. For more information, see [Using Custom JSON](http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html).
+#' @param CustomSecurityGroupIds An array containing the layer\'s custom security group IDs.
+#' @param Packages An array of `Package` objects that describe the layer\'s packages.
+#' @param VolumeConfigurations A `VolumeConfigurations` object that describes the layer\'s Amazon EBS volumes.
+#' @param EnableAutoHealing Whether to disable auto healing for the layer.
+#' @param AutoAssignElasticIps Whether to automatically assign an [Elastic IP address](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) to the layer\'s instances. For more information, see [How to Edit a Layer](http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
+#' @param AutoAssignPublicIps For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer\'s instances. For more information, see [How to Edit a Layer](http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
+#' @param CustomRecipes A `LayerCustomRecipes` object that specifies the layer\'s custom recipes.
+#' @param InstallUpdatesOnBoot Whether to install operating system and package updates when the instance boots. The default value is `true`. To control when updates are installed, set this value to `false`. You must then update your instances manually by using CreateDeployment to run the `update_dependencies` stack command or manually running `yum` (Amazon Linux) or `apt-get` (Ubuntu) on the instances.
+#' 
+#' We strongly recommend using the default value of `true`, to ensure that your instances have the latest security updates.
+#' @param UseEbsOptimizedInstances Whether to use Amazon EBS-optimized instances.
+#' @param LifecycleEventConfiguration 
+#'
+#' @examples
+#'
+#' @export
+update_layer <- function (LayerId, Name = NULL, Shortname = NULL, 
+    Attributes = NULL, CloudWatchLogsConfiguration = NULL, CustomInstanceProfileArn = NULL, 
+    CustomJson = NULL, CustomSecurityGroupIds = NULL, Packages = NULL, 
+    VolumeConfigurations = NULL, EnableAutoHealing = NULL, AutoAssignElasticIps = NULL, 
+    AutoAssignPublicIps = NULL, CustomRecipes = NULL, InstallUpdatesOnBoot = NULL, 
+    UseEbsOptimizedInstances = NULL, LifecycleEventConfiguration = NULL) 
+{
+    op <- Operation(name = "UpdateLayer", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_layer_input(LayerId = LayerId, Name = Name, 
+        Shortname = Shortname, Attributes = Attributes, CloudWatchLogsConfiguration = CloudWatchLogsConfiguration, 
+        CustomInstanceProfileArn = CustomInstanceProfileArn, 
+        CustomJson = CustomJson, CustomSecurityGroupIds = CustomSecurityGroupIds, 
+        Packages = Packages, VolumeConfigurations = VolumeConfigurations, 
+        EnableAutoHealing = EnableAutoHealing, AutoAssignElasticIps = AutoAssignElasticIps, 
+        AutoAssignPublicIps = AutoAssignPublicIps, CustomRecipes = CustomRecipes, 
+        InstallUpdatesOnBoot = InstallUpdatesOnBoot, UseEbsOptimizedInstances = UseEbsOptimizedInstances, 
+        LifecycleEventConfiguration = LifecycleEventConfiguration)
+    output <- update_layer_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates a user\'s SSH public key
+#'
+#' Updates a user\'s SSH public key.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have self-management enabled or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param SshPublicKey The user\'s SSH public key.
+#'
+#' @examples
+#'
+#' @export
+update_my_user_profile <- function (SshPublicKey = NULL) 
+{
+    op <- Operation(name = "UpdateMyUserProfile", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_my_user_profile_input(SshPublicKey = SshPublicKey)
+    output <- update_my_user_profile_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates an Amazon RDS instance
+#'
+#' Updates an Amazon RDS instance.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param RdsDbInstanceArn The Amazon RDS instance\'s ARN.
+#' @param DbUser The master user name.
+#' @param DbPassword The database password.
+#'
+#' @examples
+#'
+#' @export
+update_rds_db_instance <- function (RdsDbInstanceArn, DbUser = NULL, 
+    DbPassword = NULL) 
+{
+    op <- Operation(name = "UpdateRdsDbInstance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_rds_db_instance_input(RdsDbInstanceArn = RdsDbInstanceArn, 
+        DbUser = DbUser, DbPassword = DbPassword)
+    output <- update_rds_db_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates a specified stack
+#'
+#' Updates a specified stack.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param StackId The stack ID.
+#' @param Name The stack\'s new name.
+#' @param Attributes One or more user-defined key-value pairs to be added to the stack attributes.
+#' @param ServiceRoleArn Do not use this parameter. You cannot update a stack\'s service role.
+#' @param DefaultInstanceProfileArn The ARN of an IAM profile that is the default profile for all of the stack\'s EC2 instances. For more information about IAM ARNs, see [Using Identifiers](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' @param DefaultOs The stack\'s operating system, which must be set to one of the following:
+#' 
+#' -   A supported Linux operating system: An Amazon Linux version, such as `Amazon Linux 2017.09`, `Amazon Linux 2017.03`, `Amazon Linux 2016.09`, `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or `Amazon Linux 2015.03`.
+#' 
+#' -   A supported Ubuntu operating system, such as `Ubuntu 16.04 LTS`, `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
+#' 
+#' -   `CentOS Linux 7`
+#' 
+#' -   `Red Hat Enterprise Linux 7`
+#' 
+#' -   A supported Windows operating system, such as `Microsoft Windows Server 2012 R2 Base`, `Microsoft Windows Server 2012 R2 with SQL Server Express`, `Microsoft Windows Server 2012 R2 with SQL Server Standard`, or `Microsoft Windows Server 2012 R2 with SQL Server Web`.
+#' 
+#' -   A custom AMI: `Custom`. You specify the custom AMI you want to use when you create instances. For more information about how to use custom AMIs with OpsWorks, see [Using Custom AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+#' 
+#' The default option is the stack\'s current operating system. For more information about supported operating systems, see [AWS OpsWorks Stacks Operating Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+#' @param HostnameTheme The stack\'s new host name theme, with spaces replaced by underscores. The theme is used to generate host names for the stack\'s instances. By default, `HostnameTheme` is set to `Layer_Dependent`, which creates host names by appending integers to the layer\'s short name. The other themes are:
+#' 
+#' -   `Baked_Goods`
+#' 
+#' -   `Clouds`
+#' 
+#' -   `Europe_Cities`
+#' 
+#' -   `Fruits`
+#' 
+#' -   `Greek_Deities`
+#' 
+#' -   `Legendary_creatures_from_Japan`
+#' 
+#' -   `Planets_and_Moons`
+#' 
+#' -   `Roman_Deities`
+#' 
+#' -   `Scottish_Islands`
+#' 
+#' -   `US_Cities`
+#' 
+#' -   `Wild_Cats`
+#' 
+#' To obtain a generated host name, call `GetHostNameSuggestion`, which returns a host name based on the current theme.
+#' @param DefaultAvailabilityZone The stack\'s default Availability Zone, which must be in the stack\'s region. For more information, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html). If you also specify a value for `DefaultSubnetId`, the subnet must be in the same zone. For more information, see CreateStack.
+#' @param DefaultSubnetId The stack\'s default VPC subnet ID. This parameter is required if you specify a value for the `VpcId` parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for `DefaultAvailabilityZone`, the subnet must be in that zone. For information on default values and when this parameter is required, see the `VpcId` parameter description.
+#' @param CustomJson A string that contains user-defined, custom JSON. It can be used to override the corresponding default stack configuration JSON values or to pass data to recipes. The string should be in the following format:
+#' 
+#' `"{\"key1\": \"value1\", \"key2\": \"value2\",...}"`
+#' 
+#' For more information about custom JSON, see [Use Custom JSON to Modify the Stack Configuration Attributes](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
+#' @param ConfigurationManager The configuration manager. When you update a stack, we recommend that you use the configuration manager to specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is currently 12.
+#' @param ChefConfiguration A `ChefConfiguration` object that specifies whether to enable Berkshelf and the Berkshelf version on Chef 11.10 stacks. For more information, see [Create a New Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
+#' @param UseCustomCookbooks Whether the stack uses custom cookbooks.
+#' @param CustomCookbooksSource 
+#' @param DefaultSshKeyName A default Amazon EC2 key-pair name. The default value is `none`. If you specify a key-pair name, AWS OpsWorks Stacks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see [Using SSH to Communicate with an Instance](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html) and [Managing SSH Access](http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html). You can override this setting by specifying a different key pair, or no key pair, when you [create an instance](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html).
+#' @param DefaultRootDeviceType The default root device type. This value is used by default for all instances in the stack, but you can override it when you create an instance. For more information, see [Storage for the Root Device](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
+#' @param UseOpsworksSecurityGroups Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack\'s layers.
+#' 
+#' AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are associated with layers by default. `UseOpsworksSecurityGroups` allows you to provide your own custom security groups instead of using the built-in groups. `UseOpsworksSecurityGroups` has the following settings:
+#' 
+#' -   True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each layer (default setting). You can associate additional security groups with a layer after you create it, but you cannot delete the built-in security group.
+#' 
+#' -   False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create appropriate EC2 security groups and associate a security group with each layer that you create. However, you can still manually associate a built-in security group with a layer on. Custom security groups are required only for those layers that need custom settings.
+#' 
+#' For more information, see [Create a New Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
+#' @param AgentVersion The default AWS OpsWorks Stacks agent version. You have the following options:
+#' 
+#' -   Auto-update - Set this parameter to `LATEST`. AWS OpsWorks Stacks automatically installs new agent versions on the stack\'s instances as soon as they are available.
+#' 
+#' -   Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the stack\'s instances.
+#' 
+#' The default setting is `LATEST`. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call DescribeAgentVersions. AgentVersion cannot be set to Chef 12.2.
+#' 
+#' You can also specify an agent version when you create or update an instance, which overrides the stack\'s default setting.
+#'
+#' @examples
+#'
+#' @export
+update_stack <- function (StackId, Name = NULL, Attributes = NULL, 
+    ServiceRoleArn = NULL, DefaultInstanceProfileArn = NULL, 
+    DefaultOs = NULL, HostnameTheme = NULL, DefaultAvailabilityZone = NULL, 
+    DefaultSubnetId = NULL, CustomJson = NULL, ConfigurationManager = NULL, 
+    ChefConfiguration = NULL, UseCustomCookbooks = NULL, CustomCookbooksSource = NULL, 
+    DefaultSshKeyName = NULL, DefaultRootDeviceType = NULL, UseOpsworksSecurityGroups = NULL, 
+    AgentVersion = NULL) 
+{
+    op <- Operation(name = "UpdateStack", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_stack_input(StackId = StackId, Name = Name, 
+        Attributes = Attributes, ServiceRoleArn = ServiceRoleArn, 
+        DefaultInstanceProfileArn = DefaultInstanceProfileArn, 
+        DefaultOs = DefaultOs, HostnameTheme = HostnameTheme, 
+        DefaultAvailabilityZone = DefaultAvailabilityZone, DefaultSubnetId = DefaultSubnetId, 
+        CustomJson = CustomJson, ConfigurationManager = ConfigurationManager, 
+        ChefConfiguration = ChefConfiguration, UseCustomCookbooks = UseCustomCookbooks, 
+        CustomCookbooksSource = CustomCookbooksSource, DefaultSshKeyName = DefaultSshKeyName, 
+        DefaultRootDeviceType = DefaultRootDeviceType, UseOpsworksSecurityGroups = UseOpsworksSecurityGroups, 
+        AgentVersion = AgentVersion)
+    output <- update_stack_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates a specified user profile
+#'
+#' Updates a specified user profile.
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param IamUserArn The user IAM ARN. This can also be a federated user\'s ARN.
+#' @param SshUsername The user\'s SSH user name. The allowable characters are &#91;a-z&#93;, &#91;A-Z&#93;, &#91;0-9&#93;, \'-\', and \'\_\'. If the specified name includes other punctuation marks, AWS OpsWorks Stacks removes them. For example, `my.name` will be changed to `myname`. If you do not specify an SSH user name, AWS OpsWorks Stacks generates one from the IAM user name.
+#' @param SshPublicKey The user\'s new SSH public key.
+#' @param AllowSelfManagement Whether users can specify their own SSH public key through the My Settings page. For more information, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html).
+#'
+#' @examples
+#'
+#' @export
+update_user_profile <- function (IamUserArn, SshUsername = NULL, 
+    SshPublicKey = NULL, AllowSelfManagement = NULL) 
+{
+    op <- Operation(name = "UpdateUserProfile", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_user_profile_input(IamUserArn = IamUserArn, 
+        SshUsername = SshUsername, SshPublicKey = SshPublicKey, 
+        AllowSelfManagement = AllowSelfManagement)
+    output <- update_user_profile_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates an Amazon EBS volume\'s name or mount point
+#'
+#' Updates an Amazon EBS volume\'s name or mount point. For more information, see [Resource Management](http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
+#' 
+#' **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#'
+#' @param VolumeId The volume ID.
+#' @param Name The new name.
+#' @param MountPoint The new mount point.
+#'
+#' @examples
+#'
+#' @export
+update_volume <- function (VolumeId, Name = NULL, MountPoint = NULL) 
+{
+    op <- Operation(name = "UpdateVolume", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_volume_input(VolumeId = VolumeId, Name = Name, 
+        MountPoint = MountPoint)
+    output <- update_volume_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

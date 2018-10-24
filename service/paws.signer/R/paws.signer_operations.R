@@ -1,0 +1,231 @@
+#' Changes the state of an `ACTIVE` signing profile to `CANCELED`
+#'
+#' Changes the state of an `ACTIVE` signing profile to `CANCELED`. A canceled profile is still viewable with the `ListSigningProfiles` operation, but it cannot perform new signing jobs, and is deleted two years after cancelation.
+#'
+#' @param profileName The name of the signing profile to be canceled.
+#'
+#' @examples
+#'
+#' @export
+cancel_signing_profile <- function (profileName) 
+{
+    op <- Operation(name = "CancelSigningProfile", http_method = "DELETE", 
+        http_path = "/signing-profiles/{profileName}", paginator = list())
+    input <- cancel_signing_profile_input(profileName = profileName)
+    output <- cancel_signing_profile_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns information about a specific code signing job
+#'
+#' Returns information about a specific code signing job. You specify the job by using the `jobId` value that is returned by the StartSigningJob operation.
+#'
+#' @param jobId The ID of the signing job on input.
+#'
+#' @examples
+#'
+#' @export
+describe_signing_job <- function (jobId) 
+{
+    op <- Operation(name = "DescribeSigningJob", http_method = "GET", 
+        http_path = "/signing-jobs/{jobId}", paginator = list())
+    input <- describe_signing_job_input(jobId = jobId)
+    output <- describe_signing_job_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns information on a specific signing platform
+#'
+#' Returns information on a specific signing platform.
+#'
+#' @param platformId The ID of the target signing platform.
+#'
+#' @examples
+#'
+#' @export
+get_signing_platform <- function (platformId) 
+{
+    op <- Operation(name = "GetSigningPlatform", http_method = "GET", 
+        http_path = "/signing-platforms/{platformId}", paginator = list())
+    input <- get_signing_platform_input(platformId = platformId)
+    output <- get_signing_platform_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns information on a specific signing profile
+#'
+#' Returns information on a specific signing profile.
+#'
+#' @param profileName The name of the target signing profile.
+#'
+#' @examples
+#'
+#' @export
+get_signing_profile <- function (profileName) 
+{
+    op <- Operation(name = "GetSigningProfile", http_method = "GET", 
+        http_path = "/signing-profiles/{profileName}", paginator = list())
+    input <- get_signing_profile_input(profileName = profileName)
+    output <- get_signing_profile_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists all your signing jobs
+#'
+#' Lists all your signing jobs. You can use the `maxResults` parameter to limit the number of signing jobs that are returned in the response. If additional jobs remain to be listed, AWS Signer returns a `nextToken` value. Use this value in subsequent calls to `ListSigningJobs` to fetch the remaining values. You can continue calling `ListSigningJobs` with your `maxResults` parameter and with new values that AWS Signer returns in the `nextToken` parameter until all of your signing jobs have been returned.
+#'
+#' @param status A status value with which to filter your results.
+#' @param platformId The ID of microcontroller platform that you specified for the distribution of your code image.
+#' @param requestedBy The IAM principal that requested the signing job.
+#' @param maxResults Specifies the maximum number of items to return in the response. Use this parameter when paginating results. If additional items exist beyond the number you specify, the `nextToken` element is set in the response. Use the `nextToken` value in a subsequent request to retrieve additional items.
+#' @param nextToken String for specifying the next set of paginated results to return. After you receive a response with truncated results, use this parameter in a subsequent request. Set it to the value of `nextToken` from the response that you just received.
+#'
+#' @examples
+#'
+#' @export
+list_signing_jobs <- function (status = NULL, platformId = NULL, 
+    requestedBy = NULL, maxResults = NULL, nextToken = NULL) 
+{
+    op <- Operation(name = "ListSigningJobs", http_method = "GET", 
+        http_path = "/signing-jobs", paginator = list())
+    input <- list_signing_jobs_input(status = status, platformId = platformId, 
+        requestedBy = requestedBy, maxResults = maxResults, nextToken = nextToken)
+    output <- list_signing_jobs_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists all signing platforms available in AWS Signer that match the request parameters
+#'
+#' Lists all signing platforms available in AWS Signer that match the request parameters. If additional jobs remain to be listed, AWS Signer returns a `nextToken` value. Use this value in subsequent calls to `ListSigningJobs` to fetch the remaining values. You can continue calling `ListSigningJobs` with your `maxResults` parameter and with new values that AWS Signer returns in the `nextToken` parameter until all of your signing jobs have been returned.
+#'
+#' @param category The category type of a signing platform.
+#' @param partner Any partner entities connected to a signing platform.
+#' @param target The validation template that is used by the target signing platform.
+#' @param maxResults The maximum number of results to be returned by this operation.
+#' @param nextToken Value for specifying the next set of paginated results to return. After you receive a response with truncated results, use this parameter in a subsequent request. Set it to the value of `nextToken` from the response that you just received.
+#'
+#' @examples
+#'
+#' @export
+list_signing_platforms <- function (category = NULL, partner = NULL, 
+    target = NULL, maxResults = NULL, nextToken = NULL) 
+{
+    op <- Operation(name = "ListSigningPlatforms", http_method = "GET", 
+        http_path = "/signing-platforms", paginator = list())
+    input <- list_signing_platforms_input(category = category, 
+        partner = partner, target = target, maxResults = maxResults, 
+        nextToken = nextToken)
+    output <- list_signing_platforms_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists all available signing profiles in your AWS account
+#'
+#' Lists all available signing profiles in your AWS account. Returns only profiles with an `ACTIVE` status unless the `includeCanceled` request field is set to `true`. If additional jobs remain to be listed, AWS Signer returns a `nextToken` value. Use this value in subsequent calls to `ListSigningJobs` to fetch the remaining values. You can continue calling `ListSigningJobs` with your `maxResults` parameter and with new values that AWS Signer returns in the `nextToken` parameter until all of your signing jobs have been returned.
+#'
+#' @param includeCanceled Designates whether to include profiles with the status of `CANCELED`.
+#' @param maxResults The maximum number of profiles to be returned.
+#' @param nextToken Value for specifying the next set of paginated results to return. After you receive a response with truncated results, use this parameter in a subsequent request. Set it to the value of `nextToken` from the response that you just received.
+#'
+#' @examples
+#'
+#' @export
+list_signing_profiles <- function (includeCanceled = NULL, maxResults = NULL, 
+    nextToken = NULL) 
+{
+    op <- Operation(name = "ListSigningProfiles", http_method = "GET", 
+        http_path = "/signing-profiles", paginator = list())
+    input <- list_signing_profiles_input(includeCanceled = includeCanceled, 
+        maxResults = maxResults, nextToken = nextToken)
+    output <- list_signing_profiles_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a signing profile
+#'
+#' Creates a signing profile. A signing profile is an AWS Signer template that can be used to carry out a pre-defined signing job. For more information, see <http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html>
+#'
+#' @param profileName The name of the signing profile to be created.
+#' @param signingMaterial The AWS Certificate Manager certificate that will be used to sign code with the new signing profile.
+#' @param platformId The ID of the signing profile to be created.
+#' @param overrides A subfield of `platform`. This specifies any different configuration options that you want to apply to the chosen platform (such as a different `hash-algorithm` or `signing-algorithm`).
+#' @param signingParameters Map of key-value pairs for signing. These can include any information that you want to use during signing.
+#'
+#' @examples
+#'
+#' @export
+put_signing_profile <- function (profileName, signingMaterial, 
+    platformId, overrides = NULL, signingParameters = NULL) 
+{
+    op <- Operation(name = "PutSigningProfile", http_method = "PUT", 
+        http_path = "/signing-profiles/{profileName}", paginator = list())
+    input <- put_signing_profile_input(profileName = profileName, 
+        signingMaterial = signingMaterial, platformId = platformId, 
+        overrides = overrides, signingParameters = signingParameters)
+    output <- put_signing_profile_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Initiates a signing job to be performed on the code provided
+#'
+#' Initiates a signing job to be performed on the code provided. Signing jobs are viewable by the `ListSigningJobs` operation for two years after they are performed. Note the following requirements:
+#' 
+#' -   You must create an Amazon S3 source bucket. For more information, see [Create a Bucket](http://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon S3 Getting Started Guide*.
+#' 
+#' -   Your S3 source bucket must be version enabled.
+#' 
+#' -   You must create an S3 destination bucket. AWS Signer uses your S3 destination bucket to write your signed code.
+#' 
+#' -   You specify the name of the source and destination buckets when calling the `StartSigningJob` operation.
+#' 
+#' -   You must also specify a request token that identifies your request to AWS Signer.
+#' 
+#' You can call the DescribeSigningJob and the ListSigningJobs actions after you call `StartSigningJob`.
+#' 
+#' For a Java example that shows how to use this action, see <http://docs.aws.amazon.com/acm/latest/userguide/>
+#'
+#' @param source The S3 bucket that contains the object to sign or a BLOB that contains your raw code.
+#' @param destination The S3 bucket in which to save your signed object. The destination contains the name of your bucket and an optional prefix.
+#' @param clientRequestToken String that identifies the signing request. All calls after the first that use this token return the same response as the first call.
+#' @param profileName The name of the signing profile.
+#'
+#' @examples
+#'
+#' @export
+start_signing_job <- function (source, destination, clientRequestToken, 
+    profileName = NULL) 
+{
+    op <- Operation(name = "StartSigningJob", http_method = "POST", 
+        http_path = "/signing-jobs", paginator = list())
+    input <- start_signing_job_input(source = source, destination = destination, 
+        clientRequestToken = clientRequestToken, profileName = profileName)
+    output <- start_signing_job_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

@@ -1,0 +1,1024 @@
+#' Associates the specified fleet with the specified stack
+#'
+#' Associates the specified fleet with the specified stack.
+#'
+#' @param FleetName The name of the fleet.
+#' @param StackName The name of the stack.
+#'
+#' @examples
+#'
+#' @export
+associate_fleet <- function (FleetName, StackName) 
+{
+    op <- Operation(name = "AssociateFleet", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- associate_fleet_input(FleetName = FleetName, StackName = StackName)
+    output <- associate_fleet_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Copies the image within the same region or to a new region within the same AWS account
+#'
+#' Copies the image within the same region or to a new region within the same AWS account. Note that any tags you added to the image will not be copied.
+#'
+#' @param SourceImageName The name of the image to copy.
+#' @param DestinationImageName The name that the image will have when it is copied to the destination.
+#' @param DestinationRegion The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.
+#' @param DestinationImageDescription The description that the image will have when it is copied to the destination.
+#'
+#' @examples
+#'
+#' @export
+copy_image <- function (SourceImageName, DestinationImageName, 
+    DestinationRegion, DestinationImageDescription = NULL) 
+{
+    op <- Operation(name = "CopyImage", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- copy_image_input(SourceImageName = SourceImageName, 
+        DestinationImageName = DestinationImageName, DestinationRegion = DestinationRegion, 
+        DestinationImageDescription = DestinationImageDescription)
+    output <- copy_image_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a Directory Config object in AppStream 2
+#'
+#' Creates a Directory Config object in AppStream 2.0. This object includes the information required to join streaming instances to an Active Directory domain.
+#'
+#' @param DirectoryName The fully qualified name of the directory (for example, corp.example.com).
+#' @param OrganizationalUnitDistinguishedNames The distinguished names of the organizational units for computer accounts.
+#' @param ServiceAccountCredentials The credentials for the service account used by the streaming instance to connect to the directory.
+#'
+#' @examples
+#'
+#' @export
+create_directory_config <- function (DirectoryName, OrganizationalUnitDistinguishedNames, 
+    ServiceAccountCredentials) 
+{
+    op <- Operation(name = "CreateDirectoryConfig", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_directory_config_input(DirectoryName = DirectoryName, 
+        OrganizationalUnitDistinguishedNames = OrganizationalUnitDistinguishedNames, 
+        ServiceAccountCredentials = ServiceAccountCredentials)
+    output <- create_directory_config_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a fleet
+#'
+#' Creates a fleet. A fleet consists of streaming instances that run a specified image.
+#'
+#' @param Name A unique name for the fleet.
+#' @param InstanceType The instance type to use when launching fleet instances. The following instance types are available:
+#' 
+#' -   stream.standard.medium
+#' 
+#' -   stream.standard.large
+#' 
+#' -   stream.compute.large
+#' 
+#' -   stream.compute.xlarge
+#' 
+#' -   stream.compute.2xlarge
+#' 
+#' -   stream.compute.4xlarge
+#' 
+#' -   stream.compute.8xlarge
+#' 
+#' -   stream.memory.large
+#' 
+#' -   stream.memory.xlarge
+#' 
+#' -   stream.memory.2xlarge
+#' 
+#' -   stream.memory.4xlarge
+#' 
+#' -   stream.memory.8xlarge
+#' 
+#' -   stream.graphics-design.large
+#' 
+#' -   stream.graphics-design.xlarge
+#' 
+#' -   stream.graphics-design.2xlarge
+#' 
+#' -   stream.graphics-design.4xlarge
+#' 
+#' -   stream.graphics-desktop.2xlarge
+#' 
+#' -   stream.graphics-pro.4xlarge
+#' 
+#' -   stream.graphics-pro.8xlarge
+#' 
+#' -   stream.graphics-pro.16xlarge
+#' @param ComputeCapacity The desired capacity for the fleet.
+#' @param ImageName The name of the image used to create the fleet.
+#' @param ImageArn The ARN of the public, private, or shared image to use.
+#' @param FleetType The fleet type.
+#' 
+#' ALWAYS\_ON
+#' 
+#' :   Provides users with instant-on access to their apps. You are charged for all running instances in your fleet, even if no users are streaming apps.
+#' 
+#' ON\_DEMAND
+#' 
+#' :   Provide users with access to applications after they connect, which takes one to two minutes. You are charged for instance streaming when users are connected and a small hourly fee for instances that are not streaming apps.
+#' @param VpcConfig The VPC configuration for the fleet.
+#' @param MaxUserDurationInSeconds The maximum time that a streaming session can run, in seconds. Specify a value between 600 and 57600.
+#' @param DisconnectTimeoutInSeconds The time after disconnection when a session is considered to have ended, in seconds. If a user who was disconnected reconnects within this time interval, the user is connected to their previous session. Specify a value between 60 and 57600.
+#' @param Description The description for display.
+#' @param DisplayName The fleet name for display.
+#' @param EnableDefaultInternetAccess Enables or disables default internet access for the fleet.
+#' @param DomainJoinInfo The information needed to join a Microsoft Active Directory domain.
+#'
+#' @examples
+#'
+#' @export
+create_fleet <- function (Name, InstanceType, ComputeCapacity, 
+    ImageName = NULL, ImageArn = NULL, FleetType = NULL, VpcConfig = NULL, 
+    MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, 
+    Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, 
+    DomainJoinInfo = NULL) 
+{
+    op <- Operation(name = "CreateFleet", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_fleet_input(Name = Name, InstanceType = InstanceType, 
+        ComputeCapacity = ComputeCapacity, ImageName = ImageName, 
+        ImageArn = ImageArn, FleetType = FleetType, VpcConfig = VpcConfig, 
+        MaxUserDurationInSeconds = MaxUserDurationInSeconds, 
+        DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, 
+        Description = Description, DisplayName = DisplayName, 
+        EnableDefaultInternetAccess = EnableDefaultInternetAccess, 
+        DomainJoinInfo = DomainJoinInfo)
+    output <- create_fleet_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates an image builder
+#'
+#' Creates an image builder. An image builder is a virtual machine that is used to create an image.
+#' 
+#' The initial state of the builder is `PENDING`. When it is ready, the state is `RUNNING`.
+#'
+#' @param Name A unique name for the image builder.
+#' @param InstanceType The instance type to use when launching the image builder.
+#' @param ImageName The name of the image used to create the builder.
+#' @param ImageArn The ARN of the public, private, or shared image to use.
+#' @param Description The description for display.
+#' @param DisplayName The image builder name for display.
+#' @param VpcConfig The VPC configuration for the image builder. You can specify only one subnet.
+#' @param EnableDefaultInternetAccess Enables or disables default internet access for the image builder.
+#' @param DomainJoinInfo The information needed to join a Microsoft Active Directory domain.
+#' @param AppstreamAgentVersion The version of the AppStream 2.0 agent to use for this image builder. To use the latest version of the AppStream 2.0 agent, specify &#91;LATEST&#93;.
+#'
+#' @examples
+#'
+#' @export
+create_image_builder <- function (Name, InstanceType, ImageName = NULL, 
+    ImageArn = NULL, Description = NULL, DisplayName = NULL, 
+    VpcConfig = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, 
+    AppstreamAgentVersion = NULL) 
+{
+    op <- Operation(name = "CreateImageBuilder", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_image_builder_input(Name = Name, InstanceType = InstanceType, 
+        ImageName = ImageName, ImageArn = ImageArn, Description = Description, 
+        DisplayName = DisplayName, VpcConfig = VpcConfig, EnableDefaultInternetAccess = EnableDefaultInternetAccess, 
+        DomainJoinInfo = DomainJoinInfo, AppstreamAgentVersion = AppstreamAgentVersion)
+    output <- create_image_builder_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a URL to start an image builder streaming session
+#'
+#' Creates a URL to start an image builder streaming session.
+#'
+#' @param Name The name of the image builder.
+#' @param Validity The time that the streaming URL will be valid, in seconds. Specify a value between 1 and 604800 seconds. The default is 3600 seconds.
+#'
+#' @examples
+#'
+#' @export
+create_image_builder_streaming_url <- function (Name, Validity = NULL) 
+{
+    op <- Operation(name = "CreateImageBuilderStreamingURL", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- create_image_builder_streaming_url_input(Name = Name, 
+        Validity = Validity)
+    output <- create_image_builder_streaming_url_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a stack to start streaming applications to users
+#'
+#' Creates a stack to start streaming applications to users. A stack consists of an associated fleet, user access policies, and storage configurations.
+#'
+#' @param Name The name of the stack.
+#' @param Description The description for display.
+#' @param DisplayName The stack name for display.
+#' @param StorageConnectors The storage connectors to enable.
+#' @param RedirectURL The URL that users are redirected to after their streaming session ends.
+#' @param FeedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.
+#' @param UserSettings The actions that are enabled or disabled for users during their streaming sessions. By default, these actions are enabled.
+#' @param ApplicationSettings The persistent application settings for users of a stack. When these settings are enabled, changes that users make to applications and Windows settings are automatically saved after each session and applied to the next session.
+#'
+#' @examples
+#'
+#' @export
+create_stack <- function (Name, Description = NULL, DisplayName = NULL, 
+    StorageConnectors = NULL, RedirectURL = NULL, FeedbackURL = NULL, 
+    UserSettings = NULL, ApplicationSettings = NULL) 
+{
+    op <- Operation(name = "CreateStack", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_stack_input(Name = Name, Description = Description, 
+        DisplayName = DisplayName, StorageConnectors = StorageConnectors, 
+        RedirectURL = RedirectURL, FeedbackURL = FeedbackURL, 
+        UserSettings = UserSettings, ApplicationSettings = ApplicationSettings)
+    output <- create_stack_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a temporary URL to start an AppStream 2
+#'
+#' Creates a temporary URL to start an AppStream 2.0 streaming session for the specified user. A streaming URL enables application streaming to be tested without user setup.
+#'
+#' @param StackName The name of the stack.
+#' @param FleetName The name of the fleet.
+#' @param UserId The ID of the user.
+#' @param ApplicationId The name of the application to launch after the session starts. This is the name that you specified as **Name** in the Image Assistant.
+#' @param Validity The time that the streaming URL will be valid, in seconds. Specify a value between 1 and 604800 seconds. The default is 60 seconds.
+#' @param SessionContext The session context. For more information, see [Session Context](http://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters) in the *Amazon AppStream 2.0 Developer Guide*.
+#'
+#' @examples
+#'
+#' @export
+create_streaming_url <- function (StackName, FleetName, UserId, 
+    ApplicationId = NULL, Validity = NULL, SessionContext = NULL) 
+{
+    op <- Operation(name = "CreateStreamingURL", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_streaming_url_input(StackName = StackName, 
+        FleetName = FleetName, UserId = UserId, ApplicationId = ApplicationId, 
+        Validity = Validity, SessionContext = SessionContext)
+    output <- create_streaming_url_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified Directory Config object from AppStream 2
+#'
+#' Deletes the specified Directory Config object from AppStream 2.0. This object includes the information required to join streaming instances to an Active Directory domain.
+#'
+#' @param DirectoryName The name of the directory configuration.
+#'
+#' @examples
+#'
+#' @export
+delete_directory_config <- function (DirectoryName) 
+{
+    op <- Operation(name = "DeleteDirectoryConfig", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_directory_config_input(DirectoryName = DirectoryName)
+    output <- delete_directory_config_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified fleet
+#'
+#' Deletes the specified fleet.
+#'
+#' @param Name The name of the fleet.
+#'
+#' @examples
+#'
+#' @export
+delete_fleet <- function (Name) 
+{
+    op <- Operation(name = "DeleteFleet", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_fleet_input(Name = Name)
+    output <- delete_fleet_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified image
+#'
+#' Deletes the specified image. You cannot delete an image when it is in use. After you delete an image, you cannot provision new capacity using the image.
+#'
+#' @param Name The name of the image.
+#'
+#' @examples
+#'
+#' @export
+delete_image <- function (Name) 
+{
+    op <- Operation(name = "DeleteImage", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_image_input(Name = Name)
+    output <- delete_image_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified image builder and releases the capacity
+#'
+#' Deletes the specified image builder and releases the capacity.
+#'
+#' @param Name The name of the image builder.
+#'
+#' @examples
+#'
+#' @export
+delete_image_builder <- function (Name) 
+{
+    op <- Operation(name = "DeleteImageBuilder", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_image_builder_input(Name = Name)
+    output <- delete_image_builder_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes permissions for the specified private image
+#'
+#' Deletes permissions for the specified private image. After you delete permissions for an image, AWS accounts to which you previously granted these permissions can no longer use the image.
+#'
+#' @param Name The name of the private image.
+#' @param SharedAccountId The 12-digit ID of the AWS account for which to delete image permissions.
+#'
+#' @examples
+#'
+#' @export
+delete_image_permissions <- function (Name, SharedAccountId) 
+{
+    op <- Operation(name = "DeleteImagePermissions", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_image_permissions_input(Name = Name, SharedAccountId = SharedAccountId)
+    output <- delete_image_permissions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified stack
+#'
+#' Deletes the specified stack. After the stack is deleted, the application streaming environment provided by the stack is no longer available to users. Also, any reservations made for application streaming sessions for the stack are released.
+#'
+#' @param Name The name of the stack.
+#'
+#' @examples
+#'
+#' @export
+delete_stack <- function (Name) 
+{
+    op <- Operation(name = "DeleteStack", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_stack_input(Name = Name)
+    output <- delete_stack_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a list that describes one or more specified Directory Config objects for AppStream 2
+#'
+#' Retrieves a list that describes one or more specified Directory Config objects for AppStream 2.0, if the names for these objects are provided. Otherwise, all Directory Config objects in the account are described. These objects include the information required to join streaming instances to an Active Directory domain.
+#' 
+#' Although the response syntax in this topic includes the account password, this password is not returned in the actual response.
+#'
+#' @param DirectoryNames The directory names.
+#' @param MaxResults The maximum size of each page of results.
+#' @param NextToken The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.
+#'
+#' @examples
+#'
+#' @export
+describe_directory_configs <- function (DirectoryNames = NULL, 
+    MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeDirectoryConfigs", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_directory_configs_input(DirectoryNames = DirectoryNames, 
+        MaxResults = MaxResults, NextToken = NextToken)
+    output <- describe_directory_configs_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a list that describes one or more specified fleets, if the fleet names are provided
+#'
+#' Retrieves a list that describes one or more specified fleets, if the fleet names are provided. Otherwise, all fleets in the account are described.
+#'
+#' @param Names The names of the fleets to describe.
+#' @param NextToken The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.
+#'
+#' @examples
+#'
+#' @export
+describe_fleets <- function (Names = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeFleets", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_fleets_input(Names = Names, NextToken = NextToken)
+    output <- describe_fleets_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a list that describes one or more specified image builders, if the image builder names are provided
+#'
+#' Retrieves a list that describes one or more specified image builders, if the image builder names are provided. Otherwise, all image builders in the account are described.
+#'
+#' @param Names The names of the image builders to describe.
+#' @param MaxResults The maximum size of each page of results.
+#' @param NextToken The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.
+#'
+#' @examples
+#'
+#' @export
+describe_image_builders <- function (Names = NULL, MaxResults = NULL, 
+    NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeImageBuilders", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_image_builders_input(Names = Names, MaxResults = MaxResults, 
+        NextToken = NextToken)
+    output <- describe_image_builders_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a list that describes the permissions for shared AWS account IDs on a private image that you own
+#'
+#' Retrieves a list that describes the permissions for shared AWS account IDs on a private image that you own.
+#'
+#' @param Name The name of the private image for which to describe permissions. The image must be one that you own.
+#' @param MaxResults The maximum size of each results page.
+#' @param SharedAwsAccountIds The 12-digit ID of one or more AWS accounts with which the image is shared.
+#' @param NextToken The pagination token to use to retrieve the next page of results. If this value is empty, only the first page is retrieved.
+#'
+#' @examples
+#'
+#' @export
+describe_image_permissions <- function (Name, MaxResults = NULL, 
+    SharedAwsAccountIds = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeImagePermissions", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_image_permissions_input(Name = Name, MaxResults = MaxResults, 
+        SharedAwsAccountIds = SharedAwsAccountIds, NextToken = NextToken)
+    output <- describe_image_permissions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a list that describes one or more specified images, if the image names or image ARNs are provided
+#'
+#' Retrieves a list that describes one or more specified images, if the image names or image ARNs are provided. Otherwise, all images in the account are described.
+#'
+#' @param Names The names of the public or private images to describe.
+#' @param Arns The ARNs of the public, private, and shared images to describe.
+#' @param Type The type of image (public, private, or shared) to describe.
+#' @param NextToken The pagination token to use to retrieve the next page of results. If this value is empty, only the first page is retrieved.
+#' @param MaxResults The maximum size of each page of results.
+#'
+#' @examples
+#'
+#' @export
+describe_images <- function (Names = NULL, Arns = NULL, Type = NULL, 
+    NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "DescribeImages", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_images_input(Names = Names, Arns = Arns, 
+        Type = Type, NextToken = NextToken, MaxResults = MaxResults)
+    output <- describe_images_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a list that describes the streaming sessions for a specified stack and fleet
+#'
+#' Retrieves a list that describes the streaming sessions for a specified stack and fleet. If a user ID is provided for the stack and fleet, only streaming sessions for that user are described. If an authentication type is not provided, the default is to authenticate users using a streaming URL.
+#'
+#' @param StackName The name of the stack. This value is case-sensitive.
+#' @param FleetName The name of the fleet. This value is case-sensitive.
+#' @param UserId The user ID.
+#' @param NextToken The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.
+#' @param Limit The size of each page of results. The default value is 20 and the maximum value is 50.
+#' @param AuthenticationType The authentication method. Specify `API` for a user authenticated using a streaming URL or `SAML` for a SAML federated user. The default is to authenticate users using a streaming URL.
+#'
+#' @examples
+#'
+#' @export
+describe_sessions <- function (StackName, FleetName, UserId = NULL, 
+    NextToken = NULL, Limit = NULL, AuthenticationType = NULL) 
+{
+    op <- Operation(name = "DescribeSessions", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_sessions_input(StackName = StackName, FleetName = FleetName, 
+        UserId = UserId, NextToken = NextToken, Limit = Limit, 
+        AuthenticationType = AuthenticationType)
+    output <- describe_sessions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a list that describes one or more specified stacks, if the stack names are provided
+#'
+#' Retrieves a list that describes one or more specified stacks, if the stack names are provided. Otherwise, all stacks in the account are described.
+#'
+#' @param Names The names of the stacks to describe.
+#' @param NextToken The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.
+#'
+#' @examples
+#'
+#' @export
+describe_stacks <- function (Names = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeStacks", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_stacks_input(Names = Names, NextToken = NextToken)
+    output <- describe_stacks_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Disassociates the specified fleet from the specified stack
+#'
+#' Disassociates the specified fleet from the specified stack.
+#'
+#' @param FleetName The name of the fleet.
+#' @param StackName The name of the stack.
+#'
+#' @examples
+#'
+#' @export
+disassociate_fleet <- function (FleetName, StackName) 
+{
+    op <- Operation(name = "DisassociateFleet", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- disassociate_fleet_input(FleetName = FleetName, 
+        StackName = StackName)
+    output <- disassociate_fleet_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Immediately stops the specified streaming session
+#'
+#' Immediately stops the specified streaming session.
+#'
+#' @param SessionId The ID of the streaming session.
+#'
+#' @examples
+#'
+#' @export
+expire_session <- function (SessionId) 
+{
+    op <- Operation(name = "ExpireSession", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- expire_session_input(SessionId = SessionId)
+    output <- expire_session_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the name of the fleet that is associated with the specified stack
+#'
+#' Retrieves the name of the fleet that is associated with the specified stack.
+#'
+#' @param StackName The name of the stack.
+#' @param NextToken The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.
+#'
+#' @examples
+#'
+#' @export
+list_associated_fleets <- function (StackName, NextToken = NULL) 
+{
+    op <- Operation(name = "ListAssociatedFleets", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_associated_fleets_input(StackName = StackName, 
+        NextToken = NextToken)
+    output <- list_associated_fleets_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the name of the stack with which the specified fleet is associated
+#'
+#' Retrieves the name of the stack with which the specified fleet is associated.
+#'
+#' @param FleetName The name of the fleet.
+#' @param NextToken The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.
+#'
+#' @examples
+#'
+#' @export
+list_associated_stacks <- function (FleetName, NextToken = NULL) 
+{
+    op <- Operation(name = "ListAssociatedStacks", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_associated_stacks_input(FleetName = FleetName, 
+        NextToken = NextToken)
+    output <- list_associated_stacks_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a list of all tags for the specified AppStream 2
+#'
+#' Retrieves a list of all tags for the specified AppStream 2.0 resource. You can tag AppStream 2.0 image builders, images, fleets, and stacks.
+#' 
+#' For more information about tags, see [Tagging Your Resources](http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html) in the *Amazon AppStream 2.0 Developer Guide*.
+#'
+#' @param ResourceArn The Amazon Resource Name (ARN) of the resource.
+#'
+#' @examples
+#'
+#' @export
+list_tags_for_resource <- function (ResourceArn) 
+{
+    op <- Operation(name = "ListTagsForResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_tags_for_resource_input(ResourceArn = ResourceArn)
+    output <- list_tags_for_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Starts the specified fleet
+#'
+#' Starts the specified fleet.
+#'
+#' @param Name The name of the fleet.
+#'
+#' @examples
+#'
+#' @export
+start_fleet <- function (Name) 
+{
+    op <- Operation(name = "StartFleet", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- start_fleet_input(Name = Name)
+    output <- start_fleet_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Starts the specified image builder
+#'
+#' Starts the specified image builder.
+#'
+#' @param Name The name of the image builder.
+#' @param AppstreamAgentVersion The version of the AppStream 2.0 agent to use for this image builder. To use the latest version of the AppStream 2.0 agent, specify &#91;LATEST&#93;.
+#'
+#' @examples
+#'
+#' @export
+start_image_builder <- function (Name, AppstreamAgentVersion = NULL) 
+{
+    op <- Operation(name = "StartImageBuilder", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- start_image_builder_input(Name = Name, AppstreamAgentVersion = AppstreamAgentVersion)
+    output <- start_image_builder_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Stops the specified fleet
+#'
+#' Stops the specified fleet.
+#'
+#' @param Name The name of the fleet.
+#'
+#' @examples
+#'
+#' @export
+stop_fleet <- function (Name) 
+{
+    op <- Operation(name = "StopFleet", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- stop_fleet_input(Name = Name)
+    output <- stop_fleet_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Stops the specified image builder
+#'
+#' Stops the specified image builder.
+#'
+#' @param Name The name of the image builder.
+#'
+#' @examples
+#'
+#' @export
+stop_image_builder <- function (Name) 
+{
+    op <- Operation(name = "StopImageBuilder", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- stop_image_builder_input(Name = Name)
+    output <- stop_image_builder_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Adds or overwrites one or more tags for the specified AppStream 2
+#'
+#' Adds or overwrites one or more tags for the specified AppStream 2.0 resource. You can tag AppStream 2.0 image builders, images, fleets, and stacks.
+#' 
+#' Each tag consists of a key and an optional value. If a resource already has a tag with the same key, this operation updates its value.
+#' 
+#' To list the current tags for your resources, use ListTagsForResource. To disassociate tags from your resources, use UntagResource.
+#' 
+#' For more information about tags, see [Tagging Your Resources](http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html) in the *Amazon AppStream 2.0 Developer Guide*.
+#'
+#' @param ResourceArn The Amazon Resource Name (ARN) of the resource.
+#' @param Tags The tags to associate. A tag is a key-value pair (the value is optional). For example, `Environment=Test`, or, if you do not specify a value, `Environment=`.
+#' 
+#' If you do not specify a value, we set the value to an empty string.
+#'
+#' @examples
+#'
+#' @export
+tag_resource <- function (ResourceArn, Tags) 
+{
+    op <- Operation(name = "TagResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+    output <- tag_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Disassociates one or more specified tags from the specified AppStream 2
+#'
+#' Disassociates one or more specified tags from the specified AppStream 2.0 resource.
+#' 
+#' To list the current tags for your resources, use ListTagsForResource.
+#' 
+#' For more information about tags, see [Tagging Your Resources](http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html) in the *Amazon AppStream 2.0 Developer Guide*.
+#'
+#' @param ResourceArn The Amazon Resource Name (ARN) of the resource.
+#' @param TagKeys The tag keys for the tags to disassociate.
+#'
+#' @examples
+#'
+#' @export
+untag_resource <- function (ResourceArn, TagKeys) 
+{
+    op <- Operation(name = "UntagResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- untag_resource_input(ResourceArn = ResourceArn, 
+        TagKeys = TagKeys)
+    output <- untag_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the specified Directory Config object in AppStream 2
+#'
+#' Updates the specified Directory Config object in AppStream 2.0. This object includes the information required to join streaming instances to an Active Directory domain.
+#'
+#' @param DirectoryName The name of the Directory Config object.
+#' @param OrganizationalUnitDistinguishedNames The distinguished names of the organizational units for computer accounts.
+#' @param ServiceAccountCredentials The credentials for the service account used by the streaming instance to connect to the directory.
+#'
+#' @examples
+#'
+#' @export
+update_directory_config <- function (DirectoryName, OrganizationalUnitDistinguishedNames = NULL, 
+    ServiceAccountCredentials = NULL) 
+{
+    op <- Operation(name = "UpdateDirectoryConfig", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_directory_config_input(DirectoryName = DirectoryName, 
+        OrganizationalUnitDistinguishedNames = OrganizationalUnitDistinguishedNames, 
+        ServiceAccountCredentials = ServiceAccountCredentials)
+    output <- update_directory_config_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the specified fleet
+#'
+#' Updates the specified fleet.
+#' 
+#' If the fleet is in the `STOPPED` state, you can update any attribute except the fleet name. If the fleet is in the `RUNNING` state, you can update the `DisplayName` and `ComputeCapacity` attributes. If the fleet is in the `STARTING` or `STOPPING` state, you can\'t update it.
+#'
+#' @param ImageName The name of the image used to create the fleet.
+#' @param ImageArn The ARN of the public, private, or shared image to use.
+#' @param Name A unique name for the fleet.
+#' @param InstanceType The instance type to use when launching fleet instances. The following instance types are available:
+#' 
+#' -   stream.standard.medium
+#' 
+#' -   stream.standard.large
+#' 
+#' -   stream.compute.large
+#' 
+#' -   stream.compute.xlarge
+#' 
+#' -   stream.compute.2xlarge
+#' 
+#' -   stream.compute.4xlarge
+#' 
+#' -   stream.compute.8xlarge
+#' 
+#' -   stream.memory.large
+#' 
+#' -   stream.memory.xlarge
+#' 
+#' -   stream.memory.2xlarge
+#' 
+#' -   stream.memory.4xlarge
+#' 
+#' -   stream.memory.8xlarge
+#' 
+#' -   stream.graphics-design.large
+#' 
+#' -   stream.graphics-design.xlarge
+#' 
+#' -   stream.graphics-design.2xlarge
+#' 
+#' -   stream.graphics-design.4xlarge
+#' 
+#' -   stream.graphics-desktop.2xlarge
+#' 
+#' -   stream.graphics-pro.4xlarge
+#' 
+#' -   stream.graphics-pro.8xlarge
+#' 
+#' -   stream.graphics-pro.16xlarge
+#' @param ComputeCapacity The desired capacity for the fleet.
+#' @param VpcConfig The VPC configuration for the fleet.
+#' @param MaxUserDurationInSeconds The maximum time that a streaming session can run, in seconds. Specify a value between 600 and 57600.
+#' @param DisconnectTimeoutInSeconds The time after disconnection when a session is considered to have ended, in seconds. If a user who was disconnected reconnects within this time interval, the user is connected to their previous session. Specify a value between 60 and 57600.
+#' @param DeleteVpcConfig Deletes the VPC association for the specified fleet.
+#' @param Description The description for display.
+#' @param DisplayName The fleet name for display.
+#' @param EnableDefaultInternetAccess Enables or disables default internet access for the fleet.
+#' @param DomainJoinInfo The information needed to join a Microsoft Active Directory domain.
+#' @param AttributesToDelete The fleet attributes to delete.
+#'
+#' @examples
+#'
+#' @export
+update_fleet <- function (ImageName = NULL, ImageArn = NULL, 
+    Name = NULL, InstanceType = NULL, ComputeCapacity = NULL, 
+    VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, 
+    DeleteVpcConfig = NULL, Description = NULL, DisplayName = NULL, 
+    EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, 
+    AttributesToDelete = NULL) 
+{
+    op <- Operation(name = "UpdateFleet", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_fleet_input(ImageName = ImageName, ImageArn = ImageArn, 
+        Name = Name, InstanceType = InstanceType, ComputeCapacity = ComputeCapacity, 
+        VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, 
+        DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, 
+        DeleteVpcConfig = DeleteVpcConfig, Description = Description, 
+        DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, 
+        DomainJoinInfo = DomainJoinInfo, AttributesToDelete = AttributesToDelete)
+    output <- update_fleet_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Adds or updates permissions for the specified private image
+#'
+#' Adds or updates permissions for the specified private image.
+#'
+#' @param Name The name of the private image.
+#' @param SharedAccountId The 12-digit ID of the AWS account for which you want add or update image permissions.
+#' @param ImagePermissions The permissions for the image.
+#'
+#' @examples
+#'
+#' @export
+update_image_permissions <- function (Name, SharedAccountId, 
+    ImagePermissions) 
+{
+    op <- Operation(name = "UpdateImagePermissions", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_image_permissions_input(Name = Name, SharedAccountId = SharedAccountId, 
+        ImagePermissions = ImagePermissions)
+    output <- update_image_permissions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the specified fields for the specified stack
+#'
+#' Updates the specified fields for the specified stack.
+#'
+#' @param Name The name of the stack.
+#' @param DisplayName The stack name for display.
+#' @param Description The description for display.
+#' @param StorageConnectors The storage connectors to enable.
+#' @param DeleteStorageConnectors Deletes the storage connectors currently enabled for the stack.
+#' @param RedirectURL The URL that users are redirected to after their streaming session ends.
+#' @param FeedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.
+#' @param AttributesToDelete The stack attributes to delete.
+#' @param UserSettings The actions that are enabled or disabled for users during their streaming sessions. By default, these actions are enabled.
+#' @param ApplicationSettings The persistent application settings for users of a stack. When these settings are enabled, changes that users make to applications and Windows settings are automatically saved after each session and applied to the next session.
+#'
+#' @examples
+#'
+#' @export
+update_stack <- function (Name, DisplayName = NULL, Description = NULL, 
+    StorageConnectors = NULL, DeleteStorageConnectors = NULL, 
+    RedirectURL = NULL, FeedbackURL = NULL, AttributesToDelete = NULL, 
+    UserSettings = NULL, ApplicationSettings = NULL) 
+{
+    op <- Operation(name = "UpdateStack", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_stack_input(Name = Name, DisplayName = DisplayName, 
+        Description = Description, StorageConnectors = StorageConnectors, 
+        DeleteStorageConnectors = DeleteStorageConnectors, RedirectURL = RedirectURL, 
+        FeedbackURL = FeedbackURL, AttributesToDelete = AttributesToDelete, 
+        UserSettings = UserSettings, ApplicationSettings = ApplicationSettings)
+    output <- update_stack_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

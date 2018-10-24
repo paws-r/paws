@@ -1,0 +1,279 @@
+#' Sets the AWS Firewall Manager administrator account
+#'
+#' Sets the AWS Firewall Manager administrator account. AWS Firewall Manager must be associated with the master account your AWS organization or associated with a member account that has the appropriate permissions. If the account ID that you submit is not an AWS Organizations master account, AWS Firewall Manager will set the appropriate permissions for the given member account.
+#' 
+#' The account that you associate with AWS Firewall Manager is called the AWS Firewall Manager administrator account.
+#'
+#' @param AdminAccount The AWS account ID to associate with AWS Firewall Manager as the AWS Firewall Manager administrator account. This can be an AWS Organizations master account or a member account. For more information about AWS Organizations and master accounts, see [Managing the AWS Accounts in Your Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html).
+#'
+#' @examples
+#'
+#' @export
+associate_admin_account <- function (AdminAccount) 
+{
+    op <- Operation(name = "AssociateAdminAccount", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- associate_admin_account_input(AdminAccount = AdminAccount)
+    output <- associate_admin_account_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes an AWS Firewall Manager association with the IAM role and the Amazon Simple Notification Service (SNS) topic that is used to record AWS Firewall Manager SNS logs
+#'
+#' Deletes an AWS Firewall Manager association with the IAM role and the Amazon Simple Notification Service (SNS) topic that is used to record AWS Firewall Manager SNS logs.
+#'
+#' @examples
+#'
+#' @export
+delete_notification_channel <- function () 
+{
+    op <- Operation(name = "DeleteNotificationChannel", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_notification_channel_input()
+    output <- delete_notification_channel_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Permanently deletes an AWS Firewall Manager policy
+#'
+#' Permanently deletes an AWS Firewall Manager policy.
+#'
+#' @param PolicyId The ID of the policy that you want to delete. `PolicyId` is returned by `PutPolicy` and by `ListPolicies`.
+#'
+#' @examples
+#'
+#' @export
+delete_policy <- function (PolicyId) 
+{
+    op <- Operation(name = "DeletePolicy", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_policy_input(PolicyId = PolicyId)
+    output <- delete_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Disassociates the account that has been set as the AWS Firewall Manager administrator account
+#'
+#' Disassociates the account that has been set as the AWS Firewall Manager administrator account. You will need to submit an `AssociateAdminAccount` request to set a new account as the AWS Firewall administrator.
+#'
+#' @examples
+#'
+#' @export
+disassociate_admin_account <- function () 
+{
+    op <- Operation(name = "DisassociateAdminAccount", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- disassociate_admin_account_input()
+    output <- disassociate_admin_account_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns the AWS Organizations master account that is associated with AWS Firewall Manager as the AWS Firewall Manager administrator
+#'
+#' Returns the AWS Organizations master account that is associated with AWS Firewall Manager as the AWS Firewall Manager administrator.
+#'
+#' @examples
+#'
+#' @export
+get_admin_account <- function () 
+{
+    op <- Operation(name = "GetAdminAccount", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_admin_account_input()
+    output <- get_admin_account_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns detailed compliance information about the specified member account
+#'
+#' Returns detailed compliance information about the specified member account. Details include resources that are in and out of compliance with the specified policy. Resources are considered non-compliant if the specified policy has not been applied to them.
+#'
+#' @param PolicyId The ID of the policy that you want to get the details for. `PolicyId` is returned by `PutPolicy` and by `ListPolicies`.
+#' @param MemberAccount The AWS account that owns the resources that you want to get the details for.
+#'
+#' @examples
+#'
+#' @export
+get_compliance_detail <- function (PolicyId, MemberAccount) 
+{
+    op <- Operation(name = "GetComplianceDetail", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_compliance_detail_input(PolicyId = PolicyId, 
+        MemberAccount = MemberAccount)
+    output <- get_compliance_detail_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns information about the Amazon Simple Notification Service (SNS) topic that is used to record AWS Firewall Manager SNS logs
+#'
+#' Returns information about the Amazon Simple Notification Service (SNS) topic that is used to record AWS Firewall Manager SNS logs.
+#'
+#' @examples
+#'
+#' @export
+get_notification_channel <- function () 
+{
+    op <- Operation(name = "GetNotificationChannel", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_notification_channel_input()
+    output <- get_notification_channel_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns information about the specified AWS Firewall Manager policy
+#'
+#' Returns information about the specified AWS Firewall Manager policy.
+#'
+#' @param PolicyId The ID of the AWS Firewall Manager policy that you want the details for.
+#'
+#' @examples
+#'
+#' @export
+get_policy <- function (PolicyId) 
+{
+    op <- Operation(name = "GetPolicy", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_policy_input(PolicyId = PolicyId)
+    output <- get_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns an array of `PolicyComplianceStatus` objects in the response
+#'
+#' Returns an array of `PolicyComplianceStatus` objects in the response. Use `PolicyComplianceStatus` to get a summary of which member accounts are protected by the specified policy.
+#'
+#' @param PolicyId The ID of the AWS Firewall Manager policy that you want the details for.
+#' @param NextToken If you specify a value for `MaxResults` and you have more `PolicyComplianceStatus` objects than the number that you specify for `MaxResults`, AWS Firewall Manager returns a `NextToken` value in the response that allows you to list another group of `PolicyComplianceStatus` objects. For the second and subsequent `ListComplianceStatus` requests, specify the value of `NextToken` from the previous response to get information about another batch of `PolicyComplianceStatus` objects.
+#' @param MaxResults Specifies the number of `PolicyComplianceStatus` objects that you want AWS Firewall Manager to return for this request. If you have more `PolicyComplianceStatus` objects than the number that you specify for `MaxResults`, the response includes a `NextToken` value that you can use to get another batch of `PolicyComplianceStatus` objects.
+#'
+#' @examples
+#'
+#' @export
+list_compliance_status <- function (PolicyId, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- Operation(name = "ListComplianceStatus", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_compliance_status_input(PolicyId = PolicyId, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_compliance_status_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a `MemberAccounts` object that lists the member accounts in the administrator\'s AWS organization
+#'
+#' Returns a `MemberAccounts` object that lists the member accounts in the administrator\'s AWS organization.
+#' 
+#' The `ListMemberAccounts` must be submitted by the account that is set as the AWS Firewall Manager administrator.
+#'
+#' @param NextToken If you specify a value for `MaxResults` and you have more account IDs than the number that you specify for `MaxResults`, AWS Firewall Manager returns a `NextToken` value in the response that allows you to list another group of IDs. For the second and subsequent `ListMemberAccountsRequest` requests, specify the value of `NextToken` from the previous response to get information about another batch of member account IDs.
+#' @param MaxResults Specifies the number of member account IDs that you want AWS Firewall Manager to return for this request. If you have more IDs than the number that you specify for `MaxResults`, the response includes a `NextToken` value that you can use to get another batch of member account IDs. The maximum value for `MaxResults` is 100.
+#'
+#' @examples
+#'
+#' @export
+list_member_accounts <- function (NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "ListMemberAccounts", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_member_accounts_input(NextToken = NextToken, 
+        MaxResults = MaxResults)
+    output <- list_member_accounts_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns an array of `PolicySummary` objects in the response
+#'
+#' Returns an array of `PolicySummary` objects in the response.
+#'
+#' @param NextToken If you specify a value for `MaxResults` and you have more `PolicySummary` objects than the number that you specify for `MaxResults`, AWS Firewall Manager returns a `NextToken` value in the response that allows you to list another group of `PolicySummary` objects. For the second and subsequent `ListPolicies` requests, specify the value of `NextToken` from the previous response to get information about another batch of `PolicySummary` objects.
+#' @param MaxResults Specifies the number of `PolicySummary` objects that you want AWS Firewall Manager to return for this request. If you have more `PolicySummary` objects than the number that you specify for `MaxResults`, the response includes a `NextToken` value that you can use to get another batch of `PolicySummary` objects.
+#'
+#' @examples
+#'
+#' @export
+list_policies <- function (NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "ListPolicies", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_policies_input(NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_policies_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Designates the IAM role and Amazon Simple Notification Service (SNS) topic that AWS Firewall Manager uses to record SNS logs
+#'
+#' Designates the IAM role and Amazon Simple Notification Service (SNS) topic that AWS Firewall Manager uses to record SNS logs.
+#'
+#' @param SnsTopicArn The Amazon Resource Name (ARN) of the SNS topic that collects notifications from AWS Firewall Manager.
+#' @param SnsRoleName The Amazon Resource Name (ARN) of the IAM role that allows Amazon SNS to record AWS Firewall Manager activity.
+#'
+#' @examples
+#'
+#' @export
+put_notification_channel <- function (SnsTopicArn, SnsRoleName) 
+{
+    op <- Operation(name = "PutNotificationChannel", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- put_notification_channel_input(SnsTopicArn = SnsTopicArn, 
+        SnsRoleName = SnsRoleName)
+    output <- put_notification_channel_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates an AWS Firewall Manager policy
+#'
+#' Creates an AWS Firewall Manager policy.
+#'
+#' @param Policy The details of the AWS Firewall Manager policy to be created.
+#'
+#' @examples
+#'
+#' @export
+put_policy <- function (Policy) 
+{
+    op <- Operation(name = "PutPolicy", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- put_policy_input(Policy = Policy)
+    output <- put_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

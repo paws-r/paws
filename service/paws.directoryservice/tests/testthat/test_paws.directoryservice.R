@@ -1,0 +1,19 @@
+test_that("describe_directories", {
+    expect_error(describe_directories(), NA)
+})
+
+test_that("describe_event_topics", {
+    expect_error(describe_event_topics(), NA)
+})
+
+test_that("describe_snapshots", {
+    expect_error(describe_snapshots(), NA)
+})
+
+test_that("describe_trusts", {
+    expect_error(describe_trusts(), NA)
+})
+
+test_that("list_log_subscriptions", {
+    expect_error(list_log_subscriptions(), NA)
+})

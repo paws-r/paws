@@ -1,0 +1,136 @@
+#' Creates an Amazon EKS control plane
+#'
+#' Creates an Amazon EKS control plane.
+#' 
+#' The Amazon EKS control plane consists of control plane instances that run the Kubernetes software, like `etcd` and the API server. The control plane runs in an account managed by AWS, and the Kubernetes API is exposed via the Amazon EKS API server endpoint.
+#' 
+#' Amazon EKS worker nodes run in your AWS account and connect to your cluster\'s control plane via the Kubernetes API server endpoint and a certificate file that is created for your cluster.
+#' 
+#' The cluster control plane is provisioned across multiple Availability Zones and fronted by an Elastic Load Balancing Network Load Balancer. Amazon EKS also provisions elastic network interfaces in your VPC subnets to provide connectivity from the control plane instances to the worker nodes (for example, to support `kubectl exec`, `logs`, and `proxy` data flows).
+#' 
+#' After you create an Amazon EKS cluster, you must configure your Kubernetes tooling to communicate with the API server and launch worker nodes into your cluster. For more information, see [Managing Cluster Authentication](http://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html) and [Launching Amazon EKS Worker Nodes](http://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html)in the *Amazon EKS User Guide*.
+#'
+#' @param name The unique name to give to your cluster.
+#' @param roleArn The Amazon Resource Name (ARN) of the IAM role that provides permissions for Amazon EKS to make calls to other AWS API operations on your behalf. For more information, see [Amazon EKS Service IAM Role](http://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html) in the **Amazon EKS User Guide** .
+#' @param resourcesVpcConfig The VPC subnets and security groups used by the cluster control plane. Amazon EKS VPC resources have specific requirements to work properly with Kubernetes. For more information, see [Cluster VPC Considerations](http://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html) and [Cluster Security Group Considerations](http://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html) in the *Amazon EKS User Guide*. You must specify at least two subnets. You may specify up to 5 security groups, but we recommend that you use a dedicated security group for your cluster control plane.
+#' @param version The desired Kubernetes version for your cluster. If you do not specify a value here, the latest version available in Amazon EKS is used.
+#' @param clientRequestToken Unique, case-sensitive identifier you provide to ensure the idempotency of the request.
+#'
+#' @examples
+#' # The following example creates an Amazon EKS cluster called prod.
+#' create_cluster(
+#'   version = "1.10",
+#'   name = "prod",
+#'   clientRequestToken = "1d2129a1-3d38-460a-9756-e5b91fddb951",
+#'   resourcesVpcConfig = list(
+#'     securityGroupIds = list(
+#'       "sg-6979fe18"
+#'     ),
+#'     subnetIds = list(
+#'       "subnet-6782e71e",
+#'       "subnet-e7e761ac"
+#'     )
+#'   ),
+#'   roleArn = "arn:aws:iam::012345678910:role/eks-service-role-AWSServiceRoleForAmazonEKS-J7ONKE3BQ4PI"
+#' )
+#'
+#' @export
+create_cluster <- function (name, roleArn, resourcesVpcConfig, 
+    version = NULL, clientRequestToken = NULL) 
+{
+    op <- Operation(name = "CreateCluster", http_method = "POST", 
+        http_path = "/clusters", paginator = list())
+    input <- create_cluster_input(name = name, roleArn = roleArn, 
+        resourcesVpcConfig = resourcesVpcConfig, version = version, 
+        clientRequestToken = clientRequestToken)
+    output <- create_cluster_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the Amazon EKS cluster control plane
+#'
+#' Deletes the Amazon EKS cluster control plane.
+#' 
+#' If you have active services in your cluster that are associated with a load balancer, you must delete those services before deleting the cluster so that the load balancers are deleted properly. Otherwise, you can have orphaned resources in your VPC that prevent you from being able to delete the VPC. For more information, see [Deleting a Cluster](http://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html) in the *Amazon EKS User Guide*.
+#'
+#' @param name The name of the cluster to delete.
+#'
+#' @examples
+#' # This example command deletes a cluster named `devel` in your default
+#' # region.
+#' delete_cluster(
+#'   name = "devel"
+#' )
+#'
+#' @export
+delete_cluster <- function (name) 
+{
+    op <- Operation(name = "DeleteCluster", http_method = "DELETE", 
+        http_path = "/clusters/{name}", paginator = list())
+    input <- delete_cluster_input(name = name)
+    output <- delete_cluster_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns descriptive information about an Amazon EKS cluster
+#'
+#' Returns descriptive information about an Amazon EKS cluster.
+#' 
+#' The API server endpoint and certificate authority data returned by this operation are required for `kubelet` and `kubectl` to communicate with your Kubernetes API server. For more information, see [Create a kubeconfig for Amazon EKS](http://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html).
+#' 
+#' The API server endpoint and certificate authority data are not available until the cluster reaches the `ACTIVE` state.
+#'
+#' @param name The name of the cluster to describe.
+#'
+#' @examples
+#' # This example command provides a description of the specified cluster in
+#' # your default region.
+#' describe_cluster(
+#'   name = "devel"
+#' )
+#'
+#' @export
+describe_cluster <- function (name) 
+{
+    op <- Operation(name = "DescribeCluster", http_method = "GET", 
+        http_path = "/clusters/{name}", paginator = list())
+    input <- describe_cluster_input(name = name)
+    output <- describe_cluster_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the Amazon EKS clusters in your AWS account in the specified Region
+#'
+#' Lists the Amazon EKS clusters in your AWS account in the specified Region.
+#'
+#' @param maxResults The maximum number of cluster results returned by `ListClusters` in paginated output. When this parameter is used, `ListClusters` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `ListClusters` request with the returned `nextToken` value. This value can be between 1 and 100. If this parameter is not used, then `ListClusters` returns up to 100 results and a `nextToken` value if applicable.
+#' @param nextToken The `nextToken` value returned from a previous paginated `ListClusters` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value.
+#' 
+#' This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.
+#'
+#' @examples
+#' # This example command lists all of your available clusters in your
+#' # default region.
+#' list_clusters()
+#'
+#' @export
+list_clusters <- function (maxResults = NULL, nextToken = NULL) 
+{
+    op <- Operation(name = "ListClusters", http_method = "GET", 
+        http_path = "/clusters", paginator = list())
+    input <- list_clusters_input(maxResults = maxResults, nextToken = nextToken)
+    output <- list_clusters_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

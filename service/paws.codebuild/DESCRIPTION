@@ -1,0 +1,68 @@
+Package: paws.codebuild
+Title: AWS CodeBuild
+Version: 0.0.0.9000
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut"))
+Description: AWS CodeBuild is a fully managed build service in
+    the cloud. AWS CodeBuild compiles your source code, runs unit tests,
+    and produces artifacts that are ready to deploy. AWS CodeBuild
+    eliminates the need to provision, manage, and scale your own build
+    servers. It provides prepackaged build environments for the most
+    popular programming languages and build tools, such as Apache Maven,
+    Gradle, and more. You can also fully customize build environments in
+    AWS CodeBuild to use your own build tools. AWS CodeBuild scales
+    automatically to meet peak build requests, and you pay only for the
+    build time you consume. For more information about AWS CodeBuild, see
+    the *AWS CodeBuild User Guide*.
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.5.1)
+Imports: 
+    digest,
+    httr,
+    jsonlite,
+    xml2,
+    ini
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1
+Collate: 
+    'struct.R'
+    'handlers.R'
+    'url.R'
+    'net.R'
+    'credential_providers.R'
+    'credentials.R'
+    'client.R'
+    'config.R'
+    'convert.R'
+    'dateutil.R'
+    'defaults.R'
+    'error.R'
+    'handlers_core.R'
+    'handlers_ec2query.R'
+    'handlers_jsonrpc.R'
+    'handlers_query.R'
+    'handlers_rest.R'
+    'handlers_restjson.R'
+    'idempotency.R'
+    'jsonutil.R'
+    'paws.codebuild_interfaces.R'
+    'paws.codebuild_operations.R'
+    'paws.codebuild_package.R'
+    'paws.codebuild_service.R'
+    'populate.R'
+    'populateutil.R'
+    'type.R'
+    'queryutil.R'
+    'request.R'
+    'signer_v4.R'
+    'time.R'
+    'xmlutil.R'

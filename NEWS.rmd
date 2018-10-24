@@ -1,0 +1,12 @@
+---
+output: md_document
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Paws
+
+This is the initial release of the package.

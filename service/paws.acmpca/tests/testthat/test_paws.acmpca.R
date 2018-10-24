@@ -1,0 +1,7 @@
+test_that("list_certificate_authorities", {
+    expect_error(list_certificate_authorities(), NA)
+})
+
+test_that("list_certificate_authorities", {
+    expect_error(list_certificate_authorities(MaxResults = 20), NA)
+})

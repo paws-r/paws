@@ -1,0 +1,408 @@
+#' Authorizes the DDoS Response team (DRT) to access the specified Amazon S3 bucket containing your flow logs
+#'
+#' Authorizes the DDoS Response team (DRT) to access the specified Amazon S3 bucket containing your flow logs. You can associate up to 10 Amazon S3 buckets with your subscription.
+#' 
+#' To use the services of the DRT and make an `AssociateDRTLogBucket` request, you must be subscribed to the [Business Support plan](https://aws.amazon.com/premiumsupport/business-support/) or the [Enterprise Support plan](https://aws.amazon.com/premiumsupport/enterprise-support/).
+#'
+#' @param LogBucket The Amazon S3 bucket that contains your flow logs.
+#'
+#' @examples
+#'
+#' @export
+associate_drt_log_bucket <- function (LogBucket) 
+{
+    op <- Operation(name = "AssociateDRTLogBucket", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- associate_drt_log_bucket_input(LogBucket = LogBucket)
+    output <- associate_drt_log_bucket_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Authorizes the DDoS Response team (DRT), using the specified role, to access your AWS account to assist with DDoS attack mitigation during potential attacks
+#'
+#' Authorizes the DDoS Response team (DRT), using the specified role, to access your AWS account to assist with DDoS attack mitigation during potential attacks. This enables the DRT to inspect your AWS WAF configuration and create or update AWS WAF rules and web ACLs.
+#' 
+#' You can associate only one `RoleArn` with your subscription. If you submit an `AssociateDRTRole` request for an account that already has an associated role, the new `RoleArn` will replace the existing `RoleArn`.
+#' 
+#' Prior to making the `AssociateDRTRole` request, you must attach the [AWSShieldDRTAccessPolicy](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy) managed policy to the role you will specify in the request. For more information see [Attaching and Detaching IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html). The role must also trust the service principal ` drt.shield.amazonaws.com`. For more information, see [IAM JSON Policy Elements: Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html).
+#' 
+#' The DRT will have access only to your AWS WAF and Shield resources. By submitting this request, you authorize the DRT to inspect your AWS WAF and Shield configuration and create and update AWS WAF rules and web ACLs on your behalf. The DRT takes these actions only if explicitly authorized by you.
+#' 
+#' You must have the `iam:PassRole` permission to make an `AssociateDRTRole` request. For more information, see [Granting a User Permissions to Pass a Role to an AWS Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html).
+#' 
+#' To use the services of the DRT and make an `AssociateDRTRole` request, you must be subscribed to the [Business Support plan](https://aws.amazon.com/premiumsupport/business-support/) or the [Enterprise Support plan](https://aws.amazon.com/premiumsupport/enterprise-support/).
+#'
+#' @param RoleArn The Amazon Resource Name (ARN) of the role the DRT will use to access your AWS account.
+#' 
+#' Prior to making the `AssociateDRTRole` request, you must attach the [AWSShieldDRTAccessPolicy](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy) managed policy to this role. For more information see [Attaching and Detaching IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html).
+#'
+#' @examples
+#'
+#' @export
+associate_drt_role <- function (RoleArn) 
+{
+    op <- Operation(name = "AssociateDRTRole", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- associate_drt_role_input(RoleArn = RoleArn)
+    output <- associate_drt_role_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Enables AWS Shield Advanced for a specific AWS resource
+#'
+#' Enables AWS Shield Advanced for a specific AWS resource. The resource can be an Amazon CloudFront distribution, Elastic Load Balancing load balancer, Elastic IP Address, or an Amazon Route 53 hosted zone.
+#' 
+#' You can add protection to only a single resource with each CreateProtection request. If you want to add protection to multiple resources at once, use the [AWS WAF console](https://console.aws.amazon.com/waf/). For more information see [Getting Started with AWS Shield Advanced](https://docs.aws.amazon.com/waf/latest/developerguide/getting-started-ddos.html) and [Add AWS Shield Advanced Protection to more AWS Resources](https://docs.aws.amazon.com/waf/latest/developerguide/configure-new-protection.html).
+#'
+#' @param Name Friendly name for the `Protection` you are creating.
+#' @param ResourceArn The ARN (Amazon Resource Name) of the resource to be protected.
+#' 
+#' The ARN should be in one of the following formats:
+#' 
+#' -   For an Application Load Balancer: `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
+#' 
+#' -   For an Elastic Load Balancer (Classic Load Balancer): `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/load-balancer-name region:account-id:loadbalancer/load-balancer-name `
+#' 
+#' -   For AWS CloudFront distribution: `arn:aws:cloudfront::account-id:distribution/distribution-id account-id:distribution/distribution-id `
+#' 
+#' -   For Amazon Route 53: `arn:aws:route53::account-id:hostedzone/hosted-zone-id account-id:hostedzone/hosted-zone-id `
+#' 
+#' -   For an Elastic IP address: `arn:aws:ec2:region:account-id:eip-allocation/allocation-id region:account-id:eip-allocation/allocation-id `
+#'
+#' @examples
+#'
+#' @export
+create_protection <- function (Name, ResourceArn) 
+{
+    op <- Operation(name = "CreateProtection", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_protection_input(Name = Name, ResourceArn = ResourceArn)
+    output <- create_protection_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Activates AWS Shield Advanced for an account
+#'
+#' Activates AWS Shield Advanced for an account.
+#' 
+#' As part of this request you can specify `EmergencySettings` that automaticaly grant the DDoS response team (DRT) needed permissions to assist you during a suspected DDoS attack. For more information see [Authorize the DDoS Response Team to Create Rules and Web ACLs on Your Behalf](https://docs.aws.amazon.com/waf/latest/developerguide/authorize-DRT.html).
+#' 
+#' When you initally create a subscription, your subscription is set to be automatically renewed at the end of the existing subscription period. You can change this by submitting an `UpdateSubscription` request.
+#'
+#' @examples
+#'
+#' @export
+create_subscription <- function () 
+{
+    op <- Operation(name = "CreateSubscription", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_subscription_input()
+    output <- create_subscription_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes an AWS Shield Advanced Protection
+#'
+#' Deletes an AWS Shield Advanced Protection.
+#'
+#' @param ProtectionId The unique identifier (ID) for the Protection object to be deleted.
+#'
+#' @examples
+#'
+#' @export
+delete_protection <- function (ProtectionId) 
+{
+    op <- Operation(name = "DeleteProtection", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_protection_input(ProtectionId = ProtectionId)
+    output <- delete_protection_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes AWS Shield Advanced from an account
+#'
+#' Removes AWS Shield Advanced from an account. AWS Shield Advanced requires a 1-year subscription commitment. You cannot delete a subscription prior to the completion of that commitment.
+#'
+#' @examples
+#'
+#' @export
+delete_subscription <- function () 
+{
+    op <- Operation(name = "DeleteSubscription", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_subscription_input()
+    output <- delete_subscription_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the details of a DDoS attack
+#'
+#' Describes the details of a DDoS attack.
+#'
+#' @param AttackId The unique identifier (ID) for the attack that to be described.
+#'
+#' @examples
+#'
+#' @export
+describe_attack <- function (AttackId) 
+{
+    op <- Operation(name = "DescribeAttack", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_attack_input(AttackId = AttackId)
+    output <- describe_attack_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns the current role and list of Amazon S3 log buckets used by the DDoS Response team (DRT) to access your AWS account while assisting with attack mitigation
+#'
+#' Returns the current role and list of Amazon S3 log buckets used by the DDoS Response team (DRT) to access your AWS account while assisting with attack mitigation.
+#'
+#' @examples
+#'
+#' @export
+describe_drt_access <- function () 
+{
+    op <- Operation(name = "DescribeDRTAccess", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_drt_access_input()
+    output <- describe_drt_access_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the email addresses that the DRT can use to contact you during a suspected attack
+#'
+#' Lists the email addresses that the DRT can use to contact you during a suspected attack.
+#'
+#' @examples
+#'
+#' @export
+describe_emergency_contact_settings <- function () 
+{
+    op <- Operation(name = "DescribeEmergencyContactSettings", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_emergency_contact_settings_input()
+    output <- describe_emergency_contact_settings_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the details of a Protection object
+#'
+#' Lists the details of a Protection object.
+#'
+#' @param ProtectionId The unique identifier (ID) for the Protection object that is described.
+#'
+#' @examples
+#'
+#' @export
+describe_protection <- function (ProtectionId) 
+{
+    op <- Operation(name = "DescribeProtection", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_protection_input(ProtectionId = ProtectionId)
+    output <- describe_protection_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Provides details about the AWS Shield Advanced subscription for an account
+#'
+#' Provides details about the AWS Shield Advanced subscription for an account.
+#'
+#' @examples
+#'
+#' @export
+describe_subscription <- function () 
+{
+    op <- Operation(name = "DescribeSubscription", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_subscription_input()
+    output <- describe_subscription_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes the DDoS Response team\'s (DRT) access to the specified Amazon S3 bucket containing your flow logs
+#'
+#' Removes the DDoS Response team\'s (DRT) access to the specified Amazon S3 bucket containing your flow logs.
+#' 
+#' To make a `DisassociateDRTLogBucket` request, you must be subscribed to the [Business Support plan](https://aws.amazon.com/premiumsupport/business-support/) or the [Enterprise Support plan](https://aws.amazon.com/premiumsupport/enterprise-support/). However, if you are not subscribed to one of these support plans, but had been previously and had granted the DRT access to your account, you can submit a `DisassociateDRTLogBucket` request to remove this access.
+#'
+#' @param LogBucket The Amazon S3 bucket that contains your flow logs.
+#'
+#' @examples
+#'
+#' @export
+disassociate_drt_log_bucket <- function (LogBucket) 
+{
+    op <- Operation(name = "DisassociateDRTLogBucket", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- disassociate_drt_log_bucket_input(LogBucket = LogBucket)
+    output <- disassociate_drt_log_bucket_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes the DDoS Response team\'s (DRT) access to your AWS account
+#'
+#' Removes the DDoS Response team\'s (DRT) access to your AWS account.
+#' 
+#' To make a `DisassociateDRTRole` request, you must be subscribed to the [Business Support plan](https://aws.amazon.com/premiumsupport/business-support/) or the [Enterprise Support plan](https://aws.amazon.com/premiumsupport/enterprise-support/). However, if you are not subscribed to one of these support plans, but had been previously and had granted the DRT access to your account, you can submit a `DisassociateDRTRole` request to remove this access.
+#'
+#' @examples
+#'
+#' @export
+disassociate_drt_role <- function () 
+{
+    op <- Operation(name = "DisassociateDRTRole", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- disassociate_drt_role_input()
+    output <- disassociate_drt_role_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns the `SubscriptionState`, either `Active` or `Inactive`
+#'
+#' Returns the `SubscriptionState`, either `Active` or `Inactive`.
+#'
+#' @examples
+#'
+#' @export
+get_subscription_state <- function () 
+{
+    op <- Operation(name = "GetSubscriptionState", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_subscription_state_input()
+    output <- get_subscription_state_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns all ongoing DDoS attacks or all DDoS attacks during a specified time period
+#'
+#' Returns all ongoing DDoS attacks or all DDoS attacks during a specified time period.
+#'
+#' @param ResourceArns The ARN (Amazon Resource Name) of the resource that was attacked. If this is left blank, all applicable resources for this account will be included.
+#' @param StartTime The start of the time period for the attacks. This is a `timestamp` type. The sample request above indicates a `number` type because the default used by WAF is Unix time in seconds. However any valid [timestamp format](http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types) is allowed.
+#' @param EndTime The end of the time period for the attacks. This is a `timestamp` type. The sample request above indicates a `number` type because the default used by WAF is Unix time in seconds. However any valid [timestamp format](http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types) is allowed.
+#' @param NextToken The `ListAttacksRequest.NextMarker` value from a previous call to `ListAttacksRequest`. Pass null if this is the first call.
+#' @param MaxResults The maximum number of AttackSummary objects to be returned. If this is left blank, the first 20 results will be returned.
+#'
+#' @examples
+#'
+#' @export
+list_attacks <- function (ResourceArns = NULL, StartTime = NULL, 
+    EndTime = NULL, NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "ListAttacks", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_attacks_input(ResourceArns = ResourceArns, 
+        StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, 
+        MaxResults = MaxResults)
+    output <- list_attacks_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists all Protection objects for the account
+#'
+#' Lists all Protection objects for the account.
+#'
+#' @param NextToken The `ListProtectionsRequest.NextToken` value from a previous call to `ListProtections`. Pass null if this is the first call.
+#' @param MaxResults The maximum number of Protection objects to be returned. If this is left blank the first 20 results will be returned.
+#'
+#' @examples
+#'
+#' @export
+list_protections <- function (NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "ListProtections", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_protections_input(NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_protections_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the details of the list of email addresses that the DRT can use to contact you during a suspected attack
+#'
+#' Updates the details of the list of email addresses that the DRT can use to contact you during a suspected attack.
+#'
+#' @param EmergencyContactList A list of email addresses that the DRT can use to contact you during a suspected attack.
+#'
+#' @examples
+#'
+#' @export
+update_emergency_contact_settings <- function (EmergencyContactList = NULL) 
+{
+    op <- Operation(name = "UpdateEmergencyContactSettings", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- update_emergency_contact_settings_input(EmergencyContactList = EmergencyContactList)
+    output <- update_emergency_contact_settings_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the details of an existing subscription
+#'
+#' Updates the details of an existing subscription. Only enter values for parameters you want to change. Empty parameters are not updated.
+#'
+#' @param AutoRenew When you initally create a subscription, `AutoRenew` is set to `ENABLED`. If `ENABLED`, the subscription will be automatically renewed at the end of the existing subscription period. You can change this by submitting an `UpdateSubscription` request. If the `UpdateSubscription` request does not included a value for `AutoRenew`, the existing value for `AutoRenew` remains unchanged.
+#'
+#' @examples
+#'
+#' @export
+update_subscription <- function (AutoRenew = NULL) 
+{
+    op <- Operation(name = "UpdateSubscription", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_subscription_input(AutoRenew = AutoRenew)
+    output <- update_subscription_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

@@ -1,0 +1,1386 @@
+#' Adds the specified certificate to the specified secure listener
+#'
+#' Adds the specified certificate to the specified secure listener.
+#' 
+#' If the certificate was already added, the call is successful but the certificate is not added again.
+#' 
+#' To list the certificates for your listener, use DescribeListenerCertificates. To remove certificates from your listener, use RemoveListenerCertificates.
+#'
+#' @param ListenerArn The Amazon Resource Name (ARN) of the listener.
+#' @param Certificates The certificate to add. You can specify one certificate per call.
+#'
+#' @examples
+#'
+#' @export
+add_listener_certificates <- function (ListenerArn, Certificates) 
+{
+    op <- Operation(name = "AddListenerCertificates", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- add_listener_certificates_input(ListenerArn = ListenerArn, 
+        Certificates = Certificates)
+    output <- add_listener_certificates_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Adds the specified tags to the specified Elastic Load Balancing resource
+#'
+#' Adds the specified tags to the specified Elastic Load Balancing resource. You can tag your Application Load Balancers, Network Load Balancers, and your target groups.
+#' 
+#' Each tag consists of a key and an optional value. If a resource already has a tag with the same key, `AddTags` updates its value.
+#' 
+#' To list the current tags for your resources, use DescribeTags. To remove tags from your resources, use RemoveTags.
+#'
+#' @param ResourceArns The Amazon Resource Name (ARN) of the resource.
+#' @param Tags The tags. Each resource can have a maximum of 10 tags.
+#'
+#' @examples
+#' # This example adds the specified tags to the specified load balancer.
+#' add_tags(
+#'   ResourceArns = list(
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "project",
+#'       Value = "lima"
+#'     ),
+#'     list(
+#'       Key = "department",
+#'       Value = "digital-media"
+#'     )
+#'   )
+#' )
+#'
+#' @export
+add_tags <- function (ResourceArns, Tags) 
+{
+    op <- Operation(name = "AddTags", http_method = "POST", http_path = "/", 
+        paginator = list())
+    input <- add_tags_input(ResourceArns = ResourceArns, Tags = Tags)
+    output <- add_tags_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a listener for the specified Application Load Balancer or Network Load Balancer
+#'
+#' Creates a listener for the specified Application Load Balancer or Network Load Balancer.
+#' 
+#' To update a listener, use ModifyListener. When you are finished with a listener, you can delete it using DeleteListener. If you are finished with both the listener and the load balancer, you can delete them both using DeleteLoadBalancer.
+#' 
+#' This operation is idempotent, which means that it completes at most one time. If you attempt to create multiple listeners with the same settings, each call succeeds.
+#' 
+#' For more information, see [Listeners for Your Application Load Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html) in the *Application Load Balancers Guide* and [Listeners for Your Network Load Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html) in the *Network Load Balancers Guide*.
+#'
+#' @param LoadBalancerArn The Amazon Resource Name (ARN) of the load balancer.
+#' @param Protocol The protocol for connections from clients to the load balancer. For Application Load Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported protocol is TCP.
+#' @param Port The port on which the load balancer is listening.
+#' @param DefaultActions The actions for the default rule. The rule must include one forward action or one or more fixed-response actions.
+#' 
+#' If the action type is `forward`, you can specify a single target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer or TCP for a Network Load Balancer.
+#' 
+#' &#91;HTTPS listener&#93; If the action type is `authenticate-oidc`, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.
+#' 
+#' &#91;HTTPS listener&#93; If the action type is `authenticate-cognito`, you can use Amazon Cognito to authenticate users as they access your application.
+#' 
+#' &#91;Application Load Balancer&#93; If the action type is `redirect`, you can redirect HTTP and HTTPS requests.
+#' 
+#' &#91;Application Load Balancer&#93; If the action type is `fixed-response`, you can return a custom HTTP response.
+#' @param SslPolicy &#91;HTTPS listeners&#93; The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.
+#' @param Certificates &#91;HTTPS listeners&#93; The default SSL server certificate. You must provide exactly one default certificate. To create a certificate list, use AddListenerCertificates.
+#'
+#' @examples
+#' # This example creates an HTTP listener for the specified load balancer
+#' # that forwards requests to the specified target group.
+#' create_listener(
+#'   DefaultActions = list(
+#'     list(
+#'       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067",
+#'       Type = "forward"
+#'     )
+#'   ),
+#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188",
+#'   Port = 80L,
+#'   Protocol = "HTTP"
+#' )
+#' 
+#' # This example creates an HTTPS listener for the specified load balancer
+#' # that forwards requests to the specified target group. Note that you must
+#' # specify an SSL certificate for an HTTPS listener. You can create and
+#' # manage certificates using AWS Certificate Manager (ACM). Alternatively,
+#' # you can create a certificate using SSL/TLS tools, get the certificate
+#' # signed by a certificate authority (CA), and upload the certificate to
+#' # AWS Identity and Access Management (IAM).
+#' create_listener(
+#'   Certificates = list(
+#'     list(
+#'       CertificateArn = "arn:aws:iam::123456789012:server-certificate/my-server-cert"
+#'     )
+#'   ),
+#'   DefaultActions = list(
+#'     list(
+#'       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067",
+#'       Type = "forward"
+#'     )
+#'   ),
+#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188",
+#'   Port = 443L,
+#'   Protocol = "HTTPS",
+#'   SslPolicy = "ELBSecurityPolicy-2015-05"
+#' )
+#'
+#' @export
+create_listener <- function (LoadBalancerArn, Protocol, Port, 
+    DefaultActions, SslPolicy = NULL, Certificates = NULL) 
+{
+    op <- Operation(name = "CreateListener", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_listener_input(LoadBalancerArn = LoadBalancerArn, 
+        Protocol = Protocol, Port = Port, DefaultActions = DefaultActions, 
+        SslPolicy = SslPolicy, Certificates = Certificates)
+    output <- create_listener_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates an Application Load Balancer or a Network Load Balancer
+#'
+#' Creates an Application Load Balancer or a Network Load Balancer.
+#' 
+#' When you create a load balancer, you can specify security groups, public subnets, IP address type, and tags. Otherwise, you could do so later using SetSecurityGroups, SetSubnets, SetIpAddressType, and AddTags.
+#' 
+#' To create listeners for your load balancer, use CreateListener. To describe your current load balancers, see DescribeLoadBalancers. When you are finished with a load balancer, you can delete it using DeleteLoadBalancer.
+#' 
+#' For limit information, see [Limits for Your Application Load Balancer](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html) in the *Application Load Balancers Guide* and [Limits for Your Network Load Balancer](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html) in the *Network Load Balancers Guide*.
+#' 
+#' This operation is idempotent, which means that it completes at most one time. If you attempt to create multiple load balancers with the same settings, each call succeeds.
+#' 
+#' For more information, see [Application Load Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html) in the *Application Load Balancers Guide* and [Network Load Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html) in the *Network Load Balancers Guide*.
+#'
+#' @param Name The name of the load balancer.
+#' 
+#' This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, must not begin or end with a hyphen, and must not begin with \"internal-\".
+#' @param Subnets The IDs of the public subnets. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings.
+#' 
+#' &#91;Application Load Balancers&#93; You must specify subnets from at least two Availability Zones.
+#' 
+#' &#91;Network Load Balancers&#93; You can specify subnets from one or more Availability Zones.
+#' @param SubnetMappings The IDs of the public subnets. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings.
+#' 
+#' &#91;Application Load Balancers&#93; You must specify subnets from at least two Availability Zones. You cannot specify Elastic IP addresses for your subnets.
+#' 
+#' &#91;Network Load Balancers&#93; You can specify subnets from one or more Availability Zones. You can specify one Elastic IP address per subnet.
+#' @param SecurityGroups &#91;Application Load Balancers&#93; The IDs of the security groups for the load balancer.
+#' @param Scheme The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the internet.
+#' 
+#' The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only route requests from clients with access to the VPC for the load balancer.
+#' 
+#' The default is an Internet-facing load balancer.
+#' @param Tags One or more tags to assign to the load balancer.
+#' @param Type The type of load balancer. The default is `application`.
+#' @param IpAddressType &#91;Application Load Balancers&#93; The type of IP addresses used by the subnets for your load balancer. The possible values are `ipv4` (for IPv4 addresses) and `dualstack` (for IPv4 and IPv6 addresses). Internal load balancers must use `ipv4`.
+#'
+#' @examples
+#' # This example creates an Internet-facing load balancer and enables the
+#' # Availability Zones for the specified subnets.
+#' create_load_balancer(
+#'   Name = "my-load-balancer",
+#'   Subnets = list(
+#'     "subnet-b7d581c0",
+#'     "subnet-8360a9e7"
+#'   )
+#' )
+#' 
+#' # This example creates an internal load balancer and enables the
+#' # Availability Zones for the specified subnets.
+#' create_load_balancer(
+#'   Name = "my-internal-load-balancer",
+#'   Scheme = "internal",
+#'   SecurityGroups = list(),
+#'   Subnets = list(
+#'     "subnet-b7d581c0",
+#'     "subnet-8360a9e7"
+#'   )
+#' )
+#'
+#' @export
+create_load_balancer <- function (Name, Subnets = NULL, SubnetMappings = NULL, 
+    SecurityGroups = NULL, Scheme = NULL, Tags = NULL, Type = NULL, 
+    IpAddressType = NULL) 
+{
+    op <- Operation(name = "CreateLoadBalancer", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_load_balancer_input(Name = Name, Subnets = Subnets, 
+        SubnetMappings = SubnetMappings, SecurityGroups = SecurityGroups, 
+        Scheme = Scheme, Tags = Tags, Type = Type, IpAddressType = IpAddressType)
+    output <- create_load_balancer_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a rule for the specified listener
+#'
+#' Creates a rule for the specified listener. The listener must be associated with an Application Load Balancer.
+#' 
+#' Rules are evaluated in priority order, from the lowest value to the highest value. When the conditions for a rule are met, its actions are performed. If the conditions for no rules are met, the actions for the default rule are performed. For more information, see [Listener Rules](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules) in the *Application Load Balancers Guide*.
+#' 
+#' To view your current rules, use DescribeRules. To update a rule, use ModifyRule. To set the priorities of your rules, use SetRulePriorities. To delete a rule, use DeleteRule.
+#'
+#' @param ListenerArn The Amazon Resource Name (ARN) of the listener.
+#' @param Conditions The conditions. Each condition specifies a field name and a single value.
+#' 
+#' If the field name is `host-header`, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. You can include up to three wildcard characters.
+#' 
+#' -   A-Z, a-z, 0-9
+#' 
+#' -   \- .
+#' 
+#' -   \* (matches 0 or more characters)
+#' 
+#' -   ? (matches exactly 1 character)
+#' 
+#' If the field name is `path-pattern`, you can specify a single path pattern. A path pattern is case-sensitive, can be up to 128 characters in length, and can contain any of the following characters. You can include up to three wildcard characters.
+#' 
+#' -   A-Z, a-z, 0-9
+#' 
+#' -   \_ - . \$ / \~ \" \' @ : +
+#' 
+#' -   & (using &amp;)
+#' 
+#' -   \* (matches 0 or more characters)
+#' 
+#' -   ? (matches exactly 1 character)
+#' @param Priority The rule priority. A listener can\'t have multiple rules with the same priority.
+#' @param Actions The actions. Each rule must include exactly one of the following types of actions: `forward`, `fixed-response`, or `redirect`.
+#' 
+#' If the action type is `forward`, you can specify a single target group.
+#' 
+#' &#91;HTTPS listener&#93; If the action type is `authenticate-oidc`, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.
+#' 
+#' &#91;HTTPS listener&#93; If the action type is `authenticate-cognito`, you can use Amazon Cognito to authenticate users as they access your application.
+#' 
+#' &#91;Application Load Balancer&#93; If the action type is `redirect`, you can redirect HTTP and HTTPS requests.
+#' 
+#' &#91;Application Load Balancer&#93; If the action type is `fixed-response`, you can return a custom HTTP response.
+#'
+#' @examples
+#' # This example creates a rule that forwards requests to the specified
+#' # target group if the URL contains the specified pattern (for example,
+#' # /img/*).
+#' create_rule(
+#'   Actions = list(
+#'     list(
+#'       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067",
+#'       Type = "forward"
+#'     )
+#'   ),
+#'   Conditions = list(
+#'     list(
+#'       Field = "path-pattern",
+#'       Values = list(
+#'         "/img/*"
+#'       )
+#'     )
+#'   ),
+#'   ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2",
+#'   Priority = 10L
+#' )
+#'
+#' @export
+create_rule <- function (ListenerArn, Conditions, Priority, Actions) 
+{
+    op <- Operation(name = "CreateRule", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_rule_input(ListenerArn = ListenerArn, Conditions = Conditions, 
+        Priority = Priority, Actions = Actions)
+    output <- create_rule_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a target group
+#'
+#' Creates a target group.
+#' 
+#' To register targets with the target group, use RegisterTargets. To update the health check settings for the target group, use ModifyTargetGroup. To monitor the health of targets in the target group, use DescribeTargetHealth.
+#' 
+#' To route traffic to the targets in a target group, specify the target group in an action using CreateListener or CreateRule.
+#' 
+#' To delete a target group, use DeleteTargetGroup.
+#' 
+#' This operation is idempotent, which means that it completes at most one time. If you attempt to create multiple target groups with the same settings, each call succeeds.
+#' 
+#' For more information, see [Target Groups for Your Application Load Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html) in the *Application Load Balancers Guide* or [Target Groups for Your Network Load Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html) in the *Network Load Balancers Guide*.
+#'
+#' @param Name The name of the target group.
+#' 
+#' This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
+#' @param Protocol The protocol to use for routing traffic to the targets. For Application Load Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported protocol is TCP.
+#' @param Port The port on which the targets receive traffic. This port is used unless you specify a port override when registering the target.
+#' @param VpcId The identifier of the virtual private cloud (VPC).
+#' @param HealthCheckProtocol The protocol the load balancer uses when performing health checks on targets. The TCP protocol is supported only if the protocol of the target group is TCP. For Application Load Balancers, the default is HTTP. For Network Load Balancers, the default is TCP.
+#' @param HealthCheckPort The port the load balancer uses when performing health checks on targets. The default is `traffic-port`, which is the port on which each target receives traffic from the load balancer.
+#' @param HealthCheckPath &#91;HTTP/HTTPS health checks&#93; The ping path that is the destination on the targets for health checks. The default is /.
+#' @param HealthCheckIntervalSeconds The approximate amount of time, in seconds, between health checks of an individual target. For Application Load Balancers, the range is 5--300 seconds. For Network Load Balancers, the supported values are 10 or 30 seconds. The default is 30 seconds.
+#' @param HealthCheckTimeoutSeconds The amount of time, in seconds, during which no response from a target means a failed health check. For Application Load Balancers, the range is 2--60 seconds and the default is 5 seconds. For Network Load Balancers, this is 10 seconds for TCP and HTTPS health checks and 6 seconds for HTTP health checks.
+#' @param HealthyThresholdCount The number of consecutive health checks successes required before considering an unhealthy target healthy. For Application Load Balancers, the default is 5. For Network Load Balancers, the default is 3.
+#' @param UnhealthyThresholdCount The number of consecutive health check failures required before considering a target unhealthy. For Application Load Balancers, the default is 2. For Network Load Balancers, this value must be the same as the healthy threshold count.
+#' @param Matcher &#91;HTTP/HTTPS health checks&#93; The HTTP codes to use when checking for a successful response from a target.
+#' @param TargetType The type of target that you must specify when registering targets with this target group. The possible values are `instance` (targets are specified by instance ID) or `ip` (targets are specified by IP address). The default is `instance`. You can\'t specify targets for a target group using both instance IDs and IP addresses.
+#' 
+#' If the target type is `ip`, specify IP addresses from the subnets of the virtual private cloud (VPC) for the target group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can\'t specify publicly routable IP addresses.
+#'
+#' @examples
+#' # This example creates a target group that you can use to route traffic to
+#' # targets using HTTP on port 80. This target group uses the default health
+#' # check configuration.
+#' create_target_group(
+#'   Name = "my-targets",
+#'   Port = 80L,
+#'   Protocol = "HTTP",
+#'   VpcId = "vpc-3ac0fb5f"
+#' )
+#'
+#' @export
+create_target_group <- function (Name, Protocol, Port, VpcId, 
+    HealthCheckProtocol = NULL, HealthCheckPort = NULL, HealthCheckPath = NULL, 
+    HealthCheckIntervalSeconds = NULL, HealthCheckTimeoutSeconds = NULL, 
+    HealthyThresholdCount = NULL, UnhealthyThresholdCount = NULL, 
+    Matcher = NULL, TargetType = NULL) 
+{
+    op <- Operation(name = "CreateTargetGroup", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_target_group_input(Name = Name, Protocol = Protocol, 
+        Port = Port, VpcId = VpcId, HealthCheckProtocol = HealthCheckProtocol, 
+        HealthCheckPort = HealthCheckPort, HealthCheckPath = HealthCheckPath, 
+        HealthCheckIntervalSeconds = HealthCheckIntervalSeconds, 
+        HealthCheckTimeoutSeconds = HealthCheckTimeoutSeconds, 
+        HealthyThresholdCount = HealthyThresholdCount, UnhealthyThresholdCount = UnhealthyThresholdCount, 
+        Matcher = Matcher, TargetType = TargetType)
+    output <- create_target_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified listener
+#'
+#' Deletes the specified listener.
+#' 
+#' Alternatively, your listener is deleted when you delete the load balancer to which it is attached, using DeleteLoadBalancer.
+#'
+#' @param ListenerArn The Amazon Resource Name (ARN) of the listener.
+#'
+#' @examples
+#' # This example deletes the specified listener.
+#' delete_listener(
+#'   ListenerArn = "arn:aws:elasticloadbalancing:ua-west-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2"
+#' )
+#'
+#' @export
+delete_listener <- function (ListenerArn) 
+{
+    op <- Operation(name = "DeleteListener", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_listener_input(ListenerArn = ListenerArn)
+    output <- delete_listener_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified Application Load Balancer or Network Load Balancer and its attached listeners
+#'
+#' Deletes the specified Application Load Balancer or Network Load Balancer and its attached listeners.
+#' 
+#' You can\'t delete a load balancer if deletion protection is enabled. If the load balancer does not exist or has already been deleted, the call succeeds.
+#' 
+#' Deleting a load balancer does not affect its registered targets. For example, your EC2 instances continue to run and are still registered to their target groups. If you no longer need these EC2 instances, you can stop or terminate them.
+#'
+#' @param LoadBalancerArn The Amazon Resource Name (ARN) of the load balancer.
+#'
+#' @examples
+#' # This example deletes the specified load balancer.
+#' delete_load_balancer(
+#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188"
+#' )
+#'
+#' @export
+delete_load_balancer <- function (LoadBalancerArn) 
+{
+    op <- Operation(name = "DeleteLoadBalancer", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_load_balancer_input(LoadBalancerArn = LoadBalancerArn)
+    output <- delete_load_balancer_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified rule
+#'
+#' Deletes the specified rule.
+#'
+#' @param RuleArn The Amazon Resource Name (ARN) of the rule.
+#'
+#' @examples
+#' # This example deletes the specified rule.
+#' delete_rule(
+#'   RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2/1291d13826f405c3"
+#' )
+#'
+#' @export
+delete_rule <- function (RuleArn) 
+{
+    op <- Operation(name = "DeleteRule", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_rule_input(RuleArn = RuleArn)
+    output <- delete_rule_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified target group
+#'
+#' Deletes the specified target group.
+#' 
+#' You can delete a target group if it is not referenced by any actions. Deleting a target group also deletes any associated health checks.
+#'
+#' @param TargetGroupArn The Amazon Resource Name (ARN) of the target group.
+#'
+#' @examples
+#' # This example deletes the specified target group.
+#' delete_target_group(
+#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067"
+#' )
+#'
+#' @export
+delete_target_group <- function (TargetGroupArn) 
+{
+    op <- Operation(name = "DeleteTargetGroup", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_target_group_input(TargetGroupArn = TargetGroupArn)
+    output <- delete_target_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deregisters the specified targets from the specified target group
+#'
+#' Deregisters the specified targets from the specified target group. After the targets are deregistered, they no longer receive traffic from the load balancer.
+#'
+#' @param TargetGroupArn The Amazon Resource Name (ARN) of the target group.
+#' @param Targets The targets. If you specified a port override when you registered a target, you must specify both the target ID and the port when you deregister it.
+#'
+#' @examples
+#' # This example deregisters the specified instance from the specified
+#' # target group.
+#' deregister_targets(
+#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067",
+#'   Targets = list(
+#'     list(
+#'       Id = "i-0f76fade"
+#'     )
+#'   )
+#' )
+#'
+#' @export
+deregister_targets <- function (TargetGroupArn, Targets) 
+{
+    op <- Operation(name = "DeregisterTargets", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- deregister_targets_input(TargetGroupArn = TargetGroupArn, 
+        Targets = Targets)
+    output <- deregister_targets_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the current Elastic Load Balancing resource limits for your AWS account
+#'
+#' Describes the current Elastic Load Balancing resource limits for your AWS account.
+#' 
+#' For more information, see [Limits for Your Application Load Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html) in the *Application Load Balancer Guide* or [Limits for Your Network Load Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html) in the *Network Load Balancers Guide*.
+#'
+#' @param Marker The marker for the next set of results. (You received this marker from a previous call.)
+#' @param PageSize The maximum number of results to return with this call.
+#'
+#' @examples
+#'
+#' @export
+describe_account_limits <- function (Marker = NULL, PageSize = NULL) 
+{
+    op <- Operation(name = "DescribeAccountLimits", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_account_limits_input(Marker = Marker, PageSize = PageSize)
+    output <- describe_account_limits_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the certificates for the specified secure listener
+#'
+#' Describes the certificates for the specified secure listener.
+#'
+#' @param ListenerArn The Amazon Resource Names (ARN) of the listener.
+#' @param Marker The marker for the next set of results. (You received this marker from a previous call.)
+#' @param PageSize The maximum number of results to return with this call.
+#'
+#' @examples
+#'
+#' @export
+describe_listener_certificates <- function (ListenerArn, Marker = NULL, 
+    PageSize = NULL) 
+{
+    op <- Operation(name = "DescribeListenerCertificates", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_listener_certificates_input(ListenerArn = ListenerArn, 
+        Marker = Marker, PageSize = PageSize)
+    output <- describe_listener_certificates_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the specified listeners or the listeners for the specified Application Load Balancer or Network Load Balancer
+#'
+#' Describes the specified listeners or the listeners for the specified Application Load Balancer or Network Load Balancer. You must specify either a load balancer or one or more listeners.
+#'
+#' @param LoadBalancerArn The Amazon Resource Name (ARN) of the load balancer.
+#' @param ListenerArns The Amazon Resource Names (ARN) of the listeners.
+#' @param Marker The marker for the next set of results. (You received this marker from a previous call.)
+#' @param PageSize The maximum number of results to return with this call.
+#'
+#' @examples
+#' # This example describes the specified listener.
+#' describe_listeners(
+#'   ListenerArns = list(
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2"
+#'   )
+#' )
+#'
+#' @export
+describe_listeners <- function (LoadBalancerArn = NULL, ListenerArns = NULL, 
+    Marker = NULL, PageSize = NULL) 
+{
+    op <- Operation(name = "DescribeListeners", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_listeners_input(LoadBalancerArn = LoadBalancerArn, 
+        ListenerArns = ListenerArns, Marker = Marker, PageSize = PageSize)
+    output <- describe_listeners_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the attributes for the specified Application Load Balancer or Network Load Balancer
+#'
+#' Describes the attributes for the specified Application Load Balancer or Network Load Balancer.
+#' 
+#' For more information, see [Load Balancer Attributes](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-attributes) in the *Application Load Balancers Guide* or [Load Balancer Attributes](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#load-balancer-attributes) in the *Network Load Balancers Guide*.
+#'
+#' @param LoadBalancerArn The Amazon Resource Name (ARN) of the load balancer.
+#'
+#' @examples
+#' # This example describes the attributes of the specified load balancer.
+#' describe_load_balancer_attributes(
+#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188"
+#' )
+#'
+#' @export
+describe_load_balancer_attributes <- function (LoadBalancerArn) 
+{
+    op <- Operation(name = "DescribeLoadBalancerAttributes", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_load_balancer_attributes_input(LoadBalancerArn = LoadBalancerArn)
+    output <- describe_load_balancer_attributes_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the specified load balancers or all of your load balancers
+#'
+#' Describes the specified load balancers or all of your load balancers.
+#' 
+#' To describe the listeners for a load balancer, use DescribeListeners. To describe the attributes for a load balancer, use DescribeLoadBalancerAttributes.
+#'
+#' @param LoadBalancerArns The Amazon Resource Names (ARN) of the load balancers. You can specify up to 20 load balancers in a single call.
+#' @param Names The names of the load balancers.
+#' @param Marker The marker for the next set of results. (You received this marker from a previous call.)
+#' @param PageSize The maximum number of results to return with this call.
+#'
+#' @examples
+#' # This example describes the specified load balancer.
+#' describe_load_balancers(
+#'   LoadBalancerArns = list(
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188"
+#'   )
+#' )
+#'
+#' @export
+describe_load_balancers <- function (LoadBalancerArns = NULL, 
+    Names = NULL, Marker = NULL, PageSize = NULL) 
+{
+    op <- Operation(name = "DescribeLoadBalancers", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_load_balancers_input(LoadBalancerArns = LoadBalancerArns, 
+        Names = Names, Marker = Marker, PageSize = PageSize)
+    output <- describe_load_balancers_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the specified rules or the rules for the specified listener
+#'
+#' Describes the specified rules or the rules for the specified listener. You must specify either a listener or one or more rules.
+#'
+#' @param ListenerArn The Amazon Resource Name (ARN) of the listener.
+#' @param RuleArns The Amazon Resource Names (ARN) of the rules.
+#' @param Marker The marker for the next set of results. (You received this marker from a previous call.)
+#' @param PageSize The maximum number of results to return with this call.
+#'
+#' @examples
+#' # This example describes the specified rule.
+#' describe_rules(
+#'   RuleArns = list(
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2/9683b2d02a6cabee"
+#'   )
+#' )
+#'
+#' @export
+describe_rules <- function (ListenerArn = NULL, RuleArns = NULL, 
+    Marker = NULL, PageSize = NULL) 
+{
+    op <- Operation(name = "DescribeRules", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_rules_input(ListenerArn = ListenerArn, 
+        RuleArns = RuleArns, Marker = Marker, PageSize = PageSize)
+    output <- describe_rules_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the specified policies or all policies used for SSL negotiation
+#'
+#' Describes the specified policies or all policies used for SSL negotiation.
+#' 
+#' For more information, see [Security Policies](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies) in the *Application Load Balancers Guide*.
+#'
+#' @param Names The names of the policies.
+#' @param Marker The marker for the next set of results. (You received this marker from a previous call.)
+#' @param PageSize The maximum number of results to return with this call.
+#'
+#' @examples
+#' # This example describes the specified policy used for SSL negotiation.
+#' describe_ssl_policies(
+#'   Names = list(
+#'     "ELBSecurityPolicy-2015-05"
+#'   )
+#' )
+#'
+#' @export
+describe_ssl_policies <- function (Names = NULL, Marker = NULL, 
+    PageSize = NULL) 
+{
+    op <- Operation(name = "DescribeSSLPolicies", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_ssl_policies_input(Names = Names, Marker = Marker, 
+        PageSize = PageSize)
+    output <- describe_ssl_policies_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the tags for the specified resources
+#'
+#' Describes the tags for the specified resources. You can describe the tags for one or more Application Load Balancers, Network Load Balancers, and target groups.
+#'
+#' @param ResourceArns The Amazon Resource Names (ARN) of the resources.
+#'
+#' @examples
+#' # This example describes the tags assigned to the specified load balancer.
+#' describe_tags(
+#'   ResourceArns = list(
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188"
+#'   )
+#' )
+#'
+#' @export
+describe_tags <- function (ResourceArns) 
+{
+    op <- Operation(name = "DescribeTags", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_tags_input(ResourceArns = ResourceArns)
+    output <- describe_tags_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the attributes for the specified target group
+#'
+#' Describes the attributes for the specified target group.
+#' 
+#' For more information, see [Target Group Attributes](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#target-group-attributes) in the *Application Load Balancers Guide* or [Target Group Attributes](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#target-group-attributes) in the *Network Load Balancers Guide*.
+#'
+#' @param TargetGroupArn The Amazon Resource Name (ARN) of the target group.
+#'
+#' @examples
+#' # This example describes the attributes of the specified target group.
+#' describe_target_group_attributes(
+#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067"
+#' )
+#'
+#' @export
+describe_target_group_attributes <- function (TargetGroupArn) 
+{
+    op <- Operation(name = "DescribeTargetGroupAttributes", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_target_group_attributes_input(TargetGroupArn = TargetGroupArn)
+    output <- describe_target_group_attributes_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the specified target groups or all of your target groups
+#'
+#' Describes the specified target groups or all of your target groups. By default, all target groups are described. Alternatively, you can specify one of the following to filter the results: the ARN of the load balancer, the names of one or more target groups, or the ARNs of one or more target groups.
+#' 
+#' To describe the targets for a target group, use DescribeTargetHealth. To describe the attributes of a target group, use DescribeTargetGroupAttributes.
+#'
+#' @param LoadBalancerArn The Amazon Resource Name (ARN) of the load balancer.
+#' @param TargetGroupArns The Amazon Resource Names (ARN) of the target groups.
+#' @param Names The names of the target groups.
+#' @param Marker The marker for the next set of results. (You received this marker from a previous call.)
+#' @param PageSize The maximum number of results to return with this call.
+#'
+#' @examples
+#' # This example describes the specified target group.
+#' describe_target_groups(
+#'   TargetGroupArns = list(
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067"
+#'   )
+#' )
+#'
+#' @export
+describe_target_groups <- function (LoadBalancerArn = NULL, TargetGroupArns = NULL, 
+    Names = NULL, Marker = NULL, PageSize = NULL) 
+{
+    op <- Operation(name = "DescribeTargetGroups", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_target_groups_input(LoadBalancerArn = LoadBalancerArn, 
+        TargetGroupArns = TargetGroupArns, Names = Names, Marker = Marker, 
+        PageSize = PageSize)
+    output <- describe_target_groups_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the health of the specified targets or all of your targets
+#'
+#' Describes the health of the specified targets or all of your targets.
+#'
+#' @param TargetGroupArn The Amazon Resource Name (ARN) of the target group.
+#' @param Targets The targets.
+#'
+#' @examples
+#' # This example describes the health of the targets for the specified
+#' # target group. One target is healthy but the other is not specified in an
+#' # action, so it can't receive traffic from the load balancer.
+#' describe_target_health(
+#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067"
+#' )
+#' 
+#' # This example describes the health of the specified target. This target
+#' # is healthy.
+#' describe_target_health(
+#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067",
+#'   Targets = list(
+#'     list(
+#'       Id = "i-0f76fade",
+#'       Port = 80L
+#'     )
+#'   )
+#' )
+#'
+#' @export
+describe_target_health <- function (TargetGroupArn, Targets = NULL) 
+{
+    op <- Operation(name = "DescribeTargetHealth", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_target_health_input(TargetGroupArn = TargetGroupArn, 
+        Targets = Targets)
+    output <- describe_target_health_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Modifies the specified properties of the specified listener
+#'
+#' Modifies the specified properties of the specified listener.
+#' 
+#' Any properties that you do not specify retain their current values. However, changing the protocol from HTTPS to HTTP removes the security policy and SSL certificate properties. If you change the protocol from HTTP to HTTPS, you must add the security policy and server certificate.
+#'
+#' @param ListenerArn The Amazon Resource Name (ARN) of the listener.
+#' @param Port The port for connections from clients to the load balancer.
+#' @param Protocol The protocol for connections from clients to the load balancer. Application Load Balancers support HTTP and HTTPS and Network Load Balancers support TCP.
+#' @param SslPolicy &#91;HTTPS listeners&#93; The security policy that defines which protocols and ciphers are supported. For more information, see [Security Policies](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies) in the *Application Load Balancers Guide*.
+#' @param Certificates &#91;HTTPS listeners&#93; The default SSL server certificate. You must provide exactly one default certificate. To create a certificate list, use AddListenerCertificates.
+#' @param DefaultActions The actions for the default rule. The rule must include one forward action or one or more fixed-response actions.
+#' 
+#' If the action type is `forward`, you can specify a single target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer or TCP for a Network Load Balancer.
+#' 
+#' &#91;HTTPS listener&#93; If the action type is `authenticate-oidc`, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.
+#' 
+#' &#91;HTTPS listener&#93; If the action type is `authenticate-cognito`, you can use Amazon Cognito to authenticate users as they access your application.
+#' 
+#' &#91;Application Load Balancer&#93; If the action type is `redirect`, you can redirect HTTP and HTTPS requests.
+#' 
+#' &#91;Application Load Balancer&#93; If the action type is `fixed-response`, you can return a custom HTTP response.
+#'
+#' @examples
+#' # This example changes the default action for the specified listener.
+#' modify_listener(
+#'   DefaultActions = list(
+#'     list(
+#'       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-new-targets/2453ed029918f21f",
+#'       Type = "forward"
+#'     )
+#'   ),
+#'   ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2"
+#' )
+#' 
+#' # This example changes the server certificate for the specified HTTPS
+#' # listener.
+#' modify_listener(
+#'   Certificates = list(
+#'     list(
+#'       CertificateArn = "arn:aws:iam::123456789012:server-certificate/my-new-server-cert"
+#'     )
+#'   ),
+#'   ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/0467ef3c8400ae65"
+#' )
+#'
+#' @export
+modify_listener <- function (ListenerArn, Port = NULL, Protocol = NULL, 
+    SslPolicy = NULL, Certificates = NULL, DefaultActions = NULL) 
+{
+    op <- Operation(name = "ModifyListener", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- modify_listener_input(ListenerArn = ListenerArn, 
+        Port = Port, Protocol = Protocol, SslPolicy = SslPolicy, 
+        Certificates = Certificates, DefaultActions = DefaultActions)
+    output <- modify_listener_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Modifies the specified attributes of the specified Application Load Balancer or Network Load Balancer
+#'
+#' Modifies the specified attributes of the specified Application Load Balancer or Network Load Balancer.
+#' 
+#' If any of the specified attributes can\'t be modified as requested, the call fails. Any existing attributes that you do not modify retain their current values.
+#'
+#' @param LoadBalancerArn The Amazon Resource Name (ARN) of the load balancer.
+#' @param Attributes The load balancer attributes.
+#'
+#' @examples
+#' # This example enables deletion protection for the specified load
+#' # balancer.
+#' modify_load_balancer_attributes(
+#'   Attributes = list(
+#'     list(
+#'       Key = "deletion_protection.enabled",
+#'       Value = "true"
+#'     )
+#'   ),
+#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188"
+#' )
+#' 
+#' # This example changes the idle timeout value for the specified load
+#' # balancer.
+#' modify_load_balancer_attributes(
+#'   Attributes = list(
+#'     list(
+#'       Key = "idle_timeout.timeout_seconds",
+#'       Value = "30"
+#'     )
+#'   ),
+#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188"
+#' )
+#' 
+#' # This example enables access logs for the specified load balancer. Note
+#' # that the S3 bucket must exist in the same region as the load balancer
+#' # and must have a policy attached that grants access to the Elastic Load
+#' # Balancing service.
+#' modify_load_balancer_attributes(
+#'   Attributes = list(
+#'     list(
+#'       Key = "access_logs.s3.enabled",
+#'       Value = "true"
+#'     ),
+#'     list(
+#'       Key = "access_logs.s3.bucket",
+#'       Value = "my-loadbalancer-logs"
+#'     ),
+#'     list(
+#'       Key = "access_logs.s3.prefix",
+#'       Value = "myapp"
+#'     )
+#'   ),
+#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188"
+#' )
+#'
+#' @export
+modify_load_balancer_attributes <- function (LoadBalancerArn, 
+    Attributes) 
+{
+    op <- Operation(name = "ModifyLoadBalancerAttributes", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- modify_load_balancer_attributes_input(LoadBalancerArn = LoadBalancerArn, 
+        Attributes = Attributes)
+    output <- modify_load_balancer_attributes_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Modifies the specified rule
+#'
+#' Modifies the specified rule.
+#' 
+#' Any existing properties that you do not modify retain their current values.
+#' 
+#' To modify the actions for the default rule, use ModifyListener.
+#'
+#' @param RuleArn The Amazon Resource Name (ARN) of the rule.
+#' @param Conditions The conditions. Each condition specifies a field name and a single value.
+#' 
+#' If the field name is `host-header`, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. You can include up to three wildcard characters.
+#' 
+#' -   A-Z, a-z, 0-9
+#' 
+#' -   \- .
+#' 
+#' -   \* (matches 0 or more characters)
+#' 
+#' -   ? (matches exactly 1 character)
+#' 
+#' If the field name is `path-pattern`, you can specify a single path pattern. A path pattern is case-sensitive, can be up to 128 characters in length, and can contain any of the following characters. You can include up to three wildcard characters.
+#' 
+#' -   A-Z, a-z, 0-9
+#' 
+#' -   \_ - . \$ / \~ \" \' @ : +
+#' 
+#' -   & (using &amp;)
+#' 
+#' -   \* (matches 0 or more characters)
+#' 
+#' -   ? (matches exactly 1 character)
+#' @param Actions The actions.
+#' 
+#' If the action type is `forward`, you can specify a single target group.
+#' 
+#' If the action type is `authenticate-oidc`, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.
+#' 
+#' If the action type is `authenticate-cognito`, you can use Amazon Cognito to authenticate users as they access your application.
+#'
+#' @examples
+#' # This example modifies the condition for the specified rule.
+#' modify_rule(
+#'   Conditions = list(
+#'     list(
+#'       Field = "path-pattern",
+#'       Values = list(
+#'         "/images/*"
+#'       )
+#'     )
+#'   ),
+#'   RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2/9683b2d02a6cabee"
+#' )
+#'
+#' @export
+modify_rule <- function (RuleArn, Conditions = NULL, Actions = NULL) 
+{
+    op <- Operation(name = "ModifyRule", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- modify_rule_input(RuleArn = RuleArn, Conditions = Conditions, 
+        Actions = Actions)
+    output <- modify_rule_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Modifies the health checks used when evaluating the health state of the targets in the specified target group
+#'
+#' Modifies the health checks used when evaluating the health state of the targets in the specified target group.
+#' 
+#' To monitor the health of the targets, use DescribeTargetHealth.
+#'
+#' @param TargetGroupArn The Amazon Resource Name (ARN) of the target group.
+#' @param HealthCheckProtocol The protocol the load balancer uses when performing health checks on targets. The TCP protocol is supported only if the protocol of the target group is TCP.
+#' @param HealthCheckPort The port the load balancer uses when performing health checks on targets.
+#' @param HealthCheckPath &#91;HTTP/HTTPS health checks&#93; The ping path that is the destination for the health check request.
+#' @param HealthCheckIntervalSeconds The approximate amount of time, in seconds, between health checks of an individual target. For Application Load Balancers, the range is 5--300 seconds. For Network Load Balancers, the supported values are 10 or 30 seconds.
+#' @param HealthCheckTimeoutSeconds &#91;HTTP/HTTPS health checks&#93; The amount of time, in seconds, during which no response means a failed health check.
+#' @param HealthyThresholdCount The number of consecutive health checks successes required before considering an unhealthy target healthy.
+#' @param UnhealthyThresholdCount The number of consecutive health check failures required before considering the target unhealthy. For Network Load Balancers, this value must be the same as the healthy threshold count.
+#' @param Matcher &#91;HTTP/HTTPS health checks&#93; The HTTP codes to use when checking for a successful response from a target.
+#'
+#' @examples
+#' # This example changes the configuration of the health checks used to
+#' # evaluate the health of the targets for the specified target group.
+#' modify_target_group(
+#'   HealthCheckPort = "443",
+#'   HealthCheckProtocol = "HTTPS",
+#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-https-targets/2453ed029918f21f"
+#' )
+#'
+#' @export
+modify_target_group <- function (TargetGroupArn, HealthCheckProtocol = NULL, 
+    HealthCheckPort = NULL, HealthCheckPath = NULL, HealthCheckIntervalSeconds = NULL, 
+    HealthCheckTimeoutSeconds = NULL, HealthyThresholdCount = NULL, 
+    UnhealthyThresholdCount = NULL, Matcher = NULL) 
+{
+    op <- Operation(name = "ModifyTargetGroup", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- modify_target_group_input(TargetGroupArn = TargetGroupArn, 
+        HealthCheckProtocol = HealthCheckProtocol, HealthCheckPort = HealthCheckPort, 
+        HealthCheckPath = HealthCheckPath, HealthCheckIntervalSeconds = HealthCheckIntervalSeconds, 
+        HealthCheckTimeoutSeconds = HealthCheckTimeoutSeconds, 
+        HealthyThresholdCount = HealthyThresholdCount, UnhealthyThresholdCount = UnhealthyThresholdCount, 
+        Matcher = Matcher)
+    output <- modify_target_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Modifies the specified attributes of the specified target group
+#'
+#' Modifies the specified attributes of the specified target group.
+#'
+#' @param TargetGroupArn The Amazon Resource Name (ARN) of the target group.
+#' @param Attributes The attributes.
+#'
+#' @examples
+#' # This example sets the deregistration delay timeout to the specified
+#' # value for the specified target group.
+#' modify_target_group_attributes(
+#'   Attributes = list(
+#'     list(
+#'       Key = "deregistration_delay.timeout_seconds",
+#'       Value = "600"
+#'     )
+#'   ),
+#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067"
+#' )
+#'
+#' @export
+modify_target_group_attributes <- function (TargetGroupArn, Attributes) 
+{
+    op <- Operation(name = "ModifyTargetGroupAttributes", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- modify_target_group_attributes_input(TargetGroupArn = TargetGroupArn, 
+        Attributes = Attributes)
+    output <- modify_target_group_attributes_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Registers the specified targets with the specified target group
+#'
+#' Registers the specified targets with the specified target group.
+#' 
+#' You can register targets by instance ID or by IP address. If the target is an EC2 instance, it must be in the `running` state when you register it.
+#' 
+#' By default, the load balancer routes requests to registered targets using the protocol and port for the target group. Alternatively, you can override the port for a target when you register it. You can register each EC2 instance or IP address with the same target group multiple times using different ports.
+#' 
+#' With a Network Load Balancer, you cannot register instances by instance ID if they have the following instance types: C1, CC1, CC2, CG1, CG2, CR1, CS1, G1, G2, HI1, HS1, M1, M2, M3, and T1. You can register instances of these types by IP address.
+#' 
+#' To remove a target from a target group, use DeregisterTargets.
+#'
+#' @param TargetGroupArn The Amazon Resource Name (ARN) of the target group.
+#' @param Targets The targets.
+#'
+#' @examples
+#' # This example registers the specified instances with the specified target
+#' # group.
+#' register_targets(
+#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067",
+#'   Targets = list(
+#'     list(
+#'       Id = "i-80c8dd94"
+#'     ),
+#'     list(
+#'       Id = "i-ceddcd4d"
+#'     )
+#'   )
+#' )
+#' 
+#' # This example registers the specified instance with the specified target
+#' # group using multiple ports. This enables you to register ECS containers
+#' # on the same instance as targets in the target group.
+#' register_targets(
+#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-new-targets/3bb63f11dfb0faf9",
+#'   Targets = list(
+#'     list(
+#'       Id = "i-80c8dd94",
+#'       Port = 80L
+#'     ),
+#'     list(
+#'       Id = "i-80c8dd94",
+#'       Port = 766L
+#'     )
+#'   )
+#' )
+#'
+#' @export
+register_targets <- function (TargetGroupArn, Targets) 
+{
+    op <- Operation(name = "RegisterTargets", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- register_targets_input(TargetGroupArn = TargetGroupArn, 
+        Targets = Targets)
+    output <- register_targets_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes the specified certificate from the specified secure listener
+#'
+#' Removes the specified certificate from the specified secure listener.
+#' 
+#' You can\'t remove the default certificate for a listener. To replace the default certificate, call ModifyListener.
+#' 
+#' To list the certificates for your listener, use DescribeListenerCertificates.
+#'
+#' @param ListenerArn The Amazon Resource Name (ARN) of the listener.
+#' @param Certificates The certificate to remove. You can specify one certificate per call.
+#'
+#' @examples
+#'
+#' @export
+remove_listener_certificates <- function (ListenerArn, Certificates) 
+{
+    op <- Operation(name = "RemoveListenerCertificates", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- remove_listener_certificates_input(ListenerArn = ListenerArn, 
+        Certificates = Certificates)
+    output <- remove_listener_certificates_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes the specified tags from the specified Elastic Load Balancing resource
+#'
+#' Removes the specified tags from the specified Elastic Load Balancing resource.
+#' 
+#' To list the current tags for your resources, use DescribeTags.
+#'
+#' @param ResourceArns The Amazon Resource Name (ARN) of the resource.
+#' @param TagKeys The tag keys for the tags to remove.
+#'
+#' @examples
+#' # This example removes the specified tags from the specified load
+#' # balancer.
+#' remove_tags(
+#'   ResourceArns = list(
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188"
+#'   ),
+#'   TagKeys = list(
+#'     "project",
+#'     "department"
+#'   )
+#' )
+#'
+#' @export
+remove_tags <- function (ResourceArns, TagKeys) 
+{
+    op <- Operation(name = "RemoveTags", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- remove_tags_input(ResourceArns = ResourceArns, TagKeys = TagKeys)
+    output <- remove_tags_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Sets the type of IP addresses used by the subnets of the specified Application Load Balancer or Network Load Balancer
+#'
+#' Sets the type of IP addresses used by the subnets of the specified Application Load Balancer or Network Load Balancer.
+#' 
+#' Network Load Balancers must use `ipv4`.
+#'
+#' @param LoadBalancerArn The Amazon Resource Name (ARN) of the load balancer.
+#' @param IpAddressType The IP address type. The possible values are `ipv4` (for IPv4 addresses) and `dualstack` (for IPv4 and IPv6 addresses). Internal load balancers must use `ipv4`.
+#'
+#' @examples
+#'
+#' @export
+set_ip_address_type <- function (LoadBalancerArn, IpAddressType) 
+{
+    op <- Operation(name = "SetIpAddressType", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- set_ip_address_type_input(LoadBalancerArn = LoadBalancerArn, 
+        IpAddressType = IpAddressType)
+    output <- set_ip_address_type_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Sets the priorities of the specified rules
+#'
+#' Sets the priorities of the specified rules.
+#' 
+#' You can reorder the rules as long as there are no priority conflicts in the new order. Any existing rules that you do not specify retain their current priority.
+#'
+#' @param RulePriorities The rule priorities.
+#'
+#' @examples
+#' # This example sets the priority of the specified rule.
+#' set_rule_priorities(
+#'   RulePriorities = list(
+#'     list(
+#'       Priority = 5L,
+#'       RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2/1291d13826f405c3"
+#'     )
+#'   )
+#' )
+#'
+#' @export
+set_rule_priorities <- function (RulePriorities) 
+{
+    op <- Operation(name = "SetRulePriorities", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- set_rule_priorities_input(RulePriorities = RulePriorities)
+    output <- set_rule_priorities_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Associates the specified security groups with the specified Application Load Balancer
+#'
+#' Associates the specified security groups with the specified Application Load Balancer. The specified security groups override the previously associated security groups.
+#' 
+#' You can\'t specify a security group for a Network Load Balancer.
+#'
+#' @param LoadBalancerArn The Amazon Resource Name (ARN) of the load balancer.
+#' @param SecurityGroups The IDs of the security groups.
+#'
+#' @examples
+#' # This example associates the specified security group with the specified
+#' # load balancer.
+#' set_security_groups(
+#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188",
+#'   SecurityGroups = list(
+#'     "sg-5943793c"
+#'   )
+#' )
+#'
+#' @export
+set_security_groups <- function (LoadBalancerArn, SecurityGroups) 
+{
+    op <- Operation(name = "SetSecurityGroups", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- set_security_groups_input(LoadBalancerArn = LoadBalancerArn, 
+        SecurityGroups = SecurityGroups)
+    output <- set_security_groups_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Enables the Availability Zone for the specified public subnets for the specified Application Load Balancer
+#'
+#' Enables the Availability Zone for the specified public subnets for the specified Application Load Balancer. The specified subnets replace the previously enabled subnets.
+#' 
+#' You can\'t change the subnets for a Network Load Balancer.
+#'
+#' @param LoadBalancerArn The Amazon Resource Name (ARN) of the load balancer.
+#' @param Subnets The IDs of the public subnets. You must specify subnets from at least two Availability Zones. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings.
+#' @param SubnetMappings The IDs of the public subnets. You must specify subnets from at least two Availability Zones. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings.
+#' 
+#' You cannot specify Elastic IP addresses for your subnets.
+#'
+#' @examples
+#' # This example enables the Availability Zones for the specified subnets
+#' # for the specified load balancer.
+#' set_subnets(
+#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188",
+#'   Subnets = list(
+#'     "subnet-8360a9e7",
+#'     "subnet-b7d581c0"
+#'   )
+#' )
+#'
+#' @export
+set_subnets <- function (LoadBalancerArn, Subnets = NULL, SubnetMappings = NULL) 
+{
+    op <- Operation(name = "SetSubnets", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- set_subnets_input(LoadBalancerArn = LoadBalancerArn, 
+        Subnets = Subnets, SubnetMappings = SubnetMappings)
+    output <- set_subnets_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

@@ -1,0 +1,555 @@
+#' Creates a private namespace based on DNS, which will be visible only inside a specified Amazon VPC
+#'
+#' Creates a private namespace based on DNS, which will be visible only inside a specified Amazon VPC. The namespace defines your service naming scheme. For example, if you name your namespace `example.com` and name your service `backend`, the resulting DNS name for the service will be `backend.example.com`. For the current limit on the number of namespaces that you can create using the same AWS account, see [Limits on Auto Naming](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming) in the *Route 53 Developer Guide*.
+#'
+#' @param Name The name that you want to assign to this namespace. When you create a namespace, Amazon Route 53 automatically creates a hosted zone that has the same name as the namespace.
+#' @param Vpc The ID of the Amazon VPC that you want to associate the namespace with.
+#' @param CreatorRequestId A unique string that identifies the request and that allows failed `CreatePrivateDnsNamespace` requests to be retried without the risk of executing the operation twice. `CreatorRequestId` can be any unique string, for example, a date/time stamp.
+#' @param Description A description for the namespace.
+#'
+#' @examples
+#'
+#' @export
+create_private_dns_namespace <- function (Name, Vpc, CreatorRequestId = NULL, 
+    Description = NULL) 
+{
+    op <- Operation(name = "CreatePrivateDnsNamespace", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_private_dns_namespace_input(Name = Name, 
+        Vpc = Vpc, CreatorRequestId = CreatorRequestId, Description = Description)
+    output <- create_private_dns_namespace_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a public namespace based on DNS, which will be visible on the internet
+#'
+#' Creates a public namespace based on DNS, which will be visible on the internet. The namespace defines your service naming scheme. For example, if you name your namespace `example.com` and name your service `backend`, the resulting DNS name for the service will be `backend.example.com`. For the current limit on the number of namespaces that you can create using the same AWS account, see [Limits on Auto Naming](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming) in the *Route 53 Developer Guide*.
+#'
+#' @param Name The name that you want to assign to this namespace.
+#' @param CreatorRequestId A unique string that identifies the request and that allows failed `CreatePublicDnsNamespace` requests to be retried without the risk of executing the operation twice. `CreatorRequestId` can be any unique string, for example, a date/time stamp.
+#' @param Description A description for the namespace.
+#'
+#' @examples
+#'
+#' @export
+create_public_dns_namespace <- function (Name, CreatorRequestId = NULL, 
+    Description = NULL) 
+{
+    op <- Operation(name = "CreatePublicDnsNamespace", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_public_dns_namespace_input(Name = Name, CreatorRequestId = CreatorRequestId, 
+        Description = Description)
+    output <- create_public_dns_namespace_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a service, which defines the configuration for the following entities:
+#'
+#' Creates a service, which defines the configuration for the following entities:
+#' 
+#' -   Up to three records (A, AAAA, and SRV) or one CNAME record
+#' 
+#' -   Optionally, a health check
+#' 
+#' After you create the service, you can submit a RegisterInstance request, and Amazon Route 53 uses the values in the configuration to create the specified entities.
+#' 
+#' For the current limit on the number of instances that you can register using the same namespace and using the same service, see [Limits on Auto Naming](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming) in the *Route 53 Developer Guide*.
+#'
+#' @param Name The name that you want to assign to the service.
+#' @param DnsConfig A complex type that contains information about the records that you want Route 53 to create when you register an instance.
+#' @param CreatorRequestId A unique string that identifies the request and that allows failed `CreateService` requests to be retried without the risk of executing the operation twice. `CreatorRequestId` can be any unique string, for example, a date/time stamp.
+#' @param Description A description for the service.
+#' @param HealthCheckConfig *Public DNS namespaces only.* A complex type that contains settings for an optional health check. If you specify settings for a health check, Route 53 associates the health check with all the records that you specify in `DnsConfig`.
+#' 
+#' For information about the charges for health checks, see [Route 53 Pricing](http://aws.amazon.com/route53/pricing).
+#' @param HealthCheckCustomConfig 
+#'
+#' @examples
+#'
+#' @export
+create_service <- function (Name, DnsConfig, CreatorRequestId = NULL, 
+    Description = NULL, HealthCheckConfig = NULL, HealthCheckCustomConfig = NULL) 
+{
+    op <- Operation(name = "CreateService", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_service_input(Name = Name, DnsConfig = DnsConfig, 
+        CreatorRequestId = CreatorRequestId, Description = Description, 
+        HealthCheckConfig = HealthCheckConfig, HealthCheckCustomConfig = HealthCheckCustomConfig)
+    output <- create_service_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a namespace from the current account
+#'
+#' Deletes a namespace from the current account. If the namespace still contains one or more services, the request fails.
+#'
+#' @param Id The ID of the namespace that you want to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_namespace <- function (Id) 
+{
+    op <- Operation(name = "DeleteNamespace", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_namespace_input(Id = Id)
+    output <- delete_namespace_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a specified service
+#'
+#' Deletes a specified service. If the service still contains one or more registered instances, the request fails.
+#'
+#' @param Id The ID of the service that you want to delete.
+#'
+#' @examples
+#'
+#' @export
+delete_service <- function (Id) 
+{
+    op <- Operation(name = "DeleteService", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_service_input(Id = Id)
+    output <- delete_service_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the records and the health check, if any, that Amazon Route 53 created for the specified instance
+#'
+#' Deletes the records and the health check, if any, that Amazon Route 53 created for the specified instance.
+#'
+#' @param ServiceId The ID of the service that the instance is associated with.
+#' @param InstanceId The value that you specified for `Id` in the RegisterInstance request.
+#'
+#' @examples
+#'
+#' @export
+deregister_instance <- function (ServiceId, InstanceId) 
+{
+    op <- Operation(name = "DeregisterInstance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- deregister_instance_input(ServiceId = ServiceId, 
+        InstanceId = InstanceId)
+    output <- deregister_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about a specified instance
+#'
+#' Gets information about a specified instance.
+#'
+#' @param ServiceId The ID of the service that the instance is associated with.
+#' @param InstanceId The ID of the instance that you want to get information about.
+#'
+#' @examples
+#'
+#' @export
+get_instance <- function (ServiceId, InstanceId) 
+{
+    op <- Operation(name = "GetInstance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_instance_input(ServiceId = ServiceId, InstanceId = InstanceId)
+    output <- get_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets the current health status (`Healthy`, `Unhealthy`, or `Unknown`) of one or more instances that are associated with a specified service
+#'
+#' Gets the current health status (`Healthy`, `Unhealthy`, or `Unknown`) of one or more instances that are associated with a specified service.
+#' 
+#' There is a brief delay between when you register an instance and when the health status for the instance is available.
+#'
+#' @param ServiceId The ID of the service that the instance is associated with.
+#' @param Instances An array that contains the IDs of all the instances that you want to get the health status for.
+#' 
+#' If you omit `Instances`, Amazon Route 53 returns the health status for all the instances that are associated with the specified service.
+#' 
+#' To get the IDs for the instances that you\'ve registered by using a specified service, submit a ListInstances request.
+#' @param MaxResults The maximum number of instances that you want Route 53 to return in the response to a `GetInstancesHealthStatus` request. If you don\'t specify a value for `MaxResults`, Route 53 returns up to 100 instances.
+#' @param NextToken For the first `GetInstancesHealthStatus` request, omit this value.
+#' 
+#' If more than `MaxResults` instances match the specified criteria, you can submit another `GetInstancesHealthStatus` request to get the next group of results. Specify the value of `NextToken` from the previous response in the next request.
+#'
+#' @examples
+#'
+#' @export
+get_instances_health_status <- function (ServiceId, Instances = NULL, 
+    MaxResults = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "GetInstancesHealthStatus", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_instances_health_status_input(ServiceId = ServiceId, 
+        Instances = Instances, MaxResults = MaxResults, NextToken = NextToken)
+    output <- get_instances_health_status_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about a namespace
+#'
+#' Gets information about a namespace.
+#'
+#' @param Id The ID of the namespace that you want to get information about.
+#'
+#' @examples
+#'
+#' @export
+get_namespace <- function (Id) 
+{
+    op <- Operation(name = "GetNamespace", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_namespace_input(Id = Id)
+    output <- get_namespace_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about any operation that returns an operation ID in the response, such as a `CreateService` request
+#'
+#' Gets information about any operation that returns an operation ID in the response, such as a `CreateService` request.
+#' 
+#' To get a list of operations that match specified criteria, see ListOperations.
+#'
+#' @param OperationId The ID of the operation that you want to get more information about.
+#'
+#' @examples
+#'
+#' @export
+get_operation <- function (OperationId) 
+{
+    op <- Operation(name = "GetOperation", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_operation_input(OperationId = OperationId)
+    output <- get_operation_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets the settings for a specified service
+#'
+#' Gets the settings for a specified service.
+#'
+#' @param Id The ID of the service that you want to get settings for.
+#'
+#' @examples
+#'
+#' @export
+get_service <- function (Id) 
+{
+    op <- Operation(name = "GetService", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_service_input(Id = Id)
+    output <- get_service_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists summary information about the instances that you registered by using a specified service
+#'
+#' Lists summary information about the instances that you registered by using a specified service.
+#'
+#' @param ServiceId The ID of the service that you want to list instances for.
+#' @param NextToken For the first `ListInstances` request, omit this value.
+#' 
+#' If more than `MaxResults` instances match the specified criteria, you can submit another `ListInstances` request to get the next group of results. Specify the value of `NextToken` from the previous response in the next request.
+#' @param MaxResults The maximum number of instances that you want Amazon Route 53 to return in the response to a `ListInstances` request. If you don\'t specify a value for `MaxResults`, Route 53 returns up to 100 instances.
+#'
+#' @examples
+#'
+#' @export
+list_instances <- function (ServiceId, NextToken = NULL, MaxResults = NULL) 
+{
+    op <- Operation(name = "ListInstances", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_instances_input(ServiceId = ServiceId, NextToken = NextToken, 
+        MaxResults = MaxResults)
+    output <- list_instances_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists summary information about the namespaces that were created by the current AWS account
+#'
+#' Lists summary information about the namespaces that were created by the current AWS account.
+#'
+#' @param NextToken For the first `ListNamespaces` request, omit this value.
+#' 
+#' If the response contains `NextToken`, submit another `ListNamespaces` request to get the next group of results. Specify the value of `NextToken` from the previous response in the next request.
+#' 
+#' Route 53 gets `MaxResults` namespaces and then filters them based on the specified criteria. It\'s possible that no namespaces in the first `MaxResults` namespaces matched the specified criteria but that subsequent groups of `MaxResults` namespaces do contain namespaces that match the criteria.
+#' @param MaxResults The maximum number of namespaces that you want Amazon Route 53 to return in the response to a `ListNamespaces` request. If you don\'t specify a value for `MaxResults`, Route 53 returns up to 100 namespaces.
+#' @param Filters A complex type that contains specifications for the namespaces that you want to list.
+#' 
+#' If you specify more than one filter, a namespace must match all filters to be returned by `ListNamespaces`.
+#'
+#' @examples
+#'
+#' @export
+list_namespaces <- function (NextToken = NULL, MaxResults = NULL, 
+    Filters = NULL) 
+{
+    op <- Operation(name = "ListNamespaces", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_namespaces_input(NextToken = NextToken, MaxResults = MaxResults, 
+        Filters = Filters)
+    output <- list_namespaces_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists operations that match the criteria that you specify
+#'
+#' Lists operations that match the criteria that you specify.
+#'
+#' @param NextToken For the first `ListOperations` request, omit this value.
+#' 
+#' If the response contains `NextToken`, submit another `ListOperations` request to get the next group of results. Specify the value of `NextToken` from the previous response in the next request.
+#' 
+#' Route 53 gets `MaxResults` operations and then filters them based on the specified criteria. It\'s possible that no operations in the first `MaxResults` operations matched the specified criteria but that subsequent groups of `MaxResults` operations do contain operations that match the criteria.
+#' @param MaxResults The maximum number of items that you want Amazon Route 53 to return in the response to a `ListOperations` request. If you don\'t specify a value for `MaxResults`, Route 53 returns up to 100 operations.
+#' @param Filters A complex type that contains specifications for the operations that you want to list, for example, operations that you started between a specified start date and end date.
+#' 
+#' If you specify more than one filter, an operation must match all filters to be returned by `ListOperations`.
+#'
+#' @examples
+#'
+#' @export
+list_operations <- function (NextToken = NULL, MaxResults = NULL, 
+    Filters = NULL) 
+{
+    op <- Operation(name = "ListOperations", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_operations_input(NextToken = NextToken, MaxResults = MaxResults, 
+        Filters = Filters)
+    output <- list_operations_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists summary information for all the services that are associated with one or more specified namespaces
+#'
+#' Lists summary information for all the services that are associated with one or more specified namespaces.
+#'
+#' @param NextToken For the first `ListServices` request, omit this value.
+#' 
+#' If the response contains `NextToken`, submit another `ListServices` request to get the next group of results. Specify the value of `NextToken` from the previous response in the next request.
+#' 
+#' Route 53 gets `MaxResults` services and then filters them based on the specified criteria. It\'s possible that no services in the first `MaxResults` services matched the specified criteria but that subsequent groups of `MaxResults` services do contain services that match the criteria.
+#' @param MaxResults The maximum number of services that you want Amazon Route 53 to return in the response to a `ListServices` request. If you don\'t specify a value for `MaxResults`, Route 53 returns up to 100 services.
+#' @param Filters A complex type that contains specifications for the namespaces that you want to list services for.
+#' 
+#' If you specify more than one filter, an operation must match all filters to be returned by `ListServices`.
+#'
+#' @examples
+#'
+#' @export
+list_services <- function (NextToken = NULL, MaxResults = NULL, 
+    Filters = NULL) 
+{
+    op <- Operation(name = "ListServices", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_services_input(NextToken = NextToken, MaxResults = MaxResults, 
+        Filters = Filters)
+    output <- list_services_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates or updates one or more records and optionally a health check based on the settings in a specified service
+#'
+#' Creates or updates one or more records and optionally a health check based on the settings in a specified service. When you submit a `RegisterInstance` request, Amazon Route 53 does the following:
+#' 
+#' -   For each DNS record that you define in the service specified by `ServiceId`, creates or updates a record in the hosted zone that is associated with the corresponding namespace
+#' 
+#' -   If the service includes `HealthCheckConfig`, creates or updates a health check based on the settings in the health check configuration
+#' 
+#' -   Associates the health check, if any, with each of the records
+#' 
+#' One `RegisterInstance` request must complete before you can submit another request and specify the same service ID and instance ID.
+#' 
+#' For more information, see CreateService.
+#' 
+#' When Route 53 receives a DNS query for the specified DNS name, it returns the applicable value:
+#' 
+#' -   **If the health check is healthy**: returns all the records
+#' 
+#' -   **If the health check is unhealthy**: returns the applicable value for the last healthy instance
+#' 
+#' -   **If you didn\'t specify a health check configuration**: returns all the records
+#' 
+#' For the current limit on the number of instances that you can register using the same namespace and using the same service, see [Limits on Auto Naming](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming) in the *Route 53 Developer Guide*.
+#'
+#' @param ServiceId The ID of the service that you want to use for settings for the records and health check that Route 53 will create.
+#' @param InstanceId An identifier that you want to associate with the instance. Note the following:
+#' 
+#' -   If the service that is specified by `ServiceId` includes settings for an SRV record, the value of `InstanceId` is automatically included as part of the value for the SRV record. For more information, see DnsRecord\$Type.
+#' 
+#' -   You can use this value to update an existing instance.
+#' 
+#' -   To register a new instance, you must specify a value that is unique among instances that you register by using the same service.
+#' 
+#' -   If you specify an existing `InstanceId` and `ServiceId`, Route 53 updates the existing records. If there\'s also an existing health check, Route 53 deletes the old health check and creates a new one.
+#' 
+#'     The health check isn\'t deleted immediately, so it will still appear for a while if you submit a `ListHealthChecks` request, for example.
+#' @param Attributes A string map that contains the following information for the service that you specify in `ServiceId`:
+#' 
+#' -   The attributes that apply to the records that are defined in the service.
+#' 
+#' -   For each attribute, the applicable value.
+#' 
+#' Supported attribute keys include the following:
+#' 
+#' **AWS\_ALIAS\_DNS\_NAME**
+#' 
+#' If you want Route 53 to create an alias record that routes traffic to an Elastic Load Balancing load balancer, specify the DNS name that is associated with the load balancer. For information about how to get the DNS name, see \"DNSName\" in the topic [AliasTarget](http://docs.aws.amazon.com/http:/docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html).
+#' 
+#' Note the following:
+#' 
+#' -   The configuration for the service that is specified by `ServiceId` must include settings for an A record, an AAAA record, or both.
+#' 
+#' -   In the service that is specified by `ServiceId`, the value of `RoutingPolicy` must be `WEIGHTED`.
+#' 
+#' -   If the service that is specified by `ServiceId` includes `HealthCheckConfig` settings, Route 53 will create the health check, but it won\'t associate the health check with the alias record.
+#' 
+#' -   Auto naming currently doesn\'t support creating alias records that route traffic to AWS resources other than ELB load balancers.
+#' 
+#' -   If you specify a value for `AWS_ALIAS_DNS_NAME`, don\'t specify values for any of the `AWS_INSTANCE` attributes.
+#' 
+#' **AWS\_INSTANCE\_CNAME**
+#' 
+#' If the service configuration includes a CNAME record, the domain name that you want Route 53 to return in response to DNS queries, for example, `example.com`.
+#' 
+#' This value is required if the service specified by `ServiceId` includes settings for an CNAME record.
+#' 
+#' **AWS\_INSTANCE\_IPV4**
+#' 
+#' If the service configuration includes an A record, the IPv4 address that you want Route 53 to return in response to DNS queries, for example, `192.0.2.44`.
+#' 
+#' This value is required if the service specified by `ServiceId` includes settings for an A record. If the service includes settings for an SRV record, you must specify a value for `AWS_INSTANCE_IPV4`, `AWS_INSTANCE_IPV6`, or both.
+#' 
+#' **AWS\_INSTANCE\_IPV6**
+#' 
+#' If the service configuration includes an AAAA record, the IPv6 address that you want Route 53 to return in response to DNS queries, for example, `2001:0db8:85a3:0000:0000:abcd:0001:2345`.
+#' 
+#' This value is required if the service specified by `ServiceId` includes settings for an AAAA record. If the service includes settings for an SRV record, you must specify a value for `AWS_INSTANCE_IPV4`, `AWS_INSTANCE_IPV6`, or both.
+#' 
+#' **AWS\_INSTANCE\_PORT**
+#' 
+#' If the service includes an SRV record, the value that you want Route 53 to return for the port.
+#' 
+#' If the service includes `HealthCheckConfig`, the port on the endpoint that you want Route 53 to send requests to.
+#' 
+#' This value is required if you specified settings for an SRV record when you created the service.
+#' @param CreatorRequestId A unique string that identifies the request and that allows failed `RegisterInstance` requests to be retried without the risk of executing the operation twice. You must use a unique `CreatorRequestId` string every time you submit a `RegisterInstance` request if you\'re registering additional instances for the same namespace and service. `CreatorRequestId` can be any unique string, for example, a date/time stamp.
+#'
+#' @examples
+#'
+#' @export
+register_instance <- function (ServiceId, InstanceId, Attributes, 
+    CreatorRequestId = NULL) 
+{
+    op <- Operation(name = "RegisterInstance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- register_instance_input(ServiceId = ServiceId, InstanceId = InstanceId, 
+        Attributes = Attributes, CreatorRequestId = CreatorRequestId)
+    output <- register_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' 
+#'
+#' 
+#'
+#' @param ServiceId 
+#' @param InstanceId 
+#' @param Status 
+#'
+#' @examples
+#'
+#' @export
+update_instance_custom_health_status <- function (ServiceId, 
+    InstanceId, Status) 
+{
+    op <- Operation(name = "UpdateInstanceCustomHealthStatus", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- update_instance_custom_health_status_input(ServiceId = ServiceId, 
+        InstanceId = InstanceId, Status = Status)
+    output <- update_instance_custom_health_status_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Submits a request to perform the following operations:
+#'
+#' Submits a request to perform the following operations:
+#' 
+#' -   Add or delete `DnsRecords` configurations
+#' 
+#' -   Update the TTL setting for existing `DnsRecords` configurations
+#' 
+#' -   Add, update, or delete `HealthCheckConfig` for a specified service
+#' 
+#' You must specify all `DnsRecords` configurations (and, optionally, `HealthCheckConfig`) that you want to appear in the updated service. Any current configurations that don\'t appear in an `UpdateService` request are deleted.
+#' 
+#' When you update the TTL setting for a service, Amazon Route 53 also updates the corresponding settings in all the records and health checks that were created by using the specified service.
+#'
+#' @param Id The ID of the service that you want to update.
+#' @param Service A complex type that contains the new settings for the service.
+#'
+#' @examples
+#'
+#' @export
+update_service <- function (Id, Service) 
+{
+    op <- Operation(name = "UpdateService", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_service_input(Id = Id, Service = Service)
+    output <- update_service_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

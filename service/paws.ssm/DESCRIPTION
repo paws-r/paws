@@ -1,0 +1,66 @@
+Package: paws.ssm
+Title: Amazon Simple Systems Manager (SSM)
+Version: 0.0.0.9000
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut"))
+Description: AWS Systems Manager is a collection of capabilities
+    that helps you automate management tasks such as collecting system
+    inventory, applying operating system (OS) patches, automating the
+    creation of Amazon Machine Images (AMIs), and configuring operating
+    systems (OSs) and applications at scale. Systems Manager lets you
+    remotely and securely manage the configuration of your managed
+    instances. A *managed instance* is any Amazon EC2 instance or
+    on-premises machine in your hybrid environment that has been
+    configured for Systems Manager.
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.5.1)
+Imports: 
+    digest,
+    httr,
+    jsonlite,
+    xml2,
+    ini
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1
+Collate: 
+    'struct.R'
+    'handlers.R'
+    'url.R'
+    'net.R'
+    'credential_providers.R'
+    'credentials.R'
+    'client.R'
+    'config.R'
+    'convert.R'
+    'dateutil.R'
+    'defaults.R'
+    'error.R'
+    'handlers_core.R'
+    'handlers_ec2query.R'
+    'handlers_jsonrpc.R'
+    'handlers_query.R'
+    'handlers_rest.R'
+    'handlers_restjson.R'
+    'idempotency.R'
+    'jsonutil.R'
+    'paws.ssm_interfaces.R'
+    'paws.ssm_operations.R'
+    'paws.ssm_package.R'
+    'paws.ssm_service.R'
+    'populate.R'
+    'populateutil.R'
+    'type.R'
+    'queryutil.R'
+    'request.R'
+    'signer_v4.R'
+    'time.R'
+    'xmlutil.R'

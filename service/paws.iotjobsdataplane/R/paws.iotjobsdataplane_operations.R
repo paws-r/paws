@@ -1,0 +1,105 @@
+#' Gets details of a job execution
+#'
+#' Gets details of a job execution.
+#'
+#' @param jobId The unique identifier assigned to this job when it was created.
+#' @param thingName The thing name associated with the device the job execution is running on.
+#' @param includeJobDocument Optional. When set to true, the response contains the job document. The default is false.
+#' @param executionNumber Optional. A number that identifies a particular job execution on a particular device. If not specified, the latest job execution is returned.
+#'
+#' @examples
+#'
+#' @export
+describe_job_execution <- function (jobId, thingName, includeJobDocument = NULL, 
+    executionNumber = NULL) 
+{
+    op <- Operation(name = "DescribeJobExecution", http_method = "GET", 
+        http_path = "/things/{thingName}/jobs/{jobId}", paginator = list())
+    input <- describe_job_execution_input(jobId = jobId, thingName = thingName, 
+        includeJobDocument = includeJobDocument, executionNumber = executionNumber)
+    output <- describe_job_execution_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets the list of all jobs for a thing that are not in a terminal status
+#'
+#' Gets the list of all jobs for a thing that are not in a terminal status.
+#'
+#' @param thingName The name of the thing that is executing the job.
+#'
+#' @examples
+#'
+#' @export
+get_pending_job_executions <- function (thingName) 
+{
+    op <- Operation(name = "GetPendingJobExecutions", http_method = "GET", 
+        http_path = "/things/{thingName}/jobs", paginator = list())
+    input <- get_pending_job_executions_input(thingName = thingName)
+    output <- get_pending_job_executions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets and starts the next pending (status IN\_PROGRESS or QUEUED) job execution for a thing
+#'
+#' Gets and starts the next pending (status IN\_PROGRESS or QUEUED) job execution for a thing.
+#'
+#' @param thingName The name of the thing associated with the device.
+#' @param statusDetails A collection of name/value pairs that describe the status of the job execution. If not specified, the statusDetails are unchanged.
+#' @param stepTimeoutInMinutes Specifies the amount of time this device has to finish execution of this job. If the job execution status is not set to a terminal state before this timer expires, or before the timer is reset (by calling `UpdateJobExecution`, setting the status to `IN_PROGRESS` and specifying a new timeout value in field `stepTimeoutInMinutes`) the job execution status will be automatically set to `TIMED_OUT`. Note that setting this timeout has no effect on that job execution timeout which may have been specified when the job was created (`CreateJob` using field `timeoutConfig`).
+#'
+#' @examples
+#'
+#' @export
+start_next_pending_job_execution <- function (thingName, statusDetails = NULL, 
+    stepTimeoutInMinutes = NULL) 
+{
+    op <- Operation(name = "StartNextPendingJobExecution", http_method = "PUT", 
+        http_path = "/things/{thingName}/jobs/$next", paginator = list())
+    input <- start_next_pending_job_execution_input(thingName = thingName, 
+        statusDetails = statusDetails, stepTimeoutInMinutes = stepTimeoutInMinutes)
+    output <- start_next_pending_job_execution_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the status of a job execution
+#'
+#' Updates the status of a job execution.
+#'
+#' @param jobId The unique identifier assigned to this job when it was created.
+#' @param thingName The name of the thing associated with the device.
+#' @param status The new status for the job execution (IN\_PROGRESS, FAILED, SUCCESS, or REJECTED). This must be specified on every update.
+#' @param statusDetails Optional. A collection of name/value pairs that describe the status of the job execution. If not specified, the statusDetails are unchanged.
+#' @param stepTimeoutInMinutes Specifies the amount of time this device has to finish execution of this job. If the job execution status is not set to a terminal state before this timer expires, or before the timer is reset (by again calling `UpdateJobExecution`, setting the status to `IN_PROGRESS` and specifying a new timeout value in this field) the job execution status will be automatically set to `TIMED_OUT`. Note that setting or resetting this timeout has no effect on that job execution timeout which may have been specified when the job was created (`CreateJob` using field `timeoutConfig`).
+#' @param expectedVersion Optional. The expected current version of the job execution. Each time you update the job execution, its version is incremented. If the version of the job execution stored in Jobs does not match, the update is rejected with a VersionMismatch error, and an ErrorResponse that contains the current job execution status data is returned. (This makes it unnecessary to perform a separate DescribeJobExecution request in order to obtain the job execution status data.)
+#' @param includeJobExecutionState Optional. When included and set to true, the response contains the JobExecutionState data. The default is false.
+#' @param includeJobDocument Optional. When set to true, the response contains the job document. The default is false.
+#' @param executionNumber Optional. A number that identifies a particular job execution on a particular device.
+#'
+#' @examples
+#'
+#' @export
+update_job_execution <- function (jobId, thingName, status, statusDetails = NULL, 
+    stepTimeoutInMinutes = NULL, expectedVersion = NULL, includeJobExecutionState = NULL, 
+    includeJobDocument = NULL, executionNumber = NULL) 
+{
+    op <- Operation(name = "UpdateJobExecution", http_method = "POST", 
+        http_path = "/things/{thingName}/jobs/{jobId}", paginator = list())
+    input <- update_job_execution_input(jobId = jobId, thingName = thingName, 
+        status = status, statusDetails = statusDetails, stepTimeoutInMinutes = stepTimeoutInMinutes, 
+        expectedVersion = expectedVersion, includeJobExecutionState = includeJobExecutionState, 
+        includeJobDocument = includeJobDocument, executionNumber = executionNumber)
+    output <- update_job_execution_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

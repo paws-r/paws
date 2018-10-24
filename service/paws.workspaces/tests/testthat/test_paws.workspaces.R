@@ -1,0 +1,23 @@
+test_that("describe_ip_groups", {
+    expect_error(describe_ip_groups(), NA)
+})
+
+test_that("describe_ip_groups", {
+    expect_error(describe_ip_groups(MaxResults = 20), NA)
+})
+
+test_that("describe_workspace_bundles", {
+    expect_error(describe_workspace_bundles(), NA)
+})
+
+test_that("describe_workspace_directories", {
+    expect_error(describe_workspace_directories(), NA)
+})
+
+test_that("describe_workspaces", {
+    expect_error(describe_workspaces(), NA)
+})
+
+test_that("describe_workspaces_connection_status", {
+    expect_error(describe_workspaces_connection_status(), NA)
+})

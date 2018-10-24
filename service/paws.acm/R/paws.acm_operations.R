@@ -1,0 +1,379 @@
+#' Adds one or more tags to an ACM certificate
+#'
+#' Adds one or more tags to an ACM certificate. Tags are labels that you can use to identify and organize your AWS resources. Each tag consists of a `key` and an optional `value`. You specify the certificate on input by its Amazon Resource Name (ARN). You specify the tag by using a key-value pair.
+#' 
+#' You can apply a tag to just one certificate if you want to identify a specific characteristic of that certificate, or you can apply the same tag to multiple certificates if you want to filter for a common relationship among those certificates. Similarly, you can apply the same tag to multiple resources if you want to specify a relationship among those resources. For example, you can add the same tag to an ACM certificate and an Elastic Load Balancing load balancer to indicate that they are both used by the same website. For more information, see [Tagging ACM certificates](http://docs.aws.amazon.com/acm/latest/userguide/tags.html).
+#' 
+#' To remove one or more tags, use the RemoveTagsFromCertificate action. To view all of the tags that have been applied to the certificate, use the ListTagsForCertificate action.
+#'
+#' @param CertificateArn String that contains the ARN of the ACM certificate to which the tag is to be applied. This must be of the form:
+#' 
+#' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
+#' 
+#' For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' @param Tags The key-value pair that defines the tag. The tag value is optional.
+#'
+#' @examples
+#'
+#' @export
+add_tags_to_certificate <- function (CertificateArn, Tags) 
+{
+    op <- Operation(name = "AddTagsToCertificate", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- add_tags_to_certificate_input(CertificateArn = CertificateArn, 
+        Tags = Tags)
+    output <- add_tags_to_certificate_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a certificate and its associated private key
+#'
+#' Deletes a certificate and its associated private key. If this action succeeds, the certificate no longer appears in the list that can be displayed by calling the ListCertificates action or be retrieved by calling the GetCertificate action. The certificate will not be available for use by AWS services integrated with ACM.
+#' 
+#' You cannot delete an ACM certificate that is being used by another AWS service. To delete a certificate that is in use, the certificate association must first be removed.
+#'
+#' @param CertificateArn String that contains the ARN of the ACM certificate to be deleted. This must be of the form:
+#' 
+#' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
+#' 
+#' For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#'
+#' @examples
+#'
+#' @export
+delete_certificate <- function (CertificateArn) 
+{
+    op <- Operation(name = "DeleteCertificate", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_certificate_input(CertificateArn = CertificateArn)
+    output <- delete_certificate_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns detailed metadata about the specified ACM certificate
+#'
+#' Returns detailed metadata about the specified ACM certificate.
+#'
+#' @param CertificateArn The Amazon Resource Name (ARN) of the ACM certificate. The ARN must have the following form:
+#' 
+#' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
+#' 
+#' For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#'
+#' @examples
+#'
+#' @export
+describe_certificate <- function (CertificateArn) 
+{
+    op <- Operation(name = "DescribeCertificate", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_certificate_input(CertificateArn = CertificateArn)
+    output <- describe_certificate_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Exports a private certificate issued by a private certificate authority (CA) for use anywhere
+#'
+#' Exports a private certificate issued by a private certificate authority (CA) for use anywhere. You can export the certificate, the certificate chain, and the encrypted private key associated with the public key embedded in the certificate. You must store the private key securely. The private key is a 2048 bit RSA key. You must provide a passphrase for the private key when exporting it. You can use the following OpenSSL command to decrypt it later. Provide the passphrase when prompted.
+#' 
+#' `openssl rsa -in encrypted_key.pem -out decrypted_key.pem`
+#'
+#' @param CertificateArn An Amazon Resource Name (ARN) of the issued certificate. This must be of the form:
+#' 
+#' `arn:aws:acm:region:account:certificate/12345678-1234-1234-1234-123456789012`
+#' @param Passphrase Passphrase to associate with the encrypted exported private key. If you want to later decrypt the private key, you must have the passphrase. You can use the following OpenSSL command to decrypt a private key:
+#' 
+#' `openssl rsa -in encrypted_key.pem -out decrypted_key.pem`
+#'
+#' @examples
+#'
+#' @export
+export_certificate <- function (CertificateArn, Passphrase) 
+{
+    op <- Operation(name = "ExportCertificate", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- export_certificate_input(CertificateArn = CertificateArn, 
+        Passphrase = Passphrase)
+    output <- export_certificate_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a certificate specified by an ARN and its certificate chain 
+#'
+#' Retrieves a certificate specified by an ARN and its certificate chain . The chain is an ordered list of certificates that contains the end entity certificate, intermediate certificates of subordinate CAs, and the root certificate in that order. The certificate and certificate chain are base64 encoded. If you want to decode the certificate to see the individual fields, you can use OpenSSL.
+#'
+#' @param CertificateArn String that contains a certificate ARN in the following format:
+#' 
+#' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
+#' 
+#' For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#'
+#' @examples
+#'
+#' @export
+get_certificate <- function (CertificateArn) 
+{
+    op <- Operation(name = "GetCertificate", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_certificate_input(CertificateArn = CertificateArn)
+    output <- get_certificate_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Imports a certificate into AWS Certificate Manager (ACM) to use with services that are integrated with ACM
+#'
+#' Imports a certificate into AWS Certificate Manager (ACM) to use with services that are integrated with ACM. Note that [integrated services](http://docs.aws.amazon.com/acm/latest/userguide/acm-services.html) allow only certificate types and keys they support to be associated with their resources. Further, their support differs depending on whether the certificate is imported into IAM or into ACM. For more information, see the documentation for each service. For more information about importing certificates into ACM, see [Importing Certificates](http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html) in the *AWS Certificate Manager User Guide*.
+#' 
+#' ACM does not provide [managed renewal](http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for certificates that you import.
+#' 
+#' Note the following guidelines when importing third party certificates:
+#' 
+#' -   You must enter the private key that matches the certificate you are importing.
+#' 
+#' -   The private key must be unencrypted. You cannot import a private key that is protected by a password or a passphrase.
+#' 
+#' -   If the certificate you are importing is not self-signed, you must enter its certificate chain.
+#' 
+#' -   If a certificate chain is included, the issuer must be the subject of one of the certificates in the chain.
+#' 
+#' -   The certificate, private key, and certificate chain must be PEM-encoded.
+#' 
+#' -   The current time must be between the `Not Before` and `Not After` certificate fields.
+#' 
+#' -   The `Issuer` field must not be empty.
+#' 
+#' -   The OCSP authority URL, if present, must not exceed 1000 characters.
+#' 
+#' -   To import a new certificate, omit the `CertificateArn` argument. Include this argument only when you want to replace a previously imported certificate.
+#' 
+#' -   When you import a certificate by using the CLI, you must specify the certificate, the certificate chain, and the private key by their file names preceded by `file://`. For example, you can specify a certificate saved in the `C:\temp` folder as `file://C:\temp\certificate_to_import.pem`. If you are making an HTTP or HTTPS Query request, include these arguments as BLOBs.
+#' 
+#' -   When you import a certificate by using an SDK, you must specify the certificate, the certificate chain, and the private key files in the manner required by the programming language you\'re using.
+#' 
+#' This operation returns the [Amazon Resource Name (ARN)](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) of the imported certificate.
+#'
+#' @param Certificate The certificate to import.
+#' @param PrivateKey The private key that matches the public key in the certificate.
+#' @param CertificateArn The [Amazon Resource Name (ARN)](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) of an imported certificate to replace. To import a new certificate, omit this field.
+#' @param CertificateChain The PEM encoded certificate chain.
+#'
+#' @examples
+#'
+#' @export
+import_certificate <- function (Certificate, PrivateKey, CertificateArn = NULL, 
+    CertificateChain = NULL) 
+{
+    op <- Operation(name = "ImportCertificate", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- import_certificate_input(Certificate = Certificate, 
+        PrivateKey = PrivateKey, CertificateArn = CertificateArn, 
+        CertificateChain = CertificateChain)
+    output <- import_certificate_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a list of certificate ARNs and domain names
+#'
+#' Retrieves a list of certificate ARNs and domain names. You can request that only certificates that match a specific status be listed. You can also filter by specific attributes of the certificate.
+#'
+#' @param CertificateStatuses Filter the certificate list by status value.
+#' @param Includes Filter the certificate list. For more information, see the Filters structure.
+#' @param NextToken Use this parameter only when paginating results and only in a subsequent request after you receive a response with truncated results. Set it to the value of `NextToken` from the response you just received.
+#' @param MaxItems Use this parameter when paginating results to specify the maximum number of items to return in the response. If additional items exist beyond the number you specify, the `NextToken` element is sent in the response. Use this `NextToken` value in a subsequent request to retrieve additional items.
+#'
+#' @examples
+#'
+#' @export
+list_certificates <- function (CertificateStatuses = NULL, Includes = NULL, 
+    NextToken = NULL, MaxItems = NULL) 
+{
+    op <- Operation(name = "ListCertificates", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_certificates_input(CertificateStatuses = CertificateStatuses, 
+        Includes = Includes, NextToken = NextToken, MaxItems = MaxItems)
+    output <- list_certificates_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the tags that have been applied to the ACM certificate
+#'
+#' Lists the tags that have been applied to the ACM certificate. Use the certificate\'s Amazon Resource Name (ARN) to specify the certificate. To add a tag to an ACM certificate, use the AddTagsToCertificate action. To delete a tag, use the RemoveTagsFromCertificate action.
+#'
+#' @param CertificateArn String that contains the ARN of the ACM certificate for which you want to list the tags. This must have the following form:
+#' 
+#' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
+#' 
+#' For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#'
+#' @examples
+#'
+#' @export
+list_tags_for_certificate <- function (CertificateArn) 
+{
+    op <- Operation(name = "ListTagsForCertificate", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_tags_for_certificate_input(CertificateArn = CertificateArn)
+    output <- list_tags_for_certificate_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Remove one or more tags from an ACM certificate
+#'
+#' Remove one or more tags from an ACM certificate. A tag consists of a key-value pair. If you do not specify the value portion of the tag when calling this function, the tag will be removed regardless of value. If you specify a value, the tag is removed only if it is associated with the specified value.
+#' 
+#' To add tags to a certificate, use the AddTagsToCertificate action. To view all of the tags that have been applied to a specific ACM certificate, use the ListTagsForCertificate action.
+#'
+#' @param CertificateArn String that contains the ARN of the ACM Certificate with one or more tags that you want to remove. This must be of the form:
+#' 
+#' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
+#' 
+#' For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' @param Tags The key-value pair that defines the tag to remove.
+#'
+#' @examples
+#'
+#' @export
+remove_tags_from_certificate <- function (CertificateArn, Tags) 
+{
+    op <- Operation(name = "RemoveTagsFromCertificate", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- remove_tags_from_certificate_input(CertificateArn = CertificateArn, 
+        Tags = Tags)
+    output <- remove_tags_from_certificate_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Requests an ACM certificate for use with other AWS services
+#'
+#' Requests an ACM certificate for use with other AWS services. To request an ACM certificate, you must specify a fully qualified domain name (FQDN) in the `DomainName` parameter. You can also specify additional FQDNs in the `SubjectAlternativeNames` parameter.
+#' 
+#' If you are requesting a private certificate, domain validation is not required. If you are requesting a public certificate, each domain name that you specify must be validated to verify that you own or control the domain. You can use [DNS validation](http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html) or [email validation](http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html). We recommend that you use DNS validation. ACM issues public certificates after receiving approval from the domain owner.
+#'
+#' @param DomainName Fully qualified domain name (FQDN), such as www.example.com, that you want to secure with an ACM certificate. Use an asterisk (\*) to create a wildcard certificate that protects several sites in the same domain. For example, \*.example.com protects www.example.com, site.example.com, and images.example.com.
+#' 
+#' The first domain name you enter cannot exceed 63 octets, including periods. Each subsequent Subject Alternative Name (SAN), however, can be up to 253 octets in length.
+#' @param ValidationMethod The method you want to use if you are requesting a public certificate to validate that you own or control domain. You can [validate with DNS](http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html) or [validate with email](http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html). We recommend that you use DNS validation.
+#' @param SubjectAlternativeNames Additional FQDNs to be included in the Subject Alternative Name extension of the ACM certificate. For example, add the name www.example.net to a certificate for which the `DomainName` field is www.example.com if users can reach your site by using either name. The maximum number of domain names that you can add to an ACM certificate is 100. However, the initial limit is 10 domain names. If you need more than 10 names, you must request a limit increase. For more information, see [Limits](http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html).
+#' 
+#' The maximum length of a SAN DNS name is 253 octets. The name is made up of multiple labels separated by periods. No label can be longer than 63 octets. Consider the following examples:
+#' 
+#' -   `(63 octets).(63 octets).(63 octets).(61 octets)` is legal because the total length is 253 octets (63+1+63+1+63+1+61) and no label exceeds 63 octets.
+#' 
+#' -   `(64 octets).(63 octets).(63 octets).(61 octets)` is not legal because the total length exceeds 253 octets (64+1+63+1+63+1+61) and the first label exceeds 63 octets.
+#' 
+#' -   `(63 octets).(63 octets).(63 octets).(62 octets)` is not legal because the total length of the DNS name (63+1+63+1+63+1+62) exceeds 253 octets.
+#' @param IdempotencyToken Customer chosen string that can be used to distinguish between calls to `RequestCertificate`. Idempotency tokens time out after one hour. Therefore, if you call `RequestCertificate` multiple times with the same idempotency token within one hour, ACM recognizes that you are requesting only one certificate and will issue only one. If you change the idempotency token for each call, ACM recognizes that you are requesting multiple certificates.
+#' @param DomainValidationOptions The domain name that you want ACM to use to send you emails so that you can validate domain ownership.
+#' @param Options Currently, you can use this parameter to specify whether to add the certificate to a certificate transparency log. Certificate transparency makes it possible to detect SSL/TLS certificates that have been mistakenly or maliciously issued. Certificates that have not been logged typically produce an error message in a browser. For more information, see [Opting Out of Certificate Transparency Logging](http://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
+#' @param CertificateAuthorityArn The Amazon Resource Name (ARN) of the private certificate authority (CA) that will be used to issue the certificate. If you do not provide an ARN and you are trying to request a private certificate, ACM will attempt to issue a public certificate. For more information about private CAs, see the [AWS Certificate Manager Private Certificate Authority (PCA)](http://docs.aws.amazon.com/acm-pca/latest/userguide/PcaWelcome.html) user guide. The ARN must have the following form:
+#' 
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012`
+#'
+#' @examples
+#'
+#' @export
+request_certificate <- function (DomainName, ValidationMethod = NULL, 
+    SubjectAlternativeNames = NULL, IdempotencyToken = NULL, 
+    DomainValidationOptions = NULL, Options = NULL, CertificateAuthorityArn = NULL) 
+{
+    op <- Operation(name = "RequestCertificate", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- request_certificate_input(DomainName = DomainName, 
+        ValidationMethod = ValidationMethod, SubjectAlternativeNames = SubjectAlternativeNames, 
+        IdempotencyToken = IdempotencyToken, DomainValidationOptions = DomainValidationOptions, 
+        Options = Options, CertificateAuthorityArn = CertificateAuthorityArn)
+    output <- request_certificate_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Resends the email that requests domain ownership validation
+#'
+#' Resends the email that requests domain ownership validation. The domain owner or an authorized representative must approve the ACM certificate before it can be issued. The certificate can be approved by clicking a link in the mail to navigate to the Amazon certificate approval website and then clicking **I Approve**. However, the validation email can be blocked by spam filters. Therefore, if you do not receive the original mail, you can request that the mail be resent within 72 hours of requesting the ACM certificate. If more than 72 hours have elapsed since your original request or since your last attempt to resend validation mail, you must request a new certificate. For more information about setting up your contact email addresses, see [Configure Email for your Domain](http://docs.aws.amazon.com/acm/latest/userguide/setup-email.html).
+#'
+#' @param CertificateArn String that contains the ARN of the requested certificate. The certificate ARN is generated and returned by the RequestCertificate action as soon as the request is made. By default, using this parameter causes email to be sent to all top-level domains you specified in the certificate request. The ARN must be of the form:
+#' 
+#' `arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012`
+#' @param Domain The fully qualified domain name (FQDN) of the certificate that needs to be validated.
+#' @param ValidationDomain The base validation domain that will act as the suffix of the email addresses that are used to send the emails. This must be the same as the `Domain` value or a superdomain of the `Domain` value. For example, if you requested a certificate for `site.subdomain.example.com` and specify a **ValidationDomain** of `subdomain.example.com`, ACM sends email to the domain registrant, technical contact, and administrative contact in WHOIS and the following five addresses:
+#' 
+#' -   admin\@subdomain.example.com
+#' 
+#' -   administrator\@subdomain.example.com
+#' 
+#' -   hostmaster\@subdomain.example.com
+#' 
+#' -   postmaster\@subdomain.example.com
+#' 
+#' -   webmaster\@subdomain.example.com
+#'
+#' @examples
+#'
+#' @export
+resend_validation_email <- function (CertificateArn, Domain, 
+    ValidationDomain) 
+{
+    op <- Operation(name = "ResendValidationEmail", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- resend_validation_email_input(CertificateArn = CertificateArn, 
+        Domain = Domain, ValidationDomain = ValidationDomain)
+    output <- resend_validation_email_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates a certificate
+#'
+#' Updates a certificate. Currently, you can use this function to specify whether to opt in to or out of recording your certificate in a certificate transparency log. For more information, see [Opting Out of Certificate Transparency Logging](http://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
+#'
+#' @param CertificateArn ARN of the requested certificate to update. This must be of the form:
+#' 
+#' `arn:aws:acm:us-east-1:account:certificate/12345678-1234-1234-1234-123456789012 account:certificate/12345678-1234-1234-1234-123456789012 `
+#' @param Options Use to update the options for your certificate. Currently, you can specify whether to add your certificate to a transparency log. Certificate transparency makes it possible to detect SSL/TLS certificates that have been mistakenly or maliciously issued. Certificates that have not been logged typically produce an error message in a browser.
+#'
+#' @examples
+#'
+#' @export
+update_certificate_options <- function (CertificateArn, Options) 
+{
+    op <- Operation(name = "UpdateCertificateOptions", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_certificate_options_input(CertificateArn = CertificateArn, 
+        Options = Options)
+    output <- update_certificate_options_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}

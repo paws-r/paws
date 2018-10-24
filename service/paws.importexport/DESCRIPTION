@@ -1,0 +1,64 @@
+Package: paws.importexport
+Title: AWS Import/Export
+Version: 0.0.0.9000
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut"))
+Description: AWS Import/Export Service AWS Import/Export
+    accelerates transferring large amounts of data between the AWS cloud
+    and portable storage devices that you mail to us. AWS Import/Export
+    transfers data directly onto and off of your storage devices using
+    Amazon\'s high-speed internal network and bypassing the Internet. For
+    large data sets, AWS Import/Export is often faster than Internet
+    transfer and more cost effective than upgrading your connectivity.
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.5.1)
+Imports: 
+    digest,
+    httr,
+    jsonlite,
+    xml2,
+    ini
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1
+Collate: 
+    'struct.R'
+    'handlers.R'
+    'url.R'
+    'net.R'
+    'credential_providers.R'
+    'credentials.R'
+    'client.R'
+    'config.R'
+    'convert.R'
+    'dateutil.R'
+    'defaults.R'
+    'error.R'
+    'handlers_core.R'
+    'handlers_ec2query.R'
+    'handlers_jsonrpc.R'
+    'handlers_query.R'
+    'handlers_rest.R'
+    'handlers_restjson.R'
+    'idempotency.R'
+    'jsonutil.R'
+    'paws.importexport_interfaces.R'
+    'paws.importexport_operations.R'
+    'paws.importexport_package.R'
+    'paws.importexport_service.R'
+    'populate.R'
+    'populateutil.R'
+    'type.R'
+    'queryutil.R'
+    'request.R'
+    'signer_v4.R'
+    'time.R'
+    'xmlutil.R'

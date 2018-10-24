@@ -1,0 +1,3 @@
+#!/bin/sh
+mkdir -p inst/src
+cp -r R/* inst/src

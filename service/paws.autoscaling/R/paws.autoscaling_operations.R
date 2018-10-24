@@ -1,0 +1,2154 @@
+#' Attaches one or more EC2 instances to the specified Auto Scaling group
+#'
+#' Attaches one or more EC2 instances to the specified Auto Scaling group.
+#' 
+#' When you attach instances, Amazon EC2 Auto Scaling increases the desired capacity of the group by the number of instances being attached. If the number of instances being attached plus the desired capacity of the group exceeds the maximum size of the group, the operation fails.
+#' 
+#' If there is a Classic Load Balancer attached to your Auto Scaling group, the instances are also registered with the load balancer. If there are target groups attached to your Auto Scaling group, the instances are also registered with the target groups.
+#' 
+#' For more information, see [Attach EC2 Instances to Your Auto Scaling Group](http://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-instance-asg.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param InstanceIds The IDs of the instances. You can specify up to 20 instances.
+#'
+#' @examples
+#' # This example attaches the specified instance to the specified Auto
+#' # Scaling group.
+#' attach_instances(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   InstanceIds = list(
+#'     "i-93633f9b"
+#'   )
+#' )
+#'
+#' @export
+attach_instances <- function (AutoScalingGroupName, InstanceIds = NULL) 
+{
+    op <- Operation(name = "AttachInstances", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- attach_instances_input(AutoScalingGroupName = AutoScalingGroupName, 
+        InstanceIds = InstanceIds)
+    output <- attach_instances_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Attaches one or more target groups to the specified Auto Scaling group
+#'
+#' Attaches one or more target groups to the specified Auto Scaling group.
+#' 
+#' To describe the target groups for an Auto Scaling group, use DescribeLoadBalancerTargetGroups. To detach the target group from the Auto Scaling group, use DetachLoadBalancerTargetGroups.
+#' 
+#' For more information, see [Attach a Load Balancer to Your Auto Scaling Group](http://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param TargetGroupARNs The Amazon Resource Names (ARN) of the target groups. You can specify up to 10 target groups.
+#'
+#' @examples
+#' # This example attaches the specified target group to the specified Auto
+#' # Scaling group.
+#' attach_load_balancer_target_groups(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   TargetGroupARNs = list(
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067"
+#'   )
+#' )
+#'
+#' @export
+attach_load_balancer_target_groups <- function (AutoScalingGroupName, 
+    TargetGroupARNs) 
+{
+    op <- Operation(name = "AttachLoadBalancerTargetGroups", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- attach_load_balancer_target_groups_input(AutoScalingGroupName = AutoScalingGroupName, 
+        TargetGroupARNs = TargetGroupARNs)
+    output <- attach_load_balancer_target_groups_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Attaches one or more Classic Load Balancers to the specified Auto Scaling group
+#'
+#' Attaches one or more Classic Load Balancers to the specified Auto Scaling group.
+#' 
+#' To attach an Application Load Balancer instead, see AttachLoadBalancerTargetGroups.
+#' 
+#' To describe the load balancers for an Auto Scaling group, use DescribeLoadBalancers. To detach the load balancer from the Auto Scaling group, use DetachLoadBalancers.
+#' 
+#' For more information, see [Attach a Load Balancer to Your Auto Scaling Group](http://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param LoadBalancerNames The names of the load balancers. You can specify up to 10 load balancers.
+#'
+#' @examples
+#' # This example attaches the specified load balancer to the specified Auto
+#' # Scaling group.
+#' attach_load_balancers(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   LoadBalancerNames = list(
+#'     "my-load-balancer"
+#'   )
+#' )
+#'
+#' @export
+attach_load_balancers <- function (AutoScalingGroupName, LoadBalancerNames) 
+{
+    op <- Operation(name = "AttachLoadBalancers", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- attach_load_balancers_input(AutoScalingGroupName = AutoScalingGroupName, 
+        LoadBalancerNames = LoadBalancerNames)
+    output <- attach_load_balancers_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes one or more scheduled actions for the specified Auto Scaling group
+#'
+#' Deletes one or more scheduled actions for the specified Auto Scaling group.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param ScheduledActionNames The names of the scheduled actions to delete. The maximum number allowed is 50.
+#'
+#' @examples
+#'
+#' @export
+batch_delete_scheduled_action <- function (AutoScalingGroupName, 
+    ScheduledActionNames) 
+{
+    op <- Operation(name = "BatchDeleteScheduledAction", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- batch_delete_scheduled_action_input(AutoScalingGroupName = AutoScalingGroupName, 
+        ScheduledActionNames = ScheduledActionNames)
+    output <- batch_delete_scheduled_action_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates or updates one or more scheduled scaling actions for an Auto Scaling group
+#'
+#' Creates or updates one or more scheduled scaling actions for an Auto Scaling group. When updating a scheduled scaling action, if you leave a parameter unspecified, the corresponding value remains unchanged.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param ScheduledUpdateGroupActions One or more scheduled actions. The maximum number allowed is 50.
+#'
+#' @examples
+#'
+#' @export
+batch_put_scheduled_update_group_action <- function (AutoScalingGroupName, 
+    ScheduledUpdateGroupActions) 
+{
+    op <- Operation(name = "BatchPutScheduledUpdateGroupAction", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- batch_put_scheduled_update_group_action_input(AutoScalingGroupName = AutoScalingGroupName, 
+        ScheduledUpdateGroupActions = ScheduledUpdateGroupActions)
+    output <- batch_put_scheduled_update_group_action_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Completes the lifecycle action for the specified token or instance with the specified result
+#'
+#' Completes the lifecycle action for the specified token or instance with the specified result.
+#' 
+#' This step is a part of the procedure for adding a lifecycle hook to an Auto Scaling group:
+#' 
+#' 1.  (Optional) Create a Lambda function and a rule that allows CloudWatch Events to invoke your Lambda function when Amazon EC2 Auto Scaling launches or terminates instances.
+#' 
+#' 2.  (Optional) Create a notification target and an IAM role. The target can be either an Amazon SQS queue or an Amazon SNS topic. The role allows Amazon EC2 Auto Scaling to publish lifecycle notifications to the target.
+#' 
+#' 3.  Create the lifecycle hook. Specify whether the hook is used when the instances launch or terminate.
+#' 
+#' 4.  If you need more time, record the lifecycle action heartbeat to keep the instance in a pending state.
+#' 
+#' 5.  **If you finish before the timeout period ends, complete the lifecycle action.**
+#' 
+#' For more information, see [Auto Scaling Lifecycle](http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#'
+#' @param LifecycleHookName The name of the lifecycle hook.
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param LifecycleActionResult The action for the group to take. This parameter can be either `CONTINUE` or `ABANDON`.
+#' @param LifecycleActionToken A universally unique identifier (UUID) that identifies a specific lifecycle action associated with an instance. Amazon EC2 Auto Scaling sends this token to the notification target you specified when you created the lifecycle hook.
+#' @param InstanceId The ID of the instance.
+#'
+#' @examples
+#' # This example notifies Auto Scaling that the specified lifecycle action
+#' # is complete so that it can finish launching or terminating the instance.
+#' complete_lifecycle_action(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   LifecycleActionResult = "CONTINUE",
+#'   LifecycleActionToken = "bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635",
+#'   LifecycleHookName = "my-lifecycle-hook"
+#' )
+#'
+#' @export
+complete_lifecycle_action <- function (LifecycleHookName, AutoScalingGroupName, 
+    LifecycleActionResult, LifecycleActionToken = NULL, InstanceId = NULL) 
+{
+    op <- Operation(name = "CompleteLifecycleAction", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- complete_lifecycle_action_input(LifecycleHookName = LifecycleHookName, 
+        AutoScalingGroupName = AutoScalingGroupName, LifecycleActionResult = LifecycleActionResult, 
+        LifecycleActionToken = LifecycleActionToken, InstanceId = InstanceId)
+    output <- complete_lifecycle_action_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates an Auto Scaling group with the specified name and attributes
+#'
+#' Creates an Auto Scaling group with the specified name and attributes.
+#' 
+#' If you exceed your maximum limit of Auto Scaling groups, the call fails. For information about viewing this limit, see DescribeAccountLimits. For information about updating this limit, see [Auto Scaling Limits](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' 
+#' For more information, see [Auto Scaling Groups](http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group. This name must be unique within the scope of your AWS account.
+#' @param MinSize The minimum size of the group.
+#' @param MaxSize The maximum size of the group.
+#' @param LaunchConfigurationName The name of the launch configuration. You must specify one of the following: a launch configuration, a launch template, or an EC2 instance.
+#' @param LaunchTemplate The launch template to use to launch instances. You must specify one of the following: a launch template, a launch configuration, or an EC2 instance.
+#' @param InstanceId The ID of the instance used to create a launch configuration for the group. You must specify one of the following: an EC2 instance, a launch configuration, or a launch template.
+#' 
+#' When you specify an ID of an instance, Amazon EC2 Auto Scaling creates a new launch configuration and associates it with the group. This launch configuration derives its attributes from the specified instance, with the exception of the block device mapping.
+#' 
+#' For more information, see [Create an Auto Scaling Group Using an EC2 Instance](http://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-from-instance.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' @param DesiredCapacity The number of EC2 instances that should be running in the group. This number must be greater than or equal to the minimum size of the group and less than or equal to the maximum size of the group. If you do not specify a desired capacity, the default is the minimum size of the group.
+#' @param DefaultCooldown The amount of time, in seconds, after a scaling activity completes before another scaling activity can start. The default is 300.
+#' 
+#' For more information, see [Scaling Cooldowns](http://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' @param AvailabilityZones One or more Availability Zones for the group. This parameter is optional if you specify one or more subnets.
+#' @param LoadBalancerNames One or more Classic Load Balancers. To specify an Application Load Balancer, use `TargetGroupARNs` instead.
+#' 
+#' For more information, see [Using a Load Balancer With an Auto Scaling Group](http://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-from-instance.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' @param TargetGroupARNs The Amazon Resource Names (ARN) of the target groups.
+#' @param HealthCheckType The service to use for the health checks. The valid values are `EC2` and `ELB`.
+#' 
+#' By default, health checks use Amazon EC2 instance status checks to determine the health of an instance. For more information, see [Health Checks](http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' @param HealthCheckGracePeriod The amount of time, in seconds, that Amazon EC2 Auto Scaling waits before checking the health status of an EC2 instance that has come into service. During this time, any health check failures for the instance are ignored. The default is 0.
+#' 
+#' This parameter is required if you are adding an `ELB` health check.
+#' 
+#' For more information, see [Health Checks](http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' @param PlacementGroup The name of the placement group into which you\'ll launch your instances, if any. For more information, see [Placement Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param VPCZoneIdentifier A comma-separated list of subnet identifiers for your virtual private cloud (VPC).
+#' 
+#' If you specify subnets and Availability Zones with this call, ensure that the subnets\' Availability Zones match the Availability Zones specified.
+#' 
+#' For more information, see [Launching Auto Scaling Instances in a VPC](http://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' @param TerminationPolicies One or more termination policies used to select the instance to terminate. These policies are executed in the order that they are listed.
+#' 
+#' For more information, see [Controlling Which Instances Auto Scaling Terminates During Scale In](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html) in the *Auto Scaling User Guide*.
+#' @param NewInstancesProtectedFromScaleIn Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.
+#' @param LifecycleHookSpecificationList One or more lifecycle hooks.
+#' @param Tags One or more tags.
+#' 
+#' For more information, see [Tagging Auto Scaling Groups and Instances](http://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' @param ServiceLinkedRoleARN The Amazon Resource Name (ARN) of the service-linked role that the Auto Scaling group uses to call other AWS services on your behalf. By default, Amazon EC2 Auto Scaling uses a service-linked role named AWSServiceRoleForAutoScaling, which it creates if it does not exist.
+#'
+#' @examples
+#' # This example creates an Auto Scaling group.
+#' create_auto_scaling_group(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   LaunchConfigurationName = "my-launch-config",
+#'   MaxSize = 3L,
+#'   MinSize = 1L,
+#'   VPCZoneIdentifier = "subnet-4176792c"
+#' )
+#' 
+#' # This example creates an Auto Scaling group and attaches the specified
+#' # Classic Load Balancer.
+#' create_auto_scaling_group(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   AvailabilityZones = list(
+#'     "us-west-2c"
+#'   ),
+#'   HealthCheckGracePeriod = 120L,
+#'   HealthCheckType = "ELB",
+#'   LaunchConfigurationName = "my-launch-config",
+#'   LoadBalancerNames = list(
+#'     "my-load-balancer"
+#'   ),
+#'   MaxSize = 3L,
+#'   MinSize = 1L
+#' )
+#' 
+#' # This example creates an Auto Scaling group and attaches the specified
+#' # target group.
+#' create_auto_scaling_group(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   HealthCheckGracePeriod = 120L,
+#'   HealthCheckType = "ELB",
+#'   LaunchConfigurationName = "my-launch-config",
+#'   MaxSize = 3L,
+#'   MinSize = 1L,
+#'   TargetGroupARNs = list(
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067"
+#'   ),
+#'   VPCZoneIdentifier = "subnet-4176792c, subnet-65ea5f08"
+#' )
+#'
+#' @export
+create_auto_scaling_group <- function (AutoScalingGroupName, 
+    MinSize, MaxSize, LaunchConfigurationName = NULL, LaunchTemplate = NULL, 
+    InstanceId = NULL, DesiredCapacity = NULL, DefaultCooldown = NULL, 
+    AvailabilityZones = NULL, LoadBalancerNames = NULL, TargetGroupARNs = NULL, 
+    HealthCheckType = NULL, HealthCheckGracePeriod = NULL, PlacementGroup = NULL, 
+    VPCZoneIdentifier = NULL, TerminationPolicies = NULL, NewInstancesProtectedFromScaleIn = NULL, 
+    LifecycleHookSpecificationList = NULL, Tags = NULL, ServiceLinkedRoleARN = NULL) 
+{
+    op <- Operation(name = "CreateAutoScalingGroup", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_auto_scaling_group_input(AutoScalingGroupName = AutoScalingGroupName, 
+        MinSize = MinSize, MaxSize = MaxSize, LaunchConfigurationName = LaunchConfigurationName, 
+        LaunchTemplate = LaunchTemplate, InstanceId = InstanceId, 
+        DesiredCapacity = DesiredCapacity, DefaultCooldown = DefaultCooldown, 
+        AvailabilityZones = AvailabilityZones, LoadBalancerNames = LoadBalancerNames, 
+        TargetGroupARNs = TargetGroupARNs, HealthCheckType = HealthCheckType, 
+        HealthCheckGracePeriod = HealthCheckGracePeriod, PlacementGroup = PlacementGroup, 
+        VPCZoneIdentifier = VPCZoneIdentifier, TerminationPolicies = TerminationPolicies, 
+        NewInstancesProtectedFromScaleIn = NewInstancesProtectedFromScaleIn, 
+        LifecycleHookSpecificationList = LifecycleHookSpecificationList, 
+        Tags = Tags, ServiceLinkedRoleARN = ServiceLinkedRoleARN)
+    output <- create_auto_scaling_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a launch configuration
+#'
+#' Creates a launch configuration.
+#' 
+#' If you exceed your maximum limit of launch configurations, the call fails. For information about viewing this limit, see DescribeAccountLimits. For information about updating this limit, see [Auto Scaling Limits](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' 
+#' For more information, see [Launch Configurations](http://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#'
+#' @param LaunchConfigurationName The name of the launch configuration. This name must be unique within the scope of your AWS account.
+#' @param ImageId The ID of the Amazon Machine Image (AMI) to use to launch your EC2 instances.
+#' 
+#' If you do not specify `InstanceId`, you must specify `ImageId`.
+#' 
+#' For more information, see [Finding an AMI](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param KeyName The name of the key pair. For more information, see [Amazon EC2 Key Pairs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param SecurityGroups One or more security groups with which to associate the instances.
+#' 
+#' If your instances are launched in EC2-Classic, you can either specify security group names or the security group IDs. For more information about security groups for EC2-Classic, see [Amazon EC2 Security Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' 
+#' If your instances are launched into a VPC, specify security group IDs. For more information, see [Security Groups for Your VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' @param ClassicLinkVPCId The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances to. This parameter is supported only if you are launching EC2-Classic instances. For more information, see [ClassicLink](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param ClassicLinkVPCSecurityGroups The IDs of one or more security groups for the specified ClassicLink-enabled VPC. This parameter is required if you specify a ClassicLink-enabled VPC, and is not supported otherwise. For more information, see [ClassicLink](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param UserData The user data to make available to the launched EC2 instances. For more information, see [Instance Metadata and User Data](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param InstanceId The ID of the instance to use to create the launch configuration. The new launch configuration derives attributes from the instance, with the exception of the block device mapping.
+#' 
+#' If you do not specify `InstanceId`, you must specify both `ImageId` and `InstanceType`.
+#' 
+#' To create a launch configuration with a block device mapping or override any other instance attributes, specify them as part of the same request.
+#' 
+#' For more information, see [Create a Launch Configuration Using an EC2 Instance](http://docs.aws.amazon.com/autoscaling/ec2/userguide/create-lc-with-instanceID.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' @param InstanceType The instance type of the EC2 instance.
+#' 
+#' If you do not specify `InstanceId`, you must specify `InstanceType`.
+#' 
+#' For information about available instance types, see [Available Instance Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes) in the *Amazon Elastic Compute Cloud User Guide.*
+#' @param KernelId The ID of the kernel associated with the AMI.
+#' @param RamdiskId The ID of the RAM disk associated with the AMI.
+#' @param BlockDeviceMappings One or more mappings that specify how block devices are exposed to the instance. For more information, see [Block Device Mapping](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param InstanceMonitoring Enables detailed monitoring (`true`) or basic monitoring (`false`) for the Auto Scaling instances. The default is `true`.
+#' @param SpotPrice The maximum hourly price to be paid for any Spot Instance launched to fulfill the request. Spot Instances are launched when the price you specify exceeds the current Spot market price. For more information, see [Launching Spot Instances in Your Auto Scaling Group](http://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-launch-spot-instances.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' @param IamInstanceProfile The name or the Amazon Resource Name (ARN) of the instance profile associated with the IAM role for the instance.
+#' 
+#' EC2 instances launched with an IAM role will automatically have AWS security credentials available. You can use IAM roles with Amazon EC2 Auto Scaling to automatically enable applications running on your EC2 instances to securely access other AWS resources. For more information, see [Launch Auto Scaling Instances with an IAM Role](http://docs.aws.amazon.com/autoscaling/ec2/userguide/us-iam-role.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' @param EbsOptimized Indicates whether the instance is optimized for Amazon EBS I/O. By default, the instance is not optimized for EBS I/O. The optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal I/O performance. This optimization is not available with all instance types. Additional usage charges apply. For more information, see [Amazon EBS-Optimized Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param AssociatePublicIpAddress Used for groups that launch instances into a virtual private cloud (VPC). Specifies whether to assign a public IP address to each instance. For more information, see [Launching Auto Scaling Instances in a VPC](http://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' 
+#' If you specify this parameter, be sure to specify at least one subnet when you create your group.
+#' 
+#' Default: If the instance is launched into a default subnet, the default is to assign a public IP address. If the instance is launched into a nondefault subnet, the default is not to assign a public IP address.
+#' @param PlacementTenancy The tenancy of the instance. An instance with a tenancy of `dedicated` runs on single-tenant hardware and can only be launched into a VPC.
+#' 
+#' You must set the value of this parameter to `dedicated` if want to launch Dedicated Instances into a shared tenancy VPC (VPC with instance placement tenancy attribute set to `default`).
+#' 
+#' If you specify this parameter, be sure to specify at least one subnet when you create your group.
+#' 
+#' For more information, see [Launching Auto Scaling Instances in a VPC](http://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' 
+#' Valid values: `default` \| `dedicated`
+#'
+#' @examples
+#' # This example creates a launch configuration.
+#' create_launch_configuration(
+#'   IamInstanceProfile = "my-iam-role",
+#'   ImageId = "ami-12345678",
+#'   InstanceType = "m3.medium",
+#'   LaunchConfigurationName = "my-launch-config",
+#'   SecurityGroups = list(
+#'     "sg-eb2af88e"
+#'   )
+#' )
+#'
+#' @export
+create_launch_configuration <- function (LaunchConfigurationName, 
+    ImageId = NULL, KeyName = NULL, SecurityGroups = NULL, ClassicLinkVPCId = NULL, 
+    ClassicLinkVPCSecurityGroups = NULL, UserData = NULL, InstanceId = NULL, 
+    InstanceType = NULL, KernelId = NULL, RamdiskId = NULL, BlockDeviceMappings = NULL, 
+    InstanceMonitoring = NULL, SpotPrice = NULL, IamInstanceProfile = NULL, 
+    EbsOptimized = NULL, AssociatePublicIpAddress = NULL, PlacementTenancy = NULL) 
+{
+    op <- Operation(name = "CreateLaunchConfiguration", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_launch_configuration_input(LaunchConfigurationName = LaunchConfigurationName, 
+        ImageId = ImageId, KeyName = KeyName, SecurityGroups = SecurityGroups, 
+        ClassicLinkVPCId = ClassicLinkVPCId, ClassicLinkVPCSecurityGroups = ClassicLinkVPCSecurityGroups, 
+        UserData = UserData, InstanceId = InstanceId, InstanceType = InstanceType, 
+        KernelId = KernelId, RamdiskId = RamdiskId, BlockDeviceMappings = BlockDeviceMappings, 
+        InstanceMonitoring = InstanceMonitoring, SpotPrice = SpotPrice, 
+        IamInstanceProfile = IamInstanceProfile, EbsOptimized = EbsOptimized, 
+        AssociatePublicIpAddress = AssociatePublicIpAddress, 
+        PlacementTenancy = PlacementTenancy)
+    output <- create_launch_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates or updates tags for the specified Auto Scaling group
+#'
+#' Creates or updates tags for the specified Auto Scaling group.
+#' 
+#' When you specify a tag with a key that already exists, the operation overwrites the previous tag definition, and you do not get an error message.
+#' 
+#' For more information, see [Tagging Auto Scaling Groups and Instances](http://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#'
+#' @param Tags One or more tags.
+#'
+#' @examples
+#' # This example adds two tags to the specified Auto Scaling group.
+#' create_or_update_tags(
+#'   Tags = list(
+#'     list(
+#'       Key = "Role",
+#'       PropagateAtLaunch = TRUE,
+#'       ResourceId = "my-auto-scaling-group",
+#'       ResourceType = "auto-scaling-group",
+#'       Value = "WebServer"
+#'     ),
+#'     list(
+#'       Key = "Dept",
+#'       PropagateAtLaunch = TRUE,
+#'       ResourceId = "my-auto-scaling-group",
+#'       ResourceType = "auto-scaling-group",
+#'       Value = "Research"
+#'     )
+#'   )
+#' )
+#'
+#' @export
+create_or_update_tags <- function (Tags) 
+{
+    op <- Operation(name = "CreateOrUpdateTags", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_or_update_tags_input(Tags = Tags)
+    output <- create_or_update_tags_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified Auto Scaling group
+#'
+#' Deletes the specified Auto Scaling group.
+#' 
+#' If the group has instances or scaling activities in progress, you must specify the option to force the deletion in order for it to succeed.
+#' 
+#' If the group has policies, deleting the group deletes the policies, the underlying alarm actions, and any alarm that no longer has an associated action.
+#' 
+#' To remove instances from the Auto Scaling group before deleting it, call DetachInstances with the list of instances and the option to decrement the desired capacity so that Amazon EC2 Auto Scaling does not launch replacement instances.
+#' 
+#' To terminate all instances before deleting the Auto Scaling group, call UpdateAutoScalingGroup and set the minimum size and desired capacity of the Auto Scaling group to zero.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param ForceDelete Specifies that the group will be deleted along with all instances associated with the group, without waiting for all instances to be terminated. This parameter also deletes any lifecycle actions associated with the group.
+#'
+#' @examples
+#' # This example deletes the specified Auto Scaling group.
+#' delete_auto_scaling_group(
+#'   AutoScalingGroupName = "my-auto-scaling-group"
+#' )
+#' 
+#' # This example deletes the specified Auto Scaling group and all its
+#' # instances.
+#' delete_auto_scaling_group(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   ForceDelete = TRUE
+#' )
+#'
+#' @export
+delete_auto_scaling_group <- function (AutoScalingGroupName, 
+    ForceDelete = NULL) 
+{
+    op <- Operation(name = "DeleteAutoScalingGroup", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_auto_scaling_group_input(AutoScalingGroupName = AutoScalingGroupName, 
+        ForceDelete = ForceDelete)
+    output <- delete_auto_scaling_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified launch configuration
+#'
+#' Deletes the specified launch configuration.
+#' 
+#' The launch configuration must not be attached to an Auto Scaling group. When this call completes, the launch configuration is no longer available for use.
+#'
+#' @param LaunchConfigurationName The name of the launch configuration.
+#'
+#' @examples
+#' # This example deletes the specified launch configuration.
+#' delete_launch_configuration(
+#'   LaunchConfigurationName = "my-launch-config"
+#' )
+#'
+#' @export
+delete_launch_configuration <- function (LaunchConfigurationName) 
+{
+    op <- Operation(name = "DeleteLaunchConfiguration", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_launch_configuration_input(LaunchConfigurationName = LaunchConfigurationName)
+    output <- delete_launch_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified lifecycle hook
+#'
+#' Deletes the specified lifecycle hook.
+#' 
+#' If there are any outstanding lifecycle actions, they are completed first (`ABANDON` for launching instances, `CONTINUE` for terminating instances).
+#'
+#' @param LifecycleHookName The name of the lifecycle hook.
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#'
+#' @examples
+#' # This example deletes the specified lifecycle hook.
+#' delete_lifecycle_hook(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   LifecycleHookName = "my-lifecycle-hook"
+#' )
+#'
+#' @export
+delete_lifecycle_hook <- function (LifecycleHookName, AutoScalingGroupName) 
+{
+    op <- Operation(name = "DeleteLifecycleHook", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_lifecycle_hook_input(LifecycleHookName = LifecycleHookName, 
+        AutoScalingGroupName = AutoScalingGroupName)
+    output <- delete_lifecycle_hook_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified notification
+#'
+#' Deletes the specified notification.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param TopicARN The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic.
+#'
+#' @examples
+#' # This example deletes the specified notification from the specified Auto
+#' # Scaling group.
+#' delete_notification_configuration(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   TopicARN = "arn:aws:sns:us-west-2:123456789012:my-sns-topic"
+#' )
+#'
+#' @export
+delete_notification_configuration <- function (AutoScalingGroupName, 
+    TopicARN) 
+{
+    op <- Operation(name = "DeleteNotificationConfiguration", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- delete_notification_configuration_input(AutoScalingGroupName = AutoScalingGroupName, 
+        TopicARN = TopicARN)
+    output <- delete_notification_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified Auto Scaling policy
+#'
+#' Deletes the specified Auto Scaling policy.
+#' 
+#' Deleting a policy deletes the underlying alarm action, but does not delete the alarm, even if it no longer has an associated action.
+#'
+#' @param PolicyName The name or Amazon Resource Name (ARN) of the policy.
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#'
+#' @examples
+#' # This example deletes the specified Auto Scaling policy.
+#' delete_policy(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   PolicyName = "ScaleIn"
+#' )
+#'
+#' @export
+delete_policy <- function (PolicyName, AutoScalingGroupName = NULL) 
+{
+    op <- Operation(name = "DeletePolicy", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_policy_input(PolicyName = PolicyName, AutoScalingGroupName = AutoScalingGroupName)
+    output <- delete_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified scheduled action
+#'
+#' Deletes the specified scheduled action.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param ScheduledActionName The name of the action to delete.
+#'
+#' @examples
+#' # This example deletes the specified scheduled action from the specified
+#' # Auto Scaling group.
+#' delete_scheduled_action(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   ScheduledActionName = "my-scheduled-action"
+#' )
+#'
+#' @export
+delete_scheduled_action <- function (AutoScalingGroupName, ScheduledActionName) 
+{
+    op <- Operation(name = "DeleteScheduledAction", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_scheduled_action_input(AutoScalingGroupName = AutoScalingGroupName, 
+        ScheduledActionName = ScheduledActionName)
+    output <- delete_scheduled_action_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified tags
+#'
+#' Deletes the specified tags.
+#'
+#' @param Tags One or more tags.
+#'
+#' @examples
+#' # This example deletes the specified tag from the specified Auto Scaling
+#' # group.
+#' delete_tags(
+#'   Tags = list(
+#'     list(
+#'       Key = "Dept",
+#'       ResourceId = "my-auto-scaling-group",
+#'       ResourceType = "auto-scaling-group",
+#'       Value = "Research"
+#'     )
+#'   )
+#' )
+#'
+#' @export
+delete_tags <- function (Tags) 
+{
+    op <- Operation(name = "DeleteTags", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_tags_input(Tags = Tags)
+    output <- delete_tags_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the current Auto Scaling resource limits for your AWS account
+#'
+#' Describes the current Auto Scaling resource limits for your AWS account.
+#' 
+#' For information about requesting an increase in these limits, see [Auto Scaling Limits](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#'
+
+#'
+#' @examples
+#' # This example describes the Auto Scaling limits for your AWS account.
+#' describe_account_limits()
+#'
+#' @export
+describe_account_limits <- function () 
+{
+    op <- Operation(name = "DescribeAccountLimits", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_account_limits_input()
+    output <- describe_account_limits_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the policy adjustment types for use with PutScalingPolicy
+#'
+#' Describes the policy adjustment types for use with PutScalingPolicy.
+#'
+
+#'
+#' @examples
+#' # This example describes the available adjustment types.
+#' describe_adjustment_types()
+#'
+#' @export
+describe_adjustment_types <- function () 
+{
+    op <- Operation(name = "DescribeAdjustmentTypes", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_adjustment_types_input()
+    output <- describe_adjustment_types_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes one or more Auto Scaling groups
+#'
+#' Describes one or more Auto Scaling groups.
+#'
+#' @param AutoScalingGroupNames The names of the Auto Scaling groups. You can specify up to `MaxRecords` names. If you omit this parameter, all Auto Scaling groups are described.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#' @param MaxRecords The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.
+#'
+#' @examples
+#' # This example describes the specified Auto Scaling group.
+#' describe_auto_scaling_groups(
+#'   AutoScalingGroupNames = list(
+#'     "my-auto-scaling-group"
+#'   )
+#' )
+#'
+#' @export
+describe_auto_scaling_groups <- function (AutoScalingGroupNames = NULL, 
+    NextToken = NULL, MaxRecords = NULL) 
+{
+    op <- Operation(name = "DescribeAutoScalingGroups", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_auto_scaling_groups_input(AutoScalingGroupNames = AutoScalingGroupNames, 
+        NextToken = NextToken, MaxRecords = MaxRecords)
+    output <- describe_auto_scaling_groups_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes one or more Auto Scaling instances
+#'
+#' Describes one or more Auto Scaling instances.
+#'
+#' @param InstanceIds The IDs of the instances. You can specify up to `MaxRecords` IDs. If you omit this parameter, all Auto Scaling instances are described. If you specify an ID that does not exist, it is ignored with no error.
+#' @param MaxRecords The maximum number of items to return with this call. The default value is 50 and the maximum value is 50.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#' # This example describes the specified Auto Scaling instance.
+#' describe_auto_scaling_instances(
+#'   InstanceIds = list(
+#'     "i-4ba0837f"
+#'   )
+#' )
+#'
+#' @export
+describe_auto_scaling_instances <- function (InstanceIds = NULL, 
+    MaxRecords = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeAutoScalingInstances", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_auto_scaling_instances_input(InstanceIds = InstanceIds, 
+        MaxRecords = MaxRecords, NextToken = NextToken)
+    output <- describe_auto_scaling_instances_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the notification types that are supported by Amazon EC2 Auto Scaling
+#'
+#' Describes the notification types that are supported by Amazon EC2 Auto Scaling.
+#'
+
+#'
+#' @examples
+#' # This example describes the available notification types.
+#' describe_auto_scaling_notification_types()
+#'
+#' @export
+describe_auto_scaling_notification_types <- function () 
+{
+    op <- Operation(name = "DescribeAutoScalingNotificationTypes", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_auto_scaling_notification_types_input()
+    output <- describe_auto_scaling_notification_types_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes one or more launch configurations
+#'
+#' Describes one or more launch configurations.
+#'
+#' @param LaunchConfigurationNames The launch configuration names. If you omit this parameter, all launch configurations are described.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#' @param MaxRecords The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.
+#'
+#' @examples
+#' # This example describes the specified launch configuration.
+#' describe_launch_configurations(
+#'   LaunchConfigurationNames = list(
+#'     "my-launch-config"
+#'   )
+#' )
+#'
+#' @export
+describe_launch_configurations <- function (LaunchConfigurationNames = NULL, 
+    NextToken = NULL, MaxRecords = NULL) 
+{
+    op <- Operation(name = "DescribeLaunchConfigurations", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_launch_configurations_input(LaunchConfigurationNames = LaunchConfigurationNames, 
+        NextToken = NextToken, MaxRecords = MaxRecords)
+    output <- describe_launch_configurations_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the available types of lifecycle hooks
+#'
+#' Describes the available types of lifecycle hooks.
+#' 
+#' The following hook types are supported:
+#' 
+#' -   autoscaling:EC2\_INSTANCE\_LAUNCHING
+#' 
+#' -   autoscaling:EC2\_INSTANCE\_TERMINATING
+#'
+
+#'
+#' @examples
+#' # This example describes the available lifecycle hook types.
+#' describe_lifecycle_hook_types()
+#'
+#' @export
+describe_lifecycle_hook_types <- function () 
+{
+    op <- Operation(name = "DescribeLifecycleHookTypes", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_lifecycle_hook_types_input()
+    output <- describe_lifecycle_hook_types_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the lifecycle hooks for the specified Auto Scaling group
+#'
+#' Describes the lifecycle hooks for the specified Auto Scaling group.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param LifecycleHookNames The names of one or more lifecycle hooks. If you omit this parameter, all lifecycle hooks are described.
+#'
+#' @examples
+#' # This example describes the lifecycle hooks for the specified Auto
+#' # Scaling group.
+#' describe_lifecycle_hooks(
+#'   AutoScalingGroupName = "my-auto-scaling-group"
+#' )
+#'
+#' @export
+describe_lifecycle_hooks <- function (AutoScalingGroupName, LifecycleHookNames = NULL) 
+{
+    op <- Operation(name = "DescribeLifecycleHooks", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_lifecycle_hooks_input(AutoScalingGroupName = AutoScalingGroupName, 
+        LifecycleHookNames = LifecycleHookNames)
+    output <- describe_lifecycle_hooks_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the target groups for the specified Auto Scaling group
+#'
+#' Describes the target groups for the specified Auto Scaling group.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#' @param MaxRecords The maximum number of items to return with this call. The default value is 100 and the maximum value is 100.
+#'
+#' @examples
+#' # This example describes the target groups attached to the specified Auto
+#' # Scaling group.
+#' describe_load_balancer_target_groups(
+#'   AutoScalingGroupName = "my-auto-scaling-group"
+#' )
+#'
+#' @export
+describe_load_balancer_target_groups <- function (AutoScalingGroupName, 
+    NextToken = NULL, MaxRecords = NULL) 
+{
+    op <- Operation(name = "DescribeLoadBalancerTargetGroups", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_load_balancer_target_groups_input(AutoScalingGroupName = AutoScalingGroupName, 
+        NextToken = NextToken, MaxRecords = MaxRecords)
+    output <- describe_load_balancer_target_groups_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the load balancers for the specified Auto Scaling group
+#'
+#' Describes the load balancers for the specified Auto Scaling group.
+#' 
+#' Note that this operation describes only Classic Load Balancers. If you have Application Load Balancers, use DescribeLoadBalancerTargetGroups instead.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#' @param MaxRecords The maximum number of items to return with this call. The default value is 100 and the maximum value is 100.
+#'
+#' @examples
+#' # This example describes the load balancers attached to the specified Auto
+#' # Scaling group.
+#' describe_load_balancers(
+#'   AutoScalingGroupName = "my-auto-scaling-group"
+#' )
+#'
+#' @export
+describe_load_balancers <- function (AutoScalingGroupName, NextToken = NULL, 
+    MaxRecords = NULL) 
+{
+    op <- Operation(name = "DescribeLoadBalancers", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_load_balancers_input(AutoScalingGroupName = AutoScalingGroupName, 
+        NextToken = NextToken, MaxRecords = MaxRecords)
+    output <- describe_load_balancers_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the available CloudWatch metrics for Amazon EC2 Auto Scaling
+#'
+#' Describes the available CloudWatch metrics for Amazon EC2 Auto Scaling.
+#' 
+#' Note that the `GroupStandbyInstances` metric is not returned by default. You must explicitly request this metric when calling EnableMetricsCollection.
+#'
+
+#'
+#' @examples
+#' # This example describes the available metric collection types.
+#' describe_metric_collection_types()
+#'
+#' @export
+describe_metric_collection_types <- function () 
+{
+    op <- Operation(name = "DescribeMetricCollectionTypes", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_metric_collection_types_input()
+    output <- describe_metric_collection_types_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the notification actions associated with the specified Auto Scaling group
+#'
+#' Describes the notification actions associated with the specified Auto Scaling group.
+#'
+#' @param AutoScalingGroupNames The name of the Auto Scaling group.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#' @param MaxRecords The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.
+#'
+#' @examples
+#' # This example describes the notification configurations for the specified
+#' # Auto Scaling group.
+#' describe_notification_configurations(
+#'   AutoScalingGroupNames = list(
+#'     "my-auto-scaling-group"
+#'   )
+#' )
+#'
+#' @export
+describe_notification_configurations <- function (AutoScalingGroupNames = NULL, 
+    NextToken = NULL, MaxRecords = NULL) 
+{
+    op <- Operation(name = "DescribeNotificationConfigurations", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_notification_configurations_input(AutoScalingGroupNames = AutoScalingGroupNames, 
+        NextToken = NextToken, MaxRecords = MaxRecords)
+    output <- describe_notification_configurations_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the policies for the specified Auto Scaling group
+#'
+#' Describes the policies for the specified Auto Scaling group.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param PolicyNames The names of one or more policies. If you omit this parameter, all policies are described. If an group name is provided, the results are limited to that group. This list is limited to 50 items. If you specify an unknown policy name, it is ignored with no error.
+#' @param PolicyTypes One or more policy types. Valid values are `SimpleScaling` and `StepScaling`.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#' @param MaxRecords The maximum number of items to be returned with each call. The default value is 50 and the maximum value is 100.
+#'
+#' @examples
+#' # This example describes the policies for the specified Auto Scaling
+#' # group.
+#' describe_policies(
+#'   AutoScalingGroupName = "my-auto-scaling-group"
+#' )
+#'
+#' @export
+describe_policies <- function (AutoScalingGroupName = NULL, PolicyNames = NULL, 
+    PolicyTypes = NULL, NextToken = NULL, MaxRecords = NULL) 
+{
+    op <- Operation(name = "DescribePolicies", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_policies_input(AutoScalingGroupName = AutoScalingGroupName, 
+        PolicyNames = PolicyNames, PolicyTypes = PolicyTypes, 
+        NextToken = NextToken, MaxRecords = MaxRecords)
+    output <- describe_policies_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes one or more scaling activities for the specified Auto Scaling group
+#'
+#' Describes one or more scaling activities for the specified Auto Scaling group.
+#'
+#' @param ActivityIds The activity IDs of the desired scaling activities. You can specify up to 50 IDs. If you omit this parameter, all activities for the past six weeks are described. If unknown activities are requested, they are ignored with no error. If you specify an Auto Scaling group, the results are limited to that group.
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param MaxRecords The maximum number of items to return with this call. The default value is 100 and the maximum value is 100.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @examples
+#' # This example describes the scaling activities for the specified Auto
+#' # Scaling group.
+#' describe_scaling_activities(
+#'   AutoScalingGroupName = "my-auto-scaling-group"
+#' )
+#'
+#' @export
+describe_scaling_activities <- function (ActivityIds = NULL, 
+    AutoScalingGroupName = NULL, MaxRecords = NULL, NextToken = NULL) 
+{
+    op <- Operation(name = "DescribeScalingActivities", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_scaling_activities_input(ActivityIds = ActivityIds, 
+        AutoScalingGroupName = AutoScalingGroupName, MaxRecords = MaxRecords, 
+        NextToken = NextToken)
+    output <- describe_scaling_activities_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the scaling process types for use with ResumeProcesses and SuspendProcesses
+#'
+#' Describes the scaling process types for use with ResumeProcesses and SuspendProcesses.
+#'
+
+#'
+#' @examples
+#' # This example describes the Auto Scaling process types.
+#' describe_scaling_process_types()
+#'
+#' @export
+describe_scaling_process_types <- function () 
+{
+    op <- Operation(name = "DescribeScalingProcessTypes", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_scaling_process_types_input()
+    output <- describe_scaling_process_types_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the actions scheduled for your Auto Scaling group that haven\'t run
+#'
+#' Describes the actions scheduled for your Auto Scaling group that haven\'t run. To describe the actions that have already run, use DescribeScalingActivities.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param ScheduledActionNames The names of one or more scheduled actions. You can specify up to 50 actions. If you omit this parameter, all scheduled actions are described. If you specify an unknown scheduled action, it is ignored with no error.
+#' @param StartTime The earliest scheduled start time to return. If scheduled action names are provided, this parameter is ignored.
+#' @param EndTime The latest scheduled start time to return. If scheduled action names are provided, this parameter is ignored.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#' @param MaxRecords The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.
+#'
+#' @examples
+#' # This example describes the scheduled actions for the specified Auto
+#' # Scaling group.
+#' describe_scheduled_actions(
+#'   AutoScalingGroupName = "my-auto-scaling-group"
+#' )
+#'
+#' @export
+describe_scheduled_actions <- function (AutoScalingGroupName = NULL, 
+    ScheduledActionNames = NULL, StartTime = NULL, EndTime = NULL, 
+    NextToken = NULL, MaxRecords = NULL) 
+{
+    op <- Operation(name = "DescribeScheduledActions", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_scheduled_actions_input(AutoScalingGroupName = AutoScalingGroupName, 
+        ScheduledActionNames = ScheduledActionNames, StartTime = StartTime, 
+        EndTime = EndTime, NextToken = NextToken, MaxRecords = MaxRecords)
+    output <- describe_scheduled_actions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the specified tags
+#'
+#' Describes the specified tags.
+#' 
+#' You can use filters to limit the results. For example, you can query for the tags for a specific Auto Scaling group. You can specify multiple values for a filter. A tag must match at least one of the specified values for it to be included in the results.
+#' 
+#' You can also specify multiple filters. The result includes information for a particular tag only if it matches all the filters. If there\'s no match, no special message is returned.
+#'
+#' @param Filters A filter used to scope the tags to return.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#' @param MaxRecords The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.
+#'
+#' @examples
+#' # This example describes the tags for the specified Auto Scaling group.
+#' describe_tags(
+#'   Filters = list(
+#'     list(
+#'       Name = "auto-scaling-group",
+#'       Values = list(
+#'         "my-auto-scaling-group"
+#'       )
+#'     )
+#'   )
+#' )
+#'
+#' @export
+describe_tags <- function (Filters = NULL, NextToken = NULL, 
+    MaxRecords = NULL) 
+{
+    op <- Operation(name = "DescribeTags", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_tags_input(Filters = Filters, NextToken = NextToken, 
+        MaxRecords = MaxRecords)
+    output <- describe_tags_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the termination policies supported by Amazon EC2 Auto Scaling
+#'
+#' Describes the termination policies supported by Amazon EC2 Auto Scaling.
+#'
+
+#'
+#' @examples
+#' # This example describes the available termination policy types.
+#' describe_termination_policy_types()
+#'
+#' @export
+describe_termination_policy_types <- function () 
+{
+    op <- Operation(name = "DescribeTerminationPolicyTypes", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_termination_policy_types_input()
+    output <- describe_termination_policy_types_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes one or more instances from the specified Auto Scaling group
+#'
+#' Removes one or more instances from the specified Auto Scaling group.
+#' 
+#' After the instances are detached, you can manage them independent of the Auto Scaling group.
+#' 
+#' If you do not specify the option to decrement the desired capacity, Amazon EC2 Auto Scaling launches instances to replace the ones that are detached.
+#' 
+#' If there is a Classic Load Balancer attached to the Auto Scaling group, the instances are deregistered from the load balancer. If there are target groups attached to the Auto Scaling group, the instances are deregistered from the target groups.
+#' 
+#' For more information, see [Detach EC2 Instances from Your Auto Scaling Group](http://docs.aws.amazon.com/autoscaling/ec2/userguide/detach-instance-asg.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param ShouldDecrementDesiredCapacity Indicates whether the Auto Scaling group decrements the desired capacity value by the number of instances detached.
+#' @param InstanceIds The IDs of the instances. You can specify up to 20 instances.
+#'
+#' @examples
+#' # This example detaches the specified instance from the specified Auto
+#' # Scaling group.
+#' detach_instances(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   InstanceIds = list(
+#'     "i-93633f9b"
+#'   ),
+#'   ShouldDecrementDesiredCapacity = TRUE
+#' )
+#'
+#' @export
+detach_instances <- function (AutoScalingGroupName, ShouldDecrementDesiredCapacity, 
+    InstanceIds = NULL) 
+{
+    op <- Operation(name = "DetachInstances", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- detach_instances_input(AutoScalingGroupName = AutoScalingGroupName, 
+        ShouldDecrementDesiredCapacity = ShouldDecrementDesiredCapacity, 
+        InstanceIds = InstanceIds)
+    output <- detach_instances_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Detaches one or more target groups from the specified Auto Scaling group
+#'
+#' Detaches one or more target groups from the specified Auto Scaling group.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param TargetGroupARNs The Amazon Resource Names (ARN) of the target groups. You can specify up to 10 target groups.
+#'
+#' @examples
+#' # This example detaches the specified target group from the specified Auto
+#' # Scaling group
+#' detach_load_balancer_target_groups(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   TargetGroupARNs = list(
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067"
+#'   )
+#' )
+#'
+#' @export
+detach_load_balancer_target_groups <- function (AutoScalingGroupName, 
+    TargetGroupARNs) 
+{
+    op <- Operation(name = "DetachLoadBalancerTargetGroups", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- detach_load_balancer_target_groups_input(AutoScalingGroupName = AutoScalingGroupName, 
+        TargetGroupARNs = TargetGroupARNs)
+    output <- detach_load_balancer_target_groups_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Detaches one or more Classic Load Balancers from the specified Auto Scaling group
+#'
+#' Detaches one or more Classic Load Balancers from the specified Auto Scaling group.
+#' 
+#' Note that this operation detaches only Classic Load Balancers. If you have Application Load Balancers, use DetachLoadBalancerTargetGroups instead.
+#' 
+#' When you detach a load balancer, it enters the `Removing` state while deregistering the instances in the group. When all instances are deregistered, then you can no longer describe the load balancer using DescribeLoadBalancers. Note that the instances remain running.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param LoadBalancerNames The names of the load balancers. You can specify up to 10 load balancers.
+#'
+#' @examples
+#' # This example detaches the specified load balancer from the specified
+#' # Auto Scaling group.
+#' detach_load_balancers(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   LoadBalancerNames = list(
+#'     "my-load-balancer"
+#'   )
+#' )
+#'
+#' @export
+detach_load_balancers <- function (AutoScalingGroupName, LoadBalancerNames) 
+{
+    op <- Operation(name = "DetachLoadBalancers", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- detach_load_balancers_input(AutoScalingGroupName = AutoScalingGroupName, 
+        LoadBalancerNames = LoadBalancerNames)
+    output <- detach_load_balancers_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Disables group metrics for the specified Auto Scaling group
+#'
+#' Disables group metrics for the specified Auto Scaling group.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param Metrics One or more of the following metrics. If you omit this parameter, all metrics are disabled.
+#' 
+#' -   `GroupMinSize`
+#' 
+#' -   `GroupMaxSize`
+#' 
+#' -   `GroupDesiredCapacity`
+#' 
+#' -   `GroupInServiceInstances`
+#' 
+#' -   `GroupPendingInstances`
+#' 
+#' -   `GroupStandbyInstances`
+#' 
+#' -   `GroupTerminatingInstances`
+#' 
+#' -   `GroupTotalInstances`
+#'
+#' @examples
+#' # This example disables collecting data for the GroupDesiredCapacity
+#' # metric for the specified Auto Scaling group.
+#' disable_metrics_collection(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   Metrics = list(
+#'     "GroupDesiredCapacity"
+#'   )
+#' )
+#'
+#' @export
+disable_metrics_collection <- function (AutoScalingGroupName, 
+    Metrics = NULL) 
+{
+    op <- Operation(name = "DisableMetricsCollection", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- disable_metrics_collection_input(AutoScalingGroupName = AutoScalingGroupName, 
+        Metrics = Metrics)
+    output <- disable_metrics_collection_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Enables group metrics for the specified Auto Scaling group
+#'
+#' Enables group metrics for the specified Auto Scaling group. For more information, see [Monitoring Your Auto Scaling Groups and Instances](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-monitoring.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param Granularity The granularity to associate with the metrics to collect. The only valid value is `1Minute`.
+#' @param Metrics One or more of the following metrics. If you omit this parameter, all metrics are enabled.
+#' 
+#' -   `GroupMinSize`
+#' 
+#' -   `GroupMaxSize`
+#' 
+#' -   `GroupDesiredCapacity`
+#' 
+#' -   `GroupInServiceInstances`
+#' 
+#' -   `GroupPendingInstances`
+#' 
+#' -   `GroupStandbyInstances`
+#' 
+#' -   `GroupTerminatingInstances`
+#' 
+#' -   `GroupTotalInstances`
+#'
+#' @examples
+#' # This example enables data collection for the specified Auto Scaling
+#' # group.
+#' enable_metrics_collection(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   Granularity = "1Minute"
+#' )
+#'
+#' @export
+enable_metrics_collection <- function (AutoScalingGroupName, 
+    Granularity, Metrics = NULL) 
+{
+    op <- Operation(name = "EnableMetricsCollection", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- enable_metrics_collection_input(AutoScalingGroupName = AutoScalingGroupName, 
+        Granularity = Granularity, Metrics = Metrics)
+    output <- enable_metrics_collection_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Moves the specified instances into the standby state
+#'
+#' Moves the specified instances into the standby state.
+#' 
+#' For more information, see [Temporarily Removing Instances from Your Auto Scaling Group](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param ShouldDecrementDesiredCapacity Indicates whether to decrement the desired capacity of the Auto Scaling group by the number of instances moved to `Standby` mode.
+#' @param InstanceIds The IDs of the instances. You can specify up to 20 instances.
+#'
+#' @examples
+#' # This example puts the specified instance into standby mode.
+#' enter_standby(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   InstanceIds = list(
+#'     "i-93633f9b"
+#'   ),
+#'   ShouldDecrementDesiredCapacity = TRUE
+#' )
+#'
+#' @export
+enter_standby <- function (AutoScalingGroupName, ShouldDecrementDesiredCapacity, 
+    InstanceIds = NULL) 
+{
+    op <- Operation(name = "EnterStandby", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- enter_standby_input(AutoScalingGroupName = AutoScalingGroupName, 
+        ShouldDecrementDesiredCapacity = ShouldDecrementDesiredCapacity, 
+        InstanceIds = InstanceIds)
+    output <- enter_standby_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Executes the specified policy
+#'
+#' Executes the specified policy.
+#'
+#' @param PolicyName The name or ARN of the policy.
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param HonorCooldown Indicates whether Amazon EC2 Auto Scaling waits for the cooldown period to complete before executing the policy.
+#' 
+#' This parameter is not supported if the policy type is `StepScaling`.
+#' 
+#' For more information, see [Scaling Cooldowns](http://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' @param MetricValue The metric value to compare to `BreachThreshold`. This enables you to execute a policy of type `StepScaling` and determine which step adjustment to use. For example, if the breach threshold is 50 and you want to use a step adjustment with a lower bound of 0 and an upper bound of 10, you can set the metric value to 59.
+#' 
+#' If you specify a metric value that doesn\'t correspond to a step adjustment for the policy, the call returns an error.
+#' 
+#' This parameter is required if the policy type is `StepScaling` and not supported otherwise.
+#' @param BreachThreshold The breach threshold for the alarm.
+#' 
+#' This parameter is required if the policy type is `StepScaling` and not supported otherwise.
+#'
+#' @examples
+#' # This example executes the specified Auto Scaling policy for the
+#' # specified Auto Scaling group.
+#' execute_policy(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   HonorCooldown = TRUE,
+#'   PolicyName = "ScaleIn"
+#' )
+#'
+#' @export
+execute_policy <- function (PolicyName, AutoScalingGroupName = NULL, 
+    HonorCooldown = NULL, MetricValue = NULL, BreachThreshold = NULL) 
+{
+    op <- Operation(name = "ExecutePolicy", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- execute_policy_input(PolicyName = PolicyName, AutoScalingGroupName = AutoScalingGroupName, 
+        HonorCooldown = HonorCooldown, MetricValue = MetricValue, 
+        BreachThreshold = BreachThreshold)
+    output <- execute_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Moves the specified instances out of the standby state
+#'
+#' Moves the specified instances out of the standby state.
+#' 
+#' For more information, see [Temporarily Removing Instances from Your Auto Scaling Group](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param InstanceIds The IDs of the instances. You can specify up to 20 instances.
+#'
+#' @examples
+#' # This example moves the specified instance out of standby mode.
+#' exit_standby(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   InstanceIds = list(
+#'     "i-93633f9b"
+#'   )
+#' )
+#'
+#' @export
+exit_standby <- function (AutoScalingGroupName, InstanceIds = NULL) 
+{
+    op <- Operation(name = "ExitStandby", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- exit_standby_input(AutoScalingGroupName = AutoScalingGroupName, 
+        InstanceIds = InstanceIds)
+    output <- exit_standby_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates or updates a lifecycle hook for the specified Auto Scaling Group
+#'
+#' Creates or updates a lifecycle hook for the specified Auto Scaling Group.
+#' 
+#' A lifecycle hook tells Amazon EC2 Auto Scaling that you want to perform an action on an instance that is not actively in service; for example, either when the instance launches or before the instance terminates.
+#' 
+#' This step is a part of the procedure for adding a lifecycle hook to an Auto Scaling group:
+#' 
+#' 1.  (Optional) Create a Lambda function and a rule that allows CloudWatch Events to invoke your Lambda function when Amazon EC2 Auto Scaling launches or terminates instances.
+#' 
+#' 2.  (Optional) Create a notification target and an IAM role. The target can be either an Amazon SQS queue or an Amazon SNS topic. The role allows Amazon EC2 Auto Scaling to publish lifecycle notifications to the target.
+#' 
+#' 3.  **Create the lifecycle hook. Specify whether the hook is used when the instances launch or terminate.**
+#' 
+#' 4.  If you need more time, record the lifecycle action heartbeat to keep the instance in a pending state.
+#' 
+#' 5.  If you finish before the timeout period ends, complete the lifecycle action.
+#' 
+#' For more information, see [Auto Scaling Lifecycle Hooks](http://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' 
+#' If you exceed your maximum limit of lifecycle hooks, which by default is 50 per Auto Scaling group, the call fails. For information about updating this limit, see [AWS Service Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html) in the *Amazon Web Services General Reference*.
+#'
+#' @param LifecycleHookName The name of the lifecycle hook.
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param LifecycleTransition The instance state to which you want to attach the lifecycle hook. The possible values are:
+#' 
+#' -   autoscaling:EC2\_INSTANCE\_LAUNCHING
+#' 
+#' -   autoscaling:EC2\_INSTANCE\_TERMINATING
+#' 
+#' This parameter is required for new lifecycle hooks, but optional when updating existing hooks.
+#' @param RoleARN The ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target.
+#' 
+#' This parameter is required for new lifecycle hooks, but optional when updating existing hooks.
+#' @param NotificationTargetARN The ARN of the notification target that Amazon EC2 Auto Scaling will use to notify you when an instance is in the transition state for the lifecycle hook. This target can be either an SQS queue or an SNS topic. If you specify an empty string, this overrides the current ARN.
+#' 
+#' This operation uses the JSON format when sending notifications to an Amazon SQS queue, and an email key/value pair format when sending notifications to an Amazon SNS topic.
+#' 
+#' When you specify a notification target, Amazon EC2 Auto Scaling sends it a test message. Test messages contains the following additional key/value pair: `"Event": "autoscaling:TEST_NOTIFICATION"`.
+#' @param NotificationMetadata Contains additional information that you want to include any time Amazon EC2 Auto Scaling sends a message to the notification target.
+#' @param HeartbeatTimeout The maximum time, in seconds, that can elapse before the lifecycle hook times out. The range is from 30 to 7200 seconds. The default is 3600 seconds (1 hour).
+#' 
+#' If the lifecycle hook times out, Amazon EC2 Auto Scaling performs the default action. You can prevent the lifecycle hook from timing out by calling RecordLifecycleActionHeartbeat.
+#' @param DefaultResult Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses or if an unexpected failure occurs. This parameter can be either `CONTINUE` or `ABANDON`. The default value is `ABANDON`.
+#'
+#' @examples
+#' # This example creates a lifecycle hook.
+#' put_lifecycle_hook(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   LifecycleHookName = "my-lifecycle-hook",
+#'   LifecycleTransition = "autoscaling:EC2_INSTANCE_LAUNCHING",
+#'   NotificationTargetARN = "arn:aws:sns:us-west-2:123456789012:my-sns-topic --role-arn",
+#'   RoleARN = "arn:aws:iam::123456789012:role/my-auto-scaling-role"
+#' )
+#'
+#' @export
+put_lifecycle_hook <- function (LifecycleHookName, AutoScalingGroupName, 
+    LifecycleTransition = NULL, RoleARN = NULL, NotificationTargetARN = NULL, 
+    NotificationMetadata = NULL, HeartbeatTimeout = NULL, DefaultResult = NULL) 
+{
+    op <- Operation(name = "PutLifecycleHook", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- put_lifecycle_hook_input(LifecycleHookName = LifecycleHookName, 
+        AutoScalingGroupName = AutoScalingGroupName, LifecycleTransition = LifecycleTransition, 
+        RoleARN = RoleARN, NotificationTargetARN = NotificationTargetARN, 
+        NotificationMetadata = NotificationMetadata, HeartbeatTimeout = HeartbeatTimeout, 
+        DefaultResult = DefaultResult)
+    output <- put_lifecycle_hook_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Configures an Auto Scaling group to send notifications when specified events take place
+#'
+#' Configures an Auto Scaling group to send notifications when specified events take place. Subscribers to the specified topic can have messages delivered to an endpoint such as a web server or an email address.
+#' 
+#' This configuration overwrites any existing configuration.
+#' 
+#' For more information see [Getting SNS Notifications When Your Auto Scaling Group Scales](http://docs.aws.amazon.com/autoscaling/ec2/userguide/ASGettingNotifications.html) in the *Auto Scaling User Guide*.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param TopicARN The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic.
+#' @param NotificationTypes The type of event that will cause the notification to be sent. For details about notification types supported by Amazon EC2 Auto Scaling, see DescribeAutoScalingNotificationTypes.
+#'
+#' @examples
+#' # This example adds the specified notification to the specified Auto
+#' # Scaling group.
+#' put_notification_configuration(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   NotificationTypes = list(
+#'     "autoscaling:TEST_NOTIFICATION"
+#'   ),
+#'   TopicARN = "arn:aws:sns:us-west-2:123456789012:my-sns-topic"
+#' )
+#'
+#' @export
+put_notification_configuration <- function (AutoScalingGroupName, 
+    TopicARN, NotificationTypes) 
+{
+    op <- Operation(name = "PutNotificationConfiguration", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- put_notification_configuration_input(AutoScalingGroupName = AutoScalingGroupName, 
+        TopicARN = TopicARN, NotificationTypes = NotificationTypes)
+    output <- put_notification_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates or updates a policy for an Auto Scaling group
+#'
+#' Creates or updates a policy for an Auto Scaling group. To update an existing policy, use the existing policy name and set the parameters you want to change. Any existing parameter not changed in an update to an existing policy is not changed in this update request.
+#' 
+#' If you exceed your maximum limit of step adjustments, which by default is 20 per region, the call fails. For information about updating this limit, see [AWS Service Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html) in the *Amazon Web Services General Reference*.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param PolicyName The name of the policy.
+#' @param PolicyType The policy type. The valid values are `SimpleScaling`, `StepScaling`, and `TargetTrackingScaling`. If the policy type is null, the value is treated as `SimpleScaling`.
+#' @param AdjustmentType The adjustment type. The valid values are `ChangeInCapacity`, `ExactCapacity`, and `PercentChangeInCapacity`.
+#' 
+#' This parameter is supported if the policy type is `SimpleScaling` or `StepScaling`.
+#' 
+#' For more information, see [Dynamic Scaling](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' @param MinAdjustmentStep Available for backward compatibility. Use `MinAdjustmentMagnitude` instead.
+#' @param MinAdjustmentMagnitude The minimum number of instances to scale. If the value of `AdjustmentType` is `PercentChangeInCapacity`, the scaling policy changes the `DesiredCapacity` of the Auto Scaling group by at least this many instances. Otherwise, the error is `ValidationError`.
+#' 
+#' This parameter is supported if the policy type is `SimpleScaling` or `StepScaling`.
+#' @param ScalingAdjustment The amount by which to scale, based on the specified adjustment type. A positive value adds to the current capacity while a negative number removes from the current capacity.
+#' 
+#' This parameter is required if the policy type is `SimpleScaling` and not supported otherwise.
+#' @param Cooldown The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
+#' 
+#' This parameter is supported if the policy type is `SimpleScaling`.
+#' 
+#' For more information, see [Scaling Cooldowns](http://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' @param MetricAggregationType The aggregation type for the CloudWatch metrics. The valid values are `Minimum`, `Maximum`, and `Average`. If the aggregation type is null, the value is treated as `Average`.
+#' 
+#' This parameter is supported if the policy type is `StepScaling`.
+#' @param StepAdjustments A set of adjustments that enable you to scale based on the size of the alarm breach.
+#' 
+#' This parameter is required if the policy type is `StepScaling` and not supported otherwise.
+#' @param EstimatedInstanceWarmup The estimated time, in seconds, until a newly launched instance can contribute to the CloudWatch metrics. The default is to use the value specified for the default cooldown period for the group.
+#' 
+#' This parameter is supported if the policy type is `StepScaling` or `TargetTrackingScaling`.
+#' @param TargetTrackingConfiguration A target tracking policy.
+#' 
+#' This parameter is required if the policy type is `TargetTrackingScaling` and not supported otherwise.
+#'
+#' @examples
+#' # This example adds the specified policy to the specified Auto Scaling
+#' # group.
+#' put_scaling_policy(
+#'   AdjustmentType = "ChangeInCapacity",
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   PolicyName = "ScaleIn",
+#'   ScalingAdjustment = -1L
+#' )
+#'
+#' @export
+put_scaling_policy <- function (AutoScalingGroupName, PolicyName, 
+    PolicyType = NULL, AdjustmentType = NULL, MinAdjustmentStep = NULL, 
+    MinAdjustmentMagnitude = NULL, ScalingAdjustment = NULL, 
+    Cooldown = NULL, MetricAggregationType = NULL, StepAdjustments = NULL, 
+    EstimatedInstanceWarmup = NULL, TargetTrackingConfiguration = NULL) 
+{
+    op <- Operation(name = "PutScalingPolicy", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- put_scaling_policy_input(AutoScalingGroupName = AutoScalingGroupName, 
+        PolicyName = PolicyName, PolicyType = PolicyType, AdjustmentType = AdjustmentType, 
+        MinAdjustmentStep = MinAdjustmentStep, MinAdjustmentMagnitude = MinAdjustmentMagnitude, 
+        ScalingAdjustment = ScalingAdjustment, Cooldown = Cooldown, 
+        MetricAggregationType = MetricAggregationType, StepAdjustments = StepAdjustments, 
+        EstimatedInstanceWarmup = EstimatedInstanceWarmup, TargetTrackingConfiguration = TargetTrackingConfiguration)
+    output <- put_scaling_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates or updates a scheduled scaling action for an Auto Scaling group
+#'
+#' Creates or updates a scheduled scaling action for an Auto Scaling group. When updating a scheduled scaling action, if you leave a parameter unspecified, the corresponding value remains unchanged.
+#' 
+#' For more information, see [Scheduled Scaling](http://docs.aws.amazon.com/autoscaling/ec2/userguide/schedule_time.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param ScheduledActionName The name of this scaling action.
+#' @param Time This parameter is deprecated.
+#' @param StartTime The time for this action to start, in \"YYYY-MM-DDThh:mm:ssZ\" format in UTC/GMT only (for example, `2014-06-01T00:00:00Z`).
+#' 
+#' If you specify `Recurrence` and `StartTime`, Amazon EC2 Auto Scaling performs the action at this time, and then performs the action based on the specified recurrence.
+#' 
+#' If you try to schedule your action in the past, Amazon EC2 Auto Scaling returns an error message.
+#' @param EndTime The time for the recurring schedule to end. Amazon EC2 Auto Scaling does not perform the action after this time.
+#' @param Recurrence The recurring schedule for this action, in Unix cron syntax format. For more information about this format, see [Crontab](http://crontab.org).
+#' @param MinSize The minimum size for the Auto Scaling group.
+#' @param MaxSize The maximum size for the Auto Scaling group.
+#' @param DesiredCapacity The number of EC2 instances that should be running in the group.
+#'
+#' @examples
+#' # This example adds the specified scheduled action to the specified Auto
+#' # Scaling group.
+#' put_scheduled_update_group_action(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   DesiredCapacity = 4L,
+#'   EndTime = "2014-05-12T08:00:00Z",
+#'   MaxSize = 6L,
+#'   MinSize = 2L,
+#'   ScheduledActionName = "my-scheduled-action",
+#'   StartTime = "2014-05-12T08:00:00Z"
+#' )
+#'
+#' @export
+put_scheduled_update_group_action <- function (AutoScalingGroupName, 
+    ScheduledActionName, Time = NULL, StartTime = NULL, EndTime = NULL, 
+    Recurrence = NULL, MinSize = NULL, MaxSize = NULL, DesiredCapacity = NULL) 
+{
+    op <- Operation(name = "PutScheduledUpdateGroupAction", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- put_scheduled_update_group_action_input(AutoScalingGroupName = AutoScalingGroupName, 
+        ScheduledActionName = ScheduledActionName, Time = Time, 
+        StartTime = StartTime, EndTime = EndTime, Recurrence = Recurrence, 
+        MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity)
+    output <- put_scheduled_update_group_action_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Records a heartbeat for the lifecycle action associated with the specified token or instance
+#'
+#' Records a heartbeat for the lifecycle action associated with the specified token or instance. This extends the timeout by the length of time defined using PutLifecycleHook.
+#' 
+#' This step is a part of the procedure for adding a lifecycle hook to an Auto Scaling group:
+#' 
+#' 1.  (Optional) Create a Lambda function and a rule that allows CloudWatch Events to invoke your Lambda function when Amazon EC2 Auto Scaling launches or terminates instances.
+#' 
+#' 2.  (Optional) Create a notification target and an IAM role. The target can be either an Amazon SQS queue or an Amazon SNS topic. The role allows Amazon EC2 Auto Scaling to publish lifecycle notifications to the target.
+#' 
+#' 3.  Create the lifecycle hook. Specify whether the hook is used when the instances launch or terminate.
+#' 
+#' 4.  **If you need more time, record the lifecycle action heartbeat to keep the instance in a pending state.**
+#' 
+#' 5.  If you finish before the timeout period ends, complete the lifecycle action.
+#' 
+#' For more information, see [Auto Scaling Lifecycle](http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#'
+#' @param LifecycleHookName The name of the lifecycle hook.
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param LifecycleActionToken A token that uniquely identifies a specific lifecycle action associated with an instance. Amazon EC2 Auto Scaling sends this token to the notification target you specified when you created the lifecycle hook.
+#' @param InstanceId The ID of the instance.
+#'
+#' @examples
+#' # This example records a lifecycle action heartbeat to keep the instance
+#' # in a pending state.
+#' record_lifecycle_action_heartbeat(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   LifecycleActionToken = "bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635",
+#'   LifecycleHookName = "my-lifecycle-hook"
+#' )
+#'
+#' @export
+record_lifecycle_action_heartbeat <- function (LifecycleHookName, 
+    AutoScalingGroupName, LifecycleActionToken = NULL, InstanceId = NULL) 
+{
+    op <- Operation(name = "RecordLifecycleActionHeartbeat", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- record_lifecycle_action_heartbeat_input(LifecycleHookName = LifecycleHookName, 
+        AutoScalingGroupName = AutoScalingGroupName, LifecycleActionToken = LifecycleActionToken, 
+        InstanceId = InstanceId)
+    output <- record_lifecycle_action_heartbeat_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Resumes the specified suspended automatic scaling processes, or all suspended process, for the specified Auto Scaling group
+#'
+#' Resumes the specified suspended automatic scaling processes, or all suspended process, for the specified Auto Scaling group.
+#' 
+#' For more information, see [Suspending and Resuming Scaling Processes](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param ScalingProcesses One or more of the following processes. If you omit this parameter, all processes are specified.
+#' 
+#' -   `Launch`
+#' 
+#' -   `Terminate`
+#' 
+#' -   `HealthCheck`
+#' 
+#' -   `ReplaceUnhealthy`
+#' 
+#' -   `AZRebalance`
+#' 
+#' -   `AlarmNotification`
+#' 
+#' -   `ScheduledActions`
+#' 
+#' -   `AddToLoadBalancer`
+#'
+#' @examples
+#' # This example resumes the specified suspended scaling process for the
+#' # specified Auto Scaling group.
+#' resume_processes(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   ScalingProcesses = list(
+#'     "AlarmNotification"
+#'   )
+#' )
+#'
+#' @export
+resume_processes <- function (AutoScalingGroupName, ScalingProcesses = NULL) 
+{
+    op <- Operation(name = "ResumeProcesses", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- resume_processes_input(AutoScalingGroupName = AutoScalingGroupName, 
+        ScalingProcesses = ScalingProcesses)
+    output <- resume_processes_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Sets the size of the specified Auto Scaling group
+#'
+#' Sets the size of the specified Auto Scaling group.
+#' 
+#' For more information about desired capacity, see [What Is Amazon EC2 Auto Scaling?](http://docs.aws.amazon.com/autoscaling/ec2/userguide/WhatIsAutoScaling.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param DesiredCapacity The number of EC2 instances that should be running in the Auto Scaling group.
+#' @param HonorCooldown Indicates whether Amazon EC2 Auto Scaling waits for the cooldown period to complete before initiating a scaling activity to set your Auto Scaling group to its new capacity. By default, Amazon EC2 Auto Scaling does not honor the cooldown period during manual scaling activities.
+#'
+#' @examples
+#' # This example sets the desired capacity for the specified Auto Scaling
+#' # group.
+#' set_desired_capacity(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   DesiredCapacity = 2L,
+#'   HonorCooldown = TRUE
+#' )
+#'
+#' @export
+set_desired_capacity <- function (AutoScalingGroupName, DesiredCapacity, 
+    HonorCooldown = NULL) 
+{
+    op <- Operation(name = "SetDesiredCapacity", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- set_desired_capacity_input(AutoScalingGroupName = AutoScalingGroupName, 
+        DesiredCapacity = DesiredCapacity, HonorCooldown = HonorCooldown)
+    output <- set_desired_capacity_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Sets the health status of the specified instance
+#'
+#' Sets the health status of the specified instance.
+#' 
+#' For more information, see [Health Checks](http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#'
+#' @param InstanceId The ID of the instance.
+#' @param HealthStatus The health status of the instance. Set to `Healthy` if you want the instance to remain in service. Set to `Unhealthy` if you want the instance to be out of service. Amazon EC2 Auto Scaling will terminate and replace the unhealthy instance.
+#' @param ShouldRespectGracePeriod If the Auto Scaling group of the specified instance has a `HealthCheckGracePeriod` specified for the group, by default, this call will respect the grace period. Set this to `False`, if you do not want the call to respect the grace period associated with the group.
+#' 
+#' For more information, see the description of the health check grace period for CreateAutoScalingGroup.
+#'
+#' @examples
+#' # This example sets the health status of the specified instance to
+#' # Unhealthy.
+#' set_instance_health(
+#'   HealthStatus = "Unhealthy",
+#'   InstanceId = "i-93633f9b"
+#' )
+#'
+#' @export
+set_instance_health <- function (InstanceId, HealthStatus, ShouldRespectGracePeriod = NULL) 
+{
+    op <- Operation(name = "SetInstanceHealth", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- set_instance_health_input(InstanceId = InstanceId, 
+        HealthStatus = HealthStatus, ShouldRespectGracePeriod = ShouldRespectGracePeriod)
+    output <- set_instance_health_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the instance protection settings of the specified instances
+#'
+#' Updates the instance protection settings of the specified instances.
+#' 
+#' For more information, see [Instance Protection](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#instance-protection) in the *Amazon EC2 Auto Scaling User Guide*.
+#'
+#' @param InstanceIds One or more instance IDs.
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param ProtectedFromScaleIn Indicates whether the instance is protected from termination by Amazon EC2 Auto Scaling when scaling in.
+#'
+#' @examples
+#' # This example enables instance protection for the specified instance.
+#' set_instance_protection(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   InstanceIds = list(
+#'     "i-93633f9b"
+#'   ),
+#'   ProtectedFromScaleIn = TRUE
+#' )
+#' 
+#' # This example disables instance protection for the specified instance.
+#' set_instance_protection(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   InstanceIds = list(
+#'     "i-93633f9b"
+#'   ),
+#'   ProtectedFromScaleIn = FALSE
+#' )
+#'
+#' @export
+set_instance_protection <- function (InstanceIds, AutoScalingGroupName, 
+    ProtectedFromScaleIn) 
+{
+    op <- Operation(name = "SetInstanceProtection", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- set_instance_protection_input(InstanceIds = InstanceIds, 
+        AutoScalingGroupName = AutoScalingGroupName, ProtectedFromScaleIn = ProtectedFromScaleIn)
+    output <- set_instance_protection_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Suspends the specified automatic scaling processes, or all processes, for the specified Auto Scaling group
+#'
+#' Suspends the specified automatic scaling processes, or all processes, for the specified Auto Scaling group.
+#' 
+#' Note that if you suspend either the `Launch` or `Terminate` process types, it can prevent other process types from functioning properly.
+#' 
+#' To resume processes that have been suspended, use ResumeProcesses.
+#' 
+#' For more information, see [Suspending and Resuming Scaling Processes](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param ScalingProcesses One or more of the following processes. If you omit this parameter, all processes are specified.
+#' 
+#' -   `Launch`
+#' 
+#' -   `Terminate`
+#' 
+#' -   `HealthCheck`
+#' 
+#' -   `ReplaceUnhealthy`
+#' 
+#' -   `AZRebalance`
+#' 
+#' -   `AlarmNotification`
+#' 
+#' -   `ScheduledActions`
+#' 
+#' -   `AddToLoadBalancer`
+#'
+#' @examples
+#' # This example suspends the specified scaling process for the specified
+#' # Auto Scaling group.
+#' suspend_processes(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   ScalingProcesses = list(
+#'     "AlarmNotification"
+#'   )
+#' )
+#'
+#' @export
+suspend_processes <- function (AutoScalingGroupName, ScalingProcesses = NULL) 
+{
+    op <- Operation(name = "SuspendProcesses", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- suspend_processes_input(AutoScalingGroupName = AutoScalingGroupName, 
+        ScalingProcesses = ScalingProcesses)
+    output <- suspend_processes_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Terminates the specified instance and optionally adjusts the desired group size
+#'
+#' Terminates the specified instance and optionally adjusts the desired group size.
+#' 
+#' This call simply makes a termination request. The instance is not terminated immediately.
+#'
+#' @param InstanceId The ID of the instance.
+#' @param ShouldDecrementDesiredCapacity Indicates whether terminating the instance also decrements the size of the Auto Scaling group.
+#'
+#' @examples
+#' # This example terminates the specified instance from the specified Auto
+#' # Scaling group without updating the size of the group. Auto Scaling
+#' # launches a replacement instance after the specified instance terminates.
+#' terminate_instance_in_auto_scaling_group(
+#'   InstanceId = "i-93633f9b",
+#'   ShouldDecrementDesiredCapacity = FALSE
+#' )
+#'
+#' @export
+terminate_instance_in_auto_scaling_group <- function (InstanceId, 
+    ShouldDecrementDesiredCapacity) 
+{
+    op <- Operation(name = "TerminateInstanceInAutoScalingGroup", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- terminate_instance_in_auto_scaling_group_input(InstanceId = InstanceId, 
+        ShouldDecrementDesiredCapacity = ShouldDecrementDesiredCapacity)
+    output <- terminate_instance_in_auto_scaling_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the configuration for the specified Auto Scaling group
+#'
+#' Updates the configuration for the specified Auto Scaling group.
+#' 
+#' The new settings take effect on any scaling activities after this call returns. Scaling activities that are currently in progress aren\'t affected.
+#' 
+#' To update an Auto Scaling group with a launch configuration with `InstanceMonitoring` set to `false`, you must first disable the collection of group metrics. Otherwise, you will get an error. If you have previously enabled the collection of group metrics, you can disable it using DisableMetricsCollection.
+#' 
+#' Note the following:
+#' 
+#' -   If you specify a new value for `MinSize` without specifying a value for `DesiredCapacity`, and the new `MinSize` is larger than the current size of the group, we implicitly call SetDesiredCapacity to set the size of the group to the new value of `MinSize`.
+#' 
+#' -   If you specify a new value for `MaxSize` without specifying a value for `DesiredCapacity`, and the new `MaxSize` is smaller than the current size of the group, we implicitly call SetDesiredCapacity to set the size of the group to the new value of `MaxSize`.
+#' 
+#' -   All other optional parameters are left unchanged if not specified.
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param LaunchConfigurationName The name of the launch configuration. If you specify a launch configuration, you can\'t specify a launch template.
+#' @param LaunchTemplate The launch template to use to specify the updates. If you specify a launch template, you can\'t specify a launch configuration.
+#' @param MinSize The minimum size of the Auto Scaling group.
+#' @param MaxSize The maximum size of the Auto Scaling group.
+#' @param DesiredCapacity The number of EC2 instances that should be running in the Auto Scaling group. This number must be greater than or equal to the minimum size of the group and less than or equal to the maximum size of the group.
+#' @param DefaultCooldown The amount of time, in seconds, after a scaling activity completes before another scaling activity can start. The default is 300.
+#' 
+#' For more information, see [Scaling Cooldowns](http://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' @param AvailabilityZones One or more Availability Zones for the group.
+#' @param HealthCheckType The service to use for the health checks. The valid values are `EC2` and `ELB`.
+#' @param HealthCheckGracePeriod The amount of time, in seconds, that Amazon EC2 Auto Scaling waits before checking the health status of an EC2 instance that has come into service. The default is 0.
+#' 
+#' For more information, see [Health Checks](http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' @param PlacementGroup The name of the placement group into which you\'ll launch your instances, if any. For more information, see [Placement Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param VPCZoneIdentifier The ID of the subnet, if you are launching into a VPC. You can specify several subnets in a comma-separated list.
+#' 
+#' When you specify `VPCZoneIdentifier` with `AvailabilityZones`, ensure that the subnets\' Availability Zones match the values you specify for `AvailabilityZones`.
+#' 
+#' For more information, see [Launching Auto Scaling Instances in a VPC](http://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' @param TerminationPolicies A standalone termination policy or a list of termination policies used to select the instance to terminate. The policies are executed in the order that they are listed.
+#' 
+#' For more information, see [Controlling Which Instances Auto Scaling Terminates During Scale In](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html) in the *Auto Scaling User Guide*.
+#' @param NewInstancesProtectedFromScaleIn Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.
+#' @param ServiceLinkedRoleARN The Amazon Resource Name (ARN) of the service-linked role that the Auto Scaling group uses to call other AWS services on your behalf.
+#'
+#' @examples
+#' # This example updates the launch configuration of the specified Auto
+#' # Scaling group.
+#' update_auto_scaling_group(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   LaunchConfigurationName = "new-launch-config"
+#' )
+#' 
+#' # This example updates the minimum size and maximum size of the specified
+#' # Auto Scaling group.
+#' update_auto_scaling_group(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   MaxSize = 3L,
+#'   MinSize = 1L
+#' )
+#' 
+#' # This example enables instance protection for the specified Auto Scaling
+#' # group.
+#' update_auto_scaling_group(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   NewInstancesProtectedFromScaleIn = TRUE
+#' )
+#'
+#' @export
+update_auto_scaling_group <- function (AutoScalingGroupName, 
+    LaunchConfigurationName = NULL, LaunchTemplate = NULL, MinSize = NULL, 
+    MaxSize = NULL, DesiredCapacity = NULL, DefaultCooldown = NULL, 
+    AvailabilityZones = NULL, HealthCheckType = NULL, HealthCheckGracePeriod = NULL, 
+    PlacementGroup = NULL, VPCZoneIdentifier = NULL, TerminationPolicies = NULL, 
+    NewInstancesProtectedFromScaleIn = NULL, ServiceLinkedRoleARN = NULL) 
+{
+    op <- Operation(name = "UpdateAutoScalingGroup", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_auto_scaling_group_input(AutoScalingGroupName = AutoScalingGroupName, 
+        LaunchConfigurationName = LaunchConfigurationName, LaunchTemplate = LaunchTemplate, 
+        MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity, 
+        DefaultCooldown = DefaultCooldown, AvailabilityZones = AvailabilityZones, 
+        HealthCheckType = HealthCheckType, HealthCheckGracePeriod = HealthCheckGracePeriod, 
+        PlacementGroup = PlacementGroup, VPCZoneIdentifier = VPCZoneIdentifier, 
+        TerminationPolicies = TerminationPolicies, NewInstancesProtectedFromScaleIn = NewInstancesProtectedFromScaleIn, 
+        ServiceLinkedRoleARN = ServiceLinkedRoleARN)
+    output <- update_auto_scaling_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
