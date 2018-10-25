@@ -135,7 +135,7 @@ aws_access_key_id=awsAccessKeyID
 aws_secret_access_key=awsSecretAccessKey
 ```
 
-By default, the Paws will use the `default` profile. If you would
+By default, Paws will use the `default` profile. If you would
 rather use the credentials from a different profile, you can set the preferred
 profile by following the instructions in the "Profile" section of this
 document.
@@ -207,7 +207,7 @@ region=region-2
 ### AWS Profile
 If you do not set your AWS profile, the package will use the `default` profile.
 
-However, you may want to use another profile, which you can choose it in the 
+However, you may want to use another profile, which you can choose in the 
 following ways:
 
 1. `AWS_PROFILE` R environment variable.
