@@ -1,38 +1,36 @@
-library(aws.dynamodb)
+# DynamoDB examples
 
-#-------------------------------------------------------------------------------
-
-# Test the example function.
-(a <- aws.dynamodb::list_tables())
-
-(b <- aws.dynamodb::list_tables(Limit = 2))
-
-(c <- aws.dynamodb::describe_limits())
-
-(d <- aws.dynamodb::create_table(
-  AttributeDefinitions=list(
+# Create a DynamoDB table.
+response <- paws.dynamodb::create_table(
+  AttributeDefinitions = list(
     list(
-      'AttributeName' = 'Artist',
-      'AttributeType' = 'S'
+      "AttributeName" = "Artist",
+      "AttributeType" = "S"
     ),
     list(
-      'AttributeName' = 'SongTitle',
-      'AttributeType' = 'S'
+      "AttributeName" = "SongTitle",
+      "AttributeType" = "S"
     )
   ),
-  KeySchema=list(
+  KeySchema = list(
     list(
-      'AttributeName' = 'Artist',
-      'KeyType' = 'HASH'
+      "AttributeName" = "Artist",
+      "KeyType" = "HASH"
     ),
     list(
-      'AttributeName' = 'SongTitle',
-      'KeyType' = 'RANGE'
+      "AttributeName" = "SongTitle",
+      "KeyType" = "RANGE"
     )
   ),
-  ProvisionedThroughput=list(
-    'ReadCapacityUnits' = 5,
-    'WriteCapacityUnits' = 5
+  ProvisionedThroughput = list(
+    "ReadCapacityUnits" = 5,
+    "WriteCapacityUnits" = 5
   ),
-  TableName='Music'
-))
+  TableName = "Music"
+)
+
+# List our DynamoDB tables.
+tables <- paws.dynamodb::list_tables()
+
+# Delete the table just created.
+paws.dynamodb::delete_table("Music")
