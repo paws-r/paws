@@ -1,24 +1,32 @@
-# TODO: Implement.
-
-# Build a request for the REST XML protocol.
+# Build the request body for the REST XML protocol.
 restxml_build <- function(request) {
+  request <- rest_build(request)
+  t <- rest_payload_type(request$params)
+  if (t == "structure" || t == "") {
+    request <- xml_build(request)
+  }
   return(request)
 }
 
-#-------------------------------------------------------------------------------
-
-# Unmarshal REST XML protocol API response metadata.
+# Unmarshal metadata from a REST XML response.
 restxml_unmarshal_meta <- function(request) {
+  request <- rest_unmarshal_meta(request)
   return(request)
 }
 
-# Unmarshal the body from a REST XML protocol API response.
+# Unmarshal the body of a REST XML response.
 restxml_unmarshal <- function(request) {
+  t <- rest_payload_type(request$params)
+  if (t == "structure" || t == "") {
+    # stop("Not implemented yet")
+  } else {
+    request <- rest_unmarshal(request)
+  }
   return(request)
 }
 
-# Unmarshal an error from a REST XML protocol API response.
+# Unmarshal errors from a REST XML response.
 restxml_unmarshal_error <- function(request) {
+  request <- query_unmarshal_error(request)
   return(request)
 }
-
