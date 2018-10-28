@@ -1,3 +1,9 @@
+xml_build <- function(request) {
+  return(request)
+}
+
+#-------------------------------------------------------------------------------
+
 # Unmarshal `data` provided as XML into the shape in `interface`.
 xml_unmarshal <- function(data, interface, result_name = NULL) {
   root <- xml_to_list(data)[[1]]
