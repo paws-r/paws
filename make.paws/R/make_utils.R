@@ -1,86 +1,54 @@
-# Convert camel case names to snake case, e.g. "camelCase" -> "camel_case".
-snake_case <- function(x) {
-  y <- gsub("([A-Z][a-z]+)", "_\\1_", x, perl = TRUE)
-  y <- gsub("_+", "_", y)
-  y <- gsub("^_(.+)$", "\\1", y)
-  y <- gsub("^(.+)_$", "\\1", y)
-  y <- tolower(y)
-  y
-}
+# Read a given API's definition and documentation files.
+read_api <- function(api_name, path) {
+  api_path <- file.path(path, "apis")
+  region_config_path <- file.path(path, "lib/region_config_data.json")
 
-# Returns a quoted string, e.g. "foo" -> '"foo"'.
-quoted <- function(string) {
-  quoted_string <- sprintf('"%s"', string)
-  return(quoted_string)
-}
+  version <- get_latest_api_version(api_name, api_path)
+  files <- get_api_files(version, api_path)
 
-# Returns the R name for an operation.
-get_operation_name <- function(operation) {
-  return(snake_case(operation$name))
-}
+  api <- jsonlite::read_json(files$normal)
+  api <- fix_operation_names(api)
 
-# Replace a pattern within a string, returning NA for non-matches
-replace <- function(pattern, replacement, x) {
-  replaced <- gsub(pattern, replacement, x)
-  replaced <- ifelse(grepl(pattern, x), replaced, NA)
-  replaced
-}
+  if (!is.null(files$examples)) {
+    examples <- jsonlite::read_json(files$examples)
+    api <- merge_examples(api, examples$examples)
+  }
 
-# Parse API name, version, and file type from an API file name
-parse_file_names <- function(file_names) {
-  regex <- "^(.+)-(\\d{4}-\\d{2}-\\d{2})\\.(.+).json$"
-  name <- replace(regex, "\\1", file_names)
-  version <- replace(regex, "\\2", file_names)
-  type <- replace(regex, "\\3", file_names)
-  parsed <- data.frame(name = name, version = version, type = type,
-                       stringsAsFactors = FALSE)
-  parsed
-}
+  region_config <- jsonlite::read_json(region_config_path)
+  api <- merge_region_config(api, region_config)
 
-#' List all APIs in a given directory
-#'
-#' @export
-list_apis <- function(path) {
-  files <- list.files(path)
-  parsed <- parse_file_names(files)
-  parsed <- na.omit(parsed)
-  parsed$type <- NULL
-  unique(parsed)
-}
-
-# Get the file paths for a given API
-get_api_paths <- function(name, version, path) {
-  template <- "^{name}-{version}.{type}.json$"
-  pattern <- glue::glue(template, type = ".+")
-  files <- list.files(path, pattern = pattern)
-  paths <- file.path(path, files)
-  names(paths) <- parse_file_names(files)$type
-  as.list(paths)
-}
-
-#' Read API definition files given a name, version, and directory
-#'
-#' @export
-read_api <- function(name, version, path) {
-  api_paths <- get_api_paths(name, version, path)
-  api <- lapply(api_paths, function(path) {
-    jsonlite::read_json(path)
-  })
-  names(api) <- names(api_paths)
-  api$normal <- merge_examples(api$normal, api$examples$examples)
-  api$normal <- fix_operation_names(api$normal)
   api
 }
 
-#' Read the region config file, containing special endpoint information.
-#'
-#' @export
-read_region_config <- function(path) {
-  config <- jsonlite::read_json(path)
-  return(config)
+# Returns the latest version of the given API.
+get_latest_api_version <- function(name, path) {
+  files <- list.files(path, pattern = sprintf("^%s-.{10}.normal.json", name))
+  versions <- unique(gsub("^(.+)\\..+\\..+", "\\1", files))
+  latest <- tail(sort(versions), 1)
+  return(latest)
 }
 
-# Returns an API object with region config info attached.
+# Returns a list of API files for a given API version.
+get_api_files <- function(version, path) {
+  files <- list.files(path, pattern = sprintf("^%s", version), full.names = TRUE)
+  types <- gsub("^.+\\.(.+)\\..+", "\\1", basename(files))
+  files <- as.list(files)
+  names(files) <- types
+  return(files)
+}
+
+# Returns an API object with examples merged into the corresponding operations.
+merge_examples <- function(api, examples) {
+  for (name in names(examples)) {
+    operation <- api$operations[[name]]
+    operation[["examples"]] <- examples[[name]]
+    api$operations[[name]] <- operation
+  }
+  return(api)
+}
+
+# Returns an API object with region config info attached. Region config info
+# lists endpoints for each service and region, if different from the default.
 merge_region_config <- function(api, region_config) {
   service <- service_name(api)
   rule_names <- grep(sprintf("/%s$", service), names(region_config$rules), val = TRUE)
@@ -104,16 +72,6 @@ merge_region_config <- function(api, region_config) {
   return(api)
 }
 
-# Returns an API object with examples merged into the corresponding operations.
-merge_examples <- function(api, examples) {
-  for (name in names(examples)) {
-    operation <- api$operations[[name]]
-    operation[["examples"]] <- examples[[name]]
-    api$operations[[name]] <- operation
-  }
-  return(api)
-}
-
 # Make sure each operation has an exportable name. CloudFront's operation `name`
 # element is incorrect in this regard, e.g. they have values like
 # "OperationName2017_01_01".
@@ -122,6 +80,12 @@ fix_operation_names <- function(api) {
     api$operations[[op_name]]$name <- op_name
   }
   return(api)
+}
+
+# Returns a quoted string, e.g. "foo" -> '"foo"'.
+quoted <- function(string) {
+  quoted_string <- sprintf('"%s"', string)
+  return(quoted_string)
 }
 
 # Find the path to files in R packages.
@@ -145,4 +109,13 @@ system_file <- function(..., package = "base") {
     if (file.exists(path)) return(path)
     else return("")
   }
+}
+
+# Run an expression without printing messages.
+quietly <- function(expr) {
+  capture.output(
+    suppressMessages(
+      expr
+    )
+  )
 }

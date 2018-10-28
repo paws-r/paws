@@ -231,3 +231,18 @@ service_id <- function(api) {
 
   return(name)
 }
+
+# Convert camel case names to snake case, e.g. "camelCase" -> "camel_case".
+snake_case <- function(x) {
+  y <- gsub("([A-Z][a-z]+)", "_\\1_", x, perl = TRUE)
+  y <- gsub("_+", "_", y)
+  y <- gsub("^_(.+)$", "\\1", y)
+  y <- gsub("^(.+)_$", "\\1", y)
+  y <- tolower(y)
+  y
+}
+
+# Returns the R name for an operation.
+get_operation_name <- function(operation) {
+  return(snake_case(operation$name))
+}

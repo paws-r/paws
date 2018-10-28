@@ -4,19 +4,14 @@
 \alias{make_package}
 \title{Make an R package for a given API}
 \usage{
-make_package(api_info, region_config, path, fields = NULL,
-  overwrite = FALSE)
+make_package(api_name, in_dir, out_dir)
 }
 \arguments{
-\item{region_config}{AWS region config, from \link{read_region_config}.}
+\item{in_dir}{Directory containing API files.}
 
-\item{path}{Path to the directory where the package should be created.}
+\item{out_dir}{Directory to}
 
-\item{fields}{List of fields to include in the DESCRIPTION.}
-
-\item{overwrite}{Overwite existing packages?}
-
-\item{api}{AWS API list object, from \link{read_api}.}
+\item{api}{Name of the API to make a package for.}
 }
 \description{
 Make an R package for a given API

@@ -1,36 +1,56 @@
+#' Make an R package for a given API
+#'
+#' @param api Name of the API to make a package for.
+#' @param in_dir Directory containing API files.
+#' @param out_dir Directory to
+#'
+#' @export
+make_package <- function(api_name, in_dir, out_dir) {
+  api <- read_api(api_name, in_dir)
+
+  package <- package_name(api)
+  package_path <- file.path(out_dir, package)
+  r_path <- file.path(package_path, "R")
+
+  # Populate the package.
+  write_skeleton(package_path)
+  write_description(api, package_path)
+  write_operations(api, r_path)
+  write_interfaces(api, r_path)
+  write_service(api, r_path)
+  copy_supporting_functions(api, r_path)
+  copy_customizations(api, r_path)
+  write_tests(api, package_path)
+  write_documentation(api, package_path)
+
+  package
+}
+
+#-------------------------------------------------------------------------------
+
 # Make a package description.
 write_description <- function(api, path, fields) {
   description <- desc::desc(file.path(path, "DESCRIPTION"))
-  description$set("Title" = api$metadata$serviceFullName)
-
-  # Use as the description the first sentence (i.e. text that ends with a
-  # period), and if there is none, use the first line or paragraph.
-  if (!is.null(api$documentation)) {
-    documentation <- convert(api$documentation, wrap = FALSE)
-    desc <- documentation[1]
-    ends_with_period <- function(x) grepl("\\.$", x)
-    if (!ends_with_period(desc)) {
-      index <- which(ends_with_period(documentation))[1]
-      if (!is.na(index)) {
-        desc <- documentation[index]
-      }
-    }
-    # Fix spaces before the last period. If a period appears on a line by
-    # itself, the period gets removed, leaving an empty line, which makes the
-    # DESCRIPTION file invalid.
-    desc <- gsub(" +\\.", ".", desc)
-    description$set("Description" = desc)
+  contents <- list(
+    Package = package_name(api),
+    Title = make_title(api),
+    Version = "0.0.0.9000",
+    `Authors@R` = make_authors(),
+    Description = make_description(api),
+    Depends = "R (>= 3.5.1)",
+    Imports = make_imports(),
+    License = "Apache License (>= 2.0)",
+    Encoding = "UTF-8",
+    LazyData = "true",
+    Roxygen = 'list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))'
+  )
+  for (key in names(contents)) {
+    value <- contents[[key]]
+    description$set(key, value)
   }
-  authors <- make_authors()
-  if (!is.null(authors)) {
-    description$set("Authors@R" = authors)
-  }
-  for (dep in fields$dependencies) {
-    description$set_dep(dep)
-  }
-  description$set("Roxygen" = "list(markdown = TRUE)")
   description$normalize()
   description$write()
+  return(TRUE)
 }
 
 # Generate the operations and write them to a file in the package.
@@ -91,6 +111,14 @@ write_tests <- function(api, path) {
   write_list(tests, file.path(test_path, "testthat", filename))
 }
 
+# Generate the package's documentation.
+write_documentation <- function(api, path) {
+  quietly(
+      roxygen2::roxygenize(path)
+  )
+  return(TRUE)
+}
+
 # Write a list of code objects to a file, separated by newlines. Create
 # directories if necessary.
 write_list <- function(list, file) {
@@ -100,69 +128,44 @@ write_list <- function(list, file) {
   write_utf8(contents, file)
 }
 
-#' Make an R package for a given API
-#'
-#' @param api AWS API list object, from \link{read_api}.
-#' @param region_config AWS region config, from \link{read_region_config}.
-#' @param path Path to the directory where the package should be created.
-#' @param fields List of fields to include in the DESCRIPTION.
-#' @param overwrite Overwite existing packages?
-#'
-#' @export
-make_package <- function(api_info, region_config, path, fields = NULL, overwrite = FALSE) {
-  api <- api_info$normal
-  api <- merge_region_config(api, region_config)
-  package <- package_name(api)
-  package_path <- file.path(path, package)
-  r_path <- file.path(package_path, "R")
-
-  # Create the package skeleton if needed.
-  if (overwrite) {
-    unlink(package_path, recursive = TRUE)
-  }
-  if (!file.exists(package_path) | overwrite) {
-    package_skeleton(package, path, fields, overwrite)
-  }
-
-  # Populate the package.
-  write_description(api, package_path, fields)
-  write_operations(api, r_path)
-  write_interfaces(api, r_path)
-  write_service(api, r_path)
-  copy_supporting_functions(api, r_path)
-  copy_customizations(api, r_path)
-  write_tests(api, package_path)
-
-  package
-}
-
 #-------------------------------------------------------------------------------
 
 # Make a package directory
-# TODO: Replace devtools::create.
-package_skeleton <- function(package, path, fields, overwrite = FALSE) {
-  package_path <- file.path(path, package)
-  owd <- getwd()
-  if (dir.exists(package_path) && overwrite) {
-    unlink(package_path, recursive = TRUE, force = TRUE)
+write_skeleton <- function(path, overwrite = TRUE) {
+  if (dir.exists(path) && overwrite) {
+    unlink(path, recursive = TRUE, force = TRUE)
   }
-  devtools::create(package_path, rstudio = TRUE, quiet = TRUE)
-  use_package_doc(package_path)
-  use_apl2_license(package_path)
-  use_roxygen_md(package_path)
-  setwd(owd)
+  dir.create(file.path(path, "R"), recursive = TRUE, showWarnings = FALSE)
+  use_description(path)
+  use_namespace(path)
+  use_package_doc(path)
+  use_apl2_license(path)
+  return(TRUE)
 }
 
-# Create a dummy R file to make Roxygen generate package-level documentation.
-use_package_doc <- function(path) {
+# Create a dummy DESCRIPTION file.
+use_description <- function(path) {
+  desc_path <- file.path(path, "DESCRIPTION")
+  file.create(desc_path, showWarnings = FALSE)
+}
+
+# Create a dummy NAMESPACE file.
+use_namespace <- function(path) {
   package <- methods::getPackageName()
   template <- system_file("templates/package.R", package = package)
   to <- file.path(path, "R", paste0(basename(path), "_package.R"))
   file.copy(template, to)
 }
 
+# Create a dummy R file to make Roxygen generate package-level documentation.
+use_package_doc <- function(path) {
+  package <- methods::getPackageName()
+  template <- system_file("templates/NAMESPACE", package = package)
+  to <- file.path(path, "NAMESPACE")
+  file.copy(template, to)
+}
+
 # Add the APL2 license to the package.
-# TODO: Render the template with the copyright holder
 use_apl2_license <- function(path) {
   description <- desc::desc(file.path(path, "DESCRIPTION"))
   description$set("License" = "Apache License (>= 2.0)")
@@ -175,8 +178,36 @@ use_apl2_license <- function(path) {
   file.copy(template, to)
 }
 
-use_roxygen_md <- function(path) {
+# Make a title for the generated package.
+make_title <- function(api) {
+  return(api$metadata$serviceFullName)
+}
 
+# Make a short description of the generated package.
+make_description <- function(api) {
+  if (is.null(api$documentation)) return("")
+
+  documentation <- convert(api$documentation, wrap = FALSE)
+  contains_period <- function(x) grepl("\\.", x)
+  desc <- documentation[which.max(contains_period(documentation))]
+
+  # If the description ends with a ":", e.g."You can do the following:", then
+  # remove the sentence, provided it is not the only sentence.
+  if (endsWith(desc, ":")) {
+    sentences <- strsplit(desc, "\\.")[[1]]
+    if (length(sentences) > 1) {
+      exclude_last <- sentences[1:(length(sentences)-1)]
+      exclude_last <- paste0(exclude_last, ".")
+      desc <- paste(exclude_last, collapse = " ")
+    }
+  }
+
+  # Fix spaces before the last period. If a period appears on a line by
+  # itself, the period gets removed, leaving an empty line, which makes the
+  # DESCRIPTION file invalid.
+  desc <- gsub(" +\\.", ".", desc)
+
+  return(desc)
 }
 
 # Return the authors from this package.
@@ -185,4 +216,11 @@ make_authors <- function(authors) {
   description <- packageDescription(package)
   authors <- description$`Authors@R`
   return(authors)
+}
+
+# Get generated package Imports from this package's Suggests.
+make_imports <- function() {
+  package <- methods::getPackageName()
+  imports <- packageDescription(package)$Suggests
+  return(imports)
 }
