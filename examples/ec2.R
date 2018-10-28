@@ -1,11 +1,7 @@
-library(aws.ec2)
+# EC2 examples
 
-#-------------------------------------------------------------------------------
-
-# Test the example function.
-(a <- describe_instances())
-
-run_instances(
+# Start an EC2 instance.
+response <- paws.ec2::run_instances(
   ImageId = "ami-f973ab84",
   InstanceType = "t2.micro",
   MinCount = 1,
@@ -25,4 +21,12 @@ run_instances(
       )
     )
   )
+)
+
+# List our instances.
+instances <- paws.ec2::describe_instances()
+
+# Terminate the instance we previously started.
+paws.ec2::terminate_instances(
+  InstanceIds = response$Instances[[1]]$InstanceId
 )
