@@ -149,16 +149,16 @@ use_description <- function(path) {
   file.create(desc_path, showWarnings = FALSE)
 }
 
-# Create a dummy NAMESPACE file.
-use_namespace <- function(path) {
+# Create a dummy R file to make Roxygen generate package-level documentation.
+use_package_doc <- function(path) {
   package <- methods::getPackageName()
   template <- system_file("templates/package.R", package = package)
   to <- file.path(path, "R", paste0(basename(path), "_package.R"))
   file.copy(template, to)
 }
 
-# Create a dummy R file to make Roxygen generate package-level documentation.
-use_package_doc <- function(path) {
+# Create a dummy NAMESPACE file.
+use_namespace <- function(path) {
   package <- methods::getPackageName()
   template <- system_file("templates/NAMESPACE", package = package)
   to <- file.path(path, "NAMESPACE")
