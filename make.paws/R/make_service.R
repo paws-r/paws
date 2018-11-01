@@ -41,8 +41,8 @@ make_service_init <- function(api) {
       .SERVICE_ID = service_id(api),
       .API_VERSION = api$metadata$apiVersion,
       .SIGNING_NAME = signing_name(api),
-      .JSON_VERSION = api$metadata$jsonVersion,
-      .TARGET_PREFIX = api$metadata$targetPrefix,
+      .JSON_VERSION = json_version(api),
+      .TARGET_PREFIX = target_prefix(api),
       .HANDLERS = make_handlers(api)
     ),
     params = c()
@@ -96,4 +96,18 @@ signing_name <- function(api) {
   name <- api$metadata$signingName
   if (!is.null(name)) return(name)
   return(quote(cfg$signing_name))
+}
+
+# Returns the JSON version for the API, or "" if none.
+json_version <- function(api) {
+  version <- api$metadata$jsonVersion
+  if (is.null(version)) return("")
+  return(version)
+}
+
+# Returns the target prefix for the API, or "" if none.
+target_prefix <- function(api) {
+  prefix <- api$metadata$targetPrefix
+  if (is.null(prefix)) return("")
+  return(prefix)
 }
