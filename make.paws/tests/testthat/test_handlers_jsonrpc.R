@@ -334,6 +334,37 @@ test_that("build enums", {
 
 #-------------------------------------------------------------------------------
 
+# Build with no target prefix
+
+op <- Operation(name = "OperationName")
+svc <- Client(
+  client_info = ClientInfo(
+    json_version = "1.1",
+    target_prefix = NULL
+  )
+)
+svc$handlers$build <- HandlerList(jsonrpc_build)
+
+op_input1 <- function(Name) {
+  args <- list(Name = Name)
+  interface <- Structure(
+    Name = Scalar()
+  )
+  return(populate(args, interface))
+}
+
+test_that("build scalar members", {
+  input <- op_input1(
+    Name = "myname"
+  )
+  req <- new_request(svc, op, input, NULL)
+  req <- build(req)
+  r <- req$http_request
+  expect_equal(r$body, '{"Name":"myname"}')
+})
+
+#-------------------------------------------------------------------------------
+
 # Unmarshal tests
 
 op <- Operation(name = "OperationName")

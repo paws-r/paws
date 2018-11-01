@@ -8,19 +8,15 @@ jsonrpc_build <- function(request) {
     body <- EMPTY_JSON
   }
 
-  if (!is.null(request$client_info$target_prefix) && (
-      request$client_info$target_prefix != "" ||
-      (!is.null(body) && body != "{}"))) {
+  if (not_empty(request$client_info$target_prefix) || (!is.null(body) && body != "{}")) {
      request <- set_body(request, body)
   }
-  if (!is.null(request$client_info$target_prefix) &&
-      request$client_info$target_prefix != "")  {
+  if (not_empty(request$client_info$target_prefix))  {
     target <- paste0(request$client_info$target_prefix, ".", request$operation$name)
     request$http_request$header["X-Amz-Target"] <- target
   }
 
-  if (!is.null(request$client_info$json_version) &&
-      request$client_info$json_version != "") {
+  if (not_empty(request$client_info$json_version)) {
     json_version <- request$client_info$json_version
     request$http_request$header["Content-Type"] <- paste0("application/x-amz-json-", json_version)
   }
