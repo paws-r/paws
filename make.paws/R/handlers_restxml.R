@@ -1,5 +1,9 @@
 # Build the request body for the REST XML protocol.
 restxml_build <- function(request) {
+  if (request$client_info$service_name == "s3") {
+    request <- update_endpoint_for_s3_config(request)
+  }
+  
   request <- rest_build(request)
   t <- rest_payload_type(request$params)
   if (t == "structure" || t == "") {
@@ -18,7 +22,10 @@ restxml_unmarshal_meta <- function(request) {
 restxml_unmarshal <- function(request) {
   t <- rest_payload_type(request$params)
   if (t == "structure" || t == "") {
-    # stop("Not implemented yet")
+    data <- request$http_response$body
+    interface <- request$data
+    result_name <- paste0(request$operation$name, "Result")
+    request$data <- xml_unmarshal(data, interface, result_name)
   } else {
     request <- rest_unmarshal(request)
   }
