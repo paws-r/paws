@@ -66,4 +66,5 @@ Collate:
     'request.R'
     'signer_v4.R'
     'time.R'
+    'util.R'
     'xmlutil.R'
