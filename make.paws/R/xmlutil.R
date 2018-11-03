@@ -1,4 +1,6 @@
 xml_build <- function(request) {
+  
+  # stop("Not finished")
   return(request)
 }
 
@@ -71,11 +73,13 @@ xml_parse_structure <- function(node, interface) {
     if (length(elem) == 0) {
       # TODO: Implement.
     }
-    parsed <- if (length(field) == 1) {
-      xml_parse(children, field[[1]])
+    
+    if (flattened) {
+      parsed <- xml_parse(children, field[[1]])
     } else {
-      xml_parse(children, field)
+      parsed <- xml_parse(children, field)
     }
+
     result[[name]] <- parsed
   }
   return(result)
