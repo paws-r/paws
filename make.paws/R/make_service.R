@@ -58,13 +58,13 @@ endpoint_data <- function(api) {
 # Returns the JSON version for the API, or "" if none.
 json_version <- function(api) {
   version <- api$metadata$jsonVersion
-  if (is.null(version)) version <- ""
+  if (is.null(version)) return("")
   return(version)
 }
 
 # Returns the target prefix for the API, or "" if none.
 target_prefix <- function(api) {
   prefix <- api$metadata$targetPrefix
-  if (is.null(prefix)) prefix <- ""
+  if (is.null(prefix)) return("")
   return(prefix)
 }
