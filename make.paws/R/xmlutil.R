@@ -1,7 +1,117 @@
-xml_build <- function(request) {
+xml_build_body <- function(request) {
+  params <- request$params
+  
+  body_list <- xml_build(params)
+  
+  if (is.list(body_list)) {
+    body_xml <- xml2::as_xml_document(x = body_list)
+    body_xml <- as.character(body_xml)
+  } else {
+    body_xml <- ""
+  }
+  
+  request$http_request$body <- body_xml
+  return(request)
+}
+
+
+xml_build <- function(params) {
+  
+  location <- get_tag(params, "location")
+  if (location != "") return(NULL)
+  
+  t <- type(params)
+  
+  build_fn <- switch(
+    t,
+    structure = xml_build_structure,
+    map = xml_build_map,
+    list = xml_build_list,
+    xml_build_scalar
+  )
+  
+  result <- build_fn(params)
   
   # stop("Not finished")
-  return(request)
+  # Need to put the params in the proper spot
+  return(result)
+}
+
+xml_build_structure <- function(params) {
+  # payload <- get_tag(node, "payload")
+  # if (length(payload) > 0 && payload != "") {
+  #   result <- xml_build_structure(payload)
+  #   return(result)
+  # }
+
+  result <- list()
+  for (name in names(params)) {
+    child <- params[[name]]
+
+    parsed <- xml_build(child)
+    
+    if (!is.null(parsed)) {
+      result[[name]] <- parsed
+    }
+  }
+  return(result)
+}
+
+xml_build_list <- function(params) {
+  if (length(params) == 0) return(list())
+  result <- lapply(params, function(x) xml_build(x))
+  return(result)
+}
+
+xml_build_map <- function(params, tag = "") {
+  # if (length(node) == 0) return(list())
+  # result <- list()
+  # multiple_entries <- length(unique(names(node))) == 1
+  # if (multiple_entries) {
+  #   children <- node
+  # } else {
+  #   children <- list(node) # wrap singular map entry
+  # }
+  # for (child in children) {
+  #   parsed <- xml_build_map_entry(child, interface)
+  #   result <- c(result, parsed)
+  # }
+  # return(result)
+  return(list())
+}
+
+xml_build_map_entry <- function(params, tag = "") {
+  # key_name <- get_tag(interface, "locationNameKey")
+  # value_name <- get_tag(interface, "locationNameValue")
+  # if (key_name == "") key_name <- "key"
+  # if (value_name == "") value_name <- "value"
+  # key <- unlist(node[[key_name]])
+  # value <- node[[value_name]]
+  # result <- list()
+  # result[[key]] <- xml_build(value, interface[[1]])
+  # return(result)
+  return(list())
+}
+
+xml_build_scalar <- function(params) {
+  # Use `unlist` to avoid embedded lists in scalar nodes; `xml2::as_list`
+  # converts <foo>abc</foo> to `list(foo = list("abc"))`, when we want
+  # `list(foo = "abc")`.
+  data <- unlist(params)
+  t <- get_tag(params, "type")
+  convert <- switch(
+    t,
+    blob = base64_to_utf8,
+    boolean = as.logical,
+    double = as.numeric,
+    float = as.numeric,
+    integer = as.integer,
+    long = as.integer,
+    timestamp = function(x) as_timestamp(x, format = "iso8601"),
+    as.character
+  )
+  result <- list(convert(data))
+  return(result)
 }
 
 #-------------------------------------------------------------------------------

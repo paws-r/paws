@@ -7,7 +7,7 @@ restxml_build <- function(request) {
   request <- rest_build(request)
   t <- rest_payload_type(request$params)
   if (t == "structure" || t == "") {
-    request <- xml_build(request)
+    request <- xml_build_body(request)
   }
   return(request)
 }
