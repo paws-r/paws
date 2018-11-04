@@ -51,10 +51,17 @@ Handlers <- struct(
 #-------------------------------------------------------------------------------
 
 # Add a list of functions to an existing HandlerList.
-add_handlers <- function(existing, ...) {
+add_handlers_back <- function(existing, ...) {
   h <- existing
   n <- HandlerList(...)
   h$list <- c(h$list, n$list)
+  return(h)
+}
+
+add_handlers_front <- function(existing, ...) {
+  h <- existing
+  n <- HandlerList(...)
+  h$list <- c(n$list, h$list)
   return(h)
 }
 
