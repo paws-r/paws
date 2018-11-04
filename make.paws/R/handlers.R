@@ -58,22 +58,6 @@ add_handlers <- function(existing, ...) {
   return(h)
 }
 
-# Return a populated Handlers object with custom build, sign, etc. handlers.
-# TODO: Use the function name passed into handlers when calling add_handlers.
-handlers <- function(build = NULL, sign = NULL, unmarshal = NULL,
-                     unmarshal_meta = NULL, unmarshal_error = NULL,
-                     unmarshal_stream = NULL) {
-  args <- as.list(environment())
-  h <- default_handlers()
-  for (name in names(args)) {
-    fn <- args[[name]]
-    if (!is.null(fn)) {
-      h[[name]] <- add_handlers(h[[name]], fn)
-    }
-  }
-  return(h)
-}
-
 #-------------------------------------------------------------------------------
 
 # Run all request handlers of the given handler type (e.g. build) with a given

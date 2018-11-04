@@ -13,11 +13,42 @@ read_api <- function(api_name, path) {
     examples <- jsonlite::read_json(files$examples)
     api <- merge_examples(api, examples$examples)
   }
-
   region_config <- jsonlite::read_json(region_config_path)
   api <- merge_region_config(api, region_config)
 
-  api
+  return(api)
+}
+
+# Return a string where all whole word elements in `translations` have been
+# translated to the corresponding value, e.g.
+# translate("foo bar barqux", list("bar" = "baz")) -> "foo baz barqux"
+translate <- function(x, translations) {
+  escape <- function(x) gsub("([[:punct:]])", "\\\\\\1", x)
+  whole_word <- function(x) {
+    if (startsWith(x, "\\")) return(sprintf("%s\\b", x))
+    if (grepl("\\\\.$", x)) return(sprintf("\\b%s", x))
+    return(sprintf("\\b%s\\b", x))
+  }
+  result <- x
+  for (from in names(translations)) {
+    to <- translations[[from]]
+    if (!is.character(to)) to <- deparse(to)
+    from <- escape(from) # escape special characters.
+    from <- whole_word(from) # find whole words only.
+    result <- gsub(from, to, result)
+  }
+  return(result)
+}
+
+# Parse API name, version, and file type from an API file name
+parse_file_names <- function(file_names) {
+  regex <- "^(.+)-(\\d{4}-\\d{2}-\\d{2})\\.(.+).json$"
+  name <- replace(regex, "\\1", file_names)
+  version <- replace(regex, "\\2", file_names)
+  type <- replace(regex, "\\3", file_names)
+  parsed <- data.frame(name = name, version = version, type = type,
+                       stringsAsFactors = FALSE)
+  return(parsed)
 }
 
 # Returns the latest version of the given API.

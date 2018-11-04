@@ -40,7 +40,6 @@ Collate:
     'config.R'
     'convert.R'
     'dateutil.R'
-    'defaults.R'
     'error.R'
     'handlers_core.R'
     'handlers_ec2query.R'
