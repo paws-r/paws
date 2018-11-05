@@ -12,23 +12,23 @@ access to the full suite of AWS services from within R.
 Each AWS service has its own R package within Paws. For example, to use
 EC2, use the `paws.ec2` package.
 
-Disclaimer: We are not affiliated with Amazon Web Services, and this
-package is not a product of or supported by Amazon Web Services.
+Disclaimer: We are not affiliated with Amazon Web Services, and Paws is
+not a product of or supported by Amazon Web Services.
 
 Paws is based on the design and implementation of the [AWS SDK for
 Go](https://github.com/aws/aws-sdk-go) and it uses AWS’s API definition
 files and API documentation from the [AWS SDK for
 JavaScript](https://github.com/aws/aws-sdk-js).
 
-## Installation
+## Getting Started
+
+### Installation
 
 Paws is currently only available from GitHub. Install a package using:
 
 ``` r
 devtools::install_github("paws-r/paws/service/paws.ec2")
 ```
-
-## Getting Started
 
 ### Credentials
 
