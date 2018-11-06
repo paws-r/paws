@@ -187,6 +187,11 @@ handle_presign_removal <- function(ctx) {
   }
 }
 
+# TODO: implement.
+remove_presign <- function(ctx) {
+  return(ctx)
+}
+
 # Add security headers to the request for presigned requests.
 assign_amz_query_values <- function(ctx) {
   if (ctx$is_presigned) {

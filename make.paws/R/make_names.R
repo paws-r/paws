@@ -191,7 +191,7 @@ old_service_name <- function(name) {
     "workspaces",                      "workspaces",
     "xray",                            "xray"
   ), ncol = 2, byrow = TRUE)
-  old_service_names <- setNames(m[, 2], m[, 1])
+  old_service_names <- stats::setNames(m[, 2], m[, 1])
   if (name %in% names(old_service_names)) {
     return(old_service_names[[name]])
   }
@@ -205,7 +205,7 @@ service_alias <- function(name) {
     "elasticloadbalancingv2",    "ELBV2",
     "config",                    "ConfigService"
   ), ncol = 2, byrow = TRUE)
-  aliases <- setNames(m[, 2], m[, 1])
+  aliases <- stats::setNames(m[, 2], m[, 1])
   if (name %in% names(aliases)) {
     return(aliases[[name]])
   }
