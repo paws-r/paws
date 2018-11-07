@@ -1,82 +1,34 @@
 # Returns a list of functions for setting up API service.
 make_service <- function(api) {
-  service <- list(
-    make_service_init(api)
+  protocol <- protocol_package(api)
+  signature <- api$metadata$signatureVersion
+
+  template <- readChar(
+    system_file("templates/service.R", package = methods::getPackageName()),
+    nchars = 1e5
   )
-  return(service)
-}
+  template <- gsub("\r", "", template)
 
-# Returns a function setting up API service: client info, handlers, etc.
-make_service_init <- function(api) {
-  template <- make_function_template({
-    cfg <- client_config(
-      .SERVICE_NAME,
-      .ENDPOINT_DATA
-    )
-    client_info <- ClientInfo(
-      service_name = .SERVICE_NAME,
-      service_id = .SERVICE_ID,
-      api_version = .API_VERSION,
-      signing_name = .SIGNING_NAME,
-      signing_region = cfg$signing_region,
-      endpoint = cfg$endpoint,
-      json_version = .JSON_VERSION,
-      target_prefix = .TARGET_PREFIX
-    )
-    handlers <- .HANDLERS
-    svc <- Client(
-      config = cfg$config,
-      client_info = client_info,
-      handlers = handlers
-    )
-    return(svc)
-  })
-
-  fn <- make_function_from_template(
-    name = "service",
-    template = template,
-    subs = list(
+  service <- translate(
+    template,
+    list(
+      .PROTOCOL_HANDLER_FILE = paste0("handlers_", protocol, ".R"),
+      .BUILD_HANDLER = paste0(protocol, "_build"),
+      .SIGN_HANDLER = paste0(signature, "_sign_request_handler"),
+      .SIGN_HANDLER_FILE = paste0("signer_", signature, ".R"),
+      .UNMARSHAL_HANDLER = paste0(protocol, "_unmarshal"),
+      .UNMARSHAL_META_HANDLER = paste0(protocol, "_unmarshal_meta"),
+      .UNMARSHAL_ERROR_HANDLER = paste0(protocol, "_unmarshal_error"),
       .SERVICE_NAME = service_name(api),
-      .ENDPOINT_DATA = make_endpoint_data(api),
+      .ENDPOINT_DATA = endpoint_data(api),
       .SERVICE_ID = service_id(api),
       .API_VERSION = api$metadata$apiVersion,
       .SIGNING_NAME = signing_name(api),
       .JSON_VERSION = json_version(api),
-      .TARGET_PREFIX = target_prefix(api),
-      .HANDLERS = make_handlers(api)
-    ),
-    params = c()
+      .TARGET_PREFIX = target_prefix(api)
+    )
   )
-
-  return(fn)
-}
-
-# Returns a call which will create a list of handlers for a given API.
-# TODO: Rename all handlers to `..._handler`?
-make_handlers <- function(api) {
-  protocol <- protocol_package(api)
-  signature <- api$metadata$signatureVersion
-  args <- c(
-    build = paste0(protocol, "_build"),
-    sign = paste0(signature, "_sign_request_handler"),
-    unmarshal = paste0(protocol, "_unmarshal"),
-    unmarshal_meta = paste0(protocol, "_unmarshal_meta"),
-    unmarshal_error = paste0(protocol, "_unmarshal_error")
-  )
-  # TODO: Event stream handler -- applies only to S3.
-  # if (has_event_stream) {
-  #   args <- c(
-  #     args,
-  #     unmarshal_stream = paste0(protocol, "_unmarshal_handler")
-  #   )
-  # }
-  args <- lapply(args, as.symbol)
-  h <- make_call("handlers", args)
-  return(h)
-}
-
-make_endpoint_data <- function(api) {
-  return(api$region_config)
+  return(service)
 }
 
 #-------------------------------------------------------------------------------
@@ -94,8 +46,12 @@ protocol_package <- function(api) {
 # API definition or the signing name assigned by `client_config`.
 signing_name <- function(api) {
   name <- api$metadata$signingName
-  if (!is.null(name)) return(name)
-  return(quote(cfg$signing_name))
+  if (!is.null(name)) return(quoted(name))
+  return("cfg$signing_name")
+}
+
+endpoint_data <- function(api) {
+  return(api$region_config)
 }
 
 # Returns the JSON version for the API, or "" if none.

@@ -51,26 +51,17 @@ Handlers <- struct(
 #-------------------------------------------------------------------------------
 
 # Add a list of functions to an existing HandlerList.
-add_handlers <- function(existing, ...) {
+add_handlers_back <- function(existing, ...) {
   h <- existing
   n <- HandlerList(...)
   h$list <- c(h$list, n$list)
   return(h)
 }
 
-# Return a populated Handlers object with custom build, sign, etc. handlers.
-# TODO: Use the function name passed into handlers when calling add_handlers.
-handlers <- function(build = NULL, sign = NULL, unmarshal = NULL,
-                     unmarshal_meta = NULL, unmarshal_error = NULL,
-                     unmarshal_stream = NULL) {
-  args <- as.list(environment())
-  h <- default_handlers()
-  for (name in names(args)) {
-    fn <- args[[name]]
-    if (!is.null(fn)) {
-      h[[name]] <- add_handlers(h[[name]], fn)
-    }
-  }
+add_handlers_front <- function(existing, ...) {
+  h <- existing
+  n <- HandlerList(...)
+  h$list <- c(n$list, h$list)
   return(h)
 }
 
