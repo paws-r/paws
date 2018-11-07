@@ -2,7 +2,6 @@
 make_service <- function(api) {
   protocol <- protocol_package(api)
   signature <- api$metadata$signatureVersion
-  f <- function(...) as.symbol(paste0(...))
 
   template <- readChar(
     system_file("templates/service.R", package = methods::getPackageName()),
