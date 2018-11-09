@@ -17,6 +17,16 @@ operation_template <- function() {
   return(response)
 }
 
+# Avoid R check notes.
+utils::globalVariables(c(
+  ".OPERATION_NAME",
+  ".HTTP_METHOD",
+  ".HTTP_PATH",
+  ".OPERATION_INPUT",
+  ".OPERATION_OUTPUT",
+  "service"
+))
+
 # Make a function for a given API operation.
 make_operation_function <- function(operation, api) {
   function_name <- get_operation_name(operation)

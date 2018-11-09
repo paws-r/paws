@@ -21,6 +21,11 @@ make_interface <- function(name, shape_name, api) {
   return(interface)
 }
 
+# Avoid R check notes.
+utils::globalVariables(c(
+  ".SHAPE"
+))
+
 make_empty_interface <- function(name) {
   interface <- make_function_from_template(
     name = name,
