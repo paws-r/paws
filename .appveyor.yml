@@ -14,6 +14,7 @@ cache:
   - C:\RLibrary
 
 environment:
+  USE_RTOOLS: true
   WARNINGS_ARE_ERRORS: 1
   matrix:
     - TEST_DIR: make.paws
