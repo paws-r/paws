@@ -1,12 +1,5 @@
 context("Function utilities")
 
-test_that("make_function_template", {
-  template <- make_function_template({
-    x + y
-  })
-  expect_equal(template, substitute({x + y}))
-})
-
 test_that("make_function", {
   f <- make_function(substitute({x + 1}), alist(x =))
   g <- function(x) {
@@ -24,7 +17,7 @@ test_that("substitute_q", {
 test_that("make_function_from_template", {
   a <- make_function_from_template(
     name = "test",
-    template = substitute({A + 1}),
+    template = function() {A + 1},
     subs = list(A = substitute(x + y)),
     params = alist(x =, y =)
   )

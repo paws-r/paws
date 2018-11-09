@@ -4,11 +4,11 @@
 # shape.
 make_interface <- function(name, shape_name, api) {
   if (is.null(shape_name)) return(make_empty_interface(name))
-  interface_template <- make_function_template({
+  interface_template <- function(...) {
     args <- c(as.list(environment()), list(...))
     shape <- .SHAPE
     return(populate(args, shape))
-  })
+  }
   shape <- make_shape(list(shape = shape_name), api)
   input_shape <- api$shapes[[shape_name]]
   params <- c("..." = bquote())
@@ -24,7 +24,7 @@ make_interface <- function(name, shape_name, api) {
 make_empty_interface <- function(name) {
   interface <- make_function_from_template(
     name = name,
-    template = make_function_template({return(list())}),
+    template = function() {return(list())},
     subs = list(),
     params = list()
   )
