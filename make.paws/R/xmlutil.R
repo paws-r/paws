@@ -3,13 +3,14 @@ xml_build_body <- function(request) {
   
   body_list <- xml_build(params)
   
-  if (is.list(body_list)) {
+  if (length(body_list)) {
     body_xml <- xml2::as_xml_document(x = body_list)
     body_xml <- as.character(body_xml)
   } else {
     body_xml <- ""
   }
   
+  request$body <- body_xml
   request$http_request$body <- body_xml
   return(request)
 }
@@ -32,8 +33,6 @@ xml_build <- function(params) {
   
   result <- build_fn(params)
   
-  # stop("Not finished")
-  # Need to put the params in the proper spot
   return(result)
 }
 
@@ -59,7 +58,14 @@ xml_build_structure <- function(params) {
 
 xml_build_list <- function(params) {
   if (length(params) == 0) return(list())
-  result <- lapply(params, function(x) xml_build(x))
+  children <- lapply(params, function(x) xml_build(x))
+  
+  location_names <- sapply(params, function(x) attr(x, "locationName"))
+  
+  result <- lapply(1:length(children), function(i) children[[i]])
+  
+  names(result) <- location_names
+  
   return(result)
 }
 
@@ -118,7 +124,14 @@ xml_build_scalar <- function(params) {
 
 # Unmarshal `data` provided as XML into the shape in `interface`.
 xml_unmarshal <- function(data, interface, result_name = NULL) {
-  root <- xml_to_list(data)[[1]]
+  root <- tryCatch({
+    xml_to_list(data)[[1]]
+  }, error = function (e){
+    return(NULL)
+  })
+  
+  if (is.null(root)) return(data)
+  
   if (!is.null(result_name) && result_name %in% names(root)) {
     root <- root[[result_name]]
   }

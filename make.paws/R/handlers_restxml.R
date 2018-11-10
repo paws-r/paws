@@ -9,6 +9,9 @@ restxml_build <- function(request) {
   if (t == "structure" || t == "") {
     request <- xml_build_body(request)
   }
+  
+  request <- content_md5(request)
+  
   return(request)
 }
 

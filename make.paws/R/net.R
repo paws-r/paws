@@ -100,11 +100,14 @@ issue <- function(http_request) {
     body = body
   )
 
+  response_body <- httr::content(r, as = "text", encoding = "UTF-8")
+  if (is.na(response_body)) response_body <- httr::content(r, as = "raw")
+  
   response <- HttpResponse(
     status_code = httr::status_code(r),
     header = httr::headers(r),
     content_length = as.integer(httr::headers(r)$`content-length`),
-    body = httr::content(r, as = "text", encoding = "UTF-8")
+    body = response_body
   )
 
   return(response)
