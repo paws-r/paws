@@ -5,6 +5,7 @@
 Status](https://travis-ci.com/paws-r/paws.svg?branch=master)](https://travis-ci.com/paws-r/paws)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/2ma1spb2f55129qc/branch/master?svg=true)](https://ci.appveyor.com/project/paws-r/paws/branch/master)
+[![codecov](https://codecov.io/gh/paws-r/paws/branch/master/graph/badge.svg)](https://codecov.io/gh/paws-r/paws)
 
 Paws is a **P**ackage for **A**mazon **W**eb **S**ervices. Paws provides
 access to the full suite of AWS services from within R.
