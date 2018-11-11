@@ -6,7 +6,7 @@ Authors@R: c(
   	person("David", "Kretch", email = "david.kretch@gmail.com", role = c("aut", "cre")),
     person("Adam", "Banker", role = "aut")
   )
-Description: make.paws geenrates the Paws AWS SDKs for R.
+Description: make.paws generates the Paws AWS SDKs for R.
 License: Apache License (>= 2.0)
 Encoding: UTF-8
 LazyData: true
