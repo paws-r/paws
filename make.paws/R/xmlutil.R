@@ -3,11 +3,15 @@ xml_build_body <- function(request) {
   
   body_list <- xml_build(params)
   
-  if (length(body_list)) {
+  if (length(body_list) && is.list(body_list)) {
     body_xml <- xml2::as_xml_document(x = body_list)
     body_xml <- as.character(body_xml)
   } else {
-    body_xml <- ""
+    if (is.list(body_list)) {
+      body_xml <- ""
+    } else {
+      body_xml <- body_list
+    }
   }
   
   request$body <- body_xml
@@ -37,12 +41,6 @@ xml_build <- function(params) {
 }
 
 xml_build_structure <- function(params) {
-  # payload <- get_tag(node, "payload")
-  # if (length(payload) > 0 && payload != "") {
-  #   result <- xml_build_structure(payload)
-  #   return(result)
-  # }
-
   result <- list()
   for (name in names(params)) {
     child <- params[[name]]
@@ -50,6 +48,12 @@ xml_build_structure <- function(params) {
     parsed <- xml_build(child)
     
     if (!is.null(parsed)) {
+      
+      if (name == "Body") {
+        result <- unlist(parsed)
+        return(result)
+      }
+      
       result[[name]] <- parsed
     }
   }
