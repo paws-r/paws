@@ -32,7 +32,7 @@ translate <- function(x, translations) {
   result <- x
   for (from in names(translations)) {
     to <- translations[[from]]
-    if (!is.character(to)) to <- deparse(to)
+    if (!is.character(to)) to <- paste(deparse(to, width.cutoff = 500), collapse = "")
     from <- escape(from) # escape special characters.
     from <- whole_word(from) # find whole words only.
     result <- gsub(from, to, result)
