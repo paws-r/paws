@@ -1,6 +1,6 @@
 #' Make an R package for a given API
 #'
-#' @param api Name of the API to make a package for.
+#' @param api_name Name of the API to make a package for.
 #' @param in_dir Directory containing API files.
 #' @param out_dir Directory to
 #'
@@ -213,7 +213,7 @@ make_description <- function(api) {
 # Return the authors from this package.
 make_authors <- function(authors) {
   package <- methods::getPackageName()
-  description <- packageDescription(package)
+  description <- utils::packageDescription(package)
   authors <- description$`Authors@R`
   return(authors)
 }
@@ -221,6 +221,6 @@ make_authors <- function(authors) {
 # Get generated package Imports from this package's Suggests.
 make_imports <- function() {
   package <- methods::getPackageName()
-  imports <- packageDescription(package)$Suggests
+  imports <- utils::packageDescription(package)$Suggests
   return(imports)
 }

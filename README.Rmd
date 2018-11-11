@@ -1,5 +1,7 @@
 ---
-output: github_document
+output:
+  github_document:
+    html_preview: false
 
 ---
 
@@ -11,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 [![Build Status](https://travis-ci.com/paws-r/paws.svg?branch=master)](https://travis-ci.com/paws-r/paws)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/2ma1spb2f55129qc/branch/master?svg=true)](https://ci.appveyor.com/project/paws-r/paws/branch/master)
+[![codecov](https://codecov.io/gh/paws-r/paws/branch/master/graph/badge.svg)](https://codecov.io/gh/paws-r/paws)
 
 
 Paws is a **P**ackage for **A**mazon **W**eb **S**ervices. Paws provides
@@ -19,24 +22,24 @@ access to the full suite of AWS services from within R.
 Each AWS service has its own R package within Paws. For example, to use EC2, use
 the `paws.ec2` package.
 
-Disclaimer: We are not affiliated with Amazon Web Services, and this package is
-not a product of or supported by Amazon Web Services.
+Disclaimer: We are not affiliated with Amazon Web Services, and Paws is not a 
+product of or supported by Amazon Web Services.
 
 Paws is based on the design and implementation of the 
 [AWS SDK for Go](https://github.com/aws/aws-sdk-go) and it uses AWS's API 
 definition files and API documentation from the 
 [AWS SDK for JavaScript](https://github.com/aws/aws-sdk-js).
 
-## Installation
+
+## Getting Started
+
+### Installation
 
 Paws is currently only available from GitHub. Install a package using:
 
 ```{r, eval = FALSE}
 devtools::install_github("paws-r/paws/service/paws.ec2")
 ```
-
-
-## Getting Started
 
 ### Credentials
 

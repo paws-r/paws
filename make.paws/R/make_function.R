@@ -14,16 +14,10 @@ substitute_q <- function(x, env) {
   eval(call)
 }
 
-# Return a function body with a given expression.
-make_function_template <- function(expr) {
-  f <- make_function(substitute(expr), alist())
-  return(body(f))
-}
-
 # Make a function and assign it to a name, given a function template, template
 # substitution values, and function parameters.
 make_function_from_template <- function(name, template, subs, params) {
-  fn_body <- substitute_q(template, subs)
+  fn_body <- substitute_q(body(template), subs)
   fn_def <- make_function(fn_body, params)
   fn <- substitute(
     .NAME <- .FUNCTION,

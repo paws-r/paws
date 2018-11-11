@@ -7,11 +7,11 @@
 make_package(api_name, in_dir, out_dir)
 }
 \arguments{
+\item{api_name}{Name of the API to make a package for.}
+
 \item{in_dir}{Directory containing API files.}
 
 \item{out_dir}{Directory to}
-
-\item{api}{Name of the API to make a package for.}
 }
 \description{
 Make an R package for a given API

@@ -301,7 +301,7 @@ make_doc_return <- function(operation) {
 # Return a string with an operation example's arguments.
 make_doc_example_args <- function(input) {
   if (length(input) == 0) return("")
-  args <- paste(trimws(capture.output(dput(input))), collapse = "")
+  args <- paste(trimws(utils::capture.output(dput(input))), collapse = "")
   result <- gsub("^list\\((.*)\\)$", "\\1", args)
   return(result)
 }

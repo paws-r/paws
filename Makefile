@@ -1,4 +1,4 @@
-IN_DIR := ./aws-sdk-js
+IN_DIR := ./vendor/aws-sdk-js
 API_DIR := ${IN_DIR}/apis
 OUT_DIR := ./service
 
@@ -16,11 +16,12 @@ export R_USER
 
 help:
 	@echo "  build          build the SDK packages"
-	@echo "  codegen        build and install the code generator"
-	@echo "  docs           build project docs"
-	@echo "  integration    run integration tests"
-	@echo "  unit           run unit tests"
 	@echo "  <service>      build the SDK for <service>"
+	@echo "  unit           run unit tests"
+	@echo "  integration    run integration tests"
+	@echo "  docs           build project docs"
+	@echo "  codegen        build and install the code generator"
+	@echo "  deps           get project dependencies"
 
 build: ${SERVICES}
 	@echo "build the SDK packages"
@@ -50,3 +51,8 @@ ${INTEGRATION_TESTS}:
 
 docs:
 	@echo "build project docs"
+	@Rscript -e 'rmarkdown::render("readme.Rmd")'
+
+deps:
+	@echo "get project dependencies"
+	@cd ${IN_DIR}; git submodule init; git submodule update

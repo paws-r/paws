@@ -55,7 +55,7 @@ parse_file_names <- function(file_names) {
 get_latest_api_version <- function(name, path) {
   files <- list.files(path, pattern = sprintf("^%s-.{10}.normal.json", name))
   versions <- unique(gsub("^(.+)\\..+\\..+", "\\1", files))
-  latest <- tail(sort(versions), 1)
+  latest <- utils::tail(sort(versions), 1)
   return(latest)
 }
 
@@ -82,9 +82,9 @@ merge_examples <- function(api, examples) {
 # lists endpoints for each service and region, if different from the default.
 merge_region_config <- function(api, region_config) {
   service <- service_name(api)
-  rule_names <- grep(sprintf("/%s$", service), names(region_config$rules), val = TRUE)
+  rule_names <- grep(sprintf("/%s$", service), names(region_config$rules), value = TRUE)
   if (length(rule_names) == 0) {
-    rule_names <- grep(sprintf("/\\*$", service), names(region_config$rules), val = TRUE)
+    rule_names <- grep(sprintf("/\\*$", service), names(region_config$rules), value = TRUE)
   }
 
   rules <- list()
@@ -144,7 +144,7 @@ system_file <- function(..., package = "base") {
 
 # Run an expression without printing messages.
 quietly <- function(expr) {
-  capture.output(
+  utils::capture.output(
     suppressMessages(
       expr
     )

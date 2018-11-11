@@ -2,7 +2,7 @@
 NULL
 
 # A template for R functions calling AWS API operations
-operation_template <- make_function_template({
+operation_template <- function() {
   op <- Operation(
     name = .OPERATION_NAME,
     http_method = .HTTP_METHOD,
@@ -15,7 +15,17 @@ operation_template <- make_function_template({
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
-})
+}
+
+# Avoid R check notes.
+utils::globalVariables(c(
+  ".OPERATION_NAME",
+  ".HTTP_METHOD",
+  ".HTTP_PATH",
+  ".OPERATION_INPUT",
+  ".OPERATION_OUTPUT",
+  "service"
+))
 
 # Make a function for a given API operation.
 make_operation_function <- function(operation, api) {
