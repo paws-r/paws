@@ -3,8 +3,9 @@ Type: Package
 Title: Make Paws AWS SDKs for R
 Version: 0.1.0
 Authors@R: c(
-  	person("David", "Kretch", email = "david.kretch@gmail.com", role = c("aut", "cre")),
-    person("Adam", "Banker", role = "aut")
+    person("David", "Kretch", email = "david.kretch@gmail.com", role = c("aut", "cre")),
+    person("Adam", "Banker", email = "adam.banker39@gmail.com", role = "aut"),
+    person("Amazon.com, Inc.", role = "cph")
   )
 Description: make.paws generates the Paws AWS SDKs for R.
 License: Apache License (>= 2.0)
