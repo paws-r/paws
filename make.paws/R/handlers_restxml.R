@@ -1,16 +1,11 @@
 # Build the request body for the REST XML protocol.
 restxml_build <- function(request) {
-  if (request$client_info$service_name == "s3") {
-    request <- update_endpoint_for_s3_config(request)
-  }
   
   request <- rest_build(request)
   t <- rest_payload_type(request$params)
   if (t == "structure" || t == "") {
     request <- xml_build_body(request)
   }
-  
-  request <- content_md5(request)
   
   return(request)
 }

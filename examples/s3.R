@@ -1,16 +1,26 @@
 library(paws.s3)
 
-# (a <- list_objects(Bucket = "adam-bucket-for-learning",
-#                    MaxKeys = 2))
+# Set the name of your existing bucket
+bucket_name <- "NAME-OF-BUCKET"
 
-(b <- get_bucket_location(Bucket = "adam-bucket-for-learning"))
+# Example text that we want to upload to S3
+example_text <- "Hello, world!"
 
-# library(paws.ec2)
-# (a <- describe_instances(MaxResults = 5))
+# Encode text so it can be uploaded
+raw_text <- jsonlite::base64_enc(charToRaw(example_text))
 
-# library(paws.batch)
-# (a <- describe_compute_environments(maxResults = 3))
+# Upload text to s3 as example.txt
+put_object(
+  Body = raw_text,
+  Bucket = bucket_name,
+  Key = "example.txt"
+)
 
-# library(paws.iam)
-# 
-# list_groups(MaxItems = 4)
+# Download the file
+example_download <- get_object(
+  Bucket = bucket_name,
+  Key = "example.txt"
+)
+
+# Write output to text file
+write(example_download, file = "example.txt")

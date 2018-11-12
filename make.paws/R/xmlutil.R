@@ -201,11 +201,11 @@ xml_parse_structure <- function(node, interface) {
       # TODO: Implement.
     }
     
-    if (flattened) {
-      parsed <- xml_parse(children, field[[1]])
-    } else {
-      parsed <- xml_parse(children, field)
-    }
+    # if (flattened) {
+    #   parsed <- xml_parse(children, field[[1]])
+    # } else {
+    parsed <- xml_parse(children, field)
+    # }
 
     result[[name]] <- parsed
   }

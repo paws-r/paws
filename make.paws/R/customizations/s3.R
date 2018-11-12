@@ -41,6 +41,14 @@ update_endpoint_for_s3_config <- function(request) {
 # contentMD5
 
 content_md5 <- function(request) {
+  operation_name <- request$operation$name
+  
+  if (!(operation_name %in% c("PutBucketCors", "PutBucketLifecycle", 
+                              "PutBucketPolicy", "PutBucketTagging",
+                              "DeleteObjects",
+                              "PutBucketLifecycleConfiguration",
+                              "PutBucketReplication", "PutObject",
+                              "UploadPart"))) {return(request)}
 
   body <- request$body
 

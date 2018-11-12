@@ -2,6 +2,7 @@
 make_service <- function(api) {
   protocol <- protocol_package(api)
   signature <- api$metadata$signatureVersion
+  if (signature == "s3") signature <- "v4"
 
   template <- readChar(
     system_file("templates/service.R", package = methods::getPackageName()),
