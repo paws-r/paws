@@ -50,6 +50,7 @@ Collate:
     'handlers_restjson.R'
     'idempotency.R'
     'jsonutil.R'
+    'make_api.R'
     'make_docs.R'
     'make_function.R'
     'make_interface.R'

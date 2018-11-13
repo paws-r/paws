@@ -23,7 +23,7 @@ make_package <- function(api_name, in_dir, out_dir) {
   write_tests(api, package_path)
   write_documentation(api, package_path)
 
-  package
+  return(package)
 }
 
 #-------------------------------------------------------------------------------
