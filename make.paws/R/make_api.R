@@ -19,18 +19,6 @@ read_api <- function(api_name, path) {
   return(api)
 }
 
-
-# Parse API name, version, and file type from an API file name
-parse_file_names <- function(file_names) {
-  regex <- "^(.+)-(\\d{4}-\\d{2}-\\d{2})\\.(.+).json$"
-  name <- replace(regex, "\\1", file_names)
-  version <- replace(regex, "\\2", file_names)
-  type <- replace(regex, "\\3", file_names)
-  parsed <- data.frame(name = name, version = version, type = type,
-                       stringsAsFactors = FALSE)
-  return(parsed)
-}
-
 # Returns the latest version of the given API.
 get_latest_api_version <- function(name, path) {
   files <- list.files(path, pattern = sprintf("^%s-.{10}.normal.json", name))
