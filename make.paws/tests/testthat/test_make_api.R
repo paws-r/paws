@@ -48,7 +48,7 @@ test_that("make_package_list", {
   )
   lib <- file.path(temp, "lib")
   dir.create(lib, showWarnings = FALSE)
-  jsonlite::write_json(api2, file.path(lib, "region_config_data.json"))
+  jsonlite::write_json(region_config, file.path(lib, "region_config_data.json"))
 
   actual <- make_package_list(temp)
   expected <- list(
