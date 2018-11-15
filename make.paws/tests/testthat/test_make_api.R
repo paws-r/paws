@@ -50,10 +50,7 @@ test_that("make_package_list", {
   dir.create(lib, showWarnings = FALSE)
   jsonlite::write_json(region_config, file.path(lib, "region_config_data.json"))
 
-  actual <- make_package_list(temp)
-  expected <- list(
-    list(package = "paws.api1", api = "api1"),
-    list(package = "paws.apitwo", api = "api2")
-  )
+  actual <- capture.output(make_package_list(temp))
+  expected <- c("paws.api1\tapi1", "paws.apitwo\tapi2")
   expect_equal(actual, expected)
 })
