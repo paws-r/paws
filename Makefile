@@ -18,6 +18,8 @@ else
 endif
 export R_USER
 
+.PHONY: help list build unit integration docs codegen deps
+
 help:
 	@echo "  list               list available packages"
 	@echo "  build              build the AWS SDK packages"
@@ -51,10 +53,6 @@ ${INSTALL_PACKAGES}:
 	echo "install $$PACKAGE" && \
 	Rscript -e "devtools::install('${OUT_DIR}/$$PACKAGE', quiet = TRUE)"
 
-codegen:
-	@echo "build and install the code generator"
-	@Rscript -e "devtools::document('make.paws'); devtools::install('make.paws')"
-
 unit:
 	@echo "run unit tests"
 	@Rscript -e "devtools::test('make.paws')"
@@ -73,6 +71,10 @@ ${INTEGRATION_TESTS}:
 docs:
 	@echo "build project docs"
 	@Rscript -e "rmarkdown::render('readme.Rmd')"
+
+codegen:
+	@echo "build and install the code generator"
+	@Rscript -e "devtools::document('make.paws'); devtools::install('make.paws')"
 
 deps:
 	@echo "get project dependencies"
