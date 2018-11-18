@@ -12,9 +12,11 @@ make_package <- function(api_name, in_dir, out_dir) {
   package_path <- file.path(out_dir, package)
   r_path <- file.path(package_path, "R")
 
+  version <- make_version(package_path)
+
   # Populate the package.
   write_skeleton(package_path)
-  write_description(api, package_path)
+  write_description(api, package_path, version)
   write_operations(api, r_path)
   write_interfaces(api, r_path)
   write_service(api, r_path)
@@ -23,18 +25,18 @@ make_package <- function(api_name, in_dir, out_dir) {
   write_tests(api, package_path)
   write_documentation(api, package_path)
 
-  return(package)
+  return(invisible(package))
 }
 
 #-------------------------------------------------------------------------------
 
 # Make a package description.
-write_description <- function(api, path, fields) {
+write_description <- function(api, path, version) {
   description <- desc::desc(file.path(path, "DESCRIPTION"))
   contents <- list(
     Package = package_name(api),
     Title = make_title(api),
-    Version = "0.0.0.9000",
+    Version = version,
     `Authors@R` = make_authors(),
     Description = make_description(api),
     Depends = "R (>= 3.5.1)",
@@ -208,6 +210,15 @@ make_description <- function(api) {
   desc <- gsub(" +\\.", ".", desc)
 
   return(desc)
+}
+
+# Returns a version; the existing package's if present, otherwise a default.
+make_version <- function(path) {
+  version <- "0.0.0.9000"
+  if (dir.exists(path)) {
+    version <- desc::desc_get_version(file.path(path, "DESCRIPTION"))
+  }
+  return(version)
 }
 
 # Return the authors from this package.

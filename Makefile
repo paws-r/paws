@@ -1,6 +1,7 @@
 IN_DIR := ./vendor/aws-sdk-js
 API_DIR := ${IN_DIR}/apis
 OUT_DIR := ./service
+SCRIPT_DIR := ./script
 
 PACKAGES := $(shell awk '{ print $$1 }' PACKAGES.txt)
 INSTALL_PACKAGES := $(addprefix install-,${PACKAGES})
@@ -37,8 +38,9 @@ build: ${PACKAGES}
 
 ${PACKAGES}:
 	@echo "build $@"
-	@PACKAGE=$$(grep "^$@" PACKAGES.txt | awk '{ print $$2 }') && \
-	Rscript -e "library(make.paws); make_package('$$PACKAGE', '${IN_DIR}', '${OUT_DIR}')" > /dev/null
+	@API=$$(grep "^$@" PACKAGES.txt | awk '{ print $$2 }') && \
+	Rscript -e "library(make.paws); make_package('$$API', '${IN_DIR}', '${OUT_DIR}')" && \
+	${SCRIPT_DIR}/update_version.sh $@
 
 install: ${INSTALL_PACKAGES}
 	@echo "install the AWS SDK packages"
