@@ -180,13 +180,6 @@ preprocess <- function(text) {
   if (length(code) > 0) {
     code_text <- xml2::xml_text(code)
     xml2::xml_text(code) <- fix_unmatched_chars(code_text)
-
-    # if (!grepl("^<body>", text)) {
-    #   result <- xml2::xml_find_first(html, ".//body")
-    # } else {
-    #   result <- html
-    # }
-
     result <- as.character(xml2::xml_children(html))
   } else {
     result <- text
@@ -284,8 +277,12 @@ make_doc_params <- function(operation, api) {
     inputs <- make_inputs(shape)
     params <- sapply(inputs, function(input) {
       param <- input$param_name
+      required <- input$required
       documentation <- convert(input$documentation, wrap = FALSE)
       documentation <- glue::glue_collapse(documentation, sep = "\n")
+      if (required) {
+        documentation <- glue::glue("&#91;required&#93; {documentation}")
+      }
       documentation <- glue::glue("@param {param} {documentation}")
       lines <- strsplit(documentation, "\n")[[1]]
       lines <- glue::glue("#' {lines}")
