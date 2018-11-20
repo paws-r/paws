@@ -3,6 +3,9 @@
 # Create a topic to which we can send notifications.
 topic <- paws.sns::create_topic("ExampleTopic")
 
+# List our topics.
+paws.sns::list_topics()
+
 # Subscribe an email address to the topic.
 # You'll have to confirm the subscription to receive emails.
 paws.sns::subscribe(
