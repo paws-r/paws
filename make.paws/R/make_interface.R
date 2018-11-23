@@ -102,6 +102,11 @@ make_shape_structure <- function(shape, api, path) {
 make_shape_list <- function(shape, api, path) {
   member <- shape$member
   proto <- list(make_shape(member, api, path))
+
+  if (not_empty(member$locationName)) {
+    proto <- add_tags(list(locationNameList = member$locationName), proto)
+  }
+
   return(proto)
 }
 
@@ -109,6 +114,12 @@ make_shape_map <- function(shape, api, path) {
   key <- shape$key
   value <- shape$value
   proto <- list(make_shape(value, api, path))
+  if (not_empty(key$locationName)) {
+    proto <- add_tags(list(locationNameKey = key$locationName), proto)
+  }
+  if (not_empty(value$locationName)) {
+    proto <- add_tags(list(locationNameValue = value$locationName), proto)
+  }
   return(proto)
 }
 
