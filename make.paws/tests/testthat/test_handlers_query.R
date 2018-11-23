@@ -664,7 +664,7 @@ test_that("unmarshal flattened map", {
 })
 
 op_output12 <- Structure(
-  Map = Map(Scalar(type = "string"), .attrs = list(locationNameKey = "foo", locationNameValue = "bar"))
+  Map = Map(Scalar(type = "string"), .attrs = list(locationNameKey = "foo", locationNameValue = "bar", flattened = TRUE))
 )
 
 test_that("unmarshal named map", {

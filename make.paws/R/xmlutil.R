@@ -57,11 +57,16 @@ xml_parse_structure <- function(node, interface) {
       node_name <- get_tag(field, "locationName")
     }
 
-    children <- get_children(node, node_name)
-    if (length(children) == 0) {
+    elem <- node[[node_name]]
+    if (flattened) {
+      elem <- node[names(node) == node_name]
+    }
+
+    if (length(elem) == 0) {
       # TODO: Implement.
     }
-    parsed <- xml_parse(children, field)
+
+    parsed <- xml_parse(elem, field)
     result[[name]] <- parsed
   }
   return(result)
@@ -132,14 +137,4 @@ xml_parse_scalar <- function(node, interface) {
 xml_to_list <- function(value) {
   result <- xml2::as_list(xml2::read_xml(value))
   return(result)
-}
-
-# Return the child node or nodes with a given name.
-# Multiple nodes with the same name arise with flattened lists,
-# e.g. <foo>"a"</foo><foo>"b"</foo>.
-get_children <- function(node, name) {
-  if (sum(names(node) == name) == 1) {
-    return(node[[name]])
-  }
-  return(node[names(node) == name])
 }
