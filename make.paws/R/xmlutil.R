@@ -1,11 +1,17 @@
 xml_build_body <- function(request) {
   params <- request$params
   
+  if (is.null(params)) {
+    body_xml <- ""
+    request$body <- body_xml
+    request$http_request$body <- body_xml
+    return(request)
+  }
+  
   body_list <- xml_build(params)
   
   if (length(body_list) && is.list(body_list)) {
-    body_xml <- xml2::as_xml_document(x = body_list)
-    body_xml <- as.character(body_xml)
+    body_xml <- xml_list_to_character(body_list)
   } else {
     if (is.list(body_list)) {
       body_xml <- ""
@@ -277,4 +283,11 @@ xml_parse_scalar <- function(node, interface) {
 xml_to_list <- function(value) {
   result <- xml2::as_list(xml2::read_xml(value))
   return(result)
+}
+
+# Convert list to XML text
+xml_list_to_character <- function(value) {
+    value_xml <- xml2::as_xml_document(x = value)
+    value_character <- as.character(value_xml)
+    return(value_character)
 }
