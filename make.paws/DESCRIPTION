@@ -48,6 +48,7 @@ Collate:
     'handlers_query.R'
     'handlers_rest.R'
     'handlers_restjson.R'
+    'handlers_restxml.R'
     'idempotency.R'
     'jsonutil.R'
     'make_api.R'
