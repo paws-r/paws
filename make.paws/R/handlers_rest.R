@@ -183,7 +183,7 @@ rest_unmarshal_header <- function(value, type) {
     integer = as.integer,
     float = as.numeric,
     jsonvalue = json_to_list, # TODO
-    long = as.integer,
+    long = as.numeric,
     string = as.character,
     timestamp = function(x) as_timestamp(x, format = "rfc1123"),
     as.character

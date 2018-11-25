@@ -218,7 +218,7 @@ json_parse_scalar <- function(node, interface) {
     double = as.numeric,
     float = as.numeric,
     integer = as.integer,
-    long = as.integer,
+    long = as.numeric,
     string = as.character,
     timestamp = unix_time,
     as.character

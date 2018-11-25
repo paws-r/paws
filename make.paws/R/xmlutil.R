@@ -123,7 +123,7 @@ xml_parse_scalar <- function(node, interface) {
     double = as.numeric,
     float = as.numeric,
     integer = as.integer,
-    long = as.integer,
+    long = as.numeric,
     timestamp = function(x) as_timestamp(x, format = "iso8601"),
     as.character
   )
