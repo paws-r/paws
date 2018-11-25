@@ -301,7 +301,7 @@ test_that("unmarshal list", {
 })
 
 op_output5 <- Structure(
-  ListMember = List(Scalar(type = "string", .attrs = list(flattened = TRUE)))
+  ListMember = List(Scalar(type = "string"), .attrs = list(flattened = TRUE))
 )
 
 test_that("unmarshal flattened list", {

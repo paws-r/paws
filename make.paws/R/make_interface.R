@@ -89,12 +89,8 @@ make_shape_structure <- function(shape, api, path) {
   members <- shape$members
   for (member_name in names(members)) {
     member <- members[[member_name]]
-    export_name <- make_export_name(member_name)
     interface <- make_shape(member, api, path)
-    if (export_name != member_name) {
-      attr(interface, "locationName") <- member_name
-    }
-    proto[[export_name]] <- interface
+    proto[[member_name]] <- interface
   }
   return(proto)
 }
@@ -102,6 +98,11 @@ make_shape_structure <- function(shape, api, path) {
 make_shape_list <- function(shape, api, path) {
   member <- shape$member
   proto <- list(make_shape(member, api, path))
+
+  if (not_empty(member$locationName)) {
+    proto <- add_tags(list(locationNameList = member$locationName), proto)
+  }
+
   return(proto)
 }
 
@@ -109,6 +110,12 @@ make_shape_map <- function(shape, api, path) {
   key <- shape$key
   value <- shape$value
   proto <- list(make_shape(value, api, path))
+  if (not_empty(key$locationName)) {
+    proto <- add_tags(list(locationNameKey = key$locationName), proto)
+  }
+  if (not_empty(value$locationName)) {
+    proto <- add_tags(list(locationNameValue = value$locationName), proto)
+  }
   return(proto)
 }
 

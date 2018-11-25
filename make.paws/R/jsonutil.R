@@ -117,11 +117,46 @@ json_build_scalar <- function(values) {
     float = as.character(values),
     integer = as.character(values),
     long = as.character(values),
-    string = sprintf('"%s"', values),
+    string = json_convert_string(values),
     timestamp = as.character(as.numeric(values)),
     sprintf('"%s"', values)
   )
   return(s)
+}
+
+#-------------------------------------------------------------------------------
+
+# Escape control characters by replacing them with their Unicode representation.
+json_escape_unicode <- function(string) {
+  result <- string
+  for (i in 1:31) {
+    from <- intToUtf8(i)
+    to <- paste0("\\u00", format(as.hexmode(i), width = 2))
+    result <- gsub(from, to, result, fixed = TRUE)
+  }
+  return(result)
+}
+
+# Return a string for a JSON value, with special characters escaped.
+json_convert_string <- function(string) {
+  replace <- list(
+    c("\\", "\\\\"),
+    c('"', '\\"'),
+    c("\b", "\\b"),
+    c("\f", "\\f"),
+    c("\r", "\\r"),
+    c("\t", "\\t"),
+    c("\n", "\\n")
+  )
+  result <- string
+  for (elem in replace) {
+    from <- elem[1]
+    to <- elem[2]
+    result <- gsub(from, to, result, fixed = TRUE)
+  }
+  result <- json_escape_unicode(result)
+  result <- sprintf('"%s"', result)
+  return(result)
 }
 
 #-------------------------------------------------------------------------------
@@ -183,7 +218,7 @@ json_parse_scalar <- function(node, interface) {
     double = as.numeric,
     float = as.numeric,
     integer = as.integer,
-    long = as.integer,
+    long = as.numeric,
     string = as.character,
     timestamp = unix_time,
     as.character

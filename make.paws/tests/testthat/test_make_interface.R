@@ -195,6 +195,71 @@ test_that("map of scalars", {
   expect_equal(attr(out[[1]], "type"), "string")
 })
 
+test_that("location name for lists", {
+  api <- list(
+    shapes = list(
+      StructureShape = list(
+        type = "structure",
+        members = list(
+          List = list(
+            shape = "ListShape"
+          )
+        )
+      ),
+      ListShape = list(
+        type = "list",
+        member = list(
+          shape = "StringShape",
+          locationName = "Foo"
+        ),
+        flattened = TRUE
+      ),
+      StringShape = list(
+        type = "string"
+      )
+    )
+  )
+  out <- make_shape(list(shape = "StructureShape"), api = api)
+  expect_equal(attr(out$List, "type"), "list")
+  expect_equal(attr(out$List, "locationNameList"), "Foo")
+
+})
+
+test_that("location name for maps", {
+  api <- list(
+    shapes = list(
+      StructureShape = list(
+        type = "structure",
+        members = list(
+          Map = list(
+            shape = "MapShape"
+          )
+        )
+      ),
+      MapShape = list(
+        type = "map",
+        key = list(
+          shape = "StringShape",
+          locationName = "Foo"
+        ),
+        value = list(
+          shape = "StringShape",
+          locationName = "Bar"
+        ),
+        flattened = TRUE,
+        locationName = "Map"
+      ),
+      StringShape = list(
+        type = "string"
+      )
+    )
+  )
+  out <- make_shape(list(shape = "StructureShape"), api = api)
+  expect_equal(attr(out$Map, "type"), "map")
+  expect_equal(attr(out$Map, "locationNameKey"), "Foo")
+  expect_equal(attr(out$Map, "locationNameValue"), "Bar")
+})
+
 test_that("stop loops", {
   api <- list(
     shapes = list(
