@@ -15,8 +15,13 @@ subnets <- paws.ec2::describe_subnets(
   Filters = sprintf("vpc-id=%s", default_vpc$VpcId)
 )$Subnets
 
-# Set up a compute environment: the resources on which Batch jobs will run.
 # You will need to set up the Batch service role and provide its ARN here.
+service_role <- sprintf(
+  "arn:aws:iam::%s:role/service-role/AWSBatchServiceRole",
+  account_id = "1234567890123"
+)
+
+# Set up a compute environment: the resources on which Batch jobs will run.
 paws.batch::create_compute_environment(
   type = "MANAGED",
   computeEnvironmentName = "TestComputeEnvironment",
@@ -31,12 +36,12 @@ paws.batch::create_compute_environment(
     securityGroupIds = security_group$GroupId,
     subnets = sapply(subnets, function(x) x$SubnetId)
   ),
-  serviceRole = "arn:aws:iam::123456790123:role/service-role/AWSBatchServiceRole",
+  serviceRole = service_role,
   state = "ENABLED"
 )
 
 # Set up a job queue for the compute environment.
-queue <- paws.batch::create_job_queue(
+paws.batch::create_job_queue(
   computeEnvironmentOrder = list(
     list(
       computeEnvironment = "TestComputeEnvironment",
@@ -78,5 +83,8 @@ paws.batch::list_jobs(
 
 # Clean up.
 paws.batch::deregister_job_definition(jobDefinition = job_def$jobDefinitionArn)
-paws.batch::delete_job_queue(jobQueue = "TestJobQueue")
+paws.batch::update_job_queue("TestJobQueue", state = "DISABLED")
+paws.batch::delete_job_queue("TestJobQueue")
+Sys.sleep(30)
+paws.batch::update_compute_environment("TestComputeEnvironment", state = "DISABLED")
 paws.batch::delete_compute_environment(computeEnvironment = "TestComputeEnvironment")
