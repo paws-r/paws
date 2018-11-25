@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Update a package's version number if its files have changed since the last commit.
-# Usage: ./scripts/update_version.sh <package>
+# Usage: ./script/update_version.sh <package>
 
 package=$1
 
