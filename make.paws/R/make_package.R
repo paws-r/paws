@@ -182,7 +182,9 @@ use_apl2_license <- function(path) {
 
 # Make a title for the generated package.
 make_title <- function(api) {
-  return(api$metadata$serviceFullName)
+  title <- api$metadata$serviceFullName
+  if (is.null(title)) return("")
+  return(title)
 }
 
 # Make a short description of the generated package.
