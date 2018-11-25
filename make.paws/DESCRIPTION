@@ -66,6 +66,8 @@ Collate:
     'type.R'
     'queryutil.R'
     'request.R'
+    'signer_s3.R'
+    'signer_v2.R'
     'signer_v4.R'
     'time.R'
     'util.R'
