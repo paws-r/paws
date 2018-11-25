@@ -40,7 +40,7 @@ build: ${PACKAGES}
 
 ${PACKAGES}:
 	@echo "build $@"
-	@API=$$(grep -e "^$@\b" PACKAGES.txt | awk '{ print $$2 }') && \
+	@API=$$(grep -q -e "^$@\b" PACKAGES.txt | awk '{ print $$2 }') && \
 	Rscript -e "library(make.paws); make_package('$$API', '${IN_DIR}', '${OUT_DIR}')" && \
 	${SCRIPT_DIR}/update_version.sh $@
 
