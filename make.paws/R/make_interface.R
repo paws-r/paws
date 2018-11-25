@@ -89,12 +89,8 @@ make_shape_structure <- function(shape, api, path) {
   members <- shape$members
   for (member_name in names(members)) {
     member <- members[[member_name]]
-    export_name <- make_export_name(member_name)
     interface <- make_shape(member, api, path)
-    if (export_name != member_name) {
-      attr(interface, "locationName") <- member_name
-    }
-    proto[[export_name]] <- interface
+    proto[[member_name]] <- interface
   }
   return(proto)
 }
