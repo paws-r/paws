@@ -49,10 +49,14 @@ changes=$(git status "$package_dir" --porcelain)
 
 if [[ -n "$changes" ]]; then
   old_version=$(get "$version_file" "$package" "\t")
+  if [ $(echo "$old_version" | wc -l) -gt 1 ]; then
+    echo "repeated entries for $package in $version_file"
+    exit 1
+  fi
   if [ "$old_version" != "" ]; then
     new_version=$(increment_version "$old_version")
   else
-    new_version=0.1.0
+    new_version=0.0.1
   fi
   set "$version_file" "$package" "$new_version" "\t"
   set "$description_file" "Version" "$new_version" ": "
