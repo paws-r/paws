@@ -224,13 +224,10 @@ rest_payload_type <- function(values) {
   if (!is_valid(values)) {
     return("")
   }
-  field <- values[["_"]]
-  if (!is.null(field)) {
-    payload_name <- get_tag(field, "payload")
-    if (payload_name != "") {
-      payload <- values[[payload_name]]
-      return(get_tag(payload, "type"))
-    }
+  payload_name <- get_tag(values, "payload")
+  if (payload_name != "") {
+    payload <- values[[payload_name]]
+    return(get_tag(payload, "type"))
   }
   return("")
 }

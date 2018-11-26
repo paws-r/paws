@@ -52,14 +52,14 @@ convert_timestamp <- function(timestamp, format = NULL) {
 # e.g. "Zm9v" -> "foo".
 base64_to_utf8 <- function(value) {
   if (length(value) == 0) return(character(0))
-  return(intToUtf8(jsonlite::base64_dec(value)))
+  return(intToUtf8(base64enc::base64decode(value)))
 }
 
 # Convert a string to a base64-encoded value.
 # e.g. "foo" (raw: 66 6f 6f) -> "Zm9v".
 utf8_to_base64 <- function(value) {
   if (length(value) == 0) return(character(0))
-  return(jsonlite::base64_enc(value))
+  return(base64enc::base64encode(value))
 }
 
 # Return a strptime format string for a given timestamp format.
