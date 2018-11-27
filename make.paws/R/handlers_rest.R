@@ -129,8 +129,13 @@ rest_unmarshal_meta <- function(request) {
 }
 
 # Unmarshal the body from a REST protocol API response.
-# TODO: Implement. Check whether we already have this functionality elsewhere.
 rest_unmarshal <- function(request) {
+  values <- request$data
+  payload_name <- get_tag(values, "payload")
+  if (payload_name != "") {
+    values[[payload_name]] <- request$http_response$body
+    request$data <- values
+  }
   return(request)
 }
 
