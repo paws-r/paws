@@ -10,21 +10,16 @@ xml_build_body <- function(request) {
   
   body_list <- xml_build(params)
   
-  if (length(body_list) && is.list(body_list)) {
+  if (length(body_list)) {
     body_xml <- xml_list_to_character(body_list)
   } else {
-    if (is.list(body_list)) {
-      body_xml <- ""
-    } else {
-      body_xml <- body_list
-    }
+    body_xml <- ""
   }
   
   request$body <- body_xml
   request$http_request$body <- body_xml
   return(request)
 }
-
 
 xml_build <- function(params) {
   
@@ -54,12 +49,6 @@ xml_build_structure <- function(params) {
     parsed <- xml_build(child)
     
     if (!is.null(parsed)) {
-      
-      if (name == "Body") {
-        result <- unlist(parsed)
-        return(result)
-      }
-      
       result[[name]] <- parsed
     }
   }

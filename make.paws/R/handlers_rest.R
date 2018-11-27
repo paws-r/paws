@@ -94,7 +94,7 @@ rest_build_query_string <- function(query, field, name) {
 }
 
 rest_build_body <- function(request, values) {
-  field <- values[["_"]]
+  field <- values
   if (!is.null(field)) {
     payload_name <- get_tag(field, "payload")
     if (payload_name != "") {
