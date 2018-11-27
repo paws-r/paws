@@ -812,6 +812,25 @@ test_that("JSON payload", {
 # TODO: JSON value traits.
 # TODO: Enums.
 
+test_that("unmarshal blob payload", {
+  op_output14 <- Structure(
+    Data = Scalar(type = "blob"),
+    Header = Scalar(type = "string", .attrs = list(location = "header", locationName = "X-Foo")),
+    .attrs = list(payload = "Data")
+  )
+  req <- new_request(svc, op, NULL, op_output14)
+  req$http_response <- HttpResponse(
+    status_code = 200,
+    body = "{\"Foo\": \"abc\"}"
+  )
+  req$http_response$header[["X-Foo"]] <- "baz"
+  req <- unmarshal_meta(req)
+  req <- unmarshal(req)
+  out <- req$data
+  expect_equal(out$Data, "{\"Foo\": \"abc\"}")
+  expect_equal(out$Header, "baz")
+})
+
 #-------------------------------------------------------------------------------
 
 op <- Operation(name = "OperationName")

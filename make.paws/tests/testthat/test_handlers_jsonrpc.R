@@ -508,7 +508,8 @@ test_that("unmarshal ignores extra data", {
   )
   req <- unmarshal(req)
   out <- req$data
-  expect_equal(out, list(StrType = character(0)))
+  expect_equal(names(out), "StrType")
+  expect_equal(out$StrType, character(0))
 })
 
 op_output7 <- Structure(
