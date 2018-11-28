@@ -176,7 +176,15 @@ json_parse <- function(node, interface) {
 }
 
 json_parse_structure <- function(node, interface) {
-  result <- list()
+
+  result <- interface
+
+  payload_name <- get_tag(interface, "payload")
+  if (payload_name != "") {
+    result[[payload_name]] <- json_parse(node, interface[[payload_name]])
+    return(result)
+  }
+
   for (name in names(interface)) {
     node_name <- get_tag(interface[[name]], "locationName")
     if (node_name == "") node_name <- name
