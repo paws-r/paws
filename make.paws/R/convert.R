@@ -18,7 +18,7 @@ convert_type <- function(value) {
 # Convert a value to a base64-encoded string.
 # e.g. "foo" (raw: 66 6f 6f) -> "Zm9v".
 convert_blob <- function(blob) {
-  string <- utf8_to_base64(blob)
+  string <- raw_to_base64(blob)
   return(string)
 }
 
@@ -57,7 +57,7 @@ base64_to_utf8 <- function(value) {
 
 # Convert a string to a base64-encoded value.
 # e.g. "foo" (raw: 66 6f 6f) -> "Zm9v".
-utf8_to_base64 <- function(value) {
+raw_to_base64 <- function(value) {
   if (length(value) == 0) return(character(0))
   return(base64enc::base64encode(value))
 }
