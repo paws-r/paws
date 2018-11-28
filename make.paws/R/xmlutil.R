@@ -1,33 +1,33 @@
 xml_build_body <- function(request) {
   params <- request$params
-  
-  if (is.null(params)) {
+
+  if (is_empty(params)) {
     body_xml <- ""
     request$body <- body_xml
     request$http_request$body <- body_xml
     return(request)
   }
-  
+
   body_list <- xml_build(params)
-  
+
   if (length(body_list)) {
     body_xml <- xml_list_to_character(body_list)
   } else {
     body_xml <- ""
   }
-  
+
   request$body <- body_xml
   request$http_request$body <- body_xml
   return(request)
 }
 
 xml_build <- function(params) {
-  
+
   location <- get_tag(params, "location")
   if (location != "") return(NULL)
-  
+
   t <- type(params)
-  
+
   build_fn <- switch(
     t,
     structure = xml_build_structure,
@@ -35,9 +35,9 @@ xml_build <- function(params) {
     list = xml_build_list,
     xml_build_scalar
   )
-  
+
   result <- build_fn(params)
-  
+
   return(result)
 }
 
@@ -47,7 +47,7 @@ xml_build_structure <- function(params) {
     child <- params[[name]]
 
     parsed <- xml_build(child)
-    
+
     if (!is.null(parsed)) {
       result[[name]] <- parsed
     }
@@ -58,13 +58,13 @@ xml_build_structure <- function(params) {
 xml_build_list <- function(params) {
   if (length(params) == 0) return(list())
   children <- lapply(params, function(x) xml_build(x))
-  
+
   location_names <- sapply(params, function(x) attr(x, "locationName"))
-  
+
   result <- lapply(1:length(children), function(i) children[[i]])
-  
+
   names(result) <- location_names
-  
+
   return(result)
 }
 
@@ -128,9 +128,9 @@ xml_unmarshal <- function(data, interface, result_name = NULL) {
   }, error = function (e){
     return(NULL)
   })
-  
+
   if (is.null(root)) return(data)
-  
+
   if (!is.null(result_name) && result_name %in% names(root)) {
     root <- root[[result_name]]
   }
@@ -195,7 +195,7 @@ xml_parse_structure <- function(node, interface) {
     if (length(elem) == 0) {
       # TODO: Implement.
     }
-    
+
     # if (flattened) {
     #   parsed <- xml_parse(children, field[[1]])
     # } else {

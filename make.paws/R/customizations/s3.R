@@ -3,7 +3,7 @@ NULL
 
 ################################################################################
 # update_endpoint_for_s3_config
-  
+
 bucket_name_from_req_params <- function(request) {
   request_params <- request$params
   bucket <- request_params["Bucket"]
@@ -29,7 +29,7 @@ move_bucket_to_host <- function(url, bucket) {
 update_endpoint_for_s3_config <- function(request) {
   bucket_name <- bucket_name_from_req_params(request)
 
-  if (is.null(bucket_name)) return(NULL)
+  if (is.null(bucket_name)) return(request)
 
   request$http_request$url <-
     move_bucket_to_host(request$http_request$url, bucket_name)
