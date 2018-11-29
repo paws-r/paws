@@ -176,23 +176,7 @@ is_valid <- function(value) {
   return(length(value) > 0)
 }
 
-# Check if a list of values is empty. If the list is recursive, search the list.
-is_empty <- function(values) {
-  if (length(values) == 0) {
-    return(TRUE)
-  }
-  if (length(values) == 1 && is.atomic(values)) {
-    empty <- FALSE
-    if (is.character(values) && values == "") empty <- TRUE
-    if (is.numeric(values) && is.na(values)) empty <- TRUE
-    if (is.logical(values) && is.na(values)) empty <- TRUE
-    return(empty)
-  }
-  return(all(sapply(values, is_empty)))
-}
-
 # Return whether the request has a response object.
 data_filled <- function(request) {
   return(!is.null(request$data))
 }
-

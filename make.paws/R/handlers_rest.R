@@ -104,7 +104,7 @@ rest_build_body <- function(request, values) {
         if (t == "string") {
           request <- set_body(request, as.character(payload))
         } else if (t == "blob") {
-          request <- set_body(request, rawToChar(payload))
+          request <- set_body(request, payload)
         } else {
           stop()
         }
