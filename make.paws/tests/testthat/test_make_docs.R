@@ -121,6 +121,17 @@ test_that("make_doc_desc", {
   expect_equal(make_doc_desc(operation), expected)
 })
 
+test_that("make_doc_desc_with_percent_sign", {
+  operation <- list(documentation = "<body><p>Foo%</p><p>Bar</p></body>")
+  expected <- paste(
+    "#' Foo\\%",
+    "#' ",
+    "#' Bar",
+    sep = "\n"
+  )
+  expect_equal(make_doc_desc(operation), expected)
+})
+
 test_that("make_doc_params", {
   # Operation with no parameters.
   operation <- list()
