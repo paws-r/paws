@@ -158,6 +158,12 @@ clean_example <- function(s) {
   cleaned
 }
 
+# Escapes special characters in documentation
+escape_special_characters <- function(text) {
+  result <- gsub("%", "\\\\%", text)
+  return(result)
+}
+
 # Add comment characters at the beginning of each line of the given string.
 comment <- function(s, char = "#") {
   if (length(s) == 0) return(char)
@@ -248,6 +254,7 @@ make_doc_title <- function(operation) {
 # Make the description and details documentation.
 make_doc_desc <- function(operation) {
   docs <- convert(operation$documentation, wrap = FALSE)
+  docs <- escape_special_characters(docs)
   description <- glue::glue("#' {docs}")
   description <- glue::glue_collapse(description, sep = "\n")
   return(as.character(description))
