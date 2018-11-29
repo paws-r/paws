@@ -296,10 +296,10 @@ test_that("streaming payload", {
   op_input12 <- function(Body, Checksum, VaultName) {
     args <- list(Body = Body, Checksum = Checksum, VaultName = VaultName)
     interface <- Structure(
-      `_` = Structure(.attrs = list(payload = "Body")),
       Body = Scalar(type = "blob", .attrs = list(locationName = "body")),
       Checksum = Scalar(type = "string", .attrs = list(location = "header", locationName = "x-amz-sha256-tree-hash")),
-      VaultName = Scalar(type = "string", .attrs = list(location = "uri", locationName = "vaultName", required = TRUE))
+      VaultName = Scalar(type = "string", .attrs = list(location = "uri", locationName = "vaultName", required = TRUE)),
+      .attrs = list(payload = "Body")
     )
     return(populate(args, interface))
   }
@@ -312,7 +312,7 @@ test_that("streaming payload", {
   req <- build(req)
   r <- req$http_request
   expect_equal(build_url(r$url), "https://test/2014-01-01/vaults/name/archives")
-  expect_equal(r$body, 'contents')
+  expect_equal(rawToChar(r$body), "contents")
   expect_equal(r$header[["x-amz-sha256-tree-hash"]], "foo")
 })
 
@@ -349,8 +349,8 @@ op14 <- Operation(
 op_input14 <- function(Foo = NULL) {
   args <- list(Foo = Foo)
   interface <- Structure(
-    `_` = Structure(.attrs = list(payload = "Foo")),
-    Foo = Scalar(type = "blob", .attrs = list(locationName = "foo"))
+    Foo = Scalar(type = "blob", .attrs = list(locationName = "foo")),
+    .attrs = list(payload = "Foo")
   )
   return(populate(args, interface))
 }
@@ -363,7 +363,7 @@ test_that("blob payload", {
   req <- build(req)
   r <- req$http_request
   expect_equal(build_url(r$url), "https://test/")
-  expect_equal(r$body, 'bar')
+  expect_equal(rawToChar(r$body), "bar")
 })
 
 test_that("empty blob payload", {
@@ -539,8 +539,8 @@ test_that("string payload", {
   op_input21 <- function(Foo) {
     args <- list(Foo = Foo)
     interface <- Structure(
-      `_` = Structure(.attrs = list(payload = "Foo")),
-      Foo = Scalar(type = "string", .attrs = list(locationName = "foo"))
+      Foo = Scalar(type = "string", .attrs = list(locationName = "foo")),
+      .attrs = list(payload = "Foo")
     )
     return(populate(args, interface))
   }
