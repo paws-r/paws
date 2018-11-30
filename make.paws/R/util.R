@@ -1,7 +1,12 @@
 # Return whether x is empty, i.e. null or has a default value.
 is_empty <- function(x) {
   if (is.null(x) || length(x) == 0) return(TRUE)
-  UseMethod("is_empty", x)
+  # Use `switch` rather than `UseMethod` because the latter requires exporting
+  # the function to work correctly.
+  if (is.character(x)) return(is_empty.character(x))
+  else if (is.raw(x)) return(is_empty.raw(x))
+  else if (is.list(x)) return(is_empty.list(x))
+  return(is_empty.default(x))
 }
 
 is_empty.character <- function(x) {
