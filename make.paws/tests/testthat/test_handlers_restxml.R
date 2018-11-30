@@ -225,7 +225,7 @@ test_that("Basic build XML Body", {
     ), type = "structure")
     return(populate(args, interface))
   }
-  
+
   input <- op_input10(
       OperationName = list(
       Description = "bar",
@@ -254,7 +254,7 @@ test_that("Basic build XML Body Two of Same Tag", {
     ), type = "structure")
     return(populate(args, interface))
   }
-  
+
   input <- op_input11(
       OperationName = list(
         TagList = list(
@@ -358,7 +358,7 @@ test_that("unmarshal list", {
 })
 
 op_output5 <- Structure(
-  ListMember = List(Scalar(type = "string", .attrs = list(flattened = TRUE)))
+  ListMember = List(Scalar(type = "string"), .attrs = list(flattened = TRUE))
 )
 
 test_that("unmarshal flattened list", {
