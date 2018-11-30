@@ -38,7 +38,7 @@ get_content_length <- function(content) {
   } else if (is.raw(content)) {
     return(length(content))
   }
-  return(len)
+  return(NULL)
 }
 
 # Ensure that the request's signature doesn't expire before it is sent.
