@@ -1,11 +1,11 @@
 # Return whether x is empty, i.e. null or has a default value.
 is_empty <- function(x) {
-  if (is.null(x) || length(x) == 0 || is.na(x)) return(TRUE)
-  UseMethod("is_empty")
+  if (is.null(x) || length(x) == 0) return(TRUE)
+  UseMethod("is_empty", x)
 }
 
 is_empty.character <- function(x) {
-  return(x == "")
+  return(is.na(x) || x == "")
 }
 
 is_empty.raw <- function(x) {

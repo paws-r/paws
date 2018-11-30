@@ -1,3 +1,5 @@
+context("Utilities")
+
 test_that("is_empty", {
   expect_equal(is_empty(NULL), TRUE)
   expect_equal(is_empty(""), TRUE)
@@ -10,7 +12,7 @@ test_that("is_empty", {
   expect_equal(is_empty(raw(0)), TRUE)
   expect_equal(is_empty(list()), TRUE)
   expect_equal(is_empty(list(list())), TRUE)
-  expect_equal(is_empty(list(list(list()))), TRUE)
+  expect_equal(is_empty(list(list(list(),list()))), TRUE)
 
   expect_equal(is_empty("foo"), FALSE)
   expect_equal(is_empty(123), FALSE)
@@ -18,4 +20,5 @@ test_that("is_empty", {
   expect_equal(is_empty(FALSE), FALSE)
   expect_equal(is_empty(charToRaw("foo")), FALSE)
   expect_equal(is_empty(list(1)), FALSE)
+  expect_equal(is_empty(list(list(list(),list(1)))), FALSE)
 })
