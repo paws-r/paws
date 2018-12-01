@@ -101,7 +101,9 @@ copy_customizations <- function(api, path) {
   if (length(src_file) > 0) {
     package <- package_name(api)
     filename <- sprintf("%s_customizations.R", package)
-    file.copy(from = src_file, to = file.path(path, filename))
+    warning_text <- unlist(edit_warning(list(), new_line = T))
+    cat(warning_text, file = file.path(path, filename))
+    file.append(file.path(path, filename), src_file)
   }
 }
 
@@ -112,6 +114,8 @@ write_tests <- function(api, path) {
   package <- package_name(api)
   filename <- paste0("test_", package, ".R")
   test_path <- file.path(path, "tests")
+  testthat <- edit_warning(testthat)
+  tests <- edit_warning(tests)
   write_list(testthat, file.path(test_path, "testthat.R"))
   write_list(tests, file.path(test_path, "testthat", filename))
 }
@@ -126,9 +130,12 @@ write_documentation <- function(api, path) {
 
 
 # Add a warning saying not to edit the generated file
-edit_warning <- function(values) {
+edit_warning <- function(values, new_line = F) {
   warning_text <- paste("# This file is generated from make.paws/R.",
                         "Do Not Edit Here")
+  
+  if (new_line) warning_text <- paste0(warning_text, "\n\n")
+  
   values <- c(warning_text, values)
   
   return(values)
