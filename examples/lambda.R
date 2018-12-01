@@ -31,7 +31,7 @@ role_policy <- list(
 )
 
 iam <- paws.iam::create_role(
-  RoleName = "MyTestRole",
+  RoleName = "MyRole",
   AssumeRolePolicyDocument = jsonlite::toJSON(role_policy, auto_unbox = TRUE),
   PermissionsBoundary = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 )
@@ -48,10 +48,14 @@ paws.lambda::create_function(
 )
 
 # Run the function.
-paws.lambda::invoke("MyFunction")
+response <- paws.lambda::invoke("MyFunction")
+
+# Print the function's output.
+rawToChar(response$Payload)
 
 # List available functions.
 paws.lambda::list_functions()
 
-# Delete the function.
+# Clean up.
 paws.lambda::delete_function("MyFunction")
+paws.iam::delete_role("MyRole")
