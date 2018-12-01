@@ -1,3 +1,9 @@
+# Decode raw bytes JSON into an R list object.
+decode_json <- function(raw) {
+  obj <- json_to_list(rawToChar(raw))
+  return(obj)
+}
+
 # Read a JSON string into an R list object.
 json_to_list <- function(string) {
   if (length(string) == 0 || string == "") return(list())

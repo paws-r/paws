@@ -1,3 +1,24 @@
+# Decode raw bytes XML into an R list object.
+decode_xml <- function(raw) {
+  obj <- xml_to_list(rawToChar(raw))
+  return(obj)
+}
+
+# Convert an XML string to an R list.
+xml_to_list <- function(value) {
+  result <- xml2::as_list(xml2::read_xml(value))
+  return(result)
+}
+
+# Convert list to XML text
+xml_list_to_character <- function(value) {
+  value_xml <- xml2::as_xml_document(x = value)
+  value_character <- as.character(value_xml)
+  return(value_character)
+}
+
+#-------------------------------------------------------------------------------
+
 xml_build_body <- function(request) {
   params <- request$params
 
@@ -121,16 +142,9 @@ xml_build_scalar <- function(params) {
 
 #-------------------------------------------------------------------------------
 
-# Unmarshal `data` provided as XML into the shape in `interface`.
+# Unmarshal `data` provided as a list into the shape in `interface`.
 xml_unmarshal <- function(data, interface, result_name = NULL) {
-  root <- tryCatch({
-    xml_to_list(data)[[1]]
-  }, error = function (e){
-    return(NULL)
-  })
-
-  if (is.null(root)) return(data)
-
+  root <- data[[1]]
   if (!is.null(result_name) && result_name %in% names(root)) {
     root <- root[[result_name]]
   }
@@ -138,9 +152,9 @@ xml_unmarshal <- function(data, interface, result_name = NULL) {
   return(result)
 }
 
-# Unmarshal errors in `data` provided as XML.
+# Unmarshal errors in `data` provided as a list.
 xml_unmarshal_error <- function(data) {
-  root <- xml_to_list(data)[[1]]
+  root <- data[[1]]
   code <- unlist(root$Error$Code)
   message <- unlist(root$Error$Message)
   error <- Error(code, message)
@@ -260,19 +274,4 @@ xml_parse_scalar <- function(node, interface) {
   )
   result <- convert(data)
   return(result)
-}
-
-#-------------------------------------------------------------------------------
-
-# Convert an XML string to an R list.
-xml_to_list <- function(value) {
-  result <- xml2::as_list(xml2::read_xml(value))
-  return(result)
-}
-
-# Convert list to XML text
-xml_list_to_character <- function(value) {
-    value_xml <- xml2::as_xml_document(x = value)
-    value_character <- as.character(value_xml)
-    return(value_character)
 }

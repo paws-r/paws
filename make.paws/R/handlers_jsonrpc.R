@@ -34,7 +34,7 @@ jsonrpc_unmarshal_meta <- function(request) {
 jsonrpc_unmarshal <- function(request) {
   body <- request$http_response$body
   if (data_filled(request) && length(body) > 0) {
-    data <- json_to_list(body)
+    data <- decode_json(body)
     request$data <- json_parse(data, request$data)
   }
   return(request)
@@ -42,7 +42,7 @@ jsonrpc_unmarshal <- function(request) {
 
 # Unmarshal errors from a JSON RPC response.
 jsonrpc_unmarshal_error <- function(request) {
-  error <- json_to_list(request$http_response$body)
+  error <- decode_json(request$http_response$body)
   if (length(error) == 0) {
     return(request)
   }

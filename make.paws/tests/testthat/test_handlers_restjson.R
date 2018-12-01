@@ -617,7 +617,7 @@ test_that("unmarshal scalar members", {
   req <- new_request(svc, op, NULL, op_output1)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "{\"Str\": \"myname\", \"Num\": 123, \"FalseBool\": false, \"TrueBool\": true, \"Float\": 1.2, \"Double\": 1.3, \"Long\": 200, \"Char\": \"a\"}"
+    body = charToRaw("{\"Str\": \"myname\", \"Num\": 123, \"FalseBool\": false, \"TrueBool\": true, \"Float\": 1.2, \"Double\": 1.3, \"Long\": 200, \"Char\": \"a\"}")
   )
   req$http_response$header[["ImaHeader"]] <- "test"
   req$http_response$header[["X-Foo"]] <- "abc"
@@ -647,7 +647,7 @@ test_that("unmarshal blob member", {
   req <- new_request(svc, op, NULL, op_output2)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "{\"BlobMember\": \"aGkh\", \"StructMember\": {\"foo\": \"dGhlcmUh\"}}"
+    body = charToRaw("{\"BlobMember\": \"aGkh\", \"StructMember\": {\"foo\": \"dGhlcmUh\"}}")
   )
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
@@ -666,7 +666,7 @@ test_that("unmarshal timestamp member", {
   req <- new_request(svc, op, NULL, op_output3)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "{\"TimeMember\": 1398796238, \"StructMember\": {\"foo\": 1398796238}}"
+    body = charToRaw("{\"TimeMember\": 1398796238, \"StructMember\": {\"foo\": 1398796238}}")
   )
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
@@ -682,7 +682,7 @@ test_that("unmarshal list", {
   req <- new_request(svc, op, NULL, op_output4)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "{\"ListMember\": [\"a\", \"b\"]}"
+    body = charToRaw("{\"ListMember\": [\"a\", \"b\"]}")
   )
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
@@ -702,7 +702,7 @@ test_that("unmarshal list with structure member", {
   req <- new_request(svc, op, NULL, op_output5)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "{\"ListMember\": [{\"Foo\": \"a\"}, {\"Foo\": \"b\"}]}"
+    body = charToRaw("{\"ListMember\": [{\"Foo\": \"a\"}, {\"Foo\": \"b\"}]}")
   )
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
@@ -720,7 +720,7 @@ test_that("unmarshal map", {
   req <- new_request(svc, op, NULL, op_output6)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "{\"MapMember\": {\"a\": [1, 2], \"b\": [3, 4]}}"
+    body = charToRaw("{\"MapMember\": {\"a\": [1, 2], \"b\": [3, 4]}}")
   )
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
@@ -740,7 +740,7 @@ test_that("unmarshal map with timestamps", {
   req <- new_request(svc, op, NULL, op_output7)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "{\"MapMember\": {\"a\": 1398796238, \"b\": 1398796238}}"
+    body = charToRaw("{\"MapMember\": {\"a\": 1398796238, \"b\": 1398796238}}")
   )
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
@@ -756,7 +756,7 @@ test_that("unmarshal ignores extra data", {
   req <- new_request(svc, op, NULL, op_output8)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "{\"foo\": \"bar\"}"
+    body = charToRaw("{\"foo\": \"bar\"}")
   )
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
@@ -798,7 +798,7 @@ test_that("JSON payload", {
   req <- new_request(svc, op, NULL, op_output10)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "{\"Foo\": \"abc\"}"
+    body = charToRaw("{\"Foo\": \"abc\"}")
   )
   req$http_response$header[["X-Foo"]] <- "baz"
   req <- unmarshal_meta(req)
@@ -821,13 +821,13 @@ test_that("unmarshal blob payload", {
   req <- new_request(svc, op, NULL, op_output14)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "{\"Foo\": \"abc\"}"
+    body = charToRaw("{\"Foo\": \"abc\"}")
   )
   req$http_response$header[["X-Foo"]] <- "baz"
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
   out <- req$data
-  expect_equal(out$Data, "{\"Foo\": \"abc\"}")
+  expect_equal(rawToChar(out$Data), "{\"Foo\": \"abc\"}")
   expect_equal(out$Header, "baz")
 })
 
@@ -841,7 +841,7 @@ test_that("unmarshal error without header and with error code in response", {
   req <- new_request(svc, op, NULL, NULL)
   req$http_response <- HttpResponse(
     status_code = 400,
-    body = "{\"message\":\"foo\",\"code\":\"bar\",\"__type\":\"ClientException\"}"
+    body = charToRaw("{\"message\":\"foo\",\"code\":\"bar\",\"__type\":\"ClientException\"}")
   )
   req <- unmarshal_error(req)
   err <- req$error
@@ -853,7 +853,7 @@ test_that("unmarshal error with no header/code but with type", {
   req <- new_request(svc, op, NULL, NULL)
   req$http_response <- HttpResponse(
     status_code = 400,
-    body = "{\"message\":\"foo\",\"__type\":\"ClientException\"}"
+    body = charToRaw("{\"message\":\"foo\",\"__type\":\"ClientException\"}")
   )
   req <- unmarshal_error(req)
   err <- req$error
@@ -865,7 +865,7 @@ test_that("unmarshal error with header", {
   req <- new_request(svc, op, NULL, NULL)
   req$http_response <- HttpResponse(
     status_code = 400,
-    body = "{\"message\":\"foo\",\"__type\":\"ClientException\"}",
+    body = charToRaw("{\"message\":\"foo\",\"__type\":\"ClientException\"}"),
     header = list(`X-Amzn-Errortype` = "baz")
   )
   req <- unmarshal_error(req)

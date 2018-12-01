@@ -387,7 +387,7 @@ test_that("unmarshal scalar members", {
   req <- new_request(svc, op, NULL, op_output1)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "{\"Str\": \"myname\", \"Num\": 123, \"FalseBool\": false, \"TrueBool\": true, \"Float\": 1.2, \"Double\": 1.3, \"Long\": 200, \"Char\": \"a\"}"
+    body = charToRaw("{\"Str\": \"myname\", \"Num\": 123, \"FalseBool\": false, \"TrueBool\": true, \"Float\": 1.2, \"Double\": 1.3, \"Long\": 200, \"Char\": \"a\"}")
   )
   req <- unmarshal(req)
   out <- req$data
@@ -412,7 +412,7 @@ test_that("unmarshal blobs", {
   req <- new_request(svc, op, NULL, op_output2)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "{\"BlobMember\": \"aGkh\", \"StructMember\": {\"foo\": \"dGhlcmUh\"}}"
+    body = charToRaw("{\"BlobMember\": \"aGkh\", \"StructMember\": {\"foo\": \"dGhlcmUh\"}}")
   )
   req <- unmarshal(req)
   out <- req$data
@@ -431,7 +431,7 @@ test_that("unmarshal timestamps", {
   req <- new_request(svc, op, NULL, op_output3)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "{\"TimeMember\": 1398796238, \"StructMember\": {\"foo\": 1398796238}}"
+    body = charToRaw("{\"TimeMember\": 1398796238, \"StructMember\": {\"foo\": 1398796238}}")
   )
   req <- unmarshal(req)
   out <- req$data
@@ -449,7 +449,7 @@ test_that("unmarshal list", {
   req <- new_request(svc, op, NULL, op_output4)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "{\"ListMember\": [\"a\", \"b\"]}"
+    body = charToRaw("{\"ListMember\": [\"a\", \"b\"]}")
   )
   req <- unmarshal(req)
   out <- req$data
@@ -462,7 +462,7 @@ test_that("unmarshal list", {
   req <- new_request(svc, op, NULL, op_output4)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "{\"ListMember\": [\"a\", null], \"ListMemberMap\": [{}, null, null, {}], \"ListMemberStruct\": [{}, null, null, {}]}"
+    body = charToRaw("{\"ListMember\": [\"a\", null], \"ListMemberMap\": [{}, null, null, {}], \"ListMemberStruct\": [{}, null, null, {}]}")
   )
   req <- unmarshal(req)
   out <- req$data
@@ -486,7 +486,7 @@ test_that("unmarshal map", {
   req <- new_request(svc, op, NULL, op_output5)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "{\"MapMember\": {\"a\": [1, 2], \"b\": [3, 4]}}"
+    body = charToRaw("{\"MapMember\": {\"a\": [1, 2], \"b\": [3, 4]}}")
   )
   req <- unmarshal(req)
   out <- req$data
@@ -504,7 +504,7 @@ test_that("unmarshal ignores extra data", {
   req <- new_request(svc, op, NULL, op_output6)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "{\"foo\": \"bar\"}"
+    body = charToRaw("{\"foo\": \"bar\"}")
   )
   req <- unmarshal(req)
   out <- req$data
@@ -521,7 +521,7 @@ test_that("unmarshal enums", {
   req <- new_request(svc, op, NULL, op_output7)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "{\"FooEnum\": \"foo\", \"ListEnums\": [\"foo\", \"bar\"]}"
+    body = charToRaw("{\"FooEnum\": \"foo\", \"ListEnums\": [\"foo\", \"bar\"]}")
   )
   req <- unmarshal(req)
   out <- req$data
@@ -534,7 +534,7 @@ test_that("unmarshal error with message in 'Message'", {
   req <- new_request(svc, op, NULL, NULL)
   req$http_response <- HttpResponse(
     status_code = 400,
-    body = "{\"__type\":\"FooException\",\"Message\":\"Foo\"}"
+    body = charToRaw("{\"__type\":\"FooException\",\"Message\":\"Foo\"}")
   )
   req <- unmarshal_error(req)
   out <- req$error
@@ -546,7 +546,7 @@ test_that("unmarshal error with message in 'message'", {
   req <- new_request(svc, op, NULL, NULL)
   req$http_response <- HttpResponse(
     status_code = 400,
-    body = "{\"message\":\"Foo\",\"__type\":\"FooException\"}"
+    body = charToRaw("{\"message\":\"Foo\",\"__type\":\"FooException\"}")
   )
   req <- unmarshal_error(req)
   out <- req$error
@@ -558,7 +558,7 @@ test_that("unmarshal error with no message", {
   req <- new_request(svc, op, NULL, NULL)
   req$http_response <- HttpResponse(
     status_code = 400,
-    body = "{\"__type\":\"FooException\"}"
+    body = charToRaw("{\"__type\":\"FooException\"}")
   )
   req <- unmarshal_error(req)
   out <- req$error

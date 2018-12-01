@@ -90,7 +90,7 @@ issue <- function(http_request) {
   body <- http_request$body
 
   if (url == "") {
-    return()
+    stop("no url provided")
   }
 
   r <- httr::VERB(
@@ -100,14 +100,11 @@ issue <- function(http_request) {
     body = body
   )
 
-  response_body <- httr::content(r, as = "text", encoding = "UTF-8")
-  if (is.na(response_body)) response_body <- httr::content(r, as = "raw")
-  
   response <- HttpResponse(
     status_code = httr::status_code(r),
     header = httr::headers(r),
     content_length = as.integer(httr::headers(r)$`content-length`),
-    body = response_body
+    body = httr::content(r, as = "raw")
   )
 
   return(response)

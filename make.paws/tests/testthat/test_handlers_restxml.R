@@ -296,7 +296,7 @@ test_that("unmarshal scalar members", {
   req <- new_request(svc, op, NULL, op_output1)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "<OperationNameResponse><Str>myname</Str><FooNum>123</FooNum><FalseBool>false</FalseBool><TrueBool>true</TrueBool><Float>1.2</Float><Double>1.3</Double><Long>200</Long><Char>a</Char><RequestId>request-id</RequestId></OperationNameResponse>"
+    body = charToRaw("<OperationNameResponse><Str>myname</Str><FooNum>123</FooNum><FalseBool>false</FalseBool><TrueBool>true</TrueBool><Float>1.2</Float><Double>1.3</Double><Long>200</Long><Char>a</Char><RequestId>request-id</RequestId></OperationNameResponse>")
   )
   req <- unmarshal(req)
   out <- req$data
@@ -318,7 +318,7 @@ test_that("unmarshal blob", {
   req <- new_request(svc, op, NULL, op_output2)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "<OperationNameResponse><Blob>dmFsdWU=</Blob><RequestId>requestid</RequestId></OperationNameResponse>"
+    body = charToRaw("<OperationNameResponse><Blob>dmFsdWU=</Blob><RequestId>requestid</RequestId></OperationNameResponse>")
   )
   req <- unmarshal(req)
   out <- req$data
@@ -333,7 +333,7 @@ test_that("unmarshal list", {
   req <- new_request(svc, op, NULL, op_output3)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "<OperationNameResponse><ListMember><member>abc</member><member>123</member></ListMember><RequestId>requestid</RequestId></OperationNameResponse>"
+    body = charToRaw("<OperationNameResponse><ListMember><member>abc</member><member>123</member></ListMember><RequestId>requestid</RequestId></OperationNameResponse>")
   )
   req <- unmarshal(req)
   out <- req$data
@@ -349,7 +349,7 @@ test_that("unmarshal list", {
   req <- new_request(svc, op, NULL, op_output4)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "<OperationNameResponse><ListMember><item>abc</item><item>123</item></ListMember><RequestId>requestid</RequestId></OperationNameResponse>"
+    body = charToRaw("<OperationNameResponse><ListMember><item>abc</item><item>123</item></ListMember><RequestId>requestid</RequestId></OperationNameResponse>")
   )
   req <- unmarshal(req)
   out <- req$data
@@ -365,7 +365,7 @@ test_that("unmarshal flattened list", {
   req <- new_request(svc, op, NULL, op_output5)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "<OperationNameResponse><ListMember>abc</ListMember><ListMember>123</ListMember><RequestId>requestid</RequestId></OperationNameResponse>"
+    body = charToRaw("<OperationNameResponse><ListMember>abc</ListMember><ListMember>123</ListMember><RequestId>requestid</RequestId></OperationNameResponse>")
   )
   req <- unmarshal(req)
   out <- req$data
@@ -381,7 +381,7 @@ test_that("unmarshal map", {
   req <- new_request(svc, op, NULL, op_output6)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "<OperationNameResponse><Map><entry><key>qux</key><value><foo>bar</foo></value></entry><entry><key>baz</key><value><foo>bam</foo></value></entry></Map><RequestId>requestid</RequestId></OperationNameResponse>"
+    body = charToRaw("<OperationNameResponse><Map><entry><key>qux</key><value><foo>bar</foo></value></entry><entry><key>baz</key><value><foo>bam</foo></value></entry></Map><RequestId>requestid</RequestId></OperationNameResponse>")
   )
   req <- unmarshal(req)
   out <- req$data
@@ -397,7 +397,7 @@ test_that("unmarshal flattened map", {
   req <- new_request(svc, op, NULL, op_output7)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "<OperationNameResponse><Map><key>qux</key><value>bar</value></Map><Map><key>baz</key><value>bam</value></Map><RequestId>requestid</RequestId></OperationNameResponse>"
+    body = charToRaw("<OperationNameResponse><Map><key>qux</key><value>bar</value></Map><Map><key>baz</key><value>bam</value></Map><RequestId>requestid</RequestId></OperationNameResponse>")
   )
   req <- unmarshal(req)
   out <- req$data
@@ -413,7 +413,7 @@ test_that("unmarshal flattened named map", {
   req <- new_request(svc, op, NULL, op_output8)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "<OperationNameResponse><Map><foo>qux</foo><bar>bar</bar></Map><Map><foo>baz</foo><bar>bam</bar></Map><RequestId>requestid</RequestId></OperationNameResponse>"
+    body = charToRaw("<OperationNameResponse><Map><foo>qux</foo><bar>bar</bar></Map><Map><foo>baz</foo><bar>bam</bar></Map><RequestId>requestid</RequestId></OperationNameResponse>")
   )
   req <- unmarshal(req)
   out <- req$data
@@ -430,7 +430,7 @@ test_that("unmarshal empty string", {
   req <- new_request(svc, op, NULL, op_output9)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "<OperationNameResponse><Foo/><RequestId>requestid</RequestId></OperationNameResponse>"
+    body = charToRaw("<OperationNameResponse><Foo/><RequestId>requestid</RequestId></OperationNameResponse>")
   )
   req <- unmarshal(req)
   out <- req$data
@@ -446,7 +446,7 @@ test_that("unmarshal enum", {
   req <- new_request(svc, op, NULL, op_output10)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "<OperationNameResponse><FooEnum>foo</FooEnum><ListEnums><member>foo</member><member>bar</member></ListEnums></OperationNameResponse>"
+    body = charToRaw("<OperationNameResponse><FooEnum>foo</FooEnum><ListEnums><member>foo</member><member>bar</member></ListEnums></OperationNameResponse>")
   )
   req <- unmarshal(req)
   out <- req$data
@@ -462,7 +462,7 @@ test_that("unmarshal timestamp", {
   req <- new_request(svc, op, NULL, op_output11)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = "<OperationNameResponse><Timestamp>1970-01-01T00:00:00.000Z</Timestamp></OperationNameResponse>"
+    body = charToRaw("<OperationNameResponse><Timestamp>1970-01-01T00:00:00.000Z</Timestamp></OperationNameResponse>")
   )
   req <- unmarshal(req)
   out <- req$data

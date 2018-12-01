@@ -24,7 +24,7 @@ query_build <- function(request) {
 
 # Unmarshal the response from a Query protocol response.
 query_unmarshal <- function(request) {
-  data <- request$http_response$body
+  data <- decode_xml(request$http_response$body)
   interface <- request$data
   result_name <- paste0(request$operation$name, "Result")
   request$data <- xml_unmarshal(data, interface, result_name)
@@ -39,7 +39,7 @@ query_unmarshal_meta <- function(request) {
 
 # Unmarshal errors from a Query protocol response.
 query_unmarshal_error <- function(request) {
-  data <- request$http_response$body
+  data <- decode_xml(request$http_response$body)
   error <- xml_unmarshal_error(data)
   request$error <- error
   return(request)
