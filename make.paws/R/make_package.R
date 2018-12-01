@@ -60,6 +60,7 @@ write_operations <- function(api, path) {
   operations <- make_operations(api)
   package <- package_name(api)
   filename <- paste0(package, "_operations.R")
+  operations <- edit_warning(operations)
   write_list(operations, file.path(path, filename))
 }
 
@@ -68,6 +69,7 @@ write_interfaces <- function(api, path) {
   interfaces <- make_interfaces(api)
   package <- package_name(api)
   filename <- paste0(package, "_interfaces.R")
+  interfaces <- edit_warning(interfaces)
   write_list(interfaces, file.path(path, filename))
 }
 
@@ -76,6 +78,7 @@ write_service <- function(api, path) {
   service <- make_service(api)
   package <- package_name(api)
   filename <- paste0(package, "_service.R")
+  service <- edit_warning(service)
   write_list(service, file.path(path, filename))
 }
 
@@ -119,6 +122,16 @@ write_documentation <- function(api, path) {
       roxygen2::roxygenize(path)
   )
   return(TRUE)
+}
+
+
+# Add a warning saying not to edit the generated file
+edit_warning <- function(values) {
+  warning_text <- paste("# This file is generated from make.paws/R.",
+                        "Do Not Edit Here")
+  values <- c(warning_text, values)
+  
+  return(values)
 }
 
 # Write a list of code objects to a file, separated by newlines. Create
