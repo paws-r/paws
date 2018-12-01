@@ -147,6 +147,9 @@ test_that("make_doc_params", {
   api <- list(
     shapes = list(
       Foo = list(
+        required = list(
+          "Member2"
+        ),
         members = list(
           Member1 = list(
             documentation = "Documentation1"
@@ -156,13 +159,11 @@ test_that("make_doc_params", {
           )
         )
       )
-    ),
-    required = list(
     )
   )
   expected <- paste(
     "#' @param Member1 Documentation1",
-    "#' @param Member2 Documentation2",
+    "#' @param Member2 &#91;required&#93; Documentation2",
     sep = "\n"
   )
   expect_equal(make_doc_params(operation, api), expected)
