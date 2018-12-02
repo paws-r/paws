@@ -18,7 +18,7 @@ restxml_unmarshal_meta <- function(request) {
 
 # Unmarshal the body of a REST XML response.
 restxml_unmarshal <- function(request) {
-  t <- rest_payload_type(request$params)
+  t <- rest_payload_type(request$data)
   if (t == "structure" || t == "") {
     data <- decode_xml(request$http_response$body)
     interface <- request$data
