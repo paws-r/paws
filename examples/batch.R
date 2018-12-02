@@ -15,7 +15,8 @@ subnets <- paws.ec2::describe_subnets(
   Filters = sprintf("vpc-id=%s", default_vpc$VpcId)
 )$Subnets
 
-# You will need to set up the Batch service role and provide its ARN here.
+# You will need to set up the Batch service role and provide your AWS account
+# account number here.
 service_role <- sprintf(
   "arn:aws:iam::%s:role/service-role/AWSBatchServiceRole",
   account_id = "1234567890123"

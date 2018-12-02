@@ -25,7 +25,7 @@ msg <- paws.sqs::receive_message(
 # Delete the message.
 paws.sqs::delete_message(
   QueueUrl = sqs$QueueUrl,
-  ReceiptHandle = msg$Messages[1]$ReceiptHandle
+  ReceiptHandle = msg$Messages[[1]]$ReceiptHandle
 )
 
 # Delete the queue.
