@@ -11,6 +11,10 @@ svc <- Client(
 )
 svc$handlers$build <- HandlerList(restxml_build)
 
+#-------------------------------------------------------------------------------
+
+# Rest tests
+
 test_that("no parameters", {
   op1 <- Operation(
     name = "OperationName",
@@ -212,6 +216,11 @@ test_that("URI and query string parameters", {
   r <- req$http_request
   expect_equal(build_url(r$url), "https://test/2014-01-01/jobsByPipeline/foo?Ascending=true&PageToken=bar")
 })
+
+
+#-------------------------------------------------------------------------------
+
+# XML tests
 
 test_that("Basic build XML Body", {
   op10 <- Operation(name = "OperationName")

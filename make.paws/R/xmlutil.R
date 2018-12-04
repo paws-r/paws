@@ -6,6 +6,7 @@ decode_xml <- function(raw) {
 
 # Convert an XML string to an R list.
 xml_to_list <- function(value) {
+  if (is_empty(value)) return(NULL)
   result <- xml2::as_list(xml2::read_xml(value))
   return(result)
 }
