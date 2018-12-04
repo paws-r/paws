@@ -12,7 +12,6 @@ svc$handlers$build <- HandlerList(query_build)
 op_input1 <- function(Foo = NULL, Bar = NULL, Baz = NULL) {
   args <- list(Foo = Foo, Bar = Bar, Baz = Baz)
   interface <- Structure(
-    `_` = Structure(),
     Foo = Scalar(type = "string"),
     Bar = Scalar(type = "string"),
     Baz = Scalar(type = "boolean")
@@ -51,7 +50,6 @@ test_that("build scalar members", {
 op_input2 <- function(StructArg) {
   args <- list(StructArg = StructArg)
   interface <- Structure(
-    `_` = Structure(),
     StructArg = Structure(
       ScalarArg = Scalar(type = "string")
     )
@@ -73,7 +71,6 @@ test_that("build nested structure members", {
 op_input3 <- function(ListArg) {
   args <- list(ListArg = ListArg)
   interface <- Structure(
-    `_` = Structure(),
     ListArg = List(Scalar(type = "string"))
   )
   return(populate(args, interface))
@@ -102,7 +99,6 @@ test_that("build empty list", {
 op_input4 <- function(ListArg = NULL, NamedListArg = NULL, ScalarArg = NULL) {
   args <- list(ListArg = ListArg, NamedListArg = NamedListArg, ScalarArg = ScalarArg)
   interface <- Structure(
-    `_` = Structure(),
     ListArg = List(Scalar(type = "string"), .attrs = list(flattened = TRUE)),
     NamedListArg = List(Scalar(type = "string"), .attrs = list(flattened = TRUE, locationNameList = "Foo")),
     ScalarArg = Scalar(type = "string")
@@ -132,7 +128,6 @@ test_that("build flattened named list", {
 op_input5 <- function(MapArg) {
   args <- list(MapArg = MapArg)
   interface <- Structure(
-    `_` = Structure(),
     MapArg = Map(Scalar(type = "string"), .attrs = list(flattened = TRUE))
   )
   return(populate(args, interface))
@@ -153,7 +148,6 @@ test_that("build flattened map", {
 op_input6 <- function(ListArg) {
   args <- list(ListArg = ListArg)
   interface <- Structure(
-    `_` = Structure(),
     ListArg = List(Scalar(type = "string"), .attrs = list(locationNameList = "item"))
   )
   return(populate(args, interface))
@@ -175,7 +169,6 @@ test_that("build non-flattened list with location name", {
 op_input7 <- function(ListArg, ScalarArg) {
   args <- list(ListArg = ListArg, ScalarArg = ScalarArg)
   interface <- Structure(
-    `_` = Structure(),
     ListArg = List(Scalar(type = "string"), .attrs = list(flattened = TRUE, locationNameList = "ListArgLocation")),
     ScalarArg = Scalar(type = "string")
   )
@@ -199,7 +192,6 @@ test_that("build flattened list with location name", {
 op_input8 <- function(MapArg) {
   args <- list(MapArg = MapArg)
   interface <- Structure(
-    `_` = Structure(),
     MapArg = Map(Scalar(type = "string"))
   )
   return(populate(args, interface))
@@ -220,7 +212,6 @@ test_that("build map", {
 op_input9 <- function(MapArg) {
   args <- list(MapArg = MapArg)
   interface <- Structure(
-    `_` = Structure(),
     MapArg = Map(Scalar(type = "string"), .attrs = list(locationNameKey = "TheKey", locationNameValue = "TheValue"))
   )
   return(populate(args, interface))
@@ -353,7 +344,6 @@ test_that("build nested shapes", {
 op_input14 <- function(Token = NULL) {
   args <- list(Token = Token)
   interface <- Structure(
-    `_` = Structure(),
     Token = Scalar(type = "string", .attrs = list(idempotencyToken = TRUE))
   )
   return(populate(args, interface))
@@ -378,7 +368,6 @@ test_that("build idempotency token auto-fill", {
 op_input15 <- function(FooEnum = NULL, ListEnums = NULL) {
   args <- list(FooEnum = FooEnum, ListEnums = ListEnums)
   interface <- Structure(
-    `_` = Structure(),
     FooEnum = Scalar(type = "string", .attrs = list(enum = "InputService15TestShapeEnumType")),
     ListEnums = List(Scalar(type = "string"))
   )

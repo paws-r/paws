@@ -383,12 +383,11 @@ op15 <- Operation(
 op_input15 <- function(Foo = NULL) {
   args <- list(Foo = Foo)
   interface <- Structure(
-    `_` = Structure(.attrs = list(payload = "Foo")),
     Foo = Structure(
-      `_` = Structure(.attrs = list(locationName = "foo")),
       Baz = Scalar(type = "string", .attrs = list(locationName = "baz")),
       .attrs = list(locationName = "foo")
-    )
+    ),
+    .attrs = list(payload = "Foo")
   )
   return(populate(args, interface))
 }
