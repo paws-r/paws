@@ -3,38 +3,32 @@
 # populate the interface constructed with these functions, then build the HTTP
 # request body using one of the build handlers.
 
-Object <- function(..., .attrs = NULL, type) {
+Object <- function(..., .tags = NULL, type) {
   values <- list(...)
-  attr(values, "type") <- type
-  for (i in seq_along(.attrs)) {
-    attr_name <- names(.attrs)[i]
-    attr(values, attr_name) <- .attrs[[i]]
-  }
+  tags <- c(list(type = type), .tags)
+  values <- add_tags(tags, values)
   return(values)
 }
 
-Structure <- function(..., .attrs = NULL) {
-  return(Object(..., .attrs = .attrs, type = "structure"))
+Structure <- function(..., .tags = NULL) {
+  return(Object(..., .tags = .tags, type = "structure"))
 }
 
-List <- function(..., .attrs = NULL) {
-  return(Object(..., .attrs = .attrs, type = "list"))
+List <- function(..., .tags = NULL) {
+  return(Object(..., .tags = .tags, type = "list"))
 }
 
-Map <- function(..., .attrs = NULL) {
-  return(Object(..., .attrs = .attrs, type = "map"))
+Map <- function(..., .tags = NULL) {
+  return(Object(..., .tags = .tags, type = "map"))
 }
 
-Scalar <- function(value = NULL, .attrs = NULL, type = "scalar") {
+Scalar <- function(value = NULL, .tags = NULL, type = "scalar") {
   if (is.null(value)) value <- logical(0)
-  attr(value, "type") <- type
-  for (i in seq_along(.attrs)) {
-    attr_name <- names(.attrs)[i]
-    attr(value, attr_name) <- .attrs[[i]]
-  }
+  tags <- c(list(type = type), .tags)
+  value <- add_tags(tags, value)
   return(value)
 }
 
-Bool <- function(value = NULL, .attrs = NULL) {
-  return(Scalar(value, .attrs = .attrs, type = "boolean"))
+Bool <- function(value = NULL, .tags = NULL) {
+  return(Scalar(value, .tags = .tags, type = "boolean"))
 }

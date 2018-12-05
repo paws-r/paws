@@ -10,8 +10,8 @@ test_that("scalar", {
   )
   out <- make_shape(list(shape = "FooShape"), api = api)
   expect_length(out, 0)
-  expect_equal(attr(out, "type"), "string")
-  expect_equal(attr(out, "shape"), "FooShape")
+  expect_equal(get_tag(out, "type"), "string")
+  expect_equal(get_tag(out, "shape"), "FooShape")
 })
 
 test_that("structure with one scalar member", {
@@ -32,9 +32,9 @@ test_that("structure with one scalar member", {
   )
   out <- make_shape(list(shape = "StructureShape"), api = api)
   expect_length(out, 1)
-  expect_equal(attr(out, "type"), "structure")
+  expect_equal(get_tag(out, "type"), "structure")
   expect_length(out$StringShape, 0)
-  expect_equal(attr(out$StringShape, "type"), "string")
+  expect_equal(get_tag(out$StringShape, "type"), "string")
 })
 
 test_that("structure with multiple scalar members", {
@@ -67,13 +67,13 @@ test_that("structure with multiple scalar members", {
   )
   out <- make_shape(list(shape = "StructureShape"), api = api)
   expect_length(out, 3)
-  expect_equal(attr(out, "type"), "structure")
+  expect_equal(get_tag(out, "type"), "structure")
   expect_length(out$String, 0)
-  expect_equal(attr(out$String, "type"), "string")
+  expect_equal(get_tag(out$String, "type"), "string")
   expect_length(out$Double, 0)
-  expect_equal(attr(out$Double, "type"), "double")
+  expect_equal(get_tag(out$Double, "type"), "double")
   expect_length(out$Boolean, 0)
-  expect_equal(attr(out$Boolean, "type"), "boolean")
+  expect_equal(get_tag(out$Boolean, "type"), "boolean")
 })
 
 test_that("nested structure", {
@@ -110,13 +110,13 @@ test_that("nested structure", {
   )
   out <- make_shape(list(shape = "StructureShape"), api = api)
   expect_length(out, 1)
-  expect_equal(attr(out, "type"), "structure")
+  expect_equal(get_tag(out, "type"), "structure")
   expect_length(out$Foo, 1)
-  expect_equal(attr(out$Foo, "type"), "structure")
+  expect_equal(get_tag(out$Foo, "type"), "structure")
   expect_length(out$Foo$Bar, 1)
-  expect_equal(attr(out$Foo$Bar, "type"), "structure")
+  expect_equal(get_tag(out$Foo$Bar, "type"), "structure")
   expect_length(out$Foo$Bar$Baz, 0)
-  expect_equal(attr(out$Foo$Bar$Baz, "type"), "double")
+  expect_equal(get_tag(out$Foo$Bar$Baz, "type"), "double")
 })
 
 test_that("list of scalars", {
@@ -135,9 +135,9 @@ test_that("list of scalars", {
   )
   out <- make_shape(list(shape = "ListShape"), api = api)
   expect_length(out, 1)
-  expect_equal(attr(out, "type"), "list")
+  expect_equal(get_tag(out, "type"), "list")
   expect_length(out[[1]], 0)
-  expect_equal(attr(out[[1]], "type"), "string")
+  expect_equal(get_tag(out[[1]], "type"), "string")
 })
 
 test_that("list of structures", {
@@ -164,11 +164,11 @@ test_that("list of structures", {
   )
   out <- make_shape(list(shape = "ListShape"), api = api)
   expect_length(out, 1)
-  expect_equal(attr(out, "type"), "list")
+  expect_equal(get_tag(out, "type"), "list")
   expect_length(out[[1]], 1)
-  expect_equal(attr(out[[1]], "type"), "structure")
+  expect_equal(get_tag(out[[1]], "type"), "structure")
   expect_length(out[[1]]$String, 0)
-  expect_equal(attr(out[[1]]$String, "type"), "string")
+  expect_equal(get_tag(out[[1]]$String, "type"), "string")
 })
 
 test_that("map of scalars", {
@@ -190,9 +190,9 @@ test_that("map of scalars", {
   )
   out <- make_shape(list(shape = "MapShape"), api = api)
   expect_length(out, 1)
-  expect_equal(attr(out, "type"), "map")
+  expect_equal(get_tag(out, "type"), "map")
   expect_length(out[[1]], 0)
-  expect_equal(attr(out[[1]], "type"), "string")
+  expect_equal(get_tag(out[[1]], "type"), "string")
 })
 
 test_that("location name for lists", {
@@ -220,8 +220,8 @@ test_that("location name for lists", {
     )
   )
   out <- make_shape(list(shape = "StructureShape"), api = api)
-  expect_equal(attr(out$List, "type"), "list")
-  expect_equal(attr(out$List, "locationNameList"), "Foo")
+  expect_equal(get_tag(out$List, "type"), "list")
+  expect_equal(get_tag(out$List, "locationNameList"), "Foo")
 
 })
 
@@ -255,9 +255,9 @@ test_that("location name for maps", {
     )
   )
   out <- make_shape(list(shape = "StructureShape"), api = api)
-  expect_equal(attr(out$Map, "type"), "map")
-  expect_equal(attr(out$Map, "locationNameKey"), "Foo")
-  expect_equal(attr(out$Map, "locationNameValue"), "Bar")
+  expect_equal(get_tag(out$Map, "type"), "map")
+  expect_equal(get_tag(out$Map, "locationNameKey"), "Foo")
+  expect_equal(get_tag(out$Map, "locationNameValue"), "Bar")
 })
 
 test_that("stop loops", {
@@ -281,9 +281,9 @@ test_that("stop loops", {
   )
   out <- make_shape(list(shape = "ListShape"), api = api)
   expect_length(out, 1)
-  expect_equal(attr(out, "type"), "list")
+  expect_equal(get_tag(out, "type"), "list")
   expect_length(out[[1]], 1)
-  expect_equal(attr(out[[1]], "type"), "structure")
+  expect_equal(get_tag(out[[1]], "type"), "structure")
   expect_length(out[[1]]$List, 0)
-  expect_equal(attr(out[[1]]$List, "type"), "list")
+  expect_equal(get_tag(out[[1]]$List, "type"), "list")
 })

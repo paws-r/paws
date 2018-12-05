@@ -99,8 +99,8 @@ test_that("build empty list", {
 op_input4 <- function(ListArg = NULL, NamedListArg = NULL, ScalarArg = NULL) {
   args <- list(ListArg = ListArg, NamedListArg = NamedListArg, ScalarArg = ScalarArg)
   interface <- Structure(
-    ListArg = List(Scalar(type = "string"), .attrs = list(flattened = TRUE)),
-    NamedListArg = List(Scalar(type = "string"), .attrs = list(flattened = TRUE, locationNameList = "Foo")),
+    ListArg = List(Scalar(type = "string"), .tags = list(flattened = TRUE)),
+    NamedListArg = List(Scalar(type = "string"), .tags = list(flattened = TRUE, locationNameList = "Foo")),
     ScalarArg = Scalar(type = "string")
   )
   return(populate(args, interface))
@@ -128,7 +128,7 @@ test_that("build flattened named list", {
 op_input5 <- function(MapArg) {
   args <- list(MapArg = MapArg)
   interface <- Structure(
-    MapArg = Map(Scalar(type = "string"), .attrs = list(flattened = TRUE))
+    MapArg = Map(Scalar(type = "string"), .tags = list(flattened = TRUE))
   )
   return(populate(args, interface))
 }
@@ -148,7 +148,7 @@ test_that("build flattened map", {
 op_input6 <- function(ListArg) {
   args <- list(ListArg = ListArg)
   interface <- Structure(
-    ListArg = List(Scalar(type = "string"), .attrs = list(locationNameList = "item"))
+    ListArg = List(Scalar(type = "string"), .tags = list(locationNameList = "item"))
   )
   return(populate(args, interface))
 }
@@ -169,7 +169,7 @@ test_that("build non-flattened list with location name", {
 op_input7 <- function(ListArg, ScalarArg) {
   args <- list(ListArg = ListArg, ScalarArg = ScalarArg)
   interface <- Structure(
-    ListArg = List(Scalar(type = "string"), .attrs = list(flattened = TRUE, locationNameList = "ListArgLocation")),
+    ListArg = List(Scalar(type = "string"), .tags = list(flattened = TRUE, locationNameList = "ListArgLocation")),
     ScalarArg = Scalar(type = "string")
   )
   return(populate(args, interface))
@@ -212,7 +212,7 @@ test_that("build map", {
 op_input9 <- function(MapArg) {
   args <- list(MapArg = MapArg)
   interface <- Structure(
-    MapArg = Map(Scalar(type = "string"), .attrs = list(locationNameKey = "TheKey", locationNameValue = "TheValue"))
+    MapArg = Map(Scalar(type = "string"), .tags = list(locationNameKey = "TheKey", locationNameValue = "TheValue"))
   )
   return(populate(args, interface))
 }
@@ -249,7 +249,7 @@ test_that("build blob argument", {
 op_input11 <- function(BlobArgs) {
   args <- list(BlobArgs = BlobArgs)
   interface <- Structure(
-    BlobArgs = List(Scalar(type = "blob"), .attrs = list(flattened = TRUE))
+    BlobArgs = List(Scalar(type = "blob"), .tags = list(flattened = TRUE))
   )
   return(populate(args, interface))
 }
@@ -266,7 +266,7 @@ test_that("build blob argument", {
 op_input12 <- function(TimeArg) {
   args <- list(TimeArg = TimeArg)
   interface <- Structure(
-    TimeArg = Scalar(type = "timestamp", .attrs = list(timestampFormat = "iso8601"))
+    TimeArg = Scalar(type = "timestamp", .tags = list(timestampFormat = "iso8601"))
   )
   return(populate(args, interface))
 }
@@ -344,7 +344,7 @@ test_that("build nested shapes", {
 op_input14 <- function(Token = NULL) {
   args <- list(Token = Token)
   interface <- Structure(
-    Token = Scalar(type = "string", .attrs = list(idempotencyToken = TRUE))
+    Token = Scalar(type = "string", .tags = list(idempotencyToken = TRUE))
   )
   return(populate(args, interface))
 }
@@ -368,7 +368,7 @@ test_that("build idempotency token auto-fill", {
 op_input15 <- function(FooEnum = NULL, ListEnums = NULL) {
   args <- list(FooEnum = FooEnum, ListEnums = ListEnums)
   interface <- Structure(
-    FooEnum = Scalar(type = "string", .attrs = list(enum = "InputService15TestShapeEnumType")),
+    FooEnum = Scalar(type = "string", .tags = list(enum = "InputService15TestShapeEnumType")),
     ListEnums = List(Scalar(type = "string"))
   )
   return(populate(args, interface))
@@ -418,7 +418,7 @@ op_output1 <- Structure(
   FalseBool = Scalar(type = "boolean"),
   Float = Scalar(type = "float"),
   Long = Scalar(type = "long"),
-  Num = Scalar(type = "integer", .attrs = list(locationName = "FooNum")),
+  Num = Scalar(type = "integer", .tags = list(locationName = "FooNum")),
   Str = Scalar(type = "string"),
   TrueBool = Scalar(type = "boolean")
 )
@@ -490,7 +490,7 @@ test_that("unmarshal list", {
 })
 
 op_output4 <- Structure(
-  ListMember = List(Scalar(type = "string"), .attrs = list(locationNameList = "item"))
+  ListMember = List(Scalar(type = "string"), .tags = list(locationNameList = "item"))
 )
 
 test_that("unmarshal list with custom member name", {
@@ -505,7 +505,7 @@ test_that("unmarshal list with custom member name", {
 })
 
 op_output5 <- Structure(
-  ListMember = List(Scalar(type = "string"), .attrs = list(flattened = TRUE))
+  ListMember = List(Scalar(type = "string"), .tags = list(flattened = TRUE))
 )
 
 test_that("unmarshal flattened list", {
@@ -559,7 +559,7 @@ op_output7 <- Structure(
       Baz = Scalar(type = "string"),
       Foo = Scalar(type = "string")
     ),
-    .attrs = list(flattened = TRUE)
+    .tags = list(flattened = TRUE)
   )
 )
 
@@ -578,7 +578,7 @@ test_that("unmarshal flattened list of structures", {
 op_output8 <- Structure(
   List = List(
     Scalar(type = "string"),
-    .attrs = list(flattened = TRUE, locationNameList = "NamedList")
+    .tags = list(flattened = TRUE, locationNameList = "NamedList")
   )
 )
 
@@ -596,7 +596,7 @@ test_that("unmarshal flattened list with location name", {
 op_output9 <- Structure(
   Map = Map(
     Structure(
-      Foo = Scalar(type = "string", .attrs = list(locationName = "foo"))
+      Foo = Scalar(type = "string", .tags = list(locationName = "foo"))
     )
   )
 )
@@ -614,7 +614,7 @@ test_that("unmarshal map", {
 })
 
 op_output10 <- Structure(
-  Map = Map(Scalar(type = "string"), .attrs = list(flattened = TRUE))
+  Map = Map(Scalar(type = "string"), .tags = list(flattened = TRUE))
 )
 
 test_that("unmarshal flattened map", {
@@ -632,7 +632,7 @@ test_that("unmarshal flattened map", {
 op_output11 <- Structure(
   Map = Map(
     Scalar(type = "string"),
-    .attrs = list(
+    .tags = list(
       flattened = TRUE,
       locationName = "Attribute",
       locationNameKey = "Name",
@@ -653,7 +653,7 @@ test_that("unmarshal flattened map", {
 })
 
 op_output12 <- Structure(
-  Map = Map(Scalar(type = "string"), .attrs = list(locationNameKey = "foo", locationNameValue = "bar", flattened = TRUE))
+  Map = Map(Scalar(type = "string"), .tags = list(locationNameKey = "foo", locationNameValue = "bar", flattened = TRUE))
 )
 
 test_that("unmarshal named map", {
