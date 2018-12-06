@@ -217,19 +217,20 @@ test_that("Basic build XML Body", {
   op10 <- Operation(name = "OperationName")
   op_input10 <- function(OperationName) {
     args <- list(OperationName = OperationName)
-    interface <- structure(list(
-      OperationName = structure(list(
-        Description = structure(logical(0), shape = "Description", type = "string"),
-        Name = structure(logical(0), shape = "Name", type = "string")
-      ), type = "structure")
-    ), type = "structure")
+    interface <- Structure(
+      OperationName = Structure(
+        Description = Scalar(type = "string", .tags = list(shape = "Description")),
+        Name = Scalar(type = "string", .tags = list(shape = "Name"))
+      )
+    )
     return(populate(args, interface))
   }
 
   input <- op_input10(
-      OperationName = list(
+    OperationName = list(
       Description = "bar",
-      Name = "foo")
+      Name = "foo"
+    )
   )
   req <- new_request(svc, op10, input, NULL)
   req <- build(req)
@@ -243,25 +244,26 @@ test_that("Basic build XML Body Two of Same Tag", {
   op11 <- Operation(name = "OperationName")
   op_input11 <- function(OperationName) {
     args <- list(OperationName = OperationName)
-    interface <- structure(list(
-      OperationName = structure(list(
-        TagList = structure(list(
-          structure(list(
-            Key = structure(logical(0), type = "string")),
-            shape = "Tag", locationName = "Tag", type = "structure")
-        ), type = "list")
-      ), type = "structure")
-    ), type = "structure")
+    interface <- Structure(
+      OperationName = Structure(
+        TagList = List(
+          Structure(
+            Key = Scalar(type = "string"),
+            .tags = list(shape = "Tag", locationName = "Tag")
+          )
+        )
+      )
+    )
     return(populate(args, interface))
   }
 
   input <- op_input11(
-      OperationName = list(
-        TagList = list(
-          list(Key = "Key1"),
-          list(Key = "Key2")
-        )
+    OperationName = list(
+      TagList = list(
+        list(Key = "Key1"),
+        list(Key = "Key2")
       )
+    )
   )
   req <- new_request(svc, op11, input, NULL)
   req <- build(req)
@@ -269,9 +271,9 @@ test_that("Basic build XML Body Two of Same Tag", {
   expect_equal(r, xml_list_to_character(list(
     OperationName = list(TagList = list(Tag = list(Key = list("Key1")),
                                         Tag = list(Key = list("Key2"))
-                                        )
-                         )
-    )))
+    )
+    )
+  )))
 })
 #-------------------------------------------------------------------------------
 

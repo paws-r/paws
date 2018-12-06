@@ -80,7 +80,7 @@ xml_build_list <- function(params) {
   if (length(params) == 0) return(list())
   children <- lapply(params, function(x) xml_build(x))
 
-  location_names <- sapply(params, function(x) attr(x, "locationName"))
+  location_names <- sapply(params, function(x) get_tag(x, "locationName"))
 
   result <- lapply(1:length(children), function(i) children[[i]])
 
