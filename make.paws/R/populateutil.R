@@ -6,7 +6,7 @@
 Object <- function(..., .tags = NULL, type) {
   values <- list(...)
   tags <- c(list(type = type), .tags)
-  values <- add_tags(tags, values)
+  values <- add_tags(values, tags)
   return(values)
 }
 
@@ -25,7 +25,7 @@ Map <- function(..., .tags = NULL) {
 Scalar <- function(value = NULL, .tags = NULL, type = "scalar") {
   if (is.null(value)) value <- logical(0)
   tags <- c(list(type = type), .tags)
-  value <- add_tags(tags, value)
+  value <- add_tags(value, tags)
   return(value)
 }
 

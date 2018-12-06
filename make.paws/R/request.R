@@ -102,7 +102,8 @@ send_request <- function(request) {
   }
 
   request <- unmarshal(request)
-  out <- request$data
+
+  out <- get_request_output(request)
 
   return(out)
 }
@@ -179,4 +180,10 @@ is_valid <- function(value) {
 # Return whether the request has a response object.
 data_filled <- function(request) {
   return(!is.null(request$data))
+}
+
+# Return the request's output.
+get_request_output <- function(request) {
+  out <- remove_tags(request$data)
+  return(out)
 }

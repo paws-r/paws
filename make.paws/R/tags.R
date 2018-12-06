@@ -18,7 +18,7 @@ type <- function(object) {
 # Add metadata ("tags") about an API shape to an R object. Tags store e.g.
 # field names and types. We can access a tag with the corresponding `get_tag()`
 # function.
-add_tags <- function(tags, object) {
+add_tags <- function(object, tags) {
   keys_to_ignore <- c("documentation")
 
   keys_to_add <- setdiff(names(tags), keys_to_ignore)
@@ -38,4 +38,14 @@ get_tag <- function(object, tag) {
     return(tags[[tag]])
   }
   return("")
+}
+
+# Remove all tags from an object, including tags attached to nested elements.
+remove_tags <- function(object) {
+  result <- object
+  attr(result, "tags") <- NULL
+  for (name in names(result)) {
+    result[[name]] <- remove_tags(result[[name]])
+  }
+  return(result)
 }
