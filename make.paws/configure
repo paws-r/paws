@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Copy the code used by generated packages.
 mkdir -p inst/src
