@@ -124,3 +124,8 @@ test_that("copy customizations -- no customizations for package", {
   copy_customizations(api, path)
   expect_false(file.exists(file.path(path, "aws.example_customizations.R")))
 })
+
+test_that("make_imports returns a string-ified list separated by commas", {
+  imports <- make_imports()
+  expect_match(imports, "(.+,\n)+.+")
+})

@@ -1,2 +1,2 @@
 #!/bin/sh
-rm -fr inst/src
+source ./cleanup
