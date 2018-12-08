@@ -255,7 +255,7 @@ make_authors <- function(authors) {
 # package's DESCRIPTION file Imports section.
 make_imports <- function() {
   package <- methods::getPackageName()
-  imports_file <- system_file("extdata/packages.csv", package = package)
+  imports_file <- system_file("extdata/imports.csv", package = package)
   imports <- readLines(imports_file)
   defaults <- rownames(installed.packages(priority="high"))
   description <- paste(setdiff(imports, defaults), collapse = ",\n")

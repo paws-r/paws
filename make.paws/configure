@@ -11,8 +11,8 @@ done
 
 # Make a list of the R packages used by the generated packages.
 # Use a loop because Rtools for Windows does not have xargs.
-packages=()
+imports=()
 for file in $(find ./R ! -name "make*" -name "*.R"); do
-  packages+=($(grep -hoP "[a-zA-Z0-9\.]+(?=::)" "$file"))
+  imports+=($(grep -hoP "[a-zA-Z0-9\.]+(?=::)" "$file"))
 done
-echo ${packages[@]} | tr " " "\n" | sort | uniq > inst/extdata/packages.csv
+echo ${imports[@]} | tr " " "\n" | sort | uniq > inst/extdata/imports.csv
