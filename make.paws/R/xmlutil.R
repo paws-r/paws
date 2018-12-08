@@ -70,19 +70,19 @@ xml_build_structure <- function(params) {
     if (get_tag(child, "locationName") == "") {
       attr(child, "locationName") <- name
     }
-    
+
     parsed <- xml_build(child)
 
     if (!is.null(parsed)) {
-      mName <- get_tag(child, "locationName")
-      if (mName == "") mName <- name
-      
+      location_name <- get_tag(child, "locationName")
+      if (location_name == "") location_name <- name
+
       flattened <- get_tag(child, "flattened") != ""
-      
+
       if (flattened) {
         result <- c(result, parsed)
       } else{
-        result[[mName]] <- parsed
+        result[[location_name]] <- parsed
       }
     }
   }
@@ -94,7 +94,7 @@ xml_build_list <- function(params) {
   children <- lapply(params, function(x) xml_build(x))
 
   location_name <- get_tag(params, "locationName")
-  
+
   flattened <- get_tag(params, "flattened") != ""
   if (flattened) {
     result <- children
@@ -105,7 +105,7 @@ xml_build_list <- function(params) {
     result <- children
     names(result) <- rep(location_name_list, length(children))
   }
-  
+
   return(result)
 }
 
@@ -122,7 +122,7 @@ xml_build_scalar <- function(params) {
     double = as.numeric,
     float = as.numeric,
     integer = as.integer,
-    long = as.integer,
+    long = as.numeric,
     timestamp = function(x) as_timestamp(x, format = "iso8601"),
     as.character
   )
