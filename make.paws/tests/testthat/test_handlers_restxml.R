@@ -222,65 +222,213 @@ test_that("URI and query string parameters", {
 
 # XML tests
 
-test_that("Basic build XML Body", {
-  op10 <- Operation(name = "OperationName")
-  op_input10 <- function(OperationName) {
-    args <- list(OperationName = OperationName)
+test_that("Basic XML Case1", {
+  op_test <- Operation(name = "OperationName")
+  op_input_test <- function(OperationRequest) {
+    args <- list(OperationRequest = OperationRequest)
     interface <- structure(list(
-      OperationName = structure(list(
-        Description = structure(logical(0), shape = "Description", type = "string"),
-        Name = structure(logical(0), shape = "Name", type = "string")
-      ), type = "structure")
+      OperationRequest = structure(list(
+        Description = structure(logical(0), type = "string"),
+        Name = structure(logical(0), type = "string")
+      ), type = "structure", locationName = "OperationRequest")
     ), type = "structure")
     return(populate(args, interface))
   }
 
-  input <- op_input10(
-      OperationName = list(
+  input <- op_input_test(
+      OperationRequest = list(
       Description = "bar",
       Name = "foo")
   )
-  req <- new_request(svc, op10, input, NULL)
+  req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
   r <- req$body
   expect_equal(r, xml_list_to_character(list(
-    OperationName = list(Description = list("bar"),
+    OperationRequest = list(Description = list("bar"),
                          Name = list("foo")))))
 })
 
-test_that("Basic build XML Body Two of Same Tag", {
-  op11 <- Operation(name = "OperationName")
-  op_input11 <- function(OperationName) {
-    args <- list(OperationName = OperationName)
+test_that("Other Scalar Case1", {
+  op_test <- Operation(name = "OperationName")
+  op_input_test <- function(OperationRequest) {
+    args <- list(OperationRequest = OperationRequest)
     interface <- structure(list(
-      OperationName = structure(list(
-        TagList = structure(list(
-          structure(list(
-            Key = structure(logical(0), type = "string")),
-            shape = "Tag", locationName = "Tag", type = "structure")
-        ), type = "list")
-      ), type = "structure")
+      OperationRequest = structure(list(
+        First = structure(logical(0), type = "boolean"),
+        Fourth = structure(logical(0), type = "integer"),
+        Second = structure(logical(0), type = "boolean"),
+        Third = structure(logical(0), type = "float")
+      ), type = "structure", locationName = "OperationRequest")
     ), type = "structure")
     return(populate(args, interface))
   }
 
-  input <- op_input11(
-      OperationName = list(
-        TagList = list(
-          list(Key = "Key1"),
-          list(Key = "Key2")
-        )
+  input <- op_input_test(
+      OperationRequest = list(
+      First = TRUE,
+      Fourth = 3,
+      Second = FALSE,
+      Third = 1.2
       )
   )
-  req <- new_request(svc, op11, input, NULL)
+  req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
   r <- req$body
   expect_equal(r, xml_list_to_character(list(
-    OperationName = list(TagList = list(Tag = list(Key = list("Key1")),
-                                        Tag = list(Key = list("Key2"))
-                                        )
-                         )
-    )))
+    OperationRequest = list(First = list(TRUE),
+                            Fourth = list(3),
+                            Second = list(FALSE),
+                            Third = list(1.2)))))
+})
+
+test_that("Nested Structure Case1", {
+  op_test <- Operation(name = "OperationRequest")
+  op_input_test <- function(OperationRequest) {
+    args <- list(OperationRequest = OperationRequest)
+    interface <- structure(list(
+      OperationRequest = structure(list(
+            Description = structure(logical(0), type = "string"),
+            Substructure = structure(list(
+              Bar = structure(logical(0), type = "string"),
+              Foo = structure(logical(0), type = "string")
+            ), type = "structure")
+      ), type = "structure", locationName = "OperationRequest")
+      ), type = "structure")
+    return(populate(args, interface))
+  }
+
+  input <- op_input_test(
+      OperationRequest = list(
+        Description = "Baz",
+        Substructure = list(
+          Bar = "b",
+          Foo = "a"
+        )
+      )
+  )
+  req <- new_request(svc, op_test, input, NULL)
+  req <- build(req)
+  r <- req$body
+  expect_equal(r, xml_list_to_character(list(
+    OperationRequest = list(
+      Description = list("Baz"),
+      Substructure = list(
+        Bar = list("b"),
+        Foo = list("a")
+      )
+    )
+  )))
+})
+
+test_that("NonFlattened List Case1", {
+  op_test <- Operation(name = "OperationRequest")
+  op_input_test <- function(OperationRequest) {
+    args <- list(OperationRequest = OperationRequest)
+    interface <- structure(list(
+      OperationRequest = structure(list(
+          ListParam = structure(list(
+            structure(logical(0), type = "string")),
+            type = "list")
+      ), type = "structure", locationName = "OperationRequest")
+      ), type = "structure")
+    return(populate(args, interface))
+  }
+
+  input <- op_input_test(
+      OperationRequest = list(
+        ListParam = list(
+          "one",
+          "two",
+          "three"
+        )
+      )
+  )
+  req <- new_request(svc, op_test, input, NULL)
+  req <- build(req)
+  r <- req$body
+  #<OperationRequest xmlns="https://foo/"><ListParam xmlns="https://foo/"><member xmlns="https://foo/">one</member><member xmlns="https://foo/">two</member><member xmlns="https://foo/">three</member></ListParam></OperationRequest>
+  expect_equal(r, xml_list_to_character(list(
+    OperationRequest = list(
+      ListParam = list(
+        member = list("one"),
+        member = list("two"),
+        member = list("three")
+      )
+    )
+  )))
+})
+
+test_that("NonFlattened List With LocationName Case1", {
+  op_test <- Operation(name = "OperationRequest")
+  op_input_test <- function(OperationRequest) {
+    args <- list(OperationRequest = OperationRequest)
+    interface <- structure(list(
+      OperationRequest = structure(list(
+          ListParam = structure(list(
+            structure(logical(0), type = "string")),
+            type = "list", locationName = "AlternateName",
+            locationNameList = "NotMember")
+      ), type = "structure", locationName = "OperationRequest")
+      ), type = "structure")
+    return(populate(args, interface))
+  }
+
+  input <- op_input_test(
+      OperationRequest = list(
+        ListParam = list(
+          "one",
+          "two",
+          "three"
+        )
+      )
+  )
+  req <- new_request(svc, op_test, input, NULL)
+  req <- build(req)
+  r <- req$body
+  expect_equal(r, xml_list_to_character(list(
+    OperationRequest = list(
+      AlternateName = list(
+        NotMember = list("one"),
+        NotMember = list("two"),
+        NotMember = list("three")
+      )
+    )
+  )))
+})
+
+test_that("Flattened List Case1", {
+  op_test <- Operation(name = "OperationRequest")
+  op_input_test <- function(OperationRequest) {
+    args <- list(OperationRequest = OperationRequest)
+    interface <- structure(list(
+      OperationRequest = structure(list(
+          ListParam = structure(list(
+            structure(logical(0), type = "string")),
+            type = "list", flattened = "true")
+      ), type = "structure", locationName = "OperationRequest")
+      ), type = "structure")
+    return(populate(args, interface))
+  }
+
+  input <- op_input_test(
+      OperationRequest = list(
+        ListParam = list(
+          "one",
+          "two",
+          "three"
+        )
+      )
+  )
+  req <- new_request(svc, op_test, input, NULL)
+  req <- build(req)
+  r <- req$body
+  expect_equal(r, xml_list_to_character(list(
+    OperationRequest = list(
+      ListParam = list("one"),
+      ListParam = list("two"),
+      ListParam = list("three")
+    )
+  )))
 })
 #-------------------------------------------------------------------------------
 
