@@ -430,6 +430,71 @@ test_that("Flattened List Case1", {
     )
   )))
 })
+
+test_that("List of Structures Case1", {
+  op_test <- Operation(name = "OperationName")
+  op_input_test <- function(OperationRequest) {
+    args <- list(OperationRequest = OperationRequest)
+    interface <- structure(list(
+      OperationRequest = structure(list(
+          ListParam = structure(list(
+            Example = structure(list(
+              Value = structure(logical(0), type = "string", locationName = "value")
+              ), type = "structure")
+            ),type = "list", flattened = "true", locationName = "item")
+      ), type = "structure", locationName = "OperationRequest")
+      ), type = "structure")
+    return(populate(args, interface))
+  }
+
+  input <- op_input_test(
+      OperationRequest = list(
+      ListParam = list(
+        Example = list(
+          Value = list("one")
+      )
+      )
+  )
+  )
+  req <- new_request(svc, op_test, input, NULL)
+  req <- build(req)
+  r <- req$body
+  expect_equal(r, 
+    xml_list_to_character(list(
+    OperationRequest = list(
+      item = list(value = list("one"))
+    )
+    ))
+  )
+})
+
+test_that("Blob Case1", {
+  op_test <- Operation(name = "OperationName")
+  op_input_test <- function(OperationRequest) {
+    args <- list(OperationRequest = OperationRequest)
+    interface <- structure(list(
+      OperationRequest = structure(list(
+        StructureParam = structure(list(
+          B = structure(logical(0), type = "blob", locationName = "b")),
+          type = "structure")
+      ), type = "structure", locationName = "OperationRequest")
+    ), type = "structure")
+    return(populate(args, interface))
+  }
+
+  input <- op_input_test(
+      OperationRequest = list(
+      StructureParam = list(B = list(charToRaw("foo"))))
+  )
+  req <- new_request(svc, op_test, input, NULL)
+  req <- build(req)
+  r <- req$body
+  expect_equal(r, 
+    xml_list_to_character(list(
+    OperationRequest = list(StructureParam = list(b = list("Zm9v")))))
+  )
+})
+
 #-------------------------------------------------------------------------------
 
 # Unmarshal tests

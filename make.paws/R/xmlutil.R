@@ -117,7 +117,7 @@ xml_build_scalar <- function(params) {
   t <- get_tag(params, "type")
   convert <- switch(
     t,
-    blob = base64_to_utf8,
+    blob = raw_to_base64,
     boolean = as.logical,
     double = as.numeric,
     float = as.numeric,
@@ -126,7 +126,7 @@ xml_build_scalar <- function(params) {
     timestamp = function(x) as_timestamp(x, format = "iso8601"),
     as.character
   )
-  result <- list(convert(data))
+  result <- as.list(convert(data))
   return(result)
 }
 
