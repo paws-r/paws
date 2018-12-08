@@ -127,5 +127,5 @@ test_that("copy customizations -- no customizations for package", {
 
 test_that("make_imports returns a string-ified list separated by commas", {
   imports <- make_imports()
-  expect_match(imports, "[.+,\n]+.+")
+  expect_match(imports, "(.+,\n)+.+")
 })
