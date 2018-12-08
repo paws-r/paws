@@ -79,8 +79,8 @@ make_shape <- function(x, api, path = character(0)) {
     proto <- placeholder()
   }
 
-  proto <- add_tags(proto, x)
-  proto <- add_tags(proto, shape)
+  proto <- add_tags(proto, x[sapply(x, is.atomic)])
+  proto <- add_tags(proto, shape[sapply(shape, is.atomic)])
   return(proto)
 }
 
