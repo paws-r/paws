@@ -224,23 +224,20 @@ test_that("URI and query string parameters", {
 
 test_that("Basic XML Case1", {
   op_test <- Operation(name = "OperationName")
-  op_input_test <- function(OperationRequest) {
-    args <- list(OperationRequest = OperationRequest)
+  op_input_test <- function(Description, Name) {
+    args <- list(Description = Description, Name = Name)
     interface <- Structure(
-        OperationRequest = Structure(
-          Description = Scalar(type = "string"),
-          Name = Scalar(type = "string")
-          , .attrs = list(locationName = "OperationRequest")
-        )
+      Description = Scalar(type = "string"),
+      Name = Scalar(type = "string"),
+      .attrs = list(locationName = "OperationRequest", xmlURI = "https://foo/")
     )
     return(populate(args, interface))
   }
-
   input <- op_input_test(
-      OperationRequest = list(
-      Description = "bar",
-      Name = "foo")
+    Description = "bar",
+    Name = "foo"
   )
+  
   req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
   r <- req$body
@@ -251,27 +248,24 @@ test_that("Basic XML Case1", {
 
 test_that("Other Scalar Case1", {
   op_test <- Operation(name = "OperationName")
-  op_input_test <- function(OperationRequest) {
-    args <- list(OperationRequest = OperationRequest)
+  op_input_test <- function(First, Second, Third, Fourth) {
+    args <- list(First = First, Second = Second, Third = Third, Fourth = Fourth)
     interface <- Structure(
-      OperationRequest = Structure(
-        First = Scalar(type = "boolean"),
-        Fourth = Scalar(type = "integer"),
-        Second = Scalar(type = "boolean"),
-        Third = Scalar(type = "float"),
-        .attrs = list(locationName = "OperationRequest")
-      )
+      First = Scalar(type = "boolean"),
+      Fourth = Scalar(type = "integer"),
+      Second = Scalar(type = "boolean"),
+      Third = Scalar(type = "float"),
+      .attrs = list(locationName = "OperationRequest",
+                    xmlURI = "https://foo/")
     )
     return(populate(args, interface))
   }
 
   input <- op_input_test(
-      OperationRequest = list(
-      First = TRUE,
-      Fourth = 3,
-      Second = FALSE,
-      Third = 1.2
-      )
+    First = TRUE,
+    Fourth = 3,
+    Second = FALSE,
+    Third = 1.2
   )
   req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
@@ -285,29 +279,25 @@ test_that("Other Scalar Case1", {
 
 test_that("Nested Structure Case1", {
   op_test <- Operation(name = "OperationRequest")
-  op_input_test <- function(OperationRequest) {
-    args <- list(OperationRequest = OperationRequest)
+  op_input_test <- function(Description, Substructure) {
+    args <- list(Description = Description, Substructure = Substructure)
     interface <- Structure(
-      OperationRequest = Structure(
-        Description = Scalar(type = "string"),
-        Substructure = Structure(
-          Bar = Scalar(type = "string"),
-          Foo = Scalar(type = "string")
-        ),
-        .attrs = list(locationName = "OperationRequest")
-      )
+      Description = Scalar(type = "string"),
+      Substructure = Structure(
+        Bar = Scalar(type = "string"),
+        Foo = Scalar(type = "string")
+      ),
+      .attrs = list(locationName = "OperationRequest")
     )
     return(populate(args, interface))
   }
 
   input <- op_input_test(
-      OperationRequest = list(
-        Description = "Baz",
-        Substructure = list(
-          Bar = "b",
-          Foo = "a"
-        )
-      )
+    Description = "Baz",
+    Substructure = list(
+      Bar = "b",
+      Foo = "a"
+    )
   )
   req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
@@ -325,27 +315,23 @@ test_that("Nested Structure Case1", {
 
 test_that("NonFlattened List Case1", {
   op_test <- Operation(name = "OperationRequest")
-  op_input_test <- function(OperationRequest) {
-    args <- list(OperationRequest = OperationRequest)
+  op_input_test <- function(ListParam) {
+    args <- list(ListParam = ListParam)
     interface <- Structure(
-      OperationRequest = Structure(
-        ListParam = List(
-          Scalar(type = "string")
-        ),
-        .attrs = list(locationName = "OperationRequest")
-      )
+      ListParam = List(
+        Scalar(type = "string")
+      ),
+      .attrs = list(locationName = "OperationRequest")
     )
     return(populate(args, interface))
   }
 
   input <- op_input_test(
-      OperationRequest = list(
-        ListParam = list(
-          "one",
-          "two",
-          "three"
-        )
-      )
+    ListParam = list(
+      "one",
+      "two",
+      "three"
+    )
   )
   req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
@@ -364,29 +350,25 @@ test_that("NonFlattened List Case1", {
 
 test_that("NonFlattened List With LocationName Case1", {
   op_test <- Operation(name = "OperationRequest")
-  op_input_test <- function(OperationRequest) {
-    args <- list(OperationRequest = OperationRequest)
+  op_input_test <- function(ListParam) {
+    args <- list(ListParam = ListParam)
     interface <- Structure(
-      OperationRequest = Structure(
-        ListParam = List(
-          Scalar(type = "string"),
-          .attrs = list(locationName = "AlternateName",
-                        locationNameList = "NotMember")
-        ),
-        .attrs = list(locationName = "OperationRequest")
-      )
+      ListParam = List(
+        Scalar(type = "string"),
+        .attrs = list(locationName = "AlternateName",
+                      locationNameList = "NotMember")
+      ),
+      .attrs = list(locationName = "OperationRequest")
     )
     return(populate(args, interface))
   }
 
   input <- op_input_test(
-      OperationRequest = list(
-        ListParam = list(
-          "one",
-          "two",
-          "three"
-        )
-      )
+    ListParam = list(
+      "one",
+      "two",
+      "three"
+    )
   )
   req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
@@ -404,28 +386,24 @@ test_that("NonFlattened List With LocationName Case1", {
 
 test_that("Flattened List Case1", {
   op_test <- Operation(name = "OperationRequest")
-  op_input_test <- function(OperationRequest) {
-    args <- list(OperationRequest = OperationRequest)
+  op_input_test <- function(ListParam) {
+    args <- list(ListParam = ListParam)
     interface <- Structure(
-      OperationRequest = Structure(
-        ListParam = List(
-          Scalar(type = "string"),
-          .attrs = list(flattened = "true")
-        ),
-        .attrs = list(locationName = "OperationRequest")
-      )
+      ListParam = List(
+        Scalar(type = "string"),
+        .attrs = list(flattened = "true")
+      ),
+      .attrs = list(locationName = "OperationRequest")
     )
     return(populate(args, interface))
   }
 
   input <- op_input_test(
-      OperationRequest = list(
-        ListParam = list(
-          "one",
-          "two",
-          "three"
-        )
-      )
+    ListParam = list(
+      "one",
+      "two",
+      "three"
+    )
   )
   req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
@@ -441,10 +419,9 @@ test_that("Flattened List Case1", {
 
 test_that("List of Structures Case1", {
   op_test <- Operation(name = "OperationName")
-  op_input_test <- function(OperationRequest) {
-    args <- list(OperationRequest = OperationRequest)
+  op_input_test <- function(ListParam) {
+    args <- list(ListParam = ListParam)
     interface <- Structure(
-      OperationRequest = Structure(
         ListParam = List(
           Example = Structure(
             Value = Scalar(type = "string", .attrs = list(locationName = "value"))
@@ -452,19 +429,16 @@ test_that("List of Structures Case1", {
           .attrs = list(flattened = "true", locationName = "item")
         ),
         .attrs = list(locationName = "OperationRequest")
-      )
     )
     return(populate(args, interface))
   }
 
   input <- op_input_test(
-    OperationRequest = list(
       ListParam = list(
         Example = list(
           Value = list("one")
         )
       )
-    )
   )
   
   req <- new_request(svc, op_test, input, NULL)
@@ -481,22 +455,19 @@ test_that("List of Structures Case1", {
 
 test_that("Blob Case1", {
   op_test <- Operation(name = "OperationName")
-  op_input_test <- function(OperationRequest) {
-    args <- list(OperationRequest = OperationRequest)
+  op_input_test <- function(StructureParam) {
+    args <- list(StructureParam = StructureParam)
     interface <- Structure(
-      OperationRequest = Structure(
         StructureParam = Structure(
           B = Scalar(type = "blob", .attrs = list(locationName = "b"))
         ),
         .attrs = list(locationName = "OperationRequest")
-      )
     )
     return(populate(args, interface))
   }
 
   input <- op_input_test(
-      OperationRequest = list(
-      StructureParam = list(B = list(charToRaw("foo"))))
+      StructureParam = list(B = list(charToRaw("foo")))
   )
   req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
