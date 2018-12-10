@@ -30,6 +30,11 @@ xml_build_body <- function(request) {
     return(request)
   }
 
+  locationName <- get_tag(params, "locationName")
+  if (locationName != "") {
+    params <- Structure(params, .attrs = list(locationName = locationName))
+  }
+  
   body_list <- xml_build(params)
 
   if (length(body_list)) {
@@ -56,7 +61,7 @@ xml_build <- function(params) {
     list = xml_build_list,
     xml_build_scalar
   )
-
+  
   result <- build_fn(params)
 
   return(result)
@@ -64,11 +69,12 @@ xml_build <- function(params) {
 
 xml_build_structure <- function(params) {
   result <- list()
+  if (is.null(names(params))) return(xml_build_structure_no_names(params))
   for (name in names(params)) {
     child <- params[[name]]
 
     if (get_tag(child, "locationName") == "") {
-      attr(child, "locationName") <- name
+      child <- add_tags(list(locationName = name), child)
     }
 
     parsed <- xml_build(child)
@@ -87,6 +93,26 @@ xml_build_structure <- function(params) {
     }
   }
   return(result)
+}
+
+xml_build_structure_no_names <- function(params) {
+    result <- list()
+    for (child in params) {
+      parsed <- xml_build(child)
+      if (!is.null(parsed)) {
+        location_name <- get_tag(child, "locationName")
+        if (location_name == "") location_name <- name
+ 
+        flattened <- get_tag(child, "flattened") != ""
+
+        if (flattened) {
+          result <- c(result, parsed)
+        } else{
+          result[[location_name]] <- parsed
+        }
+      }
+    }
+    return(result)
 }
 
 xml_build_list <- function(params) {

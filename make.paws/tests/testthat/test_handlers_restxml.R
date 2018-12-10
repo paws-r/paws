@@ -423,8 +423,8 @@ test_that("List of Structures Case1", {
     args <- list(ListParam = ListParam)
     interface <- Structure(
         ListParam = List(
-          Example = Structure(
-            Value = Scalar(type = "string", .attrs = list(locationName = "value"))
+          Structure(
+            Scalar(type = "string", .attrs = list(locationName = "value"))
           ),
           .attrs = list(flattened = "true", locationName = "item")
         ),
@@ -435,8 +435,14 @@ test_that("List of Structures Case1", {
 
   input <- op_input_test(
       ListParam = list(
-        Example = list(
-          Value = list("one")
+        list(
+          value = list("one")
+        ),
+        list(
+          value = list("two")
+        ),
+        list(
+          value = list("three")
         )
       )
   )
@@ -447,7 +453,9 @@ test_that("List of Structures Case1", {
   expect_equal(r, 
     xml_list_to_character(list(
     OperationRequest = list(
-      item = list(value = list("one"))
+      item = list(value = list("one")),
+      item = list(value = list("two")),
+      item = list(value = list("three"))
     )
     ))
   )
