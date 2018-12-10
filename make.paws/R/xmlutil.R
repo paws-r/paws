@@ -11,10 +11,19 @@ xml_to_list <- function(value) {
   return(result)
 }
 
+add_xmlns <- function(xml_list, xmlns = "") {
+  if (!is.list(xml_list)) {
+    return(xml_list)
+  }
+  result <- lapply(xml_list, function(x) structure(add_xmlns(x, xmlns), xmlns = xmlns))
+  return(result)
+}
+
 # Convert list to XML text
-xml_list_to_character <- function(value) {
+list_to_xml <- function(value) {
   value_xml <- xml2::as_xml_document(x = value)
-  value_character <- as.character(value_xml)
+  value_character <- as.character(value_xml, options = "no_declaration")
+  value_character <- gsub("\\n", "", value_character)
   return(value_character)
 }
 
@@ -31,14 +40,17 @@ xml_build_body <- function(request) {
   }
 
   locationName <- get_tag(params, "locationName")
+  xmlns <- get_tag(params, "xmlURI")
   if (locationName != "") {
-    params <- Structure(params, .attrs = list(locationName = locationName))
+    params <- Structure(params, .attrs = list(locationName = locationName,
+                                              xmlns = xmlns))
   }
   
   body_list <- xml_build(params)
 
   if (length(body_list)) {
-    body_xml <- xml_list_to_character(body_list)
+    if (xmlns != "") body_list <- add_xmlns(body_list, xmlns)
+    body_xml <- list_to_xml(body_list)
   } else {
     body_xml <- ""
   }
@@ -144,7 +156,7 @@ xml_build_scalar <- function(params) {
   convert <- switch(
     t,
     blob = raw_to_base64,
-    boolean = as.logical,
+    boolean = convert_xml_boolean,
     double = as.numeric,
     float = as.numeric,
     integer = as.integer,

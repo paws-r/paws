@@ -241,9 +241,7 @@ test_that("Basic XML Case1", {
   req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
   r <- req$body
-  expect_equal(r, xml_list_to_character(list(
-    OperationRequest = list(Description = list("bar"),
-                         Name = list("foo")))))
+  expect_equal(r, '<OperationRequest xmlns="https://foo/"><Description xmlns="https://foo/">bar</Description><Name xmlns="https://foo/">foo</Name></OperationRequest>')
 })
 
 test_that("Other Scalar Case1", {
@@ -270,31 +268,27 @@ test_that("Other Scalar Case1", {
   req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
   r <- req$body
-  expect_equal(r, xml_list_to_character(list(
-    OperationRequest = list(First = list(TRUE),
-                            Fourth = list(3),
-                            Second = list(FALSE),
-                            Third = list(1.2)))))
+  expect_equal(r, '<OperationRequest xmlns="https://foo/"><First xmlns="https://foo/">true</First><Fourth xmlns="https://foo/">3</Fourth><Second xmlns="https://foo/">false</Second><Third xmlns="https://foo/">1.2</Third></OperationRequest>')
 })
 
 test_that("Nested Structure Case1", {
   op_test <- Operation(name = "OperationRequest")
-  op_input_test <- function(Description, Substructure) {
-    args <- list(Description = Description, Substructure = Substructure)
+  op_input_test <- function(Description, SubStructure) {
+    args <- list(Description = Description, SubStructure = SubStructure)
     interface <- Structure(
       Description = Scalar(type = "string"),
-      Substructure = Structure(
+      SubStructure = Structure(
         Bar = Scalar(type = "string"),
         Foo = Scalar(type = "string")
       ),
-      .attrs = list(locationName = "OperationRequest")
+      .attrs = list(locationName = "OperationRequest", xmlURI = "https://foo/")
     )
     return(populate(args, interface))
   }
 
   input <- op_input_test(
-    Description = "Baz",
-    Substructure = list(
+    Description = "baz",
+    SubStructure = list(
       Bar = "b",
       Foo = "a"
     )
@@ -302,15 +296,7 @@ test_that("Nested Structure Case1", {
   req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
   r <- req$body
-  expect_equal(r, xml_list_to_character(list(
-    OperationRequest = list(
-      Description = list("Baz"),
-      Substructure = list(
-        Bar = list("b"),
-        Foo = list("a")
-      )
-    )
-  )))
+  expect_equal(r, '<OperationRequest xmlns="https://foo/"><Description xmlns="https://foo/">baz</Description><SubStructure xmlns="https://foo/"><Bar xmlns="https://foo/">b</Bar><Foo xmlns="https://foo/">a</Foo></SubStructure></OperationRequest>')
 })
 
 test_that("NonFlattened List Case1", {
@@ -321,7 +307,7 @@ test_that("NonFlattened List Case1", {
       ListParam = List(
         Scalar(type = "string")
       ),
-      .attrs = list(locationName = "OperationRequest")
+      .attrs = list(locationName = "OperationRequest", xmlURI = "https://foo/")
     )
     return(populate(args, interface))
   }
@@ -336,16 +322,7 @@ test_that("NonFlattened List Case1", {
   req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
   r <- req$body
-  #<OperationRequest xmlns="https://foo/"><ListParam xmlns="https://foo/"><member xmlns="https://foo/">one</member><member xmlns="https://foo/">two</member><member xmlns="https://foo/">three</member></ListParam></OperationRequest>
-  expect_equal(r, xml_list_to_character(list(
-    OperationRequest = list(
-      ListParam = list(
-        member = list("one"),
-        member = list("two"),
-        member = list("three")
-      )
-    )
-  )))
+  expect_equal(r, '<OperationRequest xmlns="https://foo/"><ListParam xmlns="https://foo/"><member xmlns="https://foo/">one</member><member xmlns="https://foo/">two</member><member xmlns="https://foo/">three</member></ListParam></OperationRequest>')
 })
 
 test_that("NonFlattened List With LocationName Case1", {
@@ -358,7 +335,7 @@ test_that("NonFlattened List With LocationName Case1", {
         .attrs = list(locationName = "AlternateName",
                       locationNameList = "NotMember")
       ),
-      .attrs = list(locationName = "OperationRequest")
+      .attrs = list(locationName = "OperationRequest", xmlURI = "https://foo/")
     )
     return(populate(args, interface))
   }
@@ -373,15 +350,7 @@ test_that("NonFlattened List With LocationName Case1", {
   req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
   r <- req$body
-  expect_equal(r, xml_list_to_character(list(
-    OperationRequest = list(
-      AlternateName = list(
-        NotMember = list("one"),
-        NotMember = list("two"),
-        NotMember = list("three")
-      )
-    )
-  )))
+  expect_equal(r, '<OperationRequest xmlns="https://foo/"><AlternateName xmlns="https://foo/"><NotMember xmlns="https://foo/">one</NotMember><NotMember xmlns="https://foo/">two</NotMember><NotMember xmlns="https://foo/">three</NotMember></AlternateName></OperationRequest>')
 })
 
 test_that("Flattened List Case1", {
@@ -393,7 +362,7 @@ test_that("Flattened List Case1", {
         Scalar(type = "string"),
         .attrs = list(flattened = "true")
       ),
-      .attrs = list(locationName = "OperationRequest")
+      .attrs = list(locationName = "OperationRequest", xmlURI = "https://foo/")
     )
     return(populate(args, interface))
   }
@@ -408,13 +377,34 @@ test_that("Flattened List Case1", {
   req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
   r <- req$body
-  expect_equal(r, xml_list_to_character(list(
-    OperationRequest = list(
-      ListParam = list("one"),
-      ListParam = list("two"),
-      ListParam = list("three")
+  expect_equal(r, '<OperationRequest xmlns="https://foo/"><ListParam xmlns="https://foo/">one</ListParam><ListParam xmlns="https://foo/">two</ListParam><ListParam xmlns="https://foo/">three</ListParam></OperationRequest>')
+})
+
+test_that("Flattened List with LocationName Case1", {
+  op_test <- Operation(name = "OperationRequest")
+  op_input_test <- function(ListParam) {
+    args <- list(ListParam = ListParam)
+    interface <- Structure(
+      ListParam = List(
+        Scalar(type = "string"),
+        .attrs = list(flattened = "true", locationName = "item")
+      ),
+      .attrs = list(locationName = "OperationRequest", xmlURI = "https://foo/")
     )
-  )))
+    return(populate(args, interface))
+  }
+
+  input <- op_input_test(
+    ListParam = list(
+      "one",
+      "two",
+      "three"
+    )
+  )
+  req <- new_request(svc, op_test, input, NULL)
+  req <- build(req)
+  r <- req$body
+  expect_equal(r, '<OperationRequest xmlns="https://foo/"><item xmlns="https://foo/">one</item><item xmlns="https://foo/">two</item><item xmlns="https://foo/">three</item></OperationRequest>')
 })
 
 test_that("List of Structures Case1", {
@@ -428,7 +418,8 @@ test_that("List of Structures Case1", {
           ),
           .attrs = list(flattened = "true", locationName = "item")
         ),
-        .attrs = list(locationName = "OperationRequest")
+        .attrs = list(locationName = "OperationRequest",
+                      xmlURI = "https://foo/")
     )
     return(populate(args, interface))
   }
@@ -450,15 +441,7 @@ test_that("List of Structures Case1", {
   req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
   r <- req$body
-  expect_equal(r, 
-    xml_list_to_character(list(
-    OperationRequest = list(
-      item = list(value = list("one")),
-      item = list(value = list("two")),
-      item = list(value = list("three"))
-    )
-    ))
-  )
+  expect_equal(r, '<OperationRequest xmlns="https://foo/"><item xmlns="https://foo/"><value xmlns="https://foo/">one</value></item><item xmlns="https://foo/"><value xmlns="https://foo/">two</value></item><item xmlns="https://foo/"><value xmlns="https://foo/">three</value></item></OperationRequest>')
 })
 
 test_that("Blob Case1", {
@@ -469,7 +452,8 @@ test_that("Blob Case1", {
         StructureParam = Structure(
           B = Scalar(type = "blob", .attrs = list(locationName = "b"))
         ),
-        .attrs = list(locationName = "OperationRequest")
+        .attrs = list(locationName = "OperationRequest",
+                      xmlURI = "https://foo/")
     )
     return(populate(args, interface))
   }
@@ -480,10 +464,7 @@ test_that("Blob Case1", {
   req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
   r <- req$body
-  expect_equal(r, 
-    xml_list_to_character(list(
-    OperationRequest = list(StructureParam = list(b = list("Zm9v")))))
-  )
+  expect_equal(r, '<OperationRequest xmlns="https://foo/"><StructureParam xmlns="https://foo/"><b xmlns="https://foo/">Zm9v</b></StructureParam></OperationRequest>')
 })
 
 #-------------------------------------------------------------------------------

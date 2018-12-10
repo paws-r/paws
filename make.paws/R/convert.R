@@ -73,3 +73,10 @@ timestamp_format <- function(name) {
   )
   return(format_string)
 }
+
+convert_xml_boolean <- function(value) {
+  if (value) {
+    return("true")
+  }
+  return("false")
+}
