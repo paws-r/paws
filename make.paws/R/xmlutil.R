@@ -81,9 +81,10 @@ xml_build <- function(params) {
 
 xml_build_structure <- function(params) {
   result <- list()
-  if (is.null(names(params))) return(xml_build_structure_no_names(params))
-  for (name in names(params)) {
-    child <- params[[name]]
+  if (length(params) < 1) return(result)
+  for (i in 1:length(params)) {
+    name <- names(params[i])
+    child <- params[[i]]
 
     if (get_tag(child, "locationName") == "") {
       child <- add_tags(list(locationName = name), child)
@@ -105,26 +106,6 @@ xml_build_structure <- function(params) {
     }
   }
   return(result)
-}
-
-xml_build_structure_no_names <- function(params) {
-    result <- list()
-    for (child in params) {
-      parsed <- xml_build(child)
-      if (!is.null(parsed)) {
-        location_name <- get_tag(child, "locationName")
-        if (location_name == "") location_name <- name
- 
-        flattened <- get_tag(child, "flattened") != ""
-
-        if (flattened) {
-          result <- c(result, parsed)
-        } else{
-          result[[location_name]] <- parsed
-        }
-      }
-    }
-    return(result)
 }
 
 xml_build_list <- function(params) {
