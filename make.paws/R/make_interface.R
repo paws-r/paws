@@ -124,20 +124,6 @@ make_shape_scalar <- function(shape, api, path) {
   return(proto)
 }
 
-# Add metadata about an API shape as R attributes to the corresponding R object,
-# so we can access them later as in `attr(obj, "locationName")`.
-# TODO: Add tags with more than one value, e.g. enums.
-add_tags <- function(member, proto) {
-  ignore_keys <- c("documentation")
-  for (key in names(member)) {
-    value <- member[[key]]
-    if (is.atomic(value) && length(value) == 1 && !(key %in% ignore_keys)) {
-      attr(proto, key) <- value
-    }
-  }
-  return(proto)
-}
-
 # Convert a parameter name from an API-facing name (e.g. fooBar) to an
 # SDK-facing name (e.g. FooBar).
 make_export_name <- function(name) {
