@@ -45,8 +45,9 @@ xml_build_body <- function(request) {
   location_name <- get_tag(params, "locationName")
   xmlns <- get_tag(params, "xmlURI")
   if (location_name != "") {
-    params <- Structure(params, .attrs = list(locationName = location_name,
-                                              xmlns = xmlns))
+    params <- Structure(init = params,
+                        .attrs = list(locationName = location_name,
+                                      xmlns = xmlns))
   }
 
   body_list <- xml_build(params)
@@ -84,10 +85,8 @@ xml_build <- function(params) {
 
 xml_build_structure <- function(params) {
   result <- list()
-  if (length(params) < 1) return(result)
-  for (i in 1:length(params)) {
-    name <- names(params[i])
-    child <- params[[i]]
+  for (name in names(params)) {
+    child <- params[[name]]
 
     if (get_tag(child, "locationName") == "") {
       child <- add_tags(list(locationName = name), child)

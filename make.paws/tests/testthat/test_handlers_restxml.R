@@ -414,7 +414,9 @@ test_that("List of Structures Case1", {
     interface <- Structure(
         ListParam = List(
           Structure(
-            Scalar(type = "string", .attrs = list(locationName = "value"))
+            Element = Scalar(type = "string",
+                             .attrs = list(locationName = "value")
+                             )
           ),
           .attrs = list(flattened = "true", locationName = "item")
         ),
@@ -426,15 +428,9 @@ test_that("List of Structures Case1", {
 
   input <- op_input_test(
       ListParam = list(
-        list(
-          value = list("one")
-        ),
-        list(
-          value = list("two")
-        ),
-        list(
-          value = list("three")
-        )
+          list(Element = "one"),
+          list(Element = "two"),
+          list(Element = "three")
       )
   )
   
