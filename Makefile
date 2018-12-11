@@ -10,7 +10,6 @@ INTEGRATION_TESTS := $(addprefix test-,${PACKAGES})
 # Make R use the user's package library by setting the R user home path (R_USER)
 # to the folder containing their package library. On Windows, it is in
 # ~/Documents/R, whereas in Linux/macOS it is in ~/R.
-# In Windows
 ifdef OS
 	R_USER := ${HOME}/Documents
 else
@@ -70,7 +69,7 @@ ${INTEGRATION_TESTS}:
 
 docs:
 	@echo "build project docs"
-	@Rscript -e "rmarkdown::render('readme.Rmd')"
+	@Rscript -e "rmarkdown::render('README.Rmd')"
 
 codegen:
 	@echo "build and install the code generator"
