@@ -11,20 +11,23 @@ xml_to_list <- function(value) {
   return(result)
 }
 
-add_xmlns <- function(xml_list, xmlns = "") {
-  if (!is.list(xml_list)) {
-    return(xml_list)
-  }
-  result <- lapply(xml_list, function(x) structure(add_xmlns(x, xmlns), xmlns = xmlns))
-  return(result)
-}
-
 # Convert list to XML text
 list_to_xml <- function(value) {
   value_xml <- xml2::as_xml_document(x = value)
   value_character <- as.character(value_xml, options = "no_declaration")
   value_character <- gsub("\\n", "", value_character)
   return(value_character)
+}
+
+# Add xmlns (XML namespace) attributes to all nested elements in a list.
+add_xmlns <- function(xml_list, xmlns = "") {
+  result <- xml_list
+  result <- add_tags(list(xmlns = xmlns), result)
+  if (!is.list(result)) return(result)
+  for (i in seq_along(result)) {
+    result[[i]] <- add_xmlns(result[[i]], xmlns)
+  }
+  return(result)
 }
 
 #-------------------------------------------------------------------------------
@@ -39,13 +42,13 @@ xml_build_body <- function(request) {
     return(request)
   }
 
-  locationName <- get_tag(params, "locationName")
+  location_name <- get_tag(params, "locationName")
   xmlns <- get_tag(params, "xmlURI")
-  if (locationName != "") {
-    params <- Structure(params, .attrs = list(locationName = locationName,
+  if (location_name != "") {
+    params <- Structure(params, .attrs = list(locationName = location_name,
                                               xmlns = xmlns))
   }
-  
+
   body_list <- xml_build(params)
 
   if (length(body_list)) {
@@ -73,7 +76,7 @@ xml_build <- function(params) {
     list = xml_build_list,
     xml_build_scalar
   )
-  
+
   result <- build_fn(params)
 
   return(result)
@@ -137,7 +140,7 @@ xml_build_scalar <- function(params) {
   convert <- switch(
     t,
     blob = raw_to_base64,
-    boolean = convert_xml_boolean,
+    boolean = convert_boolean,
     double = as.numeric,
     float = as.numeric,
     integer = as.integer,
