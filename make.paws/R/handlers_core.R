@@ -17,7 +17,7 @@ build_content_length_handler <- function(request) {
     len <- as.integer(content_length)
   } else {
     if (!is.null(request$body)) {
-      len <- nchar(request$body, type = "bytes")
+      len <- get_content_length(request$body)
     }
   }
 
@@ -30,6 +30,15 @@ build_content_length_handler <- function(request) {
   }
 
   return(request)
+}
+
+get_content_length <- function(content) {
+  if (is.character(content)) {
+    return(nchar(content, type = "bytes"))
+  } else if (is.raw(content)) {
+    return(length(content))
+  }
+  return(NULL)
 }
 
 # Ensure that the request's signature doesn't expire before it is sent.

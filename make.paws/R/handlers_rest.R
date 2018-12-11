@@ -94,7 +94,7 @@ rest_build_query_string <- function(query, field, name) {
 }
 
 rest_build_body <- function(request, values) {
-  field <- values[["_"]]
+  field <- values
   if (!is.null(field)) {
     payload_name <- get_tag(field, "payload")
     if (payload_name != "") {
@@ -104,7 +104,7 @@ rest_build_body <- function(request, values) {
         if (t == "string") {
           request <- set_body(request, as.character(payload))
         } else if (t == "blob") {
-          request <- set_body(request, rawToChar(payload))
+          request <- set_body(request, payload)
         } else {
           stop()
         }
@@ -133,7 +133,13 @@ rest_unmarshal <- function(request) {
   values <- request$data
   payload_name <- get_tag(values, "payload")
   if (payload_name != "") {
-    values[[payload_name]] <- request$http_response$body
+    payload_type <- get_tag(values[[payload_name]], "type")
+    if (payload_type == "blob") {
+      payload <- request$http_response$body
+    } else {
+      payload <- rawToChar(request$http_response$body)
+    }
+    values[[payload_name]] <- payload
     request$data <- values
   }
   return(request)
@@ -187,7 +193,7 @@ rest_unmarshal_header <- function(value, type) {
     double = as.numeric,
     integer = as.integer,
     float = as.numeric,
-    jsonvalue = json_to_list, # TODO
+    jsonvalue = json_to_list,
     long = as.numeric,
     string = as.character,
     timestamp = function(x) as_timestamp(x, format = "rfc1123"),

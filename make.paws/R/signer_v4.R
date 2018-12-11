@@ -289,7 +289,7 @@ build_body_digest <- function(ctx) {
   if (hash == "") {
     if (ctx$unsigned_payload || (ctx$is_presigned && ctx$service_name == "s3")) {
       hash <- "UNSIGNED-PAYLOAD"
-    } else if (ctx$body == "") {
+    } else if (is_empty(ctx$body)) {
       hash <- EMPTY_STRING_SHA256
     } else {
       hash <- sha256(ctx$body)
@@ -385,6 +385,7 @@ build_signature <- function(ctx) {
   ctx$signature <- paste(signature, collapse = "")
   return(ctx)
 }
+
 # Do a keyed hash operation on the given data using the given key.
 make_hmac <- function(key, data) {
   return(digest::hmac(key, enc2utf8(data), "sha256", serialize = FALSE, raw = TRUE))

@@ -99,7 +99,7 @@ make_shape_list <- function(shape, api, path) {
   member <- shape$member
   proto <- list(make_shape(member, api, path))
 
-  if (not_empty(member$locationName)) {
+  if (!is_empty(member$locationName)) {
     proto <- add_tags(list(locationNameList = member$locationName), proto)
   }
 
@@ -110,10 +110,10 @@ make_shape_map <- function(shape, api, path) {
   key <- shape$key
   value <- shape$value
   proto <- list(make_shape(value, api, path))
-  if (not_empty(key$locationName)) {
+  if (!is_empty(key$locationName)) {
     proto <- add_tags(list(locationNameKey = key$locationName), proto)
   }
-  if (not_empty(value$locationName)) {
+  if (!is_empty(value$locationName)) {
     proto <- add_tags(list(locationNameValue = value$locationName), proto)
   }
   return(proto)
@@ -121,20 +121,6 @@ make_shape_map <- function(shape, api, path) {
 
 make_shape_scalar <- function(shape, api, path) {
   proto <- placeholder()
-  return(proto)
-}
-
-# Add metadata about an API shape as R attributes to the corresponding R object,
-# so we can access them later as in `attr(obj, "locationName")`.
-# TODO: Add tags with more than one value, e.g. enums.
-add_tags <- function(member, proto) {
-  ignore_keys <- c("documentation")
-  for (key in names(member)) {
-    value <- member[[key]]
-    if (is.atomic(value) && length(value) == 1 && !(key %in% ignore_keys)) {
-      attr(proto, key) <- value
-    }
-  }
   return(proto)
 }
 

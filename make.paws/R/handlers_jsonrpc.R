@@ -8,15 +8,15 @@ jsonrpc_build <- function(request) {
     body <- EMPTY_JSON
   }
 
-  if (not_empty(request$client_info$target_prefix) || (!is.null(body) && body != "{}")) {
+  if (!is_empty(request$client_info$target_prefix) || (!is.null(body) && body != "{}")) {
      request <- set_body(request, body)
   }
-  if (not_empty(request$client_info$target_prefix))  {
+  if (!is_empty(request$client_info$target_prefix))  {
     target <- paste0(request$client_info$target_prefix, ".", request$operation$name)
     request$http_request$header["X-Amz-Target"] <- target
   }
 
-  if (not_empty(request$client_info$json_version)) {
+  if (!is_empty(request$client_info$json_version)) {
     json_version <- request$client_info$json_version
     request$http_request$header["Content-Type"] <- paste0("application/x-amz-json-", json_version)
   }
@@ -34,7 +34,7 @@ jsonrpc_unmarshal_meta <- function(request) {
 jsonrpc_unmarshal <- function(request) {
   body <- request$http_response$body
   if (data_filled(request) && length(body) > 0) {
-    data <- json_to_list(body)
+    data <- decode_json(body)
     request$data <- json_parse(data, request$data)
   }
   return(request)
@@ -42,7 +42,7 @@ jsonrpc_unmarshal <- function(request) {
 
 # Unmarshal errors from a JSON RPC response.
 jsonrpc_unmarshal_error <- function(request) {
-  error <- json_to_list(request$http_response$body)
+  error <- decode_json(request$http_response$body)
   if (length(error) == 0) {
     return(request)
   }

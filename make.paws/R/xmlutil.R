@@ -1,6 +1,161 @@
-# Unmarshal `data` provided as XML into the shape in `interface`.
+# Decode raw bytes XML into an R list object.
+decode_xml <- function(raw) {
+  obj <- xml_to_list(rawToChar(raw))
+  return(obj)
+}
+
+# Convert an XML string to an R list.
+xml_to_list <- function(value) {
+  if (is_empty(value)) return(NULL)
+  result <- xml2::as_list(xml2::read_xml(value))
+  return(result)
+}
+
+# Convert list to XML text
+list_to_xml <- function(value) {
+  value_xml <- xml2::as_xml_document(x = value)
+  value_character <- as.character(value_xml, options = "no_declaration")
+  value_character <- gsub("\\n", "", value_character)
+  return(value_character)
+}
+
+# Add xmlns (XML namespace) attributes to all nested elements in a list.
+add_xmlns <- function(xml_list, xmlns = "") {
+  result <- xml_list
+  result <- add_tags(list(xmlns = xmlns), result)
+  if (!is.list(result)) return(result)
+  for (i in seq_along(result)) {
+    result[[i]] <- add_xmlns(result[[i]], xmlns)
+  }
+  return(result)
+}
+
+#-------------------------------------------------------------------------------
+
+xml_build_body <- function(request) {
+  params <- request$params
+
+  if (is_empty(params)) {
+    body_xml <- ""
+    request$body <- body_xml
+    request$http_request$body <- body_xml
+    return(request)
+  }
+
+  location_name <- get_tag(params, "locationName")
+  xmlns <- get_tag(params, "xmlURI")
+  if (location_name != "") {
+    params <- Structure(init = params,
+                        .attrs = list(locationName = location_name,
+                                      xmlns = xmlns))
+  }
+
+  body_list <- xml_build(params)
+
+  if (length(body_list)) {
+    if (xmlns != "") body_list <- add_xmlns(body_list, xmlns)
+    body_xml <- list_to_xml(body_list)
+  } else {
+    body_xml <- ""
+  }
+
+  request$body <- body_xml
+  request$http_request$body <- body_xml
+  return(request)
+}
+
+xml_build <- function(params) {
+
+  location <- get_tag(params, "location")
+  if (location != "") return(NULL)
+
+  t <- type(params)
+
+  build_fn <- switch(
+    t,
+    structure = xml_build_structure,
+    list = xml_build_list,
+    xml_build_scalar
+  )
+
+  result <- build_fn(params)
+
+  return(result)
+}
+
+xml_build_structure <- function(params) {
+  result <- list()
+  for (name in names(params)) {
+    child <- params[[name]]
+
+    if (get_tag(child, "locationName") == "") {
+      child <- add_tags(list(locationName = name), child)
+    }
+
+    parsed <- xml_build(child)
+
+    if (!is.null(parsed)) {
+      location_name <- get_tag(child, "locationName")
+      if (location_name == "") location_name <- name
+
+      flattened <- get_tag(child, "flattened") != ""
+
+      if (flattened) {
+        result <- c(result, parsed)
+      } else{
+        result[[location_name]] <- parsed
+      }
+    }
+  }
+  return(result)
+}
+
+xml_build_list <- function(params) {
+  if (length(params) == 0) return(list())
+  children <- lapply(params, function(x) xml_build(x))
+
+  location_name <- get_tag(params, "locationName")
+
+  flattened <- get_tag(params, "flattened") != ""
+  if (flattened) {
+    result <- children
+    names(result) <- rep(location_name, length(children))
+  } else {
+    location_name_list <- get_tag(params, "locationNameList")
+    if (location_name_list == "") location_name_list <- "member"
+    result <- children
+    names(result) <- rep(location_name_list, length(children))
+  }
+
+  return(result)
+}
+
+xml_build_scalar <- function(params) {
+  # Use `unlist` to avoid embedded lists in scalar nodes; `xml2::as_list`
+  # converts <foo>abc</foo> to `list(foo = list("abc"))`, when we want
+  # `list(foo = "abc")`.
+  data <- unlist(params)
+  t <- get_tag(params, "type")
+  convert <- switch(
+    t,
+    blob = raw_to_base64,
+    boolean = convert_boolean,
+    double = as.numeric,
+    float = as.numeric,
+    integer = as.integer,
+    long = as.numeric,
+    timestamp = function(x) as_timestamp(x, format = "iso8601"),
+    as.character
+  )
+  result <- as.list(convert(data))
+  return(result)
+}
+
+#-------------------------------------------------------------------------------
+
+# Unmarshal `data` provided as a list into the shape in `interface`.
 xml_unmarshal <- function(data, interface, result_name = NULL) {
-  root <- xml_to_list(data)[[1]]
+  root <- data[[1]]
   if (!is.null(result_name) && result_name %in% names(root)) {
     root <- root[[result_name]]
   }
@@ -8,9 +163,9 @@ xml_unmarshal <- function(data, interface, result_name = NULL) {
   return(result)
 }
 
-# Unmarshal errors in `data` provided as XML.
+# Unmarshal errors in `data` provided as a list.
 xml_unmarshal_error <- function(data) {
-  root <- xml_to_list(data)[[1]]
+  root <- data[[1]]
   code <- unlist(root$Error$Code)
   message <- unlist(root$Error$Message)
   error <- Error(code, message)
@@ -67,6 +222,7 @@ xml_parse_structure <- function(node, interface) {
     }
 
     parsed <- xml_parse(elem, field)
+
     result[[name]] <- parsed
   }
   return(result)
@@ -128,13 +284,5 @@ xml_parse_scalar <- function(node, interface) {
     as.character
   )
   result <- convert(data)
-  return(result)
-}
-
-#-------------------------------------------------------------------------------
-
-# Convert an XML string to an R list.
-xml_to_list <- function(value) {
-  result <- xml2::as_list(xml2::read_xml(value))
   return(result)
 }

@@ -21,7 +21,7 @@ ec2query_build <- function(request) {
 
 # Unmarshal the response from an EC2 protocol response.
 ec2query_unmarshal <- function(request) {
-  body <- xml_to_list(request$http_response$body)
+  body <- decode_xml(request$http_response$body)
   data <- body[[1]]
   request$data <- xml_parse(data, request$data)
   return(request)
@@ -35,7 +35,7 @@ ec2query_unmarshal_meta <- function(request) {
 
 # Unmarshal errors from an EC2 protocol response.
 ec2query_unmarshal_error <- function(request) {
-  body <- xml_to_list(request$http_response$body)
+  body <- decode_xml(request$http_response$body)
   data <- body[[1]]
   code <- data$Errors$Error$Code
   message <- data$Errors$Error$Message
