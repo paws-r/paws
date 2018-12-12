@@ -1,7 +1,7 @@
 # Batch examples
 
 # Note: In some cases, you'll need to wait for a step to complete in your AWS
-# account before you can successfully run the next.
+# account before you can successfully run the next step.
 
 # To set up the Batch compute environment, get security group and subnet info
 # for the default VPC.
@@ -21,7 +21,7 @@ subnets <- paws.ec2::describe_subnets(
 
 #-------------------------------------------------------------------------------
 
-# Set up an IAM role for the Lambda function.
+# Set up an IAM role for Batch.
 
 role_name <- "TestBatchServiceRole"
 policy_arn <- "arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole"
