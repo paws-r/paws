@@ -17,7 +17,10 @@ zip_contents <- readBin(zip_file, "raw", n = 1e5)
 
 # Set up an IAM role for the Lambda function.
 
-role_policy <- list(
+role_name <- "MyRole"
+policy_arn <- "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+
+trust_policy <- list(
   Version = "2012-10-17",
   Statement = list(
     list(
@@ -31,9 +34,13 @@ role_policy <- list(
 )
 
 iam <- paws.iam::create_role(
-  RoleName = "MyRole",
-  AssumeRolePolicyDocument = jsonlite::toJSON(role_policy, auto_unbox = TRUE),
-  PermissionsBoundary = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+  RoleName = role_name,
+  AssumeRolePolicyDocument = jsonlite::toJSON(trust_policy, auto_unbox = TRUE)
+)
+
+paws.iam::attach_role_policy(
+  RoleName = role_name,
+  PolicyArn = policy_arn
 )
 
 #-------------------------------------------------------------------------------
@@ -58,4 +65,5 @@ paws.lambda::list_functions()
 
 # Clean up.
 paws.lambda::delete_function("MyFunction")
-paws.iam::delete_role("MyRole")
+paws.iam::detach_role_policy(role_name, policy_arn)
+paws.iam::delete_role(role_name)
