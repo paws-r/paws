@@ -81,17 +81,15 @@ make_operations <- function(api) {
 
 #-------------------------------------------------------------------------------
 
-# Get the inputs for an API operation, putting required arguments first.
+# Get the inputs for an API operation.
 get_inputs <- function(input) {
   if (!is.null(input)) {
     members <- input$members
-    required <- members[unlist(input$required)]
-    optional <- members[setdiff(names(members), unlist(input$required))]
-    members <- c(required, optional)
+    required <- unlist(input$required)
     members[] <- lapply(seq_along(members), function(i) {
       x <- members[[i]]
       x$member_name <- names(members)[i]
-      x$required <- x$member_name %in% names(required)
+      x$required <- x$member_name %in% required
       x
     })
   } else {

@@ -180,13 +180,6 @@ preprocess <- function(text) {
   if (length(code) > 0) {
     code_text <- xml2::xml_text(code)
     xml2::xml_text(code) <- fix_unmatched_chars(code_text)
-
-    # if (!grepl("^<body>", text)) {
-    #   result <- xml2::xml_find_first(html, ".//body")
-    # } else {
-    #   result <- html
-    # }
-
     result <- as.character(xml2::xml_children(html))
   } else {
     result <- text
@@ -260,32 +253,20 @@ make_doc_desc <- function(operation) {
   return(as.character(description))
 }
 
-# Get the inputs to the function.
-make_inputs <- function(shape) {
-  members <- shape$members
-  required <- members[unlist(shape$required)]
-  optional <- members[setdiff(names(members), names(required))]
-  members <- c(required, optional)
-  members[] <- lapply(seq_along(members), function(i) {
-    x <- members[[i]]
-    x$member_name <- names(members)[i]
-    x$param_name <- x$member_name
-    x$required <- x$member_name %in% names(required)
-    x
-  })
-  return(members)
-}
-
 # Make the parameter documentation.
 make_doc_params <- function(operation, api) {
   if (!is.null(operation$input$shape)) {
     shapes <- api$shapes
     shape <- shapes[[operation$input$shape]]
-    inputs <- make_inputs(shape)
+    inputs <- get_inputs(shape)
     params <- sapply(inputs, function(input) {
-      param <- input$param_name
+      param <- input$member_name
+      required <- input$required
       documentation <- convert(input$documentation, wrap = FALSE)
       documentation <- glue::glue_collapse(documentation, sep = "\n")
+      if (required) {
+        documentation <- glue::glue("&#91;required&#93; {documentation}")
+      }
       documentation <- glue::glue("@param {param} {documentation}")
       lines <- strsplit(documentation, "\n")[[1]]
       lines <- glue::glue("#' {lines}")
