@@ -26,7 +26,7 @@ subnets <- paws.ec2::describe_subnets(
 role_name <- "TestBatchServiceRole"
 policy_arn <- "arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole"
 
-role_policy <- list(
+trust_policy <- list(
   Version = "2012-10-17",
   Statement = list(
     list(
@@ -41,7 +41,7 @@ role_policy <- list(
 
 iam <- paws.iam::create_role(
   RoleName = role_name,
-  AssumeRolePolicyDocument = jsonlite::toJSON(role_policy, auto_unbox = TRUE)
+  AssumeRolePolicyDocument = jsonlite::toJSON(trust_policy, auto_unbox = TRUE)
 )
 
 paws.iam::attach_role_policy(
