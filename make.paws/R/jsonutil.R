@@ -40,14 +40,11 @@ json_build_structure <- function(values) {
 
   # TODO: Implement is valid check.
 
-  if ("_" %in% names(values)) {
-    metadata <- values[["_"]]
-    payload_name <- get_tag(metadata, "payload")
-    if (payload_name != "") {
-      values <- values[[payload_name]]
-      if (is_empty(values)) {
-        return(NULL)
-      }
+  payload_name <- get_tag(values, "payload")
+  if (payload_name != "") {
+    values <- values[[payload_name]]
+    if (is_empty(values)) {
+      return(NULL)
     }
   }
 
