@@ -40,7 +40,7 @@ json_build_structure <- function(values) {
 
   # TODO: Implement is valid check.
 
-  payload_name <- get_tag(values, "payload")
+  payload_name <- tag_get(values, "payload")
   if (payload_name != "") {
     values <- values[[payload_name]]
     if (is_empty(values)) {
@@ -55,15 +55,15 @@ json_build_structure <- function(values) {
 
     # TODO: Implement PkgPath.
 
-    if (get_tag(field, "json") == "-") {
+    if (tag_get(field, "json") == "-") {
       next
     }
 
-    if (get_tag(field, "location") != "") {
+    if (tag_get(field, "location") != "") {
       next
     }
 
-    if (get_tag(field, "ignore") != "") {
+    if (tag_get(field, "ignore") != "") {
       next
     }
 
@@ -80,7 +80,7 @@ json_build_structure <- function(values) {
     }
 
     name <- key
-    loc_name <- get_tag(field, "locationName")
+    loc_name <- tag_get(field, "locationName")
     if (loc_name != "") {
       name <- loc_name
     }
@@ -113,7 +113,7 @@ json_build_map <- function(values) {
 
 json_build_scalar <- function(values) {
   s <- switch(
-    get_tag(values, "type"),
+    tag_get(values, "type"),
     blob = sprintf('"%s"', convert_blob(values)),
     boolean = convert_boolean(values),
     double = as.character(values),
@@ -182,14 +182,14 @@ json_parse_structure <- function(node, interface) {
 
   result <- interface
 
-  payload_name <- get_tag(interface, "payload")
+  payload_name <- tag_get(interface, "payload")
   if (payload_name != "") {
     result[[payload_name]] <- json_parse(node, interface[[payload_name]])
     return(result)
   }
 
   for (name in names(interface)) {
-    node_name <- get_tag(interface[[name]], "locationName")
+    node_name <- tag_get(interface[[name]], "locationName")
     if (node_name == "") node_name <- name
     parsed <- json_parse(node[[node_name]], interface[[name]])
     result[[name]] <- parsed
@@ -218,7 +218,7 @@ json_parse_map <- function(node, interface) {
 }
 
 json_parse_scalar <- function(node, interface) {
-  t <- get_tag(interface, "type")
+  t <- tag_get(interface, "type")
   if (t == "") {
     return(interface)
   }

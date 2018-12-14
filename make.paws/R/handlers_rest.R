@@ -22,16 +22,16 @@ rest_build_location_elements <- function(request, values, build_get_query) {
     }
 
     if (is_valid(field)) {
-      name <- get_tag(field, "locationName")
+      name <- tag_get(field, "locationName")
       if (name == "") {
         name <- field_name
       }
 
-      if (get_tag(field, "ignore") != "") {
+      if (tag_get(field, "ignore") != "") {
         next
       }
 
-      location <- get_tag(field, "location")
+      location <- tag_get(field, "location")
       if (location == "headers") {
         request$http_request$header <- rest_build_header_map(request$http_request$header, field)
       } else if (location == "header") {
@@ -57,7 +57,7 @@ rest_build_location_elements <- function(request, values, build_get_query) {
 }
 
 rest_build_header_map <- function(header, values) {
-  prefix <- get_tag(values, "locationName")
+  prefix <- tag_get(values, "locationName")
   for (key in names(values)) {
     value <- values[[key]]
     header[[paste0(prefix, key)]] <- convert_type(value)
@@ -80,7 +80,7 @@ rest_build_uri <- function(uri, value, name) {
 }
 
 rest_build_query_string <- function(query, field, name) {
-  t <- get_tag(field, "type")
+  t <- tag_get(field, "type")
   if (t == "list") {
     query[[name]] <- field
   } else if (t == "map") {
@@ -96,10 +96,10 @@ rest_build_query_string <- function(query, field, name) {
 rest_build_body <- function(request, values) {
   field <- values
   if (!is.null(field)) {
-    payload_name <- get_tag(field, "payload")
+    payload_name <- tag_get(field, "payload")
     if (payload_name != "") {
       payload <- values[[payload_name]]
-      t <- get_tag(payload, "type")
+      t <- tag_get(payload, "type")
       if (length(payload) > 0 && t != "structure" && t != "") {
         if (t == "string") {
           request <- set_body(request, as.character(payload))
@@ -131,9 +131,9 @@ rest_unmarshal_meta <- function(request) {
 # Unmarshal the body from a REST protocol API response.
 rest_unmarshal <- function(request) {
   values <- request$data
-  payload_name <- get_tag(values, "payload")
+  payload_name <- tag_get(values, "payload")
   if (payload_name != "") {
-    payload_type <- get_tag(values[[payload_name]], "type")
+    payload_type <- tag_get(values[[payload_name]], "type")
     if (payload_type == "blob") {
       payload <- request$http_response$body
     } else {
@@ -155,22 +155,22 @@ rest_unmarshal_location_elements <- function(request) {
       next
     }
 
-    name <- get_tag(field, "locationName")
+    name <- tag_get(field, "locationName")
     if (name == "") {
       name <- field_name
     }
 
-    location <- get_tag(field, "location")
+    location <- tag_get(field, "location")
     if (location == "statusCode") {
       values[[field_name]] <- rest_unmarshal_status_code(request$http_response$status_code)
     } else if (location == "header") {
       v <- request$http_response$header[[name]]
-      type <- get_tag(field, "type")
+      type <- tag_get(field, "type")
       values[[field_name]] <- rest_unmarshal_header(v, type)
     } else if (location == "headers") {
       v <- request$http_response$header
-      prefix <- get_tag(field, "locationName")
-      type <- get_tag(field, "type")
+      prefix <- tag_get(field, "locationName")
+      type <- tag_get(field, "type")
       values[[field_name]] <- rest_unmarshal_header_map(v, prefix, type)
     }
   }
@@ -235,10 +235,10 @@ rest_payload_type <- function(values) {
   if (!is_valid(values)) {
     return("")
   }
-  payload_name <- get_tag(values, "payload")
+  payload_name <- tag_get(values, "payload")
   if (payload_name != "") {
     payload <- values[[payload_name]]
-    return(get_tag(payload, "type"))
+    return(tag_get(payload, "type"))
   }
   return("")
 }

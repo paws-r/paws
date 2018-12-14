@@ -37,7 +37,7 @@ test_that("build scalar members", {
 op_input2 <- function(TimeArg) {
   args <- list(TimeArg = TimeArg)
   interface <- Structure(
-    TimeArg = Scalar(type = "timestamp", .attrs = list(timestampFormat = "unix"))
+    TimeArg = Scalar(type = "timestamp", .tags = list(timestampFormat = "unix"))
   )
   return(populate(args, interface))
 }
@@ -288,7 +288,7 @@ test_that("build empty map", {
 op_input12 <- function(Token = NULL) {
   args <- list(Token = Token)
   interface <- Structure(
-    Token = Scalar(type = "string", .attrs = list(idempotencyToken = TRUE))
+    Token = Scalar(type = "string", .tags = list(idempotencyToken = TRUE))
   )
   return(populate(args, interface))
 }
@@ -312,8 +312,8 @@ test_that("build idempotency token", {
 op_input13 <- function(FooEnum, ListEnums) {
   args <- list(FooEnum = FooEnum, ListEnums = ListEnums)
   interface <- Structure(
-    FooEnum = Scalar(type = "string", .attrs = list(enum = "InputService8TestShapeEnumType")),
-    ListEnums = List(Scalar(type = "string", .attrs = list(enum = "InputService8TestShapeEnumType")))
+    FooEnum = Scalar(type = "string", .tags = list(enum = "InputService8TestShapeEnumType")),
+    ListEnums = List(Scalar(type = "string", .tags = list(enum = "InputService8TestShapeEnumType")))
   )
   return(populate(args, interface))
 }
@@ -404,7 +404,7 @@ test_that("unmarshal scalar members", {
 op_output2 <- Structure(
   BlobMember = Scalar(type = "blob"),
   StructMember = Structure(
-    Foo = Scalar(type = "blob", .attrs = list(locationName = "foo"))
+    Foo = Scalar(type = "blob", .tags = list(locationName = "foo"))
   )
 )
 
@@ -421,9 +421,9 @@ test_that("unmarshal blobs", {
 })
 
 op_output3 <- Structure(
-  TimeMember = Scalar(type = "timestamp", .attrs = list(timestampFormat = "unix")),
+  TimeMember = Scalar(type = "timestamp", .tags = list(timestampFormat = "unix")),
   StructMember = Structure(
-    Foo = Scalar(type = "timestamp", .attrs = list(locationName = "foo", timestampFormat = "unix"))
+    Foo = Scalar(type = "timestamp", .tags = list(locationName = "foo", timestampFormat = "unix"))
   )
 )
 
@@ -513,8 +513,8 @@ test_that("unmarshal ignores extra data", {
 })
 
 op_output7 <- Structure(
-  FooEnum = Scalar(type = "string", .attrs = list(enum = "OutputService7TestShapeJSONEnumType")),
-  ListEnums = List(Scalar(type = "string", .attrs = list(enum = "OutputService7TestShapeJSONEnumType")))
+  FooEnum = Scalar(type = "string", .tags = list(enum = "OutputService7TestShapeJSONEnumType")),
+  ListEnums = List(Scalar(type = "string", .tags = list(enum = "OutputService7TestShapeJSONEnumType")))
 )
 
 test_that("unmarshal enums", {
