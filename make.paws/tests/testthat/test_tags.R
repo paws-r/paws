@@ -18,17 +18,25 @@ test_that("add tags to an object with tags", {
 })
 
 test_that("delete tags", {
-  inner <- list(foo = 123)
-  inner <- tag_add(inner, list(bar = 456))
-  outer <- list(inner = inner)
-  outer <- tag_add(outer, list(baz = "abc"))
+  inner1 <- list(foo = 1)
+  inner1 <- tag_add(inner1, list(test = "list_item_tag"))
+  inner2 <- list(foo = 2)
+  inner2 <- tag_add(inner2, list(test = "list_item_tag"))
+  inner3 <- list(foo = 3)
+  inner3 <- tag_add(inner3, list(test = "list_item_tag"))
+  inner <- list(inner1, inner2, inner3)
+  inner <- tag_add(inner, list(test = "list_tag"))
 
-  expect_equal(tag_get(outer, "baz"), "abc")
-  expect_equal(tag_get(outer$inner, "bar"), 456)
+  outer <- list(inner = inner)
+  outer <- tag_add(outer, list(test = "structure_tag"))
+
+  expect_equal(tag_get(outer, "test"), "structure_tag")
+  expect_equal(tag_get(outer$inner, "test"), "list_tag")
 
   result <- tag_del(outer)
 
-  expect_equal(tag_get(result, "baz"), "")
-  expect_equal(tag_get(result$inner, "bar"), "")
-  expect_equal(result$inner$foo, 123)
+  expect_equal(tag_get(result, "test"), "")
+  expect_equal(tag_get(result$inner, "test"), "")
+  expect_equal(tag_get(result$inner[[1]], "test"), "")
+  expect_equal(result$inner[[2]]$foo, 2)
 })

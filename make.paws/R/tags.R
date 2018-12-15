@@ -27,8 +27,9 @@ tag_add <- function(object, tags) {
 tag_del <- function(object) {
   result <- object
   attr(result, "tags") <- NULL
-  for (name in names(result)) {
-    result[[name]] <- tag_del(result[[name]])
+  if (is.atomic(result)) return(result)
+  for (i in seq_along(result)) {
+    result[[i]] <- tag_del(result[[i]])
   }
   return(result)
 }
