@@ -165,12 +165,15 @@ xml_unmarshal <- function(data, interface, result_name = NULL) {
 
 # Unmarshal errors in `data` provided as a list.
 xml_unmarshal_error <- function(data) {
-  root <- data[[1]]
-  code <- unlist(root$Error$Code)
-  message <- unlist(root$Error$Message)
+  code <- unlist(data$Error$Code)
+  message <- unlist(data$Error$Message)
+  
+  if (is.null(message) || is.null(code)) {
+    code <- "ServiceUnavailableException"
+    message <- "service is unavailable"
+  }
+  
   error <- Error(code, message)
-  # TODO: service unavailable
-  # TODO: failure to retrieve error from response
   return(error)
 }
 
