@@ -169,8 +169,7 @@ xml_unmarshal_error <- function(data) {
   message <- unlist(data$Error$Message)
   
   if (is.null(message) || is.null(code)) {
-    code <- "ServiceUnavailableException"
-    message <- "service is unavailable"
+    return(NULL)
   }
   
   error <- Error(code, message)
