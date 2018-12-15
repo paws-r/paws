@@ -1,10 +1,17 @@
 context("XML unmarshalling utilities")
 
 test_that("unmarshal error", {
-  data <- "<ErrorResponse>\n  <Error>\n    <Type>Sender</Type>\n    <Code>FooError</Code>\n    <Message>Foo</Message>\n  </Error>\n  <RequestId>123</RequestId>\n</ErrorResponse>\n"
+  data <- "<Error><Code>FooError</Code><Message>Foo</Message><RequestId>123</RequestId><HostId>ABC</HostId></Error>"
   out <- xml_unmarshal_error(xml_to_list(data))
   expect_equal(out$code, "FooError")
   expect_equal(out$message, "Foo")
+})
+
+test_that("unmarshal error no message", {
+  data <- ""
+  out <- xml_unmarshal_error(xml_to_list(data))
+  expect_equal(out$code, "ServiceUnavailableException")
+  expect_equal(out$message, "service is unavailable")
 })
 
 test_that("add XML namespace", {
