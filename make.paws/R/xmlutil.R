@@ -168,7 +168,7 @@ xml_unmarshal_error <- function(data) {
   code <- unlist(data$Error$Code)
   message <- unlist(data$Error$Message)
   
-  if (is.null(message) || is.null(code)) {
+  if (is.null(message) && is.null(code)) {
     return(NULL)
   }
   
