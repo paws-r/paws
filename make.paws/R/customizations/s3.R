@@ -38,6 +38,28 @@ update_endpoint_for_s3_config <- function(request) {
 }
 
 ################################################################################
+# populate_location_constraint
+
+populate_location_constraint <- function(request) {
+
+  operation_name <- request$operation$name
+
+  if (operation_name != "CreateBucket") return(request)
+
+  request_params <- request$params
+  location <- request_params$CreateBucketConfiguration$LocationConstraint
+
+  if (length(location) == 0) {
+    request$params[["CreateBucketConfiguration"]] <- NULL
+  }
+
+  return(request)
+}
+
+
+
+
+################################################################################
 # contentMD5
 
 content_md5 <- function(request) {
@@ -66,6 +88,9 @@ content_md5 <- function(request) {
 
 HANDLERS$build <- add_handlers_front(HANDLERS$build,
                                      update_endpoint_for_s3_config)
+
+HANDLERS$build <- add_handlers_front(HANDLERS$build,
+                                     populate_location_constraint)
 
 HANDLERS$build <- add_handlers_back(HANDLERS$build,
                                      content_md5)
