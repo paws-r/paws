@@ -65,7 +65,7 @@ Collate:
     'make_utils.R'
     'populate.R'
     'populateutil.R'
-    'type.R'
+    'tags.R'
     'queryutil.R'
     'request.R'
     'signer_v4.R'

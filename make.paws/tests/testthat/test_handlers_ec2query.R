@@ -34,8 +34,8 @@ op_input2 <- function(Foo = NULL, Bar = NULL, Yuck = NULL) {
   args <- list(Foo = Foo, Bar = Bar, Yuck = Yuck)
   interface <- Structure(
     Foo = Scalar(),
-    Bar = Scalar(.attrs = list(locationName = "barLocationName")),
-    Yuck = Scalar(.attrs = list(locationName = "yuckLocationName", queryName = "yuckQueryName"))
+    Bar = Scalar(.tags = list(locationName = "barLocationName")),
+    Yuck = Scalar(.tags = list(locationName = "yuckLocationName", queryName = "yuckQueryName"))
   )
   return(populate(args, interface))
 }
@@ -101,7 +101,7 @@ test_that("build list types", {
 op_input5 <- function(ListArg) {
   args <- list(ListArg = ListArg)
   interface <- Structure(
-    ListArg = List(Scalar(), .attrs = list(locationName = "ListMemberName", locationNameList = "item"))
+    ListArg = List(Scalar(), .tags = list(locationName = "ListMemberName", locationNameList = "item"))
   )
   return(populate(args, interface))
 }
@@ -118,7 +118,7 @@ test_that("build location name list", {
 op_input6 <- function(ListArg) {
   args <- list(ListArg = ListArg)
   interface <- Structure(
-    ListArg = List(Scalar(), .attrs = list(locationName = "ListMemberName", queryName = "ListQueryName", locationNameList = "item"))
+    ListArg = List(Scalar(), .tags = list(locationName = "ListMemberName", queryName = "ListQueryName", locationNameList = "item"))
   )
   return(populate(args, interface))
 }
@@ -152,7 +152,7 @@ test_that("build blob argument", {
 op_input8 <- function(TimeArg) {
   args <- list(TimeArg = TimeArg)
   interface <- Structure(
-    TimeArg = Scalar(type = "timestamp", .attrs = list(timestampFormat = "iso8601"))
+    TimeArg = Scalar(type = "timestamp", .tags = list(timestampFormat = "iso8601"))
   )
   return(populate(args, interface))
 }
@@ -169,7 +169,7 @@ test_that("build time argument", {
 op_input9 <- function(Token = NULL) {
   args <- list(Token = Token)
   interface <- Structure(
-    Token = Scalar(.attrs = list(idempotencyToken = TRUE))
+    Token = Scalar(.tags = list(idempotencyToken = TRUE))
   )
   return(populate(args, interface))
 }
@@ -194,7 +194,7 @@ op_input10 <- function(ListEnums = NULL) {
   args <- list(ListEnums = ListEnums)
   interface <- Structure(
     ListEnums = List(
-      Scalar(.attrs = list(enum = "InputService10TestShapeEnumType"))
+      Scalar(.tags = list(enum = "InputService10TestShapeEnumType"))
     )
   )
   return(populate(args, interface))
@@ -230,7 +230,7 @@ op_output1 <- Structure(
   FalseBool = Scalar(type = "boolean"),
   Float = Scalar(type = "float"),
   Long = Scalar(type = "long"),
-  Num = Scalar(type = "integer", .attrs = list(locationName = "FooNum")),
+  Num = Scalar(type = "integer", .tags = list(locationName = "FooNum")),
   Str = Scalar(type = "string"),
   TrueBool = Scalar(type = "boolean")
 )
@@ -301,7 +301,7 @@ test_that("unmarshal list", {
 })
 
 op_output5 <- Structure(
-  ListMember = List(Scalar(type = "string"), .attrs = list(flattened = TRUE))
+  ListMember = List(Scalar(type = "string"), .tags = list(flattened = TRUE))
 )
 
 test_that("unmarshal flattened list", {
@@ -317,7 +317,7 @@ test_that("unmarshal flattened list", {
 })
 
 op_output6 <- Structure(
-  Map = Map(Structure(Foo = Scalar(.attrs = list(locationName = "foo"))))
+  Map = Map(Structure(Foo = Scalar(.tags = list(locationName = "foo"))))
 )
 
 test_that("unmarshal map", {
@@ -333,7 +333,7 @@ test_that("unmarshal map", {
 })
 
 op_output7 <- Structure(
-  Map = Map(Scalar(), .attrs = list(flattened = TRUE))
+  Map = Map(Scalar(), .tags = list(flattened = TRUE))
 )
 
 test_that("unmarshal flattened map", {
@@ -349,7 +349,7 @@ test_that("unmarshal flattened map", {
 })
 
 op_output8 <- Structure(
-  Map = Map(Scalar(), .attrs = list(locationNameKey = "foo", locationNameValue = "bar", flattened = TRUE))
+  Map = Map(Scalar(), .tags = list(locationNameKey = "foo", locationNameValue = "bar", flattened = TRUE))
 )
 
 test_that("unmarshal flattened named map", {
@@ -381,7 +381,7 @@ test_that("unmarshal empty string", {
 })
 
 op_output10 <- Structure(
-  FooEnum = Scalar(type = "string", .attrs = list(enum = "OutputService10TestShapeEC2EnumType")),
+  FooEnum = Scalar(type = "string", .tags = list(enum = "OutputService10TestShapeEC2EnumType")),
   ListEnums = List(Scalar(type = "string"))
 )
 

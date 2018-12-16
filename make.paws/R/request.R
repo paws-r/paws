@@ -102,12 +102,19 @@ send_request <- function(request) {
   }
 
   request <- unmarshal(request)
-  out <- request$data
+
+  out <- get_request_output(request)
 
   return(out)
 }
 
 #-------------------------------------------------------------------------------
+
+# Return the request's output.
+get_request_output <- function(request) {
+  out <- tag_del(request$data)
+  return(out)
+}
 
 set_body <- function(request, body) {
   request$body <- body

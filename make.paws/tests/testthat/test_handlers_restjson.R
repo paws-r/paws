@@ -33,7 +33,7 @@ test_that("URI parameter with no location name", {
   op_input2 <- function(PipelineId) {
     args <- list(PipelineId = PipelineId)
     interface <- Structure(
-      PipelineId = Scalar(type = "string", .attrs = list(location = "uri"))
+      PipelineId = Scalar(type = "string", .tags = list(location = "uri"))
     )
     return(populate(args, interface))
   }
@@ -55,7 +55,7 @@ test_that("URI parameter with location name", {
   op_input3 <- function(Foo) {
     args <- list(Foo = Foo)
     interface <- Structure(
-      Foo = Scalar(type = "string", .attrs = list(location = "uri", locationName = "PipelineId"))
+      Foo = Scalar(type = "string", .tags = list(location = "uri", locationName = "PipelineId"))
     )
     return(populate(args, interface))
   }
@@ -77,7 +77,7 @@ test_that("query string list of strings", {
   op_input4 <- function(Items) {
     args <- list(Items = Items)
     interface <- Structure(
-      Items = List(Scalar(type = "string"), .attrs = list(location = "querystring", locationName = "item"))
+      Items = List(Scalar(type = "string"), .tags = list(location = "querystring", locationName = "item"))
     )
     return(populate(args, interface))
   }
@@ -99,8 +99,8 @@ test_that("query string map of strings", {
   op_input5 <- function(PipelineId, QueryDoc) {
     args <- list(PipelineId = PipelineId, QueryDoc = QueryDoc)
     interface <- Structure(
-      PipelineId = Scalar(type = "string", .attrs = list(location = "uri")),
-      QueryDoc = Map(Scalar(type = "string"), .attrs = list(location = "querystring"))
+      PipelineId = Scalar(type = "string", .tags = list(location = "uri")),
+      QueryDoc = Map(Scalar(type = "string"), .tags = list(location = "querystring"))
     )
     return(populate(args, interface))
   }
@@ -126,8 +126,8 @@ test_that("query string map of lists of strings", {
   op_input6 <- function(PipelineId, QueryDoc) {
     args <- list(PipelineId = PipelineId, QueryDoc = QueryDoc)
     interface <- Structure(
-      PipelineId = Scalar(type = "string", .attrs = list(location = "uri")),
-      QueryDoc = Map(List(Scalar(type = "string")), .attrs = list(location = "querystring"))
+      PipelineId = Scalar(type = "string", .tags = list(location = "uri")),
+      QueryDoc = Map(List(Scalar(type = "string")), .tags = list(location = "querystring"))
     )
     return(populate(args, interface))
   }
@@ -153,7 +153,7 @@ test_that("query string with bool (true)", {
   op_input7 <- function(BoolQuery) {
     args <- list(BoolQuery = BoolQuery)
     interface <- Structure(
-      BoolQuery = Scalar(type = "boolean", .attrs = list(location = "querystring", locationName = "bool-query"))
+      BoolQuery = Scalar(type = "boolean", .tags = list(location = "querystring", locationName = "bool-query"))
     )
     return(populate(args, interface))
   }
@@ -175,7 +175,7 @@ test_that("query string with bool (false)", {
   op_input8 <- function(BoolQuery) {
     args <- list(BoolQuery = BoolQuery)
     interface <- Structure(
-      BoolQuery = Scalar(type = "boolean", .attrs = list(location = "querystring", locationName = "bool-query"))
+      BoolQuery = Scalar(type = "boolean", .tags = list(location = "querystring", locationName = "bool-query"))
     )
     return(populate(args, interface))
   }
@@ -197,9 +197,9 @@ test_that("URI and query string parameters", {
   op_input9 <- function(Ascending, PageToken, PipelineId) {
     args <- list(Ascending = Ascending, PageToken = PageToken, PipelineId = PipelineId)
     interface <- Structure(
-      Ascending = Scalar(type = "string", .attrs = list(location = "querystring", locationName = "Ascending")),
-      PageToken = Scalar(type = "string", .attrs = list(location = "querystring", locationName = "PageToken")),
-      PipelineId = Scalar(type = "string", .attrs = list(location = "uri", locationName = "PipelineId"))
+      Ascending = Scalar(type = "string", .tags = list(location = "querystring", locationName = "Ascending")),
+      PageToken = Scalar(type = "string", .tags = list(location = "querystring", locationName = "PageToken")),
+      PipelineId = Scalar(type = "string", .tags = list(location = "uri", locationName = "PipelineId"))
     )
     return(populate(args, interface))
   }
@@ -223,13 +223,13 @@ test_that("URI, query string, and JSON body", {
   op_input10 <- function(Ascending, Config, PageToken, PipelineId) {
     args <- list(Ascending = Ascending, Config = Config, PageToken = PageToken, PipelineId = PipelineId)
     interface <- Structure(
-      Ascending = Scalar(type = "string", .attrs = list(location = "querystring", locationName = "Ascending")),
+      Ascending = Scalar(type = "string", .tags = list(location = "querystring", locationName = "Ascending")),
       Config = Structure(
         A = Scalar(type = "string"),
         B = Scalar(type = "string")
       ),
-      PageToken = Scalar(type = "string", .attrs = list(location = "querystring", locationName = "PageToken")),
-      PipelineId = Scalar(type = "string", .attrs = list(location = "uri", locationName = "PipelineId"))
+      PageToken = Scalar(type = "string", .tags = list(location = "querystring", locationName = "PageToken")),
+      PipelineId = Scalar(type = "string", .tags = list(location = "uri", locationName = "PipelineId"))
     )
     return(populate(args, interface))
   }
@@ -258,14 +258,14 @@ test_that("URI, query string, JSON body, and header", {
   op_input11 <- function(Ascending, Checksum, Config, PageToken, PipelineId) {
     args <- list(Ascending = Ascending, Checksum = Checksum, Config = Config, PageToken = PageToken, PipelineId = PipelineId)
     interface <- Structure(
-      Ascending = Scalar(type = "string", .attrs = list(location = "querystring", locationName = "Ascending")),
-      Checksum = Scalar(type = "string", .attrs = list(location = "header", locationName = "x-amz-checksum")),
+      Ascending = Scalar(type = "string", .tags = list(location = "querystring", locationName = "Ascending")),
+      Checksum = Scalar(type = "string", .tags = list(location = "header", locationName = "x-amz-checksum")),
       Config = Structure(
         A = Scalar(type = "string"),
         B = Scalar(type = "string")
       ),
-      PageToken = Scalar(type = "string", .attrs = list(location = "querystring", locationName = "PageToken")),
-      PipelineId = Scalar(type = "string", .attrs = list(location = "uri", locationName = "PipelineId"))
+      PageToken = Scalar(type = "string", .tags = list(location = "querystring", locationName = "PageToken")),
+      PipelineId = Scalar(type = "string", .tags = list(location = "uri", locationName = "PipelineId"))
     )
     return(populate(args, interface))
   }
@@ -296,10 +296,10 @@ test_that("streaming payload", {
   op_input12 <- function(Body, Checksum, VaultName) {
     args <- list(Body = Body, Checksum = Checksum, VaultName = VaultName)
     interface <- Structure(
-      Body = Scalar(type = "blob", .attrs = list(locationName = "body")),
-      Checksum = Scalar(type = "string", .attrs = list(location = "header", locationName = "x-amz-sha256-tree-hash")),
-      VaultName = Scalar(type = "string", .attrs = list(location = "uri", locationName = "vaultName", required = TRUE)),
-      .attrs = list(payload = "Body")
+      Body = Scalar(type = "blob", .tags = list(locationName = "body")),
+      Checksum = Scalar(type = "string", .tags = list(location = "header", locationName = "x-amz-sha256-tree-hash")),
+      VaultName = Scalar(type = "string", .tags = list(location = "uri", locationName = "vaultName", required = TRUE)),
+      .tags = list(payload = "Body")
     )
     return(populate(args, interface))
   }
@@ -326,7 +326,7 @@ test_that("serialize blobs in body", {
     args <- list(Bar = Bar, Foo = Foo)
     interface <- Structure(
       Bar = Scalar(type = "blob"),
-      Foo = Scalar(type = "string", .attrs = list(location = "uri", locationName = "Foo", required = TRUE))
+      Foo = Scalar(type = "string", .tags = list(location = "uri", locationName = "Foo", required = TRUE))
     )
     return(populate(args, interface))
   }
@@ -349,8 +349,8 @@ op14 <- Operation(
 op_input14 <- function(Foo = NULL) {
   args <- list(Foo = Foo)
   interface <- Structure(
-    Foo = Scalar(type = "blob", .attrs = list(locationName = "foo")),
-    .attrs = list(payload = "Foo")
+    Foo = Scalar(type = "blob", .tags = list(locationName = "foo")),
+    .tags = list(payload = "Foo")
   )
   return(populate(args, interface))
 }
@@ -383,12 +383,11 @@ op15 <- Operation(
 op_input15 <- function(Foo = NULL) {
   args <- list(Foo = Foo)
   interface <- Structure(
-    `_` = Structure(.attrs = list(payload = "Foo")),
     Foo = Structure(
-      `_` = Structure(.attrs = list(locationName = "foo")),
-      Baz = Scalar(type = "string", .attrs = list(locationName = "baz")),
-      .attrs = list(locationName = "foo")
-    )
+      Baz = Scalar(type = "string", .tags = list(locationName = "baz")),
+      .tags = list(locationName = "foo")
+    ),
+    .tags = list(payload = "Foo")
   )
   return(populate(args, interface))
 }
@@ -424,7 +423,7 @@ test_that("omit null query string parameters", {
   op_input16 <- function(Foo = NULL) {
     args <- list(Foo = Foo)
     interface <- Structure(
-      Foo = Scalar(type = "string", .attrs = list(location = "querystring", locationName = "param-name"))
+      Foo = Scalar(type = "string", .tags = list(location = "querystring", locationName = "param-name"))
     )
     return(populate(args, interface))
   }
@@ -445,7 +444,7 @@ test_that("serialize empty string query string parameters", {
   op_input17 <- function(Foo = NULL) {
     args <- list(Foo = Foo)
     interface <- Structure(
-      Foo = Scalar(type = "string", .attrs = list(location = "querystring", locationName = "param-name"))
+      Foo = Scalar(type = "string", .tags = list(location = "querystring", locationName = "param-name"))
     )
     return(populate(args, interface))
   }
@@ -470,7 +469,7 @@ test_that("timestamp value", {
   op_input18 <- function(TimeArg) {
     args <- list(TimeArg = TimeArg)
     interface <- Structure(
-      TimeArg = Scalar(type = "timestamp", .attrs = list(timestampFormat = "unix"))
+      TimeArg = Scalar(type = "timestamp", .tags = list(timestampFormat = "unix"))
     )
     return(populate(args, interface))
   }
@@ -493,7 +492,7 @@ test_that("timestamp value in header", {
   op_input19 <- function(TimeArgInHeader) {
     args <- list(TimeArgInHeader = TimeArgInHeader)
     interface <- Structure(
-      TimeArgInHeader = Scalar(type = "timestamp", .attrs = list(location = "header", locationName = "x-amz-timearg", timestampFormat = "rfc822"))
+      TimeArgInHeader = Scalar(type = "timestamp", .tags = list(location = "header", locationName = "x-amz-timearg", timestampFormat = "rfc822"))
     )
     return(populate(args, interface))
   }
@@ -516,7 +515,7 @@ test_that("timestamp value in JSON body", {
   op_input20 <- function(TimeArg) {
     args <- list(TimeArg = TimeArg)
     interface <- Structure(
-      TimeArg = Scalar(type = "timestamp", .attrs = list(locationName = "timestamp_location", timestampFormat = "unix"))
+      TimeArg = Scalar(type = "timestamp", .tags = list(locationName = "timestamp_location", timestampFormat = "unix"))
     )
     return(populate(args, interface))
   }
@@ -539,8 +538,8 @@ test_that("string payload", {
   op_input21 <- function(Foo) {
     args <- list(Foo = Foo)
     interface <- Structure(
-      Foo = Scalar(type = "string", .attrs = list(locationName = "foo")),
-      .attrs = list(payload = "Foo")
+      Foo = Scalar(type = "string", .tags = list(locationName = "foo")),
+      .tags = list(payload = "Foo")
     )
     return(populate(args, interface))
   }
@@ -562,7 +561,7 @@ op22 <- Operation(
 op_input22 <- function(Token = NULL) {
   args <- list(Token = Token)
   interface <- Structure(
-    Token = Scalar(type = "string", .attrs = list(idempotencyToken = TRUE))
+    Token = Scalar(type = "string", .tags = list(idempotencyToken = TRUE))
   )
   return(populate(args, interface))
 }
@@ -606,11 +605,11 @@ test_that("unmarshal scalar members", {
     Double = Scalar(type = "double"),
     FalseBool = Scalar(type = "boolean"),
     Float = Scalar(type = "float"),
-    ImaHeader = Scalar(type = "string", .attrs = list(location = "header")),
-    ImaHeaderLocation = Scalar(type = "string", .attrs = list(location = "header", locationName = "X-Foo")),
+    ImaHeader = Scalar(type = "string", .tags = list(location = "header")),
+    ImaHeaderLocation = Scalar(type = "string", .tags = list(location = "header", locationName = "X-Foo")),
     Long = Scalar(type = "long"),
     Num = Scalar(type = "integer"),
-    StatusCode = Scalar(type = "integer", .attrs = list(location = "statusCode")),
+    StatusCode = Scalar(type = "integer", .tags = list(location = "statusCode")),
     Str = Scalar(type = "string"),
     TrueBool = Scalar(type = "boolean")
   )
@@ -641,7 +640,7 @@ test_that("unmarshal blob member", {
   op_output2 <- Structure(
     BlobMember = Scalar(type = "blob"),
     StructMember = Structure(
-      Foo = Scalar(type = "blob", .attrs = list(locationName = "foo"))
+      Foo = Scalar(type = "blob", .tags = list(locationName = "foo"))
     )
   )
   req <- new_request(svc, op, NULL, op_output2)
@@ -658,9 +657,9 @@ test_that("unmarshal blob member", {
 
 test_that("unmarshal timestamp member", {
   op_output3 <- Structure(
-    TimeMember = Scalar(type = "timestamp", .attrs = list(timestampFormat = "unix")),
+    TimeMember = Scalar(type = "timestamp", .tags = list(timestampFormat = "unix")),
     StructMember = Structure(
-      Foo = Scalar(type = "timestamp", .attrs = list(locationName = "foo", timestampFormat = "unix"))
+      Foo = Scalar(type = "timestamp", .tags = list(locationName = "foo", timestampFormat = "unix"))
     )
   )
   req <- new_request(svc, op, NULL, op_output3)
@@ -767,8 +766,8 @@ test_that("unmarshal ignores extra data", {
 
 test_that("unmarshal header map", {
   op_output9 <- Structure(
-    AllHeaders = Map(Scalar(type = "string"), .attrs = list(location = "headers")),
-    PrefixedHeaders = Map(Scalar(type = "string"), .attrs = list(location = "headers", locationName = "X-"))
+    AllHeaders = Map(Scalar(type = "string"), .tags = list(location = "headers")),
+    PrefixedHeaders = Map(Scalar(type = "string"), .tags = list(location = "headers", locationName = "X-"))
   )
   req <- new_request(svc, op, NULL, op_output9)
   req$http_response <- HttpResponse(
@@ -792,8 +791,8 @@ test_that("JSON payload", {
     Data = Structure(
       Foo = Scalar(type = "string")
     ),
-    Header = Scalar(type = "string", .attrs = list(location = "header", locationName = "X-Foo")),
-    .attrs = list(payload = "Data")
+    Header = Scalar(type = "string", .tags = list(location = "header", locationName = "X-Foo")),
+    .tags = list(payload = "Data")
   )
   req <- new_request(svc, op, NULL, op_output10)
   req$http_response <- HttpResponse(
@@ -815,8 +814,8 @@ test_that("JSON payload", {
 test_that("unmarshal blob payload", {
   op_output14 <- Structure(
     Data = Scalar(type = "blob"),
-    Header = Scalar(type = "string", .attrs = list(location = "header", locationName = "X-Foo")),
-    .attrs = list(payload = "Data")
+    Header = Scalar(type = "string", .tags = list(location = "header", locationName = "X-Foo")),
+    .tags = list(payload = "Data")
   )
   req <- new_request(svc, op, NULL, op_output14)
   req$http_response <- HttpResponse(

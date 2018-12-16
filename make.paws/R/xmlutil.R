@@ -22,7 +22,7 @@ list_to_xml <- function(value) {
 # Add xmlns (XML namespace) attributes to all nested elements in a list.
 add_xmlns <- function(xml_list, xmlns = "") {
   result <- xml_list
-  result <- add_tags(list(xmlns = xmlns), result)
+  attr(result, "xmlns") <- xmlns
   if (!is.list(result)) return(result)
   for (i in seq_along(result)) {
     result[[i]] <- add_xmlns(result[[i]], xmlns)
@@ -42,12 +42,13 @@ xml_build_body <- function(request) {
     return(request)
   }
 
-  location_name <- get_tag(params, "locationName")
-  xmlns <- get_tag(params, "xmlURI")
+  location_name <- tag_get(params, "locationName")
+  xmlns <- tag_get(params, "xmlURI")
   if (location_name != "") {
-    params <- Structure(init = params,
-                        .attrs = list(locationName = location_name,
-                                      xmlns = xmlns))
+    params <- Structure(
+      init = params,
+      .tags = list(locationName = location_name, xmlns = xmlns)
+    )
   }
 
   body_list <- xml_build(params)
@@ -66,7 +67,7 @@ xml_build_body <- function(request) {
 
 xml_build <- function(params) {
 
-  location <- get_tag(params, "location")
+  location <- tag_get(params, "location")
   if (location != "") return(NULL)
 
   t <- type(params)
@@ -88,17 +89,17 @@ xml_build_structure <- function(params) {
   for (name in names(params)) {
     child <- params[[name]]
 
-    if (get_tag(child, "locationName") == "") {
-      child <- add_tags(list(locationName = name), child)
+    if (tag_get(child, "locationName") == "") {
+      child <- tag_add(child, list(locationName = name))
     }
 
     parsed <- xml_build(child)
 
     if (!is.null(parsed)) {
-      location_name <- get_tag(child, "locationName")
+      location_name <- tag_get(child, "locationName")
       if (location_name == "") location_name <- name
 
-      flattened <- get_tag(child, "flattened") != ""
+      flattened <- tag_get(child, "flattened") != ""
 
       if (flattened) {
         result <- c(result, parsed)
@@ -114,14 +115,14 @@ xml_build_list <- function(params) {
   if (length(params) == 0) return(list())
   children <- lapply(params, function(x) xml_build(x))
 
-  location_name <- get_tag(params, "locationName")
+  location_name <- tag_get(params, "locationName")
 
-  flattened <- get_tag(params, "flattened") != ""
+  flattened <- tag_get(params, "flattened") != ""
   if (flattened) {
     result <- children
     names(result) <- rep(location_name, length(children))
   } else {
-    location_name_list <- get_tag(params, "locationNameList")
+    location_name_list <- tag_get(params, "locationNameList")
     if (location_name_list == "") location_name_list <- "member"
     result <- children
     names(result) <- rep(location_name_list, length(children))
@@ -135,7 +136,7 @@ xml_build_scalar <- function(params) {
   # converts <foo>abc</foo> to `list(foo = list("abc"))`, when we want
   # `list(foo = "abc")`.
   data <- unlist(params)
-  t <- get_tag(params, "type")
+  t <- tag_get(params, "type")
   convert <- switch(
     t,
     blob = raw_to_base64,
@@ -194,7 +195,7 @@ xml_parse <- function(node, interface) {
 }
 
 xml_parse_structure <- function(node, interface) {
-  payload <- get_tag(node, "payload")
+  payload <- tag_get(node, "payload")
   if (length(payload) > 0 && payload != "") {
     result <- xml_parse_structure(payload, interface)
     return(result)
@@ -205,11 +206,11 @@ xml_parse_structure <- function(node, interface) {
     field <- interface[[name]]
 
     node_name <- name
-    flattened <- get_tag(field, "flattened") != ""
-    if (flattened && get_tag(field, "locationNameList") != "") {
-      node_name <- get_tag(field, "locationNameList")
-    } else if (get_tag(field, "locationName") != "") {
-      node_name <- get_tag(field, "locationName")
+    flattened <- tag_get(field, "flattened") != ""
+    if (flattened && tag_get(field, "locationNameList") != "") {
+      node_name <- tag_get(field, "locationNameList")
+    } else if (tag_get(field, "locationName") != "") {
+      node_name <- tag_get(field, "locationName")
     }
 
     elem <- node[[node_name]]
@@ -255,8 +256,8 @@ xml_parse_map <- function(node, interface) {
 }
 
 xml_parse_map_entry <- function(node, interface) {
-  key_name <- get_tag(interface, "locationNameKey")
-  value_name <- get_tag(interface, "locationNameValue")
+  key_name <- tag_get(interface, "locationNameKey")
+  value_name <- tag_get(interface, "locationNameValue")
   if (key_name == "") key_name <- "key"
   if (value_name == "") value_name <- "value"
   key <- unlist(node[[key_name]])
@@ -271,7 +272,7 @@ xml_parse_scalar <- function(node, interface) {
   # converts <foo>abc</foo> to `list(foo = list("abc"))`, when we want
   # `list(foo = "abc")`.
   data <- unlist(node)
-  t <- get_tag(interface, "type")
+  t <- tag_get(interface, "type")
   convert <- switch(
     t,
     blob = base64_to_utf8,

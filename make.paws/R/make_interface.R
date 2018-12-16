@@ -79,8 +79,8 @@ make_shape <- function(x, api, path = character(0)) {
     proto <- placeholder()
   }
 
-  proto <- add_tags(x, proto)
-  proto <- add_tags(shape, proto)
+  proto <- tag_add(proto, x[sapply(x, is.atomic)])
+  proto <- tag_add(proto, shape[sapply(shape, is.atomic)])
   return(proto)
 }
 
@@ -100,7 +100,7 @@ make_shape_list <- function(shape, api, path) {
   proto <- list(make_shape(member, api, path))
 
   if (!is_empty(member$locationName)) {
-    proto <- add_tags(list(locationNameList = member$locationName), proto)
+    proto <- tag_add(proto, list(locationNameList = member$locationName))
   }
 
   return(proto)
@@ -111,10 +111,10 @@ make_shape_map <- function(shape, api, path) {
   value <- shape$value
   proto <- list(make_shape(value, api, path))
   if (!is_empty(key$locationName)) {
-    proto <- add_tags(list(locationNameKey = key$locationName), proto)
+    proto <- tag_add(proto, list(locationNameKey = key$locationName))
   }
   if (!is_empty(value$locationName)) {
-    proto <- add_tags(list(locationNameValue = value$locationName), proto)
+    proto <- tag_add(proto, list(locationNameValue = value$locationName))
   }
   return(proto)
 }

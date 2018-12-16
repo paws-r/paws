@@ -3,7 +3,7 @@ IDEMPOTENCY_RAND_FN <- function() sample(0:(2^8-1), 1)
 
 # Return whether the idempotency token can be automatically set.
 can_set_idempotency_token <- function(value) {
-  return(length(value) == 0 && get_tag(value, IDEMPOTENCY_TOKEN_FILL_TAG) != "")
+  return(length(value) == 0 && tag_get(value, IDEMPOTENCY_TOKEN_FILL_TAG) != "")
 }
 
 # Return a randomly-generated idempotency token.

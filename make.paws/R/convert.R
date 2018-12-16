@@ -1,6 +1,6 @@
 # Convert an R value to a value acceptable by the AWS API.
 convert_type <- function(value) {
-  t <- get_tag(value, "type")
+  t <- tag_get(value, "type")
   fn <- switch(
     t,
     blob = convert_blob,
@@ -35,7 +35,7 @@ convert_boolean <- function(boolean) {
 # Convert an R datetime to a string.
 convert_timestamp <- function(timestamp, format = NULL) {
   if (is.null(format)) {
-    format <- get_tag(timestamp, "timestampFormat")
+    format <- tag_get(timestamp, "timestampFormat")
   }
   format_string <- timestamp_format(format)
   if (format_string != "") {
