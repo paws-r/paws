@@ -700,3 +700,36 @@ test_that("unmarshal enums", {
   expect_equal(out$FooEnum, "foo")
   expect_equal(out$ListEnums, c("foo", "bar"))
 })
+
+#-------------------------------------------------------------------------------
+
+# Unmarshal Error Tests
+
+request <- list()
+
+test_that("unmarshal error", {
+  data <- "<Error><Code>FooError</Code><Message>Foo</Message><RequestId>123</RequestId><HostId>ABC</HostId></Error>"
+  request$http_response$body <- charToRaw(data)
+  request <- query_unmarshal_error(request)
+  out <- request$error
+  expect_equal(out$code, "FooError")
+  expect_equal(out$message, "Foo")
+})
+
+test_that("unmarshal error no message", {
+  data <- ""
+  request$http_response$body <- charToRaw(data)
+  request <- query_unmarshal_error(request)
+  out <- request$error
+  expect_equal(out$code, "SerializationError")
+  expect_equal(out$message, "failed to read from query HTTP response body")
+})
+
+test_that("unmarshal error wrong shape", {
+  data <- "<Foo><Code>FooError</Code><Message>Foo</Message><RequestId>123</RequestId><HostId>ABC</HostId></Foo>"
+  request$http_response$body <- charToRaw(data)
+  request <- query_unmarshal_error(request)
+  out <- request$error
+  expect_equal(out$code, "SerializationError")
+  expect_equal(out$message, "failed to decode query XML error response")
+})

@@ -39,8 +39,29 @@ query_unmarshal_meta <- function(request) {
 
 # Unmarshal errors from a Query protocol response.
 query_unmarshal_error <- function(request) {
-  data <- decode_xml(request$http_response$body)
-  error <- xml_unmarshal_error(data)
+  
+  data <- tryCatch(
+    decode_xml(request$http_response$body),
+    error = function(e) NULL
+  )
+  
+  if (is.null(data)) {
+    request$error <- Error("SerializationError",
+                           "failed to read from query HTTP response body")
+    return(request)
+  }
+  
+  error <- tryCatch(
+    xml_unmarshal_error(data),
+    error = function(e) NULL
+  )
+  
+  if (is.null(error)) {
+    request$error <- Error("SerializationError",
+                           "failed to decode query XML error response")
+    return(request)
+  }
+  
   request$error <- error
   return(request)
 }
