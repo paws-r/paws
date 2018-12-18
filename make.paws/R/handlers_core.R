@@ -1,6 +1,12 @@
 # Add the name/version to the User-Agent request header.
-# TODO: Implement.
 sdk_version_user_agent_handler <- function(request) {
+  paws_version <- utils::packageVersion(methods::getPackageName())
+  r_version <- getRversion()
+  r_os <- R.Version()$os
+  r_arch <- R.Version()$arch
+  user_agent <- sprintf("paws/%s (R%s; %s; %s)",
+                        paws_version, r_version, r_os, r_arch)
+  request$http_request$header["User-Agent"] <- user_agent
   return(request)
 }
 
