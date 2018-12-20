@@ -1,3 +1,122 @@
+# Make an operation's Roxygen documentation.
+make_docs <- function(operation, api) {
+  title <- make_doc_title(operation)
+  description <- make_doc_desc(operation)
+  usage <- make_doc_usage(operation, api)
+  params <- make_doc_params(operation, api)
+  return <- make_doc_return(operation)
+  examples <- make_doc_examples(operation)
+  export <- "#' @export"
+  docs <- glue::glue_collapse(
+    c(title,
+      description,
+      usage,
+      params,
+      # return,
+      examples,
+      export),
+    sep = "\n#'\n"
+  )
+  return(as.character(docs))
+}
+
+# Make the documentation title.
+make_doc_title <- function(operation) {
+  docs <- convert(operation$documentation, wrap = FALSE)
+  title <- first_sentence(docs)
+  title <- glue::glue("#' {title}")
+  return(as.character(title))
+}
+
+# Make the description and details documentation.
+make_doc_desc <- function(operation) {
+  docs <- convert(operation$documentation, wrap = FALSE)
+  docs <- escape_special_characters(docs)
+  description <- glue::glue("#' {docs}")
+  description <- glue::glue_collapse(description, sep = "\n")
+  return(as.character(description))
+}
+
+# Make the parameter documentation.
+make_doc_params <- function(operation, api) {
+  if (!is.null(operation$input$shape)) {
+    shapes <- api$shapes
+    shape <- shapes[[operation$input$shape]]
+    inputs <- get_inputs(shape)
+    params <- sapply(inputs, function(input) {
+      param <- input$member_name
+      required <- input$required
+      documentation <- convert(input$documentation, wrap = FALSE)
+      documentation <- glue::glue_collapse(documentation, sep = "\n")
+      if (required) {
+        documentation <- glue::glue("&#91;required&#93; {documentation}")
+      }
+      documentation <- glue::glue("@param {param} {documentation}")
+      lines <- strsplit(documentation, "\n")[[1]]
+      lines <- glue::glue("#' {lines}")
+      lines
+    })
+    params <- glue::glue_collapse(unlist(params), sep = "\n")
+  } else {
+    params <- ""
+  }
+  return(as.character(params))
+}
+
+# Return a string showing the operation's usage, including all parameters.
+make_doc_usage <- function(operation, api) {
+  op_name <- get_operation_name(operation)
+  shape_name <- operation$input$shape
+  if (!is.null(shape_name)) {
+    shape <- make_shape(list(shape = shape_name), api)
+    args <- add_example_values(shape)
+    masks <- list("(" = "&#40;", ")" = "&#41;")
+    args <- mask(args, masks)
+    call <- gsub("^list", op_name, list_to_string(args, quote = FALSE))
+    call <- unmask(clean_example(call), masks)
+    usage <- comment(paste(c("@usage", call), collapse = "\n"), "#'")
+    return(usage)
+  }
+  return("")
+}
+
+# Return a string with a description of the operation's return value.
+# TODO: Implement.
+make_doc_return <- function(operation, api) {
+  output <- operation$output
+  "#' @return"
+}
+
+# Return a string with an operation example's arguments.
+make_doc_example_args <- function(input) {
+  if (length(input) == 0) return("")
+  args <- paste(trimws(utils::capture.output(dput(input))), collapse = "")
+  result <- gsub("^list\\((.*)\\)$", "\\1", args)
+  return(result)
+}
+
+# Make an operation example.
+make_doc_example <- function(example, op_name) {
+  args <- make_doc_example_args(example$input)
+  call <- glue::glue("{op_name}({args})")
+  call <- clean_example(call)
+  desc <- comment(break_lines(example$description))
+  result <- paste(desc, call, sep = "\n")
+  return(result)
+}
+
+# Make all operation examples provided in the operation object.
+make_doc_examples <- function(operation) {
+  func <- get_operation_name(operation)
+  examples <- lapply(operation$examples, make_doc_example, op_name = func)
+  result <- paste(examples, collapse = "\n\n")
+  result <- paste(c("@examples", result), collapse = "\n")
+  result <- comment(result, "#'")
+  return(result)
+}
+
+#-------------------------------------------------------------------------------
+
 # Write a UTF-8 encoded file
 # Use `writeLines(..., useBytes = TRUE)` to write UTF-8 on Windows. Otherwise
 # Pandoc will occasionally fail with errors like `pandoc.exe: Cannot decode
@@ -59,6 +178,30 @@ fix_markdown_chars <- function(x, translate = c("\\[" = "&#91;", "\\]" = "&#93;"
   return(result)
 }
 
+# Convert an R list to a string.
+# The resulting string will not be valid for lists whose names are invalid.
+list_to_string <- function(x, quote = TRUE) {
+
+  if (is.atomic(x) && length(x) == 1 && is.null(names(x))) {
+    if (quote && is.character(x)) s <- sprintf('"%s"', x)
+    else s <- as.character(x)
+    return(s)
+  }
+
+  result <- "list("
+  for (i in seq_along(x)) {
+    key <- names(x)[i]
+    value <- list_to_string(x[[i]], quote)
+    if (!is.null(key) && key != "") s <- sprintf("%s = %s", key, value)
+    else s <- value
+    if (i > 1) s <- paste0(", ", s)
+    result <- paste0(result, s)
+  }
+  result <- paste0(result, ")")
+
+  return(result)
+}
+
 # Break a string into lines that are at most `chars` characters long.
 break_lines <- function(s, chars = 72) {
   regex <- sprintf("(.{1,%i})(\\s|$)", chars)
@@ -94,9 +237,9 @@ clean_example <- function(s) {
   for (i in 1:nchar(s)) {
 
     # Get the next character
-    prev_character = substr(s, i - 1, i - 1)
-    current_character = substr(s, i, i)
-    next_character = substr(s, i + 1, i + 1)
+    prev_character <- substr(s, i - 1, i - 1)
+    current_character <- substr(s, i, i)
+    next_character <- substr(s, i + 1, i + 1)
 
     if (open_quotes) {
       # If within quotes format normally
@@ -218,7 +361,7 @@ html_to_markdown <- function(html, wrap = TRUE) {
   result
 }
 
-# Convert documentation from HTML to Markdown.
+# Convert documentation to Markdown.
 convert <- function(docs, wrap = TRUE) {
   if (is.null(docs) || docs == "") return("")
   if (grepl("^<", docs)) {
@@ -236,100 +379,64 @@ first_sentence <- function(x) {
   return(first)
 }
 
-# Make the documentation title.
-make_doc_title <- function(operation) {
-  docs <- convert(operation$documentation, wrap = FALSE)
-  title <- first_sentence(docs)
-  title <- glue::glue("#' {title}")
-  return(as.character(title))
-}
-
-# Make the description and details documentation.
-make_doc_desc <- function(operation) {
-  docs <- convert(operation$documentation, wrap = FALSE)
-  docs <- escape_special_characters(docs)
-  description <- glue::glue("#' {docs}")
-  description <- glue::glue_collapse(description, sep = "\n")
-  return(as.character(description))
-}
-
-# Make the parameter documentation.
-make_doc_params <- function(operation, api) {
-  if (!is.null(operation$input$shape)) {
-    shapes <- api$shapes
-    shape <- shapes[[operation$input$shape]]
-    inputs <- get_inputs(shape)
-    params <- sapply(inputs, function(input) {
-      param <- input$member_name
-      required <- input$required
-      documentation <- convert(input$documentation, wrap = FALSE)
-      documentation <- glue::glue_collapse(documentation, sep = "\n")
-      if (required) {
-        documentation <- glue::glue("&#91;required&#93; {documentation}")
-      }
-      documentation <- glue::glue("@param {param} {documentation}")
-      lines <- strsplit(documentation, "\n")[[1]]
-      lines <- glue::glue("#' {lines}")
-      lines
-    })
-    params <- glue::glue_collapse(unlist(params), sep = "\n")
+# Add example values, e.g. "string" for strings, to an input or output shape.
+add_example_values <- function(shape) {
+  if (type(shape) == "scalar") {
+    t <- tag_get(shape, "type")
+    if (tag_has(shape, "enum")) {
+      t <- "enum"
+      enum <- tag_get(shape, "enum")
+    }
+    result <- switch(
+      t,
+      blob = "raw",
+      boolean = "TRUE|FALSE",
+      double = "123.0",
+      enum = paste0(sprintf('"%s"', enum), collapse = "|"),
+      float = "123.0",
+      integer = "123",
+      long = "123",
+      string = '"string"',
+      timestamp = 'as.POSIXct("2015-01-01")',
+      t
+    )
   } else {
-    params <- ""
+    result <- shape
+    for (i in seq_along(result)) {
+      result[[i]] <- add_example_values(result[[i]])
+    }
   }
-  return(as.character(params))
-}
-
-# Return a string with a description of the operation's return value.
-# TODO: Implement.
-make_doc_return <- function(operation) {
-  output <- operation$output
-  "#' @return"
-}
-
-# Return a string with an operation example's arguments.
-make_doc_example_args <- function(input) {
-  if (length(input) == 0) return("")
-  args <- paste(trimws(utils::capture.output(dput(input))), collapse = "")
-  result <- gsub("^list\\((.*)\\)$", "\\1", args)
   return(result)
 }
 
-# Make an operation example.
-make_doc_example <- function(example, op_name) {
-  args <- make_doc_example_args(example$input)
-  call <- glue::glue("{op_name}({args})")
-  call <- clean_example(call)
-  desc <- comment(break_lines(example$description))
-  result <- paste(desc, call, sep = "\n")
+# Return the object with all strings masked according to `masks`, e.g.
+# `mask("foobar", list("b" = "&#98;"))` --> "foo&#98;ar"
+mask <- function(object, masks) {
+  if (is.atomic(object)) {
+    if (is.character(object)) {
+      result <- object
+      for (i in seq_along(masks)) {
+        from <- names(masks)[i]
+        to <- masks[[i]]
+        result <- gsub(from, to, result, fixed = TRUE)
+      }
+      return(result)
+    }
+    return(object)
+  }
+  result <- object
+  for (i in seq_along(object)) {
+    result[[i]] <- mask(result[[i]], masks)
+  }
   return(result)
 }
 
-# Make all operation examples provided in the operation object.
-make_doc_examples <- function(operation) {
-  func <- get_operation_name(operation)
-  examples <- lapply(operation$examples, make_doc_example, op_name = func)
-  result <- paste(examples, collapse = "\n\n")
-  result <- paste(c("@examples", result), collapse = "\n")
-  result <- comment(result, "#'")
-  return(result)
-}
-
-# Make the R function documentation.
-make_docs <- function(operation, api) {
-  title <- make_doc_title(operation)
-  description <- make_doc_desc(operation)
-  params <- make_doc_params(operation, api)
-  return <- make_doc_return(operation)
-  examples <- make_doc_examples(operation)
-  export <- "#' @export"
-  docs <- glue::glue_collapse(
-    c(title,
-      description,
-      params,
-      # return,
-      examples,
-      export),
-    sep = "\n#'\n"
-  )
-  return(as.character(docs))
+unmask <- function(object, masks) {
+  unmasks <- list()
+  for (i in seq_along(masks)) {
+    from <- masks[[i]]
+    to <- names(masks)[i]
+    unmasks[[from]] <- to
+  }
+  return(mask(object, unmasks))
 }

@@ -4,14 +4,18 @@ test_that("scalar", {
   api <- list(
     shapes = list(
       FooShape = list(
-        type = "string"
+        type = "string",
+        enum = list(
+          "value1",
+          "value2"
+        )
       )
     )
   )
   out <- make_shape(list(shape = "FooShape"), api = api)
   expect_length(out, 0)
   expect_equal(tag_get(out, "type"), "string")
-  expect_equal(tag_get(out, "shape"), "FooShape")
+  expect_equal(tag_get(out, "enum"), c("value1", "value2"))
 })
 
 test_that("structure with one scalar member", {

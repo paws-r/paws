@@ -257,7 +257,7 @@ make_imports <- function() {
   package <- methods::getPackageName()
   imports_file <- system_file("extdata/imports.csv", package = package)
   imports <- readLines(imports_file)
-  defaults <- rownames(installed.packages(priority="high"))
+  defaults <- rownames(utils::installed.packages(priority="high"))
   description <- paste(setdiff(imports, defaults), collapse = ",\n")
   return(description)
 }

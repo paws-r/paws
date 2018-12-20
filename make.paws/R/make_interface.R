@@ -10,7 +10,6 @@ make_interface <- function(name, shape_name, api) {
     return(populate(args, shape))
   }
   shape <- make_shape(list(shape = shape_name), api)
-  input_shape <- api$shapes[[shape_name]]
   params <- c("..." = bquote())
   interface <- make_function_from_template(
     name = name,
@@ -57,7 +56,6 @@ make_interfaces <- function(api) {
 
 # Make an API shape, including metadata about types and names.
 # Usage: `make_shape(list(shape = SHAPE), api)`
-# TODO: enums
 make_shape <- function(x, api, path = character(0)) {
 
   shape <- api$shapes[[x$shape]]
@@ -79,8 +77,8 @@ make_shape <- function(x, api, path = character(0)) {
     proto <- placeholder()
   }
 
-  proto <- tag_add(proto, x[sapply(x, is.atomic)])
-  proto <- tag_add(proto, shape[sapply(shape, is.atomic)])
+  proto <- tag_add(proto, make_tags(x))
+  proto <- tag_add(proto, make_tags(shape))
   return(proto)
 }
 
@@ -129,6 +127,18 @@ make_shape_scalar <- function(shape, api, path) {
 make_export_name <- function(name) {
   export_name <- paste0(toupper(substring(name, 1, 1)), substring(name, 2))
   return(export_name)
+}
+
+# Return a list of a shape's elements that should be kept as tags, e.g. type.
+make_tags <- function(shape) {
+  if ("enum" %in% names(shape)) {
+    shape$enum <- unlist(shape$enum)
+  }
+  taggable <- sapply(shape, is.atomic)
+  ignore <- c("documentation", "shape")
+  keep <- !(names(shape) %in% ignore)
+  tags <- shape[taggable & keep]
+  return(tags)
 }
 
 # A placeholder for data values in an AWS API shape.

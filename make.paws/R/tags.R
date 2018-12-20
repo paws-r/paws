@@ -7,6 +7,12 @@ tag_get <- function(object, tag) {
   return("")
 }
 
+# Returns whether the object has the given tag.
+tag_has <- function(object, tag) {
+  tags <- attr(object, "tags", exact = TRUE)
+  return(tag %in% names(tags))
+}
+
 # Add a tag to an object, which we can access later using e.g.
 # `tag_get(object, "locationName")`. This is used to store metadata about an
 # API shape, such as its location or type.
