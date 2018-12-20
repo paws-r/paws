@@ -69,9 +69,11 @@ make_doc_usage <- function(operation, api) {
   shape_name <- operation$input$shape
   if (!is.null(shape_name)) {
     shape <- make_shape(list(shape = shape_name), api)
-    args <- list_to_string(add_example_values(shape), quote = FALSE)
-    call <- gsub("^list", op_name, args)
-    call <- clean_example(call)
+    args <- add_example_values(shape)
+    masks <- list("(" = "&#40;", ")" = "&#41;")
+    args <- mask(args, masks)
+    call <- gsub("^list", op_name, list_to_string(args, quote = FALSE))
+    call <- unmask(clean_example(call), masks)
     usage <- comment(paste(c("@usage", call), collapse = "\n"), "#'")
     return(usage)
   }
@@ -235,9 +237,9 @@ clean_example <- function(s) {
   for (i in 1:nchar(s)) {
 
     # Get the next character
-    prev_character = substr(s, i - 1, i - 1)
-    current_character = substr(s, i, i)
-    next_character = substr(s, i + 1, i + 1)
+    prev_character <- substr(s, i - 1, i - 1)
+    current_character <- substr(s, i, i)
+    next_character <- substr(s, i + 1, i + 1)
 
     if (open_quotes) {
       # If within quotes format normally
@@ -395,7 +397,7 @@ add_example_values <- function(shape) {
       integer = "123",
       long = "123",
       string = '"string"',
-      timestamp = "timestamp",
+      timestamp = 'as.POSIXct("2015-01-01")',
       t
     )
   } else {
@@ -405,4 +407,36 @@ add_example_values <- function(shape) {
     }
   }
   return(result)
+}
+
+# Return the object with all strings masked according to `masks`, e.g.
+# `mask("foobar", list("b" = "&#98;"))` --> "foo&#98;ar"
+mask <- function(object, masks) {
+  if (is.atomic(object)) {
+    if (is.character(object)) {
+      result <- object
+      for (i in seq_along(masks)) {
+        from <- names(masks)[i]
+        to <- masks[[i]]
+        result <- gsub(from, to, result, fixed = TRUE)
+      }
+      return(result)
+    }
+    return(object)
+  }
+  result <- object
+  for (i in seq_along(object)) {
+    result[[i]] <- mask(result[[i]], masks)
+  }
+  return(result)
+}
+
+unmask <- function(object, masks) {
+  unmasks <- list()
+  for (i in seq_along(masks)) {
+    from <- masks[[i]]
+    to <- names(masks)[i]
+    unmasks[[from]] <- to
+  }
+  return(mask(object, unmasks))
 }

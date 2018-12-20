@@ -98,6 +98,22 @@ test_that("convert", {
   expect_equal(convert(text), expected)
 })
 
+test_that("mask", {
+  foo <- list(
+    a = list(
+      "abc",
+      "xyz",
+      123
+    )
+  )
+  masks <- list("b" = "&#98;", "z" = "&#122;")
+  result <- mask(foo, masks)
+  expect_equal(result$a[[1]], "a&#98;c")
+  expect_equal(result$a[[2]], "xy&#122;")
+  expect_equal(result$a[[3]], foo$a[[3]])
+  expect_equal(foo, unmask(mask(foo, masks), masks))
+})
+
 test_that("first_sentence", {
   expect_equal(first_sentence(""), "")
   expect_equal(first_sentence("foo."), "foo")
@@ -121,7 +137,7 @@ test_that("make_doc_desc", {
   expect_equal(make_doc_desc(operation), expected)
 })
 
-test_that("make_doc_desc_with_percent_sign", {
+test_that("make_doc_desc with percent sign", {
   operation <- list(documentation = "<body><p>Foo%</p><p>Bar</p></body>")
   expected <- paste(
     "#' Foo\\%",
@@ -130,6 +146,81 @@ test_that("make_doc_desc_with_percent_sign", {
     sep = "\n"
   )
   expect_equal(make_doc_desc(operation), expected)
+})
+
+test_that("make_doc_usage", {
+  operation <- list(
+    name = "operation",
+    input = list(
+      shape = "OperationShape"
+    )
+  )
+  api <- list(
+    shapes = list(
+      OperationShape = list(
+        type = "structure",
+        members = list(
+          Foo = list(
+            shape = "FooShape"
+          ),
+          Bar = list(
+            shape = "BarShape"
+          )
+        )
+      ),
+      FooShape = list(
+        type = "string"
+      ),
+      BarShape = list(
+        type = "structure",
+        members = list(
+          Baz = list(
+            shape = "BazShape"
+          ),
+          Qux = list(
+            shape = "QuxShape"
+          ),
+          Quux = list(
+            shape = "QuuxShape"
+          ),
+          Quuz = list(
+            shape = "QuuzShape"
+          )
+        )
+      ),
+      BazShape = list(
+        type = "integer"
+      ),
+      QuxShape = list(
+        type = "double"
+      ),
+      QuuxShape = list(
+        type = "boolean"
+      ),
+      QuuzShape = list(
+        type = "enum",
+        enum = list(
+          "a", "b", "c"
+        )
+      )
+    )
+  )
+
+  actual <- make_doc_usage(operation, api)
+  expected <- paste(
+    "#' @usage",
+    "#' operation(",
+    "#'   Foo = \"string\",",
+    "#'   Bar = list(",
+    "#'     Baz = 123,",
+    "#'     Qux = 123.0,",
+    "#'     Quux = TRUE|FALSE,",
+    "#'     Quuz = \"a\"|\"b\"|\"c\"",
+    "#'   )",
+    "#' )",
+    sep = "\n"
+  )
+  expect_equal(actual, expected)
 })
 
 test_that("make_doc_params", {
