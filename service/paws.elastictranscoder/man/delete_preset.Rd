@@ -4,10 +4,12 @@
 \alias{delete_preset}
 \title{The DeletePreset operation removes a preset that you've added in an AWS region}
 \usage{
-delete_preset(Id)
+delete_preset(
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The identifier of the preset for which you want to get detailed information.}
+\item{Id}{[required] The identifier of the preset for which you want to get detailed information.}
 }
 \description{
 The DeletePreset operation removes a preset that you've added in an AWS region.

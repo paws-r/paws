@@ -4,13 +4,22 @@
 \alias{describe_policies}
 \title{Describes the policies for the specified Auto Scaling group}
 \usage{
-describe_policies(AutoScalingGroupName = NULL, PolicyNames = NULL,
-  PolicyTypes = NULL, NextToken = NULL, MaxRecords = NULL)
+describe_policies(
+  AutoScalingGroupName = "string",
+  PolicyNames = list(
+    "string"
+  ),
+  PolicyTypes = list(
+    "string"
+  ),
+  NextToken = "string",
+  MaxRecords = 123
+)
 }
 \arguments{
 \item{AutoScalingGroupName}{The name of the Auto Scaling group.}
 
-\item{PolicyNames}{The names of one or more policies. If you omit this parameter, all policies are described. If an group name is provided, the results are limited to that group. This list is limited to 50 items. If you specify an unknown policy name, it is ignored with no error.}
+\item{PolicyNames}{The names of one or more policies. If you omit this parameter, all policies are described. If a group name is provided, the results are limited to that group. This list is limited to 50 items. If you specify an unknown policy name, it is ignored with no error.}
 
 \item{PolicyTypes}{One or more policy types. Valid values are \code{SimpleScaling} and \code{StepScaling}.}
 

@@ -4,8 +4,22 @@
 \alias{describe_agents}
 \title{Lists agents or connectors as specified by ID or other filters}
 \usage{
-describe_agents(agentIds = NULL, filters = NULL, maxResults = NULL,
-  nextToken = NULL)
+describe_agents(
+  agentIds = list(
+    "string"
+  ),
+  filters = list(
+    list(
+      name = "string",
+      values = list(
+        "string"
+      ),
+      condition = "string"
+    )
+  ),
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
 \item{agentIds}{The agent or the Connector IDs for which you want information. If you specify no IDs, the system returns information about all agents/Connectors associated with your AWS user account.}

@@ -4,10 +4,26 @@
 \alias{put_event_selectors}
 \title{Configures an event selector for your trail}
 \usage{
-put_event_selectors(TrailName, EventSelectors)
+put_event_selectors(
+  TrailName = "string",
+  EventSelectors = list(
+    list(
+      ReadWriteType = "ReadOnly"|"WriteOnly"|"All",
+      IncludeManagementEvents = TRUE|FALSE,
+      DataResources = list(
+        list(
+          Type = "string",
+          Values = list(
+            "string"
+          )
+        )
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{TrailName}{Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:
+\item{TrailName}{[required] Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:
 \itemize{
 \item Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (\_), or dashes (-)
 \item Start with a letter or number, and end with a letter or number
@@ -20,7 +36,7 @@ If you specify a trail ARN, it must be in the format:
 
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 
-\item{EventSelectors}{Specifies the settings for your event selectors. You can configure up to five event selectors for a trail.}
+\item{EventSelectors}{[required] Specifies the settings for your event selectors. You can configure up to five event selectors for a trail.}
 }
 \description{
 Configures an event selector for your trail. Use event selectors to further specify the management and data event settings for your trail. By default, trails created without specific event selectors will be configured to log all read and write management events, and no data events.

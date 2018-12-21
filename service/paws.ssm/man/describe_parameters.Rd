@@ -4,8 +4,27 @@
 \alias{describe_parameters}
 \title{Get information about a parameter}
 \usage{
-describe_parameters(Filters = NULL, ParameterFilters = NULL,
-  MaxResults = NULL, NextToken = NULL)
+describe_parameters(
+  Filters = list(
+    list(
+      Key = "Name"|"Type"|"KeyId",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  ParameterFilters = list(
+    list(
+      Key = "string",
+      Option = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{Filters}{One or more filters. Use a filter to return a more specific list of results.}

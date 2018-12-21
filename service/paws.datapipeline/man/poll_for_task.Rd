@@ -4,10 +4,17 @@
 \alias{poll_for_task}
 \title{Task runners call \code{PollForTask} to receive a task to perform from AWS Data Pipeline}
 \usage{
-poll_for_task(workerGroup, hostname = NULL, instanceIdentity = NULL)
+poll_for_task(
+  workerGroup = "string",
+  hostname = "string",
+  instanceIdentity = list(
+    document = "string",
+    signature = "string"
+  )
+)
 }
 \arguments{
-\item{workerGroup}{The type of task the task runner is configured to accept and process. The worker group is set as a field on objects in the pipeline when they are created. You can only specify a single value for \code{workerGroup} in the call to \code{PollForTask}. There are no wildcard values permitted in \code{workerGroup}; the string must be an exact, case-sensitive, match.}
+\item{workerGroup}{[required] The type of task the task runner is configured to accept and process. The worker group is set as a field on objects in the pipeline when they are created. You can only specify a single value for \code{workerGroup} in the call to \code{PollForTask}. There are no wildcard values permitted in \code{workerGroup}; the string must be an exact, case-sensitive, match.}
 
 \item{hostname}{The public DNS name of the calling task runner.}
 

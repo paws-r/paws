@@ -1,6 +1,6 @@
 Package: paws.athena
 Title: Amazon Athena
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
@@ -8,11 +8,14 @@ Authors@R:
              email = "david.kretch@gmail.com"),
       person(given = "Adam",
              family = "Banker",
-             role = "aut"))
-Description: Amazon Athena is an interactive query service that
-    lets you use standard SQL to analyze data directly in Amazon S3. You
-    can point Athena at your data in Amazon S3 and run ad-hoc queries and
-    get results in seconds. Athena is serverless, so there is no
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: Amazon Athena is an interactive query service that lets you
+    use standard SQL to analyze data directly in Amazon S3. You can point
+    Athena at your data in Amazon S3 and run ad-hoc queries and get
+    results in seconds. Athena is serverless, so there is no
     infrastructure to set up or manage. You pay only for the queries you
     run. Athena scales automatically---executing queries in parallel---so
     results are fast, even with large datasets and complex queries. For
@@ -23,14 +26,15 @@ License: Apache License (>= 2.0)
 Depends: 
     R (>= 3.5.1)
 Imports: 
+    base64enc,
     digest,
     httr,
+    ini,
     jsonlite,
-    xml2,
-    ini
+    xml2
 Encoding: UTF-8
 LazyData: true
-Roxygen: list(markdown = TRUE)
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 6.0.1
 Collate: 
     'struct.R'
@@ -43,7 +47,6 @@ Collate:
     'config.R'
     'convert.R'
     'dateutil.R'
-    'defaults.R'
     'error.R'
     'handlers_core.R'
     'handlers_ec2query.R'
@@ -51,17 +54,22 @@ Collate:
     'handlers_query.R'
     'handlers_rest.R'
     'handlers_restjson.R'
+    'handlers_restxml.R'
     'idempotency.R'
     'jsonutil.R'
     'paws.athena_interfaces.R'
     'paws.athena_operations.R'
     'paws.athena_package.R'
+    'signer_v4.R'
     'paws.athena_service.R'
     'populate.R'
     'populateutil.R'
-    'type.R'
+    'tags.R'
     'queryutil.R'
     'request.R'
-    'signer_v4.R'
+    'signer_s3.R'
+    'signer_s3v4.R'
+    'signer_v2.R'
     'time.R'
+    'util.R'
     'xmlutil.R'

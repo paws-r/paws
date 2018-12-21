@@ -4,12 +4,15 @@
 \alias{create_alias}
 \title{Creates an alias for a directory and assigns the alias to the directory}
 \usage{
-create_alias(DirectoryId, Alias)
+create_alias(
+  DirectoryId = "string",
+  Alias = "string"
+)
 }
 \arguments{
-\item{DirectoryId}{The identifier of the directory for which to create the alias.}
+\item{DirectoryId}{[required] The identifier of the directory for which to create the alias.}
 
-\item{Alias}{The requested alias.
+\item{Alias}{[required] The requested alias.
 
 The alias must be unique amongst all aliases in AWS. This operation throws an \code{EntityAlreadyExistsException} error if the alias already exists.}
 }

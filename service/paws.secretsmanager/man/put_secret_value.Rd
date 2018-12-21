@@ -4,11 +4,18 @@
 \alias{put_secret_value}
 \title{Stores a new encrypted secret value in the specified secret}
 \usage{
-put_secret_value(SecretId, ClientRequestToken = NULL, SecretBinary = NULL,
-  SecretString = NULL, VersionStages = NULL)
+put_secret_value(
+  SecretId = "string",
+  ClientRequestToken = "string",
+  SecretBinary = raw,
+  SecretString = "string",
+  VersionStages = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{SecretId}{Specifies the secret to which you want to add a new version. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret. The secret must already exist.
+\item{SecretId}{[required] Specifies the secret to which you want to add a new version. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret. The secret must already exist.
 
 If you specify an ARN, we generally recommend that you specify a complete ARN. You can specify a partial ARN too---for example, if you don't include the final hyphen and six random characters that Secrets Manager adds at the end of the ARN when you created the secret. A partial ARN match can work as long as it uniquely matches only one secret. However, if your secret has a name that ends in a hyphen followed by six characters (before Secrets Manager adds the hyphen and six characters to the ARN) and you try to use that as a partial ARN, then those characters cause Secrets Manager to assume that you're specifying a complete ARN. This confusion can cause unexpected results. To avoid this situation, we recommend that you don't create secret names that end with a hyphen followed by six characters.}
 
@@ -57,7 +64,7 @@ The Secrets Manager console uses only the \code{SecretString} field. To add bina
 \item If another version of this secret already exists, then this operation does not automatically move any staging labels other than those that you explicitly specify in the \code{VersionStages} parameter.
 \item If this operation moves the staging label \code{AWSCURRENT} from another version to this version (because you included it in the \code{StagingLabels} parameter) then Secrets Manager also automatically moves the staging label \code{AWSPREVIOUS} to the version that \code{AWSCURRENT} was removed from.
 \item This operation is idempotent. If a version with a \code{VersionId} with the same value as the \code{ClientRequestToken} parameter already exists and you specify the same secret data, the operation succeeds but does nothing. However, if the secret data is different, then the operation fails because you cannot modify an existing version; you can only create new ones.
-\item If you call an operation that needs to encrypt or decrypt the \code{SecretString} or \code{SecretBinary} for a secret in the same account as the calling user and that secret doesn't specify a AWS KMS encryption key, Secrets Manager uses the account's default AWS managed customer master key (CMK) with the alias \code{aws/secretsmanager}. If this key doesn't already exist in your account then Secrets Manager creates it for you automatically. All users in the same AWS account automatically have access to use the default CMK. Note that if an Secrets Manager API call results in AWS having to create the account's AWS-managed CMK, it can result in a one-time significant delay in returning the result.
+\item If you call an operation that needs to encrypt or decrypt the \code{SecretString} or \code{SecretBinary} for a secret in the same account as the calling user and that secret doesn't specify a AWS KMS encryption key, Secrets Manager uses the account's default AWS managed customer master key (CMK) with the alias \code{aws/secretsmanager}. If this key doesn't already exist in your account then Secrets Manager creates it for you automatically. All users and roles in the same AWS account automatically have access to use the default CMK. Note that if an Secrets Manager API call results in AWS having to create the account's AWS-managed CMK, it can result in a one-time significant delay in returning the result.
 \item If the secret is in a different AWS account from the credentials calling an API that requires encryption or decryption of the secret value then you must create and use a custom AWS KMS CMK because you can't access the default CMK for the account using credentials from a different AWS account. Store the ARN of the CMK in the secret when you create the secret or when you update it by including it in the \code{KMSKeyId}. If you call an API that must encrypt or decrypt \code{SecretString} or \code{SecretBinary} using credentials from a different account then the AWS KMS key policy must grant cross-account access to that other account's user or role for both the kms:GenerateDataKey and kms:Decrypt operations.
 }
 

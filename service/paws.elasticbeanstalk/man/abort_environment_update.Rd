@@ -4,7 +4,10 @@
 \alias{abort_environment_update}
 \title{Cancels in-progress environment configuration update or application version deployment}
 \usage{
-abort_environment_update(EnvironmentId = NULL, EnvironmentName = NULL)
+abort_environment_update(
+  EnvironmentId = "string",
+  EnvironmentName = "string"
+)
 }
 \arguments{
 \item{EnvironmentId}{This specifies the ID of the environment with the in-progress update that you want to cancel.}

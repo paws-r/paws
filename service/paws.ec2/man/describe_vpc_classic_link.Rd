@@ -4,7 +4,20 @@
 \alias{describe_vpc_classic_link}
 \title{Describes the ClassicLink status of one or more VPCs}
 \usage{
-describe_vpc_classic_link(Filters = NULL, DryRun = NULL, VpcIds = NULL)
+describe_vpc_classic_link(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE,
+  VpcIds = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{Filters}{One or more filters.

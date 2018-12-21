@@ -4,14 +4,18 @@
 \alias{move_account}
 \title{Moves an account from its current source parent root or organizational unit (OU) to the specified destination parent root or OU}
 \usage{
-move_account(AccountId, SourceParentId, DestinationParentId)
+move_account(
+  AccountId = "string",
+  SourceParentId = "string",
+  DestinationParentId = "string"
+)
 }
 \arguments{
-\item{AccountId}{The unique identifier (ID) of the account that you want to move.
+\item{AccountId}{[required] The unique identifier (ID) of the account that you want to move.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for an account ID string requires exactly 12 digits.}
 
-\item{SourceParentId}{The unique identifier (ID) of the root or organizational unit that you want to move the account from.
+\item{SourceParentId}{[required] The unique identifier (ID) of the root or organizational unit that you want to move the account from.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a parent ID string requires one of the following:
 \itemize{
@@ -19,7 +23,7 @@ The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a parent ID string
 \item Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
 }}
 
-\item{DestinationParentId}{The unique identifier (ID) of the root or organizational unit that you want to move the account to.
+\item{DestinationParentId}{[required] The unique identifier (ID) of the root or organizational unit that you want to move the account to.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a parent ID string requires one of the following:
 \itemize{

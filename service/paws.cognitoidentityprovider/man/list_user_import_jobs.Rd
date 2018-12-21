@@ -4,12 +4,16 @@
 \alias{list_user_import_jobs}
 \title{Lists the user import jobs}
 \usage{
-list_user_import_jobs(UserPoolId, MaxResults, PaginationToken = NULL)
+list_user_import_jobs(
+  UserPoolId = "string",
+  MaxResults = 123,
+  PaginationToken = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool that the users are being imported into.}
+\item{UserPoolId}{[required] The user pool ID for the user pool that the users are being imported into.}
 
-\item{MaxResults}{The maximum number of import jobs you want the request to return.}
+\item{MaxResults}{[required] The maximum number of import jobs you want the request to return.}
 
 \item{PaginationToken}{An identifier that was returned from the previous call to \code{ListUserImportJobs}, which can be used to return the next set of import jobs in the list.}
 }

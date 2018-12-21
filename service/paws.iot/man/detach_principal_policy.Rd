@@ -4,12 +4,15 @@
 \alias{detach_principal_policy}
 \title{Removes the specified policy from the specified certificate}
 \usage{
-detach_principal_policy(policyName, principal)
+detach_principal_policy(
+  policyName = "string",
+  principal = "string"
+)
 }
 \arguments{
-\item{policyName}{The name of the policy to detach.}
+\item{policyName}{[required] The name of the policy to detach.}
 
-\item{principal}{The principal.
+\item{principal}{[required] The principal.
 
 If the principal is a certificate, specify the certificate ARN. If the principal is an Amazon Cognito identity, specify the identity ID.}
 }

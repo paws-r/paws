@@ -4,10 +4,18 @@
 \alias{add_tags}
 \title{Adds one or more tags to a trail, up to a limit of 50}
 \usage{
-add_tags(ResourceId, TagsList = NULL)
+add_tags(
+  ResourceId = "string",
+  TagsList = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ResourceId}{Specifies the ARN of the trail to which one or more tags will be added. The format of a trail ARN is:
+\item{ResourceId}{[required] Specifies the ARN of the trail to which one or more tags will be added. The format of a trail ARN is:
 
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 

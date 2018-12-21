@@ -4,8 +4,50 @@
 \alias{create_function_definition}
 \title{Creates a Lambda function definition which contains a list of Lambda functions and their configurations to be used in a group}
 \usage{
-create_function_definition(AmznClientToken = NULL, InitialVersion = NULL,
-  Name = NULL)
+create_function_definition(
+  AmznClientToken = "string",
+  InitialVersion = list(
+    DefaultConfig = list(
+      Execution = list(
+        IsolationMode = "GreengrassContainer"|"NoContainer"
+      )
+    ),
+    Functions = list(
+      list(
+        FunctionArn = "string",
+        FunctionConfiguration = list(
+          EncodingType = "binary"|"json",
+          Environment = list(
+            AccessSysfs = TRUE|FALSE,
+            Execution = list(
+              IsolationMode = "GreengrassContainer"|"NoContainer",
+              RunAs = list(
+                Gid = 123,
+                Uid = 123
+              )
+            ),
+            ResourceAccessPolicies = list(
+              list(
+                Permission = "ro"|"rw",
+                ResourceId = "string"
+              )
+            ),
+            Variables = list(
+              "string"
+            )
+          ),
+          ExecArgs = "string",
+          Executable = "string",
+          MemorySize = 123,
+          Pinned = TRUE|FALSE,
+          Timeout = 123
+        ),
+        Id = "string"
+      )
+    )
+  ),
+  Name = "string"
+)
 }
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}

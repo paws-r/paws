@@ -4,10 +4,12 @@
 \alias{purchase_provisioned_capacity}
 \title{This operation purchases a provisioned capacity unit for an AWS account}
 \usage{
-purchase_provisioned_capacity(accountId)
+purchase_provisioned_capacity(
+  accountId = "string"
+)
 }
 \arguments{
-\item{accountId}{The AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '-' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, don't include any hyphens ('-') in the ID.}
+\item{accountId}{[required] The AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '-' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, don't include any hyphens ('-') in the ID.}
 }
 \description{
 This operation purchases a provisioned capacity unit for an AWS account.

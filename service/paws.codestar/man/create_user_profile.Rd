@@ -4,14 +4,19 @@
 \alias{create_user_profile}
 \title{Creates a profile for a user that includes user preferences, such as the display name and email address assocciated with the user, in AWS CodeStar}
 \usage{
-create_user_profile(userArn, displayName, emailAddress, sshPublicKey = NULL)
+create_user_profile(
+  userArn = "string",
+  displayName = "string",
+  emailAddress = "string",
+  sshPublicKey = "string"
+)
 }
 \arguments{
-\item{userArn}{The Amazon Resource Name (ARN) of the user in IAM.}
+\item{userArn}{[required] The Amazon Resource Name (ARN) of the user in IAM.}
 
-\item{displayName}{The name that will be displayed as the friendly name for the user in AWS CodeStar.}
+\item{displayName}{[required] The name that will be displayed as the friendly name for the user in AWS CodeStar.}
 
-\item{emailAddress}{The email address that will be displayed as part of the user's profile in AWS CodeStar.}
+\item{emailAddress}{[required] The email address that will be displayed as part of the user's profile in AWS CodeStar.}
 
 \item{sshPublicKey}{The SSH public key associated with the user in AWS CodeStar. If a project owner allows the user remote access to project resources, this public key will be used along with the user's private key for SSH access.}
 }

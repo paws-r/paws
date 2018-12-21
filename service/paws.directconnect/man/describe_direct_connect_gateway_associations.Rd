@@ -4,8 +4,12 @@
 \alias{describe_direct_connect_gateway_associations}
 \title{Lists the associations between your Direct Connect gateways and virtual private gateways}
 \usage{
-describe_direct_connect_gateway_associations(directConnectGatewayId = NULL,
-  virtualGatewayId = NULL, maxResults = NULL, nextToken = NULL)
+describe_direct_connect_gateway_associations(
+  directConnectGatewayId = "string",
+  virtualGatewayId = "string",
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
 \item{directConnectGatewayId}{The ID of the Direct Connect gateway.}

@@ -4,15 +4,19 @@
 \alias{update_snapshot_schedule}
 \title{Updates a snapshot schedule configured for a gateway volume}
 \usage{
-update_snapshot_schedule(VolumeARN, StartAt, RecurrenceInHours,
-  Description = NULL)
+update_snapshot_schedule(
+  VolumeARN = "string",
+  StartAt = 123,
+  RecurrenceInHours = 123,
+  Description = "string"
+)
 }
 \arguments{
-\item{VolumeARN}{The Amazon Resource Name (ARN) of the volume. Use the ListVolumes operation to return a list of gateway volumes.}
+\item{VolumeARN}{[required] The Amazon Resource Name (ARN) of the volume. Use the ListVolumes operation to return a list of gateway volumes.}
 
-\item{StartAt}{The hour of the day at which the snapshot schedule begins represented as \emph{hh}, where \emph{hh} is the hour (0 to 23). The hour of the day is in the time zone of the gateway.}
+\item{StartAt}{[required] The hour of the day at which the snapshot schedule begins represented as \emph{hh}, where \emph{hh} is the hour (0 to 23). The hour of the day is in the time zone of the gateway.}
 
-\item{RecurrenceInHours}{Frequency of snapshots. Specify the number of hours between snapshots.}
+\item{RecurrenceInHours}{[required] Frequency of snapshots. Specify the number of hours between snapshots.}
 
 \item{Description}{Optional description of the snapshot that overwrites the existing description.}
 }

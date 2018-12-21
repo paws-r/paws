@@ -4,12 +4,17 @@
 \alias{update_custom_verification_email_template}
 \title{Updates an existing custom verification email template}
 \usage{
-update_custom_verification_email_template(TemplateName,
-  FromEmailAddress = NULL, TemplateSubject = NULL, TemplateContent = NULL,
-  SuccessRedirectionURL = NULL, FailureRedirectionURL = NULL)
+update_custom_verification_email_template(
+  TemplateName = "string",
+  FromEmailAddress = "string",
+  TemplateSubject = "string",
+  TemplateContent = "string",
+  SuccessRedirectionURL = "string",
+  FailureRedirectionURL = "string"
+)
 }
 \arguments{
-\item{TemplateName}{The name of the custom verification email template that you want to update.}
+\item{TemplateName}{[required] The name of the custom verification email template that you want to update.}
 
 \item{FromEmailAddress}{The email address that the custom verification email is sent from.}
 

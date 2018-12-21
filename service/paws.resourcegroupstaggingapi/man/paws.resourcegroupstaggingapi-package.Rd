@@ -6,15 +6,20 @@
 \alias{paws.resourcegroupstaggingapi-package}
 \title{paws.resourcegroupstaggingapi: AWS Resource Groups Tagging API}
 \description{
-This guide describes the API operations for the
-resource groups tagging.
+This guide describes the API operations for the resource
+groups tagging.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

@@ -4,7 +4,10 @@
 \alias{describe_stack_events}
 \title{Returns all stack related events for a specified stack in reverse chronological order}
 \usage{
-describe_stack_events(StackName = NULL, NextToken = NULL)
+describe_stack_events(
+  StackName = "string",
+  NextToken = "string"
+)
 }
 \arguments{
 \item{StackName}{The name or the unique stack ID that is associated with the stack, which are not always interchangeable:

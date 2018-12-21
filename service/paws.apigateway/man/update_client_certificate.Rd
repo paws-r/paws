@@ -4,10 +4,20 @@
 \alias{update_client_certificate}
 \title{Changes information about an ClientCertificate resource}
 \usage{
-update_client_certificate(clientCertificateId, patchOperations = NULL)
+update_client_certificate(
+  clientCertificateId = "string",
+  patchOperations = list(
+    list(
+      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
+      path = "string",
+      value = "string",
+      from = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{clientCertificateId}{[Required] The identifier of the ClientCertificate resource to be updated.}
+\item{clientCertificateId}{[required] [Required] The identifier of the ClientCertificate resource to be updated.}
 
 \item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
 }

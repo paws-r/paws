@@ -4,13 +4,22 @@
 \alias{create_trail}
 \title{Creates a trail that specifies the settings for delivery of log data to an Amazon S3 bucket}
 \usage{
-create_trail(Name, S3BucketName, S3KeyPrefix = NULL, SnsTopicName = NULL,
-  IncludeGlobalServiceEvents = NULL, IsMultiRegionTrail = NULL,
-  EnableLogFileValidation = NULL, CloudWatchLogsLogGroupArn = NULL,
-  CloudWatchLogsRoleArn = NULL, KmsKeyId = NULL)
+create_trail(
+  Name = "string",
+  S3BucketName = "string",
+  S3KeyPrefix = "string",
+  SnsTopicName = "string",
+  IncludeGlobalServiceEvents = TRUE|FALSE,
+  IsMultiRegionTrail = TRUE|FALSE,
+  EnableLogFileValidation = TRUE|FALSE,
+  CloudWatchLogsLogGroupArn = "string",
+  CloudWatchLogsRoleArn = "string",
+  KmsKeyId = "string",
+  IsOrganizationTrail = TRUE|FALSE
+)
 }
 \arguments{
-\item{Name}{Specifies the name of the trail. The name must meet the following requirements:
+\item{Name}{[required] Specifies the name of the trail. The name must meet the following requirements:
 \itemize{
 \item Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (\_), or dashes (-)
 \item Start with a letter or number, and end with a letter or number
@@ -19,7 +28,7 @@ create_trail(Name, S3BucketName, S3KeyPrefix = NULL, SnsTopicName = NULL,
 \item Not be in IP address format (for example, 192.168.5.4)
 }}
 
-\item{S3BucketName}{Specifies the name of the Amazon S3 bucket designated for publishing log files. See \href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html}{Amazon S3 Bucket Naming Requirements}.}
+\item{S3BucketName}{[required] Specifies the name of the Amazon S3 bucket designated for publishing log files. See \href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html}{Amazon S3 Bucket Naming Requirements}.}
 
 \item{S3KeyPrefix}{Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see \href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html}{Finding Your CloudTrail Log Files}. The maximum length is 200 characters.}
 
@@ -46,6 +55,8 @@ Examples:
 \item arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012
 \item 12345678-1234-1234-1234-123456789012
 }}
+
+\item{IsOrganizationTrail}{Specifies whether the trail is created for all accounts in an organization in AWS Organizations, or only for the current AWS account. The default is false, and cannot be true unless the call is made on behalf of an AWS account that is the master account for an organization in AWS Organizations.}
 }
 \description{
 Creates a trail that specifies the settings for delivery of log data to an Amazon S3 bucket. A maximum of five trails can exist in a region, irrespective of the region in which they were created.

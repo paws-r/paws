@@ -4,20 +4,26 @@
 \alias{update_provisioning_artifact}
 \title{Updates the specified provisioning artifact (also known as a version) for the specified product}
 \usage{
-update_provisioning_artifact(ProductId, ProvisioningArtifactId,
-  AcceptLanguage = NULL, Name = NULL, Description = NULL, Active = NULL)
+update_provisioning_artifact(
+  AcceptLanguage = "string",
+  ProductId = "string",
+  ProvisioningArtifactId = "string",
+  Name = "string",
+  Description = "string",
+  Active = TRUE|FALSE
+)
 }
 \arguments{
-\item{ProductId}{The product identifier.}
-
-\item{ProvisioningArtifactId}{The identifier of the provisioning artifact.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{ProductId}{[required] The product identifier.}
+
+\item{ProvisioningArtifactId}{[required] The identifier of the provisioning artifact.}
 
 \item{Name}{The updated name of the provisioning artifact.}
 

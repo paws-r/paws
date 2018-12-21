@@ -4,10 +4,12 @@
 \alias{delete_imported_key_material}
 \title{Deletes key material that you previously imported}
 \usage{
-delete_imported_key_material(KeyId)
+delete_imported_key_material(
+  KeyId = "string"
+)
 }
 \arguments{
-\item{KeyId}{The identifier of the CMK whose key material to delete. The CMK's \code{Origin} must be \code{EXTERNAL}.
+\item{KeyId}{[required] The identifier of the CMK whose key material to delete. The CMK's \code{Origin} must be \code{EXTERNAL}.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 

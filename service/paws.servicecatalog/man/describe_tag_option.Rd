@@ -4,10 +4,12 @@
 \alias{describe_tag_option}
 \title{Gets information about the specified TagOption}
 \usage{
-describe_tag_option(Id)
+describe_tag_option(
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The TagOption identifier.}
+\item{Id}{[required] The TagOption identifier.}
 }
 \description{
 Gets information about the specified TagOption.

@@ -4,13 +4,27 @@
 \alias{create_replication_task}
 \title{Creates a replication task using the specified parameters}
 \usage{
-create_replication_task(ReplicationTaskIdentifier, SourceEndpointArn,
-  TargetEndpointArn, ReplicationInstanceArn, MigrationType, TableMappings,
-  ReplicationTaskSettings = NULL, CdcStartTime = NULL,
-  CdcStartPosition = NULL, CdcStopPosition = NULL, Tags = NULL)
+create_replication_task(
+  ReplicationTaskIdentifier = "string",
+  SourceEndpointArn = "string",
+  TargetEndpointArn = "string",
+  ReplicationInstanceArn = "string",
+  MigrationType = "full-load"|"cdc"|"full-load-and-cdc",
+  TableMappings = "string",
+  ReplicationTaskSettings = "string",
+  CdcStartTime = as.POSIXct("2015-01-01"),
+  CdcStartPosition = "string",
+  CdcStopPosition = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ReplicationTaskIdentifier}{The replication task identifier.
+\item{ReplicationTaskIdentifier}{[required] The replication task identifier.
 
 Constraints:
 \itemize{
@@ -19,19 +33,19 @@ Constraints:
 \item Cannot end with a hyphen or contain two consecutive hyphens.
 }}
 
-\item{SourceEndpointArn}{The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.}
+\item{SourceEndpointArn}{[required] The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.}
 
-\item{TargetEndpointArn}{The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.}
+\item{TargetEndpointArn}{[required] The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.}
 
-\item{ReplicationInstanceArn}{The Amazon Resource Name (ARN) of the replication instance.}
+\item{ReplicationInstanceArn}{[required] The Amazon Resource Name (ARN) of the replication instance.}
 
-\item{MigrationType}{The migration type.}
+\item{MigrationType}{[required] The migration type.}
 
-\item{TableMappings}{When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the path with "file://". When working with the DMS API, provide the JSON as the parameter value.
+\item{TableMappings}{[required] When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the path with "file://". When working with the DMS API, provide the JSON as the parameter value.
 
 For example, --table-mappings file://mappingfile.json}
 
-\item{ReplicationTaskSettings}{Settings for the task, such as target metadata settings. For a complete list of task settings, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html}{Task Settings for AWS Database Migration Service Tasks}.}
+\item{ReplicationTaskSettings}{Settings for the task, such as target metadata settings. For a complete list of task settings, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html}{Task Settings for AWS Database Migration Service Tasks} in the \emph{AWS Database Migration User Guide.}}
 
 \item{CdcStartTime}{Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or CdcStartPosition to specify when you want a CDC operation to start. Specifying both values results in an error.
 

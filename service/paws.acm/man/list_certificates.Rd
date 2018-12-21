@@ -4,8 +4,24 @@
 \alias{list_certificates}
 \title{Retrieves a list of certificate ARNs and domain names}
 \usage{
-list_certificates(CertificateStatuses = NULL, Includes = NULL,
-  NextToken = NULL, MaxItems = NULL)
+list_certificates(
+  CertificateStatuses = list(
+    "PENDING_VALIDATION"|"ISSUED"|"INACTIVE"|"EXPIRED"|"VALIDATION_TIMED_OUT"|"REVOKED"|"FAILED"
+  ),
+  Includes = list(
+    extendedKeyUsage = list(
+      "TLS_WEB_SERVER_AUTHENTICATION"|"TLS_WEB_CLIENT_AUTHENTICATION"|"CODE_SIGNING"|"EMAIL_PROTECTION"|"TIME_STAMPING"|"OCSP_SIGNING"|"IPSEC_END_SYSTEM"|"IPSEC_TUNNEL"|"IPSEC_USER"|"ANY"|"NONE"|"CUSTOM"
+    ),
+    keyUsage = list(
+      "DIGITAL_SIGNATURE"|"NON_REPUDIATION"|"KEY_ENCIPHERMENT"|"DATA_ENCIPHERMENT"|"KEY_AGREEMENT"|"CERTIFICATE_SIGNING"|"CRL_SIGNING"|"ENCIPHER_ONLY"|"DECIPHER_ONLY"|"ANY"|"CUSTOM"
+    ),
+    keyTypes = list(
+      "RSA_2048"|"RSA_1024"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1"
+    )
+  ),
+  NextToken = "string",
+  MaxItems = 123
+)
 }
 \arguments{
 \item{CertificateStatuses}{Filter the certificate list by status value.}

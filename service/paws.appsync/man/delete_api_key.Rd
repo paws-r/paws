@@ -4,12 +4,15 @@
 \alias{delete_api_key}
 \title{Deletes an API key}
 \usage{
-delete_api_key(apiId, id)
+delete_api_key(
+  apiId = "string",
+  id = "string"
+)
 }
 \arguments{
-\item{apiId}{The API ID.}
+\item{apiId}{[required] The API ID.}
 
-\item{id}{The ID for the API key.}
+\item{id}{[required] The ID for the API key.}
 }
 \description{
 Deletes an API key.

@@ -4,12 +4,15 @@
 \alias{delete_folder_contents}
 \title{Deletes the contents of the specified folder}
 \usage{
-delete_folder_contents(FolderId, AuthenticationToken = NULL)
+delete_folder_contents(
+  AuthenticationToken = "string",
+  FolderId = "string"
+)
 }
 \arguments{
-\item{FolderId}{The ID of the folder.}
-
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
+
+\item{FolderId}{[required] The ID of the folder.}
 }
 \description{
 Deletes the contents of the specified folder.

@@ -4,10 +4,14 @@
 \alias{list_uploads}
 \title{Gets information about uploads, given an AWS Device Farm project ARN}
 \usage{
-list_uploads(arn, type = NULL, nextToken = NULL)
+list_uploads(
+  arn = "string",
+  type = "ANDROID_APP"|"IOS_APP"|"WEB_APP"|"EXTERNAL_DATA"|"APPIUM_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_PYTHON_TEST_PACKAGE"|"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_WEB_PYTHON_TEST_PACKAGE"|"CALABASH_TEST_PACKAGE"|"INSTRUMENTATION_TEST_PACKAGE"|"UIAUTOMATION_TEST_PACKAGE"|"UIAUTOMATOR_TEST_PACKAGE"|"XCTEST_TEST_PACKAGE"|"XCTEST_UI_TEST_PACKAGE"|"APPIUM_JAVA_JUNIT_TEST_SPEC"|"APPIUM_JAVA_TESTNG_TEST_SPEC"|"APPIUM_PYTHON_TEST_SPEC"|"APPIUM_WEB_JAVA_JUNIT_TEST_SPEC"|"APPIUM_WEB_JAVA_TESTNG_TEST_SPEC"|"APPIUM_WEB_PYTHON_TEST_SPEC"|"INSTRUMENTATION_TEST_SPEC"|"XCTEST_UI_TEST_SPEC",
+  nextToken = "string"
+)
 }
 \arguments{
-\item{arn}{The Amazon Resource Name (ARN) of the project for which you want to list uploads.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of the project for which you want to list uploads.}
 
 \item{type}{The type of upload.
 

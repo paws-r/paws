@@ -4,19 +4,41 @@
 \alias{start_game_session_placement}
 \title{Places a request for a new game session in a queue (see CreateGameSessionQueue)}
 \usage{
-start_game_session_placement(PlacementId, GameSessionQueueName,
-  MaximumPlayerSessionCount, GameProperties = NULL, GameSessionName = NULL,
-  PlayerLatencies = NULL, DesiredPlayerSessions = NULL,
-  GameSessionData = NULL)
+start_game_session_placement(
+  PlacementId = "string",
+  GameSessionQueueName = "string",
+  GameProperties = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  MaximumPlayerSessionCount = 123,
+  GameSessionName = "string",
+  PlayerLatencies = list(
+    list(
+      PlayerId = "string",
+      RegionIdentifier = "string",
+      LatencyInMilliseconds = 123.0
+    )
+  ),
+  DesiredPlayerSessions = list(
+    list(
+      PlayerId = "string",
+      PlayerData = "string"
+    )
+  ),
+  GameSessionData = "string"
+)
 }
 \arguments{
-\item{PlacementId}{Unique identifier to assign to the new game session placement. This value is developer-defined. The value must be unique across all regions and cannot be reused unless you are resubmitting a canceled or timed-out placement request.}
+\item{PlacementId}{[required] Unique identifier to assign to the new game session placement. This value is developer-defined. The value must be unique across all regions and cannot be reused unless you are resubmitting a canceled or timed-out placement request.}
 
-\item{GameSessionQueueName}{Name of the queue to use to place the new game session.}
-
-\item{MaximumPlayerSessionCount}{Maximum number of players that can be connected simultaneously to the game session.}
+\item{GameSessionQueueName}{[required] Name of the queue to use to place the new game session.}
 
 \item{GameProperties}{Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the GameSession object with a request to start a new game session (see \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}).}
+
+\item{MaximumPlayerSessionCount}{[required] Maximum number of players that can be connected simultaneously to the game session.}
 
 \item{GameSessionName}{Descriptive label that is associated with a game session. Session names do not need to be unique.}
 

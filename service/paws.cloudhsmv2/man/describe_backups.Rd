@@ -4,8 +4,16 @@
 \alias{describe_backups}
 \title{Gets information about backups of AWS CloudHSM clusters}
 \usage{
-describe_backups(NextToken = NULL, MaxResults = NULL, Filters = NULL,
-  SortAscending = NULL)
+describe_backups(
+  NextToken = "string",
+  MaxResults = 123,
+  Filters = list(
+    list(
+      "string"
+    )
+  ),
+  SortAscending = TRUE|FALSE
+)
 }
 \arguments{
 \item{NextToken}{The \code{NextToken} value that you received in the previous response. Use this value to get more backups.}

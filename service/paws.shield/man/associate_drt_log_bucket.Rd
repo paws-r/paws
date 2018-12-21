@@ -4,10 +4,12 @@
 \alias{associate_drt_log_bucket}
 \title{Authorizes the DDoS Response team (DRT) to access the specified Amazon S3 bucket containing your flow logs}
 \usage{
-associate_drt_log_bucket(LogBucket)
+associate_drt_log_bucket(
+  LogBucket = "string"
+)
 }
 \arguments{
-\item{LogBucket}{The Amazon S3 bucket that contains your flow logs.}
+\item{LogBucket}{[required] The Amazon S3 bucket that contains your flow logs.}
 }
 \description{
 Authorizes the DDoS Response team (DRT) to access the specified Amazon S3 bucket containing your flow logs. You can associate up to 10 Amazon S3 buckets with your subscription.

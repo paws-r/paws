@@ -4,12 +4,28 @@
 \alias{create_deployment}
 \title{Creates a Deployment resource, which makes a specified RestApi callable over the internet}
 \usage{
-create_deployment(restApiId, stageName = NULL, stageDescription = NULL,
-  description = NULL, cacheClusterEnabled = NULL, cacheClusterSize = NULL,
-  variables = NULL, canarySettings = NULL, tracingEnabled = NULL)
+create_deployment(
+  restApiId = "string",
+  stageName = "string",
+  stageDescription = "string",
+  description = "string",
+  cacheClusterEnabled = TRUE|FALSE,
+  cacheClusterSize = "0.5"|"1.6"|"6.1"|"13.5"|"28.4"|"58.2"|"118"|"237",
+  variables = list(
+    "string"
+  ),
+  canarySettings = list(
+    percentTraffic = 123.0,
+    stageVariableOverrides = list(
+      "string"
+    ),
+    useStageCache = TRUE|FALSE
+  ),
+  tracingEnabled = TRUE|FALSE
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
 \item{stageName}{The name of the Stage resource for the Deployment resource to create.}
 

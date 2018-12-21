@@ -4,13 +4,25 @@
 \alias{get_shipping_label}
 \title{This operation generates a pre-paid UPS shipping label that you will use to ship your device to AWS for processing}
 \usage{
-get_shipping_label(jobIds, name = NULL, company = NULL,
-  phoneNumber = NULL, country = NULL, stateOrProvince = NULL,
-  city = NULL, postalCode = NULL, street1 = NULL, street2 = NULL,
-  street3 = NULL, APIVersion = NULL)
+get_shipping_label(
+  jobIds = list(
+    "string"
+  ),
+  name = "string",
+  company = "string",
+  phoneNumber = "string",
+  country = "string",
+  stateOrProvince = "string",
+  city = "string",
+  postalCode = "string",
+  street1 = "string",
+  street2 = "string",
+  street3 = "string",
+  APIVersion = "string"
+)
 }
 \arguments{
-\item{jobIds}{}
+\item{jobIds}{[required]}
 
 \item{name}{}
 

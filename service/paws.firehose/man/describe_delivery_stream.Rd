@@ -4,11 +4,14 @@
 \alias{describe_delivery_stream}
 \title{Describes the specified delivery stream and gets the status}
 \usage{
-describe_delivery_stream(DeliveryStreamName, Limit = NULL,
-  ExclusiveStartDestinationId = NULL)
+describe_delivery_stream(
+  DeliveryStreamName = "string",
+  Limit = 123,
+  ExclusiveStartDestinationId = "string"
+)
 }
 \arguments{
-\item{DeliveryStreamName}{The name of the delivery stream.}
+\item{DeliveryStreamName}{[required] The name of the delivery stream.}
 
 \item{Limit}{The limit on the number of destinations to return. You can have one destination per delivery stream.}
 

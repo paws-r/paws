@@ -4,10 +4,12 @@
 \alias{get_apns_channel}
 \title{Returns information about the APNs channel for an app}
 \usage{
-get_apns_channel(ApplicationId)
+get_apns_channel(
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 }
 \description{
 Returns information about the APNs channel for an app.

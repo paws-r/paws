@@ -4,12 +4,15 @@
 \alias{delete_rule}
 \title{Permanently deletes a Rule}
 \usage{
-delete_rule(RuleId, ChangeToken)
+delete_rule(
+  RuleId = "string",
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{RuleId}{The \code{RuleId} of the Rule that you want to delete. \code{RuleId} is returned by CreateRule and by ListRules.}
+\item{RuleId}{[required] The \code{RuleId} of the Rule that you want to delete. \code{RuleId} is returned by CreateRule and by ListRules.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Permanently deletes a Rule. You can't delete a \code{Rule} if it's still used in any \code{WebACL} objects or if it still includes any predicates, such as \code{ByteMatchSet} objects.

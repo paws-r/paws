@@ -4,16 +4,50 @@
 \alias{put_scaling_policy}
 \title{Creates or updates a policy for an Auto Scaling group}
 \usage{
-put_scaling_policy(AutoScalingGroupName, PolicyName, PolicyType = NULL,
-  AdjustmentType = NULL, MinAdjustmentStep = NULL,
-  MinAdjustmentMagnitude = NULL, ScalingAdjustment = NULL,
-  Cooldown = NULL, MetricAggregationType = NULL, StepAdjustments = NULL,
-  EstimatedInstanceWarmup = NULL, TargetTrackingConfiguration = NULL)
+put_scaling_policy(
+  AutoScalingGroupName = "string",
+  PolicyName = "string",
+  PolicyType = "string",
+  AdjustmentType = "string",
+  MinAdjustmentStep = 123,
+  MinAdjustmentMagnitude = 123,
+  ScalingAdjustment = 123,
+  Cooldown = 123,
+  MetricAggregationType = "string",
+  StepAdjustments = list(
+    list(
+      MetricIntervalLowerBound = 123.0,
+      MetricIntervalUpperBound = 123.0,
+      ScalingAdjustment = 123
+    )
+  ),
+  EstimatedInstanceWarmup = 123,
+  TargetTrackingConfiguration = list(
+    PredefinedMetricSpecification = list(
+      PredefinedMetricType = "ASGAverageCPUUtilization"|"ASGAverageNetworkIn"|"ASGAverageNetworkOut"|"ALBRequestCountPerTarget",
+      ResourceLabel = "string"
+    ),
+    CustomizedMetricSpecification = list(
+      MetricName = "string",
+      Namespace = "string",
+      Dimensions = list(
+        list(
+          Name = "string",
+          Value = "string"
+        )
+      ),
+      Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
+      Unit = "string"
+    ),
+    TargetValue = 123.0,
+    DisableScaleIn = TRUE|FALSE
+  )
+)
 }
 \arguments{
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{PolicyName}{The name of the policy.}
+\item{PolicyName}{[required] The name of the policy.}
 
 \item{PolicyType}{The policy type. The valid values are \code{SimpleScaling}, \code{StepScaling}, and \code{TargetTrackingScaling}. If the policy type is null, the value is treated as \code{SimpleScaling}.}
 
@@ -56,7 +90,7 @@ This parameter is supported if the policy type is \code{StepScaling} or \code{Ta
 This parameter is required if the policy type is \code{TargetTrackingScaling} and not supported otherwise.}
 }
 \description{
-Creates or updates a policy for an Auto Scaling group. To update an existing policy, use the existing policy name and set the parameters you want to change. Any existing parameter not changed in an update to an existing policy is not changed in this update request.
+Creates or updates a policy for an Auto Scaling group. To update an existing policy, use the existing policy name and set the parameters to change. Any existing parameter not changed in an update to an existing policy is not changed in this update request.
 }
 \details{
 If you exceed your maximum limit of step adjustments, which by default is 20 per region, the call fails. For information about updating this limit, see \href{http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html}{AWS Service Limits} in the \emph{Amazon Web Services General Reference}.

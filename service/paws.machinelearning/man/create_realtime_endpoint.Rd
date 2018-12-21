@@ -4,10 +4,12 @@
 \alias{create_realtime_endpoint}
 \title{Creates a real-time endpoint for the \code{MLModel}}
 \usage{
-create_realtime_endpoint(MLModelId)
+create_realtime_endpoint(
+  MLModelId = "string"
+)
 }
 \arguments{
-\item{MLModelId}{The ID assigned to the \code{MLModel} during creation.}
+\item{MLModelId}{[required] The ID assigned to the \code{MLModel} during creation.}
 }
 \description{
 Creates a real-time endpoint for the \code{MLModel}. The endpoint contains the URI of the \code{MLModel}; that is, the location to send real-time prediction requests for the specified \code{MLModel}.

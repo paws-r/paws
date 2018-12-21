@@ -4,12 +4,15 @@
 \alias{delete_vault_access_policy}
 \title{This operation deletes the access policy associated with the specified vault}
 \usage{
-delete_vault_access_policy(accountId, vaultName)
+delete_vault_access_policy(
+  accountId = "string",
+  vaultName = "string"
+)
 }
 \arguments{
-\item{accountId}{The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
+\item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
 
-\item{vaultName}{The name of the vault.}
+\item{vaultName}{[required] The name of the vault.}
 }
 \description{
 This operation deletes the access policy associated with the specified vault. The operation is eventually consistent; that is, it might take some time for Amazon Glacier to completely remove the access policy, and you might still see the effect of the policy for a short time after you send the delete request.

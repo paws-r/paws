@@ -4,13 +4,18 @@
 \alias{describe_execution}
 \title{Describes an execution}
 \usage{
-describe_execution(executionArn)
+describe_execution(
+  executionArn = "string"
+)
 }
 \arguments{
-\item{executionArn}{The Amazon Resource Name (ARN) of the execution to describe.}
+\item{executionArn}{[required] The Amazon Resource Name (ARN) of the execution to describe.}
 }
 \description{
 Describes an execution.
+}
+\details{
+This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.
 }
 \examples{
 

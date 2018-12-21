@@ -4,12 +4,20 @@
 \alias{tag_resource}
 \title{Associate a set of tags with an Amazon DynamoDB resource}
 \usage{
-tag_resource(ResourceArn, Tags)
+tag_resource(
+  ResourceArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ResourceArn}{Identifies the Amazon DynamoDB resource to which tags should be added. This value is an Amazon Resource Name (ARN).}
+\item{ResourceArn}{[required] Identifies the Amazon DynamoDB resource to which tags should be added. This value is an Amazon Resource Name (ARN).}
 
-\item{Tags}{The tags to be assigned to the Amazon DynamoDB resource.}
+\item{Tags}{[required] The tags to be assigned to the Amazon DynamoDB resource.}
 }
 \description{
 Associate a set of tags with an Amazon DynamoDB resource. You can then activate these user-defined tags so that they appear on the Billing and Cost Management console for cost allocation tracking. You can call TagResource up to 5 times per second, per account.

@@ -4,12 +4,16 @@
 \alias{upgrade_applied_schema}
 \title{Upgrades a single directory in-place using the \code{PublishedSchemaArn} with schema updates found in \code{MinorVersion}}
 \usage{
-upgrade_applied_schema(PublishedSchemaArn, DirectoryArn, DryRun = NULL)
+upgrade_applied_schema(
+  PublishedSchemaArn = "string",
+  DirectoryArn = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{PublishedSchemaArn}{The revision of the published schema to upgrade the directory to.}
+\item{PublishedSchemaArn}{[required] The revision of the published schema to upgrade the directory to.}
 
-\item{DirectoryArn}{The ARN for the directory to which the upgraded schema will be applied.}
+\item{DirectoryArn}{[required] The ARN for the directory to which the upgraded schema will be applied.}
 
 \item{DryRun}{Used for testing whether the major version schemas are backward compatible or not. If schema compatibility fails, an exception would be thrown else the call would succeed but no changes will be saved. This parameter is optional.}
 }

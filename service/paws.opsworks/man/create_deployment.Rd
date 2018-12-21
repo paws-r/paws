@@ -4,19 +4,37 @@
 \alias{create_deployment}
 \title{Runs deployment or stack commands}
 \usage{
-create_deployment(StackId, Command, AppId = NULL, InstanceIds = NULL,
-  LayerIds = NULL, Comment = NULL, CustomJson = NULL)
+create_deployment(
+  StackId = "string",
+  AppId = "string",
+  InstanceIds = list(
+    "string"
+  ),
+  LayerIds = list(
+    "string"
+  ),
+  Command = list(
+    Name = "install_dependencies"|"update_dependencies"|"update_custom_cookbooks"|"execute_recipes"|"configure"|"setup"|"deploy"|"rollback"|"start"|"stop"|"restart"|"undeploy",
+    Args = list(
+      list(
+        "string"
+      )
+    )
+  ),
+  Comment = "string",
+  CustomJson = "string"
+)
 }
 \arguments{
-\item{StackId}{The stack ID.}
-
-\item{Command}{A \code{DeploymentCommand} object that specifies the deployment command and any associated arguments.}
+\item{StackId}{[required] The stack ID.}
 
 \item{AppId}{The app ID. This parameter is required for app deployments, but not for other deployment commands.}
 
 \item{InstanceIds}{The instance IDs for the deployment targets.}
 
 \item{LayerIds}{The layer IDs for the deployment targets.}
+
+\item{Command}{[required] A \code{DeploymentCommand} object that specifies the deployment command and any associated arguments.}
 
 \item{Comment}{A user-defined comment.}
 

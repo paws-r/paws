@@ -4,10 +4,14 @@
 \alias{list_users}
 \title{Returns summaries of the organization's users}
 \usage{
-list_users(OrganizationId, NextToken = NULL, MaxResults = NULL)
+list_users(
+  OrganizationId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{OrganizationId}{The identifier for the organization under which the users exist.}
+\item{OrganizationId}{[required] The identifier for the organization under which the users exist.}
 
 \item{NextToken}{TBD}
 

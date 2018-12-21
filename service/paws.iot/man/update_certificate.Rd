@@ -4,12 +4,15 @@
 \alias{update_certificate}
 \title{Updates the status of the specified certificate}
 \usage{
-update_certificate(certificateId, newStatus)
+update_certificate(
+  certificateId = "string",
+  newStatus = "ACTIVE"|"INACTIVE"|"REVOKED"|"PENDING_TRANSFER"|"REGISTER_INACTIVE"|"PENDING_ACTIVATION"
+)
 }
 \arguments{
-\item{certificateId}{The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)}
+\item{certificateId}{[required] The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)}
 
-\item{newStatus}{The new status.
+\item{newStatus}{[required] The new status.
 
 \strong{Note:} Setting the status to PENDING\_TRANSFER will result in an exception being thrown. PENDING\_TRANSFER is a status used internally by AWS IoT. It is not intended for developer use.
 

@@ -4,10 +4,13 @@
 \alias{update_function_definition}
 \title{Updates a Lambda function definition}
 \usage{
-update_function_definition(FunctionDefinitionId, Name = NULL)
+update_function_definition(
+  FunctionDefinitionId = "string",
+  Name = "string"
+)
 }
 \arguments{
-\item{FunctionDefinitionId}{The ID of the Lambda function definition.}
+\item{FunctionDefinitionId}{[required] The ID of the Lambda function definition.}
 
 \item{Name}{The name of the definition.}
 }

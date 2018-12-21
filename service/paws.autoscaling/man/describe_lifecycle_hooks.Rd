@@ -4,10 +4,15 @@
 \alias{describe_lifecycle_hooks}
 \title{Describes the lifecycle hooks for the specified Auto Scaling group}
 \usage{
-describe_lifecycle_hooks(AutoScalingGroupName, LifecycleHookNames = NULL)
+describe_lifecycle_hooks(
+  AutoScalingGroupName = "string",
+  LifecycleHookNames = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
 \item{LifecycleHookNames}{The names of one or more lifecycle hooks. If you omit this parameter, all lifecycle hooks are described.}
 }

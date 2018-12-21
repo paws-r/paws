@@ -4,7 +4,10 @@
 \alias{list_byte_match_sets}
 \title{Returns an array of ByteMatchSetSummary objects}
 \usage{
-list_byte_match_sets(NextMarker = NULL, Limit = NULL)
+list_byte_match_sets(
+  NextMarker = "string",
+  Limit = 123
+)
 }
 \arguments{
 \item{NextMarker}{If you specify a value for \code{Limit} and you have more \code{ByteMatchSets} than the value of \code{Limit}, AWS WAF returns a \code{NextMarker} value in the response that allows you to list another group of \code{ByteMatchSets}. For the second and subsequent \code{ListByteMatchSets} requests, specify the value of \code{NextMarker} from the previous response to get information about another batch of \code{ByteMatchSets}.}

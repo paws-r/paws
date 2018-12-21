@@ -4,10 +4,12 @@
 \alias{delete_email_channel}
 \title{Delete an email channel}
 \usage{
-delete_email_channel(ApplicationId)
+delete_email_channel(
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 }
 \description{
 Delete an email channel.

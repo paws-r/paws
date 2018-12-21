@@ -4,14 +4,19 @@
 \alias{set_alarm_state}
 \title{Temporarily sets the state of an alarm for testing purposes}
 \usage{
-set_alarm_state(AlarmName, StateValue, StateReason, StateReasonData = NULL)
+set_alarm_state(
+  AlarmName = "string",
+  StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA",
+  StateReason = "string",
+  StateReasonData = "string"
+)
 }
 \arguments{
-\item{AlarmName}{The name for the alarm. This name must be unique within the AWS account. The maximum length is 255 characters.}
+\item{AlarmName}{[required] The name for the alarm. This name must be unique within the AWS account. The maximum length is 255 characters.}
 
-\item{StateValue}{The value of the state.}
+\item{StateValue}{[required] The value of the state.}
 
-\item{StateReason}{The reason that this alarm is set to this specific state, in text format.}
+\item{StateReason}{[required] The reason that this alarm is set to this specific state, in text format.}
 
 \item{StateReasonData}{The reason that this alarm is set to this specific state, in JSON format.}
 }

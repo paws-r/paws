@@ -4,10 +4,12 @@
 \alias{delete_backup}
 \title{Deletes a specified AWS CloudHSM backup}
 \usage{
-delete_backup(BackupId)
+delete_backup(
+  BackupId = "string"
+)
 }
 \arguments{
-\item{BackupId}{The ID of the backup to be deleted. To find the ID of a backup, use the DescribeBackups operation.}
+\item{BackupId}{[required] The ID of the backup to be deleted. To find the ID of a backup, use the DescribeBackups operation.}
 }
 \description{
 Deletes a specified AWS CloudHSM backup. A backup can be restored up to 7 days after the DeleteBackup request. For more information on restoring a backup, see RestoreBackup

@@ -4,10 +4,12 @@
 \alias{stop_hyper_parameter_tuning_job}
 \title{Stops a running hyperparameter tuning job and all running training jobs that the tuning job launched}
 \usage{
-stop_hyper_parameter_tuning_job(HyperParameterTuningJobName)
+stop_hyper_parameter_tuning_job(
+  HyperParameterTuningJobName = "string"
+)
 }
 \arguments{
-\item{HyperParameterTuningJobName}{The name of the tuning job to stop.}
+\item{HyperParameterTuningJobName}{[required] The name of the tuning job to stop.}
 }
 \description{
 Stops a running hyperparameter tuning job and all running training jobs that the tuning job launched.

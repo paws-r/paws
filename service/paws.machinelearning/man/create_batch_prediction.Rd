@@ -4,21 +4,26 @@
 \alias{create_batch_prediction}
 \title{Generates predictions for a group of observations}
 \usage{
-create_batch_prediction(BatchPredictionId, MLModelId,
-  BatchPredictionDataSourceId, OutputUri, BatchPredictionName = NULL)
+create_batch_prediction(
+  BatchPredictionId = "string",
+  BatchPredictionName = "string",
+  MLModelId = "string",
+  BatchPredictionDataSourceId = "string",
+  OutputUri = "string"
+)
 }
 \arguments{
-\item{BatchPredictionId}{A user-supplied ID that uniquely identifies the \code{BatchPrediction}.}
-
-\item{MLModelId}{The ID of the \code{MLModel} that will generate predictions for the group of observations.}
-
-\item{BatchPredictionDataSourceId}{The ID of the \code{DataSource} that points to the group of observations to predict.}
-
-\item{OutputUri}{The location of an Amazon Simple Storage Service (Amazon S3) bucket or directory to store the batch prediction results. The following substrings are not allowed in the \code{s3 key} portion of the \code{outputURI} field: ':', '//', '/./', '/../'.
-
-Amazon ML needs permissions to store and retrieve the logs on your behalf. For information about how to set permissions, see the \href{http://docs.aws.amazon.com/machine-learning/latest/dg}{Amazon Machine Learning Developer Guide}.}
+\item{BatchPredictionId}{[required] A user-supplied ID that uniquely identifies the \code{BatchPrediction}.}
 
 \item{BatchPredictionName}{A user-supplied name or description of the \code{BatchPrediction}. \code{BatchPredictionName} can only use the UTF-8 character set.}
+
+\item{MLModelId}{[required] The ID of the \code{MLModel} that will generate predictions for the group of observations.}
+
+\item{BatchPredictionDataSourceId}{[required] The ID of the \code{DataSource} that points to the group of observations to predict.}
+
+\item{OutputUri}{[required] The location of an Amazon Simple Storage Service (Amazon S3) bucket or directory to store the batch prediction results. The following substrings are not allowed in the \code{s3 key} portion of the \code{outputURI} field: ':', '//', '/./', '/../'.
+
+Amazon ML needs permissions to store and retrieve the logs on your behalf. For information about how to set permissions, see the \href{http://docs.aws.amazon.com/machine-learning/latest/dg}{Amazon Machine Learning Developer Guide}.}
 }
 \description{
 Generates predictions for a group of observations. The observations to process exist in one or more data files referenced by a \code{DataSource}. This operation creates a new \code{BatchPrediction}, and uses an \code{MLModel} and the data files referenced by the \code{DataSource} as information sources.

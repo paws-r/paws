@@ -4,12 +4,20 @@
 \alias{update_pipeline_notifications}
 \title{With the UpdatePipelineNotifications operation, you can update Amazon Simple Notification Service (Amazon SNS) notifications for a pipeline}
 \usage{
-update_pipeline_notifications(Id, Notifications)
+update_pipeline_notifications(
+  Id = "string",
+  Notifications = list(
+    Progressing = "string",
+    Completed = "string",
+    Warning = "string",
+    Error = "string"
+  )
+)
 }
 \arguments{
-\item{Id}{The identifier of the pipeline for which you want to change notification settings.}
+\item{Id}{[required] The identifier of the pipeline for which you want to change notification settings.}
 
-\item{Notifications}{The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic that you want to notify to report job status.
+\item{Notifications}{[required] The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic that you want to notify to report job status.
 
 To receive notifications, you must also subscribe to the new topic in the Amazon SNS console.
 \itemize{

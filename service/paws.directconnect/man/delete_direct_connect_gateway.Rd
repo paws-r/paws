@@ -4,10 +4,12 @@
 \alias{delete_direct_connect_gateway}
 \title{Deletes the specified Direct Connect gateway}
 \usage{
-delete_direct_connect_gateway(directConnectGatewayId)
+delete_direct_connect_gateway(
+  directConnectGatewayId = "string"
+)
 }
 \arguments{
-\item{directConnectGatewayId}{The ID of the Direct Connect gateway.}
+\item{directConnectGatewayId}{[required] The ID of the Direct Connect gateway.}
 }
 \description{
 Deletes the specified Direct Connect gateway. You must first delete all virtual interfaces that are attached to the Direct Connect gateway and disassociate all virtual private gateways that are associated with the Direct Connect gateway.

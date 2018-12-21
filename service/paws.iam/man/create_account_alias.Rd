@@ -4,12 +4,14 @@
 \alias{create_account_alias}
 \title{Creates an alias for your AWS account}
 \usage{
-create_account_alias(AccountAlias)
+create_account_alias(
+  AccountAlias = "string"
+)
 }
 \arguments{
-\item{AccountAlias}{The account alias to create.
+\item{AccountAlias}{[required] The account alias to create.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash, nor can you have two dashes in a row.}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash, nor can you have two dashes in a row.}
 }
 \description{
 Creates an alias for your AWS account. For information about using an AWS account alias, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/AccountAlias.html}{Using an Alias for Your AWS Account ID} in the \emph{IAM User Guide}.

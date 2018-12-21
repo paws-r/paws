@@ -4,10 +4,12 @@
 \alias{describe_endpoint_config}
 \title{Returns the description of an endpoint configuration created using the \code{CreateEndpointConfig} API}
 \usage{
-describe_endpoint_config(EndpointConfigName)
+describe_endpoint_config(
+  EndpointConfigName = "string"
+)
 }
 \arguments{
-\item{EndpointConfigName}{The name of the endpoint configuration.}
+\item{EndpointConfigName}{[required] The name of the endpoint configuration.}
 }
 \description{
 Returns the description of an endpoint configuration created using the \code{CreateEndpointConfig} API.

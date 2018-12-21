@@ -4,10 +4,14 @@
 \alias{describe_time_based_auto_scaling}
 \title{Describes time-based auto scaling configurations for specified instances}
 \usage{
-describe_time_based_auto_scaling(InstanceIds)
+describe_time_based_auto_scaling(
+  InstanceIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{InstanceIds}{An array of instance IDs.}
+\item{InstanceIds}{[required] An array of instance IDs.}
 }
 \description{
 Describes time-based auto scaling configurations for specified instances.

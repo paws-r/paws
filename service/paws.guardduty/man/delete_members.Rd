@@ -4,12 +4,17 @@
 \alias{delete_members}
 \title{Deletes GuardDuty member accounts (to the current GuardDuty master account) specified by the account IDs}
 \usage{
-delete_members(DetectorId, AccountIds)
+delete_members(
+  AccountIds = list(
+    "string"
+  ),
+  DetectorId = "string"
+)
 }
 \arguments{
-\item{DetectorId}{The unique ID of the detector of the GuardDuty account whose members you want to delete.}
+\item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts that you want to delete.}
 
-\item{AccountIds}{A list of account IDs of the GuardDuty member accounts that you want to delete.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account whose members you want to delete.}
 }
 \description{
 Deletes GuardDuty member accounts (to the current GuardDuty master account) specified by the account IDs.

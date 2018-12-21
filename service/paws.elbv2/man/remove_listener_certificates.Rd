@@ -4,12 +4,20 @@
 \alias{remove_listener_certificates}
 \title{Removes the specified certificate from the specified secure listener}
 \usage{
-remove_listener_certificates(ListenerArn, Certificates)
+remove_listener_certificates(
+  ListenerArn = "string",
+  Certificates = list(
+    list(
+      CertificateArn = "string",
+      IsDefault = TRUE|FALSE
+    )
+  )
+)
 }
 \arguments{
-\item{ListenerArn}{The Amazon Resource Name (ARN) of the listener.}
+\item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
 
-\item{Certificates}{The certificate to remove. You can specify one certificate per call.}
+\item{Certificates}{[required] The certificate to remove. You can specify one certificate per call. Set \code{CertificateArn} to the certificate ARN but do not set \code{IsDefault}.}
 }
 \description{
 Removes the specified certificate from the specified secure listener.

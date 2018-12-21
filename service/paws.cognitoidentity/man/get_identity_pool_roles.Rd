@@ -4,10 +4,12 @@
 \alias{get_identity_pool_roles}
 \title{Gets the roles for an identity pool}
 \usage{
-get_identity_pool_roles(IdentityPoolId)
+get_identity_pool_roles(
+  IdentityPoolId = "string"
+)
 }
 \arguments{
-\item{IdentityPoolId}{An identity pool ID in the format REGION:GUID.}
+\item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
 }
 \description{
 Gets the roles for an identity pool.

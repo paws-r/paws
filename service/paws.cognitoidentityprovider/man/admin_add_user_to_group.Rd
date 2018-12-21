@@ -4,14 +4,18 @@
 \alias{admin_add_user_to_group}
 \title{Adds the specified user to the specified group}
 \usage{
-admin_add_user_to_group(UserPoolId, Username, GroupName)
+admin_add_user_to_group(
+  UserPoolId = "string",
+  Username = "string",
+  GroupName = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The user pool ID for the user pool.}
 
-\item{Username}{The username for the user.}
+\item{Username}{[required] The username for the user.}
 
-\item{GroupName}{The group name.}
+\item{GroupName}{[required] The group name.}
 }
 \description{
 Adds the specified user to the specified group.

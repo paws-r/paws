@@ -4,7 +4,9 @@
 \alias{describe_interconnects}
 \title{Lists the interconnects owned by the AWS account or only the specified interconnect}
 \usage{
-describe_interconnects(interconnectId = NULL)
+describe_interconnects(
+  interconnectId = "string"
+)
 }
 \arguments{
 \item{interconnectId}{The ID of the interconnect.}

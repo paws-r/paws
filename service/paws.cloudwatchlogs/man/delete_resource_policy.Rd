@@ -4,7 +4,9 @@
 \alias{delete_resource_policy}
 \title{Deletes a resource policy from this account}
 \usage{
-delete_resource_policy(policyName = NULL)
+delete_resource_policy(
+  policyName = "string"
+)
 }
 \arguments{
 \item{policyName}{The name of the policy to be revoked. This parameter is required.}

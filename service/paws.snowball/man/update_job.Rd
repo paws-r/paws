@@ -4,12 +4,52 @@
 \alias{update_job}
 \title{While a job's \code{JobState} value is \code{New}, you can update some of the information associated with a job}
 \usage{
-update_job(JobId, RoleARN = NULL, Notification = NULL, Resources = NULL,
-  AddressId = NULL, ShippingOption = NULL, Description = NULL,
-  SnowballCapacityPreference = NULL, ForwardingAddressId = NULL)
+update_job(
+  JobId = "string",
+  RoleARN = "string",
+  Notification = list(
+    SnsTopicARN = "string",
+    JobStatesToNotify = list(
+      "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending"
+    ),
+    NotifyAll = TRUE|FALSE
+  ),
+  Resources = list(
+    S3Resources = list(
+      list(
+        BucketArn = "string",
+        KeyRange = list(
+          BeginMarker = "string",
+          EndMarker = "string"
+        )
+      )
+    ),
+    LambdaResources = list(
+      list(
+        LambdaArn = "string",
+        EventTriggers = list(
+          list(
+            EventResourceARN = "string"
+          )
+        )
+      )
+    ),
+    Ec2AmiResources = list(
+      list(
+        AmiId = "string",
+        SnowballAmiId = "string"
+      )
+    )
+  ),
+  AddressId = "string",
+  ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
+  Description = "string",
+  SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"NoPreference",
+  ForwardingAddressId = "string"
+)
 }
 \arguments{
-\item{JobId}{The job ID of the job that you want to update, for example \code{JID123e4567-e89b-12d3-a456-426655440000}.}
+\item{JobId}{[required] The job ID of the job that you want to update, for example \code{JID123e4567-e89b-12d3-a456-426655440000}.}
 
 \item{RoleARN}{The new role Amazon Resource Name (ARN) that you want to associate with this job. To create a role ARN, use the \href{http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html}{CreateRole}AWS Identity and Access Management (IAM) API action.}
 

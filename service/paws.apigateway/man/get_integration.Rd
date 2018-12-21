@@ -4,14 +4,18 @@
 \alias{get_integration}
 \title{Get the integration settings}
 \usage{
-get_integration(restApiId, resourceId, httpMethod)
+get_integration(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string"
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[Required] Specifies a get integration request's resource identifier}
+\item{resourceId}{[required] [Required] Specifies a get integration request's resource identifier}
 
-\item{httpMethod}{[Required] Specifies a get integration request's HTTP method.}
+\item{httpMethod}{[required] [Required] Specifies a get integration request's HTTP method.}
 }
 \description{
 Get the integration settings.

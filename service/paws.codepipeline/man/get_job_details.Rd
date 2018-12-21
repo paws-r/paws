@@ -4,10 +4,12 @@
 \alias{get_job_details}
 \title{Returns information about a job}
 \usage{
-get_job_details(jobId)
+get_job_details(
+  jobId = "string"
+)
 }
 \arguments{
-\item{jobId}{The unique system-generated ID for the job.}
+\item{jobId}{[required] The unique system-generated ID for the job.}
 }
 \description{
 Returns information about a job. Only used for custom actions.

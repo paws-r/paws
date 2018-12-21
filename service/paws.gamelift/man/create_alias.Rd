@@ -4,14 +4,22 @@
 \alias{create_alias}
 \title{Creates an alias for a fleet}
 \usage{
-create_alias(Name, RoutingStrategy, Description = NULL)
+create_alias(
+  Name = "string",
+  Description = "string",
+  RoutingStrategy = list(
+    Type = "SIMPLE"|"TERMINAL",
+    FleetId = "string",
+    Message = "string"
+  )
+)
 }
 \arguments{
-\item{Name}{Descriptive label that is associated with an alias. Alias names do not need to be unique.}
-
-\item{RoutingStrategy}{Object that specifies the fleet and routing type to use for the alias.}
+\item{Name}{[required] Descriptive label that is associated with an alias. Alias names do not need to be unique.}
 
 \item{Description}{Human-readable description of an alias.}
+
+\item{RoutingStrategy}{[required] Object that specifies the fleet and routing type to use for the alias.}
 }
 \description{
 Creates an alias for a fleet. In most situations, you can use an alias ID in place of a fleet ID. By using a fleet alias instead of a specific fleet ID, you can switch gameplay and players to a new fleet without changing your game client or other game components. For example, for games in production, using an alias allows you to seamlessly redirect your player base to a new game server update.

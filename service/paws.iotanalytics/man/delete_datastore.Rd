@@ -4,10 +4,12 @@
 \alias{delete_datastore}
 \title{Deletes the specified data store}
 \usage{
-delete_datastore(datastoreName)
+delete_datastore(
+  datastoreName = "string"
+)
 }
 \arguments{
-\item{datastoreName}{The name of the data store to delete.}
+\item{datastoreName}{[required] The name of the data store to delete.}
 }
 \description{
 Deletes the specified data store.

@@ -4,13 +4,19 @@
 \alias{list_attributes}
 \title{Lists the attributes for Amazon ECS resources within a specified target type and cluster}
 \usage{
-list_attributes(targetType, cluster = NULL, attributeName = NULL,
-  attributeValue = NULL, nextToken = NULL, maxResults = NULL)
+list_attributes(
+  cluster = "string",
+  targetType = "container-instance",
+  attributeName = "string",
+  attributeValue = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{targetType}{The type of the target with which to list attributes.}
-
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster to list attributes. If you do not specify a cluster, the default cluster is assumed.}
+
+\item{targetType}{[required] The type of the target with which to list attributes.}
 
 \item{attributeName}{The name of the attribute with which to filter the results.}
 

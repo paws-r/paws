@@ -4,16 +4,20 @@
 \alias{describe_instance_attribute}
 \title{Describes the specified attribute of the specified instance}
 \usage{
-describe_instance_attribute(Attribute, InstanceId, DryRun = NULL)
+describe_instance_attribute(
+  Attribute = "instanceType"|"kernel"|"ramdisk"|"userData"|"disableApiTermination"|"instanceInitiatedShutdownBehavior"|"rootDeviceName"|"blockDeviceMapping"|"productCodes"|"sourceDestCheck"|"groupSet"|"ebsOptimized"|"sriovNetSupport"|"enaSupport",
+  DryRun = TRUE|FALSE,
+  InstanceId = "string"
+)
 }
 \arguments{
-\item{Attribute}{The instance attribute.
+\item{Attribute}{[required] The instance attribute.
 
 Note: The \code{enaSupport} attribute is not supported at this time.}
 
-\item{InstanceId}{The ID of the instance.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{InstanceId}{[required] The ID of the instance.}
 }
 \description{
 Describes the specified attribute of the specified instance. You can specify only one attribute at a time. Valid attribute values are: \code{instanceType} | \code{kernel} | \code{ramdisk} | \code{userData} | \code{disableApiTermination} | \code{instanceInitiatedShutdownBehavior} | \code{rootDeviceName} | \code{blockDeviceMapping} | \code{productCodes} | \code{sourceDestCheck} | \code{groupSet} | \code{ebsOptimized} | \code{sriovNetSupport}

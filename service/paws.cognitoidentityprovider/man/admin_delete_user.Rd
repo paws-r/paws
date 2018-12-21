@@ -4,12 +4,15 @@
 \alias{admin_delete_user}
 \title{Deletes a user as an administrator}
 \usage{
-admin_delete_user(UserPoolId, Username)
+admin_delete_user(
+  UserPoolId = "string",
+  Username = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool where you want to delete the user.}
+\item{UserPoolId}{[required] The user pool ID for the user pool where you want to delete the user.}
 
-\item{Username}{The user name of the user you wish to delete.}
+\item{Username}{[required] The user name of the user you wish to delete.}
 }
 \description{
 Deletes a user as an administrator. Works on any user.

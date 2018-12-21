@@ -4,12 +4,30 @@
 \alias{create_security_configuration}
 \title{Creates a new security configuration}
 \usage{
-create_security_configuration(Name, EncryptionConfiguration)
+create_security_configuration(
+  Name = "string",
+  EncryptionConfiguration = list(
+    S3Encryption = list(
+      list(
+        S3EncryptionMode = "DISABLED"|"SSE-KMS"|"SSE-S3",
+        KmsKeyArn = "string"
+      )
+    ),
+    CloudWatchEncryption = list(
+      CloudWatchEncryptionMode = "DISABLED"|"SSE-KMS",
+      KmsKeyArn = "string"
+    ),
+    JobBookmarksEncryption = list(
+      JobBookmarksEncryptionMode = "DISABLED"|"CSE-KMS",
+      KmsKeyArn = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{Name}{The name for the new security configuration.}
+\item{Name}{[required] The name for the new security configuration.}
 
-\item{EncryptionConfiguration}{The encryption configuration for the new security configuration.}
+\item{EncryptionConfiguration}{[required] The encryption configuration for the new security configuration.}
 }
 \description{
 Creates a new security configuration.

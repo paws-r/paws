@@ -4,15 +4,21 @@
 \alias{add_application_cloud_watch_logging_option}
 \title{Adds a CloudWatch log stream to monitor application configuration errors}
 \usage{
-add_application_cloud_watch_logging_option(ApplicationName,
-  CurrentApplicationVersionId, CloudWatchLoggingOption)
+add_application_cloud_watch_logging_option(
+  ApplicationName = "string",
+  CurrentApplicationVersionId = 123,
+  CloudWatchLoggingOption = list(
+    LogStreamARN = "string",
+    RoleARN = "string"
+  )
+)
 }
 \arguments{
-\item{ApplicationName}{The Kinesis Analytics application name.}
+\item{ApplicationName}{[required] The Kinesis Analytics application name.}
 
-\item{CurrentApplicationVersionId}{The version ID of the Kinesis Analytics application.}
+\item{CurrentApplicationVersionId}{[required] The version ID of the Kinesis Analytics application.}
 
-\item{CloudWatchLoggingOption}{Provides the CloudWatch log stream Amazon Resource Name (ARN) and the IAM role ARN. Note: To write application messages to CloudWatch, the IAM role that is used must have the \code{PutLogEvents} policy action enabled.}
+\item{CloudWatchLoggingOption}{[required] Provides the CloudWatch log stream Amazon Resource Name (ARN) and the IAM role ARN. Note: To write application messages to CloudWatch, the IAM role that is used must have the \code{PutLogEvents} policy action enabled.}
 }
 \description{
 Adds a CloudWatch log stream to monitor application configuration errors. For more information about using CloudWatch log streams with Amazon Kinesis Analytics applications, see \href{http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html}{Working with Amazon CloudWatch Logs}.

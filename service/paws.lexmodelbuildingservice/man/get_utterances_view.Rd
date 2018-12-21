@@ -4,14 +4,20 @@
 \alias{get_utterances_view}
 \title{Use the \code{GetUtterancesView} operation to get information about the utterances that your users have made to your bot}
 \usage{
-get_utterances_view(botName, botVersions, statusType)
+get_utterances_view(
+  botName = "string",
+  botVersions = list(
+    "string"
+  ),
+  statusType = "Detected"|"Missed"
+)
 }
 \arguments{
-\item{botName}{The name of the bot for which utterance information should be returned.}
+\item{botName}{[required] The name of the bot for which utterance information should be returned.}
 
-\item{botVersions}{An array of bot versions for which utterance information should be returned. The limit is 5 versions per request.}
+\item{botVersions}{[required] An array of bot versions for which utterance information should be returned. The limit is 5 versions per request.}
 
-\item{statusType}{To return utterances that were recognized and handled, use\code{Detected}. To return utterances that were not recognized, use \code{Missed}.}
+\item{statusType}{[required] To return utterances that were recognized and handled, use\code{Detected}. To return utterances that were not recognized, use \code{Missed}.}
 }
 \description{
 Use the \code{GetUtterancesView} operation to get information about the utterances that your users have made to your bot. You can use this list to tune the utterances that your bot responds to.

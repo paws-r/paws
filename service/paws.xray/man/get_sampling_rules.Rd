@@ -4,7 +4,9 @@
 \alias{get_sampling_rules}
 \title{Retrieves all sampling rules}
 \usage{
-get_sampling_rules(NextToken = NULL)
+get_sampling_rules(
+  NextToken = "string"
+)
 }
 \arguments{
 \item{NextToken}{Pagination token. Not used.}

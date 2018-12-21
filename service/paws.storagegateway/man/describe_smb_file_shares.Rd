@@ -4,10 +4,14 @@
 \alias{describe_smb_file_shares}
 \title{Gets a description for one or more Server Message Block (SMB) file shares from a file gateway}
 \usage{
-describe_smb_file_shares(FileShareARNList)
+describe_smb_file_shares(
+  FileShareARNList = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{FileShareARNList}{An array containing the Amazon Resource Name (ARN) of each file share to be described.}
+\item{FileShareARNList}{[required] An array containing the Amazon Resource Name (ARN) of each file share to be described.}
 }
 \description{
 Gets a description for one or more Server Message Block (SMB) file shares from a file gateway. This operation is only supported for file gateways.

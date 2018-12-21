@@ -4,8 +4,13 @@
 \alias{list_things}
 \title{Lists your things}
 \usage{
-list_things(nextToken = NULL, maxResults = NULL, attributeName = NULL,
-  attributeValue = NULL, thingTypeName = NULL)
+list_things(
+  nextToken = "string",
+  maxResults = 123,
+  attributeName = "string",
+  attributeValue = "string",
+  thingTypeName = "string"
+)
 }
 \arguments{
 \item{nextToken}{The token to retrieve the next set of results.}

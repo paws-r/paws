@@ -4,7 +4,10 @@
 \alias{list_function_definitions}
 \title{Retrieves a list of Lambda function definitions}
 \usage{
-list_function_definitions(MaxResults = NULL, NextToken = NULL)
+list_function_definitions(
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
 \arguments{
 \item{MaxResults}{The maximum number of results to be returned per request.}

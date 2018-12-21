@@ -4,12 +4,61 @@
 \alias{update_receipt_rule}
 \title{Updates a receipt rule}
 \usage{
-update_receipt_rule(RuleSetName, Rule)
+update_receipt_rule(
+  RuleSetName = "string",
+  Rule = list(
+    Name = "string",
+    Enabled = TRUE|FALSE,
+    TlsPolicy = "Require"|"Optional",
+    Recipients = list(
+      "string"
+    ),
+    Actions = list(
+      list(
+        S3Action = list(
+          TopicArn = "string",
+          BucketName = "string",
+          ObjectKeyPrefix = "string",
+          KmsKeyArn = "string"
+        ),
+        BounceAction = list(
+          TopicArn = "string",
+          SmtpReplyCode = "string",
+          StatusCode = "string",
+          Message = "string",
+          Sender = "string"
+        ),
+        WorkmailAction = list(
+          TopicArn = "string",
+          OrganizationArn = "string"
+        ),
+        LambdaAction = list(
+          TopicArn = "string",
+          FunctionArn = "string",
+          InvocationType = "Event"|"RequestResponse"
+        ),
+        StopAction = list(
+          Scope = "RuleSet",
+          TopicArn = "string"
+        ),
+        AddHeaderAction = list(
+          HeaderName = "string",
+          HeaderValue = "string"
+        ),
+        SNSAction = list(
+          TopicArn = "string",
+          Encoding = "UTF-8"|"Base64"
+        )
+      )
+    ),
+    ScanEnabled = TRUE|FALSE
+  )
+)
 }
 \arguments{
-\item{RuleSetName}{The name of the receipt rule set that the receipt rule belongs to.}
+\item{RuleSetName}{[required] The name of the receipt rule set that the receipt rule belongs to.}
 
-\item{Rule}{A data structure that contains the updated receipt rule information.}
+\item{Rule}{[required] A data structure that contains the updated receipt rule information.}
 }
 \description{
 Updates a receipt rule.

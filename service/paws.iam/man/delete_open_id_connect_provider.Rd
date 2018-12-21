@@ -4,10 +4,12 @@
 \alias{delete_open_id_connect_provider}
 \title{Deletes an OpenID Connect identity provider (IdP) resource object in IAM}
 \usage{
-delete_open_id_connect_provider(OpenIDConnectProviderArn)
+delete_open_id_connect_provider(
+  OpenIDConnectProviderArn = "string"
+)
 }
 \arguments{
-\item{OpenIDConnectProviderArn}{The Amazon Resource Name (ARN) of the IAM OpenID Connect provider resource object to delete. You can get a list of OpenID Connect provider resource ARNs by using the ListOpenIDConnectProviders operation.}
+\item{OpenIDConnectProviderArn}{[required] The Amazon Resource Name (ARN) of the IAM OpenID Connect provider resource object to delete. You can get a list of OpenID Connect provider resource ARNs by using the ListOpenIDConnectProviders operation.}
 }
 \description{
 Deletes an OpenID Connect identity provider (IdP) resource object in IAM.

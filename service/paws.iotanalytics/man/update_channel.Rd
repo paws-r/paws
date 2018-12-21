@@ -4,10 +4,16 @@
 \alias{update_channel}
 \title{Updates the settings of a channel}
 \usage{
-update_channel(channelName, retentionPeriod = NULL)
+update_channel(
+  channelName = "string",
+  retentionPeriod = list(
+    unlimited = TRUE|FALSE,
+    numberOfDays = 123
+  )
+)
 }
 \arguments{
-\item{channelName}{The name of the channel to be updated.}
+\item{channelName}{[required] The name of the channel to be updated.}
 
 \item{retentionPeriod}{How long, in days, message data is kept for the channel.}
 }

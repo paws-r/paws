@@ -4,7 +4,12 @@
 \alias{describe_services}
 \title{Returns the current list of AWS services and a list of service categories that applies to each one}
 \usage{
-describe_services(serviceCodeList = NULL, language = NULL)
+describe_services(
+  serviceCodeList = list(
+    "string"
+  ),
+  language = "string"
+)
 }
 \arguments{
 \item{serviceCodeList}{A JSON-formatted list of service codes available for AWS services.}

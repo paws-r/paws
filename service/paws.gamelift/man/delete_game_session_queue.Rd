@@ -4,10 +4,12 @@
 \alias{delete_game_session_queue}
 \title{Deletes a game session queue}
 \usage{
-delete_game_session_queue(Name)
+delete_game_session_queue(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{Descriptive label that is associated with game session queue. Queue names must be unique within each region.}
+\item{Name}{[required] Descriptive label that is associated with game session queue. Queue names must be unique within each region.}
 }
 \description{
 Deletes a game session queue. This action means that any StartGameSessionPlacement requests that reference this queue will fail. To delete a queue, specify the queue name.

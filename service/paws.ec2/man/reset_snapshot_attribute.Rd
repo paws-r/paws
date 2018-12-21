@@ -4,12 +4,16 @@
 \alias{reset_snapshot_attribute}
 \title{Resets permission settings for the specified snapshot}
 \usage{
-reset_snapshot_attribute(Attribute, SnapshotId, DryRun = NULL)
+reset_snapshot_attribute(
+  Attribute = "productCodes"|"createVolumePermission",
+  SnapshotId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{Attribute}{The attribute to reset. Currently, only the attribute for permission to create volumes can be reset.}
+\item{Attribute}{[required] The attribute to reset. Currently, only the attribute for permission to create volumes can be reset.}
 
-\item{SnapshotId}{The ID of the snapshot.}
+\item{SnapshotId}{[required] The ID of the snapshot.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

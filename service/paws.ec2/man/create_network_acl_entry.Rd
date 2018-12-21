@@ -4,32 +4,47 @@
 \alias{create_network_acl_entry}
 \title{Creates an entry (a rule) in a network ACL with the specified rule number}
 \usage{
-create_network_acl_entry(Egress, NetworkAclId, Protocol, RuleAction, RuleNumber,
-  CidrBlock = NULL, DryRun = NULL, IcmpTypeCode = NULL,
-  Ipv6CidrBlock = NULL, PortRange = NULL)
+create_network_acl_entry(
+  CidrBlock = "string",
+  DryRun = TRUE|FALSE,
+  Egress = TRUE|FALSE,
+  IcmpTypeCode = list(
+    Code = 123,
+    Type = 123
+  ),
+  Ipv6CidrBlock = "string",
+  NetworkAclId = "string",
+  PortRange = list(
+    From = 123,
+    To = 123
+  ),
+  Protocol = "string",
+  RuleAction = "allow"|"deny",
+  RuleNumber = 123
+)
 }
 \arguments{
-\item{Egress}{Indicates whether this is an egress rule (rule is applied to traffic leaving the subnet).}
-
-\item{NetworkAclId}{The ID of the network ACL.}
-
-\item{Protocol}{The protocol. A value of \code{-1} or \code{all} means all protocols. If you specify \code{all}, \code{-1}, or a protocol number other than \code{6} (tcp), \code{17} (udp), or \code{1} (icmp), traffic on all ports is allowed, regardless of any ports or ICMP types or codes that you specify. If you specify protocol \code{58} (ICMPv6) and specify an IPv4 CIDR block, traffic for all ICMP types and codes allowed, regardless of any that you specify. If you specify protocol \code{58} (ICMPv6) and specify an IPv6 CIDR block, you must specify an ICMP type and code.}
-
-\item{RuleAction}{Indicates whether to allow or deny the traffic that matches the rule.}
-
-\item{RuleNumber}{The rule number for the entry (for example, 100). ACL entries are processed in ascending order by rule number.
-
-Constraints: Positive integer from 1 to 32766. The range 32767 to 65535 is reserved for internal use.}
-
 \item{CidrBlock}{The IPv4 network range to allow or deny, in CIDR notation (for example \code{172.16.0.0/24}).}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{IcmpTypeCode}{ICMP protocol: The ICMP or ICMPv6 type and code. Required if specifying the ICMP protocol, or protocol 58 (ICMPv6) with an IPv6 CIDR block.}
+\item{Egress}{[required] Indicates whether this is an egress rule (rule is applied to traffic leaving the subnet).}
+
+\item{IcmpTypeCode}{ICMP protocol: The ICMP or ICMPv6 type and code. Required if specifying protocol 1 (ICMP) or protocol 58 (ICMPv6) with an IPv6 CIDR block.}
 
 \item{Ipv6CidrBlock}{The IPv6 network range to allow or deny, in CIDR notation (for example \code{2001:db8:1234:1a00::/64}).}
 
-\item{PortRange}{TCP or UDP protocols: The range of ports the rule applies to.}
+\item{NetworkAclId}{[required] The ID of the network ACL.}
+
+\item{PortRange}{TCP or UDP protocols: The range of ports the rule applies to. Required if specifying protocol 6 (TCP) or 17 (UDP).}
+
+\item{Protocol}{[required] The protocol number. A value of "-1" means all protocols. If you specify "-1" or a protocol number other than "6" (TCP), "17" (UDP), or "1" (ICMP), traffic on all ports is allowed, regardless of any ports or ICMP types or codes that you specify. If you specify protocol "58" (ICMPv6) and specify an IPv4 CIDR block, traffic for all ICMP types and codes allowed, regardless of any that you specify. If you specify protocol "58" (ICMPv6) and specify an IPv6 CIDR block, you must specify an ICMP type and code.}
+
+\item{RuleAction}{[required] Indicates whether to allow or deny the traffic that matches the rule.}
+
+\item{RuleNumber}{[required] The rule number for the entry (for example, 100). ACL entries are processed in ascending order by rule number.
+
+Constraints: Positive integer from 1 to 32766. The range 32767 to 65535 is reserved for internal use.}
 }
 \description{
 Creates an entry (a rule) in a network ACL with the specified rule number. Each network ACL has a set of numbered ingress rules and a separate set of numbered egress rules. When determining whether a packet should be allowed in or out of a subnet associated with the ACL, we process the entries in the ACL according to the rule numbers, in ascending order. Each network ACL has a set of ingress rules and a separate set of egress rules.
@@ -53,7 +68,7 @@ create_network_acl_entry(
     From = 53L,
     To = 53L
   ),
-  Protocol = "udp",
+  Protocol = "17",
   RuleAction = "allow",
   RuleNumber = 100L
 )

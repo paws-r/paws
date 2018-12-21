@@ -4,10 +4,12 @@
 \alias{delete_fleet}
 \title{Deletes everything related to a fleet}
 \usage{
-delete_fleet(FleetId)
+delete_fleet(
+  FleetId = "string"
+)
 }
 \arguments{
-\item{FleetId}{Unique identifier for a fleet to be deleted.}
+\item{FleetId}{[required] Unique identifier for a fleet to be deleted.}
 }
 \description{
 Deletes everything related to a fleet. Before deleting a fleet, you must set the fleet's desired capacity to zero. See UpdateFleetCapacity.

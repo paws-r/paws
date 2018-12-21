@@ -4,10 +4,17 @@
 \alias{cancel_job}
 \title{Cancels a job}
 \usage{
-cancel_job(jobId, comment = NULL, force = NULL)
+cancel_job(
+  jobId = "string",
+  reasonCode = "string",
+  comment = "string",
+  force = TRUE|FALSE
+)
 }
 \arguments{
-\item{jobId}{The unique identifier you assigned to this job when it was created.}
+\item{jobId}{[required] The unique identifier you assigned to this job when it was created.}
+
+\item{reasonCode}{(Optional)A reason code string that explains why the job was canceled.}
 
 \item{comment}{An optional comment string describing why the job was canceled.}
 

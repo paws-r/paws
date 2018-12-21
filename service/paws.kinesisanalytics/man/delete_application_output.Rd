@@ -4,15 +4,18 @@
 \alias{delete_application_output}
 \title{Deletes output destination configuration from your application configuration}
 \usage{
-delete_application_output(ApplicationName, CurrentApplicationVersionId,
-  OutputId)
+delete_application_output(
+  ApplicationName = "string",
+  CurrentApplicationVersionId = 123,
+  OutputId = "string"
+)
 }
 \arguments{
-\item{ApplicationName}{Amazon Kinesis Analytics application name.}
+\item{ApplicationName}{[required] Amazon Kinesis Analytics application name.}
 
-\item{CurrentApplicationVersionId}{Amazon Kinesis Analytics application version. You can use the DescribeApplication operation to get the current application version. If the version specified is not the current version, the \code{ConcurrentModificationException} is returned.}
+\item{CurrentApplicationVersionId}{[required] Amazon Kinesis Analytics application version. You can use the DescribeApplication operation to get the current application version. If the version specified is not the current version, the \code{ConcurrentModificationException} is returned.}
 
-\item{OutputId}{The ID of the configuration to delete. Each output configuration that is added to the application, either when the application is created or later using the AddApplicationOutput operation, has a unique ID. You need to provide the ID to uniquely identify the output configuration that you want to delete from the application configuration. You can use the DescribeApplication operation to get the specific \code{OutputId}.}
+\item{OutputId}{[required] The ID of the configuration to delete. Each output configuration that is added to the application, either when the application is created or later using the AddApplicationOutput operation, has a unique ID. You need to provide the ID to uniquely identify the output configuration that you want to delete from the application configuration. You can use the DescribeApplication operation to get the specific \code{OutputId}.}
 }
 \description{
 Deletes output destination configuration from your application configuration. Amazon Kinesis Analytics will no longer write data from the corresponding in-application stream to the external output destination.

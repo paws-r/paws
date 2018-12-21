@@ -4,12 +4,15 @@
 \alias{create_log_stream}
 \title{Creates a log stream for the specified log group}
 \usage{
-create_log_stream(logGroupName, logStreamName)
+create_log_stream(
+  logGroupName = "string",
+  logStreamName = "string"
+)
 }
 \arguments{
-\item{logGroupName}{The name of the log group.}
+\item{logGroupName}{[required] The name of the log group.}
 
-\item{logStreamName}{The name of the log stream.}
+\item{logStreamName}{[required] The name of the log stream.}
 }
 \description{
 Creates a log stream for the specified log group.

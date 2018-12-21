@@ -4,12 +4,15 @@
 \alias{associate_hosted_connection}
 \title{Associates a hosted connection and its virtual interfaces with a link aggregation group (LAG) or interconnect}
 \usage{
-associate_hosted_connection(connectionId, parentConnectionId)
+associate_hosted_connection(
+  connectionId = "string",
+  parentConnectionId = "string"
+)
 }
 \arguments{
-\item{connectionId}{The ID of the hosted connection.}
+\item{connectionId}{[required] The ID of the hosted connection.}
 
-\item{parentConnectionId}{The ID of the interconnect or the LAG.}
+\item{parentConnectionId}{[required] The ID of the interconnect or the LAG.}
 }
 \description{
 Associates a hosted connection and its virtual interfaces with a link aggregation group (LAG) or interconnect. If the target interconnect or LAG has an existing hosted connection with a conflicting VLAN number or IP address, the operation fails. This action temporarily interrupts the hosted connection's connectivity to AWS as it is being migrated.

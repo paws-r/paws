@@ -4,12 +4,22 @@
 \alias{describe_container_instances}
 \title{Describes Amazon Elastic Container Service container instances}
 \usage{
-describe_container_instances(containerInstances, cluster = NULL)
+describe_container_instances(
+  cluster = "string",
+  containerInstances = list(
+    "string"
+  ),
+  include = list(
+    "TAGS"
+  )
+)
 }
 \arguments{
-\item{containerInstances}{A list of up to 100 container instance IDs or full Amazon Resource Name (ARN) entries.}
-
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instances to describe. If you do not specify a cluster, the default cluster is assumed.}
+
+\item{containerInstances}{[required] A list of up to 100 container instance IDs or full Amazon Resource Name (ARN) entries.}
+
+\item{include}{Specifies whether you want to see the resource tags for the container instance. If \code{TAGS} is specified, the tags are included in the response. If this field is omitted, tags are not included in the response.}
 }
 \description{
 Describes Amazon Elastic Container Service container instances. Returns metadata about registered and remaining resources on each container instance requested.

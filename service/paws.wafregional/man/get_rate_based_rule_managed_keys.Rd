@@ -4,10 +4,13 @@
 \alias{get_rate_based_rule_managed_keys}
 \title{Returns an array of IP addresses currently being blocked by the RateBasedRule that is specified by the \code{RuleId}}
 \usage{
-get_rate_based_rule_managed_keys(RuleId, NextMarker = NULL)
+get_rate_based_rule_managed_keys(
+  RuleId = "string",
+  NextMarker = "string"
+)
 }
 \arguments{
-\item{RuleId}{The \code{RuleId} of the RateBasedRule for which you want to get a list of \code{ManagedKeys}. \code{RuleId} is returned by CreateRateBasedRule and by ListRateBasedRules.}
+\item{RuleId}{[required] The \code{RuleId} of the RateBasedRule for which you want to get a list of \code{ManagedKeys}. \code{RuleId} is returned by CreateRateBasedRule and by ListRateBasedRules.}
 
 \item{NextMarker}{A null value and not currently used. Do not include this in your request.}
 }

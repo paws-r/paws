@@ -4,17 +4,27 @@
 \alias{put_method_response}
 \title{Adds a MethodResponse to an existing Method resource}
 \usage{
-put_method_response(restApiId, resourceId, httpMethod, statusCode,
-  responseParameters = NULL, responseModels = NULL)
+put_method_response(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string",
+  statusCode = "string",
+  responseParameters = list(
+    TRUE|FALSE
+  ),
+  responseModels = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[Required] The Resource identifier for the Method resource.}
+\item{resourceId}{[required] [Required] The Resource identifier for the Method resource.}
 
-\item{httpMethod}{[Required] The HTTP verb of the Method resource.}
+\item{httpMethod}{[required] [Required] The HTTP verb of the Method resource.}
 
-\item{statusCode}{[Required] The method response's status code.}
+\item{statusCode}{[required] [Required] The method response's status code.}
 
 \item{responseParameters}{A key-value map specifying required or optional response parameters that API Gateway can send back to the caller. A key defines a method response header name and the associated value is a Boolean flag indicating whether the method response parameter is required or not. The method response header names must match the pattern of \code{method.response.header.{name}}, where \code{name} is a valid and unique header name. The response parameter names defined here are available in the integration response to be mapped from an integration response header expressed in \code{integration.response.header.{name}}, a static value enclosed within a pair of single quotes (e.g., \code{'application/json'}), or a JSON expression from the back-end response payload in the form of \code{integration.response.body.{JSON-expression}}, where \code{JSON-expression} is a valid JSON expression without the \code{$} prefix.)}
 

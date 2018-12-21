@@ -4,12 +4,15 @@
 \alias{create_activation}
 \title{Registers your on-premises server or virtual machine with Amazon EC2 so that you can manage these resources using Run Command}
 \usage{
-create_activation(IamRole, Description = NULL, DefaultInstanceName = NULL,
-  RegistrationLimit = NULL, ExpirationDate = NULL)
+create_activation(
+  Description = "string",
+  DefaultInstanceName = "string",
+  IamRole = "string",
+  RegistrationLimit = 123,
+  ExpirationDate = as.POSIXct("2015-01-01")
+)
 }
 \arguments{
-\item{IamRole}{The Amazon Identity and Access Management (IAM) role that you want to assign to the managed instance.}
-
 \item{Description}{A user-defined description of the resource that you want to register with Amazon EC2.
 
 Do not enter personally identifiable information in this field.}
@@ -17,6 +20,8 @@ Do not enter personally identifiable information in this field.}
 \item{DefaultInstanceName}{The name of the registered, managed instance as it will appear in the Amazon EC2 console or when you use the AWS command line tools to list EC2 resources.
 
 Do not enter personally identifiable information in this field.}
+
+\item{IamRole}{[required] The Amazon Identity and Access Management (IAM) role that you want to assign to the managed instance.}
 
 \item{RegistrationLimit}{Specify the maximum number of managed instances you want to register. The default value is 1 instance.}
 

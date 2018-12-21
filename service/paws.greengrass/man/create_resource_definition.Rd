@@ -4,8 +4,49 @@
 \alias{create_resource_definition}
 \title{Creates a resource definition which contains a list of resources to be used in a group}
 \usage{
-create_resource_definition(AmznClientToken = NULL, InitialVersion = NULL,
-  Name = NULL)
+create_resource_definition(
+  AmznClientToken = "string",
+  InitialVersion = list(
+    Resources = list(
+      list(
+        Id = "string",
+        Name = "string",
+        ResourceDataContainer = list(
+          LocalDeviceResourceData = list(
+            GroupOwnerSetting = list(
+              AutoAddGroupOwner = TRUE|FALSE,
+              GroupOwner = "string"
+            ),
+            SourcePath = "string"
+          ),
+          LocalVolumeResourceData = list(
+            DestinationPath = "string",
+            GroupOwnerSetting = list(
+              AutoAddGroupOwner = TRUE|FALSE,
+              GroupOwner = "string"
+            ),
+            SourcePath = "string"
+          ),
+          S3MachineLearningModelResourceData = list(
+            DestinationPath = "string",
+            S3Uri = "string"
+          ),
+          SageMakerMachineLearningModelResourceData = list(
+            DestinationPath = "string",
+            SageMakerJobArn = "string"
+          ),
+          SecretsManagerSecretResourceData = list(
+            ARN = "string",
+            AdditionalStagingLabelsToDownload = list(
+              "string"
+            )
+          )
+        )
+      )
+    )
+  ),
+  Name = "string"
+)
 }
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}

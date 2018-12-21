@@ -4,12 +4,16 @@
 \alias{suggest}
 \title{Retrieves autocomplete suggestions for a partial query string}
 \usage{
-suggest(query, suggester, size = NULL)
+suggest(
+  query = "string",
+  suggester = "string",
+  size = 123
+)
 }
 \arguments{
-\item{query}{Specifies the string for which you want to get suggestions.}
+\item{query}{[required] Specifies the string for which you want to get suggestions.}
 
-\item{suggester}{Specifies the name of the suggester to use to find suggested matches.}
+\item{suggester}{[required] Specifies the name of the suggester to use to find suggested matches.}
 
 \item{size}{Specifies the maximum number of suggestions to return.}
 }

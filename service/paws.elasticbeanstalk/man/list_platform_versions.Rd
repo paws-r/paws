@@ -4,8 +4,19 @@
 \alias{list_platform_versions}
 \title{Lists the available platforms}
 \usage{
-list_platform_versions(Filters = NULL, MaxRecords = NULL,
-  NextToken = NULL)
+list_platform_versions(
+  Filters = list(
+    list(
+      Type = "string",
+      Operator = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{Filters}{List only the platforms where the platform member value relates to one of the supplied values.}

@@ -4,12 +4,81 @@
 \alias{put_events}
 \title{Use to record events for endpoints}
 \usage{
-put_events(ApplicationId, EventsRequest)
+put_events(
+  ApplicationId = "string",
+  EventsRequest = list(
+    BatchItem = list(
+      list(
+        Endpoint = list(
+          Address = "string",
+          Attributes = list(
+            list(
+              "string"
+            )
+          ),
+          ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
+          Demographic = list(
+            AppVersion = "string",
+            Locale = "string",
+            Make = "string",
+            Model = "string",
+            ModelVersion = "string",
+            Platform = "string",
+            PlatformVersion = "string",
+            Timezone = "string"
+          ),
+          EffectiveDate = "string",
+          EndpointStatus = "string",
+          Location = list(
+            City = "string",
+            Country = "string",
+            Latitude = 123.0,
+            Longitude = 123.0,
+            PostalCode = "string",
+            Region = "string"
+          ),
+          Metrics = list(
+            123.0
+          ),
+          OptOut = "string",
+          RequestId = "string",
+          User = list(
+            UserAttributes = list(
+              list(
+                "string"
+              )
+            ),
+            UserId = "string"
+          )
+        ),
+        Events = list(
+          list(
+            Attributes = list(
+              "string"
+            ),
+            ClientSdkVersion = "string",
+            EventType = "string",
+            Metrics = list(
+              123.0
+            ),
+            Session = list(
+              Duration = 123,
+              Id = "string",
+              StartTimestamp = "string",
+              StopTimestamp = "string"
+            ),
+            Timestamp = "string"
+          )
+        )
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 
-\item{EventsRequest}{}
+\item{EventsRequest}{[required]}
 }
 \description{
 Use to record events for endpoints. This method creates events and creates or updates the endpoints that those events are associated with.

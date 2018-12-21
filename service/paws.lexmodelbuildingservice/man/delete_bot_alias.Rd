@@ -4,12 +4,15 @@
 \alias{delete_bot_alias}
 \title{Deletes an alias for the specified bot}
 \usage{
-delete_bot_alias(name, botName)
+delete_bot_alias(
+  name = "string",
+  botName = "string"
+)
 }
 \arguments{
-\item{name}{The name of the alias to delete. The name is case sensitive.}
+\item{name}{[required] The name of the alias to delete. The name is case sensitive.}
 
-\item{botName}{The name of the bot that the alias points to.}
+\item{botName}{[required] The name of the bot that the alias points to.}
 }
 \description{
 Deletes an alias for the specified bot.

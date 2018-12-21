@@ -4,10 +4,12 @@
 \alias{describe_security_profile}
 \title{Gets information about a Device Defender security profile}
 \usage{
-describe_security_profile(securityProfileName)
+describe_security_profile(
+  securityProfileName = "string"
+)
 }
 \arguments{
-\item{securityProfileName}{The name of the security profile whose information you want to get.}
+\item{securityProfileName}{[required] The name of the security profile whose information you want to get.}
 }
 \description{
 Gets information about a Device Defender security profile.

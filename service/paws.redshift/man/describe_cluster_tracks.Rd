@@ -4,8 +4,11 @@
 \alias{describe_cluster_tracks}
 \title{Returns a list of all the available maintenance tracks}
 \usage{
-describe_cluster_tracks(MaintenanceTrackName = NULL, MaxRecords = NULL,
-  Marker = NULL)
+describe_cluster_tracks(
+  MaintenanceTrackName = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{MaintenanceTrackName}{The name of the maintenance track.}

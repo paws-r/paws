@@ -4,28 +4,66 @@
 \alias{create_data_source}
 \title{Creates a \code{DataSource} object}
 \usage{
-create_data_source(apiId, name, type, description = NULL,
-  serviceRoleArn = NULL, dynamodbConfig = NULL, lambdaConfig = NULL,
-  elasticsearchConfig = NULL, httpConfig = NULL)
+create_data_source(
+  apiId = "string",
+  name = "string",
+  description = "string",
+  type = "AWS_LAMBDA"|"AMAZON_DYNAMODB"|"AMAZON_ELASTICSEARCH"|"NONE"|"HTTP"|"RELATIONAL_DATABASE",
+  serviceRoleArn = "string",
+  dynamodbConfig = list(
+    tableName = "string",
+    awsRegion = "string",
+    useCallerCredentials = TRUE|FALSE
+  ),
+  lambdaConfig = list(
+    lambdaFunctionArn = "string"
+  ),
+  elasticsearchConfig = list(
+    endpoint = "string",
+    awsRegion = "string"
+  ),
+  httpConfig = list(
+    endpoint = "string",
+    authorizationConfig = list(
+      authorizationType = "AWS_IAM",
+      awsIamConfig = list(
+        signingRegion = "string",
+        signingServiceName = "string"
+      )
+    )
+  ),
+  relationalDatabaseConfig = list(
+    relationalDatabaseSourceType = "RDS_HTTP_ENDPOINT",
+    rdsHttpEndpointConfig = list(
+      awsRegion = "string",
+      dbClusterIdentifier = "string",
+      databaseName = "string",
+      schema = "string",
+      awsSecretStoreArn = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{apiId}{The API ID for the GraphQL API for the \code{DataSource}.}
+\item{apiId}{[required] The API ID for the GraphQL API for the \code{DataSource}.}
 
-\item{name}{A user-supplied name for the \code{DataSource}.}
-
-\item{type}{The type of the \code{DataSource}.}
+\item{name}{[required] A user-supplied name for the \code{DataSource}.}
 
 \item{description}{A description of the \code{DataSource}.}
 
-\item{serviceRoleArn}{The IAM service role ARN for the data source. The system assumes this role when accessing the data source.}
+\item{type}{[required] The type of the \code{DataSource}.}
 
-\item{dynamodbConfig}{DynamoDB settings.}
+\item{serviceRoleArn}{The AWS IAM service role ARN for the data source. The system assumes this role when accessing the data source.}
+
+\item{dynamodbConfig}{Amazon DynamoDB settings.}
 
 \item{lambdaConfig}{AWS Lambda settings.}
 
-\item{elasticsearchConfig}{Amazon Elasticsearch settings.}
+\item{elasticsearchConfig}{Amazon Elasticsearch Service settings.}
 
-\item{httpConfig}{Http endpoint settings.}
+\item{httpConfig}{HTTP endpoint settings.}
+
+\item{relationalDatabaseConfig}{Relational database settings.}
 }
 \description{
 Creates a \code{DataSource} object.

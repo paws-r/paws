@@ -4,14 +4,18 @@
 \alias{get_table}
 \title{Retrieves the \code{Table} definition in a Data Catalog for a specified table}
 \usage{
-get_table(DatabaseName, Name, CatalogId = NULL)
+get_table(
+  CatalogId = "string",
+  DatabaseName = "string",
+  Name = "string"
+)
 }
 \arguments{
-\item{DatabaseName}{The name of the database in the catalog in which the table resides. For Hive compatibility, this name is entirely lowercase.}
-
-\item{Name}{The name of the table for which to retrieve the definition. For Hive compatibility, this name is entirely lowercase.}
-
 \item{CatalogId}{The ID of the Data Catalog where the table resides. If none is supplied, the AWS account ID is used by default.}
+
+\item{DatabaseName}{[required] The name of the database in the catalog in which the table resides. For Hive compatibility, this name is entirely lowercase.}
+
+\item{Name}{[required] The name of the table for which to retrieve the definition. For Hive compatibility, this name is entirely lowercase.}
 }
 \description{
 Retrieves the \code{Table} definition in a Data Catalog for a specified table.

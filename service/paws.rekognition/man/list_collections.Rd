@@ -4,7 +4,10 @@
 \alias{list_collections}
 \title{Returns list of collection IDs in your account}
 \usage{
-list_collections(NextToken = NULL, MaxResults = NULL)
+list_collections(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{NextToken}{Pagination token from the previous response.}

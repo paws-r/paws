@@ -4,16 +4,45 @@
 \alias{create_certificate_authority}
 \title{Creates a private subordinate certificate authority (CA)}
 \usage{
-create_certificate_authority(CertificateAuthorityConfiguration,
-  CertificateAuthorityType, RevocationConfiguration = NULL,
-  IdempotencyToken = NULL)
+create_certificate_authority(
+  CertificateAuthorityConfiguration = list(
+    KeyAlgorithm = "RSA_2048"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1",
+    SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA",
+    Subject = list(
+      Country = "string",
+      Organization = "string",
+      OrganizationalUnit = "string",
+      DistinguishedNameQualifier = "string",
+      State = "string",
+      CommonName = "string",
+      SerialNumber = "string",
+      Locality = "string",
+      Title = "string",
+      Surname = "string",
+      GivenName = "string",
+      Initials = "string",
+      Pseudonym = "string",
+      GenerationQualifier = "string"
+    )
+  ),
+  RevocationConfiguration = list(
+    CrlConfiguration = list(
+      Enabled = TRUE|FALSE,
+      ExpirationInDays = 123,
+      CustomCname = "string",
+      S3BucketName = "string"
+    )
+  ),
+  CertificateAuthorityType = "SUBORDINATE",
+  IdempotencyToken = "string"
+)
 }
 \arguments{
-\item{CertificateAuthorityConfiguration}{Name and bit size of the private key algorithm, the name of the signing algorithm, and X.500 certificate subject information.}
-
-\item{CertificateAuthorityType}{The type of the certificate authority. Currently, this must be \strong{SUBORDINATE}.}
+\item{CertificateAuthorityConfiguration}{[required] Name and bit size of the private key algorithm, the name of the signing algorithm, and X.500 certificate subject information.}
 
 \item{RevocationConfiguration}{Contains a Boolean value that you can use to enable a certification revocation list (CRL) for the CA, the name of the S3 bucket to which ACM PCA will write the CRL, and an optional CNAME alias that you can use to hide the name of your bucket in the \strong{CRL Distribution Points} extension of your CA certificate. For more information, see the CrlConfiguration structure.}
+
+\item{CertificateAuthorityType}{[required] The type of the certificate authority. Currently, this must be \strong{SUBORDINATE}.}
 
 \item{IdempotencyToken}{Alphanumeric string that can be used to distinguish between calls to \strong{CreateCertificateAuthority}. Idempotency tokens time out after five minutes. Therefore, if you call \strong{CreateCertificateAuthority} multiple times with the same idempotency token within a five minute period, ACM PCA recognizes that you are requesting only one certificate. As a result, ACM PCA issues only one. If you change the idempotency token for each call, however, ACM PCA recognizes that you are requesting multiple certificates.}
 }

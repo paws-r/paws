@@ -4,8 +4,18 @@
 \alias{describe_replication_subnet_groups}
 \title{Returns information about the replication subnet groups}
 \usage{
-describe_replication_subnet_groups(Filters = NULL, MaxRecords = NULL,
-  Marker = NULL)
+describe_replication_subnet_groups(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{Filters}{Filters applied to the describe action.}

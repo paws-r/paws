@@ -4,12 +4,17 @@
 \alias{get_host_reservation_purchase_preview}
 \title{Preview a reservation purchase with configurations that match those of your Dedicated Host}
 \usage{
-get_host_reservation_purchase_preview(HostIdSet, OfferingId)
+get_host_reservation_purchase_preview(
+  HostIdSet = list(
+    "string"
+  ),
+  OfferingId = "string"
+)
 }
 \arguments{
-\item{HostIdSet}{The IDs of the Dedicated Hosts with which the reservation is associated.}
+\item{HostIdSet}{[required] The IDs of the Dedicated Hosts with which the reservation is associated.}
 
-\item{OfferingId}{The offering ID of the reservation.}
+\item{OfferingId}{[required] The offering ID of the reservation.}
 }
 \description{
 Preview a reservation purchase with configurations that match those of your Dedicated Host. You must have active Dedicated Hosts in your account before you purchase a reservation.

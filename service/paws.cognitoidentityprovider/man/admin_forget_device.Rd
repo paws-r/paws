@@ -4,14 +4,18 @@
 \alias{admin_forget_device}
 \title{Forgets the device, as an administrator}
 \usage{
-admin_forget_device(UserPoolId, Username, DeviceKey)
+admin_forget_device(
+  UserPoolId = "string",
+  Username = "string",
+  DeviceKey = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID.}
+\item{UserPoolId}{[required] The user pool ID.}
 
-\item{Username}{The user name.}
+\item{Username}{[required] The user name.}
 
-\item{DeviceKey}{The device key.}
+\item{DeviceKey}{[required] The device key.}
 }
 \description{
 Forgets the device, as an administrator.

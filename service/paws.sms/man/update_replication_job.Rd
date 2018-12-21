@@ -2,27 +2,49 @@
 % Please edit documentation in R/paws.sms_operations.R
 \name{update_replication_job}
 \alias{update_replication_job}
-\title{The UpdateReplicationJob API is used to change the settings of your existing ReplicationJob created using CreateReplicationJob}
+\title{Updates the specified settings for the specified replication job}
 \usage{
-update_replication_job(replicationJobId, frequency = NULL,
-  nextReplicationRunStartTime = NULL, licenseType = NULL, roleName = NULL,
-  description = NULL)
+update_replication_job(
+  replicationJobId = "string",
+  frequency = 123,
+  nextReplicationRunStartTime = as.POSIXct("2015-01-01"),
+  licenseType = "AWS"|"BYOL",
+  roleName = "string",
+  description = "string",
+  numberOfRecentAmisToKeep = 123,
+  encrypted = TRUE|FALSE,
+  kmsKeyId = "string"
+)
 }
 \arguments{
-\item{replicationJobId}{}
+\item{replicationJobId}{[required] The identifier of the replication job.}
 
-\item{frequency}{}
+\item{frequency}{The time between consecutive replication runs, in hours.}
 
-\item{nextReplicationRunStartTime}{}
+\item{nextReplicationRunStartTime}{The start time of the next replication run.}
 
-\item{licenseType}{}
+\item{licenseType}{The license type to be used for the AMI created by a successful replication run.}
 
-\item{roleName}{}
+\item{roleName}{The name of the IAM role to be used by AWS SMS.}
 
-\item{description}{}
+\item{description}{The description of the replication job.}
+
+\item{numberOfRecentAmisToKeep}{The maximum number of SMS-created AMIs to retain. The oldest will be deleted once the maximum number is reached and a new AMI is created.}
+
+\item{encrypted}{When true, the replication job produces encrypted AMIs . See also \code{KmsKeyId} below.}
+
+\item{kmsKeyId}{KMS key ID for replication jobs that produce encrypted AMIs. Can be any of the following:
+\itemize{
+\item KMS key ID
+\item KMS key alias
+\item ARN referring to KMS key ID
+\item ARN referring to KMS key alias
+}
+
+If encrypted is \emph{true} but a KMS key id is not specified, the customer's default KMS key for EBS is used.}
 }
 \description{
-The UpdateReplicationJob API is used to change the settings of your existing ReplicationJob created using CreateReplicationJob. Calling this API will affect the next scheduled ReplicationRun.
+Updates the specified settings for the specified replication job.
 }
 \examples{
 

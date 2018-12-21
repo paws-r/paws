@@ -4,10 +4,12 @@
 \alias{delete_hit}
 \title{The \code{DeleteHIT} operation is used to delete HIT that is no longer needed}
 \usage{
-delete_hit(HITId)
+delete_hit(
+  HITId = "string"
+)
 }
 \arguments{
-\item{HITId}{The ID of the HIT to be deleted.}
+\item{HITId}{[required] The ID of the HIT to be deleted.}
 }
 \description{
 The \code{DeleteHIT} operation is used to delete HIT that is no longer needed. Only the Requester who created the HIT can delete it.

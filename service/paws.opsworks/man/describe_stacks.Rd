@@ -4,7 +4,11 @@
 \alias{describe_stacks}
 \title{Requests a description of one or more stacks}
 \usage{
-describe_stacks(StackIds = NULL)
+describe_stacks(
+  StackIds = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{StackIds}{An array of stack IDs that specify the stacks to be described. If you omit this parameter, \code{DescribeStacks} returns a description of every stack.}

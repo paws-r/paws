@@ -4,19 +4,30 @@
 \alias{create_directory}
 \title{Creates a Simple AD directory}
 \usage{
-create_directory(Name, Password, Size, ShortName = NULL, Description = NULL,
-  VpcSettings = NULL)
+create_directory(
+  Name = "string",
+  ShortName = "string",
+  Password = "string",
+  Description = "string",
+  Size = "Small"|"Large",
+  VpcSettings = list(
+    VpcId = "string",
+    SubnetIds = list(
+      "string"
+    )
+  )
+)
 }
 \arguments{
-\item{Name}{The fully qualified name for the directory, such as \code{corp.example.com}.}
-
-\item{Password}{The password for the directory administrator. The directory creation process creates a directory administrator account with the user name \code{Administrator} and this password.}
-
-\item{Size}{The size of the directory.}
+\item{Name}{[required] The fully qualified name for the directory, such as \code{corp.example.com}.}
 
 \item{ShortName}{The short name of the directory, such as \code{CORP}.}
 
+\item{Password}{[required] The password for the directory administrator. The directory creation process creates a directory administrator account with the user name \code{Administrator} and this password.}
+
 \item{Description}{A textual description for the directory.}
+
+\item{Size}{[required] The size of the directory.}
 
 \item{VpcSettings}{A DirectoryVpcSettings object that contains additional information for the operation.}
 }

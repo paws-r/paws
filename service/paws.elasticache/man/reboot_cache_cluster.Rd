@@ -4,12 +4,17 @@
 \alias{reboot_cache_cluster}
 \title{Reboots some, or all, of the cache nodes within a provisioned cluster}
 \usage{
-reboot_cache_cluster(CacheClusterId, CacheNodeIdsToReboot)
+reboot_cache_cluster(
+  CacheClusterId = "string",
+  CacheNodeIdsToReboot = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{CacheClusterId}{The cluster identifier. This parameter is stored as a lowercase string.}
+\item{CacheClusterId}{[required] The cluster identifier. This parameter is stored as a lowercase string.}
 
-\item{CacheNodeIdsToReboot}{A list of cache node IDs to reboot. A node ID is a numeric identifier (0001, 0002, etc.). To reboot an entire cluster, specify all of the cache node IDs.}
+\item{CacheNodeIdsToReboot}{[required] A list of cache node IDs to reboot. A node ID is a numeric identifier (0001, 0002, etc.). To reboot an entire cluster, specify all of the cache node IDs.}
 }
 \description{
 Reboots some, or all, of the cache nodes within a provisioned cluster. This operation applies any modified cache parameter groups to the cluster. The reboot operation takes place as soon as possible, and results in a momentary outage to the cluster. During the reboot, the cluster status is set to REBOOTING.

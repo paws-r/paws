@@ -4,10 +4,16 @@
 \alias{stop_workspaces}
 \title{Stops the specified WorkSpaces}
 \usage{
-stop_workspaces(StopWorkspaceRequests)
+stop_workspaces(
+  StopWorkspaceRequests = list(
+    list(
+      WorkspaceId = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{StopWorkspaceRequests}{The WorkSpaces to stop. You can specify up to 25 WorkSpaces.}
+\item{StopWorkspaceRequests}{[required] The WorkSpaces to stop. You can specify up to 25 WorkSpaces.}
 }
 \description{
 Stops the specified WorkSpaces.

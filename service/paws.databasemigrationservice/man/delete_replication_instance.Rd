@@ -4,10 +4,12 @@
 \alias{delete_replication_instance}
 \title{Deletes the specified replication instance}
 \usage{
-delete_replication_instance(ReplicationInstanceArn)
+delete_replication_instance(
+  ReplicationInstanceArn = "string"
+)
 }
 \arguments{
-\item{ReplicationInstanceArn}{The Amazon Resource Name (ARN) of the replication instance to be deleted.}
+\item{ReplicationInstanceArn}{[required] The Amazon Resource Name (ARN) of the replication instance to be deleted.}
 }
 \description{
 Deletes the specified replication instance.

@@ -4,12 +4,15 @@
 \alias{remove_all_resource_permissions}
 \title{Removes all the permissions from the specified resource}
 \usage{
-remove_all_resource_permissions(ResourceId, AuthenticationToken = NULL)
+remove_all_resource_permissions(
+  AuthenticationToken = "string",
+  ResourceId = "string"
+)
 }
 \arguments{
-\item{ResourceId}{The ID of the resource.}
-
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
+
+\item{ResourceId}{[required] The ID of the resource.}
 }
 \description{
 Removes all the permissions from the specified resource.

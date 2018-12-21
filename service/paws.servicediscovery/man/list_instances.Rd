@@ -4,16 +4,20 @@
 \alias{list_instances}
 \title{Lists summary information about the instances that you registered by using a specified service}
 \usage{
-list_instances(ServiceId, NextToken = NULL, MaxResults = NULL)
+list_instances(
+  ServiceId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{ServiceId}{The ID of the service that you want to list instances for.}
+\item{ServiceId}{[required] The ID of the service that you want to list instances for.}
 
 \item{NextToken}{For the first \code{ListInstances} request, omit this value.
 
 If more than \code{MaxResults} instances match the specified criteria, you can submit another \code{ListInstances} request to get the next group of results. Specify the value of \code{NextToken} from the previous response in the next request.}
 
-\item{MaxResults}{The maximum number of instances that you want Amazon Route 53 to return in the response to a \code{ListInstances} request. If you don't specify a value for \code{MaxResults}, Route 53 returns up to 100 instances.}
+\item{MaxResults}{The maximum number of instances that you want AWS Cloud Map to return in the response to a \code{ListInstances} request. If you don't specify a value for \code{MaxResults}, AWS Cloud Map returns up to 100 instances.}
 }
 \description{
 Lists summary information about the instances that you registered by using a specified service.

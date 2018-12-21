@@ -4,12 +4,15 @@
 \alias{get_deployment_instance}
 \title{Gets information about an instance as part of a deployment}
 \usage{
-get_deployment_instance(deploymentId, instanceId)
+get_deployment_instance(
+  deploymentId = "string",
+  instanceId = "string"
+)
 }
 \arguments{
-\item{deploymentId}{The unique ID of a deployment.}
+\item{deploymentId}{[required] The unique ID of a deployment.}
 
-\item{instanceId}{The unique ID of an instance in the deployment group.}
+\item{instanceId}{[required] The unique ID of an instance in the deployment group.}
 }
 \description{
 Gets information about an instance as part of a deployment.

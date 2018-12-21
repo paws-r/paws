@@ -4,7 +4,13 @@
 \alias{describe_agent_versions}
 \title{Describes the available AWS OpsWorks Stacks agent versions}
 \usage{
-describe_agent_versions(StackId = NULL, ConfigurationManager = NULL)
+describe_agent_versions(
+  StackId = "string",
+  ConfigurationManager = list(
+    Name = "string",
+    Version = "string"
+  )
+)
 }
 \arguments{
 \item{StackId}{The stack ID.}

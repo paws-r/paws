@@ -4,15 +4,19 @@
 \alias{remove_resource_permission}
 \title{Removes the permission for the specified principal from the specified resource}
 \usage{
-remove_resource_permission(ResourceId, PrincipalId,
-  AuthenticationToken = NULL, PrincipalType = NULL)
+remove_resource_permission(
+  AuthenticationToken = "string",
+  ResourceId = "string",
+  PrincipalId = "string",
+  PrincipalType = "USER"|"GROUP"|"INVITE"|"ANONYMOUS"|"ORGANIZATION"
+)
 }
 \arguments{
-\item{ResourceId}{The ID of the resource.}
-
-\item{PrincipalId}{The principal ID of the resource.}
-
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
+
+\item{ResourceId}{[required] The ID of the resource.}
+
+\item{PrincipalId}{[required] The principal ID of the resource.}
 
 \item{PrincipalType}{The principal type of the resource.}
 }

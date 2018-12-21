@@ -4,8 +4,19 @@
 \alias{list_record_history}
 \title{Lists the specified requests or all performed requests}
 \usage{
-list_record_history(AcceptLanguage = NULL, AccessLevelFilter = NULL,
-  SearchFilter = NULL, PageSize = NULL, PageToken = NULL)
+list_record_history(
+  AcceptLanguage = "string",
+  AccessLevelFilter = list(
+    Key = "Account"|"Role"|"User",
+    Value = "string"
+  ),
+  SearchFilter = list(
+    Key = "string",
+    Value = "string"
+  ),
+  PageSize = 123,
+  PageToken = "string"
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.

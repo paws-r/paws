@@ -4,7 +4,10 @@
 \alias{list_hi_ts}
 \title{The \code{ListHITs} operation returns all of a Requester's HITs}
 \usage{
-list_hi_ts(NextToken = NULL, MaxResults = NULL)
+list_hi_ts(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{NextToken}{Pagination token}

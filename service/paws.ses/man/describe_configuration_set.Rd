@@ -4,11 +4,15 @@
 \alias{describe_configuration_set}
 \title{Returns the details of the specified configuration set}
 \usage{
-describe_configuration_set(ConfigurationSetName,
-  ConfigurationSetAttributeNames = NULL)
+describe_configuration_set(
+  ConfigurationSetName = "string",
+  ConfigurationSetAttributeNames = list(
+    "eventDestinations"|"trackingOptions"|"reputationOptions"
+  )
+)
 }
 \arguments{
-\item{ConfigurationSetName}{The name of the configuration set to describe.}
+\item{ConfigurationSetName}{[required] The name of the configuration set to describe.}
 
 \item{ConfigurationSetAttributeNames}{A list of configuration set attributes to return.}
 }

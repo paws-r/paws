@@ -6,17 +6,21 @@
 \alias{paws.lexmodelbuildingservice-package}
 \title{paws.lexmodelbuildingservice: Amazon Lex Model Building Service}
 \description{
-Amazon Lex is an AWS service for building
-conversational voice and text interfaces. Use these actions to create,
-update, and delete conversational bots for new and existing client
-applications.
+Amazon Lex is an AWS service for building conversational
+voice and text interfaces. Use these actions to create, update, and
+delete conversational bots for new and existing client applications.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

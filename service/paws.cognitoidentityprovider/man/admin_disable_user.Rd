@@ -4,12 +4,15 @@
 \alias{admin_disable_user}
 \title{Disables the specified user as an administrator}
 \usage{
-admin_disable_user(UserPoolId, Username)
+admin_disable_user(
+  UserPoolId = "string",
+  Username = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool where you want to disable the user.}
+\item{UserPoolId}{[required] The user pool ID for the user pool where you want to disable the user.}
 
-\item{Username}{The user name of the user you wish to disable.}
+\item{Username}{[required] The user name of the user you wish to disable.}
 }
 \description{
 Disables the specified user as an administrator. Works on any user.

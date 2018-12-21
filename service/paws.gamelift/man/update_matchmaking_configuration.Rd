@@ -4,15 +4,30 @@
 \alias{update_matchmaking_configuration}
 \title{Updates settings for a FlexMatch matchmaking configuration}
 \usage{
-update_matchmaking_configuration(Name, Description = NULL,
-  GameSessionQueueArns = NULL, RequestTimeoutSeconds = NULL,
-  AcceptanceTimeoutSeconds = NULL, AcceptanceRequired = NULL,
-  RuleSetName = NULL, NotificationTarget = NULL,
-  AdditionalPlayerCount = NULL, CustomEventData = NULL,
-  GameProperties = NULL, GameSessionData = NULL)
+update_matchmaking_configuration(
+  Name = "string",
+  Description = "string",
+  GameSessionQueueArns = list(
+    "string"
+  ),
+  RequestTimeoutSeconds = 123,
+  AcceptanceTimeoutSeconds = 123,
+  AcceptanceRequired = TRUE|FALSE,
+  RuleSetName = "string",
+  NotificationTarget = "string",
+  AdditionalPlayerCount = 123,
+  CustomEventData = "string",
+  GameProperties = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  GameSessionData = "string"
+)
 }
 \arguments{
-\item{Name}{Unique identifier for a matchmaking configuration to update.}
+\item{Name}{[required] Unique identifier for a matchmaking configuration to update.}
 
 \item{Description}{Descriptive label that is associated with matchmaking configuration.}
 

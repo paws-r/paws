@@ -4,11 +4,19 @@
 \alias{create_db_security_group}
 \title{Creates a new DB security group}
 \usage{
-create_db_security_group(DBSecurityGroupName, DBSecurityGroupDescription,
-  Tags = NULL)
+create_db_security_group(
+  DBSecurityGroupName = "string",
+  DBSecurityGroupDescription = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{DBSecurityGroupName}{The name for the DB security group. This value is stored as a lowercase string.
+\item{DBSecurityGroupName}{[required] The name for the DB security group. This value is stored as a lowercase string.
 
 Constraints:
 \itemize{
@@ -20,7 +28,7 @@ Constraints:
 
 Example: \code{mysecuritygroup}}
 
-\item{DBSecurityGroupDescription}{The description for the DB security group.}
+\item{DBSecurityGroupDescription}{[required] The description for the DB security group.}
 
 \item{Tags}{}
 }

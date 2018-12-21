@@ -4,12 +4,15 @@
 \alias{delete_repository_policy}
 \title{Deletes the repository policy from a specified repository}
 \usage{
-delete_repository_policy(repositoryName, registryId = NULL)
+delete_repository_policy(
+  registryId = "string",
+  repositoryName = "string"
+)
 }
 \arguments{
-\item{repositoryName}{The name of the repository that is associated with the repository policy to delete.}
-
 \item{registryId}{The AWS account ID associated with the registry that contains the repository policy to delete. If you do not specify a registry, the default registry is assumed.}
+
+\item{repositoryName}{[required] The name of the repository that is associated with the repository policy to delete.}
 }
 \description{
 Deletes the repository policy from a specified repository.

@@ -4,10 +4,13 @@
 \alias{get_password_data}
 \title{Retrieves the encrypted administrator password for a running Windows instance}
 \usage{
-get_password_data(InstanceId, DryRun = NULL)
+get_password_data(
+  InstanceId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{InstanceId}{The ID of the Windows instance.}
+\item{InstanceId}{[required] The ID of the Windows instance.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

@@ -4,14 +4,18 @@
 \alias{update_application_version}
 \title{Updates the specified application version to have the specified properties}
 \usage{
-update_application_version(ApplicationName, VersionLabel, Description = NULL)
+update_application_version(
+  ApplicationName = "string",
+  VersionLabel = "string",
+  Description = "string"
+)
 }
 \arguments{
-\item{ApplicationName}{The name of the application associated with this version.
+\item{ApplicationName}{[required] The name of the application associated with this version.
 
 If no application is found with this name, \code{UpdateApplication} returns an \code{InvalidParameterValue} error.}
 
-\item{VersionLabel}{The name of the version to update.
+\item{VersionLabel}{[required] The name of the version to update.
 
 If no application version is found with this label, \code{UpdateApplication} returns an \code{InvalidParameterValue} error.}
 

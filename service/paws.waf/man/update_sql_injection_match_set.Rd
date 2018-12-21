@@ -4,14 +4,29 @@
 \alias{update_sql_injection_match_set}
 \title{Inserts or deletes SqlInjectionMatchTuple objects (filters) in a SqlInjectionMatchSet}
 \usage{
-update_sql_injection_match_set(SqlInjectionMatchSetId, ChangeToken, Updates)
+update_sql_injection_match_set(
+  SqlInjectionMatchSetId = "string",
+  ChangeToken = "string",
+  Updates = list(
+    list(
+      Action = "INSERT"|"DELETE",
+      SqlInjectionMatchTuple = list(
+        FieldToMatch = list(
+          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+          Data = "string"
+        ),
+        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{SqlInjectionMatchSetId}{The \code{SqlInjectionMatchSetId} of the \code{SqlInjectionMatchSet} that you want to update. \code{SqlInjectionMatchSetId} is returned by CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets.}
+\item{SqlInjectionMatchSetId}{[required] The \code{SqlInjectionMatchSetId} of the \code{SqlInjectionMatchSet} that you want to update. \code{SqlInjectionMatchSetId} is returned by CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 
-\item{Updates}{An array of \code{SqlInjectionMatchSetUpdate} objects that you want to insert into or delete from a SqlInjectionMatchSet. For more information, see the applicable data types:
+\item{Updates}{[required] An array of \code{SqlInjectionMatchSetUpdate} objects that you want to insert into or delete from a SqlInjectionMatchSet. For more information, see the applicable data types:
 \itemize{
 \item SqlInjectionMatchSetUpdate: Contains \code{Action} and \code{SqlInjectionMatchTuple}
 \item SqlInjectionMatchTuple: Contains \code{FieldToMatch} and \code{TextTransformation}
@@ -30,7 +45,7 @@ Inserts or deletes SqlInjectionMatchTuple objects (filters) in a SqlInjectionMat
 
 You can only specify a single type of TextTransformation.
 
-You use \code{SqlInjectionMatchSet} objects to specify which CloudFront requests you want to allow, block, or count. For example, if you're receiving requests that contain snippets of SQL code in the query string and you want to block the requests, you can create a \code{SqlInjectionMatchSet} with the applicable settings, and then configure AWS WAF to block the requests.
+You use \code{SqlInjectionMatchSet} objects to specify which CloudFront requests that you want to allow, block, or count. For example, if you're receiving requests that contain snippets of SQL code in the query string and you want to block the requests, you can create a \code{SqlInjectionMatchSet} with the applicable settings, and then configure AWS WAF to block the requests.
 
 To create and configure a \code{SqlInjectionMatchSet}, perform the following steps:
 \enumerate{

@@ -4,10 +4,12 @@
 \alias{describe_cluster}
 \title{Returns information about a specific cluster including shipping information, cluster status, and other important metadata}
 \usage{
-describe_cluster(ClusterId)
+describe_cluster(
+  ClusterId = "string"
+)
 }
 \arguments{
-\item{ClusterId}{The automatically generated ID for a cluster.}
+\item{ClusterId}{[required] The automatically generated ID for a cluster.}
 }
 \description{
 Returns information about a specific cluster including shipping information, cluster status, and other important metadata.

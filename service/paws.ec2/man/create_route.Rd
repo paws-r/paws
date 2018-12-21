@@ -4,15 +4,21 @@
 \alias{create_route}
 \title{Creates a route in a route table within a VPC}
 \usage{
-create_route(RouteTableId, DestinationCidrBlock = NULL,
-  DestinationIpv6CidrBlock = NULL, DryRun = NULL,
-  EgressOnlyInternetGatewayId = NULL, GatewayId = NULL, InstanceId = NULL,
-  NatGatewayId = NULL, NetworkInterfaceId = NULL,
-  VpcPeeringConnectionId = NULL)
+create_route(
+  DestinationCidrBlock = "string",
+  DestinationIpv6CidrBlock = "string",
+  DryRun = TRUE|FALSE,
+  EgressOnlyInternetGatewayId = "string",
+  GatewayId = "string",
+  InstanceId = "string",
+  NatGatewayId = "string",
+  TransitGatewayId = "string",
+  NetworkInterfaceId = "string",
+  RouteTableId = "string",
+  VpcPeeringConnectionId = "string"
+)
 }
 \arguments{
-\item{RouteTableId}{The ID of the route table for the route.}
-
 \item{DestinationCidrBlock}{The IPv4 CIDR address block used for the destination match. Routing decisions are based on the most specific match.}
 
 \item{DestinationIpv6CidrBlock}{The IPv6 CIDR block used for the destination match. Routing decisions are based on the most specific match.}
@@ -27,7 +33,11 @@ create_route(RouteTableId, DestinationCidrBlock = NULL,
 
 \item{NatGatewayId}{[IPv4 traffic only] The ID of a NAT gateway.}
 
+\item{TransitGatewayId}{The ID of a transit gateway.}
+
 \item{NetworkInterfaceId}{The ID of a network interface.}
+
+\item{RouteTableId}{[required] The ID of the route table for the route.}
 
 \item{VpcPeeringConnectionId}{The ID of a VPC peering connection.}
 }

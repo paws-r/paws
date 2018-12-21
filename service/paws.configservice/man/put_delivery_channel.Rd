@@ -4,10 +4,20 @@
 \alias{put_delivery_channel}
 \title{Creates a delivery channel object to deliver configuration information to an Amazon S3 bucket and Amazon SNS topic}
 \usage{
-put_delivery_channel(DeliveryChannel)
+put_delivery_channel(
+  DeliveryChannel = list(
+    name = "string",
+    s3BucketName = "string",
+    s3KeyPrefix = "string",
+    snsTopicARN = "string",
+    configSnapshotDeliveryProperties = list(
+      deliveryFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours"
+    )
+  )
+)
 }
 \arguments{
-\item{DeliveryChannel}{The configuration delivery channel object that delivers the configuration information to an Amazon S3 bucket and to an Amazon SNS topic.}
+\item{DeliveryChannel}{[required] The configuration delivery channel object that delivers the configuration information to an Amazon S3 bucket and to an Amazon SNS topic.}
 }
 \description{
 Creates a delivery channel object to deliver configuration information to an Amazon S3 bucket and Amazon SNS topic.

@@ -4,8 +4,12 @@
 \alias{list_authorizers}
 \title{Lists the authorizers registered in your account}
 \usage{
-list_authorizers(pageSize = NULL, marker = NULL, ascendingOrder = NULL,
-  status = NULL)
+list_authorizers(
+  pageSize = 123,
+  marker = "string",
+  ascendingOrder = TRUE|FALSE,
+  status = "ACTIVE"|"INACTIVE"
+)
 }
 \arguments{
 \item{pageSize}{The maximum number of results to return at one time.}

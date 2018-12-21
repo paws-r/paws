@@ -4,10 +4,12 @@
 \alias{resolve_customer}
 \title{ResolveCustomer is called by a SaaS application during the registration process}
 \usage{
-resolve_customer(RegistrationToken)
+resolve_customer(
+  RegistrationToken = "string"
+)
 }
 \arguments{
-\item{RegistrationToken}{When a buyer visits your website during the registration process, the buyer submits a registration token through the browser. The registration token is resolved to obtain a CustomerIdentifier and product code.}
+\item{RegistrationToken}{[required] When a buyer visits your website during the registration process, the buyer submits a registration token through the browser. The registration token is resolved to obtain a CustomerIdentifier and product code.}
 }
 \description{
 ResolveCustomer is called by a SaaS application during the registration process. When a buyer visits your website during the registration process, the buyer submits a registration token through their browser. The registration token is resolved through this API to obtain a CustomerIdentifier and product code.

@@ -4,20 +4,36 @@
 \alias{update_product}
 \title{Updates the specified product}
 \usage{
-update_product(Id, AcceptLanguage = NULL, Name = NULL, Owner = NULL,
-  Description = NULL, Distributor = NULL, SupportDescription = NULL,
-  SupportEmail = NULL, SupportUrl = NULL, AddTags = NULL,
-  RemoveTags = NULL)
+update_product(
+  AcceptLanguage = "string",
+  Id = "string",
+  Name = "string",
+  Owner = "string",
+  Description = "string",
+  Distributor = "string",
+  SupportDescription = "string",
+  SupportEmail = "string",
+  SupportUrl = "string",
+  AddTags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  RemoveTags = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{Id}{The product identifier.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{Id}{[required] The product identifier.}
 
 \item{Name}{The updated product name.}
 

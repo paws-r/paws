@@ -4,10 +4,12 @@
 \alias{describe_upload_buffer}
 \title{Returns information about the upload buffer of a gateway}
 \usage{
-describe_upload_buffer(GatewayARN)
+describe_upload_buffer(
+  GatewayARN = "string"
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 }
 \description{
 Returns information about the upload buffer of a gateway. This operation is supported for the stored volume, cached volume and tape gateway types.

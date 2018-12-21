@@ -4,8 +4,18 @@
 \alias{describe_replication_tasks}
 \title{Returns information about replication tasks for your account in the current region}
 \usage{
-describe_replication_tasks(Filters = NULL, MaxRecords = NULL,
-  Marker = NULL)
+describe_replication_tasks(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{Filters}{Filters applied to the describe action.

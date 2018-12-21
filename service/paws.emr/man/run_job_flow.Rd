@@ -4,19 +4,243 @@
 \alias{run_job_flow}
 \title{RunJobFlow creates and starts running a new cluster (job flow)}
 \usage{
-run_job_flow(Name, Instances, LogUri = NULL, AdditionalInfo = NULL,
-  AmiVersion = NULL, ReleaseLabel = NULL, Steps = NULL,
-  BootstrapActions = NULL, SupportedProducts = NULL,
-  NewSupportedProducts = NULL, Applications = NULL, Configurations = NULL,
-  VisibleToAllUsers = NULL, JobFlowRole = NULL, ServiceRole = NULL,
-  Tags = NULL, SecurityConfiguration = NULL, AutoScalingRole = NULL,
-  ScaleDownBehavior = NULL, CustomAmiId = NULL, EbsRootVolumeSize = NULL,
-  RepoUpgradeOnBoot = NULL, KerberosAttributes = NULL)
+run_job_flow(
+  Name = "string",
+  LogUri = "string",
+  AdditionalInfo = "string",
+  AmiVersion = "string",
+  ReleaseLabel = "string",
+  Instances = list(
+    MasterInstanceType = "string",
+    SlaveInstanceType = "string",
+    InstanceCount = 123,
+    InstanceGroups = list(
+      list(
+        Name = "string",
+        Market = "ON_DEMAND"|"SPOT",
+        InstanceRole = "MASTER"|"CORE"|"TASK",
+        BidPrice = "string",
+        InstanceType = "string",
+        InstanceCount = 123,
+        Configurations = list(
+          list(
+            Classification = "string",
+            Configurations = list(),
+            Properties = list(
+              "string"
+            )
+          )
+        ),
+        EbsConfiguration = list(
+          EbsBlockDeviceConfigs = list(
+            list(
+              VolumeSpecification = list(
+                VolumeType = "string",
+                Iops = 123,
+                SizeInGB = 123
+              ),
+              VolumesPerInstance = 123
+            )
+          ),
+          EbsOptimized = TRUE|FALSE
+        ),
+        AutoScalingPolicy = list(
+          Constraints = list(
+            MinCapacity = 123,
+            MaxCapacity = 123
+          ),
+          Rules = list(
+            list(
+              Name = "string",
+              Description = "string",
+              Action = list(
+                Market = "ON_DEMAND"|"SPOT",
+                SimpleScalingPolicyConfiguration = list(
+                  AdjustmentType = "CHANGE_IN_CAPACITY"|"PERCENT_CHANGE_IN_CAPACITY"|"EXACT_CAPACITY",
+                  ScalingAdjustment = 123,
+                  CoolDown = 123
+                )
+              ),
+              Trigger = list(
+                CloudWatchAlarmDefinition = list(
+                  ComparisonOperator = "GREATER_THAN_OR_EQUAL"|"GREATER_THAN"|"LESS_THAN"|"LESS_THAN_OR_EQUAL",
+                  EvaluationPeriods = 123,
+                  MetricName = "string",
+                  Namespace = "string",
+                  Period = 123,
+                  Statistic = "SAMPLE_COUNT"|"AVERAGE"|"SUM"|"MINIMUM"|"MAXIMUM",
+                  Threshold = 123.0,
+                  Unit = "NONE"|"SECONDS"|"MICRO_SECONDS"|"MILLI_SECONDS"|"BYTES"|"KILO_BYTES"|"MEGA_BYTES"|"GIGA_BYTES"|"TERA_BYTES"|"BITS"|"KILO_BITS"|"MEGA_BITS"|"GIGA_BITS"|"TERA_BITS"|"PERCENT"|"COUNT"|"BYTES_PER_SECOND"|"KILO_BYTES_PER_SECOND"|"MEGA_BYTES_PER_SECOND"|"GIGA_BYTES_PER_SECOND"|"TERA_BYTES_PER_SECOND"|"BITS_PER_SECOND"|"KILO_BITS_PER_SECOND"|"MEGA_BITS_PER_SECOND"|"GIGA_BITS_PER_SECOND"|"TERA_BITS_PER_SECOND"|"COUNT_PER_SECOND",
+                  Dimensions = list(
+                    list(
+                      Key = "string",
+                      Value = "string"
+                    )
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+    ),
+    InstanceFleets = list(
+      list(
+        Name = "string",
+        InstanceFleetType = "MASTER"|"CORE"|"TASK",
+        TargetOnDemandCapacity = 123,
+        TargetSpotCapacity = 123,
+        InstanceTypeConfigs = list(
+          list(
+            InstanceType = "string",
+            WeightedCapacity = 123,
+            BidPrice = "string",
+            BidPriceAsPercentageOfOnDemandPrice = 123.0,
+            EbsConfiguration = list(
+              EbsBlockDeviceConfigs = list(
+                list(
+                  VolumeSpecification = list(
+                    VolumeType = "string",
+                    Iops = 123,
+                    SizeInGB = 123
+                  ),
+                  VolumesPerInstance = 123
+                )
+              ),
+              EbsOptimized = TRUE|FALSE
+            ),
+            Configurations = list(
+              list(
+                Classification = "string",
+                Configurations = list(),
+                Properties = list(
+                  "string"
+                )
+              )
+            )
+          )
+        ),
+        LaunchSpecifications = list(
+          SpotSpecification = list(
+            TimeoutDurationMinutes = 123,
+            TimeoutAction = "SWITCH_TO_ON_DEMAND"|"TERMINATE_CLUSTER",
+            BlockDurationMinutes = 123
+          )
+        )
+      )
+    ),
+    Ec2KeyName = "string",
+    Placement = list(
+      AvailabilityZone = "string",
+      AvailabilityZones = list(
+        "string"
+      )
+    ),
+    KeepJobFlowAliveWhenNoSteps = TRUE|FALSE,
+    TerminationProtected = TRUE|FALSE,
+    HadoopVersion = "string",
+    Ec2SubnetId = "string",
+    Ec2SubnetIds = list(
+      "string"
+    ),
+    EmrManagedMasterSecurityGroup = "string",
+    EmrManagedSlaveSecurityGroup = "string",
+    ServiceAccessSecurityGroup = "string",
+    AdditionalMasterSecurityGroups = list(
+      "string"
+    ),
+    AdditionalSlaveSecurityGroups = list(
+      "string"
+    )
+  ),
+  Steps = list(
+    list(
+      Name = "string",
+      ActionOnFailure = "TERMINATE_JOB_FLOW"|"TERMINATE_CLUSTER"|"CANCEL_AND_WAIT"|"CONTINUE",
+      HadoopJarStep = list(
+        Properties = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        ),
+        Jar = "string",
+        MainClass = "string",
+        Args = list(
+          "string"
+        )
+      )
+    )
+  ),
+  BootstrapActions = list(
+    list(
+      Name = "string",
+      ScriptBootstrapAction = list(
+        Path = "string",
+        Args = list(
+          "string"
+        )
+      )
+    )
+  ),
+  SupportedProducts = list(
+    "string"
+  ),
+  NewSupportedProducts = list(
+    list(
+      Name = "string",
+      Args = list(
+        "string"
+      )
+    )
+  ),
+  Applications = list(
+    list(
+      Name = "string",
+      Version = "string",
+      Args = list(
+        "string"
+      ),
+      AdditionalInfo = list(
+        "string"
+      )
+    )
+  ),
+  Configurations = list(
+    list(
+      Classification = "string",
+      Configurations = list(),
+      Properties = list(
+        "string"
+      )
+    )
+  ),
+  VisibleToAllUsers = TRUE|FALSE,
+  JobFlowRole = "string",
+  ServiceRole = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  SecurityConfiguration = "string",
+  AutoScalingRole = "string",
+  ScaleDownBehavior = "TERMINATE_AT_INSTANCE_HOUR"|"TERMINATE_AT_TASK_COMPLETION",
+  CustomAmiId = "string",
+  EbsRootVolumeSize = 123,
+  RepoUpgradeOnBoot = "SECURITY"|"NONE",
+  KerberosAttributes = list(
+    Realm = "string",
+    KdcAdminPassword = "string",
+    CrossRealmTrustPrincipalPassword = "string",
+    ADDomainJoinUser = "string",
+    ADDomainJoinPassword = "string"
+  )
+)
 }
 \arguments{
-\item{Name}{The name of the job flow.}
-
-\item{Instances}{A specification of the number and type of Amazon EC2 instances.}
+\item{Name}{[required] The name of the job flow.}
 
 \item{LogUri}{The location in Amazon S3 to write the log files of the job flow. If a value is not provided, logs are not created.}
 
@@ -25,6 +249,8 @@ run_job_flow(Name, Instances, LogUri = NULL, AdditionalInfo = NULL,
 \item{AmiVersion}{Applies only to Amazon EMR AMI versions 3.x and 2.x. For Amazon EMR releases 4.0 and later, \code{ReleaseLabel} is used. To specify a custom AMI, use \code{CustomAmiID}.}
 
 \item{ReleaseLabel}{The Amazon EMR release label, which determines the version of open-source application packages installed on the cluster. Release labels are in the form \code{emr-x.x.x}, where x.x.x is an Amazon EMR release version, for example, \code{emr-5.14.0}. For more information about Amazon EMR release versions and included application versions and features, see \url{http://docs.aws.amazon.com/emr/latest/ReleaseGuide/}. The release label applies only to Amazon EMR releases versions 4.x and later. Earlier versions use \code{AmiVersion}.}
+
+\item{Instances}{[required] A specification of the number and type of Amazon EC2 instances.}
 
 \item{Steps}{A list of steps to run.}
 

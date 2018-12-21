@@ -4,10 +4,12 @@
 \alias{delete_volume}
 \title{Deletes the specified storage volume that you previously created using the CreateCachediSCSIVolume or CreateStorediSCSIVolume API}
 \usage{
-delete_volume(VolumeARN)
+delete_volume(
+  VolumeARN = "string"
+)
 }
 \arguments{
-\item{VolumeARN}{The Amazon Resource Name (ARN) of the volume. Use the ListVolumes operation to return a list of gateway volumes.}
+\item{VolumeARN}{[required] The Amazon Resource Name (ARN) of the volume. Use the ListVolumes operation to return a list of gateway volumes.}
 }
 \description{
 Deletes the specified storage volume that you previously created using the CreateCachediSCSIVolume or CreateStorediSCSIVolume API. This operation is only supported in the cached volume and stored volume types. For stored volume gateways, the local disk that was configured as the storage volume is not deleted. You can reuse the local disk to create another storage volume.

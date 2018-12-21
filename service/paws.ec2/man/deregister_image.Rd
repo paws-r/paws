@@ -4,10 +4,13 @@
 \alias{deregister_image}
 \title{Deregisters the specified AMI}
 \usage{
-deregister_image(ImageId, DryRun = NULL)
+deregister_image(
+  ImageId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{ImageId}{The ID of the AMI.}
+\item{ImageId}{[required] The ID of the AMI.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

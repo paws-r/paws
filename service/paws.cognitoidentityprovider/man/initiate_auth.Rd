@@ -4,11 +4,25 @@
 \alias{initiate_auth}
 \title{Initiates the authentication flow}
 \usage{
-initiate_auth(AuthFlow, ClientId, AuthParameters = NULL,
-  ClientMetadata = NULL, AnalyticsMetadata = NULL, UserContextData = NULL)
+initiate_auth(
+  AuthFlow = "USER_SRP_AUTH"|"REFRESH_TOKEN_AUTH"|"REFRESH_TOKEN"|"CUSTOM_AUTH"|"ADMIN_NO_SRP_AUTH"|"USER_PASSWORD_AUTH",
+  AuthParameters = list(
+    "string"
+  ),
+  ClientMetadata = list(
+    "string"
+  ),
+  ClientId = "string",
+  AnalyticsMetadata = list(
+    AnalyticsEndpointId = "string"
+  ),
+  UserContextData = list(
+    EncodedData = "string"
+  )
+)
 }
 \arguments{
-\item{AuthFlow}{The authentication flow for this call to execute. The API action will depend on this value. For example:
+\item{AuthFlow}{[required] The authentication flow for this call to execute. The API action will depend on this value. For example:
 \itemize{
 \item \code{REFRESH_TOKEN_AUTH} will take in a valid refresh token and return new tokens.
 \item \code{USER_SRP_AUTH} will take in \code{USERNAME} and \code{SRP_A} and return the SRP variables to be used for next challenge execution.
@@ -25,8 +39,6 @@ Valid values include:
 
 \code{ADMIN_NO_SRP_AUTH} is not a valid value.}
 
-\item{ClientId}{The app client ID.}
-
 \item{AuthParameters}{The authentication parameters. These are inputs corresponding to the \code{AuthFlow} that you are invoking. The required values depend on the value of \code{AuthFlow}:
 \itemize{
 \item For \code{USER_SRP_AUTH}: \code{USERNAME} (required), \code{SRP_A} (required), \code{SECRET_HASH} (required if the app client is configured with a client secret), \code{DEVICE_KEY}
@@ -35,6 +47,8 @@ Valid values include:
 }}
 
 \item{ClientMetadata}{This is a random key-value pair map which can contain any key and will be passed to your PreAuthentication Lambda trigger as-is. It can be used to implement additional validations around authentication.}
+
+\item{ClientId}{[required] The app client ID.}
 
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for \code{InitiateAuth} calls.}
 

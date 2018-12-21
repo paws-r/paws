@@ -4,12 +4,15 @@
 \alias{register_elastic_ip}
 \title{Registers an Elastic IP address with a specified stack}
 \usage{
-register_elastic_ip(ElasticIp, StackId)
+register_elastic_ip(
+  ElasticIp = "string",
+  StackId = "string"
+)
 }
 \arguments{
-\item{ElasticIp}{The Elastic IP address.}
+\item{ElasticIp}{[required] The Elastic IP address.}
 
-\item{StackId}{The stack ID.}
+\item{StackId}{[required] The stack ID.}
 }
 \description{
 Registers an Elastic IP address with a specified stack. An address can be registered with only one stack at a time. If the address is already registered, you must first deregister it by calling DeregisterElasticIp. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.

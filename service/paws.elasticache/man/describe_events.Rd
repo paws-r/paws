@@ -4,9 +4,15 @@
 \alias{describe_events}
 \title{Returns events related to clusters, cache security groups, and cache parameter groups}
 \usage{
-describe_events(SourceIdentifier = NULL, SourceType = NULL,
-  StartTime = NULL, EndTime = NULL, Duration = NULL, MaxRecords = NULL,
-  Marker = NULL)
+describe_events(
+  SourceIdentifier = "string",
+  SourceType = "cache-cluster"|"cache-parameter-group"|"cache-security-group"|"cache-subnet-group"|"replication-group",
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  Duration = 123,
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{SourceIdentifier}{The identifier of the event source for which events are returned. If not specified, all sources are included in the response.}

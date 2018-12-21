@@ -4,13 +4,18 @@
 \alias{set_task_status}
 \title{Task runners call \code{SetTaskStatus} to notify AWS Data Pipeline that a task is completed and provide information about the final status}
 \usage{
-set_task_status(taskId, taskStatus, errorId = NULL, errorMessage = NULL,
-  errorStackTrace = NULL)
+set_task_status(
+  taskId = "string",
+  taskStatus = "FINISHED"|"FAILED"|"FALSE",
+  errorId = "string",
+  errorMessage = "string",
+  errorStackTrace = "string"
+)
 }
 \arguments{
-\item{taskId}{The ID of the task assigned to the task runner. This value is provided in the response for PollForTask.}
+\item{taskId}{[required] The ID of the task assigned to the task runner. This value is provided in the response for PollForTask.}
 
-\item{taskStatus}{If \code{FINISHED}, the task successfully completed. If \code{FAILED}, the task ended unsuccessfully. Preconditions use false.}
+\item{taskStatus}{[required] If \code{FINISHED}, the task successfully completed. If \code{FAILED}, the task ended unsuccessfully. Preconditions use false.}
 
 \item{errorId}{If an error occurred during the task, this value specifies the error code. This value is set on the physical attempt object. It is used to display error information to the user. It should not start with string "Service\_" which is reserved by the system.}
 

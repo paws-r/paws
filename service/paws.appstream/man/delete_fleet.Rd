@@ -4,10 +4,12 @@
 \alias{delete_fleet}
 \title{Deletes the specified fleet}
 \usage{
-delete_fleet(Name)
+delete_fleet(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the fleet.}
+\item{Name}{[required] The name of the fleet.}
 }
 \description{
 Deletes the specified fleet.

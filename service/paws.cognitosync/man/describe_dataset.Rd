@@ -4,14 +4,18 @@
 \alias{describe_dataset}
 \title{Gets meta data about a dataset by identity and dataset name}
 \usage{
-describe_dataset(IdentityPoolId, IdentityId, DatasetName)
+describe_dataset(
+  IdentityPoolId = "string",
+  IdentityId = "string",
+  DatasetName = "string"
+)
 }
 \arguments{
-\item{IdentityPoolId}{A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
+\item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
 
-\item{IdentityId}{A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
+\item{IdentityId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
 
-\item{DatasetName}{A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).}
+\item{DatasetName}{[required] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).}
 }
 \description{
 Gets meta data about a dataset by identity and dataset name. With Amazon Cognito Sync, each identity has access only to its own data. Thus, the credentials used to make this API call need to have access to the identity data.

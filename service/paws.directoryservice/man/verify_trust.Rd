@@ -4,10 +4,12 @@
 \alias{verify_trust}
 \title{AWS Directory Service for Microsoft Active Directory allows you to configure and verify trust relationships}
 \usage{
-verify_trust(TrustId)
+verify_trust(
+  TrustId = "string"
+)
 }
 \arguments{
-\item{TrustId}{The unique Trust ID of the trust relationship to verify.}
+\item{TrustId}{[required] The unique Trust ID of the trust relationship to verify.}
 }
 \description{
 AWS Directory Service for Microsoft Active Directory allows you to configure and verify trust relationships.

@@ -4,12 +4,17 @@
 \alias{delete_tags}
 \title{Deletes a tag or tags from a resource}
 \usage{
-delete_tags(ResourceName, TagKeys)
+delete_tags(
+  ResourceName = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ResourceName}{The Amazon Resource Name (ARN) from which you want to remove the tag or tags. For example, \code{arn:aws:redshift:us-east-1:123456789:cluster:t1}.}
+\item{ResourceName}{[required] The Amazon Resource Name (ARN) from which you want to remove the tag or tags. For example, \code{arn:aws:redshift:us-east-1:123456789:cluster:t1}.}
 
-\item{TagKeys}{The tag key that you want to delete.}
+\item{TagKeys}{[required] The tag key that you want to delete.}
 }
 \description{
 Deletes a tag or tags from a resource. You must provide the ARN of the resource from which you want to delete the tag or tags.

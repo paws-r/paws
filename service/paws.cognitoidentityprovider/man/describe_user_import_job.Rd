@@ -4,12 +4,15 @@
 \alias{describe_user_import_job}
 \title{Describes the user import job}
 \usage{
-describe_user_import_job(UserPoolId, JobId)
+describe_user_import_job(
+  UserPoolId = "string",
+  JobId = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool that the users are being imported into.}
+\item{UserPoolId}{[required] The user pool ID for the user pool that the users are being imported into.}
 
-\item{JobId}{The job ID for the user import job.}
+\item{JobId}{[required] The job ID for the user import job.}
 }
 \description{
 Describes the user import job.

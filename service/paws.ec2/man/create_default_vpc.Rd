@@ -4,7 +4,9 @@
 \alias{create_default_vpc}
 \title{Creates a default VPC with a size \code{/16} IPv4 CIDR block and a default subnet in each Availability Zone}
 \usage{
-create_default_vpc(DryRun = NULL)
+create_default_vpc(
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}

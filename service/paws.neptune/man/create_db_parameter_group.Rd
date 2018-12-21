@@ -4,11 +4,20 @@
 \alias{create_db_parameter_group}
 \title{Creates a new DB parameter group}
 \usage{
-create_db_parameter_group(DBParameterGroupName, DBParameterGroupFamily,
-  Description, Tags = NULL)
+create_db_parameter_group(
+  DBParameterGroupName = "string",
+  DBParameterGroupFamily = "string",
+  Description = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{DBParameterGroupName}{The name of the DB parameter group.
+\item{DBParameterGroupName}{[required] The name of the DB parameter group.
 
 Constraints:
 \itemize{
@@ -19,9 +28,9 @@ Constraints:
 
 This value is stored as a lowercase string.}
 
-\item{DBParameterGroupFamily}{The DB parameter group family name. A DB parameter group can be associated with one and only one DB parameter group family, and can be applied only to a DB instance running a database engine and engine version compatible with that DB parameter group family.}
+\item{DBParameterGroupFamily}{[required] The DB parameter group family name. A DB parameter group can be associated with one and only one DB parameter group family, and can be applied only to a DB instance running a database engine and engine version compatible with that DB parameter group family.}
 
-\item{Description}{The description for the DB parameter group.}
+\item{Description}{[required] The description for the DB parameter group.}
 
 \item{Tags}{}
 }

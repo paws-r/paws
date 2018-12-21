@@ -4,15 +4,19 @@
 \alias{copy_image}
 \title{Copies the image within the same region or to a new region within the same AWS account}
 \usage{
-copy_image(SourceImageName, DestinationImageName, DestinationRegion,
-  DestinationImageDescription = NULL)
+copy_image(
+  SourceImageName = "string",
+  DestinationImageName = "string",
+  DestinationRegion = "string",
+  DestinationImageDescription = "string"
+)
 }
 \arguments{
-\item{SourceImageName}{The name of the image to copy.}
+\item{SourceImageName}{[required] The name of the image to copy.}
 
-\item{DestinationImageName}{The name that the image will have when it is copied to the destination.}
+\item{DestinationImageName}{[required] The name that the image will have when it is copied to the destination.}
 
-\item{DestinationRegion}{The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.}
+\item{DestinationRegion}{[required] The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.}
 
 \item{DestinationImageDescription}{The description that the image will have when it is copied to the destination.}
 }

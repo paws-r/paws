@@ -4,10 +4,53 @@
 \alias{revoke_security_group_ingress}
 \title{Removes one or more ingress rules from a security group}
 \usage{
-revoke_security_group_ingress(CidrIp = NULL, FromPort = NULL,
-  GroupId = NULL, GroupName = NULL, IpPermissions = NULL,
-  IpProtocol = NULL, SourceSecurityGroupName = NULL,
-  SourceSecurityGroupOwnerId = NULL, ToPort = NULL, DryRun = NULL)
+revoke_security_group_ingress(
+  CidrIp = "string",
+  FromPort = 123,
+  GroupId = "string",
+  GroupName = "string",
+  IpPermissions = list(
+    list(
+      FromPort = 123,
+      IpProtocol = "string",
+      IpRanges = list(
+        list(
+          CidrIp = "string",
+          Description = "string"
+        )
+      ),
+      Ipv6Ranges = list(
+        list(
+          CidrIpv6 = "string",
+          Description = "string"
+        )
+      ),
+      PrefixListIds = list(
+        list(
+          Description = "string",
+          PrefixListId = "string"
+        )
+      ),
+      ToPort = 123,
+      UserIdGroupPairs = list(
+        list(
+          Description = "string",
+          GroupId = "string",
+          GroupName = "string",
+          PeeringStatus = "string",
+          UserId = "string",
+          VpcId = "string",
+          VpcPeeringConnectionId = "string"
+        )
+      )
+    )
+  ),
+  IpProtocol = "string",
+  SourceSecurityGroupName = "string",
+  SourceSecurityGroupOwnerId = "string",
+  ToPort = 123,
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{CidrIp}{The CIDR IP address range. You can't specify this parameter when specifying a source security group.}

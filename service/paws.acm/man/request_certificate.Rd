@@ -4,13 +4,27 @@
 \alias{request_certificate}
 \title{Requests an ACM certificate for use with other AWS services}
 \usage{
-request_certificate(DomainName, ValidationMethod = NULL,
-  SubjectAlternativeNames = NULL, IdempotencyToken = NULL,
-  DomainValidationOptions = NULL, Options = NULL,
-  CertificateAuthorityArn = NULL)
+request_certificate(
+  DomainName = "string",
+  ValidationMethod = "EMAIL"|"DNS",
+  SubjectAlternativeNames = list(
+    "string"
+  ),
+  IdempotencyToken = "string",
+  DomainValidationOptions = list(
+    list(
+      DomainName = "string",
+      ValidationDomain = "string"
+    )
+  ),
+  Options = list(
+    CertificateTransparencyLoggingPreference = "ENABLED"|"DISABLED"
+  ),
+  CertificateAuthorityArn = "string"
+)
 }
 \arguments{
-\item{DomainName}{Fully qualified domain name (FQDN), such as www.example.com, that you want to secure with an ACM certificate. Use an asterisk (*) to create a wildcard certificate that protects several sites in the same domain. For example, *.example.com protects www.example.com, site.example.com, and images.example.com.
+\item{DomainName}{[required] Fully qualified domain name (FQDN), such as www.example.com, that you want to secure with an ACM certificate. Use an asterisk (*) to create a wildcard certificate that protects several sites in the same domain. For example, *.example.com protects www.example.com, site.example.com, and images.example.com.
 
 The first domain name you enter cannot exceed 63 octets, including periods. Each subsequent Subject Alternative Name (SAN), however, can be up to 253 octets in length.}
 

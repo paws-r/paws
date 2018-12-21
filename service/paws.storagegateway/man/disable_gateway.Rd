@@ -4,10 +4,12 @@
 \alias{disable_gateway}
 \title{Disables a tape gateway when the gateway is no longer functioning}
 \usage{
-disable_gateway(GatewayARN)
+disable_gateway(
+  GatewayARN = "string"
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 }
 \description{
 Disables a tape gateway when the gateway is no longer functioning. For example, if your gateway VM is damaged, you can disable the gateway so you can recover virtual tapes.

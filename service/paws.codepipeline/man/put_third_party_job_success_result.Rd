@@ -4,13 +4,27 @@
 \alias{put_third_party_job_success_result}
 \title{Represents the success of a third party job as returned to the pipeline by a job worker}
 \usage{
-put_third_party_job_success_result(jobId, clientToken, currentRevision = NULL,
-  continuationToken = NULL, executionDetails = NULL)
+put_third_party_job_success_result(
+  jobId = "string",
+  clientToken = "string",
+  currentRevision = list(
+    revision = "string",
+    changeIdentifier = "string",
+    created = as.POSIXct("2015-01-01"),
+    revisionSummary = "string"
+  ),
+  continuationToken = "string",
+  executionDetails = list(
+    summary = "string",
+    externalExecutionId = "string",
+    percentComplete = 123
+  )
+)
 }
 \arguments{
-\item{jobId}{The ID of the job that successfully completed. This is the same ID returned from PollForThirdPartyJobs.}
+\item{jobId}{[required] The ID of the job that successfully completed. This is the same ID returned from PollForThirdPartyJobs.}
 
-\item{clientToken}{The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.}
+\item{clientToken}{[required] The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.}
 
 \item{currentRevision}{Represents information about a current revision.}
 

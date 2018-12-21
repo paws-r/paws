@@ -4,12 +4,20 @@
 \alias{send_automation_signal}
 \title{Sends a signal to an Automation execution to change the current behavior or status of the execution}
 \usage{
-send_automation_signal(AutomationExecutionId, SignalType, Payload = NULL)
+send_automation_signal(
+  AutomationExecutionId = "string",
+  SignalType = "Approve"|"Reject"|"StartStep"|"StopStep"|"Resume",
+  Payload = list(
+    list(
+      "string"
+    )
+  )
+)
 }
 \arguments{
-\item{AutomationExecutionId}{The unique identifier for an existing Automation execution that you want to send the signal to.}
+\item{AutomationExecutionId}{[required] The unique identifier for an existing Automation execution that you want to send the signal to.}
 
-\item{SignalType}{The type of signal. Valid signal types include the following: Approve and Reject}
+\item{SignalType}{[required] The type of signal. Valid signal types include the following: Approve and Reject}
 
 \item{Payload}{The data sent with the signal. The data schema depends on the type of signal used in the request.}
 }

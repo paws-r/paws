@@ -4,10 +4,13 @@
 \alias{delete_function}
 \title{Deletes a Lambda function}
 \usage{
-delete_function(FunctionName, Qualifier = NULL)
+delete_function(
+  FunctionName = "string",
+  Qualifier = "string"
+)
 }
 \arguments{
-\item{FunctionName}{The name of the lambda function.
+\item{FunctionName}{[required] The name of the Lambda function.
 
 \strong{Name formats}
 \itemize{

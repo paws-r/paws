@@ -4,14 +4,24 @@
 \alias{update_resource_server}
 \title{Updates the name and scopes of resource server}
 \usage{
-update_resource_server(UserPoolId, Identifier, Name, Scopes = NULL)
+update_resource_server(
+  UserPoolId = "string",
+  Identifier = "string",
+  Name = "string",
+  Scopes = list(
+    list(
+      ScopeName = "string",
+      ScopeDescription = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The user pool ID for the user pool.}
 
-\item{Identifier}{The identifier for the resource server.}
+\item{Identifier}{[required] The identifier for the resource server.}
 
-\item{Name}{The name of the resource server.}
+\item{Name}{[required] The name of the resource server.}
 
 \item{Scopes}{The scope values to be set for the resource server.}
 }

@@ -4,14 +4,18 @@
 \alias{describe_image_attribute}
 \title{Describes the specified attribute of the specified AMI}
 \usage{
-describe_image_attribute(Attribute, ImageId, DryRun = NULL)
+describe_image_attribute(
+  Attribute = "description"|"kernel"|"ramdisk"|"launchPermission"|"productCodes"|"blockDeviceMapping"|"sriovNetSupport",
+  ImageId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{Attribute}{The AMI attribute.
+\item{Attribute}{[required] The AMI attribute.
 
 \strong{Note}: Depending on your account privileges, the \code{blockDeviceMapping} attribute may return a \code{Client.AuthFailure} error. If this happens, use DescribeImages to get information about the block device mapping for the AMI.}
 
-\item{ImageId}{The ID of the AMI.}
+\item{ImageId}{[required] The ID of the AMI.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

@@ -4,10 +4,15 @@
 \alias{terminate_instances}
 \title{Shuts down one or more instances}
 \usage{
-terminate_instances(InstanceIds, DryRun = NULL)
+terminate_instances(
+  InstanceIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{InstanceIds}{One or more instance IDs.
+\item{InstanceIds}{[required] One or more instance IDs.
 
 Constraints: Up to 1000 instance IDs. We recommend breaking up this request into smaller batches.}
 

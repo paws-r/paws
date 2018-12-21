@@ -4,10 +4,12 @@
 \alias{get_container_policy}
 \title{Retrieves the access policy for the specified container}
 \usage{
-get_container_policy(ContainerName)
+get_container_policy(
+  ContainerName = "string"
+)
 }
 \arguments{
-\item{ContainerName}{The name of the container.}
+\item{ContainerName}{[required] The name of the container.}
 }
 \description{
 Retrieves the access policy for the specified container. For information about the data that is included in an access policy, see the \href{https://aws.amazon.com/documentation/iam/}{AWS Identity and Access Management User Guide}.

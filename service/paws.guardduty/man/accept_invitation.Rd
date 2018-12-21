@@ -4,14 +4,18 @@
 \alias{accept_invitation}
 \title{Accepts the invitation to be monitored by a master GuardDuty account}
 \usage{
-accept_invitation(DetectorId, MasterId, InvitationId)
+accept_invitation(
+  DetectorId = "string",
+  InvitationId = "string",
+  MasterId = "string"
+)
 }
 \arguments{
-\item{DetectorId}{The unique ID of the detector of the GuardDuty member account.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.}
 
-\item{MasterId}{The account ID of the master GuardDuty account whose invitation you're accepting.}
+\item{InvitationId}{[required] This value is used to validate the master account to the member account.}
 
-\item{InvitationId}{This value is used to validate the master account to the member account.}
+\item{MasterId}{[required] The account ID of the master GuardDuty account whose invitation you're accepting.}
 }
 \description{
 Accepts the invitation to be monitored by a master GuardDuty account.

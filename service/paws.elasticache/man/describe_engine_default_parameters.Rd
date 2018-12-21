@@ -4,11 +4,14 @@
 \alias{describe_engine_default_parameters}
 \title{Returns the default engine and system parameter information for the specified cache engine}
 \usage{
-describe_engine_default_parameters(CacheParameterGroupFamily,
-  MaxRecords = NULL, Marker = NULL)
+describe_engine_default_parameters(
+  CacheParameterGroupFamily = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
-\item{CacheParameterGroupFamily}{The name of the cache parameter group family.
+\item{CacheParameterGroupFamily}{[required] The name of the cache parameter group family.
 
 Valid values are: \code{memcached1.4} | \code{redis2.6} | \code{redis2.8} | \code{redis3.2} | \code{redis4.0}}
 

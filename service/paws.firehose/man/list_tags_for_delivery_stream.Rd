@@ -4,11 +4,14 @@
 \alias{list_tags_for_delivery_stream}
 \title{Lists the tags for the specified delivery stream}
 \usage{
-list_tags_for_delivery_stream(DeliveryStreamName, ExclusiveStartTagKey = NULL,
-  Limit = NULL)
+list_tags_for_delivery_stream(
+  DeliveryStreamName = "string",
+  ExclusiveStartTagKey = "string",
+  Limit = 123
+)
 }
 \arguments{
-\item{DeliveryStreamName}{The name of the delivery stream whose tags you want to list.}
+\item{DeliveryStreamName}{[required] The name of the delivery stream whose tags you want to list.}
 
 \item{ExclusiveStartTagKey}{The key to use as the starting point for the list of tags. If you set this parameter, \code{ListTagsForDeliveryStream} gets all tags that occur after \code{ExclusiveStartTagKey}.}
 

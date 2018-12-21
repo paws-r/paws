@@ -4,12 +4,15 @@
 \alias{admin_user_global_sign_out}
 \title{Signs out users from all devices, as an administrator}
 \usage{
-admin_user_global_sign_out(UserPoolId, Username)
+admin_user_global_sign_out(
+  UserPoolId = "string",
+  Username = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID.}
+\item{UserPoolId}{[required] The user pool ID.}
 
-\item{Username}{The user name.}
+\item{Username}{[required] The user name.}
 }
 \description{
 Signs out users from all devices, as an administrator.

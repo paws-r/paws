@@ -4,10 +4,12 @@
 \alias{describe_endpoint}
 \title{Returns the description of an endpoint}
 \usage{
-describe_endpoint(EndpointName)
+describe_endpoint(
+  EndpointName = "string"
+)
 }
 \arguments{
-\item{EndpointName}{The name of the endpoint.}
+\item{EndpointName}{[required] The name of the endpoint.}
 }
 \description{
 Returns the description of an endpoint.

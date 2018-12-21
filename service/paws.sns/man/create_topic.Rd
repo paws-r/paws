@@ -4,12 +4,26 @@
 \alias{create_topic}
 \title{Creates a topic to which notifications can be published}
 \usage{
-create_topic(Name)
+create_topic(
+  Name = "string",
+  Attributes = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{Name}{The name of the topic you want to create.
+\item{Name}{[required] The name of the topic you want to create.
 
 Constraints: Topic names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 256 characters long.}
+
+\item{Attributes}{A map of attributes with their corresponding values.
+
+The following lists the names, descriptions, and values of the special request parameters that the \code{CreateTopic} action uses:
+\itemize{
+\item \code{DeliveryPolicy} -- The policy that defines how Amazon SNS retries failed deliveries to HTTP/S endpoints.
+\item \code{DisplayName} -- The display name to use for a topic with SMS subscriptions.
+\item \code{Policy} -- The policy that defines who can access your topic. By default, only the topic owner can publish or subscribe to the topic.
+}}
 }
 \description{
 Creates a topic to which notifications can be published. Users can create at most 100,000 topics. For more information, see \href{http://aws.amazon.com/sns/}{http://aws.amazon.com/sns}. This action is idempotent, so if the requester already owns a topic with the specified name, that topic's ARN is returned without creating a new topic.

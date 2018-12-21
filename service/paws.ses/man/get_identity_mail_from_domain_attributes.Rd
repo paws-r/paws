@@ -4,10 +4,14 @@
 \alias{get_identity_mail_from_domain_attributes}
 \title{Returns the custom MAIL FROM attributes for a list of identities (email addresses : domains)}
 \usage{
-get_identity_mail_from_domain_attributes(Identities)
+get_identity_mail_from_domain_attributes(
+  Identities = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{Identities}{A list of one or more identities.}
+\item{Identities}{[required] A list of one or more identities.}
 }
 \description{
 Returns the custom MAIL FROM attributes for a list of identities (email addresses : domains).

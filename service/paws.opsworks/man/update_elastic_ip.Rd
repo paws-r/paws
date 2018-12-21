@@ -4,10 +4,13 @@
 \alias{update_elastic_ip}
 \title{Updates a registered Elastic IP address's name}
 \usage{
-update_elastic_ip(ElasticIp, Name = NULL)
+update_elastic_ip(
+  ElasticIp = "string",
+  Name = "string"
+)
 }
 \arguments{
-\item{ElasticIp}{The IP address for which you want to update the name.}
+\item{ElasticIp}{[required] The IP address for which you want to update the name.}
 
 \item{Name}{The new name.}
 }

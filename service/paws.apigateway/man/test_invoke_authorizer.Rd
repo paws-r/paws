@@ -4,14 +4,31 @@
 \alias{test_invoke_authorizer}
 \title{Simulate the execution of an Authorizer in your RestApi with headers, parameters, and an incoming request body}
 \usage{
-test_invoke_authorizer(restApiId, authorizerId, headers = NULL,
-  multiValueHeaders = NULL, pathWithQueryString = NULL, body = NULL,
-  stageVariables = NULL, additionalContext = NULL)
+test_invoke_authorizer(
+  restApiId = "string",
+  authorizerId = "string",
+  headers = list(
+    "string"
+  ),
+  multiValueHeaders = list(
+    list(
+      "string"
+    )
+  ),
+  pathWithQueryString = "string",
+  body = "string",
+  stageVariables = list(
+    "string"
+  ),
+  additionalContext = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{authorizerId}{[Required] Specifies a test invoke authorizer request's Authorizer ID.}
+\item{authorizerId}{[required] [Required] Specifies a test invoke authorizer request's Authorizer ID.}
 
 \item{headers}{[Required] A key-value map of headers to simulate an incoming invocation request. This is where the incoming authorization token, or identity source, should be specified.}
 
@@ -27,6 +44,11 @@ test_invoke_authorizer(restApiId, authorizerId, headers = NULL,
 }
 \description{
 Simulate the execution of an Authorizer in your RestApi with headers, parameters, and an incoming request body.
+}
+\details{
+::: {.seeAlso}
+\href{https://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html}{Enable custom authorizers}
+:::
 }
 \examples{
 

@@ -4,8 +4,12 @@
 \alias{describe_cluster_versions}
 \title{Returns descriptions of the available Amazon Redshift cluster versions}
 \usage{
-describe_cluster_versions(ClusterVersion = NULL,
-  ClusterParameterGroupFamily = NULL, MaxRecords = NULL, Marker = NULL)
+describe_cluster_versions(
+  ClusterVersion = "string",
+  ClusterParameterGroupFamily = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{ClusterVersion}{The specific cluster version to return.

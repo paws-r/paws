@@ -4,10 +4,12 @@
 \alias{delete_protection}
 \title{Deletes an AWS Shield Advanced Protection}
 \usage{
-delete_protection(ProtectionId)
+delete_protection(
+  ProtectionId = "string"
+)
 }
 \arguments{
-\item{ProtectionId}{The unique identifier (ID) for the Protection object to be deleted.}
+\item{ProtectionId}{[required] The unique identifier (ID) for the Protection object to be deleted.}
 }
 \description{
 Deletes an AWS Shield Advanced Protection.

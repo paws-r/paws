@@ -4,10 +4,12 @@
 \alias{delete_broker}
 \title{Deletes a broker}
 \usage{
-delete_broker(BrokerId)
+delete_broker(
+  BrokerId = "string"
+)
 }
 \arguments{
-\item{BrokerId}{The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.}
+\item{BrokerId}{[required] The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.}
 }
 \description{
 Deletes a broker. Note: This API is asynchronous.

@@ -4,12 +4,15 @@
 \alias{create_sql_injection_match_set}
 \title{Creates a SqlInjectionMatchSet, which you use to allow, block, or count requests that contain snippets of SQL code in a specified part of web requests}
 \usage{
-create_sql_injection_match_set(Name, ChangeToken)
+create_sql_injection_match_set(
+  Name = "string",
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{Name}{A friendly name or description for the SqlInjectionMatchSet that you're creating. You can't change \code{Name} after you create the \code{SqlInjectionMatchSet}.}
+\item{Name}{[required] A friendly name or description for the SqlInjectionMatchSet that you're creating. You can't change \code{Name} after you create the \code{SqlInjectionMatchSet}.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Creates a SqlInjectionMatchSet, which you use to allow, block, or count requests that contain snippets of SQL code in a specified part of web requests. AWS WAF searches for character sequences that are likely to be malicious strings.

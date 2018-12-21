@@ -4,12 +4,17 @@
 \alias{list_users_in_group}
 \title{Lists the users in the specified group}
 \usage{
-list_users_in_group(UserPoolId, GroupName, Limit = NULL, NextToken = NULL)
+list_users_in_group(
+  UserPoolId = "string",
+  GroupName = "string",
+  Limit = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The user pool ID for the user pool.}
 
-\item{GroupName}{The name of the group.}
+\item{GroupName}{[required] The name of the group.}
 
 \item{Limit}{The limit of the request to list users.}
 

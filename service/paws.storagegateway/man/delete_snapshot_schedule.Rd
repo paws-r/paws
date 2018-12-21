@@ -4,10 +4,12 @@
 \alias{delete_snapshot_schedule}
 \title{Deletes a snapshot of a volume}
 \usage{
-delete_snapshot_schedule(VolumeARN)
+delete_snapshot_schedule(
+  VolumeARN = "string"
+)
 }
 \arguments{
-\item{VolumeARN}{}
+\item{VolumeARN}{[required]}
 }
 \description{
 Deletes a snapshot of a volume.

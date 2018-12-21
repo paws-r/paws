@@ -4,12 +4,16 @@
 \alias{confirm_subscription}
 \title{Verifies an endpoint owner's intent to receive messages by validating the token sent to the endpoint by an earlier \code{Subscribe} action}
 \usage{
-confirm_subscription(TopicArn, Token, AuthenticateOnUnsubscribe = NULL)
+confirm_subscription(
+  TopicArn = "string",
+  Token = "string",
+  AuthenticateOnUnsubscribe = "string"
+)
 }
 \arguments{
-\item{TopicArn}{The ARN of the topic for which you wish to confirm a subscription.}
+\item{TopicArn}{[required] The ARN of the topic for which you wish to confirm a subscription.}
 
-\item{Token}{Short-lived token sent to an endpoint during the \code{Subscribe} action.}
+\item{Token}{[required] Short-lived token sent to an endpoint during the \code{Subscribe} action.}
 
 \item{AuthenticateOnUnsubscribe}{Disallows unauthenticated unsubscribes of the subscription. If the value of this parameter is \code{true} and the request has an AWS signature, then only the topic owner and the subscription owner can unsubscribe the endpoint. The unsubscribe action requires AWS authentication.}
 }

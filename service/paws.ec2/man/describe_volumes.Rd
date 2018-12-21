@@ -4,8 +4,22 @@
 \alias{describe_volumes}
 \title{Describes the specified EBS volumes}
 \usage{
-describe_volumes(Filters = NULL, VolumeIds = NULL, DryRun = NULL,
-  MaxResults = NULL, NextToken = NULL)
+describe_volumes(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  VolumeIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE,
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{Filters}{One or more filters.

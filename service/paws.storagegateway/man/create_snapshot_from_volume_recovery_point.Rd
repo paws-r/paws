@@ -4,12 +4,15 @@
 \alias{create_snapshot_from_volume_recovery_point}
 \title{Initiates a snapshot of a gateway from a volume recovery point}
 \usage{
-create_snapshot_from_volume_recovery_point(VolumeARN, SnapshotDescription)
+create_snapshot_from_volume_recovery_point(
+  VolumeARN = "string",
+  SnapshotDescription = "string"
+)
 }
 \arguments{
-\item{VolumeARN}{}
+\item{VolumeARN}{[required]}
 
-\item{SnapshotDescription}{}
+\item{SnapshotDescription}{[required]}
 }
 \description{
 Initiates a snapshot of a gateway from a volume recovery point. This operation is only supported in the cached volume gateway type.

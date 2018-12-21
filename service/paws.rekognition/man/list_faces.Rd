@@ -4,10 +4,14 @@
 \alias{list_faces}
 \title{Returns metadata for faces in the specified collection}
 \usage{
-list_faces(CollectionId, NextToken = NULL, MaxResults = NULL)
+list_faces(
+  CollectionId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{CollectionId}{ID of the collection from which to list the faces.}
+\item{CollectionId}{[required] ID of the collection from which to list the faces.}
 
 \item{NextToken}{If the previous response was incomplete (because there is more data to retrieve), Amazon Rekognition returns a pagination token in the response. You can use this pagination token to retrieve the next set of faces.}
 

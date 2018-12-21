@@ -4,8 +4,13 @@
 \alias{list_task_definitions}
 \title{Returns a list of task definitions that are registered to your account}
 \usage{
-list_task_definitions(familyPrefix = NULL, status = NULL, sort = NULL,
-  nextToken = NULL, maxResults = NULL)
+list_task_definitions(
+  familyPrefix = "string",
+  status = "ACTIVE"|"INACTIVE",
+  sort = "ASC"|"DESC",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{familyPrefix}{The full family name with which to filter the \code{ListTaskDefinitions} results. Specifying a \code{familyPrefix} limits the listed task definitions to task definition revisions that belong to that family.}

@@ -4,33 +4,99 @@
 \alias{create_auto_scaling_group}
 \title{Creates an Auto Scaling group with the specified name and attributes}
 \usage{
-create_auto_scaling_group(AutoScalingGroupName, MinSize, MaxSize,
-  LaunchConfigurationName = NULL, LaunchTemplate = NULL,
-  InstanceId = NULL, DesiredCapacity = NULL, DefaultCooldown = NULL,
-  AvailabilityZones = NULL, LoadBalancerNames = NULL,
-  TargetGroupARNs = NULL, HealthCheckType = NULL,
-  HealthCheckGracePeriod = NULL, PlacementGroup = NULL,
-  VPCZoneIdentifier = NULL, TerminationPolicies = NULL,
-  NewInstancesProtectedFromScaleIn = NULL,
-  LifecycleHookSpecificationList = NULL, Tags = NULL,
-  ServiceLinkedRoleARN = NULL)
+create_auto_scaling_group(
+  AutoScalingGroupName = "string",
+  LaunchConfigurationName = "string",
+  LaunchTemplate = list(
+    LaunchTemplateId = "string",
+    LaunchTemplateName = "string",
+    Version = "string"
+  ),
+  MixedInstancesPolicy = list(
+    LaunchTemplate = list(
+      LaunchTemplateSpecification = list(
+        LaunchTemplateId = "string",
+        LaunchTemplateName = "string",
+        Version = "string"
+      ),
+      Overrides = list(
+        list(
+          InstanceType = "string"
+        )
+      )
+    ),
+    InstancesDistribution = list(
+      OnDemandAllocationStrategy = "string",
+      OnDemandBaseCapacity = 123,
+      OnDemandPercentageAboveBaseCapacity = 123,
+      SpotAllocationStrategy = "string",
+      SpotInstancePools = 123,
+      SpotMaxPrice = "string"
+    )
+  ),
+  InstanceId = "string",
+  MinSize = 123,
+  MaxSize = 123,
+  DesiredCapacity = 123,
+  DefaultCooldown = 123,
+  AvailabilityZones = list(
+    "string"
+  ),
+  LoadBalancerNames = list(
+    "string"
+  ),
+  TargetGroupARNs = list(
+    "string"
+  ),
+  HealthCheckType = "string",
+  HealthCheckGracePeriod = 123,
+  PlacementGroup = "string",
+  VPCZoneIdentifier = "string",
+  TerminationPolicies = list(
+    "string"
+  ),
+  NewInstancesProtectedFromScaleIn = TRUE|FALSE,
+  LifecycleHookSpecificationList = list(
+    list(
+      LifecycleHookName = "string",
+      LifecycleTransition = "string",
+      NotificationMetadata = "string",
+      HeartbeatTimeout = 123,
+      DefaultResult = "string",
+      NotificationTargetARN = "string",
+      RoleARN = "string"
+    )
+  ),
+  Tags = list(
+    list(
+      ResourceId = "string",
+      ResourceType = "string",
+      Key = "string",
+      Value = "string",
+      PropagateAtLaunch = TRUE|FALSE
+    )
+  ),
+  ServiceLinkedRoleARN = "string"
+)
 }
 \arguments{
-\item{AutoScalingGroupName}{The name of the Auto Scaling group. This name must be unique within the scope of your AWS account.}
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group. This name must be unique within the scope of your AWS account.}
 
-\item{MinSize}{The minimum size of the group.}
+\item{LaunchConfigurationName}{The name of the launch configuration. This parameter, a launch template, a mixed instances policy, or an EC2 instance must be specified.}
 
-\item{MaxSize}{The maximum size of the group.}
+\item{LaunchTemplate}{The launch template to use to launch instances. This parameter, a launch configuration, a mixed instances policy, or an EC2 instance must be specified.}
 
-\item{LaunchConfigurationName}{The name of the launch configuration. You must specify one of the following: a launch configuration, a launch template, or an EC2 instance.}
+\item{MixedInstancesPolicy}{The mixed instances policy to use to launch instances. This parameter, a launch template, a launch configuration, or an EC2 instance must be specified.}
 
-\item{LaunchTemplate}{The launch template to use to launch instances. You must specify one of the following: a launch template, a launch configuration, or an EC2 instance.}
+\item{InstanceId}{The ID of the instance used to create a launch configuration for the group. This parameter, a launch configuration, a launch template, or a mixed instances policy must be specified.
 
-\item{InstanceId}{The ID of the instance used to create a launch configuration for the group. You must specify one of the following: an EC2 instance, a launch configuration, or a launch template.
-
-When you specify an ID of an instance, Amazon EC2 Auto Scaling creates a new launch configuration and associates it with the group. This launch configuration derives its attributes from the specified instance, with the exception of the block device mapping.
+When you specify an ID of an instance, Amazon EC2 Auto Scaling creates a new launch configuration and associates it with the group. This launch configuration derives its attributes from the specified instance, except for the block device mapping.
 
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-from-instance.html}{Create an Auto Scaling Group Using an EC2 Instance} in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+
+\item{MinSize}{[required] The minimum size of the group.}
+
+\item{MaxSize}{[required] The maximum size of the group.}
 
 \item{DesiredCapacity}{The number of EC2 instances that should be running in the group. This number must be greater than or equal to the minimum size of the group and less than or equal to the maximum size of the group. If you do not specify a desired capacity, the default is the minimum size of the group.}
 
@@ -56,7 +122,7 @@ This parameter is required if you are adding an \code{ELB} health check.
 
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html}{Health Checks} in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
-\item{PlacementGroup}{The name of the placement group into which you'll launch your instances, if any. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement Groups} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+\item{PlacementGroup}{The name of the placement group into which to launch your instances, if any. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement Groups} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{VPCZoneIdentifier}{A comma-separated list of subnet identifiers for your virtual private cloud (VPC).
 

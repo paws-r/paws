@@ -4,10 +4,12 @@
 \alias{describe_connections_on_interconnect}
 \title{Deprecated}
 \usage{
-describe_connections_on_interconnect(interconnectId)
+describe_connections_on_interconnect(
+  interconnectId = "string"
+)
 }
 \arguments{
-\item{interconnectId}{The ID of the interconnect.}
+\item{interconnectId}{[required] The ID of the interconnect.}
 }
 \description{
 Deprecated. Use DescribeHostedConnections instead.

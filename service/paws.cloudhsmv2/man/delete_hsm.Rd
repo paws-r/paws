@@ -4,10 +4,15 @@
 \alias{delete_hsm}
 \title{Deletes the specified HSM}
 \usage{
-delete_hsm(ClusterId, HsmId = NULL, EniId = NULL, EniIp = NULL)
+delete_hsm(
+  ClusterId = "string",
+  HsmId = "string",
+  EniId = "string",
+  EniIp = "string"
+)
 }
 \arguments{
-\item{ClusterId}{The identifier (ID) of the cluster that contains the HSM that you are deleting.}
+\item{ClusterId}{[required] The identifier (ID) of the cluster that contains the HSM that you are deleting.}
 
 \item{HsmId}{The identifier (ID) of the HSM that you are deleting.}
 

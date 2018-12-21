@@ -4,8 +4,12 @@
 \alias{list_accepted_portfolio_shares}
 \title{Lists all portfolios for which sharing was accepted by this account}
 \usage{
-list_accepted_portfolio_shares(AcceptLanguage = NULL, PageToken = NULL,
-  PageSize = NULL, PortfolioShareType = NULL)
+list_accepted_portfolio_shares(
+  AcceptLanguage = "string",
+  PageToken = "string",
+  PageSize = 123,
+  PortfolioShareType = "IMPORTED"|"AWS_SERVICECATALOG"|"AWS_ORGANIZATIONS"
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -21,6 +25,7 @@ list_accepted_portfolio_shares(AcceptLanguage = NULL, PageToken = NULL,
 
 \item{PortfolioShareType}{The type of shared portfolios to list. The default is to list imported portfolios.
 \itemize{
+\item \code{AWS_ORGANIZATIONS} - List portfolios shared by the master account of your organization
 \item \code{AWS_SERVICECATALOG} - List default portfolios
 \item \code{IMPORTED} - List imported portfolios
 }}

@@ -4,15 +4,73 @@
 \alias{create_preset}
 \title{The CreatePreset operation creates a preset with settings that you specify}
 \usage{
-create_preset(Name, Container, Description = NULL, Video = NULL,
-  Audio = NULL, Thumbnails = NULL)
+create_preset(
+  Name = "string",
+  Description = "string",
+  Container = "string",
+  Video = list(
+    Codec = "string",
+    CodecOptions = list(
+      "string"
+    ),
+    KeyframesMaxDist = "string",
+    FixedGOP = "string",
+    BitRate = "string",
+    FrameRate = "string",
+    MaxFrameRate = "string",
+    Resolution = "string",
+    AspectRatio = "string",
+    MaxWidth = "string",
+    MaxHeight = "string",
+    DisplayAspectRatio = "string",
+    SizingPolicy = "string",
+    PaddingPolicy = "string",
+    Watermarks = list(
+      list(
+        Id = "string",
+        MaxWidth = "string",
+        MaxHeight = "string",
+        SizingPolicy = "string",
+        HorizontalAlign = "string",
+        HorizontalOffset = "string",
+        VerticalAlign = "string",
+        VerticalOffset = "string",
+        Opacity = "string",
+        Target = "string"
+      )
+    )
+  ),
+  Audio = list(
+    Codec = "string",
+    SampleRate = "string",
+    BitRate = "string",
+    Channels = "string",
+    AudioPackingMode = "string",
+    CodecOptions = list(
+      Profile = "string",
+      BitDepth = "string",
+      BitOrder = "string",
+      Signed = "string"
+    )
+  ),
+  Thumbnails = list(
+    Format = "string",
+    Interval = "string",
+    Resolution = "string",
+    AspectRatio = "string",
+    MaxWidth = "string",
+    MaxHeight = "string",
+    SizingPolicy = "string",
+    PaddingPolicy = "string"
+  )
+)
 }
 \arguments{
-\item{Name}{The name of the preset. We recommend that the name be unique within the AWS account, but uniqueness is not enforced.}
-
-\item{Container}{The container type for the output file. Valid values include \code{flac}, \code{flv}, \code{fmp4}, \code{gif}, \code{mp3}, \code{mp4}, \code{mpg}, \code{mxf}, \code{oga}, \code{ogg}, \code{ts}, and \code{webm}.}
+\item{Name}{[required] The name of the preset. We recommend that the name be unique within the AWS account, but uniqueness is not enforced.}
 
 \item{Description}{A description of the preset.}
+
+\item{Container}{[required] The container type for the output file. Valid values include \code{flac}, \code{flv}, \code{fmp4}, \code{gif}, \code{mp3}, \code{mp4}, \code{mpg}, \code{mxf}, \code{oga}, \code{ogg}, \code{ts}, and \code{webm}.}
 
 \item{Video}{A section of the request body that specifies the video parameters.}
 

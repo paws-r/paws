@@ -4,10 +4,14 @@
 \alias{describe_tags}
 \title{Describes the tags for the specified resources}
 \usage{
-describe_tags(ResourceArns)
+describe_tags(
+  ResourceArns = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ResourceArns}{The Amazon Resource Names (ARN) of the resources.}
+\item{ResourceArns}{[required] The Amazon Resource Names (ARN) of the resources.}
 }
 \description{
 Describes the tags for the specified resources. You can describe the tags for one or more Application Load Balancers, Network Load Balancers, and target groups.

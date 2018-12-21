@@ -4,10 +4,13 @@
 \alias{check_domain_availability}
 \title{This operation checks the availability of one domain name}
 \usage{
-check_domain_availability(DomainName, IdnLangCode = NULL)
+check_domain_availability(
+  DomainName = "string",
+  IdnLangCode = "string"
+)
 }
 \arguments{
-\item{DomainName}{The name of the domain that you want to get availability for.
+\item{DomainName}{[required] The name of the domain that you want to get availability for.
 
 Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.}
 

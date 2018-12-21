@@ -4,7 +4,10 @@
 \alias{list_configurations}
 \title{Returns a list of all configurations}
 \usage{
-list_configurations(MaxResults = NULL, NextToken = NULL)
+list_configurations(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{MaxResults}{The maximum number of configurations that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.}

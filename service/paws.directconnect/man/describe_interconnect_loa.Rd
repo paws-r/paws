@@ -4,11 +4,14 @@
 \alias{describe_interconnect_loa}
 \title{Deprecated}
 \usage{
-describe_interconnect_loa(interconnectId, providerName = NULL,
-  loaContentType = NULL)
+describe_interconnect_loa(
+  interconnectId = "string",
+  providerName = "string",
+  loaContentType = "application/pdf"
+)
 }
 \arguments{
-\item{interconnectId}{The ID of the interconnect.}
+\item{interconnectId}{[required] The ID of the interconnect.}
 
 \item{providerName}{The name of the service provider who establishes connectivity on your behalf. If you supply this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.}
 

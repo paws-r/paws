@@ -4,13 +4,17 @@
 \alias{restore_table_to_point_in_time}
 \title{Restores the specified table to the specified point in time within \code{EarliestRestorableDateTime} and \code{LatestRestorableDateTime}}
 \usage{
-restore_table_to_point_in_time(SourceTableName, TargetTableName,
-  UseLatestRestorableTime = NULL, RestoreDateTime = NULL)
+restore_table_to_point_in_time(
+  SourceTableName = "string",
+  TargetTableName = "string",
+  UseLatestRestorableTime = TRUE|FALSE,
+  RestoreDateTime = as.POSIXct("2015-01-01")
+)
 }
 \arguments{
-\item{SourceTableName}{Name of the source table that is being restored.}
+\item{SourceTableName}{[required] Name of the source table that is being restored.}
 
-\item{TargetTableName}{The name of the new table to which it must be restored to.}
+\item{TargetTableName}{[required] The name of the new table to which it must be restored to.}
 
 \item{UseLatestRestorableTime}{Restore the table to the latest possible time. \code{LatestRestorableDateTime} is typically 5 minutes before the current time.}
 

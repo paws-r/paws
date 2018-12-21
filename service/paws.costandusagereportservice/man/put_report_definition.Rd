@@ -4,10 +4,26 @@
 \alias{put_report_definition}
 \title{Create a new report definition}
 \usage{
-put_report_definition(ReportDefinition)
+put_report_definition(
+  ReportDefinition = list(
+    ReportName = "string",
+    TimeUnit = "HOURLY"|"DAILY",
+    Format = "textORcsv",
+    Compression = "ZIP"|"GZIP",
+    AdditionalSchemaElements = list(
+      "RESOURCES"
+    ),
+    S3Bucket = "string",
+    S3Prefix = "string",
+    S3Region = "us-east-1"|"us-west-1"|"us-west-2"|"eu-central-1"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1",
+    AdditionalArtifacts = list(
+      "REDSHIFT"|"QUICKSIGHT"
+    )
+  )
+)
 }
 \arguments{
-\item{ReportDefinition}{}
+\item{ReportDefinition}{[required]}
 }
 \description{
 Create a new report definition

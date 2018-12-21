@@ -4,12 +4,17 @@
 \alias{tag_resource}
 \title{Add tags to a MediaConvert queue, preset, or job template}
 \usage{
-tag_resource(Arn, Tags)
+tag_resource(
+  Arn = "string",
+  Tags = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{Arn}{The Amazon Resource Name (ARN) of the resource that you want to tag. To get the ARN, send a GET request with the resource name.}
+\item{Arn}{[required] The Amazon Resource Name (ARN) of the resource that you want to tag. To get the ARN, send a GET request with the resource name.}
 
-\item{Tags}{The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.}
+\item{Tags}{[required] The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.}
 }
 \description{
 Add tags to a MediaConvert queue, preset, or job template. For information about tagging, see the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html

@@ -4,12 +4,17 @@
 \alias{tag_project}
 \title{Adds tags to a project}
 \usage{
-tag_project(id, tags)
+tag_project(
+  id = "string",
+  tags = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{id}{The ID of the project you want to add a tag to.}
+\item{id}{[required] The ID of the project you want to add a tag to.}
 
-\item{tags}{The tags you want to add to the project.}
+\item{tags}{[required] The tags you want to add to the project.}
 }
 \description{
 Adds tags to a project.

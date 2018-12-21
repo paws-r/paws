@@ -4,10 +4,12 @@
 \alias{decode_authorization_message}
 \title{Decodes additional information about the authorization status of a request from an encoded message returned in response to an AWS request}
 \usage{
-decode_authorization_message(EncodedMessage)
+decode_authorization_message(
+  EncodedMessage = "string"
+)
 }
 \arguments{
-\item{EncodedMessage}{The encoded message that was returned with the response.}
+\item{EncodedMessage}{[required] The encoded message that was returned with the response.}
 }
 \description{
 Decodes additional information about the authorization status of a request from an encoded message returned in response to an AWS request.

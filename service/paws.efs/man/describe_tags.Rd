@@ -4,14 +4,18 @@
 \alias{describe_tags}
 \title{Returns the tags associated with a file system}
 \usage{
-describe_tags(FileSystemId, MaxItems = NULL, Marker = NULL)
+describe_tags(
+  MaxItems = 123,
+  Marker = "string",
+  FileSystemId = "string"
+)
 }
 \arguments{
-\item{FileSystemId}{ID of the file system whose tag set you want to retrieve.}
-
 \item{MaxItems}{(Optional) Maximum number of file system tags to return in the response. It must be an integer with a value greater than zero.}
 
 \item{Marker}{(Optional) Opaque pagination token returned from a previous \code{DescribeTags} operation (String). If present, it specifies to continue the list from where the previous call left off.}
+
+\item{FileSystemId}{[required] ID of the file system whose tag set you want to retrieve.}
 }
 \description{
 Returns the tags associated with a file system. The order of tags returned in the response of one \code{DescribeTags} call and the order of tags returned across the responses of a multi-call iteration (when using pagination) is unspecified.

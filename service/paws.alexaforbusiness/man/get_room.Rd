@@ -4,7 +4,9 @@
 \alias{get_room}
 \title{Gets room details by room ARN}
 \usage{
-get_room(RoomArn = NULL)
+get_room(
+  RoomArn = "string"
+)
 }
 \arguments{
 \item{RoomArn}{The ARN of the room for which to request details. Required.}

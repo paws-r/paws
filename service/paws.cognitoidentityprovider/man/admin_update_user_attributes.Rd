@@ -4,14 +4,23 @@
 \alias{admin_update_user_attributes}
 \title{Updates the specified user's attributes, including developer attributes, as an administrator}
 \usage{
-admin_update_user_attributes(UserPoolId, Username, UserAttributes)
+admin_update_user_attributes(
+  UserPoolId = "string",
+  Username = "string",
+  UserAttributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool where you want to update user attributes.}
+\item{UserPoolId}{[required] The user pool ID for the user pool where you want to update user attributes.}
 
-\item{Username}{The user name of the user for whom you want to update user attributes.}
+\item{Username}{[required] The user name of the user for whom you want to update user attributes.}
 
-\item{UserAttributes}{An array of name-value pairs representing user attributes.
+\item{UserAttributes}{[required] An array of name-value pairs representing user attributes.
 
 For custom attributes, you must prepend the \code{custom:} prefix to the attribute name.}
 }

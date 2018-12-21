@@ -4,11 +4,39 @@
 \alias{describe_affected_entities}
 \title{Returns a list of entities that have been affected by the specified events, based on the specified filter criteria}
 \usage{
-describe_affected_entities(filter, locale = NULL, nextToken = NULL,
-  maxResults = NULL)
+describe_affected_entities(
+  filter = list(
+    eventArns = list(
+      "string"
+    ),
+    entityArns = list(
+      "string"
+    ),
+    entityValues = list(
+      "string"
+    ),
+    lastUpdatedTimes = list(
+      list(
+        from = as.POSIXct("2015-01-01"),
+        to = as.POSIXct("2015-01-01")
+      )
+    ),
+    tags = list(
+      list(
+        "string"
+      )
+    ),
+    statusCodes = list(
+      "IMPAIRED"|"UNIMPAIRED"|"UNKNOWN"
+    )
+  ),
+  locale = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{filter}{Values to narrow the results returned. At least one event ARN is required.}
+\item{filter}{[required] Values to narrow the results returned. At least one event ARN is required.}
 
 \item{locale}{The locale (language) to return information in. English (en) is the default and the only supported value at this time.}
 

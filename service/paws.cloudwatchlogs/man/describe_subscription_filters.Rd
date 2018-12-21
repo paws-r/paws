@@ -4,11 +4,15 @@
 \alias{describe_subscription_filters}
 \title{Lists the subscription filters for the specified log group}
 \usage{
-describe_subscription_filters(logGroupName, filterNamePrefix = NULL,
-  nextToken = NULL, limit = NULL)
+describe_subscription_filters(
+  logGroupName = "string",
+  filterNamePrefix = "string",
+  nextToken = "string",
+  limit = 123
+)
 }
 \arguments{
-\item{logGroupName}{The name of the log group.}
+\item{logGroupName}{[required] The name of the log group.}
 
 \item{filterNamePrefix}{The prefix to match. If you don't specify a value, no prefix filter is applied.}
 

@@ -4,12 +4,15 @@
 \alias{delete_policy}
 \title{Deletes the specified Auto Scaling policy}
 \usage{
-delete_policy(PolicyName, AutoScalingGroupName = NULL)
+delete_policy(
+  AutoScalingGroupName = "string",
+  PolicyName = "string"
+)
 }
 \arguments{
-\item{PolicyName}{The name or Amazon Resource Name (ARN) of the policy.}
-
 \item{AutoScalingGroupName}{The name of the Auto Scaling group.}
+
+\item{PolicyName}{[required] The name or Amazon Resource Name (ARN) of the policy.}
 }
 \description{
 Deletes the specified Auto Scaling policy.

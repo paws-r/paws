@@ -4,20 +4,29 @@
 \alias{register_workflow_type}
 \title{Registers a new \emph{workflow type} and its configuration settings in the specified domain}
 \usage{
-register_workflow_type(domain, name, version, description = NULL,
-  defaultTaskStartToCloseTimeout = NULL,
-  defaultExecutionStartToCloseTimeout = NULL, defaultTaskList = NULL,
-  defaultTaskPriority = NULL, defaultChildPolicy = NULL,
-  defaultLambdaRole = NULL)
+register_workflow_type(
+  domain = "string",
+  name = "string",
+  version = "string",
+  description = "string",
+  defaultTaskStartToCloseTimeout = "string",
+  defaultExecutionStartToCloseTimeout = "string",
+  defaultTaskList = list(
+    name = "string"
+  ),
+  defaultTaskPriority = "string",
+  defaultChildPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
+  defaultLambdaRole = "string"
+)
 }
 \arguments{
-\item{domain}{The name of the domain in which to register the workflow type.}
+\item{domain}{[required] The name of the domain in which to register the workflow type.}
 
-\item{name}{The name of the workflow type.
+\item{name}{[required] The name of the workflow type.
 
 The specified string must not start or end with whitespace. It must not contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control characters (\code{\u0000-\u001f} | \code{\u007f-\u009f}). Also, it must not contain the literal string \code{arn}.}
 
-\item{version}{The version of the workflow type.
+\item{version}{[required] The version of the workflow type.
 
 The workflow type consists of the name and version, the combination of which must be unique within the domain. To get a list of all currently registered workflow types, use the ListWorkflowTypes action.
 

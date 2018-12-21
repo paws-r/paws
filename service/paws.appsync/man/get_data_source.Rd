@@ -4,12 +4,15 @@
 \alias{get_data_source}
 \title{Retrieves a \code{DataSource} object}
 \usage{
-get_data_source(apiId, name)
+get_data_source(
+  apiId = "string",
+  name = "string"
+)
 }
 \arguments{
-\item{apiId}{The API ID.}
+\item{apiId}{[required] The API ID.}
 
-\item{name}{The name of the data source.}
+\item{name}{[required] The name of the data source.}
 }
 \description{
 Retrieves a \code{DataSource} object.

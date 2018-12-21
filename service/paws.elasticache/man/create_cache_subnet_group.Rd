@@ -4,19 +4,24 @@
 \alias{create_cache_subnet_group}
 \title{Creates a new cache subnet group}
 \usage{
-create_cache_subnet_group(CacheSubnetGroupName, CacheSubnetGroupDescription,
-  SubnetIds)
+create_cache_subnet_group(
+  CacheSubnetGroupName = "string",
+  CacheSubnetGroupDescription = "string",
+  SubnetIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{CacheSubnetGroupName}{A name for the cache subnet group. This value is stored as a lowercase string.
+\item{CacheSubnetGroupName}{[required] A name for the cache subnet group. This value is stored as a lowercase string.
 
 Constraints: Must contain no more than 255 alphanumeric characters or hyphens.
 
 Example: \code{mysubnetgroup}}
 
-\item{CacheSubnetGroupDescription}{A description for the cache subnet group.}
+\item{CacheSubnetGroupDescription}{[required] A description for the cache subnet group.}
 
-\item{SubnetIds}{A list of VPC subnet IDs for the cache subnet group.}
+\item{SubnetIds}{[required] A list of VPC subnet IDs for the cache subnet group.}
 }
 \description{
 Creates a new cache subnet group.

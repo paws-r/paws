@@ -4,8 +4,14 @@
 \alias{describe_listeners}
 \title{Describes the specified listeners or the listeners for the specified Application Load Balancer or Network Load Balancer}
 \usage{
-describe_listeners(LoadBalancerArn = NULL, ListenerArns = NULL,
-  Marker = NULL, PageSize = NULL)
+describe_listeners(
+  LoadBalancerArn = "string",
+  ListenerArns = list(
+    "string"
+  ),
+  Marker = "string",
+  PageSize = 123
+)
 }
 \arguments{
 \item{LoadBalancerArn}{The Amazon Resource Name (ARN) of the load balancer.}

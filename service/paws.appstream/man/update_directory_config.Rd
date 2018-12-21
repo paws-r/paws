@@ -4,12 +4,19 @@
 \alias{update_directory_config}
 \title{Updates the specified Directory Config object in AppStream 2}
 \usage{
-update_directory_config(DirectoryName,
-  OrganizationalUnitDistinguishedNames = NULL,
-  ServiceAccountCredentials = NULL)
+update_directory_config(
+  DirectoryName = "string",
+  OrganizationalUnitDistinguishedNames = list(
+    "string"
+  ),
+  ServiceAccountCredentials = list(
+    AccountName = "string",
+    AccountPassword = "string"
+  )
+)
 }
 \arguments{
-\item{DirectoryName}{The name of the Directory Config object.}
+\item{DirectoryName}{[required] The name of the Directory Config object.}
 
 \item{OrganizationalUnitDistinguishedNames}{The distinguished names of the organizational units for computer accounts.}
 

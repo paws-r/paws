@@ -4,12 +4,15 @@
 \alias{delete_request_validator}
 \title{Deletes a RequestValidator of a given RestApi}
 \usage{
-delete_request_validator(restApiId, requestValidatorId)
+delete_request_validator(
+  restApiId = "string",
+  requestValidatorId = "string"
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{requestValidatorId}{[Required] The identifier of the RequestValidator to be deleted.}
+\item{requestValidatorId}{[required] [Required] The identifier of the RequestValidator to be deleted.}
 }
 \description{
 Deletes a RequestValidator of a given RestApi.

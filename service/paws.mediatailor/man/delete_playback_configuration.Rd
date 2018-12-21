@@ -4,10 +4,12 @@
 \alias{delete_playback_configuration}
 \title{Deletes the configuration for the specified name}
 \usage{
-delete_playback_configuration(Name)
+delete_playback_configuration(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The identifier for the configuration.}
+\item{Name}{[required] The identifier for the configuration.}
 }
 \description{
 Deletes the configuration for the specified name.

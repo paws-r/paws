@@ -4,12 +4,15 @@
 \alias{update_pull_request_description}
 \title{Replaces the contents of the description of a pull request}
 \usage{
-update_pull_request_description(pullRequestId, description)
+update_pull_request_description(
+  pullRequestId = "string",
+  description = "string"
+)
 }
 \arguments{
-\item{pullRequestId}{The system-generated ID of the pull request. To get this ID, use ListPullRequests.}
+\item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use ListPullRequests.}
 
-\item{description}{The updated content of the description for the pull request. This content will replace the existing description.}
+\item{description}{[required] The updated content of the description for the pull request. This content will replace the existing description.}
 }
 \description{
 Replaces the contents of the description of a pull request.

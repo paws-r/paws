@@ -4,12 +4,18 @@
 \alias{update_group_query}
 \title{Updates the resource query of a group}
 \usage{
-update_group_query(GroupName, ResourceQuery)
+update_group_query(
+  GroupName = "string",
+  ResourceQuery = list(
+    Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
+    Query = "string"
+  )
+)
 }
 \arguments{
-\item{GroupName}{The name of the resource group for which you want to edit the query.}
+\item{GroupName}{[required] The name of the resource group for which you want to edit the query.}
 
-\item{ResourceQuery}{The resource query that determines which AWS resources are members of the resource group.}
+\item{ResourceQuery}{[required] The resource query that determines which AWS resources are members of the resource group.}
 }
 \description{
 Updates the resource query of a group.

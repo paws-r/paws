@@ -4,21 +4,36 @@
 \alias{connect_directory}
 \title{Creates an AD Connector to connect to an on-premises directory}
 \usage{
-connect_directory(Name, Password, Size, ConnectSettings, ShortName = NULL,
-  Description = NULL)
+connect_directory(
+  Name = "string",
+  ShortName = "string",
+  Password = "string",
+  Description = "string",
+  Size = "Small"|"Large",
+  ConnectSettings = list(
+    VpcId = "string",
+    SubnetIds = list(
+      "string"
+    ),
+    CustomerDnsIps = list(
+      "string"
+    ),
+    CustomerUserName = "string"
+  )
+)
 }
 \arguments{
-\item{Name}{The fully qualified name of the on-premises directory, such as \code{corp.example.com}.}
-
-\item{Password}{The password for the on-premises user account.}
-
-\item{Size}{The size of the directory.}
-
-\item{ConnectSettings}{A DirectoryConnectSettings object that contains additional information for the operation.}
+\item{Name}{[required] The fully qualified name of the on-premises directory, such as \code{corp.example.com}.}
 
 \item{ShortName}{The NetBIOS name of the on-premises directory, such as \code{CORP}.}
 
+\item{Password}{[required] The password for the on-premises user account.}
+
 \item{Description}{A textual description for the directory.}
+
+\item{Size}{[required] The size of the directory.}
+
+\item{ConnectSettings}{[required] A DirectoryConnectSettings object that contains additional information for the operation.}
 }
 \description{
 Creates an AD Connector to connect to an on-premises directory.

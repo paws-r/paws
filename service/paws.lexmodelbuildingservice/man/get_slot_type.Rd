@@ -4,12 +4,15 @@
 \alias{get_slot_type}
 \title{Returns information about a specific version of a slot type}
 \usage{
-get_slot_type(name, version)
+get_slot_type(
+  name = "string",
+  version = "string"
+)
 }
 \arguments{
-\item{name}{The name of the slot type. The name is case sensitive.}
+\item{name}{[required] The name of the slot type. The name is case sensitive.}
 
-\item{version}{The version of the slot type.}
+\item{version}{[required] The version of the slot type.}
 }
 \description{
 Returns information about a specific version of a slot type. In addition to specifying the slot type name, you must specify the slot type version.

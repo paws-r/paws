@@ -4,14 +4,29 @@
 \alias{put_attributes}
 \title{The PutAttributes operation creates or replaces attributes in an item}
 \usage{
-put_attributes(DomainName, ItemName, Attributes, Expected = NULL)
+put_attributes(
+  DomainName = "string",
+  ItemName = "string",
+  Attributes = list(
+    list(
+      Name = "string",
+      Value = "string",
+      Replace = TRUE|FALSE
+    )
+  ),
+  Expected = list(
+    Name = "string",
+    Value = "string",
+    Exists = TRUE|FALSE
+  )
+)
 }
 \arguments{
-\item{DomainName}{The name of the domain in which to perform the operation.}
+\item{DomainName}{[required] The name of the domain in which to perform the operation.}
 
-\item{ItemName}{The name of the item.}
+\item{ItemName}{[required] The name of the item.}
 
-\item{Attributes}{The list of attributes.}
+\item{Attributes}{[required] The list of attributes.}
 
 \item{Expected}{The update condition which, if specified, determines whether the specified attributes will be updated or not. The update condition must be satisfied in order for this request to be processed and the attributes to be updated.}
 }

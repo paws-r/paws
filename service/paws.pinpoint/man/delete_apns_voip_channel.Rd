@@ -4,10 +4,12 @@
 \alias{delete_apns_voip_channel}
 \title{Delete an APNS VoIP channel}
 \usage{
-delete_apns_voip_channel(ApplicationId)
+delete_apns_voip_channel(
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 }
 \description{
 Delete an APNS VoIP channel

@@ -4,7 +4,13 @@
 \alias{describe_image_builders}
 \title{Retrieves a list that describes one or more specified image builders, if the image builder names are provided}
 \usage{
-describe_image_builders(Names = NULL, MaxResults = NULL, NextToken = NULL)
+describe_image_builders(
+  Names = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{Names}{The names of the image builders to describe.}

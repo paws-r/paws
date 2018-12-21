@@ -4,12 +4,19 @@
 \alias{untag_resources}
 \title{Removes the specified tags from the specified resources}
 \usage{
-untag_resources(ResourceARNList, TagKeys)
+untag_resources(
+  ResourceARNList = list(
+    "string"
+  ),
+  TagKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ResourceARNList}{A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a resource. You can specify a minimum of 1 and a maximum of 20 ARNs (resources) to untag. An ARN can be set to a maximum of 1600 characters. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces} in the \emph{AWS General Reference}.}
+\item{ResourceARNList}{[required] A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a resource. You can specify a minimum of 1 and a maximum of 20 ARNs (resources) to untag. An ARN can be set to a maximum of 1600 characters. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces} in the \emph{AWS General Reference}.}
 
-\item{TagKeys}{A list of the tag keys that you want to remove from the specified resources.}
+\item{TagKeys}{[required] A list of the tag keys that you want to remove from the specified resources.}
 }
 \description{
 Removes the specified tags from the specified resources. When you specify a tag key, the action removes both that key and its associated value. The operation succeeds even if you attempt to remove tags from a resource that were already removed. Note the following:

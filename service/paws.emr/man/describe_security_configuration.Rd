@@ -4,10 +4,12 @@
 \alias{describe_security_configuration}
 \title{Provides the details of a security configuration by returning the configuration JSON}
 \usage{
-describe_security_configuration(Name)
+describe_security_configuration(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the security configuration.}
+\item{Name}{[required] The name of the security configuration.}
 }
 \description{
 Provides the details of a security configuration by returning the configuration JSON.

@@ -4,15 +4,19 @@
 \alias{disassociate_discovered_resource}
 \title{Disassociate an Application Discovery Service (ADS) discovered resource from a migration task}
 \usage{
-disassociate_discovered_resource(ProgressUpdateStream, MigrationTaskName,
-  ConfigurationId, DryRun = NULL)
+disassociate_discovered_resource(
+  ProgressUpdateStream = "string",
+  MigrationTaskName = "string",
+  ConfigurationId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{ProgressUpdateStream}{The name of the ProgressUpdateStream.}
+\item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
 
-\item{MigrationTaskName}{The identifier given to the MigrationTask.}
+\item{MigrationTaskName}{[required] The identifier given to the MigrationTask.}
 
-\item{ConfigurationId}{ConfigurationId of the ADS resource to be disassociated.}
+\item{ConfigurationId}{[required] ConfigurationId of the ADS resource to be disassociated.}
 
 \item{DryRun}{Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.}
 }

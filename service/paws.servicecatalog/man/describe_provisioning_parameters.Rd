@@ -4,20 +4,24 @@
 \alias{describe_provisioning_parameters}
 \title{Gets information about the configuration required to provision the specified product using the specified provisioning artifact}
 \usage{
-describe_provisioning_parameters(ProductId, ProvisioningArtifactId,
-  AcceptLanguage = NULL, PathId = NULL)
+describe_provisioning_parameters(
+  AcceptLanguage = "string",
+  ProductId = "string",
+  ProvisioningArtifactId = "string",
+  PathId = "string"
+)
 }
 \arguments{
-\item{ProductId}{The product identifier.}
-
-\item{ProvisioningArtifactId}{The identifier of the provisioning artifact.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{ProductId}{[required] The product identifier.}
+
+\item{ProvisioningArtifactId}{[required] The identifier of the provisioning artifact.}
 
 \item{PathId}{The path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path. To list the paths for a product, use ListLaunchPaths.}
 }

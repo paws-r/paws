@@ -4,20 +4,29 @@
 \alias{register_activity_type}
 \title{Registers a new \emph{activity type} along with its configuration settings in the specified domain}
 \usage{
-register_activity_type(domain, name, version, description = NULL,
-  defaultTaskStartToCloseTimeout = NULL, defaultTaskHeartbeatTimeout = NULL,
-  defaultTaskList = NULL, defaultTaskPriority = NULL,
-  defaultTaskScheduleToStartTimeout = NULL,
-  defaultTaskScheduleToCloseTimeout = NULL)
+register_activity_type(
+  domain = "string",
+  name = "string",
+  version = "string",
+  description = "string",
+  defaultTaskStartToCloseTimeout = "string",
+  defaultTaskHeartbeatTimeout = "string",
+  defaultTaskList = list(
+    name = "string"
+  ),
+  defaultTaskPriority = "string",
+  defaultTaskScheduleToStartTimeout = "string",
+  defaultTaskScheduleToCloseTimeout = "string"
+)
 }
 \arguments{
-\item{domain}{The name of the domain in which this activity is to be registered.}
+\item{domain}{[required] The name of the domain in which this activity is to be registered.}
 
-\item{name}{The name of the activity type within the domain.
+\item{name}{[required] The name of the activity type within the domain.
 
 The specified string must not start or end with whitespace. It must not contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control characters (\code{\u0000-\u001f} | \code{\u007f-\u009f}). Also, it must not contain the literal string \code{arn}.}
 
-\item{version}{The version of the activity type.
+\item{version}{[required] The version of the activity type.
 
 The activity type consists of the name and version, the combination of which must be unique within the domain.
 

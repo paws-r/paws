@@ -4,13 +4,17 @@
 \alias{list_created_artifacts}
 \title{Lists the created artifacts attached to a given migration task in an update stream}
 \usage{
-list_created_artifacts(ProgressUpdateStream, MigrationTaskName,
-  NextToken = NULL, MaxResults = NULL)
+list_created_artifacts(
+  ProgressUpdateStream = "string",
+  MigrationTaskName = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{ProgressUpdateStream}{The name of the ProgressUpdateStream.}
+\item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
 
-\item{MigrationTaskName}{Unique identifier that references the migration task.}
+\item{MigrationTaskName}{[required] Unique identifier that references the migration task.}
 
 \item{NextToken}{If a \code{NextToken} was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in \code{NextToken}.}
 

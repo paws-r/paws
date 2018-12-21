@@ -4,10 +4,12 @@
 \alias{stop_trigger}
 \title{Stops a specified trigger}
 \usage{
-stop_trigger(Name)
+stop_trigger(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the trigger to stop.}
+\item{Name}{[required] The name of the trigger to stop.}
 }
 \description{
 Stops a specified trigger.

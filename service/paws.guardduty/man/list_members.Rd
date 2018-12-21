@@ -4,11 +4,15 @@
 \alias{list_members}
 \title{Lists details about all member accounts for the current GuardDuty master account}
 \usage{
-list_members(DetectorId, MaxResults = NULL, NextToken = NULL,
-  OnlyAssociated = NULL)
+list_members(
+  DetectorId = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  OnlyAssociated = "string"
+)
 }
 \arguments{
-\item{DetectorId}{The unique ID of the detector of the GuardDuty account whose members you want to list.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account whose members you want to list.}
 
 \item{MaxResults}{You can use this parameter to indicate the maximum number of items you want in the response. The default value is 1. The maximum value is 50.}
 

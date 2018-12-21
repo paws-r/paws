@@ -4,10 +4,12 @@
 \alias{delete_activity}
 \title{Deletes an activity}
 \usage{
-delete_activity(activityArn)
+delete_activity(
+  activityArn = "string"
+)
 }
 \arguments{
-\item{activityArn}{The Amazon Resource Name (ARN) of the activity to delete.}
+\item{activityArn}{[required] The Amazon Resource Name (ARN) of the activity to delete.}
 }
 \description{
 Deletes an activity.

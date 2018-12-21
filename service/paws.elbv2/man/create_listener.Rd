@@ -4,31 +4,90 @@
 \alias{create_listener}
 \title{Creates a listener for the specified Application Load Balancer or Network Load Balancer}
 \usage{
-create_listener(LoadBalancerArn, Protocol, Port, DefaultActions,
-  SslPolicy = NULL, Certificates = NULL)
+create_listener(
+  LoadBalancerArn = "string",
+  Protocol = "HTTP"|"HTTPS"|"TCP",
+  Port = 123,
+  SslPolicy = "string",
+  Certificates = list(
+    list(
+      CertificateArn = "string",
+      IsDefault = TRUE|FALSE
+    )
+  ),
+  DefaultActions = list(
+    list(
+      Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
+      TargetGroupArn = "string",
+      AuthenticateOidcConfig = list(
+        Issuer = "string",
+        AuthorizationEndpoint = "string",
+        TokenEndpoint = "string",
+        UserInfoEndpoint = "string",
+        ClientId = "string",
+        ClientSecret = "string",
+        SessionCookieName = "string",
+        Scope = "string",
+        SessionTimeout = 123,
+        AuthenticationRequestExtraParams = list(
+          "string"
+        ),
+        OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
+      ),
+      AuthenticateCognitoConfig = list(
+        UserPoolArn = "string",
+        UserPoolClientId = "string",
+        UserPoolDomain = "string",
+        SessionCookieName = "string",
+        Scope = "string",
+        SessionTimeout = 123,
+        AuthenticationRequestExtraParams = list(
+          "string"
+        ),
+        OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
+      ),
+      Order = 123,
+      RedirectConfig = list(
+        Protocol = "string",
+        Port = "string",
+        Host = "string",
+        Path = "string",
+        Query = "string",
+        StatusCode = "HTTP_301"|"HTTP_302"
+      ),
+      FixedResponseConfig = list(
+        MessageBody = "string",
+        StatusCode = "string",
+        ContentType = "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{LoadBalancerArn}{The Amazon Resource Name (ARN) of the load balancer.}
+\item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
 
-\item{Protocol}{The protocol for connections from clients to the load balancer. For Application Load Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported protocol is TCP.}
+\item{Protocol}{[required] The protocol for connections from clients to the load balancer. For Application Load Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported protocol is TCP.}
 
-\item{Port}{The port on which the load balancer is listening.}
-
-\item{DefaultActions}{The actions for the default rule. The rule must include one forward action or one or more fixed-response actions.
-
-If the action type is \code{forward}, you can specify a single target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer or TCP for a Network Load Balancer.
-
-[HTTPS listener] If the action type is \code{authenticate-oidc}, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.
-
-[HTTPS listener] If the action type is \code{authenticate-cognito}, you can use Amazon Cognito to authenticate users as they access your application.
-
-[Application Load Balancer] If the action type is \code{redirect}, you can redirect HTTP and HTTPS requests.
-
-[Application Load Balancer] If the action type is \code{fixed-response}, you can return a custom HTTP response.}
+\item{Port}{[required] The port on which the load balancer is listening.}
 
 \item{SslPolicy}{[HTTPS listeners] The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.}
 
-\item{Certificates}{[HTTPS listeners] The default SSL server certificate. You must provide exactly one default certificate. To create a certificate list, use AddListenerCertificates.}
+\item{Certificates}{[HTTPS listeners] The default SSL server certificate. You must provide exactly one certificate. Set \code{CertificateArn} to the certificate ARN but do not set \code{IsDefault}.
+
+To create a certificate list, use AddListenerCertificates.}
+
+\item{DefaultActions}{[required] The actions for the default rule. The rule must include one forward action or one or more fixed-response actions.
+
+If the action type is \code{forward}, you specify a target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer or TCP for a Network Load Balancer.
+
+[HTTPS listener] If the action type is \code{authenticate-oidc}, you authenticate users through an identity provider that is OpenID Connect (OIDC) compliant.
+
+[HTTPS listener] If the action type is \code{authenticate-cognito}, you authenticate users through the user pools supported by Amazon Cognito.
+
+[Application Load Balancer] If the action type is \code{redirect}, you redirect specified client requests from one URL to another.
+
+[Application Load Balancer] If the action type is \code{fixed-response}, you drop specified client requests and return a custom HTTP response.}
 }
 \description{
 Creates a listener for the specified Application Load Balancer or Network Load Balancer.

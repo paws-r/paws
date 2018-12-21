@@ -4,8 +4,11 @@
 \alias{list_signing_profiles}
 \title{Lists all available signing profiles in your AWS account}
 \usage{
-list_signing_profiles(includeCanceled = NULL, maxResults = NULL,
-  nextToken = NULL)
+list_signing_profiles(
+  includeCanceled = TRUE|FALSE,
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
 \item{includeCanceled}{Designates whether to include profiles with the status of \code{CANCELED}.}

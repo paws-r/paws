@@ -4,13 +4,16 @@
 \alias{reset_network_interface_attribute}
 \title{Resets a network interface attribute}
 \usage{
-reset_network_interface_attribute(NetworkInterfaceId, DryRun = NULL,
-  SourceDestCheck = NULL)
+reset_network_interface_attribute(
+  DryRun = TRUE|FALSE,
+  NetworkInterfaceId = "string",
+  SourceDestCheck = "string"
+)
 }
 \arguments{
-\item{NetworkInterfaceId}{The ID of the network interface.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{NetworkInterfaceId}{[required] The ID of the network interface.}
 
 \item{SourceDestCheck}{The source/destination checking attribute. Resets the value to \code{true}.}
 }

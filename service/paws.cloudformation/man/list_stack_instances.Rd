@@ -4,11 +4,16 @@
 \alias{list_stack_instances}
 \title{Returns summary information about stack instances that are associated with the specified stack set}
 \usage{
-list_stack_instances(StackSetName, NextToken = NULL, MaxResults = NULL,
-  StackInstanceAccount = NULL, StackInstanceRegion = NULL)
+list_stack_instances(
+  StackSetName = "string",
+  NextToken = "string",
+  MaxResults = 123,
+  StackInstanceAccount = "string",
+  StackInstanceRegion = "string"
+)
 }
 \arguments{
-\item{StackSetName}{The name or unique ID of the stack set that you want to list stack instances for.}
+\item{StackSetName}{[required] The name or unique ID of the stack set that you want to list stack instances for.}
 
 \item{NextToken}{If the previous request didn't return all of the remaining results, the response's \code{NextToken} parameter value is set to a token. To retrieve the next set of results, call \code{ListStackInstances} again and assign that token to the request object's \code{NextToken} parameter. If there are no remaining results, the previous response object's \code{NextToken} parameter is set to \code{null}.}
 

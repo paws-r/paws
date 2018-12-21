@@ -6,9 +6,9 @@
 \alias{paws.inspector-package}
 \title{paws.inspector: Amazon Inspector}
 \description{
-Amazon Inspector enables you to analyze the
-behavior of your AWS resources and to identify potential security
-issues. For more information, see [Amazon Inspector User
+Amazon Inspector enables you to analyze the behavior of your
+AWS resources and to identify potential security issues. For more
+information, see [Amazon Inspector User
 Guide](http://docs.aws.amazon.com/inspector/latest/userguide/inspector_introduction.html).
 }
 \author{
@@ -16,7 +16,12 @@ Guide](http://docs.aws.amazon.com/inspector/latest/userguide/inspector_introduct
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

@@ -6,16 +6,21 @@
 \alias{paws.sfn-package}
 \title{paws.sfn: AWS Step Functions}
 \description{
-AWS Step Functions is a service that lets you
-coordinate the components of distributed applications and
-microservices using visual workflows.
+AWS Step Functions is a service that lets you coordinate the
+components of distributed applications and microservices using visual
+workflows.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

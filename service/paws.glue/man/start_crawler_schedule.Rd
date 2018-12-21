@@ -4,10 +4,12 @@
 \alias{start_crawler_schedule}
 \title{Changes the schedule state of the specified crawler to \code{SCHEDULED}, unless the crawler is already running or the schedule state is already \code{SCHEDULED}}
 \usage{
-start_crawler_schedule(CrawlerName)
+start_crawler_schedule(
+  CrawlerName = "string"
+)
 }
 \arguments{
-\item{CrawlerName}{Name of the crawler to schedule.}
+\item{CrawlerName}{[required] Name of the crawler to schedule.}
 }
 \description{
 Changes the schedule state of the specified crawler to \code{SCHEDULED}, unless the crawler is already running or the schedule state is already \code{SCHEDULED}.

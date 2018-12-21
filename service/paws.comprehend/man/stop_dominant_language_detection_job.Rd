@@ -4,10 +4,12 @@
 \alias{stop_dominant_language_detection_job}
 \title{Stops a dominant language detection job in progress}
 \usage{
-stop_dominant_language_detection_job(JobId)
+stop_dominant_language_detection_job(
+  JobId = "string"
+)
 }
 \arguments{
-\item{JobId}{The identifier of the dominant language detection job to stop.}
+\item{JobId}{[required] The identifier of the dominant language detection job to stop.}
 }
 \description{
 Stops a dominant language detection job in progress.

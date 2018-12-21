@@ -4,8 +4,19 @@
 \alias{describe_pending_maintenance_actions}
 \title{Returns a list of resources (for example, DB instances) that have at least one pending maintenance action}
 \usage{
-describe_pending_maintenance_actions(ResourceIdentifier = NULL,
-  Filters = NULL, Marker = NULL, MaxRecords = NULL)
+describe_pending_maintenance_actions(
+  ResourceIdentifier = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  Marker = "string",
+  MaxRecords = 123
+)
 }
 \arguments{
 \item{ResourceIdentifier}{The ARN of a resource to return pending maintenance actions for.}

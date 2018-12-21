@@ -4,11 +4,16 @@
 \alias{lookup_developer_identity}
 \title{Retrieves the \code{IdentityID} associated with a \code{DeveloperUserIdentifier} or the list of \code{DeveloperUserIdentifier}s associated with an \code{IdentityId} for an existing identity}
 \usage{
-lookup_developer_identity(IdentityPoolId, IdentityId = NULL,
-  DeveloperUserIdentifier = NULL, MaxResults = NULL, NextToken = NULL)
+lookup_developer_identity(
+  IdentityPoolId = "string",
+  IdentityId = "string",
+  DeveloperUserIdentifier = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{IdentityPoolId}{An identity pool ID in the format REGION:GUID.}
+\item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
 
 \item{IdentityId}{A unique identifier in the format REGION:GUID.}
 

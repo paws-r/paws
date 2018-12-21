@@ -4,12 +4,18 @@
 \alias{define_expression}
 \title{Configures an \code{Expression} for the search domain}
 \usage{
-define_expression(DomainName, Expression)
+define_expression(
+  DomainName = "string",
+  Expression = list(
+    ExpressionName = "string",
+    ExpressionValue = "string"
+  )
+)
 }
 \arguments{
-\item{DomainName}{}
+\item{DomainName}{[required]}
 
-\item{Expression}{}
+\item{Expression}{[required]}
 }
 \description{
 Configures an \code{Expression} for the search domain. Used to create new expressions and modify existing ones. If the expression exists, the new configuration replaces the old one. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html}{Configuring Expressions} in the \emph{Amazon CloudSearch Developer Guide}.

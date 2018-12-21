@@ -4,16 +4,22 @@
 \alias{update_job}
 \title{You use this operation to change the parameters specified in the original manifest file by supplying a new manifest file}
 \usage{
-update_job(JobId, Manifest, JobType, ValidateOnly, APIVersion = NULL)
+update_job(
+  JobId = "string",
+  Manifest = "string",
+  JobType = "Import"|"Export",
+  ValidateOnly = TRUE|FALSE,
+  APIVersion = "string"
+)
 }
 \arguments{
-\item{JobId}{}
+\item{JobId}{[required]}
 
-\item{Manifest}{}
+\item{Manifest}{[required]}
 
-\item{JobType}{}
+\item{JobType}{[required]}
 
-\item{ValidateOnly}{}
+\item{ValidateOnly}{[required]}
 
 \item{APIVersion}{}
 }

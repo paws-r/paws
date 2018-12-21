@@ -4,15 +4,122 @@
 \alias{put_item}
 \title{Creates a new item, or replaces an old item with a new item}
 \usage{
-put_item(TableName, Item, Expected = NULL, ReturnValues = NULL,
-  ReturnConsumedCapacity = NULL, ReturnItemCollectionMetrics = NULL,
-  ConditionalOperator = NULL, ConditionExpression = NULL,
-  ExpressionAttributeNames = NULL, ExpressionAttributeValues = NULL)
+put_item(
+  TableName = "string",
+  Item = list(
+    list(
+      S = "string",
+      N = "string",
+      B = raw,
+      SS = list(
+        "string"
+      ),
+      NS = list(
+        "string"
+      ),
+      BS = list(
+        raw
+      ),
+      M = list(
+        list()
+      ),
+      L = list(
+        list()
+      ),
+      NULL = TRUE|FALSE,
+      BOOL = TRUE|FALSE
+    )
+  ),
+  Expected = list(
+    list(
+      Value = list(
+        S = "string",
+        N = "string",
+        B = raw,
+        SS = list(
+          "string"
+        ),
+        NS = list(
+          "string"
+        ),
+        BS = list(
+          raw
+        ),
+        M = list(
+          list()
+        ),
+        L = list(
+          list()
+        ),
+        NULL = TRUE|FALSE,
+        BOOL = TRUE|FALSE
+      ),
+      Exists = TRUE|FALSE,
+      ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH",
+      AttributeValueList = list(
+        list(
+          S = "string",
+          N = "string",
+          B = raw,
+          SS = list(
+            "string"
+          ),
+          NS = list(
+            "string"
+          ),
+          BS = list(
+            raw
+          ),
+          M = list(
+            list()
+          ),
+          L = list(
+            list()
+          ),
+          NULL = TRUE|FALSE,
+          BOOL = TRUE|FALSE
+        )
+      )
+    )
+  ),
+  ReturnValues = "NONE"|"ALL_OLD"|"UPDATED_OLD"|"ALL_NEW"|"UPDATED_NEW",
+  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
+  ReturnItemCollectionMetrics = "SIZE"|"NONE",
+  ConditionalOperator = "AND"|"OR",
+  ConditionExpression = "string",
+  ExpressionAttributeNames = list(
+    "string"
+  ),
+  ExpressionAttributeValues = list(
+    list(
+      S = "string",
+      N = "string",
+      B = raw,
+      SS = list(
+        "string"
+      ),
+      NS = list(
+        "string"
+      ),
+      BS = list(
+        raw
+      ),
+      M = list(
+        list()
+      ),
+      L = list(
+        list()
+      ),
+      NULL = TRUE|FALSE,
+      BOOL = TRUE|FALSE
+    )
+  )
+)
 }
 \arguments{
-\item{TableName}{The name of the table to contain the item.}
+\item{TableName}{[required] The name of the table to contain the item.}
 
-\item{Item}{A map of attribute name/value pairs, one for each attribute. Only the primary key attributes are required; you can optionally provide other attribute name-value pairs for the item.
+\item{Item}{[required] A map of attribute name/value pairs, one for each attribute. Only the primary key attributes are required; you can optionally provide other attribute name-value pairs for the item.
 
 You must provide all of the attributes for the primary key. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide both values for both the partition key and the sort key.
 

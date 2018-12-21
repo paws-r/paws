@@ -4,20 +4,26 @@
 \alias{lookup_policy}
 \title{Lists all policies from the root of the Directory to the object specified}
 \usage{
-lookup_policy(DirectoryArn, ObjectReference, NextToken = NULL,
-  MaxResults = NULL)
+lookup_policy(
+  DirectoryArn = "string",
+  ObjectReference = list(
+    Selector = "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{DirectoryArn}{The Amazon Resource Name (ARN) that is associated with the Directory. For more information, see arns.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory. For more information, see arns.}
 
-\item{ObjectReference}{Reference that identifies the object whose policies will be looked up.}
+\item{ObjectReference}{[required] Reference that identifies the object whose policies will be looked up.}
 
 \item{NextToken}{The token to request the next page of results.}
 
 \item{MaxResults}{The maximum number of items to be retrieved in a single call. This is an approximate number.}
 }
 \description{
-Lists all policies from the root of the Directory to the object specified. If there are no policies present, an empty list is returned. If policies are present, and if some objects don't have the policies attached, it returns the \code{ObjectIdentifier} for such objects. If policies are present, it returns \code{ObjectIdentifier}, \code{policyId}, and \code{policyType}. Paths that don't lead to the root from the target object are ignored. For more information, see \href{http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies}{Policies}.
+Lists all policies from the root of the Directory to the object specified. If there are no policies present, an empty list is returned. If policies are present, and if some objects don't have the policies attached, it returns the \code{ObjectIdentifier} for such objects. If policies are present, it returns \code{ObjectIdentifier}, \code{policyId}, and \code{policyType}. Paths that don't lead to the root from the target object are ignored. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies}{Policies}.
 }
 \examples{
 

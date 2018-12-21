@@ -4,10 +4,16 @@
 \alias{get_random_password}
 \title{Generates a random password of the specified complexity}
 \usage{
-get_random_password(PasswordLength = NULL, ExcludeCharacters = NULL,
-  ExcludeNumbers = NULL, ExcludePunctuation = NULL,
-  ExcludeUppercase = NULL, ExcludeLowercase = NULL, IncludeSpace = NULL,
-  RequireEachIncludedType = NULL)
+get_random_password(
+  PasswordLength = 123,
+  ExcludeCharacters = "string",
+  ExcludeNumbers = TRUE|FALSE,
+  ExcludePunctuation = TRUE|FALSE,
+  ExcludeUppercase = TRUE|FALSE,
+  ExcludeLowercase = TRUE|FALSE,
+  IncludeSpace = TRUE|FALSE,
+  RequireEachIncludedType = TRUE|FALSE
+)
 }
 \arguments{
 \item{PasswordLength}{The desired length of the generated password. The default value if you do not include this parameter is 32 characters.}

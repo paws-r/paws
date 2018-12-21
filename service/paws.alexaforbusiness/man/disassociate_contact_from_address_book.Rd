@@ -4,12 +4,15 @@
 \alias{disassociate_contact_from_address_book}
 \title{Disassociates a contact from a given address book}
 \usage{
-disassociate_contact_from_address_book(ContactArn, AddressBookArn)
+disassociate_contact_from_address_book(
+  ContactArn = "string",
+  AddressBookArn = "string"
+)
 }
 \arguments{
-\item{ContactArn}{The ARN of the contact to disassociate from an address book.}
+\item{ContactArn}{[required] The ARN of the contact to disassociate from an address book.}
 
-\item{AddressBookArn}{The ARN of the address from which to disassociate the contact.}
+\item{AddressBookArn}{[required] The ARN of the address from which to disassociate the contact.}
 }
 \description{
 Disassociates a contact from a given address book.

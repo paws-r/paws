@@ -4,10 +4,16 @@
 \alias{create_log_group}
 \title{Creates a log group with the specified name}
 \usage{
-create_log_group(logGroupName, kmsKeyId = NULL, tags = NULL)
+create_log_group(
+  logGroupName = "string",
+  kmsKeyId = "string",
+  tags = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{logGroupName}{The name of the log group.}
+\item{logGroupName}{[required] The name of the log group.}
 
 \item{kmsKeyId}{The Amazon Resource Name (ARN) of the CMK to use when encrypting log data. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms}{Amazon Resource Names - AWS Key Management Service (AWS KMS)}.}
 

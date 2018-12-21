@@ -4,11 +4,15 @@
 \alias{list_workers_with_qualification_type}
 \title{The \code{ListWorkersWithQualificationType} operation returns all of the Workers that have been associated with a given Qualification type}
 \usage{
-list_workers_with_qualification_type(QualificationTypeId, Status = NULL,
-  NextToken = NULL, MaxResults = NULL)
+list_workers_with_qualification_type(
+  QualificationTypeId = "string",
+  Status = "Granted"|"Revoked",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{QualificationTypeId}{The ID of the Qualification type of the Qualifications to return.}
+\item{QualificationTypeId}{[required] The ID of the Qualification type of the Qualifications to return.}
 
 \item{Status}{The status of the Qualifications to return. Can be \code{Granted | Revoked}.}
 

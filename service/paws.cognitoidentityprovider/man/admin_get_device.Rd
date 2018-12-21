@@ -4,14 +4,18 @@
 \alias{admin_get_device}
 \title{Gets the device, as an administrator}
 \usage{
-admin_get_device(DeviceKey, UserPoolId, Username)
+admin_get_device(
+  DeviceKey = "string",
+  UserPoolId = "string",
+  Username = "string"
+)
 }
 \arguments{
-\item{DeviceKey}{The device key.}
+\item{DeviceKey}{[required] The device key.}
 
-\item{UserPoolId}{The user pool ID.}
+\item{UserPoolId}{[required] The user pool ID.}
 
-\item{Username}{The user name.}
+\item{Username}{[required] The user name.}
 }
 \description{
 Gets the device, as an administrator.

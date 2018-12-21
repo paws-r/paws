@@ -4,11 +4,14 @@
 \alias{modify_db_snapshot}
 \title{Updates a manual DB snapshot, which can be encrypted or not encrypted, with a new engine version}
 \usage{
-modify_db_snapshot(DBSnapshotIdentifier, EngineVersion = NULL,
-  OptionGroupName = NULL)
+modify_db_snapshot(
+  DBSnapshotIdentifier = "string",
+  EngineVersion = "string",
+  OptionGroupName = "string"
+)
 }
 \arguments{
-\item{DBSnapshotIdentifier}{The identifier of the DB snapshot to modify.}
+\item{DBSnapshotIdentifier}{[required] The identifier of the DB snapshot to modify.}
 
 \item{EngineVersion}{The engine version to upgrade the DB snapshot to.
 

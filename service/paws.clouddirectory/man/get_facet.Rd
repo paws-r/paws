@@ -4,12 +4,15 @@
 \alias{get_facet}
 \title{Gets details of the Facet, such as facet name, attributes, Rules, or \code{ObjectType}}
 \usage{
-get_facet(SchemaArn, Name)
+get_facet(
+  SchemaArn = "string",
+  Name = "string"
+)
 }
 \arguments{
-\item{SchemaArn}{The Amazon Resource Name (ARN) that is associated with the Facet. For more information, see arns.}
+\item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the Facet. For more information, see arns.}
 
-\item{Name}{The name of the facet to retrieve.}
+\item{Name}{[required] The name of the facet to retrieve.}
 }
 \description{
 Gets details of the Facet, such as facet name, attributes, Rules, or \code{ObjectType}. You can call this on all kinds of schema facets -- published, development, or applied.

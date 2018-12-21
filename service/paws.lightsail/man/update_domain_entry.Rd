@@ -4,15 +4,30 @@
 \alias{update_domain_entry}
 \title{Updates a domain recordset after it is created}
 \usage{
-update_domain_entry(domainName, domainEntry)
+update_domain_entry(
+  domainName = "string",
+  domainEntry = list(
+    id = "string",
+    name = "string",
+    target = "string",
+    isAlias = TRUE|FALSE,
+    type = "string",
+    options = list(
+      "string"
+    )
+  )
+)
 }
 \arguments{
-\item{domainName}{The name of the domain recordset to update.}
+\item{domainName}{[required] The name of the domain recordset to update.}
 
-\item{domainEntry}{An array of key-value pairs containing information about the domain entry.}
+\item{domainEntry}{[required] An array of key-value pairs containing information about the domain entry.}
 }
 \description{
 Updates a domain recordset after it is created.
+}
+\details{
+The \code{update domain entry} operation supports tag-based access control via resource tags applied to the resource identified by domainName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \examples{
 

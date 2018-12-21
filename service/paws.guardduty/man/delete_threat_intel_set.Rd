@@ -4,12 +4,15 @@
 \alias{delete_threat_intel_set}
 \title{Deletes ThreatIntelSet specified by the ThreatIntelSet ID}
 \usage{
-delete_threat_intel_set(ThreatIntelSetId, DetectorId)
+delete_threat_intel_set(
+  DetectorId = "string",
+  ThreatIntelSetId = "string"
+)
 }
 \arguments{
-\item{ThreatIntelSetId}{The unique ID that specifies the ThreatIntelSet that you want to delete.}
+\item{DetectorId}{[required] The detectorID that specifies the GuardDuty service whose ThreatIntelSet you want to delete.}
 
-\item{DetectorId}{The detectorID that specifies the GuardDuty service whose ThreatIntelSet you want to delete.}
+\item{ThreatIntelSetId}{[required] The unique ID that specifies the ThreatIntelSet that you want to delete.}
 }
 \description{
 Deletes ThreatIntelSet specified by the ThreatIntelSet ID.

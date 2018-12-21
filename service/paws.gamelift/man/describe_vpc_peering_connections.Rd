@@ -4,7 +4,9 @@
 \alias{describe_vpc_peering_connections}
 \title{Retrieves information on VPC peering connections}
 \usage{
-describe_vpc_peering_connections(FleetId = NULL)
+describe_vpc_peering_connections(
+  FleetId = "string"
+)
 }
 \arguments{
 \item{FleetId}{Unique identifier for a fleet.}

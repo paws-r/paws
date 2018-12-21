@@ -4,10 +4,12 @@
 \alias{delete_snapshot_copy_grant}
 \title{Deletes the specified snapshot copy grant}
 \usage{
-delete_snapshot_copy_grant(SnapshotCopyGrantName)
+delete_snapshot_copy_grant(
+  SnapshotCopyGrantName = "string"
+)
 }
 \arguments{
-\item{SnapshotCopyGrantName}{The name of the snapshot copy grant to delete.}
+\item{SnapshotCopyGrantName}{[required] The name of the snapshot copy grant to delete.}
 }
 \description{
 Deletes the specified snapshot copy grant.

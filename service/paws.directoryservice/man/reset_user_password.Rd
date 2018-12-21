@@ -4,14 +4,18 @@
 \alias{reset_user_password}
 \title{Resets the password for any user in your AWS Managed Microsoft AD or Simple AD directory}
 \usage{
-reset_user_password(DirectoryId, UserName, NewPassword)
+reset_user_password(
+  DirectoryId = "string",
+  UserName = "string",
+  NewPassword = "string"
+)
 }
 \arguments{
-\item{DirectoryId}{Identifier of the AWS Managed Microsoft AD or Simple AD directory in which the user resides.}
+\item{DirectoryId}{[required] Identifier of the AWS Managed Microsoft AD or Simple AD directory in which the user resides.}
 
-\item{UserName}{The user name of the user whose password will be reset.}
+\item{UserName}{[required] The user name of the user whose password will be reset.}
 
-\item{NewPassword}{The new password that will be reset.}
+\item{NewPassword}{[required] The new password that will be reset.}
 }
 \description{
 Resets the password for any user in your AWS Managed Microsoft AD or Simple AD directory.

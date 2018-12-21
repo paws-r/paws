@@ -4,10 +4,12 @@
 \alias{stop_notebook_instance}
 \title{Terminates the ML compute instance}
 \usage{
-stop_notebook_instance(NotebookInstanceName)
+stop_notebook_instance(
+  NotebookInstanceName = "string"
+)
 }
 \arguments{
-\item{NotebookInstanceName}{The name of the notebook instance to terminate.}
+\item{NotebookInstanceName}{[required] The name of the notebook instance to terminate.}
 }
 \description{
 Terminates the ML compute instance. Before terminating the instance, Amazon SageMaker disconnects the ML storage volume from it. Amazon SageMaker preserves the ML storage volume.

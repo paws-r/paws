@@ -6,15 +6,22 @@
 \alias{paws.budgets-package}
 \title{paws.budgets: AWS Budgets}
 \description{
-- Cost budgets allow you to say how much you
-want to spend on a service.
+The AWS Budgets API enables you to use AWS Budgets to plan
+your service usage, service costs, and instance reservations. The API
+reference provides descriptions, syntax, and usage examples for each
+of the actions and data types for AWS Budgets.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

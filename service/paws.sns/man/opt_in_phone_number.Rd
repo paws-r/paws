@@ -4,10 +4,12 @@
 \alias{opt_in_phone_number}
 \title{Use this request to opt in a phone number that is opted out, which enables you to resume sending SMS messages to the number}
 \usage{
-opt_in_phone_number(phoneNumber)
+opt_in_phone_number(
+  phoneNumber = "string"
+)
 }
 \arguments{
-\item{phoneNumber}{The phone number to opt in.}
+\item{phoneNumber}{[required] The phone number to opt in.}
 }
 \description{
 Use this request to opt in a phone number that is opted out, which enables you to resume sending SMS messages to the number.

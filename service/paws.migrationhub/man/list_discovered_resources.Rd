@@ -4,13 +4,17 @@
 \alias{list_discovered_resources}
 \title{Lists discovered resources associated with the given \code{MigrationTask}}
 \usage{
-list_discovered_resources(ProgressUpdateStream, MigrationTaskName,
-  NextToken = NULL, MaxResults = NULL)
+list_discovered_resources(
+  ProgressUpdateStream = "string",
+  MigrationTaskName = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{ProgressUpdateStream}{The name of the ProgressUpdateStream.}
+\item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
 
-\item{MigrationTaskName}{The name of the MigrationTask.}
+\item{MigrationTaskName}{[required] The name of the MigrationTask.}
 
 \item{NextToken}{If a \code{NextToken} was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in \code{NextToken}.}
 

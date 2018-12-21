@@ -4,22 +4,25 @@
 \alias{add_role_to_instance_profile}
 \title{Adds the specified IAM role to the specified instance profile}
 \usage{
-add_role_to_instance_profile(InstanceProfileName, RoleName)
+add_role_to_instance_profile(
+  InstanceProfileName = "string",
+  RoleName = "string"
+)
 }
 \arguments{
-\item{InstanceProfileName}{The name of the instance profile to update.
+\item{InstanceProfileName}{[required] The name of the instance profile to update.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
-\item{RoleName}{The name of the role to add.
+\item{RoleName}{[required] The name of the role to add.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
-Adds the specified IAM role to the specified instance profile. An instance profile can contain only one role, and this limit cannot be increased. You can remove the existing role and then add a different role to an instance profile. You must then wait for the change to appear across all of AWS because of \href{https://en.wikipedia.org/wiki/Eventual_consistency}{eventual consistency}. To force the change, you must \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateIamInstanceProfile.html}{disassociate the instance profile} and then \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateIamInstanceProfile.html}{associate the instance profile}, or you can stop your instance and then restart it.
+Adds the specified IAM role to the specified instance profile. An instance profile can contain only one role, and this limit cannot be increased. You can remove the existing role and then add a different role to an instance profile. You must then wait for the change to appear across all of AWS because of \href{https://en.wikipedia.org/wiki/Eventual_consistency}{eventual consistency}. To force the change, you must \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateIamInstanceProfile.html}{disassociate the instance profile} and then \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateIamInstanceProfile.html}{associate the instance profile}, or you can stop your instance and then restart it.
 }
 \details{
-The caller of this API must be granted the \code{PassRole} permission on the IAM role by a permission policy.
+The caller of this API must be granted the \code{PassRole} permission on the IAM role by a permissions policy.
 
 For more information about roles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html}{Working with Roles}. For more information about instance profiles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}.
 }

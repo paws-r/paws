@@ -4,10 +4,13 @@
 \alias{accept_certificate_transfer}
 \title{Accepts a pending certificate transfer}
 \usage{
-accept_certificate_transfer(certificateId, setAsActive = NULL)
+accept_certificate_transfer(
+  certificateId = "string",
+  setAsActive = TRUE|FALSE
+)
 }
 \arguments{
-\item{certificateId}{The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)}
+\item{certificateId}{[required] The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)}
 
 \item{setAsActive}{Specifies whether the certificate is active.}
 }

@@ -4,10 +4,35 @@
 \alias{set_time_based_auto_scaling}
 \title{Specify the time-based auto scaling configuration for a specified instance}
 \usage{
-set_time_based_auto_scaling(InstanceId, AutoScalingSchedule = NULL)
+set_time_based_auto_scaling(
+  InstanceId = "string",
+  AutoScalingSchedule = list(
+    Monday = list(
+      "string"
+    ),
+    Tuesday = list(
+      "string"
+    ),
+    Wednesday = list(
+      "string"
+    ),
+    Thursday = list(
+      "string"
+    ),
+    Friday = list(
+      "string"
+    ),
+    Saturday = list(
+      "string"
+    ),
+    Sunday = list(
+      "string"
+    )
+  )
+)
 }
 \arguments{
-\item{InstanceId}{The instance ID.}
+\item{InstanceId}{[required] The instance ID.}
 
 \item{AutoScalingSchedule}{An \code{AutoScalingSchedule} with the instance schedule.}
 }

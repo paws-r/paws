@@ -4,10 +4,27 @@
 \alias{create_address}
 \title{Creates an address for a Snowball to be shipped to}
 \usage{
-create_address(Address)
+create_address(
+  Address = list(
+    AddressId = "string",
+    Name = "string",
+    Company = "string",
+    Street1 = "string",
+    Street2 = "string",
+    Street3 = "string",
+    City = "string",
+    StateOrProvince = "string",
+    PrefectureOrDistrict = "string",
+    Landmark = "string",
+    Country = "string",
+    PostalCode = "string",
+    PhoneNumber = "string",
+    IsRestricted = TRUE|FALSE
+  )
+)
 }
 \arguments{
-\item{Address}{The address that you want the Snowball shipped to.}
+\item{Address}{[required] The address that you want the Snowball shipped to.}
 }
 \description{
 Creates an address for a Snowball to be shipped to. In most regions, addresses are validated at the time of creation. The address you provide must be located within the serviceable area of your region. If the address is invalid or unsupported, then an exception is thrown.

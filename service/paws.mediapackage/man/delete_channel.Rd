@@ -4,10 +4,12 @@
 \alias{delete_channel}
 \title{Deletes an existing Channel}
 \usage{
-delete_channel(Id)
+delete_channel(
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The ID of the Channel to delete.}
+\item{Id}{[required] The ID of the Channel to delete.}
 }
 \description{
 Deletes an existing Channel.

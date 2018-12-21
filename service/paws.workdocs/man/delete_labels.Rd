@@ -4,11 +4,17 @@
 \alias{delete_labels}
 \title{Deletes the specified list of labels from a resource}
 \usage{
-delete_labels(ResourceId, AuthenticationToken = NULL, Labels = NULL,
-  DeleteAll = NULL)
+delete_labels(
+  ResourceId = "string",
+  AuthenticationToken = "string",
+  Labels = list(
+    "string"
+  ),
+  DeleteAll = TRUE|FALSE
+)
 }
 \arguments{
-\item{ResourceId}{The ID of the resource.}
+\item{ResourceId}{[required] The ID of the resource.}
 
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
 

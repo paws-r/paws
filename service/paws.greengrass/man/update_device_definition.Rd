@@ -4,10 +4,13 @@
 \alias{update_device_definition}
 \title{Updates a device definition}
 \usage{
-update_device_definition(DeviceDefinitionId, Name = NULL)
+update_device_definition(
+  DeviceDefinitionId = "string",
+  Name = "string"
+)
 }
 \arguments{
-\item{DeviceDefinitionId}{The ID of the device definition.}
+\item{DeviceDefinitionId}{[required] The ID of the device definition.}
 
 \item{Name}{The name of the definition.}
 }

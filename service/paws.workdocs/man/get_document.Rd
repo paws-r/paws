@@ -4,13 +4,16 @@
 \alias{get_document}
 \title{Retrieves details of a document}
 \usage{
-get_document(DocumentId, AuthenticationToken = NULL,
-  IncludeCustomMetadata = NULL)
+get_document(
+  AuthenticationToken = "string",
+  DocumentId = "string",
+  IncludeCustomMetadata = TRUE|FALSE
+)
 }
 \arguments{
-\item{DocumentId}{The ID of the document.}
-
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
+
+\item{DocumentId}{[required] The ID of the document.}
 
 \item{IncludeCustomMetadata}{Set this to \code{TRUE} to include custom metadata in the response.}
 }

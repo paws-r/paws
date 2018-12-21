@@ -4,10 +4,13 @@
 \alias{create_slot_type_version}
 \title{Creates a new version of a slot type based on the \code{$LATEST} version of the specified slot type}
 \usage{
-create_slot_type_version(name, checksum = NULL)
+create_slot_type_version(
+  name = "string",
+  checksum = "string"
+)
 }
 \arguments{
-\item{name}{The name of the slot type that you want to create a new version for. The name is case sensitive.}
+\item{name}{[required] The name of the slot type that you want to create a new version for. The name is case sensitive.}
 
 \item{checksum}{Checksum for the \code{$LATEST} version of the slot type that you want to publish. If you specify a checksum and the \code{$LATEST} version of the slot type has a different checksum, Amazon Lex returns a \code{PreconditionFailedException} exception and doesn't publish the new version. If you don't specify a checksum, Amazon Lex publishes the \code{$LATEST} version.}
 }

@@ -4,10 +4,13 @@
 \alias{stop_deployment}
 \title{Attempts to stop an ongoing deployment}
 \usage{
-stop_deployment(deploymentId, autoRollbackEnabled = NULL)
+stop_deployment(
+  deploymentId = "string",
+  autoRollbackEnabled = TRUE|FALSE
+)
 }
 \arguments{
-\item{deploymentId}{The unique ID of a deployment.}
+\item{deploymentId}{[required] The unique ID of a deployment.}
 
 \item{autoRollbackEnabled}{Indicates, when a deployment is stopped, whether instances that have been updated should be rolled back to the previous version of the application revision.}
 }

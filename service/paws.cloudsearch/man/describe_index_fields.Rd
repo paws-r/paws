@@ -4,10 +4,16 @@
 \alias{describe_index_fields}
 \title{Gets information about the index fields configured for the search domain}
 \usage{
-describe_index_fields(DomainName, FieldNames = NULL, Deployed = NULL)
+describe_index_fields(
+  DomainName = "string",
+  FieldNames = list(
+    "string"
+  ),
+  Deployed = TRUE|FALSE
+)
 }
 \arguments{
-\item{DomainName}{The name of the domain you want to describe.}
+\item{DomainName}{[required] The name of the domain you want to describe.}
 
 \item{FieldNames}{A list of the index fields you want to describe. If not specified, information is returned for all configured index fields.}
 

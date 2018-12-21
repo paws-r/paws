@@ -4,12 +4,15 @@
 \alias{get_ip_set}
 \title{Retrieves the IPSet specified by the IPSet ID}
 \usage{
-get_ip_set(DetectorId, IpSetId)
+get_ip_set(
+  DetectorId = "string",
+  IpSetId = "string"
+)
 }
 \arguments{
-\item{DetectorId}{The detectorID that specifies the GuardDuty service whose IPSet you want to retrieve.}
+\item{DetectorId}{[required] The detectorID that specifies the GuardDuty service whose IPSet you want to retrieve.}
 
-\item{IpSetId}{The unique ID that specifies the IPSet that you want to describe.}
+\item{IpSetId}{[required] The unique ID that specifies the IPSet that you want to describe.}
 }
 \description{
 Retrieves the IPSet specified by the IPSet ID.

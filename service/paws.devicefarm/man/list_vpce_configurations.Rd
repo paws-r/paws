@@ -4,7 +4,10 @@
 \alias{list_vpce_configurations}
 \title{Returns information about all Amazon Virtual Private Cloud (VPC) endpoint configurations in the AWS account}
 \usage{
-list_vpce_configurations(maxResults = NULL, nextToken = NULL)
+list_vpce_configurations(
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
 \item{maxResults}{An integer specifying the maximum number of items you want to return in the API response.}

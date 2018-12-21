@@ -4,14 +4,18 @@
 \alias{describe_stack_instance}
 \title{Returns the stack instance that's associated with the specified stack set, AWS account, and region}
 \usage{
-describe_stack_instance(StackSetName, StackInstanceAccount, StackInstanceRegion)
+describe_stack_instance(
+  StackSetName = "string",
+  StackInstanceAccount = "string",
+  StackInstanceRegion = "string"
+)
 }
 \arguments{
-\item{StackSetName}{The name or the unique stack ID of the stack set that you want to get stack instance information for.}
+\item{StackSetName}{[required] The name or the unique stack ID of the stack set that you want to get stack instance information for.}
 
-\item{StackInstanceAccount}{The ID of an AWS account that's associated with this stack instance.}
+\item{StackInstanceAccount}{[required] The ID of an AWS account that's associated with this stack instance.}
 
-\item{StackInstanceRegion}{The name of a region that's associated with this stack instance.}
+\item{StackInstanceRegion}{[required] The name of a region that's associated with this stack instance.}
 }
 \description{
 Returns the stack instance that's associated with the specified stack set, AWS account, and region.

@@ -4,10 +4,12 @@
 \alias{stop_crawler}
 \title{If the specified crawler is running, stops the crawl}
 \usage{
-stop_crawler(Name)
+stop_crawler(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{Name of the crawler to stop.}
+\item{Name}{[required] Name of the crawler to stop.}
 }
 \description{
 If the specified crawler is running, stops the crawl.

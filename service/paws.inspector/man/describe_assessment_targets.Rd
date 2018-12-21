@@ -4,10 +4,14 @@
 \alias{describe_assessment_targets}
 \title{Describes the assessment targets that are specified by the ARNs of the assessment targets}
 \usage{
-describe_assessment_targets(assessmentTargetArns)
+describe_assessment_targets(
+  assessmentTargetArns = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{assessmentTargetArns}{The ARNs that specifies the assessment targets that you want to describe.}
+\item{assessmentTargetArns}{[required] The ARNs that specifies the assessment targets that you want to describe.}
 }
 \description{
 Describes the assessment targets that are specified by the ARNs of the assessment targets.

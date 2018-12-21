@@ -4,13 +4,17 @@
 \alias{admin_list_user_auth_events}
 \title{Lists a history of user activity and any risks detected as part of Amazon Cognito advanced security}
 \usage{
-admin_list_user_auth_events(UserPoolId, Username, MaxResults = NULL,
-  NextToken = NULL)
+admin_list_user_auth_events(
+  UserPoolId = "string",
+  Username = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID.}
+\item{UserPoolId}{[required] The user pool ID.}
 
-\item{Username}{The user pool username or an alias.}
+\item{Username}{[required] The user pool username or an alias.}
 
 \item{MaxResults}{The maximum number of authentication events to return.}
 

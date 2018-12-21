@@ -4,10 +4,15 @@
 \alias{describe_rules_packages}
 \title{Describes the rules packages that are specified by the ARNs of the rules packages}
 \usage{
-describe_rules_packages(rulesPackageArns, locale = NULL)
+describe_rules_packages(
+  rulesPackageArns = list(
+    "string"
+  ),
+  locale = "EN_US"
+)
 }
 \arguments{
-\item{rulesPackageArns}{The ARN that specifies the rules package that you want to describe.}
+\item{rulesPackageArns}{[required] The ARN that specifies the rules package that you want to describe.}
 
 \item{locale}{The locale that you want to translate a rules package description into.}
 }

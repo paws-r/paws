@@ -4,20 +4,24 @@
 \alias{associate_product_with_portfolio}
 \title{Associates the specified product with the specified portfolio}
 \usage{
-associate_product_with_portfolio(ProductId, PortfolioId,
-  AcceptLanguage = NULL, SourcePortfolioId = NULL)
+associate_product_with_portfolio(
+  AcceptLanguage = "string",
+  ProductId = "string",
+  PortfolioId = "string",
+  SourcePortfolioId = "string"
+)
 }
 \arguments{
-\item{ProductId}{The product identifier.}
-
-\item{PortfolioId}{The portfolio identifier.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{ProductId}{[required] The product identifier.}
+
+\item{PortfolioId}{[required] The portfolio identifier.}
 
 \item{SourcePortfolioId}{The identifier of the source portfolio.}
 }

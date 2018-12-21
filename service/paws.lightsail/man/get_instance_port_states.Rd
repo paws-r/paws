@@ -4,10 +4,12 @@
 \alias{get_instance_port_states}
 \title{Returns the port states for a specific virtual private server, or \emph{instance}}
 \usage{
-get_instance_port_states(instanceName)
+get_instance_port_states(
+  instanceName = "string"
+)
 }
 \arguments{
-\item{instanceName}{The name of the instance.}
+\item{instanceName}{[required] The name of the instance.}
 }
 \description{
 Returns the port states for a specific virtual private server, or \emph{instance}.

@@ -4,10 +4,12 @@
 \alias{describe_environment_status}
 \title{Gets status information for an AWS Cloud9 development environment}
 \usage{
-describe_environment_status(environmentId)
+describe_environment_status(
+  environmentId = "string"
+)
 }
 \arguments{
-\item{environmentId}{The ID of the environment to get status information about.}
+\item{environmentId}{[required] The ID of the environment to get status information about.}
 }
 \description{
 Gets status information for an AWS Cloud9 development environment.

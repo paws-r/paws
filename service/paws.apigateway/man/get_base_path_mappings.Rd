@@ -4,10 +4,14 @@
 \alias{get_base_path_mappings}
 \title{Represents a collection of BasePathMapping resources}
 \usage{
-get_base_path_mappings(domainName, position = NULL, limit = NULL)
+get_base_path_mappings(
+  domainName = "string",
+  position = "string",
+  limit = 123
+)
 }
 \arguments{
-\item{domainName}{[Required] The domain name of a BasePathMapping resource.}
+\item{domainName}{[required] [Required] The domain name of a BasePathMapping resource.}
 
 \item{position}{The current pagination position in the paged result set.}
 

@@ -4,23 +4,45 @@
 \alias{get_resource_metrics}
 \title{Retrieve Performance Insights metrics for a set of data sources, over a time period}
 \usage{
-get_resource_metrics(ServiceType, Identifier, MetricQueries, StartTime, EndTime,
-  PeriodInSeconds = NULL, MaxResults = NULL, NextToken = NULL)
+get_resource_metrics(
+  ServiceType = "RDS",
+  Identifier = "string",
+  MetricQueries = list(
+    list(
+      Metric = "string",
+      GroupBy = list(
+        Group = "string",
+        Dimensions = list(
+          "string"
+        ),
+        Limit = 123
+      ),
+      Filter = list(
+        "string"
+      )
+    )
+  ),
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  PeriodInSeconds = 123,
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{ServiceType}{The AWS service for which Performance Insights will return metrics. The only valid value for \emph{ServiceType} is: \code{RDS}}
+\item{ServiceType}{[required] The AWS service for which Performance Insights will return metrics. The only valid value for \emph{ServiceType} is: \code{RDS}}
 
-\item{Identifier}{An immutable, AWS Region-unique identifier for a data source. Performance Insights gathers metrics from this data source.
+\item{Identifier}{[required] An immutable, AWS Region-unique identifier for a data source. Performance Insights gathers metrics from this data source.
 
 To use an Amazon RDS instance as a data source, you specify its \code{DbiResourceId} value - for example: \code{db-FAIHNTYBKTGAUSUZQYPDS2GW4A}}
 
-\item{MetricQueries}{An array of one or more queries to perform. Each query must specify a Performance Insights metric, and can optionally specify aggregation and filtering criteria.}
+\item{MetricQueries}{[required] An array of one or more queries to perform. Each query must specify a Performance Insights metric, and can optionally specify aggregation and filtering criteria.}
 
-\item{StartTime}{The date and time specifying the beginning of the requested time series data. You can't specify a \code{StartTime} that's earlier than 7 days ago. The value specified is \emph{inclusive} - data points equal to or greater than \code{StartTime} will be returned.
+\item{StartTime}{[required] The date and time specifying the beginning of the requested time series data. You can't specify a \code{StartTime} that's earlier than 7 days ago. The value specified is \emph{inclusive} - data points equal to or greater than \code{StartTime} will be returned.
 
 The value for \code{StartTime} must be earlier than the value for \code{EndTime}.}
 
-\item{EndTime}{The date and time specifiying the end of the requested time series data. The value specified is \emph{exclusive} - data points less than (but not equal to) \code{EndTime} will be returned.
+\item{EndTime}{[required] The date and time specifiying the end of the requested time series data. The value specified is \emph{exclusive} - data points less than (but not equal to) \code{EndTime} will be returned.
 
 The value for \code{EndTime} must be later than the value for \code{StartTime}.}
 

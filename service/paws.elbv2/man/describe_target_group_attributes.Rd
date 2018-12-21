@@ -4,10 +4,12 @@
 \alias{describe_target_group_attributes}
 \title{Describes the attributes for the specified target group}
 \usage{
-describe_target_group_attributes(TargetGroupArn)
+describe_target_group_attributes(
+  TargetGroupArn = "string"
+)
 }
 \arguments{
-\item{TargetGroupArn}{The Amazon Resource Name (ARN) of the target group.}
+\item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
 }
 \description{
 Describes the attributes for the specified target group.

@@ -4,7 +4,9 @@
 \alias{deregister_webhook_with_third_party}
 \title{Removes the connection between the webhook that was created by CodePipeline and the external tool with events to be detected}
 \usage{
-deregister_webhook_with_third_party(webhookName = NULL)
+deregister_webhook_with_third_party(
+  webhookName = "string"
+)
 }
 \arguments{
 \item{webhookName}{The name of the webhook you want to deregister.}

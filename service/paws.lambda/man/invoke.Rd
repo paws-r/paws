@@ -4,11 +4,17 @@
 \alias{invoke}
 \title{Invokes a Lambda function}
 \usage{
-invoke(FunctionName, InvocationType = NULL, LogType = NULL,
-  ClientContext = NULL, Payload = NULL, Qualifier = NULL)
+invoke(
+  FunctionName = "string",
+  InvocationType = "Event"|"RequestResponse"|"DryRun",
+  LogType = "None"|"Tail",
+  ClientContext = "string",
+  Payload = raw,
+  Qualifier = "string"
+)
 }
 \arguments{
-\item{FunctionName}{The name of the lambda function.
+\item{FunctionName}{[required] The name of the Lambda function.
 
 \strong{Name formats}
 \itemize{

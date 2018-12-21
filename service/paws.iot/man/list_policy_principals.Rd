@@ -4,11 +4,15 @@
 \alias{list_policy_principals}
 \title{Lists the principals associated with the specified policy}
 \usage{
-list_policy_principals(policyName, marker = NULL, pageSize = NULL,
-  ascendingOrder = NULL)
+list_policy_principals(
+  policyName = "string",
+  marker = "string",
+  pageSize = 123,
+  ascendingOrder = TRUE|FALSE
+)
 }
 \arguments{
-\item{policyName}{The policy name.}
+\item{policyName}{[required] The policy name.}
 
 \item{marker}{The marker for the next set of results.}
 

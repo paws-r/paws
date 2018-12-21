@@ -4,7 +4,9 @@
 \alias{list_security_configurations}
 \title{Lists all the security configurations visible to this account, providing their creation dates and times, and their names}
 \usage{
-list_security_configurations(Marker = NULL)
+list_security_configurations(
+  Marker = "string"
+)
 }
 \arguments{
 \item{Marker}{The pagination token that indicates the set of results to retrieve.}

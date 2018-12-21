@@ -4,10 +4,13 @@
 \alias{delete_cache_cluster}
 \title{Deletes a previously provisioned cluster}
 \usage{
-delete_cache_cluster(CacheClusterId, FinalSnapshotIdentifier = NULL)
+delete_cache_cluster(
+  CacheClusterId = "string",
+  FinalSnapshotIdentifier = "string"
+)
 }
 \arguments{
-\item{CacheClusterId}{The cluster identifier for the cluster to be deleted. This parameter is not case sensitive.}
+\item{CacheClusterId}{[required] The cluster identifier for the cluster to be deleted. This parameter is not case sensitive.}
 
 \item{FinalSnapshotIdentifier}{The user-supplied name of a final cluster snapshot. This is the unique name that identifies the snapshot. ElastiCache creates the snapshot, and then deletes the cluster immediately afterward.}
 }

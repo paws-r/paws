@@ -4,10 +4,14 @@
 \alias{list_groups}
 \title{Lists the groups associated with a user pool}
 \usage{
-list_groups(UserPoolId, Limit = NULL, NextToken = NULL)
+list_groups(
+  UserPoolId = "string",
+  Limit = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The user pool ID for the user pool.}
 
 \item{Limit}{The limit of the request to list groups.}
 

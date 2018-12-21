@@ -4,12 +4,23 @@
 \alias{copy_db_cluster_snapshot}
 \title{Copies a snapshot of a DB cluster}
 \usage{
-copy_db_cluster_snapshot(SourceDBClusterSnapshotIdentifier,
-  TargetDBClusterSnapshotIdentifier, KmsKeyId = NULL, PreSignedUrl = NULL,
-  CopyTags = NULL, Tags = NULL, SourceRegion = NULL)
+copy_db_cluster_snapshot(
+  SourceDBClusterSnapshotIdentifier = "string",
+  TargetDBClusterSnapshotIdentifier = "string",
+  KmsKeyId = "string",
+  PreSignedUrl = "string",
+  CopyTags = TRUE|FALSE,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  SourceRegion = "string"
+)
 }
 \arguments{
-\item{SourceDBClusterSnapshotIdentifier}{The identifier of the DB cluster snapshot to copy. This parameter is not case-sensitive.
+\item{SourceDBClusterSnapshotIdentifier}{[required] The identifier of the DB cluster snapshot to copy. This parameter is not case-sensitive.
 
 You can't copy an encrypted, shared DB cluster snapshot from one AWS Region to another.
 
@@ -22,7 +33,7 @@ Constraints:
 
 Example: \code{my-cluster-snapshot1}}
 
-\item{TargetDBClusterSnapshotIdentifier}{The identifier of the new DB cluster snapshot to create from the source DB cluster snapshot. This parameter is not case-sensitive.
+\item{TargetDBClusterSnapshotIdentifier}{[required] The identifier of the new DB cluster snapshot to create from the source DB cluster snapshot. This parameter is not case-sensitive.
 
 Constraints:
 \itemize{

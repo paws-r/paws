@@ -4,14 +4,20 @@
 \alias{predict}
 \title{Generates a prediction for the observation using the specified \code{ML Model}}
 \usage{
-predict(MLModelId, Record, PredictEndpoint)
+predict(
+  MLModelId = "string",
+  Record = list(
+    "string"
+  ),
+  PredictEndpoint = "string"
+)
 }
 \arguments{
-\item{MLModelId}{A unique identifier of the \code{MLModel}.}
+\item{MLModelId}{[required] A unique identifier of the \code{MLModel}.}
 
-\item{Record}{}
+\item{Record}{[required]}
 
-\item{PredictEndpoint}{}
+\item{PredictEndpoint}{[required]}
 }
 \description{
 Generates a prediction for the observation using the specified \code{ML Model}.

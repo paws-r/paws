@@ -4,12 +4,22 @@
 \alias{list_instances}
 \title{Provides information for all active EC2 instances and EC2 instances terminated in the last 30 days, up to a maximum of 2,000}
 \usage{
-list_instances(ClusterId, InstanceGroupId = NULL, InstanceGroupTypes = NULL,
-  InstanceFleetId = NULL, InstanceFleetType = NULL, InstanceStates = NULL,
-  Marker = NULL)
+list_instances(
+  ClusterId = "string",
+  InstanceGroupId = "string",
+  InstanceGroupTypes = list(
+    "MASTER"|"CORE"|"TASK"
+  ),
+  InstanceFleetId = "string",
+  InstanceFleetType = "MASTER"|"CORE"|"TASK",
+  InstanceStates = list(
+    "AWAITING_FULFILLMENT"|"PROVISIONING"|"BOOTSTRAPPING"|"RUNNING"|"TERMINATED"
+  ),
+  Marker = "string"
+)
 }
 \arguments{
-\item{ClusterId}{The identifier of the cluster for which to list the instances.}
+\item{ClusterId}{[required] The identifier of the cluster for which to list the instances.}
 
 \item{InstanceGroupId}{The identifier of the instance group for which to list the instances.}
 

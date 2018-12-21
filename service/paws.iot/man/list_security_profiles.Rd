@@ -4,7 +4,10 @@
 \alias{list_security_profiles}
 \title{Lists the Device Defender security profiles you have created}
 \usage{
-list_security_profiles(nextToken = NULL, maxResults = NULL)
+list_security_profiles(
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{nextToken}{The token for the next set of results.}

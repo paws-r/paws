@@ -4,10 +4,12 @@
 \alias{register_default_patch_baseline}
 \title{Defines the default patch baseline}
 \usage{
-register_default_patch_baseline(BaselineId)
+register_default_patch_baseline(
+  BaselineId = "string"
+)
 }
 \arguments{
-\item{BaselineId}{The ID of the patch baseline that should be the default patch baseline.}
+\item{BaselineId}{[required] The ID of the patch baseline that should be the default patch baseline.}
 }
 \description{
 Defines the default patch baseline.

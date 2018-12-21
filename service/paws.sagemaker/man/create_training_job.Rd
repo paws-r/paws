@@ -4,16 +4,85 @@
 \alias{create_training_job}
 \title{Starts a model training job}
 \usage{
-create_training_job(TrainingJobName, AlgorithmSpecification, RoleArn,
-  InputDataConfig, OutputDataConfig, ResourceConfig, StoppingCondition,
-  HyperParameters = NULL, VpcConfig = NULL, Tags = NULL)
+create_training_job(
+  TrainingJobName = "string",
+  HyperParameters = list(
+    "string"
+  ),
+  AlgorithmSpecification = list(
+    TrainingImage = "string",
+    AlgorithmName = "string",
+    TrainingInputMode = "Pipe"|"File",
+    MetricDefinitions = list(
+      list(
+        Name = "string",
+        Regex = "string"
+      )
+    )
+  ),
+  RoleArn = "string",
+  InputDataConfig = list(
+    list(
+      ChannelName = "string",
+      DataSource = list(
+        S3DataSource = list(
+          S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
+          S3Uri = "string",
+          S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+          AttributeNames = list(
+            "string"
+          )
+        )
+      ),
+      ContentType = "string",
+      CompressionType = "None"|"Gzip",
+      RecordWrapperType = "None"|"RecordIO",
+      InputMode = "Pipe"|"File",
+      ShuffleConfig = list(
+        Seed = 123
+      )
+    )
+  ),
+  OutputDataConfig = list(
+    KmsKeyId = "string",
+    S3OutputPath = "string"
+  ),
+  ResourceConfig = list(
+    InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge",
+    InstanceCount = 123,
+    VolumeSizeInGB = 123,
+    VolumeKmsKeyId = "string"
+  ),
+  VpcConfig = list(
+    SecurityGroupIds = list(
+      "string"
+    ),
+    Subnets = list(
+      "string"
+    )
+  ),
+  StoppingCondition = list(
+    MaxRuntimeInSeconds = 123
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  EnableNetworkIsolation = TRUE|FALSE
+)
 }
 \arguments{
-\item{TrainingJobName}{The name of the training job. The name must be unique within an AWS Region in an AWS account.}
+\item{TrainingJobName}{[required] The name of the training job. The name must be unique within an AWS Region in an AWS account.}
 
-\item{AlgorithmSpecification}{The registry path of the Docker image that contains the training algorithm and algorithm-specific metadata, including the input mode. For more information about algorithms provided by Amazon SageMaker, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html}{Algorithms}. For information about providing your own algorithms, see your-algorithms.}
+\item{HyperParameters}{Algorithm-specific parameters that influence the quality of the model. You set hyperparameters before you start the learning process. For a list of hyperparameters for each training algorithm provided by Amazon SageMaker, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html}{Algorithms}.
 
-\item{RoleArn}{The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can assume to perform tasks on your behalf.
+You can specify a maximum of 100 hyperparameters. Each hyperparameter is a key-value pair. Each key and value is limited to 256 characters, as specified by the \code{Length Constraint}.}
+
+\item{AlgorithmSpecification}{[required] The registry path of the Docker image that contains the training algorithm and algorithm-specific metadata, including the input mode. For more information about algorithms provided by Amazon SageMaker, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html}{Algorithms}. For information about providing your own algorithms, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html}{Using Your Own Algorithms with Amazon SageMaker}.}
+
+\item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can assume to perform tasks on your behalf.
 
 During model training, Amazon SageMaker needs your permission to read input data from an S3 bucket, download a Docker image that contains training code, write model artifacts to an S3 bucket, write logs to Amazon CloudWatch Logs, and publish metrics to Amazon CloudWatch. You grant permissions for all of these tasks to an IAM role. For more information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{Amazon SageMaker Roles}.
 
@@ -25,23 +94,23 @@ Algorithms can accept input data from one or more channels. For example, an algo
 
 Depending on the input mode that the algorithm supports, Amazon SageMaker either copies input data files from an S3 bucket to a local directory in the Docker container, or makes it available as input streams.}
 
-\item{OutputDataConfig}{Specifies the path to the S3 bucket where you want to store model artifacts. Amazon SageMaker creates subfolders for the artifacts.}
+\item{OutputDataConfig}{[required] Specifies the path to the S3 bucket where you want to store model artifacts. Amazon SageMaker creates subfolders for the artifacts.}
 
-\item{ResourceConfig}{The resources, including the ML compute instances and ML storage volumes, to use for model training.
+\item{ResourceConfig}{[required] The resources, including the ML compute instances and ML storage volumes, to use for model training.
 
 ML storage volumes store model artifacts and incremental states. Training algorithms might also use ML storage volumes for scratch space. If you want Amazon SageMaker to use the ML storage volume to store the training data, choose \code{File} as the \code{TrainingInputMode} in the algorithm specification. For distributed training algorithms, specify an instance count greater than 1.}
 
-\item{StoppingCondition}{Sets a duration for training. Use this parameter to cap model training costs. To stop a job, Amazon SageMaker sends the algorithm the \code{SIGTERM} signal, which delays job termination for 120 seconds. Algorithms might use this 120-second window to save the model artifacts.
+\item{VpcConfig}{A VpcConfig object that specifies the VPC that you want your training job to connect to. Control access to and from your training container by configuring the VPC. For more information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html}{Protect Training Jobs by Using an Amazon Virtual Private Cloud}.}
+
+\item{StoppingCondition}{[required] Sets a duration for training. Use this parameter to cap model training costs. To stop a job, Amazon SageMaker sends the algorithm the \code{SIGTERM} signal, which delays job termination for 120 seconds. Algorithms might use this 120-second window to save the model artifacts.
 
 When Amazon SageMaker terminates a job because the stopping condition has been met, training algorithms provided by Amazon SageMaker save the intermediate results of the job. This intermediate data is a valid model artifact. You can use it to create a model using the \code{CreateModel} API.}
 
-\item{HyperParameters}{Algorithm-specific parameters that influence the quality of the model. You set hyperparameters before you start the learning process. For a list of hyperparameters for each training algorithm provided by Amazon SageMaker, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html}{Algorithms}.
-
-You can specify a maximum of 100 hyperparameters. Each hyperparameter is a key-value pair. Each key and value is limited to 256 characters, as specified by the \code{Length Constraint}.}
-
-\item{VpcConfig}{A VpcConfig object that specifies the VPC that you want your training job to connect to. Control access to and from your training container by configuring the VPC. For more information, see train-vpc}
-
 \item{Tags}{An array of key-value pairs. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags} in the \emph{AWS Billing and Cost Management User Guide}.}
+
+\item{EnableNetworkIsolation}{Isolates the training container. No inbound or outbound network calls can be made, except for calls between peers within a training cluster for distributed training. If network isolation is used for training jobs that are configured to use a VPC, Amazon SageMaker downloads and uploads customer data and model artifacts through the specifed VPC, but the training container does not have network access.
+
+The Semantic Segmentation built-in algorithm does not support network isolation.}
 }
 \description{
 Starts a model training job. After training completes, Amazon SageMaker saves the resulting model artifacts to an Amazon S3 location that you specify.

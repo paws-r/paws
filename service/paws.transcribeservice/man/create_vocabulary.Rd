@@ -4,17 +4,23 @@
 \alias{create_vocabulary}
 \title{Creates a new custom vocabulary that you can use to change the way Amazon Transcribe handles transcription of an audio file}
 \usage{
-create_vocabulary(VocabularyName, LanguageCode, Phrases)
+create_vocabulary(
+  VocabularyName = "string",
+  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT",
+  Phrases = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{VocabularyName}{The name of the vocabulary. The name must be unique within an AWS account. The name is case-sensitive.}
+\item{VocabularyName}{[required] The name of the vocabulary. The name must be unique within an AWS account. The name is case-sensitive.}
 
-\item{LanguageCode}{The language code of the vocabulary entries.}
+\item{LanguageCode}{[required] The language code of the vocabulary entries.}
 
-\item{Phrases}{An array of strings that contains the vocabulary entries.}
+\item{Phrases}{[required] An array of strings that contains the vocabulary entries.}
 }
 \description{
-Creates a new custom vocabulary that you can use to change the way Amazon Transcribe handles transcription of an audio file. Note that vocabularies for en-AU, en-UK, and fr-CA languages that are in preview are not available. In the console, the vocabulary section will be greyed-out and SDK will return error message.
+Creates a new custom vocabulary that you can use to change the way Amazon Transcribe handles transcription of an audio file.
 }
 \examples{
 

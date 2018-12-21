@@ -4,12 +4,21 @@
 \alias{put_records}
 \title{Writes multiple data records into a Kinesis data stream in a single call (also referred to as a \code{PutRecords} request)}
 \usage{
-put_records(Records, StreamName)
+put_records(
+  Records = list(
+    list(
+      Data = raw,
+      ExplicitHashKey = "string",
+      PartitionKey = "string"
+    )
+  ),
+  StreamName = "string"
+)
 }
 \arguments{
-\item{Records}{The records associated with the request.}
+\item{Records}{[required] The records associated with the request.}
 
-\item{StreamName}{The stream name associated with the request.}
+\item{StreamName}{[required] The stream name associated with the request.}
 }
 \description{
 Writes multiple data records into a Kinesis data stream in a single call (also referred to as a \code{PutRecords} request). Use this operation to send data into the stream for data ingestion and processing.

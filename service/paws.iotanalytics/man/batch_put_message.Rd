@@ -4,12 +4,20 @@
 \alias{batch_put_message}
 \title{Sends messages to a channel}
 \usage{
-batch_put_message(channelName, messages)
+batch_put_message(
+  channelName = "string",
+  messages = list(
+    list(
+      messageId = "string",
+      payload = raw
+    )
+  )
+)
 }
 \arguments{
-\item{channelName}{The name of the channel where the messages are sent.}
+\item{channelName}{[required] The name of the channel where the messages are sent.}
 
-\item{messages}{The list of messages to be sent. Each message has format: '{ "messageId": "string", "payload": "string"}'.}
+\item{messages}{[required] The list of messages to be sent. Each message has format: '{ "messageId": "string", "payload": "string"}'.}
 }
 \description{
 Sends messages to a channel.

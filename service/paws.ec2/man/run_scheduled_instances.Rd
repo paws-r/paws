@@ -4,14 +4,80 @@
 \alias{run_scheduled_instances}
 \title{Launches the specified Scheduled Instances}
 \usage{
-run_scheduled_instances(LaunchSpecification, ScheduledInstanceId,
-  ClientToken = NULL, DryRun = NULL, InstanceCount = NULL)
+run_scheduled_instances(
+  ClientToken = "string",
+  DryRun = TRUE|FALSE,
+  InstanceCount = 123,
+  LaunchSpecification = list(
+    BlockDeviceMappings = list(
+      list(
+        DeviceName = "string",
+        Ebs = list(
+          DeleteOnTermination = TRUE|FALSE,
+          Encrypted = TRUE|FALSE,
+          Iops = 123,
+          SnapshotId = "string",
+          VolumeSize = 123,
+          VolumeType = "string"
+        ),
+        NoDevice = "string",
+        VirtualName = "string"
+      )
+    ),
+    EbsOptimized = TRUE|FALSE,
+    IamInstanceProfile = list(
+      Arn = "string",
+      Name = "string"
+    ),
+    ImageId = "string",
+    InstanceType = "string",
+    KernelId = "string",
+    KeyName = "string",
+    Monitoring = list(
+      Enabled = TRUE|FALSE
+    ),
+    NetworkInterfaces = list(
+      list(
+        AssociatePublicIpAddress = TRUE|FALSE,
+        DeleteOnTermination = TRUE|FALSE,
+        Description = "string",
+        DeviceIndex = 123,
+        Groups = list(
+          "string"
+        ),
+        Ipv6AddressCount = 123,
+        Ipv6Addresses = list(
+          list(
+            Ipv6Address = "string"
+          )
+        ),
+        NetworkInterfaceId = "string",
+        PrivateIpAddress = "string",
+        PrivateIpAddressConfigs = list(
+          list(
+            Primary = TRUE|FALSE,
+            PrivateIpAddress = "string"
+          )
+        ),
+        SecondaryPrivateIpAddressCount = 123,
+        SubnetId = "string"
+      )
+    ),
+    Placement = list(
+      AvailabilityZone = "string",
+      GroupName = "string"
+    ),
+    RamdiskId = "string",
+    SecurityGroupIds = list(
+      "string"
+    ),
+    SubnetId = "string",
+    UserData = "string"
+  ),
+  ScheduledInstanceId = "string"
+)
 }
 \arguments{
-\item{LaunchSpecification}{The launch specification. You must match the instance type, Availability Zone, network, and platform of the schedule that you purchased.}
-
-\item{ScheduledInstanceId}{The Scheduled Instance ID.}
-
 \item{ClientToken}{Unique, case-sensitive identifier that ensures the idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -19,6 +85,10 @@ run_scheduled_instances(LaunchSpecification, ScheduledInstanceId,
 \item{InstanceCount}{The number of instances.
 
 Default: 1}
+
+\item{LaunchSpecification}{[required] The launch specification. You must match the instance type, Availability Zone, network, and platform of the schedule that you purchased.}
+
+\item{ScheduledInstanceId}{[required] The Scheduled Instance ID.}
 }
 \description{
 Launches the specified Scheduled Instances.

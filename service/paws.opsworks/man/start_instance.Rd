@@ -4,10 +4,12 @@
 \alias{start_instance}
 \title{Starts a specified instance}
 \usage{
-start_instance(InstanceId)
+start_instance(
+  InstanceId = "string"
+)
 }
 \arguments{
-\item{InstanceId}{The instance ID.}
+\item{InstanceId}{[required] The instance ID.}
 }
 \description{
 Starts a specified instance. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html}{Starting, Stopping, and Rebooting Instances}.

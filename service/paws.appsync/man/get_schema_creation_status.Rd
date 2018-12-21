@@ -4,10 +4,12 @@
 \alias{get_schema_creation_status}
 \title{Retrieves the current status of a schema creation operation}
 \usage{
-get_schema_creation_status(apiId)
+get_schema_creation_status(
+  apiId = "string"
+)
 }
 \arguments{
-\item{apiId}{The API ID.}
+\item{apiId}{[required] The API ID.}
 }
 \description{
 Retrieves the current status of a schema creation operation.

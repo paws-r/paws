@@ -4,8 +4,17 @@
 \alias{describe_snapshot_copy_grants}
 \title{Returns a list of snapshot copy grants owned by the AWS account in the destination region}
 \usage{
-describe_snapshot_copy_grants(SnapshotCopyGrantName = NULL,
-  MaxRecords = NULL, Marker = NULL, TagKeys = NULL, TagValues = NULL)
+describe_snapshot_copy_grants(
+  SnapshotCopyGrantName = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  TagKeys = list(
+    "string"
+  ),
+  TagValues = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{SnapshotCopyGrantName}{The name of the snapshot copy grant.}

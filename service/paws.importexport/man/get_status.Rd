@@ -4,10 +4,13 @@
 \alias{get_status}
 \title{This operation returns information about a job, including where the job is in the processing pipeline, the status of the results, and the signature value associated with the job}
 \usage{
-get_status(JobId, APIVersion = NULL)
+get_status(
+  JobId = "string",
+  APIVersion = "string"
+)
 }
 \arguments{
-\item{JobId}{}
+\item{JobId}{[required]}
 
 \item{APIVersion}{}
 }

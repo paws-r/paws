@@ -4,11 +4,19 @@
 \alias{update_compute_environment}
 \title{Updates an AWS Batch compute environment}
 \usage{
-update_compute_environment(computeEnvironment, state = NULL,
-  computeResources = NULL, serviceRole = NULL)
+update_compute_environment(
+  computeEnvironment = "string",
+  state = "ENABLED"|"DISABLED",
+  computeResources = list(
+    minvCpus = 123,
+    maxvCpus = 123,
+    desiredvCpus = 123
+  ),
+  serviceRole = "string"
+)
 }
 \arguments{
-\item{computeEnvironment}{The name or full Amazon Resource Name (ARN) of the compute environment to update.}
+\item{computeEnvironment}{[required] The name or full Amazon Resource Name (ARN) of the compute environment to update.}
 
 \item{state}{The state of the compute environment. Compute environments in the \code{ENABLED} state can accept jobs from a queue and scale in or out automatically based on the workload demand of its associated queues.}
 

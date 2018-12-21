@@ -4,7 +4,9 @@
 \alias{import_catalog_to_glue}
 \title{Imports an existing Athena Data Catalog to AWS Glue}
 \usage{
-import_catalog_to_glue(CatalogId = NULL)
+import_catalog_to_glue(
+  CatalogId = "string"
+)
 }
 \arguments{
 \item{CatalogId}{The ID of the catalog to import. Currently, this should be the AWS account ID.}

@@ -4,13 +4,18 @@
 \alias{execute_policy}
 \title{Executes the specified policy}
 \usage{
-execute_policy(PolicyName, AutoScalingGroupName = NULL,
-  HonorCooldown = NULL, MetricValue = NULL, BreachThreshold = NULL)
+execute_policy(
+  AutoScalingGroupName = "string",
+  PolicyName = "string",
+  HonorCooldown = TRUE|FALSE,
+  MetricValue = 123.0,
+  BreachThreshold = 123.0
+)
 }
 \arguments{
-\item{PolicyName}{The name or ARN of the policy.}
-
 \item{AutoScalingGroupName}{The name of the Auto Scaling group.}
+
+\item{PolicyName}{[required] The name or ARN of the policy.}
 
 \item{HonorCooldown}{Indicates whether Amazon EC2 Auto Scaling waits for the cooldown period to complete before executing the policy.
 

@@ -4,19 +4,30 @@
 \alias{create_microsoft_ad}
 \title{Creates an AWS Managed Microsoft AD directory}
 \usage{
-create_microsoft_ad(Name, Password, VpcSettings, ShortName = NULL,
-  Description = NULL, Edition = NULL)
+create_microsoft_ad(
+  Name = "string",
+  ShortName = "string",
+  Password = "string",
+  Description = "string",
+  VpcSettings = list(
+    VpcId = "string",
+    SubnetIds = list(
+      "string"
+    )
+  ),
+  Edition = "Enterprise"|"Standard"
+)
 }
 \arguments{
-\item{Name}{The fully qualified domain name for the directory, such as \code{corp.example.com}. This name will resolve inside your VPC only. It does not need to be publicly resolvable.}
-
-\item{Password}{The password for the default administrative user named \code{Admin}.}
-
-\item{VpcSettings}{Contains VPC information for the CreateDirectory or CreateMicrosoftAD operation.}
+\item{Name}{[required] The fully qualified domain name for the directory, such as \code{corp.example.com}. This name will resolve inside your VPC only. It does not need to be publicly resolvable.}
 
 \item{ShortName}{The NetBIOS name for your domain. A short identifier for your domain, such as \code{CORP}. If you don't specify a NetBIOS name, it will default to the first part of your directory DNS. For example, \code{CORP} for the directory DNS \code{corp.example.com}.}
 
+\item{Password}{[required] The password for the default administrative user named \code{Admin}.}
+
 \item{Description}{A textual description for the directory. This label will appear on the AWS console \code{Directory Details} page after the directory is created.}
+
+\item{VpcSettings}{[required] Contains VPC information for the CreateDirectory or CreateMicrosoftAD operation.}
 
 \item{Edition}{AWS Managed Microsoft AD is available in two editions: Standard and Enterprise. Enterprise is the default.}
 }

@@ -4,10 +4,12 @@
 \alias{describe_stack_set}
 \title{Returns the description of the specified stack set}
 \usage{
-describe_stack_set(StackSetName)
+describe_stack_set(
+  StackSetName = "string"
+)
 }
 \arguments{
-\item{StackSetName}{The name or unique ID of the stack set whose description you want.}
+\item{StackSetName}{[required] The name or unique ID of the stack set whose description you want.}
 }
 \description{
 Returns the description of the specified stack set.

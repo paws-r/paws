@@ -4,8 +4,20 @@
 \alias{describe_reserved_instances_modifications}
 \title{Describes the modifications made to your Reserved Instances}
 \usage{
-describe_reserved_instances_modifications(Filters = NULL,
-  ReservedInstancesModificationIds = NULL, NextToken = NULL)
+describe_reserved_instances_modifications(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  ReservedInstancesModificationIds = list(
+    "string"
+  ),
+  NextToken = "string"
+)
 }
 \arguments{
 \item{Filters}{One or more filters.

@@ -4,10 +4,12 @@
 \alias{delete_template}
 \title{Deletes an email template}
 \usage{
-delete_template(TemplateName)
+delete_template(
+  TemplateName = "string"
+)
 }
 \arguments{
-\item{TemplateName}{The name of the template to be deleted.}
+\item{TemplateName}{[required] The name of the template to be deleted.}
 }
 \description{
 Deletes an email template.

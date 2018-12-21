@@ -4,10 +4,13 @@
 \alias{get_alias}
 \title{Returns the specified alias information such as the alias ARN, description, and function version it is pointing to}
 \usage{
-get_alias(FunctionName, Name)
+get_alias(
+  FunctionName = "string",
+  Name = "string"
+)
 }
 \arguments{
-\item{FunctionName}{The name of the lambda function.
+\item{FunctionName}{[required] The name of the lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -18,7 +21,7 @@ get_alias(FunctionName, Name)
 
 The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
-\item{Name}{Name of the alias for which you want to retrieve information.}
+\item{Name}{[required] Name of the alias for which you want to retrieve information.}
 }
 \description{
 Returns the specified alias information such as the alias ARN, description, and function version it is pointing to. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html}{Introduction to AWS Lambda Aliases}.

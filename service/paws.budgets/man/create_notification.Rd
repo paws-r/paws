@@ -4,16 +4,32 @@
 \alias{create_notification}
 \title{Creates a notification}
 \usage{
-create_notification(AccountId, BudgetName, Notification, Subscribers)
+create_notification(
+  AccountId = "string",
+  BudgetName = "string",
+  Notification = list(
+    NotificationType = "ACTUAL"|"FORECASTED",
+    ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
+    Threshold = 123.0,
+    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+    NotificationState = "OK"|"ALARM"
+  ),
+  Subscribers = list(
+    list(
+      SubscriptionType = "SNS"|"EMAIL",
+      Address = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{AccountId}{The \code{accountId} that is associated with the budget that you want to create a notification for.}
+\item{AccountId}{[required] The \code{accountId} that is associated with the budget that you want to create a notification for.}
 
-\item{BudgetName}{The name of the budget that you want AWS to notified you about. Budget names must be unique within an account.}
+\item{BudgetName}{[required] The name of the budget that you want AWS to notify you about. Budget names must be unique within an account.}
 
-\item{Notification}{The notification that you want to create.}
+\item{Notification}{[required] The notification that you want to create.}
 
-\item{Subscribers}{A list of subscribers that you want to associate with the notification. Each notification can have one SNS subscriber and up to ten email subscribers.}
+\item{Subscribers}{[required] A list of subscribers that you want to associate with the notification. Each notification can have one SNS subscriber and up to 10 email subscribers.}
 }
 \description{
 Creates a notification. You must create the budget before you create the associated notification.

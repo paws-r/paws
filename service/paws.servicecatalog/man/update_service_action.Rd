@@ -4,11 +4,18 @@
 \alias{update_service_action}
 \title{Updates a self-service action}
 \usage{
-update_service_action(Id, Name = NULL, Definition = NULL,
-  Description = NULL, AcceptLanguage = NULL)
+update_service_action(
+  Id = "string",
+  Name = "string",
+  Definition = list(
+    "string"
+  ),
+  Description = "string",
+  AcceptLanguage = "string"
+)
 }
 \arguments{
-\item{Id}{The self-service action identifier.}
+\item{Id}{[required] The self-service action identifier.}
 
 \item{Name}{The self-service action name.}
 

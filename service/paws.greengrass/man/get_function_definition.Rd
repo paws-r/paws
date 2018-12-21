@@ -4,10 +4,12 @@
 \alias{get_function_definition}
 \title{Retrieves information about a Lambda function definition, including its creation time and latest version}
 \usage{
-get_function_definition(FunctionDefinitionId)
+get_function_definition(
+  FunctionDefinitionId = "string"
+)
 }
 \arguments{
-\item{FunctionDefinitionId}{The ID of the Lambda function definition.}
+\item{FunctionDefinitionId}{[required] The ID of the Lambda function definition.}
 }
 \description{
 Retrieves information about a Lambda function definition, including its creation time and latest version.

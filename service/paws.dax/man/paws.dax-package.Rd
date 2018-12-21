@@ -6,8 +6,8 @@
 \alias{paws.dax-package}
 \title{paws.dax: Amazon DynamoDB Accelerator (DAX)}
 \description{
-DAX is a managed caching service engineered for
-Amazon DynamoDB. DAX dramatically speeds up database reads by caching
+DAX is a managed caching service engineered for Amazon
+DynamoDB. DAX dramatically speeds up database reads by caching
 frequently-accessed data from DynamoDB, so applications can access
 that data with sub-millisecond latency. You can create a DAX cluster
 easily, using the AWS Management Console. With a few simple
@@ -20,7 +20,12 @@ read performance.
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

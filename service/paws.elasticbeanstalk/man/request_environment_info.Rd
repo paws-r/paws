@@ -4,12 +4,13 @@
 \alias{request_environment_info}
 \title{Initiates a request to compile the specified type of information of the deployed environment}
 \usage{
-request_environment_info(InfoType, EnvironmentId = NULL,
-  EnvironmentName = NULL)
+request_environment_info(
+  EnvironmentId = "string",
+  EnvironmentName = "string",
+  InfoType = "tail"|"bundle"
+)
 }
 \arguments{
-\item{InfoType}{The type of information to request.}
-
 \item{EnvironmentId}{The ID of the environment of the requested data.
 
 If no such environment is found, \code{RequestEnvironmentInfo} returns an \code{InvalidParameterValue} error.
@@ -21,6 +22,8 @@ Condition: You must specify either this or an EnvironmentName, or both. If you d
 If no such environment is found, \code{RequestEnvironmentInfo} returns an \code{InvalidParameterValue} error.
 
 Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
+
+\item{InfoType}{[required] The type of information to request.}
 }
 \description{
 Initiates a request to compile the specified type of information of the deployed environment.

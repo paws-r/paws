@@ -4,12 +4,15 @@
 \alias{delete_chap_credentials}
 \title{Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target and initiator pair}
 \usage{
-delete_chap_credentials(TargetARN, InitiatorName)
+delete_chap_credentials(
+  TargetARN = "string",
+  InitiatorName = "string"
+)
 }
 \arguments{
-\item{TargetARN}{The Amazon Resource Name (ARN) of the iSCSI volume target. Use the DescribeStorediSCSIVolumes operation to return to retrieve the TargetARN for specified VolumeARN.}
+\item{TargetARN}{[required] The Amazon Resource Name (ARN) of the iSCSI volume target. Use the DescribeStorediSCSIVolumes operation to return to retrieve the TargetARN for specified VolumeARN.}
 
-\item{InitiatorName}{The iSCSI initiator that connects to the target.}
+\item{InitiatorName}{[required] The iSCSI initiator that connects to the target.}
 }
 \description{
 Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target and initiator pair.

@@ -4,12 +4,20 @@
 \alias{add_permission}
 \title{Adds a permission to the resource policy associated with the specified AWS Lambda function}
 \usage{
-add_permission(FunctionName, StatementId, Action, Principal, SourceArn = NULL,
-  SourceAccount = NULL, EventSourceToken = NULL, Qualifier = NULL,
-  RevisionId = NULL)
+add_permission(
+  FunctionName = "string",
+  StatementId = "string",
+  Action = "string",
+  Principal = "string",
+  SourceArn = "string",
+  SourceAccount = "string",
+  EventSourceToken = "string",
+  Qualifier = "string",
+  RevisionId = "string"
+)
 }
 \arguments{
-\item{FunctionName}{The name of the lambda function.
+\item{FunctionName}{[required] The name of the Lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -20,11 +28,11 @@ add_permission(FunctionName, StatementId, Action, Principal, SourceArn = NULL,
 
 The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
-\item{StatementId}{A unique statement identifier.}
+\item{StatementId}{[required] A unique statement identifier.}
 
-\item{Action}{The AWS Lambda action you want to allow in this statement. Each Lambda action is a string starting with \code{lambda:} followed by the API name . For example, \code{lambda:CreateFunction}. You can use wildcard (\code{lambda:*}) to grant permission for all AWS Lambda actions.}
+\item{Action}{[required] The AWS Lambda action you want to allow in this statement. Each Lambda action is a string starting with \code{lambda:} followed by the API name . For example, \code{lambda:CreateFunction}. You can use wildcard (\code{lambda:*}) to grant permission for all AWS Lambda actions.}
 
-\item{Principal}{The principal who is getting this permission. The principal can be an AWS service (e.g. \code{s3.amazonaws.com} or \code{sns.amazonaws.com}) for service triggers, or an account ID for cross-account access. If you specify a service as a principal, use the \code{SourceArn} parameter to limit who can invoke the function through that service.}
+\item{Principal}{[required] The principal who is getting this permission. The principal can be an AWS service (e.g. \code{s3.amazonaws.com} or \code{sns.amazonaws.com}) for service triggers, or an account ID for cross-account access. If you specify a service as a principal, use the \code{SourceArn} parameter to limit who can invoke the function through that service.}
 
 \item{SourceArn}{The Amazon Resource Name of the invoker.
 

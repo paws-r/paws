@@ -4,11 +4,13 @@
 \alias{list_endpoints_by_platform_application}
 \title{Lists the endpoints and endpoint attributes for devices in a supported push notification service, such as GCM and APNS}
 \usage{
-list_endpoints_by_platform_application(PlatformApplicationArn,
-  NextToken = NULL)
+list_endpoints_by_platform_application(
+  PlatformApplicationArn = "string",
+  NextToken = "string"
+)
 }
 \arguments{
-\item{PlatformApplicationArn}{PlatformApplicationArn for ListEndpointsByPlatformApplicationInput action.}
+\item{PlatformApplicationArn}{[required] PlatformApplicationArn for ListEndpointsByPlatformApplicationInput action.}
 
 \item{NextToken}{NextToken string is used when calling ListEndpointsByPlatformApplication action to retrieve additional records that are available after the first page results.}
 }

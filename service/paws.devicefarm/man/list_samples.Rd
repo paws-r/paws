@@ -2,17 +2,20 @@
 % Please edit documentation in R/paws.devicefarm_operations.R
 \name{list_samples}
 \alias{list_samples}
-\title{Gets information about samples, given an AWS Device Farm project ARN}
+\title{Gets information about samples, given an AWS Device Farm job ARN}
 \usage{
-list_samples(arn, nextToken = NULL)
+list_samples(
+  arn = "string",
+  nextToken = "string"
+)
 }
 \arguments{
-\item{arn}{The Amazon Resource Name (ARN) of the project for which you want to list samples.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of the job used to list samples.}
 
 \item{nextToken}{An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.}
 }
 \description{
-Gets information about samples, given an AWS Device Farm project ARN
+Gets information about samples, given an AWS Device Farm job ARN.
 }
 \examples{
 # The following example returns information about samples, given a

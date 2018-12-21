@@ -4,9 +4,26 @@
 \alias{describe_scheduled_instances}
 \title{Describes one or more of your Scheduled Instances}
 \usage{
-describe_scheduled_instances(DryRun = NULL, Filters = NULL,
-  MaxResults = NULL, NextToken = NULL, ScheduledInstanceIds = NULL,
-  SlotStartTimeRange = NULL)
+describe_scheduled_instances(
+  DryRun = TRUE|FALSE,
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string",
+  ScheduledInstanceIds = list(
+    "string"
+  ),
+  SlotStartTimeRange = list(
+    EarliestTime = as.POSIXct("2015-01-01"),
+    LatestTime = as.POSIXct("2015-01-01")
+  )
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}

@@ -6,19 +6,23 @@
 \alias{paws.costexplorer-package}
 \title{paws.costexplorer: AWS Cost Explorer Service}
 \description{
-The Cost Explorer API allows you to
-programmatically query your cost and usage data. You can query for
-aggregated data such as total monthly costs or total daily usage. You
-can also query for granular data, such as the number of daily write
-operations for Amazon DynamoDB database tables in your production
-environment.
+The Cost Explorer API enables you to programmatically query
+your cost and usage data. You can query for aggregated data such as
+total monthly costs or total daily usage. You can also query for
+granular data, such as the number of daily write operations for Amazon
+DynamoDB database tables in your production environment.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

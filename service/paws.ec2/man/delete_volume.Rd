@@ -4,10 +4,13 @@
 \alias{delete_volume}
 \title{Deletes the specified EBS volume}
 \usage{
-delete_volume(VolumeId, DryRun = NULL)
+delete_volume(
+  VolumeId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{VolumeId}{The ID of the volume.}
+\item{VolumeId}{[required] The ID of the volume.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

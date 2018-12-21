@@ -4,7 +4,9 @@
 \alias{list_git_hub_account_token_names}
 \title{Lists the names of stored connections to GitHub accounts}
 \usage{
-list_git_hub_account_token_names(nextToken = NULL)
+list_git_hub_account_token_names(
+  nextToken = "string"
+)
 }
 \arguments{
 \item{nextToken}{An identifier returned from the previous ListGitHubAccountTokenNames call. It can be used to return the next set of names in the list.}

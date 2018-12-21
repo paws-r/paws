@@ -4,10 +4,13 @@
 \alias{create_project}
 \title{Creates a new project}
 \usage{
-create_project(name, defaultJobTimeoutMinutes = NULL)
+create_project(
+  name = "string",
+  defaultJobTimeoutMinutes = 123
+)
 }
 \arguments{
-\item{name}{The project's name.}
+\item{name}{[required] The project's name.}
 
 \item{defaultJobTimeoutMinutes}{Sets the execution timeout value (in minutes) for a project. All test runs in this project will use the specified execution timeout value unless overridden when scheduling a run.}
 }

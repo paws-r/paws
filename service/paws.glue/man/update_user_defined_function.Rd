@@ -4,17 +4,32 @@
 \alias{update_user_defined_function}
 \title{Updates an existing function definition in the Data Catalog}
 \usage{
-update_user_defined_function(DatabaseName, FunctionName, FunctionInput,
-  CatalogId = NULL)
+update_user_defined_function(
+  CatalogId = "string",
+  DatabaseName = "string",
+  FunctionName = "string",
+  FunctionInput = list(
+    FunctionName = "string",
+    ClassName = "string",
+    OwnerName = "string",
+    OwnerType = "USER"|"ROLE"|"GROUP",
+    ResourceUris = list(
+      list(
+        ResourceType = "JAR"|"FILE"|"ARCHIVE",
+        Uri = "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{DatabaseName}{The name of the catalog database where the function to be updated is located.}
-
-\item{FunctionName}{The name of the function.}
-
-\item{FunctionInput}{A \code{FunctionInput} object that re-defines the function in the Data Catalog.}
-
 \item{CatalogId}{The ID of the Data Catalog where the function to be updated is located. If none is supplied, the AWS account ID is used by default.}
+
+\item{DatabaseName}{[required] The name of the catalog database where the function to be updated is located.}
+
+\item{FunctionName}{[required] The name of the function.}
+
+\item{FunctionInput}{[required] A \code{FunctionInput} object that re-defines the function in the Data Catalog.}
 }
 \description{
 Updates an existing function definition in the Data Catalog.

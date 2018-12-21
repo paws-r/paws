@@ -4,15 +4,19 @@
 \alias{associate_service_action_with_provisioning_artifact}
 \title{Associates a self-service action with a provisioning artifact}
 \usage{
-associate_service_action_with_provisioning_artifact(ProductId,
-  ProvisioningArtifactId, ServiceActionId, AcceptLanguage = NULL)
+associate_service_action_with_provisioning_artifact(
+  ProductId = "string",
+  ProvisioningArtifactId = "string",
+  ServiceActionId = "string",
+  AcceptLanguage = "string"
+)
 }
 \arguments{
-\item{ProductId}{The product identifier. For example, \code{prod-abcdzk7xy33qa}.}
+\item{ProductId}{[required] The product identifier. For example, \code{prod-abcdzk7xy33qa}.}
 
-\item{ProvisioningArtifactId}{The identifier of the provisioning artifact. For example, \code{pa-4abcdjnxjj6ne}.}
+\item{ProvisioningArtifactId}{[required] The identifier of the provisioning artifact. For example, \code{pa-4abcdjnxjj6ne}.}
 
-\item{ServiceActionId}{The self-service action identifier. For example, \code{act-fs7abcd89wxyz}.}
+\item{ServiceActionId}{[required] The self-service action identifier. For example, \code{act-fs7abcd89wxyz}.}
 
 \item{AcceptLanguage}{The language code.
 \itemize{

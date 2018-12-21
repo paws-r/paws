@@ -4,13 +4,50 @@
 \alias{update_crawler}
 \title{Updates a crawler}
 \usage{
-update_crawler(Name, Role = NULL, DatabaseName = NULL, Description = NULL,
-  Targets = NULL, Schedule = NULL, Classifiers = NULL,
-  TablePrefix = NULL, SchemaChangePolicy = NULL, Configuration = NULL,
-  CrawlerSecurityConfiguration = NULL)
+update_crawler(
+  Name = "string",
+  Role = "string",
+  DatabaseName = "string",
+  Description = "string",
+  Targets = list(
+    S3Targets = list(
+      list(
+        Path = "string",
+        Exclusions = list(
+          "string"
+        )
+      )
+    ),
+    JdbcTargets = list(
+      list(
+        ConnectionName = "string",
+        Path = "string",
+        Exclusions = list(
+          "string"
+        )
+      )
+    ),
+    DynamoDBTargets = list(
+      list(
+        Path = "string"
+      )
+    )
+  ),
+  Schedule = "string",
+  Classifiers = list(
+    "string"
+  ),
+  TablePrefix = "string",
+  SchemaChangePolicy = list(
+    UpdateBehavior = "LOG"|"UPDATE_IN_DATABASE",
+    DeleteBehavior = "LOG"|"DELETE_FROM_DATABASE"|"DEPRECATE_IN_DATABASE"
+  ),
+  Configuration = "string",
+  CrawlerSecurityConfiguration = "string"
+)
 }
 \arguments{
-\item{Name}{Name of the new crawler.}
+\item{Name}{[required] Name of the new crawler.}
 
 \item{Role}{The IAM role (or ARN of an IAM role) used by the new crawler to access customer resources.}
 
@@ -28,11 +65,7 @@ update_crawler(Name, Role = NULL, DatabaseName = NULL, Description = NULL,
 
 \item{SchemaChangePolicy}{Policy for the crawler's update and deletion behavior.}
 
-\item{Configuration}{Crawler configuration information. This versioned JSON string allows users to specify aspects of a Crawler's behavior.
-
-You can use this field to force partitions to inherit metadata such as classification, input format, output format, serde information, and schema from their parent table, rather than detect this information separately for each partition. Use the following JSON string to specify that behavior:
-
-Example: \code{'{ "Version": 1.0, "CrawlerOutput": { "Partitions": { "AddOrUpdateBehavior": "InheritFromTable" } } }'}}
+\item{Configuration}{Crawler configuration information. This versioned JSON string allows users to specify aspects of a crawler's behavior. For more information, see \href{http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html}{Configuring a Crawler}.}
 
 \item{CrawlerSecurityConfiguration}{The name of the SecurityConfiguration structure to be used by this Crawler.}
 }

@@ -4,23 +4,31 @@
 \alias{create_hsm}
 \title{This is documentation for \strong{AWS CloudHSM Classic}}
 \usage{
-create_hsm(SubnetId, SshKey, IamRoleArn, SubscriptionType, EniIp = NULL,
-  ExternalId = NULL, ClientToken = NULL, SyslogIp = NULL)
+create_hsm(
+  SubnetId = "string",
+  SshKey = "string",
+  EniIp = "string",
+  IamRoleArn = "string",
+  ExternalId = "string",
+  SubscriptionType = "PRODUCTION",
+  ClientToken = "string",
+  SyslogIp = "string"
+)
 }
 \arguments{
-\item{SubnetId}{The identifier of the subnet in your VPC in which to place the HSM.}
+\item{SubnetId}{[required] The identifier of the subnet in your VPC in which to place the HSM.}
 
-\item{SshKey}{The SSH public key to install on the HSM.}
-
-\item{IamRoleArn}{The ARN of an IAM role to enable the AWS CloudHSM service to allocate an ENI on your behalf.}
-
-\item{SubscriptionType}{}
+\item{SshKey}{[required] The SSH public key to install on the HSM.}
 
 \item{EniIp}{The IP address to assign to the HSM's ENI.
 
 If an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the subnet.}
 
+\item{IamRoleArn}{[required] The ARN of an IAM role to enable the AWS CloudHSM service to allocate an ENI on your behalf.}
+
 \item{ExternalId}{The external ID from \code{IamRoleArn}, if present.}
+
+\item{SubscriptionType}{[required]}
 
 \item{ClientToken}{A user-defined token to ensure idempotence. Subsequent calls to this operation with the same token will be ignored.}
 

@@ -4,10 +4,12 @@
 \alias{delete_collection}
 \title{Deletes the specified collection}
 \usage{
-delete_collection(CollectionId)
+delete_collection(
+  CollectionId = "string"
+)
 }
 \arguments{
-\item{CollectionId}{ID of the collection to delete.}
+\item{CollectionId}{[required] ID of the collection to delete.}
 }
 \description{
 Deletes the specified collection. Note that this operation removes all faces in the collection. For an example, see delete-collection-procedure.

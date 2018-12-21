@@ -4,10 +4,13 @@
 \alias{delete_change_set}
 \title{Deletes the specified change set}
 \usage{
-delete_change_set(ChangeSetName, StackName = NULL)
+delete_change_set(
+  ChangeSetName = "string",
+  StackName = "string"
+)
 }
 \arguments{
-\item{ChangeSetName}{The name or Amazon Resource Name (ARN) of the change set that you want to delete.}
+\item{ChangeSetName}{[required] The name or Amazon Resource Name (ARN) of the change set that you want to delete.}
 
 \item{StackName}{If you specified the name of a change set to delete, specify the stack name or ID (ARN) that is associated with it.}
 }

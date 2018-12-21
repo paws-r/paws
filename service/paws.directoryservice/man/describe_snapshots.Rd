@@ -4,8 +4,14 @@
 \alias{describe_snapshots}
 \title{Obtains information about the directory snapshots that belong to this account}
 \usage{
-describe_snapshots(DirectoryId = NULL, SnapshotIds = NULL,
-  NextToken = NULL, Limit = NULL)
+describe_snapshots(
+  DirectoryId = "string",
+  SnapshotIds = list(
+    "string"
+  ),
+  NextToken = "string",
+  Limit = 123
+)
 }
 \arguments{
 \item{DirectoryId}{The identifier of the directory for which to retrieve snapshot information.}

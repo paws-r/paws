@@ -4,8 +4,13 @@
 \alias{list_signing_jobs}
 \title{Lists all your signing jobs}
 \usage{
-list_signing_jobs(status = NULL, platformId = NULL, requestedBy = NULL,
-  maxResults = NULL, nextToken = NULL)
+list_signing_jobs(
+  status = "InProgress"|"Failed"|"Succeeded",
+  platformId = "string",
+  requestedBy = "string",
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
 \item{status}{A status value with which to filter your results.}

@@ -4,10 +4,15 @@
 \alias{get_queue_attributes}
 \title{Gets attributes for the specified queue}
 \usage{
-get_queue_attributes(QueueUrl, AttributeNames = NULL)
+get_queue_attributes(
+  QueueUrl = "string",
+  AttributeNames = list(
+    "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"
+  )
+)
 }
 \arguments{
-\item{QueueUrl}{The URL of the Amazon SQS queue whose attribute information is retrieved.
+\item{QueueUrl}{[required] The URL of the Amazon SQS queue whose attribute information is retrieved.
 
 Queue URLs and names are case-sensitive.}
 

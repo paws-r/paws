@@ -4,12 +4,15 @@
 \alias{update_configuration_set_sending_enabled}
 \title{Enables or disables email sending for messages sent using a specific configuration set in a given AWS Region}
 \usage{
-update_configuration_set_sending_enabled(ConfigurationSetName, Enabled)
+update_configuration_set_sending_enabled(
+  ConfigurationSetName = "string",
+  Enabled = TRUE|FALSE
+)
 }
 \arguments{
-\item{ConfigurationSetName}{The name of the configuration set that you want to update.}
+\item{ConfigurationSetName}{[required] The name of the configuration set that you want to update.}
 
-\item{Enabled}{Describes whether email sending is enabled or disabled for the configuration set.}
+\item{Enabled}{[required] Describes whether email sending is enabled or disabled for the configuration set.}
 }
 \description{
 Enables or disables email sending for messages sent using a specific configuration set in a given AWS Region. You can use this operation in conjunction with Amazon CloudWatch alarms to temporarily pause email sending for a configuration set when the reputation metrics for that configuration set (such as your bounce on complaint rate) exceed certain thresholds.

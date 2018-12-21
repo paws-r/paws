@@ -4,12 +4,16 @@
 \alias{get_model}
 \title{Describes an existing model defined for a RestApi resource}
 \usage{
-get_model(restApiId, modelName, flatten = NULL)
+get_model(
+  restApiId = "string",
+  modelName = "string",
+  flatten = TRUE|FALSE
+)
 }
 \arguments{
-\item{restApiId}{[Required] The RestApi identifier under which the Model exists.}
+\item{restApiId}{[required] [Required] The RestApi identifier under which the Model exists.}
 
-\item{modelName}{[Required] The name of the model as an identifier.}
+\item{modelName}{[required] [Required] The name of the model as an identifier.}
 
 \item{flatten}{A query parameter of a Boolean value to resolve (\code{true}) all external model references and returns a flattened model schema or not (\code{false}) The default is \code{false}.}
 }

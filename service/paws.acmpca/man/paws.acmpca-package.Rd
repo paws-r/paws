@@ -6,14 +6,14 @@
 \alias{paws.acmpca-package}
 \title{paws.acmpca: AWS Certificate Manager Private Certificate Authority}
 \description{
-You can use the ACM PCA API to create a private
-certificate authority (CA). You must first call the
-CreateCertificateAuthority operation. If successful, the operation
-returns an Amazon Resource Name (ARN) for your private CA. Use this
-ARN as input to the GetCertificateAuthorityCsr operation to retrieve
-the certificate signing request (CSR) for your private CA certificate.
-Sign the CSR using the root or an intermediate CA in your on-premises
-PKI hierarchy, and call the ImportCertificateAuthorityCertificate to
+You can use the ACM PCA API to create a private certificate
+authority (CA). You must first call the CreateCertificateAuthority
+operation. If successful, the operation returns an Amazon Resource
+Name (ARN) for your private CA. Use this ARN as input to the
+GetCertificateAuthorityCsr operation to retrieve the certificate
+signing request (CSR) for your private CA certificate. Sign the CSR
+using the root or an intermediate CA in your on-premises PKI
+hierarchy, and call the ImportCertificateAuthorityCertificate to
 import your signed private CA certificate into ACM PCA.
 }
 \author{
@@ -21,7 +21,12 @@ import your signed private CA certificate into ACM PCA.
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

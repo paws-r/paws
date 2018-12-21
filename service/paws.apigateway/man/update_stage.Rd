@@ -4,12 +4,23 @@
 \alias{update_stage}
 \title{Changes information about a Stage resource}
 \usage{
-update_stage(restApiId, stageName, patchOperations = NULL)
+update_stage(
+  restApiId = "string",
+  stageName = "string",
+  patchOperations = list(
+    list(
+      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
+      path = "string",
+      value = "string",
+      from = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{stageName}{[Required] The name of the Stage resource to change information about.}
+\item{stageName}{[required] [Required] The name of the Stage resource to change information about.}
 
 \item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
 }

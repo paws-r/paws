@@ -4,13 +4,21 @@
 \alias{poll_for_decision_task}
 \title{Used by deciders to get a DecisionTask from the specified decision \code{taskList}}
 \usage{
-poll_for_decision_task(domain, taskList, identity = NULL,
-  nextPageToken = NULL, maximumPageSize = NULL, reverseOrder = NULL)
+poll_for_decision_task(
+  domain = "string",
+  taskList = list(
+    name = "string"
+  ),
+  identity = "string",
+  nextPageToken = "string",
+  maximumPageSize = 123,
+  reverseOrder = TRUE|FALSE
+)
 }
 \arguments{
-\item{domain}{The name of the domain containing the task lists to poll.}
+\item{domain}{[required] The name of the domain containing the task lists to poll.}
 
-\item{taskList}{Specifies the task list to poll for decision tasks.
+\item{taskList}{[required] Specifies the task list to poll for decision tasks.
 
 The specified string must not start or end with whitespace. It must not contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control characters (\code{\u0000-\u001f} | \code{\u007f-\u009f}). Also, it must not contain the literal string \code{arn}.}
 

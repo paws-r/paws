@@ -4,15 +4,20 @@
 \alias{update_ip_set}
 \title{Updates the IPSet specified by the IPSet ID}
 \usage{
-update_ip_set(DetectorId, IpSetId, Activate = NULL, Location = NULL,
-  Name = NULL)
+update_ip_set(
+  Activate = TRUE|FALSE,
+  DetectorId = "string",
+  IpSetId = "string",
+  Location = "string",
+  Name = "string"
+)
 }
 \arguments{
-\item{DetectorId}{The detectorID that specifies the GuardDuty service whose IPSet you want to update.}
-
-\item{IpSetId}{The unique ID that specifies the IPSet that you want to update.}
-
 \item{Activate}{The updated boolean value that specifies whether the IPSet is active or not.}
+
+\item{DetectorId}{[required] The detectorID that specifies the GuardDuty service whose IPSet you want to update.}
+
+\item{IpSetId}{[required] The unique ID that specifies the IPSet that you want to update.}
 
 \item{Location}{The updated URI of the file that contains the IPSet. For example (https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key).}
 

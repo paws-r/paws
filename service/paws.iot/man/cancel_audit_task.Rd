@@ -4,10 +4,12 @@
 \alias{cancel_audit_task}
 \title{Cancels an audit that is in progress}
 \usage{
-cancel_audit_task(taskId)
+cancel_audit_task(
+  taskId = "string"
+)
 }
 \arguments{
-\item{taskId}{The ID of the audit you want to cancel. You can only cancel an audit that is "IN\_PROGRESS".}
+\item{taskId}{[required] The ID of the audit you want to cancel. You can only cancel an audit that is "IN\_PROGRESS".}
 }
 \description{
 Cancels an audit that is in progress. The audit can be either scheduled or on-demand. If the audit is not in progress, an "InvalidRequestException" occurs.

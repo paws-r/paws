@@ -4,12 +4,17 @@
 \alias{add_upload_buffer}
 \title{Configures one or more gateway local disks as upload buffer for a specified gateway}
 \usage{
-add_upload_buffer(GatewayARN, DiskIds)
+add_upload_buffer(
+  GatewayARN = "string",
+  DiskIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 
-\item{DiskIds}{}
+\item{DiskIds}{[required]}
 }
 \description{
 Configures one or more gateway local disks as upload buffer for a specified gateway. This operation is supported for the stored volume, cached volume and tape gateway types.

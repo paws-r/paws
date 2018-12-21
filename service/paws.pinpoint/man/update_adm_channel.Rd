@@ -4,12 +4,19 @@
 \alias{update_adm_channel}
 \title{Update an ADM channel}
 \usage{
-update_adm_channel(ApplicationId, ADMChannelRequest)
+update_adm_channel(
+  ADMChannelRequest = list(
+    ClientId = "string",
+    ClientSecret = "string",
+    Enabled = TRUE|FALSE
+  ),
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ADMChannelRequest}{[required]}
 
-\item{ADMChannelRequest}{}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 }
 \description{
 Update an ADM channel.

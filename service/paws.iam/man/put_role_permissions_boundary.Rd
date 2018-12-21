@@ -4,12 +4,15 @@
 \alias{put_role_permissions_boundary}
 \title{Adds or updates the policy that is specified as the IAM role's permissions boundary}
 \usage{
-put_role_permissions_boundary(RoleName, PermissionsBoundary)
+put_role_permissions_boundary(
+  RoleName = "string",
+  PermissionsBoundary = "string"
+)
 }
 \arguments{
-\item{RoleName}{The name (friendly name, not ARN) of the IAM role for which you want to set the permissions boundary.}
+\item{RoleName}{[required] The name (friendly name, not ARN) of the IAM role for which you want to set the permissions boundary.}
 
-\item{PermissionsBoundary}{The ARN of the policy that is used to set the permissions boundary for the role.}
+\item{PermissionsBoundary}{[required] The ARN of the policy that is used to set the permissions boundary for the role.}
 }
 \description{
 Adds or updates the policy that is specified as the IAM role's permissions boundary. You can use an AWS managed policy or a customer managed policy to set the boundary for a role. Use the boundary to control the maximum permissions that the role can have. Setting a permissions boundary is an advanced feature that can affect the permissions for the role.
@@ -17,7 +20,7 @@ Adds or updates the policy that is specified as the IAM role's permissions bound
 \details{
 You cannot set the boundary for a service-linked role.
 
-Policies used as permissions boundaries do not provide permissions. You must also attach a permissions policy to the role. To learn how the effective permissions for a role are evaluated, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html}{IAM JSON Policy Evaluation Logic} in the IAM User Guide.
+Policies used as permissions boundaries do not provide permissions. You must also attach a permissions policy to the role. To learn how the effective permissions for a role are evaluated, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html}{IAM JSON Policy Evaluation Logic} in the IAM User Guide.
 }
 \examples{
 

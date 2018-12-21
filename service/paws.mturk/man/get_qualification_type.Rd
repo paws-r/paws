@@ -4,10 +4,12 @@
 \alias{get_qualification_type}
 \title{The \code{GetQualificationType}operation retrieves information about a Qualification type using its ID}
 \usage{
-get_qualification_type(QualificationTypeId)
+get_qualification_type(
+  QualificationTypeId = "string"
+)
 }
 \arguments{
-\item{QualificationTypeId}{The ID of the QualificationType.}
+\item{QualificationTypeId}{[required] The ID of the QualificationType.}
 }
 \description{
 The \code{GetQualificationType}operation retrieves information about a Qualification type using its ID.

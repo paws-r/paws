@@ -4,10 +4,15 @@
 \alias{create_security_group}
 \title{Creates a security group}
 \usage{
-create_security_group(Description, GroupName, VpcId = NULL, DryRun = NULL)
+create_security_group(
+  Description = "string",
+  GroupName = "string",
+  VpcId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{Description}{A description for the security group. This is informational only.
+\item{Description}{[required] A description for the security group. This is informational only.
 
 Constraints: Up to 255 characters in length
 
@@ -15,7 +20,7 @@ Constraints for EC2-Classic: ASCII characters
 
 Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and .\_-:/()#,@[]+=&;{}!\$*}
 
-\item{GroupName}{The name of the security group.
+\item{GroupName}{[required] The name of the security group.
 
 Constraints: Up to 255 characters in length. Cannot start with \code{sg-}.
 

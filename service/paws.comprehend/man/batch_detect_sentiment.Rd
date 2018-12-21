@@ -4,12 +4,17 @@
 \alias{batch_detect_sentiment}
 \title{Inspects a batch of documents and returns an inference of the prevailing sentiment, \code{POSITIVE}, \code{NEUTRAL}, \code{MIXED}, or \code{NEGATIVE}, in each one}
 \usage{
-batch_detect_sentiment(TextList, LanguageCode)
+batch_detect_sentiment(
+  TextList = list(
+    "string"
+  ),
+  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+)
 }
 \arguments{
-\item{TextList}{A list containing the text of the input documents. The list can contain a maximum of 25 documents. Each document must contain fewer that 5,000 bytes of UTF-8 encoded characters.}
+\item{TextList}{[required] A list containing the text of the input documents. The list can contain a maximum of 25 documents. Each document must contain fewer that 5,000 bytes of UTF-8 encoded characters.}
 
-\item{LanguageCode}{The language of the input documents. You can specify English ("en") or Spanish ("es"). All documents must be in the same language.}
+\item{LanguageCode}{[required] The language of the input documents. You can specify English ("en") or Spanish ("es"). All documents must be in the same language.}
 }
 \description{
 Inspects a batch of documents and returns an inference of the prevailing sentiment, \code{POSITIVE}, \code{NEUTRAL}, \code{MIXED}, or \code{NEGATIVE}, in each one.

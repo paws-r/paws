@@ -4,23 +4,27 @@
 \alias{resync_mfa_device}
 \title{Synchronizes the specified MFA device with its IAM resource object on the AWS servers}
 \usage{
-resync_mfa_device(UserName, SerialNumber, AuthenticationCode1,
-  AuthenticationCode2)
+resync_mfa_device(
+  UserName = "string",
+  SerialNumber = "string",
+  AuthenticationCode1 = "string",
+  AuthenticationCode2 = "string"
+)
 }
 \arguments{
-\item{UserName}{The name of the user whose MFA device you want to resynchronize.
+\item{UserName}{[required] The name of the user whose MFA device you want to resynchronize.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
-\item{SerialNumber}{Serial number that uniquely identifies the MFA device.
+\item{SerialNumber}{[required] Serial number that uniquely identifies the MFA device.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
-\item{AuthenticationCode1}{An authentication code emitted by the device.
+\item{AuthenticationCode1}{[required] An authentication code emitted by the device.
 
 The format for this parameter is a sequence of six digits.}
 
-\item{AuthenticationCode2}{A subsequent authentication code emitted by the device.
+\item{AuthenticationCode2}{[required] A subsequent authentication code emitted by the device.
 
 The format for this parameter is a sequence of six digits.}
 }

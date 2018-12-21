@@ -4,14 +4,84 @@
 \alias{update_table}
 \title{Updates a metadata table in the Data Catalog}
 \usage{
-update_table(DatabaseName, TableInput, CatalogId = NULL, SkipArchive = NULL)
+update_table(
+  CatalogId = "string",
+  DatabaseName = "string",
+  TableInput = list(
+    Name = "string",
+    Description = "string",
+    Owner = "string",
+    LastAccessTime = as.POSIXct("2015-01-01"),
+    LastAnalyzedTime = as.POSIXct("2015-01-01"),
+    Retention = 123,
+    StorageDescriptor = list(
+      Columns = list(
+        list(
+          Name = "string",
+          Type = "string",
+          Comment = "string"
+        )
+      ),
+      Location = "string",
+      InputFormat = "string",
+      OutputFormat = "string",
+      Compressed = TRUE|FALSE,
+      NumberOfBuckets = 123,
+      SerdeInfo = list(
+        Name = "string",
+        SerializationLibrary = "string",
+        Parameters = list(
+          "string"
+        )
+      ),
+      BucketColumns = list(
+        "string"
+      ),
+      SortColumns = list(
+        list(
+          Column = "string",
+          SortOrder = 123
+        )
+      ),
+      Parameters = list(
+        "string"
+      ),
+      SkewedInfo = list(
+        SkewedColumnNames = list(
+          "string"
+        ),
+        SkewedColumnValues = list(
+          "string"
+        ),
+        SkewedColumnValueLocationMaps = list(
+          "string"
+        )
+      ),
+      StoredAsSubDirectories = TRUE|FALSE
+    ),
+    PartitionKeys = list(
+      list(
+        Name = "string",
+        Type = "string",
+        Comment = "string"
+      )
+    ),
+    ViewOriginalText = "string",
+    ViewExpandedText = "string",
+    TableType = "string",
+    Parameters = list(
+      "string"
+    )
+  ),
+  SkipArchive = TRUE|FALSE
+)
 }
 \arguments{
-\item{DatabaseName}{The name of the catalog database in which the table resides. For Hive compatibility, this name is entirely lowercase.}
-
-\item{TableInput}{An updated \code{TableInput} object to define the metadata table in the catalog.}
-
 \item{CatalogId}{The ID of the Data Catalog where the table resides. If none is supplied, the AWS account ID is used by default.}
+
+\item{DatabaseName}{[required] The name of the catalog database in which the table resides. For Hive compatibility, this name is entirely lowercase.}
+
+\item{TableInput}{[required] An updated \code{TableInput} object to define the metadata table in the catalog.}
 
 \item{SkipArchive}{By default, \code{UpdateTable} always creates an archived version of the table before updating it. If \code{skipArchive} is set to true, however, \code{UpdateTable} does not create the archived version.}
 }

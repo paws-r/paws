@@ -4,10 +4,12 @@
 \alias{describe_input}
 \title{Produces details about an input}
 \usage{
-describe_input(InputId)
+describe_input(
+  InputId = "string"
+)
 }
 \arguments{
-\item{InputId}{Unique ID of the input}
+\item{InputId}{[required] Unique ID of the input}
 }
 \description{
 Produces details about an input

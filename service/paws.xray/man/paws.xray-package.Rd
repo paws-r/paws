@@ -6,8 +6,8 @@
 \alias{paws.xray-package}
 \title{paws.xray: AWS X-Ray}
 \description{
-AWS X-Ray provides APIs for managing debug traces
-and retrieving service maps and other data created by processing those
+AWS X-Ray provides APIs for managing debug traces and
+retrieving service maps and other data created by processing those
 traces.
 }
 \author{
@@ -15,7 +15,12 @@ traces.
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

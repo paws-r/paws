@@ -4,11 +4,15 @@
 \alias{describe_cache_parameters}
 \title{Returns the detailed parameter list for a particular cache parameter group}
 \usage{
-describe_cache_parameters(CacheParameterGroupName, Source = NULL,
-  MaxRecords = NULL, Marker = NULL)
+describe_cache_parameters(
+  CacheParameterGroupName = "string",
+  Source = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
-\item{CacheParameterGroupName}{The name of a specific cache parameter group to return details for.}
+\item{CacheParameterGroupName}{[required] The name of a specific cache parameter group to return details for.}
 
 \item{Source}{The parameter types to return.
 

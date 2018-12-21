@@ -4,13 +4,19 @@
 \alias{describe_objects}
 \title{Gets the object definitions for a set of objects associated with the pipeline}
 \usage{
-describe_objects(pipelineId, objectIds, evaluateExpressions = NULL,
-  marker = NULL)
+describe_objects(
+  pipelineId = "string",
+  objectIds = list(
+    "string"
+  ),
+  evaluateExpressions = TRUE|FALSE,
+  marker = "string"
+)
 }
 \arguments{
-\item{pipelineId}{The ID of the pipeline that contains the object definitions.}
+\item{pipelineId}{[required] The ID of the pipeline that contains the object definitions.}
 
-\item{objectIds}{The IDs of the pipeline objects that contain the definitions to be described. You can pass as many as 25 identifiers in a single call to \code{DescribeObjects}.}
+\item{objectIds}{[required] The IDs of the pipeline objects that contain the definitions to be described. You can pass as many as 25 identifiers in a single call to \code{DescribeObjects}.}
 
 \item{evaluateExpressions}{Indicates whether any expressions in the object should be evaluated when the object descriptions are returned.}
 

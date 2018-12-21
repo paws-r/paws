@@ -4,19 +4,22 @@
 \alias{create_protection}
 \title{Enables AWS Shield Advanced for a specific AWS resource}
 \usage{
-create_protection(Name, ResourceArn)
+create_protection(
+  Name = "string",
+  ResourceArn = "string"
+)
 }
 \arguments{
-\item{Name}{Friendly name for the \code{Protection} you are creating.}
+\item{Name}{[required] Friendly name for the \code{Protection} you are creating.}
 
-\item{ResourceArn}{The ARN (Amazon Resource Name) of the resource to be protected.
+\item{ResourceArn}{[required] The ARN (Amazon Resource Name) of the resource to be protected.
 
 The ARN should be in one of the following formats:
 \itemize{
 \item For an Application Load Balancer: \code{arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id }
 \item For an Elastic Load Balancer (Classic Load Balancer): \code{arn:aws:elasticloadbalancing:region:account-id:loadbalancer/load-balancer-name region:account-id:loadbalancer/load-balancer-name }
 \item For AWS CloudFront distribution: \code{arn:aws:cloudfront::account-id:distribution/distribution-id account-id:distribution/distribution-id }
-\item For Amazon Route 53: \code{arn:aws:route53::account-id:hostedzone/hosted-zone-id account-id:hostedzone/hosted-zone-id }
+\item For Amazon Route 53: \code{arn:aws:route53:::hostedzone/hosted-zone-id hosted-zone-id }
 \item For an Elastic IP address: \code{arn:aws:ec2:region:account-id:eip-allocation/allocation-id region:account-id:eip-allocation/allocation-id }
 }}
 }

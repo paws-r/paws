@@ -4,14 +4,18 @@
 \alias{put_destination}
 \title{Creates or updates a destination}
 \usage{
-put_destination(destinationName, targetArn, roleArn)
+put_destination(
+  destinationName = "string",
+  targetArn = "string",
+  roleArn = "string"
+)
 }
 \arguments{
-\item{destinationName}{A name for the destination.}
+\item{destinationName}{[required] A name for the destination.}
 
-\item{targetArn}{The ARN of an Amazon Kinesis stream to which to deliver matching log events.}
+\item{targetArn}{[required] The ARN of an Amazon Kinesis stream to which to deliver matching log events.}
 
-\item{roleArn}{The ARN of an IAM role that grants CloudWatch Logs permissions to call the Amazon Kinesis PutRecord operation on the destination stream.}
+\item{roleArn}{[required] The ARN of an IAM role that grants CloudWatch Logs permissions to call the Amazon Kinesis PutRecord operation on the destination stream.}
 }
 \description{
 Creates or updates a destination. A destination encapsulates a physical resource (such as an Amazon Kinesis stream) and enables you to subscribe to a real-time stream of log events for a different account, ingested using PutLogEvents. Currently, the only supported physical resource is a Kinesis stream belonging to the same account as the destination.

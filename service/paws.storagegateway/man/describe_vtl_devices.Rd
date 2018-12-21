@@ -4,11 +4,17 @@
 \alias{describe_vtl_devices}
 \title{Returns a description of virtual tape library (VTL) devices for the specified tape gateway}
 \usage{
-describe_vtl_devices(GatewayARN, VTLDeviceARNs = NULL, Marker = NULL,
-  Limit = NULL)
+describe_vtl_devices(
+  GatewayARN = "string",
+  VTLDeviceARNs = list(
+    "string"
+  ),
+  Marker = "string",
+  Limit = 123
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 
 \item{VTLDeviceARNs}{An array of strings, where each string represents the Amazon Resource Name (ARN) of a VTL device.
 

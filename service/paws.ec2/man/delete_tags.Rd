@@ -4,12 +4,25 @@
 \alias{delete_tags}
 \title{Deletes the specified set of tags from the specified set of resources}
 \usage{
-delete_tags(Resources, DryRun = NULL, Tags = NULL)
+delete_tags(
+  DryRun = TRUE|FALSE,
+  Resources = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{Resources}{The IDs of one or more resources.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{Resources}{[required] The IDs of one or more resources, separated by spaces.
+
+Constraints: Up to 1000 resource IDs. We recommend breaking up this request into smaller batches.}
 
 \item{Tags}{One or more tags to delete. Specify a tag key and an optional tag value to delete specific tags. If you specify a tag key without a tag value, we delete any tag with this key regardless of its value. If you specify a tag key with an empty string as the tag value, we delete the tag only if its value is an empty string.
 

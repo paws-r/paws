@@ -4,10 +4,12 @@
 \alias{get_query_execution}
 \title{Returns information about a single execution of a query}
 \usage{
-get_query_execution(QueryExecutionId)
+get_query_execution(
+  QueryExecutionId = "string"
+)
 }
 \arguments{
-\item{QueryExecutionId}{The unique ID of the query execution.}
+\item{QueryExecutionId}{[required] The unique ID of the query execution.}
 }
 \description{
 Returns information about a single execution of a query. Each time a query executes, information about the query execution is saved with a unique ID.

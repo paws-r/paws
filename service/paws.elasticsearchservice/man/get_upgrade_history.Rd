@@ -4,10 +4,14 @@
 \alias{get_upgrade_history}
 \title{Retrieves the complete history of the last 10 upgrades that were performed on the domain}
 \usage{
-get_upgrade_history(DomainName, MaxResults = NULL, NextToken = NULL)
+get_upgrade_history(
+  DomainName = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{DomainName}{}
+\item{DomainName}{[required]}
 
 \item{MaxResults}{}
 

@@ -4,10 +4,12 @@
 \alias{initiate_device_claim}
 \title{Given a device ID, initiates a claim request for the associated device}
 \usage{
-initiate_device_claim(DeviceId)
+initiate_device_claim(
+  DeviceId = "string"
+)
 }
 \arguments{
-\item{DeviceId}{The unique identifier of the device.}
+\item{DeviceId}{[required] The unique identifier of the device.}
 }
 \description{
 Given a device ID, initiates a claim request for the associated device.

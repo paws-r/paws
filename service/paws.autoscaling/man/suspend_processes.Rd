@@ -4,10 +4,15 @@
 \alias{suspend_processes}
 \title{Suspends the specified automatic scaling processes, or all processes, for the specified Auto Scaling group}
 \usage{
-suspend_processes(AutoScalingGroupName, ScalingProcesses = NULL)
+suspend_processes(
+  AutoScalingGroupName = "string",
+  ScalingProcesses = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
 \item{ScalingProcesses}{One or more of the following processes. If you omit this parameter, all processes are specified.
 \itemize{
@@ -25,7 +30,7 @@ suspend_processes(AutoScalingGroupName, ScalingProcesses = NULL)
 Suspends the specified automatic scaling processes, or all processes, for the specified Auto Scaling group.
 }
 \details{
-Note that if you suspend either the \code{Launch} or \code{Terminate} process types, it can prevent other process types from functioning properly.
+If you suspend either the \code{Launch} or \code{Terminate} process types, it can prevent other process types from functioning properly.
 
 To resume processes that have been suspended, use ResumeProcesses.
 

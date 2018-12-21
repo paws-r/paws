@@ -4,10 +4,14 @@
 \alias{batch_get_named_query}
 \title{Returns the details of a single named query or a list of up to 50 queries, which you provide as an array of query ID strings}
 \usage{
-batch_get_named_query(NamedQueryIds)
+batch_get_named_query(
+  NamedQueryIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{NamedQueryIds}{An array of query IDs.}
+\item{NamedQueryIds}{[required] An array of query IDs.}
 }
 \description{
 Returns the details of a single named query or a list of up to 50 queries, which you provide as an array of query ID strings. Use ListNamedQueries to get the list of named query IDs. If information could not be retrieved for a submitted query ID, information about the query ID submitted is listed under UnprocessedNamedQueryId. Named queries are different from executed queries. Use BatchGetQueryExecution to get details about each unique query execution, and ListQueryExecutions to get a list of query execution IDs.

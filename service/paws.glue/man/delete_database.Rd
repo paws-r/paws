@@ -4,12 +4,15 @@
 \alias{delete_database}
 \title{Removes a specified Database from a Data Catalog}
 \usage{
-delete_database(Name, CatalogId = NULL)
+delete_database(
+  CatalogId = "string",
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the Database to delete. For Hive compatibility, this must be all lowercase.}
-
 \item{CatalogId}{The ID of the Data Catalog in which the database resides. If none is supplied, the AWS account ID is used by default.}
+
+\item{Name}{[required] The name of the Database to delete. For Hive compatibility, this must be all lowercase.}
 }
 \description{
 Removes a specified Database from a Data Catalog.

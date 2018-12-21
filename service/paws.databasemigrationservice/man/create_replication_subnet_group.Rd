@@ -4,19 +4,30 @@
 \alias{create_replication_subnet_group}
 \title{Creates a replication subnet group given a list of the subnet IDs in a VPC}
 \usage{
-create_replication_subnet_group(ReplicationSubnetGroupIdentifier,
-  ReplicationSubnetGroupDescription, SubnetIds, Tags = NULL)
+create_replication_subnet_group(
+  ReplicationSubnetGroupIdentifier = "string",
+  ReplicationSubnetGroupDescription = "string",
+  SubnetIds = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ReplicationSubnetGroupIdentifier}{The name for the replication subnet group. This value is stored as a lowercase string.
+\item{ReplicationSubnetGroupIdentifier}{[required] The name for the replication subnet group. This value is stored as a lowercase string.
 
 Constraints: Must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens. Must not be "default".
 
 Example: \code{mySubnetgroup}}
 
-\item{ReplicationSubnetGroupDescription}{The description for the subnet group.}
+\item{ReplicationSubnetGroupDescription}{[required] The description for the subnet group.}
 
-\item{SubnetIds}{The EC2 subnet IDs for the subnet group.}
+\item{SubnetIds}{[required] The EC2 subnet IDs for the subnet group.}
 
 \item{Tags}{The tag to be assigned to the subnet group.}
 }

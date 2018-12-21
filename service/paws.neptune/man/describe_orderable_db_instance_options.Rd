@@ -4,12 +4,26 @@
 \alias{describe_orderable_db_instance_options}
 \title{Returns a list of orderable DB instance options for the specified engine}
 \usage{
-describe_orderable_db_instance_options(Engine, EngineVersion = NULL,
-  DBInstanceClass = NULL, LicenseModel = NULL, Vpc = NULL,
-  Filters = NULL, MaxRecords = NULL, Marker = NULL)
+describe_orderable_db_instance_options(
+  Engine = "string",
+  EngineVersion = "string",
+  DBInstanceClass = "string",
+  LicenseModel = "string",
+  Vpc = TRUE|FALSE,
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
-\item{Engine}{The name of the engine to retrieve DB instance options for.}
+\item{Engine}{[required] The name of the engine to retrieve DB instance options for.}
 
 \item{EngineVersion}{The engine version filter value. Specify this parameter to show only the available offerings matching the specified engine version.}
 

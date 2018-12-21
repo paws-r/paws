@@ -4,11 +4,15 @@
 \alias{list_job_executions_for_thing}
 \title{Lists the job executions for the specified thing}
 \usage{
-list_job_executions_for_thing(thingName, status = NULL, maxResults = NULL,
-  nextToken = NULL)
+list_job_executions_for_thing(
+  thingName = "string",
+  status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
-\item{thingName}{The thing name.}
+\item{thingName}{[required] The thing name.}
 
 \item{status}{An optional filter that lets you search for jobs that have the specified status.}
 

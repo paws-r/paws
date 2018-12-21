@@ -4,8 +4,22 @@
 \alias{describe_reserved_instances}
 \title{Describes one or more of the Reserved Instances that you purchased}
 \usage{
-describe_reserved_instances(Filters = NULL, OfferingClass = NULL,
-  ReservedInstancesIds = NULL, DryRun = NULL, OfferingType = NULL)
+describe_reserved_instances(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  OfferingClass = "standard"|"convertible",
+  ReservedInstancesIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE,
+  OfferingType = "Heavy Utilization"|"Medium Utilization"|"Light Utilization"|"No Upfront"|"Partial Upfront"|"All Upfront"
+)
 }
 \arguments{
 \item{Filters}{One or more filters.

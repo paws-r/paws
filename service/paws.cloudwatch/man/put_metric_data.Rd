@@ -2,19 +2,48 @@
 % Please edit documentation in R/paws.cloudwatch_operations.R
 \name{put_metric_data}
 \alias{put_metric_data}
-\title{Publishes metric data to Amazon CloudWatch}
+\title{Publishes metric data points to Amazon CloudWatch}
 \usage{
-put_metric_data(Namespace, MetricData)
+put_metric_data(
+  Namespace = "string",
+  MetricData = list(
+    list(
+      MetricName = "string",
+      Dimensions = list(
+        list(
+          Name = "string",
+          Value = "string"
+        )
+      ),
+      Timestamp = as.POSIXct("2015-01-01"),
+      Value = 123.0,
+      StatisticValues = list(
+        SampleCount = 123.0,
+        Sum = 123.0,
+        Minimum = 123.0,
+        Maximum = 123.0
+      ),
+      Values = list(
+        123.0
+      ),
+      Counts = list(
+        123.0
+      ),
+      Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
+      StorageResolution = 123
+    )
+  )
+)
 }
 \arguments{
-\item{Namespace}{The namespace for the metric data.
+\item{Namespace}{[required] The namespace for the metric data.
 
 You cannot specify a namespace that begins with "AWS/". Namespaces that begin with "AWS/" are reserved for use by Amazon Web Services products.}
 
-\item{MetricData}{The data for the metric. The array can include no more than 20 metrics per call.}
+\item{MetricData}{[required] The data for the metric. The array can include no more than 20 metrics per call.}
 }
 \description{
-Publishes metric data to Amazon CloudWatch. CloudWatch associates the data with the specified metric. If the specified metric does not exist, CloudWatch creates the metric. When CloudWatch creates a metric, it can take up to fifteen minutes for the metric to appear in calls to ListMetrics.
+Publishes metric data points to Amazon CloudWatch. CloudWatch associates the data points with the specified metric. If the specified metric does not exist, CloudWatch creates the metric. When CloudWatch creates a metric, it can take up to fifteen minutes for the metric to appear in calls to ListMetrics.
 }
 \details{
 You can publish either individual data points in the \code{Value} field, or arrays of values and the number of times each value occurred during the period by using the \code{Values} and \code{Counts} fields in the \code{MetricDatum} structure. Using the \code{Values} and \code{Counts} method enables you to publish up to 150 values per metric with one \code{PutMetricData} request, and supports retrieving percentile statistics on this data.
@@ -27,7 +56,7 @@ You can use up to 10 dimensions per metric to further clarify what data the metr
 
 Data points with time stamps from 24 hours ago or longer can take at least 48 hours to become available for GetMetricData or GetMetricStatistics from the time they are submitted.
 
-CloudWatch needs raw data points to calculate percentile statistics. These raw data points could be published individually or as part of \code{Values} and \code{Counts} arrays. If you publish data using statistic sets in the \code{StatisticValues} field instead, you can only retrieve percentile statistics for this data if one of the following conditions is true:
+CloudWatch needs raw data points to calculate percentile statistics. If you publish data using a statistic set instead, you can only retrieve percentile statistics for this data if one of the following conditions is true:
 \itemize{
 \item The \code{SampleCount} value of the statistic set is 1 and \code{Min}, \code{Max}, and \code{Sum} are all equal.
 \item The \code{Min} and \code{Max} are equal, and \code{Sum} is equal to \code{Min} multiplied by \code{SampleCount}.

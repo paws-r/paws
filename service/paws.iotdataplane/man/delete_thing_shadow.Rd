@@ -4,10 +4,12 @@
 \alias{delete_thing_shadow}
 \title{Deletes the thing shadow for the specified thing}
 \usage{
-delete_thing_shadow(thingName)
+delete_thing_shadow(
+  thingName = "string"
+)
 }
 \arguments{
-\item{thingName}{The name of the thing.}
+\item{thingName}{[required] The name of the thing.}
 }
 \description{
 Deletes the thing shadow for the specified thing.

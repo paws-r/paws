@@ -4,10 +4,20 @@
 \alias{create_repository}
 \title{Creates an image repository}
 \usage{
-create_repository(repositoryName)
+create_repository(
+  repositoryName = "string",
+  tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{repositoryName}{The name to use for the repository. The repository name may be specified on its own (such as \code{nginx-web-app}) or it can be prepended with a namespace to group the repository into a category (such as \code{project-a/nginx-web-app}).}
+\item{repositoryName}{[required] The name to use for the repository. The repository name may be specified on its own (such as \code{nginx-web-app}) or it can be prepended with a namespace to group the repository into a category (such as \code{project-a/nginx-web-app}).}
+
+\item{tags}{}
 }
 \description{
 Creates an image repository.

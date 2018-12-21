@@ -4,12 +4,15 @@
 \alias{delete_scheduled_action}
 \title{Deletes the specified scheduled action}
 \usage{
-delete_scheduled_action(AutoScalingGroupName, ScheduledActionName)
+delete_scheduled_action(
+  AutoScalingGroupName = "string",
+  ScheduledActionName = "string"
+)
 }
 \arguments{
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{ScheduledActionName}{The name of the action to delete.}
+\item{ScheduledActionName}{[required] The name of the action to delete.}
 }
 \description{
 Deletes the specified scheduled action.

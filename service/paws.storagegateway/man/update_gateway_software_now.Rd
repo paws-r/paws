@@ -4,10 +4,12 @@
 \alias{update_gateway_software_now}
 \title{Updates the gateway virtual machine (VM) software}
 \usage{
-update_gateway_software_now(GatewayARN)
+update_gateway_software_now(
+  GatewayARN = "string"
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 }
 \description{
 Updates the gateway virtual machine (VM) software. The request immediately triggers the software update.

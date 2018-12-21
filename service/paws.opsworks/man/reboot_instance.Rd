@@ -4,10 +4,12 @@
 \alias{reboot_instance}
 \title{Reboots a specified instance}
 \usage{
-reboot_instance(InstanceId)
+reboot_instance(
+  InstanceId = "string"
+)
 }
 \arguments{
-\item{InstanceId}{The instance ID.}
+\item{InstanceId}{[required] The instance ID.}
 }
 \description{
 Reboots a specified instance. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html}{Starting, Stopping, and Rebooting Instances}.

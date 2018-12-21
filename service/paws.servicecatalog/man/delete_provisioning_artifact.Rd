@@ -4,20 +4,23 @@
 \alias{delete_provisioning_artifact}
 \title{Deletes the specified provisioning artifact (also known as a version) for the specified product}
 \usage{
-delete_provisioning_artifact(ProductId, ProvisioningArtifactId,
-  AcceptLanguage = NULL)
+delete_provisioning_artifact(
+  AcceptLanguage = "string",
+  ProductId = "string",
+  ProvisioningArtifactId = "string"
+)
 }
 \arguments{
-\item{ProductId}{The product identifier.}
-
-\item{ProvisioningArtifactId}{The identifier of the provisioning artifact.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{ProductId}{[required] The product identifier.}
+
+\item{ProvisioningArtifactId}{[required] The identifier of the provisioning artifact.}
 }
 \description{
 Deletes the specified provisioning artifact (also known as a version) for the specified product.

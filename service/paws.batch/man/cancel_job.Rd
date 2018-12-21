@@ -4,12 +4,15 @@
 \alias{cancel_job}
 \title{Cancels a job in an AWS Batch job queue}
 \usage{
-cancel_job(jobId, reason)
+cancel_job(
+  jobId = "string",
+  reason = "string"
+)
 }
 \arguments{
-\item{jobId}{The AWS Batch job ID of the job to cancel.}
+\item{jobId}{[required] The AWS Batch job ID of the job to cancel.}
 
-\item{reason}{A message to attach to the job that explains the reason for canceling it. This message is returned by future DescribeJobs operations on the job. This message is also recorded in the AWS Batch activity logs.}
+\item{reason}{[required] A message to attach to the job that explains the reason for canceling it. This message is returned by future DescribeJobs operations on the job. This message is also recorded in the AWS Batch activity logs.}
 }
 \description{
 Cancels a job in an AWS Batch job queue. Jobs that are in the \code{SUBMITTED}, \code{PENDING}, or \code{RUNNABLE} state are cancelled. Jobs that have progressed to \code{STARTING} or \code{RUNNING} are not cancelled (but the API operation still succeeds, even if no job is cancelled); these jobs must be terminated with the TerminateJob operation.

@@ -4,10 +4,14 @@
 \alias{get_console_output}
 \title{Gets the console output for the specified instance}
 \usage{
-get_console_output(InstanceId, DryRun = NULL, Latest = NULL)
+get_console_output(
+  InstanceId = "string",
+  DryRun = TRUE|FALSE,
+  Latest = TRUE|FALSE
+)
 }
 \arguments{
-\item{InstanceId}{The ID of the instance.}
+\item{InstanceId}{[required] The ID of the instance.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 

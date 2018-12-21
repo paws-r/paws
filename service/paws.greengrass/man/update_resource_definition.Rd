@@ -4,12 +4,15 @@
 \alias{update_resource_definition}
 \title{Updates a resource definition}
 \usage{
-update_resource_definition(ResourceDefinitionId, Name = NULL)
+update_resource_definition(
+  Name = "string",
+  ResourceDefinitionId = "string"
+)
 }
 \arguments{
-\item{ResourceDefinitionId}{The ID of the resource definition.}
-
 \item{Name}{The name of the definition.}
+
+\item{ResourceDefinitionId}{[required] The ID of the resource definition.}
 }
 \description{
 Updates a resource definition.

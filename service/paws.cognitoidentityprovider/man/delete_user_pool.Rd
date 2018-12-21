@@ -4,10 +4,12 @@
 \alias{delete_user_pool}
 \title{Deletes the specified Amazon Cognito user pool}
 \usage{
-delete_user_pool(UserPoolId)
+delete_user_pool(
+  UserPoolId = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool you want to delete.}
+\item{UserPoolId}{[required] The user pool ID for the user pool you want to delete.}
 }
 \description{
 Deletes the specified Amazon Cognito user pool.

@@ -4,14 +4,18 @@
 \alias{enable_logging}
 \title{Starts logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster}
 \usage{
-enable_logging(ClusterIdentifier, BucketName, S3KeyPrefix = NULL)
+enable_logging(
+  ClusterIdentifier = "string",
+  BucketName = "string",
+  S3KeyPrefix = "string"
+)
 }
 \arguments{
-\item{ClusterIdentifier}{The identifier of the cluster on which logging is to be started.
+\item{ClusterIdentifier}{[required] The identifier of the cluster on which logging is to be started.
 
 Example: \code{examplecluster}}
 
-\item{BucketName}{The name of an existing S3 bucket where the log files are to be stored.
+\item{BucketName}{[required] The name of an existing S3 bucket where the log files are to be stored.
 
 Constraints:
 \itemize{

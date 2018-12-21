@@ -4,10 +4,12 @@
 \alias{delete_tag_option}
 \title{Deletes the specified TagOption}
 \usage{
-delete_tag_option(Id)
+delete_tag_option(
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The TagOption identifier.}
+\item{Id}{[required] The TagOption identifier.}
 }
 \description{
 Deletes the specified TagOption.

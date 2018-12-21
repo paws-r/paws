@@ -4,14 +4,18 @@
 \alias{split_shard}
 \title{Splits a shard into two new shards in the Kinesis data stream, to increase the stream's capacity to ingest and transport data}
 \usage{
-split_shard(StreamName, ShardToSplit, NewStartingHashKey)
+split_shard(
+  StreamName = "string",
+  ShardToSplit = "string",
+  NewStartingHashKey = "string"
+)
 }
 \arguments{
-\item{StreamName}{The name of the stream for the shard split.}
+\item{StreamName}{[required] The name of the stream for the shard split.}
 
-\item{ShardToSplit}{The shard ID of the shard to split.}
+\item{ShardToSplit}{[required] The shard ID of the shard to split.}
 
-\item{NewStartingHashKey}{A hash key value for the starting hash key of one of the child shards created by the split. The hash key range for a given shard constitutes a set of ordered contiguous positive integers. The value for \code{NewStartingHashKey} must be in the range of hash keys being mapped into the shard. The \code{NewStartingHashKey} hash key value and all higher hash key values in hash key range are distributed to one of the child shards. All the lower hash key values in the range are distributed to the other child shard.}
+\item{NewStartingHashKey}{[required] A hash key value for the starting hash key of one of the child shards created by the split. The hash key range for a given shard constitutes a set of ordered contiguous positive integers. The value for \code{NewStartingHashKey} must be in the range of hash keys being mapped into the shard. The \code{NewStartingHashKey} hash key value and all higher hash key values in hash key range are distributed to one of the child shards. All the lower hash key values in the range are distributed to the other child shard.}
 }
 \description{
 Splits a shard into two new shards in the Kinesis data stream, to increase the stream's capacity to ingest and transport data. \code{SplitShard} is called when there is a need to increase the overall capacity of a stream because of an expected increase in the volume of data records being ingested.

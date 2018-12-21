@@ -4,12 +4,15 @@
 \alias{delete_rate_based_rule}
 \title{Permanently deletes a RateBasedRule}
 \usage{
-delete_rate_based_rule(RuleId, ChangeToken)
+delete_rate_based_rule(
+  RuleId = "string",
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{RuleId}{The \code{RuleId} of the RateBasedRule that you want to delete. \code{RuleId} is returned by CreateRateBasedRule and by ListRateBasedRules.}
+\item{RuleId}{[required] The \code{RuleId} of the RateBasedRule that you want to delete. \code{RuleId} is returned by CreateRateBasedRule and by ListRateBasedRules.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Permanently deletes a RateBasedRule. You can't delete a rule if it's still used in any \code{WebACL} objects or if it still includes any predicates, such as \code{ByteMatchSet} objects.

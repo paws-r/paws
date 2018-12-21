@@ -4,8 +4,20 @@
 \alias{describe_internet_gateways}
 \title{Describes one or more of your internet gateways}
 \usage{
-describe_internet_gateways(Filters = NULL, DryRun = NULL,
-  InternetGatewayIds = NULL)
+describe_internet_gateways(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE,
+  InternetGatewayIds = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -13,6 +25,7 @@ describe_internet_gateways(Filters = NULL, DryRun = NULL,
 \item \code{attachment.state} - The current state of the attachment between the gateway and the VPC (\code{available}). Present only if a VPC is attached.
 \item \code{attachment.vpc-id} - The ID of an attached VPC.
 \item \code{internet-gateway-id} - The ID of the Internet gateway.
+\item \code{owner-id} - The ID of the AWS account that owns the internet gateway.
 \item \code{tag}:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 }}

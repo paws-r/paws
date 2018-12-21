@@ -4,10 +4,12 @@
 \alias{delete_trigger}
 \title{Deletes a specified trigger}
 \usage{
-delete_trigger(Name)
+delete_trigger(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the trigger to delete.}
+\item{Name}{[required] The name of the trigger to delete.}
 }
 \description{
 Deletes a specified trigger. If the trigger is not found, no exception is thrown.

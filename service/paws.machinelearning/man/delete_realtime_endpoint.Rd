@@ -4,10 +4,12 @@
 \alias{delete_realtime_endpoint}
 \title{Deletes a real time endpoint of an \code{MLModel}}
 \usage{
-delete_realtime_endpoint(MLModelId)
+delete_realtime_endpoint(
+  MLModelId = "string"
+)
 }
 \arguments{
-\item{MLModelId}{The ID assigned to the \code{MLModel} during creation.}
+\item{MLModelId}{[required] The ID assigned to the \code{MLModel} during creation.}
 }
 \description{
 Deletes a real time endpoint of an \code{MLModel}.

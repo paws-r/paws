@@ -4,10 +4,15 @@
 \alias{describe_findings}
 \title{Describes the findings that are specified by the ARNs of the findings}
 \usage{
-describe_findings(findingArns, locale = NULL)
+describe_findings(
+  findingArns = list(
+    "string"
+  ),
+  locale = "EN_US"
+)
 }
 \arguments{
-\item{findingArns}{The ARN that specifies the finding that you want to describe.}
+\item{findingArns}{[required] The ARN that specifies the finding that you want to describe.}
 
 \item{locale}{The locale into which you want to translate a finding description, recommendation, and the short description that identifies the finding.}
 }

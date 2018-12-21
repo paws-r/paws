@@ -4,12 +4,17 @@
 \alias{disassociate_ip_groups}
 \title{Disassociates the specified IP access control group from the specified directory}
 \usage{
-disassociate_ip_groups(DirectoryId, GroupIds)
+disassociate_ip_groups(
+  DirectoryId = "string",
+  GroupIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{DirectoryId}{The ID of the directory.}
+\item{DirectoryId}{[required] The identifier of the directory.}
 
-\item{GroupIds}{The IDs of one or more IP access control groups.}
+\item{GroupIds}{[required] The identifiers of one or more IP access control groups.}
 }
 \description{
 Disassociates the specified IP access control group from the specified directory.

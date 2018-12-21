@@ -4,15 +4,41 @@
 \alias{create_trigger}
 \title{Creates a new trigger}
 \usage{
-create_trigger(Name, Type, Actions, Schedule = NULL, Predicate = NULL,
-  Description = NULL, StartOnCreation = NULL)
+create_trigger(
+  Name = "string",
+  Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
+  Schedule = "string",
+  Predicate = list(
+    Logical = "AND"|"ANY",
+    Conditions = list(
+      list(
+        LogicalOperator = "EQUALS",
+        JobName = "string",
+        State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"
+      )
+    )
+  ),
+  Actions = list(
+    list(
+      JobName = "string",
+      Arguments = list(
+        "string"
+      ),
+      Timeout = 123,
+      NotificationProperty = list(
+        NotifyDelayAfter = 123
+      ),
+      SecurityConfiguration = "string"
+    )
+  ),
+  Description = "string",
+  StartOnCreation = TRUE|FALSE
+)
 }
 \arguments{
-\item{Name}{The name of the trigger.}
+\item{Name}{[required] The name of the trigger.}
 
-\item{Type}{The type of the new trigger.}
-
-\item{Actions}{The actions initiated by this trigger when it fires.}
+\item{Type}{[required] The type of the new trigger.}
 
 \item{Schedule}{A \code{cron} expression used to specify the schedule (see \href{http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html}{Time-Based Schedules for Jobs and Crawlers}. For example, to run something every day at 12:15 UTC, you would specify: \code{cron(15 12 * * ? *)}.
 
@@ -21,6 +47,8 @@ This field is required when the trigger type is SCHEDULED.}
 \item{Predicate}{A predicate to specify when the new trigger should fire.
 
 This field is required when the trigger type is CONDITIONAL.}
+
+\item{Actions}{[required] The actions initiated by this trigger when it fires.}
 
 \item{Description}{A description of the new trigger.}
 

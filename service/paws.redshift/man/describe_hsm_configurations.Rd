@@ -4,8 +4,17 @@
 \alias{describe_hsm_configurations}
 \title{Returns information about the specified Amazon Redshift HSM configuration}
 \usage{
-describe_hsm_configurations(HsmConfigurationIdentifier = NULL,
-  MaxRecords = NULL, Marker = NULL, TagKeys = NULL, TagValues = NULL)
+describe_hsm_configurations(
+  HsmConfigurationIdentifier = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  TagKeys = list(
+    "string"
+  ),
+  TagValues = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{HsmConfigurationIdentifier}{The identifier of a specific Amazon Redshift HSM configuration to be described. If no identifier is specified, information is returned for all HSM configurations owned by your AWS customer account.}

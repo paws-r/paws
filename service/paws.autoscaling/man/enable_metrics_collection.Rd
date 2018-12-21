@@ -4,12 +4,16 @@
 \alias{enable_metrics_collection}
 \title{Enables group metrics for the specified Auto Scaling group}
 \usage{
-enable_metrics_collection(AutoScalingGroupName, Granularity, Metrics = NULL)
+enable_metrics_collection(
+  AutoScalingGroupName = "string",
+  Metrics = list(
+    "string"
+  ),
+  Granularity = "string"
+)
 }
 \arguments{
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
-
-\item{Granularity}{The granularity to associate with the metrics to collect. The only valid value is \code{1Minute}.}
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
 \item{Metrics}{One or more of the following metrics. If you omit this parameter, all metrics are enabled.
 \itemize{
@@ -22,6 +26,8 @@ enable_metrics_collection(AutoScalingGroupName, Granularity, Metrics = NULL)
 \item \code{GroupTerminatingInstances}
 \item \code{GroupTotalInstances}
 }}
+
+\item{Granularity}{[required] The granularity to associate with the metrics to collect. The only valid value is \code{1Minute}.}
 }
 \description{
 Enables group metrics for the specified Auto Scaling group. For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-monitoring.html}{Monitoring Your Auto Scaling Groups and Instances} in the \emph{Amazon EC2 Auto Scaling User Guide}.

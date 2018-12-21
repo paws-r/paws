@@ -4,7 +4,11 @@
 \alias{describe_endpoints}
 \title{Send an request with an empty body to the regional API endpoint to get your account API endpoint}
 \usage{
-describe_endpoints(MaxResults = NULL, Mode = NULL, NextToken = NULL)
+describe_endpoints(
+  MaxResults = 123,
+  Mode = "DEFAULT"|"GET_ONLY",
+  NextToken = "string"
+)
 }
 \arguments{
 \item{MaxResults}{Optional. Max number of endpoints, up to twenty, that will be returned at one time.}

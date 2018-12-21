@@ -4,15 +4,21 @@
 \alias{upload_multipart_part}
 \title{This operation uploads a part of an archive}
 \usage{
-upload_multipart_part(accountId, vaultName, uploadId, checksum = NULL,
-  range = NULL, body = NULL)
+upload_multipart_part(
+  accountId = "string",
+  vaultName = "string",
+  uploadId = "string",
+  checksum = "string",
+  range = "string",
+  body = raw
+)
 }
 \arguments{
-\item{accountId}{The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
+\item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
 
-\item{vaultName}{The name of the vault.}
+\item{vaultName}{[required] The name of the vault.}
 
-\item{uploadId}{The upload ID of the multipart upload.}
+\item{uploadId}{[required] The upload ID of the multipart upload.}
 
 \item{checksum}{The SHA256 tree hash of the data being uploaded.}
 

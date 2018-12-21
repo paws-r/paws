@@ -4,12 +4,24 @@
 \alias{associate_s3_resources}
 \title{Associates specified S3 resources with Amazon Macie for monitoring and data classification}
 \usage{
-associate_s3_resources(s3Resources, memberAccountId = NULL)
+associate_s3_resources(
+  memberAccountId = "string",
+  s3Resources = list(
+    list(
+      bucketName = "string",
+      prefix = "string",
+      classificationType = list(
+        oneTime = "FULL"|"NONE",
+        continuous = "FULL"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{s3Resources}{The S3 resources that you want to associate with Amazon Macie for monitoring and data classification.}
-
 \item{memberAccountId}{The ID of the Amazon Macie member account whose resources you want to associate with Macie.}
+
+\item{s3Resources}{[required] The S3 resources that you want to associate with Amazon Macie for monitoring and data classification.}
 }
 \description{
 Associates specified S3 resources with Amazon Macie for monitoring and data classification. If memberAccountId isn't specified, the action associates specified S3 resources with Macie for the current master account. If memberAccountId is specified, the action associates specified S3 resources with Macie for the specified member account.

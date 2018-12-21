@@ -4,12 +4,26 @@
 \alias{delete_attributes}
 \title{Deletes one or more attributes associated with an item}
 \usage{
-delete_attributes(DomainName, ItemName, Attributes = NULL, Expected = NULL)
+delete_attributes(
+  DomainName = "string",
+  ItemName = "string",
+  Attributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  Expected = list(
+    Name = "string",
+    Value = "string",
+    Exists = TRUE|FALSE
+  )
+)
 }
 \arguments{
-\item{DomainName}{The name of the domain in which to perform the operation.}
+\item{DomainName}{[required] The name of the domain in which to perform the operation.}
 
-\item{ItemName}{The name of the item. Similar to rows on a spreadsheet, items represent individual objects that contain one or more value-attribute pairs.}
+\item{ItemName}{[required] The name of the item. Similar to rows on a spreadsheet, items represent individual objects that contain one or more value-attribute pairs.}
 
 \item{Attributes}{A list of Attributes. Similar to columns on a spreadsheet, attributes represent categories of data that can be assigned to items.}
 

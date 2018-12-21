@@ -4,10 +4,12 @@
 \alias{delete_channel}
 \title{Deletes the specified channel}
 \usage{
-delete_channel(channelName)
+delete_channel(
+  channelName = "string"
+)
 }
 \arguments{
-\item{channelName}{The name of the channel to delete.}
+\item{channelName}{[required] The name of the channel to delete.}
 }
 \description{
 Deletes the specified channel.

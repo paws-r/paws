@@ -4,13 +4,18 @@
 \alias{describe_state_machine}
 \title{Describes a state machine}
 \usage{
-describe_state_machine(stateMachineArn)
+describe_state_machine(
+  stateMachineArn = "string"
+)
 }
 \arguments{
-\item{stateMachineArn}{The Amazon Resource Name (ARN) of the state machine to describe.}
+\item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine to describe.}
 }
 \description{
 Describes a state machine.
+}
+\details{
+This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.
 }
 \examples{
 

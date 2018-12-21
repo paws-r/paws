@@ -4,10 +4,13 @@
 \alias{delete_trust}
 \title{Deletes an existing trust relationship between your AWS Managed Microsoft AD directory and an external domain}
 \usage{
-delete_trust(TrustId, DeleteAssociatedConditionalForwarder = NULL)
+delete_trust(
+  TrustId = "string",
+  DeleteAssociatedConditionalForwarder = TRUE|FALSE
+)
 }
 \arguments{
-\item{TrustId}{The Trust ID of the trust relationship to be deleted.}
+\item{TrustId}{[required] The Trust ID of the trust relationship to be deleted.}
 
 \item{DeleteAssociatedConditionalForwarder}{Delete a conditional forwarder as part of a DeleteTrustRequest.}
 }

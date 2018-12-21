@@ -4,7 +4,10 @@
 \alias{list_configuration_sets}
 \title{Provides a list of the configuration sets associated with your Amazon SES account in the current AWS Region}
 \usage{
-list_configuration_sets(NextToken = NULL, MaxItems = NULL)
+list_configuration_sets(
+  NextToken = "string",
+  MaxItems = 123
+)
 }
 \arguments{
 \item{NextToken}{A token returned from a previous call to \code{ListConfigurationSets} to indicate the position of the configuration set in the configuration set list.}

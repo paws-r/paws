@@ -2,24 +2,71 @@
 % Please edit documentation in R/paws.codestar_operations.R
 \name{create_project}
 \alias{create_project}
-\title{Reserved for future use}
+\title{Creates a project, including project resources}
 \usage{
-create_project(name, id, description = NULL, clientRequestToken = NULL,
-  tags = NULL)
+create_project(
+  name = "string",
+  id = "string",
+  description = "string",
+  clientRequestToken = "string",
+  sourceCode = list(
+    list(
+      source = list(
+        s3 = list(
+          bucketName = "string",
+          bucketKey = "string"
+        )
+      ),
+      destination = list(
+        codeCommit = list(
+          name = "string"
+        ),
+        gitHub = list(
+          name = "string",
+          description = "string",
+          type = "string",
+          owner = "string",
+          privateRepository = TRUE|FALSE,
+          issuesEnabled = TRUE|FALSE,
+          token = "string"
+        )
+      )
+    )
+  ),
+  toolchain = list(
+    source = list(
+      s3 = list(
+        bucketName = "string",
+        bucketKey = "string"
+      )
+    ),
+    roleArn = "string",
+    stackParameters = list(
+      "string"
+    )
+  ),
+  tags = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{name}{Reserved for future use.}
+\item{name}{[required] The display name for the project to be created in AWS CodeStar.}
 
-\item{id}{Reserved for future use.}
+\item{id}{[required] The ID of the project to be created in AWS CodeStar.}
 
-\item{description}{Reserved for future use.}
+\item{description}{The description of the project, if any.}
 
-\item{clientRequestToken}{Reserved for future use.}
+\item{clientRequestToken}{A user- or system-generated token that identifies the entity that requested project creation. This token can be used to repeat the request.}
+
+\item{sourceCode}{A list of the Code objects submitted with the project request. If this parameter is specified, the request must also include the toolchain parameter.}
+
+\item{toolchain}{The name of the toolchain template file submitted with the project request. If this parameter is specified, the request must also include the sourceCode parameter.}
 
 \item{tags}{The tags created for the project.}
 }
 \description{
-Reserved for future use. To create a project, use the AWS CodeStar console.
+Creates a project, including project resources. This action creates a project based on a submitted project request. A set of source code files and a toolchain template file can be included with the project request. If these are not provided, an empty project is created.
 }
 \examples{
 

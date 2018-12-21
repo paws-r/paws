@@ -4,10 +4,12 @@
 \alias{delete_endpoint}
 \title{Deletes the endpoint for a device and mobile app from Amazon SNS}
 \usage{
-delete_endpoint(EndpointArn)
+delete_endpoint(
+  EndpointArn = "string"
+)
 }
 \arguments{
-\item{EndpointArn}{EndpointArn of endpoint to delete.}
+\item{EndpointArn}{[required] EndpointArn of endpoint to delete.}
 }
 \description{
 Deletes the endpoint for a device and mobile app from Amazon SNS. This action is idempotent. For more information, see \href{http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.

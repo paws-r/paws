@@ -4,12 +4,15 @@
 \alias{get_threat_intel_set}
 \title{Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID}
 \usage{
-get_threat_intel_set(ThreatIntelSetId, DetectorId)
+get_threat_intel_set(
+  DetectorId = "string",
+  ThreatIntelSetId = "string"
+)
 }
 \arguments{
-\item{ThreatIntelSetId}{The unique ID that specifies the ThreatIntelSet that you want to describe.}
+\item{DetectorId}{[required] The detectorID that specifies the GuardDuty service whose ThreatIntelSet you want to describe.}
 
-\item{DetectorId}{The detectorID that specifies the GuardDuty service whose ThreatIntelSet you want to describe.}
+\item{ThreatIntelSetId}{[required] The unique ID that specifies the ThreatIntelSet that you want to describe.}
 }
 \description{
 Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID.

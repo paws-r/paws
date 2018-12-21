@@ -4,10 +4,15 @@
 \alias{resume_processes}
 \title{Resumes the specified suspended automatic scaling processes, or all suspended process, for the specified Auto Scaling group}
 \usage{
-resume_processes(AutoScalingGroupName, ScalingProcesses = NULL)
+resume_processes(
+  AutoScalingGroupName = "string",
+  ScalingProcesses = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
 \item{ScalingProcesses}{One or more of the following processes. If you omit this parameter, all processes are specified.
 \itemize{

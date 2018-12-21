@@ -4,8 +4,13 @@
 \alias{describe_configuration_aggregators}
 \title{Returns the details of one or more configuration aggregators}
 \usage{
-describe_configuration_aggregators(ConfigurationAggregatorNames = NULL,
-  NextToken = NULL, Limit = NULL)
+describe_configuration_aggregators(
+  ConfigurationAggregatorNames = list(
+    "string"
+  ),
+  NextToken = "string",
+  Limit = 123
+)
 }
 \arguments{
 \item{ConfigurationAggregatorNames}{The name of the configuration aggregators.}

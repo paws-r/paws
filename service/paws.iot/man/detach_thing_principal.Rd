@@ -4,15 +4,21 @@
 \alias{detach_thing_principal}
 \title{Detaches the specified principal from the specified thing}
 \usage{
-detach_thing_principal(thingName, principal)
+detach_thing_principal(
+  thingName = "string",
+  principal = "string"
+)
 }
 \arguments{
-\item{thingName}{The name of the thing.}
+\item{thingName}{[required] The name of the thing.}
 
-\item{principal}{If the principal is a certificate, this value must be ARN of the certificate. If the principal is an Amazon Cognito identity, this value must be the ID of the Amazon Cognito identity.}
+\item{principal}{[required] If the principal is a certificate, this value must be ARN of the certificate. If the principal is an Amazon Cognito identity, this value must be the ID of the Amazon Cognito identity.}
 }
 \description{
 Detaches the specified principal from the specified thing.
+}
+\details{
+This call is asynchronous. It might take several seconds for the detachment to propagate.
 }
 \examples{
 

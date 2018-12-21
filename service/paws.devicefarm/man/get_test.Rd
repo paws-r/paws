@@ -4,10 +4,12 @@
 \alias{get_test}
 \title{Gets information about a test}
 \usage{
-get_test(arn)
+get_test(
+  arn = "string"
+)
 }
 \arguments{
-\item{arn}{The test's ARN.}
+\item{arn}{[required] The test's ARN.}
 }
 \description{
 Gets information about a test.

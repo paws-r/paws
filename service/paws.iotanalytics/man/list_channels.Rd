@@ -4,7 +4,10 @@
 \alias{list_channels}
 \title{Retrieves a list of channels}
 \usage{
-list_channels(nextToken = NULL, maxResults = NULL)
+list_channels(
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{nextToken}{The token for the next set of results.}

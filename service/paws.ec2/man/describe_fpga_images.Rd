@@ -4,8 +4,25 @@
 \alias{describe_fpga_images}
 \title{Describes one or more available Amazon FPGA Images (AFIs)}
 \usage{
-describe_fpga_images(DryRun = NULL, FpgaImageIds = NULL, Owners = NULL,
-  Filters = NULL, NextToken = NULL, MaxResults = NULL)
+describe_fpga_images(
+  DryRun = TRUE|FALSE,
+  FpgaImageIds = list(
+    "string"
+  ),
+  Owners = list(
+    "string"
+  ),
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}

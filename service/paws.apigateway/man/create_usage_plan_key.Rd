@@ -4,14 +4,18 @@
 \alias{create_usage_plan_key}
 \title{Creates a usage plan key for adding an existing API key to a usage plan}
 \usage{
-create_usage_plan_key(usagePlanId, keyId, keyType)
+create_usage_plan_key(
+  usagePlanId = "string",
+  keyId = "string",
+  keyType = "string"
+)
 }
 \arguments{
-\item{usagePlanId}{[Required] The Id of the UsagePlan resource representing the usage plan containing the to-be-created UsagePlanKey resource representing a plan customer.}
+\item{usagePlanId}{[required] [Required] The Id of the UsagePlan resource representing the usage plan containing the to-be-created UsagePlanKey resource representing a plan customer.}
 
-\item{keyId}{[Required] The identifier of a UsagePlanKey resource for a plan customer.}
+\item{keyId}{[required] [Required] The identifier of a UsagePlanKey resource for a plan customer.}
 
-\item{keyType}{[Required] The type of a UsagePlanKey resource for a plan customer.}
+\item{keyType}{[required] [Required] The type of a UsagePlanKey resource for a plan customer.}
 }
 \description{
 Creates a usage plan key for adding an existing API key to a usage plan.

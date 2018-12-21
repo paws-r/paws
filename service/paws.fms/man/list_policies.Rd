@@ -4,7 +4,10 @@
 \alias{list_policies}
 \title{Returns an array of \code{PolicySummary} objects in the response}
 \usage{
-list_policies(NextToken = NULL, MaxResults = NULL)
+list_policies(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{NextToken}{If you specify a value for \code{MaxResults} and you have more \code{PolicySummary} objects than the number that you specify for \code{MaxResults}, AWS Firewall Manager returns a \code{NextToken} value in the response that allows you to list another group of \code{PolicySummary} objects. For the second and subsequent \code{ListPolicies} requests, specify the value of \code{NextToken} from the previous response to get information about another batch of \code{PolicySummary} objects.}

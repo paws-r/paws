@@ -4,10 +4,20 @@
 \alias{detect_moderation_labels}
 \title{Detects explicit or suggestive adult content in a specified JPEG or PNG format image}
 \usage{
-detect_moderation_labels(Image, MinConfidence = NULL)
+detect_moderation_labels(
+  Image = list(
+    Bytes = raw,
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  MinConfidence = 123.0
+)
 }
 \arguments{
-\item{Image}{The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.}
+\item{Image}{[required] The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.}
 
 \item{MinConfidence}{Specifies the minimum confidence level for the labels to return. Amazon Rekognition doesn't return any labels with a confidence level lower than this specified value.
 

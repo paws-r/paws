@@ -4,7 +4,11 @@
 \alias{list_directories}
 \title{Lists directories created within an account}
 \usage{
-list_directories(NextToken = NULL, MaxResults = NULL, state = NULL)
+list_directories(
+  NextToken = "string",
+  MaxResults = 123,
+  state = "ENABLED"|"DISABLED"|"DELETED"
+)
 }
 \arguments{
 \item{NextToken}{The pagination token.}

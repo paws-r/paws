@@ -4,12 +4,16 @@
 \alias{list_artifacts}
 \title{Gets information about artifacts}
 \usage{
-list_artifacts(arn, type, nextToken = NULL)
+list_artifacts(
+  arn = "string",
+  type = "SCREENSHOT"|"FILE"|"LOG",
+  nextToken = "string"
+)
 }
 \arguments{
-\item{arn}{The Run, Job, Suite, or Test ARN.}
+\item{arn}{[required] The Run, Job, Suite, or Test ARN.}
 
-\item{type}{The artifacts' type.
+\item{type}{[required] The artifacts' type.
 
 Allowed values include:
 \itemize{

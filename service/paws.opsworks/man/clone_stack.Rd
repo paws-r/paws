@@ -4,21 +4,50 @@
 \alias{clone_stack}
 \title{Creates a clone of a specified stack}
 \usage{
-clone_stack(SourceStackId, ServiceRoleArn, Name = NULL, Region = NULL,
-  VpcId = NULL, Attributes = NULL, DefaultInstanceProfileArn = NULL,
-  DefaultOs = NULL, HostnameTheme = NULL, DefaultAvailabilityZone = NULL,
-  DefaultSubnetId = NULL, CustomJson = NULL, ConfigurationManager = NULL,
-  ChefConfiguration = NULL, UseCustomCookbooks = NULL,
-  UseOpsworksSecurityGroups = NULL, CustomCookbooksSource = NULL,
-  DefaultSshKeyName = NULL, ClonePermissions = NULL, CloneAppIds = NULL,
-  DefaultRootDeviceType = NULL, AgentVersion = NULL)
+clone_stack(
+  SourceStackId = "string",
+  Name = "string",
+  Region = "string",
+  VpcId = "string",
+  Attributes = list(
+    "string"
+  ),
+  ServiceRoleArn = "string",
+  DefaultInstanceProfileArn = "string",
+  DefaultOs = "string",
+  HostnameTheme = "string",
+  DefaultAvailabilityZone = "string",
+  DefaultSubnetId = "string",
+  CustomJson = "string",
+  ConfigurationManager = list(
+    Name = "string",
+    Version = "string"
+  ),
+  ChefConfiguration = list(
+    ManageBerkshelf = TRUE|FALSE,
+    BerkshelfVersion = "string"
+  ),
+  UseCustomCookbooks = TRUE|FALSE,
+  UseOpsworksSecurityGroups = TRUE|FALSE,
+  CustomCookbooksSource = list(
+    Type = "git"|"svn"|"archive"|"s3",
+    Url = "string",
+    Username = "string",
+    Password = "string",
+    SshKey = "string",
+    Revision = "string"
+  ),
+  DefaultSshKeyName = "string",
+  ClonePermissions = TRUE|FALSE,
+  CloneAppIds = list(
+    "string"
+  ),
+  DefaultRootDeviceType = "ebs"|"instance-store",
+  AgentVersion = "string"
+)
 }
 \arguments{
-\item{SourceStackId}{The source stack ID.}
-
-\item{ServiceRoleArn}{The stack AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role. If you create a stack by using the AWS OpsWorks Stacks console, it creates the role for you. You can obtain an existing stack's IAM ARN programmatically by calling DescribePermissions. For more information about IAM ARNs, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.
-
-You must set this parameter to a valid service role ARN or the action will fail; there is no default value. You can specify the source stack's service role ARN, if you prefer, but you must do so explicitly.}
+\item{SourceStackId}{[required] The source stack ID.}
 
 \item{Name}{The cloned stack name.}
 
@@ -41,6 +70,10 @@ If you specify a nondefault VPC ID, note the following:
 For more information about how to use AWS OpsWorks Stacks with a VPC, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html}{Running a Stack in a VPC}. For more information about default VPC and EC2 Classic, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html}{Supported Platforms}.}
 
 \item{Attributes}{A list of stack attributes and values as key/value pairs to be added to the cloned stack.}
+
+\item{ServiceRoleArn}{[required] The stack AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role. If you create a stack by using the AWS OpsWorks Stacks console, it creates the role for you. You can obtain an existing stack's IAM ARN programmatically by calling DescribePermissions. For more information about IAM ARNs, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.
+
+You must set this parameter to a valid service role ARN or the action will fail; there is no default value. You can specify the source stack's service role ARN, if you prefer, but you must do so explicitly.}
 
 \item{DefaultInstanceProfileArn}{The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2 instances. For more information about IAM ARNs, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
 

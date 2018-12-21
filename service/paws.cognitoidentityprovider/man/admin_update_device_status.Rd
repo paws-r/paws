@@ -4,15 +4,19 @@
 \alias{admin_update_device_status}
 \title{Updates the device status as an administrator}
 \usage{
-admin_update_device_status(UserPoolId, Username, DeviceKey,
-  DeviceRememberedStatus = NULL)
+admin_update_device_status(
+  UserPoolId = "string",
+  Username = "string",
+  DeviceKey = "string",
+  DeviceRememberedStatus = "remembered"|"not_remembered"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID.}
+\item{UserPoolId}{[required] The user pool ID.}
 
-\item{Username}{The user name.}
+\item{Username}{[required] The user name.}
 
-\item{DeviceKey}{The device key.}
+\item{DeviceKey}{[required] The device key.}
 
 \item{DeviceRememberedStatus}{The status indicating whether a device has been remembered or not.}
 }

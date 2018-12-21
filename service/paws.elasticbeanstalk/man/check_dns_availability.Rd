@@ -4,10 +4,12 @@
 \alias{check_dns_availability}
 \title{Checks if the specified CNAME is available}
 \usage{
-check_dns_availability(CNAMEPrefix)
+check_dns_availability(
+  CNAMEPrefix = "string"
+)
 }
 \arguments{
-\item{CNAMEPrefix}{The prefix used when this CNAME is reserved.}
+\item{CNAMEPrefix}{[required] The prefix used when this CNAME is reserved.}
 }
 \description{
 Checks if the specified CNAME is available.

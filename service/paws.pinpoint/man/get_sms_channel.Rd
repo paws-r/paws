@@ -4,10 +4,12 @@
 \alias{get_sms_channel}
 \title{Get an SMS channel}
 \usage{
-get_sms_channel(ApplicationId)
+get_sms_channel(
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 }
 \description{
 Get an SMS channel.

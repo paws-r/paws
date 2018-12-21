@@ -4,10 +4,12 @@
 \alias{describe_load_balancer_attributes}
 \title{Describes the attributes for the specified Application Load Balancer or Network Load Balancer}
 \usage{
-describe_load_balancer_attributes(LoadBalancerArn)
+describe_load_balancer_attributes(
+  LoadBalancerArn = "string"
+)
 }
 \arguments{
-\item{LoadBalancerArn}{The Amazon Resource Name (ARN) of the load balancer.}
+\item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
 }
 \description{
 Describes the attributes for the specified Application Load Balancer or Network Load Balancer.

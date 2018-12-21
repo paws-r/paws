@@ -4,10 +4,14 @@
 \alias{list_ip_sets}
 \title{Lists the IPSets of the GuardDuty service specified by the detector ID}
 \usage{
-list_ip_sets(DetectorId, MaxResults = NULL, NextToken = NULL)
+list_ip_sets(
+  DetectorId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{DetectorId}{The unique ID of the detector that you want to retrieve.}
+\item{DetectorId}{[required] The unique ID of the detector that you want to retrieve.}
 
 \item{MaxResults}{You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 7. The maximum value is 7.}
 

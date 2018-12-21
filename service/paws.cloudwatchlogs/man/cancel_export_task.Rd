@@ -4,10 +4,12 @@
 \alias{cancel_export_task}
 \title{Cancels the specified export task}
 \usage{
-cancel_export_task(taskId)
+cancel_export_task(
+  taskId = "string"
+)
 }
 \arguments{
-\item{taskId}{The ID of the export task.}
+\item{taskId}{[required] The ID of the export task.}
 }
 \description{
 Cancels the specified export task.

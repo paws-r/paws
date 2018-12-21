@@ -4,10 +4,12 @@
 \alias{describe_maintenance_start_time}
 \title{Returns your gateway's weekly maintenance start time including the day and time of the week}
 \usage{
-describe_maintenance_start_time(GatewayARN)
+describe_maintenance_start_time(
+  GatewayARN = "string"
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 }
 \description{
 Returns your gateway's weekly maintenance start time including the day and time of the week. Note that values are in terms of the gateway's time zone.

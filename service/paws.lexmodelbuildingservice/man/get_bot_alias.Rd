@@ -4,12 +4,15 @@
 \alias{get_bot_alias}
 \title{Returns information about an Amazon Lex bot alias}
 \usage{
-get_bot_alias(name, botName)
+get_bot_alias(
+  name = "string",
+  botName = "string"
+)
 }
 \arguments{
-\item{name}{The name of the bot alias. The name is case sensitive.}
+\item{name}{[required] The name of the bot alias. The name is case sensitive.}
 
-\item{botName}{The name of the bot.}
+\item{botName}{[required] The name of the bot.}
 }
 \description{
 Returns information about an Amazon Lex bot alias. For more information about aliases, see versioning-aliases.

@@ -4,7 +4,30 @@
 \alias{modify_instance_groups}
 \title{ModifyInstanceGroups modifies the number of nodes and configuration settings of an instance group}
 \usage{
-modify_instance_groups(ClusterId = NULL, InstanceGroups = NULL)
+modify_instance_groups(
+  ClusterId = "string",
+  InstanceGroups = list(
+    list(
+      InstanceGroupId = "string",
+      InstanceCount = 123,
+      EC2InstanceIdsToTerminate = list(
+        "string"
+      ),
+      ShrinkPolicy = list(
+        DecommissionTimeout = 123,
+        InstanceResizePolicy = list(
+          InstancesToTerminate = list(
+            "string"
+          ),
+          InstancesToProtect = list(
+            "string"
+          ),
+          InstanceTerminationTimeout = 123
+        )
+      )
+    )
+  )
+)
 }
 \arguments{
 \item{ClusterId}{The ID of the cluster to which the instance group belongs.}

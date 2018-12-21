@@ -4,10 +4,14 @@
 \alias{describe_change_set}
 \title{Returns the inputs for the change set and a list of changes that AWS CloudFormation will make if you execute the change set}
 \usage{
-describe_change_set(ChangeSetName, StackName = NULL, NextToken = NULL)
+describe_change_set(
+  ChangeSetName = "string",
+  StackName = "string",
+  NextToken = "string"
+)
 }
 \arguments{
-\item{ChangeSetName}{The name or Amazon Resource Name (ARN) of the change set that you want to describe.}
+\item{ChangeSetName}{[required] The name or Amazon Resource Name (ARN) of the change set that you want to describe.}
 
 \item{StackName}{If you specified the name of a change set, specify the stack name or ID (ARN) of the change set you want to describe.}
 

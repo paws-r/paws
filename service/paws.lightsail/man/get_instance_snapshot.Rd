@@ -4,10 +4,12 @@
 \alias{get_instance_snapshot}
 \title{Returns information about a specific instance snapshot}
 \usage{
-get_instance_snapshot(instanceSnapshotName)
+get_instance_snapshot(
+  instanceSnapshotName = "string"
+)
 }
 \arguments{
-\item{instanceSnapshotName}{The name of the snapshot for which you are requesting information.}
+\item{instanceSnapshotName}{[required] The name of the snapshot for which you are requesting information.}
 }
 \description{
 Returns information about a specific instance snapshot.

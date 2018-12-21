@@ -4,10 +4,13 @@
 \alias{update_repository_description}
 \title{Sets or changes the comment or description for a repository}
 \usage{
-update_repository_description(repositoryName, repositoryDescription = NULL)
+update_repository_description(
+  repositoryName = "string",
+  repositoryDescription = "string"
+)
 }
 \arguments{
-\item{repositoryName}{The name of the repository to set or change the comment or description for.}
+\item{repositoryName}{[required] The name of the repository to set or change the comment or description for.}
 
 \item{repositoryDescription}{The new comment or description for the specified repository. Repository descriptions are limited to 1,000 characters.}
 }

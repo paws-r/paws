@@ -4,10 +4,14 @@
 \alias{batch_detect_dominant_language}
 \title{Determines the dominant language of the input text for a batch of documents}
 \usage{
-batch_detect_dominant_language(TextList)
+batch_detect_dominant_language(
+  TextList = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{TextList}{A list containing the text of the input documents. The list can contain a maximum of 25 documents. Each document should contain at least 20 characters and must contain fewer than 5,000 bytes of UTF-8 encoded characters.}
+\item{TextList}{[required] A list containing the text of the input documents. The list can contain a maximum of 25 documents. Each document should contain at least 20 characters and must contain fewer than 5,000 bytes of UTF-8 encoded characters.}
 }
 \description{
 Determines the dominant language of the input text for a batch of documents. For a list of languages that Amazon Comprehend can detect, see \href{http://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html}{Amazon Comprehend Supported Languages}.

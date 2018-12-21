@@ -4,7 +4,10 @@
 \alias{describe_environment_resources}
 \title{Returns AWS resources for this environment}
 \usage{
-describe_environment_resources(EnvironmentId = NULL, EnvironmentName = NULL)
+describe_environment_resources(
+  EnvironmentId = "string",
+  EnvironmentName = "string"
+)
 }
 \arguments{
 \item{EnvironmentId}{The ID of the environment to retrieve AWS resource usage data.

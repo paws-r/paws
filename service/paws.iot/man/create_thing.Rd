@@ -4,16 +4,28 @@
 \alias{create_thing}
 \title{Creates a thing record in the registry}
 \usage{
-create_thing(thingName, thingTypeName = NULL, attributePayload = NULL)
+create_thing(
+  thingName = "string",
+  thingTypeName = "string",
+  attributePayload = list(
+    attributes = list(
+      "string"
+    ),
+    merge = TRUE|FALSE
+  ),
+  billingGroupName = "string"
+)
 }
 \arguments{
-\item{thingName}{The name of the thing to create.}
+\item{thingName}{[required] The name of the thing to create.}
 
 \item{thingTypeName}{The name of the thing type associated with the new thing.}
 
 \item{attributePayload}{The attribute payload, which consists of up to three name/value pairs in a JSON document. For example:
 
 \code{{\"attributes\":{\"string1\":\"string2\"}}}}
+
+\item{billingGroupName}{The name of the billing group the thing will be added to.}
 }
 \description{
 Creates a thing record in the registry.

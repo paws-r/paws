@@ -4,10 +4,12 @@
 \alias{remove_account_from_organization}
 \title{Removes the specified account from the organization}
 \usage{
-remove_account_from_organization(AccountId)
+remove_account_from_organization(
+  AccountId = "string"
+)
 }
 \arguments{
-\item{AccountId}{The unique identifier (ID) of the member account that you want to remove from the organization.
+\item{AccountId}{[required] The unique identifier (ID) of the member account that you want to remove from the organization.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for an account ID string requires exactly 12 digits.}
 }

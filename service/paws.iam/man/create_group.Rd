@@ -4,18 +4,21 @@
 \alias{create_group}
 \title{Creates a new group}
 \usage{
-create_group(GroupName, Path = NULL)
+create_group(
+  Path = "string",
+  GroupName = "string"
+)
 }
 \arguments{
-\item{GroupName}{The name of the group to create. Do not include the path in this value.
-
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-. The group name must be unique within the account. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".}
-
 \item{Path}{The path to the group. For more information about paths, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers} in the \emph{IAM User Guide}.
 
 This parameter is optional. If it is not included, it defaults to a slash (/).
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.}
+
+\item{GroupName}{[required] The name of the group to create. Do not include the path in this value.
+
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-. The group name must be unique within the account. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".}
 }
 \description{
 Creates a new group.

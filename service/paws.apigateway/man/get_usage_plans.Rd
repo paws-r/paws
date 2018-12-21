@@ -4,7 +4,11 @@
 \alias{get_usage_plans}
 \title{Gets all the usage plans of the caller's account}
 \usage{
-get_usage_plans(position = NULL, keyId = NULL, limit = NULL)
+get_usage_plans(
+  position = "string",
+  keyId = "string",
+  limit = 123
+)
 }
 \arguments{
 \item{position}{The current pagination position in the paged result set.}

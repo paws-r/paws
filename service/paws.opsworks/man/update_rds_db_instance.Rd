@@ -4,10 +4,14 @@
 \alias{update_rds_db_instance}
 \title{Updates an Amazon RDS instance}
 \usage{
-update_rds_db_instance(RdsDbInstanceArn, DbUser = NULL, DbPassword = NULL)
+update_rds_db_instance(
+  RdsDbInstanceArn = "string",
+  DbUser = "string",
+  DbPassword = "string"
+)
 }
 \arguments{
-\item{RdsDbInstanceArn}{The Amazon RDS instance's ARN.}
+\item{RdsDbInstanceArn}{[required] The Amazon RDS instance's ARN.}
 
 \item{DbUser}{The master user name.}
 

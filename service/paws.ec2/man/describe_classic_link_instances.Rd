@@ -4,8 +4,22 @@
 \alias{describe_classic_link_instances}
 \title{Describes one or more of your linked EC2-Classic instances}
 \usage{
-describe_classic_link_instances(Filters = NULL, DryRun = NULL,
-  InstanceIds = NULL, MaxResults = NULL, NextToken = NULL)
+describe_classic_link_instances(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE,
+  InstanceIds = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{Filters}{One or more filters.

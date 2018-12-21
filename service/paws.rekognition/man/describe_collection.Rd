@@ -4,10 +4,12 @@
 \alias{describe_collection}
 \title{Describes the specified collection}
 \usage{
-describe_collection(CollectionId)
+describe_collection(
+  CollectionId = "string"
+)
 }
 \arguments{
-\item{CollectionId}{The ID of the collection to describe.}
+\item{CollectionId}{[required] The ID of the collection to describe.}
 }
 \description{
 Describes the specified collection. You can use \code{DescribeCollection} to get information, such as the number of faces indexed into a collection and the version of the model used by the collection for face detection.

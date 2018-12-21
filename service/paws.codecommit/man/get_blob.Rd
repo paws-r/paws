@@ -4,12 +4,15 @@
 \alias{get_blob}
 \title{Returns the base-64 encoded content of an individual blob within a repository}
 \usage{
-get_blob(repositoryName, blobId)
+get_blob(
+  repositoryName = "string",
+  blobId = "string"
+)
 }
 \arguments{
-\item{repositoryName}{The name of the repository that contains the blob.}
+\item{repositoryName}{[required] The name of the repository that contains the blob.}
 
-\item{blobId}{The ID of the blob, which is its SHA-1 pointer.}
+\item{blobId}{[required] The ID of the blob, which is its SHA-1 pointer.}
 }
 \description{
 Returns the base-64 encoded content of an individual blob within a repository.

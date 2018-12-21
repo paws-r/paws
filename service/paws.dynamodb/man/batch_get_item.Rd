@@ -4,10 +4,50 @@
 \alias{batch_get_item}
 \title{The \code{BatchGetItem} operation returns the attributes of one or more items from one or more tables}
 \usage{
-batch_get_item(RequestItems, ReturnConsumedCapacity = NULL)
+batch_get_item(
+  RequestItems = list(
+    list(
+      Keys = list(
+        list(
+          list(
+            S = "string",
+            N = "string",
+            B = raw,
+            SS = list(
+              "string"
+            ),
+            NS = list(
+              "string"
+            ),
+            BS = list(
+              raw
+            ),
+            M = list(
+              list()
+            ),
+            L = list(
+              list()
+            ),
+            NULL = TRUE|FALSE,
+            BOOL = TRUE|FALSE
+          )
+        )
+      ),
+      AttributesToGet = list(
+        "string"
+      ),
+      ConsistentRead = TRUE|FALSE,
+      ProjectionExpression = "string",
+      ExpressionAttributeNames = list(
+        "string"
+      )
+    )
+  ),
+  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE"
+)
 }
 \arguments{
-\item{RequestItems}{A map of one or more table names and, for each table, a map that describes one or more items to retrieve from that table. Each table name can be used only once per \code{BatchGetItem} request.
+\item{RequestItems}{[required] A map of one or more table names and, for each table, a map that describes one or more items to retrieve from that table. Each table name can be used only once per \code{BatchGetItem} request.
 
 Each element in the map of items to retrieve consists of the following:
 \itemize{

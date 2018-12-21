@@ -4,16 +4,75 @@
 \alias{create_partition}
 \title{Creates a new partition}
 \usage{
-create_partition(DatabaseName, TableName, PartitionInput, CatalogId = NULL)
+create_partition(
+  CatalogId = "string",
+  DatabaseName = "string",
+  TableName = "string",
+  PartitionInput = list(
+    Values = list(
+      "string"
+    ),
+    LastAccessTime = as.POSIXct("2015-01-01"),
+    StorageDescriptor = list(
+      Columns = list(
+        list(
+          Name = "string",
+          Type = "string",
+          Comment = "string"
+        )
+      ),
+      Location = "string",
+      InputFormat = "string",
+      OutputFormat = "string",
+      Compressed = TRUE|FALSE,
+      NumberOfBuckets = 123,
+      SerdeInfo = list(
+        Name = "string",
+        SerializationLibrary = "string",
+        Parameters = list(
+          "string"
+        )
+      ),
+      BucketColumns = list(
+        "string"
+      ),
+      SortColumns = list(
+        list(
+          Column = "string",
+          SortOrder = 123
+        )
+      ),
+      Parameters = list(
+        "string"
+      ),
+      SkewedInfo = list(
+        SkewedColumnNames = list(
+          "string"
+        ),
+        SkewedColumnValues = list(
+          "string"
+        ),
+        SkewedColumnValueLocationMaps = list(
+          "string"
+        )
+      ),
+      StoredAsSubDirectories = TRUE|FALSE
+    ),
+    Parameters = list(
+      "string"
+    ),
+    LastAnalyzedTime = as.POSIXct("2015-01-01")
+  )
+)
 }
 \arguments{
-\item{DatabaseName}{The name of the metadata database in which the partition is to be created.}
-
-\item{TableName}{The name of the metadata table in which the partition is to be created.}
-
-\item{PartitionInput}{A \code{PartitionInput} structure defining the partition to be created.}
-
 \item{CatalogId}{The ID of the catalog in which the partion is to be created. Currently, this should be the AWS account ID.}
+
+\item{DatabaseName}{[required] The name of the metadata database in which the partition is to be created.}
+
+\item{TableName}{[required] The name of the metadata table in which the partition is to be created.}
+
+\item{PartitionInput}{[required] A \code{PartitionInput} structure defining the partition to be created.}
 }
 \description{
 Creates a new partition.

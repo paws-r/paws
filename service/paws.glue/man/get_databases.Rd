@@ -4,7 +4,11 @@
 \alias{get_databases}
 \title{Retrieves all Databases defined in a given Data Catalog}
 \usage{
-get_databases(CatalogId = NULL, NextToken = NULL, MaxResults = NULL)
+get_databases(
+  CatalogId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog from which to retrieve \code{Databases}. If none is supplied, the AWS account ID is used by default.}

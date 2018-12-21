@@ -4,12 +4,17 @@
 \alias{add_cache}
 \title{Configures one or more gateway local disks as cache for a gateway}
 \usage{
-add_cache(GatewayARN, DiskIds)
+add_cache(
+  GatewayARN = "string",
+  DiskIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 
-\item{DiskIds}{}
+\item{DiskIds}{[required]}
 }
 \description{
 Configures one or more gateway local disks as cache for a gateway. This operation is only supported in the cached volume, tape and file gateway type (see \href{http://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html}{Storage Gateway Concepts}).

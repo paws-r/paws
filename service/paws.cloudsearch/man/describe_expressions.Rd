@@ -4,10 +4,16 @@
 \alias{describe_expressions}
 \title{Gets the expressions configured for the search domain}
 \usage{
-describe_expressions(DomainName, ExpressionNames = NULL, Deployed = NULL)
+describe_expressions(
+  DomainName = "string",
+  ExpressionNames = list(
+    "string"
+  ),
+  Deployed = TRUE|FALSE
+)
 }
 \arguments{
-\item{DomainName}{The name of the domain you want to describe.}
+\item{DomainName}{[required] The name of the domain you want to describe.}
 
 \item{ExpressionNames}{Limits the \code{DescribeExpressions} response to the specified expressions. If not specified, all expressions are shown.}
 

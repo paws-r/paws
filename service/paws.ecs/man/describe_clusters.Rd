@@ -4,7 +4,14 @@
 \alias{describe_clusters}
 \title{Describes one or more of your clusters}
 \usage{
-describe_clusters(clusters = NULL, include = NULL)
+describe_clusters(
+  clusters = list(
+    "string"
+  ),
+  include = list(
+    "STATISTICS"|"TAGS"
+  )
+)
 }
 \arguments{
 \item{clusters}{A list of up to 100 cluster names or full cluster Amazon Resource Name (ARN) entries. If you do not specify a cluster, the default cluster is assumed.}

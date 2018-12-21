@@ -4,10 +4,17 @@
 \alias{update_template}
 \title{Updates an email template}
 \usage{
-update_template(Template)
+update_template(
+  Template = list(
+    TemplateName = "string",
+    SubjectPart = "string",
+    TextPart = "string",
+    HtmlPart = "string"
+  )
+)
 }
 \arguments{
-\item{Template}{}
+\item{Template}{[required]}
 }
 \description{
 Updates an email template. Email templates enable you to send personalized email to one or more destinations in a single API operation. For more information, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html}{Amazon SES Developer Guide}.

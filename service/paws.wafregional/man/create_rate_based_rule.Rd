@@ -4,18 +4,24 @@
 \alias{create_rate_based_rule}
 \title{Creates a RateBasedRule}
 \usage{
-create_rate_based_rule(Name, MetricName, RateKey, RateLimit, ChangeToken)
+create_rate_based_rule(
+  Name = "string",
+  MetricName = "string",
+  RateKey = "IP",
+  RateLimit = 123,
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{Name}{A friendly name or description of the RateBasedRule. You can't change the name of a \code{RateBasedRule} after you create it.}
+\item{Name}{[required] A friendly name or description of the RateBasedRule. You can't change the name of a \code{RateBasedRule} after you create it.}
 
-\item{MetricName}{A friendly name or description for the metrics for this \code{RateBasedRule}. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the \code{RateBasedRule}.}
+\item{MetricName}{[required] A friendly name or description for the metrics for this \code{RateBasedRule}. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the \code{RateBasedRule}.}
 
-\item{RateKey}{The field that AWS WAF uses to determine if requests are likely arriving from a single source and thus subject to rate monitoring. The only valid value for \code{RateKey} is \code{IP}. \code{IP} indicates that requests that arrive from the same IP address are subject to the \code{RateLimit} that is specified in the \code{RateBasedRule}.}
+\item{RateKey}{[required] The field that AWS WAF uses to determine if requests are likely arriving from a single source and thus subject to rate monitoring. The only valid value for \code{RateKey} is \code{IP}. \code{IP} indicates that requests that arrive from the same IP address are subject to the \code{RateLimit} that is specified in the \code{RateBasedRule}.}
 
-\item{RateLimit}{The maximum number of requests, which have an identical value in the field that is specified by \code{RateKey}, allowed in a five-minute period. If the number of requests exceeds the \code{RateLimit} and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.}
+\item{RateLimit}{[required] The maximum number of requests, which have an identical value in the field that is specified by \code{RateKey}, allowed in a five-minute period. If the number of requests exceeds the \code{RateLimit} and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.}
 
-\item{ChangeToken}{The \code{ChangeToken} that you used to submit the \code{CreateRateBasedRule} request. You can also use this value to query the status of the request. For more information, see GetChangeTokenStatus.}
+\item{ChangeToken}{[required] The \code{ChangeToken} that you used to submit the \code{CreateRateBasedRule} request. You can also use this value to query the status of the request. For more information, see GetChangeTokenStatus.}
 }
 \description{
 Creates a RateBasedRule. The \code{RateBasedRule} contains a \code{RateLimit}, which specifies the maximum number of requests that AWS WAF allows from a specified IP address in a five-minute period. The \code{RateBasedRule} also contains the \code{IPSet} objects, \code{ByteMatchSet} objects, and other predicates that identify the requests that you want to count or block if these requests exceed the \code{RateLimit}.

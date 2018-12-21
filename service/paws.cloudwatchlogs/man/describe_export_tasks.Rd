@@ -4,8 +4,12 @@
 \alias{describe_export_tasks}
 \title{Lists the specified export tasks}
 \usage{
-describe_export_tasks(taskId = NULL, statusCode = NULL, nextToken = NULL,
-  limit = NULL)
+describe_export_tasks(
+  taskId = "string",
+  statusCode = "CANCELLED"|"COMPLETED"|"FAILED"|"PENDING"|"PENDING_CANCEL"|"RUNNING",
+  nextToken = "string",
+  limit = 123
+)
 }
 \arguments{
 \item{taskId}{The ID of the export task. Specifying a task ID filters the results to zero or one export tasks.}

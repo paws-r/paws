@@ -4,10 +4,12 @@
 \alias{delete_identity_pool}
 \title{Deletes a user pool}
 \usage{
-delete_identity_pool(IdentityPoolId)
+delete_identity_pool(
+  IdentityPoolId = "string"
+)
 }
 \arguments{
-\item{IdentityPoolId}{An identity pool ID in the format REGION:GUID.}
+\item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
 }
 \description{
 Deletes a user pool. Once a pool is deleted, users will not be able to authenticate with the pool.

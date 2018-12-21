@@ -4,12 +4,14 @@
 \alias{get_role}
 \title{Retrieves information about the specified role, including the role's path, GUID, ARN, and the role's trust policy that grants permission to assume the role}
 \usage{
-get_role(RoleName)
+get_role(
+  RoleName = "string"
+)
 }
 \arguments{
-\item{RoleName}{The name of the IAM role to get information about.
+\item{RoleName}{[required] The name of the IAM role to get information about.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Retrieves information about the specified role, including the role's path, GUID, ARN, and the role's trust policy that grants permission to assume the role. For more information about roles, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html}{Working with Roles}.

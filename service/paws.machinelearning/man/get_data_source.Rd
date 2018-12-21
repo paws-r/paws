@@ -4,10 +4,13 @@
 \alias{get_data_source}
 \title{Returns a \code{DataSource} that includes metadata and data file information, as well as the current status of the \code{DataSource}}
 \usage{
-get_data_source(DataSourceId, Verbose = NULL)
+get_data_source(
+  DataSourceId = "string",
+  Verbose = TRUE|FALSE
+)
 }
 \arguments{
-\item{DataSourceId}{The ID assigned to the \code{DataSource} at creation.}
+\item{DataSourceId}{[required] The ID assigned to the \code{DataSource} at creation.}
 
 \item{Verbose}{Specifies whether the \code{GetDataSource} operation should return \code{DataSourceSchema}.
 

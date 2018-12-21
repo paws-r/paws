@@ -4,10 +4,12 @@
 \alias{start_trigger}
 \title{Starts an existing trigger}
 \usage{
-start_trigger(Name)
+start_trigger(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the trigger to start.}
+\item{Name}{[required] The name of the trigger to start.}
 }
 \description{
 Starts an existing trigger. See \href{http://docs.aws.amazon.com/glue/latest/dg/trigger-job.html}{Triggering Jobs} for information about how different types of trigger are started.

@@ -4,18 +4,22 @@
 \alias{put_user_policy}
 \title{Adds or updates an inline policy document that is embedded in the specified IAM user}
 \usage{
-put_user_policy(UserName, PolicyName, PolicyDocument)
+put_user_policy(
+  UserName = "string",
+  PolicyName = "string",
+  PolicyDocument = "string"
+)
 }
 \arguments{
-\item{UserName}{The name of the user to associate the policy with.
+\item{UserName}{[required] The name of the user to associate the policy with.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
-\item{PolicyName}{The name of the policy document.
+\item{PolicyName}{[required] The name of the policy document.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
-\item{PolicyDocument}{The policy document.
+\item{PolicyDocument}{[required] The policy document.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate this parameter is a string of characters consisting of the following:
 \itemize{

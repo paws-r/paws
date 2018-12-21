@@ -4,13 +4,18 @@
 \alias{update_group}
 \title{Updates the specified group with the specified attributes}
 \usage{
-update_group(GroupName, UserPoolId, Description = NULL, RoleArn = NULL,
-  Precedence = NULL)
+update_group(
+  GroupName = "string",
+  UserPoolId = "string",
+  Description = "string",
+  RoleArn = "string",
+  Precedence = 123
+)
 }
 \arguments{
-\item{GroupName}{The name of the group.}
+\item{GroupName}{[required] The name of the group.}
 
-\item{UserPoolId}{The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The user pool ID for the user pool.}
 
 \item{Description}{A string containing the new description of the group.}
 

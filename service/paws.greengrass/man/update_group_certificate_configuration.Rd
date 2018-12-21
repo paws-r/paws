@@ -4,13 +4,15 @@
 \alias{update_group_certificate_configuration}
 \title{Updates the Certificate expiry time for a group}
 \usage{
-update_group_certificate_configuration(GroupId,
-  CertificateExpiryInMilliseconds = NULL)
+update_group_certificate_configuration(
+  CertificateExpiryInMilliseconds = "string",
+  GroupId = "string"
+)
 }
 \arguments{
-\item{GroupId}{The ID of the AWS Greengrass group.}
-
 \item{CertificateExpiryInMilliseconds}{The amount of time remaining before the certificate expires, in milliseconds.}
+
+\item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \description{
 Updates the Certificate expiry time for a group.

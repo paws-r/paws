@@ -4,11 +4,17 @@
 \alias{update_account_password_policy}
 \title{Updates the password policy settings for the AWS account}
 \usage{
-update_account_password_policy(MinimumPasswordLength = NULL,
-  RequireSymbols = NULL, RequireNumbers = NULL,
-  RequireUppercaseCharacters = NULL, RequireLowercaseCharacters = NULL,
-  AllowUsersToChangePassword = NULL, MaxPasswordAge = NULL,
-  PasswordReusePrevention = NULL, HardExpiry = NULL)
+update_account_password_policy(
+  MinimumPasswordLength = 123,
+  RequireSymbols = TRUE|FALSE,
+  RequireNumbers = TRUE|FALSE,
+  RequireUppercaseCharacters = TRUE|FALSE,
+  RequireLowercaseCharacters = TRUE|FALSE,
+  AllowUsersToChangePassword = TRUE|FALSE,
+  MaxPasswordAge = 123,
+  PasswordReusePrevention = 123,
+  HardExpiry = TRUE|FALSE
+)
 }
 \arguments{
 \item{MinimumPasswordLength}{The minimum number of characters allowed in an IAM user password.

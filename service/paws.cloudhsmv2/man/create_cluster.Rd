@@ -4,16 +4,22 @@
 \alias{create_cluster}
 \title{Creates a new AWS CloudHSM cluster}
 \usage{
-create_cluster(SubnetIds, HsmType, SourceBackupId = NULL)
+create_cluster(
+  SubnetIds = list(
+    "string"
+  ),
+  HsmType = "string",
+  SourceBackupId = "string"
+)
 }
 \arguments{
-\item{SubnetIds}{The identifiers (IDs) of the subnets where you are creating the cluster. You must specify at least one subnet. If you specify multiple subnets, they must meet the following criteria:
+\item{SubnetIds}{[required] The identifiers (IDs) of the subnets where you are creating the cluster. You must specify at least one subnet. If you specify multiple subnets, they must meet the following criteria:
 \itemize{
 \item All subnets must be in the same virtual private cloud (VPC).
 \item You can specify only one subnet per Availability Zone.
 }}
 
-\item{HsmType}{The type of HSM to use in the cluster. Currently the only allowed value is \code{hsm1.medium}.}
+\item{HsmType}{[required] The type of HSM to use in the cluster. Currently the only allowed value is \code{hsm1.medium}.}
 
 \item{SourceBackupId}{The identifier (ID) of the cluster backup to restore. Use this value to restore the cluster from a backup instead of creating a new cluster. To find the backup ID, use DescribeBackups.}
 }

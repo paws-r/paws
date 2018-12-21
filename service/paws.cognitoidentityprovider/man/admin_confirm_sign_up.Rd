@@ -4,12 +4,15 @@
 \alias{admin_confirm_sign_up}
 \title{Confirms user registration as an admin without using a confirmation code}
 \usage{
-admin_confirm_sign_up(UserPoolId, Username)
+admin_confirm_sign_up(
+  UserPoolId = "string",
+  Username = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for which you want to confirm user registration.}
+\item{UserPoolId}{[required] The user pool ID for which you want to confirm user registration.}
 
-\item{Username}{The user name for which you want to confirm user registration.}
+\item{Username}{[required] The user name for which you want to confirm user registration.}
 }
 \description{
 Confirms user registration as an admin without using a confirmation code. Works on any user.

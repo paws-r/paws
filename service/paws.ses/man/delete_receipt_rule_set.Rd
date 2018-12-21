@@ -4,10 +4,12 @@
 \alias{delete_receipt_rule_set}
 \title{Deletes the specified receipt rule set and all of the receipt rules it contains}
 \usage{
-delete_receipt_rule_set(RuleSetName)
+delete_receipt_rule_set(
+  RuleSetName = "string"
+)
 }
 \arguments{
-\item{RuleSetName}{The name of the receipt rule set to delete.}
+\item{RuleSetName}{[required] The name of the receipt rule set to delete.}
 }
 \description{
 Deletes the specified receipt rule set and all of the receipt rules it contains.

@@ -4,10 +4,15 @@
 \alias{untag_resource}
 \title{Removes the specified tags from the specified customer master key (CMK)}
 \usage{
-untag_resource(KeyId, TagKeys)
+untag_resource(
+  KeyId = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{KeyId}{A unique identifier for the CMK from which you are removing tags.
+\item{KeyId}{[required] A unique identifier for the CMK from which you are removing tags.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 
@@ -19,7 +24,7 @@ For example:
 
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 
-\item{TagKeys}{One or more tag keys. Specify only the tag keys, not the tag values.}
+\item{TagKeys}{[required] One or more tag keys. Specify only the tag keys, not the tag values.}
 }
 \description{
 Removes the specified tags from the specified customer master key (CMK). You cannot perform this operation on a CMK in a different AWS account.

@@ -4,15 +4,122 @@
 \alias{delete_item}
 \title{Deletes a single item in a table by primary key}
 \usage{
-delete_item(TableName, Key, Expected = NULL, ConditionalOperator = NULL,
-  ReturnValues = NULL, ReturnConsumedCapacity = NULL,
-  ReturnItemCollectionMetrics = NULL, ConditionExpression = NULL,
-  ExpressionAttributeNames = NULL, ExpressionAttributeValues = NULL)
+delete_item(
+  TableName = "string",
+  Key = list(
+    list(
+      S = "string",
+      N = "string",
+      B = raw,
+      SS = list(
+        "string"
+      ),
+      NS = list(
+        "string"
+      ),
+      BS = list(
+        raw
+      ),
+      M = list(
+        list()
+      ),
+      L = list(
+        list()
+      ),
+      NULL = TRUE|FALSE,
+      BOOL = TRUE|FALSE
+    )
+  ),
+  Expected = list(
+    list(
+      Value = list(
+        S = "string",
+        N = "string",
+        B = raw,
+        SS = list(
+          "string"
+        ),
+        NS = list(
+          "string"
+        ),
+        BS = list(
+          raw
+        ),
+        M = list(
+          list()
+        ),
+        L = list(
+          list()
+        ),
+        NULL = TRUE|FALSE,
+        BOOL = TRUE|FALSE
+      ),
+      Exists = TRUE|FALSE,
+      ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH",
+      AttributeValueList = list(
+        list(
+          S = "string",
+          N = "string",
+          B = raw,
+          SS = list(
+            "string"
+          ),
+          NS = list(
+            "string"
+          ),
+          BS = list(
+            raw
+          ),
+          M = list(
+            list()
+          ),
+          L = list(
+            list()
+          ),
+          NULL = TRUE|FALSE,
+          BOOL = TRUE|FALSE
+        )
+      )
+    )
+  ),
+  ConditionalOperator = "AND"|"OR",
+  ReturnValues = "NONE"|"ALL_OLD"|"UPDATED_OLD"|"ALL_NEW"|"UPDATED_NEW",
+  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
+  ReturnItemCollectionMetrics = "SIZE"|"NONE",
+  ConditionExpression = "string",
+  ExpressionAttributeNames = list(
+    "string"
+  ),
+  ExpressionAttributeValues = list(
+    list(
+      S = "string",
+      N = "string",
+      B = raw,
+      SS = list(
+        "string"
+      ),
+      NS = list(
+        "string"
+      ),
+      BS = list(
+        raw
+      ),
+      M = list(
+        list()
+      ),
+      L = list(
+        list()
+      ),
+      NULL = TRUE|FALSE,
+      BOOL = TRUE|FALSE
+    )
+  )
+)
 }
 \arguments{
-\item{TableName}{The name of the table from which to delete the item.}
+\item{TableName}{[required] The name of the table from which to delete the item.}
 
-\item{Key}{A map of attribute names to \code{AttributeValue} objects, representing the primary key of the item to delete.
+\item{Key}{[required] A map of attribute names to \code{AttributeValue} objects, representing the primary key of the item to delete.
 
 For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for both the partition key and the sort key.}
 

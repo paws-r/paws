@@ -4,11 +4,15 @@
 \alias{revoke_cluster_security_group_ingress}
 \title{Revokes an ingress rule in an Amazon Redshift security group for a previously authorized IP range or Amazon EC2 security group}
 \usage{
-revoke_cluster_security_group_ingress(ClusterSecurityGroupName, CIDRIP = NULL,
-  EC2SecurityGroupName = NULL, EC2SecurityGroupOwnerId = NULL)
+revoke_cluster_security_group_ingress(
+  ClusterSecurityGroupName = "string",
+  CIDRIP = "string",
+  EC2SecurityGroupName = "string",
+  EC2SecurityGroupOwnerId = "string"
+)
 }
 \arguments{
-\item{ClusterSecurityGroupName}{The name of the security Group from which to revoke the ingress rule.}
+\item{ClusterSecurityGroupName}{[required] The name of the security Group from which to revoke the ingress rule.}
 
 \item{CIDRIP}{The IP range for which to revoke access. This range must be a valid Classless Inter-Domain Routing (CIDR) block of IP addresses. If \code{CIDRIP} is specified, \code{EC2SecurityGroupName} and \code{EC2SecurityGroupOwnerId} cannot be provided.}
 

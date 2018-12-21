@@ -4,12 +4,23 @@
 \alias{describe_db_cluster_backtracks}
 \title{Returns information about backtracks for a DB cluster}
 \usage{
-describe_db_cluster_backtracks(DBClusterIdentifier,
-  BacktrackIdentifier = NULL, Filters = NULL, MaxRecords = NULL,
-  Marker = NULL)
+describe_db_cluster_backtracks(
+  DBClusterIdentifier = "string",
+  BacktrackIdentifier = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
-\item{DBClusterIdentifier}{The DB cluster identifier of the DB cluster to be described. This parameter is stored as a lowercase string.
+\item{DBClusterIdentifier}{[required] The DB cluster identifier of the DB cluster to be described. This parameter is stored as a lowercase string.
 
 Constraints:
 \itemize{

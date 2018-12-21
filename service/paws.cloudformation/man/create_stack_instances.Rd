@@ -4,16 +4,40 @@
 \alias{create_stack_instances}
 \title{Creates stack instances for the specified accounts, within the specified regions}
 \usage{
-create_stack_instances(StackSetName, Accounts, Regions,
-  ParameterOverrides = NULL, OperationPreferences = NULL,
-  OperationId = NULL)
+create_stack_instances(
+  StackSetName = "string",
+  Accounts = list(
+    "string"
+  ),
+  Regions = list(
+    "string"
+  ),
+  ParameterOverrides = list(
+    list(
+      ParameterKey = "string",
+      ParameterValue = "string",
+      UsePreviousValue = TRUE|FALSE,
+      ResolvedValue = "string"
+    )
+  ),
+  OperationPreferences = list(
+    RegionOrder = list(
+      "string"
+    ),
+    FailureToleranceCount = 123,
+    FailureTolerancePercentage = 123,
+    MaxConcurrentCount = 123,
+    MaxConcurrentPercentage = 123
+  ),
+  OperationId = "string"
+)
 }
 \arguments{
-\item{StackSetName}{The name or unique ID of the stack set that you want to create stack instances from.}
+\item{StackSetName}{[required] The name or unique ID of the stack set that you want to create stack instances from.}
 
-\item{Accounts}{The names of one or more AWS accounts that you want to create stack instances in the specified region(s) for.}
+\item{Accounts}{[required] The names of one or more AWS accounts that you want to create stack instances in the specified region(s) for.}
 
-\item{Regions}{The names of one or more regions where you want to create stack instances using the specified AWS account(s).}
+\item{Regions}{[required] The names of one or more regions where you want to create stack instances using the specified AWS account(s).}
 
 \item{ParameterOverrides}{A list of stack set parameters whose values you want to override in the selected stack instances.
 

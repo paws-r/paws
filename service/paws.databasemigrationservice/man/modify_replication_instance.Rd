@@ -4,14 +4,24 @@
 \alias{modify_replication_instance}
 \title{Modifies the replication instance to apply new settings}
 \usage{
-modify_replication_instance(ReplicationInstanceArn, AllocatedStorage = NULL,
-  ApplyImmediately = NULL, ReplicationInstanceClass = NULL,
-  VpcSecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL,
-  MultiAZ = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL,
-  AutoMinorVersionUpgrade = NULL, ReplicationInstanceIdentifier = NULL)
+modify_replication_instance(
+  ReplicationInstanceArn = "string",
+  AllocatedStorage = 123,
+  ApplyImmediately = TRUE|FALSE,
+  ReplicationInstanceClass = "string",
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  PreferredMaintenanceWindow = "string",
+  MultiAZ = TRUE|FALSE,
+  EngineVersion = "string",
+  AllowMajorVersionUpgrade = TRUE|FALSE,
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  ReplicationInstanceIdentifier = "string"
+)
 }
 \arguments{
-\item{ReplicationInstanceArn}{The Amazon Resource Name (ARN) of the replication instance.}
+\item{ReplicationInstanceArn}{[required] The Amazon Resource Name (ARN) of the replication instance.}
 
 \item{AllocatedStorage}{The amount of storage (in gigabytes) to be allocated for the replication instance.}
 

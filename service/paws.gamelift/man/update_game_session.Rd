@@ -4,12 +4,16 @@
 \alias{update_game_session}
 \title{Updates game session properties}
 \usage{
-update_game_session(GameSessionId, MaximumPlayerSessionCount = NULL,
-  Name = NULL, PlayerSessionCreationPolicy = NULL,
-  ProtectionPolicy = NULL)
+update_game_session(
+  GameSessionId = "string",
+  MaximumPlayerSessionCount = 123,
+  Name = "string",
+  PlayerSessionCreationPolicy = "ACCEPT_ALL"|"DENY_ALL",
+  ProtectionPolicy = "NoProtection"|"FullProtection"
+)
 }
 \arguments{
-\item{GameSessionId}{Unique identifier for the game session to update.}
+\item{GameSessionId}{[required] Unique identifier for the game session to update.}
 
 \item{MaximumPlayerSessionCount}{Maximum number of players that can be connected simultaneously to the game session.}
 

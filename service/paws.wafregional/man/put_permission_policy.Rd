@@ -4,12 +4,15 @@
 \alias{put_permission_policy}
 \title{Attaches a IAM policy to the specified resource}
 \usage{
-put_permission_policy(ResourceArn, Policy)
+put_permission_policy(
+  ResourceArn = "string",
+  Policy = "string"
+)
 }
 \arguments{
-\item{ResourceArn}{The Amazon Resource Name (ARN) of the RuleGroup to which you want to attach the policy.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the RuleGroup to which you want to attach the policy.}
 
-\item{Policy}{The policy to attach to the specified RuleGroup.}
+\item{Policy}{[required] The policy to attach to the specified RuleGroup.}
 }
 \description{
 Attaches a IAM policy to the specified resource. The only supported use for this action is to share a RuleGroup across accounts.

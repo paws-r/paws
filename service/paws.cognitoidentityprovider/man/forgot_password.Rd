@@ -4,17 +4,26 @@
 \alias{forgot_password}
 \title{Calling this API causes a message to be sent to the end user with a confirmation code that is required to change the user's password}
 \usage{
-forgot_password(ClientId, Username, SecretHash = NULL,
-  UserContextData = NULL, AnalyticsMetadata = NULL)
+forgot_password(
+  ClientId = "string",
+  SecretHash = "string",
+  UserContextData = list(
+    EncodedData = "string"
+  ),
+  Username = "string",
+  AnalyticsMetadata = list(
+    AnalyticsEndpointId = "string"
+  )
+)
 }
 \arguments{
-\item{ClientId}{The ID of the client associated with the user pool.}
-
-\item{Username}{The user name of the user for whom you want to enter a code to reset a forgotten password.}
+\item{ClientId}{[required] The ID of the client associated with the user pool.}
 
 \item{SecretHash}{A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.}
 
 \item{UserContextData}{Contextual data such as the user's device fingerprint, IP address, or location used for evaluating the risk of an unexpected event by Amazon Cognito advanced security.}
+
+\item{Username}{[required] The user name of the user for whom you want to enter a code to reset a forgotten password.}
 
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for \code{ForgotPassword} calls.}
 }

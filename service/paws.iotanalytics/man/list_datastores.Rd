@@ -4,7 +4,10 @@
 \alias{list_datastores}
 \title{Retrieves a list of data stores}
 \usage{
-list_datastores(nextToken = NULL, maxResults = NULL)
+list_datastores(
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{nextToken}{The token for the next set of results.}

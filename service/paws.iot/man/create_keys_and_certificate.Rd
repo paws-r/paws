@@ -4,7 +4,9 @@
 \alias{create_keys_and_certificate}
 \title{Creates a 2048-bit RSA key pair and issues an X}
 \usage{
-create_keys_and_certificate(setAsActive = NULL)
+create_keys_and_certificate(
+  setAsActive = TRUE|FALSE
+)
 }
 \arguments{
 \item{setAsActive}{Specifies whether the certificate is active.}

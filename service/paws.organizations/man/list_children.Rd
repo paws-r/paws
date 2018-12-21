@@ -4,10 +4,15 @@
 \alias{list_children}
 \title{Lists all of the organizational units (OUs) or accounts that are contained in the specified parent OU or root}
 \usage{
-list_children(ParentId, ChildType, NextToken = NULL, MaxResults = NULL)
+list_children(
+  ParentId = "string",
+  ChildType = "ACCOUNT"|"ORGANIZATIONAL_UNIT",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{ParentId}{The unique identifier (ID) for the parent root or OU whose children you want to list.
+\item{ParentId}{[required] The unique identifier (ID) for the parent root or OU whose children you want to list.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a parent ID string requires one of the following:
 \itemize{
@@ -15,7 +20,7 @@ The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a parent ID string
 \item Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
 }}
 
-\item{ChildType}{Filters the output to include only the specified child type.}
+\item{ChildType}{[required] Filters the output to include only the specified child type.}
 
 \item{NextToken}{Use this parameter if you receive a \code{NextToken} response in a previous request that indicates that there is more output available. Set it to the value of the previous call's \code{NextToken} response to indicate where the output should continue from.}
 

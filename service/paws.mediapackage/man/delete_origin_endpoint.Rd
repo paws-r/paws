@@ -4,10 +4,12 @@
 \alias{delete_origin_endpoint}
 \title{Deletes an existing OriginEndpoint}
 \usage{
-delete_origin_endpoint(Id)
+delete_origin_endpoint(
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The ID of the OriginEndpoint to delete.}
+\item{Id}{[required] The ID of the OriginEndpoint to delete.}
 }
 \description{
 Deletes an existing OriginEndpoint.

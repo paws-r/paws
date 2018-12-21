@@ -4,10 +4,12 @@
 \alias{delete_state_machine}
 \title{Deletes a state machine}
 \usage{
-delete_state_machine(stateMachineArn)
+delete_state_machine(
+  stateMachineArn = "string"
+)
 }
 \arguments{
-\item{stateMachineArn}{The Amazon Resource Name (ARN) of the state machine to delete.}
+\item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine to delete.}
 }
 \description{
 Deletes a state machine. This is an asynchronous operation: It sets the state machine's status to \code{DELETING} and begins the deletion process. Each state machine execution is deleted the next time it makes a state transition.

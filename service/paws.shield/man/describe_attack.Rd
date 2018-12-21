@@ -4,10 +4,12 @@
 \alias{describe_attack}
 \title{Describes the details of a DDoS attack}
 \usage{
-describe_attack(AttackId)
+describe_attack(
+  AttackId = "string"
+)
 }
 \arguments{
-\item{AttackId}{The unique identifier (ID) for the attack that to be described.}
+\item{AttackId}{[required] The unique identifier (ID) for the attack that to be described.}
 }
 \description{
 Describes the details of a DDoS attack.

@@ -4,18 +4,21 @@
 \alias{create_virtual_mfa_device}
 \title{Creates a new virtual MFA device for the AWS account}
 \usage{
-create_virtual_mfa_device(VirtualMFADeviceName, Path = NULL)
+create_virtual_mfa_device(
+  Path = "string",
+  VirtualMFADeviceName = "string"
+)
 }
 \arguments{
-\item{VirtualMFADeviceName}{The name of the virtual MFA device. Use with path to uniquely identify a virtual MFA device.
-
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
-
 \item{Path}{The path for the virtual MFA device. For more information about paths, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers} in the \emph{IAM User Guide}.
 
 This parameter is optional. If it is not included, it defaults to a slash (/).
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.}
+
+\item{VirtualMFADeviceName}{[required] The name of the virtual MFA device. Use with path to uniquely identify a virtual MFA device.
+
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Creates a new virtual MFA device for the AWS account. After creating the virtual MFA, use EnableMFADevice to attach the MFA device to an IAM user. For more information about creating and working with virtual MFA devices, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_VirtualMFA.html}{Using a Virtual MFA Device} in the \emph{IAM User Guide}.

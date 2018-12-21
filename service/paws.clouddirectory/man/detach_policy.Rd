@@ -4,14 +4,22 @@
 \alias{detach_policy}
 \title{Detaches a policy from an object}
 \usage{
-detach_policy(DirectoryArn, PolicyReference, ObjectReference)
+detach_policy(
+  DirectoryArn = "string",
+  PolicyReference = list(
+    Selector = "string"
+  ),
+  ObjectReference = list(
+    Selector = "string"
+  )
+)
 }
 \arguments{
-\item{DirectoryArn}{The Amazon Resource Name (ARN) that is associated with the Directory where both objects reside. For more information, see arns.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where both objects reside. For more information, see arns.}
 
-\item{PolicyReference}{Reference that identifies the policy object.}
+\item{PolicyReference}{[required] Reference that identifies the policy object.}
 
-\item{ObjectReference}{Reference that identifies the object whose policy object will be detached.}
+\item{ObjectReference}{[required] Reference that identifies the object whose policy object will be detached.}
 }
 \description{
 Detaches a policy from an object.

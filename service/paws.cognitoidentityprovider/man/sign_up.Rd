@@ -4,18 +4,39 @@
 \alias{sign_up}
 \title{Registers the user in the specified user pool and creates a user name, password, and user attributes}
 \usage{
-sign_up(ClientId, Username, Password, SecretHash = NULL,
-  UserAttributes = NULL, ValidationData = NULL, AnalyticsMetadata = NULL,
-  UserContextData = NULL)
+sign_up(
+  ClientId = "string",
+  SecretHash = "string",
+  Username = "string",
+  Password = "string",
+  UserAttributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  ValidationData = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  AnalyticsMetadata = list(
+    AnalyticsEndpointId = "string"
+  ),
+  UserContextData = list(
+    EncodedData = "string"
+  )
+)
 }
 \arguments{
-\item{ClientId}{The ID of the client associated with the user pool.}
-
-\item{Username}{The user name of the user you wish to register.}
-
-\item{Password}{The password of the user you wish to register.}
+\item{ClientId}{[required] The ID of the client associated with the user pool.}
 
 \item{SecretHash}{A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.}
+
+\item{Username}{[required] The user name of the user you wish to register.}
+
+\item{Password}{[required] The password of the user you wish to register.}
 
 \item{UserAttributes}{An array of name-value pairs representing user attributes.
 

@@ -4,17 +4,29 @@
 \alias{update_method_response}
 \title{Updates an existing MethodResponse resource}
 \usage{
-update_method_response(restApiId, resourceId, httpMethod, statusCode,
-  patchOperations = NULL)
+update_method_response(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string",
+  statusCode = "string",
+  patchOperations = list(
+    list(
+      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
+      path = "string",
+      value = "string",
+      from = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[Required] The Resource identifier for the MethodResponse resource.}
+\item{resourceId}{[required] [Required] The Resource identifier for the MethodResponse resource.}
 
-\item{httpMethod}{[Required] The HTTP verb of the Method resource.}
+\item{httpMethod}{[required] [Required] The HTTP verb of the Method resource.}
 
-\item{statusCode}{[Required] The status code for the MethodResponse resource.}
+\item{statusCode}{[required] [Required] The status code for the MethodResponse resource.}
 
 \item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
 }

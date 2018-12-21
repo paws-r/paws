@@ -4,7 +4,10 @@
 \alias{accept_vpc_peering_connection}
 \title{Accept a VPC peering connection request}
 \usage{
-accept_vpc_peering_connection(DryRun = NULL, VpcPeeringConnectionId = NULL)
+accept_vpc_peering_connection(
+  DryRun = TRUE|FALSE,
+  VpcPeeringConnectionId = "string"
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}

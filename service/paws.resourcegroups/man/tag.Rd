@@ -4,12 +4,17 @@
 \alias{tag}
 \title{Adds specified tags to a resource with the specified ARN}
 \usage{
-tag(Arn, Tags)
+tag(
+  Arn = "string",
+  Tags = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{Arn}{The ARN of the resource to which to add tags.}
+\item{Arn}{[required] The ARN of the resource to which to add tags.}
 
-\item{Tags}{The tags to add to the specified resource. A tag is a string-to-string map of key-value pairs. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.}
+\item{Tags}{[required] The tags to add to the specified resource. A tag is a string-to-string map of key-value pairs. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.}
 }
 \description{
 Adds specified tags to a resource with the specified ARN. Existing tags on a resource are not changed if they are not specified in the request parameters.

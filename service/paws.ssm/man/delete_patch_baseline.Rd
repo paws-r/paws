@@ -4,10 +4,12 @@
 \alias{delete_patch_baseline}
 \title{Deletes a patch baseline}
 \usage{
-delete_patch_baseline(BaselineId)
+delete_patch_baseline(
+  BaselineId = "string"
+)
 }
 \arguments{
-\item{BaselineId}{The ID of the patch baseline to delete.}
+\item{BaselineId}{[required] The ID of the patch baseline to delete.}
 }
 \description{
 Deletes a patch baseline.

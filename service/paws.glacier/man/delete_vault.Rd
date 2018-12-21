@@ -4,12 +4,15 @@
 \alias{delete_vault}
 \title{This operation deletes a vault}
 \usage{
-delete_vault(accountId, vaultName)
+delete_vault(
+  accountId = "string",
+  vaultName = "string"
+)
 }
 \arguments{
-\item{accountId}{The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
+\item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
 
-\item{vaultName}{The name of the vault.}
+\item{vaultName}{[required] The name of the vault.}
 }
 \description{
 This operation deletes a vault. Amazon Glacier will delete a vault only if there are no archives in the vault as of the last inventory and there have been no writes to the vault since the last inventory. If either of these conditions is not satisfied, the vault deletion fails (that is, the vault is not removed) and Amazon Glacier returns an error. You can use DescribeVault to return the number of archives in a vault, and you can use \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html}{Initiate a Job (POST jobs)} to initiate a new inventory retrieval for a vault. The inventory contains the archive IDs you use to delete archives using \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delete.html}{Delete Archive (DELETE archive)}.

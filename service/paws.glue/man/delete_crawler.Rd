@@ -4,10 +4,12 @@
 \alias{delete_crawler}
 \title{Removes a specified crawler from the Data Catalog, unless the crawler state is \code{RUNNING}}
 \usage{
-delete_crawler(Name)
+delete_crawler(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{Name of the crawler to remove.}
+\item{Name}{[required] Name of the crawler to remove.}
 }
 \description{
 Removes a specified crawler from the Data Catalog, unless the crawler state is \code{RUNNING}.

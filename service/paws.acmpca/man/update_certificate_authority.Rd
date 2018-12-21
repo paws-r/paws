@@ -4,11 +4,21 @@
 \alias{update_certificate_authority}
 \title{Updates the status or configuration of a private certificate authority (CA)}
 \usage{
-update_certificate_authority(CertificateAuthorityArn,
-  RevocationConfiguration = NULL, Status = NULL)
+update_certificate_authority(
+  CertificateAuthorityArn = "string",
+  RevocationConfiguration = list(
+    CrlConfiguration = list(
+      Enabled = TRUE|FALSE,
+      ExpirationInDays = 123,
+      CustomCname = "string",
+      S3BucketName = "string"
+    )
+  ),
+  Status = "CREATING"|"PENDING_CERTIFICATE"|"ACTIVE"|"DELETED"|"DISABLED"|"EXPIRED"|"FAILED"
+)
 }
 \arguments{
-\item{CertificateAuthorityArn}{Amazon Resource Name (ARN) of the private CA that issued the certificate to be revoked. This must be of the form:
+\item{CertificateAuthorityArn}{[required] Amazon Resource Name (ARN) of the private CA that issued the certificate to be revoked. This must be of the form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }}
 

@@ -4,17 +4,20 @@
 \alias{describe_product_as_admin}
 \title{Gets information about the specified product}
 \usage{
-describe_product_as_admin(Id, AcceptLanguage = NULL)
+describe_product_as_admin(
+  AcceptLanguage = "string",
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The product identifier.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{Id}{[required] The product identifier.}
 }
 \description{
 Gets information about the specified product. This operation is run with administrator access.

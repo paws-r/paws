@@ -4,17 +4,22 @@
 \alias{put_bot_alias}
 \title{Creates an alias for the specified version of the bot or replaces an alias for the specified bot}
 \usage{
-put_bot_alias(name, botVersion, botName, description = NULL,
-  checksum = NULL)
+put_bot_alias(
+  name = "string",
+  description = "string",
+  botVersion = "string",
+  botName = "string",
+  checksum = "string"
+)
 }
 \arguments{
-\item{name}{The name of the alias. The name is \emph{not} case sensitive.}
-
-\item{botVersion}{The version of the bot.}
-
-\item{botName}{The name of the bot.}
+\item{name}{[required] The name of the alias. The name is \emph{not} case sensitive.}
 
 \item{description}{A description of the alias.}
+
+\item{botVersion}{[required] The version of the bot.}
+
+\item{botName}{[required] The name of the bot.}
 
 \item{checksum}{Identifies a specific revision of the \code{$LATEST} version.
 

@@ -4,11 +4,14 @@
 \alias{execute_change_set}
 \title{Updates a stack using the input information that was provided when the specified change set was created}
 \usage{
-execute_change_set(ChangeSetName, StackName = NULL,
-  ClientRequestToken = NULL)
+execute_change_set(
+  ChangeSetName = "string",
+  StackName = "string",
+  ClientRequestToken = "string"
+)
 }
 \arguments{
-\item{ChangeSetName}{The name or ARN of the change set that you want use to update the specified stack.}
+\item{ChangeSetName}{[required] The name or ARN of the change set that you want use to update the specified stack.}
 
 \item{StackName}{If you specified the name of a change set, specify the stack name or ID (ARN) that is associated with the change set you want to execute.}
 

@@ -4,13 +4,29 @@
 \alias{update_nfs_file_share}
 \title{Updates a Network File System (NFS) file share}
 \usage{
-update_nfs_file_share(FileShareARN, KMSEncrypted = NULL, KMSKey = NULL,
-  NFSFileShareDefaults = NULL, DefaultStorageClass = NULL,
-  ObjectACL = NULL, ClientList = NULL, Squash = NULL, ReadOnly = NULL,
-  GuessMIMETypeEnabled = NULL, RequesterPays = NULL)
+update_nfs_file_share(
+  FileShareARN = "string",
+  KMSEncrypted = TRUE|FALSE,
+  KMSKey = "string",
+  NFSFileShareDefaults = list(
+    FileMode = "string",
+    DirectoryMode = "string",
+    GroupId = 123,
+    OwnerId = 123
+  ),
+  DefaultStorageClass = "string",
+  ObjectACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"|"aws-exec-read",
+  ClientList = list(
+    "string"
+  ),
+  Squash = "string",
+  ReadOnly = TRUE|FALSE,
+  GuessMIMETypeEnabled = TRUE|FALSE,
+  RequesterPays = TRUE|FALSE
+)
 }
 \arguments{
-\item{FileShareARN}{The Amazon Resource Name (ARN) of the file share to be updated.}
+\item{FileShareARN}{[required] The Amazon Resource Name (ARN) of the file share to be updated.}
 
 \item{KMSEncrypted}{True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.}
 

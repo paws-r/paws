@@ -4,12 +4,20 @@
 \alias{modify_load_balancer_attributes}
 \title{Modifies the specified attributes of the specified Application Load Balancer or Network Load Balancer}
 \usage{
-modify_load_balancer_attributes(LoadBalancerArn, Attributes)
+modify_load_balancer_attributes(
+  LoadBalancerArn = "string",
+  Attributes = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{LoadBalancerArn}{The Amazon Resource Name (ARN) of the load balancer.}
+\item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
 
-\item{Attributes}{The load balancer attributes.}
+\item{Attributes}{[required] The load balancer attributes.}
 }
 \description{
 Modifies the specified attributes of the specified Application Load Balancer or Network Load Balancer.

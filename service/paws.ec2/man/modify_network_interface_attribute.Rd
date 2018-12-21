@@ -4,13 +4,25 @@
 \alias{modify_network_interface_attribute}
 \title{Modifies the specified network interface attribute}
 \usage{
-modify_network_interface_attribute(NetworkInterfaceId, Attachment = NULL,
-  Description = NULL, DryRun = NULL, Groups = NULL,
-  SourceDestCheck = NULL)
+modify_network_interface_attribute(
+  Attachment = list(
+    AttachmentId = "string",
+    DeleteOnTermination = TRUE|FALSE
+  ),
+  Description = list(
+    Value = "string"
+  ),
+  DryRun = TRUE|FALSE,
+  Groups = list(
+    "string"
+  ),
+  NetworkInterfaceId = "string",
+  SourceDestCheck = list(
+    Value = TRUE|FALSE
+  )
+)
 }
 \arguments{
-\item{NetworkInterfaceId}{The ID of the network interface.}
-
 \item{Attachment}{Information about the interface attachment. If modifying the 'delete on termination' attribute, you must specify the ID of the interface attachment.}
 
 \item{Description}{A description for the network interface.}
@@ -18,6 +30,8 @@ modify_network_interface_attribute(NetworkInterfaceId, Attachment = NULL,
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Groups}{Changes the security groups for the network interface. The new set of groups you specify replaces the current set. You must specify at least one group, even if it's just the default security group in the VPC. You must specify the ID of the security group, not the name.}
+
+\item{NetworkInterfaceId}{[required] The ID of the network interface.}
 
 \item{SourceDestCheck}{Indicates whether source/destination checking is enabled. A value of \code{true} means checking is enabled, and \code{false} means checking is disabled. This value must be \code{false} for a NAT instance to perform NAT. For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html}{NAT Instances} in the \emph{Amazon Virtual Private Cloud User Guide}.}
 }

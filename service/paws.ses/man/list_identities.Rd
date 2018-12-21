@@ -4,7 +4,11 @@
 \alias{list_identities}
 \title{Returns a list containing all of the identities (email addresses and domains) for your AWS account in the current AWS Region, regardless of verification status}
 \usage{
-list_identities(IdentityType = NULL, NextToken = NULL, MaxItems = NULL)
+list_identities(
+  IdentityType = "EmailAddress"|"Domain",
+  NextToken = "string",
+  MaxItems = 123
+)
 }
 \arguments{
 \item{IdentityType}{The type of the identities to list. Possible values are "EmailAddress" and "Domain". If this parameter is omitted, then all identities will be listed.}

@@ -4,7 +4,9 @@
 \alias{get_operations}
 \title{Returns information about all operations}
 \usage{
-get_operations(pageToken = NULL)
+get_operations(
+  pageToken = "string"
+)
 }
 \arguments{
 \item{pageToken}{A token used for advancing to the next page of results from your get operations request.}

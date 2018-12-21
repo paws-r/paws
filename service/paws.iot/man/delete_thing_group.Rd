@@ -4,10 +4,13 @@
 \alias{delete_thing_group}
 \title{Deletes a thing group}
 \usage{
-delete_thing_group(thingGroupName, expectedVersion = NULL)
+delete_thing_group(
+  thingGroupName = "string",
+  expectedVersion = 123
+)
 }
 \arguments{
-\item{thingGroupName}{The name of the thing group to delete.}
+\item{thingGroupName}{[required] The name of the thing group to delete.}
 
 \item{expectedVersion}{The expected version of the thing group to delete.}
 }

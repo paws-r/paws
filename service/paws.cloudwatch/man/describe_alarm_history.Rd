@@ -4,8 +4,14 @@
 \alias{describe_alarm_history}
 \title{Retrieves the history for the specified alarm}
 \usage{
-describe_alarm_history(AlarmName = NULL, HistoryItemType = NULL,
-  StartDate = NULL, EndDate = NULL, MaxRecords = NULL, NextToken = NULL)
+describe_alarm_history(
+  AlarmName = "string",
+  HistoryItemType = "ConfigurationUpdate"|"StateUpdate"|"Action",
+  StartDate = as.POSIXct("2015-01-01"),
+  EndDate = as.POSIXct("2015-01-01"),
+  MaxRecords = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{AlarmName}{The name of the alarm.}

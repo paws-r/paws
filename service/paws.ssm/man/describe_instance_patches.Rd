@@ -4,11 +4,22 @@
 \alias{describe_instance_patches}
 \title{Retrieves information about the patches on the specified instance and their state relative to the patch baseline being used for the instance}
 \usage{
-describe_instance_patches(InstanceId, Filters = NULL, NextToken = NULL,
-  MaxResults = NULL)
+describe_instance_patches(
+  InstanceId = "string",
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{InstanceId}{The ID of the instance whose patch state information should be retrieved.}
+\item{InstanceId}{[required] The ID of the instance whose patch state information should be retrieved.}
 
 \item{Filters}{Each entry in the array is a structure containing:
 

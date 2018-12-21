@@ -4,10 +4,12 @@
 \alias{get_user_pool_mfa_config}
 \title{Gets the user pool multi-factor authentication (MFA) configuration}
 \usage{
-get_user_pool_mfa_config(UserPoolId)
+get_user_pool_mfa_config(
+  UserPoolId = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID.}
+\item{UserPoolId}{[required] The user pool ID.}
 }
 \description{
 Gets the user pool multi-factor authentication (MFA) configuration.

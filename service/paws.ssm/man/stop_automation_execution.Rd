@@ -4,10 +4,13 @@
 \alias{stop_automation_execution}
 \title{Stop an Automation that is currently executing}
 \usage{
-stop_automation_execution(AutomationExecutionId, Type = NULL)
+stop_automation_execution(
+  AutomationExecutionId = "string",
+  Type = "Complete"|"Cancel"
+)
 }
 \arguments{
-\item{AutomationExecutionId}{The execution ID of the Automation to stop.}
+\item{AutomationExecutionId}{[required] The execution ID of the Automation to stop.}
 
 \item{Type}{The stop request type. Valid types include the following: Cancel and Complete. The default type is Cancel.}
 }

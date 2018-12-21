@@ -4,10 +4,13 @@
 \alias{list_runs}
 \title{Gets information about runs, given an AWS Device Farm project ARN}
 \usage{
-list_runs(arn, nextToken = NULL)
+list_runs(
+  arn = "string",
+  nextToken = "string"
+)
 }
 \arguments{
-\item{arn}{The Amazon Resource Name (ARN) of the project for which you want to list runs.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of the project for which you want to list runs.}
 
 \item{nextToken}{An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.}
 }

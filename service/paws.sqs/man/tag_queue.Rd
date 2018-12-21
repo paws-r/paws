@@ -4,12 +4,17 @@
 \alias{tag_queue}
 \title{Add cost allocation tags to the specified Amazon SQS queue}
 \usage{
-tag_queue(QueueUrl, Tags)
+tag_queue(
+  QueueUrl = "string",
+  Tags = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{QueueUrl}{The URL of the queue.}
+\item{QueueUrl}{[required] The URL of the queue.}
 
-\item{Tags}{The list of tags to be added to the specified queue.}
+\item{Tags}{[required] The list of tags to be added to the specified queue.}
 }
 \description{
 Add cost allocation tags to the specified Amazon SQS queue. For an overview, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html}{Tagging Your Amazon SQS Queues} in the \emph{Amazon Simple Queue Service Developer Guide}.

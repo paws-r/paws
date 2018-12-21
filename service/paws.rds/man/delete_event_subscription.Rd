@@ -4,10 +4,12 @@
 \alias{delete_event_subscription}
 \title{Deletes an RDS event notification subscription}
 \usage{
-delete_event_subscription(SubscriptionName)
+delete_event_subscription(
+  SubscriptionName = "string"
+)
 }
 \arguments{
-\item{SubscriptionName}{The name of the RDS event notification subscription you want to delete.}
+\item{SubscriptionName}{[required] The name of the RDS event notification subscription you want to delete.}
 }
 \description{
 Deletes an RDS event notification subscription.

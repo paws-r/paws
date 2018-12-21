@@ -4,13 +4,17 @@
 \alias{get_campaign_activities}
 \title{Returns information about the activity performed by a campaign}
 \usage{
-get_campaign_activities(ApplicationId, CampaignId, PageSize = NULL,
-  Token = NULL)
+get_campaign_activities(
+  ApplicationId = "string",
+  CampaignId = "string",
+  PageSize = "string",
+  Token = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 
-\item{CampaignId}{The unique ID of the campaign.}
+\item{CampaignId}{[required] The unique ID of the campaign.}
 
 \item{PageSize}{The number of entries you want on each page in the response.}
 

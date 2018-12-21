@@ -4,10 +4,15 @@
 \alias{create_queue}
 \title{Creates a new standard or FIFO queue}
 \usage{
-create_queue(QueueName, Attributes = NULL)
+create_queue(
+  QueueName = "string",
+  Attributes = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{QueueName}{The name of the new queue. The following limits apply to this name:
+\item{QueueName}{[required] The name of the new queue. The following limits apply to this name:
 \itemize{
 \item A queue name can have up to 80 characters.
 \item Valid values: alphanumeric characters, hyphens (\code{-}), and underscores (\code{_}).

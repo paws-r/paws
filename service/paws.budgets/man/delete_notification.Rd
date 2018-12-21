@@ -4,20 +4,30 @@
 \alias{delete_notification}
 \title{Deletes a notification}
 \usage{
-delete_notification(AccountId, BudgetName, Notification)
+delete_notification(
+  AccountId = "string",
+  BudgetName = "string",
+  Notification = list(
+    NotificationType = "ACTUAL"|"FORECASTED",
+    ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
+    Threshold = 123.0,
+    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+    NotificationState = "OK"|"ALARM"
+  )
+)
 }
 \arguments{
-\item{AccountId}{The \code{accountId} that is associated with the budget whose notification you want to delete.}
+\item{AccountId}{[required] The \code{accountId} that is associated with the budget whose notification you want to delete.}
 
-\item{BudgetName}{The name of the budget whose notification you want to delete.}
+\item{BudgetName}{[required] The name of the budget whose notification you want to delete.}
 
-\item{Notification}{The notification that you want to delete.}
+\item{Notification}{[required] The notification that you want to delete.}
 }
 \description{
 Deletes a notification.
 }
 \details{
-\strong{Deleting a notification also deletes the subscribers associated with the notification.}
+Deleting a notification also deletes the subscribers that are associated with the notification.
 }
 \examples{
 

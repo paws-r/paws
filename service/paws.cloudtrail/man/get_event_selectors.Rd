@@ -4,10 +4,12 @@
 \alias{get_event_selectors}
 \title{Describes the settings for the event selectors that you configured for your trail}
 \usage{
-get_event_selectors(TrailName)
+get_event_selectors(
+  TrailName = "string"
+)
 }
 \arguments{
-\item{TrailName}{Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:
+\item{TrailName}{[required] Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:
 \itemize{
 \item Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (\_), or dashes (-)
 \item Start with a letter or number, and end with a letter or number

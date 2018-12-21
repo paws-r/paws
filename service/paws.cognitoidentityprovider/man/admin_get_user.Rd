@@ -4,12 +4,15 @@
 \alias{admin_get_user}
 \title{Gets the specified user by user name in a user pool as an administrator}
 \usage{
-admin_get_user(UserPoolId, Username)
+admin_get_user(
+  UserPoolId = "string",
+  Username = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool where you want to get information about the user.}
+\item{UserPoolId}{[required] The user pool ID for the user pool where you want to get information about the user.}
 
-\item{Username}{The user name of the user you wish to retrieve.}
+\item{Username}{[required] The user name of the user you wish to retrieve.}
 }
 \description{
 Gets the specified user by user name in a user pool as an administrator. Works on any user.

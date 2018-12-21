@@ -4,7 +4,9 @@
 \alias{list_pipelines}
 \title{Lists the pipeline identifiers for all active pipelines that you have permission to access}
 \usage{
-list_pipelines(marker = NULL)
+list_pipelines(
+  marker = "string"
+)
 }
 \arguments{
 \item{marker}{The starting point for the results to be returned. For the first call, this value should be empty. As long as there are more results, continue to call \code{ListPipelines} with the marker value from the previous call to retrieve the next set of results.}

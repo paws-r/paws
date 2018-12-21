@@ -4,10 +4,12 @@
 \alias{get_device}
 \title{Gets information about a unique device type}
 \usage{
-get_device(arn)
+get_device(
+  arn = "string"
+)
 }
 \arguments{
-\item{arn}{The device type's ARN.}
+\item{arn}{[required] The device type's ARN.}
 }
 \description{
 Gets information about a unique device type.

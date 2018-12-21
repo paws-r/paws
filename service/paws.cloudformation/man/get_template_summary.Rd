@@ -4,8 +4,12 @@
 \alias{get_template_summary}
 \title{Returns information about a new or existing template}
 \usage{
-get_template_summary(TemplateBody = NULL, TemplateURL = NULL,
-  StackName = NULL, StackSetName = NULL)
+get_template_summary(
+  TemplateBody = "string",
+  TemplateURL = "string",
+  StackName = "string",
+  StackSetName = "string"
+)
 }
 \arguments{
 \item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes. For more information about templates, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy} in the AWS CloudFormation User Guide.

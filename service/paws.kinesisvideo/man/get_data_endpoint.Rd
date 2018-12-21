@@ -4,14 +4,18 @@
 \alias{get_data_endpoint}
 \title{Gets an endpoint for a specified stream for either reading or writing}
 \usage{
-get_data_endpoint(APIName, StreamName = NULL, StreamARN = NULL)
+get_data_endpoint(
+  StreamName = "string",
+  StreamARN = "string",
+  APIName = "PUT_MEDIA"|"GET_MEDIA"|"LIST_FRAGMENTS"|"GET_MEDIA_FOR_FRAGMENT_LIST"|"GET_HLS_STREAMING_SESSION_URL"
+)
 }
 \arguments{
-\item{APIName}{The name of the API action for which to get an endpoint.}
-
 \item{StreamName}{The name of the stream that you want to get the endpoint for. You must specify either this parameter or a \code{StreamARN} in the request.}
 
 \item{StreamARN}{The Amazon Resource Name (ARN) of the stream that you want to get the endpoint for. You must specify either this parameter or a \code{StreamName} in the request.}
+
+\item{APIName}{[required] The name of the API action for which to get an endpoint.}
 }
 \description{
 Gets an endpoint for a specified stream for either reading or writing. Use this endpoint in your application to read from the specified stream (using the \code{GetMedia} or \code{GetMediaForFragmentList} operations) or write to it (using the \code{PutMedia} operation).

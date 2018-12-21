@@ -4,10 +4,18 @@
 \alias{start_session}
 \title{Initiates a connection to a target (for example, an instance) for a Session Manager session}
 \usage{
-start_session(Target, DocumentName = NULL, Parameters = NULL)
+start_session(
+  Target = "string",
+  DocumentName = "string",
+  Parameters = list(
+    list(
+      "string"
+    )
+  )
+)
 }
 \arguments{
-\item{Target}{The instance to connect to for the session.}
+\item{Target}{[required] The instance to connect to for the session.}
 
 \item{DocumentName}{The name of the SSM document to define the parameters and plugin settings for the session. For example, \code{SSM-SessionManagerRunShell}. If no document name is provided, a shell to the instance is launched by default.}
 

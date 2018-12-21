@@ -4,15 +4,18 @@
 \alias{set_load_balancer_listener_ssl_certificate}
 \title{Sets the certificate that terminates the specified listener's SSL connections}
 \usage{
-set_load_balancer_listener_ssl_certificate(LoadBalancerName, LoadBalancerPort,
-  SSLCertificateId)
+set_load_balancer_listener_ssl_certificate(
+  LoadBalancerName = "string",
+  LoadBalancerPort = 123,
+  SSLCertificateId = "string"
+)
 }
 \arguments{
-\item{LoadBalancerName}{The name of the load balancer.}
+\item{LoadBalancerName}{[required] The name of the load balancer.}
 
-\item{LoadBalancerPort}{The port that uses the specified SSL certificate.}
+\item{LoadBalancerPort}{[required] The port that uses the specified SSL certificate.}
 
-\item{SSLCertificateId}{The Amazon Resource Name (ARN) of the SSL certificate.}
+\item{SSLCertificateId}{[required] The Amazon Resource Name (ARN) of the SSL certificate.}
 }
 \description{
 Sets the certificate that terminates the specified listener's SSL connections. The specified certificate replaces any prior certificate that was used on the same load balancer and port.

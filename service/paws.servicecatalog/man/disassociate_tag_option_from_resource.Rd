@@ -4,12 +4,15 @@
 \alias{disassociate_tag_option_from_resource}
 \title{Disassociates the specified TagOption from the specified resource}
 \usage{
-disassociate_tag_option_from_resource(ResourceId, TagOptionId)
+disassociate_tag_option_from_resource(
+  ResourceId = "string",
+  TagOptionId = "string"
+)
 }
 \arguments{
-\item{ResourceId}{The resource identifier.}
+\item{ResourceId}{[required] The resource identifier.}
 
-\item{TagOptionId}{The TagOption identifier.}
+\item{TagOptionId}{[required] The TagOption identifier.}
 }
 \description{
 Disassociates the specified TagOption from the specified resource.

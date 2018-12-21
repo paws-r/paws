@@ -4,7 +4,10 @@
 \alias{list_resource_data_sync}
 \title{Lists your resource data sync configurations}
 \usage{
-list_resource_data_sync(NextToken = NULL, MaxResults = NULL)
+list_resource_data_sync(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{NextToken}{A token to start the list. Use this token to get the next set of results.}

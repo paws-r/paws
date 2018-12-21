@@ -4,8 +4,14 @@
 \alias{describe_instances_health}
 \title{Retrieves detailed information about the health of instances in your AWS Elastic Beanstalk}
 \usage{
-describe_instances_health(EnvironmentName = NULL, EnvironmentId = NULL,
-  AttributeNames = NULL, NextToken = NULL)
+describe_instances_health(
+  EnvironmentName = "string",
+  EnvironmentId = "string",
+  AttributeNames = list(
+    "HealthStatus"|"Color"|"Causes"|"ApplicationMetrics"|"RefreshedAt"|"LaunchedAt"|"System"|"Deployment"|"AvailabilityZone"|"InstanceType"|"All"
+  ),
+  NextToken = "string"
+)
 }
 \arguments{
 \item{EnvironmentName}{Specify the AWS Elastic Beanstalk environment by name.}

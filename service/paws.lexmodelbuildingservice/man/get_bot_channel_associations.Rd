@@ -4,13 +4,18 @@
 \alias{get_bot_channel_associations}
 \title{Returns a list of all of the channels associated with the specified bot}
 \usage{
-get_bot_channel_associations(botName, botAlias, nextToken = NULL,
-  maxResults = NULL, nameContains = NULL)
+get_bot_channel_associations(
+  botName = "string",
+  botAlias = "string",
+  nextToken = "string",
+  maxResults = 123,
+  nameContains = "string"
+)
 }
 \arguments{
-\item{botName}{The name of the Amazon Lex bot in the association.}
+\item{botName}{[required] The name of the Amazon Lex bot in the association.}
 
-\item{botAlias}{An alias pointing to the specific version of the Amazon Lex bot to which this association is being made.}
+\item{botAlias}{[required] An alias pointing to the specific version of the Amazon Lex bot to which this association is being made.}
 
 \item{nextToken}{A pagination token for fetching the next page of associations. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of associations, specify the pagination token in the next request.}
 

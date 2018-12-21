@@ -4,9 +4,19 @@
 \alias{describe_ml_models}
 \title{Returns a list of \code{MLModel} that match the search criteria in the request}
 \usage{
-describe_ml_models(FilterVariable = NULL, EQ = NULL, GT = NULL,
-  LT = NULL, GE = NULL, LE = NULL, NE = NULL, Prefix = NULL,
-  SortOrder = NULL, NextToken = NULL, Limit = NULL)
+describe_ml_models(
+  FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"IAMUser"|"TrainingDataSourceId"|"RealtimeEndpointStatus"|"MLModelType"|"Algorithm"|"TrainingDataURI",
+  EQ = "string",
+  GT = "string",
+  LT = "string",
+  GE = "string",
+  LE = "string",
+  NE = "string",
+  Prefix = "string",
+  SortOrder = "asc"|"dsc",
+  NextToken = "string",
+  Limit = 123
+)
 }
 \arguments{
 \item{FilterVariable}{Use one of the following variables to filter a list of \code{MLModel}:

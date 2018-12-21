@@ -4,10 +4,13 @@
 \alias{create_organizational_unit}
 \title{Creates an organizational unit (OU) within a root or parent OU}
 \usage{
-create_organizational_unit(ParentId, Name)
+create_organizational_unit(
+  ParentId = "string",
+  Name = "string"
+)
 }
 \arguments{
-\item{ParentId}{The unique identifier (ID) of the parent root or OU in which you want to create the new OU.
+\item{ParentId}{[required] The unique identifier (ID) of the parent root or OU in which you want to create the new OU.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a parent ID string requires one of the following:
 \itemize{
@@ -15,7 +18,7 @@ The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a parent ID string
 \item Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
 }}
 
-\item{Name}{The friendly name to assign to the new OU.}
+\item{Name}{[required] The friendly name to assign to the new OU.}
 }
 \description{
 Creates an organizational unit (OU) within a root or parent OU. An OU is a container for accounts that enables you to organize your accounts to apply policies according to your business requirements. The number of levels deep that you can nest OUs is dependent upon the policy types enabled for that root. For service control policies, the limit is five.

@@ -4,14 +4,20 @@
 \alias{get_config}
 \title{This is documentation for \strong{AWS CloudHSM Classic}}
 \usage{
-get_config(ClientArn, ClientVersion, HapgList)
+get_config(
+  ClientArn = "string",
+  ClientVersion = "5.1"|"5.3",
+  HapgList = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ClientArn}{The ARN of the client.}
+\item{ClientArn}{[required] The ARN of the client.}
 
-\item{ClientVersion}{The client version.}
+\item{ClientVersion}{[required] The client version.}
 
-\item{HapgList}{A list of ARNs that identify the high-availability partition groups that are associated with the client.}
+\item{HapgList}{[required] A list of ARNs that identify the high-availability partition groups that are associated with the client.}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHSM Classic FAQs}, the \href{http://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide}, and the \href{http://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.

@@ -4,10 +4,12 @@
 \alias{enable_topic_rule}
 \title{Enables the rule}
 \usage{
-enable_topic_rule(ruleName)
+enable_topic_rule(
+  ruleName = "string"
+)
 }
 \arguments{
-\item{ruleName}{The name of the topic rule to enable.}
+\item{ruleName}{[required] The name of the topic rule to enable.}
 }
 \description{
 Enables the rule.

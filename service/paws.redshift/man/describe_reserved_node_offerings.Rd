@@ -4,8 +4,11 @@
 \alias{describe_reserved_node_offerings}
 \title{Returns a list of the available reserved node offerings by Amazon Redshift with their descriptions including the node type, the fixed and recurring costs of reserving the node and duration the node will be reserved for you}
 \usage{
-describe_reserved_node_offerings(ReservedNodeOfferingId = NULL,
-  MaxRecords = NULL, Marker = NULL)
+describe_reserved_node_offerings(
+  ReservedNodeOfferingId = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{ReservedNodeOfferingId}{The unique identifier for the offering.}

@@ -4,12 +4,15 @@
 \alias{detach_elastic_load_balancer}
 \title{Detaches a specified Elastic Load Balancing instance from its layer}
 \usage{
-detach_elastic_load_balancer(ElasticLoadBalancerName, LayerId)
+detach_elastic_load_balancer(
+  ElasticLoadBalancerName = "string",
+  LayerId = "string"
+)
 }
 \arguments{
-\item{ElasticLoadBalancerName}{The Elastic Load Balancing instance's name.}
+\item{ElasticLoadBalancerName}{[required] The Elastic Load Balancing instance's name.}
 
-\item{LayerId}{The ID of the layer that the Elastic Load Balancing instance is attached to.}
+\item{LayerId}{[required] The ID of the layer that the Elastic Load Balancing instance is attached to.}
 }
 \description{
 Detaches a specified Elastic Load Balancing instance from its layer.

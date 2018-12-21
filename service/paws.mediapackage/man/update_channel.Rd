@@ -4,12 +4,15 @@
 \alias{update_channel}
 \title{Updates an existing Channel}
 \usage{
-update_channel(Id, Description = NULL)
+update_channel(
+  Description = "string",
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The ID of the Channel to update.}
-
 \item{Description}{A short text description of the Channel.}
+
+\item{Id}{[required] The ID of the Channel to update.}
 }
 \description{
 Updates an existing Channel.

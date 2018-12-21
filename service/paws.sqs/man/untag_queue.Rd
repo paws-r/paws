@@ -4,12 +4,17 @@
 \alias{untag_queue}
 \title{Remove cost allocation tags from the specified Amazon SQS queue}
 \usage{
-untag_queue(QueueUrl, TagKeys)
+untag_queue(
+  QueueUrl = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{QueueUrl}{The URL of the queue.}
+\item{QueueUrl}{[required] The URL of the queue.}
 
-\item{TagKeys}{The list of tags to be removed from the specified queue.}
+\item{TagKeys}{[required] The list of tags to be removed from the specified queue.}
 }
 \description{
 Remove cost allocation tags from the specified Amazon SQS queue. For an overview, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html}{Tagging Your Amazon SQS Queues} in the \emph{Amazon Simple Queue Service Developer Guide}.

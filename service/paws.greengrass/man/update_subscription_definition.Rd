@@ -4,12 +4,15 @@
 \alias{update_subscription_definition}
 \title{Updates a subscription definition}
 \usage{
-update_subscription_definition(SubscriptionDefinitionId, Name = NULL)
+update_subscription_definition(
+  Name = "string",
+  SubscriptionDefinitionId = "string"
+)
 }
 \arguments{
-\item{SubscriptionDefinitionId}{The ID of the subscription definition.}
-
 \item{Name}{The name of the definition.}
+
+\item{SubscriptionDefinitionId}{[required] The ID of the subscription definition.}
 }
 \description{
 Updates a subscription definition.

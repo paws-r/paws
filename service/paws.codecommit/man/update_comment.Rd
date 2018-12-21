@@ -4,12 +4,15 @@
 \alias{update_comment}
 \title{Replaces the contents of a comment}
 \usage{
-update_comment(commentId, content)
+update_comment(
+  commentId = "string",
+  content = "string"
+)
 }
 \arguments{
-\item{commentId}{The system-generated ID of the comment you want to update. To get this ID, use GetCommentsForComparedCommit or GetCommentsForPullRequest.}
+\item{commentId}{[required] The system-generated ID of the comment you want to update. To get this ID, use GetCommentsForComparedCommit or GetCommentsForPullRequest.}
 
-\item{content}{The updated content with which you want to replace the existing content of the comment.}
+\item{content}{[required] The updated content with which you want to replace the existing content of the comment.}
 }
 \description{
 Replaces the contents of a comment.

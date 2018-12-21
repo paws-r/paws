@@ -4,10 +4,12 @@
 \alias{stop_stack}
 \title{Stops a specified stack}
 \usage{
-stop_stack(StackId)
+stop_stack(
+  StackId = "string"
+)
 }
 \arguments{
-\item{StackId}{The stack ID.}
+\item{StackId}{[required] The stack ID.}
 }
 \description{
 Stops a specified stack.

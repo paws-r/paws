@@ -4,18 +4,26 @@
 \alias{create_trust}
 \title{AWS Directory Service for Microsoft Active Directory allows you to configure trust relationships}
 \usage{
-create_trust(DirectoryId, RemoteDomainName, TrustPassword, TrustDirection,
-  TrustType = NULL, ConditionalForwarderIpAddrs = NULL,
-  SelectiveAuth = NULL)
+create_trust(
+  DirectoryId = "string",
+  RemoteDomainName = "string",
+  TrustPassword = "string",
+  TrustDirection = "One-Way: Outgoing"|"One-Way: Incoming"|"Two-Way",
+  TrustType = "Forest"|"External",
+  ConditionalForwarderIpAddrs = list(
+    "string"
+  ),
+  SelectiveAuth = "Enabled"|"Disabled"
+)
 }
 \arguments{
-\item{DirectoryId}{The Directory ID of the AWS Managed Microsoft AD directory for which to establish the trust relationship.}
+\item{DirectoryId}{[required] The Directory ID of the AWS Managed Microsoft AD directory for which to establish the trust relationship.}
 
-\item{RemoteDomainName}{The Fully Qualified Domain Name (FQDN) of the external domain for which to create the trust relationship.}
+\item{RemoteDomainName}{[required] The Fully Qualified Domain Name (FQDN) of the external domain for which to create the trust relationship.}
 
-\item{TrustPassword}{The trust password. The must be the same password that was used when creating the trust relationship on the external domain.}
+\item{TrustPassword}{[required] The trust password. The must be the same password that was used when creating the trust relationship on the external domain.}
 
-\item{TrustDirection}{The direction of the trust relationship.}
+\item{TrustDirection}{[required] The direction of the trust relationship.}
 
 \item{TrustType}{The trust relationship type. \code{Forest} is the default.}
 

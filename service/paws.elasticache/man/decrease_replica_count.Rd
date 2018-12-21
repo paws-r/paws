@@ -4,14 +4,26 @@
 \alias{decrease_replica_count}
 \title{Dynamically decreases the number of replics in a Redis (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Redis (cluster mode enabled) replication group}
 \usage{
-decrease_replica_count(ReplicationGroupId, ApplyImmediately,
-  NewReplicaCount = NULL, ReplicaConfiguration = NULL,
-  ReplicasToRemove = NULL)
+decrease_replica_count(
+  ReplicationGroupId = "string",
+  NewReplicaCount = 123,
+  ReplicaConfiguration = list(
+    list(
+      NodeGroupId = "string",
+      NewReplicaCount = 123,
+      PreferredAvailabilityZones = list(
+        "string"
+      )
+    )
+  ),
+  ReplicasToRemove = list(
+    "string"
+  ),
+  ApplyImmediately = TRUE|FALSE
+)
 }
 \arguments{
-\item{ReplicationGroupId}{The id of the replication group from which you want to remove replica nodes.}
-
-\item{ApplyImmediately}{If \code{True}, the number of replica nodes is decreased immediately. If \code{False}, the number of replica nodes is decreased during the next maintenance window.}
+\item{ReplicationGroupId}{[required] The id of the replication group from which you want to remove replica nodes.}
 
 \item{NewReplicaCount}{The number of read replica nodes you want at the completion of this operation. For Redis (cluster mode disabled) replication groups, this is the number of replica nodes in the replication group. For Redis (cluster mode enabled) replication groups, this is the number of replica nodes in each of the replication group's node groups.
 
@@ -28,6 +40,8 @@ The minimum number of replicas in a shard or replication group is:
 \item{ReplicaConfiguration}{A list of \code{ConfigureShard} objects that can be used to configure each shard in a Redis (cluster mode enabled) replication group. The \code{ConfigureShard} has three members: \code{NewReplicaCount}, \code{NodeGroupId}, and \code{PreferredAvailabilityZones}.}
 
 \item{ReplicasToRemove}{A list of the node ids to remove from the replication group or node group (shard).}
+
+\item{ApplyImmediately}{[required] If \code{True}, the number of replica nodes is decreased immediately. If \code{False}, the number of replica nodes is decreased during the next maintenance window.}
 }
 \description{
 Dynamically decreases the number of replics in a Redis (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Redis (cluster mode enabled) replication group. This operation is performed with no cluster down time.

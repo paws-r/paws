@@ -4,18 +4,37 @@
 \alias{create_stream_processor}
 \title{Creates an Amazon Rekognition stream processor that you can use to detect and recognize faces in a streaming video}
 \usage{
-create_stream_processor(Input, Output, Name, Settings, RoleArn)
+create_stream_processor(
+  Input = list(
+    KinesisVideoStream = list(
+      Arn = "string"
+    )
+  ),
+  Output = list(
+    KinesisDataStream = list(
+      Arn = "string"
+    )
+  ),
+  Name = "string",
+  Settings = list(
+    FaceSearch = list(
+      CollectionId = "string",
+      FaceMatchThreshold = 123.0
+    )
+  ),
+  RoleArn = "string"
+)
 }
 \arguments{
-\item{Input}{Kinesis video stream stream that provides the source streaming video. If you are using the AWS CLI, the parameter name is \code{StreamProcessorInput}.}
+\item{Input}{[required] Kinesis video stream stream that provides the source streaming video. If you are using the AWS CLI, the parameter name is \code{StreamProcessorInput}.}
 
-\item{Output}{Kinesis data stream stream to which Amazon Rekognition Video puts the analysis results. If you are using the AWS CLI, the parameter name is \code{StreamProcessorOutput}.}
+\item{Output}{[required] Kinesis data stream stream to which Amazon Rekognition Video puts the analysis results. If you are using the AWS CLI, the parameter name is \code{StreamProcessorOutput}.}
 
-\item{Name}{An identifier you assign to the stream processor. You can use \code{Name} to manage the stream processor. For example, you can get the current status of the stream processor by calling . \code{Name} is idempotent.}
+\item{Name}{[required] An identifier you assign to the stream processor. You can use \code{Name} to manage the stream processor. For example, you can get the current status of the stream processor by calling . \code{Name} is idempotent.}
 
-\item{Settings}{Face recognition input parameters to be used by the stream processor. Includes the collection to use for face recognition and the face attributes to detect.}
+\item{Settings}{[required] Face recognition input parameters to be used by the stream processor. Includes the collection to use for face recognition and the face attributes to detect.}
 
-\item{RoleArn}{ARN of the IAM role that allows access to the stream processor.}
+\item{RoleArn}{[required] ARN of the IAM role that allows access to the stream processor.}
 }
 \description{
 Creates an Amazon Rekognition stream processor that you can use to detect and recognize faces in a streaming video.

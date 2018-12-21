@@ -4,10 +4,12 @@
 \alias{get_application}
 \title{Gets information about an application}
 \usage{
-get_application(applicationName)
+get_application(
+  applicationName = "string"
+)
 }
 \arguments{
-\item{applicationName}{The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
+\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
 }
 \description{
 Gets information about an application.

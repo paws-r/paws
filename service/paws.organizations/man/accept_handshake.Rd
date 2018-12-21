@@ -4,10 +4,12 @@
 \alias{accept_handshake}
 \title{Sends a response to the originator of a handshake agreeing to the action proposed by the handshake request}
 \usage{
-accept_handshake(HandshakeId)
+accept_handshake(
+  HandshakeId = "string"
+)
 }
 \arguments{
-\item{HandshakeId}{The unique identifier (ID) of the handshake that you want to accept.
+\item{HandshakeId}{[required] The unique identifier (ID) of the handshake that you want to accept.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.}
 }

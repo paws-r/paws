@@ -4,10 +4,12 @@
 \alias{get_template}
 \title{Displays the template object (which includes the Subject line, HTML part and text part) for the template you specify}
 \usage{
-get_template(TemplateName)
+get_template(
+  TemplateName = "string"
+)
 }
 \arguments{
-\item{TemplateName}{The name of the template you want to retrieve.}
+\item{TemplateName}{[required] The name of the template you want to retrieve.}
 }
 \description{
 Displays the template object (which includes the Subject line, HTML part and text part) for the template you specify.

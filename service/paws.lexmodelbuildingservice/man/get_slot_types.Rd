@@ -4,7 +4,11 @@
 \alias{get_slot_types}
 \title{Returns slot type information as follows:}
 \usage{
-get_slot_types(nextToken = NULL, maxResults = NULL, nameContains = NULL)
+get_slot_types(
+  nextToken = "string",
+  maxResults = 123,
+  nameContains = "string"
+)
 }
 \arguments{
 \item{nextToken}{A pagination token that fetches the next page of slot types. If the response to this API call is truncated, Amazon Lex returns a pagination token in the response. To fetch next page of slot types, specify the pagination token in the next request.}

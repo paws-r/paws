@@ -4,10 +4,13 @@
 \alias{update_application}
 \title{Updates the specified application to have the specified properties}
 \usage{
-update_application(ApplicationName, Description = NULL)
+update_application(
+  ApplicationName = "string",
+  Description = "string"
+)
 }
 \arguments{
-\item{ApplicationName}{The name of the application to update. If no such application is found, \code{UpdateApplication} returns an \code{InvalidParameterValue} error.}
+\item{ApplicationName}{[required] The name of the application to update. If no such application is found, \code{UpdateApplication} returns an \code{InvalidParameterValue} error.}
 
 \item{Description}{A new description for the application.
 

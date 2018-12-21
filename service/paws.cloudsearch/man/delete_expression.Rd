@@ -4,12 +4,15 @@
 \alias{delete_expression}
 \title{Removes an \code{Expression} from the search domain}
 \usage{
-delete_expression(DomainName, ExpressionName)
+delete_expression(
+  DomainName = "string",
+  ExpressionName = "string"
+)
 }
 \arguments{
-\item{DomainName}{}
+\item{DomainName}{[required]}
 
-\item{ExpressionName}{The name of the \code{Expression} to delete.}
+\item{ExpressionName}{[required] The name of the \code{Expression} to delete.}
 }
 \description{
 Removes an \code{Expression} from the search domain. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html}{Configuring Expressions} in the \emph{Amazon CloudSearch Developer Guide}.

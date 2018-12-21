@@ -4,17 +4,22 @@
 \alias{create_named_query}
 \title{Creates a named query}
 \usage{
-create_named_query(Name, Database, QueryString, Description = NULL,
-  ClientRequestToken = NULL)
+create_named_query(
+  Name = "string",
+  Description = "string",
+  Database = "string",
+  QueryString = "string",
+  ClientRequestToken = "string"
+)
 }
 \arguments{
-\item{Name}{The plain language name for the query.}
-
-\item{Database}{The database to which the query belongs.}
-
-\item{QueryString}{The text of the query itself. In other words, all query statements.}
+\item{Name}{[required] The plain language name for the query.}
 
 \item{Description}{A brief explanation of the query.}
+
+\item{Database}{[required] The database to which the query belongs.}
+
+\item{QueryString}{[required] The text of the query itself. In other words, all query statements.}
 
 \item{ClientRequestToken}{A unique case-sensitive string used to ensure the request to create the query is idempotent (executes only once). If another \code{CreateNamedQuery} request is received, the same response is returned and another query is not created. If a parameter has changed, for example, the \code{QueryString}, an error is returned.
 

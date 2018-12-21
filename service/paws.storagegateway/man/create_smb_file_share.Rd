@@ -4,24 +4,39 @@
 \alias{create_smb_file_share}
 \title{Creates a Server Message Block (SMB) file share on an existing file gateway}
 \usage{
-create_smb_file_share(ClientToken, GatewayARN, Role, LocationARN,
-  KMSEncrypted = NULL, KMSKey = NULL, DefaultStorageClass = NULL,
-  ObjectACL = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL,
-  RequesterPays = NULL, ValidUserList = NULL, InvalidUserList = NULL,
-  Authentication = NULL)
+create_smb_file_share(
+  ClientToken = "string",
+  GatewayARN = "string",
+  KMSEncrypted = TRUE|FALSE,
+  KMSKey = "string",
+  Role = "string",
+  LocationARN = "string",
+  DefaultStorageClass = "string",
+  ObjectACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"|"aws-exec-read",
+  ReadOnly = TRUE|FALSE,
+  GuessMIMETypeEnabled = TRUE|FALSE,
+  RequesterPays = TRUE|FALSE,
+  ValidUserList = list(
+    "string"
+  ),
+  InvalidUserList = list(
+    "string"
+  ),
+  Authentication = "string"
+)
 }
 \arguments{
-\item{ClientToken}{A unique string value that you supply that is used by file gateway to ensure idempotent file share creation.}
+\item{ClientToken}{[required] A unique string value that you supply that is used by file gateway to ensure idempotent file share creation.}
 
-\item{GatewayARN}{The Amazon Resource Name (ARN) of the file gateway on which you want to create a file share.}
-
-\item{Role}{The ARN of the AWS Identity and Access Management (IAM) role that a file gateway assumes when it accesses the underlying storage.}
-
-\item{LocationARN}{The ARN of the backed storage used for storing file data.}
+\item{GatewayARN}{[required] The Amazon Resource Name (ARN) of the file gateway on which you want to create a file share.}
 
 \item{KMSEncrypted}{True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.}
 
 \item{KMSKey}{The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. This value can only be set when KMSEncrypted is true. Optional.}
+
+\item{Role}{[required] The ARN of the AWS Identity and Access Management (IAM) role that a file gateway assumes when it accesses the underlying storage.}
+
+\item{LocationARN}{[required] The ARN of the backed storage used for storing file data.}
 
 \item{DefaultStorageClass}{The default storage class for objects put into an Amazon S3 bucket by the file gateway. Possible values are \code{S3_STANDARD}, \code{S3_STANDARD_IA}, or \code{S3_ONEZONE_IA}. If this field is not populated, the default value \code{S3_STANDARD} is used. Optional.}
 

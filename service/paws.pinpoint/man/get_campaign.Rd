@@ -4,12 +4,15 @@
 \alias{get_campaign}
 \title{Returns information about a campaign}
 \usage{
-get_campaign(CampaignId, ApplicationId)
+get_campaign(
+  ApplicationId = "string",
+  CampaignId = "string"
+)
 }
 \arguments{
-\item{CampaignId}{The unique ID of the campaign.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{CampaignId}{[required] The unique ID of the campaign.}
 }
 \description{
 Returns information about a campaign.

@@ -4,8 +4,11 @@
 \alias{describe_reserved_nodes}
 \title{Returns the descriptions of the reserved nodes}
 \usage{
-describe_reserved_nodes(ReservedNodeId = NULL, MaxRecords = NULL,
-  Marker = NULL)
+describe_reserved_nodes(
+  ReservedNodeId = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{ReservedNodeId}{Identifier for the node reservation.}

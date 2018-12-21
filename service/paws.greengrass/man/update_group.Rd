@@ -4,10 +4,13 @@
 \alias{update_group}
 \title{Updates a group}
 \usage{
-update_group(GroupId, Name = NULL)
+update_group(
+  GroupId = "string",
+  Name = "string"
+)
 }
 \arguments{
-\item{GroupId}{The ID of the AWS Greengrass group.}
+\item{GroupId}{[required] The ID of the Greengrass group.}
 
 \item{Name}{The name of the definition.}
 }

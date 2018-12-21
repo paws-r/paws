@@ -4,12 +4,15 @@
 \alias{retrieve_tape_recovery_point}
 \title{Retrieves the recovery point for the specified virtual tape}
 \usage{
-retrieve_tape_recovery_point(TapeARN, GatewayARN)
+retrieve_tape_recovery_point(
+  TapeARN = "string",
+  GatewayARN = "string"
+)
 }
 \arguments{
-\item{TapeARN}{The Amazon Resource Name (ARN) of the virtual tape for which you want to retrieve the recovery point.}
+\item{TapeARN}{[required] The Amazon Resource Name (ARN) of the virtual tape for which you want to retrieve the recovery point.}
 
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 }
 \description{
 Retrieves the recovery point for the specified virtual tape. This operation is only supported in the tape gateway type.

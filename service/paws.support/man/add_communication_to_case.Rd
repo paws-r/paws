@@ -4,13 +4,19 @@
 \alias{add_communication_to_case}
 \title{Adds additional customer communication to an AWS Support case}
 \usage{
-add_communication_to_case(communicationBody, caseId = NULL,
-  ccEmailAddresses = NULL, attachmentSetId = NULL)
+add_communication_to_case(
+  caseId = "string",
+  communicationBody = "string",
+  ccEmailAddresses = list(
+    "string"
+  ),
+  attachmentSetId = "string"
+)
 }
 \arguments{
-\item{communicationBody}{The body of an email communication to add to the support case.}
-
 \item{caseId}{The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
+
+\item{communicationBody}{[required] The body of an email communication to add to the support case.}
 
 \item{ccEmailAddresses}{The email addresses in the CC line of an email to be added to the support case.}
 

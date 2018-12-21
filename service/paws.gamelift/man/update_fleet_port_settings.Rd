@@ -4,11 +4,28 @@
 \alias{update_fleet_port_settings}
 \title{Updates port settings for a fleet}
 \usage{
-update_fleet_port_settings(FleetId, InboundPermissionAuthorizations = NULL,
-  InboundPermissionRevocations = NULL)
+update_fleet_port_settings(
+  FleetId = "string",
+  InboundPermissionAuthorizations = list(
+    list(
+      FromPort = 123,
+      ToPort = 123,
+      IpRange = "string",
+      Protocol = "TCP"|"UDP"
+    )
+  ),
+  InboundPermissionRevocations = list(
+    list(
+      FromPort = 123,
+      ToPort = 123,
+      IpRange = "string",
+      Protocol = "TCP"|"UDP"
+    )
+  )
+)
 }
 \arguments{
-\item{FleetId}{Unique identifier for a fleet to update port settings for.}
+\item{FleetId}{[required] Unique identifier for a fleet to update port settings for.}
 
 \item{InboundPermissionAuthorizations}{Collection of port settings to be added to the fleet record.}
 

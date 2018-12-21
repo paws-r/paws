@@ -4,10 +4,12 @@
 \alias{delete_logger_definition}
 \title{Deletes a logger definition}
 \usage{
-delete_logger_definition(LoggerDefinitionId)
+delete_logger_definition(
+  LoggerDefinitionId = "string"
+)
 }
 \arguments{
-\item{LoggerDefinitionId}{The ID of the logger definition.}
+\item{LoggerDefinitionId}{[required] The ID of the logger definition.}
 }
 \description{
 Deletes a logger definition.

@@ -4,7 +4,9 @@
 \alias{describe_lags}
 \title{Describes all your link aggregation groups (LAG) or the specified LAG}
 \usage{
-describe_lags(lagId = NULL)
+describe_lags(
+  lagId = "string"
+)
 }
 \arguments{
 \item{lagId}{The ID of the LAG.}

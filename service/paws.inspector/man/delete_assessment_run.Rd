@@ -4,10 +4,12 @@
 \alias{delete_assessment_run}
 \title{Deletes the assessment run that is specified by the ARN of the assessment run}
 \usage{
-delete_assessment_run(assessmentRunArn)
+delete_assessment_run(
+  assessmentRunArn = "string"
+)
 }
 \arguments{
-\item{assessmentRunArn}{The ARN that specifies the assessment run that you want to delete.}
+\item{assessmentRunArn}{[required] The ARN that specifies the assessment run that you want to delete.}
 }
 \description{
 Deletes the assessment run that is specified by the ARN of the assessment run.

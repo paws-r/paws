@@ -4,10 +4,20 @@
 \alias{update_domain_name}
 \title{Changes information about the DomainName resource}
 \usage{
-update_domain_name(domainName, patchOperations = NULL)
+update_domain_name(
+  domainName = "string",
+  patchOperations = list(
+    list(
+      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
+      path = "string",
+      value = "string",
+      from = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{domainName}{[Required] The name of the DomainName resource to be changed.}
+\item{domainName}{[required] [Required] The name of the DomainName resource to be changed.}
 
 \item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
 }

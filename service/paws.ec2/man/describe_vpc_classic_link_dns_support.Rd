@@ -4,8 +4,13 @@
 \alias{describe_vpc_classic_link_dns_support}
 \title{Describes the ClassicLink DNS support status of one or more VPCs}
 \usage{
-describe_vpc_classic_link_dns_support(MaxResults = NULL, NextToken = NULL,
-  VpcIds = NULL)
+describe_vpc_classic_link_dns_support(
+  MaxResults = 123,
+  NextToken = "string",
+  VpcIds = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{MaxResults}{The maximum number of items to return for this request. The request returns a token that you can specify in a subsequent call to get the next set of results.}

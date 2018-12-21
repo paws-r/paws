@@ -4,10 +4,12 @@
 \alias{get_upload}
 \title{Gets information about an upload}
 \usage{
-get_upload(arn)
+get_upload(
+  arn = "string"
+)
 }
 \arguments{
-\item{arn}{The upload's ARN.}
+\item{arn}{[required] The upload's ARN.}
 }
 \description{
 Gets information about an upload.

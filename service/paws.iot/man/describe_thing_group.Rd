@@ -4,10 +4,12 @@
 \alias{describe_thing_group}
 \title{Describe a thing group}
 \usage{
-describe_thing_group(thingGroupName)
+describe_thing_group(
+  thingGroupName = "string"
+)
 }
 \arguments{
-\item{thingGroupName}{The name of the thing group.}
+\item{thingGroupName}{[required] The name of the thing group.}
 }
 \description{
 Describe a thing group.

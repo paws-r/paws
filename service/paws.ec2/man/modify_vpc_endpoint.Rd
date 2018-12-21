@@ -4,16 +4,36 @@
 \alias{modify_vpc_endpoint}
 \title{Modifies attributes of a specified VPC endpoint}
 \usage{
-modify_vpc_endpoint(VpcEndpointId, DryRun = NULL, ResetPolicy = NULL,
-  PolicyDocument = NULL, AddRouteTableIds = NULL,
-  RemoveRouteTableIds = NULL, AddSubnetIds = NULL, RemoveSubnetIds = NULL,
-  AddSecurityGroupIds = NULL, RemoveSecurityGroupIds = NULL,
-  PrivateDnsEnabled = NULL)
+modify_vpc_endpoint(
+  DryRun = TRUE|FALSE,
+  VpcEndpointId = "string",
+  ResetPolicy = TRUE|FALSE,
+  PolicyDocument = "string",
+  AddRouteTableIds = list(
+    "string"
+  ),
+  RemoveRouteTableIds = list(
+    "string"
+  ),
+  AddSubnetIds = list(
+    "string"
+  ),
+  RemoveSubnetIds = list(
+    "string"
+  ),
+  AddSecurityGroupIds = list(
+    "string"
+  ),
+  RemoveSecurityGroupIds = list(
+    "string"
+  ),
+  PrivateDnsEnabled = TRUE|FALSE
+)
 }
 \arguments{
-\item{VpcEndpointId}{The ID of the endpoint.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{VpcEndpointId}{[required] The ID of the endpoint.}
 
 \item{ResetPolicy}{(Gateway endpoint) Specify \code{true} to reset the policy document to the default policy. The default policy allows full access to the service.}
 

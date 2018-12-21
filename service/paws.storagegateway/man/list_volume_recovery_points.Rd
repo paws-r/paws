@@ -4,10 +4,12 @@
 \alias{list_volume_recovery_points}
 \title{Lists the recovery points for a specified gateway}
 \usage{
-list_volume_recovery_points(GatewayARN)
+list_volume_recovery_points(
+  GatewayARN = "string"
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 }
 \description{
 Lists the recovery points for a specified gateway. This operation is only supported in the cached volume gateway type.

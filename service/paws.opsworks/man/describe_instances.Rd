@@ -4,7 +4,13 @@
 \alias{describe_instances}
 \title{Requests a description of a set of instances}
 \usage{
-describe_instances(StackId = NULL, LayerId = NULL, InstanceIds = NULL)
+describe_instances(
+  StackId = "string",
+  LayerId = "string",
+  InstanceIds = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{StackId}{A stack ID. If you use this parameter, \code{DescribeInstances} returns descriptions of the instances associated with the specified stack.}

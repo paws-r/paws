@@ -4,12 +4,51 @@
 \alias{update_cluster}
 \title{While a cluster's \code{ClusterState} value is in the \code{AwaitingQuorum} state, you can update some of the information associated with a cluster}
 \usage{
-update_cluster(ClusterId, RoleARN = NULL, Description = NULL,
-  Resources = NULL, AddressId = NULL, ShippingOption = NULL,
-  Notification = NULL, ForwardingAddressId = NULL)
+update_cluster(
+  ClusterId = "string",
+  RoleARN = "string",
+  Description = "string",
+  Resources = list(
+    S3Resources = list(
+      list(
+        BucketArn = "string",
+        KeyRange = list(
+          BeginMarker = "string",
+          EndMarker = "string"
+        )
+      )
+    ),
+    LambdaResources = list(
+      list(
+        LambdaArn = "string",
+        EventTriggers = list(
+          list(
+            EventResourceARN = "string"
+          )
+        )
+      )
+    ),
+    Ec2AmiResources = list(
+      list(
+        AmiId = "string",
+        SnowballAmiId = "string"
+      )
+    )
+  ),
+  AddressId = "string",
+  ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
+  Notification = list(
+    SnsTopicARN = "string",
+    JobStatesToNotify = list(
+      "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending"
+    ),
+    NotifyAll = TRUE|FALSE
+  ),
+  ForwardingAddressId = "string"
+)
 }
 \arguments{
-\item{ClusterId}{The cluster ID of the cluster that you want to update, for example \code{CID123e4567-e89b-12d3-a456-426655440000}.}
+\item{ClusterId}{[required] The cluster ID of the cluster that you want to update, for example \code{CID123e4567-e89b-12d3-a456-426655440000}.}
 
 \item{RoleARN}{The new role Amazon Resource Name (ARN) that you want to associate with this cluster. To create a role ARN, use the \href{http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html}{CreateRole} API action in AWS Identity and Access Management (IAM).}
 

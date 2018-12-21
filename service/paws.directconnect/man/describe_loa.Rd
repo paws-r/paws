@@ -4,10 +4,14 @@
 \alias{describe_loa}
 \title{Gets the LOA-CFA for a connection, interconnect, or link aggregation group (LAG)}
 \usage{
-describe_loa(connectionId, providerName = NULL, loaContentType = NULL)
+describe_loa(
+  connectionId = "string",
+  providerName = "string",
+  loaContentType = "application/pdf"
+)
 }
 \arguments{
-\item{connectionId}{The ID of a connection, LAG, or interconnect.}
+\item{connectionId}{[required] The ID of a connection, LAG, or interconnect.}
 
 \item{providerName}{The name of the service provider who establishes connectivity on your behalf. If you specify this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.}
 

@@ -4,8 +4,16 @@
 \alias{list_dominant_language_detection_jobs}
 \title{Gets a list of the dominant language detection jobs that you have submitted}
 \usage{
-list_dominant_language_detection_jobs(Filter = NULL, NextToken = NULL,
-  MaxResults = NULL)
+list_dominant_language_detection_jobs(
+  Filter = list(
+    JobName = "string",
+    JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+    SubmitTimeBefore = as.POSIXct("2015-01-01"),
+    SubmitTimeAfter = as.POSIXct("2015-01-01")
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{Filter}{Filters that jobs that are returned. You can filter jobs on their name, status, or the date and time that they were submitted. You can only set one filter at a time.}

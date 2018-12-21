@@ -4,12 +4,15 @@
 \alias{test_connection}
 \title{Tests the connection between the replication instance and the endpoint}
 \usage{
-test_connection(ReplicationInstanceArn, EndpointArn)
+test_connection(
+  ReplicationInstanceArn = "string",
+  EndpointArn = "string"
+)
 }
 \arguments{
-\item{ReplicationInstanceArn}{The Amazon Resource Name (ARN) of the replication instance.}
+\item{ReplicationInstanceArn}{[required] The Amazon Resource Name (ARN) of the replication instance.}
 
-\item{EndpointArn}{The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.}
+\item{EndpointArn}{[required] The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.}
 }
 \description{
 Tests the connection between the replication instance and the endpoint.

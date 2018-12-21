@@ -4,12 +4,15 @@
 \alias{add_role_to_db_cluster}
 \title{Associates an Identity and Access Management (IAM) role from an Aurora DB cluster}
 \usage{
-add_role_to_db_cluster(DBClusterIdentifier, RoleArn)
+add_role_to_db_cluster(
+  DBClusterIdentifier = "string",
+  RoleArn = "string"
+)
 }
 \arguments{
-\item{DBClusterIdentifier}{The name of the DB cluster to associate the IAM role with.}
+\item{DBClusterIdentifier}{[required] The name of the DB cluster to associate the IAM role with.}
 
-\item{RoleArn}{The Amazon Resource Name (ARN) of the IAM role to associate with the Aurora DB cluster, for example \code{arn:aws:iam::123456789012:role/AuroraAccessRole}.}
+\item{RoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role to associate with the Aurora DB cluster, for example \code{arn:aws:iam::123456789012:role/AuroraAccessRole}.}
 }
 \description{
 Associates an Identity and Access Management (IAM) role from an Aurora DB cluster. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Authorizing.html}{Authorizing Amazon Aurora MySQL to Access Other AWS Services on Your Behalf} in the \emph{Amazon Aurora User Guide}.

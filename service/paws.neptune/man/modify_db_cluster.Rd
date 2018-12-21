@@ -4,15 +4,26 @@
 \alias{modify_db_cluster}
 \title{Modify a setting for a DB cluster}
 \usage{
-modify_db_cluster(DBClusterIdentifier, NewDBClusterIdentifier = NULL,
-  ApplyImmediately = NULL, BackupRetentionPeriod = NULL,
-  DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL,
-  Port = NULL, MasterUserPassword = NULL, OptionGroupName = NULL,
-  PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL,
-  EnableIAMDatabaseAuthentication = NULL, EngineVersion = NULL)
+modify_db_cluster(
+  DBClusterIdentifier = "string",
+  NewDBClusterIdentifier = "string",
+  ApplyImmediately = TRUE|FALSE,
+  BackupRetentionPeriod = 123,
+  DBClusterParameterGroupName = "string",
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  Port = 123,
+  MasterUserPassword = "string",
+  OptionGroupName = "string",
+  PreferredBackupWindow = "string",
+  PreferredMaintenanceWindow = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  EngineVersion = "string"
+)
 }
 \arguments{
-\item{DBClusterIdentifier}{The DB cluster identifier for the cluster being modified. This parameter is not case-sensitive.
+\item{DBClusterIdentifier}{[required] The DB cluster identifier for the cluster being modified. This parameter is not case-sensitive.
 
 Constraints:
 \itemize{

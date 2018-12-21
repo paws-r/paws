@@ -4,19 +4,24 @@
 \alias{allocate_connection_on_interconnect}
 \title{Deprecated}
 \usage{
-allocate_connection_on_interconnect(bandwidth, connectionName, ownerAccount,
-  interconnectId, vlan)
+allocate_connection_on_interconnect(
+  bandwidth = "string",
+  connectionName = "string",
+  ownerAccount = "string",
+  interconnectId = "string",
+  vlan = 123
+)
 }
 \arguments{
-\item{bandwidth}{The bandwidth of the connection, in Mbps. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, and 500Mbps.}
+\item{bandwidth}{[required] The bandwidth of the connection, in Mbps. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, and 500Mbps.}
 
-\item{connectionName}{The name of the provisioned connection.}
+\item{connectionName}{[required] The name of the provisioned connection.}
 
-\item{ownerAccount}{The ID of the AWS account of the customer for whom the connection will be provisioned.}
+\item{ownerAccount}{[required] The ID of the AWS account of the customer for whom the connection will be provisioned.}
 
-\item{interconnectId}{The ID of the interconnect on which the connection will be provisioned. For example, dxcon-456abc78.}
+\item{interconnectId}{[required] The ID of the interconnect on which the connection will be provisioned. For example, dxcon-456abc78.}
 
-\item{vlan}{The dedicated VLAN provisioned to the connection.}
+\item{vlan}{[required] The dedicated VLAN provisioned to the connection.}
 }
 \description{
 Deprecated. Use AllocateHostedConnection instead.

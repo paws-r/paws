@@ -6,19 +6,24 @@
 \alias{paws.connect-package}
 \title{paws.connect: Amazon Connect Service}
 \description{
-The Amazon Connect API Reference provides
-descriptions, syntax, and usage examples for each of the Amazon
-Connect actions, data types, parameters, and errors. Amazon Connect is
-a cloud-based contact center solution that makes it easy to set up and
-manage a customer contact center and provide reliable customer
-engagement at any scale.
+The Amazon Connect API Reference provides descriptions,
+syntax, and usage examples for each of the Amazon Connect actions,
+data types, parameters, and errors. Amazon Connect is a cloud-based
+contact center solution that makes it easy to set up and manage a
+customer contact center and provide reliable customer engagement at
+any scale.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

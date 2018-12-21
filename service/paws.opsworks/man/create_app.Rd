@@ -4,23 +4,60 @@
 \alias{create_app}
 \title{Creates an app for a specified stack}
 \usage{
-create_app(StackId, Name, Type, Shortname = NULL, Description = NULL,
-  DataSources = NULL, AppSource = NULL, Domains = NULL,
-  EnableSsl = NULL, SslConfiguration = NULL, Attributes = NULL,
-  Environment = NULL)
+create_app(
+  StackId = "string",
+  Shortname = "string",
+  Name = "string",
+  Description = "string",
+  DataSources = list(
+    list(
+      Type = "string",
+      Arn = "string",
+      DatabaseName = "string"
+    )
+  ),
+  Type = "aws-flow-ruby"|"java"|"rails"|"php"|"nodejs"|"static"|"other",
+  AppSource = list(
+    Type = "git"|"svn"|"archive"|"s3",
+    Url = "string",
+    Username = "string",
+    Password = "string",
+    SshKey = "string",
+    Revision = "string"
+  ),
+  Domains = list(
+    "string"
+  ),
+  EnableSsl = TRUE|FALSE,
+  SslConfiguration = list(
+    Certificate = "string",
+    PrivateKey = "string",
+    Chain = "string"
+  ),
+  Attributes = list(
+    "string"
+  ),
+  Environment = list(
+    list(
+      Key = "string",
+      Value = "string",
+      Secure = TRUE|FALSE
+    )
+  )
+)
 }
 \arguments{
-\item{StackId}{The stack ID.}
-
-\item{Name}{The app name.}
-
-\item{Type}{The app type. Each supported type is associated with a particular layer. For example, PHP applications are associated with a PHP layer. AWS OpsWorks Stacks deploys an application to those instances that are members of the corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own Deploy recipes, specify \code{other}.}
+\item{StackId}{[required] The stack ID.}
 
 \item{Shortname}{The app's short name.}
+
+\item{Name}{[required] The app name.}
 
 \item{Description}{A description of the app.}
 
 \item{DataSources}{The app's data source.}
+
+\item{Type}{[required] The app type. Each supported type is associated with a particular layer. For example, PHP applications are associated with a PHP layer. AWS OpsWorks Stacks deploys an application to those instances that are members of the corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own Deploy recipes, specify \code{other}.}
 
 \item{AppSource}{A \code{Source} object that specifies the app repository.}
 

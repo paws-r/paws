@@ -4,15 +4,20 @@
 \alias{get_table_versions}
 \title{Retrieves a list of strings that identify available versions of a specified table}
 \usage{
-get_table_versions(DatabaseName, TableName, CatalogId = NULL,
-  NextToken = NULL, MaxResults = NULL)
+get_table_versions(
+  CatalogId = "string",
+  DatabaseName = "string",
+  TableName = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{DatabaseName}{The database in the catalog in which the table resides. For Hive compatibility, this name is entirely lowercase.}
-
-\item{TableName}{The name of the table. For Hive compatibility, this name is entirely lowercase.}
-
 \item{CatalogId}{The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.}
+
+\item{DatabaseName}{[required] The database in the catalog in which the table resides. For Hive compatibility, this name is entirely lowercase.}
+
+\item{TableName}{[required] The name of the table. For Hive compatibility, this name is entirely lowercase.}
 
 \item{NextToken}{A continuation token, if this is not the first call.}
 

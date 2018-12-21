@@ -4,19 +4,24 @@
 \alias{update_data_retention}
 \title{Increases or decreases the stream's data retention period by the value that you specify}
 \usage{
-update_data_retention(CurrentVersion, Operation, DataRetentionChangeInHours,
-  StreamName = NULL, StreamARN = NULL)
+update_data_retention(
+  StreamName = "string",
+  StreamARN = "string",
+  CurrentVersion = "string",
+  Operation = "INCREASE_DATA_RETENTION"|"DECREASE_DATA_RETENTION",
+  DataRetentionChangeInHours = 123
+)
 }
 \arguments{
-\item{CurrentVersion}{The version of the stream whose retention period you want to change. To get the version, call either the \code{DescribeStream} or the \code{ListStreams} API.}
-
-\item{Operation}{Indicates whether you want to increase or decrease the retention period.}
-
-\item{DataRetentionChangeInHours}{The retention period, in hours. The value you specify replaces the current value.}
-
 \item{StreamName}{The name of the stream whose retention period you want to change.}
 
 \item{StreamARN}{The Amazon Resource Name (ARN) of the stream whose retention period you want to change.}
+
+\item{CurrentVersion}{[required] The version of the stream whose retention period you want to change. To get the version, call either the \code{DescribeStream} or the \code{ListStreams} API.}
+
+\item{Operation}{[required] Indicates whether you want to increase or decrease the retention period.}
+
+\item{DataRetentionChangeInHours}{[required] The retention period, in hours. The value you specify replaces the current value.}
 }
 \description{
 Increases or decreases the stream's data retention period by the value that you specify. To indicate whether you want to increase or decrease the data retention period, specify the \code{Operation} parameter in the request body. In the request, you must specify either the \code{StreamName} or the \code{StreamARN}.

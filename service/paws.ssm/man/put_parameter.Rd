@@ -4,11 +4,18 @@
 \alias{put_parameter}
 \title{Add a parameter to the system}
 \usage{
-put_parameter(Name, Value, Type, Description = NULL, KeyId = NULL,
-  Overwrite = NULL, AllowedPattern = NULL)
+put_parameter(
+  Name = "string",
+  Description = "string",
+  Value = "string",
+  Type = "String"|"StringList"|"SecureString",
+  KeyId = "string",
+  Overwrite = TRUE|FALSE,
+  AllowedPattern = "string"
+)
 }
 \arguments{
-\item{Name}{The fully qualified name of the parameter that you want to add to the system. The fully qualified name includes the complete hierarchy of the parameter path and name. For example: \code{/Dev/DBServer/MySQL/db-string13}
+\item{Name}{[required] The fully qualified name of the parameter that you want to add to the system. The fully qualified name includes the complete hierarchy of the parameter path and name. For example: \code{/Dev/DBServer/MySQL/db-string13}
 
 Naming Constraints:
 \itemize{
@@ -24,17 +31,17 @@ For additional information about valid values for parameter names, see \href{htt
 
 The maximum length constraint listed below includes capacity for additional system attributes that are not part of the name. The maximum length for the fully qualified parameter name is 1011 characters.}
 
-\item{Value}{The parameter value that you want to add to the system.}
+\item{Description}{Information about the parameter that you want to add to the system. Optional but recommended.
 
-\item{Type}{The type of parameter that you want to add to the system.
+Do not enter personally identifiable information in this field.}
+
+\item{Value}{[required] The parameter value that you want to add to the system.}
+
+\item{Type}{[required] The type of parameter that you want to add to the system.
 
 Items in a \code{StringList} must be separated by a comma (,). You can't use other punctuation or special character to escape items in the list. If you have a parameter value that requires a comma, then use the \code{String} data type.
 
 \code{SecureString} is not currently supported for AWS CloudFormation templates or in the China Regions.}
-
-\item{Description}{Information about the parameter that you want to add to the system. Optional but recommended.
-
-Do not enter personally identifiable information in this field.}
 
 \item{KeyId}{The KMS Key ID that you want to use to encrypt a parameter. Either the default AWS Key Management Service (AWS KMS) key automatically assigned to your AWS account or a custom key. Required for parameters that use the \code{SecureString} data type.
 

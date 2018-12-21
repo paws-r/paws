@@ -4,10 +4,12 @@
 \alias{stop_query_execution}
 \title{Stops a query execution}
 \usage{
-stop_query_execution(QueryExecutionId)
+stop_query_execution(
+  QueryExecutionId = "string"
+)
 }
 \arguments{
-\item{QueryExecutionId}{The unique ID of the query execution to stop.}
+\item{QueryExecutionId}{[required] The unique ID of the query execution to stop.}
 }
 \description{
 Stops a query execution.

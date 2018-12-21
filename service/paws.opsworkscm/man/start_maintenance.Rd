@@ -4,10 +4,18 @@
 \alias{start_maintenance}
 \title{Manually starts server maintenance}
 \usage{
-start_maintenance(ServerName, EngineAttributes = NULL)
+start_maintenance(
+  ServerName = "string",
+  EngineAttributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ServerName}{The name of the server on which to run maintenance.}
+\item{ServerName}{[required] The name of the server on which to run maintenance.}
 
 \item{EngineAttributes}{Engine attributes that are specific to the server on which you want to run maintenance.}
 }

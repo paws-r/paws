@@ -4,26 +4,42 @@
 \alias{create_matchmaking_configuration}
 \title{Defines a new matchmaking configuration for use with FlexMatch}
 \usage{
-create_matchmaking_configuration(Name, GameSessionQueueArns,
-  RequestTimeoutSeconds, AcceptanceRequired, RuleSetName, Description = NULL,
-  AcceptanceTimeoutSeconds = NULL, NotificationTarget = NULL,
-  AdditionalPlayerCount = NULL, CustomEventData = NULL,
-  GameProperties = NULL, GameSessionData = NULL)
+create_matchmaking_configuration(
+  Name = "string",
+  Description = "string",
+  GameSessionQueueArns = list(
+    "string"
+  ),
+  RequestTimeoutSeconds = 123,
+  AcceptanceTimeoutSeconds = 123,
+  AcceptanceRequired = TRUE|FALSE,
+  RuleSetName = "string",
+  NotificationTarget = "string",
+  AdditionalPlayerCount = 123,
+  CustomEventData = "string",
+  GameProperties = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  GameSessionData = "string"
+)
 }
 \arguments{
-\item{Name}{Unique identifier for a matchmaking configuration. This name is used to identify the configuration associated with a matchmaking request or ticket.}
-
-\item{GameSessionQueueArns}{Amazon Resource Name (\href{http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html}{ARN}) that is assigned to a game session queue and uniquely identifies it. Format is \code{arn:aws:gamelift:<region>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912}. These queues are used when placing game sessions for matches that are created with this matchmaking configuration. Queues can be located in any region.}
-
-\item{RequestTimeoutSeconds}{Maximum duration, in seconds, that a matchmaking ticket can remain in process before timing out. Requests that time out can be resubmitted as needed.}
-
-\item{AcceptanceRequired}{Flag that determines whether or not a match that was created with this configuration must be accepted by the matched players. To require acceptance, set to TRUE.}
-
-\item{RuleSetName}{Unique identifier for a matchmaking rule set to use with this configuration. A matchmaking configuration can only use rule sets that are defined in the same region.}
+\item{Name}{[required] Unique identifier for a matchmaking configuration. This name is used to identify the configuration associated with a matchmaking request or ticket.}
 
 \item{Description}{Meaningful description of the matchmaking configuration.}
 
+\item{GameSessionQueueArns}{[required] Amazon Resource Name (\href{http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html}{ARN}) that is assigned to a game session queue and uniquely identifies it. Format is \code{arn:aws:gamelift:<region>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912}. These queues are used when placing game sessions for matches that are created with this matchmaking configuration. Queues can be located in any region.}
+
+\item{RequestTimeoutSeconds}{[required] Maximum duration, in seconds, that a matchmaking ticket can remain in process before timing out. Requests that time out can be resubmitted as needed.}
+
 \item{AcceptanceTimeoutSeconds}{Length of time (in seconds) to wait for players to accept a proposed match. If any player rejects the match or fails to accept before the timeout, the ticket continues to look for an acceptable match.}
+
+\item{AcceptanceRequired}{[required] Flag that determines whether or not a match that was created with this configuration must be accepted by the matched players. To require acceptance, set to TRUE.}
+
+\item{RuleSetName}{[required] Unique identifier for a matchmaking rule set to use with this configuration. A matchmaking configuration can only use rule sets that are defined in the same region.}
 
 \item{NotificationTarget}{SNS topic ARN that is set up to receive matchmaking notifications.}
 

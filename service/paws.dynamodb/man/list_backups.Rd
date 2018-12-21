@@ -4,9 +4,14 @@
 \alias{list_backups}
 \title{List backups associated with an AWS account}
 \usage{
-list_backups(TableName = NULL, Limit = NULL, TimeRangeLowerBound = NULL,
-  TimeRangeUpperBound = NULL, ExclusiveStartBackupArn = NULL,
-  BackupType = NULL)
+list_backups(
+  TableName = "string",
+  Limit = 123,
+  TimeRangeLowerBound = as.POSIXct("2015-01-01"),
+  TimeRangeUpperBound = as.POSIXct("2015-01-01"),
+  ExclusiveStartBackupArn = "string",
+  BackupType = "USER"|"SYSTEM"|"ALL"
+)
 }
 \arguments{
 \item{TableName}{The backups from the table specified by \code{TableName} are listed.}

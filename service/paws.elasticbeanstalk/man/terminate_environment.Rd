@@ -4,8 +4,12 @@
 \alias{terminate_environment}
 \title{Terminates the specified environment}
 \usage{
-terminate_environment(EnvironmentId = NULL, EnvironmentName = NULL,
-  TerminateResources = NULL, ForceTerminate = NULL)
+terminate_environment(
+  EnvironmentId = "string",
+  EnvironmentName = "string",
+  TerminateResources = TRUE|FALSE,
+  ForceTerminate = TRUE|FALSE
+)
 }
 \arguments{
 \item{EnvironmentId}{The ID of the environment to terminate.

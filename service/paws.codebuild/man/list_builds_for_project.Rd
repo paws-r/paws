@@ -4,10 +4,14 @@
 \alias{list_builds_for_project}
 \title{Gets a list of build IDs for the specified build project, with each build ID representing a single build}
 \usage{
-list_builds_for_project(projectName, sortOrder = NULL, nextToken = NULL)
+list_builds_for_project(
+  projectName = "string",
+  sortOrder = "ASCENDING"|"DESCENDING",
+  nextToken = "string"
+)
 }
 \arguments{
-\item{projectName}{The name of the AWS CodeBuild project.}
+\item{projectName}{[required] The name of the AWS CodeBuild project.}
 
 \item{sortOrder}{The order to list build IDs. Valid values include:
 \itemize{

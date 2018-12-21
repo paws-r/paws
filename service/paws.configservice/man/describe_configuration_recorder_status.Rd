@@ -4,7 +4,11 @@
 \alias{describe_configuration_recorder_status}
 \title{Returns the current status of the specified configuration recorder}
 \usage{
-describe_configuration_recorder_status(ConfigurationRecorderNames = NULL)
+describe_configuration_recorder_status(
+  ConfigurationRecorderNames = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{ConfigurationRecorderNames}{The name(s) of the configuration recorder. If the name is not specified, the action returns the current status of all the configuration recorders associated with the account.}

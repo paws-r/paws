@@ -4,10 +4,12 @@
 \alias{delete_baidu_channel}
 \title{Delete a BAIDU GCM channel}
 \usage{
-delete_baidu_channel(ApplicationId)
+delete_baidu_channel(
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 }
 \description{
 Delete a BAIDU GCM channel

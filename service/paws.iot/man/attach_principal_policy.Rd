@@ -4,12 +4,15 @@
 \alias{attach_principal_policy}
 \title{Attaches the specified policy to the specified principal (certificate or other credential)}
 \usage{
-attach_principal_policy(policyName, principal)
+attach_principal_policy(
+  policyName = "string",
+  principal = "string"
+)
 }
 \arguments{
-\item{policyName}{The policy name.}
+\item{policyName}{[required] The policy name.}
 
-\item{principal}{The principal, which can be a certificate ARN (as returned from the CreateCertificate operation) or an Amazon Cognito ID.}
+\item{principal}{[required] The principal, which can be a certificate ARN (as returned from the CreateCertificate operation) or an Amazon Cognito ID.}
 }
 \description{
 Attaches the specified policy to the specified principal (certificate or other credential).

@@ -4,12 +4,15 @@
 \alias{acknowledge_job}
 \title{Returns information about a specified job and whether that job has been received by the job worker}
 \usage{
-acknowledge_job(jobId, nonce)
+acknowledge_job(
+  jobId = "string",
+  nonce = "string"
+)
 }
 \arguments{
-\item{jobId}{The unique system-generated ID of the job for which you want to confirm receipt.}
+\item{jobId}{[required] The unique system-generated ID of the job for which you want to confirm receipt.}
 
-\item{nonce}{A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Get this number from the response of the PollForJobs request that returned this job.}
+\item{nonce}{[required] A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Get this number from the response of the PollForJobs request that returned this job.}
 }
 \description{
 Returns information about a specified job and whether that job has been received by the job worker. Only used for custom actions.

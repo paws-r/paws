@@ -4,14 +4,20 @@
 \alias{detach_object}
 \title{Detaches a given object from the parent object}
 \usage{
-detach_object(DirectoryArn, ParentReference, LinkName)
+detach_object(
+  DirectoryArn = "string",
+  ParentReference = list(
+    Selector = "string"
+  ),
+  LinkName = "string"
+)
 }
 \arguments{
-\item{DirectoryArn}{The Amazon Resource Name (ARN) that is associated with the Directory where objects reside. For more information, see arns.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where objects reside. For more information, see arns.}
 
-\item{ParentReference}{The parent reference from which the object with the specified link name is detached.}
+\item{ParentReference}{[required] The parent reference from which the object with the specified link name is detached.}
 
-\item{LinkName}{The link name associated with the object that needs to be detached.}
+\item{LinkName}{[required] The link name associated with the object that needs to be detached.}
 }
 \description{
 Detaches a given object from the parent object. The object that is to be detached from the parent is specified by the link name.

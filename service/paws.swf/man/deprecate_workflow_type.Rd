@@ -4,12 +4,18 @@
 \alias{deprecate_workflow_type}
 \title{Deprecates the specified \emph{workflow type}}
 \usage{
-deprecate_workflow_type(domain, workflowType)
+deprecate_workflow_type(
+  domain = "string",
+  workflowType = list(
+    name = "string",
+    version = "string"
+  )
+)
 }
 \arguments{
-\item{domain}{The name of the domain in which the workflow type is registered.}
+\item{domain}{[required] The name of the domain in which the workflow type is registered.}
 
-\item{workflowType}{The workflow type to deprecate.}
+\item{workflowType}{[required] The workflow type to deprecate.}
 }
 \description{
 Deprecates the specified \emph{workflow type}. After a workflow type has been deprecated, you cannot create new executions of that type. Executions that were started before the type was deprecated continues to run. A deprecated workflow type may still be used when calling visibility actions.

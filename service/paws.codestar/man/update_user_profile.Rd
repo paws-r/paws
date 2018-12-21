@@ -4,11 +4,15 @@
 \alias{update_user_profile}
 \title{Updates a user's profile in AWS CodeStar}
 \usage{
-update_user_profile(userArn, displayName = NULL, emailAddress = NULL,
-  sshPublicKey = NULL)
+update_user_profile(
+  userArn = "string",
+  displayName = "string",
+  emailAddress = "string",
+  sshPublicKey = "string"
+)
 }
 \arguments{
-\item{userArn}{The name that will be displayed as the friendly name for the user in AWS CodeStar.}
+\item{userArn}{[required] The name that will be displayed as the friendly name for the user in AWS CodeStar.}
 
 \item{displayName}{The name that is displayed as the friendly name for the user in AWS CodeStar.}
 

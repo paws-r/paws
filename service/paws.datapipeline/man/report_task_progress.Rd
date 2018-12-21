@@ -4,10 +4,19 @@
 \alias{report_task_progress}
 \title{Task runners call \code{ReportTaskProgress} when assigned a task to acknowledge that it has the task}
 \usage{
-report_task_progress(taskId, fields = NULL)
+report_task_progress(
+  taskId = "string",
+  fields = list(
+    list(
+      key = "string",
+      stringValue = "string",
+      refValue = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{taskId}{The ID of the task assigned to the task runner. This value is provided in the response for PollForTask.}
+\item{taskId}{[required] The ID of the task assigned to the task runner. This value is provided in the response for PollForTask.}
 
 \item{fields}{Key-value pairs that define the properties of the ReportTaskProgressInput object.}
 }

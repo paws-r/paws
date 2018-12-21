@@ -4,10 +4,13 @@
 \alias{list_suites}
 \title{Gets information about test suites for a given job}
 \usage{
-list_suites(arn, nextToken = NULL)
+list_suites(
+  arn = "string",
+  nextToken = "string"
+)
 }
 \arguments{
-\item{arn}{The job's Amazon Resource Name (ARN).}
+\item{arn}{[required] The job's Amazon Resource Name (ARN).}
 
 \item{nextToken}{An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.}
 }

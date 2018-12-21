@@ -4,13 +4,65 @@
 \alias{set_risk_configuration}
 \title{Configures actions on detected risks}
 \usage{
-set_risk_configuration(UserPoolId, ClientId = NULL,
-  CompromisedCredentialsRiskConfiguration = NULL,
-  AccountTakeoverRiskConfiguration = NULL,
-  RiskExceptionConfiguration = NULL)
+set_risk_configuration(
+  UserPoolId = "string",
+  ClientId = "string",
+  CompromisedCredentialsRiskConfiguration = list(
+    EventFilter = list(
+      "SIGN_IN"|"PASSWORD_CHANGE"|"SIGN_UP"
+    ),
+    Actions = list(
+      EventAction = "BLOCK"|"NO_ACTION"
+    )
+  ),
+  AccountTakeoverRiskConfiguration = list(
+    NotifyConfiguration = list(
+      From = "string",
+      ReplyTo = "string",
+      SourceArn = "string",
+      BlockEmail = list(
+        Subject = "string",
+        HtmlBody = "string",
+        TextBody = "string"
+      ),
+      NoActionEmail = list(
+        Subject = "string",
+        HtmlBody = "string",
+        TextBody = "string"
+      ),
+      MfaEmail = list(
+        Subject = "string",
+        HtmlBody = "string",
+        TextBody = "string"
+      )
+    ),
+    Actions = list(
+      LowAction = list(
+        Notify = TRUE|FALSE,
+        EventAction = "BLOCK"|"MFA_IF_CONFIGURED"|"MFA_REQUIRED"|"NO_ACTION"
+      ),
+      MediumAction = list(
+        Notify = TRUE|FALSE,
+        EventAction = "BLOCK"|"MFA_IF_CONFIGURED"|"MFA_REQUIRED"|"NO_ACTION"
+      ),
+      HighAction = list(
+        Notify = TRUE|FALSE,
+        EventAction = "BLOCK"|"MFA_IF_CONFIGURED"|"MFA_REQUIRED"|"NO_ACTION"
+      )
+    )
+  ),
+  RiskExceptionConfiguration = list(
+    BlockedIPRangeList = list(
+      "string"
+    ),
+    SkippedIPRangeList = list(
+      "string"
+    )
+  )
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID.}
+\item{UserPoolId}{[required] The user pool ID.}
 
 \item{ClientId}{The app client ID. If \code{ClientId} is null, then the risk configuration is mapped to \code{userPoolId}. When the client ID is null, the same risk configuration is applied to all the clients in the userPool.
 

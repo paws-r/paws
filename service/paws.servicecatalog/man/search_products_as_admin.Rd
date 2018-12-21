@@ -4,9 +4,20 @@
 \alias{search_products_as_admin}
 \title{Gets information about the products for the specified portfolio or all products}
 \usage{
-search_products_as_admin(AcceptLanguage = NULL, PortfolioId = NULL,
-  Filters = NULL, SortBy = NULL, SortOrder = NULL, PageToken = NULL,
-  PageSize = NULL, ProductSource = NULL)
+search_products_as_admin(
+  AcceptLanguage = "string",
+  PortfolioId = "string",
+  Filters = list(
+    list(
+      "string"
+    )
+  ),
+  SortBy = "Title"|"VersionCount"|"CreationDate",
+  SortOrder = "ASCENDING"|"DESCENDING",
+  PageToken = "string",
+  PageSize = 123,
+  ProductSource = "ACCOUNT"
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.

@@ -4,10 +4,14 @@
 \alias{list_filters}
 \title{Returns a paginated list of the current filters}
 \usage{
-list_filters(DetectorId, MaxResults = NULL, NextToken = NULL)
+list_filters(
+  DetectorId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{DetectorId}{The ID of the detector that specifies the GuardDuty service where you want to list filters.}
+\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service where you want to list filters.}
 
 \item{MaxResults}{Indicates the maximum number of items that you want in the response. The maximum value is 50.}
 

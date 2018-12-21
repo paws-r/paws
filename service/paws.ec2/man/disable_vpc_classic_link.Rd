@@ -4,12 +4,15 @@
 \alias{disable_vpc_classic_link}
 \title{Disables ClassicLink for a VPC}
 \usage{
-disable_vpc_classic_link(VpcId, DryRun = NULL)
+disable_vpc_classic_link(
+  DryRun = TRUE|FALSE,
+  VpcId = "string"
+)
 }
 \arguments{
-\item{VpcId}{The ID of the VPC.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{VpcId}{[required] The ID of the VPC.}
 }
 \description{
 Disables ClassicLink for a VPC. You cannot disable ClassicLink for a VPC that has EC2-Classic instances linked to it.

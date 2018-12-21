@@ -6,10 +6,10 @@
 \alias{paws.iotdataplane-package}
 \title{paws.iotdataplane: AWS IoT Data Plane}
 \description{
-AWS IoT-Data enables secure, bi-directional
-communication between Internet-connected things (such as sensors,
-actuators, embedded devices, or smart appliances) and the AWS cloud.
-It implements a broker for applications and things to publish messages
+AWS IoT-Data enables secure, bi-directional communication
+between Internet-connected things (such as sensors, actuators,
+embedded devices, or smart appliances) and the AWS cloud. It
+implements a broker for applications and things to publish messages
 over HTTP (Publish) and retrieve, update, and delete thing shadows. A
 thing shadow is a persistent representation of your things and their
 state in the AWS cloud.
@@ -19,7 +19,12 @@ state in the AWS cloud.
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

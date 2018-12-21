@@ -4,10 +4,12 @@
 \alias{list_tags_for_resource}
 \title{Returns the tags applied to an AWS Elastic Beanstalk resource}
 \usage{
-list_tags_for_resource(ResourceArn)
+list_tags_for_resource(
+  ResourceArn = "string"
+)
 }
 \arguments{
-\item{ResourceArn}{The Amazon Resource Name (ARN) of the resouce for which a tag list is requested.
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resouce for which a tag list is requested.
 
 Must be the ARN of an Elastic Beanstalk environment.}
 }

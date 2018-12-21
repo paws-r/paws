@@ -4,10 +4,12 @@
 \alias{delete_hsm_client_certificate}
 \title{Deletes the specified HSM client certificate}
 \usage{
-delete_hsm_client_certificate(HsmClientCertificateIdentifier)
+delete_hsm_client_certificate(
+  HsmClientCertificateIdentifier = "string"
+)
 }
 \arguments{
-\item{HsmClientCertificateIdentifier}{The identifier of the HSM client certificate to be deleted.}
+\item{HsmClientCertificateIdentifier}{[required] The identifier of the HSM client certificate to be deleted.}
 }
 \description{
 Deletes the specified HSM client certificate.

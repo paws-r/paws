@@ -4,7 +4,10 @@
 \alias{list_clusters}
 \title{Returns an array of \code{ClusterListEntry} objects of the specified length}
 \usage{
-list_clusters(MaxResults = NULL, NextToken = NULL)
+list_clusters(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{MaxResults}{The number of \code{ClusterListEntry} objects to return.}

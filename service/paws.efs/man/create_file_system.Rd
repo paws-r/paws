@@ -4,12 +4,17 @@
 \alias{create_file_system}
 \title{Creates a new, empty file system}
 \usage{
-create_file_system(CreationToken, PerformanceMode = NULL, Encrypted = NULL,
-  KmsKeyId = NULL, ThroughputMode = NULL,
-  ProvisionedThroughputInMibps = NULL)
+create_file_system(
+  CreationToken = "string",
+  PerformanceMode = "generalPurpose"|"maxIO",
+  Encrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  ThroughputMode = "bursting"|"provisioned",
+  ProvisionedThroughputInMibps = 123.0
+)
 }
 \arguments{
-\item{CreationToken}{String of up to 64 ASCII characters. Amazon EFS uses this to ensure idempotent creation.}
+\item{CreationToken}{[required] String of up to 64 ASCII characters. Amazon EFS uses this to ensure idempotent creation.}
 
 \item{PerformanceMode}{The \code{PerformanceMode} of the file system. We recommend \code{generalPurpose} performance mode for most file systems. File systems using the \code{maxIO} performance mode can scale to higher levels of aggregate throughput and operations per second with a tradeoff of slightly higher latencies for most file operations. This can't be changed after the file system has been created.}
 

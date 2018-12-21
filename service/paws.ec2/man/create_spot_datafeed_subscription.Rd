@@ -4,10 +4,14 @@
 \alias{create_spot_datafeed_subscription}
 \title{Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs}
 \usage{
-create_spot_datafeed_subscription(Bucket, DryRun = NULL, Prefix = NULL)
+create_spot_datafeed_subscription(
+  Bucket = "string",
+  DryRun = TRUE|FALSE,
+  Prefix = "string"
+)
 }
 \arguments{
-\item{Bucket}{The Amazon S3 bucket in which to store the Spot Instance data feed.}
+\item{Bucket}{[required] The Amazon S3 bucket in which to store the Spot Instance data feed.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 

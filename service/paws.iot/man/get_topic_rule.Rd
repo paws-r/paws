@@ -4,10 +4,12 @@
 \alias{get_topic_rule}
 \title{Gets information about the rule}
 \usage{
-get_topic_rule(ruleName)
+get_topic_rule(
+  ruleName = "string"
+)
 }
 \arguments{
-\item{ruleName}{The name of the rule.}
+\item{ruleName}{[required] The name of the rule.}
 }
 \description{
 Gets information about the rule.

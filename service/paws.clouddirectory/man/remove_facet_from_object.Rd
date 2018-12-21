@@ -4,14 +4,23 @@
 \alias{remove_facet_from_object}
 \title{Removes the specified facet from the specified object}
 \usage{
-remove_facet_from_object(DirectoryArn, SchemaFacet, ObjectReference)
+remove_facet_from_object(
+  DirectoryArn = "string",
+  SchemaFacet = list(
+    SchemaArn = "string",
+    FacetName = "string"
+  ),
+  ObjectReference = list(
+    Selector = "string"
+  )
+)
 }
 \arguments{
-\item{DirectoryArn}{The ARN of the directory in which the object resides.}
+\item{DirectoryArn}{[required] The ARN of the directory in which the object resides.}
 
-\item{SchemaFacet}{The facet to remove. See SchemaFacet for details.}
+\item{SchemaFacet}{[required] The facet to remove. See SchemaFacet for details.}
 
-\item{ObjectReference}{A reference to the object to remove the facet from.}
+\item{ObjectReference}{[required] A reference to the object to remove the facet from.}
 }
 \description{
 Removes the specified facet from the specified object.

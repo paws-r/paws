@@ -4,10 +4,13 @@
 \alias{reject_qualification_request}
 \title{The \code{RejectQualificationRequest} operation rejects a user's request for a Qualification}
 \usage{
-reject_qualification_request(QualificationRequestId, Reason = NULL)
+reject_qualification_request(
+  QualificationRequestId = "string",
+  Reason = "string"
+)
 }
 \arguments{
-\item{QualificationRequestId}{The ID of the Qualification request, as returned by the \code{ListQualificationRequests} operation.}
+\item{QualificationRequestId}{[required] The ID of the Qualification request, as returned by the \code{ListQualificationRequests} operation.}
 
 \item{Reason}{A text message explaining why the request was rejected, to be shown to the Worker who made the request.}
 }

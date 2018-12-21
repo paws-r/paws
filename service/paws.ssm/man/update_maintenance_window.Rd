@@ -4,13 +4,23 @@
 \alias{update_maintenance_window}
 \title{Updates an existing Maintenance Window}
 \usage{
-update_maintenance_window(WindowId, Name = NULL, Description = NULL,
-  StartDate = NULL, EndDate = NULL, Schedule = NULL,
-  ScheduleTimezone = NULL, Duration = NULL, Cutoff = NULL,
-  AllowUnassociatedTargets = NULL, Enabled = NULL, Replace = NULL)
+update_maintenance_window(
+  WindowId = "string",
+  Name = "string",
+  Description = "string",
+  StartDate = "string",
+  EndDate = "string",
+  Schedule = "string",
+  ScheduleTimezone = "string",
+  Duration = 123,
+  Cutoff = 123,
+  AllowUnassociatedTargets = TRUE|FALSE,
+  Enabled = TRUE|FALSE,
+  Replace = TRUE|FALSE
+)
 }
 \arguments{
-\item{WindowId}{The ID of the Maintenance Window to update.}
+\item{WindowId}{[required] The ID of the Maintenance Window to update.}
 
 \item{Name}{The name of the Maintenance Window.}
 

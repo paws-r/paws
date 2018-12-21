@@ -4,10 +4,12 @@
 \alias{describe_backup}
 \title{Describes an existing backup of a table}
 \usage{
-describe_backup(BackupArn)
+describe_backup(
+  BackupArn = "string"
+)
 }
 \arguments{
-\item{BackupArn}{The ARN associated with the backup.}
+\item{BackupArn}{[required] The ARN associated with the backup.}
 }
 \description{
 Describes an existing backup of a table.

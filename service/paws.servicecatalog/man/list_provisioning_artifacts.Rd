@@ -4,17 +4,20 @@
 \alias{list_provisioning_artifacts}
 \title{Lists all provisioning artifacts (also known as versions) for the specified product}
 \usage{
-list_provisioning_artifacts(ProductId, AcceptLanguage = NULL)
+list_provisioning_artifacts(
+  AcceptLanguage = "string",
+  ProductId = "string"
+)
 }
 \arguments{
-\item{ProductId}{The product identifier.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{ProductId}{[required] The product identifier.}
 }
 \description{
 Lists all provisioning artifacts (also known as versions) for the specified product.

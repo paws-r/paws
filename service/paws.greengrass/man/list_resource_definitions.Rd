@@ -4,7 +4,10 @@
 \alias{list_resource_definitions}
 \title{Retrieves a list of resource definitions}
 \usage{
-list_resource_definitions(MaxResults = NULL, NextToken = NULL)
+list_resource_definitions(
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
 \arguments{
 \item{MaxResults}{The maximum number of results to be returned per request.}

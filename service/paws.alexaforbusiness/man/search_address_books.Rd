@@ -4,8 +4,24 @@
 \alias{search_address_books}
 \title{Searches address books and lists the ones that meet a set of filter and sort criteria}
 \usage{
-search_address_books(Filters = NULL, SortCriteria = NULL,
-  NextToken = NULL, MaxResults = NULL)
+search_address_books(
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  SortCriteria = list(
+    list(
+      Key = "string",
+      Value = "ASC"|"DESC"
+    )
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{Filters}{The filters to use to list a specified set of address books. The supported filter key is AddressBookName.}

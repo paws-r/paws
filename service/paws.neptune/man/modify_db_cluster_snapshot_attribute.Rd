@@ -4,13 +4,21 @@
 \alias{modify_db_cluster_snapshot_attribute}
 \title{Adds an attribute and values to, or removes an attribute and values from, a manual DB cluster snapshot}
 \usage{
-modify_db_cluster_snapshot_attribute(DBClusterSnapshotIdentifier, AttributeName,
-  ValuesToAdd = NULL, ValuesToRemove = NULL)
+modify_db_cluster_snapshot_attribute(
+  DBClusterSnapshotIdentifier = "string",
+  AttributeName = "string",
+  ValuesToAdd = list(
+    "string"
+  ),
+  ValuesToRemove = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{DBClusterSnapshotIdentifier}{The identifier for the DB cluster snapshot to modify the attributes for.}
+\item{DBClusterSnapshotIdentifier}{[required] The identifier for the DB cluster snapshot to modify the attributes for.}
 
-\item{AttributeName}{The name of the DB cluster snapshot attribute to modify.
+\item{AttributeName}{[required] The name of the DB cluster snapshot attribute to modify.
 
 To manage authorization for other AWS accounts to copy or restore a manual DB cluster snapshot, set this value to \code{restore}.}
 

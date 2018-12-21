@@ -4,14 +4,20 @@
 \alias{untag_stream}
 \title{Removes one or more tags from a stream}
 \usage{
-untag_stream(TagKeyList, StreamARN = NULL, StreamName = NULL)
+untag_stream(
+  StreamARN = "string",
+  StreamName = "string",
+  TagKeyList = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{TagKeyList}{A list of the keys of the tags that you want to remove.}
-
 \item{StreamARN}{The Amazon Resource Name (ARN) of the stream that you want to remove tags from.}
 
 \item{StreamName}{The name of the stream that you want to remove tags from.}
+
+\item{TagKeyList}{[required] A list of the keys of the tags that you want to remove.}
 }
 \description{
 Removes one or more tags from a stream. In the request, specify only a tag key or keys; don't specify the value. If you specify a tag key that does not exist, it's ignored.

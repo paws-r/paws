@@ -4,17 +4,21 @@
 \alias{start_thing_registration_task}
 \title{Creates a bulk thing provisioning task}
 \usage{
-start_thing_registration_task(templateBody, inputFileBucket, inputFileKey,
-  roleArn)
+start_thing_registration_task(
+  templateBody = "string",
+  inputFileBucket = "string",
+  inputFileKey = "string",
+  roleArn = "string"
+)
 }
 \arguments{
-\item{templateBody}{The provisioning template.}
+\item{templateBody}{[required] The provisioning template.}
 
-\item{inputFileBucket}{The S3 bucket that contains the input file.}
+\item{inputFileBucket}{[required] The S3 bucket that contains the input file.}
 
-\item{inputFileKey}{The name of input file within the S3 bucket. This file contains a newline delimited JSON file. Each line contains the parameter values to provision one device (thing).}
+\item{inputFileKey}{[required] The name of input file within the S3 bucket. This file contains a newline delimited JSON file. Each line contains the parameter values to provision one device (thing).}
 
-\item{roleArn}{The IAM role ARN that grants permission the input file.}
+\item{roleArn}{[required] The IAM role ARN that grants permission the input file.}
 }
 \description{
 Creates a bulk thing provisioning task.

@@ -4,8 +4,11 @@
 \alias{describe_cache_security_groups}
 \title{Returns a list of cache security group descriptions}
 \usage{
-describe_cache_security_groups(CacheSecurityGroupName = NULL,
-  MaxRecords = NULL, Marker = NULL)
+describe_cache_security_groups(
+  CacheSecurityGroupName = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{CacheSecurityGroupName}{The name of the cache security group to return details for.}

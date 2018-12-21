@@ -4,10 +4,15 @@
 \alias{describe_exclusions}
 \title{Describes the exclusions that are specified by the exclusions' ARNs}
 \usage{
-describe_exclusions(exclusionArns, locale = NULL)
+describe_exclusions(
+  exclusionArns = list(
+    "string"
+  ),
+  locale = "EN_US"
+)
 }
 \arguments{
-\item{exclusionArns}{The list of ARNs that specify the exclusions that you want to describe.}
+\item{exclusionArns}{[required] The list of ARNs that specify the exclusions that you want to describe.}
 
 \item{locale}{The locale into which you want to translate the exclusion's title, description, and recommendation.}
 }

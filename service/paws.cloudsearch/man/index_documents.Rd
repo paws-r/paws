@@ -4,10 +4,12 @@
 \alias{index_documents}
 \title{Tells the search domain to start indexing its documents using the latest indexing options}
 \usage{
-index_documents(DomainName)
+index_documents(
+  DomainName = "string"
+)
 }
 \arguments{
-\item{DomainName}{}
+\item{DomainName}{[required]}
 }
 \description{
 Tells the search domain to start indexing its documents using the latest indexing options. This operation must be invoked to activate options whose OptionStatus is \code{RequiresIndexDocuments}.

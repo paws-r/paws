@@ -4,10 +4,12 @@
 \alias{delete_notebook_instance_lifecycle_config}
 \title{Deletes a notebook instance lifecycle configuration}
 \usage{
-delete_notebook_instance_lifecycle_config(NotebookInstanceLifecycleConfigName)
+delete_notebook_instance_lifecycle_config(
+  NotebookInstanceLifecycleConfigName = "string"
+)
 }
 \arguments{
-\item{NotebookInstanceLifecycleConfigName}{The name of the lifecycle configuration to delete.}
+\item{NotebookInstanceLifecycleConfigName}{[required] The name of the lifecycle configuration to delete.}
 }
 \description{
 Deletes a notebook instance lifecycle configuration.

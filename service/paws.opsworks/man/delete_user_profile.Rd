@@ -4,10 +4,12 @@
 \alias{delete_user_profile}
 \title{Deletes a user profile}
 \usage{
-delete_user_profile(IamUserArn)
+delete_user_profile(
+  IamUserArn = "string"
+)
 }
 \arguments{
-\item{IamUserArn}{The user's IAM ARN. This can also be a federated user's ARN.}
+\item{IamUserArn}{[required] The user's IAM ARN. This can also be a federated user's ARN.}
 }
 \description{
 Deletes a user profile.

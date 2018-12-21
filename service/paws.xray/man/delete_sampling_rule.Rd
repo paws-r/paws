@@ -4,7 +4,10 @@
 \alias{delete_sampling_rule}
 \title{Deletes a sampling rule}
 \usage{
-delete_sampling_rule(RuleName = NULL, RuleARN = NULL)
+delete_sampling_rule(
+  RuleName = "string",
+  RuleARN = "string"
+)
 }
 \arguments{
 \item{RuleName}{The name of the sampling rule. Specify a rule by either name or ARN, but not both.}

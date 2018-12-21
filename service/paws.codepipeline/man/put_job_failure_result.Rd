@@ -4,12 +4,19 @@
 \alias{put_job_failure_result}
 \title{Represents the failure of a job as returned to the pipeline by a job worker}
 \usage{
-put_job_failure_result(jobId, failureDetails)
+put_job_failure_result(
+  jobId = "string",
+  failureDetails = list(
+    type = "JobFailed"|"ConfigurationError"|"PermissionError"|"RevisionOutOfSync"|"RevisionUnavailable"|"SystemUnavailable",
+    message = "string",
+    externalExecutionId = "string"
+  )
+)
 }
 \arguments{
-\item{jobId}{The unique system-generated ID of the job that failed. This is the same ID returned from PollForJobs.}
+\item{jobId}{[required] The unique system-generated ID of the job that failed. This is the same ID returned from PollForJobs.}
 
-\item{failureDetails}{The details about the failure of a job.}
+\item{failureDetails}{[required] The details about the failure of a job.}
 }
 \description{
 Represents the failure of a job as returned to the pipeline by a job worker. Only used for custom actions.

@@ -4,11 +4,15 @@
 \alias{put_key_policy}
 \title{Attaches a key policy to the specified customer master key (CMK)}
 \usage{
-put_key_policy(KeyId, PolicyName, Policy,
-  BypassPolicyLockoutSafetyCheck = NULL)
+put_key_policy(
+  KeyId = "string",
+  PolicyName = "string",
+  Policy = "string",
+  BypassPolicyLockoutSafetyCheck = TRUE|FALSE
+)
 }
 \arguments{
-\item{KeyId}{A unique identifier for the customer master key (CMK).
+\item{KeyId}{[required] A unique identifier for the customer master key (CMK).
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 
@@ -20,14 +24,14 @@ For example:
 
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 
-\item{PolicyName}{The name of the key policy. The only valid value is \code{default}.}
+\item{PolicyName}{[required] The name of the key policy. The only valid value is \code{default}.}
 
-\item{Policy}{The key policy to attach to the CMK.
+\item{Policy}{[required] The key policy to attach to the CMK.
 
 The key policy must meet the following criteria:
 \itemize{
 \item If you don't set \code{BypassPolicyLockoutSafetyCheck} to true, the key policy must allow the principal that is making the \code{PutKeyPolicy} request to make a subsequent \code{PutKeyPolicy} request on the CMK. This reduces the risk that the CMK becomes unmanageable. For more information, refer to the scenario in the \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam}{Default Key Policy} section of the \emph{AWS Key Management Service Developer Guide}.
-\item Each statement in the key policy must contain one or more principals. The principals in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before including the new principal in a key policy. The reason for this is that the new principal might not be immediately visible to AWS KMS. For more information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible} in the \emph{AWS Identity and Access Management User Guide}.
+\item Each statement in the key policy must contain one or more principals. The principals in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before including the new principal in a key policy because the new principal might not be immediately visible to AWS KMS. For more information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible} in the \emph{AWS Identity and Access Management User Guide}.
 }
 
 The key policy size limit is 32 kilobytes (32768 bytes).}

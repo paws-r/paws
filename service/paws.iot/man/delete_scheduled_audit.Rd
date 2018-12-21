@@ -4,10 +4,12 @@
 \alias{delete_scheduled_audit}
 \title{Deletes a scheduled audit}
 \usage{
-delete_scheduled_audit(scheduledAuditName)
+delete_scheduled_audit(
+  scheduledAuditName = "string"
+)
 }
 \arguments{
-\item{scheduledAuditName}{The name of the scheduled audit you want to delete.}
+\item{scheduledAuditName}{[required] The name of the scheduled audit you want to delete.}
 }
 \description{
 Deletes a scheduled audit.

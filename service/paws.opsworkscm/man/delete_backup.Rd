@@ -4,10 +4,12 @@
 \alias{delete_backup}
 \title{Deletes a backup}
 \usage{
-delete_backup(BackupId)
+delete_backup(
+  BackupId = "string"
+)
 }
 \arguments{
-\item{BackupId}{The ID of the backup to delete. Run the DescribeBackups command to get a list of backup IDs. Backup IDs are in the format \code{ServerName-yyyyMMddHHmmssSSS}.}
+\item{BackupId}{[required] The ID of the backup to delete. Run the DescribeBackups command to get a list of backup IDs. Backup IDs are in the format \code{ServerName-yyyyMMddHHmmssSSS}.}
 }
 \description{
 Deletes a backup. You can delete both manual and automated backups. This operation is asynchronous.

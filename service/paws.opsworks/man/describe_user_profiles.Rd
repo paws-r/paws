@@ -4,7 +4,11 @@
 \alias{describe_user_profiles}
 \title{Describe specified users}
 \usage{
-describe_user_profiles(IamUserArns = NULL)
+describe_user_profiles(
+  IamUserArns = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{IamUserArns}{An array of IAM or federated user ARNs that identify the users to be described.}

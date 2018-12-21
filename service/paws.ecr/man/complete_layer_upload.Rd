@@ -4,17 +4,23 @@
 \alias{complete_layer_upload}
 \title{Informs Amazon ECR that the image layer upload has completed for a specified registry, repository name, and upload ID}
 \usage{
-complete_layer_upload(repositoryName, uploadId, layerDigests,
-  registryId = NULL)
+complete_layer_upload(
+  registryId = "string",
+  repositoryName = "string",
+  uploadId = "string",
+  layerDigests = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{repositoryName}{The name of the repository to associate with the image layer.}
-
-\item{uploadId}{The upload ID from a previous InitiateLayerUpload operation to associate with the image layer.}
-
-\item{layerDigests}{The \code{sha256} digest of the image layer.}
-
 \item{registryId}{The AWS account ID associated with the registry to which to upload layers. If you do not specify a registry, the default registry is assumed.}
+
+\item{repositoryName}{[required] The name of the repository to associate with the image layer.}
+
+\item{uploadId}{[required] The upload ID from a previous InitiateLayerUpload operation to associate with the image layer.}
+
+\item{layerDigests}{[required] The \code{sha256} digest of the image layer.}
 }
 \description{
 Informs Amazon ECR that the image layer upload has completed for a specified registry, repository name, and upload ID. You can optionally provide a \code{sha256} digest of the image layer for data validation purposes.

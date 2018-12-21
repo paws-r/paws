@@ -4,11 +4,21 @@
 \alias{create_option_group}
 \title{Creates a new option group}
 \usage{
-create_option_group(OptionGroupName, EngineName, MajorEngineVersion,
-  OptionGroupDescription, Tags = NULL)
+create_option_group(
+  OptionGroupName = "string",
+  EngineName = "string",
+  MajorEngineVersion = "string",
+  OptionGroupDescription = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{OptionGroupName}{Specifies the name of the option group to be created.
+\item{OptionGroupName}{[required] Specifies the name of the option group to be created.
 
 Constraints:
 \itemize{
@@ -19,11 +29,11 @@ Constraints:
 
 Example: \code{myoptiongroup}}
 
-\item{EngineName}{Specifies the name of the engine that this option group should be associated with.}
+\item{EngineName}{[required] Specifies the name of the engine that this option group should be associated with.}
 
-\item{MajorEngineVersion}{Specifies the major version of the engine that this option group should be associated with.}
+\item{MajorEngineVersion}{[required] Specifies the major version of the engine that this option group should be associated with.}
 
-\item{OptionGroupDescription}{The description of the option group.}
+\item{OptionGroupDescription}{[required] The description of the option group.}
 
 \item{Tags}{}
 }

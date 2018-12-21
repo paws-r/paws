@@ -4,12 +4,15 @@
 \alias{delete_model}
 \title{Deletes a model}
 \usage{
-delete_model(restApiId, modelName)
+delete_model(
+  restApiId = "string",
+  modelName = "string"
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{modelName}{[Required] The name of the model to delete.}
+\item{modelName}{[required] [Required] The name of the model to delete.}
 }
 \description{
 Deletes a model.

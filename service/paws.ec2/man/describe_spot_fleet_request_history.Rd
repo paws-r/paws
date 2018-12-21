@@ -4,14 +4,16 @@
 \alias{describe_spot_fleet_request_history}
 \title{Describes the events for the specified Spot Fleet request during the specified time}
 \usage{
-describe_spot_fleet_request_history(SpotFleetRequestId, StartTime,
-  DryRun = NULL, EventType = NULL, MaxResults = NULL, NextToken = NULL)
+describe_spot_fleet_request_history(
+  DryRun = TRUE|FALSE,
+  EventType = "instanceChange"|"fleetRequestChange"|"error",
+  MaxResults = 123,
+  NextToken = "string",
+  SpotFleetRequestId = "string",
+  StartTime = as.POSIXct("2015-01-01")
+)
 }
 \arguments{
-\item{SpotFleetRequestId}{The ID of the Spot Fleet request.}
-
-\item{StartTime}{The starting date and time for the events, in UTC format (for example, \emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{EventType}{The type of events to describe. By default, all events are described.}
@@ -19,12 +21,16 @@ describe_spot_fleet_request_history(SpotFleetRequestId, StartTime,
 \item{MaxResults}{The maximum number of results to return in a single call. Specify a value between 1 and 1000. The default value is 1000. To retrieve the remaining results, make another call with the returned \code{NextToken} value.}
 
 \item{NextToken}{The token for the next set of results.}
+
+\item{SpotFleetRequestId}{[required] The ID of the Spot Fleet request.}
+
+\item{StartTime}{[required] The starting date and time for the events, in UTC format (for example, \emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
 }
 \description{
 Describes the events for the specified Spot Fleet request during the specified time.
 }
 \details{
-Spot Fleet events are delayed by up to 30 seconds before they can be described. This ensures that you can query by the last evaluated time and not miss a recorded event.
+Spot Fleet events are delayed by up to 30 seconds before they can be described. This ensures that you can query by the last evaluated time and not miss a recorded event. Spot Fleet events are available for 48 hours.
 }
 \examples{
 # This example returns the history for the specified Spot fleet starting

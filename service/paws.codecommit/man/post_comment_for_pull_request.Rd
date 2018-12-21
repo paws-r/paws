@@ -4,21 +4,32 @@
 \alias{post_comment_for_pull_request}
 \title{Posts a comment on a pull request}
 \usage{
-post_comment_for_pull_request(pullRequestId, repositoryName, beforeCommitId,
-  afterCommitId, content, location = NULL, clientRequestToken = NULL)
+post_comment_for_pull_request(
+  pullRequestId = "string",
+  repositoryName = "string",
+  beforeCommitId = "string",
+  afterCommitId = "string",
+  location = list(
+    filePath = "string",
+    filePosition = 123,
+    relativeFileVersion = "BEFORE"|"AFTER"
+  ),
+  content = "string",
+  clientRequestToken = "string"
+)
 }
 \arguments{
-\item{pullRequestId}{The system-generated ID of the pull request. To get this ID, use ListPullRequests.}
+\item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use ListPullRequests.}
 
-\item{repositoryName}{The name of the repository where you want to post a comment on a pull request.}
+\item{repositoryName}{[required] The name of the repository where you want to post a comment on a pull request.}
 
-\item{beforeCommitId}{The full commit ID of the commit in the destination branch that was the tip of the branch at the time the pull request was created.}
+\item{beforeCommitId}{[required] The full commit ID of the commit in the destination branch that was the tip of the branch at the time the pull request was created.}
 
-\item{afterCommitId}{The full commit ID of the commit in the source branch that is the current tip of the branch for the pull request when you post the comment.}
-
-\item{content}{The content of your comment on the change.}
+\item{afterCommitId}{[required] The full commit ID of the commit in the source branch that is the current tip of the branch for the pull request when you post the comment.}
 
 \item{location}{The location of the change where you want to post your comment. If no location is provided, the comment will be posted as a general comment on the pull request difference between the before commit ID and the after commit ID.}
+
+\item{content}{[required] The content of your comment on the change.}
 
 \item{clientRequestToken}{A unique, client-generated idempotency token that when provided in a request, ensures the request cannot be repeated with a changed parameter. If a request is received with the same parameters and a token is included, the request will return information about the initial request that used that token.}
 }

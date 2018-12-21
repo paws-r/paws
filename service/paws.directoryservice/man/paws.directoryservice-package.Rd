@@ -6,12 +6,12 @@
 \alias{paws.directoryservice-package}
 \title{paws.directoryservice: AWS Directory Service}
 \description{
-AWS Directory Service is a web service that makes
-it easy for you to setup and run directories in the AWS cloud, or
-connect your AWS resources with an existing on-premises Microsoft
-Active Directory. This guide provides detailed information about AWS
-Directory Service operations, data types, parameters, and errors. For
-information about AWS Directory Services features, see [AWS Directory
+AWS Directory Service is a web service that makes it easy for
+you to setup and run directories in the AWS cloud, or connect your AWS
+resources with an existing on-premises Microsoft Active Directory.
+This guide provides detailed information about AWS Directory Service
+operations, data types, parameters, and errors. For information about
+AWS Directory Services features, see [AWS Directory
 Service](https://aws.amazon.com/directoryservice/) and the [AWS
 Directory Service Administration
 Guide](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html).
@@ -21,7 +21,12 @@ Guide](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.ht
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

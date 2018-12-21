@@ -4,10 +4,13 @@
 \alias{get_stages}
 \title{Gets information about one or more Stage resources}
 \usage{
-get_stages(restApiId, deploymentId = NULL)
+get_stages(
+  restApiId = "string",
+  deploymentId = "string"
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
 \item{deploymentId}{The stages' deployment identifiers.}
 }

@@ -4,12 +4,15 @@
 \alias{modify_luna_client}
 \title{This is documentation for \strong{AWS CloudHSM Classic}}
 \usage{
-modify_luna_client(ClientArn, Certificate)
+modify_luna_client(
+  ClientArn = "string",
+  Certificate = "string"
+)
 }
 \arguments{
-\item{ClientArn}{The ARN of the client.}
+\item{ClientArn}{[required] The ARN of the client.}
 
-\item{Certificate}{The new certificate for the client.}
+\item{Certificate}{[required] The new certificate for the client.}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHSM Classic FAQs}, the \href{http://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide}, and the \href{http://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.

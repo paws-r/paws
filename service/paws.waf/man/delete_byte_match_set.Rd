@@ -4,12 +4,15 @@
 \alias{delete_byte_match_set}
 \title{Permanently deletes a ByteMatchSet}
 \usage{
-delete_byte_match_set(ByteMatchSetId, ChangeToken)
+delete_byte_match_set(
+  ByteMatchSetId = "string",
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{ByteMatchSetId}{The \code{ByteMatchSetId} of the ByteMatchSet that you want to delete. \code{ByteMatchSetId} is returned by CreateByteMatchSet and by ListByteMatchSets.}
+\item{ByteMatchSetId}{[required] The \code{ByteMatchSetId} of the ByteMatchSet that you want to delete. \code{ByteMatchSetId} is returned by CreateByteMatchSet and by ListByteMatchSets.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Permanently deletes a ByteMatchSet. You can't delete a \code{ByteMatchSet} if it's still used in any \code{Rules} or if it still includes any ByteMatchTuple objects (any filters).

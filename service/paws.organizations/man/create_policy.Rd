@@ -4,18 +4,23 @@
 \alias{create_policy}
 \title{Creates a policy of a specified type that you can attach to a root, an organizational unit (OU), or an individual AWS account}
 \usage{
-create_policy(Content, Description, Name, Type)
+create_policy(
+  Content = "string",
+  Description = "string",
+  Name = "string",
+  Type = "SERVICE_CONTROL_POLICY"
+)
 }
 \arguments{
-\item{Content}{The policy content to add to the new policy. For example, if you create a \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html}{service control policy} (SCP), this string must be JSON text that specifies the permissions that admins in attached accounts can delegate to their users, groups, and roles. For more information about the SCP syntax, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html}{Service Control Policy Syntax} in the \emph{AWS Organizations User Guide}.}
+\item{Content}{[required] The policy content to add to the new policy. For example, if you create a \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html}{service control policy} (SCP), this string must be JSON text that specifies the permissions that admins in attached accounts can delegate to their users, groups, and roles. For more information about the SCP syntax, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html}{Service Control Policy Syntax} in the \emph{AWS Organizations User Guide}.}
 
-\item{Description}{An optional description to assign to the policy.}
+\item{Description}{[required] An optional description to assign to the policy.}
 
-\item{Name}{The friendly name to assign to the policy.
+\item{Name}{[required] The friendly name to assign to the policy.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} that is used to validate this parameter is a string of any of the characters in the ASCII character range.}
 
-\item{Type}{The type of policy to create.
+\item{Type}{[required] The type of policy to create.
 
 In the current release, the only type of policy that you can create is a service control policy (SCP).}
 }

@@ -4,14 +4,24 @@
 \alias{add_tags_to_on_premises_instances}
 \title{Adds tags to on-premises instances}
 \usage{
-add_tags_to_on_premises_instances(tags, instanceNames)
+add_tags_to_on_premises_instances(
+  tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  instanceNames = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{tags}{The tag key-value pairs to add to the on-premises instances.
+\item{tags}{[required] The tag key-value pairs to add to the on-premises instances.
 
 Keys and values are both required. Keys cannot be null or empty strings. Value-only tags are not allowed.}
 
-\item{instanceNames}{The names of the on-premises instances to which to add tags.}
+\item{instanceNames}{[required] The names of the on-premises instances to which to add tags.}
 }
 \description{
 Adds tags to on-premises instances.

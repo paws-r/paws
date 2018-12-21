@@ -4,15 +4,21 @@
 \alias{list_activity_types}
 \title{Returns information about all activities registered in the specified domain that match the specified name and registration status}
 \usage{
-list_activity_types(domain, registrationStatus, name = NULL,
-  nextPageToken = NULL, maximumPageSize = NULL, reverseOrder = NULL)
+list_activity_types(
+  domain = "string",
+  name = "string",
+  registrationStatus = "REGISTERED"|"DEPRECATED",
+  nextPageToken = "string",
+  maximumPageSize = 123,
+  reverseOrder = TRUE|FALSE
+)
 }
 \arguments{
-\item{domain}{The name of the domain in which the activity types have been registered.}
-
-\item{registrationStatus}{Specifies the registration status of the activity types to list.}
+\item{domain}{[required] The name of the domain in which the activity types have been registered.}
 
 \item{name}{If specified, only lists the activity types that have this name.}
+
+\item{registrationStatus}{[required] Specifies the registration status of the activity types to list.}
 
 \item{nextPageToken}{If a \code{NextPageToken} was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in \code{nextPageToken}. Keep all other arguments unchanged.
 

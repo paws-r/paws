@@ -4,10 +4,30 @@
 \alias{validate_security_profile_behaviors}
 \title{Validates a Device Defender security profile behaviors specification}
 \usage{
-validate_security_profile_behaviors(behaviors)
+validate_security_profile_behaviors(
+  behaviors = list(
+    list(
+      name = "string",
+      metric = "string",
+      criteria = list(
+        comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set",
+        value = list(
+          count = 123,
+          cidrs = list(
+            "string"
+          ),
+          ports = list(
+            123
+          )
+        ),
+        durationSeconds = 123
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{behaviors}{Specifies the behaviors that, when violated by a device (thing), cause an alert.}
+\item{behaviors}{[required] Specifies the behaviors that, when violated by a device (thing), cause an alert.}
 }
 \description{
 Validates a Device Defender security profile behaviors specification.

@@ -4,10 +4,12 @@
 \alias{get_dashboard}
 \title{Displays the details of the dashboard that you specify}
 \usage{
-get_dashboard(DashboardName)
+get_dashboard(
+  DashboardName = "string"
+)
 }
 \arguments{
-\item{DashboardName}{The name of the dashboard to be described.}
+\item{DashboardName}{[required] The name of the dashboard to be described.}
 }
 \description{
 Displays the details of the dashboard that you specify.

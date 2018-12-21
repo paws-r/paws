@@ -4,10 +4,12 @@
 \alias{get_comment}
 \title{Returns the content of a comment made on a change, file, or commit in a repository}
 \usage{
-get_comment(commentId)
+get_comment(
+  commentId = "string"
+)
 }
 \arguments{
-\item{commentId}{The unique, system-generated ID of the comment. To get this ID, use GetCommentsForComparedCommit or GetCommentsForPullRequest.}
+\item{commentId}{[required] The unique, system-generated ID of the comment. To get this ID, use GetCommentsForComparedCommit or GetCommentsForPullRequest.}
 }
 \description{
 Returns the content of a comment made on a change, file, or commit in a repository.

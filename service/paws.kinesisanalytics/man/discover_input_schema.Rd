@@ -4,9 +4,24 @@
 \alias{discover_input_schema}
 \title{Infers a schema by evaluating sample records on the specified streaming source (Amazon Kinesis stream or Amazon Kinesis Firehose delivery stream) or S3 object}
 \usage{
-discover_input_schema(ResourceARN = NULL, RoleARN = NULL,
-  InputStartingPositionConfiguration = NULL, S3Configuration = NULL,
-  InputProcessingConfiguration = NULL)
+discover_input_schema(
+  ResourceARN = "string",
+  RoleARN = "string",
+  InputStartingPositionConfiguration = list(
+    InputStartingPosition = "NOW"|"TRIM_HORIZON"|"LAST_STOPPED_POINT"
+  ),
+  S3Configuration = list(
+    RoleARN = "string",
+    BucketARN = "string",
+    FileKey = "string"
+  ),
+  InputProcessingConfiguration = list(
+    InputLambdaProcessor = list(
+      ResourceARN = "string",
+      RoleARN = "string"
+    )
+  )
+)
 }
 \arguments{
 \item{ResourceARN}{Amazon Resource Name (ARN) of the streaming source.}
@@ -15,7 +30,7 @@ discover_input_schema(ResourceARN = NULL, RoleARN = NULL,
 
 \item{InputStartingPositionConfiguration}{Point at which you want Amazon Kinesis Analytics to start reading records from the specified streaming source discovery purposes.}
 
-\item{S3Configuration}{Specify this parameter to discover a schema from data in an S3 object.}
+\item{S3Configuration}{Specify this parameter to discover a schema from data in an Amazon S3 object.}
 
 \item{InputProcessingConfiguration}{The InputProcessingConfiguration to use to preprocess the records before discovering the schema of the records.}
 }

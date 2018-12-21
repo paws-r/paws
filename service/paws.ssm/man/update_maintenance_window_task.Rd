@@ -4,16 +4,83 @@
 \alias{update_maintenance_window_task}
 \title{Modifies a task assigned to a Maintenance Window}
 \usage{
-update_maintenance_window_task(WindowId, WindowTaskId, Targets = NULL,
-  TaskArn = NULL, ServiceRoleArn = NULL, TaskParameters = NULL,
-  TaskInvocationParameters = NULL, Priority = NULL, MaxConcurrency = NULL,
-  MaxErrors = NULL, LoggingInfo = NULL, Name = NULL, Description = NULL,
-  Replace = NULL)
+update_maintenance_window_task(
+  WindowId = "string",
+  WindowTaskId = "string",
+  Targets = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  TaskArn = "string",
+  ServiceRoleArn = "string",
+  TaskParameters = list(
+    list(
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  TaskInvocationParameters = list(
+    RunCommand = list(
+      Comment = "string",
+      DocumentHash = "string",
+      DocumentHashType = "Sha256"|"Sha1",
+      NotificationConfig = list(
+        NotificationArn = "string",
+        NotificationEvents = list(
+          "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
+        ),
+        NotificationType = "Command"|"Invocation"
+      ),
+      OutputS3BucketName = "string",
+      OutputS3KeyPrefix = "string",
+      Parameters = list(
+        list(
+          "string"
+        )
+      ),
+      ServiceRoleArn = "string",
+      TimeoutSeconds = 123
+    ),
+    Automation = list(
+      DocumentVersion = "string",
+      Parameters = list(
+        list(
+          "string"
+        )
+      )
+    ),
+    StepFunctions = list(
+      Input = "string",
+      Name = "string"
+    ),
+    Lambda = list(
+      ClientContext = "string",
+      Qualifier = "string",
+      Payload = raw
+    )
+  ),
+  Priority = 123,
+  MaxConcurrency = "string",
+  MaxErrors = "string",
+  LoggingInfo = list(
+    S3BucketName = "string",
+    S3KeyPrefix = "string",
+    S3Region = "string"
+  ),
+  Name = "string",
+  Description = "string",
+  Replace = TRUE|FALSE
+)
 }
 \arguments{
-\item{WindowId}{The Maintenance Window ID that contains the task to modify.}
+\item{WindowId}{[required] The Maintenance Window ID that contains the task to modify.}
 
-\item{WindowTaskId}{The task ID to modify.}
+\item{WindowTaskId}{[required] The task ID to modify.}
 
 \item{Targets}{The targets (either instances or tags) to modify. Instances are specified using Key=instanceids,Values=instanceID\_1,instanceID\_2. Tags are specified using Key=tag\_name,Values=tag\_value.}
 

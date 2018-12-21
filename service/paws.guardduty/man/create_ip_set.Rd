@@ -4,21 +4,27 @@
 \alias{create_ip_set}
 \title{Creates a new IPSet - a list of trusted IP addresses that have been whitelisted for secure communication with AWS infrastructure and applications}
 \usage{
-create_ip_set(DetectorId, Format, Activate, Location, Name,
-  ClientToken = NULL)
+create_ip_set(
+  Activate = TRUE|FALSE,
+  ClientToken = "string",
+  DetectorId = "string",
+  Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
+  Location = "string",
+  Name = "string"
+)
 }
 \arguments{
-\item{DetectorId}{The unique ID of the detector that you want to update.}
-
-\item{Format}{The format of the file that contains the IPSet.}
-
-\item{Activate}{A boolean value that indicates whether GuardDuty is to start using the uploaded IPSet.}
-
-\item{Location}{The URI of the file that contains the IPSet. For example (https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key)}
-
-\item{Name}{The user friendly name to identify the IPSet. This name is displayed in all findings that are triggered by activity that involves IP addresses included in this IPSet.}
+\item{Activate}{[required] A boolean value that indicates whether GuardDuty is to start using the uploaded IPSet.}
 
 \item{ClientToken}{The idempotency token for the create request.}
+
+\item{DetectorId}{[required] The unique ID of the detector that you want to update.}
+
+\item{Format}{[required] The format of the file that contains the IPSet.}
+
+\item{Location}{[required] The URI of the file that contains the IPSet. For example (https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key)}
+
+\item{Name}{[required] The user friendly name to identify the IPSet. This name is displayed in all findings that are triggered by activity that involves IP addresses included in this IPSet.}
 }
 \description{
 Creates a new IPSet - a list of trusted IP addresses that have been whitelisted for secure communication with AWS infrastructure and applications.

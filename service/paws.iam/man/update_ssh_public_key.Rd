@@ -4,18 +4,22 @@
 \alias{update_ssh_public_key}
 \title{Sets the status of an IAM user's SSH public key to active or inactive}
 \usage{
-update_ssh_public_key(UserName, SSHPublicKeyId, Status)
+update_ssh_public_key(
+  UserName = "string",
+  SSHPublicKeyId = "string",
+  Status = "Active"|"Inactive"
+)
 }
 \arguments{
-\item{UserName}{The name of the IAM user associated with the SSH public key.
+\item{UserName}{[required] The name of the IAM user associated with the SSH public key.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
-\item{SSHPublicKeyId}{The unique identifier for the SSH public key.
+\item{SSHPublicKeyId}{[required] The unique identifier for the SSH public key.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
 
-\item{Status}{The status to assign to the SSH public key. \code{Active} means that the key can be used for authentication with an AWS CodeCommit repository. \code{Inactive} means that the key cannot be used.}
+\item{Status}{[required] The status to assign to the SSH public key. \code{Active} means that the key can be used for authentication with an AWS CodeCommit repository. \code{Inactive} means that the key cannot be used.}
 }
 \description{
 Sets the status of an IAM user's SSH public key to active or inactive. SSH public keys that are inactive cannot be used for authentication. This operation can be used to disable a user's SSH public key as part of a key rotation work flow.

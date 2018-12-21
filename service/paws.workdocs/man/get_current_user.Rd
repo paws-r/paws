@@ -4,10 +4,12 @@
 \alias{get_current_user}
 \title{Retrieves details of the current user for whom the authentication token was generated}
 \usage{
-get_current_user(AuthenticationToken)
+get_current_user(
+  AuthenticationToken = "string"
+)
 }
 \arguments{
-\item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
+\item{AuthenticationToken}{[required] Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
 }
 \description{
 Retrieves details of the current user for whom the authentication token was generated. This is not a valid action for SigV4 (administrative API) clients.

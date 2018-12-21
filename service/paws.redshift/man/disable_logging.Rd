@@ -4,10 +4,12 @@
 \alias{disable_logging}
 \title{Stops logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster}
 \usage{
-disable_logging(ClusterIdentifier)
+disable_logging(
+  ClusterIdentifier = "string"
+)
 }
 \arguments{
-\item{ClusterIdentifier}{The identifier of the cluster on which logging is to be stopped.
+\item{ClusterIdentifier}{[required] The identifier of the cluster on which logging is to be stopped.
 
 Example: \code{examplecluster}}
 }

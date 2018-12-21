@@ -4,12 +4,15 @@
 \alias{describe_user}
 \title{Provides information regarding the user}
 \usage{
-describe_user(OrganizationId, UserId)
+describe_user(
+  OrganizationId = "string",
+  UserId = "string"
+)
 }
 \arguments{
-\item{OrganizationId}{The identifier for the organization under which the user exists.}
+\item{OrganizationId}{[required] The identifier for the organization under which the user exists.}
 
-\item{UserId}{The identifier for the user to be described.}
+\item{UserId}{[required] The identifier for the user to be described.}
 }
 \description{
 Provides information regarding the user.

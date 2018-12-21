@@ -4,12 +4,49 @@
 \alias{update_app}
 \title{Updates a specified app}
 \usage{
-update_app(AppId, Name = NULL, Description = NULL, DataSources = NULL,
-  Type = NULL, AppSource = NULL, Domains = NULL, EnableSsl = NULL,
-  SslConfiguration = NULL, Attributes = NULL, Environment = NULL)
+update_app(
+  AppId = "string",
+  Name = "string",
+  Description = "string",
+  DataSources = list(
+    list(
+      Type = "string",
+      Arn = "string",
+      DatabaseName = "string"
+    )
+  ),
+  Type = "aws-flow-ruby"|"java"|"rails"|"php"|"nodejs"|"static"|"other",
+  AppSource = list(
+    Type = "git"|"svn"|"archive"|"s3",
+    Url = "string",
+    Username = "string",
+    Password = "string",
+    SshKey = "string",
+    Revision = "string"
+  ),
+  Domains = list(
+    "string"
+  ),
+  EnableSsl = TRUE|FALSE,
+  SslConfiguration = list(
+    Certificate = "string",
+    PrivateKey = "string",
+    Chain = "string"
+  ),
+  Attributes = list(
+    "string"
+  ),
+  Environment = list(
+    list(
+      Key = "string",
+      Value = "string",
+      Secure = TRUE|FALSE
+    )
+  )
+)
 }
 \arguments{
-\item{AppId}{The app ID.}
+\item{AppId}{[required] The app ID.}
 
 \item{Name}{The app name.}
 

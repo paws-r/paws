@@ -4,12 +4,18 @@
 \alias{update_gcm_channel}
 \title{Use to update the GCM channel for an app}
 \usage{
-update_gcm_channel(ApplicationId, GCMChannelRequest)
+update_gcm_channel(
+  ApplicationId = "string",
+  GCMChannelRequest = list(
+    ApiKey = "string",
+    Enabled = TRUE|FALSE
+  )
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 
-\item{GCMChannelRequest}{}
+\item{GCMChannelRequest}{[required]}
 }
 \description{
 Use to update the GCM channel for an app.

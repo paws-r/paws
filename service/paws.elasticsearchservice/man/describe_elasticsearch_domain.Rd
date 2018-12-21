@@ -4,10 +4,12 @@
 \alias{describe_elasticsearch_domain}
 \title{Returns domain configuration information about the specified Elasticsearch domain, including the domain ID, domain endpoint, and domain ARN}
 \usage{
-describe_elasticsearch_domain(DomainName)
+describe_elasticsearch_domain(
+  DomainName = "string"
+)
 }
 \arguments{
-\item{DomainName}{The name of the Elasticsearch domain for which you want information.}
+\item{DomainName}{[required] The name of the Elasticsearch domain for which you want information.}
 }
 \description{
 Returns domain configuration information about the specified Elasticsearch domain, including the domain ID, domain endpoint, and domain ARN.

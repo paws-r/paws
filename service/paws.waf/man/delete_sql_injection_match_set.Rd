@@ -4,12 +4,15 @@
 \alias{delete_sql_injection_match_set}
 \title{Permanently deletes a SqlInjectionMatchSet}
 \usage{
-delete_sql_injection_match_set(SqlInjectionMatchSetId, ChangeToken)
+delete_sql_injection_match_set(
+  SqlInjectionMatchSetId = "string",
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{SqlInjectionMatchSetId}{The \code{SqlInjectionMatchSetId} of the SqlInjectionMatchSet that you want to delete. \code{SqlInjectionMatchSetId} is returned by CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets.}
+\item{SqlInjectionMatchSetId}{[required] The \code{SqlInjectionMatchSetId} of the SqlInjectionMatchSet that you want to delete. \code{SqlInjectionMatchSetId} is returned by CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Permanently deletes a SqlInjectionMatchSet. You can't delete a \code{SqlInjectionMatchSet} if it's still used in any \code{Rules} or if it still contains any SqlInjectionMatchTuple objects.

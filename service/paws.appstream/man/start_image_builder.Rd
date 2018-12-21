@@ -4,10 +4,13 @@
 \alias{start_image_builder}
 \title{Starts the specified image builder}
 \usage{
-start_image_builder(Name, AppstreamAgentVersion = NULL)
+start_image_builder(
+  Name = "string",
+  AppstreamAgentVersion = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the image builder.}
+\item{Name}{[required] The name of the image builder.}
 
 \item{AppstreamAgentVersion}{The version of the AppStream 2.0 agent to use for this image builder. To use the latest version of the AppStream 2.0 agent, specify [LATEST].}
 }

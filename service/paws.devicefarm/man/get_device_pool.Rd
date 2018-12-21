@@ -4,10 +4,12 @@
 \alias{get_device_pool}
 \title{Gets information about a device pool}
 \usage{
-get_device_pool(arn)
+get_device_pool(
+  arn = "string"
+)
 }
 \arguments{
-\item{arn}{The device pool's ARN.}
+\item{arn}{[required] The device pool's ARN.}
 }
 \description{
 Gets information about a device pool.

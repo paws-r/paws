@@ -4,10 +4,12 @@
 \alias{delete_repository}
 \title{Deletes a repository}
 \usage{
-delete_repository(repositoryName)
+delete_repository(
+  repositoryName = "string"
+)
 }
 \arguments{
-\item{repositoryName}{The name of the repository to delete.}
+\item{repositoryName}{[required] The name of the repository to delete.}
 }
 \description{
 Deletes a repository. If a specified repository was already deleted, a null repository ID will be returned.

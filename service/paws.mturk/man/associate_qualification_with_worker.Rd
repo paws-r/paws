@@ -4,13 +4,17 @@
 \alias{associate_qualification_with_worker}
 \title{The \code{AssociateQualificationWithWorker} operation gives a Worker a Qualification}
 \usage{
-associate_qualification_with_worker(QualificationTypeId, WorkerId,
-  IntegerValue = NULL, SendNotification = NULL)
+associate_qualification_with_worker(
+  QualificationTypeId = "string",
+  WorkerId = "string",
+  IntegerValue = 123,
+  SendNotification = TRUE|FALSE
+)
 }
 \arguments{
-\item{QualificationTypeId}{The ID of the Qualification type to use for the assigned Qualification.}
+\item{QualificationTypeId}{[required] The ID of the Qualification type to use for the assigned Qualification.}
 
-\item{WorkerId}{The ID of the Worker to whom the Qualification is being assigned. Worker IDs are included with submitted HIT assignments and Qualification requests.}
+\item{WorkerId}{[required] The ID of the Worker to whom the Qualification is being assigned. Worker IDs are included with submitted HIT assignments and Qualification requests.}
 
 \item{IntegerValue}{The value of the Qualification to assign.}
 

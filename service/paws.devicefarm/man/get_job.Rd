@@ -4,10 +4,12 @@
 \alias{get_job}
 \title{Gets information about a job}
 \usage{
-get_job(arn)
+get_job(
+  arn = "string"
+)
 }
 \arguments{
-\item{arn}{The job's ARN.}
+\item{arn}{[required] The job's ARN.}
 }
 \description{
 Gets information about a job.

@@ -4,12 +4,19 @@
 \alias{list_review_policy_results_for_hit}
 \title{The \code{ListReviewPolicyResultsForHIT} operation retrieves the computed results and the actions taken in the course of executing your Review Policies for a given HIT}
 \usage{
-list_review_policy_results_for_hit(HITId, PolicyLevels = NULL,
-  RetrieveActions = NULL, RetrieveResults = NULL, NextToken = NULL,
-  MaxResults = NULL)
+list_review_policy_results_for_hit(
+  HITId = "string",
+  PolicyLevels = list(
+    "Assignment"|"HIT"
+  ),
+  RetrieveActions = TRUE|FALSE,
+  RetrieveResults = TRUE|FALSE,
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{HITId}{The unique identifier of the HIT to retrieve review results for.}
+\item{HITId}{[required] The unique identifier of the HIT to retrieve review results for.}
 
 \item{PolicyLevels}{The Policy Level(s) to retrieve review results for - HIT or Assignment. If omitted, the default behavior is to retrieve all data for both policy levels. For a list of all the described policies, see Review Policies.}
 

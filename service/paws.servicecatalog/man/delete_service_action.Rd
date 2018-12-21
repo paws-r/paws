@@ -4,10 +4,13 @@
 \alias{delete_service_action}
 \title{Deletes a self-service action}
 \usage{
-delete_service_action(Id, AcceptLanguage = NULL)
+delete_service_action(
+  Id = "string",
+  AcceptLanguage = "string"
+)
 }
 \arguments{
-\item{Id}{The self-service action identifier. For example, \code{act-fs7abcd89wxyz}.}
+\item{Id}{[required] The self-service action identifier. For example, \code{act-fs7abcd89wxyz}.}
 
 \item{AcceptLanguage}{The language code.
 \itemize{

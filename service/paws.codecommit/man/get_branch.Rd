@@ -4,7 +4,10 @@
 \alias{get_branch}
 \title{Returns information about a repository branch, including its name and the last commit ID}
 \usage{
-get_branch(repositoryName = NULL, branchName = NULL)
+get_branch(
+  repositoryName = "string",
+  branchName = "string"
+)
 }
 \arguments{
 \item{repositoryName}{The name of the repository that contains the branch for which you want to retrieve information.}

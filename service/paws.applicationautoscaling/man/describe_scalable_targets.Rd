@@ -4,11 +4,18 @@
 \alias{describe_scalable_targets}
 \title{Gets information about the scalable targets in the specified namespace}
 \usage{
-describe_scalable_targets(ServiceNamespace, ResourceIds = NULL,
-  ScalableDimension = NULL, MaxResults = NULL, NextToken = NULL)
+describe_scalable_targets(
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
+  ResourceIds = list(
+    "string"
+  ),
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{ServiceNamespace}{The namespace of the AWS service that provides the resource or \code{custom-resource} for a resource provided by your own application or service. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces} in the \emph{Amazon Web Services General Reference}.}
+\item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource or \code{custom-resource} for a resource provided by your own application or service. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces} in the \emph{Amazon Web Services General Reference}.}
 
 \item{ResourceIds}{The identifier of the resource associated with the scalable target. This string consists of the resource type and unique identifier. If you specify a scalable dimension, you must also specify a resource ID.
 \itemize{

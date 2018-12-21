@@ -4,18 +4,49 @@
 \alias{update_user_pool_client}
 \title{Updates the specified user pool app client with the specified attributes}
 \usage{
-update_user_pool_client(UserPoolId, ClientId, ClientName = NULL,
-  RefreshTokenValidity = NULL, ReadAttributes = NULL,
-  WriteAttributes = NULL, ExplicitAuthFlows = NULL,
-  SupportedIdentityProviders = NULL, CallbackURLs = NULL,
-  LogoutURLs = NULL, DefaultRedirectURI = NULL, AllowedOAuthFlows = NULL,
-  AllowedOAuthScopes = NULL, AllowedOAuthFlowsUserPoolClient = NULL,
-  AnalyticsConfiguration = NULL)
+update_user_pool_client(
+  UserPoolId = "string",
+  ClientId = "string",
+  ClientName = "string",
+  RefreshTokenValidity = 123,
+  ReadAttributes = list(
+    "string"
+  ),
+  WriteAttributes = list(
+    "string"
+  ),
+  ExplicitAuthFlows = list(
+    "ADMIN_NO_SRP_AUTH"|"CUSTOM_AUTH_FLOW_ONLY"|"USER_PASSWORD_AUTH"
+  ),
+  SupportedIdentityProviders = list(
+    "string"
+  ),
+  CallbackURLs = list(
+    "string"
+  ),
+  LogoutURLs = list(
+    "string"
+  ),
+  DefaultRedirectURI = "string",
+  AllowedOAuthFlows = list(
+    "code"|"implicit"|"client_credentials"
+  ),
+  AllowedOAuthScopes = list(
+    "string"
+  ),
+  AllowedOAuthFlowsUserPoolClient = TRUE|FALSE,
+  AnalyticsConfiguration = list(
+    ApplicationId = "string",
+    RoleArn = "string",
+    ExternalId = "string",
+    UserDataShared = TRUE|FALSE
+  )
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool where you want to update the user pool client.}
+\item{UserPoolId}{[required] The user pool ID for the user pool where you want to update the user pool client.}
 
-\item{ClientId}{The ID of the client associated with the user pool.}
+\item{ClientId}{[required] The ID of the client associated with the user pool.}
 
 \item{ClientName}{The client name from the update user pool client request.}
 

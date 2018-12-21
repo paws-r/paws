@@ -4,18 +4,42 @@
 \alias{update_rule_group}
 \title{Inserts or deletes ActivatedRule objects in a \code{RuleGroup}}
 \usage{
-update_rule_group(RuleGroupId, Updates, ChangeToken)
+update_rule_group(
+  RuleGroupId = "string",
+  Updates = list(
+    list(
+      Action = "INSERT"|"DELETE",
+      ActivatedRule = list(
+        Priority = 123,
+        RuleId = "string",
+        Action = list(
+          Type = "BLOCK"|"ALLOW"|"COUNT"
+        ),
+        OverrideAction = list(
+          Type = "NONE"|"COUNT"
+        ),
+        Type = "REGULAR"|"RATE_BASED"|"GROUP",
+        ExcludedRules = list(
+          list(
+            RuleId = "string"
+          )
+        )
+      )
+    )
+  ),
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{RuleGroupId}{The \code{RuleGroupId} of the RuleGroup that you want to update. \code{RuleGroupId} is returned by CreateRuleGroup and by ListRuleGroups.}
+\item{RuleGroupId}{[required] The \code{RuleGroupId} of the RuleGroup that you want to update. \code{RuleGroupId} is returned by CreateRuleGroup and by ListRuleGroups.}
 
-\item{Updates}{An array of \code{RuleGroupUpdate} objects that you want to insert into or delete from a RuleGroup.
+\item{Updates}{[required] An array of \code{RuleGroupUpdate} objects that you want to insert into or delete from a RuleGroup.
 
 You can only insert \code{REGULAR} rules into a rule group.
 
 \code{ActivatedRule|OverrideAction} applies only when updating or adding a \code{RuleGroup} to a \code{WebACL}. In this case you do not use \code{ActivatedRule|Action}. For all other update requests, \code{ActivatedRule|Action} is used instead of \code{ActivatedRule|OverrideAction}.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Inserts or deletes ActivatedRule objects in a \code{RuleGroup}.

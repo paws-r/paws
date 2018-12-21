@@ -4,7 +4,11 @@
 \alias{describe_delivery_channels}
 \title{Returns details about the specified delivery channel}
 \usage{
-describe_delivery_channels(DeliveryChannelNames = NULL)
+describe_delivery_channels(
+  DeliveryChannelNames = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{DeliveryChannelNames}{A list of delivery channel names.}

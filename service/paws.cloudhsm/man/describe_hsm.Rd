@@ -4,7 +4,10 @@
 \alias{describe_hsm}
 \title{This is documentation for \strong{AWS CloudHSM Classic}}
 \usage{
-describe_hsm(HsmArn = NULL, HsmSerialNumber = NULL)
+describe_hsm(
+  HsmArn = "string",
+  HsmSerialNumber = "string"
+)
 }
 \arguments{
 \item{HsmArn}{The ARN of the HSM. Either the \code{HsmArn} or the \code{SerialNumber} parameter must be specified.}

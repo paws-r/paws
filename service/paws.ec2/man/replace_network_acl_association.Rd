@@ -4,14 +4,18 @@
 \alias{replace_network_acl_association}
 \title{Changes which network ACL a subnet is associated with}
 \usage{
-replace_network_acl_association(AssociationId, NetworkAclId, DryRun = NULL)
+replace_network_acl_association(
+  AssociationId = "string",
+  DryRun = TRUE|FALSE,
+  NetworkAclId = "string"
+)
 }
 \arguments{
-\item{AssociationId}{The ID of the current association between the original network ACL and the subnet.}
-
-\item{NetworkAclId}{The ID of the new network ACL to associate with the subnet.}
+\item{AssociationId}{[required] The ID of the current association between the original network ACL and the subnet.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{NetworkAclId}{[required] The ID of the new network ACL to associate with the subnet.}
 }
 \description{
 Changes which network ACL a subnet is associated with. By default when you create a subnet, it's automatically associated with the default network ACL. For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html}{Network ACLs} in the \emph{Amazon Virtual Private Cloud User Guide}.

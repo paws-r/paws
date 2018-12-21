@@ -4,12 +4,33 @@
 \alias{add_job_flow_steps}
 \title{AddJobFlowSteps adds new steps to a running cluster}
 \usage{
-add_job_flow_steps(JobFlowId, Steps)
+add_job_flow_steps(
+  JobFlowId = "string",
+  Steps = list(
+    list(
+      Name = "string",
+      ActionOnFailure = "TERMINATE_JOB_FLOW"|"TERMINATE_CLUSTER"|"CANCEL_AND_WAIT"|"CONTINUE",
+      HadoopJarStep = list(
+        Properties = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        ),
+        Jar = "string",
+        MainClass = "string",
+        Args = list(
+          "string"
+        )
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{JobFlowId}{A string that uniquely identifies the job flow. This identifier is returned by RunJobFlow and can also be obtained from ListClusters.}
+\item{JobFlowId}{[required] A string that uniquely identifies the job flow. This identifier is returned by RunJobFlow and can also be obtained from ListClusters.}
 
-\item{Steps}{A list of StepConfig to be executed by the job flow.}
+\item{Steps}{[required] A list of StepConfig to be executed by the job flow.}
 }
 \description{
 AddJobFlowSteps adds new steps to a running cluster. A maximum of 256 steps are allowed in each job flow.

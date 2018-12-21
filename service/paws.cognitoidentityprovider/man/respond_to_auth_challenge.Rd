@@ -4,14 +4,25 @@
 \alias{respond_to_auth_challenge}
 \title{Responds to the authentication challenge}
 \usage{
-respond_to_auth_challenge(ClientId, ChallengeName, Session = NULL,
-  ChallengeResponses = NULL, AnalyticsMetadata = NULL,
-  UserContextData = NULL)
+respond_to_auth_challenge(
+  ClientId = "string",
+  ChallengeName = "SMS_MFA"|"SOFTWARE_TOKEN_MFA"|"SELECT_MFA_TYPE"|"MFA_SETUP"|"PASSWORD_VERIFIER"|"CUSTOM_CHALLENGE"|"DEVICE_SRP_AUTH"|"DEVICE_PASSWORD_VERIFIER"|"ADMIN_NO_SRP_AUTH"|"NEW_PASSWORD_REQUIRED",
+  Session = "string",
+  ChallengeResponses = list(
+    "string"
+  ),
+  AnalyticsMetadata = list(
+    AnalyticsEndpointId = "string"
+  ),
+  UserContextData = list(
+    EncodedData = "string"
+  )
+)
 }
 \arguments{
-\item{ClientId}{The app client ID.}
+\item{ClientId}{[required] The app client ID.}
 
-\item{ChallengeName}{The challenge name. For more information, see .
+\item{ChallengeName}{[required] The challenge name. For more information, see .
 
 \code{ADMIN_NO_SRP_AUTH} is not a valid value.}
 

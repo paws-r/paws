@@ -4,14 +4,22 @@
 \alias{attach_to_index}
 \title{Attaches the specified object to the specified index}
 \usage{
-attach_to_index(DirectoryArn, IndexReference, TargetReference)
+attach_to_index(
+  DirectoryArn = "string",
+  IndexReference = list(
+    Selector = "string"
+  ),
+  TargetReference = list(
+    Selector = "string"
+  )
+)
 }
 \arguments{
-\item{DirectoryArn}{The Amazon Resource Name (ARN) of the directory where the object and index exist.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory where the object and index exist.}
 
-\item{IndexReference}{A reference to the index that you are attaching the object to.}
+\item{IndexReference}{[required] A reference to the index that you are attaching the object to.}
 
-\item{TargetReference}{A reference to the object that you are attaching to the index.}
+\item{TargetReference}{[required] A reference to the object that you are attaching to the index.}
 }
 \description{
 Attaches the specified object to the specified index.

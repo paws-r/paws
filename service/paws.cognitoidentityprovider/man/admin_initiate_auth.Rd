@@ -4,15 +4,39 @@
 \alias{admin_initiate_auth}
 \title{Initiates the authentication flow, as an administrator}
 \usage{
-admin_initiate_auth(UserPoolId, ClientId, AuthFlow, AuthParameters = NULL,
-  ClientMetadata = NULL, AnalyticsMetadata = NULL, ContextData = NULL)
+admin_initiate_auth(
+  UserPoolId = "string",
+  ClientId = "string",
+  AuthFlow = "USER_SRP_AUTH"|"REFRESH_TOKEN_AUTH"|"REFRESH_TOKEN"|"CUSTOM_AUTH"|"ADMIN_NO_SRP_AUTH"|"USER_PASSWORD_AUTH",
+  AuthParameters = list(
+    "string"
+  ),
+  ClientMetadata = list(
+    "string"
+  ),
+  AnalyticsMetadata = list(
+    AnalyticsEndpointId = "string"
+  ),
+  ContextData = list(
+    IpAddress = "string",
+    ServerName = "string",
+    ServerPath = "string",
+    HttpHeaders = list(
+      list(
+        headerName = "string",
+        headerValue = "string"
+      )
+    ),
+    EncodedData = "string"
+  )
+)
 }
 \arguments{
-\item{UserPoolId}{The ID of the Amazon Cognito user pool.}
+\item{UserPoolId}{[required] The ID of the Amazon Cognito user pool.}
 
-\item{ClientId}{The app client ID.}
+\item{ClientId}{[required] The app client ID.}
 
-\item{AuthFlow}{The authentication flow for this call to execute. The API action will depend on this value. For example:
+\item{AuthFlow}{[required] The authentication flow for this call to execute. The API action will depend on this value. For example:
 \itemize{
 \item \code{REFRESH_TOKEN_AUTH} will take in a valid refresh token and return new tokens.
 \item \code{USER_SRP_AUTH} will take in \code{USERNAME} and \code{SRP_A} and return the SRP variables to be used for next challenge execution.

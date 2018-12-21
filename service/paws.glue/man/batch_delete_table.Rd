@@ -4,14 +4,20 @@
 \alias{batch_delete_table}
 \title{Deletes multiple tables at once}
 \usage{
-batch_delete_table(DatabaseName, TablesToDelete, CatalogId = NULL)
+batch_delete_table(
+  CatalogId = "string",
+  DatabaseName = "string",
+  TablesToDelete = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{DatabaseName}{The name of the catalog database where the tables to delete reside. For Hive compatibility, this name is entirely lowercase.}
-
-\item{TablesToDelete}{A list of the table to delete.}
-
 \item{CatalogId}{The ID of the Data Catalog where the table resides. If none is supplied, the AWS account ID is used by default.}
+
+\item{DatabaseName}{[required] The name of the catalog database where the tables to delete reside. For Hive compatibility, this name is entirely lowercase.}
+
+\item{TablesToDelete}{[required] A list of the table to delete.}
 }
 \description{
 Deletes multiple tables at once.

@@ -4,15 +4,21 @@
 \alias{replace_route}
 \title{Replaces an existing route within a route table in a VPC}
 \usage{
-replace_route(RouteTableId, DestinationCidrBlock = NULL,
-  DestinationIpv6CidrBlock = NULL, DryRun = NULL,
-  EgressOnlyInternetGatewayId = NULL, GatewayId = NULL, InstanceId = NULL,
-  NatGatewayId = NULL, NetworkInterfaceId = NULL,
-  VpcPeeringConnectionId = NULL)
+replace_route(
+  DestinationCidrBlock = "string",
+  DestinationIpv6CidrBlock = "string",
+  DryRun = TRUE|FALSE,
+  EgressOnlyInternetGatewayId = "string",
+  GatewayId = "string",
+  InstanceId = "string",
+  NatGatewayId = "string",
+  TransitGatewayId = "string",
+  NetworkInterfaceId = "string",
+  RouteTableId = "string",
+  VpcPeeringConnectionId = "string"
+)
 }
 \arguments{
-\item{RouteTableId}{The ID of the route table.}
-
 \item{DestinationCidrBlock}{The IPv4 CIDR address block used for the destination match. The value that you provide must match the CIDR of an existing route in the table.}
 
 \item{DestinationIpv6CidrBlock}{The IPv6 CIDR address block used for the destination match. The value that you provide must match the CIDR of an existing route in the table.}
@@ -27,7 +33,11 @@ replace_route(RouteTableId, DestinationCidrBlock = NULL,
 
 \item{NatGatewayId}{[IPv4 traffic only] The ID of a NAT gateway.}
 
+\item{TransitGatewayId}{The ID of a transit gateway.}
+
 \item{NetworkInterfaceId}{The ID of a network interface.}
+
+\item{RouteTableId}{[required] The ID of the route table.}
 
 \item{VpcPeeringConnectionId}{The ID of a VPC peering connection.}
 }

@@ -4,17 +4,22 @@
 \alias{detach_volume}
 \title{Detaches an EBS volume from an instance}
 \usage{
-detach_volume(VolumeId, Device = NULL, Force = NULL, InstanceId = NULL,
-  DryRun = NULL)
+detach_volume(
+  Device = "string",
+  Force = TRUE|FALSE,
+  InstanceId = "string",
+  VolumeId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{VolumeId}{The ID of the volume.}
-
 \item{Device}{The device name.}
 
 \item{Force}{Forces detachment if the previous detachment attempt did not occur cleanly (for example, logging into an instance, unmounting the volume, and detaching normally). This option can lead to data loss or a corrupted file system. Use this option only as a last resort to detach a volume from a failed instance. The instance won't have an opportunity to flush file system caches or file system metadata. If you use this option, you must perform file system check and repair procedures.}
 
 \item{InstanceId}{The ID of the instance.}
+
+\item{VolumeId}{[required] The ID of the volume.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

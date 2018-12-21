@@ -4,17 +4,21 @@
 \alias{update_chap_credentials}
 \title{Updates the Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target}
 \usage{
-update_chap_credentials(TargetARN, SecretToAuthenticateInitiator, InitiatorName,
-  SecretToAuthenticateTarget = NULL)
+update_chap_credentials(
+  TargetARN = "string",
+  SecretToAuthenticateInitiator = "string",
+  InitiatorName = "string",
+  SecretToAuthenticateTarget = "string"
+)
 }
 \arguments{
-\item{TargetARN}{The Amazon Resource Name (ARN) of the iSCSI volume target. Use the DescribeStorediSCSIVolumes operation to return the TargetARN for specified VolumeARN.}
+\item{TargetARN}{[required] The Amazon Resource Name (ARN) of the iSCSI volume target. Use the DescribeStorediSCSIVolumes operation to return the TargetARN for specified VolumeARN.}
 
-\item{SecretToAuthenticateInitiator}{The secret key that the initiator (for example, the Windows client) must provide to participate in mutual CHAP with the target.
+\item{SecretToAuthenticateInitiator}{[required] The secret key that the initiator (for example, the Windows client) must provide to participate in mutual CHAP with the target.
 
 The secret key must be between 12 and 16 bytes when encoded in UTF-8.}
 
-\item{InitiatorName}{The iSCSI initiator that connects to the target.}
+\item{InitiatorName}{[required] The iSCSI initiator that connects to the target.}
 
 \item{SecretToAuthenticateTarget}{The secret key that the target must provide to participate in mutual CHAP with the initiator (e.g. Windows client).
 

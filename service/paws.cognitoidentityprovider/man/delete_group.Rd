@@ -4,12 +4,15 @@
 \alias{delete_group}
 \title{Deletes a group}
 \usage{
-delete_group(GroupName, UserPoolId)
+delete_group(
+  GroupName = "string",
+  UserPoolId = "string"
+)
 }
 \arguments{
-\item{GroupName}{The name of the group.}
+\item{GroupName}{[required] The name of the group.}
 
-\item{UserPoolId}{The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The user pool ID for the user pool.}
 }
 \description{
 Deletes a group. Currently only groups with no members can be deleted.

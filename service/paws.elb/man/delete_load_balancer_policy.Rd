@@ -4,12 +4,15 @@
 \alias{delete_load_balancer_policy}
 \title{Deletes the specified policy from the specified load balancer}
 \usage{
-delete_load_balancer_policy(LoadBalancerName, PolicyName)
+delete_load_balancer_policy(
+  LoadBalancerName = "string",
+  PolicyName = "string"
+)
 }
 \arguments{
-\item{LoadBalancerName}{The name of the load balancer.}
+\item{LoadBalancerName}{[required] The name of the load balancer.}
 
-\item{PolicyName}{The name of the policy.}
+\item{PolicyName}{[required] The name of the policy.}
 }
 \description{
 Deletes the specified policy from the specified load balancer. This policy must not be enabled for any listeners.

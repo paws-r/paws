@@ -4,12 +4,15 @@
 \alias{test_render_template}
 \title{Creates a preview of the MIME content of an email when provided with a template and a set of replacement data}
 \usage{
-test_render_template(TemplateName, TemplateData)
+test_render_template(
+  TemplateName = "string",
+  TemplateData = "string"
+)
 }
 \arguments{
-\item{TemplateName}{The name of the template that you want to render.}
+\item{TemplateName}{[required] The name of the template that you want to render.}
 
-\item{TemplateData}{A list of replacement values to apply to the template. This parameter is a JSON object, typically consisting of key-value pairs in which the keys correspond to replacement tags in the email template.}
+\item{TemplateData}{[required] A list of replacement values to apply to the template. This parameter is a JSON object, typically consisting of key-value pairs in which the keys correspond to replacement tags in the email template.}
 }
 \description{
 Creates a preview of the MIME content of an email when provided with a template and a set of replacement data.

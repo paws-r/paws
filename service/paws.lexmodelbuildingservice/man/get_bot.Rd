@@ -4,12 +4,15 @@
 \alias{get_bot}
 \title{Returns metadata information for a specific bot}
 \usage{
-get_bot(name, versionOrAlias)
+get_bot(
+  name = "string",
+  versionOrAlias = "string"
+)
 }
 \arguments{
-\item{name}{The name of the bot. The name is case sensitive.}
+\item{name}{[required] The name of the bot. The name is case sensitive.}
 
-\item{versionOrAlias}{The version or alias of the bot.}
+\item{versionOrAlias}{[required] The version or alias of the bot.}
 }
 \description{
 Returns metadata information for a specific bot. You must provide the bot name and the bot version or alias.

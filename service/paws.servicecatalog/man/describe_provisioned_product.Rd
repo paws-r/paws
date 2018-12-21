@@ -4,17 +4,20 @@
 \alias{describe_provisioned_product}
 \title{Gets information about the specified provisioned product}
 \usage{
-describe_provisioned_product(Id, AcceptLanguage = NULL)
+describe_provisioned_product(
+  AcceptLanguage = "string",
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The provisioned product identifier.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{Id}{[required] The provisioned product identifier.}
 }
 \description{
 Gets information about the specified provisioned product.

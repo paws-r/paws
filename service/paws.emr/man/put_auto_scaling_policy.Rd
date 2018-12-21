@@ -4,14 +4,55 @@
 \alias{put_auto_scaling_policy}
 \title{Creates or updates an automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster}
 \usage{
-put_auto_scaling_policy(ClusterId, InstanceGroupId, AutoScalingPolicy)
+put_auto_scaling_policy(
+  ClusterId = "string",
+  InstanceGroupId = "string",
+  AutoScalingPolicy = list(
+    Constraints = list(
+      MinCapacity = 123,
+      MaxCapacity = 123
+    ),
+    Rules = list(
+      list(
+        Name = "string",
+        Description = "string",
+        Action = list(
+          Market = "ON_DEMAND"|"SPOT",
+          SimpleScalingPolicyConfiguration = list(
+            AdjustmentType = "CHANGE_IN_CAPACITY"|"PERCENT_CHANGE_IN_CAPACITY"|"EXACT_CAPACITY",
+            ScalingAdjustment = 123,
+            CoolDown = 123
+          )
+        ),
+        Trigger = list(
+          CloudWatchAlarmDefinition = list(
+            ComparisonOperator = "GREATER_THAN_OR_EQUAL"|"GREATER_THAN"|"LESS_THAN"|"LESS_THAN_OR_EQUAL",
+            EvaluationPeriods = 123,
+            MetricName = "string",
+            Namespace = "string",
+            Period = 123,
+            Statistic = "SAMPLE_COUNT"|"AVERAGE"|"SUM"|"MINIMUM"|"MAXIMUM",
+            Threshold = 123.0,
+            Unit = "NONE"|"SECONDS"|"MICRO_SECONDS"|"MILLI_SECONDS"|"BYTES"|"KILO_BYTES"|"MEGA_BYTES"|"GIGA_BYTES"|"TERA_BYTES"|"BITS"|"KILO_BITS"|"MEGA_BITS"|"GIGA_BITS"|"TERA_BITS"|"PERCENT"|"COUNT"|"BYTES_PER_SECOND"|"KILO_BYTES_PER_SECOND"|"MEGA_BYTES_PER_SECOND"|"GIGA_BYTES_PER_SECOND"|"TERA_BYTES_PER_SECOND"|"BITS_PER_SECOND"|"KILO_BITS_PER_SECOND"|"MEGA_BITS_PER_SECOND"|"GIGA_BITS_PER_SECOND"|"TERA_BITS_PER_SECOND"|"COUNT_PER_SECOND",
+            Dimensions = list(
+              list(
+                Key = "string",
+                Value = "string"
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{ClusterId}{Specifies the ID of a cluster. The instance group to which the automatic scaling policy is applied is within this cluster.}
+\item{ClusterId}{[required] Specifies the ID of a cluster. The instance group to which the automatic scaling policy is applied is within this cluster.}
 
-\item{InstanceGroupId}{Specifies the ID of the instance group to which the automatic scaling policy is applied.}
+\item{InstanceGroupId}{[required] Specifies the ID of the instance group to which the automatic scaling policy is applied.}
 
-\item{AutoScalingPolicy}{Specifies the definition of the automatic scaling policy.}
+\item{AutoScalingPolicy}{[required] Specifies the definition of the automatic scaling policy.}
 }
 \description{
 Creates or updates an automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric.

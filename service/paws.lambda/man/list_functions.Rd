@@ -4,8 +4,12 @@
 \alias{list_functions}
 \title{Returns a list of your Lambda functions}
 \usage{
-list_functions(MasterRegion = NULL, FunctionVersion = NULL, Marker = NULL,
-  MaxItems = NULL)
+list_functions(
+  MasterRegion = "string",
+  FunctionVersion = "ALL",
+  Marker = "string",
+  MaxItems = 123
+)
 }
 \arguments{
 \item{MasterRegion}{Specify a region (e.g. \code{us-east-2}) to only list functions that were created in that region, or \code{ALL} to include functions replicated from any region. If specified, you also must specify the \code{FunctionVersion}.}

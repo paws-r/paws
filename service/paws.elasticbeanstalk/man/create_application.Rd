@@ -4,11 +4,28 @@
 \alias{create_application}
 \title{Creates an application that has one configuration template named \code{default} and no application versions}
 \usage{
-create_application(ApplicationName, Description = NULL,
-  ResourceLifecycleConfig = NULL)
+create_application(
+  ApplicationName = "string",
+  Description = "string",
+  ResourceLifecycleConfig = list(
+    ServiceRole = "string",
+    VersionLifecycleConfig = list(
+      MaxCountRule = list(
+        Enabled = TRUE|FALSE,
+        MaxCount = 123,
+        DeleteSourceFromS3 = TRUE|FALSE
+      ),
+      MaxAgeRule = list(
+        Enabled = TRUE|FALSE,
+        MaxAgeInDays = 123,
+        DeleteSourceFromS3 = TRUE|FALSE
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{ApplicationName}{The name of the application.
+\item{ApplicationName}{[required] The name of the application.
 
 Constraint: This name must be unique within your account. If the specified name already exists, the action returns an \code{InvalidParameterValue} error.}
 

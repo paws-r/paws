@@ -4,7 +4,10 @@
 \alias{list_stream_processors}
 \title{Gets a list of stream processors that you have created with}
 \usage{
-list_stream_processors(NextToken = NULL, MaxResults = NULL)
+list_stream_processors(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{NextToken}{If the previous response was incomplete (because there are more stream processors to retrieve), Amazon Rekognition Video returns a pagination token in the response. You can use this pagination token to retrieve the next set of stream processors.}

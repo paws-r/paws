@@ -4,11 +4,15 @@
 \alias{describe_instances}
 \title{Retrieves information about a fleet's instances, including instance IDs}
 \usage{
-describe_instances(FleetId, InstanceId = NULL, Limit = NULL,
-  NextToken = NULL)
+describe_instances(
+  FleetId = "string",
+  InstanceId = "string",
+  Limit = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{FleetId}{Unique identifier for a fleet to retrieve instance information for.}
+\item{FleetId}{[required] Unique identifier for a fleet to retrieve instance information for.}
 
 \item{InstanceId}{Unique identifier for an instance to retrieve. Specify an instance ID or leave blank to retrieve all instances in the fleet.}
 

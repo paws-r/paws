@@ -4,10 +4,17 @@
 \alias{describe_tapes}
 \title{Returns a description of the specified Amazon Resource Name (ARN) of virtual tapes}
 \usage{
-describe_tapes(GatewayARN, TapeARNs = NULL, Marker = NULL, Limit = NULL)
+describe_tapes(
+  GatewayARN = "string",
+  TapeARNs = list(
+    "string"
+  ),
+  Marker = "string",
+  Limit = 123
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 
 \item{TapeARNs}{Specifies one or more unique Amazon Resource Names (ARNs) that represent the virtual tapes you want to describe. If this parameter is not specified, Tape gateway returns a description of all virtual tapes associated with the specified gateway.}
 

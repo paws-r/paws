@@ -4,19 +4,24 @@
 \alias{allocate_hosted_connection}
 \title{Creates a hosted connection on the specified interconnect or a link aggregation group (LAG)}
 \usage{
-allocate_hosted_connection(connectionId, ownerAccount, bandwidth,
-  connectionName, vlan)
+allocate_hosted_connection(
+  connectionId = "string",
+  ownerAccount = "string",
+  bandwidth = "string",
+  connectionName = "string",
+  vlan = 123
+)
 }
 \arguments{
-\item{connectionId}{The ID of the interconnect or LAG.}
+\item{connectionId}{[required] The ID of the interconnect or LAG.}
 
-\item{ownerAccount}{The ID of the AWS account ID of the customer for the connection.}
+\item{ownerAccount}{[required] The ID of the AWS account ID of the customer for the connection.}
 
-\item{bandwidth}{The bandwidth of the hosted connection, in Mbps. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, and 500Mbps.}
+\item{bandwidth}{[required] The bandwidth of the hosted connection, in Mbps. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, and 500Mbps.}
 
-\item{connectionName}{The name of the hosted connection.}
+\item{connectionName}{[required] The name of the hosted connection.}
 
-\item{vlan}{The dedicated VLAN provisioned to the hosted connection.}
+\item{vlan}{[required] The dedicated VLAN provisioned to the hosted connection.}
 }
 \description{
 Creates a hosted connection on the specified interconnect or a link aggregation group (LAG).

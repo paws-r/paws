@@ -4,7 +4,10 @@
 \alias{update_device}
 \title{Updates the device name by device ARN}
 \usage{
-update_device(DeviceArn = NULL, DeviceName = NULL)
+update_device(
+  DeviceArn = "string",
+  DeviceName = "string"
+)
 }
 \arguments{
 \item{DeviceArn}{The ARN of the device to update. Required.}

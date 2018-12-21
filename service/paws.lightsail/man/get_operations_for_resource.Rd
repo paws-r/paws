@@ -4,10 +4,13 @@
 \alias{get_operations_for_resource}
 \title{Gets operations for a specific resource (e}
 \usage{
-get_operations_for_resource(resourceName, pageToken = NULL)
+get_operations_for_resource(
+  resourceName = "string",
+  pageToken = "string"
+)
 }
 \arguments{
-\item{resourceName}{The name of the resource for which you are requesting information.}
+\item{resourceName}{[required] The name of the resource for which you are requesting information.}
 
 \item{pageToken}{A token used for advancing to the next page of results from your get operations for resource request.}
 }

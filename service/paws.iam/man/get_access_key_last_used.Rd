@@ -4,12 +4,14 @@
 \alias{get_access_key_last_used}
 \title{Retrieves information about when the specified access key was last used}
 \usage{
-get_access_key_last_used(AccessKeyId)
+get_access_key_last_used(
+  AccessKeyId = "string"
+)
 }
 \arguments{
-\item{AccessKeyId}{The identifier of an access key.
+\item{AccessKeyId}{[required] The identifier of an access key.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
 }
 \description{
 Retrieves information about when the specified access key was last used. The information includes the date and time of last use, along with the AWS service and region that were specified in the last request made with that key.

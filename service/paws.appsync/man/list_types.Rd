@@ -4,12 +4,17 @@
 \alias{list_types}
 \title{Lists the types for a given API}
 \usage{
-list_types(apiId, format, nextToken = NULL, maxResults = NULL)
+list_types(
+  apiId = "string",
+  format = "SDL"|"JSON",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{apiId}{The API ID.}
+\item{apiId}{[required] The API ID.}
 
-\item{format}{The type format: SDL or JSON.}
+\item{format}{[required] The type format: SDL or JSON.}
 
 \item{nextToken}{An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.}
 

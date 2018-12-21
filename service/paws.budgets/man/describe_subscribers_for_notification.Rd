@@ -2,24 +2,35 @@
 % Please edit documentation in R/paws.budgets_operations.R
 \name{describe_subscribers_for_notification}
 \alias{describe_subscribers_for_notification}
-\title{Lists the subscribers associated with a notification}
+\title{Lists the subscribers that are associated with a notification}
 \usage{
-describe_subscribers_for_notification(AccountId, BudgetName, Notification,
-  MaxResults = NULL, NextToken = NULL)
+describe_subscribers_for_notification(
+  AccountId = "string",
+  BudgetName = "string",
+  Notification = list(
+    NotificationType = "ACTUAL"|"FORECASTED",
+    ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
+    Threshold = 123.0,
+    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+    NotificationState = "OK"|"ALARM"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{AccountId}{The \code{accountId} that is associated with the budget whose subscribers you want descriptions of.}
+\item{AccountId}{[required] The \code{accountId} that is associated with the budget whose subscribers you want descriptions of.}
 
-\item{BudgetName}{The name of the budget whose subscribers you want descriptions of.}
+\item{BudgetName}{[required] The name of the budget whose subscribers you want descriptions of.}
 
-\item{Notification}{The notification whose subscribers you want to list.}
+\item{Notification}{[required] The notification whose subscribers you want to list.}
 
-\item{MaxResults}{Optional integer. Specifies the maximum number of results to return in response.}
+\item{MaxResults}{An optional integer that represents how many entries a paginated response contains. The maximum is 100.}
 
-\item{NextToken}{The pagination token that indicates the next set of results to retrieve.}
+\item{NextToken}{The pagination token that you include in your request to indicate the next set of results that you want to retrieve.}
 }
 \description{
-Lists the subscribers associated with a notification.
+Lists the subscribers that are associated with a notification.
 }
 \examples{
 

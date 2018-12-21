@@ -4,7 +4,10 @@
 \alias{list_containers}
 \title{Lists the properties of all containers in AWS Elemental MediaStore}
 \usage{
-list_containers(NextToken = NULL, MaxResults = NULL)
+list_containers(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{NextToken}{Only if you used \code{MaxResults} in the first command, enter the token (which was included in the previous response) to obtain the next set of containers. This token is included in a response only if there actually are more containers to list.}

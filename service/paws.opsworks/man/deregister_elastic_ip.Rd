@@ -4,10 +4,12 @@
 \alias{deregister_elastic_ip}
 \title{Deregisters a specified Elastic IP address}
 \usage{
-deregister_elastic_ip(ElasticIp)
+deregister_elastic_ip(
+  ElasticIp = "string"
+)
 }
 \arguments{
-\item{ElasticIp}{The Elastic IP address.}
+\item{ElasticIp}{[required] The Elastic IP address.}
 }
 \description{
 Deregisters a specified Elastic IP address. The address can then be registered by another stack. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.

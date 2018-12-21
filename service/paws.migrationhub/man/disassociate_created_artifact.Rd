@@ -4,15 +4,19 @@
 \alias{disassociate_created_artifact}
 \title{Disassociates a created artifact of an AWS resource with a migration task performed by a migration tool that was previously associated}
 \usage{
-disassociate_created_artifact(ProgressUpdateStream, MigrationTaskName,
-  CreatedArtifactName, DryRun = NULL)
+disassociate_created_artifact(
+  ProgressUpdateStream = "string",
+  MigrationTaskName = "string",
+  CreatedArtifactName = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{ProgressUpdateStream}{The name of the ProgressUpdateStream.}
+\item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
 
-\item{MigrationTaskName}{Unique identifier that references the migration task to be disassociated with the artifact.}
+\item{MigrationTaskName}{[required] Unique identifier that references the migration task to be disassociated with the artifact.}
 
-\item{CreatedArtifactName}{An ARN of the AWS resource related to the migration (e.g., AMI, EC2 instance, RDS instance, etc.)}
+\item{CreatedArtifactName}{[required] An ARN of the AWS resource related to the migration (e.g., AMI, EC2 instance, RDS instance, etc.)}
 
 \item{DryRun}{Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.}
 }

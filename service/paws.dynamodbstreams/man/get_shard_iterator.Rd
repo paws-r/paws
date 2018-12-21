@@ -4,15 +4,19 @@
 \alias{get_shard_iterator}
 \title{Returns a shard iterator}
 \usage{
-get_shard_iterator(StreamArn, ShardId, ShardIteratorType,
-  SequenceNumber = NULL)
+get_shard_iterator(
+  StreamArn = "string",
+  ShardId = "string",
+  ShardIteratorType = "TRIM_HORIZON"|"LATEST"|"AT_SEQUENCE_NUMBER"|"AFTER_SEQUENCE_NUMBER",
+  SequenceNumber = "string"
+)
 }
 \arguments{
-\item{StreamArn}{The Amazon Resource Name (ARN) for the stream.}
+\item{StreamArn}{[required] The Amazon Resource Name (ARN) for the stream.}
 
-\item{ShardId}{The identifier of the shard. The iterator will be returned for this shard ID.}
+\item{ShardId}{[required] The identifier of the shard. The iterator will be returned for this shard ID.}
 
-\item{ShardIteratorType}{Determines how the shard iterator is used to start reading stream records from the shard:
+\item{ShardIteratorType}{[required] Determines how the shard iterator is used to start reading stream records from the shard:
 \itemize{
 \item \code{AT_SEQUENCE_NUMBER} - Start reading exactly from the position denoted by a specific sequence number.
 \item \code{AFTER_SEQUENCE_NUMBER} - Start reading right after the position denoted by a specific sequence number.

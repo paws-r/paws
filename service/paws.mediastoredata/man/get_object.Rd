@@ -4,10 +4,13 @@
 \alias{get_object}
 \title{Downloads the object at the specified path}
 \usage{
-get_object(Path, Range = NULL)
+get_object(
+  Path = "string",
+  Range = "string"
+)
 }
 \arguments{
-\item{Path}{The path (including the file name) where the object is stored in the container. Format: <folder name>/<folder name>/<file name>
+\item{Path}{[required] The path (including the file name) where the object is stored in the container. Format: <folder name>/<folder name>/<file name>
 
 For example, to upload the file \code{mlaw.avi} to the folder path \code{premium\canada} in the container \code{movies}, enter the path \code{premium/canada/mlaw.avi}.
 

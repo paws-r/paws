@@ -4,10 +4,27 @@
 \alias{update_sampling_rule}
 \title{Modifies a sampling rule's configuration}
 \usage{
-update_sampling_rule(SamplingRuleUpdate)
+update_sampling_rule(
+  SamplingRuleUpdate = list(
+    RuleName = "string",
+    RuleARN = "string",
+    ResourceARN = "string",
+    Priority = 123,
+    FixedRate = 123.0,
+    ReservoirSize = 123,
+    Host = "string",
+    ServiceName = "string",
+    ServiceType = "string",
+    HTTPMethod = "string",
+    URLPath = "string",
+    Attributes = list(
+      "string"
+    )
+  )
+)
 }
 \arguments{
-\item{SamplingRuleUpdate}{The rule and fields to change.}
+\item{SamplingRuleUpdate}{[required] The rule and fields to change.}
 }
 \description{
 Modifies a sampling rule's configuration.

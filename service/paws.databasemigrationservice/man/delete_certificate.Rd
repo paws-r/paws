@@ -4,10 +4,12 @@
 \alias{delete_certificate}
 \title{Deletes the specified certificate}
 \usage{
-delete_certificate(CertificateArn)
+delete_certificate(
+  CertificateArn = "string"
+)
 }
 \arguments{
-\item{CertificateArn}{The Amazon Resource Name (ARN) of the deleted certificate.}
+\item{CertificateArn}{[required] The Amazon Resource Name (ARN) of the deleted certificate.}
 }
 \description{
 Deletes the specified certificate.

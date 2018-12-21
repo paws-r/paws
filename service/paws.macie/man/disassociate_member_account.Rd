@@ -4,10 +4,12 @@
 \alias{disassociate_member_account}
 \title{Removes the specified member account from Amazon Macie}
 \usage{
-disassociate_member_account(memberAccountId)
+disassociate_member_account(
+  memberAccountId = "string"
+)
 }
 \arguments{
-\item{memberAccountId}{The ID of the member account that you want to remove from Amazon Macie.}
+\item{memberAccountId}{[required] The ID of the member account that you want to remove from Amazon Macie.}
 }
 \description{
 Removes the specified member account from Amazon Macie.

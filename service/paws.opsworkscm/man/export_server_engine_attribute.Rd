@@ -4,13 +4,21 @@
 \alias{export_server_engine_attribute}
 \title{Exports a specified server engine attribute as a base64-encoded string}
 \usage{
-export_server_engine_attribute(ExportAttributeName, ServerName,
-  InputAttributes = NULL)
+export_server_engine_attribute(
+  ExportAttributeName = "string",
+  ServerName = "string",
+  InputAttributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ExportAttributeName}{The name of the export attribute. Currently supported export attribute is "Userdata" which exports a userdata script filled out with parameters provided in the \code{InputAttributes} list.}
+\item{ExportAttributeName}{[required] The name of the export attribute. Currently supported export attribute is "Userdata" which exports a userdata script filled out with parameters provided in the \code{InputAttributes} list.}
 
-\item{ServerName}{The name of the Server to which the attribute is being exported from}
+\item{ServerName}{[required] The name of the Server to which the attribute is being exported from}
 
 \item{InputAttributes}{The list of engine attributes. The list type is \code{EngineAttribute}. \code{EngineAttribute} is a pair of attribute name and value. For \code{ExportAttributeName} "Userdata", currently supported input attribute names are: - "RunList": For Chef, an ordered list of roles and/or recipes that are run in the exact order. For Puppet, this parameter is ignored. - "OrganizationName": For Chef, an organization name. AWS OpsWorks for Chef Server always creates the organization "default". For Puppet, this parameter is ignored. - "NodeEnvironment": For Chef, a node environment (eg. development, staging, onebox). For Puppet, this parameter is ignored. - "NodeClientVersion": For Chef, version of Chef Engine (3 numbers separated by dots, eg. "13.8.5"). If empty, it uses the latest one. For Puppet, this parameter is ignored.}
 }

@@ -4,22 +4,33 @@
 \alias{create_user}
 \title{Creates a user in a Simple AD or Microsoft AD directory}
 \usage{
-create_user(Username, GivenName, Surname, Password, OrganizationId = NULL,
-  EmailAddress = NULL, TimeZoneId = NULL, StorageRule = NULL,
-  AuthenticationToken = NULL)
+create_user(
+  OrganizationId = "string",
+  Username = "string",
+  EmailAddress = "string",
+  GivenName = "string",
+  Surname = "string",
+  Password = "string",
+  TimeZoneId = "string",
+  StorageRule = list(
+    StorageAllocatedInBytes = 123,
+    StorageType = "UNLIMITED"|"QUOTA"
+  ),
+  AuthenticationToken = "string"
+)
 }
 \arguments{
-\item{Username}{The login name of the user.}
-
-\item{GivenName}{The given name of the user.}
-
-\item{Surname}{The surname of the user.}
-
-\item{Password}{The password of the user.}
-
 \item{OrganizationId}{The ID of the organization.}
 
+\item{Username}{[required] The login name of the user.}
+
 \item{EmailAddress}{The email address of the user.}
+
+\item{GivenName}{[required] The given name of the user.}
+
+\item{Surname}{[required] The surname of the user.}
+
+\item{Password}{[required] The password of the user.}
 
 \item{TimeZoneId}{The time zone ID of the user.}
 

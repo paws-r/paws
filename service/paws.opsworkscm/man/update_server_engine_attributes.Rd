@@ -4,13 +4,16 @@
 \alias{update_server_engine_attributes}
 \title{Updates engine-specific attributes on a specified server}
 \usage{
-update_server_engine_attributes(ServerName, AttributeName,
-  AttributeValue = NULL)
+update_server_engine_attributes(
+  ServerName = "string",
+  AttributeName = "string",
+  AttributeValue = "string"
+)
 }
 \arguments{
-\item{ServerName}{The name of the server to update.}
+\item{ServerName}{[required] The name of the server to update.}
 
-\item{AttributeName}{The name of the engine attribute to update.}
+\item{AttributeName}{[required] The name of the engine attribute to update.}
 
 \item{AttributeValue}{The value to set for the attribute.}
 }

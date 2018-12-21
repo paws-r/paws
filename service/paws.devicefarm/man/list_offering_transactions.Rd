@@ -4,7 +4,9 @@
 \alias{list_offering_transactions}
 \title{Returns a list of all historical purchases, renewals, and system renewal transactions for an AWS account}
 \usage{
-list_offering_transactions(nextToken = NULL)
+list_offering_transactions(
+  nextToken = "string"
+)
 }
 \arguments{
 \item{nextToken}{An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.}

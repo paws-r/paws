@@ -4,12 +4,24 @@
 \alias{update_apns_voip_sandbox_channel}
 \title{Update an APNS VoIP sandbox channel}
 \usage{
-update_apns_voip_sandbox_channel(ApplicationId, APNSVoipSandboxChannelRequest)
+update_apns_voip_sandbox_channel(
+  APNSVoipSandboxChannelRequest = list(
+    BundleId = "string",
+    Certificate = "string",
+    DefaultAuthenticationMethod = "string",
+    Enabled = TRUE|FALSE,
+    PrivateKey = "string",
+    TeamId = "string",
+    TokenKey = "string",
+    TokenKeyId = "string"
+  ),
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{APNSVoipSandboxChannelRequest}{[required]}
 
-\item{APNSVoipSandboxChannelRequest}{}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 }
 \description{
 Update an APNS VoIP sandbox channel

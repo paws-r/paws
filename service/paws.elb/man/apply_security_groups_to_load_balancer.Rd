@@ -4,12 +4,17 @@
 \alias{apply_security_groups_to_load_balancer}
 \title{Associates one or more security groups with your load balancer in a virtual private cloud (VPC)}
 \usage{
-apply_security_groups_to_load_balancer(LoadBalancerName, SecurityGroups)
+apply_security_groups_to_load_balancer(
+  LoadBalancerName = "string",
+  SecurityGroups = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{LoadBalancerName}{The name of the load balancer.}
+\item{LoadBalancerName}{[required] The name of the load balancer.}
 
-\item{SecurityGroups}{The IDs of the security groups to associate with the load balancer. Note that you cannot specify the name of the security group.}
+\item{SecurityGroups}{[required] The IDs of the security groups to associate with the load balancer. Note that you cannot specify the name of the security group.}
 }
 \description{
 Associates one or more security groups with your load balancer in a virtual private cloud (VPC). The specified security groups override the previously associated security groups.

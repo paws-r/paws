@@ -4,10 +4,12 @@
 \alias{unclaim_device}
 \title{Disassociates a device from your AWS account using its device ID}
 \usage{
-unclaim_device(DeviceId)
+unclaim_device(
+  DeviceId = "string"
+)
 }
 \arguments{
-\item{DeviceId}{The unique identifier of the device.}
+\item{DeviceId}{[required] The unique identifier of the device.}
 }
 \description{
 Disassociates a device from your AWS account using its device ID.

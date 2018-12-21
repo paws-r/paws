@@ -4,18 +4,27 @@
 \alias{put_approval_result}
 \title{Provides the response to a manual approval request to AWS CodePipeline}
 \usage{
-put_approval_result(pipelineName, stageName, actionName, result, token)
+put_approval_result(
+  pipelineName = "string",
+  stageName = "string",
+  actionName = "string",
+  result = list(
+    summary = "string",
+    status = "Approved"|"Rejected"
+  ),
+  token = "string"
+)
 }
 \arguments{
-\item{pipelineName}{The name of the pipeline that contains the action.}
+\item{pipelineName}{[required] The name of the pipeline that contains the action.}
 
-\item{stageName}{The name of the stage that contains the action.}
+\item{stageName}{[required] The name of the stage that contains the action.}
 
-\item{actionName}{The name of the action for which approval is requested.}
+\item{actionName}{[required] The name of the action for which approval is requested.}
 
-\item{result}{Represents information about the result of the approval request.}
+\item{result}{[required] Represents information about the result of the approval request.}
 
-\item{token}{The system-generated token used to identify a unique approval request. The token for each open approval request can be obtained using the GetPipelineState action and is used to validate that the approval request corresponding to this token is still valid.}
+\item{token}{[required] The system-generated token used to identify a unique approval request. The token for each open approval request can be obtained using the GetPipelineState action and is used to validate that the approval request corresponding to this token is still valid.}
 }
 \description{
 Provides the response to a manual approval request to AWS CodePipeline. Valid responses include Approved and Rejected.

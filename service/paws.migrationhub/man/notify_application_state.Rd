@@ -4,12 +4,16 @@
 \alias{notify_application_state}
 \title{Sets the migration state of an application}
 \usage{
-notify_application_state(ApplicationId, Status, DryRun = NULL)
+notify_application_state(
+  ApplicationId = "string",
+  Status = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{ApplicationId}{The configurationId in ADS that uniquely identifies the grouped application.}
+\item{ApplicationId}{[required] The configurationId in ADS that uniquely identifies the grouped application.}
 
-\item{Status}{Status of the application - Not Started, In-Progress, Complete.}
+\item{Status}{[required] Status of the application - Not Started, In-Progress, Complete.}
 
 \item{DryRun}{Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.}
 }

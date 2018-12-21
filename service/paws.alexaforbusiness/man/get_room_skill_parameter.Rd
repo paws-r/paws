@@ -4,14 +4,18 @@
 \alias{get_room_skill_parameter}
 \title{Gets room skill parameter details by room, skill, and parameter key ARN}
 \usage{
-get_room_skill_parameter(SkillId, ParameterKey, RoomArn = NULL)
+get_room_skill_parameter(
+  RoomArn = "string",
+  SkillId = "string",
+  ParameterKey = "string"
+)
 }
 \arguments{
-\item{SkillId}{The ARN of the skill from which to get the room skill parameter details. Required.}
-
-\item{ParameterKey}{The room skill parameter key for which to get details. Required.}
-
 \item{RoomArn}{The ARN of the room from which to get the room skill parameter details.}
+
+\item{SkillId}{[required] The ARN of the skill from which to get the room skill parameter details. Required.}
+
+\item{ParameterKey}{[required] The room skill parameter key for which to get details. Required.}
 }
 \description{
 Gets room skill parameter details by room, skill, and parameter key ARN.

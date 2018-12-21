@@ -4,10 +4,12 @@
 \alias{describe_broker}
 \title{Returns information about the specified broker}
 \usage{
-describe_broker(BrokerId)
+describe_broker(
+  BrokerId = "string"
+)
 }
 \arguments{
-\item{BrokerId}{The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.}
+\item{BrokerId}{[required] The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.}
 }
 \description{
 Returns information about the specified broker.

@@ -4,21 +4,27 @@
 \alias{upload_layer_part}
 \title{Uploads an image layer part to Amazon ECR}
 \usage{
-upload_layer_part(repositoryName, uploadId, partFirstByte, partLastByte,
-  layerPartBlob, registryId = NULL)
+upload_layer_part(
+  registryId = "string",
+  repositoryName = "string",
+  uploadId = "string",
+  partFirstByte = 123,
+  partLastByte = 123,
+  layerPartBlob = raw
+)
 }
 \arguments{
-\item{repositoryName}{The name of the repository to which you are uploading layer parts.}
-
-\item{uploadId}{The upload ID from a previous InitiateLayerUpload operation to associate with the layer part upload.}
-
-\item{partFirstByte}{The integer value of the first byte of the layer part.}
-
-\item{partLastByte}{The integer value of the last byte of the layer part.}
-
-\item{layerPartBlob}{The base64-encoded layer part payload.}
-
 \item{registryId}{The AWS account ID associated with the registry to which you are uploading layer parts. If you do not specify a registry, the default registry is assumed.}
+
+\item{repositoryName}{[required] The name of the repository to which you are uploading layer parts.}
+
+\item{uploadId}{[required] The upload ID from a previous InitiateLayerUpload operation to associate with the layer part upload.}
+
+\item{partFirstByte}{[required] The integer value of the first byte of the layer part.}
+
+\item{partLastByte}{[required] The integer value of the last byte of the layer part.}
+
+\item{layerPartBlob}{[required] The base64-encoded layer part payload.}
 }
 \description{
 Uploads an image layer part to Amazon ECR.

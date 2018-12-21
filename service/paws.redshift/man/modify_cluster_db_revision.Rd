@@ -4,14 +4,17 @@
 \alias{modify_cluster_db_revision}
 \title{Modifies the database revision of a cluster}
 \usage{
-modify_cluster_db_revision(ClusterIdentifier, RevisionTarget)
+modify_cluster_db_revision(
+  ClusterIdentifier = "string",
+  RevisionTarget = "string"
+)
 }
 \arguments{
-\item{ClusterIdentifier}{The unique identifier of a cluster whose database revision you want to modify.
+\item{ClusterIdentifier}{[required] The unique identifier of a cluster whose database revision you want to modify.
 
 Example: \code{examplecluster}}
 
-\item{RevisionTarget}{The identifier of the database revision. You can retrieve this value from the response to the DescribeClusterDbRevisions request.}
+\item{RevisionTarget}{[required] The identifier of the database revision. You can retrieve this value from the response to the DescribeClusterDbRevisions request.}
 }
 \description{
 Modifies the database revision of a cluster. The database revision is a unique revision of the database running in a cluster.

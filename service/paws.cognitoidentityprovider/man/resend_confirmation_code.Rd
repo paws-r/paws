@@ -4,17 +4,26 @@
 \alias{resend_confirmation_code}
 \title{Resends the confirmation (for confirmation of registration) to a specific user in the user pool}
 \usage{
-resend_confirmation_code(ClientId, Username, SecretHash = NULL,
-  UserContextData = NULL, AnalyticsMetadata = NULL)
+resend_confirmation_code(
+  ClientId = "string",
+  SecretHash = "string",
+  UserContextData = list(
+    EncodedData = "string"
+  ),
+  Username = "string",
+  AnalyticsMetadata = list(
+    AnalyticsEndpointId = "string"
+  )
+)
 }
 \arguments{
-\item{ClientId}{The ID of the client associated with the user pool.}
-
-\item{Username}{The user name of the user to whom you wish to resend a confirmation code.}
+\item{ClientId}{[required] The ID of the client associated with the user pool.}
 
 \item{SecretHash}{A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.}
 
 \item{UserContextData}{Contextual data such as the user's device fingerprint, IP address, or location used for evaluating the risk of an unexpected event by Amazon Cognito advanced security.}
+
+\item{Username}{[required] The user name of the user to whom you wish to resend a confirmation code.}
 
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for \code{ResendConfirmationCode} calls.}
 }

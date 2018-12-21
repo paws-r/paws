@@ -4,8 +4,13 @@
 \alias{describe_auto_scaling_instances}
 \title{Describes one or more Auto Scaling instances}
 \usage{
-describe_auto_scaling_instances(InstanceIds = NULL, MaxRecords = NULL,
-  NextToken = NULL)
+describe_auto_scaling_instances(
+  InstanceIds = list(
+    "string"
+  ),
+  MaxRecords = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{InstanceIds}{The IDs of the instances. You can specify up to \code{MaxRecords} IDs. If you omit this parameter, all Auto Scaling instances are described. If you specify an ID that does not exist, it is ignored with no error.}

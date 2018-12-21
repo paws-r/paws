@@ -4,7 +4,12 @@
 \alias{describe_config_rules}
 \title{Returns details about your AWS Config rules}
 \usage{
-describe_config_rules(ConfigRuleNames = NULL, NextToken = NULL)
+describe_config_rules(
+  ConfigRuleNames = list(
+    "string"
+  ),
+  NextToken = "string"
+)
 }
 \arguments{
 \item{ConfigRuleNames}{The names of the AWS Config rules for which you want details. If you do not specify any names, AWS Config returns details for all your rules.}

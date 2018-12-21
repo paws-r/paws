@@ -6,18 +6,23 @@
 \alias{paws.apigateway-package}
 \title{paws.apigateway: Amazon API Gateway}
 \description{
-Amazon API Gateway helps developers deliver robust,
-secure, and scalable mobile and web application back ends. API Gateway
-allows developers to securely connect mobile and web applications to
-APIs that run on AWS Lambda, Amazon EC2, or other publicly addressable
-web services that are hosted outside of AWS.
+Amazon API Gateway helps developers deliver robust, secure,
+and scalable mobile and web application back ends. API Gateway allows
+developers to securely connect mobile and web applications to APIs
+that run on AWS Lambda, Amazon EC2, or other publicly addressable web
+services that are hosted outside of AWS.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

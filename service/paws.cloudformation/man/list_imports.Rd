@@ -4,10 +4,13 @@
 \alias{list_imports}
 \title{Lists all stacks that are importing an exported output value}
 \usage{
-list_imports(ExportName, NextToken = NULL)
+list_imports(
+  ExportName = "string",
+  NextToken = "string"
+)
 }
 \arguments{
-\item{ExportName}{The name of the exported output value. AWS CloudFormation returns the stack names that are importing this value.}
+\item{ExportName}{[required] The name of the exported output value. AWS CloudFormation returns the stack names that are importing this value.}
 
 \item{NextToken}{A string (provided by the ListImports response output) that identifies the next page of stacks that are importing the specified exported output value.}
 }

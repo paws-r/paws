@@ -4,14 +4,18 @@
 \alias{get_resolver}
 \title{Retrieves a \code{Resolver} object}
 \usage{
-get_resolver(apiId, typeName, fieldName)
+get_resolver(
+  apiId = "string",
+  typeName = "string",
+  fieldName = "string"
+)
 }
 \arguments{
-\item{apiId}{The API ID.}
+\item{apiId}{[required] The API ID.}
 
-\item{typeName}{The resolver type name.}
+\item{typeName}{[required] The resolver type name.}
 
-\item{fieldName}{The resolver field name.}
+\item{fieldName}{[required] The resolver field name.}
 }
 \description{
 Retrieves a \code{Resolver} object.

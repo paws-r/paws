@@ -6,9 +6,9 @@
 \alias{paws.cloudsearch-package}
 \title{paws.cloudsearch: Amazon CloudSearch}
 \description{
-You use the Amazon CloudSearch configuration
-service to create, configure, and manage search domains. Configuration
-service requests are submitted using the AWS Query protocol. AWS Query
+You use the Amazon CloudSearch configuration service to
+create, configure, and manage search domains. Configuration service
+requests are submitted using the AWS Query protocol. AWS Query
 requests are HTTP or HTTPS requests submitted via HTTP GET or POST
 with a query parameter named Action.
 }
@@ -17,7 +17,12 @@ with a query parameter named Action.
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

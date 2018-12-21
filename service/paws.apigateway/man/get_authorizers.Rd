@@ -4,10 +4,14 @@
 \alias{get_authorizers}
 \title{Describe an existing Authorizers resource}
 \usage{
-get_authorizers(restApiId, position = NULL, limit = NULL)
+get_authorizers(
+  restApiId = "string",
+  position = "string",
+  limit = 123
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
 \item{position}{The current pagination position in the paged result set.}
 
@@ -15,6 +19,11 @@ get_authorizers(restApiId, position = NULL, limit = NULL)
 }
 \description{
 Describe an existing Authorizers resource.
+}
+\details{
+::: {.seeAlso}
+\href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizers.html}{AWS CLI}
+:::
 }
 \examples{
 

@@ -4,10 +4,13 @@
 \alias{cancel_job}
 \title{This operation cancels a specified job}
 \usage{
-cancel_job(JobId, APIVersion = NULL)
+cancel_job(
+  JobId = "string",
+  APIVersion = "string"
+)
 }
 \arguments{
-\item{JobId}{}
+\item{JobId}{[required]}
 
 \item{APIVersion}{}
 }

@@ -4,10 +4,24 @@
 \alias{update_stream}
 \title{Updates an existing stream}
 \usage{
-update_stream(streamId, description = NULL, files = NULL, roleArn = NULL)
+update_stream(
+  streamId = "string",
+  description = "string",
+  files = list(
+    list(
+      fileId = 123,
+      s3Location = list(
+        bucket = "string",
+        key = "string",
+        version = "string"
+      )
+    )
+  ),
+  roleArn = "string"
+)
 }
 \arguments{
-\item{streamId}{The stream ID.}
+\item{streamId}{[required] The stream ID.}
 
 \item{description}{The description of the stream.}
 

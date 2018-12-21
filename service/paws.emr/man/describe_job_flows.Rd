@@ -4,8 +4,16 @@
 \alias{describe_job_flows}
 \title{This API is deprecated and will eventually be removed}
 \usage{
-describe_job_flows(CreatedAfter = NULL, CreatedBefore = NULL,
-  JobFlowIds = NULL, JobFlowStates = NULL)
+describe_job_flows(
+  CreatedAfter = as.POSIXct("2015-01-01"),
+  CreatedBefore = as.POSIXct("2015-01-01"),
+  JobFlowIds = list(
+    "string"
+  ),
+  JobFlowStates = list(
+    "STARTING"|"BOOTSTRAPPING"|"RUNNING"|"WAITING"|"SHUTTING_DOWN"|"TERMINATED"|"COMPLETED"|"FAILED"
+  )
+)
 }
 \arguments{
 \item{CreatedAfter}{Return only job flows created after this date and time.}

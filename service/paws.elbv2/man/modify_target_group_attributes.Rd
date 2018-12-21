@@ -4,12 +4,20 @@
 \alias{modify_target_group_attributes}
 \title{Modifies the specified attributes of the specified target group}
 \usage{
-modify_target_group_attributes(TargetGroupArn, Attributes)
+modify_target_group_attributes(
+  TargetGroupArn = "string",
+  Attributes = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{TargetGroupArn}{The Amazon Resource Name (ARN) of the target group.}
+\item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
 
-\item{Attributes}{The attributes.}
+\item{Attributes}{[required] The attributes.}
 }
 \description{
 Modifies the specified attributes of the specified target group.

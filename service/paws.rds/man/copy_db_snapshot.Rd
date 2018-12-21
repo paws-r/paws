@@ -4,12 +4,24 @@
 \alias{copy_db_snapshot}
 \title{Copies the specified DB snapshot}
 \usage{
-copy_db_snapshot(SourceDBSnapshotIdentifier, TargetDBSnapshotIdentifier,
-  KmsKeyId = NULL, Tags = NULL, CopyTags = NULL, PreSignedUrl = NULL,
-  OptionGroupName = NULL, SourceRegion = NULL)
+copy_db_snapshot(
+  SourceDBSnapshotIdentifier = "string",
+  TargetDBSnapshotIdentifier = "string",
+  KmsKeyId = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  CopyTags = TRUE|FALSE,
+  PreSignedUrl = "string",
+  OptionGroupName = "string",
+  SourceRegion = "string"
+)
 }
 \arguments{
-\item{SourceDBSnapshotIdentifier}{The identifier for the source DB snapshot.
+\item{SourceDBSnapshotIdentifier}{[required] The identifier for the source DB snapshot.
 
 If the source snapshot is in the same AWS Region as the copy, specify a valid DB snapshot identifier. For example, you might specify \code{rds:mysql-instance1-snapshot-20130805}.
 
@@ -28,7 +40,7 @@ Example: \code{rds:mydb-2012-04-02-00-01}
 
 Example: \code{arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20130805}}
 
-\item{TargetDBSnapshotIdentifier}{The identifier for the copy of the snapshot.
+\item{TargetDBSnapshotIdentifier}{[required] The identifier for the copy of the snapshot.
 
 Constraints:
 \itemize{

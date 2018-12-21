@@ -4,10 +4,12 @@
 \alias{delete_server}
 \title{Deletes the server and the underlying AWS CloudFormation stacks (including the server's EC2 instance)}
 \usage{
-delete_server(ServerName)
+delete_server(
+  ServerName = "string"
+)
 }
 \arguments{
-\item{ServerName}{The ID of the server to delete.}
+\item{ServerName}{[required] The ID of the server to delete.}
 }
 \description{
 Deletes the server and the underlying AWS CloudFormation stacks (including the server's EC2 instance). When you run this command, the server state is updated to \code{DELETING}. After the server is deleted, it is no longer returned by \code{DescribeServer} requests. If the AWS CloudFormation stack cannot be deleted, the server cannot be deleted.

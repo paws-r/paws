@@ -4,17 +4,20 @@
 \alias{describe_product}
 \title{Gets information about the specified product}
 \usage{
-describe_product(Id, AcceptLanguage = NULL)
+describe_product(
+  AcceptLanguage = "string",
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The product identifier.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{Id}{[required] The product identifier.}
 }
 \description{
 Gets information about the specified product.

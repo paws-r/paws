@@ -4,10 +4,18 @@
 \alias{create_hsm_client_certificate}
 \title{Creates an HSM client certificate that an Amazon Redshift cluster will use to connect to the client's HSM in order to store and retrieve the keys used to encrypt the cluster databases}
 \usage{
-create_hsm_client_certificate(HsmClientCertificateIdentifier, Tags = NULL)
+create_hsm_client_certificate(
+  HsmClientCertificateIdentifier = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{HsmClientCertificateIdentifier}{The identifier to be assigned to the new HSM client certificate that the cluster will use to connect to the HSM to use the database encryption keys.}
+\item{HsmClientCertificateIdentifier}{[required] The identifier to be assigned to the new HSM client certificate that the cluster will use to connect to the HSM to use the database encryption keys.}
 
 \item{Tags}{A list of tag instances.}
 }

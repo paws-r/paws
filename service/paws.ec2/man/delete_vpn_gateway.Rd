@@ -4,10 +4,13 @@
 \alias{delete_vpn_gateway}
 \title{Deletes the specified virtual private gateway}
 \usage{
-delete_vpn_gateway(VpnGatewayId, DryRun = NULL)
+delete_vpn_gateway(
+  VpnGatewayId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{VpnGatewayId}{The ID of the virtual private gateway.}
+\item{VpnGatewayId}{[required] The ID of the virtual private gateway.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

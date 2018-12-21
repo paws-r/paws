@@ -4,14 +4,20 @@
 \alias{delete_fleets}
 \title{Deletes the specified EC2 Fleet}
 \usage{
-delete_fleets(FleetIds, TerminateInstances, DryRun = NULL)
+delete_fleets(
+  DryRun = TRUE|FALSE,
+  FleetIds = list(
+    "string"
+  ),
+  TerminateInstances = TRUE|FALSE
+)
 }
 \arguments{
-\item{FleetIds}{The IDs of the EC2 Fleets.}
-
-\item{TerminateInstances}{Indicates whether to terminate instances for an EC2 Fleet if it is deleted successfully.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{FleetIds}{[required] The IDs of the EC2 Fleets.}
+
+\item{TerminateInstances}{[required] Indicates whether to terminate instances for an EC2 Fleet if it is deleted successfully.}
 }
 \description{
 Deletes the specified EC2 Fleet.

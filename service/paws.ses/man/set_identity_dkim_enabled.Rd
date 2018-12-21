@@ -4,12 +4,15 @@
 \alias{set_identity_dkim_enabled}
 \title{Enables or disables Easy DKIM signing of email sent from an identity:}
 \usage{
-set_identity_dkim_enabled(Identity, DkimEnabled)
+set_identity_dkim_enabled(
+  Identity = "string",
+  DkimEnabled = TRUE|FALSE
+)
 }
 \arguments{
-\item{Identity}{The identity for which DKIM signing should be enabled or disabled.}
+\item{Identity}{[required] The identity for which DKIM signing should be enabled or disabled.}
 
-\item{DkimEnabled}{Sets whether DKIM signing is enabled for an identity. Set to \code{true} to enable DKIM signing for this identity; \code{false} to disable it.}
+\item{DkimEnabled}{[required] Sets whether DKIM signing is enabled for an identity. Set to \code{true} to enable DKIM signing for this identity; \code{false} to disable it.}
 }
 \description{
 Enables or disables Easy DKIM signing of email sent from an identity:

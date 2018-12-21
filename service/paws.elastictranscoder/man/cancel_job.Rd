@@ -4,10 +4,12 @@
 \alias{cancel_job}
 \title{The CancelJob operation cancels an unfinished job}
 \usage{
-cancel_job(Id)
+cancel_job(
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The identifier of the job that you want to cancel.
+\item{Id}{[required] The identifier of the job that you want to cancel.
 
 To get a list of the jobs (including their \code{jobId}) that have a status of \code{Submitted}, use the ListJobsByStatus API action.}
 }

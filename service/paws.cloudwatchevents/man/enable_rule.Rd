@@ -4,10 +4,12 @@
 \alias{enable_rule}
 \title{Enables the specified rule}
 \usage{
-enable_rule(Name)
+enable_rule(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the rule.}
+\item{Name}{[required] The name of the rule.}
 }
 \description{
 Enables the specified rule. If the rule does not exist, the operation fails.

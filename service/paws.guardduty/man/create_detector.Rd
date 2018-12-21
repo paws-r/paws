@@ -4,13 +4,16 @@
 \alias{create_detector}
 \title{Creates a single Amazon GuardDuty detector}
 \usage{
-create_detector(Enable, ClientToken = NULL,
-  FindingPublishingFrequency = NULL)
+create_detector(
+  ClientToken = "string",
+  Enable = TRUE|FALSE,
+  FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS"
+)
 }
 \arguments{
-\item{Enable}{A boolean value that specifies whether the detector is to be enabled.}
-
 \item{ClientToken}{The idempotency token for the create request.}
+
+\item{Enable}{[required] A boolean value that specifies whether the detector is to be enabled.}
 
 \item{FindingPublishingFrequency}{A enum value that specifies how frequently customer got Finding updates published.}
 }

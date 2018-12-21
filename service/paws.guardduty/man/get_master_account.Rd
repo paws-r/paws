@@ -4,10 +4,12 @@
 \alias{get_master_account}
 \title{Provides the details for the GuardDuty master account to the current GuardDuty member account}
 \usage{
-get_master_account(DetectorId)
+get_master_account(
+  DetectorId = "string"
+)
 }
 \arguments{
-\item{DetectorId}{The unique ID of the detector of the GuardDuty member account.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.}
 }
 \description{
 Provides the details for the GuardDuty master account to the current GuardDuty member account.

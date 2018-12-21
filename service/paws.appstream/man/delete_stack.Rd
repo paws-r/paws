@@ -4,10 +4,12 @@
 \alias{delete_stack}
 \title{Deletes the specified stack}
 \usage{
-delete_stack(Name)
+delete_stack(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the stack.}
+\item{Name}{[required] The name of the stack.}
 }
 \description{
 Deletes the specified stack. After the stack is deleted, the application streaming environment provided by the stack is no longer available to users. Also, any reservations made for application streaming sessions for the stack are released.

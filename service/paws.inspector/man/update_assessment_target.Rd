@@ -4,13 +4,16 @@
 \alias{update_assessment_target}
 \title{Updates the assessment target that is specified by the ARN of the assessment target}
 \usage{
-update_assessment_target(assessmentTargetArn, assessmentTargetName,
-  resourceGroupArn = NULL)
+update_assessment_target(
+  assessmentTargetArn = "string",
+  assessmentTargetName = "string",
+  resourceGroupArn = "string"
+)
 }
 \arguments{
-\item{assessmentTargetArn}{The ARN of the assessment target that you want to update.}
+\item{assessmentTargetArn}{[required] The ARN of the assessment target that you want to update.}
 
-\item{assessmentTargetName}{The name of the assessment target that you want to update.}
+\item{assessmentTargetName}{[required] The name of the assessment target that you want to update.}
 
 \item{resourceGroupArn}{The ARN of the resource group that is used to specify the new resource group to associate with the assessment target.}
 }

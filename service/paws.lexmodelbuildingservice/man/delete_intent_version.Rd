@@ -4,12 +4,15 @@
 \alias{delete_intent_version}
 \title{Deletes a specific version of an intent}
 \usage{
-delete_intent_version(name, version)
+delete_intent_version(
+  name = "string",
+  version = "string"
+)
 }
 \arguments{
-\item{name}{The name of the intent.}
+\item{name}{[required] The name of the intent.}
 
-\item{version}{The version of the intent to delete. You cannot delete the \code{$LATEST} version of the intent. To delete the \code{$LATEST} version, use the DeleteIntent operation.}
+\item{version}{[required] The version of the intent to delete. You cannot delete the \code{$LATEST} version of the intent. To delete the \code{$LATEST} version, use the DeleteIntent operation.}
 }
 \description{
 Deletes a specific version of an intent. To delete all versions of a intent, use the DeleteIntent operation.

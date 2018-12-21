@@ -4,10 +4,14 @@
 \alias{describe_assessment_runs}
 \title{Describes the assessment runs that are specified by the ARNs of the assessment runs}
 \usage{
-describe_assessment_runs(assessmentRunArns)
+describe_assessment_runs(
+  assessmentRunArns = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{assessmentRunArns}{The ARN that specifies the assessment run that you want to describe.}
+\item{assessmentRunArns}{[required] The ARN that specifies the assessment run that you want to describe.}
 }
 \description{
 Describes the assessment runs that are specified by the ARNs of the assessment runs.

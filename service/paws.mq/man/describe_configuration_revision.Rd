@@ -4,12 +4,15 @@
 \alias{describe_configuration_revision}
 \title{Returns the specified configuration revision for the specified configuration}
 \usage{
-describe_configuration_revision(ConfigurationRevision, ConfigurationId)
+describe_configuration_revision(
+  ConfigurationId = "string",
+  ConfigurationRevision = "string"
+)
 }
 \arguments{
-\item{ConfigurationRevision}{The revision of the configuration.}
+\item{ConfigurationId}{[required] The unique ID that Amazon MQ generates for the configuration.}
 
-\item{ConfigurationId}{The unique ID that Amazon MQ generates for the configuration.}
+\item{ConfigurationRevision}{[required] The revision of the configuration.}
 }
 \description{
 Returns the specified configuration revision for the specified configuration.

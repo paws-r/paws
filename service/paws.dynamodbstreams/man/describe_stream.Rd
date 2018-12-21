@@ -4,10 +4,14 @@
 \alias{describe_stream}
 \title{Returns information about a stream, including the current status of the stream, its Amazon Resource Name (ARN), the composition of its shards, and its corresponding DynamoDB table}
 \usage{
-describe_stream(StreamArn, Limit = NULL, ExclusiveStartShardId = NULL)
+describe_stream(
+  StreamArn = "string",
+  Limit = 123,
+  ExclusiveStartShardId = "string"
+)
 }
 \arguments{
-\item{StreamArn}{The Amazon Resource Name (ARN) for the stream.}
+\item{StreamArn}{[required] The Amazon Resource Name (ARN) for the stream.}
 
 \item{Limit}{The maximum number of shard objects to return. The upper limit is 100.}
 

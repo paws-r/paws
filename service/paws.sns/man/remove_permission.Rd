@@ -4,12 +4,15 @@
 \alias{remove_permission}
 \title{Removes a statement from a topic's access control policy}
 \usage{
-remove_permission(TopicArn, Label)
+remove_permission(
+  TopicArn = "string",
+  Label = "string"
+)
 }
 \arguments{
-\item{TopicArn}{The ARN of the topic whose access control policy you wish to modify.}
+\item{TopicArn}{[required] The ARN of the topic whose access control policy you wish to modify.}
 
-\item{Label}{The unique label of the statement you want to remove.}
+\item{Label}{[required] The unique label of the statement you want to remove.}
 }
 \description{
 Removes a statement from a topic's access control policy.

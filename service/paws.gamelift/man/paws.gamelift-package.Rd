@@ -6,20 +6,25 @@
 \alias{paws.gamelift-package}
 \title{paws.gamelift: Amazon GameLift}
 \description{
-Amazon GameLift is a managed service for developers
-who need a scalable, dedicated server solution for their multiplayer
-games. Use Amazon GameLift for these tasks: (1) set up computing
-resources and deploy your game servers, (2) run game sessions and get
-players into games, (3) automatically scale your resources to meet
-player demand and manage costs, and (4) track in-depth metrics on game
-server performance and player usage.
+Amazon GameLift is a managed service for developers who need
+a scalable, dedicated server solution for their multiplayer games. Use
+Amazon GameLift for these tasks: (1) set up computing resources and
+deploy your game servers, (2) run game sessions and get players into
+games, (3) automatically scale your resources to meet player demand
+and manage costs, and (4) track in-depth metrics on game server
+performance and player usage.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

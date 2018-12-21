@@ -4,10 +4,12 @@
 \alias{describe_dataset}
 \title{Retrieves information about a data set}
 \usage{
-describe_dataset(datasetName)
+describe_dataset(
+  datasetName = "string"
+)
 }
 \arguments{
-\item{datasetName}{The name of the data set whose information is retrieved.}
+\item{datasetName}{[required] The name of the data set whose information is retrieved.}
 }
 \description{
 Retrieves information about a data set.

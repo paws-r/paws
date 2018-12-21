@@ -4,10 +4,12 @@
 \alias{delete_file_system}
 \title{Deletes a file system, permanently severing access to its contents}
 \usage{
-delete_file_system(FileSystemId)
+delete_file_system(
+  FileSystemId = "string"
+)
 }
 \arguments{
-\item{FileSystemId}{ID of the file system you want to delete.}
+\item{FileSystemId}{[required] ID of the file system you want to delete.}
 }
 \description{
 Deletes a file system, permanently severing access to its contents. Upon return, the file system no longer exists and you can't access any contents of the deleted file system.

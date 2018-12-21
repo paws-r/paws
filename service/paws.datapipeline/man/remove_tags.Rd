@@ -4,12 +4,17 @@
 \alias{remove_tags}
 \title{Removes existing tags from the specified pipeline}
 \usage{
-remove_tags(pipelineId, tagKeys)
+remove_tags(
+  pipelineId = "string",
+  tagKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{pipelineId}{The ID of the pipeline.}
+\item{pipelineId}{[required] The ID of the pipeline.}
 
-\item{tagKeys}{The keys of the tags to remove.}
+\item{tagKeys}{[required] The keys of the tags to remove.}
 }
 \description{
 Removes existing tags from the specified pipeline.

@@ -4,16 +4,25 @@
 \alias{attach_object}
 \title{Attaches an existing object to another object}
 \usage{
-attach_object(DirectoryArn, ParentReference, ChildReference, LinkName)
+attach_object(
+  DirectoryArn = "string",
+  ParentReference = list(
+    Selector = "string"
+  ),
+  ChildReference = list(
+    Selector = "string"
+  ),
+  LinkName = "string"
+)
 }
 \arguments{
-\item{DirectoryArn}{Amazon Resource Name (ARN) that is associated with the Directory where both objects reside. For more information, see arns.}
+\item{DirectoryArn}{[required] Amazon Resource Name (ARN) that is associated with the Directory where both objects reside. For more information, see arns.}
 
-\item{ParentReference}{The parent object reference.}
+\item{ParentReference}{[required] The parent object reference.}
 
-\item{ChildReference}{The child object reference to be attached to the object.}
+\item{ChildReference}{[required] The child object reference to be attached to the object.}
 
-\item{LinkName}{The link name with which the child object is attached to the parent.}
+\item{LinkName}{[required] The link name with which the child object is attached to the parent.}
 }
 \description{
 Attaches an existing object to another object. An object can be accessed in two ways:

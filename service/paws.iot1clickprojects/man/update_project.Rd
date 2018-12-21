@@ -4,10 +4,26 @@
 \alias{update_project}
 \title{Updates a project associated with your AWS account and region}
 \usage{
-update_project(projectName, description = NULL, placementTemplate = NULL)
+update_project(
+  projectName = "string",
+  description = "string",
+  placementTemplate = list(
+    defaultAttributes = list(
+      "string"
+    ),
+    deviceTemplates = list(
+      list(
+        deviceType = "string",
+        callbackOverrides = list(
+          "string"
+        )
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{projectName}{The name of the project to be updated.}
+\item{projectName}{[required] The name of the project to be updated.}
 
 \item{description}{An optional user-defined description for the project.}
 

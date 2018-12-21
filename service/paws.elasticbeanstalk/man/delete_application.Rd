@@ -4,10 +4,13 @@
 \alias{delete_application}
 \title{Deletes the specified application along with all associated versions and configurations}
 \usage{
-delete_application(ApplicationName, TerminateEnvByForce = NULL)
+delete_application(
+  ApplicationName = "string",
+  TerminateEnvByForce = TRUE|FALSE
+)
 }
 \arguments{
-\item{ApplicationName}{The name of the application to delete.}
+\item{ApplicationName}{[required] The name of the application to delete.}
 
 \item{TerminateEnvByForce}{When set to true, running environments will be terminated before deleting the application.}
 }

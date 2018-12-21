@@ -4,12 +4,18 @@
 \alias{modify_volume_attribute}
 \title{Modifies a volume attribute}
 \usage{
-modify_volume_attribute(VolumeId, AutoEnableIO = NULL, DryRun = NULL)
+modify_volume_attribute(
+  AutoEnableIO = list(
+    Value = TRUE|FALSE
+  ),
+  VolumeId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{VolumeId}{The ID of the volume.}
-
 \item{AutoEnableIO}{Indicates whether the volume should be auto-enabled for I/O operations.}
+
+\item{VolumeId}{[required] The ID of the volume.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

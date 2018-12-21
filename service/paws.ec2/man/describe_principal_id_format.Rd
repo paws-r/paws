@@ -4,8 +4,14 @@
 \alias{describe_principal_id_format}
 \title{Describes the ID format settings for the root user and all IAM roles and IAM users that have explicitly specified a longer ID (17-character ID) preference}
 \usage{
-describe_principal_id_format(DryRun = NULL, Resources = NULL,
-  MaxResults = NULL, NextToken = NULL)
+describe_principal_id_format(
+  DryRun = TRUE|FALSE,
+  Resources = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}

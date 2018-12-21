@@ -4,7 +4,15 @@
 \alias{list_tag_options}
 \title{Lists the specified TagOptions or all TagOptions}
 \usage{
-list_tag_options(Filters = NULL, PageSize = NULL, PageToken = NULL)
+list_tag_options(
+  Filters = list(
+    Key = "string",
+    Value = "string",
+    Active = TRUE|FALSE
+  ),
+  PageSize = 123,
+  PageToken = "string"
+)
 }
 \arguments{
 \item{Filters}{The search filters. If no search filters are specified, the output includes all TagOptions.}

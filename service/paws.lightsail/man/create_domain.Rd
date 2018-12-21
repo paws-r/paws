@@ -4,15 +4,30 @@
 \alias{create_domain}
 \title{Creates a domain resource for the specified domain (e}
 \usage{
-create_domain(domainName)
+create_domain(
+  domainName = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{domainName}{The domain name to manage (e.g., \code{example.com}).
+\item{domainName}{[required] The domain name to manage (e.g., \code{example.com}).
 
 You cannot register a new domain name using Lightsail. You must register a domain name using Amazon Route 53 or another domain name registrar. If you have already registered your domain, you can enter its name in this parameter to manage the DNS records for that domain.}
+
+\item{tags}{The tag keys and optional values to add to the resource during create.
+
+To tag a resource after it has been created, see the \code{tag resource} operation.}
 }
 \description{
 Creates a domain resource for the specified domain (e.g., example.com).
+}
+\details{
+The \code{create domain} operation supports tag-based access control via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \examples{
 

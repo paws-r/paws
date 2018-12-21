@@ -4,10 +4,12 @@
 \alias{describe_db_snapshot_attributes}
 \title{Returns a list of DB snapshot attribute names and values for a manual DB snapshot}
 \usage{
-describe_db_snapshot_attributes(DBSnapshotIdentifier)
+describe_db_snapshot_attributes(
+  DBSnapshotIdentifier = "string"
+)
 }
 \arguments{
-\item{DBSnapshotIdentifier}{The identifier for the DB snapshot to describe the attributes for.}
+\item{DBSnapshotIdentifier}{[required] The identifier for the DB snapshot to describe the attributes for.}
 }
 \description{
 Returns a list of DB snapshot attribute names and values for a manual DB snapshot.

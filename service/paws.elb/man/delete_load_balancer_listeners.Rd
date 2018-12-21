@@ -4,12 +4,17 @@
 \alias{delete_load_balancer_listeners}
 \title{Deletes the specified listeners from the specified load balancer}
 \usage{
-delete_load_balancer_listeners(LoadBalancerName, LoadBalancerPorts)
+delete_load_balancer_listeners(
+  LoadBalancerName = "string",
+  LoadBalancerPorts = list(
+    123
+  )
+)
 }
 \arguments{
-\item{LoadBalancerName}{The name of the load balancer.}
+\item{LoadBalancerName}{[required] The name of the load balancer.}
 
-\item{LoadBalancerPorts}{The client port numbers of the listeners.}
+\item{LoadBalancerPorts}{[required] The client port numbers of the listeners.}
 }
 \description{
 Deletes the specified listeners from the specified load balancer.

@@ -4,10 +4,12 @@
 \alias{delete_project}
 \title{Delets a project in AWS Mobile Hub}
 \usage{
-delete_project(projectId)
+delete_project(
+  projectId = "string"
+)
 }
 \arguments{
-\item{projectId}{Unique project identifier.}
+\item{projectId}{[required] Unique project identifier.}
 }
 \description{
 Delets a project in AWS Mobile Hub.

@@ -6,8 +6,8 @@
 \alias{paws.cognitoidentity-package}
 \title{paws.cognitoidentity: Amazon Cognito Identity}
 \description{
-Amazon Cognito is a web service that delivers
-scoped temporary credentials to mobile devices and other untrusted
+Amazon Cognito is a web service that delivers scoped
+temporary credentials to mobile devices and other untrusted
 environments. Amazon Cognito uniquely identifies a device and supplies
 the user with a consistent identity over the lifetime of an
 application.
@@ -17,7 +17,12 @@ application.
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

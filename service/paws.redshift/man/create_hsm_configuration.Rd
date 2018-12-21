@@ -4,22 +4,33 @@
 \alias{create_hsm_configuration}
 \title{Creates an HSM configuration that contains the information required by an Amazon Redshift cluster to store and use database encryption keys in a Hardware Security Module (HSM)}
 \usage{
-create_hsm_configuration(HsmConfigurationIdentifier, Description, HsmIpAddress,
-  HsmPartitionName, HsmPartitionPassword, HsmServerPublicCertificate,
-  Tags = NULL)
+create_hsm_configuration(
+  HsmConfigurationIdentifier = "string",
+  Description = "string",
+  HsmIpAddress = "string",
+  HsmPartitionName = "string",
+  HsmPartitionPassword = "string",
+  HsmServerPublicCertificate = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{HsmConfigurationIdentifier}{The identifier to be assigned to the new Amazon Redshift HSM configuration.}
+\item{HsmConfigurationIdentifier}{[required] The identifier to be assigned to the new Amazon Redshift HSM configuration.}
 
-\item{Description}{A text description of the HSM configuration to be created.}
+\item{Description}{[required] A text description of the HSM configuration to be created.}
 
-\item{HsmIpAddress}{The IP address that the Amazon Redshift cluster must use to access the HSM.}
+\item{HsmIpAddress}{[required] The IP address that the Amazon Redshift cluster must use to access the HSM.}
 
-\item{HsmPartitionName}{The name of the partition in the HSM where the Amazon Redshift clusters will store their database encryption keys.}
+\item{HsmPartitionName}{[required] The name of the partition in the HSM where the Amazon Redshift clusters will store their database encryption keys.}
 
-\item{HsmPartitionPassword}{The password required to access the HSM partition.}
+\item{HsmPartitionPassword}{[required] The password required to access the HSM partition.}
 
-\item{HsmServerPublicCertificate}{The HSMs public certificate file. When using Cloud HSM, the file name is server.pem.}
+\item{HsmServerPublicCertificate}{[required] The HSMs public certificate file. When using Cloud HSM, the file name is server.pem.}
 
 \item{Tags}{A list of tag instances.}
 }

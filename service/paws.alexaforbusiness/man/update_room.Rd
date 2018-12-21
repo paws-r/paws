@@ -4,8 +4,13 @@
 \alias{update_room}
 \title{Updates room details by room ARN}
 \usage{
-update_room(RoomArn = NULL, RoomName = NULL, Description = NULL,
-  ProviderCalendarId = NULL, ProfileArn = NULL)
+update_room(
+  RoomArn = "string",
+  RoomName = "string",
+  Description = "string",
+  ProviderCalendarId = "string",
+  ProfileArn = "string"
+)
 }
 \arguments{
 \item{RoomArn}{The ARN of the room to update.}

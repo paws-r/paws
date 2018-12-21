@@ -4,10 +4,14 @@
 \alias{list_data_sources}
 \title{Lists the data sources for a given API}
 \usage{
-list_data_sources(apiId, nextToken = NULL, maxResults = NULL)
+list_data_sources(
+  apiId = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{apiId}{The API ID.}
+\item{apiId}{[required] The API ID.}
 
 \item{nextToken}{An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.}
 

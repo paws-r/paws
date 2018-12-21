@@ -6,8 +6,8 @@
 \alias{paws.sns-package}
 \title{paws.sns: Amazon Simple Notification Service}
 \description{
-Amazon Simple Notification Service (Amazon SNS) is
-a web service that enables you to build distributed web-enabled
+Amazon Simple Notification Service (Amazon SNS) is a web
+service that enables you to build distributed web-enabled
 applications. Applications can use Amazon SNS to easily push real-time
 notification messages to interested subscribers over multiple delivery
 protocols. For more information about this product see
@@ -21,7 +21,12 @@ Guide](http://docs.aws.amazon.com/sns/latest/dg/).
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

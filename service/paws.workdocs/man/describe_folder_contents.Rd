@@ -4,14 +4,21 @@
 \alias{describe_folder_contents}
 \title{Describes the contents of the specified folder, including its documents and subfolders}
 \usage{
-describe_folder_contents(FolderId, AuthenticationToken = NULL, Sort = NULL,
-  Order = NULL, Limit = NULL, Marker = NULL, Type = NULL,
-  Include = NULL)
+describe_folder_contents(
+  AuthenticationToken = "string",
+  FolderId = "string",
+  Sort = "DATE"|"NAME",
+  Order = "ASCENDING"|"DESCENDING",
+  Limit = 123,
+  Marker = "string",
+  Type = "ALL"|"DOCUMENT"|"FOLDER",
+  Include = "string"
+)
 }
 \arguments{
-\item{FolderId}{The ID of the folder.}
-
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
+
+\item{FolderId}{[required] The ID of the folder.}
 
 \item{Sort}{The sorting criteria.}
 

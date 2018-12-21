@@ -4,12 +4,15 @@
 \alias{update_alias}
 \title{Associates an existing alias with a different customer master key (CMK)}
 \usage{
-update_alias(AliasName, TargetKeyId)
+update_alias(
+  AliasName = "string",
+  TargetKeyId = "string"
+)
 }
 \arguments{
-\item{AliasName}{String that contains the name of the alias to be modified. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/aws" are reserved.}
+\item{AliasName}{[required] String that contains the name of the alias to be modified. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/aws" are reserved.}
 
-\item{TargetKeyId}{Unique identifier of the customer master key to be mapped to the alias.
+\item{TargetKeyId}{[required] Unique identifier of the customer master key to be mapped to the alias.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 

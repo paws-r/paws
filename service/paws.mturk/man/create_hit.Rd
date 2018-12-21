@@ -4,29 +4,98 @@
 \alias{create_hit}
 \title{The \code{CreateHIT} operation creates a new Human Intelligence Task (HIT)}
 \usage{
-create_hit(LifetimeInSeconds, AssignmentDurationInSeconds, Reward, Title,
-  Description, MaxAssignments = NULL, AutoApprovalDelayInSeconds = NULL,
-  Keywords = NULL, Question = NULL, RequesterAnnotation = NULL,
-  QualificationRequirements = NULL, UniqueRequestToken = NULL,
-  AssignmentReviewPolicy = NULL, HITReviewPolicy = NULL,
-  HITLayoutId = NULL, HITLayoutParameters = NULL)
+create_hit(
+  MaxAssignments = 123,
+  AutoApprovalDelayInSeconds = 123,
+  LifetimeInSeconds = 123,
+  AssignmentDurationInSeconds = 123,
+  Reward = "string",
+  Title = "string",
+  Keywords = "string",
+  Description = "string",
+  Question = "string",
+  RequesterAnnotation = "string",
+  QualificationRequirements = list(
+    list(
+      QualificationTypeId = "string",
+      Comparator = "LessThan"|"LessThanOrEqualTo"|"GreaterThan"|"GreaterThanOrEqualTo"|"EqualTo"|"NotEqualTo"|"Exists"|"DoesNotExist"|"In"|"NotIn",
+      IntegerValues = list(
+        123
+      ),
+      LocaleValues = list(
+        list(
+          Country = "string",
+          Subdivision = "string"
+        )
+      ),
+      RequiredToPreview = TRUE|FALSE,
+      ActionsGuarded = "Accept"|"PreviewAndAccept"|"DiscoverPreviewAndAccept"
+    )
+  ),
+  UniqueRequestToken = "string",
+  AssignmentReviewPolicy = list(
+    PolicyName = "string",
+    Parameters = list(
+      list(
+        Key = "string",
+        Values = list(
+          "string"
+        ),
+        MapEntries = list(
+          list(
+            Key = "string",
+            Values = list(
+              "string"
+            )
+          )
+        )
+      )
+    )
+  ),
+  HITReviewPolicy = list(
+    PolicyName = "string",
+    Parameters = list(
+      list(
+        Key = "string",
+        Values = list(
+          "string"
+        ),
+        MapEntries = list(
+          list(
+            Key = "string",
+            Values = list(
+              "string"
+            )
+          )
+        )
+      )
+    )
+  ),
+  HITLayoutId = "string",
+  HITLayoutParameters = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{LifetimeInSeconds}{An amount of time, in seconds, after which the HIT is no longer available for users to accept. After the lifetime of the HIT elapses, the HIT no longer appears in HIT searches, even if not all of the assignments for the HIT have been accepted.}
-
-\item{AssignmentDurationInSeconds}{The amount of time, in seconds, that a Worker has to complete the HIT after accepting it. If a Worker does not complete the assignment within the specified duration, the assignment is considered abandoned. If the HIT is still active (that is, its lifetime has not elapsed), the assignment becomes available for other users to find and accept.}
-
-\item{Reward}{The amount of money the Requester will pay a Worker for successfully completing the HIT.}
-
-\item{Title}{The title of the HIT. A title should be short and descriptive about the kind of task the HIT contains. On the Amazon Mechanical Turk web site, the HIT title appears in search results, and everywhere the HIT is mentioned.}
-
-\item{Description}{A general description of the HIT. A description includes detailed information about the kind of task the HIT contains. On the Amazon Mechanical Turk web site, the HIT description appears in the expanded view of search results, and in the HIT and assignment screens. A good description gives the user enough information to evaluate the HIT before accepting it.}
-
 \item{MaxAssignments}{The number of times the HIT can be accepted and completed before the HIT becomes unavailable.}
 
 \item{AutoApprovalDelayInSeconds}{The number of seconds after an assignment for the HIT has been submitted, after which the assignment is considered Approved automatically unless the Requester explicitly rejects it.}
 
+\item{LifetimeInSeconds}{[required] An amount of time, in seconds, after which the HIT is no longer available for users to accept. After the lifetime of the HIT elapses, the HIT no longer appears in HIT searches, even if not all of the assignments for the HIT have been accepted.}
+
+\item{AssignmentDurationInSeconds}{[required] The amount of time, in seconds, that a Worker has to complete the HIT after accepting it. If a Worker does not complete the assignment within the specified duration, the assignment is considered abandoned. If the HIT is still active (that is, its lifetime has not elapsed), the assignment becomes available for other users to find and accept.}
+
+\item{Reward}{[required] The amount of money the Requester will pay a Worker for successfully completing the HIT.}
+
+\item{Title}{[required] The title of the HIT. A title should be short and descriptive about the kind of task the HIT contains. On the Amazon Mechanical Turk web site, the HIT title appears in search results, and everywhere the HIT is mentioned.}
+
 \item{Keywords}{One or more words or phrases that describe the HIT, separated by commas. These words are used in searches to find HITs.}
+
+\item{Description}{[required] A general description of the HIT. A description includes detailed information about the kind of task the HIT contains. On the Amazon Mechanical Turk web site, the HIT description appears in the expanded view of search results, and in the HIT and assignment screens. A good description gives the user enough information to evaluate the HIT before accepting it.}
 
 \item{Question}{The data the person completing the HIT uses to produce the results.
 

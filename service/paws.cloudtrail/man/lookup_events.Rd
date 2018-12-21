@@ -4,8 +4,18 @@
 \alias{lookup_events}
 \title{Looks up \link{management events}(https://docs}
 \usage{
-lookup_events(LookupAttributes = NULL, StartTime = NULL, EndTime = NULL,
-  MaxResults = NULL, NextToken = NULL)
+lookup_events(
+  LookupAttributes = list(
+    list(
+      AttributeKey = "EventId"|"EventName"|"ReadOnly"|"Username"|"ResourceType"|"ResourceName"|"EventSource"|"AccessKeyId",
+      AttributeValue = "string"
+    )
+  ),
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{LookupAttributes}{Contains a list of lookup attributes. Currently the list can contain only one item.}

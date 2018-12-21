@@ -4,7 +4,9 @@
 \alias{get_sampling_statistic_summaries}
 \title{Retrieves information about recent sampling results for all sampling rules}
 \usage{
-get_sampling_statistic_summaries(NextToken = NULL)
+get_sampling_statistic_summaries(
+  NextToken = "string"
+)
 }
 \arguments{
 \item{NextToken}{Pagination token. Not used.}

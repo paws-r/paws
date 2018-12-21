@@ -4,12 +4,17 @@
 \alias{tag_resource}
 \title{Apply cost-allocation tags to a specified stack or layer in AWS OpsWorks Stacks}
 \usage{
-tag_resource(ResourceArn, Tags)
+tag_resource(
+  ResourceArn = "string",
+  Tags = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ResourceArn}{The stack or layer's Amazon Resource Number (ARN).}
+\item{ResourceArn}{[required] The stack or layer's Amazon Resource Number (ARN).}
 
-\item{Tags}{A map that contains tag keys and tag values that are attached to a stack or layer.
+\item{Tags}{[required] A map that contains tag keys and tag values that are attached to a stack or layer.
 \itemize{
 \item The key cannot be empty.
 \item The key can be a maximum of 127 characters, and can contain only Unicode letters, numbers, or separators, or the following special characters: \code{+ - = . _ : /}

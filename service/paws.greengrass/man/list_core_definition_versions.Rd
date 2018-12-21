@@ -4,11 +4,14 @@
 \alias{list_core_definition_versions}
 \title{Lists the versions of a core definition}
 \usage{
-list_core_definition_versions(CoreDefinitionId, MaxResults = NULL,
-  NextToken = NULL)
+list_core_definition_versions(
+  CoreDefinitionId = "string",
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
 \arguments{
-\item{CoreDefinitionId}{The ID of the core definition.}
+\item{CoreDefinitionId}{[required] The ID of the core definition.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 

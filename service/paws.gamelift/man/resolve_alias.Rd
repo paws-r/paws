@@ -4,10 +4,12 @@
 \alias{resolve_alias}
 \title{Retrieves the fleet ID that a specified alias is currently pointing to}
 \usage{
-resolve_alias(AliasId)
+resolve_alias(
+  AliasId = "string"
+)
 }
 \arguments{
-\item{AliasId}{Unique identifier for the alias you want to resolve.}
+\item{AliasId}{[required] Unique identifier for the alias you want to resolve.}
 }
 \description{
 Retrieves the fleet ID that a specified alias is currently pointing to.

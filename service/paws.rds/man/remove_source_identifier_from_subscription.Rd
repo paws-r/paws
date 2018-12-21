@@ -4,12 +4,15 @@
 \alias{remove_source_identifier_from_subscription}
 \title{Removes a source identifier from an existing RDS event notification subscription}
 \usage{
-remove_source_identifier_from_subscription(SubscriptionName, SourceIdentifier)
+remove_source_identifier_from_subscription(
+  SubscriptionName = "string",
+  SourceIdentifier = "string"
+)
 }
 \arguments{
-\item{SubscriptionName}{The name of the RDS event notification subscription you want to remove a source identifier from.}
+\item{SubscriptionName}{[required] The name of the RDS event notification subscription you want to remove a source identifier from.}
 
-\item{SourceIdentifier}{The source identifier to be removed from the subscription, such as the \strong{DB instance identifier} for a DB instance or the name of a security group.}
+\item{SourceIdentifier}{[required] The source identifier to be removed from the subscription, such as the \strong{DB instance identifier} for a DB instance or the name of a security group.}
 }
 \description{
 Removes a source identifier from an existing RDS event notification subscription.

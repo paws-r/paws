@@ -4,15 +4,32 @@
 \alias{query_objects}
 \title{Queries the specified pipeline for the names of objects that match the specified set of conditions}
 \usage{
-query_objects(pipelineId, sphere, query = NULL, marker = NULL,
-  limit = NULL)
+query_objects(
+  pipelineId = "string",
+  query = list(
+    selectors = list(
+      list(
+        fieldName = "string",
+        operator = list(
+          type = "EQ"|"REF_EQ"|"LE"|"GE"|"BETWEEN",
+          values = list(
+            "string"
+          )
+        )
+      )
+    )
+  ),
+  sphere = "string",
+  marker = "string",
+  limit = 123
+)
 }
 \arguments{
-\item{pipelineId}{The ID of the pipeline.}
-
-\item{sphere}{Indicates whether the query applies to components or instances. The possible values are: \code{COMPONENT}, \code{INSTANCE}, and \code{ATTEMPT}.}
+\item{pipelineId}{[required] The ID of the pipeline.}
 
 \item{query}{The query that defines the objects to be returned. The \code{Query} object can contain a maximum of ten selectors. The conditions in the query are limited to top-level String fields in the object. These filters can be applied to components, instances, and attempts.}
+
+\item{sphere}{[required] Indicates whether the query applies to components or instances. The possible values are: \code{COMPONENT}, \code{INSTANCE}, and \code{ATTEMPT}.}
 
 \item{marker}{The starting point for the results to be returned. For the first call, this value should be empty. As long as there are more results, continue to call \code{QueryObjects} with the marker value from the previous call to retrieve the next set of results.}
 

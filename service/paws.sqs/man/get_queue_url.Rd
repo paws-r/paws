@@ -4,10 +4,13 @@
 \alias{get_queue_url}
 \title{Returns the URL of an existing Amazon SQS queue}
 \usage{
-get_queue_url(QueueName, QueueOwnerAWSAccountId = NULL)
+get_queue_url(
+  QueueName = "string",
+  QueueOwnerAWSAccountId = "string"
+)
 }
 \arguments{
-\item{QueueName}{The name of the queue whose URL must be fetched. Maximum 80 characters. Valid values: alphanumeric characters, hyphens (\code{-}), and underscores (\code{_}).
+\item{QueueName}{[required] The name of the queue whose URL must be fetched. Maximum 80 characters. Valid values: alphanumeric characters, hyphens (\code{-}), and underscores (\code{_}).
 
 Queue URLs and names are case-sensitive.}
 

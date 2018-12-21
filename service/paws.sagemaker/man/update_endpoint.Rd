@@ -4,12 +4,15 @@
 \alias{update_endpoint}
 \title{Deploys the new \code{EndpointConfig} specified in the request, switches to using newly created endpoint, and then deletes resources provisioned for the endpoint using the previous \code{EndpointConfig} (there is no availability loss)}
 \usage{
-update_endpoint(EndpointName, EndpointConfigName)
+update_endpoint(
+  EndpointName = "string",
+  EndpointConfigName = "string"
+)
 }
 \arguments{
-\item{EndpointName}{The name of the endpoint whose configuration you want to update.}
+\item{EndpointName}{[required] The name of the endpoint whose configuration you want to update.}
 
-\item{EndpointConfigName}{The name of the new endpoint configuration.}
+\item{EndpointConfigName}{[required] The name of the new endpoint configuration.}
 }
 \description{
 Deploys the new \code{EndpointConfig} specified in the request, switches to using newly created endpoint, and then deletes resources provisioned for the endpoint using the previous \code{EndpointConfig} (there is no availability loss).

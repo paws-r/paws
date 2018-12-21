@@ -4,15 +4,19 @@
 \alias{execute_provisioned_product_service_action}
 \title{Executes a self-service action against a provisioned product}
 \usage{
-execute_provisioned_product_service_action(ProvisionedProductId,
-  ServiceActionId, ExecuteToken, AcceptLanguage = NULL)
+execute_provisioned_product_service_action(
+  ProvisionedProductId = "string",
+  ServiceActionId = "string",
+  ExecuteToken = "string",
+  AcceptLanguage = "string"
+)
 }
 \arguments{
-\item{ProvisionedProductId}{The identifier of the provisioned product.}
+\item{ProvisionedProductId}{[required] The identifier of the provisioned product.}
 
-\item{ServiceActionId}{The self-service action identifier. For example, \code{act-fs7abcd89wxyz}.}
+\item{ServiceActionId}{[required] The self-service action identifier. For example, \code{act-fs7abcd89wxyz}.}
 
-\item{ExecuteToken}{An idempotency token that uniquely identifies the execute request.}
+\item{ExecuteToken}{[required] An idempotency token that uniquely identifies the execute request.}
 
 \item{AcceptLanguage}{The language code.
 \itemize{

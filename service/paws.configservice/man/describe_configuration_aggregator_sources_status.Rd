@@ -4,11 +4,17 @@
 \alias{describe_configuration_aggregator_sources_status}
 \title{Returns status information for sources within an aggregator}
 \usage{
-describe_configuration_aggregator_sources_status(ConfigurationAggregatorName,
-  UpdateStatus = NULL, NextToken = NULL, Limit = NULL)
+describe_configuration_aggregator_sources_status(
+  ConfigurationAggregatorName = "string",
+  UpdateStatus = list(
+    "FAILED"|"SUCCEEDED"|"OUTDATED"
+  ),
+  NextToken = "string",
+  Limit = 123
+)
 }
 \arguments{
-\item{ConfigurationAggregatorName}{The name of the configuration aggregator.}
+\item{ConfigurationAggregatorName}{[required] The name of the configuration aggregator.}
 
 \item{UpdateStatus}{Filters the status type.
 \itemize{

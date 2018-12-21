@@ -4,12 +4,15 @@
 \alias{delete_suggester}
 \title{Deletes a suggester}
 \usage{
-delete_suggester(DomainName, SuggesterName)
+delete_suggester(
+  DomainName = "string",
+  SuggesterName = "string"
+)
 }
 \arguments{
-\item{DomainName}{}
+\item{DomainName}{[required]}
 
-\item{SuggesterName}{Specifies the name of the suggester you want to delete.}
+\item{SuggesterName}{[required] Specifies the name of the suggester you want to delete.}
 }
 \description{
 Deletes a suggester. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html}{Getting Search Suggestions} in the \emph{Amazon CloudSearch Developer Guide}.

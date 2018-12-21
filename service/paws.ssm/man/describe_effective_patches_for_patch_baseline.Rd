@@ -4,11 +4,14 @@
 \alias{describe_effective_patches_for_patch_baseline}
 \title{Retrieves the current effective patches (the patch and the approval state) for the specified patch baseline}
 \usage{
-describe_effective_patches_for_patch_baseline(BaselineId, MaxResults = NULL,
-  NextToken = NULL)
+describe_effective_patches_for_patch_baseline(
+  BaselineId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{BaselineId}{The ID of the patch baseline to retrieve the effective patches for.}
+\item{BaselineId}{[required] The ID of the patch baseline to retrieve the effective patches for.}
 
 \item{MaxResults}{The maximum number of patches to return (per page).}
 

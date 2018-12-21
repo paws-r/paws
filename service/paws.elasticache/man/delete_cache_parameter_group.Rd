@@ -4,10 +4,12 @@
 \alias{delete_cache_parameter_group}
 \title{Deletes the specified cache parameter group}
 \usage{
-delete_cache_parameter_group(CacheParameterGroupName)
+delete_cache_parameter_group(
+  CacheParameterGroupName = "string"
+)
 }
 \arguments{
-\item{CacheParameterGroupName}{The name of the cache parameter group to delete.
+\item{CacheParameterGroupName}{[required] The name of the cache parameter group to delete.
 
 The specified cache security group must not be associated with any clusters.}
 }

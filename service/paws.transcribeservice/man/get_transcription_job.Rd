@@ -4,10 +4,12 @@
 \alias{get_transcription_job}
 \title{Returns information about a transcription job}
 \usage{
-get_transcription_job(TranscriptionJobName)
+get_transcription_job(
+  TranscriptionJobName = "string"
+)
 }
 \arguments{
-\item{TranscriptionJobName}{The name of the job.}
+\item{TranscriptionJobName}{[required] The name of the job.}
 }
 \description{
 Returns information about a transcription job. To see the status of the job, check the \code{TranscriptionJobStatus} field. If the status is \code{COMPLETED}, the job is finished and you can find the results at the location specified in the \code{TranscriptionFileUri} field.

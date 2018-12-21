@@ -4,10 +4,12 @@
 \alias{create_domain}
 \title{The \code{CreateDomain} operation creates a new domain}
 \usage{
-create_domain(DomainName)
+create_domain(
+  DomainName = "string"
+)
 }
 \arguments{
-\item{DomainName}{The name of the domain to create. The name can range between 3 and 255 characters and can contain the following characters: a-z, A-Z, 0-9, '_', '-', and '.'.}
+\item{DomainName}{[required] The name of the domain to create. The name can range between 3 and 255 characters and can contain the following characters: a-z, A-Z, 0-9, '_', '-', and '.'.}
 }
 \description{
 The \code{CreateDomain} operation creates a new domain. The domain name should be unique among the domains associated with the Access Key ID provided in the request. The \code{CreateDomain} operation may take 10 or more seconds to complete.

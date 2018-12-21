@@ -4,17 +4,22 @@
 \alias{create_job}
 \title{This operation initiates the process of scheduling an upload or download of your data}
 \usage{
-create_job(JobType, Manifest, ValidateOnly, ManifestAddendum = NULL,
-  APIVersion = NULL)
+create_job(
+  JobType = "Import"|"Export",
+  Manifest = "string",
+  ManifestAddendum = "string",
+  ValidateOnly = TRUE|FALSE,
+  APIVersion = "string"
+)
 }
 \arguments{
-\item{JobType}{}
+\item{JobType}{[required]}
 
-\item{Manifest}{}
-
-\item{ValidateOnly}{}
+\item{Manifest}{[required]}
 
 \item{ManifestAddendum}{}
+
+\item{ValidateOnly}{[required]}
 
 \item{APIVersion}{}
 }

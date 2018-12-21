@@ -4,13 +4,17 @@
 \alias{describe_job_execution}
 \title{Gets details of a job execution}
 \usage{
-describe_job_execution(jobId, thingName, includeJobDocument = NULL,
-  executionNumber = NULL)
+describe_job_execution(
+  jobId = "string",
+  thingName = "string",
+  includeJobDocument = TRUE|FALSE,
+  executionNumber = 123
+)
 }
 \arguments{
-\item{jobId}{The unique identifier assigned to this job when it was created.}
+\item{jobId}{[required] The unique identifier assigned to this job when it was created.}
 
-\item{thingName}{The thing name associated with the device the job execution is running on.}
+\item{thingName}{[required] The thing name associated with the device the job execution is running on.}
 
 \item{includeJobDocument}{Optional. When set to true, the response contains the job document. The default is false.}
 

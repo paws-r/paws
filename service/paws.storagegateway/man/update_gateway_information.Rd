@@ -4,11 +4,14 @@
 \alias{update_gateway_information}
 \title{Updates a gateway's metadata, which includes the gateway's name and time zone}
 \usage{
-update_gateway_information(GatewayARN, GatewayName = NULL,
-  GatewayTimezone = NULL)
+update_gateway_information(
+  GatewayARN = "string",
+  GatewayName = "string",
+  GatewayTimezone = "string"
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 
 \item{GatewayName}{}
 

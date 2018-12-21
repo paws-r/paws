@@ -4,10 +4,14 @@
 \alias{describe_load_based_auto_scaling}
 \title{Describes load-based auto scaling configurations for specified layers}
 \usage{
-describe_load_based_auto_scaling(LayerIds)
+describe_load_based_auto_scaling(
+  LayerIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{LayerIds}{An array of layer IDs.}
+\item{LayerIds}{[required] An array of layer IDs.}
 }
 \description{
 Describes load-based auto scaling configurations for specified layers.

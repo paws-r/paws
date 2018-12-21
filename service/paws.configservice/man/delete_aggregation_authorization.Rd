@@ -4,12 +4,15 @@
 \alias{delete_aggregation_authorization}
 \title{Deletes the authorization granted to the specified configuration aggregator account in a specified region}
 \usage{
-delete_aggregation_authorization(AuthorizedAccountId, AuthorizedAwsRegion)
+delete_aggregation_authorization(
+  AuthorizedAccountId = "string",
+  AuthorizedAwsRegion = "string"
+)
 }
 \arguments{
-\item{AuthorizedAccountId}{The 12-digit account ID of the account authorized to aggregate data.}
+\item{AuthorizedAccountId}{[required] The 12-digit account ID of the account authorized to aggregate data.}
 
-\item{AuthorizedAwsRegion}{The region authorized to collect aggregated data.}
+\item{AuthorizedAwsRegion}{[required] The region authorized to collect aggregated data.}
 }
 \description{
 Deletes the authorization granted to the specified configuration aggregator account in a specified region.

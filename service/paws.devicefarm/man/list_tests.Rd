@@ -4,10 +4,13 @@
 \alias{list_tests}
 \title{Gets information about tests in a given test suite}
 \usage{
-list_tests(arn, nextToken = NULL)
+list_tests(
+  arn = "string",
+  nextToken = "string"
+)
 }
 \arguments{
-\item{arn}{The test suite's Amazon Resource Name (ARN).}
+\item{arn}{[required] The test suite's Amazon Resource Name (ARN).}
 
 \item{nextToken}{An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.}
 }

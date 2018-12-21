@@ -4,13 +4,16 @@
 \alias{create_channel}
 \title{Creates a new Channel}
 \usage{
-create_channel(Id, Description = NULL)
+create_channel(
+  Description = "string",
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The ID of the Channel. The ID must be unique within the region and it
-cannot be changed after a Channel is created.}
-
 \item{Description}{A short text description of the Channel.}
+
+\item{Id}{[required] The ID of the Channel. The ID must be unique within the region and it
+cannot be changed after a Channel is created.}
 }
 \description{
 Creates a new Channel.

@@ -4,10 +4,13 @@
 \alias{delete_snapshot}
 \title{Deletes the specified snapshot}
 \usage{
-delete_snapshot(SnapshotId, DryRun = NULL)
+delete_snapshot(
+  SnapshotId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{SnapshotId}{The ID of the EBS snapshot.}
+\item{SnapshotId}{[required] The ID of the EBS snapshot.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

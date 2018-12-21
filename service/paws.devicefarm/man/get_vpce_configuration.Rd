@@ -4,10 +4,12 @@
 \alias{get_vpce_configuration}
 \title{Returns information about the configuration settings for your Amazon Virtual Private Cloud (VPC) endpoint}
 \usage{
-get_vpce_configuration(arn)
+get_vpce_configuration(
+  arn = "string"
+)
 }
 \arguments{
-\item{arn}{The Amazon Resource Name (ARN) of the VPC endpoint configuration you want to describe.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of the VPC endpoint configuration you want to describe.}
 }
 \description{
 Returns information about the configuration settings for your Amazon Virtual Private Cloud (VPC) endpoint.

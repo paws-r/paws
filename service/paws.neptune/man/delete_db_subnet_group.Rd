@@ -4,10 +4,12 @@
 \alias{delete_db_subnet_group}
 \title{Deletes a DB subnet group}
 \usage{
-delete_db_subnet_group(DBSubnetGroupName)
+delete_db_subnet_group(
+  DBSubnetGroupName = "string"
+)
 }
 \arguments{
-\item{DBSubnetGroupName}{The name of the database subnet group to delete.
+\item{DBSubnetGroupName}{[required] The name of the database subnet group to delete.
 
 You can't delete the default subnet group.
 

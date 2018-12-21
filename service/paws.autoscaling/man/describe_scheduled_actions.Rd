@@ -4,9 +4,16 @@
 \alias{describe_scheduled_actions}
 \title{Describes the actions scheduled for your Auto Scaling group that haven't run}
 \usage{
-describe_scheduled_actions(AutoScalingGroupName = NULL,
-  ScheduledActionNames = NULL, StartTime = NULL, EndTime = NULL,
-  NextToken = NULL, MaxRecords = NULL)
+describe_scheduled_actions(
+  AutoScalingGroupName = "string",
+  ScheduledActionNames = list(
+    "string"
+  ),
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  NextToken = "string",
+  MaxRecords = 123
+)
 }
 \arguments{
 \item{AutoScalingGroupName}{The name of the Auto Scaling group.}

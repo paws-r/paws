@@ -4,10 +4,12 @@
 \alias{delete_document}
 \title{Deletes the Systems Manager document and all instance associations to the document}
 \usage{
-delete_document(Name)
+delete_document(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the document.}
+\item{Name}{[required] The name of the document.}
 }
 \description{
 Deletes the Systems Manager document and all instance associations to the document.

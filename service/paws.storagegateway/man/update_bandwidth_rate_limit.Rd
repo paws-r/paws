@@ -4,12 +4,14 @@
 \alias{update_bandwidth_rate_limit}
 \title{Updates the bandwidth rate limits of a gateway}
 \usage{
-update_bandwidth_rate_limit(GatewayARN,
-  AverageUploadRateLimitInBitsPerSec = NULL,
-  AverageDownloadRateLimitInBitsPerSec = NULL)
+update_bandwidth_rate_limit(
+  GatewayARN = "string",
+  AverageUploadRateLimitInBitsPerSec = 123,
+  AverageDownloadRateLimitInBitsPerSec = 123
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 
 \item{AverageUploadRateLimitInBitsPerSec}{The average upload bandwidth rate limit in bits per second.}
 

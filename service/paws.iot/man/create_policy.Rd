@@ -4,12 +4,15 @@
 \alias{create_policy}
 \title{Creates an AWS IoT policy}
 \usage{
-create_policy(policyName, policyDocument)
+create_policy(
+  policyName = "string",
+  policyDocument = "string"
+)
 }
 \arguments{
-\item{policyName}{The policy name.}
+\item{policyName}{[required] The policy name.}
 
-\item{policyDocument}{The JSON document that describes the policy. \strong{policyDocument} must have a minimum length of 1, with a maximum length of 2048, excluding whitespace.}
+\item{policyDocument}{[required] The JSON document that describes the policy. \strong{policyDocument} must have a minimum length of 1, with a maximum length of 2048, excluding whitespace.}
 }
 \description{
 Creates an AWS IoT policy.

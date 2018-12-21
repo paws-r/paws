@@ -4,12 +4,33 @@
 \alias{create_load_balancer}
 \title{Creates an Application Load Balancer or a Network Load Balancer}
 \usage{
-create_load_balancer(Name, Subnets = NULL, SubnetMappings = NULL,
-  SecurityGroups = NULL, Scheme = NULL, Tags = NULL, Type = NULL,
-  IpAddressType = NULL)
+create_load_balancer(
+  Name = "string",
+  Subnets = list(
+    "string"
+  ),
+  SubnetMappings = list(
+    list(
+      SubnetId = "string",
+      AllocationId = "string"
+    )
+  ),
+  SecurityGroups = list(
+    "string"
+  ),
+  Scheme = "internet-facing"|"internal",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  Type = "application"|"network",
+  IpAddressType = "ipv4"|"dualstack"
+)
 }
 \arguments{
-\item{Name}{The name of the load balancer.
+\item{Name}{[required] The name of the load balancer.
 
 This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, must not begin or end with a hyphen, and must not begin with "internal-".}
 

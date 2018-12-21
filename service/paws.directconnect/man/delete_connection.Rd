@@ -4,10 +4,12 @@
 \alias{delete_connection}
 \title{Deletes the specified connection}
 \usage{
-delete_connection(connectionId)
+delete_connection(
+  connectionId = "string"
+)
 }
 \arguments{
-\item{connectionId}{The ID of the connection.}
+\item{connectionId}{[required] The ID of the connection.}
 }
 \description{
 Deletes the specified connection.

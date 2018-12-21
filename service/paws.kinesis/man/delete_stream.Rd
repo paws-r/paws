@@ -4,10 +4,13 @@
 \alias{delete_stream}
 \title{Deletes a Kinesis data stream and all its shards and data}
 \usage{
-delete_stream(StreamName, EnforceConsumerDeletion = NULL)
+delete_stream(
+  StreamName = "string",
+  EnforceConsumerDeletion = TRUE|FALSE
+)
 }
 \arguments{
-\item{StreamName}{The name of the stream to delete.}
+\item{StreamName}{[required] The name of the stream to delete.}
 
 \item{EnforceConsumerDeletion}{If this parameter is unset (\code{null}) or if you set it to \code{false}, and the stream has registered consumers, the call to \code{DeleteStream} fails with a \code{ResourceInUseException}.}
 }

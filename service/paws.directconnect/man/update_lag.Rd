@@ -4,10 +4,14 @@
 \alias{update_lag}
 \title{Updates the attributes of the specified link aggregation group (LAG)}
 \usage{
-update_lag(lagId, lagName = NULL, minimumLinks = NULL)
+update_lag(
+  lagId = "string",
+  lagName = "string",
+  minimumLinks = 123
+)
 }
 \arguments{
-\item{lagId}{The ID of the LAG.}
+\item{lagId}{[required] The ID of the LAG.}
 
 \item{lagName}{The name of the LAG.}
 

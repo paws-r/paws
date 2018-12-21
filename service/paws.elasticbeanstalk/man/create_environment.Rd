@@ -4,14 +4,46 @@
 \alias{create_environment}
 \title{Launches an environment for the specified application using the specified configuration}
 \usage{
-create_environment(ApplicationName, EnvironmentName = NULL,
-  GroupName = NULL, Description = NULL, CNAMEPrefix = NULL, Tier = NULL,
-  Tags = NULL, VersionLabel = NULL, TemplateName = NULL,
-  SolutionStackName = NULL, PlatformArn = NULL, OptionSettings = NULL,
-  OptionsToRemove = NULL)
+create_environment(
+  ApplicationName = "string",
+  EnvironmentName = "string",
+  GroupName = "string",
+  Description = "string",
+  CNAMEPrefix = "string",
+  Tier = list(
+    Name = "string",
+    Type = "string",
+    Version = "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  VersionLabel = "string",
+  TemplateName = "string",
+  SolutionStackName = "string",
+  PlatformArn = "string",
+  OptionSettings = list(
+    list(
+      ResourceName = "string",
+      Namespace = "string",
+      OptionName = "string",
+      Value = "string"
+    )
+  ),
+  OptionsToRemove = list(
+    list(
+      ResourceName = "string",
+      Namespace = "string",
+      OptionName = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ApplicationName}{The name of the application that contains the version to be deployed.
+\item{ApplicationName}{[required] The name of the application that contains the version to be deployed.
 
 If no application is found with this name, \code{CreateEnvironment} returns an \code{InvalidParameterValue} error.}
 

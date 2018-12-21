@@ -4,11 +4,14 @@
 \alias{delete_db_cluster}
 \title{The DeleteDBCluster action deletes a previously provisioned DB cluster}
 \usage{
-delete_db_cluster(DBClusterIdentifier, SkipFinalSnapshot = NULL,
-  FinalDBSnapshotIdentifier = NULL)
+delete_db_cluster(
+  DBClusterIdentifier = "string",
+  SkipFinalSnapshot = TRUE|FALSE,
+  FinalDBSnapshotIdentifier = "string"
+)
 }
 \arguments{
-\item{DBClusterIdentifier}{The DB cluster identifier for the DB cluster to be deleted. This parameter isn't case-sensitive.
+\item{DBClusterIdentifier}{[required] The DB cluster identifier for the DB cluster to be deleted. This parameter isn't case-sensitive.
 
 Constraints:
 \itemize{

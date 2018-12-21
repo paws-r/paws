@@ -4,10 +4,12 @@
 \alias{delete_sms_channel}
 \title{Delete an SMS channel}
 \usage{
-delete_sms_channel(ApplicationId)
+delete_sms_channel(
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 }
 \description{
 Delete an SMS channel.

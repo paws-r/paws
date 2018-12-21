@@ -4,10 +4,12 @@
 \alias{delete_project}
 \title{Deletes a project}
 \usage{
-delete_project(projectName)
+delete_project(
+  projectName = "string"
+)
 }
 \arguments{
-\item{projectName}{The name of the empty project to delete.}
+\item{projectName}{[required] The name of the empty project to delete.}
 }
 \description{
 Deletes a project. To delete a project, it must not have any placements associated with it.

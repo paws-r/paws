@@ -4,7 +4,30 @@
 \alias{create_script}
 \title{Transforms a directed acyclic graph (DAG) into code}
 \usage{
-create_script(DagNodes = NULL, DagEdges = NULL, Language = NULL)
+create_script(
+  DagNodes = list(
+    list(
+      Id = "string",
+      NodeType = "string",
+      Args = list(
+        list(
+          Name = "string",
+          Value = "string",
+          Param = TRUE|FALSE
+        )
+      ),
+      LineNumber = 123
+    )
+  ),
+  DagEdges = list(
+    list(
+      Source = "string",
+      Target = "string",
+      TargetParameter = "string"
+    )
+  ),
+  Language = "PYTHON"|"SCALA"
+)
 }
 \arguments{
 \item{DagNodes}{A list of the nodes in the DAG.}

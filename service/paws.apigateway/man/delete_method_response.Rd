@@ -4,16 +4,21 @@
 \alias{delete_method_response}
 \title{Deletes an existing MethodResponse resource}
 \usage{
-delete_method_response(restApiId, resourceId, httpMethod, statusCode)
+delete_method_response(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string",
+  statusCode = "string"
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[Required] The Resource identifier for the MethodResponse resource.}
+\item{resourceId}{[required] [Required] The Resource identifier for the MethodResponse resource.}
 
-\item{httpMethod}{[Required] The HTTP verb of the Method resource.}
+\item{httpMethod}{[required] [Required] The HTTP verb of the Method resource.}
 
-\item{statusCode}{[Required] The status code identifier for the MethodResponse resource.}
+\item{statusCode}{[required] [Required] The status code identifier for the MethodResponse resource.}
 }
 \description{
 Deletes an existing MethodResponse resource.

@@ -4,14 +4,35 @@
 \alias{create_cluster}
 \title{Creates a DAX cluster}
 \usage{
-create_cluster(ClusterName, NodeType, ReplicationFactor, IamRoleArn,
-  Description = NULL, AvailabilityZones = NULL, SubnetGroupName = NULL,
-  SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL,
-  NotificationTopicArn = NULL, ParameterGroupName = NULL, Tags = NULL,
-  SSESpecification = NULL)
+create_cluster(
+  ClusterName = "string",
+  NodeType = "string",
+  Description = "string",
+  ReplicationFactor = 123,
+  AvailabilityZones = list(
+    "string"
+  ),
+  SubnetGroupName = "string",
+  SecurityGroupIds = list(
+    "string"
+  ),
+  PreferredMaintenanceWindow = "string",
+  NotificationTopicArn = "string",
+  IamRoleArn = "string",
+  ParameterGroupName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  SSESpecification = list(
+    Enabled = TRUE|FALSE
+  )
+)
 }
 \arguments{
-\item{ClusterName}{The cluster identifier. This parameter is stored as a lowercase string.
+\item{ClusterName}{[required] The cluster identifier. This parameter is stored as a lowercase string.
 
 \strong{Constraints:}
 \itemize{
@@ -20,15 +41,13 @@ create_cluster(ClusterName, NodeType, ReplicationFactor, IamRoleArn,
 \item A name cannot end with a hyphen or contain two consecutive hyphens.
 }}
 
-\item{NodeType}{The compute and memory capacity of the nodes in the cluster.}
-
-\item{ReplicationFactor}{The number of nodes in the DAX cluster. A replication factor of 1 will create a single-node cluster, without any read replicas. For additional fault tolerance, you can create a multiple node cluster with one or more read replicas. To do this, set \emph{ReplicationFactor} to 2 or more.
-
-AWS recommends that you have at least two read replicas per cluster.}
-
-\item{IamRoleArn}{A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX will assume this role and use the role's permissions to access DynamoDB on your behalf.}
+\item{NodeType}{[required] The compute and memory capacity of the nodes in the cluster.}
 
 \item{Description}{A description of the cluster.}
+
+\item{ReplicationFactor}{[required] The number of nodes in the DAX cluster. A replication factor of 1 will create a single-node cluster, without any read replicas. For additional fault tolerance, you can create a multiple node cluster with one or more read replicas. To do this, set \emph{ReplicationFactor} to 2 or more.
+
+AWS recommends that you have at least two read replicas per cluster.}
 
 \item{AvailabilityZones}{The Availability Zones (AZs) in which the cluster nodes will be created. All nodes belonging to the cluster are placed in these Availability Zones. Use this parameter if you want to distribute the nodes across multiple AZs.}
 
@@ -58,6 +77,8 @@ If you don't specify a preferred maintenance window when you create or modify a 
 \item{NotificationTopicArn}{The Amazon Resource Name (ARN) of the Amazon SNS topic to which notifications will be sent.
 
 The Amazon SNS topic owner must be same as the DAX cluster owner.}
+
+\item{IamRoleArn}{[required] A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX will assume this role and use the role's permissions to access DynamoDB on your behalf.}
 
 \item{ParameterGroupName}{The parameter group to be associated with the DAX cluster.}
 

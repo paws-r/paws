@@ -4,8 +4,11 @@
 \alias{list_outgoing_certificates}
 \title{Lists certificates that are being transferred but not yet accepted}
 \usage{
-list_outgoing_certificates(pageSize = NULL, marker = NULL,
-  ascendingOrder = NULL)
+list_outgoing_certificates(
+  pageSize = 123,
+  marker = "string",
+  ascendingOrder = TRUE|FALSE
+)
 }
 \arguments{
 \item{pageSize}{The result page size.}

@@ -4,12 +4,19 @@
 \alias{create_global_table}
 \title{Creates a global table from an existing table}
 \usage{
-create_global_table(GlobalTableName, ReplicationGroup)
+create_global_table(
+  GlobalTableName = "string",
+  ReplicationGroup = list(
+    list(
+      RegionName = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{GlobalTableName}{The global table name.}
+\item{GlobalTableName}{[required] The global table name.}
 
-\item{ReplicationGroup}{The regions where the global table needs to be created.}
+\item{ReplicationGroup}{[required] The regions where the global table needs to be created.}
 }
 \description{
 Creates a global table from an existing table. A global table creates a replication relationship between two or more DynamoDB tables with the same table name in the provided regions.

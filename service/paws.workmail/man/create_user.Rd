@@ -4,16 +4,21 @@
 \alias{create_user}
 \title{Creates a user who can be used in Amazon WorkMail by calling the RegisterToWorkMail operation}
 \usage{
-create_user(OrganizationId, Name, DisplayName, Password)
+create_user(
+  OrganizationId = "string",
+  Name = "string",
+  DisplayName = "string",
+  Password = "string"
+)
 }
 \arguments{
-\item{OrganizationId}{The identifier of the organization for which the user is created.}
+\item{OrganizationId}{[required] The identifier of the organization for which the user is created.}
 
-\item{Name}{The name for the user to be created.}
+\item{Name}{[required] The name for the user to be created.}
 
-\item{DisplayName}{The display name for the user to be created.}
+\item{DisplayName}{[required] The display name for the user to be created.}
 
-\item{Password}{The password for the user to be created.}
+\item{Password}{[required] The password for the user to be created.}
 }
 \description{
 Creates a user who can be used in Amazon WorkMail by calling the RegisterToWorkMail operation.

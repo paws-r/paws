@@ -4,15 +4,20 @@
 \alias{batch_check_layer_availability}
 \title{Check the availability of multiple image layers in a specified registry and repository}
 \usage{
-batch_check_layer_availability(repositoryName, layerDigests,
-  registryId = NULL)
+batch_check_layer_availability(
+  registryId = "string",
+  repositoryName = "string",
+  layerDigests = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{repositoryName}{The name of the repository that is associated with the image layers to check.}
-
-\item{layerDigests}{The digests of the image layers to check.}
-
 \item{registryId}{The AWS account ID associated with the registry that contains the image layers to check. If you do not specify a registry, the default registry is assumed.}
+
+\item{repositoryName}{[required] The name of the repository that is associated with the image layers to check.}
+
+\item{layerDigests}{[required] The digests of the image layers to check.}
 }
 \description{
 Check the availability of multiple image layers in a specified registry and repository.

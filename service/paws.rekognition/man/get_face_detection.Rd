@@ -4,10 +4,14 @@
 \alias{get_face_detection}
 \title{Gets face detection results for a Amazon Rekognition Video analysis started by}
 \usage{
-get_face_detection(JobId, MaxResults = NULL, NextToken = NULL)
+get_face_detection(
+  JobId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{JobId}{Unique identifier for the face detection job. The \code{JobId} is returned from \code{StartFaceDetection}.}
+\item{JobId}{[required] Unique identifier for the face detection job. The \code{JobId} is returned from \code{StartFaceDetection}.}
 
 \item{MaxResults}{Maximum number of results to return per paginated call. The largest value you can specify is 1000. If you specify a value greater than 1000, a maximum of 1000 results is returned. The default value is 1000.}
 

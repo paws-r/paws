@@ -4,14 +4,20 @@
 \alias{start_device_sync}
 \title{Resets a device and its account to the known default settings, by clearing all information and settings set by previous users}
 \usage{
-start_device_sync(Features, RoomArn = NULL, DeviceArn = NULL)
+start_device_sync(
+  RoomArn = "string",
+  DeviceArn = "string",
+  Features = list(
+    "BLUETOOTH"|"VOLUME"|"NOTIFICATIONS"|"LISTS"|"SKILLS"|"ALL"
+  )
+)
 }
 \arguments{
-\item{Features}{Request structure to start the device sync. Required.}
-
 \item{RoomArn}{The ARN of the room with which the device to sync is associated. Required.}
 
 \item{DeviceArn}{The ARN of the device to sync. Required.}
+
+\item{Features}{[required] Request structure to start the device sync. Required.}
 }
 \description{
 Resets a device and its account to the known default settings, by clearing all information and settings set by previous users.

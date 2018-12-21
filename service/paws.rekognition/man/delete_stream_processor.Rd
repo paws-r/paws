@@ -4,10 +4,12 @@
 \alias{delete_stream_processor}
 \title{Deletes the stream processor identified by \code{Name}}
 \usage{
-delete_stream_processor(Name)
+delete_stream_processor(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the stream processor you want to delete.}
+\item{Name}{[required] The name of the stream processor you want to delete.}
 }
 \description{
 Deletes the stream processor identified by \code{Name}. You assign the value for \code{Name} when you create the stream processor with . You might not be able to use the same name for a stream processor for a few seconds after calling \code{DeleteStreamProcessor}.

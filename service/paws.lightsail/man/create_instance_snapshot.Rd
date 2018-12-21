@@ -4,15 +4,31 @@
 \alias{create_instance_snapshot}
 \title{Creates a snapshot of a specific virtual private server, or \emph{instance}}
 \usage{
-create_instance_snapshot(instanceSnapshotName, instanceName)
+create_instance_snapshot(
+  instanceSnapshotName = "string",
+  instanceName = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{instanceSnapshotName}{The name for your new snapshot.}
+\item{instanceSnapshotName}{[required] The name for your new snapshot.}
 
-\item{instanceName}{The Lightsail instance on which to base your snapshot.}
+\item{instanceName}{[required] The Lightsail instance on which to base your snapshot.}
+
+\item{tags}{The tag keys and optional values to add to the resource during create.
+
+To tag a resource after it has been created, see the \code{tag resource} operation.}
 }
 \description{
 Creates a snapshot of a specific virtual private server, or \emph{instance}. You can use a snapshot to create a new instance that is based on that snapshot.
+}
+\details{
+The \code{create instance snapshot} operation supports tag-based access control via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \examples{
 

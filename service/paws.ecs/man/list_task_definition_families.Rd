@@ -4,8 +4,12 @@
 \alias{list_task_definition_families}
 \title{Returns a list of task definition families that are registered to your account (which may include task definition families that no longer have any \code{ACTIVE} task definition revisions)}
 \usage{
-list_task_definition_families(familyPrefix = NULL, status = NULL,
-  nextToken = NULL, maxResults = NULL)
+list_task_definition_families(
+  familyPrefix = "string",
+  status = "ACTIVE"|"INACTIVE"|"ALL",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{familyPrefix}{The \code{familyPrefix} is a string that is used to filter the results of \code{ListTaskDefinitionFamilies}. If you specify a \code{familyPrefix}, only task definition family names that begin with the \code{familyPrefix} string are returned.}

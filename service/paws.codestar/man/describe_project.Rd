@@ -4,10 +4,12 @@
 \alias{describe_project}
 \title{Describes a project and its resources}
 \usage{
-describe_project(id)
+describe_project(
+  id = "string"
+)
 }
 \arguments{
-\item{id}{The ID of the project.}
+\item{id}{[required] The ID of the project.}
 }
 \description{
 Describes a project and its resources.

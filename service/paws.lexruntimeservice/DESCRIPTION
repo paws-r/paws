@@ -1,6 +1,6 @@
 Package: paws.lexruntimeservice
 Title: Amazon Lex Runtime Service
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
@@ -8,31 +8,35 @@ Authors@R:
              email = "david.kretch@gmail.com"),
       person(given = "Adam",
              family = "Banker",
-             role = "aut"))
-Description: Amazon Lex provides both build and runtime
-    endpoints. Each endpoint provides a set of operations (API). Your
-    conversational bot uses the runtime API to understand user utterances
-    (user input text or voice). For example, suppose a user says \"I want
-    pizza\", your bot sends this input to Amazon Lex using the runtime
-    API. Amazon Lex recognizes that the user request is for the OrderPizza
-    intent (one of the intents defined in the bot). Then Amazon Lex
-    engages in user conversation on behalf of the bot to elicit required
-    information (slot values, such as pizza size and crust type), and then
-    performs fulfillment activity (that you configured when you created
-    the bot). You use the build-time API to create and manage your Amazon
-    Lex bot. For a list of build-time operations, see the build-time API,.
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: Amazon Lex provides both build and runtime endpoints. Each
+    endpoint provides a set of operations (API). Your conversational bot
+    uses the runtime API to understand user utterances (user input text or
+    voice). For example, suppose a user says \"I want pizza\", your bot
+    sends this input to Amazon Lex using the runtime API. Amazon Lex
+    recognizes that the user request is for the OrderPizza intent (one of
+    the intents defined in the bot). Then Amazon Lex engages in user
+    conversation on behalf of the bot to elicit required information (slot
+    values, such as pizza size and crust type), and then performs
+    fulfillment activity (that you configured when you created the bot).
+    You use the build-time API to create and manage your Amazon Lex bot.
+    For a list of build-time operations, see the build-time API,.
 License: Apache License (>= 2.0)
 Depends: 
     R (>= 3.5.1)
 Imports: 
+    base64enc,
     digest,
     httr,
+    ini,
     jsonlite,
-    xml2,
-    ini
+    xml2
 Encoding: UTF-8
 LazyData: true
-Roxygen: list(markdown = TRUE)
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 6.0.1
 Collate: 
     'struct.R'
@@ -45,7 +49,6 @@ Collate:
     'config.R'
     'convert.R'
     'dateutil.R'
-    'defaults.R'
     'error.R'
     'handlers_core.R'
     'handlers_ec2query.R'
@@ -53,17 +56,22 @@ Collate:
     'handlers_query.R'
     'handlers_rest.R'
     'handlers_restjson.R'
+    'handlers_restxml.R'
     'idempotency.R'
     'jsonutil.R'
     'paws.lexruntimeservice_interfaces.R'
     'paws.lexruntimeservice_operations.R'
     'paws.lexruntimeservice_package.R'
+    'signer_v4.R'
     'paws.lexruntimeservice_service.R'
     'populate.R'
     'populateutil.R'
-    'type.R'
+    'tags.R'
     'queryutil.R'
     'request.R'
-    'signer_v4.R'
+    'signer_s3.R'
+    'signer_s3v4.R'
+    'signer_v2.R'
     'time.R'
+    'util.R'
     'xmlutil.R'

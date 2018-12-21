@@ -4,14 +4,20 @@
 \alias{tag_stream}
 \title{Adds one or more tags to a stream}
 \usage{
-tag_stream(Tags, StreamARN = NULL, StreamName = NULL)
+tag_stream(
+  StreamARN = "string",
+  StreamName = "string",
+  Tags = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{Tags}{A list of tags to associate with the specified stream. Each tag is a key-value pair (the value is optional).}
-
 \item{StreamARN}{The Amazon Resource Name (ARN) of the resource that you want to add the tag or tags to.}
 
 \item{StreamName}{The name of the stream that you want to add the tag or tags to.}
+
+\item{Tags}{[required] A list of tags to associate with the specified stream. Each tag is a key-value pair (the value is optional).}
 }
 \description{
 Adds one or more tags to a stream. A \emph{tag} is a key-value pair (the value is optional) that you can define and assign to AWS resources. If you specify a tag that already exists, the tag value is replaced with the value that you specify in the request. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags} in the \emph{AWS Billing and Cost Management User Guide}.

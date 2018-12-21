@@ -4,8 +4,23 @@
 \alias{update_classifier}
 \title{Modifies an existing classifier (a \code{GrokClassifier}, \code{XMLClassifier}, or \code{JsonClassifier}, depending on which field is present)}
 \usage{
-update_classifier(GrokClassifier = NULL, XMLClassifier = NULL,
-  JsonClassifier = NULL)
+update_classifier(
+  GrokClassifier = list(
+    Name = "string",
+    Classification = "string",
+    GrokPattern = "string",
+    CustomPatterns = "string"
+  ),
+  XMLClassifier = list(
+    Name = "string",
+    Classification = "string",
+    RowTag = "string"
+  ),
+  JsonClassifier = list(
+    Name = "string",
+    JsonPath = "string"
+  )
+)
 }
 \arguments{
 \item{GrokClassifier}{A \code{GrokClassifier} object with updated fields.}

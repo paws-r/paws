@@ -4,7 +4,9 @@
 \alias{get_load_balancers}
 \title{Returns information about all load balancers in an account}
 \usage{
-get_load_balancers(pageToken = NULL)
+get_load_balancers(
+  pageToken = "string"
+)
 }
 \arguments{
 \item{pageToken}{A token used for paginating the results from your GetLoadBalancers request.}

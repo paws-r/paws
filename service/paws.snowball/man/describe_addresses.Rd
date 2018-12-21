@@ -4,7 +4,10 @@
 \alias{describe_addresses}
 \title{Returns a specified number of \code{ADDRESS} objects}
 \usage{
-describe_addresses(MaxResults = NULL, NextToken = NULL)
+describe_addresses(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{MaxResults}{The number of \code{ADDRESS} objects to return.}

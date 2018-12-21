@@ -4,8 +4,19 @@
 \alias{list_command_invocations}
 \title{An invocation is copy of a command sent to a specific instance}
 \usage{
-list_command_invocations(CommandId = NULL, InstanceId = NULL,
-  MaxResults = NULL, NextToken = NULL, Filters = NULL, Details = NULL)
+list_command_invocations(
+  CommandId = "string",
+  InstanceId = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  Filters = list(
+    list(
+      key = "InvokedAfter"|"InvokedBefore"|"Status"|"ExecutionStage"|"DocumentName",
+      value = "string"
+    )
+  ),
+  Details = TRUE|FALSE
+)
 }
 \arguments{
 \item{CommandId}{(Optional) The invocations for a specific command ID.}

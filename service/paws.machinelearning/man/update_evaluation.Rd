@@ -4,12 +4,15 @@
 \alias{update_evaluation}
 \title{Updates the \code{EvaluationName} of an \code{Evaluation}}
 \usage{
-update_evaluation(EvaluationId, EvaluationName)
+update_evaluation(
+  EvaluationId = "string",
+  EvaluationName = "string"
+)
 }
 \arguments{
-\item{EvaluationId}{The ID assigned to the \code{Evaluation} during creation.}
+\item{EvaluationId}{[required] The ID assigned to the \code{Evaluation} during creation.}
 
-\item{EvaluationName}{A new user-supplied name or description of the \code{Evaluation} that will replace the current content.}
+\item{EvaluationName}{[required] A new user-supplied name or description of the \code{Evaluation} that will replace the current content.}
 }
 \description{
 Updates the \code{EvaluationName} of an \code{Evaluation}.

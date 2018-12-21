@@ -4,7 +4,18 @@
 \alias{describe_patch_groups}
 \title{Lists all patch groups that have been registered with patch baselines}
 \usage{
-describe_patch_groups(MaxResults = NULL, Filters = NULL, NextToken = NULL)
+describe_patch_groups(
+  MaxResults = 123,
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
 }
 \arguments{
 \item{MaxResults}{The maximum number of patch groups to return (per page).}

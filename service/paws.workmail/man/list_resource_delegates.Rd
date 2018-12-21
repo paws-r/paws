@@ -4,13 +4,17 @@
 \alias{list_resource_delegates}
 \title{Lists the delegates associated with a resource}
 \usage{
-list_resource_delegates(OrganizationId, ResourceId, NextToken = NULL,
-  MaxResults = NULL)
+list_resource_delegates(
+  OrganizationId = "string",
+  ResourceId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{OrganizationId}{The identifier for the organization that contains the resource for which delegates are listed.}
+\item{OrganizationId}{[required] The identifier for the organization that contains the resource for which delegates are listed.}
 
-\item{ResourceId}{The identifier for the resource whose delegates are listed.}
+\item{ResourceId}{[required] The identifier for the resource whose delegates are listed.}
 
 \item{NextToken}{The token used to paginate through the delegates associated with a resource.}
 

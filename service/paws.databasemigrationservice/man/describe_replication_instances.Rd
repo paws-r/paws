@@ -4,8 +4,18 @@
 \alias{describe_replication_instances}
 \title{Returns information about replication instances for your account in the current region}
 \usage{
-describe_replication_instances(Filters = NULL, MaxRecords = NULL,
-  Marker = NULL)
+describe_replication_instances(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{Filters}{Filters applied to the describe action.

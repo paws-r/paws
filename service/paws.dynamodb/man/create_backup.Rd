@@ -4,12 +4,15 @@
 \alias{create_backup}
 \title{Creates a backup for an existing table}
 \usage{
-create_backup(TableName, BackupName)
+create_backup(
+  TableName = "string",
+  BackupName = "string"
+)
 }
 \arguments{
-\item{TableName}{The name of the table.}
+\item{TableName}{[required] The name of the table.}
 
-\item{BackupName}{Specified name for the backup.}
+\item{BackupName}{[required] Specified name for the backup.}
 }
 \description{
 Creates a backup for an existing table.

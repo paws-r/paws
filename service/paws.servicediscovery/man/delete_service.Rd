@@ -4,10 +4,12 @@
 \alias{delete_service}
 \title{Deletes a specified service}
 \usage{
-delete_service(Id)
+delete_service(
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The ID of the service that you want to delete.}
+\item{Id}{[required] The ID of the service that you want to delete.}
 }
 \description{
 Deletes a specified service. If the service still contains one or more registered instances, the request fails.

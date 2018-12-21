@@ -4,7 +4,10 @@
 \alias{list_web_ac_ls}
 \title{Returns an array of WebACLSummary objects in the response}
 \usage{
-list_web_ac_ls(NextMarker = NULL, Limit = NULL)
+list_web_ac_ls(
+  NextMarker = "string",
+  Limit = 123
+)
 }
 \arguments{
 \item{NextMarker}{If you specify a value for \code{Limit} and you have more \code{WebACL} objects than the number that you specify for \code{Limit}, AWS WAF returns a \code{NextMarker} value in the response that allows you to list another group of \code{WebACL} objects. For the second and subsequent \code{ListWebACLs} requests, specify the value of \code{NextMarker} from the previous response to get information about another batch of \code{WebACL} objects.}

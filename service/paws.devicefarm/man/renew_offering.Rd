@@ -4,7 +4,10 @@
 \alias{renew_offering}
 \title{Explicitly sets the quantity of devices to renew for an offering, starting from the \code{effectiveDate} of the next period}
 \usage{
-renew_offering(offeringId = NULL, quantity = NULL)
+renew_offering(
+  offeringId = "string",
+  quantity = 123
+)
 }
 \arguments{
 \item{offeringId}{The ID of a request to renew an offering.}

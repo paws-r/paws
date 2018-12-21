@@ -4,8 +4,16 @@
 \alias{create_build}
 \title{Creates a new Amazon GameLift build record for your game server binary files and points to the location of your game server build files in an Amazon Simple Storage Service (Amazon S3) location}
 \usage{
-create_build(Name = NULL, Version = NULL, StorageLocation = NULL,
-  OperatingSystem = NULL)
+create_build(
+  Name = "string",
+  Version = "string",
+  StorageLocation = list(
+    Bucket = "string",
+    Key = "string",
+    RoleArn = "string"
+  ),
+  OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"
+)
 }
 \arguments{
 \item{Name}{Descriptive label that is associated with a build. Build names do not need to be unique. You can use UpdateBuild to change this value later.}

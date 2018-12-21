@@ -4,10 +4,13 @@
 \alias{delete_dhcp_options}
 \title{Deletes the specified set of DHCP options}
 \usage{
-delete_dhcp_options(DhcpOptionsId, DryRun = NULL)
+delete_dhcp_options(
+  DhcpOptionsId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{DhcpOptionsId}{The ID of the DHCP options set.}
+\item{DhcpOptionsId}{[required] The ID of the DHCP options set.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

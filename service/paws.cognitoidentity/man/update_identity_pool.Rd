@@ -4,17 +4,35 @@
 \alias{update_identity_pool}
 \title{Updates a user pool}
 \usage{
-update_identity_pool(IdentityPoolId, IdentityPoolName,
-  AllowUnauthenticatedIdentities, SupportedLoginProviders = NULL,
-  DeveloperProviderName = NULL, OpenIdConnectProviderARNs = NULL,
-  CognitoIdentityProviders = NULL, SamlProviderARNs = NULL)
+update_identity_pool(
+  IdentityPoolId = "string",
+  IdentityPoolName = "string",
+  AllowUnauthenticatedIdentities = TRUE|FALSE,
+  SupportedLoginProviders = list(
+    "string"
+  ),
+  DeveloperProviderName = "string",
+  OpenIdConnectProviderARNs = list(
+    "string"
+  ),
+  CognitoIdentityProviders = list(
+    list(
+      ProviderName = "string",
+      ClientId = "string",
+      ServerSideTokenCheck = TRUE|FALSE
+    )
+  ),
+  SamlProviderARNs = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{IdentityPoolId}{An identity pool ID in the format REGION:GUID.}
+\item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
 
-\item{IdentityPoolName}{A string that you provide.}
+\item{IdentityPoolName}{[required] A string that you provide.}
 
-\item{AllowUnauthenticatedIdentities}{TRUE if the identity pool supports unauthenticated logins.}
+\item{AllowUnauthenticatedIdentities}{[required] TRUE if the identity pool supports unauthenticated logins.}
 
 \item{SupportedLoginProviders}{Optional key:value pairs mapping provider names to provider app IDs.}
 

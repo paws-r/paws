@@ -4,19 +4,23 @@
 \alias{create_evaluation}
 \title{Creates a new \code{Evaluation} of an \code{MLModel}}
 \usage{
-create_evaluation(EvaluationId, MLModelId, EvaluationDataSourceId,
-  EvaluationName = NULL)
+create_evaluation(
+  EvaluationId = "string",
+  EvaluationName = "string",
+  MLModelId = "string",
+  EvaluationDataSourceId = "string"
+)
 }
 \arguments{
-\item{EvaluationId}{A user-supplied ID that uniquely identifies the \code{Evaluation}.}
+\item{EvaluationId}{[required] A user-supplied ID that uniquely identifies the \code{Evaluation}.}
 
-\item{MLModelId}{The ID of the \code{MLModel} to evaluate.
+\item{EvaluationName}{A user-supplied name or description of the \code{Evaluation}.}
+
+\item{MLModelId}{[required] The ID of the \code{MLModel} to evaluate.
 
 The schema used in creating the \code{MLModel} must match the schema of the \code{DataSource} used in the \code{Evaluation}.}
 
-\item{EvaluationDataSourceId}{The ID of the \code{DataSource} for the evaluation. The schema of the \code{DataSource} must match the schema used to create the \code{MLModel}.}
-
-\item{EvaluationName}{A user-supplied name or description of the \code{Evaluation}.}
+\item{EvaluationDataSourceId}{[required] The ID of the \code{DataSource} for the evaluation. The schema of the \code{DataSource} must match the schema used to create the \code{MLModel}.}
 }
 \description{
 Creates a new \code{Evaluation} of an \code{MLModel}. An \code{MLModel} is evaluated on a set of observations associated to a \code{DataSource}. Like a \code{DataSource} for an \code{MLModel}, the \code{DataSource} for an \code{Evaluation} contains values for the \code{Target Variable}. The \code{Evaluation} compares the predicted result for each observation to the actual outcome and provides a summary so that you know how effective the \code{MLModel} functions on the test data. Evaluation generates a relevant performance metric, such as BinaryAUC, RegressionRMSE or MulticlassAvgFScore based on the corresponding \code{MLModelType}: \code{BINARY}, \code{REGRESSION} or \code{MULTICLASS}.

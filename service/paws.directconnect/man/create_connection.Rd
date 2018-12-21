@@ -4,14 +4,19 @@
 \alias{create_connection}
 \title{Creates a connection between a customer network and a specific AWS Direct Connect location}
 \usage{
-create_connection(location, bandwidth, connectionName, lagId = NULL)
+create_connection(
+  location = "string",
+  bandwidth = "string",
+  connectionName = "string",
+  lagId = "string"
+)
 }
 \arguments{
-\item{location}{The location of the connection.}
+\item{location}{[required] The location of the connection.}
 
-\item{bandwidth}{The bandwidth of the connection.}
+\item{bandwidth}{[required] The bandwidth of the connection.}
 
-\item{connectionName}{The name of the connection.}
+\item{connectionName}{[required] The name of the connection.}
 
 \item{lagId}{The ID of the LAG.}
 }

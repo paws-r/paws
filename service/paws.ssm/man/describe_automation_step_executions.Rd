@@ -4,11 +4,23 @@
 \alias{describe_automation_step_executions}
 \title{Information about all active and terminated step executions in an Automation workflow}
 \usage{
-describe_automation_step_executions(AutomationExecutionId, Filters = NULL,
-  NextToken = NULL, MaxResults = NULL, ReverseOrder = NULL)
+describe_automation_step_executions(
+  AutomationExecutionId = "string",
+  Filters = list(
+    list(
+      Key = "StartTimeBefore"|"StartTimeAfter"|"StepExecutionStatus"|"StepExecutionId"|"StepName"|"Action",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string",
+  MaxResults = 123,
+  ReverseOrder = TRUE|FALSE
+)
 }
 \arguments{
-\item{AutomationExecutionId}{The Automation execution ID for which you want step execution descriptions.}
+\item{AutomationExecutionId}{[required] The Automation execution ID for which you want step execution descriptions.}
 
 \item{Filters}{One or more filters to limit the number of step executions returned by the request.}
 

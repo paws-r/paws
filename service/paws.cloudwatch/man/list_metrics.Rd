@@ -4,8 +4,17 @@
 \alias{list_metrics}
 \title{List the specified metrics}
 \usage{
-list_metrics(Namespace = NULL, MetricName = NULL, Dimensions = NULL,
-  NextToken = NULL)
+list_metrics(
+  Namespace = "string",
+  MetricName = "string",
+  Dimensions = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
 }
 \arguments{
 \item{Namespace}{The namespace to filter against.}

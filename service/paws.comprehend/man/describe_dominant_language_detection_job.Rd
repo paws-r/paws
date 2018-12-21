@@ -4,10 +4,12 @@
 \alias{describe_dominant_language_detection_job}
 \title{Gets the properties associated with a dominant language detection job}
 \usage{
-describe_dominant_language_detection_job(JobId)
+describe_dominant_language_detection_job(
+  JobId = "string"
+)
 }
 \arguments{
-\item{JobId}{The identifier that Amazon Comprehend generated for the job. The operation returns this identifier in its response.}
+\item{JobId}{[required] The identifier that Amazon Comprehend generated for the job. The operation returns this identifier in its response.}
 }
 \description{
 Gets the properties associated with a dominant language detection job. Use this operation to get the status of a detection job.

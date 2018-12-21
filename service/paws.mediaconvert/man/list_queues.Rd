@@ -4,8 +4,12 @@
 \alias{list_queues}
 \title{Retrieve a JSON array of up to twenty of your queues}
 \usage{
-list_queues(ListBy = NULL, MaxResults = NULL, NextToken = NULL,
-  Order = NULL)
+list_queues(
+  ListBy = "NAME"|"CREATION_DATE",
+  MaxResults = 123,
+  NextToken = "string",
+  Order = "ASCENDING"|"DESCENDING"
+)
 }
 \arguments{
 \item{ListBy}{}

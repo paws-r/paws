@@ -4,10 +4,14 @@
 \alias{describe_resource_groups}
 \title{Describes the resource groups that are specified by the ARNs of the resource groups}
 \usage{
-describe_resource_groups(resourceGroupArns)
+describe_resource_groups(
+  resourceGroupArns = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{resourceGroupArns}{The ARN that specifies the resource group that you want to describe.}
+\item{resourceGroupArns}{[required] The ARN that specifies the resource group that you want to describe.}
 }
 \description{
 Describes the resource groups that are specified by the ARNs of the resource groups.

@@ -4,10 +4,12 @@
 \alias{delete_pipeline}
 \title{Deletes the specified pipeline}
 \usage{
-delete_pipeline(pipelineName)
+delete_pipeline(
+  pipelineName = "string"
+)
 }
 \arguments{
-\item{pipelineName}{The name of the pipeline to delete.}
+\item{pipelineName}{[required] The name of the pipeline to delete.}
 }
 \description{
 Deletes the specified pipeline.

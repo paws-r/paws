@@ -4,12 +4,19 @@
 \alias{remove_attributes_from_findings}
 \title{Removes entire attributes (key and value pairs) from the findings that are specified by the ARNs of the findings where an attribute with the specified key exists}
 \usage{
-remove_attributes_from_findings(findingArns, attributeKeys)
+remove_attributes_from_findings(
+  findingArns = list(
+    "string"
+  ),
+  attributeKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{findingArns}{The ARNs that specify the findings that you want to remove attributes from.}
+\item{findingArns}{[required] The ARNs that specify the findings that you want to remove attributes from.}
 
-\item{attributeKeys}{The array of attribute keys that you want to remove from specified findings.}
+\item{attributeKeys}{[required] The array of attribute keys that you want to remove from specified findings.}
 }
 \description{
 Removes entire attributes (key and value pairs) from the findings that are specified by the ARNs of the findings where an attribute with the specified key exists.

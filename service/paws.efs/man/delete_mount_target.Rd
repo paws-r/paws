@@ -4,10 +4,12 @@
 \alias{delete_mount_target}
 \title{Deletes the specified mount target}
 \usage{
-delete_mount_target(MountTargetId)
+delete_mount_target(
+  MountTargetId = "string"
+)
 }
 \arguments{
-\item{MountTargetId}{ID of the mount target to delete (String).}
+\item{MountTargetId}{[required] ID of the mount target to delete (String).}
 }
 \description{
 Deletes the specified mount target.

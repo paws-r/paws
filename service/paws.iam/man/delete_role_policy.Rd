@@ -4,16 +4,19 @@
 \alias{delete_role_policy}
 \title{Deletes the specified inline policy that is embedded in the specified IAM role}
 \usage{
-delete_role_policy(RoleName, PolicyName)
+delete_role_policy(
+  RoleName = "string",
+  PolicyName = "string"
+)
 }
 \arguments{
-\item{RoleName}{The name (friendly name, not ARN) identifying the role that the policy is embedded in.
+\item{RoleName}{[required] The name (friendly name, not ARN) identifying the role that the policy is embedded in.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
-\item{PolicyName}{The name of the inline policy to delete from the specified IAM role.
+\item{PolicyName}{[required] The name of the inline policy to delete from the specified IAM role.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Deletes the specified inline policy that is embedded in the specified IAM role.

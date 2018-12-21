@@ -4,14 +4,18 @@
 \alias{list_principal_things}
 \title{Lists the things associated with the specified principal}
 \usage{
-list_principal_things(principal, nextToken = NULL, maxResults = NULL)
+list_principal_things(
+  nextToken = "string",
+  maxResults = 123,
+  principal = "string"
+)
 }
 \arguments{
-\item{principal}{The principal.}
-
 \item{nextToken}{The token to retrieve the next set of results.}
 
 \item{maxResults}{The maximum number of results to return in this operation.}
+
+\item{principal}{[required] The principal.}
 }
 \description{
 Lists the things associated with the specified principal.

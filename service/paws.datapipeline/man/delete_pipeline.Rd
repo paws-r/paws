@@ -4,10 +4,12 @@
 \alias{delete_pipeline}
 \title{Deletes a pipeline, its pipeline definition, and its run history}
 \usage{
-delete_pipeline(pipelineId)
+delete_pipeline(
+  pipelineId = "string"
+)
 }
 \arguments{
-\item{pipelineId}{The ID of the pipeline.}
+\item{pipelineId}{[required] The ID of the pipeline.}
 }
 \description{
 Deletes a pipeline, its pipeline definition, and its run history. AWS Data Pipeline attempts to cancel instances associated with the pipeline that are currently being processed by task runners.

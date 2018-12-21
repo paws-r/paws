@@ -4,8 +4,13 @@
 \alias{describe_matchmaking_rule_sets}
 \title{Retrieves the details for FlexMatch matchmaking rule sets}
 \usage{
-describe_matchmaking_rule_sets(Names = NULL, Limit = NULL,
-  NextToken = NULL)
+describe_matchmaking_rule_sets(
+  Names = list(
+    "string"
+  ),
+  Limit = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{Names}{Unique identifier for a matchmaking rule set. This name is used to identify the rule set associated with a matchmaking configuration.}

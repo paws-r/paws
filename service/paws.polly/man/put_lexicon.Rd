@@ -4,12 +4,15 @@
 \alias{put_lexicon}
 \title{Stores a pronunciation lexicon in an AWS Region}
 \usage{
-put_lexicon(Name, Content)
+put_lexicon(
+  Name = "string",
+  Content = "string"
+)
 }
 \arguments{
-\item{Name}{Name of the lexicon. The name must follow the regular express format [0-9A-Za-z]{1,20}. That is, the name is a case-sensitive alphanumeric string up to 20 characters long.}
+\item{Name}{[required] Name of the lexicon. The name must follow the regular express format [0-9A-Za-z]{1,20}. That is, the name is a case-sensitive alphanumeric string up to 20 characters long.}
 
-\item{Content}{Content of the PLS lexicon as string data.}
+\item{Content}{[required] Content of the PLS lexicon as string data.}
 }
 \description{
 Stores a pronunciation lexicon in an AWS Region. If a lexicon with the same name already exists in the region, it is overwritten by the new lexicon. Lexicon operations have eventual consistency, therefore, it might take some time before the lexicon is available to the SynthesizeSpeech operation.

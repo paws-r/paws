@@ -4,15 +4,30 @@
 \alias{create_domain_entry}
 \title{Creates one of the following entry records associated with the domain: A record, CNAME record, TXT record, or MX record}
 \usage{
-create_domain_entry(domainName, domainEntry)
+create_domain_entry(
+  domainName = "string",
+  domainEntry = list(
+    id = "string",
+    name = "string",
+    target = "string",
+    isAlias = TRUE|FALSE,
+    type = "string",
+    options = list(
+      "string"
+    )
+  )
+)
 }
 \arguments{
-\item{domainName}{The domain name (e.g., \code{example.com}) for which you want to create the domain entry.}
+\item{domainName}{[required] The domain name (e.g., \code{example.com}) for which you want to create the domain entry.}
 
-\item{domainEntry}{An array of key-value pairs containing information about the domain entry request.}
+\item{domainEntry}{[required] An array of key-value pairs containing information about the domain entry request.}
 }
 \description{
 Creates one of the following entry records associated with the domain: A record, CNAME record, TXT record, or MX record.
+}
+\details{
+The \code{create domain entry} operation supports tag-based access control via resource tags applied to the resource identified by domainName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \examples{
 

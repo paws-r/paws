@@ -4,10 +4,12 @@
 \alias{disable_key_rotation}
 \title{Disables \link{automatic rotation of the key material}(http://docs}
 \usage{
-disable_key_rotation(KeyId)
+disable_key_rotation(
+  KeyId = "string"
+)
 }
 \arguments{
-\item{KeyId}{A unique identifier for the customer master key (CMK).
+\item{KeyId}{[required] A unique identifier for the customer master key (CMK).
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 

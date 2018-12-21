@@ -4,10 +4,13 @@
 \alias{stop_db_instance}
 \title{Stops an Amazon RDS DB instance}
 \usage{
-stop_db_instance(DBInstanceIdentifier, DBSnapshotIdentifier = NULL)
+stop_db_instance(
+  DBInstanceIdentifier = "string",
+  DBSnapshotIdentifier = "string"
+)
 }
 \arguments{
-\item{DBInstanceIdentifier}{The user-supplied instance identifier.}
+\item{DBInstanceIdentifier}{[required] The user-supplied instance identifier.}
 
 \item{DBSnapshotIdentifier}{The user-supplied instance identifier of the DB Snapshot created immediately before the DB instance is stopped.}
 }

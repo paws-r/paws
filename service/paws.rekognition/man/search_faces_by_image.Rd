@@ -4,13 +4,24 @@
 \alias{search_faces_by_image}
 \title{For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces}
 \usage{
-search_faces_by_image(CollectionId, Image, MaxFaces = NULL,
-  FaceMatchThreshold = NULL)
+search_faces_by_image(
+  CollectionId = "string",
+  Image = list(
+    Bytes = raw,
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  MaxFaces = 123,
+  FaceMatchThreshold = 123.0
+)
 }
 \arguments{
-\item{CollectionId}{ID of the collection to search.}
+\item{CollectionId}{[required] ID of the collection to search.}
 
-\item{Image}{The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.}
+\item{Image}{[required] The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.}
 
 \item{MaxFaces}{Maximum number of faces to return. The operation returns the maximum number of faces with the highest confidence in the match.}
 

@@ -4,10 +4,18 @@
 \alias{remove_tags}
 \title{Removes the specified tags from a trail}
 \usage{
-remove_tags(ResourceId, TagsList = NULL)
+remove_tags(
+  ResourceId = "string",
+  TagsList = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ResourceId}{Specifies the ARN of the trail from which tags should be removed. The format of a trail ARN is:
+\item{ResourceId}{[required] Specifies the ARN of the trail from which tags should be removed. The format of a trail ARN is:
 
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 

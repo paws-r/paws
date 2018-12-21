@@ -4,13 +4,20 @@
 \alias{cancel_job_execution}
 \title{Cancels the execution of a job for a given thing}
 \usage{
-cancel_job_execution(jobId, thingName, force = NULL, expectedVersion = NULL,
-  statusDetails = NULL)
+cancel_job_execution(
+  jobId = "string",
+  thingName = "string",
+  force = TRUE|FALSE,
+  expectedVersion = 123,
+  statusDetails = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{jobId}{The ID of the job to be canceled.}
+\item{jobId}{[required] The ID of the job to be canceled.}
 
-\item{thingName}{The name of the thing whose execution of the job will be canceled.}
+\item{thingName}{[required] The name of the thing whose execution of the job will be canceled.}
 
 \item{force}{(Optional) If \code{true} the job execution will be canceled if it has status IN\_PROGRESS or QUEUED, otherwise the job execution will be canceled only if it has status QUEUED. If you attempt to cancel a job execution that is IN\_PROGRESS, and you do not set \code{force} to \code{true}, then an \code{InvalidStateTransitionException} will be thrown. The default is \code{false}.
 

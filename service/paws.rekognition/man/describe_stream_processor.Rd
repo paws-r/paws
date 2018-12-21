@@ -4,10 +4,12 @@
 \alias{describe_stream_processor}
 \title{Provides information about a stream processor created by}
 \usage{
-describe_stream_processor(Name)
+describe_stream_processor(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{Name of the stream processor for which you want information.}
+\item{Name}{[required] Name of the stream processor for which you want information.}
 }
 \description{
 Provides information about a stream processor created by . You can get information about the input and output streams, the input parameters for the face recognition being performed, and the current status of the stream processor.

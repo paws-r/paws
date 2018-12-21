@@ -4,14 +4,27 @@
 \alias{create_tags}
 \title{Adds or overwrites one or more tags for the specified Amazon EC2 resource or resources}
 \usage{
-create_tags(Resources, Tags, DryRun = NULL)
+create_tags(
+  DryRun = TRUE|FALSE,
+  Resources = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{Resources}{The IDs of one or more resources to tag. For example, ami-1a2b3c4d.}
-
-\item{Tags}{One or more tags. The \code{value} parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{Resources}{[required] The IDs of one or more resources, separated by spaces.
+
+Constraints: Up to 1000 resource IDs. We recommend breaking up this request into smaller batches.}
+
+\item{Tags}{[required] One or more tags. The \code{value} parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string.}
 }
 \description{
 Adds or overwrites one or more tags for the specified Amazon EC2 resource or resources. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.

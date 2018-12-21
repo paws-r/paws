@@ -4,10 +4,13 @@
 \alias{reboot_db_instance}
 \title{You might need to reboot your DB instance, usually for maintenance reasons}
 \usage{
-reboot_db_instance(DBInstanceIdentifier, ForceFailover = NULL)
+reboot_db_instance(
+  DBInstanceIdentifier = "string",
+  ForceFailover = TRUE|FALSE
+)
 }
 \arguments{
-\item{DBInstanceIdentifier}{The DB instance identifier. This parameter is stored as a lowercase string.
+\item{DBInstanceIdentifier}{[required] The DB instance identifier. This parameter is stored as a lowercase string.
 
 Constraints:
 \itemize{

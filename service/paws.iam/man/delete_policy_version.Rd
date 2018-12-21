@@ -4,16 +4,19 @@
 \alias{delete_policy_version}
 \title{Deletes the specified version from the specified managed policy}
 \usage{
-delete_policy_version(PolicyArn, VersionId)
+delete_policy_version(
+  PolicyArn = "string",
+  VersionId = "string"
+)
 }
 \arguments{
-\item{PolicyArn}{The Amazon Resource Name (ARN) of the IAM policy from which you want to delete a version.
+\item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy from which you want to delete a version.
 
 For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces} in the \emph{AWS General Reference}.}
 
-\item{VersionId}{The policy version to delete.
+\item{VersionId}{[required] The policy version to delete.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a period '.' and a string of letters and digits.
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a period '.' and a string of letters and digits.
 
 For more information about managed policy versions, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies} in the \emph{IAM User Guide}.}
 }

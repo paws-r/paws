@@ -4,10 +4,13 @@
 \alias{delete_progress_update_stream}
 \title{Deletes a progress update stream, including all of its tasks, which was previously created as an AWS resource used for access control}
 \usage{
-delete_progress_update_stream(ProgressUpdateStreamName, DryRun = NULL)
+delete_progress_update_stream(
+  ProgressUpdateStreamName = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{ProgressUpdateStreamName}{The name of the ProgressUpdateStream.}
+\item{ProgressUpdateStreamName}{[required] The name of the ProgressUpdateStream.}
 
 \item{DryRun}{Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.}
 }

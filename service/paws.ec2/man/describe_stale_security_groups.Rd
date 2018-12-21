@@ -4,17 +4,21 @@
 \alias{describe_stale_security_groups}
 \title{[EC2-VPC only] Describes the stale security group rules for security groups in a specified VPC}
 \usage{
-describe_stale_security_groups(VpcId, DryRun = NULL, MaxResults = NULL,
-  NextToken = NULL)
+describe_stale_security_groups(
+  DryRun = TRUE|FALSE,
+  MaxResults = 123,
+  NextToken = "string",
+  VpcId = "string"
+)
 }
 \arguments{
-\item{VpcId}{The ID of the VPC.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{MaxResults}{The maximum number of items to return for this request. The request returns a token that you can specify in a subsequent call to get the next set of results.}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token from a prior call.)}
+
+\item{VpcId}{[required] The ID of the VPC.}
 }
 \description{
 [EC2-VPC only] Describes the stale security group rules for security groups in a specified VPC. Rules are stale when they reference a deleted security group in a peer VPC, or a security group in a peer VPC for which the VPC peering connection has been deleted.

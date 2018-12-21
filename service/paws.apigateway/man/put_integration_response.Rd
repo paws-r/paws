@@ -4,18 +4,29 @@
 \alias{put_integration_response}
 \title{Represents a put integration}
 \usage{
-put_integration_response(restApiId, resourceId, httpMethod, statusCode,
-  selectionPattern = NULL, responseParameters = NULL,
-  responseTemplates = NULL, contentHandling = NULL)
+put_integration_response(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string",
+  statusCode = "string",
+  selectionPattern = "string",
+  responseParameters = list(
+    "string"
+  ),
+  responseTemplates = list(
+    "string"
+  ),
+  contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[Required] Specifies a put integration response request's resource identifier.}
+\item{resourceId}{[required] [Required] Specifies a put integration response request's resource identifier.}
 
-\item{httpMethod}{[Required] Specifies a put integration response request's HTTP method.}
+\item{httpMethod}{[required] [Required] Specifies a put integration response request's HTTP method.}
 
-\item{statusCode}{[Required] Specifies the status code that is used to map the integration response to an existing MethodResponse.}
+\item{statusCode}{[required] [Required] Specifies the status code that is used to map the integration response to an existing MethodResponse.}
 
 \item{selectionPattern}{Specifies the selection pattern of a put integration response.}
 

@@ -4,12 +4,15 @@
 \alias{create_group}
 \title{Creates a group that can be used in Amazon WorkMail by calling the RegisterToWorkMail operation}
 \usage{
-create_group(OrganizationId, Name)
+create_group(
+  OrganizationId = "string",
+  Name = "string"
+)
 }
 \arguments{
-\item{OrganizationId}{The organization under which the group is to be created.}
+\item{OrganizationId}{[required] The organization under which the group is to be created.}
 
-\item{Name}{The name of the group.}
+\item{Name}{[required] The name of the group.}
 }
 \description{
 Creates a group that can be used in Amazon WorkMail by calling the RegisterToWorkMail operation.

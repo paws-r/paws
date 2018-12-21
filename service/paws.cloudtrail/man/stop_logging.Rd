@@ -4,10 +4,12 @@
 \alias{stop_logging}
 \title{Suspends the recording of AWS API calls and log file delivery for the specified trail}
 \usage{
-stop_logging(Name)
+stop_logging(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{Specifies the name or the CloudTrail ARN of the trail for which CloudTrail will stop logging AWS API calls. The format of a trail ARN is:
+\item{Name}{[required] Specifies the name or the CloudTrail ARN of the trail for which CloudTrail will stop logging AWS API calls. The format of a trail ARN is:
 
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 }

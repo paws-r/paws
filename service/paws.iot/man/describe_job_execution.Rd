@@ -4,12 +4,16 @@
 \alias{describe_job_execution}
 \title{Describes a job execution}
 \usage{
-describe_job_execution(jobId, thingName, executionNumber = NULL)
+describe_job_execution(
+  jobId = "string",
+  thingName = "string",
+  executionNumber = 123
+)
 }
 \arguments{
-\item{jobId}{The unique identifier you assigned to this job when it was created.}
+\item{jobId}{[required] The unique identifier you assigned to this job when it was created.}
 
-\item{thingName}{The name of the thing on which the job execution is running.}
+\item{thingName}{[required] The name of the thing on which the job execution is running.}
 
 \item{executionNumber}{A string (consisting of the digits "0" through "9" which is used to specify a particular job execution on a particular device.}
 }

@@ -4,15 +4,83 @@
 \alias{register_task_with_maintenance_window}
 \title{Adds a new task to a Maintenance Window}
 \usage{
-register_task_with_maintenance_window(WindowId, Targets, TaskArn, TaskType,
-  MaxConcurrency, MaxErrors, ServiceRoleArn = NULL, TaskParameters = NULL,
-  TaskInvocationParameters = NULL, Priority = NULL, LoggingInfo = NULL,
-  Name = NULL, Description = NULL, ClientToken = NULL)
+register_task_with_maintenance_window(
+  WindowId = "string",
+  Targets = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  TaskArn = "string",
+  ServiceRoleArn = "string",
+  TaskType = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA",
+  TaskParameters = list(
+    list(
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  TaskInvocationParameters = list(
+    RunCommand = list(
+      Comment = "string",
+      DocumentHash = "string",
+      DocumentHashType = "Sha256"|"Sha1",
+      NotificationConfig = list(
+        NotificationArn = "string",
+        NotificationEvents = list(
+          "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
+        ),
+        NotificationType = "Command"|"Invocation"
+      ),
+      OutputS3BucketName = "string",
+      OutputS3KeyPrefix = "string",
+      Parameters = list(
+        list(
+          "string"
+        )
+      ),
+      ServiceRoleArn = "string",
+      TimeoutSeconds = 123
+    ),
+    Automation = list(
+      DocumentVersion = "string",
+      Parameters = list(
+        list(
+          "string"
+        )
+      )
+    ),
+    StepFunctions = list(
+      Input = "string",
+      Name = "string"
+    ),
+    Lambda = list(
+      ClientContext = "string",
+      Qualifier = "string",
+      Payload = raw
+    )
+  ),
+  Priority = 123,
+  MaxConcurrency = "string",
+  MaxErrors = "string",
+  LoggingInfo = list(
+    S3BucketName = "string",
+    S3KeyPrefix = "string",
+    S3Region = "string"
+  ),
+  Name = "string",
+  Description = "string",
+  ClientToken = "string"
+)
 }
 \arguments{
-\item{WindowId}{The ID of the Maintenance Window the task should be added to.}
+\item{WindowId}{[required] The ID of the Maintenance Window the task should be added to.}
 
-\item{Targets}{The targets (either instances or Maintenance Window targets).
+\item{Targets}{[required] The targets (either instances or Maintenance Window targets).
 
 Specify instances using the following format:
 
@@ -22,19 +90,15 @@ Specify Maintenance Window targets using the following format:
 
 \code{Key=<WindowTargetIds>,Values=<window-target-id-1>,<window-target-id-2>}}
 
-\item{TaskArn}{The ARN of the task to execute}
-
-\item{TaskType}{The type of task being registered.}
-
-\item{MaxConcurrency}{The maximum number of targets this task can be run for in parallel.}
-
-\item{MaxErrors}{The maximum number of errors allowed before this task stops being scheduled.}
+\item{TaskArn}{[required] The ARN of the task to execute}
 
 \item{ServiceRoleArn}{The role to assume when running the Maintenance Window task.
 
 If you do not specify a service role ARN, Systems Manager will use your account's service-linked role for Systems Manager by default. If no service-linked role for Systems Manager exists in your account, it will be created when you run \code{RegisterTaskWithMaintenanceWindow} without specifying a service role ARN.
 
 For more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions}{Service-Linked Role Permissions for Systems Manager} and \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role}{Should I Use a Service-Linked Role or a Custom Service Role to Run Maintenance Window Tasks?} in the \emph{AWS Systems Manager User Guide}.}
+
+\item{TaskType}{[required] The type of task being registered.}
 
 \item{TaskParameters}{The parameters that should be passed to the task when it is executed.
 
@@ -43,6 +107,10 @@ For more information, see \href{http://docs.aws.amazon.com/systems-manager/lates
 \item{TaskInvocationParameters}{The parameters that the task should use during execution. Populate only the fields that match the task type. All other fields should be empty.}
 
 \item{Priority}{The priority of the task in the Maintenance Window, the lower the number the higher the priority. Tasks in a Maintenance Window are scheduled in priority order with tasks that have the same priority scheduled in parallel.}
+
+\item{MaxConcurrency}{[required] The maximum number of targets this task can be run for in parallel.}
+
+\item{MaxErrors}{[required] The maximum number of errors allowed before this task stops being scheduled.}
 
 \item{LoggingInfo}{A structure containing information about an Amazon S3 bucket to write instance-level logs to.
 

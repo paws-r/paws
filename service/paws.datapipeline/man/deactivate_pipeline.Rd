@@ -4,10 +4,13 @@
 \alias{deactivate_pipeline}
 \title{Deactivates the specified running pipeline}
 \usage{
-deactivate_pipeline(pipelineId, cancelActive = NULL)
+deactivate_pipeline(
+  pipelineId = "string",
+  cancelActive = TRUE|FALSE
+)
 }
 \arguments{
-\item{pipelineId}{The ID of the pipeline.}
+\item{pipelineId}{[required] The ID of the pipeline.}
 
 \item{cancelActive}{Indicates whether to cancel any running objects. The default is true, which sets the state of any running objects to \code{CANCELED}. If this value is false, the pipeline is deactivated after all running objects finish.}
 }

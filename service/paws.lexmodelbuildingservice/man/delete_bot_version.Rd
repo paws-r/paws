@@ -4,12 +4,15 @@
 \alias{delete_bot_version}
 \title{Deletes a specific version of a bot}
 \usage{
-delete_bot_version(name, version)
+delete_bot_version(
+  name = "string",
+  version = "string"
+)
 }
 \arguments{
-\item{name}{The name of the bot.}
+\item{name}{[required] The name of the bot.}
 
-\item{version}{The version of the bot to delete. You cannot delete the \code{$LATEST} version of the bot. To delete the \code{$LATEST} version, use the DeleteBot operation.}
+\item{version}{[required] The version of the bot to delete. You cannot delete the \code{$LATEST} version of the bot. To delete the \code{$LATEST} version, use the DeleteBot operation.}
 }
 \description{
 Deletes a specific version of a bot. To delete all versions of a bot, use the DeleteBot operation.

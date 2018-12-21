@@ -4,18 +4,22 @@
 \alias{put_identity_policy}
 \title{Adds or updates a sending authorization policy for the specified identity (an email address or a domain)}
 \usage{
-put_identity_policy(Identity, PolicyName, Policy)
+put_identity_policy(
+  Identity = "string",
+  PolicyName = "string",
+  Policy = "string"
+)
 }
 \arguments{
-\item{Identity}{The identity that the policy will apply to. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: \code{user@example.com}, \code{example.com}, \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}.
+\item{Identity}{[required] The identity that the policy will apply to. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: \code{user@example.com}, \code{example.com}, \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}.
 
 To successfully call this API, you must own the identity.}
 
-\item{PolicyName}{The name of the policy.
+\item{PolicyName}{[required] The name of the policy.
 
 The policy name cannot exceed 64 characters and can only include alphanumeric characters, dashes, and underscores.}
 
-\item{Policy}{The text of the policy in JSON format. The policy cannot exceed 4 KB.
+\item{Policy}{[required] The text of the policy in JSON format. The policy cannot exceed 4 KB.
 
 For information about the syntax of sending authorization policies, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html}{Amazon SES Developer Guide}.}
 }

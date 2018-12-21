@@ -4,10 +4,12 @@
 \alias{delete_batch_prediction}
 \title{Assigns the DELETED status to a \code{BatchPrediction}, rendering it unusable}
 \usage{
-delete_batch_prediction(BatchPredictionId)
+delete_batch_prediction(
+  BatchPredictionId = "string"
+)
 }
 \arguments{
-\item{BatchPredictionId}{A user-supplied ID that uniquely identifies the \code{BatchPrediction}.}
+\item{BatchPredictionId}{[required] A user-supplied ID that uniquely identifies the \code{BatchPrediction}.}
 }
 \description{
 Assigns the DELETED status to a \code{BatchPrediction}, rendering it unusable.

@@ -4,10 +4,12 @@
 \alias{get_rate_based_rule}
 \title{Returns the RateBasedRule that is specified by the \code{RuleId} that you included in the \code{GetRateBasedRule} request}
 \usage{
-get_rate_based_rule(RuleId)
+get_rate_based_rule(
+  RuleId = "string"
+)
 }
 \arguments{
-\item{RuleId}{The \code{RuleId} of the RateBasedRule that you want to get. \code{RuleId} is returned by CreateRateBasedRule and by ListRateBasedRules.}
+\item{RuleId}{[required] The \code{RuleId} of the RateBasedRule that you want to get. \code{RuleId} is returned by CreateRateBasedRule and by ListRateBasedRules.}
 }
 \description{
 Returns the RateBasedRule that is specified by the \code{RuleId} that you included in the \code{GetRateBasedRule} request.

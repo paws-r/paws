@@ -4,7 +4,10 @@
 \alias{describe_stream}
 \title{Returns the most current information about the specified stream}
 \usage{
-describe_stream(StreamName = NULL, StreamARN = NULL)
+describe_stream(
+  StreamName = "string",
+  StreamARN = "string"
+)
 }
 \arguments{
 \item{StreamName}{The name of the stream.}

@@ -4,12 +4,17 @@
 \alias{update_api_key}
 \title{Updates an API key}
 \usage{
-update_api_key(apiId, id, description = NULL, expires = NULL)
+update_api_key(
+  apiId = "string",
+  id = "string",
+  description = "string",
+  expires = 123
+)
 }
 \arguments{
-\item{apiId}{The ID for the GraphQL API}
+\item{apiId}{[required] The ID for the GraphQL API.}
 
-\item{id}{The API key ID.}
+\item{id}{[required] The API key ID.}
 
 \item{description}{A description of the purpose of the API key.}
 

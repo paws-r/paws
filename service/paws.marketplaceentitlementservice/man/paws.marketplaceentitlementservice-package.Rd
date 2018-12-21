@@ -6,15 +6,20 @@
 \alias{paws.marketplaceentitlementservice-package}
 \title{paws.marketplaceentitlementservice: AWS Marketplace Entitlement Service}
 \description{
-This reference provides descriptions of the AWS
-Marketplace Entitlement Service API.
+This reference provides descriptions of the AWS Marketplace
+Entitlement Service API.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

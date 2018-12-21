@@ -4,7 +4,9 @@
 \alias{list_pipelines}
 \title{Gets a summary of all of the pipelines associated with your account}
 \usage{
-list_pipelines(nextToken = NULL)
+list_pipelines(
+  nextToken = "string"
+)
 }
 \arguments{
 \item{nextToken}{An identifier that was returned from the previous list pipelines call, which can be used to return the next set of pipelines in the list.}

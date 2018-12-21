@@ -5,12 +5,20 @@
 \alias{update_application}
 \title{Updates the specified application}
 \usage{
-update_application(ApplicationId, Author = NULL, Description = NULL,
-  HomePageUrl = NULL, Labels = NULL, ReadmeBody = NULL,
-  ReadmeUrl = NULL)
+update_application(
+  ApplicationId = "string",
+  Author = "string",
+  Description = "string",
+  HomePageUrl = "string",
+  Labels = list(
+    "string"
+  ),
+  ReadmeBody = "string",
+  ReadmeUrl = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The Amazon Resource Name (ARN) of the application.}
+\item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
 
 \item{Author}{The name of the author publishing the app.
 

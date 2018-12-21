@@ -4,17 +4,29 @@
 \alias{create_identity_provider}
 \title{Creates an identity provider for a user pool}
 \usage{
-create_identity_provider(UserPoolId, ProviderName, ProviderType,
-  ProviderDetails, AttributeMapping = NULL, IdpIdentifiers = NULL)
+create_identity_provider(
+  UserPoolId = "string",
+  ProviderName = "string",
+  ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"OIDC",
+  ProviderDetails = list(
+    "string"
+  ),
+  AttributeMapping = list(
+    "string"
+  ),
+  IdpIdentifiers = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID.}
+\item{UserPoolId}{[required] The user pool ID.}
 
-\item{ProviderName}{The identity provider name.}
+\item{ProviderName}{[required] The identity provider name.}
 
-\item{ProviderType}{The identity provider type.}
+\item{ProviderType}{[required] The identity provider type.}
 
-\item{ProviderDetails}{The identity provider details, such as \code{MetadataURL} and \code{MetadataFile}.}
+\item{ProviderDetails}{[required] The identity provider details, such as \code{MetadataURL} and \code{MetadataFile}.}
 
 \item{AttributeMapping}{A mapping of identity provider attributes to standard and custom user pool attributes.}
 

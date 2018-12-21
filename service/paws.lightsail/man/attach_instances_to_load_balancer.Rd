@@ -4,12 +4,17 @@
 \alias{attach_instances_to_load_balancer}
 \title{Attaches one or more Lightsail instances to a load balancer}
 \usage{
-attach_instances_to_load_balancer(loadBalancerName, instanceNames)
+attach_instances_to_load_balancer(
+  loadBalancerName = "string",
+  instanceNames = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{loadBalancerName}{The name of the load balancer.}
+\item{loadBalancerName}{[required] The name of the load balancer.}
 
-\item{instanceNames}{An array of strings representing the instance name(s) you want to attach to your load balancer.
+\item{instanceNames}{[required] An array of strings representing the instance name(s) you want to attach to your load balancer.
 
 An instance must be \code{running} before you can attach it to your load balancer.
 
@@ -20,6 +25,8 @@ Attaches one or more Lightsail instances to a load balancer.
 }
 \details{
 After some time, the instances are attached to the load balancer and the health check status is available.
+
+The \code{attach instances to load balancer} operation supports tag-based access control via resource tags applied to the resource identified by loadBalancerName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \examples{
 

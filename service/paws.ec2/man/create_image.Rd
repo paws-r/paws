@@ -4,21 +4,42 @@
 \alias{create_image}
 \title{Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped}
 \usage{
-create_image(InstanceId, Name, BlockDeviceMappings = NULL,
-  Description = NULL, DryRun = NULL, NoReboot = NULL)
+create_image(
+  BlockDeviceMappings = list(
+    list(
+      DeviceName = "string",
+      VirtualName = "string",
+      Ebs = list(
+        DeleteOnTermination = TRUE|FALSE,
+        Iops = 123,
+        SnapshotId = "string",
+        VolumeSize = 123,
+        VolumeType = "standard"|"io1"|"gp2"|"sc1"|"st1",
+        Encrypted = TRUE|FALSE,
+        KmsKeyId = "string"
+      ),
+      NoDevice = "string"
+    )
+  ),
+  Description = "string",
+  DryRun = TRUE|FALSE,
+  InstanceId = "string",
+  Name = "string",
+  NoReboot = TRUE|FALSE
+)
 }
 \arguments{
-\item{InstanceId}{The ID of the instance.}
-
-\item{Name}{A name for the new image.
-
-Constraints: 3-128 alphanumeric characters, parentheses (()), square brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-), single quotes ('), at-signs (@), or underscores(\_)}
-
 \item{BlockDeviceMappings}{Information about one or more block device mappings. This parameter cannot be used to modify the encryption status of existing volumes or snapshots. To create an AMI with encrypted snapshots, use the CopyImage action.}
 
 \item{Description}{A description for the new image.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{InstanceId}{[required] The ID of the instance.}
+
+\item{Name}{[required] A name for the new image.
+
+Constraints: 3-128 alphanumeric characters, parentheses (()), square brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-), single quotes ('), at-signs (@), or underscores(\_)}
 
 \item{NoReboot}{By default, Amazon EC2 attempts to shut down and reboot the instance before creating the image. If the 'No Reboot' option is set, Amazon EC2 doesn't shut down the instance before creating the image. When this option is used, file system integrity on the created image can't be guaranteed.}
 }

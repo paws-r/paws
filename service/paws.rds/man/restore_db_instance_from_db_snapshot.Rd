@@ -4,20 +4,53 @@
 \alias{restore_db_instance_from_db_snapshot}
 \title{Creates a new DB instance from a DB snapshot}
 \usage{
-restore_db_instance_from_db_snapshot(DBInstanceIdentifier, DBSnapshotIdentifier,
-  DBInstanceClass = NULL, Port = NULL, AvailabilityZone = NULL,
-  DBSubnetGroupName = NULL, MultiAZ = NULL, PubliclyAccessible = NULL,
-  AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, DBName = NULL,
-  Engine = NULL, Iops = NULL, OptionGroupName = NULL, Tags = NULL,
-  StorageType = NULL, TdeCredentialArn = NULL,
-  TdeCredentialPassword = NULL, Domain = NULL, CopyTagsToSnapshot = NULL,
-  DomainIAMRoleName = NULL, EnableIAMDatabaseAuthentication = NULL,
-  EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL,
-  UseDefaultProcessorFeatures = NULL, DBParameterGroupName = NULL,
-  DeletionProtection = NULL)
+restore_db_instance_from_db_snapshot(
+  DBInstanceIdentifier = "string",
+  DBSnapshotIdentifier = "string",
+  DBInstanceClass = "string",
+  Port = 123,
+  AvailabilityZone = "string",
+  DBSubnetGroupName = "string",
+  MultiAZ = TRUE|FALSE,
+  PubliclyAccessible = TRUE|FALSE,
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  LicenseModel = "string",
+  DBName = "string",
+  Engine = "string",
+  Iops = 123,
+  OptionGroupName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  StorageType = "string",
+  TdeCredentialArn = "string",
+  TdeCredentialPassword = "string",
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  Domain = "string",
+  CopyTagsToSnapshot = TRUE|FALSE,
+  DomainIAMRoleName = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  EnableCloudwatchLogsExports = list(
+    "string"
+  ),
+  ProcessorFeatures = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  UseDefaultProcessorFeatures = TRUE|FALSE,
+  DBParameterGroupName = "string",
+  DeletionProtection = TRUE|FALSE
+)
 }
 \arguments{
-\item{DBInstanceIdentifier}{Name of the DB instance to create from the DB snapshot. This parameter isn't case-sensitive.
+\item{DBInstanceIdentifier}{[required] Name of the DB instance to create from the DB snapshot. This parameter isn't case-sensitive.
 
 Constraints:
 \itemize{
@@ -28,7 +61,7 @@ Constraints:
 
 Example: \code{my-snapshot-id}}
 
-\item{DBSnapshotIdentifier}{The identifier for the DB snapshot to restore from.
+\item{DBSnapshotIdentifier}{[required] The identifier for the DB snapshot to restore from.
 
 Constraints:
 \itemize{
@@ -122,6 +155,10 @@ Default: \code{io1} if the \code{Iops} parameter is specified, otherwise \code{s
 \item{TdeCredentialArn}{The ARN from the key store with which to associate the instance for TDE encryption.}
 
 \item{TdeCredentialPassword}{The password for the given ARN from the key store in order to access the device.}
+
+\item{VpcSecurityGroupIds}{A list of EC2 VPC security groups to associate with this DB instance.
+
+Default: The default EC2 VPC security group for the DB subnet group's VPC.}
 
 \item{Domain}{Specify the Active Directory Domain to restore the instance in.}
 

@@ -4,8 +4,22 @@
 \alias{describe_export_tasks}
 \title{Retrieve status of one or more export tasks}
 \usage{
-describe_export_tasks(exportIds = NULL, filters = NULL, maxResults = NULL,
-  nextToken = NULL)
+describe_export_tasks(
+  exportIds = list(
+    "string"
+  ),
+  filters = list(
+    list(
+      name = "string",
+      values = list(
+        "string"
+      ),
+      condition = "string"
+    )
+  ),
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
 \item{exportIds}{One or more unique identifiers used to query the status of an export request.}

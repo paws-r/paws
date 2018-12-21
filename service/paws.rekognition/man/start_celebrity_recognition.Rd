@@ -4,11 +4,24 @@
 \alias{start_celebrity_recognition}
 \title{Starts asynchronous recognition of celebrities in a stored video}
 \usage{
-start_celebrity_recognition(Video, ClientRequestToken = NULL,
-  NotificationChannel = NULL, JobTag = NULL)
+start_celebrity_recognition(
+  Video = list(
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  ClientRequestToken = "string",
+  NotificationChannel = list(
+    SNSTopicArn = "string",
+    RoleArn = "string"
+  ),
+  JobTag = "string"
+)
 }
 \arguments{
-\item{Video}{The video in which you want to recognize celebrities. The video must be stored in an Amazon S3 bucket.}
+\item{Video}{[required] The video in which you want to recognize celebrities. The video must be stored in an Amazon S3 bucket.}
 
 \item{ClientRequestToken}{Idempotent token used to identify the start request. If you use the same token with multiple \code{StartCelebrityRecognition} requests, the same \code{JobId} is returned. Use \code{ClientRequestToken} to prevent the same job from being accidently started more than once.}
 

@@ -4,13 +4,18 @@
 \alias{list_qualification_types}
 \title{The \code{ListQualificationTypes} operation returns a list of Qualification types, filtered by an optional search term}
 \usage{
-list_qualification_types(MustBeRequestable, Query = NULL,
-  MustBeOwnedByCaller = NULL, NextToken = NULL, MaxResults = NULL)
+list_qualification_types(
+  Query = "string",
+  MustBeRequestable = TRUE|FALSE,
+  MustBeOwnedByCaller = TRUE|FALSE,
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{MustBeRequestable}{Specifies that only Qualification types that a user can request through the Amazon Mechanical Turk web site, such as by taking a Qualification test, are returned as results of the search. Some Qualification types, such as those assigned automatically by the system, cannot be requested directly by users. If false, all Qualification types, including those managed by the system, are considered. Valid values are True | False.}
-
 \item{Query}{A text query against all of the searchable attributes of Qualification types.}
+
+\item{MustBeRequestable}{[required] Specifies that only Qualification types that a user can request through the Amazon Mechanical Turk web site, such as by taking a Qualification test, are returned as results of the search. Some Qualification types, such as those assigned automatically by the system, cannot be requested directly by users. If false, all Qualification types, including those managed by the system, are considered. Valid values are True | False.}
 
 \item{MustBeOwnedByCaller}{Specifies that only Qualification types that the Requester created are returned. If false, the operation returns all Qualification types.}
 

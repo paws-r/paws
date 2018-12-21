@@ -4,15 +4,19 @@
 \alias{list_domains}
 \title{Returns the list of domains registered in the account}
 \usage{
-list_domains(registrationStatus, nextPageToken = NULL,
-  maximumPageSize = NULL, reverseOrder = NULL)
+list_domains(
+  nextPageToken = "string",
+  registrationStatus = "REGISTERED"|"DEPRECATED",
+  maximumPageSize = 123,
+  reverseOrder = TRUE|FALSE
+)
 }
 \arguments{
-\item{registrationStatus}{Specifies the registration status of the domains to list.}
-
 \item{nextPageToken}{If a \code{NextPageToken} was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in \code{nextPageToken}. Keep all other arguments unchanged.
 
 The configured \code{maximumPageSize} determines how many results can be returned in a single call.}
+
+\item{registrationStatus}{[required] Specifies the registration status of the domains to list.}
 
 \item{maximumPageSize}{The maximum number of results that are returned per call. \code{nextPageToken} can be used to obtain futher pages of results. The default is 1000, which is the maximum allowed page size. You can, however, specify a page size \emph{smaller} than the maximum.
 

@@ -4,12 +4,15 @@
 \alias{refresh_schemas}
 \title{Populates the schema for the specified endpoint}
 \usage{
-refresh_schemas(EndpointArn, ReplicationInstanceArn)
+refresh_schemas(
+  EndpointArn = "string",
+  ReplicationInstanceArn = "string"
+)
 }
 \arguments{
-\item{EndpointArn}{The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.}
+\item{EndpointArn}{[required] The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.}
 
-\item{ReplicationInstanceArn}{The Amazon Resource Name (ARN) of the replication instance.}
+\item{ReplicationInstanceArn}{[required] The Amazon Resource Name (ARN) of the replication instance.}
 }
 \description{
 Populates the schema for the specified endpoint. This is an asynchronous operation and can take several minutes. You can check the status of this operation by calling the DescribeRefreshSchemasStatus operation.

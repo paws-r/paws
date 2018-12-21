@@ -4,7 +4,10 @@
 \alias{associate_software_token}
 \title{Returns a unique generated shared secret key code for the user account}
 \usage{
-associate_software_token(AccessToken = NULL, Session = NULL)
+associate_software_token(
+  AccessToken = "string",
+  Session = "string"
+)
 }
 \arguments{
 \item{AccessToken}{The access token.}

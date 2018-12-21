@@ -4,14 +4,18 @@
 \alias{update_shard_count}
 \title{Updates the shard count of the specified stream to the specified number of shards}
 \usage{
-update_shard_count(StreamName, TargetShardCount, ScalingType)
+update_shard_count(
+  StreamName = "string",
+  TargetShardCount = 123,
+  ScalingType = "UNIFORM_SCALING"
+)
 }
 \arguments{
-\item{StreamName}{The name of the stream.}
+\item{StreamName}{[required] The name of the stream.}
 
-\item{TargetShardCount}{The new number of shards.}
+\item{TargetShardCount}{[required] The new number of shards.}
 
-\item{ScalingType}{The scaling type. Uniform scaling creates shards of equal size.}
+\item{ScalingType}{[required] The scaling type. Uniform scaling creates shards of equal size.}
 }
 \description{
 Updates the shard count of the specified stream to the specified number of shards.

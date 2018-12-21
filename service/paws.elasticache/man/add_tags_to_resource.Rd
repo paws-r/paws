@@ -4,14 +4,22 @@
 \alias{add_tags_to_resource}
 \title{Adds up to 50 cost allocation tags to the named resource}
 \usage{
-add_tags_to_resource(ResourceName, Tags)
+add_tags_to_resource(
+  ResourceName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ResourceName}{The Amazon Resource Name (ARN) of the resource to which the tags are to be added, for example \code{arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster} or \code{arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot}. ElastiCache resources are \emph{cluster} and \emph{snapshot}.
+\item{ResourceName}{[required] The Amazon Resource Name (ARN) of the resource to which the tags are to be added, for example \code{arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster} or \code{arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot}. ElastiCache resources are \emph{cluster} and \emph{snapshot}.
 
 For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
 
-\item{Tags}{A list of cost allocation tags to be added to this resource. A tag is a key-value pair. A tag key must be accompanied by a tag value.}
+\item{Tags}{[required] A list of cost allocation tags to be added to this resource. A tag is a key-value pair. A tag key must be accompanied by a tag value.}
 }
 \description{
 Adds up to 50 cost allocation tags to the named resource. A cost allocation tag is a key-value pair where the key and value are case-sensitive. You can use cost allocation tags to categorize and track your AWS costs.

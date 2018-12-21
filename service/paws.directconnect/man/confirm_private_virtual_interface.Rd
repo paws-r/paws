@@ -4,11 +4,14 @@
 \alias{confirm_private_virtual_interface}
 \title{Accepts ownership of a private virtual interface created by another AWS account}
 \usage{
-confirm_private_virtual_interface(virtualInterfaceId, virtualGatewayId = NULL,
-  directConnectGatewayId = NULL)
+confirm_private_virtual_interface(
+  virtualInterfaceId = "string",
+  virtualGatewayId = "string",
+  directConnectGatewayId = "string"
+)
 }
 \arguments{
-\item{virtualInterfaceId}{The ID of the virtual interface.}
+\item{virtualInterfaceId}{[required] The ID of the virtual interface.}
 
 \item{virtualGatewayId}{The ID of the virtual private gateway.}
 

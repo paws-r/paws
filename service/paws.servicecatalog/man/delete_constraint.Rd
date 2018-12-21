@@ -4,17 +4,20 @@
 \alias{delete_constraint}
 \title{Deletes the specified constraint}
 \usage{
-delete_constraint(Id, AcceptLanguage = NULL)
+delete_constraint(
+  AcceptLanguage = "string",
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The identifier of the constraint.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{Id}{[required] The identifier of the constraint.}
 }
 \description{
 Deletes the specified constraint.

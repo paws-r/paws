@@ -4,12 +4,18 @@
 \alias{create_labels}
 \title{Adds the specified list of labels to the given resource (a document or folder)}
 \usage{
-create_labels(ResourceId, Labels, AuthenticationToken = NULL)
+create_labels(
+  ResourceId = "string",
+  Labels = list(
+    "string"
+  ),
+  AuthenticationToken = "string"
+)
 }
 \arguments{
-\item{ResourceId}{The ID of the resource.}
+\item{ResourceId}{[required] The ID of the resource.}
 
-\item{Labels}{List of labels to add to the resource.}
+\item{Labels}{[required] List of labels to add to the resource.}
 
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
 }

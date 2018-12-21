@@ -4,12 +4,15 @@
 \alias{delete_size_constraint_set}
 \title{Permanently deletes a SizeConstraintSet}
 \usage{
-delete_size_constraint_set(SizeConstraintSetId, ChangeToken)
+delete_size_constraint_set(
+  SizeConstraintSetId = "string",
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{SizeConstraintSetId}{The \code{SizeConstraintSetId} of the SizeConstraintSet that you want to delete. \code{SizeConstraintSetId} is returned by CreateSizeConstraintSet and by ListSizeConstraintSets.}
+\item{SizeConstraintSetId}{[required] The \code{SizeConstraintSetId} of the SizeConstraintSet that you want to delete. \code{SizeConstraintSetId} is returned by CreateSizeConstraintSet and by ListSizeConstraintSets.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Permanently deletes a SizeConstraintSet. You can't delete a \code{SizeConstraintSet} if it's still used in any \code{Rules} or if it still includes any SizeConstraint objects (any filters).

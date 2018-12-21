@@ -4,7 +4,10 @@
 \alias{list_worker_blocks}
 \title{The \code{ListWorkersBlocks} operation retrieves a list of Workers who are blocked from working on your HITs}
 \usage{
-list_worker_blocks(NextToken = NULL, MaxResults = NULL)
+list_worker_blocks(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{NextToken}{Pagination token}

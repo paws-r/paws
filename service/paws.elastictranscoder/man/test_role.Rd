@@ -4,16 +4,23 @@
 \alias{test_role}
 \title{The TestRole operation tests the IAM role used to create the pipeline}
 \usage{
-test_role(Role, InputBucket, OutputBucket, Topics)
+test_role(
+  Role = "string",
+  InputBucket = "string",
+  OutputBucket = "string",
+  Topics = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{Role}{The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to test.}
+\item{Role}{[required] The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to test.}
 
-\item{InputBucket}{The Amazon S3 bucket that contains media files to be transcoded. The action attempts to read from this bucket.}
+\item{InputBucket}{[required] The Amazon S3 bucket that contains media files to be transcoded. The action attempts to read from this bucket.}
 
-\item{OutputBucket}{The Amazon S3 bucket that Elastic Transcoder writes transcoded media files to. The action attempts to read from this bucket.}
+\item{OutputBucket}{[required] The Amazon S3 bucket that Elastic Transcoder writes transcoded media files to. The action attempts to read from this bucket.}
 
-\item{Topics}{The ARNs of one or more Amazon Simple Notification Service (Amazon SNS) topics that you want the action to send a test notification to.}
+\item{Topics}{[required] The ARNs of one or more Amazon Simple Notification Service (Amazon SNS) topics that you want the action to send a test notification to.}
 }
 \description{
 The TestRole operation tests the IAM role used to create the pipeline.

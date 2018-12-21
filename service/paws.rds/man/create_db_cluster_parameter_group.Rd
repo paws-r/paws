@@ -4,11 +4,20 @@
 \alias{create_db_cluster_parameter_group}
 \title{Creates a new DB cluster parameter group}
 \usage{
-create_db_cluster_parameter_group(DBClusterParameterGroupName,
-  DBParameterGroupFamily, Description, Tags = NULL)
+create_db_cluster_parameter_group(
+  DBClusterParameterGroupName = "string",
+  DBParameterGroupFamily = "string",
+  Description = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{DBClusterParameterGroupName}{The name of the DB cluster parameter group.
+\item{DBClusterParameterGroupName}{[required] The name of the DB cluster parameter group.
 
 Constraints:
 \itemize{
@@ -17,7 +26,7 @@ Constraints:
 
 This value is stored as a lowercase string.}
 
-\item{DBParameterGroupFamily}{The DB cluster parameter group family name. A DB cluster parameter group can be associated with one and only one DB cluster parameter group family, and can be applied only to a DB cluster running a database engine and engine version compatible with that DB cluster parameter group family.
+\item{DBParameterGroupFamily}{[required] The DB cluster parameter group family name. A DB cluster parameter group can be associated with one and only one DB cluster parameter group family, and can be applied only to a DB cluster running a database engine and engine version compatible with that DB cluster parameter group family.
 
 \strong{Aurora MySQL}
 
@@ -27,7 +36,7 @@ Example: \code{aurora5.6}, \code{aurora-mysql5.7}
 
 Example: \code{aurora-postgresql9.6}}
 
-\item{Description}{The description for the DB cluster parameter group.}
+\item{Description}{[required] The description for the DB cluster parameter group.}
 
 \item{Tags}{}
 }

@@ -4,12 +4,16 @@
 \alias{create_player_session}
 \title{Adds a player to a game session and creates a player session record}
 \usage{
-create_player_session(GameSessionId, PlayerId, PlayerData = NULL)
+create_player_session(
+  GameSessionId = "string",
+  PlayerId = "string",
+  PlayerData = "string"
+)
 }
 \arguments{
-\item{GameSessionId}{Unique identifier for the game session to add a player to.}
+\item{GameSessionId}{[required] Unique identifier for the game session to add a player to.}
 
-\item{PlayerId}{Unique identifier for a player. Player IDs are developer-defined.}
+\item{PlayerId}{[required] Unique identifier for a player. Player IDs are developer-defined.}
 
 \item{PlayerData}{Developer-defined information related to a player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game.}
 }

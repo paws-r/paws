@@ -4,10 +4,12 @@
 \alias{delete_cache_security_group}
 \title{Deletes a cache security group}
 \usage{
-delete_cache_security_group(CacheSecurityGroupName)
+delete_cache_security_group(
+  CacheSecurityGroupName = "string"
+)
 }
 \arguments{
-\item{CacheSecurityGroupName}{The name of the cache security group to delete.
+\item{CacheSecurityGroupName}{[required] The name of the cache security group to delete.
 
 You cannot delete the default security group.}
 }

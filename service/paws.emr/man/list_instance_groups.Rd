@@ -4,10 +4,13 @@
 \alias{list_instance_groups}
 \title{Provides all available details about the instance groups in a cluster}
 \usage{
-list_instance_groups(ClusterId, Marker = NULL)
+list_instance_groups(
+  ClusterId = "string",
+  Marker = "string"
+)
 }
 \arguments{
-\item{ClusterId}{The identifier of the cluster for which to list the instance groups.}
+\item{ClusterId}{[required] The identifier of the cluster for which to list the instance groups.}
 
 \item{Marker}{The pagination token that indicates the next set of results to retrieve.}
 }

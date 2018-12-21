@@ -4,10 +4,13 @@
 \alias{describe_risk_configuration}
 \title{Describes the risk configuration}
 \usage{
-describe_risk_configuration(UserPoolId, ClientId = NULL)
+describe_risk_configuration(
+  UserPoolId = "string",
+  ClientId = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID.}
+\item{UserPoolId}{[required] The user pool ID.}
 
 \item{ClientId}{The app client ID.}
 }

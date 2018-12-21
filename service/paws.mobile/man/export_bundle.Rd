@@ -4,10 +4,14 @@
 \alias{export_bundle}
 \title{Generates customized software development kit (SDK) and or tool packages used to integrate mobile web or mobile app clients with backend AWS resources}
 \usage{
-export_bundle(bundleId, projectId = NULL, platform = NULL)
+export_bundle(
+  bundleId = "string",
+  projectId = "string",
+  platform = "OSX"|"WINDOWS"|"LINUX"|"OBJC"|"SWIFT"|"ANDROID"|"JAVASCRIPT"
+)
 }
 \arguments{
-\item{bundleId}{Unique bundle identifier.}
+\item{bundleId}{[required] Unique bundle identifier.}
 
 \item{projectId}{Unique project identifier.}
 

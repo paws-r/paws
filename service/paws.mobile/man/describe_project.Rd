@@ -4,10 +4,13 @@
 \alias{describe_project}
 \title{Gets details about a project in AWS Mobile Hub}
 \usage{
-describe_project(projectId, syncFromResources = NULL)
+describe_project(
+  projectId = "string",
+  syncFromResources = TRUE|FALSE
+)
 }
 \arguments{
-\item{projectId}{Unique project identifier.}
+\item{projectId}{[required] Unique project identifier.}
 
 \item{syncFromResources}{If set to true, causes AWS Mobile Hub to synchronize information from other services, e.g., update state of AWS CloudFormation stacks in the AWS Mobile Hub project.}
 }

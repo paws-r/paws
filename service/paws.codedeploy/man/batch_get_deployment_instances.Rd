@@ -2,17 +2,25 @@
 % Please edit documentation in R/paws.codedeploy_operations.R
 \name{batch_get_deployment_instances}
 \alias{batch_get_deployment_instances}
-\title{Gets information about one or more instance that are part of a deployment group}
+\title{This method works, but is considered deprecated}
 \usage{
-batch_get_deployment_instances(deploymentId, instanceIds)
+batch_get_deployment_instances(
+  deploymentId = "string",
+  instanceIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{deploymentId}{The unique ID of a deployment.}
+\item{deploymentId}{[required] The unique ID of a deployment.}
 
-\item{instanceIds}{The unique IDs of instances in the deployment group.}
+\item{instanceIds}{[required] The unique IDs of instances of the deployment.}
 }
 \description{
-Gets information about one or more instance that are part of a deployment group.
+This method works, but is considered deprecated. Use \code{BatchGetDeploymentTargets} instead.
+}
+\details{
+Returns an array of instances associated with a deployment. This method works with EC2/On-premises and AWS Lambda compute platforms. The newer \code{BatchGetDeploymentTargets} works with all compute platforms.
 }
 \examples{
 

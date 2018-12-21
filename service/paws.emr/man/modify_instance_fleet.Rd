@@ -4,12 +4,19 @@
 \alias{modify_instance_fleet}
 \title{Modifies the target On-Demand and target Spot capacities for the instance fleet with the specified InstanceFleetID within the cluster specified using ClusterID}
 \usage{
-modify_instance_fleet(ClusterId, InstanceFleet)
+modify_instance_fleet(
+  ClusterId = "string",
+  InstanceFleet = list(
+    InstanceFleetId = "string",
+    TargetOnDemandCapacity = 123,
+    TargetSpotCapacity = 123
+  )
+)
 }
 \arguments{
-\item{ClusterId}{The unique identifier of the cluster.}
+\item{ClusterId}{[required] The unique identifier of the cluster.}
 
-\item{InstanceFleet}{The unique identifier of the instance fleet.}
+\item{InstanceFleet}{[required] The unique identifier of the instance fleet.}
 }
 \description{
 Modifies the target On-Demand and target Spot capacities for the instance fleet with the specified InstanceFleetID within the cluster specified using ClusterID. The call either succeeds or fails atomically.

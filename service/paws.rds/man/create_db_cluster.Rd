@@ -4,36 +4,55 @@
 \alias{create_db_cluster}
 \title{Creates a new Amazon Aurora DB cluster}
 \usage{
-create_db_cluster(DBClusterIdentifier, Engine, AvailabilityZones = NULL,
-  BackupRetentionPeriod = NULL, CharacterSetName = NULL,
-  DatabaseName = NULL, DBClusterParameterGroupName = NULL,
-  VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL,
-  EngineVersion = NULL, Port = NULL, MasterUsername = NULL,
-  MasterUserPassword = NULL, OptionGroupName = NULL,
-  PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL,
-  ReplicationSourceIdentifier = NULL, Tags = NULL,
-  StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL,
-  EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL,
-  EnableCloudwatchLogsExports = NULL, EngineMode = NULL,
-  ScalingConfiguration = NULL, DeletionProtection = NULL,
-  SourceRegion = NULL)
+create_db_cluster(
+  AvailabilityZones = list(
+    "string"
+  ),
+  BackupRetentionPeriod = 123,
+  CharacterSetName = "string",
+  DatabaseName = "string",
+  DBClusterIdentifier = "string",
+  DBClusterParameterGroupName = "string",
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  DBSubnetGroupName = "string",
+  Engine = "string",
+  EngineVersion = "string",
+  Port = 123,
+  MasterUsername = "string",
+  MasterUserPassword = "string",
+  OptionGroupName = "string",
+  PreferredBackupWindow = "string",
+  PreferredMaintenanceWindow = "string",
+  ReplicationSourceIdentifier = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  StorageEncrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  PreSignedUrl = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  BacktrackWindow = 123,
+  EnableCloudwatchLogsExports = list(
+    "string"
+  ),
+  EngineMode = "string",
+  ScalingConfiguration = list(
+    MinCapacity = 123,
+    MaxCapacity = 123,
+    AutoPause = TRUE|FALSE,
+    SecondsUntilAutoPause = 123
+  ),
+  DeletionProtection = TRUE|FALSE,
+  GlobalClusterIdentifier = "string",
+  SourceRegion = "string"
+)
 }
 \arguments{
-\item{DBClusterIdentifier}{The DB cluster identifier. This parameter is stored as a lowercase string.
-
-Constraints:
-\itemize{
-\item Must contain from 1 to 63 letters, numbers, or hyphens.
-\item First character must be a letter.
-\item Can't end with a hyphen or contain two consecutive hyphens.
-}
-
-Example: \code{my-cluster1}}
-
-\item{Engine}{The name of the database engine to be used for this DB cluster.
-
-Valid Values: \code{aurora} (for MySQL 5.6-compatible Aurora), \code{aurora-mysql} (for MySQL 5.7-compatible Aurora), and \code{aurora-postgresql}}
-
 \item{AvailabilityZones}{A list of EC2 Availability Zones that instances in the DB cluster can be created in. For information on AWS Regions and Availability Zones, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.RegionsAndAvailabilityZones.html}{Choosing the Regions and Availability Zones} in the \emph{Amazon Aurora User Guide}.}
 
 \item{BackupRetentionPeriod}{The number of days for which automated backups are retained. You must specify a minimum value of 1.
@@ -49,6 +68,17 @@ Constraints:
 
 \item{DatabaseName}{The name for your database of up to 64 alpha-numeric characters. If you do not provide a name, Amazon RDS will not create a database in the DB cluster you are creating.}
 
+\item{DBClusterIdentifier}{[required] The DB cluster identifier. This parameter is stored as a lowercase string.
+
+Constraints:
+\itemize{
+\item Must contain from 1 to 63 letters, numbers, or hyphens.
+\item First character must be a letter.
+\item Can't end with a hyphen or contain two consecutive hyphens.
+}
+
+Example: \code{my-cluster1}}
+
 \item{DBClusterParameterGroupName}{The name of the DB cluster parameter group to associate with this DB cluster. If this argument is omitted, \code{default.aurora5.6} is used.
 
 Constraints:
@@ -63,6 +93,10 @@ Constraints:
 Constraints: Must match the name of an existing DBSubnetGroup. Must not be default.
 
 Example: \code{mySubnetgroup}}
+
+\item{Engine}{[required] The name of the database engine to be used for this DB cluster.
+
+Valid Values: \code{aurora} (for MySQL 5.6-compatible Aurora), \code{aurora-mysql} (for MySQL 5.7-compatible Aurora), and \code{aurora-postgresql}}
 
 \item{EngineVersion}{The version number of the database engine to use.
 
@@ -167,11 +201,13 @@ Constraints:
 
 \item{EnableCloudwatchLogsExports}{The list of log types that need to be enabled for exporting to CloudWatch Logs. The values in the list depend on the DB engine being used. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs} in the \emph{Amazon Aurora User Guide}.}
 
-\item{EngineMode}{The DB engine mode of the DB cluster, either \code{provisioned}, \code{serverless}, or \code{parallelquery}.}
+\item{EngineMode}{The DB engine mode of the DB cluster, either \code{provisioned}, \code{serverless}, \code{parallelquery}, or \code{global}.}
 
 \item{ScalingConfiguration}{For DB clusters in \code{serverless} DB engine mode, the scaling properties of the DB cluster.}
 
 \item{DeletionProtection}{Indicates if the DB cluster should have deletion protection enabled. The database can't be deleted when this value is set to true. The default is false.}
+
+\item{GlobalClusterIdentifier}{The global cluster ID of an Aurora cluster that becomes the primary cluster in the new global database cluster.}
 
 \item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }

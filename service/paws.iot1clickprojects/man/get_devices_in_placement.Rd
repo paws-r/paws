@@ -4,12 +4,15 @@
 \alias{get_devices_in_placement}
 \title{Returns an object enumerating the devices in a placement}
 \usage{
-get_devices_in_placement(projectName, placementName)
+get_devices_in_placement(
+  projectName = "string",
+  placementName = "string"
+)
 }
 \arguments{
-\item{projectName}{The name of the project containing the placement.}
+\item{projectName}{[required] The name of the project containing the placement.}
 
-\item{placementName}{The name of the placement to get the devices from.}
+\item{placementName}{[required] The name of the placement to get the devices from.}
 }
 \description{
 Returns an object enumerating the devices in a placement.

@@ -4,12 +4,15 @@
 \alias{delete_xss_match_set}
 \title{Permanently deletes an XssMatchSet}
 \usage{
-delete_xss_match_set(XssMatchSetId, ChangeToken)
+delete_xss_match_set(
+  XssMatchSetId = "string",
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{XssMatchSetId}{The \code{XssMatchSetId} of the XssMatchSet that you want to delete. \code{XssMatchSetId} is returned by CreateXssMatchSet and by ListXssMatchSets.}
+\item{XssMatchSetId}{[required] The \code{XssMatchSetId} of the XssMatchSet that you want to delete. \code{XssMatchSetId} is returned by CreateXssMatchSet and by ListXssMatchSets.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Permanently deletes an XssMatchSet. You can't delete an \code{XssMatchSet} if it's still used in any \code{Rules} or if it still contains any XssMatchTuple objects.

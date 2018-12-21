@@ -4,12 +4,38 @@
 \alias{modify_load_balancer_attributes}
 \title{Modifies the attributes of the specified load balancer}
 \usage{
-modify_load_balancer_attributes(LoadBalancerName, LoadBalancerAttributes)
+modify_load_balancer_attributes(
+  LoadBalancerName = "string",
+  LoadBalancerAttributes = list(
+    CrossZoneLoadBalancing = list(
+      Enabled = TRUE|FALSE
+    ),
+    AccessLog = list(
+      Enabled = TRUE|FALSE,
+      S3BucketName = "string",
+      EmitInterval = 123,
+      S3BucketPrefix = "string"
+    ),
+    ConnectionDraining = list(
+      Enabled = TRUE|FALSE,
+      Timeout = 123
+    ),
+    ConnectionSettings = list(
+      IdleTimeout = 123
+    ),
+    AdditionalAttributes = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{LoadBalancerName}{The name of the load balancer.}
+\item{LoadBalancerName}{[required] The name of the load balancer.}
 
-\item{LoadBalancerAttributes}{The attributes for the load balancer.}
+\item{LoadBalancerAttributes}{[required] The attributes for the load balancer.}
 }
 \description{
 Modifies the attributes of the specified load balancer.

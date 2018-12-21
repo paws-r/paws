@@ -6,21 +6,19 @@
 \alias{paws.glacier-package}
 \title{paws.glacier: Amazon Glacier}
 \description{
-Amazon Glacier is an extremely low-cost storage
-service that provides secure, durable, and easy-to-use storage for
-data backup and archival. With Amazon Glacier, customers can store
-their data cost effectively for months, years, or decades. Amazon
-Glacier also enables customers to offload the administrative burdens
-of operating and scaling storage to AWS, so they don\'t have to worry
-about capacity planning, hardware provisioning, data replication,
-hardware failure and recovery, or time-consuming hardware migrations.
+Amazon Glacier is a storage solution for \"cold data.\"
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

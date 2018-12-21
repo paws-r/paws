@@ -4,10 +4,12 @@
 \alias{get_lifecycle_policy}
 \title{Gets detailed information about the specified lifecycle policy}
 \usage{
-get_lifecycle_policy(PolicyId)
+get_lifecycle_policy(
+  PolicyId = "string"
+)
 }
 \arguments{
-\item{PolicyId}{The identifier of the lifecycle policy.}
+\item{PolicyId}{[required] The identifier of the lifecycle policy.}
 }
 \description{
 Gets detailed information about the specified lifecycle policy.

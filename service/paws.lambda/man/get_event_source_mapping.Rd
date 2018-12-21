@@ -2,18 +2,17 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{get_event_source_mapping}
 \alias{get_event_source_mapping}
-\title{Returns configuration information for the specified event source mapping (see CreateEventSourceMapping)}
+\title{Returns details about an event source mapping}
 \usage{
-get_event_source_mapping(UUID)
+get_event_source_mapping(
+  UUID = "string"
+)
 }
 \arguments{
-\item{UUID}{The AWS Lambda assigned ID of the event source mapping.}
+\item{UUID}{[required] The identifier of the event source mapping.}
 }
 \description{
-Returns configuration information for the specified event source mapping (see CreateEventSourceMapping).
-}
-\details{
-This operation requires permission for the \code{lambda:GetEventSourceMapping} action.
+Returns details about an event source mapping.
 }
 \examples{
 # This operation retrieves a Lambda function's event source mapping

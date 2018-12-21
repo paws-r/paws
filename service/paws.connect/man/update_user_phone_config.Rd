@@ -4,14 +4,23 @@
 \alias{update_user_phone_config}
 \title{Updates the phone configuration settings in the \code{UserPhoneConfig} object for the specified user}
 \usage{
-update_user_phone_config(PhoneConfig, UserId, InstanceId)
+update_user_phone_config(
+  PhoneConfig = list(
+    PhoneType = "SOFT_PHONE"|"DESK_PHONE",
+    AutoAccept = TRUE|FALSE,
+    AfterContactWorkTimeLimit = 123,
+    DeskPhoneNumber = "string"
+  ),
+  UserId = "string",
+  InstanceId = "string"
+)
 }
 \arguments{
-\item{PhoneConfig}{A \code{UserPhoneConfig} object that contains settings for \code{AfterContactWorkTimeLimit}, \code{AutoAccept}, \code{DeskPhoneNumber}, and \code{PhoneType} to assign to the user.}
+\item{PhoneConfig}{[required] A \code{UserPhoneConfig} object that contains settings for \code{AfterContactWorkTimeLimit}, \code{AutoAccept}, \code{DeskPhoneNumber}, and \code{PhoneType} to assign to the user.}
 
-\item{UserId}{The identifier for the user account to change phone settings for.}
+\item{UserId}{[required] The identifier for the user account to change phone settings for.}
 
-\item{InstanceId}{The identifier for your Amazon Connect instance. To find the ID of your instance, open the AWS console and select Amazon Connect. Select the alias of the instance in the Instance alias column. The instance ID is displayed in the Overview section of your instance settings. For example, the instance ID is the set of characters at the end of the instance ARN, after instance/, such as 10a4c4eb-f57e-4d4c-b602-bf39176ced07.}
+\item{InstanceId}{[required] The identifier for your Amazon Connect instance. To find the ID of your instance, open the AWS console and select Amazon Connect. Select the alias of the instance in the Instance alias column. The instance ID is displayed in the Overview section of your instance settings. For example, the instance ID is the set of characters at the end of the instance ARN, after instance/, such as 10a4c4eb-f57e-4d4c-b602-bf39176ced07.}
 }
 \description{
 Updates the phone configuration settings in the \code{UserPhoneConfig} object for the specified user.

@@ -4,7 +4,9 @@
 \alias{list_luna_clients}
 \title{This is documentation for \strong{AWS CloudHSM Classic}}
 \usage{
-list_luna_clients(NextToken = NULL)
+list_luna_clients(
+  NextToken = "string"
+)
 }
 \arguments{
 \item{NextToken}{The \code{NextToken} value from a previous call to \code{ListLunaClients}. Pass null if this is the first call.}

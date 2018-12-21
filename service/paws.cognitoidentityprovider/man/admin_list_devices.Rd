@@ -4,13 +4,17 @@
 \alias{admin_list_devices}
 \title{Lists devices, as an administrator}
 \usage{
-admin_list_devices(UserPoolId, Username, Limit = NULL,
-  PaginationToken = NULL)
+admin_list_devices(
+  UserPoolId = "string",
+  Username = "string",
+  Limit = 123,
+  PaginationToken = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID.}
+\item{UserPoolId}{[required] The user pool ID.}
 
-\item{Username}{The user name.}
+\item{Username}{[required] The user name.}
 
 \item{Limit}{The limit of the devices request.}
 

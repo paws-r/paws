@@ -4,7 +4,11 @@
 \alias{list_portfolios}
 \title{Lists all portfolios in the catalog}
 \usage{
-list_portfolios(AcceptLanguage = NULL, PageToken = NULL, PageSize = NULL)
+list_portfolios(
+  AcceptLanguage = "string",
+  PageToken = "string",
+  PageSize = 123
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.

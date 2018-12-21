@@ -4,10 +4,12 @@
 \alias{describe_receipt_rule_set}
 \title{Returns the details of the specified receipt rule set}
 \usage{
-describe_receipt_rule_set(RuleSetName)
+describe_receipt_rule_set(
+  RuleSetName = "string"
+)
 }
 \arguments{
-\item{RuleSetName}{The name of the receipt rule set to describe.}
+\item{RuleSetName}{[required] The name of the receipt rule set to describe.}
 }
 \description{
 Returns the details of the specified receipt rule set.

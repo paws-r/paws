@@ -4,8 +4,14 @@
 \alias{describe_volumes}
 \title{Describes an instance's Amazon EBS volumes}
 \usage{
-describe_volumes(InstanceId = NULL, StackId = NULL, RaidArrayId = NULL,
-  VolumeIds = NULL)
+describe_volumes(
+  InstanceId = "string",
+  StackId = "string",
+  RaidArrayId = "string",
+  VolumeIds = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{InstanceId}{The instance ID. If you use this parameter, \code{DescribeVolumes} returns descriptions of the volumes associated with the specified instance.}

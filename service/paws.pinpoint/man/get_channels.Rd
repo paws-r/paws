@@ -4,10 +4,12 @@
 \alias{get_channels}
 \title{Get all channels}
 \usage{
-get_channels(ApplicationId)
+get_channels(
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 }
 \description{
 Get all channels.

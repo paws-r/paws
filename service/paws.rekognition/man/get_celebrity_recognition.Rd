@@ -4,11 +4,15 @@
 \alias{get_celebrity_recognition}
 \title{Gets the celebrity recognition results for a Amazon Rekognition Video analysis started by}
 \usage{
-get_celebrity_recognition(JobId, MaxResults = NULL, NextToken = NULL,
-  SortBy = NULL)
+get_celebrity_recognition(
+  JobId = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  SortBy = "ID"|"TIMESTAMP"
+)
 }
 \arguments{
-\item{JobId}{Job identifier for the required celebrity recognition analysis. You can get the job identifer from a call to \code{StartCelebrityRecognition}.}
+\item{JobId}{[required] Job identifier for the required celebrity recognition analysis. You can get the job identifer from a call to \code{StartCelebrityRecognition}.}
 
 \item{MaxResults}{Maximum number of results to return per paginated call. The largest value you can specify is 1000. If you specify a value greater than 1000, a maximum of 1000 results is returned. The default value is 1000.}
 

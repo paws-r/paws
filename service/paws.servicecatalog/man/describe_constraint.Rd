@@ -4,17 +4,20 @@
 \alias{describe_constraint}
 \title{Gets information about the specified constraint}
 \usage{
-describe_constraint(Id, AcceptLanguage = NULL)
+describe_constraint(
+  AcceptLanguage = "string",
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The identifier of the constraint.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{Id}{[required] The identifier of the constraint.}
 }
 \description{
 Gets information about the specified constraint.

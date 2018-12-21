@@ -4,13 +4,20 @@
 \alias{list_attached_indices}
 \title{Lists indices attached to the specified object}
 \usage{
-list_attached_indices(DirectoryArn, TargetReference, NextToken = NULL,
-  MaxResults = NULL, ConsistencyLevel = NULL)
+list_attached_indices(
+  DirectoryArn = "string",
+  TargetReference = list(
+    Selector = "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123,
+  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
+)
 }
 \arguments{
-\item{DirectoryArn}{The ARN of the directory.}
+\item{DirectoryArn}{[required] The ARN of the directory.}
 
-\item{TargetReference}{A reference to the object that has indices attached.}
+\item{TargetReference}{[required] A reference to the object that has indices attached.}
 
 \item{NextToken}{The pagination token.}
 

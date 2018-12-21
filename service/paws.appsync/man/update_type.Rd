@@ -4,16 +4,21 @@
 \alias{update_type}
 \title{Updates a \code{Type} object}
 \usage{
-update_type(apiId, typeName, format, definition = NULL)
+update_type(
+  apiId = "string",
+  typeName = "string",
+  definition = "string",
+  format = "SDL"|"JSON"
+)
 }
 \arguments{
-\item{apiId}{The API ID.}
+\item{apiId}{[required] The API ID.}
 
-\item{typeName}{The new type name.}
-
-\item{format}{The new type format: SDL or JSON.}
+\item{typeName}{[required] The new type name.}
 
 \item{definition}{The new definition.}
+
+\item{format}{[required] The new type format: SDL or JSON.}
 }
 \description{
 Updates a \code{Type} object.

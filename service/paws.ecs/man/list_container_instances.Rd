@@ -4,8 +4,13 @@
 \alias{list_container_instances}
 \title{Returns a list of container instances in a specified cluster}
 \usage{
-list_container_instances(cluster = NULL, filter = NULL, nextToken = NULL,
-  maxResults = NULL, status = NULL)
+list_container_instances(
+  cluster = "string",
+  filter = "string",
+  nextToken = "string",
+  maxResults = 123,
+  status = "ACTIVE"|"DRAINING"
+)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instances to list. If you do not specify a cluster, the default cluster is assumed.}

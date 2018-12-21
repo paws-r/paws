@@ -4,12 +4,16 @@
 \alias{request_cancel_workflow_execution}
 \title{Records a \code{WorkflowExecutionCancelRequested} event in the currently running workflow execution identified by the given domain, workflowId, and runId}
 \usage{
-request_cancel_workflow_execution(domain, workflowId, runId = NULL)
+request_cancel_workflow_execution(
+  domain = "string",
+  workflowId = "string",
+  runId = "string"
+)
 }
 \arguments{
-\item{domain}{The name of the domain containing the workflow execution to cancel.}
+\item{domain}{[required] The name of the domain containing the workflow execution to cancel.}
 
-\item{workflowId}{The workflowId of the workflow execution to cancel.}
+\item{workflowId}{[required] The workflowId of the workflow execution to cancel.}
 
 \item{runId}{The runId of the workflow execution to cancel.}
 }

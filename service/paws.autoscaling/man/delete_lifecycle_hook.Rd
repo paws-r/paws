@@ -4,12 +4,15 @@
 \alias{delete_lifecycle_hook}
 \title{Deletes the specified lifecycle hook}
 \usage{
-delete_lifecycle_hook(LifecycleHookName, AutoScalingGroupName)
+delete_lifecycle_hook(
+  LifecycleHookName = "string",
+  AutoScalingGroupName = "string"
+)
 }
 \arguments{
-\item{LifecycleHookName}{The name of the lifecycle hook.}
+\item{LifecycleHookName}{[required] The name of the lifecycle hook.}
 
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 }
 \description{
 Deletes the specified lifecycle hook.

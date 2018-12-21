@@ -4,11 +4,34 @@
 \alias{list_findings}
 \title{Lists Amazon GuardDuty findings for the specified detector ID}
 \usage{
-list_findings(DetectorId, FindingCriteria = NULL, MaxResults = NULL,
-  NextToken = NULL, SortCriteria = NULL)
+list_findings(
+  DetectorId = "string",
+  FindingCriteria = list(
+    Criterion = list(
+      list(
+        Eq = list(
+          "string"
+        ),
+        Gt = 123,
+        Gte = 123,
+        Lt = 123,
+        Lte = 123,
+        Neq = list(
+          "string"
+        )
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string",
+  SortCriteria = list(
+    AttributeName = "string",
+    OrderBy = "ASC"|"DESC"
+  )
+)
 }
 \arguments{
-\item{DetectorId}{The ID of the detector that specifies the GuardDuty service whose findings you want to list.}
+\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose findings you want to list.}
 
 \item{FindingCriteria}{Represents the criteria used for querying findings.}
 

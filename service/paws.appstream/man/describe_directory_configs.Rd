@@ -4,8 +4,13 @@
 \alias{describe_directory_configs}
 \title{Retrieves a list that describes one or more specified Directory Config objects for AppStream 2}
 \usage{
-describe_directory_configs(DirectoryNames = NULL, MaxResults = NULL,
-  NextToken = NULL)
+describe_directory_configs(
+  DirectoryNames = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{DirectoryNames}{The directory names.}

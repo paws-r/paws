@@ -4,8 +4,11 @@
 \alias{list_thing_registration_tasks}
 \title{List bulk thing provisioning tasks}
 \usage{
-list_thing_registration_tasks(nextToken = NULL, maxResults = NULL,
-  status = NULL)
+list_thing_registration_tasks(
+  nextToken = "string",
+  maxResults = 123,
+  status = "InProgress"|"Completed"|"Failed"|"Cancelled"|"Cancelling"
+)
 }
 \arguments{
 \item{nextToken}{The token to retrieve the next set of results.}

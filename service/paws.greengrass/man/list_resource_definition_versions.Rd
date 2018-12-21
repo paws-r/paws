@@ -4,15 +4,18 @@
 \alias{list_resource_definition_versions}
 \title{Lists the versions of a resource definition}
 \usage{
-list_resource_definition_versions(ResourceDefinitionId, MaxResults = NULL,
-  NextToken = NULL)
+list_resource_definition_versions(
+  MaxResults = "string",
+  NextToken = "string",
+  ResourceDefinitionId = "string"
+)
 }
 \arguments{
-\item{ResourceDefinitionId}{The ID of the resource definition.}
-
 \item{MaxResults}{The maximum number of results to be returned per request.}
 
 \item{NextToken}{The token for the next set of results, or ''null'' if there are no additional results.}
+
+\item{ResourceDefinitionId}{[required] The ID of the resource definition.}
 }
 \description{
 Lists the versions of a resource definition.

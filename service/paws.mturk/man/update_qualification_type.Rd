@@ -4,13 +4,20 @@
 \alias{update_qualification_type}
 \title{The \code{UpdateQualificationType} operation modifies the attributes of an existing Qualification type, which is represented by a QualificationType data structure}
 \usage{
-update_qualification_type(QualificationTypeId, Description = NULL,
-  QualificationTypeStatus = NULL, Test = NULL, AnswerKey = NULL,
-  TestDurationInSeconds = NULL, RetryDelayInSeconds = NULL,
-  AutoGranted = NULL, AutoGrantedValue = NULL)
+update_qualification_type(
+  QualificationTypeId = "string",
+  Description = "string",
+  QualificationTypeStatus = "Active"|"Inactive",
+  Test = "string",
+  AnswerKey = "string",
+  TestDurationInSeconds = 123,
+  RetryDelayInSeconds = 123,
+  AutoGranted = TRUE|FALSE,
+  AutoGrantedValue = 123
+)
 }
 \arguments{
-\item{QualificationTypeId}{The ID of the Qualification type to update.}
+\item{QualificationTypeId}{[required] The ID of the Qualification type to update.}
 
 \item{Description}{The new description of the Qualification type.}
 

@@ -4,15 +4,24 @@
 \alias{set_user_mfa_preference}
 \title{Set the user's multi-factor authentication (MFA) method preference}
 \usage{
-set_user_mfa_preference(AccessToken, SMSMfaSettings = NULL,
-  SoftwareTokenMfaSettings = NULL)
+set_user_mfa_preference(
+  SMSMfaSettings = list(
+    Enabled = TRUE|FALSE,
+    PreferredMfa = TRUE|FALSE
+  ),
+  SoftwareTokenMfaSettings = list(
+    Enabled = TRUE|FALSE,
+    PreferredMfa = TRUE|FALSE
+  ),
+  AccessToken = "string"
+)
 }
 \arguments{
-\item{AccessToken}{The access token.}
-
 \item{SMSMfaSettings}{The SMS text message multi-factor authentication (MFA) settings.}
 
 \item{SoftwareTokenMfaSettings}{The time-based one-time password software token MFA settings.}
+
+\item{AccessToken}{[required] The access token.}
 }
 \description{
 Set the user's multi-factor authentication (MFA) method preference.

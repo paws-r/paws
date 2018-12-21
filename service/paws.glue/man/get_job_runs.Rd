@@ -4,10 +4,14 @@
 \alias{get_job_runs}
 \title{Retrieves metadata for all runs of a given job definition}
 \usage{
-get_job_runs(JobName, NextToken = NULL, MaxResults = NULL)
+get_job_runs(
+  JobName = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{JobName}{The name of the job definition for which to retrieve all job runs.}
+\item{JobName}{[required] The name of the job definition for which to retrieve all job runs.}
 
 \item{NextToken}{A continuation token, if this is a continuation call.}
 

@@ -4,12 +4,15 @@
 \alias{delete_document}
 \title{Permanently deletes the specified document and its associated metadata}
 \usage{
-delete_document(DocumentId, AuthenticationToken = NULL)
+delete_document(
+  AuthenticationToken = "string",
+  DocumentId = "string"
+)
 }
 \arguments{
-\item{DocumentId}{The ID of the document.}
-
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
+
+\item{DocumentId}{[required] The ID of the document.}
 }
 \description{
 Permanently deletes the specified document and its associated metadata.

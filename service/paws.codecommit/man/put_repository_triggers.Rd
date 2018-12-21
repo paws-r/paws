@@ -4,12 +4,27 @@
 \alias{put_repository_triggers}
 \title{Replaces all triggers for a repository}
 \usage{
-put_repository_triggers(repositoryName, triggers)
+put_repository_triggers(
+  repositoryName = "string",
+  triggers = list(
+    list(
+      name = "string",
+      destinationArn = "string",
+      customData = "string",
+      branches = list(
+        "string"
+      ),
+      events = list(
+        "all"|"updateReference"|"createReference"|"deleteReference"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{repositoryName}{The name of the repository where you want to create or update the trigger.}
+\item{repositoryName}{[required] The name of the repository where you want to create or update the trigger.}
 
-\item{triggers}{The JSON block of configuration information for each trigger.}
+\item{triggers}{[required] The JSON block of configuration information for each trigger.}
 }
 \description{
 Replaces all triggers for a repository. This can be used to create or delete triggers.

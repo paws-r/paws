@@ -4,24 +4,28 @@
 \alias{update_signing_certificate}
 \title{Changes the status of the specified user signing certificate from active to disabled, or vice versa}
 \usage{
-update_signing_certificate(CertificateId, Status, UserName = NULL)
+update_signing_certificate(
+  UserName = "string",
+  CertificateId = "string",
+  Status = "Active"|"Inactive"
+)
 }
 \arguments{
-\item{CertificateId}{The ID of the signing certificate you want to update.
-
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
-
-\item{Status}{The status you want to assign to the certificate. \code{Active} means that the certificate can be used for API calls to AWS \code{Inactive} means that the certificate cannot be used.}
-
 \item{UserName}{The name of the IAM user the signing certificate belongs to.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+
+\item{CertificateId}{[required] The ID of the signing certificate you want to update.
+
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
+
+\item{Status}{[required] The status you want to assign to the certificate. \code{Active} means that the certificate can be used for API calls to AWS \code{Inactive} means that the certificate cannot be used.}
 }
 \description{
 Changes the status of the specified user signing certificate from active to disabled, or vice versa. This operation can be used to disable an IAM user's signing certificate as part of a certificate rotation work flow.
 }
 \details{
-If the \code{UserName} field is not specified, the user name is determined implicitly based on the AWS access key ID used to sign the request. Because this operation works for access keys under the AWS account, you can use this operation to manage AWS account root user credentials even if the AWS account has no associated users.
+If the \code{UserName} field is not specified, the user name is determined implicitly based on the AWS access key ID used to sign the request. This operation works for access keys under the AWS account. Consequently, you can use this operation to manage AWS account root user credentials even if the AWS account has no associated users.
 }
 \examples{
 # The following command changes the status of a signing certificate for a

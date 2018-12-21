@@ -4,12 +4,22 @@
 \alias{create_tags}
 \title{Creates one or more tags for configuration items}
 \usage{
-create_tags(configurationIds, tags)
+create_tags(
+  configurationIds = list(
+    "string"
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{configurationIds}{A list of configuration items that you want to tag.}
+\item{configurationIds}{[required] A list of configuration items that you want to tag.}
 
-\item{tags}{Tags that you want to associate with one or more configuration items. Specify the tags that you want to create in a \emph{key}-\emph{value} format. For example:
+\item{tags}{[required] Tags that you want to associate with one or more configuration items. Specify the tags that you want to create in a \emph{key}-\emph{value} format. For example:
 
 \code{{"key": "serverType", "value": "webServer"}}}
 }

@@ -1,6 +1,6 @@
 Package: paws.importexport
 Title: AWS Import/Export
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
@@ -8,26 +8,30 @@ Authors@R:
              email = "david.kretch@gmail.com"),
       person(given = "Adam",
              family = "Banker",
-             role = "aut"))
-Description: AWS Import/Export Service AWS Import/Export
-    accelerates transferring large amounts of data between the AWS cloud
-    and portable storage devices that you mail to us. AWS Import/Export
-    transfers data directly onto and off of your storage devices using
-    Amazon\'s high-speed internal network and bypassing the Internet. For
-    large data sets, AWS Import/Export is often faster than Internet
-    transfer and more cost effective than upgrading your connectivity.
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: AWS Import/Export Service AWS Import/Export accelerates
+    transferring large amounts of data between the AWS cloud and portable
+    storage devices that you mail to us. AWS Import/Export transfers data
+    directly onto and off of your storage devices using Amazon\'s
+    high-speed internal network and bypassing the Internet. For large data
+    sets, AWS Import/Export is often faster than Internet transfer and
+    more cost effective than upgrading your connectivity.
 License: Apache License (>= 2.0)
 Depends: 
     R (>= 3.5.1)
 Imports: 
+    base64enc,
     digest,
     httr,
+    ini,
     jsonlite,
-    xml2,
-    ini
+    xml2
 Encoding: UTF-8
 LazyData: true
-Roxygen: list(markdown = TRUE)
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 6.0.1
 Collate: 
     'struct.R'
@@ -40,7 +44,6 @@ Collate:
     'config.R'
     'convert.R'
     'dateutil.R'
-    'defaults.R'
     'error.R'
     'handlers_core.R'
     'handlers_ec2query.R'
@@ -48,17 +51,22 @@ Collate:
     'handlers_query.R'
     'handlers_rest.R'
     'handlers_restjson.R'
+    'handlers_restxml.R'
     'idempotency.R'
     'jsonutil.R'
     'paws.importexport_interfaces.R'
     'paws.importexport_operations.R'
     'paws.importexport_package.R'
+    'signer_v2.R'
     'paws.importexport_service.R'
     'populate.R'
     'populateutil.R'
-    'type.R'
+    'tags.R'
     'queryutil.R'
     'request.R'
     'signer_v4.R'
+    'signer_s3.R'
+    'signer_s3v4.R'
     'time.R'
+    'util.R'
     'xmlutil.R'

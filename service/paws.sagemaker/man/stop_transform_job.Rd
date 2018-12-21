@@ -4,10 +4,12 @@
 \alias{stop_transform_job}
 \title{Stops a transform job}
 \usage{
-stop_transform_job(TransformJobName)
+stop_transform_job(
+  TransformJobName = "string"
+)
 }
 \arguments{
-\item{TransformJobName}{The name of the transform job to stop.}
+\item{TransformJobName}{[required] The name of the transform job to stop.}
 }
 \description{
 Stops a transform job.

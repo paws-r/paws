@@ -4,7 +4,9 @@
 \alias{list_hsms}
 \title{This is documentation for \strong{AWS CloudHSM Classic}}
 \usage{
-list_hsms(NextToken = NULL)
+list_hsms(
+  NextToken = "string"
+)
 }
 \arguments{
 \item{NextToken}{The \code{NextToken} value from a previous call to \code{ListHsms}. Pass null if this is the first call.}

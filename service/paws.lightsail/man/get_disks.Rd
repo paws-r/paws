@@ -4,7 +4,9 @@
 \alias{get_disks}
 \title{Returns information about all block storage disks in your AWS account and region}
 \usage{
-get_disks(pageToken = NULL)
+get_disks(
+  pageToken = "string"
+)
 }
 \arguments{
 \item{pageToken}{A token used for advancing to the next page of results from your GetDisks request.}

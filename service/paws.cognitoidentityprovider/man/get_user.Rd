@@ -4,10 +4,12 @@
 \alias{get_user}
 \title{Gets the user attributes and metadata for a user}
 \usage{
-get_user(AccessToken)
+get_user(
+  AccessToken = "string"
+)
 }
 \arguments{
-\item{AccessToken}{The access token returned by the server response to get information about the user.}
+\item{AccessToken}{[required] The access token returned by the server response to get information about the user.}
 }
 \description{
 Gets the user attributes and metadata for a user.

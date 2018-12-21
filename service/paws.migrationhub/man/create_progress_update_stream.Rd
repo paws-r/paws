@@ -4,10 +4,13 @@
 \alias{create_progress_update_stream}
 \title{Creates a progress update stream which is an AWS resource used for access control as well as a namespace for migration task names that is implicitly linked to your AWS account}
 \usage{
-create_progress_update_stream(ProgressUpdateStreamName, DryRun = NULL)
+create_progress_update_stream(
+  ProgressUpdateStreamName = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{ProgressUpdateStreamName}{The name of the ProgressUpdateStream.}
+\item{ProgressUpdateStreamName}{[required] The name of the ProgressUpdateStream.}
 
 \item{DryRun}{Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.}
 }

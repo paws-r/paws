@@ -4,22 +4,21 @@
 \alias{create_maintenance_window}
 \title{Creates a new Maintenance Window}
 \usage{
-create_maintenance_window(Name, Schedule, Duration, Cutoff,
-  AllowUnassociatedTargets, Description = NULL, StartDate = NULL,
-  EndDate = NULL, ScheduleTimezone = NULL, ClientToken = NULL)
+create_maintenance_window(
+  Name = "string",
+  Description = "string",
+  StartDate = "string",
+  EndDate = "string",
+  Schedule = "string",
+  ScheduleTimezone = "string",
+  Duration = 123,
+  Cutoff = 123,
+  AllowUnassociatedTargets = TRUE|FALSE,
+  ClientToken = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the Maintenance Window.}
-
-\item{Schedule}{The schedule of the Maintenance Window in the form of a cron or rate expression.}
-
-\item{Duration}{The duration of the Maintenance Window in hours.}
-
-\item{Cutoff}{The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.}
-
-\item{AllowUnassociatedTargets}{Enables a Maintenance Window task to execute on managed instances, even if you have not registered those instances as targets. If enabled, then you must specify the unregistered instances (by instance ID) when you register a task with the Maintenance Window
-
-If you don't enable this option, then you must specify previously-registered targets when you register a task with the Maintenance Window.}
+\item{Name}{[required] The name of the Maintenance Window.}
 
 \item{Description}{An optional description for the Maintenance Window. We recommend specifying a description to help you organize your Maintenance Windows.}
 
@@ -27,7 +26,17 @@ If you don't enable this option, then you must specify previously-registered tar
 
 \item{EndDate}{The date and time, in ISO-8601 Extended format, for when you want the Maintenance Window to become inactive. EndDate allows you to set a date and time in the future when the Maintenance Window will no longer run.}
 
+\item{Schedule}{[required] The schedule of the Maintenance Window in the form of a cron or rate expression.}
+
 \item{ScheduleTimezone}{The time zone that the scheduled Maintenance Window executions are based on, in Internet Assigned Numbers Authority (IANA) format. For example: "America/Los\_Angeles", "etc/UTC", or "Asia/Seoul". For more information, see the \href{https://www.iana.org/time-zones}{Time Zone Database} on the IANA website.}
+
+\item{Duration}{[required] The duration of the Maintenance Window in hours.}
+
+\item{Cutoff}{[required] The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.}
+
+\item{AllowUnassociatedTargets}{[required] Enables a Maintenance Window task to execute on managed instances, even if you have not registered those instances as targets. If enabled, then you must specify the unregistered instances (by instance ID) when you register a task with the Maintenance Window
+
+If you don't enable this option, then you must specify previously-registered targets when you register a task with the Maintenance Window.}
 
 \item{ClientToken}{User-provided idempotency token.}
 }

@@ -4,13 +4,17 @@
 \alias{initiate_multipart_upload}
 \title{This operation initiates a multipart upload}
 \usage{
-initiate_multipart_upload(accountId, vaultName, archiveDescription = NULL,
-  partSize = NULL)
+initiate_multipart_upload(
+  accountId = "string",
+  vaultName = "string",
+  archiveDescription = "string",
+  partSize = "string"
+)
 }
 \arguments{
-\item{accountId}{The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
+\item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
 
-\item{vaultName}{The name of the vault.}
+\item{vaultName}{[required] The name of the vault.}
 
 \item{archiveDescription}{The archive description that you are uploading in parts.
 

@@ -4,10 +4,14 @@
 \alias{list_resource_servers}
 \title{Lists the resource servers for a user pool}
 \usage{
-list_resource_servers(UserPoolId, MaxResults = NULL, NextToken = NULL)
+list_resource_servers(
+  UserPoolId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The user pool ID for the user pool.}
 
 \item{MaxResults}{The maximum number of resource servers to return.}
 

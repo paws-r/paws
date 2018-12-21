@@ -4,10 +4,14 @@
 \alias{set_sms_attributes}
 \title{Use this request to set the default settings for sending SMS messages and receiving daily SMS usage reports}
 \usage{
-set_sms_attributes(attributes)
+set_sms_attributes(
+  attributes = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{attributes}{The default settings for sending SMS messages from your account. You can set values for the following attribute names:
+\item{attributes}{[required] The default settings for sending SMS messages from your account. You can set values for the following attribute names:
 
 \code{MonthlySpendLimit} -- The maximum amount in USD that you are willing to spend each month to send SMS messages. When Amazon SNS determines that sending an SMS message would incur a cost that exceeds this limit, it stops sending SMS messages within minutes.
 

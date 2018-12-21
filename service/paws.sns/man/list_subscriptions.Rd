@@ -4,7 +4,9 @@
 \alias{list_subscriptions}
 \title{Returns a list of the requester's subscriptions}
 \usage{
-list_subscriptions(NextToken = NULL)
+list_subscriptions(
+  NextToken = "string"
+)
 }
 \arguments{
 \item{NextToken}{Token returned by the previous \code{ListSubscriptions} request.}

@@ -4,10 +4,12 @@
 \alias{describe_elasticsearch_domain_config}
 \title{Provides cluster configuration information about the specified Elasticsearch domain, such as the state, creation date, update version, and update date for cluster options}
 \usage{
-describe_elasticsearch_domain_config(DomainName)
+describe_elasticsearch_domain_config(
+  DomainName = "string"
+)
 }
 \arguments{
-\item{DomainName}{The Elasticsearch domain that you want to get information about.}
+\item{DomainName}{[required] The Elasticsearch domain that you want to get information about.}
 }
 \description{
 Provides cluster configuration information about the specified Elasticsearch domain, such as the state, creation date, update version, and update date for cluster options.

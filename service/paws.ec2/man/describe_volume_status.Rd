@@ -4,8 +4,22 @@
 \alias{describe_volume_status}
 \title{Describes the status of the specified volumes}
 \usage{
-describe_volume_status(Filters = NULL, MaxResults = NULL,
-  NextToken = NULL, VolumeIds = NULL, DryRun = NULL)
+describe_volume_status(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string",
+  VolumeIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{Filters}{One or more filters.

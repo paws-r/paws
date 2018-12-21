@@ -4,10 +4,14 @@
 \alias{list_tags_for_resource}
 \title{Lists the tags that have been added to the specified resource}
 \usage{
-list_tags_for_resource(ResourceARN, Marker = NULL, Limit = NULL)
+list_tags_for_resource(
+  ResourceARN = "string",
+  Marker = "string",
+  Limit = 123
+)
 }
 \arguments{
-\item{ResourceARN}{The Amazon Resource Name (ARN) of the resource for which you want to list tags.}
+\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the resource for which you want to list tags.}
 
 \item{Marker}{An opaque string that indicates the position at which to begin returning the list of tags.}
 

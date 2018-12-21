@@ -4,19 +4,31 @@
 \alias{start_query_execution}
 \title{Runs (executes) the SQL query statements contained in the \code{Query} string}
 \usage{
-start_query_execution(QueryString, ResultConfiguration,
-  ClientRequestToken = NULL, QueryExecutionContext = NULL)
+start_query_execution(
+  QueryString = "string",
+  ClientRequestToken = "string",
+  QueryExecutionContext = list(
+    Database = "string"
+  ),
+  ResultConfiguration = list(
+    OutputLocation = "string",
+    EncryptionConfiguration = list(
+      EncryptionOption = "SSE_S3"|"SSE_KMS"|"CSE_KMS",
+      KmsKey = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{QueryString}{The SQL query statements to be executed.}
-
-\item{ResultConfiguration}{Specifies information about where and how to save the results of the query execution.}
+\item{QueryString}{[required] The SQL query statements to be executed.}
 
 \item{ClientRequestToken}{A unique case-sensitive string used to ensure the request to create the query is idempotent (executes only once). If another \code{StartQueryExecution} request is received, the same response is returned and another query is not created. If a parameter has changed, for example, the \code{QueryString}, an error is returned.
 
 This token is listed as not required because AWS SDKs (for example the AWS SDK for Java) auto-generate the token for users. If you are not using the AWS SDK or the AWS CLI, you must provide this token or the action will fail.}
 
 \item{QueryExecutionContext}{The database within which the query executes.}
+
+\item{ResultConfiguration}{[required] Specifies information about where and how to save the results of the query execution.}
 }
 \description{
 Runs (executes) the SQL query statements contained in the \code{Query} string.

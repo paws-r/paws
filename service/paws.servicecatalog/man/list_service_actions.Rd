@@ -4,8 +4,11 @@
 \alias{list_service_actions}
 \title{Lists all self-service actions}
 \usage{
-list_service_actions(AcceptLanguage = NULL, PageSize = NULL,
-  PageToken = NULL)
+list_service_actions(
+  AcceptLanguage = "string",
+  PageSize = 123,
+  PageToken = "string"
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.

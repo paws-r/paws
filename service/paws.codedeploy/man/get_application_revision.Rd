@@ -4,12 +4,36 @@
 \alias{get_application_revision}
 \title{Gets information about an application revision}
 \usage{
-get_application_revision(applicationName, revision)
+get_application_revision(
+  applicationName = "string",
+  revision = list(
+    revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
+    s3Location = list(
+      bucket = "string",
+      key = "string",
+      bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
+      version = "string",
+      eTag = "string"
+    ),
+    gitHubLocation = list(
+      repository = "string",
+      commitId = "string"
+    ),
+    string = list(
+      content = "string",
+      sha256 = "string"
+    ),
+    appSpecContent = list(
+      content = "string",
+      sha256 = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{applicationName}{The name of the application that corresponds to the revision.}
+\item{applicationName}{[required] The name of the application that corresponds to the revision.}
 
-\item{revision}{Information about the application revision to get, including type and location.}
+\item{revision}{[required] Information about the application revision to get, including type and location.}
 }
 \description{
 Gets information about an application revision.

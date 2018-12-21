@@ -4,11 +4,24 @@
 \alias{put_slot_type}
 \title{Creates a custom slot type or replaces an existing custom slot type}
 \usage{
-put_slot_type(name, description = NULL, enumerationValues = NULL,
-  checksum = NULL, valueSelectionStrategy = NULL, createVersion = NULL)
+put_slot_type(
+  name = "string",
+  description = "string",
+  enumerationValues = list(
+    list(
+      value = "string",
+      synonyms = list(
+        "string"
+      )
+    )
+  ),
+  checksum = "string",
+  valueSelectionStrategy = "ORIGINAL_VALUE"|"TOP_RESOLUTION",
+  createVersion = TRUE|FALSE
+)
 }
 \arguments{
-\item{name}{The name of the slot type. The name is \emph{not} case sensitive.
+\item{name}{[required] The name of the slot type. The name is \emph{not} case sensitive.
 
 The name can't match a built-in slot type name, or a built-in slot type name with "AMAZON." removed. For example, because there is a built-in slot type called \code{AMAZON.DATE}, you can't create a custom slot type called \code{DATE}.
 

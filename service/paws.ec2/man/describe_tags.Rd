@@ -4,8 +4,19 @@
 \alias{describe_tags}
 \title{Describes one or more of the tags for your EC2 resources}
 \usage{
-describe_tags(DryRun = NULL, Filters = NULL, MaxResults = NULL,
-  NextToken = NULL)
+describe_tags(
+  DryRun = TRUE|FALSE,
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}

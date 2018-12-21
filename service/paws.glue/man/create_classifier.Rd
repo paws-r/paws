@@ -4,8 +4,23 @@
 \alias{create_classifier}
 \title{Creates a classifier in the user's account}
 \usage{
-create_classifier(GrokClassifier = NULL, XMLClassifier = NULL,
-  JsonClassifier = NULL)
+create_classifier(
+  GrokClassifier = list(
+    Classification = "string",
+    Name = "string",
+    GrokPattern = "string",
+    CustomPatterns = "string"
+  ),
+  XMLClassifier = list(
+    Classification = "string",
+    Name = "string",
+    RowTag = "string"
+  ),
+  JsonClassifier = list(
+    Name = "string",
+    JsonPath = "string"
+  )
+)
 }
 \arguments{
 \item{GrokClassifier}{A \code{GrokClassifier} object specifying the classifier to create.}

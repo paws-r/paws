@@ -4,14 +4,23 @@
 \alias{get_media}
 \title{Use this API to retrieve media content from a Kinesis video stream}
 \usage{
-get_media(StartSelector, StreamName = NULL, StreamARN = NULL)
+get_media(
+  StreamName = "string",
+  StreamARN = "string",
+  StartSelector = list(
+    StartSelectorType = "FRAGMENT_NUMBER"|"SERVER_TIMESTAMP"|"PRODUCER_TIMESTAMP"|"NOW"|"EARLIEST"|"CONTINUATION_TOKEN",
+    AfterFragmentNumber = "string",
+    StartTimestamp = as.POSIXct("2015-01-01"),
+    ContinuationToken = "string"
+  )
+)
 }
 \arguments{
-\item{StartSelector}{Identifies the starting chunk to get from the specified stream.}
-
 \item{StreamName}{The Kinesis video stream name from where you want to get the media content. If you don't specify the \code{streamName}, you must specify the \code{streamARN}.}
 
 \item{StreamARN}{The ARN of the stream from where you want to get the media content. If you don't specify the \code{streamARN}, you must specify the \code{streamName}.}
+
+\item{StartSelector}{[required] Identifies the starting chunk to get from the specified stream.}
 }
 \description{
 Use this API to retrieve media content from a Kinesis video stream. In the request, you identify stream name or stream Amazon Resource Name (ARN), and the starting chunk. Kinesis Video Streams then returns a stream of chunks in order by fragment number.

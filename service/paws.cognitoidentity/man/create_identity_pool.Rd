@@ -4,15 +4,32 @@
 \alias{create_identity_pool}
 \title{Creates a new identity pool}
 \usage{
-create_identity_pool(IdentityPoolName, AllowUnauthenticatedIdentities,
-  SupportedLoginProviders = NULL, DeveloperProviderName = NULL,
-  OpenIdConnectProviderARNs = NULL, CognitoIdentityProviders = NULL,
-  SamlProviderARNs = NULL)
+create_identity_pool(
+  IdentityPoolName = "string",
+  AllowUnauthenticatedIdentities = TRUE|FALSE,
+  SupportedLoginProviders = list(
+    "string"
+  ),
+  DeveloperProviderName = "string",
+  OpenIdConnectProviderARNs = list(
+    "string"
+  ),
+  CognitoIdentityProviders = list(
+    list(
+      ProviderName = "string",
+      ClientId = "string",
+      ServerSideTokenCheck = TRUE|FALSE
+    )
+  ),
+  SamlProviderARNs = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{IdentityPoolName}{A string that you provide.}
+\item{IdentityPoolName}{[required] A string that you provide.}
 
-\item{AllowUnauthenticatedIdentities}{TRUE if the identity pool supports unauthenticated logins.}
+\item{AllowUnauthenticatedIdentities}{[required] TRUE if the identity pool supports unauthenticated logins.}
 
 \item{SupportedLoginProviders}{Optional key:value pairs mapping provider names to provider app IDs.}
 

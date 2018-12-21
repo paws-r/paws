@@ -4,14 +4,29 @@
 \alias{create_user_defined_function}
 \title{Creates a new function definition in the Data Catalog}
 \usage{
-create_user_defined_function(DatabaseName, FunctionInput, CatalogId = NULL)
+create_user_defined_function(
+  CatalogId = "string",
+  DatabaseName = "string",
+  FunctionInput = list(
+    FunctionName = "string",
+    ClassName = "string",
+    OwnerName = "string",
+    OwnerType = "USER"|"ROLE"|"GROUP",
+    ResourceUris = list(
+      list(
+        ResourceType = "JAR"|"FILE"|"ARCHIVE",
+        Uri = "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{DatabaseName}{The name of the catalog database in which to create the function.}
-
-\item{FunctionInput}{A \code{FunctionInput} object that defines the function to create in the Data Catalog.}
-
 \item{CatalogId}{The ID of the Data Catalog in which to create the function. If none is supplied, the AWS account ID is used by default.}
+
+\item{DatabaseName}{[required] The name of the catalog database in which to create the function.}
+
+\item{FunctionInput}{[required] A \code{FunctionInput} object that defines the function to create in the Data Catalog.}
 }
 \description{
 Creates a new function definition in the Data Catalog.

@@ -4,15 +4,18 @@
 \alias{copy_snapshot}
 \title{Copies a point-in-time snapshot of an EBS volume and stores it in Amazon S3}
 \usage{
-copy_snapshot(SourceRegion, SourceSnapshotId, Description = NULL,
-  DestinationRegion = NULL, Encrypted = NULL, KmsKeyId = NULL,
-  PresignedUrl = NULL, DryRun = NULL)
+copy_snapshot(
+  Description = "string",
+  DestinationRegion = "string",
+  Encrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  PresignedUrl = "string",
+  SourceRegion = "string",
+  SourceSnapshotId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{SourceRegion}{The ID of the region that contains the snapshot to be copied.}
-
-\item{SourceSnapshotId}{The ID of the EBS snapshot to copy.}
-
 \item{Description}{A description for the EBS snapshot.}
 
 \item{DestinationRegion}{The destination region to use in the \code{PresignedUrl} parameter of a snapshot copy operation. This parameter is only valid for specifying the destination region in a \code{PresignedUrl} parameter, where it is required.
@@ -36,6 +39,10 @@ AWS parses \code{KmsKeyId} asynchronously, meaning that the action you call may 
 \item{PresignedUrl}{When you copy an encrypted source snapshot using the Amazon EC2 Query API, you must supply a pre-signed URL. This parameter is optional for unencrypted snapshots. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html}{Query Requests}.
 
 The \code{PresignedUrl} should use the snapshot source endpoint, the \code{CopySnapshot} action, and include the \code{SourceRegion}, \code{SourceSnapshotId}, and \code{DestinationRegion} parameters. The \code{PresignedUrl} must be signed using AWS Signature Version 4. Because EBS snapshots are stored in Amazon S3, the signing algorithm for this parameter uses the same logic that is described in \href{http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests by Using Query Parameters (AWS Signature Version 4)} in the \emph{Amazon Simple Storage Service API Reference}. An invalid or improperly signed \code{PresignedUrl} will cause the copy operation to fail asynchronously, and the snapshot will move to an \code{error} state.}
+
+\item{SourceRegion}{[required] The ID of the region that contains the snapshot to be copied.}
+
+\item{SourceSnapshotId}{[required] The ID of the EBS snapshot to copy.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

@@ -4,10 +4,12 @@
 \alias{finalize_device_claim}
 \title{Given a device ID, finalizes the claim request for the associated device}
 \usage{
-finalize_device_claim(DeviceId)
+finalize_device_claim(
+  DeviceId = "string"
+)
 }
 \arguments{
-\item{DeviceId}{The unique identifier of the device.}
+\item{DeviceId}{[required] The unique identifier of the device.}
 }
 \description{
 Given a device ID, finalizes the claim request for the associated device.

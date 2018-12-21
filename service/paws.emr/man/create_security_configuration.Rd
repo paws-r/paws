@@ -4,12 +4,15 @@
 \alias{create_security_configuration}
 \title{Creates a security configuration, which is stored in the service and can be specified when a cluster is created}
 \usage{
-create_security_configuration(Name, SecurityConfiguration)
+create_security_configuration(
+  Name = "string",
+  SecurityConfiguration = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the security configuration.}
+\item{Name}{[required] The name of the security configuration.}
 
-\item{SecurityConfiguration}{The security configuration details in JSON format. For JSON parameters and examples, see \href{http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-security-configurations.html}{Use Security Configurations to Set Up Cluster Security} in the \emph{Amazon EMR Management Guide}.}
+\item{SecurityConfiguration}{[required] The security configuration details in JSON format. For JSON parameters and examples, see \href{http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-security-configurations.html}{Use Security Configurations to Set Up Cluster Security} in the \emph{Amazon EMR Management Guide}.}
 }
 \description{
 Creates a security configuration, which is stored in the service and can be specified when a cluster is created.

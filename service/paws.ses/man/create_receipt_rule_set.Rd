@@ -4,10 +4,12 @@
 \alias{create_receipt_rule_set}
 \title{Creates an empty receipt rule set}
 \usage{
-create_receipt_rule_set(RuleSetName)
+create_receipt_rule_set(
+  RuleSetName = "string"
+)
 }
 \arguments{
-\item{RuleSetName}{The name of the rule set to create. The name must:
+\item{RuleSetName}{[required] The name of the rule set to create. The name must:
 \itemize{
 \item This value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (\_), or dashes (-).
 \item Start and end with a letter or number.

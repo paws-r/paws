@@ -4,7 +4,20 @@
 \alias{describe_bundle_tasks}
 \title{Describes one or more of your bundling tasks}
 \usage{
-describe_bundle_tasks(BundleIds = NULL, Filters = NULL, DryRun = NULL)
+describe_bundle_tasks(
+  BundleIds = list(
+    "string"
+  ),
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{BundleIds}{One or more bundle task IDs.

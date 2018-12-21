@@ -4,12 +4,17 @@
 \alias{get_members}
 \title{Retrieves GuardDuty member accounts (to the current GuardDuty master account) specified by the account IDs}
 \usage{
-get_members(DetectorId, AccountIds)
+get_members(
+  AccountIds = list(
+    "string"
+  ),
+  DetectorId = "string"
+)
 }
 \arguments{
-\item{DetectorId}{The unique ID of the detector of the GuardDuty account whose members you want to retrieve.}
+\item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts that you want to describe.}
 
-\item{AccountIds}{A list of account IDs of the GuardDuty member accounts that you want to describe.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account whose members you want to retrieve.}
 }
 \description{
 Retrieves GuardDuty member accounts (to the current GuardDuty master account) specified by the account IDs.

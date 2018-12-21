@@ -4,11 +4,19 @@
 \alias{get_aggregate_config_rule_compliance_summary}
 \title{Returns the number of compliant and noncompliant rules for one or more accounts and regions in an aggregator}
 \usage{
-get_aggregate_config_rule_compliance_summary(ConfigurationAggregatorName,
-  Filters = NULL, GroupByKey = NULL, Limit = NULL, NextToken = NULL)
+get_aggregate_config_rule_compliance_summary(
+  ConfigurationAggregatorName = "string",
+  Filters = list(
+    AccountId = "string",
+    AwsRegion = "string"
+  ),
+  GroupByKey = "ACCOUNT_ID"|"AWS_REGION",
+  Limit = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{ConfigurationAggregatorName}{The name of the configuration aggregator.}
+\item{ConfigurationAggregatorName}{[required] The name of the configuration aggregator.}
 
 \item{Filters}{Filters the results based on the ConfigRuleComplianceSummaryFilters object.}
 

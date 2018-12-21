@@ -4,8 +4,12 @@
 \alias{describe_retention_configurations}
 \title{Returns the details of one or more retention configurations}
 \usage{
-describe_retention_configurations(RetentionConfigurationNames = NULL,
-  NextToken = NULL)
+describe_retention_configurations(
+  RetentionConfigurationNames = list(
+    "string"
+  ),
+  NextToken = "string"
+)
 }
 \arguments{
 \item{RetentionConfigurationNames}{A list of names of retention configurations for which you want details. If you do not specify a name, AWS Config returns details for all the retention configurations for that account.

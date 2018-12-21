@@ -4,12 +4,15 @@
 \alias{get_compliance_detail}
 \title{Returns detailed compliance information about the specified member account}
 \usage{
-get_compliance_detail(PolicyId, MemberAccount)
+get_compliance_detail(
+  PolicyId = "string",
+  MemberAccount = "string"
+)
 }
 \arguments{
-\item{PolicyId}{The ID of the policy that you want to get the details for. \code{PolicyId} is returned by \code{PutPolicy} and by \code{ListPolicies}.}
+\item{PolicyId}{[required] The ID of the policy that you want to get the details for. \code{PolicyId} is returned by \code{PutPolicy} and by \code{ListPolicies}.}
 
-\item{MemberAccount}{The AWS account that owns the resources that you want to get the details for.}
+\item{MemberAccount}{[required] The AWS account that owns the resources that you want to get the details for.}
 }
 \description{
 Returns detailed compliance information about the specified member account. Details include resources that are in and out of compliance with the specified policy. Resources are considered non-compliant if the specified policy has not been applied to them.

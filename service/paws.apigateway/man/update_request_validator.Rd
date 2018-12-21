@@ -4,13 +4,23 @@
 \alias{update_request_validator}
 \title{Updates a RequestValidator of a given RestApi}
 \usage{
-update_request_validator(restApiId, requestValidatorId,
-  patchOperations = NULL)
+update_request_validator(
+  restApiId = "string",
+  requestValidatorId = "string",
+  patchOperations = list(
+    list(
+      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
+      path = "string",
+      value = "string",
+      from = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{requestValidatorId}{[Required] The identifier of RequestValidator to be updated.}
+\item{requestValidatorId}{[required] [Required] The identifier of RequestValidator to be updated.}
 
 \item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
 }

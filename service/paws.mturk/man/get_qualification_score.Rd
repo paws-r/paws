@@ -4,12 +4,15 @@
 \alias{get_qualification_score}
 \title{The \code{GetQualificationScore} operation returns the value of a Worker's Qualification for a given Qualification type}
 \usage{
-get_qualification_score(QualificationTypeId, WorkerId)
+get_qualification_score(
+  QualificationTypeId = "string",
+  WorkerId = "string"
+)
 }
 \arguments{
-\item{QualificationTypeId}{The ID of the QualificationType.}
+\item{QualificationTypeId}{[required] The ID of the QualificationType.}
 
-\item{WorkerId}{The ID of the Worker whose Qualification is being updated.}
+\item{WorkerId}{[required] The ID of the Worker whose Qualification is being updated.}
 }
 \description{
 The \code{GetQualificationScore} operation returns the value of a Worker's Qualification for a given Qualification type.

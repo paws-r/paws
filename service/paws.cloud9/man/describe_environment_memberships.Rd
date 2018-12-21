@@ -4,8 +4,15 @@
 \alias{describe_environment_memberships}
 \title{Gets information about environment members for an AWS Cloud9 development environment}
 \usage{
-describe_environment_memberships(userArn = NULL, environmentId = NULL,
-  permissions = NULL, nextToken = NULL, maxResults = NULL)
+describe_environment_memberships(
+  userArn = "string",
+  environmentId = "string",
+  permissions = list(
+    "owner"|"read-write"|"read-only"
+  ),
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{userArn}{The Amazon Resource Name (ARN) of an individual environment member to get information about. If no value is specified, information about all environment members are returned.}

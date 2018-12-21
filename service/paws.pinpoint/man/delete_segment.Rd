@@ -4,12 +4,15 @@
 \alias{delete_segment}
 \title{Deletes a segment}
 \usage{
-delete_segment(SegmentId, ApplicationId)
+delete_segment(
+  ApplicationId = "string",
+  SegmentId = "string"
+)
 }
 \arguments{
-\item{SegmentId}{The unique ID of the segment.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{SegmentId}{[required] The unique ID of the segment.}
 }
 \description{
 Deletes a segment.

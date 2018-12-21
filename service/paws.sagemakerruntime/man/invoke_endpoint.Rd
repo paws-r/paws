@@ -4,13 +4,18 @@
 \alias{invoke_endpoint}
 \title{After you deploy a model into production using Amazon SageMaker hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint}
 \usage{
-invoke_endpoint(EndpointName, Body, ContentType = NULL, Accept = NULL,
-  CustomAttributes = NULL)
+invoke_endpoint(
+  EndpointName = "string",
+  Body = raw,
+  ContentType = "string",
+  Accept = "string",
+  CustomAttributes = "string"
+)
 }
 \arguments{
-\item{EndpointName}{The name of the endpoint that you specified when you created the endpoint using the \href{http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html}{CreateEndpoint} API.}
+\item{EndpointName}{[required] The name of the endpoint that you specified when you created the endpoint using the \href{http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html}{CreateEndpoint} API.}
 
-\item{Body}{Provides input data, in the format specified in the \code{ContentType} request header. Amazon SageMaker passes all of the data in the body to the model.
+\item{Body}{[required] Provides input data, in the format specified in the \code{ContentType} request header. Amazon SageMaker passes all of the data in the body to the model.
 
 For information about the format of the request body, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html}{Common Data Formats---Inference}.}
 

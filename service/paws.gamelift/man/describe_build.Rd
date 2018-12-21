@@ -4,10 +4,12 @@
 \alias{describe_build}
 \title{Retrieves properties for a build}
 \usage{
-describe_build(BuildId)
+describe_build(
+  BuildId = "string"
+)
 }
 \arguments{
-\item{BuildId}{Unique identifier for a build to retrieve properties for.}
+\item{BuildId}{[required] Unique identifier for a build to retrieve properties for.}
 }
 \description{
 Retrieves properties for a build. To request a build record, specify a build ID. If successful, an object containing the build properties is returned.

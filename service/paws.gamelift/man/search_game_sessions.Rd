@@ -4,9 +4,14 @@
 \alias{search_game_sessions}
 \title{Retrieves all active game sessions that match a set of search criteria and sorts them in a specified order}
 \usage{
-search_game_sessions(FleetId = NULL, AliasId = NULL,
-  FilterExpression = NULL, SortExpression = NULL, Limit = NULL,
-  NextToken = NULL)
+search_game_sessions(
+  FleetId = "string",
+  AliasId = "string",
+  FilterExpression = "string",
+  SortExpression = "string",
+  Limit = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{FleetId}{Unique identifier for a fleet to search for active game sessions. Each request must reference either a fleet ID or alias ID, but not both.}

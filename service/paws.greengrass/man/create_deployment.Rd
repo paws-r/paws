@@ -4,22 +4,27 @@
 \alias{create_deployment}
 \title{Creates a deployment}
 \usage{
-create_deployment(GroupId, AmznClientToken = NULL, DeploymentId = NULL,
-  DeploymentType = NULL, GroupVersionId = NULL)
+create_deployment(
+  AmznClientToken = "string",
+  DeploymentId = "string",
+  DeploymentType = "NewDeployment"|"Redeployment"|"ResetDeployment"|"ForceResetDeployment",
+  GroupId = "string",
+  GroupVersionId = "string"
+)
 }
 \arguments{
-\item{GroupId}{The ID of the AWS Greengrass group.}
-
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
 
 \item{DeploymentId}{The ID of the deployment if you wish to redeploy a previous deployment.}
 
 \item{DeploymentType}{The type of deployment. When used in ''CreateDeployment'', only ''NewDeployment'' and ''Redeployment'' are valid.}
 
+\item{GroupId}{[required] The ID of the Greengrass group.}
+
 \item{GroupVersionId}{The ID of the group version to be deployed.}
 }
 \description{
-Creates a deployment.
+Creates a deployment. ''CreateDeployment'' requests are idempotent with respect to the ''X-Amzn-Client-Token'' token and the request parameters.
 }
 \examples{
 

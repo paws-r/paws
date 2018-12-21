@@ -4,12 +4,15 @@
 \alias{get_core_definition_version}
 \title{Retrieves information about a core definition version}
 \usage{
-get_core_definition_version(CoreDefinitionId, CoreDefinitionVersionId)
+get_core_definition_version(
+  CoreDefinitionId = "string",
+  CoreDefinitionVersionId = "string"
+)
 }
 \arguments{
-\item{CoreDefinitionId}{The ID of the core definition.}
+\item{CoreDefinitionId}{[required] The ID of the core definition.}
 
-\item{CoreDefinitionVersionId}{The ID of the core definition version.}
+\item{CoreDefinitionVersionId}{[required] The ID of the core definition version.}
 }
 \description{
 Retrieves information about a core definition version.

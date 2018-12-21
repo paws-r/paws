@@ -4,12 +4,15 @@
 \alias{delete_resource_server}
 \title{Deletes a resource server}
 \usage{
-delete_resource_server(UserPoolId, Identifier)
+delete_resource_server(
+  UserPoolId = "string",
+  Identifier = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool that hosts the resource server.}
+\item{UserPoolId}{[required] The user pool ID for the user pool that hosts the resource server.}
 
-\item{Identifier}{The identifier for the resource server.}
+\item{Identifier}{[required] The identifier for the resource server.}
 }
 \description{
 Deletes a resource server.

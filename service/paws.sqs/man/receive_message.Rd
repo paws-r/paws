@@ -4,13 +4,22 @@
 \alias{receive_message}
 \title{Retrieves one or more messages (up to 10), from the specified queue}
 \usage{
-receive_message(QueueUrl, AttributeNames = NULL,
-  MessageAttributeNames = NULL, MaxNumberOfMessages = NULL,
-  VisibilityTimeout = NULL, WaitTimeSeconds = NULL,
-  ReceiveRequestAttemptId = NULL)
+receive_message(
+  QueueUrl = "string",
+  AttributeNames = list(
+    "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"
+  ),
+  MessageAttributeNames = list(
+    "string"
+  ),
+  MaxNumberOfMessages = 123,
+  VisibilityTimeout = 123,
+  WaitTimeSeconds = 123,
+  ReceiveRequestAttemptId = "string"
+)
 }
 \arguments{
-\item{QueueUrl}{The URL of the Amazon SQS queue from which messages are received.
+\item{QueueUrl}{[required] The URL of the Amazon SQS queue from which messages are received.
 
 Queue URLs and names are case-sensitive.}
 

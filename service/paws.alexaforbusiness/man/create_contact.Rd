@@ -4,17 +4,22 @@
 \alias{create_contact}
 \title{Creates a contact with the specified details}
 \usage{
-create_contact(FirstName, PhoneNumber, DisplayName = NULL, LastName = NULL,
-  ClientRequestToken = NULL)
+create_contact(
+  DisplayName = "string",
+  FirstName = "string",
+  LastName = "string",
+  PhoneNumber = "string",
+  ClientRequestToken = "string"
+)
 }
 \arguments{
-\item{FirstName}{The first name of the contact that is used to call the contact on the device.}
-
-\item{PhoneNumber}{The phone number of the contact in E.164 format.}
-
 \item{DisplayName}{The name of the contact to display on the console.}
 
+\item{FirstName}{[required] The first name of the contact that is used to call the contact on the device.}
+
 \item{LastName}{The last name of the contact that is used to call the contact on the device.}
+
+\item{PhoneNumber}{The phone number of the contact in E.164 format.}
 
 \item{ClientRequestToken}{A unique, user-specified identifier for this request that ensures idempotency.}
 }

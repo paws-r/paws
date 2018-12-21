@@ -4,10 +4,19 @@
 \alias{list_steps}
 \title{Provides a list of steps for the cluster in reverse order unless you specify stepIds with the request}
 \usage{
-list_steps(ClusterId, StepStates = NULL, StepIds = NULL, Marker = NULL)
+list_steps(
+  ClusterId = "string",
+  StepStates = list(
+    "PENDING"|"CANCEL_PENDING"|"RUNNING"|"COMPLETED"|"CANCELLED"|"FAILED"|"INTERRUPTED"
+  ),
+  StepIds = list(
+    "string"
+  ),
+  Marker = "string"
+)
 }
 \arguments{
-\item{ClusterId}{The identifier of the cluster for which to list the steps.}
+\item{ClusterId}{[required] The identifier of the cluster for which to list the steps.}
 
 \item{StepStates}{The filter to limit the step list based on certain states.}
 

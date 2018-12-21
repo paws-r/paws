@@ -4,7 +4,10 @@
 \alias{associate_skill_group_with_room}
 \title{Associates a skill group with a given room}
 \usage{
-associate_skill_group_with_room(SkillGroupArn = NULL, RoomArn = NULL)
+associate_skill_group_with_room(
+  SkillGroupArn = "string",
+  RoomArn = "string"
+)
 }
 \arguments{
 \item{SkillGroupArn}{The ARN of the skill group to associate with a room. Required.}

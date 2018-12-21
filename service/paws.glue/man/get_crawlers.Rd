@@ -4,7 +4,10 @@
 \alias{get_crawlers}
 \title{Retrieves metadata for all crawlers defined in the customer account}
 \usage{
-get_crawlers(MaxResults = NULL, NextToken = NULL)
+get_crawlers(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{MaxResults}{The number of crawlers to return on each call.}

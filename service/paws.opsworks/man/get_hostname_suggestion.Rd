@@ -4,10 +4,12 @@
 \alias{get_hostname_suggestion}
 \title{Gets a generated host name for the specified layer, based on the current host name theme}
 \usage{
-get_hostname_suggestion(LayerId)
+get_hostname_suggestion(
+  LayerId = "string"
+)
 }
 \arguments{
-\item{LayerId}{The layer ID.}
+\item{LayerId}{[required] The layer ID.}
 }
 \description{
 Gets a generated host name for the specified layer, based on the current host name theme.

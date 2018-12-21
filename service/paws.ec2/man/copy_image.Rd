@@ -4,16 +4,18 @@
 \alias{copy_image}
 \title{Initiates the copy of an AMI from the specified source region to the current region}
 \usage{
-copy_image(Name, SourceImageId, SourceRegion, ClientToken = NULL,
-  Description = NULL, Encrypted = NULL, KmsKeyId = NULL, DryRun = NULL)
+copy_image(
+  ClientToken = "string",
+  Description = "string",
+  Encrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  Name = "string",
+  SourceImageId = "string",
+  SourceRegion = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{Name}{The name of the new AMI in the destination region.}
-
-\item{SourceImageId}{The ID of the AMI to copy.}
-
-\item{SourceRegion}{The name of the region that contains the AMI to copy.}
-
 \item{ClientToken}{Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{Description}{A description for the new AMI in the destination region.}
@@ -33,6 +35,12 @@ The CMK identifier may be provided in any of the following formats:
 AWS parses \code{KmsKeyId} asynchronously, meaning that the action you call may appear to complete even though you provided an invalid identifier. This action will eventually report failure.
 
 The specified CMK must exist in the region that the snapshot is being copied to.}
+
+\item{Name}{[required] The name of the new AMI in the destination region.}
+
+\item{SourceImageId}{[required] The ID of the AMI to copy.}
+
+\item{SourceRegion}{[required] The name of the region that contains the AMI to copy.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

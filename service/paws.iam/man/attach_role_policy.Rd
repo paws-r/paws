@@ -4,14 +4,17 @@
 \alias{attach_role_policy}
 \title{Attaches the specified managed policy to the specified IAM role}
 \usage{
-attach_role_policy(RoleName, PolicyArn)
+attach_role_policy(
+  RoleName = "string",
+  PolicyArn = "string"
+)
 }
 \arguments{
-\item{RoleName}{The name (friendly name, not ARN) of the role to attach the policy to.
+\item{RoleName}{[required] The name (friendly name, not ARN) of the role to attach the policy to.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
-\item{PolicyArn}{The Amazon Resource Name (ARN) of the IAM policy you want to attach.
+\item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 
 For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces} in the \emph{AWS General Reference}.}
 }

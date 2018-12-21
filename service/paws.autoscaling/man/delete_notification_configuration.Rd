@@ -4,12 +4,15 @@
 \alias{delete_notification_configuration}
 \title{Deletes the specified notification}
 \usage{
-delete_notification_configuration(AutoScalingGroupName, TopicARN)
+delete_notification_configuration(
+  AutoScalingGroupName = "string",
+  TopicARN = "string"
+)
 }
 \arguments{
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{TopicARN}{The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic.}
+\item{TopicARN}{[required] The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (Amazon SNS) topic.}
 }
 \description{
 Deletes the specified notification.

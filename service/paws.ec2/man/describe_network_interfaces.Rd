@@ -4,8 +4,22 @@
 \alias{describe_network_interfaces}
 \title{Describes one or more of your network interfaces}
 \usage{
-describe_network_interfaces(Filters = NULL, DryRun = NULL,
-  NetworkInterfaceIds = NULL, NextToken = NULL, MaxResults = NULL)
+describe_network_interfaces(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE,
+  NetworkInterfaceIds = list(
+    "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{Filters}{One or more filters.

@@ -4,13 +4,46 @@
 \alias{create_facet}
 \title{Creates a new Facet in a schema}
 \usage{
-create_facet(SchemaArn, Name, Attributes = NULL, ObjectType = NULL,
-  FacetStyle = NULL)
+create_facet(
+  SchemaArn = "string",
+  Name = "string",
+  Attributes = list(
+    list(
+      Name = "string",
+      AttributeDefinition = list(
+        Type = "STRING"|"BINARY"|"BOOLEAN"|"NUMBER"|"DATETIME"|"VARIANT",
+        DefaultValue = list(
+          StringValue = "string",
+          BinaryValue = raw,
+          BooleanValue = TRUE|FALSE,
+          NumberValue = "string",
+          DatetimeValue = as.POSIXct("2015-01-01")
+        ),
+        IsImmutable = TRUE|FALSE,
+        Rules = list(
+          list(
+            Type = "BINARY_LENGTH"|"NUMBER_COMPARISON"|"STRING_FROM_SET"|"STRING_LENGTH",
+            Parameters = list(
+              "string"
+            )
+          )
+        )
+      ),
+      AttributeReference = list(
+        TargetFacetName = "string",
+        TargetAttributeName = "string"
+      ),
+      RequiredBehavior = "REQUIRED_ALWAYS"|"NOT_REQUIRED"
+    )
+  ),
+  ObjectType = "NODE"|"LEAF_NODE"|"POLICY"|"INDEX",
+  FacetStyle = "STATIC"|"DYNAMIC"
+)
 }
 \arguments{
-\item{SchemaArn}{The schema ARN in which the new Facet will be created. For more information, see arns.}
+\item{SchemaArn}{[required] The schema ARN in which the new Facet will be created. For more information, see arns.}
 
-\item{Name}{The name of the Facet, which is unique for a given schema.}
+\item{Name}{[required] The name of the Facet, which is unique for a given schema.}
 
 \item{Attributes}{The attributes that are associated with the Facet.}
 
@@ -18,7 +51,7 @@ create_facet(SchemaArn, Name, Attributes = NULL, ObjectType = NULL,
 \itemize{
 \item Node: Can have multiple children but one parent.
 \item Leaf node: Cannot have children but can have multiple parents.
-\item Policy: Allows you to store a policy document and policy type. For more information, see \href{http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies}{Policies}.
+\item Policy: Allows you to store a policy document and policy type. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies}{Policies}.
 \item Index: Can be created with the Index API.
 }}
 

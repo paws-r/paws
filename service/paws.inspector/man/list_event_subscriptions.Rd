@@ -4,8 +4,11 @@
 \alias{list_event_subscriptions}
 \title{Lists all the event subscriptions for the assessment template that is specified by the ARN of the assessment template}
 \usage{
-list_event_subscriptions(resourceArn = NULL, nextToken = NULL,
-  maxResults = NULL)
+list_event_subscriptions(
+  resourceArn = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{resourceArn}{The ARN of the assessment template for which you want to list the existing event subscriptions.}

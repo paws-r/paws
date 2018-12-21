@@ -4,12 +4,14 @@
 \alias{create_organization}
 \title{Creates an AWS organization}
 \usage{
-create_organization(FeatureSet = NULL)
+create_organization(
+  FeatureSet = "ALL"|"CONSOLIDATED_BILLING"
+)
 }
 \arguments{
 \item{FeatureSet}{Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.
 \itemize{
-\item \emph{CONSOLIDATED\_BILLING}: All member accounts have their bills consolidated to and paid by the master account. For more information, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only}{Consolidated Billing} in the \emph{AWS Organizations User Guide}.
+\item \emph{CONSOLIDATED\_BILLING}: All member accounts have their bills consolidated to and paid by the master account. For more information, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only}{Consolidated billing} in the \emph{AWS Organizations User Guide}.
 \item \emph{ALL}: In addition to all the features supported by the consolidated billing feature set, the master account can also apply any type of policy to any member account in the organization. For more information, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all}{All features} in the \emph{AWS Organizations User Guide}.
 }}
 }

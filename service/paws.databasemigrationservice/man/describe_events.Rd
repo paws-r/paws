@@ -4,10 +4,26 @@
 \alias{describe_events}
 \title{Lists events for a given source identifier and source type}
 \usage{
-describe_events(SourceIdentifier = NULL, SourceType = NULL,
-  StartTime = NULL, EndTime = NULL, Duration = NULL,
-  EventCategories = NULL, Filters = NULL, MaxRecords = NULL,
-  Marker = NULL)
+describe_events(
+  SourceIdentifier = "string",
+  SourceType = "replication-instance",
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  Duration = 123,
+  EventCategories = list(
+    "string"
+  ),
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{SourceIdentifier}{The identifier of the event source. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens. It cannot end with a hyphen or contain two consecutive hyphens.}
@@ -35,7 +51,7 @@ Constraints: Minimum 20, maximum 100.}
 \item{Marker}{An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
 \description{
-Lists events for a given source identifier and source type. You can also specify a start and end time. For more information on AWS DMS events, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html}{Working with Events and Notifications}.
+Lists events for a given source identifier and source type. You can also specify a start and end time. For more information on AWS DMS events, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html}{Working with Events and Notifications} in the \emph{AWS Database Migration User Guide.}
 }
 \examples{
 

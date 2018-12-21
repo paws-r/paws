@@ -4,10 +4,14 @@
 \alias{list_team_members}
 \title{Lists all team members associated with a project}
 \usage{
-list_team_members(projectId, nextToken = NULL, maxResults = NULL)
+list_team_members(
+  projectId = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{projectId}{The ID of the project for which you want to list team members.}
+\item{projectId}{[required] The ID of the project for which you want to list team members.}
 
 \item{nextToken}{The continuation token for the next set of results, if the results cannot be returned in one response.}
 

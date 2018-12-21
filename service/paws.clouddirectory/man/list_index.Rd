@@ -4,17 +4,51 @@
 \alias{list_index}
 \title{Lists objects attached to the specified index}
 \usage{
-list_index(DirectoryArn, IndexReference, RangesOnIndexedValues = NULL,
-  MaxResults = NULL, NextToken = NULL, ConsistencyLevel = NULL)
+list_index(
+  DirectoryArn = "string",
+  RangesOnIndexedValues = list(
+    list(
+      AttributeKey = list(
+        SchemaArn = "string",
+        FacetName = "string",
+        Name = "string"
+      ),
+      Range = list(
+        StartMode = "FIRST"|"LAST"|"LAST_BEFORE_MISSING_VALUES"|"INCLUSIVE"|"EXCLUSIVE",
+        StartValue = list(
+          StringValue = "string",
+          BinaryValue = raw,
+          BooleanValue = TRUE|FALSE,
+          NumberValue = "string",
+          DatetimeValue = as.POSIXct("2015-01-01")
+        ),
+        EndMode = "FIRST"|"LAST"|"LAST_BEFORE_MISSING_VALUES"|"INCLUSIVE"|"EXCLUSIVE",
+        EndValue = list(
+          StringValue = "string",
+          BinaryValue = raw,
+          BooleanValue = TRUE|FALSE,
+          NumberValue = "string",
+          DatetimeValue = as.POSIXct("2015-01-01")
+        )
+      )
+    )
+  ),
+  IndexReference = list(
+    Selector = "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string",
+  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
+)
 }
 \arguments{
-\item{DirectoryArn}{The ARN of the directory that the index exists in.}
-
-\item{IndexReference}{The reference to the index to list.}
+\item{DirectoryArn}{[required] The ARN of the directory that the index exists in.}
 
 \item{RangesOnIndexedValues}{Specifies the ranges of indexed values that you want to query.}
 
-\item{MaxResults}{The maximum number of objects in a single page to retrieve from the index during a request. For more information, see \href{http://docs.aws.amazon.com/directoryservice/latest/admin-guide/limits.html#limits_cd}{AWS Directory Service Limits}.}
+\item{IndexReference}{[required] The reference to the index to list.}
+
+\item{MaxResults}{The maximum number of objects in a single page to retrieve from the index during a request. For more information, see \href{http://docs.aws.amazon.com/clouddirectory/latest/developerguide/limits.html}{Amazon Cloud Directory Limits}.}
 
 \item{NextToken}{The pagination token.}
 

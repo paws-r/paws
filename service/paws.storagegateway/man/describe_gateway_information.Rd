@@ -4,10 +4,12 @@
 \alias{describe_gateway_information}
 \title{Returns metadata about a gateway such as its name, network interfaces, configured time zone, and the state (whether the gateway is running or not)}
 \usage{
-describe_gateway_information(GatewayARN)
+describe_gateway_information(
+  GatewayARN = "string"
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 }
 \description{
 Returns metadata about a gateway such as its name, network interfaces, configured time zone, and the state (whether the gateway is running or not). To specify which gateway to describe, use the Amazon Resource Name (ARN) of the gateway in your request.

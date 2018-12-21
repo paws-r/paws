@@ -4,10 +4,12 @@
 \alias{describe_handshake}
 \title{Retrieves information about a previously requested handshake}
 \usage{
-describe_handshake(HandshakeId)
+describe_handshake(
+  HandshakeId = "string"
+)
 }
 \arguments{
-\item{HandshakeId}{The unique identifier (ID) of the handshake that you want information about. You can get the ID from the original call to InviteAccountToOrganization, or from a call to ListHandshakesForAccount or ListHandshakesForOrganization.
+\item{HandshakeId}{[required] The unique identifier (ID) of the handshake that you want information about. You can get the ID from the original call to InviteAccountToOrganization, or from a call to ListHandshakesForAccount or ListHandshakesForOrganization.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.}
 }

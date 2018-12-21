@@ -4,12 +4,17 @@
 \alias{detach_load_balancer_from_subnets}
 \title{Removes the specified subnets from the set of configured subnets for the load balancer}
 \usage{
-detach_load_balancer_from_subnets(LoadBalancerName, Subnets)
+detach_load_balancer_from_subnets(
+  LoadBalancerName = "string",
+  Subnets = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{LoadBalancerName}{The name of the load balancer.}
+\item{LoadBalancerName}{[required] The name of the load balancer.}
 
-\item{Subnets}{The IDs of the subnets.}
+\item{Subnets}{[required] The IDs of the subnets.}
 }
 \description{
 Removes the specified subnets from the set of configured subnets for the load balancer.

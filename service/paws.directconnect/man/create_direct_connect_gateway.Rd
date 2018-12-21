@@ -4,10 +4,13 @@
 \alias{create_direct_connect_gateway}
 \title{Creates a Direct Connect gateway, which is an intermediate object that enables you to connect a set of virtual interfaces and virtual private gateways}
 \usage{
-create_direct_connect_gateway(directConnectGatewayName, amazonSideAsn = NULL)
+create_direct_connect_gateway(
+  directConnectGatewayName = "string",
+  amazonSideAsn = 123
+)
 }
 \arguments{
-\item{directConnectGatewayName}{The name of the Direct Connect gateway.}
+\item{directConnectGatewayName}{[required] The name of the Direct Connect gateway.}
 
 \item{amazonSideAsn}{The autonomous system number (ASN) for Border Gateway Protocol (BGP) to be configured on the Amazon side of the connection. The ASN must be in the private range of 64,512 to 65,534 or 4,200,000,000 to 4,294,967,294. The default is 64512.}
 }

@@ -4,10 +4,13 @@
 \alias{get_function_configuration}
 \title{Returns the configuration information of the Lambda function}
 \usage{
-get_function_configuration(FunctionName, Qualifier = NULL)
+get_function_configuration(
+  FunctionName = "string",
+  Qualifier = "string"
+)
 }
 \arguments{
-\item{FunctionName}{The name of the lambda function.
+\item{FunctionName}{[required] The name of the Lambda function.
 
 \strong{Name formats}
 \itemize{

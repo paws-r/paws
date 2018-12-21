@@ -4,10 +4,12 @@
 \alias{disassociate_elastic_ip}
 \title{Disassociates an Elastic IP address from its instance}
 \usage{
-disassociate_elastic_ip(ElasticIp)
+disassociate_elastic_ip(
+  ElasticIp = "string"
+)
 }
 \arguments{
-\item{ElasticIp}{The Elastic IP address.}
+\item{ElasticIp}{[required] The Elastic IP address.}
 }
 \description{
 Disassociates an Elastic IP address from its instance. The address remains registered with the stack. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.

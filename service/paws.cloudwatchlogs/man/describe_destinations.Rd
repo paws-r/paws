@@ -4,8 +4,11 @@
 \alias{describe_destinations}
 \title{Lists all your destinations}
 \usage{
-describe_destinations(DestinationNamePrefix = NULL, nextToken = NULL,
-  limit = NULL)
+describe_destinations(
+  DestinationNamePrefix = "string",
+  nextToken = "string",
+  limit = 123
+)
 }
 \arguments{
 \item{DestinationNamePrefix}{The prefix to match. If you don't specify a value, no prefix filter is applied.}

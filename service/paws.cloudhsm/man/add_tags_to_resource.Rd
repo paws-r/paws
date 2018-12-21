@@ -4,12 +4,20 @@
 \alias{add_tags_to_resource}
 \title{This is documentation for \strong{AWS CloudHSM Classic}}
 \usage{
-add_tags_to_resource(ResourceArn, TagList)
+add_tags_to_resource(
+  ResourceArn = "string",
+  TagList = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ResourceArn}{The Amazon Resource Name (ARN) of the AWS CloudHSM resource to tag.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the AWS CloudHSM resource to tag.}
 
-\item{TagList}{One or more tags.}
+\item{TagList}{[required] One or more tags.}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHSM Classic FAQs}, the \href{http://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide}, and the \href{http://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.

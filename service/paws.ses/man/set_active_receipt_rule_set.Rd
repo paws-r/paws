@@ -4,7 +4,9 @@
 \alias{set_active_receipt_rule_set}
 \title{Sets the specified receipt rule set as the active receipt rule set}
 \usage{
-set_active_receipt_rule_set(RuleSetName = NULL)
+set_active_receipt_rule_set(
+  RuleSetName = "string"
+)
 }
 \arguments{
 \item{RuleSetName}{The name of the receipt rule set to make active. Setting this value to null disables all email receiving.}

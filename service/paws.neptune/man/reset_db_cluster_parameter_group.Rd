@@ -4,11 +4,27 @@
 \alias{reset_db_cluster_parameter_group}
 \title{Modifies the parameters of a DB cluster parameter group to the default value}
 \usage{
-reset_db_cluster_parameter_group(DBClusterParameterGroupName,
-  ResetAllParameters = NULL, Parameters = NULL)
+reset_db_cluster_parameter_group(
+  DBClusterParameterGroupName = "string",
+  ResetAllParameters = TRUE|FALSE,
+  Parameters = list(
+    list(
+      ParameterName = "string",
+      ParameterValue = "string",
+      Description = "string",
+      Source = "string",
+      ApplyType = "string",
+      DataType = "string",
+      AllowedValues = "string",
+      IsModifiable = TRUE|FALSE,
+      MinimumEngineVersion = "string",
+      ApplyMethod = "immediate"|"pending-reboot"
+    )
+  )
+)
 }
 \arguments{
-\item{DBClusterParameterGroupName}{The name of the DB cluster parameter group to reset.}
+\item{DBClusterParameterGroupName}{[required] The name of the DB cluster parameter group to reset.}
 
 \item{ResetAllParameters}{A value that is set to \code{true} to reset all parameters in the DB cluster parameter group to their default values, and \code{false} otherwise. You can't use this parameter if there is a list of parameter names specified for the \code{Parameters} parameter.}
 

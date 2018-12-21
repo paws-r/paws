@@ -5,10 +5,12 @@
 \alias{get_application_policy}
 \title{Retrieves the policy for the application}
 \usage{
-get_application_policy(ApplicationId)
+get_application_policy(
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The Amazon Resource Name (ARN) of the application.}
+\item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
 }
 \description{
 Retrieves the policy for the application.

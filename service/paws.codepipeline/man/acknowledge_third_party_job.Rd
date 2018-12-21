@@ -4,14 +4,18 @@
 \alias{acknowledge_third_party_job}
 \title{Confirms a job worker has received the specified job}
 \usage{
-acknowledge_third_party_job(jobId, nonce, clientToken)
+acknowledge_third_party_job(
+  jobId = "string",
+  nonce = "string",
+  clientToken = "string"
+)
 }
 \arguments{
-\item{jobId}{The unique system-generated ID of the job.}
+\item{jobId}{[required] The unique system-generated ID of the job.}
 
-\item{nonce}{A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Get this number from the response to a GetThirdPartyJobDetails request.}
+\item{nonce}{[required] A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Get this number from the response to a GetThirdPartyJobDetails request.}
 
-\item{clientToken}{The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.}
+\item{clientToken}{[required] The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.}
 }
 \description{
 Confirms a job worker has received the specified job. Only used for partner actions.

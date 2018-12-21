@@ -4,12 +4,23 @@
 \alias{create_load_balancer_listeners}
 \title{Creates one or more listeners for the specified load balancer}
 \usage{
-create_load_balancer_listeners(LoadBalancerName, Listeners)
+create_load_balancer_listeners(
+  LoadBalancerName = "string",
+  Listeners = list(
+    list(
+      Protocol = "string",
+      LoadBalancerPort = 123,
+      InstanceProtocol = "string",
+      InstancePort = 123,
+      SSLCertificateId = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{LoadBalancerName}{The name of the load balancer.}
+\item{LoadBalancerName}{[required] The name of the load balancer.}
 
-\item{Listeners}{The listeners.}
+\item{Listeners}{[required] The listeners.}
 }
 \description{
 Creates one or more listeners for the specified load balancer. If a listener with the specified port does not already exist, it is created; otherwise, the properties of the new listener must match the properties of the existing listener.

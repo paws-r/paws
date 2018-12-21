@@ -4,10 +4,13 @@
 \alias{create_default_subnet}
 \title{Creates a default subnet with a size \code{/20} IPv4 CIDR block in the specified Availability Zone in your default VPC}
 \usage{
-create_default_subnet(AvailabilityZone, DryRun = NULL)
+create_default_subnet(
+  AvailabilityZone = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{AvailabilityZone}{The Availability Zone in which to create the default subnet.}
+\item{AvailabilityZone}{[required] The Availability Zone in which to create the default subnet.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

@@ -4,16 +4,36 @@
 \alias{describe_scheduled_instance_availability}
 \title{Finds available schedules that meet the specified criteria}
 \usage{
-describe_scheduled_instance_availability(FirstSlotStartTimeRange, Recurrence,
-  DryRun = NULL, Filters = NULL, MaxResults = NULL,
-  MaxSlotDurationInHours = NULL, MinSlotDurationInHours = NULL,
-  NextToken = NULL)
+describe_scheduled_instance_availability(
+  DryRun = TRUE|FALSE,
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  FirstSlotStartTimeRange = list(
+    EarliestTime = as.POSIXct("2015-01-01"),
+    LatestTime = as.POSIXct("2015-01-01")
+  ),
+  MaxResults = 123,
+  MaxSlotDurationInHours = 123,
+  MinSlotDurationInHours = 123,
+  NextToken = "string",
+  Recurrence = list(
+    Frequency = "string",
+    Interval = 123,
+    OccurrenceDays = list(
+      123
+    ),
+    OccurrenceRelativeToEnd = TRUE|FALSE,
+    OccurrenceUnit = "string"
+  )
+)
 }
 \arguments{
-\item{FirstSlotStartTimeRange}{The time period for the first schedule to start.}
-
-\item{Recurrence}{The schedule recurrence.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Filters}{One or more filters.
@@ -24,6 +44,8 @@ describe_scheduled_instance_availability(FirstSlotStartTimeRange, Recurrence,
 \item \code{platform} - The platform (\code{Linux/UNIX} or \code{Windows}).
 }}
 
+\item{FirstSlotStartTimeRange}{[required] The time period for the first schedule to start.}
+
 \item{MaxResults}{The maximum number of results to return in a single call. This value can be between 5 and 300. The default value is 300. To retrieve the remaining results, make another call with the returned \code{NextToken} value.}
 
 \item{MaxSlotDurationInHours}{The maximum available duration, in hours. This value must be greater than \code{MinSlotDurationInHours} and less than 1,720.}
@@ -31,6 +53,8 @@ describe_scheduled_instance_availability(FirstSlotStartTimeRange, Recurrence,
 \item{MinSlotDurationInHours}{The minimum available duration, in hours. The minimum required duration is 1,200 hours per year. For example, the minimum daily schedule is 4 hours, the minimum weekly schedule is 24 hours, and the minimum monthly schedule is 100 hours.}
 
 \item{NextToken}{The token for the next set of results.}
+
+\item{Recurrence}{[required] The schedule recurrence.}
 }
 \description{
 Finds available schedules that meet the specified criteria.

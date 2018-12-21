@@ -4,10 +4,12 @@
 \alias{list_local_disks}
 \title{Returns a list of the gateway's local disks}
 \usage{
-list_local_disks(GatewayARN)
+list_local_disks(
+  GatewayARN = "string"
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 }
 \description{
 Returns a list of the gateway's local disks. To specify which gateway to describe, you use the Amazon Resource Name (ARN) of the gateway in the body of the request.

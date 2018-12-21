@@ -4,12 +4,15 @@
 \alias{register_ecs_cluster}
 \title{Registers a specified Amazon ECS cluster with a stack}
 \usage{
-register_ecs_cluster(EcsClusterArn, StackId)
+register_ecs_cluster(
+  EcsClusterArn = "string",
+  StackId = "string"
+)
 }
 \arguments{
-\item{EcsClusterArn}{The cluster's ARN.}
+\item{EcsClusterArn}{[required] The cluster's ARN.}
 
-\item{StackId}{The stack ID.}
+\item{StackId}{[required] The stack ID.}
 }
 \description{
 Registers a specified Amazon ECS cluster with a stack. You can register only one cluster with a stack. A cluster can be registered with only one stack. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html}{Resource Management}.

@@ -4,13 +4,21 @@
 \alias{update_resource}
 \title{Updates data for the resource}
 \usage{
-update_resource(OrganizationId, ResourceId, Name = NULL,
-  BookingOptions = NULL)
+update_resource(
+  OrganizationId = "string",
+  ResourceId = "string",
+  Name = "string",
+  BookingOptions = list(
+    AutoAcceptRequests = TRUE|FALSE,
+    AutoDeclineRecurringRequests = TRUE|FALSE,
+    AutoDeclineConflictingRequests = TRUE|FALSE
+  )
+)
 }
 \arguments{
-\item{OrganizationId}{The identifier associated with the organization for which the resource is updated.}
+\item{OrganizationId}{[required] The identifier associated with the organization for which the resource is updated.}
 
-\item{ResourceId}{The identifier of the resource to be updated.}
+\item{ResourceId}{[required] The identifier of the resource to be updated.}
 
 \item{Name}{The name of the resource to be updated.}
 

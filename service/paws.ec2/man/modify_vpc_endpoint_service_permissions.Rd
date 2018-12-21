@@ -4,13 +4,21 @@
 \alias{modify_vpc_endpoint_service_permissions}
 \title{Modifies the permissions for your \link{VPC endpoint service}(http://docs}
 \usage{
-modify_vpc_endpoint_service_permissions(ServiceId, DryRun = NULL,
-  AddAllowedPrincipals = NULL, RemoveAllowedPrincipals = NULL)
+modify_vpc_endpoint_service_permissions(
+  DryRun = TRUE|FALSE,
+  ServiceId = "string",
+  AddAllowedPrincipals = list(
+    "string"
+  ),
+  RemoveAllowedPrincipals = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ServiceId}{The ID of the service.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{ServiceId}{[required] The ID of the service.}
 
 \item{AddAllowedPrincipals}{The Amazon Resource Names (ARN) of one or more principals. Permissions are granted to the principals in this list. To grant permissions to all principals, specify an asterisk (*).}
 

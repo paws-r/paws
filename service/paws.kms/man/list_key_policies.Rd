@@ -4,10 +4,14 @@
 \alias{list_key_policies}
 \title{Gets the names of the key policies that are attached to a customer master key (CMK)}
 \usage{
-list_key_policies(KeyId, Limit = NULL, Marker = NULL)
+list_key_policies(
+  KeyId = "string",
+  Limit = 123,
+  Marker = "string"
+)
 }
 \arguments{
-\item{KeyId}{A unique identifier for the customer master key (CMK).
+\item{KeyId}{[required] A unique identifier for the customer master key (CMK).
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 

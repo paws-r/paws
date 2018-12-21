@@ -4,9 +4,23 @@
 \alias{describe_instance_status}
 \title{Describes the status of one or more instances}
 \usage{
-describe_instance_status(Filters = NULL, InstanceIds = NULL,
-  MaxResults = NULL, NextToken = NULL, DryRun = NULL,
-  IncludeAllInstances = NULL)
+describe_instance_status(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  InstanceIds = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string",
+  DryRun = TRUE|FALSE,
+  IncludeAllInstances = TRUE|FALSE
+)
 }
 \arguments{
 \item{Filters}{One or more filters.

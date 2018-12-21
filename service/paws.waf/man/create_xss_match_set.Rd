@@ -4,12 +4,15 @@
 \alias{create_xss_match_set}
 \title{Creates an XssMatchSet, which you use to allow, block, or count requests that contain cross-site scripting attacks in the specified part of web requests}
 \usage{
-create_xss_match_set(Name, ChangeToken)
+create_xss_match_set(
+  Name = "string",
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{Name}{A friendly name or description for the XssMatchSet that you're creating. You can't change \code{Name} after you create the \code{XssMatchSet}.}
+\item{Name}{[required] A friendly name or description for the XssMatchSet that you're creating. You can't change \code{Name} after you create the \code{XssMatchSet}.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Creates an XssMatchSet, which you use to allow, block, or count requests that contain cross-site scripting attacks in the specified part of web requests. AWS WAF searches for character sequences that are likely to be malicious strings.

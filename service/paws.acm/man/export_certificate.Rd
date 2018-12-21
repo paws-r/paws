@@ -4,14 +4,17 @@
 \alias{export_certificate}
 \title{Exports a private certificate issued by a private certificate authority (CA) for use anywhere}
 \usage{
-export_certificate(CertificateArn, Passphrase)
+export_certificate(
+  CertificateArn = "string",
+  Passphrase = raw
+)
 }
 \arguments{
-\item{CertificateArn}{An Amazon Resource Name (ARN) of the issued certificate. This must be of the form:
+\item{CertificateArn}{[required] An Amazon Resource Name (ARN) of the issued certificate. This must be of the form:
 
 \code{arn:aws:acm:region:account:certificate/12345678-1234-1234-1234-123456789012}}
 
-\item{Passphrase}{Passphrase to associate with the encrypted exported private key. If you want to later decrypt the private key, you must have the passphrase. You can use the following OpenSSL command to decrypt a private key:
+\item{Passphrase}{[required] Passphrase to associate with the encrypted exported private key. If you want to later decrypt the private key, you must have the passphrase. You can use the following OpenSSL command to decrypt a private key:
 
 \code{openssl rsa -in encrypted_key.pem -out decrypted_key.pem}}
 }

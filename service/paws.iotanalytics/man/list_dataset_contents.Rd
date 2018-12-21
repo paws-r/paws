@@ -4,10 +4,14 @@
 \alias{list_dataset_contents}
 \title{Lists information about data set contents that have been created}
 \usage{
-list_dataset_contents(datasetName, nextToken = NULL, maxResults = NULL)
+list_dataset_contents(
+  datasetName = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{datasetName}{The name of the data set whose contents information you want to list.}
+\item{datasetName}{[required] The name of the data set whose contents information you want to list.}
 
 \item{nextToken}{The token for the next set of results.}
 

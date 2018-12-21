@@ -4,9 +4,19 @@
 \alias{describe_evaluations}
 \title{Returns a list of \code{DescribeEvaluations} that match the search criteria in the request}
 \usage{
-describe_evaluations(FilterVariable = NULL, EQ = NULL, GT = NULL,
-  LT = NULL, GE = NULL, LE = NULL, NE = NULL, Prefix = NULL,
-  SortOrder = NULL, NextToken = NULL, Limit = NULL)
+describe_evaluations(
+  FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"IAMUser"|"MLModelId"|"DataSourceId"|"DataURI",
+  EQ = "string",
+  GT = "string",
+  LT = "string",
+  GE = "string",
+  LE = "string",
+  NE = "string",
+  Prefix = "string",
+  SortOrder = "asc"|"dsc",
+  NextToken = "string",
+  Limit = 123
+)
 }
 \arguments{
 \item{FilterVariable}{Use one of the following variable to filter a list of \code{Evaluation} objects:

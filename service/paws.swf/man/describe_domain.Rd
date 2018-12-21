@@ -4,10 +4,12 @@
 \alias{describe_domain}
 \title{Returns information about the specified domain, including description and status}
 \usage{
-describe_domain(name)
+describe_domain(
+  name = "string"
+)
 }
 \arguments{
-\item{name}{The name of the domain to describe.}
+\item{name}{[required] The name of the domain to describe.}
 }
 \description{
 Returns information about the specified domain, including description and status.

@@ -4,15 +4,20 @@
 \alias{terminate_provisioned_product}
 \title{Terminates the specified provisioned product}
 \usage{
-terminate_provisioned_product(TerminateToken, ProvisionedProductName = NULL,
-  ProvisionedProductId = NULL, IgnoreErrors = NULL, AcceptLanguage = NULL)
+terminate_provisioned_product(
+  ProvisionedProductName = "string",
+  ProvisionedProductId = "string",
+  TerminateToken = "string",
+  IgnoreErrors = TRUE|FALSE,
+  AcceptLanguage = "string"
+)
 }
 \arguments{
-\item{TerminateToken}{An idempotency token that uniquely identifies the termination request. This token is only valid during the termination process. After the provisioned product is terminated, subsequent requests to terminate the same provisioned product always return \strong{ResourceNotFound}.}
-
 \item{ProvisionedProductName}{The name of the provisioned product. You cannot specify both \code{ProvisionedProductName} and \code{ProvisionedProductId}.}
 
 \item{ProvisionedProductId}{The identifier of the provisioned product. You cannot specify both \code{ProvisionedProductName} and \code{ProvisionedProductId}.}
+
+\item{TerminateToken}{[required] An idempotency token that uniquely identifies the termination request. This token is only valid during the termination process. After the provisioned product is terminated, subsequent requests to terminate the same provisioned product always return \strong{ResourceNotFound}.}
 
 \item{IgnoreErrors}{If set to true, AWS Service Catalog stops managing the specified provisioned product even if it cannot delete the underlying resources.}
 

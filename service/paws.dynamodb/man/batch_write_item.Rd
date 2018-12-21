@@ -4,11 +4,71 @@
 \alias{batch_write_item}
 \title{The \code{BatchWriteItem} operation puts or deletes multiple items in one or more tables}
 \usage{
-batch_write_item(RequestItems, ReturnConsumedCapacity = NULL,
-  ReturnItemCollectionMetrics = NULL)
+batch_write_item(
+  RequestItems = list(
+    list(
+      list(
+        PutRequest = list(
+          Item = list(
+            list(
+              S = "string",
+              N = "string",
+              B = raw,
+              SS = list(
+                "string"
+              ),
+              NS = list(
+                "string"
+              ),
+              BS = list(
+                raw
+              ),
+              M = list(
+                list()
+              ),
+              L = list(
+                list()
+              ),
+              NULL = TRUE|FALSE,
+              BOOL = TRUE|FALSE
+            )
+          )
+        ),
+        DeleteRequest = list(
+          Key = list(
+            list(
+              S = "string",
+              N = "string",
+              B = raw,
+              SS = list(
+                "string"
+              ),
+              NS = list(
+                "string"
+              ),
+              BS = list(
+                raw
+              ),
+              M = list(
+                list()
+              ),
+              L = list(
+                list()
+              ),
+              NULL = TRUE|FALSE,
+              BOOL = TRUE|FALSE
+            )
+          )
+        )
+      )
+    )
+  ),
+  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
+  ReturnItemCollectionMetrics = "SIZE"|"NONE"
+)
 }
 \arguments{
-\item{RequestItems}{A map of one or more table names and, for each table, a list of operations to be performed (\code{DeleteRequest} or \code{PutRequest}). Each element in the map consists of the following:
+\item{RequestItems}{[required] A map of one or more table names and, for each table, a list of operations to be performed (\code{DeleteRequest} or \code{PutRequest}). Each element in the map consists of the following:
 \itemize{
 \item \code{DeleteRequest} - Perform a \code{DeleteItem} operation on the specified item. The item to be deleted is identified by a \code{Key} subelement:
 \itemize{

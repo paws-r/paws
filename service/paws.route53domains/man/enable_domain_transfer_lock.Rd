@@ -4,10 +4,12 @@
 \alias{enable_domain_transfer_lock}
 \title{This operation sets the transfer lock on the domain (specifically the \code{clientTransferProhibited} status) to prevent domain transfers}
 \usage{
-enable_domain_transfer_lock(DomainName)
+enable_domain_transfer_lock(
+  DomainName = "string"
+)
 }
 \arguments{
-\item{DomainName}{The name of the domain that you want to set the transfer lock for.}
+\item{DomainName}{[required] The name of the domain that you want to set the transfer lock for.}
 }
 \description{
 This operation sets the transfer lock on the domain (specifically the \code{clientTransferProhibited} status) to prevent domain transfers. Successful submission returns an operation ID that you can use to track the progress and completion of the action. If the request is not completed successfully, the domain registrant will be notified by email.

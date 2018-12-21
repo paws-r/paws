@@ -4,12 +4,19 @@
 \alias{update_function_code}
 \title{Updates the code for the specified Lambda function}
 \usage{
-update_function_code(FunctionName, ZipFile = NULL, S3Bucket = NULL,
-  S3Key = NULL, S3ObjectVersion = NULL, Publish = NULL, DryRun = NULL,
-  RevisionId = NULL)
+update_function_code(
+  FunctionName = "string",
+  ZipFile = raw,
+  S3Bucket = "string",
+  S3Key = "string",
+  S3ObjectVersion = "string",
+  Publish = TRUE|FALSE,
+  DryRun = TRUE|FALSE,
+  RevisionId = "string"
+)
 }
 \arguments{
-\item{FunctionName}{The name of the lambda function.
+\item{FunctionName}{[required] The name of the Lambda function.
 
 \strong{Name formats}
 \itemize{

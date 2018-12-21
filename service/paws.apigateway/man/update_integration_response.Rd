@@ -4,17 +4,29 @@
 \alias{update_integration_response}
 \title{Represents an update integration response}
 \usage{
-update_integration_response(restApiId, resourceId, httpMethod, statusCode,
-  patchOperations = NULL)
+update_integration_response(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string",
+  statusCode = "string",
+  patchOperations = list(
+    list(
+      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
+      path = "string",
+      value = "string",
+      from = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[Required] Specifies an update integration response request's resource identifier.}
+\item{resourceId}{[required] [Required] Specifies an update integration response request's resource identifier.}
 
-\item{httpMethod}{[Required] Specifies an update integration response request's HTTP method.}
+\item{httpMethod}{[required] [Required] Specifies an update integration response request's HTTP method.}
 
-\item{statusCode}{[Required] Specifies an update integration response request's status code.}
+\item{statusCode}{[required] [Required] Specifies an update integration response request's status code.}
 
 \item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
 }

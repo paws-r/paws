@@ -4,7 +4,11 @@
 \alias{list_policies}
 \title{Lists your policies}
 \usage{
-list_policies(marker = NULL, pageSize = NULL, ascendingOrder = NULL)
+list_policies(
+  marker = "string",
+  pageSize = 123,
+  ascendingOrder = TRUE|FALSE
+)
 }
 \arguments{
 \item{marker}{The marker for the next set of results.}

@@ -4,7 +4,10 @@
 \alias{list_pipelines}
 \title{Retrieves a list of pipelines}
 \usage{
-list_pipelines(nextToken = NULL, maxResults = NULL)
+list_pipelines(
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{nextToken}{The token for the next set of results.}

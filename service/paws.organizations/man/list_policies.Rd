@@ -4,10 +4,14 @@
 \alias{list_policies}
 \title{Retrieves the list of all policies in an organization of a specified type}
 \usage{
-list_policies(Filter, NextToken = NULL, MaxResults = NULL)
+list_policies(
+  Filter = "SERVICE_CONTROL_POLICY",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{Filter}{Specifies the type of policy that you want to include in the response.}
+\item{Filter}{[required] Specifies the type of policy that you want to include in the response.}
 
 \item{NextToken}{Use this parameter if you receive a \code{NextToken} response in a previous request that indicates that there is more output available. Set it to the value of the previous call's \code{NextToken} response to indicate where the output should continue from.}
 

@@ -4,12 +4,17 @@
 \alias{remove_tags_from_resource}
 \title{Removes metadata tags from an Amazon Neptune resource}
 \usage{
-remove_tags_from_resource(ResourceName, TagKeys)
+remove_tags_from_resource(
+  ResourceName = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ResourceName}{The Amazon Neptune resource that the tags are removed from. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see \href{http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing}{Constructing an Amazon Resource Name (ARN)}.}
+\item{ResourceName}{[required] The Amazon Neptune resource that the tags are removed from. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see \href{http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing}{Constructing an Amazon Resource Name (ARN)}.}
 
-\item{TagKeys}{The tag key (name) of the tag to be removed.}
+\item{TagKeys}{[required] The tag key (name) of the tag to be removed.}
 }
 \description{
 Removes metadata tags from an Amazon Neptune resource.

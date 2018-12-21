@@ -4,11 +4,14 @@
 \alias{describe_effective_instance_associations}
 \title{All associations for the instance(s)}
 \usage{
-describe_effective_instance_associations(InstanceId, MaxResults = NULL,
-  NextToken = NULL)
+describe_effective_instance_associations(
+  InstanceId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{InstanceId}{The instance ID for which you want to view all associations.}
+\item{InstanceId}{[required] The instance ID for which you want to view all associations.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 

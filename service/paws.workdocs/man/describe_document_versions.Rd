@@ -4,13 +4,19 @@
 \alias{describe_document_versions}
 \title{Retrieves the document versions for the specified document}
 \usage{
-describe_document_versions(DocumentId, AuthenticationToken = NULL,
-  Marker = NULL, Limit = NULL, Include = NULL, Fields = NULL)
+describe_document_versions(
+  AuthenticationToken = "string",
+  DocumentId = "string",
+  Marker = "string",
+  Limit = 123,
+  Include = "string",
+  Fields = "string"
+)
 }
 \arguments{
-\item{DocumentId}{The ID of the document.}
-
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
+
+\item{DocumentId}{[required] The ID of the document.}
 
 \item{Marker}{The marker for the next set of results. (You received this marker from a previous call.)}
 

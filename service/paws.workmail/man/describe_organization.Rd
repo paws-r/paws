@@ -4,10 +4,12 @@
 \alias{describe_organization}
 \title{Provides more information regarding a given organization based on its identifier}
 \usage{
-describe_organization(OrganizationId)
+describe_organization(
+  OrganizationId = "string"
+)
 }
 \arguments{
-\item{OrganizationId}{The identifier for the organization to be described.}
+\item{OrganizationId}{[required] The identifier for the organization to be described.}
 }
 \description{
 Provides more information regarding a given organization based on its identifier.

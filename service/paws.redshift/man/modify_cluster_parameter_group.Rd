@@ -4,12 +4,27 @@
 \alias{modify_cluster_parameter_group}
 \title{Modifies the parameters of a parameter group}
 \usage{
-modify_cluster_parameter_group(ParameterGroupName, Parameters)
+modify_cluster_parameter_group(
+  ParameterGroupName = "string",
+  Parameters = list(
+    list(
+      ParameterName = "string",
+      ParameterValue = "string",
+      Description = "string",
+      Source = "string",
+      DataType = "string",
+      AllowedValues = "string",
+      ApplyType = "static"|"dynamic",
+      IsModifiable = TRUE|FALSE,
+      MinimumEngineVersion = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ParameterGroupName}{The name of the parameter group to be modified.}
+\item{ParameterGroupName}{[required] The name of the parameter group to be modified.}
 
-\item{Parameters}{An array of parameters to be modified. A maximum of 20 parameters can be modified in a single request.
+\item{Parameters}{[required] An array of parameters to be modified. A maximum of 20 parameters can be modified in a single request.
 
 For each parameter to be modified, you must supply at least the parameter name and parameter value; other name-value pairs of the parameter are optional.
 

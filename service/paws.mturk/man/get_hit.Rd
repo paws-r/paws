@@ -4,10 +4,12 @@
 \alias{get_hit}
 \title{The \code{GetHIT} operation retrieves the details of the specified HIT}
 \usage{
-get_hit(HITId)
+get_hit(
+  HITId = "string"
+)
 }
 \arguments{
-\item{HITId}{The ID of the HIT to be retrieved.}
+\item{HITId}{[required] The ID of the HIT to be retrieved.}
 }
 \description{
 The \code{GetHIT} operation retrieves the details of the specified HIT.

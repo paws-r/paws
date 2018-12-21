@@ -4,17 +4,20 @@
 \alias{create_cache_parameter_group}
 \title{Creates a new Amazon ElastiCache cache parameter group}
 \usage{
-create_cache_parameter_group(CacheParameterGroupName, CacheParameterGroupFamily,
-  Description)
+create_cache_parameter_group(
+  CacheParameterGroupName = "string",
+  CacheParameterGroupFamily = "string",
+  Description = "string"
+)
 }
 \arguments{
-\item{CacheParameterGroupName}{A user-specified name for the cache parameter group.}
+\item{CacheParameterGroupName}{[required] A user-specified name for the cache parameter group.}
 
-\item{CacheParameterGroupFamily}{The name of the cache parameter group family that the cache parameter group can be used with.
+\item{CacheParameterGroupFamily}{[required] The name of the cache parameter group family that the cache parameter group can be used with.
 
 Valid values are: \code{memcached1.4} | \code{redis2.6} | \code{redis2.8} | \code{redis3.2} | \code{redis4.0}}
 
-\item{Description}{A user-specified description for the cache parameter group.}
+\item{Description}{[required] A user-specified description for the cache parameter group.}
 }
 \description{
 Creates a new Amazon ElastiCache cache parameter group. An ElastiCache cache parameter group is a collection of parameters and their values that are applied to all of the nodes in any cluster or replication group using the CacheParameterGroup.

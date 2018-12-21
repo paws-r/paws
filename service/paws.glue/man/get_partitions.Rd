@@ -4,17 +4,86 @@
 \alias{get_partitions}
 \title{Retrieves information about the partitions in a table}
 \usage{
-get_partitions(DatabaseName, TableName, CatalogId = NULL, Expression = NULL,
-  NextToken = NULL, Segment = NULL, MaxResults = NULL)
+get_partitions(
+  CatalogId = "string",
+  DatabaseName = "string",
+  TableName = "string",
+  Expression = "string",
+  NextToken = "string",
+  Segment = list(
+    SegmentNumber = 123,
+    TotalSegments = 123
+  ),
+  MaxResults = 123
+)
 }
 \arguments{
-\item{DatabaseName}{The name of the catalog database where the partitions reside.}
-
-\item{TableName}{The name of the partitions' table.}
-
 \item{CatalogId}{The ID of the Data Catalog where the partitions in question reside. If none is supplied, the AWS account ID is used by default.}
 
-\item{Expression}{An expression filtering the partitions to be returned.}
+\item{DatabaseName}{[required] The name of the catalog database where the partitions reside.}
+
+\item{TableName}{[required] The name of the partitions' table.}
+
+\item{Expression}{An expression filtering the partitions to be returned.
+
+The expression uses SQL syntax similar to the SQL \code{WHERE} filter clause. The SQL statement parser \href{http://jsqlparser.sourceforge.net/home.php}{JSQLParser} parses the expression.
+
+\emph{Operators}: The following are the operators that you can use in the \code{Expression} API call:
+
+=
+
+:   Checks if the values of the two operands are equal or not; if yes, then the condition becomes true.\preformatted{Example: Assume \'variable a\' holds 10 and \'variable b\' holds 20.
+
+(a = b) is not true.
+}
+
+< >
+
+:   Checks if the values of two operands are equal or not; if the values are not equal, then the condition becomes true.\preformatted{Example: (a \< \> b) is true.
+}
+
+>
+
+:   Checks if the value of the left operand is greater than the value of the right operand; if yes, then the condition becomes true.\preformatted{Example: (a \> b) is not true.
+}
+
+<
+
+:   Checks if the value of the left operand is less than the value of the right operand; if yes, then the condition becomes true.\preformatted{Example: (a \< b) is true.
+}
+
+>=
+
+:   Checks if the value of the left operand is greater than or equal to the value of the right operand; if yes, then the condition becomes true.\preformatted{Example: (a \>= b) is not true.
+}
+
+<=
+
+:   Checks if the value of the left operand is less than or equal to the value of the right operand; if yes, then the condition becomes true.\preformatted{Example: (a \<= b) is true.
+}
+
+AND, OR, IN, BETWEEN, LIKE, NOT, IS NULL
+
+:   Logical operators.
+
+\emph{Supported Partition Key Types}: The following are the the supported partition keys.
+\itemize{
+\item \code{string}
+\item \code{date}
+\item \code{timestamp}
+\item \code{int}
+\item \code{bigint}
+\item \code{long}
+\item \code{tinyint}
+\item \code{smallint}
+\item \code{decimal}
+}
+
+If an invalid type is encountered, an exception is thrown.
+
+The following list shows the valid operators on each type. When you define a crawler, the \code{partitionKey} type is created as a \code{STRING}, to be compatible with the catalog partitions.
+
+\emph{Sample API Call}:}
 
 \item{NextToken}{A continuation token, if this is not the first call to retrieve these partitions.}
 

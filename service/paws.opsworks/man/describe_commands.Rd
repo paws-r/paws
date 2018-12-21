@@ -4,8 +4,13 @@
 \alias{describe_commands}
 \title{Describes the results of specified commands}
 \usage{
-describe_commands(DeploymentId = NULL, InstanceId = NULL,
-  CommandIds = NULL)
+describe_commands(
+  DeploymentId = "string",
+  InstanceId = "string",
+  CommandIds = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{DeploymentId}{The deployment ID. If you include this parameter, \code{DescribeCommands} returns a description of the commands associated with the specified deployment.}

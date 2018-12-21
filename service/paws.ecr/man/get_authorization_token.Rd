@@ -4,7 +4,11 @@
 \alias{get_authorization_token}
 \title{Retrieves a token that is valid for a specified registry for 12 hours}
 \usage{
-get_authorization_token(registryIds = NULL)
+get_authorization_token(
+  registryIds = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{registryIds}{A list of AWS account IDs that are associated with the registries for which to get authorization tokens. If you do not specify a registry, the default registry is assumed.}

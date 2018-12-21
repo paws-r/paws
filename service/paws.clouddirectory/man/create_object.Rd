@@ -4,13 +4,40 @@
 \alias{create_object}
 \title{Creates an object in a Directory}
 \usage{
-create_object(DirectoryArn, SchemaFacets, ObjectAttributeList = NULL,
-  ParentReference = NULL, LinkName = NULL)
+create_object(
+  DirectoryArn = "string",
+  SchemaFacets = list(
+    list(
+      SchemaArn = "string",
+      FacetName = "string"
+    )
+  ),
+  ObjectAttributeList = list(
+    list(
+      Key = list(
+        SchemaArn = "string",
+        FacetName = "string",
+        Name = "string"
+      ),
+      Value = list(
+        StringValue = "string",
+        BinaryValue = raw,
+        BooleanValue = TRUE|FALSE,
+        NumberValue = "string",
+        DatetimeValue = as.POSIXct("2015-01-01")
+      )
+    )
+  ),
+  ParentReference = list(
+    Selector = "string"
+  ),
+  LinkName = "string"
+)
 }
 \arguments{
-\item{DirectoryArn}{The Amazon Resource Name (ARN) that is associated with the Directory in which the object will be created. For more information, see arns.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory in which the object will be created. For more information, see arns.}
 
-\item{SchemaFacets}{A list of schema facets to be associated with the object. Do not provide minor version components. See SchemaFacet for details.}
+\item{SchemaFacets}{[required] A list of schema facets to be associated with the object. Do not provide minor version components. See SchemaFacet for details.}
 
 \item{ObjectAttributeList}{The attribute map whose attribute ARN contains the key and attribute value as the map value.}
 

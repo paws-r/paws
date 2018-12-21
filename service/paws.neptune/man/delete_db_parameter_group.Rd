@@ -4,10 +4,12 @@
 \alias{delete_db_parameter_group}
 \title{Deletes a specified DBParameterGroup}
 \usage{
-delete_db_parameter_group(DBParameterGroupName)
+delete_db_parameter_group(
+  DBParameterGroupName = "string"
+)
 }
 \arguments{
-\item{DBParameterGroupName}{The name of the DB parameter group.
+\item{DBParameterGroupName}{[required] The name of the DB parameter group.
 
 Constraints:
 \itemize{

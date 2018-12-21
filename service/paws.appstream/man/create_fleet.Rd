@@ -4,16 +4,42 @@
 \alias{create_fleet}
 \title{Creates a fleet}
 \usage{
-create_fleet(Name, InstanceType, ComputeCapacity, ImageName = NULL,
-  ImageArn = NULL, FleetType = NULL, VpcConfig = NULL,
-  MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL,
-  Description = NULL, DisplayName = NULL,
-  EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL)
+create_fleet(
+  Name = "string",
+  ImageName = "string",
+  ImageArn = "string",
+  InstanceType = "string",
+  FleetType = "ALWAYS_ON"|"ON_DEMAND",
+  ComputeCapacity = list(
+    DesiredInstances = 123
+  ),
+  VpcConfig = list(
+    SubnetIds = list(
+      "string"
+    ),
+    SecurityGroupIds = list(
+      "string"
+    )
+  ),
+  MaxUserDurationInSeconds = 123,
+  DisconnectTimeoutInSeconds = 123,
+  Description = "string",
+  DisplayName = "string",
+  EnableDefaultInternetAccess = TRUE|FALSE,
+  DomainJoinInfo = list(
+    DirectoryName = "string",
+    OrganizationalUnitDistinguishedName = "string"
+  )
+)
 }
 \arguments{
-\item{Name}{A unique name for the fleet.}
+\item{Name}{[required] A unique name for the fleet.}
 
-\item{InstanceType}{The instance type to use when launching fleet instances. The following instance types are available:
+\item{ImageName}{The name of the image used to create the fleet.}
+
+\item{ImageArn}{The ARN of the public, private, or shared image to use.}
+
+\item{InstanceType}{[required] The instance type to use when launching fleet instances. The following instance types are available:
 \itemize{
 \item stream.standard.medium
 \item stream.standard.large
@@ -37,12 +63,6 @@ create_fleet(Name, InstanceType, ComputeCapacity, ImageName = NULL,
 \item stream.graphics-pro.16xlarge
 }}
 
-\item{ComputeCapacity}{The desired capacity for the fleet.}
-
-\item{ImageName}{The name of the image used to create the fleet.}
-
-\item{ImageArn}{The ARN of the public, private, or shared image to use.}
-
 \item{FleetType}{The fleet type.
 
 ALWAYS\_ON
@@ -52,6 +72,8 @@ ALWAYS\_ON
 ON\_DEMAND
 
 :   Provide users with access to applications after they connect, which takes one to two minutes. You are charged for instance streaming when users are connected and a small hourly fee for instances that are not streaming apps.}
+
+\item{ComputeCapacity}{[required] The desired capacity for the fleet.}
 
 \item{VpcConfig}{The VPC configuration for the fleet.}
 

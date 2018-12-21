@@ -4,10 +4,12 @@
 \alias{enable_domain_auto_renew}
 \title{This operation configures Amazon Route 53 to automatically renew the specified domain before the domain registration expires}
 \usage{
-enable_domain_auto_renew(DomainName)
+enable_domain_auto_renew(
+  DomainName = "string"
+)
 }
 \arguments{
-\item{DomainName}{The name of the domain that you want to enable automatic renewal for.}
+\item{DomainName}{[required] The name of the domain that you want to enable automatic renewal for.}
 }
 \description{
 This operation configures Amazon Route 53 to automatically renew the specified domain before the domain registration expires. The cost of renewing your domain registration is billed to your AWS account.

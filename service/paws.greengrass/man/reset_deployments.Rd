@@ -4,14 +4,18 @@
 \alias{reset_deployments}
 \title{Resets a group's deployments}
 \usage{
-reset_deployments(GroupId, AmznClientToken = NULL, Force = NULL)
+reset_deployments(
+  AmznClientToken = "string",
+  Force = TRUE|FALSE,
+  GroupId = "string"
+)
 }
 \arguments{
-\item{GroupId}{The ID of the AWS Greengrass group.}
-
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
 
 \item{Force}{If true, performs a best-effort only core reset.}
+
+\item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \description{
 Resets a group's deployments.

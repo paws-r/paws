@@ -4,9 +4,28 @@
 \alias{describe_snapshots}
 \title{Describes one or more of the EBS snapshots available to you}
 \usage{
-describe_snapshots(Filters = NULL, MaxResults = NULL, NextToken = NULL,
-  OwnerIds = NULL, RestorableByUserIds = NULL, SnapshotIds = NULL,
-  DryRun = NULL)
+describe_snapshots(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string",
+  OwnerIds = list(
+    "string"
+  ),
+  RestorableByUserIds = list(
+    "string"
+  ),
+  SnapshotIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{Filters}{One or more filters.

@@ -6,17 +6,22 @@
 \alias{paws.datapipeline-package}
 \title{paws.datapipeline: AWS Data Pipeline}
 \description{
-AWS Data Pipeline configures and manages a
-data-driven workflow called a pipeline. AWS Data Pipeline handles the
-details of scheduling and ensuring that data dependencies are met so
-that your application can focus on processing the data.
+AWS Data Pipeline configures and manages a data-driven
+workflow called a pipeline. AWS Data Pipeline handles the details of
+scheduling and ensuring that data dependencies are met so that your
+application can focus on processing the data.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

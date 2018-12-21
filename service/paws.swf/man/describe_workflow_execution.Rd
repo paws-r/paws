@@ -4,12 +4,18 @@
 \alias{describe_workflow_execution}
 \title{Returns information about the specified workflow execution including its type and some statistics}
 \usage{
-describe_workflow_execution(domain, execution)
+describe_workflow_execution(
+  domain = "string",
+  execution = list(
+    workflowId = "string",
+    runId = "string"
+  )
+)
 }
 \arguments{
-\item{domain}{The name of the domain containing the workflow execution.}
+\item{domain}{[required] The name of the domain containing the workflow execution.}
 
-\item{execution}{The workflow execution to describe.}
+\item{execution}{[required] The workflow execution to describe.}
 }
 \description{
 Returns information about the specified workflow execution including its type and some statistics.

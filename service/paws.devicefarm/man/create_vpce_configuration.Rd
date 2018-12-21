@@ -4,15 +4,19 @@
 \alias{create_vpce_configuration}
 \title{Creates a configuration record in Device Farm for your Amazon Virtual Private Cloud (VPC) endpoint}
 \usage{
-create_vpce_configuration(vpceConfigurationName, vpceServiceName,
-  serviceDnsName, vpceConfigurationDescription = NULL)
+create_vpce_configuration(
+  vpceConfigurationName = "string",
+  vpceServiceName = "string",
+  serviceDnsName = "string",
+  vpceConfigurationDescription = "string"
+)
 }
 \arguments{
-\item{vpceConfigurationName}{The friendly name you give to your VPC endpoint configuration, to manage your configurations more easily.}
+\item{vpceConfigurationName}{[required] The friendly name you give to your VPC endpoint configuration, to manage your configurations more easily.}
 
-\item{vpceServiceName}{The name of the VPC endpoint service running inside your AWS account that you want Device Farm to test.}
+\item{vpceServiceName}{[required] The name of the VPC endpoint service running inside your AWS account that you want Device Farm to test.}
 
-\item{serviceDnsName}{The DNS name of the service running in your VPC that you want Device Farm to test.}
+\item{serviceDnsName}{[required] The DNS name of the service running in your VPC that you want Device Farm to test.}
 
 \item{vpceConfigurationDescription}{An optional description, providing more details about your VPC endpoint configuration.}
 }

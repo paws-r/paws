@@ -4,14 +4,18 @@
 \alias{delete_alias}
 \title{Remove the alias from a set of aliases for a given user}
 \usage{
-delete_alias(OrganizationId, EntityId, Alias)
+delete_alias(
+  OrganizationId = "string",
+  EntityId = "string",
+  Alias = "string"
+)
 }
 \arguments{
-\item{OrganizationId}{The identifier for the organization under which the user exists.}
+\item{OrganizationId}{[required] The identifier for the organization under which the user exists.}
 
-\item{EntityId}{The identifier for the Amazon WorkMail entity to have the aliases removed.}
+\item{EntityId}{[required] The identifier for the Amazon WorkMail entity to have the aliases removed.}
 
-\item{Alias}{The aliases to be removed from the user's set of aliases. Duplicate entries in the list are collapsed into single entries (the list is transformed into a set).}
+\item{Alias}{[required] The aliases to be removed from the user's set of aliases. Duplicate entries in the list are collapsed into single entries (the list is transformed into a set).}
 }
 \description{
 Remove the alias from a set of aliases for a given user.

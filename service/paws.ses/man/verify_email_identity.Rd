@@ -4,10 +4,12 @@
 \alias{verify_email_identity}
 \title{Adds an email address to the list of identities for your Amazon SES account in the current AWS region and attempts to verify it}
 \usage{
-verify_email_identity(EmailAddress)
+verify_email_identity(
+  EmailAddress = "string"
+)
 }
 \arguments{
-\item{EmailAddress}{The email address to be verified.}
+\item{EmailAddress}{[required] The email address to be verified.}
 }
 \description{
 Adds an email address to the list of identities for your Amazon SES account in the current AWS region and attempts to verify it. As a result of executing this operation, a verification email is sent to the specified address.

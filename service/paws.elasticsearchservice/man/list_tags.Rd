@@ -4,10 +4,12 @@
 \alias{list_tags}
 \title{Returns all tags for the given Elasticsearch domain}
 \usage{
-list_tags(ARN)
+list_tags(
+  ARN = "string"
+)
 }
 \arguments{
-\item{ARN}{Specify the \code{ARN} for the Elasticsearch domain to which the tags are attached that you want to view.}
+\item{ARN}{[required] Specify the \code{ARN} for the Elasticsearch domain to which the tags are attached that you want to view.}
 }
 \description{
 Returns all tags for the given Elasticsearch domain.

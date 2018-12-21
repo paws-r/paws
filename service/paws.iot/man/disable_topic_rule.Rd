@@ -4,10 +4,12 @@
 \alias{disable_topic_rule}
 \title{Disables the rule}
 \usage{
-disable_topic_rule(ruleName)
+disable_topic_rule(
+  ruleName = "string"
+)
 }
 \arguments{
-\item{ruleName}{The name of the rule to disable.}
+\item{ruleName}{[required] The name of the rule to disable.}
 }
 \description{
 Disables the rule.

@@ -4,10 +4,12 @@
 \alias{get_patch_baseline}
 \title{Retrieves information about a patch baseline}
 \usage{
-get_patch_baseline(BaselineId)
+get_patch_baseline(
+  BaselineId = "string"
+)
 }
 \arguments{
-\item{BaselineId}{The ID of the patch baseline to retrieve.}
+\item{BaselineId}{[required] The ID of the patch baseline to retrieve.}
 }
 \description{
 Retrieves information about a patch baseline.

@@ -4,12 +4,15 @@
 \alias{cancel_pipeline_reprocessing}
 \title{Cancels the reprocessing of data through the pipeline}
 \usage{
-cancel_pipeline_reprocessing(pipelineName, reprocessingId)
+cancel_pipeline_reprocessing(
+  pipelineName = "string",
+  reprocessingId = "string"
+)
 }
 \arguments{
-\item{pipelineName}{The name of pipeline for which data reprocessing is canceled.}
+\item{pipelineName}{[required] The name of pipeline for which data reprocessing is canceled.}
 
-\item{reprocessingId}{The ID of the reprocessing task (returned by "StartPipelineReprocessing").}
+\item{reprocessingId}{[required] The ID of the reprocessing task (returned by "StartPipelineReprocessing").}
 }
 \description{
 Cancels the reprocessing of data through the pipeline.

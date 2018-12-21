@@ -4,12 +4,17 @@
 \alias{disable_enhanced_monitoring}
 \title{Disables enhanced monitoring}
 \usage{
-disable_enhanced_monitoring(StreamName, ShardLevelMetrics)
+disable_enhanced_monitoring(
+  StreamName = "string",
+  ShardLevelMetrics = list(
+    "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
+  )
+)
 }
 \arguments{
-\item{StreamName}{The name of the Kinesis data stream for which to disable enhanced monitoring.}
+\item{StreamName}{[required] The name of the Kinesis data stream for which to disable enhanced monitoring.}
 
-\item{ShardLevelMetrics}{List of shard-level metrics to disable.
+\item{ShardLevelMetrics}{[required] List of shard-level metrics to disable.
 
 The following are the valid shard-level metrics. The value "\code{ALL}" disables every metric.
 \itemize{

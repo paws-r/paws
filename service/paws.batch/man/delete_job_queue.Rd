@@ -4,10 +4,12 @@
 \alias{delete_job_queue}
 \title{Deletes the specified job queue}
 \usage{
-delete_job_queue(jobQueue)
+delete_job_queue(
+  jobQueue = "string"
+)
 }
 \arguments{
-\item{jobQueue}{The short name or full Amazon Resource Name (ARN) of the queue to delete.}
+\item{jobQueue}{[required] The short name or full Amazon Resource Name (ARN) of the queue to delete.}
 }
 \description{
 Deletes the specified job queue. You must first disable submissions for a queue with the UpdateJobQueue operation. All jobs in the queue are terminated when you delete a job queue.

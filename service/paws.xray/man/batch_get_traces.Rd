@@ -4,10 +4,15 @@
 \alias{batch_get_traces}
 \title{Retrieves a list of traces specified by ID}
 \usage{
-batch_get_traces(TraceIds, NextToken = NULL)
+batch_get_traces(
+  TraceIds = list(
+    "string"
+  ),
+  NextToken = "string"
+)
 }
 \arguments{
-\item{TraceIds}{Specify the trace IDs of requests for which to retrieve segments.}
+\item{TraceIds}{[required] Specify the trace IDs of requests for which to retrieve segments.}
 
 \item{NextToken}{Pagination token. Not used.}
 }

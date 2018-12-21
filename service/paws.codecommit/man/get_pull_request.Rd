@@ -4,10 +4,12 @@
 \alias{get_pull_request}
 \title{Gets information about a pull request in a specified repository}
 \usage{
-get_pull_request(pullRequestId)
+get_pull_request(
+  pullRequestId = "string"
+)
 }
 \arguments{
-\item{pullRequestId}{The system-generated ID of the pull request. To get this ID, use ListPullRequests.}
+\item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use ListPullRequests.}
 }
 \description{
 Gets information about a pull request in a specified repository.

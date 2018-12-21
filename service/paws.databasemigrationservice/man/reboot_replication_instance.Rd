@@ -4,10 +4,13 @@
 \alias{reboot_replication_instance}
 \title{Reboots a replication instance}
 \usage{
-reboot_replication_instance(ReplicationInstanceArn, ForceFailover = NULL)
+reboot_replication_instance(
+  ReplicationInstanceArn = "string",
+  ForceFailover = TRUE|FALSE
+)
 }
 \arguments{
-\item{ReplicationInstanceArn}{The Amazon Resource Name (ARN) of the replication instance.}
+\item{ReplicationInstanceArn}{[required] The Amazon Resource Name (ARN) of the replication instance.}
 
 \item{ForceFailover}{If this parameter is \code{true}, the reboot is conducted through a Multi-AZ failover. (If the instance isn't configured for Multi-AZ, then you can't specify \code{true}.)}
 }

@@ -4,10 +4,12 @@
 \alias{list_tags_for_resource}
 \title{Lists the tags (metadata) which you have assigned to the resource}
 \usage{
-list_tags_for_resource(resourceArn)
+list_tags_for_resource(
+  resourceArn = "string"
+)
 }
 \arguments{
-\item{resourceArn}{The ARN of the resource whose tags you want to list.}
+\item{resourceArn}{[required] The ARN of the resource whose tags you want to list.}
 }
 \description{
 Lists the tags (metadata) which you have assigned to the resource.

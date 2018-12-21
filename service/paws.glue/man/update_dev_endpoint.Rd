@@ -4,12 +4,24 @@
 \alias{update_dev_endpoint}
 \title{Updates a specified DevEndpoint}
 \usage{
-update_dev_endpoint(EndpointName, PublicKey = NULL, AddPublicKeys = NULL,
-  DeletePublicKeys = NULL, CustomLibraries = NULL,
-  UpdateEtlLibraries = NULL)
+update_dev_endpoint(
+  EndpointName = "string",
+  PublicKey = "string",
+  AddPublicKeys = list(
+    "string"
+  ),
+  DeletePublicKeys = list(
+    "string"
+  ),
+  CustomLibraries = list(
+    ExtraPythonLibsS3Path = "string",
+    ExtraJarsS3Path = "string"
+  ),
+  UpdateEtlLibraries = TRUE|FALSE
+)
 }
 \arguments{
-\item{EndpointName}{The name of the DevEndpoint to be updated.}
+\item{EndpointName}{[required] The name of the DevEndpoint to be updated.}
 
 \item{PublicKey}{The public key for the DevEndpoint to use.}
 

@@ -4,10 +4,14 @@
 \alias{list_tags}
 \title{Returns a list of tags that are applied to the specified stack or layer}
 \usage{
-list_tags(ResourceArn, MaxResults = NULL, NextToken = NULL)
+list_tags(
+  ResourceArn = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{ResourceArn}{The stack or layer's Amazon Resource Number (ARN).}
+\item{ResourceArn}{[required] The stack or layer's Amazon Resource Number (ARN).}
 
 \item{MaxResults}{Do not use. A validation exception occurs if you add a \code{MaxResults} parameter to a \code{ListTagsRequest} call.}
 

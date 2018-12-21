@@ -4,10 +4,12 @@
 \alias{list_group_certificate_authorities}
 \title{Retrieves the current CAs for a group}
 \usage{
-list_group_certificate_authorities(GroupId)
+list_group_certificate_authorities(
+  GroupId = "string"
+)
 }
 \arguments{
-\item{GroupId}{The ID of the AWS Greengrass group.}
+\item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \description{
 Retrieves the current CAs for a group.

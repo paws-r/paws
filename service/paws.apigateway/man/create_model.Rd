@@ -4,19 +4,24 @@
 \alias{create_model}
 \title{Adds a new Model resource to an existing RestApi resource}
 \usage{
-create_model(restApiId, name, contentType, description = NULL,
-  schema = NULL)
+create_model(
+  restApiId = "string",
+  name = "string",
+  description = "string",
+  schema = "string",
+  contentType = "string"
+)
 }
 \arguments{
-\item{restApiId}{[Required] The RestApi identifier under which the Model will be created.}
+\item{restApiId}{[required] [Required] The RestApi identifier under which the Model will be created.}
 
-\item{name}{[Required] The name of the model. Must be alphanumeric.}
-
-\item{contentType}{[Required] The content-type for the model.}
+\item{name}{[required] [Required] The name of the model. Must be alphanumeric.}
 
 \item{description}{The description of the model.}
 
-\item{schema}{The schema for the model. For \code{application/json} models, this should be \href{%5B%5BJsonSchemaUrl%5D%5D}{JSON schema draft 4} model.}
+\item{schema}{The schema for the model. For \code{application/json} models, this should be \href{https://tools.ietf.org/html/draft-zyp-json-schema-04}{JSON schema draft 4} model.}
+
+\item{contentType}{[required] [Required] The content-type for the model.}
 }
 \description{
 Adds a new Model resource to an existing RestApi resource.

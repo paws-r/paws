@@ -4,19 +4,36 @@
 \alias{create_disk}
 \title{Creates a block storage disk that can be attached to a Lightsail instance in the same Availability Zone (e}
 \usage{
-create_disk(diskName, availabilityZone, sizeInGb)
+create_disk(
+  diskName = "string",
+  availabilityZone = "string",
+  sizeInGb = 123,
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{diskName}{The unique Lightsail disk name (e.g., \code{my-disk}).}
+\item{diskName}{[required] The unique Lightsail disk name (e.g., \code{my-disk}).}
 
-\item{availabilityZone}{The Availability Zone where you want to create the disk (e.g., \code{us-east-2a}). Choose the same Availability Zone as the Lightsail instance where you want to create the disk.
+\item{availabilityZone}{[required] The Availability Zone where you want to create the disk (e.g., \code{us-east-2a}). Choose the same Availability Zone as the Lightsail instance where you want to create the disk.
 
 Use the GetRegions operation to list the Availability Zones where Lightsail is currently available.}
 
-\item{sizeInGb}{The size of the disk in GB (e.g., \code{32}).}
+\item{sizeInGb}{[required] The size of the disk in GB (e.g., \code{32}).}
+
+\item{tags}{The tag keys and optional values to add to the resource during create.
+
+To tag a resource after it has been created, see the \code{tag resource} operation.}
 }
 \description{
 Creates a block storage disk that can be attached to a Lightsail instance in the same Availability Zone (e.g., \code{us-east-2a}). The disk is created in the regional endpoint that you send the HTTP request to. For more information, see \href{https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail}{Regions and Availability Zones in Lightsail}.
+}
+\details{
+The \code{create disk} operation supports tag-based access control via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \examples{
 

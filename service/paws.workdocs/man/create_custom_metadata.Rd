@@ -4,17 +4,23 @@
 \alias{create_custom_metadata}
 \title{Adds one or more custom properties to the specified resource (a folder, document, or version)}
 \usage{
-create_custom_metadata(ResourceId, CustomMetadata, AuthenticationToken = NULL,
-  VersionId = NULL)
+create_custom_metadata(
+  AuthenticationToken = "string",
+  ResourceId = "string",
+  VersionId = "string",
+  CustomMetadata = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ResourceId}{The ID of the resource.}
-
-\item{CustomMetadata}{Custom metadata in the form of name-value pairs.}
-
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
 
+\item{ResourceId}{[required] The ID of the resource.}
+
 \item{VersionId}{The ID of the version, if the custom metadata is being added to a document version.}
+
+\item{CustomMetadata}{[required] Custom metadata in the form of name-value pairs.}
 }
 \description{
 Adds one or more custom properties to the specified resource (a folder, document, or version).

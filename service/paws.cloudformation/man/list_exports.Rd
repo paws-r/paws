@@ -4,7 +4,9 @@
 \alias{list_exports}
 \title{Lists all exported output values in the account and region in which you call this action}
 \usage{
-list_exports(NextToken = NULL)
+list_exports(
+  NextToken = "string"
+)
 }
 \arguments{
 \item{NextToken}{A string (provided by the ListExports response output) that identifies the next page of exported output values that you asked to retrieve.}

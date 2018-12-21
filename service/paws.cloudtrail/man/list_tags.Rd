@@ -4,10 +4,15 @@
 \alias{list_tags}
 \title{Lists the tags for the trail in the current region}
 \usage{
-list_tags(ResourceIdList, NextToken = NULL)
+list_tags(
+  ResourceIdList = list(
+    "string"
+  ),
+  NextToken = "string"
+)
 }
 \arguments{
-\item{ResourceIdList}{Specifies a list of trail ARNs whose tags will be listed. The list has a limit of 20 ARNs. The format of a trail ARN is:
+\item{ResourceIdList}{[required] Specifies a list of trail ARNs whose tags will be listed. The list has a limit of 20 ARNs. The format of a trail ARN is:
 
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 

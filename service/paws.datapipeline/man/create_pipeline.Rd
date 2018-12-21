@@ -4,12 +4,22 @@
 \alias{create_pipeline}
 \title{Creates a new, empty pipeline}
 \usage{
-create_pipeline(name, uniqueId, description = NULL, tags = NULL)
+create_pipeline(
+  name = "string",
+  uniqueId = "string",
+  description = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{name}{The name for the pipeline. You can use the same name for multiple pipelines associated with your AWS account, because AWS Data Pipeline assigns each pipeline a unique pipeline identifier.}
+\item{name}{[required] The name for the pipeline. You can use the same name for multiple pipelines associated with your AWS account, because AWS Data Pipeline assigns each pipeline a unique pipeline identifier.}
 
-\item{uniqueId}{A unique identifier. This identifier is not the same as the pipeline identifier assigned by AWS Data Pipeline. You are responsible for defining the format and ensuring the uniqueness of this identifier. You use this parameter to ensure idempotency during repeated calls to \code{CreatePipeline}. For example, if the first call to \code{CreatePipeline} does not succeed, you can pass in the same unique identifier and pipeline name combination on a subsequent call to \code{CreatePipeline}. \code{CreatePipeline} ensures that if a pipeline already exists with the same name and unique identifier, a new pipeline is not created. Instead, you'll receive the pipeline identifier from the previous attempt. The uniqueness of the name and unique identifier combination is scoped to the AWS account or IAM user credentials.}
+\item{uniqueId}{[required] A unique identifier. This identifier is not the same as the pipeline identifier assigned by AWS Data Pipeline. You are responsible for defining the format and ensuring the uniqueness of this identifier. You use this parameter to ensure idempotency during repeated calls to \code{CreatePipeline}. For example, if the first call to \code{CreatePipeline} does not succeed, you can pass in the same unique identifier and pipeline name combination on a subsequent call to \code{CreatePipeline}. \code{CreatePipeline} ensures that if a pipeline already exists with the same name and unique identifier, a new pipeline is not created. Instead, you'll receive the pipeline identifier from the previous attempt. The uniqueness of the name and unique identifier combination is scoped to the AWS account or IAM user credentials.}
 
 \item{description}{The description for the pipeline.}
 

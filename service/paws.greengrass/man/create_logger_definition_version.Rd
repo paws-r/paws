@@ -4,13 +4,24 @@
 \alias{create_logger_definition_version}
 \title{Creates a version of a logger definition that has already been defined}
 \usage{
-create_logger_definition_version(LoggerDefinitionId, AmznClientToken = NULL,
-  Loggers = NULL)
+create_logger_definition_version(
+  AmznClientToken = "string",
+  LoggerDefinitionId = "string",
+  Loggers = list(
+    list(
+      Component = "GreengrassSystem"|"Lambda",
+      Id = "string",
+      Level = "DEBUG"|"INFO"|"WARN"|"ERROR"|"FATAL",
+      Space = 123,
+      Type = "FileSystem"|"AWSCloudWatch"
+    )
+  )
+)
 }
 \arguments{
-\item{LoggerDefinitionId}{The ID of the logger definition.}
-
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
+
+\item{LoggerDefinitionId}{[required] The ID of the logger definition.}
 
 \item{Loggers}{A list of loggers.}
 }

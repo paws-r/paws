@@ -4,15 +4,59 @@
 \alias{update_budget}
 \title{Updates a budget}
 \usage{
-update_budget(AccountId, NewBudget)
+update_budget(
+  AccountId = "string",
+  NewBudget = list(
+    BudgetName = "string",
+    BudgetLimit = list(
+      Amount = "string",
+      Unit = "string"
+    ),
+    CostFilters = list(
+      list(
+        "string"
+      )
+    ),
+    CostTypes = list(
+      IncludeTax = TRUE|FALSE,
+      IncludeSubscription = TRUE|FALSE,
+      UseBlended = TRUE|FALSE,
+      IncludeRefund = TRUE|FALSE,
+      IncludeCredit = TRUE|FALSE,
+      IncludeUpfront = TRUE|FALSE,
+      IncludeRecurring = TRUE|FALSE,
+      IncludeOtherSubscription = TRUE|FALSE,
+      IncludeSupport = TRUE|FALSE,
+      IncludeDiscount = TRUE|FALSE,
+      UseAmortized = TRUE|FALSE
+    ),
+    TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY",
+    TimePeriod = list(
+      Start = as.POSIXct("2015-01-01"),
+      End = as.POSIXct("2015-01-01")
+    ),
+    CalculatedSpend = list(
+      ActualSpend = list(
+        Amount = "string",
+        Unit = "string"
+      ),
+      ForecastedSpend = list(
+        Amount = "string",
+        Unit = "string"
+      )
+    ),
+    BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE",
+    LastUpdatedTime = as.POSIXct("2015-01-01")
+  )
+)
 }
 \arguments{
-\item{AccountId}{The \code{accountId} that is associated with the budget that you want to update.}
+\item{AccountId}{[required] The \code{accountId} that is associated with the budget that you want to update.}
 
-\item{NewBudget}{The budget that you want to update your budget to.}
+\item{NewBudget}{[required] The budget that you want to update your budget to.}
 }
 \description{
-Updates a budget. You can change every part of a budget except for the \code{budgetName} and the \code{calculatedSpend}. When a budget is modified, the \code{calculatedSpend} drops to zero until AWS has new usage data to use for forecasting.
+Updates a budget. You can change every part of a budget except for the \code{budgetName} and the \code{calculatedSpend}. When you modify a budget, the \code{calculatedSpend} drops to zero until AWS has new usage data to use for forecasting.
 }
 \examples{
 

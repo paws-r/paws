@@ -4,7 +4,11 @@
 \alias{describe_delivery_channel_status}
 \title{Returns the current status of the specified delivery channel}
 \usage{
-describe_delivery_channel_status(DeliveryChannelNames = NULL)
+describe_delivery_channel_status(
+  DeliveryChannelNames = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{DeliveryChannelNames}{A list of delivery channel names.}

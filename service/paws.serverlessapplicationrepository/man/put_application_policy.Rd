@@ -5,15 +5,28 @@
 \alias{put_application_policy}
 \title{Sets the permission policy for an application}
 \usage{
-put_application_policy(ApplicationId, Statements)
+put_application_policy(
+  ApplicationId = "string",
+  Statements = list(
+    list(
+      Actions = list(
+        "string"
+      ),
+      Principals = list(
+        "string"
+      ),
+      StatementId = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ApplicationId}{The Amazon Resource Name (ARN) of the application.}
+\item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
 
-\item{Statements}{An array of policy statements applied to the application.}
+\item{Statements}{[required] An array of policy statements applied to the application.}
 }
 \description{
-Sets the permission policy for an application. See \href{https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions}{Application Permissions} for the list of supported actions that can be used with this operation.
+Sets the permission policy for an application. For the list of actions supported for this operation, see \href{https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions}{Application Permissions} .
 }
 \examples{
 

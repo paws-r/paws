@@ -4,7 +4,9 @@
 \alias{describe_platform_version}
 \title{Describes the version of the platform}
 \usage{
-describe_platform_version(PlatformArn = NULL)
+describe_platform_version(
+  PlatformArn = "string"
+)
 }
 \arguments{
 \item{PlatformArn}{The ARN of the version of the platform.}

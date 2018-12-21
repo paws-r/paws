@@ -4,12 +4,15 @@
 \alias{delete_environment_membership}
 \title{Deletes an environment member from an AWS Cloud9 development environment}
 \usage{
-delete_environment_membership(environmentId, userArn)
+delete_environment_membership(
+  environmentId = "string",
+  userArn = "string"
+)
 }
 \arguments{
-\item{environmentId}{The ID of the environment to delete the environment member from.}
+\item{environmentId}{[required] The ID of the environment to delete the environment member from.}
 
-\item{userArn}{The Amazon Resource Name (ARN) of the environment member to delete from the environment.}
+\item{userArn}{[required] The Amazon Resource Name (ARN) of the environment member to delete from the environment.}
 }
 \description{
 Deletes an environment member from an AWS Cloud9 development environment.

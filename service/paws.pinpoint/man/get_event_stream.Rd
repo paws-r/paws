@@ -4,10 +4,12 @@
 \alias{get_event_stream}
 \title{Returns the event stream for an app}
 \usage{
-get_event_stream(ApplicationId)
+get_event_stream(
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 }
 \description{
 Returns the event stream for an app.

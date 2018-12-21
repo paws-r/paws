@@ -4,14 +4,38 @@
 \alias{update_object_attributes}
 \title{Updates a given object's attributes}
 \usage{
-update_object_attributes(DirectoryArn, ObjectReference, AttributeUpdates)
+update_object_attributes(
+  DirectoryArn = "string",
+  ObjectReference = list(
+    Selector = "string"
+  ),
+  AttributeUpdates = list(
+    list(
+      ObjectAttributeKey = list(
+        SchemaArn = "string",
+        FacetName = "string",
+        Name = "string"
+      ),
+      ObjectAttributeAction = list(
+        ObjectAttributeActionType = "CREATE_OR_UPDATE"|"DELETE",
+        ObjectAttributeUpdateValue = list(
+          StringValue = "string",
+          BinaryValue = raw,
+          BooleanValue = TRUE|FALSE,
+          NumberValue = "string",
+          DatetimeValue = as.POSIXct("2015-01-01")
+        )
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{DirectoryArn}{The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.}
 
-\item{ObjectReference}{The reference that identifies the object.}
+\item{ObjectReference}{[required] The reference that identifies the object.}
 
-\item{AttributeUpdates}{The attributes update structure.}
+\item{AttributeUpdates}{[required] The attributes update structure.}
 }
 \description{
 Updates a given object's attributes.

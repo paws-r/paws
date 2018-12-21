@@ -4,10 +4,12 @@
 \alias{enable_aws_service_access}
 \title{Enables the integration of an AWS service (the service that is specified by \code{ServicePrincipal}) with AWS Organizations}
 \usage{
-enable_aws_service_access(ServicePrincipal)
+enable_aws_service_access(
+  ServicePrincipal = "string"
+)
 }
 \arguments{
-\item{ServicePrincipal}{The service principal name of the AWS service for which you want to enable integration with your organization. This is typically in the form of a URL, such as \code{ service-abbreviation.amazonaws.comservice-abbreviation.amazonaws.com}.}
+\item{ServicePrincipal}{[required] The service principal name of the AWS service for which you want to enable integration with your organization. This is typically in the form of a URL, such as \code{ service-abbreviation.amazonaws.comservice-abbreviation.amazonaws.com}.}
 }
 \description{
 Enables the integration of an AWS service (the service that is specified by \code{ServicePrincipal}) with AWS Organizations. When you enable integration, you allow the specified service to create a \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html}{service-linked role} in all the accounts in your organization. This allows the service to perform operations on your behalf in your organization and its accounts.

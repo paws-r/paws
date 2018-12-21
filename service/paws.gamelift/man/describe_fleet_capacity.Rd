@@ -4,7 +4,13 @@
 \alias{describe_fleet_capacity}
 \title{Retrieves the current status of fleet capacity for one or more fleets}
 \usage{
-describe_fleet_capacity(FleetIds = NULL, Limit = NULL, NextToken = NULL)
+describe_fleet_capacity(
+  FleetIds = list(
+    "string"
+  ),
+  Limit = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{FleetIds}{Unique identifier for a fleet(s) to retrieve capacity information for. To request capacity information for all fleets, leave this parameter empty.}

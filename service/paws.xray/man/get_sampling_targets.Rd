@@ -4,10 +4,21 @@
 \alias{get_sampling_targets}
 \title{Requests a sampling quota for rules that the service is using to sample requests}
 \usage{
-get_sampling_targets(SamplingStatisticsDocuments)
+get_sampling_targets(
+  SamplingStatisticsDocuments = list(
+    list(
+      RuleName = "string",
+      ClientID = "string",
+      Timestamp = as.POSIXct("2015-01-01"),
+      RequestCount = 123,
+      SampledCount = 123,
+      BorrowCount = 123
+    )
+  )
+)
 }
 \arguments{
-\item{SamplingStatisticsDocuments}{Information about rules that the service is using to sample requests.}
+\item{SamplingStatisticsDocuments}{[required] Information about rules that the service is using to sample requests.}
 }
 \description{
 Requests a sampling quota for rules that the service is using to sample requests.

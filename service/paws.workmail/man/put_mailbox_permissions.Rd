@@ -4,16 +4,23 @@
 \alias{put_mailbox_permissions}
 \title{Sets permissions for a user or group}
 \usage{
-put_mailbox_permissions(OrganizationId, EntityId, GranteeId, PermissionValues)
+put_mailbox_permissions(
+  OrganizationId = "string",
+  EntityId = "string",
+  GranteeId = "string",
+  PermissionValues = list(
+    "FULL_ACCESS"|"SEND_AS"|"SEND_ON_BEHALF"
+  )
+)
 }
 \arguments{
-\item{OrganizationId}{The identifier of the organization under which the entity (user or group) exists.}
+\item{OrganizationId}{[required] The identifier of the organization under which the entity (user or group) exists.}
 
-\item{EntityId}{The identifier of the entity (user or group) for which to update mailbox permissions.}
+\item{EntityId}{[required] The identifier of the entity (user or group) for which to update mailbox permissions.}
 
-\item{GranteeId}{The identifier of the entity (user or group) to which to grant the permissions.}
+\item{GranteeId}{[required] The identifier of the entity (user or group) to which to grant the permissions.}
 
-\item{PermissionValues}{The permissions granted to the grantee. SEND\_AS allows the grantee to send email as the owner of the mailbox (the grantee is not mentioned on these emails). SEND\_ON\_BEHALF allows the grantee to send email on behalf of the owner of the mailbox (the grantee is not mentioned as the physical sender of these emails). FULL\_ACCESS allows the grantee full access to the mailbox, irrespective of other folder-level permissions set on the mailbox.}
+\item{PermissionValues}{[required] The permissions granted to the grantee. SEND\_AS allows the grantee to send email as the owner of the mailbox (the grantee is not mentioned on these emails). SEND\_ON\_BEHALF allows the grantee to send email on behalf of the owner of the mailbox (the grantee is not mentioned as the physical sender of these emails). FULL\_ACCESS allows the grantee full access to the mailbox, irrespective of other folder-level permissions set on the mailbox.}
 }
 \description{
 Sets permissions for a user or group. This replaces any pre-existing permissions set for the entity.

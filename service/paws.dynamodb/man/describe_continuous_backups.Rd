@@ -4,10 +4,12 @@
 \alias{describe_continuous_backups}
 \title{Checks the status of continuous backups and point in time recovery on the specified table}
 \usage{
-describe_continuous_backups(TableName)
+describe_continuous_backups(
+  TableName = "string"
+)
 }
 \arguments{
-\item{TableName}{Name of the table for which the customer wants to check the continuous backups and point in time recovery settings.}
+\item{TableName}{[required] Name of the table for which the customer wants to check the continuous backups and point in time recovery settings.}
 }
 \description{
 Checks the status of continuous backups and point in time recovery on the specified table. Continuous backups are \code{ENABLED} on all tables at table creation. If point in time recovery is enabled, \code{PointInTimeRecoveryStatus} will be set to ENABLED.

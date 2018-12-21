@@ -4,10 +4,14 @@
 \alias{list_device_pools}
 \title{Gets information about device pools}
 \usage{
-list_device_pools(arn, type = NULL, nextToken = NULL)
+list_device_pools(
+  arn = "string",
+  type = "CURATED"|"PRIVATE",
+  nextToken = "string"
+)
 }
 \arguments{
-\item{arn}{The project ARN.}
+\item{arn}{[required] The project ARN.}
 
 \item{type}{The device pools' type.
 

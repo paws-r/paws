@@ -4,7 +4,10 @@
 \alias{associate_device_with_room}
 \title{Associates a device with a given room}
 \usage{
-associate_device_with_room(DeviceArn = NULL, RoomArn = NULL)
+associate_device_with_room(
+  DeviceArn = "string",
+  RoomArn = "string"
+)
 }
 \arguments{
 \item{DeviceArn}{The ARN of the device to associate to a room. Required.}

@@ -4,15 +4,19 @@
 \alias{verify_software_token}
 \title{Use this API to register a user's entered TOTP code and mark the user's software token MFA status as "verified" if successful}
 \usage{
-verify_software_token(UserCode, AccessToken = NULL, Session = NULL,
-  FriendlyDeviceName = NULL)
+verify_software_token(
+  AccessToken = "string",
+  Session = "string",
+  UserCode = "string",
+  FriendlyDeviceName = "string"
+)
 }
 \arguments{
-\item{UserCode}{The one time password computed using the secret code returned by}
-
 \item{AccessToken}{The access token.}
 
 \item{Session}{The session which should be passed both ways in challenge-response calls to the service.}
+
+\item{UserCode}{[required] The one time password computed using the secret code returned by}
 
 \item{FriendlyDeviceName}{The friendly device name.}
 }

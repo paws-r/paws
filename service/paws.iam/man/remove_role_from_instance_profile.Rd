@@ -4,16 +4,19 @@
 \alias{remove_role_from_instance_profile}
 \title{Removes the specified IAM role from the specified EC2 instance profile}
 \usage{
-remove_role_from_instance_profile(InstanceProfileName, RoleName)
+remove_role_from_instance_profile(
+  InstanceProfileName = "string",
+  RoleName = "string"
+)
 }
 \arguments{
-\item{InstanceProfileName}{The name of the instance profile to update.
+\item{InstanceProfileName}{[required] The name of the instance profile to update.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
-\item{RoleName}{The name of the role to remove.
+\item{RoleName}{[required] The name of the role to remove.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Removes the specified IAM role from the specified EC2 instance profile.

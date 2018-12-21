@@ -4,16 +4,23 @@
 \alias{create_web_acl}
 \title{Creates a \code{WebACL}, which contains the \code{Rules} that identify the CloudFront web requests that you want to allow, block, or count}
 \usage{
-create_web_acl(Name, MetricName, DefaultAction, ChangeToken)
+create_web_acl(
+  Name = "string",
+  MetricName = "string",
+  DefaultAction = list(
+    Type = "BLOCK"|"ALLOW"|"COUNT"
+  ),
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{Name}{A friendly name or description of the WebACL. You can't change \code{Name} after you create the \code{WebACL}.}
+\item{Name}{[required] A friendly name or description of the WebACL. You can't change \code{Name} after you create the \code{WebACL}.}
 
-\item{MetricName}{A friendly name or description for the metrics for this \code{WebACL}. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change \code{MetricName} after you create the \code{WebACL}.}
+\item{MetricName}{[required] A friendly name or description for the metrics for this \code{WebACL}. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain white space. You can't change \code{MetricName} after you create the \code{WebACL}.}
 
-\item{DefaultAction}{The action that you want AWS WAF to take when a request doesn't match the criteria specified in any of the \code{Rule} objects that are associated with the \code{WebACL}.}
+\item{DefaultAction}{[required] The action that you want AWS WAF to take when a request doesn't match the criteria specified in any of the \code{Rule} objects that are associated with the \code{WebACL}.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Creates a \code{WebACL}, which contains the \code{Rules} that identify the CloudFront web requests that you want to allow, block, or count. AWS WAF evaluates \code{Rules} in order based on the value of \code{Priority} for each \code{Rule}.

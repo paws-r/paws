@@ -4,10 +4,14 @@
 \alias{describe_assessment_templates}
 \title{Describes the assessment templates that are specified by the ARNs of the assessment templates}
 \usage{
-describe_assessment_templates(assessmentTemplateArns)
+describe_assessment_templates(
+  assessmentTemplateArns = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{assessmentTemplateArns}{}
+\item{assessmentTemplateArns}{[required]}
 }
 \description{
 Describes the assessment templates that are specified by the ARNs of the assessment templates.

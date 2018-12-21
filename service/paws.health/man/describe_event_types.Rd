@@ -4,8 +4,22 @@
 \alias{describe_event_types}
 \title{Returns the event types that meet the specified filter criteria}
 \usage{
-describe_event_types(filter = NULL, locale = NULL, nextToken = NULL,
-  maxResults = NULL)
+describe_event_types(
+  filter = list(
+    eventTypeCodes = list(
+      "string"
+    ),
+    services = list(
+      "string"
+    ),
+    eventTypeCategories = list(
+      "issue"|"accountNotification"|"scheduledChange"
+    )
+  ),
+  locale = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{filter}{Values to narrow the results returned.}

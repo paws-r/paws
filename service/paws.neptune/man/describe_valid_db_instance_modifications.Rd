@@ -4,10 +4,12 @@
 \alias{describe_valid_db_instance_modifications}
 \title{You can call DescribeValidDBInstanceModifications to learn what modifications you can make to your DB instance}
 \usage{
-describe_valid_db_instance_modifications(DBInstanceIdentifier)
+describe_valid_db_instance_modifications(
+  DBInstanceIdentifier = "string"
+)
 }
 \arguments{
-\item{DBInstanceIdentifier}{The customer identifier or the ARN of your DB instance.}
+\item{DBInstanceIdentifier}{[required] The customer identifier or the ARN of your DB instance.}
 }
 \description{
 You can call DescribeValidDBInstanceModifications to learn what modifications you can make to your DB instance. You can use this information when you call ModifyDBInstance.

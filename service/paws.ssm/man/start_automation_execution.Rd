@@ -4,13 +4,51 @@
 \alias{start_automation_execution}
 \title{Initiates execution of an Automation document}
 \usage{
-start_automation_execution(DocumentName, DocumentVersion = NULL,
-  Parameters = NULL, ClientToken = NULL, Mode = NULL,
-  TargetParameterName = NULL, Targets = NULL, TargetMaps = NULL,
-  MaxConcurrency = NULL, MaxErrors = NULL)
+start_automation_execution(
+  DocumentName = "string",
+  DocumentVersion = "string",
+  Parameters = list(
+    list(
+      "string"
+    )
+  ),
+  ClientToken = "string",
+  Mode = "Auto"|"Interactive",
+  TargetParameterName = "string",
+  Targets = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  TargetMaps = list(
+    list(
+      list(
+        "string"
+      )
+    )
+  ),
+  MaxConcurrency = "string",
+  MaxErrors = "string",
+  TargetLocations = list(
+    list(
+      Accounts = list(
+        "string"
+      ),
+      Regions = list(
+        "string"
+      ),
+      TargetLocationMaxConcurrency = "string",
+      TargetLocationMaxErrors = "string",
+      ExecutionRoleName = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{DocumentName}{The name of the Automation document to use for this execution.}
+\item{DocumentName}{[required] The name of the Automation document to use for this execution.}
 
 \item{DocumentVersion}{The version of the Automation document to use for this execution.}
 
@@ -31,6 +69,8 @@ start_automation_execution(DocumentName, DocumentVersion = NULL,
 \item{MaxErrors}{The number of errors that are allowed before the system stops running the automation on additional targets. You can specify either an absolute number of errors, for example 10, or a percentage of the target set, for example 10%. If you specify 3, for example, the system stops running the automation when the fourth error is received. If you specify 0, then the system stops running the automation on additional targets after the first error result is returned. If you run an automation on 50 resources and set max-errors to 10%, then the system stops running the automation on additional targets when the sixth error is received.
 
 Executions that are already running an automation when max-errors is reached are allowed to complete, but some of these executions may fail as well. If you need to ensure that there won't be more than max-errors failed executions, set max-concurrency to 1 so the executions proceed one at a time.}
+
+\item{TargetLocations}{A location is a combination of AWS Regions and/or AWS accounts where you want to execute the Automation. Use this action to start an Automation in multiple Regions and multiple accounts. For more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html}{Concurrently Executing Automations in Multiple AWS Regions and Accounts} in the \emph{AWS Systems Manager User Guide}.}
 }
 \description{
 Initiates execution of an Automation document.

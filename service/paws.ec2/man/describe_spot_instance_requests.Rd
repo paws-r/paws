@@ -4,8 +4,20 @@
 \alias{describe_spot_instance_requests}
 \title{Describes the specified Spot Instance requests}
 \usage{
-describe_spot_instance_requests(Filters = NULL, DryRun = NULL,
-  SpotInstanceRequestIds = NULL)
+describe_spot_instance_requests(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE,
+  SpotInstanceRequestIds = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{Filters}{One or more filters.

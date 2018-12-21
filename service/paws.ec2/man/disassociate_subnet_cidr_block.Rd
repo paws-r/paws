@@ -4,10 +4,12 @@
 \alias{disassociate_subnet_cidr_block}
 \title{Disassociates a CIDR block from a subnet}
 \usage{
-disassociate_subnet_cidr_block(AssociationId)
+disassociate_subnet_cidr_block(
+  AssociationId = "string"
+)
 }
 \arguments{
-\item{AssociationId}{The association ID for the CIDR block.}
+\item{AssociationId}{[required] The association ID for the CIDR block.}
 }
 \description{
 Disassociates a CIDR block from a subnet. Currently, you can disassociate an IPv6 CIDR block only. You must detach or delete all gateways and resources that are associated with the CIDR block before you can disassociate it.

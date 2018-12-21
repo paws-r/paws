@@ -4,10 +4,14 @@
 \alias{list_threat_intel_sets}
 \title{Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID}
 \usage{
-list_threat_intel_sets(DetectorId, MaxResults = NULL, NextToken = NULL)
+list_threat_intel_sets(
+  DetectorId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{DetectorId}{The detectorID that specifies the GuardDuty service whose ThreatIntelSets you want to list.}
+\item{DetectorId}{[required] The detectorID that specifies the GuardDuty service whose ThreatIntelSets you want to list.}
 
 \item{MaxResults}{You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 7. The maximum value is 7.}
 

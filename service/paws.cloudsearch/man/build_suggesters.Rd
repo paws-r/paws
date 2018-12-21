@@ -4,10 +4,12 @@
 \alias{build_suggesters}
 \title{Indexes the search suggestions}
 \usage{
-build_suggesters(DomainName)
+build_suggesters(
+  DomainName = "string"
+)
 }
 \arguments{
-\item{DomainName}{}
+\item{DomainName}{[required]}
 }
 \description{
 Indexes the search suggestions. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html#configuring-suggesters}{Configuring Suggesters} in the \emph{Amazon CloudSearch Developer Guide}.

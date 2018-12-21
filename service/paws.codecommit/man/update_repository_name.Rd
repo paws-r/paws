@@ -4,12 +4,15 @@
 \alias{update_repository_name}
 \title{Renames a repository}
 \usage{
-update_repository_name(oldName, newName)
+update_repository_name(
+  oldName = "string",
+  newName = "string"
+)
 }
 \arguments{
-\item{oldName}{The existing name of the repository.}
+\item{oldName}{[required] The existing name of the repository.}
 
-\item{newName}{The new name for the repository.}
+\item{newName}{[required] The new name for the repository.}
 }
 \description{
 Renames a repository. The repository name must be unique across the calling AWS account. In addition, repository names are limited to 100 alphanumeric, dash, and underscore characters, and cannot include certain characters. The suffix ".git" is prohibited. For a full description of the limits on repository names, see \href{http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html}{Limits} in the AWS CodeCommit User Guide.

@@ -4,16 +4,20 @@
 \alias{renew_domain}
 \title{This operation renews a domain for the specified number of years}
 \usage{
-renew_domain(DomainName, CurrentExpiryYear, DurationInYears = NULL)
+renew_domain(
+  DomainName = "string",
+  DurationInYears = 123,
+  CurrentExpiryYear = 123
+)
 }
 \arguments{
-\item{DomainName}{The name of the domain that you want to renew.}
-
-\item{CurrentExpiryYear}{The year when the registration for the domain is set to expire. This value must match the current expiration date for the domain.}
+\item{DomainName}{[required] The name of the domain that you want to renew.}
 
 \item{DurationInYears}{The number of years that you want to renew the domain for. The maximum number of years depends on the top-level domain. For the range of valid values for your domain, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53} in the \emph{Amazon Route 53 Developer Guide}.
 
 Default: 1}
+
+\item{CurrentExpiryYear}{[required] The year when the registration for the domain is set to expire. This value must match the current expiration date for the domain.}
 }
 \description{
 This operation renews a domain for the specified number of years. The cost of renewing your domain is billed to your AWS account.

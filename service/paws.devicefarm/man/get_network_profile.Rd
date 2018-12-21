@@ -4,10 +4,12 @@
 \alias{get_network_profile}
 \title{Returns information about a network profile}
 \usage{
-get_network_profile(arn)
+get_network_profile(
+  arn = "string"
+)
 }
 \arguments{
-\item{arn}{The Amazon Resource Name (ARN) of the network profile you want to return information about.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of the network profile you want to return information about.}
 }
 \description{
 Returns information about a network profile.

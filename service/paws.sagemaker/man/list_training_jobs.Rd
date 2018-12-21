@@ -4,11 +4,18 @@
 \alias{list_training_jobs}
 \title{Lists training jobs}
 \usage{
-list_training_jobs(NextToken = NULL, MaxResults = NULL,
-  CreationTimeAfter = NULL, CreationTimeBefore = NULL,
-  LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL,
-  NameContains = NULL, StatusEquals = NULL, SortBy = NULL,
-  SortOrder = NULL)
+list_training_jobs(
+  NextToken = "string",
+  MaxResults = 123,
+  CreationTimeAfter = as.POSIXct("2015-01-01"),
+  CreationTimeBefore = as.POSIXct("2015-01-01"),
+  LastModifiedTimeAfter = as.POSIXct("2015-01-01"),
+  LastModifiedTimeBefore = as.POSIXct("2015-01-01"),
+  NameContains = "string",
+  StatusEquals = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+  SortBy = "Name"|"CreationTime"|"Status",
+  SortOrder = "Ascending"|"Descending"
+)
 }
 \arguments{
 \item{NextToken}{If the result of the previous \code{ListTrainingJobs} request was truncated, the response includes a \code{NextToken}. To retrieve the next set of training jobs, use the token in the next request.}

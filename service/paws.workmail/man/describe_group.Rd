@@ -4,12 +4,15 @@
 \alias{describe_group}
 \title{Returns the data available for the group}
 \usage{
-describe_group(OrganizationId, GroupId)
+describe_group(
+  OrganizationId = "string",
+  GroupId = "string"
+)
 }
 \arguments{
-\item{OrganizationId}{The identifier for the organization under which the group exists.}
+\item{OrganizationId}{[required] The identifier for the organization under which the group exists.}
 
-\item{GroupId}{The identifier for the group to be described.}
+\item{GroupId}{[required] The identifier for the group to be described.}
 }
 \description{
 Returns the data available for the group.

@@ -4,12 +4,15 @@
 \alias{delete_log_stream}
 \title{Deletes the specified log stream and permanently deletes all the archived log events associated with the log stream}
 \usage{
-delete_log_stream(logGroupName, logStreamName)
+delete_log_stream(
+  logGroupName = "string",
+  logStreamName = "string"
+)
 }
 \arguments{
-\item{logGroupName}{The name of the log group.}
+\item{logGroupName}{[required] The name of the log group.}
 
-\item{logStreamName}{The name of the log stream.}
+\item{logStreamName}{[required] The name of the log stream.}
 }
 \description{
 Deletes the specified log stream and permanently deletes all the archived log events associated with the log stream.

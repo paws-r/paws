@@ -4,10 +4,12 @@
 \alias{delete_graphql_api}
 \title{Deletes a \code{GraphqlApi} object}
 \usage{
-delete_graphql_api(apiId)
+delete_graphql_api(
+  apiId = "string"
+)
 }
 \arguments{
-\item{apiId}{The API ID.}
+\item{apiId}{[required] The API ID.}
 }
 \description{
 Deletes a \code{GraphqlApi} object.

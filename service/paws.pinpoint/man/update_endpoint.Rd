@@ -4,14 +4,59 @@
 \alias{update_endpoint}
 \title{Creates or updates an endpoint}
 \usage{
-update_endpoint(ApplicationId, EndpointId, EndpointRequest)
+update_endpoint(
+  ApplicationId = "string",
+  EndpointId = "string",
+  EndpointRequest = list(
+    Address = "string",
+    Attributes = list(
+      list(
+        "string"
+      )
+    ),
+    ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
+    Demographic = list(
+      AppVersion = "string",
+      Locale = "string",
+      Make = "string",
+      Model = "string",
+      ModelVersion = "string",
+      Platform = "string",
+      PlatformVersion = "string",
+      Timezone = "string"
+    ),
+    EffectiveDate = "string",
+    EndpointStatus = "string",
+    Location = list(
+      City = "string",
+      Country = "string",
+      Latitude = 123.0,
+      Longitude = 123.0,
+      PostalCode = "string",
+      Region = "string"
+    ),
+    Metrics = list(
+      123.0
+    ),
+    OptOut = "string",
+    RequestId = "string",
+    User = list(
+      UserAttributes = list(
+        list(
+          "string"
+        )
+      ),
+      UserId = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 
-\item{EndpointId}{The unique ID of the endpoint.}
+\item{EndpointId}{[required] The unique ID of the endpoint.}
 
-\item{EndpointRequest}{}
+\item{EndpointRequest}{[required]}
 }
 \description{
 Creates or updates an endpoint.

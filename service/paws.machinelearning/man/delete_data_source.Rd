@@ -4,10 +4,12 @@
 \alias{delete_data_source}
 \title{Assigns the DELETED status to a \code{DataSource}, rendering it unusable}
 \usage{
-delete_data_source(DataSourceId)
+delete_data_source(
+  DataSourceId = "string"
+)
 }
 \arguments{
-\item{DataSourceId}{A user-supplied ID that uniquely identifies the \code{DataSource}.}
+\item{DataSourceId}{[required] A user-supplied ID that uniquely identifies the \code{DataSource}.}
 }
 \description{
 Assigns the DELETED status to a \code{DataSource}, rendering it unusable.

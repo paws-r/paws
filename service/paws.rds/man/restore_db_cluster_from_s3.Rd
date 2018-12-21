@@ -4,62 +4,49 @@
 \alias{restore_db_cluster_from_s3}
 \title{Creates an Amazon Aurora DB cluster from data stored in an Amazon S3 bucket}
 \usage{
-restore_db_cluster_from_s3(DBClusterIdentifier, Engine, MasterUsername,
-  MasterUserPassword, SourceEngine, SourceEngineVersion, S3BucketName,
-  S3IngestionRoleArn, AvailabilityZones = NULL,
-  BackupRetentionPeriod = NULL, CharacterSetName = NULL,
-  DatabaseName = NULL, DBClusterParameterGroupName = NULL,
-  VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL,
-  EngineVersion = NULL, Port = NULL, OptionGroupName = NULL,
-  PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL,
-  Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL,
-  EnableIAMDatabaseAuthentication = NULL, S3Prefix = NULL,
-  BacktrackWindow = NULL, EnableCloudwatchLogsExports = NULL,
-  DeletionProtection = NULL)
+restore_db_cluster_from_s3(
+  AvailabilityZones = list(
+    "string"
+  ),
+  BackupRetentionPeriod = 123,
+  CharacterSetName = "string",
+  DatabaseName = "string",
+  DBClusterIdentifier = "string",
+  DBClusterParameterGroupName = "string",
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  DBSubnetGroupName = "string",
+  Engine = "string",
+  EngineVersion = "string",
+  Port = 123,
+  MasterUsername = "string",
+  MasterUserPassword = "string",
+  OptionGroupName = "string",
+  PreferredBackupWindow = "string",
+  PreferredMaintenanceWindow = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  StorageEncrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  SourceEngine = "string",
+  SourceEngineVersion = "string",
+  S3BucketName = "string",
+  S3Prefix = "string",
+  S3IngestionRoleArn = "string",
+  BacktrackWindow = 123,
+  EnableCloudwatchLogsExports = list(
+    "string"
+  ),
+  DeletionProtection = TRUE|FALSE
+)
 }
 \arguments{
-\item{DBClusterIdentifier}{The name of the DB cluster to create from the source data in the Amazon S3 bucket. This parameter is isn't case-sensitive.
-
-Constraints:
-\itemize{
-\item Must contain from 1 to 63 letters, numbers, or hyphens.
-\item First character must be a letter.
-\item Can't end with a hyphen or contain two consecutive hyphens.
-}
-
-Example: \code{my-cluster1}}
-
-\item{Engine}{The name of the database engine to be used for the restored DB cluster.
-
-Valid Values: \code{aurora}, \code{aurora-postgresql}}
-
-\item{MasterUsername}{The name of the master user for the restored DB cluster.
-
-Constraints:
-\itemize{
-\item Must be 1 to 16 letters or numbers.
-\item First character must be a letter.
-\item Can't be a reserved word for the chosen database engine.
-}}
-
-\item{MasterUserPassword}{The password for the master database user. This password can contain any printable ASCII character except "/", """, or "@".
-
-Constraints: Must contain from 8 to 41 characters.}
-
-\item{SourceEngine}{The identifier for the database engine that was backed up to create the files stored in the Amazon S3 bucket.
-
-Valid values: \code{mysql}}
-
-\item{SourceEngineVersion}{The version of the database that the backup files were created from.
-
-MySQL version 5.5 and 5.6 are supported.
-
-Example: \code{5.6.22}}
-
-\item{S3BucketName}{The name of the Amazon S3 bucket that contains the data used to create the Amazon Aurora DB cluster.}
-
-\item{S3IngestionRoleArn}{The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that authorizes Amazon RDS to access the Amazon S3 bucket on your behalf.}
-
 \item{AvailabilityZones}{A list of EC2 Availability Zones that instances in the restored DB cluster can be created in.}
 
 \item{BackupRetentionPeriod}{The number of days for which automated backups of the restored DB cluster are retained. You must specify a minimum value of 1.
@@ -74,6 +61,17 @@ Constraints:
 \item{CharacterSetName}{A value that indicates that the restored DB cluster should be associated with the specified CharacterSet.}
 
 \item{DatabaseName}{The database name for the restored DB cluster.}
+
+\item{DBClusterIdentifier}{[required] The name of the DB cluster to create from the source data in the Amazon S3 bucket. This parameter is isn't case-sensitive.
+
+Constraints:
+\itemize{
+\item Must contain from 1 to 63 letters, numbers, or hyphens.
+\item First character must be a letter.
+\item Can't end with a hyphen or contain two consecutive hyphens.
+}
+
+Example: \code{my-cluster1}}
 
 \item{DBClusterParameterGroupName}{The name of the DB cluster parameter group to associate with the restored DB cluster. If this argument is omitted, \code{default.aurora5.6} is used.
 
@@ -90,6 +88,10 @@ Constraints: If supplied, must match the name of an existing DBSubnetGroup.
 
 Example: \code{mySubnetgroup}}
 
+\item{Engine}{[required] The name of the database engine to be used for the restored DB cluster.
+
+Valid Values: \code{aurora}, \code{aurora-postgresql}}
+
 \item{EngineVersion}{The version number of the database engine to use.
 
 \strong{Aurora MySQL}
@@ -103,6 +105,19 @@ Example: \code{9.6.3}}
 \item{Port}{The port number on which the instances in the restored DB cluster accept connections.
 
 Default: \code{3306}}
+
+\item{MasterUsername}{[required] The name of the master user for the restored DB cluster.
+
+Constraints:
+\itemize{
+\item Must be 1 to 16 letters or numbers.
+\item First character must be a letter.
+\item Can't be a reserved word for the chosen database engine.
+}}
+
+\item{MasterUserPassword}{[required] The password for the master database user. This password can contain any printable ASCII character except "/", """, or "@".
+
+Constraints: Must contain from 8 to 41 characters.}
 
 \item{OptionGroupName}{A value that indicates that the restored DB cluster should be associated with the specified option group.
 
@@ -144,7 +159,21 @@ If the \code{StorageEncrypted} parameter is true, and you do not specify a value
 
 Default: \code{false}}
 
+\item{SourceEngine}{[required] The identifier for the database engine that was backed up to create the files stored in the Amazon S3 bucket.
+
+Valid values: \code{mysql}}
+
+\item{SourceEngineVersion}{[required] The version of the database that the backup files were created from.
+
+MySQL version 5.5 and 5.6 are supported.
+
+Example: \code{5.6.22}}
+
+\item{S3BucketName}{[required] The name of the Amazon S3 bucket that contains the data used to create the Amazon Aurora DB cluster.}
+
 \item{S3Prefix}{The prefix for all of the file names that contain the data used to create the Amazon Aurora DB cluster. If you do not specify a \strong{SourceS3Prefix} value, then the Amazon Aurora DB cluster is created by using all of the files in the Amazon S3 bucket.}
+
+\item{S3IngestionRoleArn}{[required] The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that authorizes Amazon RDS to access the Amazon S3 bucket on your behalf.}
 
 \item{BacktrackWindow}{The target backtrack window, in seconds. To disable backtracking, set this value to 0.
 

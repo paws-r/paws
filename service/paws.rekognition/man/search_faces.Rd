@@ -4,13 +4,17 @@
 \alias{search_faces}
 \title{For a given input face ID, searches for matching faces in the collection the face belongs to}
 \usage{
-search_faces(CollectionId, FaceId, MaxFaces = NULL,
-  FaceMatchThreshold = NULL)
+search_faces(
+  CollectionId = "string",
+  FaceId = "string",
+  MaxFaces = 123,
+  FaceMatchThreshold = 123.0
+)
 }
 \arguments{
-\item{CollectionId}{ID of the collection the face belongs to.}
+\item{CollectionId}{[required] ID of the collection the face belongs to.}
 
-\item{FaceId}{ID of a face to find matches for in the collection.}
+\item{FaceId}{[required] ID of a face to find matches for in the collection.}
 
 \item{MaxFaces}{Maximum number of faces to return. The operation returns the maximum number of faces with the highest confidence in the match.}
 

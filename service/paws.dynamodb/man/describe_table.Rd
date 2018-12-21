@@ -4,10 +4,12 @@
 \alias{describe_table}
 \title{Returns information about the table, including the current status of the table, when it was created, the primary key schema, and any indexes on the table}
 \usage{
-describe_table(TableName)
+describe_table(
+  TableName = "string"
+)
 }
 \arguments{
-\item{TableName}{The name of the table to describe.}
+\item{TableName}{[required] The name of the table to describe.}
 }
 \description{
 Returns information about the table, including the current status of the table, when it was created, the primary key schema, and any indexes on the table.

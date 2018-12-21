@@ -4,13 +4,21 @@
 \alias{get_workflow_execution_history}
 \title{Returns the history of the specified workflow execution}
 \usage{
-get_workflow_execution_history(domain, execution, nextPageToken = NULL,
-  maximumPageSize = NULL, reverseOrder = NULL)
+get_workflow_execution_history(
+  domain = "string",
+  execution = list(
+    workflowId = "string",
+    runId = "string"
+  ),
+  nextPageToken = "string",
+  maximumPageSize = 123,
+  reverseOrder = TRUE|FALSE
+)
 }
 \arguments{
-\item{domain}{The name of the domain containing the workflow execution.}
+\item{domain}{[required] The name of the domain containing the workflow execution.}
 
-\item{execution}{Specifies the workflow execution for which to return the history.}
+\item{execution}{[required] Specifies the workflow execution for which to return the history.}
 
 \item{nextPageToken}{If a \code{NextPageToken} was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in \code{nextPageToken}. Keep all other arguments unchanged.
 

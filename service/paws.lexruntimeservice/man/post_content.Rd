@@ -4,15 +4,23 @@
 \alias{post_content}
 \title{Sends user input (text or speech) to Amazon Lex}
 \usage{
-post_content(botName, botAlias, userId, contentType, inputStream,
-  sessionAttributes = NULL, requestAttributes = NULL, accept = NULL)
+post_content(
+  botName = "string",
+  botAlias = "string",
+  userId = "string",
+  sessionAttributes = "string",
+  requestAttributes = "string",
+  contentType = "string",
+  accept = "string",
+  inputStream = raw
+)
 }
 \arguments{
-\item{botName}{Name of the Amazon Lex bot.}
+\item{botName}{[required] Name of the Amazon Lex bot.}
 
-\item{botAlias}{Alias of the Amazon Lex bot.}
+\item{botAlias}{[required] Alias of the Amazon Lex bot.}
 
-\item{userId}{The ID of the client application user. Amazon Lex uses this to identify a user's conversation with your bot. At runtime, each request must contain the \code{userID} field.
+\item{userId}{[required] The ID of the client application user. Amazon Lex uses this to identify a user's conversation with your bot. At runtime, each request must contain the \code{userID} field.
 
 To decide the user ID to use for your application, consider the following factors.
 \itemize{
@@ -22,7 +30,21 @@ To decide the user ID to use for your application, consider the following factor
 \item A user can't have two independent conversations with two different versions of the same bot. For example, a user can't have a conversation with the PROD and BETA versions of the same bot. If you anticipate that a user will need to have conversation with two different versions, for example, while testing, include the bot alias in the user ID to separate the two conversations.
 }}
 
-\item{contentType}{You pass this value as the \code{Content-Type} HTTP header.
+\item{sessionAttributes}{You pass this value as the \code{x-amz-lex-session-attributes} HTTP header.
+
+Application-specific information passed between Amazon Lex and a client application. The value must be a JSON serialized and base64 encoded map with string keys and values. The total size of the \code{sessionAttributes} and \code{requestAttributes} headers is limited to 12 KB.
+
+For more information, see \href{http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs}{Setting Session Attributes}.}
+
+\item{requestAttributes}{You pass this value as the \code{x-amz-lex-request-attributes} HTTP header.
+
+Request-specific information passed between Amazon Lex and a client application. The value must be a JSON serialized and base64 encoded map with string keys and values. The total size of the \code{requestAttributes} and \code{sessionAttributes} headers is limited to 12 KB.
+
+The namespace \code{x-amz-lex:} is reserved for special attributes. Don't create any request attributes with the prefix \code{x-amz-lex:}.
+
+For more information, see \href{http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs}{Setting Request Attributes}.}
+
+\item{contentType}{[required] You pass this value as the \code{Content-Type} HTTP header.
 
 Indicates the audio format or text. The header value must start with one of the following prefixes:
 \itemize{
@@ -42,24 +64,6 @@ Indicates the audio format or text. The header value must start with one of the 
 }
 }}
 
-\item{inputStream}{User input in PCM or Opus audio format or text format as described in the \code{Content-Type} HTTP header.
-
-You can stream audio data to Amazon Lex or you can create a local buffer that captures all of the audio data before sending. In general, you get better performance if you stream audio data rather than buffering the data locally.}
-
-\item{sessionAttributes}{You pass this value as the \code{x-amz-lex-session-attributes} HTTP header.
-
-Application-specific information passed between Amazon Lex and a client application. The value must be a JSON serialized and base64 encoded map with string keys and values. The total size of the \code{sessionAttributes} and \code{requestAttributes} headers is limited to 12 KB.
-
-For more information, see \href{http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs}{Setting Session Attributes}.}
-
-\item{requestAttributes}{You pass this value as the \code{x-amz-lex-request-attributes} HTTP header.
-
-Request-specific information passed between Amazon Lex and a client application. The value must be a JSON serialized and base64 encoded map with string keys and values. The total size of the \code{requestAttributes} and \code{sessionAttributes} headers is limited to 12 KB.
-
-The namespace \code{x-amz-lex:} is reserved for special attributes. Don't create any request attributes with the prefix \code{x-amz-lex:}.
-
-For more information, see \href{http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs}{Setting Request Attributes}.}
-
 \item{accept}{You pass this value as the \code{Accept} HTTP header.
 
 The message Amazon Lex returns in the response can be either text or speech based on the \code{Accept} HTTP header value in the request.
@@ -76,6 +80,10 @@ The following are the accepted values:
 \item audio/* (defaults to mpeg)
 }
 }}
+
+\item{inputStream}{[required] User input in PCM or Opus audio format or text format as described in the \code{Content-Type} HTTP header.
+
+You can stream audio data to Amazon Lex or you can create a local buffer that captures all of the audio data before sending. In general, you get better performance if you stream audio data rather than buffering the data locally.}
 }
 \description{
 Sends user input (text or speech) to Amazon Lex. Clients use this API to send text and audio requests to Amazon Lex at runtime. Amazon Lex interprets the user input using the machine learning model that it built for the bot.

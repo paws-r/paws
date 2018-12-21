@@ -4,14 +4,23 @@
 \alias{batch_delete_image}
 \title{Deletes a list of specified images within a specified repository}
 \usage{
-batch_delete_image(repositoryName, imageIds, registryId = NULL)
+batch_delete_image(
+  registryId = "string",
+  repositoryName = "string",
+  imageIds = list(
+    list(
+      imageDigest = "string",
+      imageTag = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{repositoryName}{The repository that contains the image to delete.}
-
-\item{imageIds}{A list of image ID references that correspond to images to delete. The format of the \code{imageIds} reference is \code{imageTag=tag} or \code{imageDigest=digest}.}
-
 \item{registryId}{The AWS account ID associated with the registry that contains the image to delete. If you do not specify a registry, the default registry is assumed.}
+
+\item{repositoryName}{[required] The repository that contains the image to delete.}
+
+\item{imageIds}{[required] A list of image ID references that correspond to images to delete. The format of the \code{imageIds} reference is \code{imageTag=tag} or \code{imageDigest=digest}.}
 }
 \description{
 Deletes a list of specified images within a specified repository. Images are specified with either \code{imageTag} or \code{imageDigest}.

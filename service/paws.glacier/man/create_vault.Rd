@@ -4,12 +4,15 @@
 \alias{create_vault}
 \title{This operation creates a new vault with the specified name}
 \usage{
-create_vault(accountId, vaultName)
+create_vault(
+  accountId = "string",
+  vaultName = "string"
+)
 }
 \arguments{
-\item{accountId}{The \code{AccountId} value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.}
+\item{accountId}{[required] The \code{AccountId} value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.}
 
-\item{vaultName}{The name of the vault.}
+\item{vaultName}{[required] The name of the vault.}
 }
 \description{
 This operation creates a new vault with the specified name. The name of the vault must be unique within a region for an AWS account. You can create up to 1,000 vaults per account. If you need to create more vaults, contact Amazon Glacier.

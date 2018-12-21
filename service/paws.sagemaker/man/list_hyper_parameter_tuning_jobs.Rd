@@ -4,11 +4,18 @@
 \alias{list_hyper_parameter_tuning_jobs}
 \title{Gets a list of HyperParameterTuningJobSummary objects that describe the hyperparameter tuning jobs launched in your account}
 \usage{
-list_hyper_parameter_tuning_jobs(NextToken = NULL, MaxResults = NULL,
-  SortBy = NULL, SortOrder = NULL, NameContains = NULL,
-  CreationTimeAfter = NULL, CreationTimeBefore = NULL,
-  LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL,
-  StatusEquals = NULL)
+list_hyper_parameter_tuning_jobs(
+  NextToken = "string",
+  MaxResults = 123,
+  SortBy = "Name"|"Status"|"CreationTime",
+  SortOrder = "Ascending"|"Descending",
+  NameContains = "string",
+  CreationTimeAfter = as.POSIXct("2015-01-01"),
+  CreationTimeBefore = as.POSIXct("2015-01-01"),
+  LastModifiedTimeAfter = as.POSIXct("2015-01-01"),
+  LastModifiedTimeBefore = as.POSIXct("2015-01-01"),
+  StatusEquals = "Completed"|"InProgress"|"Failed"|"Stopped"|"Stopping"
+)
 }
 \arguments{
 \item{NextToken}{If the result of the previous \code{ListHyperParameterTuningJobs} request was truncated, the response includes a \code{NextToken}. To retrieve the next set of tuning jobs, use the token in the next request.}

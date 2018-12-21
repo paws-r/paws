@@ -4,13 +4,18 @@
 \alias{delete_domain}
 \title{Deletes the specified domain recordset and all of its domain records}
 \usage{
-delete_domain(domainName)
+delete_domain(
+  domainName = "string"
+)
 }
 \arguments{
-\item{domainName}{The specific domain name to delete.}
+\item{domainName}{[required] The specific domain name to delete.}
 }
 \description{
 Deletes the specified domain recordset and all of its domain records.
+}
+\details{
+The \code{delete domain} operation supports tag-based access control via resource tags applied to the resource identified by domainName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \examples{
 

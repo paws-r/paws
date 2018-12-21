@@ -4,12 +4,17 @@
 \alias{remove_tags_from_resource}
 \title{Removes metadata tags from an Amazon RDS resource}
 \usage{
-remove_tags_from_resource(ResourceName, TagKeys)
+remove_tags_from_resource(
+  ResourceName = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ResourceName}{The Amazon RDS resource that the tags are removed from. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS} in the \emph{Amazon RDS User Guide.}}
+\item{ResourceName}{[required] The Amazon RDS resource that the tags are removed from. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS} in the \emph{Amazon RDS User Guide.}}
 
-\item{TagKeys}{The tag key (name) of the tag to be removed.}
+\item{TagKeys}{[required] The tag key (name) of the tag to be removed.}
 }
 \description{
 Removes metadata tags from an Amazon RDS resource.

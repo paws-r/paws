@@ -4,12 +4,16 @@
 \alias{transfer_certificate}
 \title{Transfers the specified certificate to the specified AWS account}
 \usage{
-transfer_certificate(certificateId, targetAwsAccount, transferMessage = NULL)
+transfer_certificate(
+  certificateId = "string",
+  targetAwsAccount = "string",
+  transferMessage = "string"
+)
 }
 \arguments{
-\item{certificateId}{The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)}
+\item{certificateId}{[required] The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)}
 
-\item{targetAwsAccount}{The AWS account.}
+\item{targetAwsAccount}{[required] The AWS account.}
 
 \item{transferMessage}{The transfer message.}
 }

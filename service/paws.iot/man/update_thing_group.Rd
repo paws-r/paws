@@ -4,13 +4,24 @@
 \alias{update_thing_group}
 \title{Update a thing group}
 \usage{
-update_thing_group(thingGroupName, thingGroupProperties,
-  expectedVersion = NULL)
+update_thing_group(
+  thingGroupName = "string",
+  thingGroupProperties = list(
+    thingGroupDescription = "string",
+    attributePayload = list(
+      attributes = list(
+        "string"
+      ),
+      merge = TRUE|FALSE
+    )
+  ),
+  expectedVersion = 123
+)
 }
 \arguments{
-\item{thingGroupName}{The thing group to update.}
+\item{thingGroupName}{[required] The thing group to update.}
 
-\item{thingGroupProperties}{The thing group properties.}
+\item{thingGroupProperties}{[required] The thing group properties.}
 
 \item{expectedVersion}{The expected version of the thing group. If this does not match the version of the thing group being updated, the update will fail.}
 }

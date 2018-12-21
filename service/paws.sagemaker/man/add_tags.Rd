@@ -4,18 +4,28 @@
 \alias{add_tags}
 \title{Adds or overwrites one or more tags for the specified Amazon SageMaker resource}
 \usage{
-add_tags(ResourceArn, Tags)
+add_tags(
+  ResourceArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ResourceArn}{The Amazon Resource Name (ARN) of the resource that you want to tag.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource that you want to tag.}
 
-\item{Tags}{An array of \code{Tag} objects. Each tag is a key-value pair. Only the \code{key} parameter is required. If you don't specify a value, Amazon SageMaker sets the value to an empty string.}
+\item{Tags}{[required] An array of \code{Tag} objects. Each tag is a key-value pair. Only the \code{key} parameter is required. If you don't specify a value, Amazon SageMaker sets the value to an empty string.}
 }
 \description{
-Adds or overwrites one or more tags for the specified Amazon SageMaker resource. You can add tags to notebook instances, training jobs, models, endpoint configurations, and endpoints.
+Adds or overwrites one or more tags for the specified Amazon SageMaker resource. You can add tags to notebook instances, training jobs, hyperparameter tuning jobs, models, endpoint configurations, and endpoints.
 }
 \details{
-Each tag consists of a key and an optional value. Tag keys must be unique per resource. For more information about tags, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags} in the \emph{AWS Billing and Cost Management User Guide}.
+Each tag consists of a key and an optional value. Tag keys must be unique per resource. For more information about tags, see For more information, see \href{https://aws.amazon.com/answers/account-management/aws-tagging-strategies/}{AWS Tagging Strategies}.
+
+Tags that you add to a hyperparameter tuning job by calling this API are also added to any training jobs that the hyperparameter tuning job launches after you call this API, but not to training jobs that the hyperparameter tuning job launched before you called this API. To make sure that the tags associated with a hyperparameter tuning job are also added to all training jobs that the hyperparameter tuning job launches, add the tags when you first create the tuning job by specifying them in the \code{Tags} parameter of CreateHyperParameterTuningJob
 }
 \examples{
 

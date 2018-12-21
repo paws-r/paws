@@ -6,15 +6,20 @@
 \alias{paws.translate-package}
 \title{paws.translate: Amazon Translate}
 \description{
-Provides translation between English and one of six
-languages, or between one of the six languages and English.
+Provides translation between one source language and another
+of the same set of languages.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

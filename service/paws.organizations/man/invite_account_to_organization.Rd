@@ -4,7 +4,13 @@
 \alias{invite_account_to_organization}
 \title{Sends an invitation to another account to join your organization as a member account}
 \usage{
-invite_account_to_organization(Target, Notes = NULL)
+invite_account_to_organization(
+  Target = list(
+    Id = "string",
+    Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
+  ),
+  Notes = "string"
+)
 }
 \arguments{
 \item{Notes}{Additional information that you want to include in the generated email to the recipient account owner.}

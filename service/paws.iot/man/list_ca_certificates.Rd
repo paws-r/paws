@@ -4,8 +4,11 @@
 \alias{list_ca_certificates}
 \title{Lists the CA certificates registered for your AWS account}
 \usage{
-list_ca_certificates(pageSize = NULL, marker = NULL,
-  ascendingOrder = NULL)
+list_ca_certificates(
+  pageSize = 123,
+  marker = "string",
+  ascendingOrder = TRUE|FALSE
+)
 }
 \arguments{
 \item{pageSize}{The result page size.}

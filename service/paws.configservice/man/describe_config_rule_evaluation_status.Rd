@@ -4,8 +4,13 @@
 \alias{describe_config_rule_evaluation_status}
 \title{Returns status information for each of your AWS managed Config rules}
 \usage{
-describe_config_rule_evaluation_status(ConfigRuleNames = NULL,
-  NextToken = NULL, Limit = NULL)
+describe_config_rule_evaluation_status(
+  ConfigRuleNames = list(
+    "string"
+  ),
+  NextToken = "string",
+  Limit = 123
+)
 }
 \arguments{
 \item{ConfigRuleNames}{The name of the AWS managed Config rules for which you want status information. If you do not specify any names, AWS Config returns status information for all AWS managed Config rules that you use.}

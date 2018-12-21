@@ -4,7 +4,11 @@
 \alias{list_fleets}
 \title{Retrieves a collection of fleet records for this AWS account}
 \usage{
-list_fleets(BuildId = NULL, Limit = NULL, NextToken = NULL)
+list_fleets(
+  BuildId = "string",
+  Limit = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{BuildId}{Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the specified build. To retrieve all fleets, leave this parameter empty.}

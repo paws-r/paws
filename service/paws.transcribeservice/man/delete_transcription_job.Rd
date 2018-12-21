@@ -2,15 +2,17 @@
 % Please edit documentation in R/paws.transcribeservice_operations.R
 \name{delete_transcription_job}
 \alias{delete_transcription_job}
-\title{Deletes a previously submitted transcription job as well as any other generated results such as the transcription, models, and so on}
+\title{Deletes a previously submitted transcription job along with any other generated results such as the transcription, models, and so on}
 \usage{
-delete_transcription_job(TranscriptionJobName)
+delete_transcription_job(
+  TranscriptionJobName = "string"
+)
 }
 \arguments{
-\item{TranscriptionJobName}{The name of the transcription job to be deleted.}
+\item{TranscriptionJobName}{[required] The name of the transcription job to be deleted.}
 }
 \description{
-Deletes a previously submitted transcription job as well as any other generated results such as the transcription, models, and so on.
+Deletes a previously submitted transcription job along with any other generated results such as the transcription, models, and so on.
 }
 \examples{
 

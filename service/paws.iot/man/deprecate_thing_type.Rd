@@ -4,10 +4,13 @@
 \alias{deprecate_thing_type}
 \title{Deprecates a thing type}
 \usage{
-deprecate_thing_type(thingTypeName, undoDeprecate = NULL)
+deprecate_thing_type(
+  thingTypeName = "string",
+  undoDeprecate = TRUE|FALSE
+)
 }
 \arguments{
-\item{thingTypeName}{The name of the thing type to deprecate.}
+\item{thingTypeName}{[required] The name of the thing type to deprecate.}
 
 \item{undoDeprecate}{Whether to undeprecate a deprecated thing type. If \strong{true}, the thing type will not be deprecated anymore and you can associate it with things.}
 }

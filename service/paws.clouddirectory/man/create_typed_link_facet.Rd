@@ -4,15 +4,46 @@
 \alias{create_typed_link_facet}
 \title{Creates a TypedLinkFacet}
 \usage{
-create_typed_link_facet(SchemaArn, Facet)
+create_typed_link_facet(
+  SchemaArn = "string",
+  Facet = list(
+    Name = "string",
+    Attributes = list(
+      list(
+        Name = "string",
+        Type = "STRING"|"BINARY"|"BOOLEAN"|"NUMBER"|"DATETIME"|"VARIANT",
+        DefaultValue = list(
+          StringValue = "string",
+          BinaryValue = raw,
+          BooleanValue = TRUE|FALSE,
+          NumberValue = "string",
+          DatetimeValue = as.POSIXct("2015-01-01")
+        ),
+        IsImmutable = TRUE|FALSE,
+        Rules = list(
+          list(
+            Type = "BINARY_LENGTH"|"NUMBER_COMPARISON"|"STRING_FROM_SET"|"STRING_LENGTH",
+            Parameters = list(
+              "string"
+            )
+          )
+        ),
+        RequiredBehavior = "REQUIRED_ALWAYS"|"NOT_REQUIRED"
+      )
+    ),
+    IdentityAttributeOrder = list(
+      "string"
+    )
+  )
+)
 }
 \arguments{
-\item{SchemaArn}{The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.}
+\item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.}
 
-\item{Facet}{Facet structure that is associated with the typed link facet.}
+\item{Facet}{[required] Facet structure that is associated with the typed link facet.}
 }
 \description{
-Creates a TypedLinkFacet. For more information, see \href{http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink}{Typed link}.
+Creates a TypedLinkFacet. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 }
 \examples{
 

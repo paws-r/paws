@@ -4,16 +4,21 @@
 \alias{create_portfolio}
 \title{Creates a portfolio}
 \usage{
-create_portfolio(DisplayName, ProviderName, IdempotencyToken,
-  AcceptLanguage = NULL, Description = NULL, Tags = NULL)
+create_portfolio(
+  AcceptLanguage = "string",
+  DisplayName = "string",
+  Description = "string",
+  ProviderName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  IdempotencyToken = "string"
+)
 }
 \arguments{
-\item{DisplayName}{The name to use for display purposes.}
-
-\item{ProviderName}{The name of the portfolio provider.}
-
-\item{IdempotencyToken}{A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
@@ -21,9 +26,15 @@ create_portfolio(DisplayName, ProviderName, IdempotencyToken,
 \item \code{zh} - Chinese
 }}
 
+\item{DisplayName}{[required] The name to use for display purposes.}
+
 \item{Description}{The description of the portfolio.}
 
+\item{ProviderName}{[required] The name of the portfolio provider.}
+
 \item{Tags}{One or more tags.}
+
+\item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.}
 }
 \description{
 Creates a portfolio.

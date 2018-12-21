@@ -4,10 +4,12 @@
 \alias{describe_role_alias}
 \title{Describes a role alias}
 \usage{
-describe_role_alias(roleAlias)
+describe_role_alias(
+  roleAlias = "string"
+)
 }
 \arguments{
-\item{roleAlias}{The role alias to describe.}
+\item{roleAlias}{[required] The role alias to describe.}
 }
 \description{
 Describes a role alias.

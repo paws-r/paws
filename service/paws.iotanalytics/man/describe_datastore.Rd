@@ -4,10 +4,13 @@
 \alias{describe_datastore}
 \title{Retrieves information about a data store}
 \usage{
-describe_datastore(datastoreName, includeStatistics = NULL)
+describe_datastore(
+  datastoreName = "string",
+  includeStatistics = TRUE|FALSE
+)
 }
 \arguments{
-\item{datastoreName}{The name of the data store}
+\item{datastoreName}{[required] The name of the data store}
 
 \item{includeStatistics}{If true, additional statistical information about the datastore is included in the response.}
 }

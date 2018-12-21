@@ -4,13 +4,22 @@
 \alias{get_load_balancer_metric_data}
 \title{Returns information about health metrics for your Lightsail load balancer}
 \usage{
-get_load_balancer_metric_data(loadBalancerName, metricName, period, startTime,
-  endTime, unit, statistics)
+get_load_balancer_metric_data(
+  loadBalancerName = "string",
+  metricName = "ClientTLSNegotiationErrorCount"|"HealthyHostCount"|"UnhealthyHostCount"|"HTTPCode_LB_4XX_Count"|"HTTPCode_LB_5XX_Count"|"HTTPCode_Instance_2XX_Count"|"HTTPCode_Instance_3XX_Count"|"HTTPCode_Instance_4XX_Count"|"HTTPCode_Instance_5XX_Count"|"InstanceResponseTime"|"RejectedConnectionCount"|"RequestCount",
+  period = 123,
+  startTime = as.POSIXct("2015-01-01"),
+  endTime = as.POSIXct("2015-01-01"),
+  unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
+  statistics = list(
+    "Minimum"|"Maximum"|"Sum"|"Average"|"SampleCount"
+  )
+)
 }
 \arguments{
-\item{loadBalancerName}{The name of the load balancer.}
+\item{loadBalancerName}{[required] The name of the load balancer.}
 
-\item{metricName}{The metric about which you want to return information. Valid values are listed below, along with the most useful \code{statistics} to include in your request.
+\item{metricName}{[required] The metric about which you want to return information. Valid values are listed below, along with the most useful \code{statistics} to include in your request.
 \itemize{
 \item \strong{\code{ClientTLSNegotiationErrorCount}} - The number of TLS connections initiated by the client that did not establish a session with the load balancer. Possible causes include a mismatch of ciphers or protocols.
 
@@ -50,15 +59,15 @@ get_load_balancer_metric_data(loadBalancerName, metricName, period, startTime,
 \code{Statistics}: The most useful statistic is \code{Sum}. Note that \code{Minimum}, \code{Maximum}, and \code{Average} all return \code{1}.
 }}
 
-\item{period}{The time period duration for your health data request.}
+\item{period}{[required] The granularity, in seconds, of the returned data points.}
 
-\item{startTime}{The start time of the period.}
+\item{startTime}{[required] The start time of the period.}
 
-\item{endTime}{The end time of the period.}
+\item{endTime}{[required] The end time of the period.}
 
-\item{unit}{The unit for the time period request. Valid values are listed below.}
+\item{unit}{[required] The unit for the time period request. Valid values are listed below.}
 
-\item{statistics}{An array of statistics that you want to request metrics for. Valid values are listed below.
+\item{statistics}{[required] An array of statistics that you want to request metrics for. Valid values are listed below.
 \itemize{
 \item \strong{\code{SampleCount}} - The count (number) of data points used for the statistical calculation.
 \item \strong{\code{Average}} - The value of Sum / SampleCount during the specified period. By comparing this statistic with the Minimum and Maximum, you can determine the full scope of a metric and how close the average use is to the Minimum and Maximum. This comparison helps you to know when to increase or decrease your resources as needed.

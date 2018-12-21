@@ -4,14 +4,18 @@
 \alias{update_environment_membership}
 \title{Changes the settings of an existing environment member for an AWS Cloud9 development environment}
 \usage{
-update_environment_membership(environmentId, userArn, permissions)
+update_environment_membership(
+  environmentId = "string",
+  userArn = "string",
+  permissions = "read-write"|"read-only"
+)
 }
 \arguments{
-\item{environmentId}{The ID of the environment for the environment member whose settings you want to change.}
+\item{environmentId}{[required] The ID of the environment for the environment member whose settings you want to change.}
 
-\item{userArn}{The Amazon Resource Name (ARN) of the environment member whose settings you want to change.}
+\item{userArn}{[required] The Amazon Resource Name (ARN) of the environment member whose settings you want to change.}
 
-\item{permissions}{The replacement type of environment member permissions you want to associate with this environment member. Available values include:
+\item{permissions}{[required] The replacement type of environment member permissions you want to associate with this environment member. Available values include:
 \itemize{
 \item \code{read-only}: Has read-only access to the environment.
 \item \code{read-write}: Has read-write access to the environment.

@@ -4,10 +4,14 @@
 \alias{put_trace_segments}
 \title{Uploads segment documents to AWS X-Ray}
 \usage{
-put_trace_segments(TraceSegmentDocuments)
+put_trace_segments(
+  TraceSegmentDocuments = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{TraceSegmentDocuments}{A string containing a JSON document defining one or more segments or subsegments.}
+\item{TraceSegmentDocuments}{[required] A string containing a JSON document defining one or more segments or subsegments.}
 }
 \description{
 Uploads segment documents to AWS X-Ray. The X-Ray SDK generates segment documents and sends them to the X-Ray daemon, which uploads them in batches. A segment document can be a completed segment, an in-progress segment, or an array of subsegments.

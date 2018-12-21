@@ -4,13 +4,44 @@
 \alias{put_pipeline_definition}
 \title{Adds tasks, schedules, and preconditions to the specified pipeline}
 \usage{
-put_pipeline_definition(pipelineId, pipelineObjects, parameterObjects = NULL,
-  parameterValues = NULL)
+put_pipeline_definition(
+  pipelineId = "string",
+  pipelineObjects = list(
+    list(
+      id = "string",
+      name = "string",
+      fields = list(
+        list(
+          key = "string",
+          stringValue = "string",
+          refValue = "string"
+        )
+      )
+    )
+  ),
+  parameterObjects = list(
+    list(
+      id = "string",
+      attributes = list(
+        list(
+          key = "string",
+          stringValue = "string"
+        )
+      )
+    )
+  ),
+  parameterValues = list(
+    list(
+      id = "string",
+      stringValue = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{pipelineId}{The ID of the pipeline.}
+\item{pipelineId}{[required] The ID of the pipeline.}
 
-\item{pipelineObjects}{The objects that define the pipeline. These objects overwrite the existing pipeline definition.}
+\item{pipelineObjects}{[required] The objects that define the pipeline. These objects overwrite the existing pipeline definition.}
 
 \item{parameterObjects}{The parameter objects used with the pipeline.}
 

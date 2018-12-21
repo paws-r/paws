@@ -4,19 +4,29 @@
 \alias{list_object_parents}
 \title{Lists parent objects that are associated with a given object in pagination fashion}
 \usage{
-list_object_parents(DirectoryArn, ObjectReference, NextToken = NULL,
-  MaxResults = NULL, ConsistencyLevel = NULL)
+list_object_parents(
+  DirectoryArn = "string",
+  ObjectReference = list(
+    Selector = "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123,
+  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL",
+  IncludeAllLinksToEachParent = TRUE|FALSE
+)
 }
 \arguments{
-\item{DirectoryArn}{The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.}
 
-\item{ObjectReference}{The reference that identifies the object for which parent objects are being listed.}
+\item{ObjectReference}{[required] The reference that identifies the object for which parent objects are being listed.}
 
 \item{NextToken}{The pagination token.}
 
 \item{MaxResults}{The maximum number of items to be retrieved in a single call. This is an approximate number.}
 
 \item{ConsistencyLevel}{Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.}
+
+\item{IncludeAllLinksToEachParent}{When set to True, returns all ListObjectParentsResponse\$ParentLinks. There could be multiple links between a parent-child pair.}
 }
 \description{
 Lists parent objects that are associated with a given object in pagination fashion.

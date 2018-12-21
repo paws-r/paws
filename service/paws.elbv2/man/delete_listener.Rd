@@ -4,10 +4,12 @@
 \alias{delete_listener}
 \title{Deletes the specified listener}
 \usage{
-delete_listener(ListenerArn)
+delete_listener(
+  ListenerArn = "string"
+)
 }
 \arguments{
-\item{ListenerArn}{The Amazon Resource Name (ARN) of the listener.}
+\item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
 }
 \description{
 Deletes the specified listener.

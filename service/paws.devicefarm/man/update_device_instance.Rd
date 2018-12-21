@@ -4,10 +4,16 @@
 \alias{update_device_instance}
 \title{Updates information about an existing private device instance}
 \usage{
-update_device_instance(arn, profileArn = NULL, labels = NULL)
+update_device_instance(
+  arn = "string",
+  profileArn = "string",
+  labels = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{arn}{The Amazon Resource Name (ARN) of the device instance.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of the device instance.}
 
 \item{profileArn}{The Amazon Resource Name (ARN) of the profile that you want to associate with the device instance.}
 

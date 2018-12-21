@@ -4,11 +4,14 @@
 \alias{list_configuration_revisions}
 \title{Returns a list of all revisions for the specified configuration}
 \usage{
-list_configuration_revisions(ConfigurationId, MaxResults = NULL,
-  NextToken = NULL)
+list_configuration_revisions(
+  ConfigurationId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{ConfigurationId}{The unique ID that Amazon MQ generates for the configuration.}
+\item{ConfigurationId}{[required] The unique ID that Amazon MQ generates for the configuration.}
 
 \item{MaxResults}{The maximum number of configurations that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.}
 

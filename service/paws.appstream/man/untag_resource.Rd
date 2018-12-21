@@ -4,12 +4,17 @@
 \alias{untag_resource}
 \title{Disassociates one or more specified tags from the specified AppStream 2}
 \usage{
-untag_resource(ResourceArn, TagKeys)
+untag_resource(
+  ResourceArn = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ResourceArn}{The Amazon Resource Name (ARN) of the resource.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 
-\item{TagKeys}{The tag keys for the tags to disassociate.}
+\item{TagKeys}{[required] The tag keys for the tags to disassociate.}
 }
 \description{
 Disassociates one or more specified tags from the specified AppStream 2.0 resource.

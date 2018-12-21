@@ -4,17 +4,22 @@
 \alias{create_lag}
 \title{Creates a link aggregation group (LAG) with the specified number of bundled physical connections between the customer network and a specific AWS Direct Connect location}
 \usage{
-create_lag(numberOfConnections, location, connectionsBandwidth, lagName,
-  connectionId = NULL)
+create_lag(
+  numberOfConnections = 123,
+  location = "string",
+  connectionsBandwidth = "string",
+  lagName = "string",
+  connectionId = "string"
+)
 }
 \arguments{
-\item{numberOfConnections}{The number of physical connections initially provisioned and bundled by the LAG.}
+\item{numberOfConnections}{[required] The number of physical connections initially provisioned and bundled by the LAG.}
 
-\item{location}{The location for the LAG.}
+\item{location}{[required] The location for the LAG.}
 
-\item{connectionsBandwidth}{The bandwidth of the individual physical connections bundled by the LAG. The possible values are 1Gbps and 10Gbps.}
+\item{connectionsBandwidth}{[required] The bandwidth of the individual physical connections bundled by the LAG. The possible values are 1Gbps and 10Gbps.}
 
-\item{lagName}{The name of the LAG.}
+\item{lagName}{[required] The name of the LAG.}
 
 \item{connectionId}{The ID of an existing connection to migrate to the LAG.}
 }

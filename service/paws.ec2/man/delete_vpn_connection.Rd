@@ -4,10 +4,13 @@
 \alias{delete_vpn_connection}
 \title{Deletes the specified VPN connection}
 \usage{
-delete_vpn_connection(VpnConnectionId, DryRun = NULL)
+delete_vpn_connection(
+  VpnConnectionId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{VpnConnectionId}{The ID of the VPN connection.}
+\item{VpnConnectionId}{[required] The ID of the VPN connection.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

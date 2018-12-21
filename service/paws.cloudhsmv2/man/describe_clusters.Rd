@@ -4,7 +4,15 @@
 \alias{describe_clusters}
 \title{Gets information about AWS CloudHSM clusters}
 \usage{
-describe_clusters(Filters = NULL, NextToken = NULL, MaxResults = NULL)
+describe_clusters(
+  Filters = list(
+    list(
+      "string"
+    )
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{Filters}{One or more filters to limit the items returned in the response.

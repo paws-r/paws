@@ -4,10 +4,12 @@
 \alias{get_operation}
 \title{Returns information about a specific operation}
 \usage{
-get_operation(operationId)
+get_operation(
+  operationId = "string"
+)
 }
 \arguments{
-\item{operationId}{A GUID used to identify the operation.}
+\item{operationId}{[required] A GUID used to identify the operation.}
 }
 \description{
 Returns information about a specific operation. Operations include events such as when you create an instance, allocate a static IP, attach a static IP, and so on.

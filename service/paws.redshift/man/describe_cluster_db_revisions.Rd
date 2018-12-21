@@ -4,8 +4,11 @@
 \alias{describe_cluster_db_revisions}
 \title{Returns an array of \code{ClusterDbRevision} objects}
 \usage{
-describe_cluster_db_revisions(ClusterIdentifier = NULL, MaxRecords = NULL,
-  Marker = NULL)
+describe_cluster_db_revisions(
+  ClusterIdentifier = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{ClusterIdentifier}{A unique identifier for a cluster whose \code{ClusterDbRevisions} you are requesting. This parameter is case sensitive. All clusters defined for an account are returned by default.}

@@ -4,10 +4,12 @@
 \alias{delete_table}
 \title{The \code{DeleteTable} operation deletes a table and all of its items}
 \usage{
-delete_table(TableName)
+delete_table(
+  TableName = "string"
+)
 }
 \arguments{
-\item{TableName}{The name of the table to delete.}
+\item{TableName}{[required] The name of the table to delete.}
 }
 \description{
 The \code{DeleteTable} operation deletes a table and all of its items. After a \code{DeleteTable} request, the specified table is in the \code{DELETING} state until DynamoDB completes the deletion. If the table is in the \code{ACTIVE} state, you can delete it. If a table is in \code{CREATING} or \code{UPDATING} states, then DynamoDB returns a \code{ResourceInUseException}. If the specified table does not exist, DynamoDB returns a \code{ResourceNotFoundException}. If table is already in the \code{DELETING} state, no error is returned.

@@ -4,18 +4,52 @@
 \alias{create_pipeline}
 \title{The CreatePipeline operation creates a pipeline with settings that you specify}
 \usage{
-create_pipeline(Name, InputBucket, Role, OutputBucket = NULL,
-  AwsKmsKeyArn = NULL, Notifications = NULL, ContentConfig = NULL,
-  ThumbnailConfig = NULL)
+create_pipeline(
+  Name = "string",
+  InputBucket = "string",
+  OutputBucket = "string",
+  Role = "string",
+  AwsKmsKeyArn = "string",
+  Notifications = list(
+    Progressing = "string",
+    Completed = "string",
+    Warning = "string",
+    Error = "string"
+  ),
+  ContentConfig = list(
+    Bucket = "string",
+    StorageClass = "string",
+    Permissions = list(
+      list(
+        GranteeType = "string",
+        Grantee = "string",
+        Access = list(
+          "string"
+        )
+      )
+    )
+  ),
+  ThumbnailConfig = list(
+    Bucket = "string",
+    StorageClass = "string",
+    Permissions = list(
+      list(
+        GranteeType = "string",
+        Grantee = "string",
+        Access = list(
+          "string"
+        )
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{Name}{The name of the pipeline. We recommend that the name be unique within the AWS account, but uniqueness is not enforced.
+\item{Name}{[required] The name of the pipeline. We recommend that the name be unique within the AWS account, but uniqueness is not enforced.
 
 Constraints: Maximum 40 characters.}
 
-\item{InputBucket}{The Amazon S3 bucket in which you saved the media files that you want to transcode.}
-
-\item{Role}{The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to use to create the pipeline.}
+\item{InputBucket}{[required] The Amazon S3 bucket in which you saved the media files that you want to transcode.}
 
 \item{OutputBucket}{The Amazon S3 bucket in which you want Elastic Transcoder to save the transcoded files. (Use this, or use ContentConfig:Bucket plus ThumbnailConfig:Bucket.)
 
@@ -30,6 +64,8 @@ When Elastic Transcoder saves files in \code{OutputBucket}, it grants full contr
 }
 
 If you want to save transcoded files and playlists in one bucket and thumbnails in another bucket, specify which users can access the transcoded files or the permissions the users have, or change the Amazon S3 storage class, omit \code{OutputBucket} and specify values for \code{ContentConfig} and \code{ThumbnailConfig} instead.}
+
+\item{Role}{[required] The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to use to create the pipeline.}
 
 \item{AwsKmsKeyArn}{The AWS Key Management Service (AWS KMS) key that you want to use with this pipeline.
 

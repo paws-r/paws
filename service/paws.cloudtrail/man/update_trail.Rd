@@ -4,14 +4,22 @@
 \alias{update_trail}
 \title{Updates the settings that specify delivery of log files}
 \usage{
-update_trail(Name, S3BucketName = NULL, S3KeyPrefix = NULL,
-  SnsTopicName = NULL, IncludeGlobalServiceEvents = NULL,
-  IsMultiRegionTrail = NULL, EnableLogFileValidation = NULL,
-  CloudWatchLogsLogGroupArn = NULL, CloudWatchLogsRoleArn = NULL,
-  KmsKeyId = NULL)
+update_trail(
+  Name = "string",
+  S3BucketName = "string",
+  S3KeyPrefix = "string",
+  SnsTopicName = "string",
+  IncludeGlobalServiceEvents = TRUE|FALSE,
+  IsMultiRegionTrail = TRUE|FALSE,
+  EnableLogFileValidation = TRUE|FALSE,
+  CloudWatchLogsLogGroupArn = "string",
+  CloudWatchLogsRoleArn = "string",
+  KmsKeyId = "string",
+  IsOrganizationTrail = TRUE|FALSE
+)
 }
 \arguments{
-\item{Name}{Specifies the name of the trail or trail ARN. If \code{Name} is a trail name, the string must meet the following requirements:
+\item{Name}{[required] Specifies the name of the trail or trail ARN. If \code{Name} is a trail name, the string must meet the following requirements:
 \itemize{
 \item Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (\_), or dashes (-)
 \item Start with a letter or number, and end with a letter or number
@@ -51,6 +59,8 @@ Examples:
 \item arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012
 \item 12345678-1234-1234-1234-123456789012
 }}
+
+\item{IsOrganizationTrail}{Specifies whether the trail is applied to all accounts in an organization in AWS Organizations, or only for the current AWS account. The default is false, and cannot be true unless the call is made on behalf of an AWS account that is the master account for an organization in AWS Organizations. If the trail is not an organization trail and this is set to true, the trail will be created in all AWS accounts that belong to the organization. If the trail is an organization trail and this is set to false, the trail will remain in the current AWS account but be deleted from all member accounts in the organization.}
 }
 \description{
 Updates the settings that specify delivery of log files. Changes to a trail do not require stopping the CloudTrail service. Use this action to designate an existing bucket for log delivery. If the existing bucket has previously been a target for CloudTrail log files, an IAM policy exists for the bucket. \code{UpdateTrail} must be called from the region in which the trail was created; otherwise, an \code{InvalidHomeRegionException} is thrown.

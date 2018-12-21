@@ -4,7 +4,10 @@
 \alias{describe_resource_policies}
 \title{Lists the resource policies in this account}
 \usage{
-describe_resource_policies(nextToken = NULL, limit = NULL)
+describe_resource_policies(
+  nextToken = "string",
+  limit = 123
+)
 }
 \arguments{
 \item{nextToken}{}

@@ -6,15 +6,19 @@
 \alias{paws.sqs-package}
 \title{paws.sqs: Amazon Simple Queue Service}
 \description{
-Welcome to the *Amazon Simple Queue Service API
-Reference*.
+Welcome to the *Amazon Simple Queue Service API Reference*.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

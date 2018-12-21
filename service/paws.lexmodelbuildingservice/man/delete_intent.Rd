@@ -4,10 +4,12 @@
 \alias{delete_intent}
 \title{Deletes all versions of the intent, including the \code{$LATEST} version}
 \usage{
-delete_intent(name)
+delete_intent(
+  name = "string"
+)
 }
 \arguments{
-\item{name}{The name of the intent. The name is case sensitive.}
+\item{name}{[required] The name of the intent. The name is case sensitive.}
 }
 \description{
 Deletes all versions of the intent, including the \code{$LATEST} version. To delete a specific version of the intent, use the DeleteIntentVersion operation.

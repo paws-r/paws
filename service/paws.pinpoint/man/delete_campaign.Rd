@@ -4,12 +4,15 @@
 \alias{delete_campaign}
 \title{Deletes a campaign}
 \usage{
-delete_campaign(CampaignId, ApplicationId)
+delete_campaign(
+  ApplicationId = "string",
+  CampaignId = "string"
+)
 }
 \arguments{
-\item{CampaignId}{The unique ID of the campaign.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{CampaignId}{[required] The unique ID of the campaign.}
 }
 \description{
 Deletes a campaign.

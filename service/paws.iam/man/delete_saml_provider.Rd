@@ -4,10 +4,12 @@
 \alias{delete_saml_provider}
 \title{Deletes a SAML provider resource in IAM}
 \usage{
-delete_saml_provider(SAMLProviderArn)
+delete_saml_provider(
+  SAMLProviderArn = "string"
+)
 }
 \arguments{
-\item{SAMLProviderArn}{The Amazon Resource Name (ARN) of the SAML provider to delete.}
+\item{SAMLProviderArn}{[required] The Amazon Resource Name (ARN) of the SAML provider to delete.}
 }
 \description{
 Deletes a SAML provider resource in IAM.

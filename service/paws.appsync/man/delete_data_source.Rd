@@ -4,12 +4,15 @@
 \alias{delete_data_source}
 \title{Deletes a \code{DataSource} object}
 \usage{
-delete_data_source(apiId, name)
+delete_data_source(
+  apiId = "string",
+  name = "string"
+)
 }
 \arguments{
-\item{apiId}{The API ID.}
+\item{apiId}{[required] The API ID.}
 
-\item{name}{The name of the data source.}
+\item{name}{[required] The name of the data source.}
 }
 \description{
 Deletes a \code{DataSource} object.

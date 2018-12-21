@@ -4,8 +4,14 @@
 \alias{describe_application_versions}
 \title{Retrieve a list of application versions}
 \usage{
-describe_application_versions(ApplicationName = NULL, VersionLabels = NULL,
-  MaxRecords = NULL, NextToken = NULL)
+describe_application_versions(
+  ApplicationName = "string",
+  VersionLabels = list(
+    "string"
+  ),
+  MaxRecords = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{ApplicationName}{Specify an application name to show only application versions for that application.}

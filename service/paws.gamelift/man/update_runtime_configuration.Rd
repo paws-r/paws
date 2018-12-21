@@ -4,12 +4,25 @@
 \alias{update_runtime_configuration}
 \title{Updates the current run-time configuration for the specified fleet, which tells Amazon GameLift how to launch server processes on instances in the fleet}
 \usage{
-update_runtime_configuration(FleetId, RuntimeConfiguration)
+update_runtime_configuration(
+  FleetId = "string",
+  RuntimeConfiguration = list(
+    ServerProcesses = list(
+      list(
+        LaunchPath = "string",
+        Parameters = "string",
+        ConcurrentExecutions = 123
+      )
+    ),
+    MaxConcurrentGameSessionActivations = 123,
+    GameSessionActivationTimeoutSeconds = 123
+  )
+)
 }
 \arguments{
-\item{FleetId}{Unique identifier for a fleet to update run-time configuration for.}
+\item{FleetId}{[required] Unique identifier for a fleet to update run-time configuration for.}
 
-\item{RuntimeConfiguration}{Instructions for launching server processes on each instance in the fleet. The run-time configuration for a fleet has a collection of server process configurations, one for each type of server process to run on an instance. A server process configuration specifies the location of the server executable, launch parameters, and the number of concurrent processes with that configuration to maintain on each instance.}
+\item{RuntimeConfiguration}{[required] Instructions for launching server processes on each instance in the fleet. The run-time configuration for a fleet has a collection of server process configurations, one for each type of server process to run on an instance. A server process configuration specifies the location of the server executable, launch parameters, and the number of concurrent processes with that configuration to maintain on each instance.}
 }
 \description{
 Updates the current run-time configuration for the specified fleet, which tells Amazon GameLift how to launch server processes on instances in the fleet. You can update a fleet's run-time configuration at any time after the fleet is created; it does not need to be in an \code{ACTIVE} status.

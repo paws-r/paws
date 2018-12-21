@@ -4,10 +4,12 @@
 \alias{get_disk_snapshot}
 \title{Returns information about a specific block storage disk snapshot}
 \usage{
-get_disk_snapshot(diskSnapshotName)
+get_disk_snapshot(
+  diskSnapshotName = "string"
+)
 }
 \arguments{
-\item{diskSnapshotName}{The name of the disk snapshot (e.g., \code{my-disk-snapshot}).}
+\item{diskSnapshotName}{[required] The name of the disk snapshot (e.g., \code{my-disk-snapshot}).}
 }
 \description{
 Returns information about a specific block storage disk snapshot.

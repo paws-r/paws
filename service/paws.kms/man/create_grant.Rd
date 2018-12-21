@@ -4,11 +4,29 @@
 \alias{create_grant}
 \title{Adds a grant to a customer master key (CMK)}
 \usage{
-create_grant(KeyId, GranteePrincipal, Operations, RetiringPrincipal = NULL,
-  Constraints = NULL, GrantTokens = NULL, Name = NULL)
+create_grant(
+  KeyId = "string",
+  GranteePrincipal = "string",
+  RetiringPrincipal = "string",
+  Operations = list(
+    "Decrypt"|"Encrypt"|"GenerateDataKey"|"GenerateDataKeyWithoutPlaintext"|"ReEncryptFrom"|"ReEncryptTo"|"CreateGrant"|"RetireGrant"|"DescribeKey"
+  ),
+  Constraints = list(
+    EncryptionContextSubset = list(
+      "string"
+    ),
+    EncryptionContextEquals = list(
+      "string"
+    )
+  ),
+  GrantTokens = list(
+    "string"
+  ),
+  Name = "string"
+)
 }
 \arguments{
-\item{KeyId}{The unique identifier for the customer master key (CMK) that the grant applies to.
+\item{KeyId}{[required] The unique identifier for the customer master key (CMK) that the grant applies to.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN.
 
@@ -20,15 +38,15 @@ For example:
 
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 
-\item{GranteePrincipal}{The principal that is given permission to perform the operations that the grant permits.
+\item{GranteePrincipal}{[required] The principal that is given permission to perform the operations that the grant permits.
 
 To specify the principal, use the \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)} of an AWS principal. Valid AWS principals include AWS accounts (root), IAM users, IAM roles, federated users, and assumed role users. For examples of the ARN syntax to use for specifying a principal, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam}{AWS Identity and Access Management (IAM)} in the Example ARNs section of the \emph{AWS General Reference}.}
-
-\item{Operations}{A list of operations that the grant permits.}
 
 \item{RetiringPrincipal}{The principal that is given permission to retire the grant by using RetireGrant operation.
 
 To specify the principal, use the \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)} of an AWS principal. Valid AWS principals include AWS accounts (root), IAM users, federated users, and assumed role users. For examples of the ARN syntax to use for specifying a principal, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam}{AWS Identity and Access Management (IAM)} in the Example ARNs section of the \emph{AWS General Reference}.}
+
+\item{Operations}{[required] A list of operations that the grant permits.}
 
 \item{Constraints}{A structure that you can use to allow certain operations in the grant only when the desired encryption context is present. For more information about encryption context, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html}{Encryption Context} in the \emph{AWS Key Management Service Developer Guide}.}
 
@@ -36,7 +54,7 @@ To specify the principal, use the \href{http://docs.aws.amazon.com/general/lates
 
 For more information, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token}{Grant Tokens} in the \emph{AWS Key Management Service Developer Guide}.}
 
-\item{Name}{A friendly name for identifying the grant. Use this value to prevent the unintended creation of duplicate grants when retrying this request.
+\item{Name}{A friendly name for identifying the grant. Use this value to prevent unintended creation of duplicate grants when retrying this request.
 
 When this value is absent, all \code{CreateGrant} requests result in a new grant with a unique \code{GrantId} even if all the supplied parameters are identical. This can result in unintended duplicates when you retry the \code{CreateGrant} request.
 

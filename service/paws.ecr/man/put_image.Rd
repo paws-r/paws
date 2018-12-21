@@ -4,14 +4,19 @@
 \alias{put_image}
 \title{Creates or updates the image manifest and tags associated with an image}
 \usage{
-put_image(repositoryName, imageManifest, registryId = NULL, imageTag = NULL)
+put_image(
+  registryId = "string",
+  repositoryName = "string",
+  imageManifest = "string",
+  imageTag = "string"
+)
 }
 \arguments{
-\item{repositoryName}{The name of the repository in which to put the image.}
-
-\item{imageManifest}{The image manifest corresponding to the image to be uploaded.}
-
 \item{registryId}{The AWS account ID associated with the registry that contains the repository in which to put the image. If you do not specify a registry, the default registry is assumed.}
+
+\item{repositoryName}{[required] The name of the repository in which to put the image.}
+
+\item{imageManifest}{[required] The image manifest corresponding to the image to be uploaded.}
 
 \item{imageTag}{The tag to associate with the image. This parameter is required for images that use the Docker Image Manifest V2 Schema 2 or OCI formats.}
 }

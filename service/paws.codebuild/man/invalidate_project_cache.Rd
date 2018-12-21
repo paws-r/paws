@@ -4,10 +4,12 @@
 \alias{invalidate_project_cache}
 \title{Resets the cache for a project}
 \usage{
-invalidate_project_cache(projectName)
+invalidate_project_cache(
+  projectName = "string"
+)
 }
 \arguments{
-\item{projectName}{The name of the AWS CodeBuild build project that the cache will be reset for.}
+\item{projectName}{[required] The name of the AWS CodeBuild build project that the cache is reset for.}
 }
 \description{
 Resets the cache for a project.

@@ -4,14 +4,18 @@
 \alias{verify_user_attribute}
 \title{Verifies the specified user attributes in the user pool}
 \usage{
-verify_user_attribute(AccessToken, AttributeName, Code)
+verify_user_attribute(
+  AccessToken = "string",
+  AttributeName = "string",
+  Code = "string"
+)
 }
 \arguments{
-\item{AccessToken}{Represents the access token of the request to verify user attributes.}
+\item{AccessToken}{[required] Represents the access token of the request to verify user attributes.}
 
-\item{AttributeName}{The attribute name in the request to verify user attributes.}
+\item{AttributeName}{[required] The attribute name in the request to verify user attributes.}
 
-\item{Code}{The verification code in the request to verify user attributes.}
+\item{Code}{[required] The verification code in the request to verify user attributes.}
 }
 \description{
 Verifies the specified user attributes in the user pool.

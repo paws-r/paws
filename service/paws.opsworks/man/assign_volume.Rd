@@ -4,10 +4,13 @@
 \alias{assign_volume}
 \title{Assigns one of the stack's registered Amazon EBS volumes to a specified instance}
 \usage{
-assign_volume(VolumeId, InstanceId = NULL)
+assign_volume(
+  VolumeId = "string",
+  InstanceId = "string"
+)
 }
 \arguments{
-\item{VolumeId}{The volume ID.}
+\item{VolumeId}{[required] The volume ID.}
 
 \item{InstanceId}{The instance ID.}
 }

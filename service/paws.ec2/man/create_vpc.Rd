@@ -4,11 +4,15 @@
 \alias{create_vpc}
 \title{Creates a VPC with the specified IPv4 CIDR block}
 \usage{
-create_vpc(CidrBlock, AmazonProvidedIpv6CidrBlock = NULL, DryRun = NULL,
-  InstanceTenancy = NULL)
+create_vpc(
+  CidrBlock = "string",
+  AmazonProvidedIpv6CidrBlock = TRUE|FALSE,
+  DryRun = TRUE|FALSE,
+  InstanceTenancy = "default"|"dedicated"|"host"
+)
 }
 \arguments{
-\item{CidrBlock}{The IPv4 network range for the VPC, in CIDR notation. For example, \code{10.0.0.0/16}.}
+\item{CidrBlock}{[required] The IPv4 network range for the VPC, in CIDR notation. For example, \code{10.0.0.0/16}.}
 
 \item{AmazonProvidedIpv6CidrBlock}{Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length for the VPC. You cannot specify the range of IP addresses, or the size of the CIDR block.}
 

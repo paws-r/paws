@@ -4,12 +4,15 @@
 \alias{create_log_subscription}
 \title{Creates a subscription to forward real time Directory Service domain controller security logs to the specified CloudWatch log group in your AWS account}
 \usage{
-create_log_subscription(DirectoryId, LogGroupName)
+create_log_subscription(
+  DirectoryId = "string",
+  LogGroupName = "string"
+)
 }
 \arguments{
-\item{DirectoryId}{Identifier (ID) of the directory to which you want to subscribe and receive real-time logs to your specified CloudWatch log group.}
+\item{DirectoryId}{[required] Identifier (ID) of the directory to which you want to subscribe and receive real-time logs to your specified CloudWatch log group.}
 
-\item{LogGroupName}{The name of the CloudWatch log group where the real-time domain controller logs are forwarded.}
+\item{LogGroupName}{[required] The name of the CloudWatch log group where the real-time domain controller logs are forwarded.}
 }
 \description{
 Creates a subscription to forward real time Directory Service domain controller security logs to the specified CloudWatch log group in your AWS account.

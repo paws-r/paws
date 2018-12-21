@@ -4,63 +4,71 @@
 \alias{create_db_instance}
 \title{Creates a new DB instance}
 \usage{
-create_db_instance(DBInstanceIdentifier, DBInstanceClass, Engine,
-  DBName = NULL, AllocatedStorage = NULL, MasterUsername = NULL,
-  MasterUserPassword = NULL, DBSecurityGroups = NULL,
-  VpcSecurityGroupIds = NULL, AvailabilityZone = NULL,
-  DBSubnetGroupName = NULL, PreferredMaintenanceWindow = NULL,
-  DBParameterGroupName = NULL, BackupRetentionPeriod = NULL,
-  PreferredBackupWindow = NULL, Port = NULL, MultiAZ = NULL,
-  EngineVersion = NULL, AutoMinorVersionUpgrade = NULL,
-  LicenseModel = NULL, Iops = NULL, OptionGroupName = NULL,
-  CharacterSetName = NULL, PubliclyAccessible = NULL, Tags = NULL,
-  DBClusterIdentifier = NULL, StorageType = NULL, TdeCredentialArn = NULL,
-  TdeCredentialPassword = NULL, StorageEncrypted = NULL, KmsKeyId = NULL,
-  Domain = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL,
-  MonitoringRoleArn = NULL, DomainIAMRoleName = NULL,
-  PromotionTier = NULL, Timezone = NULL,
-  EnableIAMDatabaseAuthentication = NULL, EnablePerformanceInsights = NULL,
-  PerformanceInsightsKMSKeyId = NULL,
-  PerformanceInsightsRetentionPeriod = NULL,
-  EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL,
-  DeletionProtection = NULL)
+create_db_instance(
+  DBName = "string",
+  DBInstanceIdentifier = "string",
+  AllocatedStorage = 123,
+  DBInstanceClass = "string",
+  Engine = "string",
+  MasterUsername = "string",
+  MasterUserPassword = "string",
+  DBSecurityGroups = list(
+    "string"
+  ),
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  AvailabilityZone = "string",
+  DBSubnetGroupName = "string",
+  PreferredMaintenanceWindow = "string",
+  DBParameterGroupName = "string",
+  BackupRetentionPeriod = 123,
+  PreferredBackupWindow = "string",
+  Port = 123,
+  MultiAZ = TRUE|FALSE,
+  EngineVersion = "string",
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  LicenseModel = "string",
+  Iops = 123,
+  OptionGroupName = "string",
+  CharacterSetName = "string",
+  PubliclyAccessible = TRUE|FALSE,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  DBClusterIdentifier = "string",
+  StorageType = "string",
+  TdeCredentialArn = "string",
+  TdeCredentialPassword = "string",
+  StorageEncrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  Domain = "string",
+  CopyTagsToSnapshot = TRUE|FALSE,
+  MonitoringInterval = 123,
+  MonitoringRoleArn = "string",
+  DomainIAMRoleName = "string",
+  PromotionTier = 123,
+  Timezone = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  EnablePerformanceInsights = TRUE|FALSE,
+  PerformanceInsightsKMSKeyId = "string",
+  PerformanceInsightsRetentionPeriod = 123,
+  EnableCloudwatchLogsExports = list(
+    "string"
+  ),
+  ProcessorFeatures = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  DeletionProtection = TRUE|FALSE
+)
 }
 \arguments{
-\item{DBInstanceIdentifier}{The DB instance identifier. This parameter is stored as a lowercase string.
-
-Constraints:
-\itemize{
-\item Must contain from 1 to 63 letters, numbers, or hyphens.
-\item First character must be a letter.
-\item Can't end with a hyphen or contain two consecutive hyphens.
-}
-
-Example: \code{mydbinstance}}
-
-\item{DBInstanceClass}{The compute and memory capacity of the DB instance, for example, \code{db.m4.large}. Not all DB instance classes are available in all AWS Regions, or for all database engines. For the full list of DB instance classes, and availability for your engine, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class} in the \emph{Amazon RDS User Guide.}}
-
-\item{Engine}{The name of the database engine to be used for this instance.
-
-Not every database engine is available for every AWS Region.
-
-Valid Values:
-\itemize{
-\item \code{aurora} (for MySQL 5.6-compatible Aurora)
-\item \code{aurora-mysql} (for MySQL 5.7-compatible Aurora)
-\item \code{aurora-postgresql}
-\item \code{mariadb}
-\item \code{mysql}
-\item \code{oracle-ee}
-\item \code{oracle-se2}
-\item \code{oracle-se1}
-\item \code{oracle-se}
-\item \code{postgres}
-\item \code{sqlserver-ee}
-\item \code{sqlserver-se}
-\item \code{sqlserver-ex}
-\item \code{sqlserver-web}
-}}
-
 \item{DBName}{The meaning of this parameter differs according to the database engine you use.
 
 Type: String
@@ -121,6 +129,17 @@ Constraints:
 \item Can't be a word reserved by the specified database engine
 }}
 
+\item{DBInstanceIdentifier}{[required] The DB instance identifier. This parameter is stored as a lowercase string.
+
+Constraints:
+\itemize{
+\item Must contain from 1 to 63 letters, numbers, or hyphens.
+\item First character must be a letter.
+\item Can't end with a hyphen or contain two consecutive hyphens.
+}
+
+Example: \code{mydbinstance}}
+
 \item{AllocatedStorage}{The amount of storage (in gibibytes) to allocate for the DB instance.
 
 Type: Integer
@@ -160,8 +179,8 @@ Constraints to the amount of storage for each storage type are the following:
 
 Constraints to the amount of storage for each storage type are the following:
 \itemize{
-\item General Purpose (SSD) storage (gp2): Must be an integer from 20 to 16384.
-\item Provisioned IOPS storage (io1): Must be an integer from 100 to 16384.
+\item General Purpose (SSD) storage (gp2): Must be an integer from 20 to 32768.
+\item Provisioned IOPS storage (io1): Must be an integer from 100 to 32768.
 \item Magnetic storage (standard): Must be an integer from 10 to 3072.
 }
 
@@ -184,6 +203,30 @@ Constraints to the amount of storage for each storage type are the following:
 \item Enterprise and Standard editions: Must be an integer from 200 to 1024.
 \item Web and Express editions: Must be an integer from 20 to 1024.
 }
+}}
+
+\item{DBInstanceClass}{[required] The compute and memory capacity of the DB instance, for example, \code{db.m4.large}. Not all DB instance classes are available in all AWS Regions, or for all database engines. For the full list of DB instance classes, and availability for your engine, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class} in the \emph{Amazon RDS User Guide.}}
+
+\item{Engine}{[required] The name of the database engine to be used for this instance.
+
+Not every database engine is available for every AWS Region.
+
+Valid Values:
+\itemize{
+\item \code{aurora} (for MySQL 5.6-compatible Aurora)
+\item \code{aurora-mysql} (for MySQL 5.7-compatible Aurora)
+\item \code{aurora-postgresql}
+\item \code{mariadb}
+\item \code{mysql}
+\item \code{oracle-ee}
+\item \code{oracle-se2}
+\item \code{oracle-se1}
+\item \code{oracle-se}
+\item \code{postgres}
+\item \code{sqlserver-ee}
+\item \code{sqlserver-se}
+\item \code{sqlserver-ex}
+\item \code{sqlserver-web}
 }}
 
 \item{MasterUsername}{The name for the master user.
@@ -271,7 +314,7 @@ Constraints: Must contain from 8 to 128 characters.}
 
 Default: The default DB security group for the database engine.}
 
-\item{VpcSecurityGroupIds}{A list of EC2 VPC security groups to associate with this DB instance.
+\item{VpcSecurityGroupIds}{A list of Amazon EC2 VPC security groups to associate with this DB instance.
 
 \strong{Amazon Aurora}
 
@@ -386,7 +429,7 @@ Valid Values: \code{1150-65535}
 
 Type: Integer}
 
-\item{MultiAZ}{Specifies if the DB instance is a Multi-AZ deployment. You can't set the AvailabilityZone parameter if the MultiAZ parameter is set to true.}
+\item{MultiAZ}{A value that specifies whether the DB instance is a Multi-AZ deployment. You can't set the AvailabilityZone parameter if the MultiAZ parameter is set to true.}
 
 \item{EngineVersion}{The version number of the database engine to use.
 

@@ -4,14 +4,19 @@
 \alias{delete_job_execution}
 \title{Deletes a job execution}
 \usage{
-delete_job_execution(jobId, thingName, executionNumber, force = NULL)
+delete_job_execution(
+  jobId = "string",
+  thingName = "string",
+  executionNumber = 123,
+  force = TRUE|FALSE
+)
 }
 \arguments{
-\item{jobId}{The ID of the job whose execution on a particular device will be deleted.}
+\item{jobId}{[required] The ID of the job whose execution on a particular device will be deleted.}
 
-\item{thingName}{The name of the thing whose job execution will be deleted.}
+\item{thingName}{[required] The name of the thing whose job execution will be deleted.}
 
-\item{executionNumber}{The ID of the job execution to be deleted. The \code{executionNumber} refers to the execution of a particular job on a particular device.
+\item{executionNumber}{[required] The ID of the job execution to be deleted. The \code{executionNumber} refers to the execution of a particular job on a particular device.
 
 Note that once a job execution is deleted, the \code{executionNumber} may be reused by IoT, so be sure you get and use the correct value here.}
 

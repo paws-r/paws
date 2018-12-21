@@ -4,12 +4,17 @@
 \alias{set_endpoint_attributes}
 \title{Sets the attributes for an endpoint for a device on one of the supported push notification services, such as GCM and APNS}
 \usage{
-set_endpoint_attributes(EndpointArn, Attributes)
+set_endpoint_attributes(
+  EndpointArn = "string",
+  Attributes = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{EndpointArn}{EndpointArn used for SetEndpointAttributes action.}
+\item{EndpointArn}{[required] EndpointArn used for SetEndpointAttributes action.}
 
-\item{Attributes}{A map of the endpoint attributes. Attributes in this map include the following:
+\item{Attributes}{[required] A map of the endpoint attributes. Attributes in this map include the following:
 \itemize{
 \item \code{CustomUserData} -- arbitrary user data to associate with the endpoint. Amazon SNS does not use this data. The data must be in UTF-8 format and less than 2KB.
 \item \code{Enabled} -- flag that enables/disables delivery to the endpoint. Amazon SNS will set this to false when a notification service indicates to Amazon SNS that the endpoint is invalid. Users can set it back to true, typically after updating Token.

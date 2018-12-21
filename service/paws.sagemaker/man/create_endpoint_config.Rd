@@ -4,13 +4,31 @@
 \alias{create_endpoint_config}
 \title{Creates an endpoint configuration that Amazon SageMaker hosting services uses to deploy models}
 \usage{
-create_endpoint_config(EndpointConfigName, ProductionVariants, Tags = NULL,
-  KmsKeyId = NULL)
+create_endpoint_config(
+  EndpointConfigName = "string",
+  ProductionVariants = list(
+    list(
+      VariantName = "string",
+      ModelName = "string",
+      InitialInstanceCount = 123,
+      InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge",
+      InitialVariantWeight = 123.0,
+      AcceleratorType = "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  KmsKeyId = "string"
+)
 }
 \arguments{
-\item{EndpointConfigName}{The name of the endpoint configuration. You specify this name in a \href{http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html}{CreateEndpoint} request.}
+\item{EndpointConfigName}{[required] The name of the endpoint configuration. You specify this name in a \href{http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html}{CreateEndpoint} request.}
 
-\item{ProductionVariants}{An array of \code{ProductionVariant} objects, one for each model that you want to host at this endpoint.}
+\item{ProductionVariants}{[required] An array of \code{ProductionVariant} objects, one for each model that you want to host at this endpoint.}
 
 \item{Tags}{An array of key-value pairs. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags} in the \emph{AWS Billing and Cost Management User Guide}.}
 

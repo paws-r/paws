@@ -4,10 +4,12 @@
 \alias{disable_domain_transfer_lock}
 \title{This operation removes the transfer lock on the domain (specifically the \code{clientTransferProhibited} status) to allow domain transfers}
 \usage{
-disable_domain_transfer_lock(DomainName)
+disable_domain_transfer_lock(
+  DomainName = "string"
+)
 }
 \arguments{
-\item{DomainName}{The name of the domain that you want to remove the transfer lock for.}
+\item{DomainName}{[required] The name of the domain that you want to remove the transfer lock for.}
 }
 \description{
 This operation removes the transfer lock on the domain (specifically the \code{clientTransferProhibited} status) to allow domain transfers. We recommend you refrain from performing this action unless you intend to transfer the domain to a different registrar. Successful submission returns an operation ID that you can use to track the progress and completion of the action. If the request is not completed successfully, the domain registrant will be notified by email.

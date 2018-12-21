@@ -4,12 +4,15 @@
 \alias{describe_step}
 \title{Provides more detail about the cluster step}
 \usage{
-describe_step(ClusterId, StepId)
+describe_step(
+  ClusterId = "string",
+  StepId = "string"
+)
 }
 \arguments{
-\item{ClusterId}{The identifier of the cluster with steps to describe.}
+\item{ClusterId}{[required] The identifier of the cluster with steps to describe.}
 
-\item{StepId}{The identifier of the step to describe.}
+\item{StepId}{[required] The identifier of the step to describe.}
 }
 \description{
 Provides more detail about the cluster step.

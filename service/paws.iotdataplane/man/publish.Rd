@@ -4,10 +4,14 @@
 \alias{publish}
 \title{Publishes state information}
 \usage{
-publish(topic, qos = NULL, payload = NULL)
+publish(
+  topic = "string",
+  qos = 123,
+  payload = raw
+)
 }
 \arguments{
-\item{topic}{The name of the MQTT topic.}
+\item{topic}{[required] The name of the MQTT topic.}
 
 \item{qos}{The Quality of Service (QoS) level.}
 

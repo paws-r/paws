@@ -4,8 +4,38 @@
 \alias{list_assessment_runs}
 \title{Lists the assessment runs that correspond to the assessment templates that are specified by the ARNs of the assessment templates}
 \usage{
-list_assessment_runs(assessmentTemplateArns = NULL, filter = NULL,
-  nextToken = NULL, maxResults = NULL)
+list_assessment_runs(
+  assessmentTemplateArns = list(
+    "string"
+  ),
+  filter = list(
+    namePattern = "string",
+    states = list(
+      "CREATED"|"START_DATA_COLLECTION_PENDING"|"START_DATA_COLLECTION_IN_PROGRESS"|"COLLECTING_DATA"|"STOP_DATA_COLLECTION_PENDING"|"DATA_COLLECTED"|"START_EVALUATING_RULES_PENDING"|"EVALUATING_RULES"|"FAILED"|"ERROR"|"COMPLETED"|"COMPLETED_WITH_ERRORS"|"CANCELED"
+    ),
+    durationRange = list(
+      minSeconds = 123,
+      maxSeconds = 123
+    ),
+    rulesPackageArns = list(
+      "string"
+    ),
+    startTimeRange = list(
+      beginDate = as.POSIXct("2015-01-01"),
+      endDate = as.POSIXct("2015-01-01")
+    ),
+    completionTimeRange = list(
+      beginDate = as.POSIXct("2015-01-01"),
+      endDate = as.POSIXct("2015-01-01")
+    ),
+    stateChangeTimeRange = list(
+      beginDate = as.POSIXct("2015-01-01"),
+      endDate = as.POSIXct("2015-01-01")
+    )
+  ),
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{assessmentTemplateArns}{The ARNs that specify the assessment templates whose assessment runs you want to list.}

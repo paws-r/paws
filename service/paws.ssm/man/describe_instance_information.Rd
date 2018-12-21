@@ -4,15 +4,33 @@
 \alias{describe_instance_information}
 \title{Describes one or more of your instances}
 \usage{
-describe_instance_information(InstanceInformationFilterList = NULL,
-  Filters = NULL, MaxResults = NULL, NextToken = NULL)
+describe_instance_information(
+  InstanceInformationFilterList = list(
+    list(
+      key = "InstanceIds"|"AgentVersion"|"PingStatus"|"PlatformTypes"|"ActivationIds"|"IamRole"|"ResourceType"|"AssociationStatus",
+      valueSet = list(
+        "string"
+      )
+    )
+  ),
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{InstanceInformationFilterList}{This is a legacy method. We recommend that you don't use this method. Instead, use the InstanceInformationFilter action. The \code{InstanceInformationFilter} action enables you to return instance information by using tags that are specified as a key-value mapping.
 
 If you do use this method, then you can't use the \code{InstanceInformationFilter} action. Using this method and the \code{InstanceInformationFilter} action causes an exception error.}
 
-\item{Filters}{One or more filters. Use a filter to return a more specific list of instances.}
+\item{Filters}{One or more filters. Use a filter to return a more specific list of instances. You can filter on Amazon EC2 tag. Specify tags by using a key-value mapping.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 

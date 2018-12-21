@@ -4,23 +4,47 @@
 \alias{create_job}
 \title{Creates a new job definition}
 \usage{
-create_job(Name, Role, Command, Description = NULL, LogUri = NULL,
-  ExecutionProperty = NULL, DefaultArguments = NULL, Connections = NULL,
-  MaxRetries = NULL, AllocatedCapacity = NULL, Timeout = NULL,
-  NotificationProperty = NULL, SecurityConfiguration = NULL)
+create_job(
+  Name = "string",
+  Description = "string",
+  LogUri = "string",
+  Role = "string",
+  ExecutionProperty = list(
+    MaxConcurrentRuns = 123
+  ),
+  Command = list(
+    Name = "string",
+    ScriptLocation = "string"
+  ),
+  DefaultArguments = list(
+    "string"
+  ),
+  Connections = list(
+    Connections = list(
+      "string"
+    )
+  ),
+  MaxRetries = 123,
+  AllocatedCapacity = 123,
+  Timeout = 123,
+  NotificationProperty = list(
+    NotifyDelayAfter = 123
+  ),
+  SecurityConfiguration = "string"
+)
 }
 \arguments{
-\item{Name}{The name you assign to this job definition. It must be unique in your account.}
-
-\item{Role}{The name or ARN of the IAM role associated with this job.}
-
-\item{Command}{The JobCommand that executes this job.}
+\item{Name}{[required] The name you assign to this job definition. It must be unique in your account.}
 
 \item{Description}{Description of the job being defined.}
 
 \item{LogUri}{This field is reserved for future use.}
 
+\item{Role}{[required] The name or ARN of the IAM role associated with this job.}
+
 \item{ExecutionProperty}{An ExecutionProperty specifying the maximum number of concurrent runs allowed for this job.}
+
+\item{Command}{[required] The JobCommand that executes this job.}
 
 \item{DefaultArguments}{The default arguments for this job.
 

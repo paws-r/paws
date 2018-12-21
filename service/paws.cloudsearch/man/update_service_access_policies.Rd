@@ -4,12 +4,15 @@
 \alias{update_service_access_policies}
 \title{Configures the access rules that control access to the domain's document and search endpoints}
 \usage{
-update_service_access_policies(DomainName, AccessPolicies)
+update_service_access_policies(
+  DomainName = "string",
+  AccessPolicies = "string"
+)
 }
 \arguments{
-\item{DomainName}{}
+\item{DomainName}{[required]}
 
-\item{AccessPolicies}{The access rules you want to configure. These rules replace any existing rules.}
+\item{AccessPolicies}{[required] The access rules you want to configure. These rules replace any existing rules.}
 }
 \description{
 Configures the access rules that control access to the domain's document and search endpoints. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html}{Configuring Access for an Amazon CloudSearch Domain}.

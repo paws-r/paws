@@ -4,11 +4,22 @@
 \alias{create_user}
 \title{Creates a user}
 \usage{
-create_user(UserId, FirstName = NULL, LastName = NULL, Email = NULL,
-  ClientRequestToken = NULL, Tags = NULL)
+create_user(
+  UserId = "string",
+  FirstName = "string",
+  LastName = "string",
+  Email = "string",
+  ClientRequestToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{UserId}{The ARN for the user.}
+\item{UserId}{[required] The ARN for the user.}
 
 \item{FirstName}{The first name for the user.}
 

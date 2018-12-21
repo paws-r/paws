@@ -4,10 +4,13 @@
 \alias{delete_worker_block}
 \title{The \code{DeleteWorkerBlock} operation allows you to reinstate a blocked Worker to work on your HITs}
 \usage{
-delete_worker_block(WorkerId, Reason = NULL)
+delete_worker_block(
+  WorkerId = "string",
+  Reason = "string"
+)
 }
 \arguments{
-\item{WorkerId}{The ID of the Worker to unblock.}
+\item{WorkerId}{[required] The ID of the Worker to unblock.}
 
 \item{Reason}{A message that explains the reason for unblocking the Worker. The Worker does not see this message.}
 }

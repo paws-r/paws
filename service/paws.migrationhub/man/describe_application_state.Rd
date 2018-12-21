@@ -4,10 +4,12 @@
 \alias{describe_application_state}
 \title{Gets the migration status of an application}
 \usage{
-describe_application_state(ApplicationId)
+describe_application_state(
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The configurationId in ADS that uniquely identifies the grouped application.}
+\item{ApplicationId}{[required] The configurationId in ADS that uniquely identifies the grouped application.}
 }
 \description{
 Gets the migration status of an application.

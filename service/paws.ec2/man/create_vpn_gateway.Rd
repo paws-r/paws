@@ -4,13 +4,17 @@
 \alias{create_vpn_gateway}
 \title{Creates a virtual private gateway}
 \usage{
-create_vpn_gateway(Type, AvailabilityZone = NULL, AmazonSideAsn = NULL,
-  DryRun = NULL)
+create_vpn_gateway(
+  AvailabilityZone = "string",
+  Type = "ipsec.1",
+  AmazonSideAsn = 123,
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{Type}{The type of VPN connection this virtual private gateway supports.}
-
 \item{AvailabilityZone}{The Availability Zone for the virtual private gateway.}
+
+\item{Type}{[required] The type of VPN connection this virtual private gateway supports.}
 
 \item{AmazonSideAsn}{A private Autonomous System Number (ASN) for the Amazon side of a BGP session. If you're using a 16-bit ASN, it must be in the 64512 to 65534 range. If you're using a 32-bit ASN, it must be in the 4200000000 to 4294967294 range.
 

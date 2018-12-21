@@ -4,19 +4,21 @@
 \alias{create_flow_logs}
 \title{Creates one or more flow logs to capture information about IP traffic for a specific network interface, subnet, or VPC}
 \usage{
-create_flow_logs(ResourceIds, ResourceType, TrafficType, DryRun = NULL,
-  ClientToken = NULL, DeliverLogsPermissionArn = NULL,
-  LogGroupName = NULL, LogDestinationType = NULL, LogDestination = NULL)
+create_flow_logs(
+  DryRun = TRUE|FALSE,
+  ClientToken = "string",
+  DeliverLogsPermissionArn = "string",
+  LogGroupName = "string",
+  ResourceIds = list(
+    "string"
+  ),
+  ResourceType = "VPC"|"Subnet"|"NetworkInterface",
+  TrafficType = "ACCEPT"|"REJECT"|"ALL",
+  LogDestinationType = "cloud-watch-logs"|"s3",
+  LogDestination = "string"
+)
 }
 \arguments{
-\item{ResourceIds}{One or more subnet, network interface, or VPC IDs.
-
-Constraints: Maximum of 1000 resources}
-
-\item{ResourceType}{The type of resource on which to create the flow log.}
-
-\item{TrafficType}{The type of traffic to log.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
@@ -24,6 +26,14 @@ Constraints: Maximum of 1000 resources}
 \item{DeliverLogsPermissionArn}{The ARN for the IAM role that's used to post flow logs to a log group.}
 
 \item{LogGroupName}{The name of the log group.}
+
+\item{ResourceIds}{[required] One or more subnet, network interface, or VPC IDs.
+
+Constraints: Maximum of 1000 resources}
+
+\item{ResourceType}{[required] The type of resource on which to create the flow log.}
+
+\item{TrafficType}{[required] The type of traffic to log.}
 
 \item{LogDestinationType}{Specifies the type of destination to which the flow log data is to be published. Flow log data can be published to CloudWatch Logs or Amazon S3. To publish flow log data to CloudWatch Logs, specify \code{cloud-watch-logs}. To publish flow log data to Amazon S3, specify \code{s3}.
 

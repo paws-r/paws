@@ -4,14 +4,25 @@
 \alias{update_domain_nameservers}
 \title{This operation replaces the current set of name servers for the domain with the specified set of name servers}
 \usage{
-update_domain_nameservers(DomainName, Nameservers, FIAuthKey = NULL)
+update_domain_nameservers(
+  DomainName = "string",
+  FIAuthKey = "string",
+  Nameservers = list(
+    list(
+      Name = "string",
+      GlueIps = list(
+        "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{DomainName}{The name of the domain that you want to change name servers for.}
-
-\item{Nameservers}{A list of new name servers for the domain.}
+\item{DomainName}{[required] The name of the domain that you want to change name servers for.}
 
 \item{FIAuthKey}{The authorization key for .fi domains}
+
+\item{Nameservers}{[required] A list of new name servers for the domain.}
 }
 \description{
 This operation replaces the current set of name servers for the domain with the specified set of name servers. If you use Amazon Route 53 as your DNS service, specify the four name servers in the delegation set for the hosted zone for the domain.

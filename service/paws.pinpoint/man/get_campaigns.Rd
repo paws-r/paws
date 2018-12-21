@@ -4,10 +4,14 @@
 \alias{get_campaigns}
 \title{Returns information about your campaigns}
 \usage{
-get_campaigns(ApplicationId, PageSize = NULL, Token = NULL)
+get_campaigns(
+  ApplicationId = "string",
+  PageSize = "string",
+  Token = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 
 \item{PageSize}{The number of entries you want on each page in the response.}
 

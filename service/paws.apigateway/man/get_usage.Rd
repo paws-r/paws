@@ -4,17 +4,23 @@
 \alias{get_usage}
 \title{Gets the usage data of a usage plan in a specified time interval}
 \usage{
-get_usage(usagePlanId, startDate, endDate, keyId = NULL, position = NULL,
-  limit = NULL)
+get_usage(
+  usagePlanId = "string",
+  keyId = "string",
+  startDate = "string",
+  endDate = "string",
+  position = "string",
+  limit = 123
+)
 }
 \arguments{
-\item{usagePlanId}{[Required] The Id of the usage plan associated with the usage data.}
-
-\item{startDate}{[Required] The starting date (e.g., 2016-01-01) of the usage data.}
-
-\item{endDate}{[Required] The ending date (e.g., 2016-12-31) of the usage data.}
+\item{usagePlanId}{[required] [Required] The Id of the usage plan associated with the usage data.}
 
 \item{keyId}{The Id of the API key associated with the resultant usage data.}
+
+\item{startDate}{[required] [Required] The starting date (e.g., 2016-01-01) of the usage data.}
+
+\item{endDate}{[required] [Required] The ending date (e.g., 2016-12-31) of the usage data.}
 
 \item{position}{The current pagination position in the paged result set.}
 

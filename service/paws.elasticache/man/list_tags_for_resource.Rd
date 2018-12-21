@@ -4,10 +4,12 @@
 \alias{list_tags_for_resource}
 \title{Lists all cost allocation tags currently on the named resource}
 \usage{
-list_tags_for_resource(ResourceName)
+list_tags_for_resource(
+  ResourceName = "string"
+)
 }
 \arguments{
-\item{ResourceName}{The Amazon Resource Name (ARN) of the resource for which you want the list of tags, for example \code{arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster} or \code{arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot}.
+\item{ResourceName}{[required] The Amazon Resource Name (ARN) of the resource for which you want the list of tags, for example \code{arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster} or \code{arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot}.
 
 For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
 }

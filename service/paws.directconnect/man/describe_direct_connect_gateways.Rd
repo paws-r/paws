@@ -4,8 +4,11 @@
 \alias{describe_direct_connect_gateways}
 \title{Lists all your Direct Connect gateways or only the specified Direct Connect gateway}
 \usage{
-describe_direct_connect_gateways(directConnectGatewayId = NULL,
-  maxResults = NULL, nextToken = NULL)
+describe_direct_connect_gateways(
+  directConnectGatewayId = "string",
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
 \item{directConnectGatewayId}{The ID of the Direct Connect gateway.}

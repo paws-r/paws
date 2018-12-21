@@ -4,14 +4,17 @@
 \alias{modify_id_format}
 \title{Modifies the ID format for the specified resource on a per-region basis}
 \usage{
-modify_id_format(Resource, UseLongIds)
+modify_id_format(
+  Resource = "string",
+  UseLongIds = TRUE|FALSE
+)
 }
 \arguments{
-\item{Resource}{The type of resource: \code{bundle} | \code{conversion-task} | \code{customer-gateway} | \code{dhcp-options} | \code{elastic-ip-allocation} | \code{elastic-ip-association} | \code{export-task} | \code{flow-log} | \code{image} | \code{import-task} | \code{internet-gateway} | \code{network-acl} | \code{network-acl-association} | \code{network-interface} | \code{network-interface-attachment} | \code{prefix-list} | \code{route-table} | \code{route-table-association} | \code{security-group} | \code{subnet} | \code{subnet-cidr-block-association} | \code{vpc} | \code{vpc-cidr-block-association} | \code{vpc-endpoint} | \code{vpc-peering-connection} | \code{vpn-connection} | \code{vpn-gateway}.
+\item{Resource}{[required] The type of resource: \code{bundle} | \code{conversion-task} | \code{customer-gateway} | \code{dhcp-options} | \code{elastic-ip-allocation} | \code{elastic-ip-association} | \code{export-task} | \code{flow-log} | \code{image} | \code{import-task} | \code{internet-gateway} | \code{network-acl} | \code{network-acl-association} | \code{network-interface} | \code{network-interface-attachment} | \code{prefix-list} | \code{route-table} | \code{route-table-association} | \code{security-group} | \code{subnet} | \code{subnet-cidr-block-association} | \code{vpc} | \code{vpc-cidr-block-association} | \code{vpc-endpoint} | \code{vpc-peering-connection} | \code{vpn-connection} | \code{vpn-gateway}.
 
 Alternatively, use the \code{all-current} option to include all resource types that are currently within their opt-in period for longer IDs.}
 
-\item{UseLongIds}{Indicate whether the resource should use longer IDs (17-character IDs).}
+\item{UseLongIds}{[required] Indicate whether the resource should use longer IDs (17-character IDs).}
 }
 \description{
 Modifies the ID format for the specified resource on a per-region basis. You can specify that resources should receive longer IDs (17-character IDs) when they are created.

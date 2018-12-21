@@ -4,17 +4,22 @@
 \alias{signal_workflow_execution}
 \title{Records a \code{WorkflowExecutionSignaled} event in the workflow execution history and creates a decision task for the workflow execution identified by the given domain, workflowId and runId}
 \usage{
-signal_workflow_execution(domain, workflowId, signalName, runId = NULL,
-  input = NULL)
+signal_workflow_execution(
+  domain = "string",
+  workflowId = "string",
+  runId = "string",
+  signalName = "string",
+  input = "string"
+)
 }
 \arguments{
-\item{domain}{The name of the domain containing the workflow execution to signal.}
+\item{domain}{[required] The name of the domain containing the workflow execution to signal.}
 
-\item{workflowId}{The workflowId of the workflow execution to signal.}
-
-\item{signalName}{The name of the signal. This name must be meaningful to the target workflow.}
+\item{workflowId}{[required] The workflowId of the workflow execution to signal.}
 
 \item{runId}{The runId of the workflow execution to signal.}
+
+\item{signalName}{[required] The name of the signal. This name must be meaningful to the target workflow.}
 
 \item{input}{Data to attach to the \code{WorkflowExecutionSignaled} event in the target workflow execution's history.}
 }

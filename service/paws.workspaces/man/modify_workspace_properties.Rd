@@ -4,12 +4,21 @@
 \alias{modify_workspace_properties}
 \title{Modifies the specified WorkSpace properties}
 \usage{
-modify_workspace_properties(WorkspaceId, WorkspaceProperties)
+modify_workspace_properties(
+  WorkspaceId = "string",
+  WorkspaceProperties = list(
+    RunningMode = "AUTO_STOP"|"ALWAYS_ON",
+    RunningModeAutoStopTimeoutInMinutes = 123,
+    RootVolumeSizeGib = 123,
+    UserVolumeSizeGib = 123,
+    ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
+  )
+)
 }
 \arguments{
-\item{WorkspaceId}{The ID of the WorkSpace.}
+\item{WorkspaceId}{[required] The identifier of the WorkSpace.}
 
-\item{WorkspaceProperties}{The properties of the WorkSpace.}
+\item{WorkspaceProperties}{[required] The properties of the WorkSpace.}
 }
 \description{
 Modifies the specified WorkSpace properties.

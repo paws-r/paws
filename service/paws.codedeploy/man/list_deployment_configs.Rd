@@ -4,10 +4,12 @@
 \alias{list_deployment_configs}
 \title{Lists the deployment configurations with the applicable IAM user or AWS account}
 \usage{
-list_deployment_configs(nextToken = NULL)
+list_deployment_configs(
+  nextToken = "string"
+)
 }
 \arguments{
-\item{nextToken}{An identifier returned from the previous list deployment configurations call. It can be used to return the next set of deployment configurations in the list.}
+\item{nextToken}{An identifier returned from the previous \code{ListDeploymentConfigs} call. It can be used to return the next set of deployment configurations in the list.}
 }
 \description{
 Lists the deployment configurations with the applicable IAM user or AWS account.

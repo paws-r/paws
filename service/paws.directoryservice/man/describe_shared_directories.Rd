@@ -4,11 +4,17 @@
 \alias{describe_shared_directories}
 \title{Returns the shared directories in your account}
 \usage{
-describe_shared_directories(OwnerDirectoryId, SharedDirectoryIds = NULL,
-  NextToken = NULL, Limit = NULL)
+describe_shared_directories(
+  OwnerDirectoryId = "string",
+  SharedDirectoryIds = list(
+    "string"
+  ),
+  NextToken = "string",
+  Limit = 123
+)
 }
 \arguments{
-\item{OwnerDirectoryId}{Returns the identifier of the directory in the directory owner account.}
+\item{OwnerDirectoryId}{[required] Returns the identifier of the directory in the directory owner account.}
 
 \item{SharedDirectoryIds}{A list of identifiers of all shared directories in your account.}
 

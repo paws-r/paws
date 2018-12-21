@@ -4,14 +4,22 @@
 \alias{unlink_identity}
 \title{Unlinks a federated identity from an existing account}
 \usage{
-unlink_identity(IdentityId, Logins, LoginsToRemove)
+unlink_identity(
+  IdentityId = "string",
+  Logins = list(
+    "string"
+  ),
+  LoginsToRemove = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{IdentityId}{A unique identifier in the format REGION:GUID.}
+\item{IdentityId}{[required] A unique identifier in the format REGION:GUID.}
 
-\item{Logins}{A set of optional name-value pairs that map provider names to provider tokens.}
+\item{Logins}{[required] A set of optional name-value pairs that map provider names to provider tokens.}
 
-\item{LoginsToRemove}{Provider names to unlink from this identity.}
+\item{LoginsToRemove}{[required] Provider names to unlink from this identity.}
 }
 \description{
 Unlinks a federated identity from an existing account. Unlinked logins will be considered new identities next time they are seen. Removing the last linked login will make this identity inaccessible.

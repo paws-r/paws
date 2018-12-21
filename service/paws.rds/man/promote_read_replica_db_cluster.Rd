@@ -4,10 +4,12 @@
 \alias{promote_read_replica_db_cluster}
 \title{Promotes a Read Replica DB cluster to a standalone DB cluster}
 \usage{
-promote_read_replica_db_cluster(DBClusterIdentifier)
+promote_read_replica_db_cluster(
+  DBClusterIdentifier = "string"
+)
 }
 \arguments{
-\item{DBClusterIdentifier}{The identifier of the DB cluster Read Replica to promote. This parameter is not case-sensitive.
+\item{DBClusterIdentifier}{[required] The identifier of the DB cluster Read Replica to promote. This parameter is not case-sensitive.
 
 Constraints:
 \itemize{

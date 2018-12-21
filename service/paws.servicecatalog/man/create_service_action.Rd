@@ -4,15 +4,23 @@
 \alias{create_service_action}
 \title{Creates a self-service action}
 \usage{
-create_service_action(Name, DefinitionType, Definition, IdempotencyToken,
-  Description = NULL, AcceptLanguage = NULL)
+create_service_action(
+  Name = "string",
+  DefinitionType = "SSM_AUTOMATION",
+  Definition = list(
+    "string"
+  ),
+  Description = "string",
+  AcceptLanguage = "string",
+  IdempotencyToken = "string"
+)
 }
 \arguments{
-\item{Name}{The self-service action name.}
+\item{Name}{[required] The self-service action name.}
 
-\item{DefinitionType}{The service action definition type. For example, \code{SSM_AUTOMATION}.}
+\item{DefinitionType}{[required] The service action definition type. For example, \code{SSM_AUTOMATION}.}
 
-\item{Definition}{The self-service action definition. Can be one of the following:
+\item{Definition}{[required] The self-service action definition. Can be one of the following:
 
 Name
 
@@ -32,8 +40,6 @@ Parameters
 :   The list of parameters in JSON format.\preformatted{For example: `[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]`.
 }}
 
-\item{IdempotencyToken}{A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.}
-
 \item{Description}{The self-service action description.}
 
 \item{AcceptLanguage}{The language code.
@@ -42,6 +48,8 @@ Parameters
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.}
 }
 \description{
 Creates a self-service action.

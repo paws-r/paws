@@ -4,10 +4,12 @@
 \alias{associate_drt_role}
 \title{Authorizes the DDoS Response team (DRT), using the specified role, to access your AWS account to assist with DDoS attack mitigation during potential attacks}
 \usage{
-associate_drt_role(RoleArn)
+associate_drt_role(
+  RoleArn = "string"
+)
 }
 \arguments{
-\item{RoleArn}{The Amazon Resource Name (ARN) of the role the DRT will use to access your AWS account.
+\item{RoleArn}{[required] The Amazon Resource Name (ARN) of the role the DRT will use to access your AWS account.
 
 Prior to making the \code{AssociateDRTRole} request, you must attach the \href{https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy}{AWSShieldDRTAccessPolicy} managed policy to this role. For more information see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html}{Attaching and Detaching IAM Policies}.}
 }

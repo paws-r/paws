@@ -4,10 +4,14 @@
 \alias{list_group_versions}
 \title{Lists the versions of a group}
 \usage{
-list_group_versions(GroupId, MaxResults = NULL, NextToken = NULL)
+list_group_versions(
+  GroupId = "string",
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
 \arguments{
-\item{GroupId}{The ID of the AWS Greengrass group.}
+\item{GroupId}{[required] The ID of the Greengrass group.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 

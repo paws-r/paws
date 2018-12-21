@@ -4,10 +4,17 @@
 \alias{create_software_update_job}
 \title{Creates a software update for a core or group of cores (specified as an IoT thing group}
 \usage{
-create_software_update_job(AmznClientToken = NULL, S3UrlSignerRole = NULL,
-  SoftwareToUpdate = NULL, UpdateAgentLogLevel = NULL,
-  UpdateTargets = NULL, UpdateTargetsArchitecture = NULL,
-  UpdateTargetsOperatingSystem = NULL)
+create_software_update_job(
+  AmznClientToken = "string",
+  S3UrlSignerRole = "string",
+  SoftwareToUpdate = "core"|"ota_agent",
+  UpdateAgentLogLevel = "NONE"|"TRACE"|"DEBUG"|"VERBOSE"|"INFO"|"WARN"|"ERROR"|"FATAL",
+  UpdateTargets = list(
+    "string"
+  ),
+  UpdateTargetsArchitecture = "armv7l"|"x86_64"|"aarch64",
+  UpdateTargetsOperatingSystem = "ubuntu"|"raspbian"|"amazon_linux"
+)
 }
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}

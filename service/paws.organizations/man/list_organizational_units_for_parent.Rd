@@ -4,11 +4,14 @@
 \alias{list_organizational_units_for_parent}
 \title{Lists the organizational units (OUs) in a parent organizational unit or root}
 \usage{
-list_organizational_units_for_parent(ParentId, NextToken = NULL,
-  MaxResults = NULL)
+list_organizational_units_for_parent(
+  ParentId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{ParentId}{The unique identifier (ID) of the root or OU whose child OUs you want to list.
+\item{ParentId}{[required] The unique identifier (ID) of the root or OU whose child OUs you want to list.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a parent ID string requires one of the following:
 \itemize{

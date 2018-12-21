@@ -4,8 +4,12 @@
 \alias{list_bonus_payments}
 \title{The \code{ListBonusPayments} operation retrieves the amounts of bonuses you have paid to Workers for a given HIT or assignment}
 \usage{
-list_bonus_payments(HITId = NULL, AssignmentId = NULL, NextToken = NULL,
-  MaxResults = NULL)
+list_bonus_payments(
+  HITId = "string",
+  AssignmentId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{HITId}{The ID of the HIT associated with the bonus payments to retrieve. If not specified, all bonus payments for all assignments for the given HIT are returned. Either the HITId parameter or the AssignmentId parameter must be specified}

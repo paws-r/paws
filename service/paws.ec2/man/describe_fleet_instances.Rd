@@ -4,17 +4,29 @@
 \alias{describe_fleet_instances}
 \title{Describes the running instances for the specified EC2 Fleet}
 \usage{
-describe_fleet_instances(FleetId, DryRun = NULL, MaxResults = NULL,
-  NextToken = NULL, Filters = NULL)
+describe_fleet_instances(
+  DryRun = TRUE|FALSE,
+  MaxResults = 123,
+  NextToken = "string",
+  FleetId = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{FleetId}{The ID of the EC2 Fleet.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{MaxResults}{The maximum number of results to return in a single call. Specify a value between 1 and 1000. The default value is 1000. To retrieve the remaining results, make another call with the returned \code{NextToken} value.}
 
 \item{NextToken}{The token for the next set of results.}
+
+\item{FleetId}{[required] The ID of the EC2 Fleet.}
 
 \item{Filters}{One or more filters.
 \itemize{

@@ -4,10 +4,12 @@
 \alias{delete_backup}
 \title{Deletes an existing backup of a table}
 \usage{
-delete_backup(BackupArn)
+delete_backup(
+  BackupArn = "string"
+)
 }
 \arguments{
-\item{BackupArn}{The ARN associated with the backup.}
+\item{BackupArn}{[required] The ARN associated with the backup.}
 }
 \description{
 Deletes an existing backup of a table.

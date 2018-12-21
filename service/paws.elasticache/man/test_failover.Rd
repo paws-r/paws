@@ -4,12 +4,15 @@
 \alias{test_failover}
 \title{Represents the input of a \code{TestFailover} operation which test automatic failover on a specified node group (called shard in the console) in a replication group (called cluster in the console)}
 \usage{
-test_failover(ReplicationGroupId, NodeGroupId)
+test_failover(
+  ReplicationGroupId = "string",
+  NodeGroupId = "string"
+)
 }
 \arguments{
-\item{ReplicationGroupId}{The name of the replication group (console: cluster) whose automatic failover is being tested by this operation.}
+\item{ReplicationGroupId}{[required] The name of the replication group (console: cluster) whose automatic failover is being tested by this operation.}
 
-\item{NodeGroupId}{The name of the node group (called shard in the console) in this replication group on which automatic failover is to be tested. You may test automatic failover on up to 5 node groups in any rolling 24-hour period.}
+\item{NodeGroupId}{[required] The name of the node group (called shard in the console) in this replication group on which automatic failover is to be tested. You may test automatic failover on up to 5 node groups in any rolling 24-hour period.}
 }
 \description{
 Represents the input of a \code{TestFailover} operation which test automatic failover on a specified node group (called shard in the console) in a replication group (called cluster in the console).

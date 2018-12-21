@@ -4,14 +4,20 @@
 \alias{accept_vpc_endpoint_connections}
 \title{Accepts one or more interface VPC endpoint connection requests to your VPC endpoint service}
 \usage{
-accept_vpc_endpoint_connections(ServiceId, VpcEndpointIds, DryRun = NULL)
+accept_vpc_endpoint_connections(
+  DryRun = TRUE|FALSE,
+  ServiceId = "string",
+  VpcEndpointIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ServiceId}{The ID of the endpoint service.}
-
-\item{VpcEndpointIds}{The IDs of one or more interface VPC endpoints.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{ServiceId}{[required] The ID of the endpoint service.}
+
+\item{VpcEndpointIds}{[required] The IDs of one or more interface VPC endpoints.}
 }
 \description{
 Accepts one or more interface VPC endpoint connection requests to your VPC endpoint service.

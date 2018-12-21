@@ -4,8 +4,14 @@
 \alias{describe_spot_fleet_requests}
 \title{Describes your Spot Fleet requests}
 \usage{
-describe_spot_fleet_requests(DryRun = NULL, MaxResults = NULL,
-  NextToken = NULL, SpotFleetRequestIds = NULL)
+describe_spot_fleet_requests(
+  DryRun = TRUE|FALSE,
+  MaxResults = 123,
+  NextToken = "string",
+  SpotFleetRequestIds = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}

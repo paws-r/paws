@@ -4,10 +4,12 @@
 \alias{confirm_public_virtual_interface}
 \title{Accepts ownership of a public virtual interface created by another AWS account}
 \usage{
-confirm_public_virtual_interface(virtualInterfaceId)
+confirm_public_virtual_interface(
+  virtualInterfaceId = "string"
+)
 }
 \arguments{
-\item{virtualInterfaceId}{The ID of the virtual interface.}
+\item{virtualInterfaceId}{[required] The ID of the virtual interface.}
 }
 \description{
 Accepts ownership of a public virtual interface created by another AWS account.

@@ -4,11 +4,26 @@
 \alias{reset_cluster_parameter_group}
 \title{Sets one or more parameters of the specified parameter group to their default values and sets the source values of the parameters to "engine-default"}
 \usage{
-reset_cluster_parameter_group(ParameterGroupName, ResetAllParameters = NULL,
-  Parameters = NULL)
+reset_cluster_parameter_group(
+  ParameterGroupName = "string",
+  ResetAllParameters = TRUE|FALSE,
+  Parameters = list(
+    list(
+      ParameterName = "string",
+      ParameterValue = "string",
+      Description = "string",
+      Source = "string",
+      DataType = "string",
+      AllowedValues = "string",
+      ApplyType = "static"|"dynamic",
+      IsModifiable = TRUE|FALSE,
+      MinimumEngineVersion = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ParameterGroupName}{The name of the cluster parameter group to be reset.}
+\item{ParameterGroupName}{[required] The name of the cluster parameter group to be reset.}
 
 \item{ResetAllParameters}{If \code{true}, all parameters in the specified parameter group will be reset to their default values.
 

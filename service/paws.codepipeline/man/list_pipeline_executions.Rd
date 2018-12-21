@@ -4,10 +4,14 @@
 \alias{list_pipeline_executions}
 \title{Gets a summary of the most recent executions for a pipeline}
 \usage{
-list_pipeline_executions(pipelineName, maxResults = NULL, nextToken = NULL)
+list_pipeline_executions(
+  pipelineName = "string",
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
-\item{pipelineName}{The name of the pipeline for which you want to get execution summary information.}
+\item{pipelineName}{[required] The name of the pipeline for which you want to get execution summary information.}
 
 \item{maxResults}{The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned nextToken value. The available pipeline execution history is limited to the most recent 12 months, based on pipeline execution start times. Default value is 100.}
 

@@ -4,18 +4,23 @@
 \alias{list_constraints_for_portfolio}
 \title{Lists the constraints for the specified portfolio and product}
 \usage{
-list_constraints_for_portfolio(PortfolioId, AcceptLanguage = NULL,
-  ProductId = NULL, PageSize = NULL, PageToken = NULL)
+list_constraints_for_portfolio(
+  AcceptLanguage = "string",
+  PortfolioId = "string",
+  ProductId = "string",
+  PageSize = 123,
+  PageToken = "string"
+)
 }
 \arguments{
-\item{PortfolioId}{The portfolio identifier.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{PortfolioId}{[required] The portfolio identifier.}
 
 \item{ProductId}{The product identifier.}
 

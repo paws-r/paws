@@ -4,8 +4,14 @@
 \alias{describe_repositories}
 \title{Describes image repositories in a registry}
 \usage{
-describe_repositories(registryId = NULL, repositoryNames = NULL,
-  nextToken = NULL, maxResults = NULL)
+describe_repositories(
+  registryId = "string",
+  repositoryNames = list(
+    "string"
+  ),
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{registryId}{The AWS account ID associated with the registry that contains the repositories to be described. If you do not specify a registry, the default registry is assumed.}
@@ -16,7 +22,7 @@ describe_repositories(registryId = NULL, repositoryNames = NULL,
 
 This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.}
 
-\item{maxResults}{The maximum number of repository results returned by \code{DescribeRepositories} in paginated output. When this parameter is used, \code{DescribeRepositories} only returns \code{maxResults} results in a single page along with a \code{nextToken} response element. The remaining results of the initial request can be seen by sending another \code{DescribeRepositories} request with the returned \code{nextToken} value. This value can be between 1 and 100. If this parameter is not used, then \code{DescribeRepositories} returns up to 100 results and a \code{nextToken} value, if applicable. This option cannot be used when you specify repositories with \code{repositoryNames}.}
+\item{maxResults}{The maximum number of repository results returned by \code{DescribeRepositories} in paginated output. When this parameter is used, \code{DescribeRepositories} only returns \code{maxResults} results in a single page along with a \code{nextToken} response element. The remaining results of the initial request can be seen by sending another \code{DescribeRepositories} request with the returned \code{nextToken} value. This value can be between 1 and 1000. If this parameter is not used, then \code{DescribeRepositories} returns up to 100 results and a \code{nextToken} value, if applicable. This option cannot be used when you specify repositories with \code{repositoryNames}.}
 }
 \description{
 Describes image repositories in a registry.

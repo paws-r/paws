@@ -4,7 +4,9 @@
 \alias{list_platform_applications}
 \title{Lists the platform application objects for the supported push notification services, such as APNS and GCM}
 \usage{
-list_platform_applications(NextToken = NULL)
+list_platform_applications(
+  NextToken = "string"
+)
 }
 \arguments{
 \item{NextToken}{NextToken string is used when calling ListPlatformApplications action to retrieve additional records that are available after the first page results.}

@@ -4,12 +4,22 @@
 \alias{update_fleet_attributes}
 \title{Updates fleet properties, including name and description, for a fleet}
 \usage{
-update_fleet_attributes(FleetId, Name = NULL, Description = NULL,
-  NewGameSessionProtectionPolicy = NULL, ResourceCreationLimitPolicy = NULL,
-  MetricGroups = NULL)
+update_fleet_attributes(
+  FleetId = "string",
+  Name = "string",
+  Description = "string",
+  NewGameSessionProtectionPolicy = "NoProtection"|"FullProtection",
+  ResourceCreationLimitPolicy = list(
+    NewGameSessionsPerCreator = 123,
+    PolicyPeriodInMinutes = 123
+  ),
+  MetricGroups = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{FleetId}{Unique identifier for a fleet to update attribute metadata for.}
+\item{FleetId}{[required] Unique identifier for a fleet to update attribute metadata for.}
 
 \item{Name}{Descriptive label that is associated with a fleet. Fleet names do not need to be unique.}
 

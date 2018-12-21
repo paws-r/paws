@@ -4,10 +4,12 @@
 \alias{get_subscription_attributes}
 \title{Returns all of the properties of a subscription}
 \usage{
-get_subscription_attributes(SubscriptionArn)
+get_subscription_attributes(
+  SubscriptionArn = "string"
+)
 }
 \arguments{
-\item{SubscriptionArn}{The ARN of the subscription whose properties you want to get.}
+\item{SubscriptionArn}{[required] The ARN of the subscription whose properties you want to get.}
 }
 \description{
 Returns all of the properties of a subscription.

@@ -4,10 +4,15 @@
 \alias{reboot_instances}
 \title{Requests a reboot of one or more instances}
 \usage{
-reboot_instances(InstanceIds, DryRun = NULL)
+reboot_instances(
+  InstanceIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{InstanceIds}{One or more instance IDs.}
+\item{InstanceIds}{[required] One or more instance IDs.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

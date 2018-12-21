@@ -4,26 +4,68 @@
 \alias{create_db_instance}
 \title{Creates a new DB instance}
 \usage{
-create_db_instance(DBInstanceIdentifier, DBInstanceClass, Engine,
-  DBName = NULL, AllocatedStorage = NULL, MasterUsername = NULL,
-  MasterUserPassword = NULL, DBSecurityGroups = NULL,
-  VpcSecurityGroupIds = NULL, AvailabilityZone = NULL,
-  DBSubnetGroupName = NULL, PreferredMaintenanceWindow = NULL,
-  DBParameterGroupName = NULL, BackupRetentionPeriod = NULL,
-  PreferredBackupWindow = NULL, Port = NULL, MultiAZ = NULL,
-  EngineVersion = NULL, AutoMinorVersionUpgrade = NULL,
-  LicenseModel = NULL, Iops = NULL, OptionGroupName = NULL,
-  CharacterSetName = NULL, PubliclyAccessible = NULL, Tags = NULL,
-  DBClusterIdentifier = NULL, StorageType = NULL, TdeCredentialArn = NULL,
-  TdeCredentialPassword = NULL, StorageEncrypted = NULL, KmsKeyId = NULL,
-  Domain = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL,
-  MonitoringRoleArn = NULL, DomainIAMRoleName = NULL,
-  PromotionTier = NULL, Timezone = NULL,
-  EnableIAMDatabaseAuthentication = NULL, EnablePerformanceInsights = NULL,
-  PerformanceInsightsKMSKeyId = NULL, EnableCloudwatchLogsExports = NULL)
+create_db_instance(
+  DBName = "string",
+  DBInstanceIdentifier = "string",
+  AllocatedStorage = 123,
+  DBInstanceClass = "string",
+  Engine = "string",
+  MasterUsername = "string",
+  MasterUserPassword = "string",
+  DBSecurityGroups = list(
+    "string"
+  ),
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  AvailabilityZone = "string",
+  DBSubnetGroupName = "string",
+  PreferredMaintenanceWindow = "string",
+  DBParameterGroupName = "string",
+  BackupRetentionPeriod = 123,
+  PreferredBackupWindow = "string",
+  Port = 123,
+  MultiAZ = TRUE|FALSE,
+  EngineVersion = "string",
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  LicenseModel = "string",
+  Iops = 123,
+  OptionGroupName = "string",
+  CharacterSetName = "string",
+  PubliclyAccessible = TRUE|FALSE,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  DBClusterIdentifier = "string",
+  StorageType = "string",
+  TdeCredentialArn = "string",
+  TdeCredentialPassword = "string",
+  StorageEncrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  Domain = "string",
+  CopyTagsToSnapshot = TRUE|FALSE,
+  MonitoringInterval = 123,
+  MonitoringRoleArn = "string",
+  DomainIAMRoleName = "string",
+  PromotionTier = 123,
+  Timezone = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  EnablePerformanceInsights = TRUE|FALSE,
+  PerformanceInsightsKMSKeyId = "string",
+  EnableCloudwatchLogsExports = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{DBInstanceIdentifier}{The DB instance identifier. This parameter is stored as a lowercase string.
+\item{DBName}{The database name.
+
+Type: String}
+
+\item{DBInstanceIdentifier}{[required] The DB instance identifier. This parameter is stored as a lowercase string.
 
 Constraints:
 \itemize{
@@ -34,21 +76,17 @@ Constraints:
 
 Example: \code{mydbinstance}}
 
-\item{DBInstanceClass}{The compute and memory capacity of the DB instance, for example, \code{db.m4.large}. Not all DB instance classes are available in all AWS Regions.}
-
-\item{Engine}{The name of the database engine to be used for this instance.
-
-Valid Values: \code{neptune}}
-
-\item{DBName}{The database name.
-
-Type: String}
-
 \item{AllocatedStorage}{The amount of storage (in gibibytes) to allocate for the DB instance.
 
 Type: Integer
 
 Not applicable. Neptune cluster volumes automatically grow as the amount of data in your database increases, though you are only charged for the space that you use in a Neptune cluster volume.}
+
+\item{DBInstanceClass}{[required] The compute and memory capacity of the DB instance, for example, \code{db.m4.large}. Not all DB instance classes are available in all AWS Regions.}
+
+\item{Engine}{[required] The name of the database engine to be used for this instance.
+
+Valid Values: \code{neptune}}
 
 \item{MasterUsername}{The name for the master user. Not used.}
 

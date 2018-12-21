@@ -4,10 +4,12 @@
 \alias{verify_domain_identity}
 \title{Adds a domain to the list of identities for your Amazon SES account in the current AWS Region and attempts to verify it}
 \usage{
-verify_domain_identity(Domain)
+verify_domain_identity(
+  Domain = "string"
+)
 }
 \arguments{
-\item{Domain}{The domain to be verified.}
+\item{Domain}{[required] The domain to be verified.}
 }
 \description{
 Adds a domain to the list of identities for your Amazon SES account in the current AWS Region and attempts to verify it. For more information about verifying domains, see \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html}{Verifying Email Addresses and Domains} in the \emph{Amazon SES Developer Guide.}

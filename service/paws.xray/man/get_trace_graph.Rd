@@ -4,10 +4,15 @@
 \alias{get_trace_graph}
 \title{Retrieves a service graph for one or more specific trace IDs}
 \usage{
-get_trace_graph(TraceIds, NextToken = NULL)
+get_trace_graph(
+  TraceIds = list(
+    "string"
+  ),
+  NextToken = "string"
+)
 }
 \arguments{
-\item{TraceIds}{Trace IDs of requests for which to generate a service graph.}
+\item{TraceIds}{[required] Trace IDs of requests for which to generate a service graph.}
 
 \item{NextToken}{Pagination token. Not used.}
 }

@@ -4,12 +4,15 @@
 \alias{upload_documents}
 \title{Posts a batch of documents to a search domain for indexing}
 \usage{
-upload_documents(documents, contentType)
+upload_documents(
+  documents = raw,
+  contentType = "application/json"|"application/xml"
+)
 }
 \arguments{
-\item{documents}{A batch of documents formatted in JSON or HTML.}
+\item{documents}{[required] A batch of documents formatted in JSON or HTML.}
 
-\item{contentType}{The format of the batch you are uploading. Amazon CloudSearch supports two document batch formats:
+\item{contentType}{[required] The format of the batch you are uploading. Amazon CloudSearch supports two document batch formats:
 \itemize{
 \item application/json
 \item application/xml

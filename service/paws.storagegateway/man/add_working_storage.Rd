@@ -4,12 +4,17 @@
 \alias{add_working_storage}
 \title{Configures one or more gateway local disks as working storage for a gateway}
 \usage{
-add_working_storage(GatewayARN, DiskIds)
+add_working_storage(
+  GatewayARN = "string",
+  DiskIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 
-\item{DiskIds}{An array of strings that identify disks that are to be configured as working storage. Each string have a minimum length of 1 and maximum length of 300. You can get the disk IDs from the ListLocalDisks API.}
+\item{DiskIds}{[required] An array of strings that identify disks that are to be configured as working storage. Each string have a minimum length of 1 and maximum length of 300. You can get the disk IDs from the ListLocalDisks API.}
 }
 \description{
 Configures one or more gateway local disks as working storage for a gateway. This operation is only supported in the stored volume gateway type. This operation is deprecated in cached volume API version 20120630. Use AddUploadBuffer instead.

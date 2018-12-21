@@ -4,7 +4,10 @@
 \alias{list_core_definitions}
 \title{Retrieves a list of core definitions}
 \usage{
-list_core_definitions(MaxResults = NULL, NextToken = NULL)
+list_core_definitions(
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
 \arguments{
 \item{MaxResults}{The maximum number of results to be returned per request.}

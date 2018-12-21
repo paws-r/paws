@@ -4,10 +4,12 @@
 \alias{get_apns_voip_sandbox_channel}
 \title{Get an APNS VoIPSandbox channel}
 \usage{
-get_apns_voip_sandbox_channel(ApplicationId)
+get_apns_voip_sandbox_channel(
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 }
 \description{
 Get an APNS VoIPSandbox channel

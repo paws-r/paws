@@ -4,10 +4,15 @@
 \alias{update_upload}
 \title{Update an uploaded test specification (test spec)}
 \usage{
-update_upload(arn, name = NULL, contentType = NULL, editContent = NULL)
+update_upload(
+  arn = "string",
+  name = "string",
+  contentType = "string",
+  editContent = TRUE|FALSE
+)
 }
 \arguments{
-\item{arn}{The Amazon Resource Name (ARN) of the uploaded test spec.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of the uploaded test spec.}
 
 \item{name}{The upload's test spec file name. The name should not contain the '/' character. The test spec file name must end with the \code{.yaml} or \code{.yml} file extension.}
 

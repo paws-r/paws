@@ -4,10 +4,13 @@
 \alias{update_key_description}
 \title{Updates the description of a customer master key (CMK)}
 \usage{
-update_key_description(KeyId, Description)
+update_key_description(
+  KeyId = "string",
+  Description = "string"
+)
 }
 \arguments{
-\item{KeyId}{A unique identifier for the customer master key (CMK).
+\item{KeyId}{[required] A unique identifier for the customer master key (CMK).
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 
@@ -19,10 +22,10 @@ For example:
 
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 
-\item{Description}{New description for the CMK.}
+\item{Description}{[required] New description for the CMK.}
 }
 \description{
-Updates the description of a customer master key (CMK). To see the description of a CMK, use DescribeKey.
+Updates the description of a customer master key (CMK). To see the decription of a CMK, use DescribeKey.
 }
 \details{
 You cannot perform this operation on a CMK in a different AWS account.

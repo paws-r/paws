@@ -4,15 +4,18 @@
 \alias{list_subscription_definition_versions}
 \title{Lists the versions of a subscription definition}
 \usage{
-list_subscription_definition_versions(SubscriptionDefinitionId,
-  MaxResults = NULL, NextToken = NULL)
+list_subscription_definition_versions(
+  MaxResults = "string",
+  NextToken = "string",
+  SubscriptionDefinitionId = "string"
+)
 }
 \arguments{
-\item{SubscriptionDefinitionId}{The ID of the subscription definition.}
-
 \item{MaxResults}{The maximum number of results to be returned per request.}
 
 \item{NextToken}{The token for the next set of results, or ''null'' if there are no additional results.}
+
+\item{SubscriptionDefinitionId}{[required] The ID of the subscription definition.}
 }
 \description{
 Lists the versions of a subscription definition.

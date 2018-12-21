@@ -4,8 +4,11 @@
 \alias{describe_stack_resources}
 \title{Returns AWS resource descriptions for running and deleted stacks}
 \usage{
-describe_stack_resources(StackName = NULL, LogicalResourceId = NULL,
-  PhysicalResourceId = NULL)
+describe_stack_resources(
+  StackName = "string",
+  LogicalResourceId = "string",
+  PhysicalResourceId = "string"
+)
 }
 \arguments{
 \item{StackName}{The name or the unique stack ID that is associated with the stack, which are not always interchangeable:

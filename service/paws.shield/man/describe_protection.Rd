@@ -4,10 +4,12 @@
 \alias{describe_protection}
 \title{Lists the details of a Protection object}
 \usage{
-describe_protection(ProtectionId)
+describe_protection(
+  ProtectionId = "string"
+)
 }
 \arguments{
-\item{ProtectionId}{The unique identifier (ID) for the Protection object that is described.}
+\item{ProtectionId}{[required] The unique identifier (ID) for the Protection object that is described.}
 }
 \description{
 Lists the details of a Protection object.

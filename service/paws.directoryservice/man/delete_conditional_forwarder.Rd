@@ -4,12 +4,15 @@
 \alias{delete_conditional_forwarder}
 \title{Deletes a conditional forwarder that has been set up for your AWS directory}
 \usage{
-delete_conditional_forwarder(DirectoryId, RemoteDomainName)
+delete_conditional_forwarder(
+  DirectoryId = "string",
+  RemoteDomainName = "string"
+)
 }
 \arguments{
-\item{DirectoryId}{The directory ID for which you are deleting the conditional forwarder.}
+\item{DirectoryId}{[required] The directory ID for which you are deleting the conditional forwarder.}
 
-\item{RemoteDomainName}{The fully qualified domain name (FQDN) of the remote domain with which you are deleting the conditional forwarder.}
+\item{RemoteDomainName}{[required] The fully qualified domain name (FQDN) of the remote domain with which you are deleting the conditional forwarder.}
 }
 \description{
 Deletes a conditional forwarder that has been set up for your AWS directory.

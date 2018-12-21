@@ -4,12 +4,15 @@
 \alias{delete_identity_provider}
 \title{Deletes an identity provider for a user pool}
 \usage{
-delete_identity_provider(UserPoolId, ProviderName)
+delete_identity_provider(
+  UserPoolId = "string",
+  ProviderName = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID.}
+\item{UserPoolId}{[required] The user pool ID.}
 
-\item{ProviderName}{The identity provider name.}
+\item{ProviderName}{[required] The identity provider name.}
 }
 \description{
 Deletes an identity provider for a user pool.

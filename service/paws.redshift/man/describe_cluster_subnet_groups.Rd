@@ -4,8 +4,17 @@
 \alias{describe_cluster_subnet_groups}
 \title{Returns one or more cluster subnet group objects, which contain metadata about your cluster subnet groups}
 \usage{
-describe_cluster_subnet_groups(ClusterSubnetGroupName = NULL,
-  MaxRecords = NULL, Marker = NULL, TagKeys = NULL, TagValues = NULL)
+describe_cluster_subnet_groups(
+  ClusterSubnetGroupName = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  TagKeys = list(
+    "string"
+  ),
+  TagValues = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{ClusterSubnetGroupName}{The name of the cluster subnet group for which information is requested.}

@@ -4,12 +4,38 @@
 \alias{batch_get_application_revisions}
 \title{Gets information about one or more application revisions}
 \usage{
-batch_get_application_revisions(applicationName, revisions)
+batch_get_application_revisions(
+  applicationName = "string",
+  revisions = list(
+    list(
+      revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
+      s3Location = list(
+        bucket = "string",
+        key = "string",
+        bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
+        version = "string",
+        eTag = "string"
+      ),
+      gitHubLocation = list(
+        repository = "string",
+        commitId = "string"
+      ),
+      string = list(
+        content = "string",
+        sha256 = "string"
+      ),
+      appSpecContent = list(
+        content = "string",
+        sha256 = "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{applicationName}{The name of an AWS CodeDeploy application about which to get revision information.}
+\item{applicationName}{[required] The name of an AWS CodeDeploy application about which to get revision information.}
 
-\item{revisions}{Information to get about the application revisions, including type and location.}
+\item{revisions}{[required] Information to get about the application revisions, including type and location.}
 }
 \description{
 Gets information about one or more application revisions.

@@ -4,8 +4,15 @@
 \alias{describe_compliance_by_resource}
 \title{Indicates whether the specified AWS resources are compliant}
 \usage{
-describe_compliance_by_resource(ResourceType = NULL, ResourceId = NULL,
-  ComplianceTypes = NULL, Limit = NULL, NextToken = NULL)
+describe_compliance_by_resource(
+  ResourceType = "string",
+  ResourceId = "string",
+  ComplianceTypes = list(
+    "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA"
+  ),
+  Limit = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{ResourceType}{The types of AWS resources for which you want compliance information (for example, \code{AWS::EC2::Instance}). For this action, you can specify that the resource type is an AWS account by specifying \code{AWS::::Account}.}

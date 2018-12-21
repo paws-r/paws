@@ -4,11 +4,15 @@
 \alias{get_content_moderation}
 \title{Gets the content moderation analysis results for a Amazon Rekognition Video analysis started by}
 \usage{
-get_content_moderation(JobId, MaxResults = NULL, NextToken = NULL,
-  SortBy = NULL)
+get_content_moderation(
+  JobId = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  SortBy = "NAME"|"TIMESTAMP"
+)
 }
 \arguments{
-\item{JobId}{The identifier for the content moderation job. Use \code{JobId} to identify the job in a subsequent call to \code{GetContentModeration}.}
+\item{JobId}{[required] The identifier for the content moderation job. Use \code{JobId} to identify the job in a subsequent call to \code{GetContentModeration}.}
 
 \item{MaxResults}{Maximum number of results to return per paginated call. The largest value you can specify is 1000. If you specify a value greater than 1000, a maximum of 1000 results is returned. The default value is 1000.}
 

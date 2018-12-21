@@ -4,12 +4,19 @@
 \alias{batch_associate_service_action_with_provisioning_artifact}
 \title{Associates multiple self-service actions with provisioning artifacts}
 \usage{
-
-  batch_associate_service_action_with_provisioning_artifact(ServiceActionAssociations,
-  AcceptLanguage = NULL)
+batch_associate_service_action_with_provisioning_artifact(
+  ServiceActionAssociations = list(
+    list(
+      ServiceActionId = "string",
+      ProductId = "string",
+      ProvisioningArtifactId = "string"
+    )
+  ),
+  AcceptLanguage = "string"
+)
 }
 \arguments{
-\item{ServiceActionAssociations}{One or more associations, each consisting of the Action ID, the Product ID, and the Provisioning Artifact ID.}
+\item{ServiceActionAssociations}{[required] One or more associations, each consisting of the Action ID, the Product ID, and the Provisioning Artifact ID.}
 
 \item{AcceptLanguage}{The language code.
 \itemize{

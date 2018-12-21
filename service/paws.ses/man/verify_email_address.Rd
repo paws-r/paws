@@ -4,10 +4,12 @@
 \alias{verify_email_address}
 \title{Deprecated}
 \usage{
-verify_email_address(EmailAddress)
+verify_email_address(
+  EmailAddress = "string"
+)
 }
 \arguments{
-\item{EmailAddress}{The email address to be verified.}
+\item{EmailAddress}{[required] The email address to be verified.}
 }
 \description{
 Deprecated. Use the \code{VerifyEmailIdentity} operation to verify a new email address.

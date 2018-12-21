@@ -4,14 +4,17 @@
 \alias{get_certificate}
 \title{Retrieves a certificate from your private CA}
 \usage{
-get_certificate(CertificateAuthorityArn, CertificateArn)
+get_certificate(
+  CertificateAuthorityArn = "string",
+  CertificateArn = "string"
+)
 }
 \arguments{
-\item{CertificateAuthorityArn}{The Amazon Resource Name (ARN) that was returned when you called CreateCertificateAuthority. This must be of the form:
+\item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called CreateCertificateAuthority. This must be of the form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }.}
 
-\item{CertificateArn}{The ARN of the issued certificate. The ARN contains the certificate serial number and must be in the following form:
+\item{CertificateArn}{[required] The ARN of the issued certificate. The ARN contains the certificate serial number and must be in the following form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012/certificate/286535153982981100925020015808220737245 region:account:certificate-authority/12345678-1234-1234-1234-123456789012/certificate/286535153982981100925020015808220737245 }}
 }

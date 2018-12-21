@@ -4,7 +4,10 @@
 \alias{list_certificate_authorities}
 \title{Lists the private certificate authorities that you created by using the CreateCertificateAuthority operation}
 \usage{
-list_certificate_authorities(NextToken = NULL, MaxResults = NULL)
+list_certificate_authorities(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{NextToken}{Use this parameter when paginating results in a subsequent request after you receive a response with truncated results. Set it to the value of the \code{NextToken} parameter from the response you just received.}

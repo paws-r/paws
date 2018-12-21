@@ -6,9 +6,9 @@
 \alias{paws.cognitosync-package}
 \title{paws.cognitosync: Amazon Cognito Sync}
 \description{
-Amazon Cognito Sync provides an AWS service and
-client library that enable cross-device syncing of application-related
-user data. High-level client libraries are available for both iOS and
+Amazon Cognito Sync provides an AWS service and client
+library that enable cross-device syncing of application-related user
+data. High-level client libraries are available for both iOS and
 Android. You can use these libraries to persist data locally so that
 it\'s available even if the device is offline. Developer credentials
 don\'t need to be stored on the mobile device to access the service.
@@ -22,7 +22,12 @@ identity.
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

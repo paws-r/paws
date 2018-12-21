@@ -4,7 +4,10 @@
 \alias{describe_orderable_replication_instances}
 \title{Returns information about the replication instance types that can be created in the specified region}
 \usage{
-describe_orderable_replication_instances(MaxRecords = NULL, Marker = NULL)
+describe_orderable_replication_instances(
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{MaxRecords}{The maximum number of records to include in the response. If more records exist than the specified \code{MaxRecords} value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.

@@ -4,13 +4,24 @@
 \alias{create_data_source_from_s3}
 \title{Creates a \code{DataSource} object}
 \usage{
-create_data_source_from_s3(DataSourceId, DataSpec, DataSourceName = NULL,
-  ComputeStatistics = NULL)
+create_data_source_from_s3(
+  DataSourceId = "string",
+  DataSourceName = "string",
+  DataSpec = list(
+    DataLocationS3 = "string",
+    DataRearrangement = "string",
+    DataSchema = "string",
+    DataSchemaLocationS3 = "string"
+  ),
+  ComputeStatistics = TRUE|FALSE
+)
 }
 \arguments{
-\item{DataSourceId}{A user-supplied identifier that uniquely identifies the \code{DataSource}.}
+\item{DataSourceId}{[required] A user-supplied identifier that uniquely identifies the \code{DataSource}.}
 
-\item{DataSpec}{The data specification of a \code{DataSource}:
+\item{DataSourceName}{A user-supplied name or description of the \code{DataSource}.}
+
+\item{DataSpec}{[required] The data specification of a \code{DataSource}:
 \itemize{
 \item DataLocationS3 - The Amazon S3 location of the observation data.
 \item DataSchemaLocationS3 - The Amazon S3 location of the \code{DataSchema}.
@@ -19,8 +30,6 @@ create_data_source_from_s3(DataSourceId, DataSpec, DataSourceName = NULL,
 
 Sample - \code{ "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"}
 }}
-
-\item{DataSourceName}{A user-supplied name or description of the \code{DataSource}.}
 
 \item{ComputeStatistics}{The compute statistics for a \code{DataSource}. The statistics are generated from the observation data referenced by a \code{DataSource}. Amazon ML uses the statistics internally during \code{MLModel} training. This parameter must be set to \code{true} if the \code{DataSource} needs to be used for \code{MLModel} training.}
 }

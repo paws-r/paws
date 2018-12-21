@@ -4,10 +4,14 @@
 \alias{get_query_results}
 \title{Returns the results of a single query execution specified by \code{QueryExecutionId}}
 \usage{
-get_query_results(QueryExecutionId, NextToken = NULL, MaxResults = NULL)
+get_query_results(
+  QueryExecutionId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{QueryExecutionId}{The unique ID of the query execution.}
+\item{QueryExecutionId}{[required] The unique ID of the query execution.}
 
 \item{NextToken}{The token that specifies where to start pagination if a previous request was truncated.}
 

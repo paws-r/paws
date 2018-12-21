@@ -4,15 +4,25 @@
 \alias{create_pull_request}
 \title{Creates a pull request in the specified repository}
 \usage{
-create_pull_request(title, targets, description = NULL,
-  clientRequestToken = NULL)
+create_pull_request(
+  title = "string",
+  description = "string",
+  targets = list(
+    list(
+      repositoryName = "string",
+      sourceReference = "string",
+      destinationReference = "string"
+    )
+  ),
+  clientRequestToken = "string"
+)
 }
 \arguments{
-\item{title}{The title of the pull request. This title will be used to identify the pull request to other users in the repository.}
-
-\item{targets}{The targets for the pull request, including the source of the code to be reviewed (the source branch), and the destination where the creator of the pull request intends the code to be merged after the pull request is closed (the destination branch).}
+\item{title}{[required] The title of the pull request. This title will be used to identify the pull request to other users in the repository.}
 
 \item{description}{A description of the pull request.}
+
+\item{targets}{[required] The targets for the pull request, including the source of the code to be reviewed (the source branch), and the destination where the creator of the pull request intends the code to be merged after the pull request is closed (the destination branch).}
 
 \item{clientRequestToken}{A unique, client-generated idempotency token that when provided in a request, ensures the request cannot be repeated with a changed parameter. If a request is received with the same parameters and a token is included, the request will return information about the initial request that used that token.
 

@@ -4,11 +4,14 @@
 \alias{create_skill_group}
 \title{Creates a skill group with a specified name and description}
 \usage{
-create_skill_group(SkillGroupName, Description = NULL,
-  ClientRequestToken = NULL)
+create_skill_group(
+  SkillGroupName = "string",
+  Description = "string",
+  ClientRequestToken = "string"
+)
 }
 \arguments{
-\item{SkillGroupName}{The name for the skill group.}
+\item{SkillGroupName}{[required] The name for the skill group.}
 
 \item{Description}{The description for the skill group.}
 

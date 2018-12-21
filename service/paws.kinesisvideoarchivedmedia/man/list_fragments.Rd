@@ -4,11 +4,21 @@
 \alias{list_fragments}
 \title{Returns a list of Fragment objects from the specified stream and start location within the archived data}
 \usage{
-list_fragments(StreamName, MaxResults = NULL, NextToken = NULL,
-  FragmentSelector = NULL)
+list_fragments(
+  StreamName = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  FragmentSelector = list(
+    FragmentSelectorType = "PRODUCER_TIMESTAMP"|"SERVER_TIMESTAMP",
+    TimestampRange = list(
+      StartTimestamp = as.POSIXct("2015-01-01"),
+      EndTimestamp = as.POSIXct("2015-01-01")
+    )
+  )
+)
 }
 \arguments{
-\item{StreamName}{The name of the stream from which to retrieve a fragment list.}
+\item{StreamName}{[required] The name of the stream from which to retrieve a fragment list.}
 
 \item{MaxResults}{The total number of fragments to return. If the total number of fragments available is more than the value specified in \code{max-results}, then a ListFragmentsOutput\$NextToken is provided in the output that you can use to resume pagination.}
 

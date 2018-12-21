@@ -4,21 +4,54 @@
 \alias{send_bulk_templated_email}
 \title{Composes an email message to multiple destinations}
 \usage{
-send_bulk_templated_email(Source, Template, Destinations, SourceArn = NULL,
-  ReplyToAddresses = NULL, ReturnPath = NULL, ReturnPathArn = NULL,
-  ConfigurationSetName = NULL, DefaultTags = NULL, TemplateArn = NULL,
-  DefaultTemplateData = NULL)
+send_bulk_templated_email(
+  Source = "string",
+  SourceArn = "string",
+  ReplyToAddresses = list(
+    "string"
+  ),
+  ReturnPath = "string",
+  ReturnPathArn = "string",
+  ConfigurationSetName = "string",
+  DefaultTags = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  Template = "string",
+  TemplateArn = "string",
+  DefaultTemplateData = "string",
+  Destinations = list(
+    list(
+      Destination = list(
+        ToAddresses = list(
+          "string"
+        ),
+        CcAddresses = list(
+          "string"
+        ),
+        BccAddresses = list(
+          "string"
+        )
+      ),
+      ReplacementTags = list(
+        list(
+          Name = "string",
+          Value = "string"
+        )
+      ),
+      ReplacementTemplateData = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{Source}{The email address that is sending the email. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. For information about verifying identities, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html}{Amazon SES Developer Guide}.
+\item{Source}{[required] The email address that is sending the email. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. For information about verifying identities, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html}{Amazon SES Developer Guide}.
 
 If you are sending on behalf of another user and have been permitted to do so by a sending authorization policy, then you must also specify the \code{SourceArn} parameter. For more information about sending authorization, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.
 
 Amazon SES does not support the SMTPUTF8 extension, as described in \href{https://tools.ietf.org/html/rfc6531}{RFC6531}. For this reason, the \emph{local part} of a source email address (the part of the email address that precedes the @ sign) may only contain \href{https://en.wikipedia.org/wiki/Email_address#Local-part}{7-bit ASCII characters}. If the \emph{domain part} of an address (the part after the @ sign) contains non-ASCII characters, they must be encoded using Punycode, as described in \href{https://tools.ietf.org/html/rfc3492.html}{RFC3492}. The sender name (also known as the \emph{friendly name}) may contain non-ASCII characters. These characters must be encoded using MIME encoded-word syntax, as described in \href{https://tools.ietf.org/html/rfc2047}{RFC 2047}. MIME encoded-word syntax uses the following form: \code{=?charset?encoding?encoded-text?=}.}
-
-\item{Template}{The template to use when sending this email.}
-
-\item{Destinations}{One or more \code{Destination} objects. All of the recipients in a \code{Destination} will receive the same version of the email. You can specify up to 50 \code{Destination} objects within a \code{Destinations} array.}
 
 \item{SourceArn}{This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to send for the email address specified in the \code{Source} parameter.
 
@@ -40,11 +73,15 @@ For more information about sending authorization, see the \href{http://docs.aws.
 
 \item{DefaultTags}{A list of tags, in the form of name/value pairs, to apply to an email that you send to a destination using \code{SendBulkTemplatedEmail}.}
 
+\item{Template}{[required] The template to use when sending this email.}
+
 \item{TemplateArn}{The ARN of the template to use when sending this email.}
 
 \item{DefaultTemplateData}{A list of replacement values to apply to the template when replacement data is not specified in a Destination object. These values act as a default or fallback option when no other data is available.
 
 The template data is a JSON object, typically consisting of key-value pairs in which the keys correspond to replacement tags in the email template.}
+
+\item{Destinations}{[required] One or more \code{Destination} objects. All of the recipients in a \code{Destination} will receive the same version of the email. You can specify up to 50 \code{Destination} objects within a \code{Destinations} array.}
 }
 \description{
 Composes an email message to multiple destinations. The message body is created using an email template.

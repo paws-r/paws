@@ -4,8 +4,14 @@
 \alias{describe_matchmaking_configurations}
 \title{Retrieves the details of FlexMatch matchmaking configurations}
 \usage{
-describe_matchmaking_configurations(Names = NULL, RuleSetName = NULL,
-  Limit = NULL, NextToken = NULL)
+describe_matchmaking_configurations(
+  Names = list(
+    "string"
+  ),
+  RuleSetName = "string",
+  Limit = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{Names}{Unique identifier for a matchmaking configuration(s) to retrieve. To request all existing configurations, leave this parameter empty.}

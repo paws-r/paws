@@ -4,10 +4,12 @@
 \alias{get_geo_match_set}
 \title{Returns the GeoMatchSet that is specified by \code{GeoMatchSetId}}
 \usage{
-get_geo_match_set(GeoMatchSetId)
+get_geo_match_set(
+  GeoMatchSetId = "string"
+)
 }
 \arguments{
-\item{GeoMatchSetId}{The \code{GeoMatchSetId} of the GeoMatchSet that you want to get. \code{GeoMatchSetId} is returned by CreateGeoMatchSet and by ListGeoMatchSets.}
+\item{GeoMatchSetId}{[required] The \code{GeoMatchSetId} of the GeoMatchSet that you want to get. \code{GeoMatchSetId} is returned by CreateGeoMatchSet and by ListGeoMatchSets.}
 }
 \description{
 Returns the GeoMatchSet that is specified by \code{GeoMatchSetId}.

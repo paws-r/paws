@@ -4,10 +4,12 @@
 \alias{describe_stream_summary}
 \title{Provides a summarized description of the specified Kinesis data stream without the shard list}
 \usage{
-describe_stream_summary(StreamName)
+describe_stream_summary(
+  StreamName = "string"
+)
 }
 \arguments{
-\item{StreamName}{The name of the stream to describe.}
+\item{StreamName}{[required] The name of the stream to describe.}
 }
 \description{
 Provides a summarized description of the specified Kinesis data stream without the shard list.

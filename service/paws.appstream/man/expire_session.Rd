@@ -4,10 +4,12 @@
 \alias{expire_session}
 \title{Immediately stops the specified streaming session}
 \usage{
-expire_session(SessionId)
+expire_session(
+  SessionId = "string"
+)
 }
 \arguments{
-\item{SessionId}{The ID of the streaming session.}
+\item{SessionId}{[required] The ID of the streaming session.}
 }
 \description{
 Immediately stops the specified streaming session.

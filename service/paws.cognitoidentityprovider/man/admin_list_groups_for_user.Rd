@@ -4,13 +4,17 @@
 \alias{admin_list_groups_for_user}
 \title{Lists the groups that the user belongs to}
 \usage{
-admin_list_groups_for_user(Username, UserPoolId, Limit = NULL,
-  NextToken = NULL)
+admin_list_groups_for_user(
+  Username = "string",
+  UserPoolId = "string",
+  Limit = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{Username}{The username for the user.}
+\item{Username}{[required] The username for the user.}
 
-\item{UserPoolId}{The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The user pool ID for the user pool.}
 
 \item{Limit}{The limit of the request to list groups.}
 

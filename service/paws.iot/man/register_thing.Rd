@@ -4,10 +4,15 @@
 \alias{register_thing}
 \title{Provisions a thing}
 \usage{
-register_thing(templateBody, parameters = NULL)
+register_thing(
+  templateBody = "string",
+  parameters = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{templateBody}{The provisioning template. See \href{http://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html}{Programmatic Provisioning} for more information.}
+\item{templateBody}{[required] The provisioning template. See \href{http://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html}{Programmatic Provisioning} for more information.}
 
 \item{parameters}{The parameters for provisioning a thing. See \href{http://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html}{Programmatic Provisioning} for more information.}
 }

@@ -4,12 +4,15 @@
 \alias{delete_lifecycle_policy}
 \title{Deletes the specified lifecycle policy}
 \usage{
-delete_lifecycle_policy(repositoryName, registryId = NULL)
+delete_lifecycle_policy(
+  registryId = "string",
+  repositoryName = "string"
+)
 }
 \arguments{
-\item{repositoryName}{The name of the repository.}
-
 \item{registryId}{The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.}
+
+\item{repositoryName}{[required] The name of the repository.}
 }
 \description{
 Deletes the specified lifecycle policy.

@@ -4,12 +4,16 @@
 \alias{create_role_alias}
 \title{Creates a role alias}
 \usage{
-create_role_alias(roleAlias, roleArn, credentialDurationSeconds = NULL)
+create_role_alias(
+  roleAlias = "string",
+  roleArn = "string",
+  credentialDurationSeconds = 123
+)
 }
 \arguments{
-\item{roleAlias}{The role alias that points to a role ARN. This allows you to change the role without having to update the device.}
+\item{roleAlias}{[required] The role alias that points to a role ARN. This allows you to change the role without having to update the device.}
 
-\item{roleArn}{The role ARN.}
+\item{roleArn}{[required] The role ARN.}
 
 \item{credentialDurationSeconds}{How long (in seconds) the credentials will be valid.}
 }

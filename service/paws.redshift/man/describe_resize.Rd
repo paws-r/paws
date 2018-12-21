@@ -4,10 +4,12 @@
 \alias{describe_resize}
 \title{Returns information about the last resize operation for the specified cluster}
 \usage{
-describe_resize(ClusterIdentifier)
+describe_resize(
+  ClusterIdentifier = "string"
+)
 }
 \arguments{
-\item{ClusterIdentifier}{The unique identifier of a cluster whose resize progress you are requesting. This parameter is case-sensitive.
+\item{ClusterIdentifier}{[required] The unique identifier of a cluster whose resize progress you are requesting. This parameter is case-sensitive.
 
 By default, resize operations for all clusters defined for an AWS account are returned.}
 }

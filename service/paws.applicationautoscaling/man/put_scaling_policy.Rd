@@ -4,16 +4,55 @@
 \alias{put_scaling_policy}
 \title{Creates or updates a policy for an Application Auto Scaling scalable target}
 \usage{
-put_scaling_policy(PolicyName, ServiceNamespace, ResourceId, ScalableDimension,
-  PolicyType = NULL, StepScalingPolicyConfiguration = NULL,
-  TargetTrackingScalingPolicyConfiguration = NULL)
+put_scaling_policy(
+  PolicyName = "string",
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
+  ResourceId = "string",
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property",
+  PolicyType = "StepScaling"|"TargetTrackingScaling",
+  StepScalingPolicyConfiguration = list(
+    AdjustmentType = "ChangeInCapacity"|"PercentChangeInCapacity"|"ExactCapacity",
+    StepAdjustments = list(
+      list(
+        MetricIntervalLowerBound = 123.0,
+        MetricIntervalUpperBound = 123.0,
+        ScalingAdjustment = 123
+      )
+    ),
+    MinAdjustmentMagnitude = 123,
+    Cooldown = 123,
+    MetricAggregationType = "Average"|"Minimum"|"Maximum"
+  ),
+  TargetTrackingScalingPolicyConfiguration = list(
+    TargetValue = 123.0,
+    PredefinedMetricSpecification = list(
+      PredefinedMetricType = "DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut"|"SageMakerVariantInvocationsPerInstance"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization",
+      ResourceLabel = "string"
+    ),
+    CustomizedMetricSpecification = list(
+      MetricName = "string",
+      Namespace = "string",
+      Dimensions = list(
+        list(
+          Name = "string",
+          Value = "string"
+        )
+      ),
+      Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
+      Unit = "string"
+    ),
+    ScaleOutCooldown = 123,
+    ScaleInCooldown = 123,
+    DisableScaleIn = TRUE|FALSE
+  )
+)
 }
 \arguments{
-\item{PolicyName}{The name of the scaling policy.}
+\item{PolicyName}{[required] The name of the scaling policy.}
 
-\item{ServiceNamespace}{The namespace of the AWS service that provides the resource or \code{custom-resource} for a resource provided by your own application or service. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces} in the \emph{Amazon Web Services General Reference}.}
+\item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource or \code{custom-resource} for a resource provided by your own application or service. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces} in the \emph{Amazon Web Services General Reference}.}
 
-\item{ResourceId}{The identifier of the resource associated with the scaling policy. This string consists of the resource type and unique identifier.
+\item{ResourceId}{[required] The identifier of the resource associated with the scaling policy. This string consists of the resource type and unique identifier.
 \itemize{
 \item ECS service - The resource type is \code{service} and the unique identifier is the cluster name and service name. Example: \code{service/default/sample-webapp}.
 \item Spot fleet request - The resource type is \code{spot-fleet-request} and the unique identifier is the Spot fleet request ID. Example: \code{spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE}.
@@ -26,7 +65,7 @@ put_scaling_policy(PolicyName, ServiceNamespace, ResourceId, ScalableDimension,
 \item Custom resources are not supported with a resource type. This parameter must specify the \code{OutputValue} from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
 }}
 
-\item{ScalableDimension}{The scalable dimension. This string consists of the service namespace, resource type, and scaling property.
+\item{ScalableDimension}{[required] The scalable dimension. This string consists of the service namespace, resource type, and scaling property.
 \itemize{
 \item \code{ecs:service:DesiredCount} - The desired task count of an ECS service.
 \item \code{ec2:spot-fleet-request:TargetCapacity} - The target capacity of a Spot fleet request.

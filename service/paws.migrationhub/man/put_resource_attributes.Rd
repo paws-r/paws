@@ -4,15 +4,24 @@
 \alias{put_resource_attributes}
 \title{Provides identifying details of the resource being migrated so that it can be associated in the Application Discovery Service (ADS)'s repository}
 \usage{
-put_resource_attributes(ProgressUpdateStream, MigrationTaskName,
-  ResourceAttributeList, DryRun = NULL)
+put_resource_attributes(
+  ProgressUpdateStream = "string",
+  MigrationTaskName = "string",
+  ResourceAttributeList = list(
+    list(
+      Type = "IPV4_ADDRESS"|"IPV6_ADDRESS"|"MAC_ADDRESS"|"FQDN"|"VM_MANAGER_ID"|"VM_MANAGED_OBJECT_REFERENCE"|"VM_NAME"|"VM_PATH"|"BIOS_ID"|"MOTHERBOARD_SERIAL_NUMBER",
+      Value = "string"
+    )
+  ),
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{ProgressUpdateStream}{The name of the ProgressUpdateStream.}
+\item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
 
-\item{MigrationTaskName}{Unique identifier that references the migration task.}
+\item{MigrationTaskName}{[required] Unique identifier that references the migration task.}
 
-\item{ResourceAttributeList}{Information about the resource that is being migrated. This data will be used to map the task to a resource in the Application Discovery Service (ADS)'s repository.
+\item{ResourceAttributeList}{[required] Information about the resource that is being migrated. This data will be used to map the task to a resource in the Application Discovery Service (ADS)'s repository.
 
 Takes the object array of \code{ResourceAttribute} where the \code{Type} field is reserved for the following values: \code{IPV4_ADDRESS | IPV6_ADDRESS | MAC_ADDRESS | FQDN | VM_MANAGER_ID | VM_MANAGED_OBJECT_REFERENCE | VM_NAME | VM_PATH | BIOS_ID | MOTHERBOARD_SERIAL_NUMBER} where the identifying value can be a string up to 256 characters.
 \itemize{

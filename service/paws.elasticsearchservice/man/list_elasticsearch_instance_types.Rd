@@ -4,11 +4,15 @@
 \alias{list_elasticsearch_instance_types}
 \title{List all Elasticsearch instance types that are supported for given ElasticsearchVersion}
 \usage{
-list_elasticsearch_instance_types(ElasticsearchVersion, DomainName = NULL,
-  MaxResults = NULL, NextToken = NULL)
+list_elasticsearch_instance_types(
+  ElasticsearchVersion = "string",
+  DomainName = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{ElasticsearchVersion}{Version of Elasticsearch for which list of supported elasticsearch instance types are needed.}
+\item{ElasticsearchVersion}{[required] Version of Elasticsearch for which list of supported elasticsearch instance types are needed.}
 
 \item{DomainName}{DomainName represents the name of the Domain that we are trying to modify. This should be present only if we are querying for list of available Elasticsearch instance types when modifying existing domain.}
 

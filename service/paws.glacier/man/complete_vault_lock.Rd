@@ -4,14 +4,18 @@
 \alias{complete_vault_lock}
 \title{This operation completes the vault locking process by transitioning the vault lock from the \code{InProgress} state to the \code{Locked} state, which causes the vault lock policy to become unchangeable}
 \usage{
-complete_vault_lock(accountId, vaultName, lockId)
+complete_vault_lock(
+  accountId = "string",
+  vaultName = "string",
+  lockId = "string"
+)
 }
 \arguments{
-\item{accountId}{The \code{AccountId} value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.}
+\item{accountId}{[required] The \code{AccountId} value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.}
 
-\item{vaultName}{The name of the vault.}
+\item{vaultName}{[required] The name of the vault.}
 
-\item{lockId}{The \code{lockId} value is the lock ID obtained from a InitiateVaultLock request.}
+\item{lockId}{[required] The \code{lockId} value is the lock ID obtained from a InitiateVaultLock request.}
 }
 \description{
 This operation completes the vault locking process by transitioning the vault lock from the \code{InProgress} state to the \code{Locked} state, which causes the vault lock policy to become unchangeable. A vault lock is put into the \code{InProgress} state by calling InitiateVaultLock. You can obtain the state of the vault lock by calling GetVaultLock. For more information about the vault locking process, \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html}{Amazon Glacier Vault Lock}.

@@ -4,10 +4,12 @@
 \alias{describe_certificate}
 \title{Returns detailed metadata about the specified ACM certificate}
 \usage{
-describe_certificate(CertificateArn)
+describe_certificate(
+  CertificateArn = "string"
+)
 }
 \arguments{
-\item{CertificateArn}{The Amazon Resource Name (ARN) of the ACM certificate. The ARN must have the following form:
+\item{CertificateArn}{[required] The Amazon Resource Name (ARN) of the ACM certificate. The ARN must have the following form:
 
 \code{arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012}
 

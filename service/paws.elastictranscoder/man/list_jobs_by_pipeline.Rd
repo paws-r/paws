@@ -4,10 +4,14 @@
 \alias{list_jobs_by_pipeline}
 \title{The ListJobsByPipeline operation gets a list of the jobs currently in a pipeline}
 \usage{
-list_jobs_by_pipeline(PipelineId, Ascending = NULL, PageToken = NULL)
+list_jobs_by_pipeline(
+  PipelineId = "string",
+  Ascending = "string",
+  PageToken = "string"
+)
 }
 \arguments{
-\item{PipelineId}{The ID of the pipeline for which you want to get job information.}
+\item{PipelineId}{[required] The ID of the pipeline for which you want to get job information.}
 
 \item{Ascending}{To list jobs in chronological order by the date and time that they were submitted, enter \code{true}. To list jobs in reverse chronological order, enter \code{false}.}
 

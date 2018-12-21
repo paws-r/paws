@@ -4,10 +4,14 @@
 \alias{get_tags}
 \title{Gets the Tags collection for a given resource}
 \usage{
-get_tags(resourceArn, position = NULL, limit = NULL)
+get_tags(
+  resourceArn = "string",
+  position = "string",
+  limit = 123
+)
 }
 \arguments{
-\item{resourceArn}{[Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present, Stage is the only taggable resource.}
+\item{resourceArn}{[required] [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present, Stage is the only taggable resource.}
 
 \item{position}{(Not currently supported) The current pagination position in the paged result set.}
 

@@ -4,11 +4,15 @@
 \alias{modify_current_db_cluster_capacity}
 \title{Set the capacity of an Aurora Serverless DB cluster to a specific value}
 \usage{
-modify_current_db_cluster_capacity(DBClusterIdentifier, Capacity = NULL,
-  SecondsBeforeTimeout = NULL, TimeoutAction = NULL)
+modify_current_db_cluster_capacity(
+  DBClusterIdentifier = "string",
+  Capacity = 123,
+  SecondsBeforeTimeout = 123,
+  TimeoutAction = "string"
+)
 }
 \arguments{
-\item{DBClusterIdentifier}{The DB cluster identifier for the cluster being modified. This parameter is not case-sensitive.
+\item{DBClusterIdentifier}{[required] The DB cluster identifier for the cluster being modified. This parameter is not case-sensitive.
 
 Constraints:
 \itemize{

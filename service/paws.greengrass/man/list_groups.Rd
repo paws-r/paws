@@ -4,7 +4,10 @@
 \alias{list_groups}
 \title{Retrieves a list of groups}
 \usage{
-list_groups(MaxResults = NULL, NextToken = NULL)
+list_groups(
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
 \arguments{
 \item{MaxResults}{The maximum number of results to be returned per request.}

@@ -4,10 +4,14 @@
 \alias{batch_get_projects}
 \title{Gets information about build projects}
 \usage{
-batch_get_projects(names)
+batch_get_projects(
+  names = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{names}{The names of the build projects.}
+\item{names}{[required] The names of the build projects.}
 }
 \description{
 Gets information about build projects.

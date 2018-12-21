@@ -4,12 +4,15 @@
 \alias{delete_utterances}
 \title{Deletes stored utterances}
 \usage{
-delete_utterances(botName, userId)
+delete_utterances(
+  botName = "string",
+  userId = "string"
+)
 }
 \arguments{
-\item{botName}{The name of the bot that stored the utterances.}
+\item{botName}{[required] The name of the bot that stored the utterances.}
 
-\item{userId}{The unique identifier for the user that made the utterances. This is the user ID that was sent in the \href{http://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostContent.html}{PostContent} or \href{http://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html}{PostText} operation request that contained the utterance.}
+\item{userId}{[required] The unique identifier for the user that made the utterances. This is the user ID that was sent in the \href{http://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostContent.html}{PostContent} or \href{http://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html}{PostText} operation request that contained the utterance.}
 }
 \description{
 Deletes stored utterances.

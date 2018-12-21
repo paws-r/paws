@@ -4,10 +4,12 @@
 \alias{get_game_session_log_url}
 \title{Retrieves the location of stored game session logs for a specified game session}
 \usage{
-get_game_session_log_url(GameSessionId)
+get_game_session_log_url(
+  GameSessionId = "string"
+)
 }
 \arguments{
-\item{GameSessionId}{Unique identifier for the game session to get logs for.}
+\item{GameSessionId}{[required] Unique identifier for the game session to get logs for.}
 }
 \description{
 Retrieves the location of stored game session logs for a specified game session. When a game session is terminated, Amazon GameLift automatically stores the logs in Amazon S3 and retains them for 14 days. Use this URL to download the logs.

@@ -4,11 +4,23 @@
 \alias{set_identity_pool_configuration}
 \title{Sets the necessary configuration for push sync}
 \usage{
-set_identity_pool_configuration(IdentityPoolId, PushSync = NULL,
-  CognitoStreams = NULL)
+set_identity_pool_configuration(
+  IdentityPoolId = "string",
+  PushSync = list(
+    ApplicationArns = list(
+      "string"
+    ),
+    RoleArn = "string"
+  ),
+  CognitoStreams = list(
+    StreamName = "string",
+    RoleArn = "string",
+    StreamingStatus = "ENABLED"|"DISABLED"
+  )
+)
 }
 \arguments{
-\item{IdentityPoolId}{A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This is the ID of the pool to modify.}
+\item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This is the ID of the pool to modify.}
 
 \item{PushSync}{Options to apply to this identity pool for push synchronization.}
 

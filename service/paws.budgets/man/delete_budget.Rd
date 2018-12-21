@@ -4,18 +4,21 @@
 \alias{delete_budget}
 \title{Deletes a budget}
 \usage{
-delete_budget(AccountId, BudgetName)
+delete_budget(
+  AccountId = "string",
+  BudgetName = "string"
+)
 }
 \arguments{
-\item{AccountId}{The \code{accountId} that is associated with the budget that you want to delete.}
+\item{AccountId}{[required] The \code{accountId} that is associated with the budget that you want to delete.}
 
-\item{BudgetName}{The name of the budget that you want to delete.}
+\item{BudgetName}{[required] The name of the budget that you want to delete.}
 }
 \description{
 Deletes a budget. You can delete your budget at any time.
 }
 \details{
-\strong{Deleting a budget also deletes the notifications and subscribers associated with that budget.}
+Deleting a budget also deletes the notifications and subscribers that are associated with that budget.
 }
 \examples{
 

@@ -4,11 +4,56 @@
 \alias{get_device_pool_compatibility}
 \title{Gets information about compatibility with a device pool}
 \usage{
-get_device_pool_compatibility(devicePoolArn, appArn = NULL, testType = NULL,
-  test = NULL, configuration = NULL)
+get_device_pool_compatibility(
+  devicePoolArn = "string",
+  appArn = "string",
+  testType = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+  test = list(
+    type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+    testPackageArn = "string",
+    testSpecArn = "string",
+    filter = "string",
+    parameters = list(
+      "string"
+    )
+  ),
+  configuration = list(
+    extraDataPackageArn = "string",
+    networkProfileArn = "string",
+    locale = "string",
+    location = list(
+      latitude = 123.0,
+      longitude = 123.0
+    ),
+    vpceConfigurationArns = list(
+      "string"
+    ),
+    customerArtifactPaths = list(
+      iosPaths = list(
+        "string"
+      ),
+      androidPaths = list(
+        "string"
+      ),
+      deviceHostPaths = list(
+        "string"
+      )
+    ),
+    radios = list(
+      wifi = TRUE|FALSE,
+      bluetooth = TRUE|FALSE,
+      nfc = TRUE|FALSE,
+      gps = TRUE|FALSE
+    ),
+    auxiliaryApps = list(
+      "string"
+    ),
+    billingMethod = "METERED"|"UNMETERED"
+  )
+)
 }
 \arguments{
-\item{devicePoolArn}{The device pool's ARN.}
+\item{devicePoolArn}{[required] The device pool's ARN.}
 
 \item{appArn}{The ARN of the app that is associated with the specified device pool.}
 

@@ -6,15 +6,20 @@
 \alias{paws.elasticsearchservice-package}
 \title{paws.elasticsearchservice: Amazon Elasticsearch Service}
 \description{
-Use the Amazon Elasticsearch configuration API to
-create, configure, and manage Elasticsearch domains.
+Use the Amazon Elasticsearch configuration API to create,
+configure, and manage Elasticsearch domains.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

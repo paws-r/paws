@@ -4,12 +4,15 @@
 \alias{delete_rule_group}
 \title{Permanently deletes a RuleGroup}
 \usage{
-delete_rule_group(RuleGroupId, ChangeToken)
+delete_rule_group(
+  RuleGroupId = "string",
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{RuleGroupId}{The \code{RuleGroupId} of the RuleGroup that you want to delete. \code{RuleGroupId} is returned by CreateRuleGroup and by ListRuleGroups.}
+\item{RuleGroupId}{[required] The \code{RuleGroupId} of the RuleGroup that you want to delete. \code{RuleGroupId} is returned by CreateRuleGroup and by ListRuleGroups.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Permanently deletes a RuleGroup. You can't delete a \code{RuleGroup} if it's still used in any \code{WebACL} objects or if it still includes any rules.

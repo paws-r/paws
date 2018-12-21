@@ -4,10 +4,12 @@
 \alias{describe_db_cluster_snapshot_attributes}
 \title{Returns a list of DB cluster snapshot attribute names and values for a manual DB cluster snapshot}
 \usage{
-describe_db_cluster_snapshot_attributes(DBClusterSnapshotIdentifier)
+describe_db_cluster_snapshot_attributes(
+  DBClusterSnapshotIdentifier = "string"
+)
 }
 \arguments{
-\item{DBClusterSnapshotIdentifier}{The identifier for the DB cluster snapshot to describe the attributes for.}
+\item{DBClusterSnapshotIdentifier}{[required] The identifier for the DB cluster snapshot to describe the attributes for.}
 }
 \description{
 Returns a list of DB cluster snapshot attribute names and values for a manual DB cluster snapshot.

@@ -4,12 +4,15 @@
 \alias{get_deployment_status}
 \title{Returns the status of a deployment}
 \usage{
-get_deployment_status(GroupId, DeploymentId)
+get_deployment_status(
+  DeploymentId = "string",
+  GroupId = "string"
+)
 }
 \arguments{
-\item{GroupId}{The ID of the AWS Greengrass group.}
+\item{DeploymentId}{[required] The ID of the deployment.}
 
-\item{DeploymentId}{The ID of the deployment.}
+\item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \description{
 Returns the status of a deployment.

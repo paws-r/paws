@@ -4,15 +4,25 @@
 \alias{create_computer}
 \title{Creates a computer account in the specified directory, and joins the computer to the directory}
 \usage{
-create_computer(DirectoryId, ComputerName, Password,
-  OrganizationalUnitDistinguishedName = NULL, ComputerAttributes = NULL)
+create_computer(
+  DirectoryId = "string",
+  ComputerName = "string",
+  Password = "string",
+  OrganizationalUnitDistinguishedName = "string",
+  ComputerAttributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{DirectoryId}{The identifier of the directory in which to create the computer account.}
+\item{DirectoryId}{[required] The identifier of the directory in which to create the computer account.}
 
-\item{ComputerName}{The name of the computer account.}
+\item{ComputerName}{[required] The name of the computer account.}
 
-\item{Password}{A one-time password that is used to join the computer to the directory. You should generate a random, strong password to use for this parameter.}
+\item{Password}{[required] A one-time password that is used to join the computer to the directory. You should generate a random, strong password to use for this parameter.}
 
 \item{OrganizationalUnitDistinguishedName}{The fully-qualified distinguished name of the organizational unit to place the computer account in.}
 

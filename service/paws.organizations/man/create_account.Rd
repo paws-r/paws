@@ -4,13 +4,17 @@
 \alias{create_account}
 \title{Creates an AWS account that is automatically a member of the organization whose credentials made the request}
 \usage{
-create_account(Email, AccountName, RoleName = NULL,
-  IamUserAccessToBilling = NULL)
+create_account(
+  Email = "string",
+  AccountName = "string",
+  RoleName = "string",
+  IamUserAccessToBilling = "ALLOW"|"DENY"
+)
 }
 \arguments{
-\item{Email}{The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account. You must use a valid email address to complete account creation. You can't access the root user of the account or remove an account that was created with an invalid email address.}
+\item{Email}{[required] The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account. You must use a valid email address to complete account creation. You can't access the root user of the account or remove an account that was created with an invalid email address.}
 
-\item{AccountName}{The friendly name of the member account.}
+\item{AccountName}{[required] The friendly name of the member account.}
 
 \item{RoleName}{(Optional)
 
@@ -46,6 +50,7 @@ For more information about creating accounts, see \href{http://docs.aws.amazon.c
 \item When you create an account in an organization using the AWS Organizations console, API, or CLI commands, the information required for the account to operate as a standalone account, such as a payment method and signing the end user license agreement (EULA) is \emph{not} automatically collected. If you must remove an account from your organization later, you can do so only after you provide the missing information. Follow the steps at \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info}{To leave an organization as a member account} in the \emph{AWS Organizations User Guide}.
 \item If you get an exception that indicates that you exceeded your account limits for the organization, contact \href{https://console.aws.amazon.com/support/home#/}{AWS Support}.
 \item If you get an exception that indicates that the operation failed because your organization is still initializing, wait one hour and then try again. If the error persists, contact \href{https://console.aws.amazon.com/support/home#/}{AWS Support}.
+\item Using CreateAccount to create multiple temporary accounts is not recommended. You can only close an account from the Billing and Cost Management Console, and you must be signed in as the root user. For information on the requirements and process for closing an account, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html}{Closing an AWS Account} in the \emph{AWS Organizations User Guide}.
 }
 
 When you create a member account with this operation, you can choose whether to create the account with the \strong{IAM User and Role Access to Billing Information} switch enabled. If you enable it, IAM users and roles that have appropriate permissions can view billing information for the account. If you disable it, only the account root user can access billing information. For information about how to disable this switch for an account, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html}{Granting Access to Your Billing Information and Tools}.

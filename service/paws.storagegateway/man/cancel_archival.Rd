@@ -4,12 +4,15 @@
 \alias{cancel_archival}
 \title{Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after the archiving process is initiated}
 \usage{
-cancel_archival(GatewayARN, TapeARN)
+cancel_archival(
+  GatewayARN = "string",
+  TapeARN = "string"
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 
-\item{TapeARN}{The Amazon Resource Name (ARN) of the virtual tape you want to cancel archiving for.}
+\item{TapeARN}{[required] The Amazon Resource Name (ARN) of the virtual tape you want to cancel archiving for.}
 }
 \description{
 Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after the archiving process is initiated. This operation is only supported in the tape gateway type.

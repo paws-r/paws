@@ -4,10 +4,12 @@
 \alias{get_pending_job_executions}
 \title{Gets the list of all jobs for a thing that are not in a terminal status}
 \usage{
-get_pending_job_executions(thingName)
+get_pending_job_executions(
+  thingName = "string"
+)
 }
 \arguments{
-\item{thingName}{The name of the thing that is executing the job.}
+\item{thingName}{[required] The name of the thing that is executing the job.}
 }
 \description{
 Gets the list of all jobs for a thing that are not in a terminal status.

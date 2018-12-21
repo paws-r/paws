@@ -4,10 +4,12 @@
 \alias{get_project}
 \title{Gets information about a project}
 \usage{
-get_project(arn)
+get_project(
+  arn = "string"
+)
 }
 \arguments{
-\item{arn}{The project's ARN.}
+\item{arn}{[required] The project's ARN.}
 }
 \description{
 Gets information about a project.

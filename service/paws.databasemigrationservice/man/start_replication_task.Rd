@@ -4,13 +4,18 @@
 \alias{start_replication_task}
 \title{Starts the replication task}
 \usage{
-start_replication_task(ReplicationTaskArn, StartReplicationTaskType,
-  CdcStartTime = NULL, CdcStartPosition = NULL, CdcStopPosition = NULL)
+start_replication_task(
+  ReplicationTaskArn = "string",
+  StartReplicationTaskType = "start-replication"|"resume-processing"|"reload-target",
+  CdcStartTime = as.POSIXct("2015-01-01"),
+  CdcStartPosition = "string",
+  CdcStopPosition = "string"
+)
 }
 \arguments{
-\item{ReplicationTaskArn}{The Amazon Resource Name (ARN) of the replication task to be started.}
+\item{ReplicationTaskArn}{[required] The Amazon Resource Name (ARN) of the replication task to be started.}
 
-\item{StartReplicationTaskType}{The type of replication task.}
+\item{StartReplicationTaskType}{[required] The type of replication task.}
 
 \item{CdcStartTime}{Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or CdcStartPosition to specify when you want a CDC operation to start. Specifying both values results in an error.
 
@@ -36,7 +41,7 @@ Commit time example: --cdc-stop-position "commit\_time: 3018-02-09T12:12:12 "}
 Starts the replication task.
 }
 \details{
-For more information about AWS DMS tasks, see the AWS DMS user guide at \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html}{Working with Migration Tasks}
+For more information about AWS DMS tasks, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html}{Working with Migration Tasks} in the \emph{AWS Database Migration Service User Guide.}
 }
 \examples{
 # Starts the replication task.

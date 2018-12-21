@@ -4,32 +4,73 @@
 \alias{create_cluster}
 \title{Creates an empty cluster}
 \usage{
-create_cluster(JobType, Resources, AddressId, RoleARN, ShippingOption,
-  Description = NULL, KmsKeyARN = NULL, SnowballType = NULL,
-  Notification = NULL, ForwardingAddressId = NULL)
+create_cluster(
+  JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
+  Resources = list(
+    S3Resources = list(
+      list(
+        BucketArn = "string",
+        KeyRange = list(
+          BeginMarker = "string",
+          EndMarker = "string"
+        )
+      )
+    ),
+    LambdaResources = list(
+      list(
+        LambdaArn = "string",
+        EventTriggers = list(
+          list(
+            EventResourceARN = "string"
+          )
+        )
+      )
+    ),
+    Ec2AmiResources = list(
+      list(
+        AmiId = "string",
+        SnowballAmiId = "string"
+      )
+    )
+  ),
+  Description = "string",
+  AddressId = "string",
+  KmsKeyARN = "string",
+  RoleARN = "string",
+  SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG",
+  ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
+  Notification = list(
+    SnsTopicARN = "string",
+    JobStatesToNotify = list(
+      "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending"
+    ),
+    NotifyAll = TRUE|FALSE
+  ),
+  ForwardingAddressId = "string"
+)
 }
 \arguments{
-\item{JobType}{The type of job for this cluster. Currently, the only job type supported for clusters is \code{LOCAL_USE}.}
+\item{JobType}{[required] The type of job for this cluster. Currently, the only job type supported for clusters is \code{LOCAL_USE}.}
 
-\item{Resources}{The resources associated with the cluster job. These resources include Amazon S3 buckets and optional AWS Lambda functions written in the Python language.}
-
-\item{AddressId}{The ID for the address that you want the cluster shipped to.}
-
-\item{RoleARN}{The \code{RoleARN} that you want to associate with this cluster. \code{RoleArn} values are created by using the \href{http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html}{CreateRole} API action in AWS Identity and Access Management (IAM).}
-
-\item{ShippingOption}{The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge device, rather it represents how quickly each device moves to its destination while in transit. Regional shipping speeds are as follows:
-\itemize{
-\item In Australia, you have access to express shipping. Typically, devices shipped express are delivered in about a day.
-\item In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.
-\item In India, Snowball Edges are delivered in one to seven days.
-\item In the US, you have access to one-day shipping and two-day shipping.
-}}
+\item{Resources}{[required] The resources associated with the cluster job. These resources include Amazon S3 buckets and optional AWS Lambda functions written in the Python language.}
 
 \item{Description}{An optional description of this specific cluster, for example \code{Environmental Data Cluster-01}.}
 
+\item{AddressId}{[required] The ID for the address that you want the cluster shipped to.}
+
 \item{KmsKeyARN}{The \code{KmsKeyARN} value that you want to associate with this cluster. \code{KmsKeyARN} values are created by using the \href{http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html}{CreateKey} API action in AWS Key Management Service (AWS KMS).}
 
-\item{SnowballType}{The type of AWS Snowball device to use for this cluster. Currently, the only supported device type for cluster jobs is \code{EDGE}.}
+\item{RoleARN}{[required] The \code{RoleARN} that you want to associate with this cluster. \code{RoleArn} values are created by using the \href{http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html}{CreateRole} API action in AWS Identity and Access Management (IAM).}
+
+\item{SnowballType}{The type of AWS Snowball device to use for this cluster. The only supported device types for cluster jobs are \code{EDGE}, \code{EDGE_C}, and \code{EDGE_CG}.}
+
+\item{ShippingOption}{[required] The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge device, rather it represents how quickly each device moves to its destination while in transit. Regional shipping speeds are as follows:
+\itemize{
+\item In Australia, you have access to express shipping. Typically, devices shipped express are delivered in about a day.
+\item In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.
+\item In India, devices are delivered in one to seven days.
+\item In the US, you have access to one-day shipping and two-day shipping.
+}}
 
 \item{Notification}{The Amazon Simple Notification Service (Amazon SNS) notification settings for this cluster.}
 

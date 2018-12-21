@@ -4,11 +4,15 @@
 \alias{list_provisioning_artifacts_for_service_action}
 \title{Lists all provisioning artifacts (also known as versions) for the specified self-service action}
 \usage{
-list_provisioning_artifacts_for_service_action(ServiceActionId,
-  PageSize = NULL, PageToken = NULL, AcceptLanguage = NULL)
+list_provisioning_artifacts_for_service_action(
+  ServiceActionId = "string",
+  PageSize = 123,
+  PageToken = "string",
+  AcceptLanguage = "string"
+)
 }
 \arguments{
-\item{ServiceActionId}{The self-service action identifier. For example, \code{act-fs7abcd89wxyz}.}
+\item{ServiceActionId}{[required] The self-service action identifier. For example, \code{act-fs7abcd89wxyz}.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 

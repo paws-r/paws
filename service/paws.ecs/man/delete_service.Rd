@@ -4,12 +4,16 @@
 \alias{delete_service}
 \title{Deletes a specified service within a cluster}
 \usage{
-delete_service(service, cluster = NULL, force = NULL)
+delete_service(
+  cluster = "string",
+  service = "string",
+  force = TRUE|FALSE
+)
 }
 \arguments{
-\item{service}{The name of the service to delete.}
-
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that hosts the service to delete. If you do not specify a cluster, the default cluster is assumed.}
+
+\item{service}{[required] The name of the service to delete.}
 
 \item{force}{If \code{true}, allows you to delete a service even if it has not been scaled down to zero tasks. It is only necessary to use this if the service is using the \code{REPLICA} scheduling strategy.}
 }
@@ -17,9 +21,9 @@ delete_service(service, cluster = NULL, force = NULL)
 Deletes a specified service within a cluster. You can delete a service if you have no running tasks in it and the desired task count is zero. If the service is actively maintaining tasks, you cannot delete it, and you must update the service to a desired task count of zero. For more information, see UpdateService.
 }
 \details{
-When you delete a service, if there are still running tasks that require cleanup, the service status moves from \code{ACTIVE} to \code{DRAINING}, and the service is no longer visible in the console or in ListServices API operations. After the tasks have stopped, then the service status moves from \code{DRAINING} to \code{INACTIVE}. Services in the \code{DRAINING} or \code{INACTIVE} status can still be viewed with DescribeServices API operations. However, in the future, \code{INACTIVE} services may be cleaned up and purged from Amazon ECS record keeping, and DescribeServices API operations on those services return a \code{ServiceNotFoundException} error.
+When you delete a service, if there are still running tasks that require cleanup, the service status moves from \code{ACTIVE} to \code{DRAINING}, and the service is no longer visible in the console or in the ListServices API operation. After the tasks have stopped, then the service status moves from \code{DRAINING} to \code{INACTIVE}. Services in the \code{DRAINING} or \code{INACTIVE} status can still be viewed with the DescribeServices API operation. However, in the future, \code{INACTIVE} services may be cleaned up and purged from Amazon ECS record keeping, and DescribeServices calls on those services return a \code{ServiceNotFoundException} error.
 
-If you attempt to create a new service with the same name as an existing service in either \code{ACTIVE} or \code{DRAINING} status, you will receive an error.
+If you attempt to create a new service with the same name as an existing service in either \code{ACTIVE} or \code{DRAINING} status, you receive an error.
 }
 \examples{
 # This example deletes the my-http-service service. The service must have

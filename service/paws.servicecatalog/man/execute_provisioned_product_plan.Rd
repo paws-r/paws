@@ -4,20 +4,23 @@
 \alias{execute_provisioned_product_plan}
 \title{Provisions or modifies a product based on the resource changes for the specified plan}
 \usage{
-execute_provisioned_product_plan(PlanId, IdempotencyToken,
-  AcceptLanguage = NULL)
+execute_provisioned_product_plan(
+  AcceptLanguage = "string",
+  PlanId = "string",
+  IdempotencyToken = "string"
+)
 }
 \arguments{
-\item{PlanId}{The plan identifier.}
-
-\item{IdempotencyToken}{A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{PlanId}{[required] The plan identifier.}
+
+\item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.}
 }
 \description{
 Provisions or modifies a product based on the resource changes for the specified plan.

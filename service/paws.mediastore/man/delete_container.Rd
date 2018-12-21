@@ -4,10 +4,12 @@
 \alias{delete_container}
 \title{Deletes the specified container}
 \usage{
-delete_container(ContainerName)
+delete_container(
+  ContainerName = "string"
+)
 }
 \arguments{
-\item{ContainerName}{The name of the container to delete.}
+\item{ContainerName}{[required] The name of the container to delete.}
 }
 \description{
 Deletes the specified container. Before you make a \code{DeleteContainer} request, delete any objects in the container or in any folders in the container. You can delete only empty containers.

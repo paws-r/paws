@@ -4,17 +4,21 @@
 \alias{delete_route}
 \title{Deletes the specified route from the specified route table}
 \usage{
-delete_route(RouteTableId, DestinationCidrBlock = NULL,
-  DestinationIpv6CidrBlock = NULL, DryRun = NULL)
+delete_route(
+  DestinationCidrBlock = "string",
+  DestinationIpv6CidrBlock = "string",
+  DryRun = TRUE|FALSE,
+  RouteTableId = "string"
+)
 }
 \arguments{
-\item{RouteTableId}{The ID of the route table.}
-
 \item{DestinationCidrBlock}{The IPv4 CIDR range for the route. The value you specify must match the CIDR for the route exactly.}
 
 \item{DestinationIpv6CidrBlock}{The IPv6 CIDR range for the route. The value you specify must match the CIDR for the route exactly.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{RouteTableId}{[required] The ID of the route table.}
 }
 \description{
 Deletes the specified route from the specified route table.

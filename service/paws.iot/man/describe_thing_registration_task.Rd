@@ -4,10 +4,12 @@
 \alias{describe_thing_registration_task}
 \title{Describes a bulk thing provisioning task}
 \usage{
-describe_thing_registration_task(taskId)
+describe_thing_registration_task(
+  taskId = "string"
+)
 }
 \arguments{
-\item{taskId}{The task ID.}
+\item{taskId}{[required] The task ID.}
 }
 \description{
 Describes a bulk thing provisioning task.

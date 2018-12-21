@@ -4,7 +4,11 @@
 \alias{list_operations}
 \title{This operation returns the operation IDs of operations that are not yet complete}
 \usage{
-list_operations(SubmittedSince = NULL, Marker = NULL, MaxItems = NULL)
+list_operations(
+  SubmittedSince = as.POSIXct("2015-01-01"),
+  Marker = "string",
+  MaxItems = 123
+)
 }
 \arguments{
 \item{SubmittedSince}{An optional parameter that lets you get information about all the operations that you submitted after a specified date and time. Specify the date and time in Coordinated Universal time (UTC).}

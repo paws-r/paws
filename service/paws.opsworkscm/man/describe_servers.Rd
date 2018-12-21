@@ -4,7 +4,11 @@
 \alias{describe_servers}
 \title{Lists all configuration management servers that are identified with your account}
 \usage{
-describe_servers(ServerName = NULL, NextToken = NULL, MaxResults = NULL)
+describe_servers(
+  ServerName = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{ServerName}{Describes the server with the specified ServerName.}

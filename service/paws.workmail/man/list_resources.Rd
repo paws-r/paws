@@ -4,10 +4,14 @@
 \alias{list_resources}
 \title{Returns summaries of the organization's resources}
 \usage{
-list_resources(OrganizationId, NextToken = NULL, MaxResults = NULL)
+list_resources(
+  OrganizationId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{OrganizationId}{The identifier for the organization under which the resources exist.}
+\item{OrganizationId}{[required] The identifier for the organization under which the resources exist.}
 
 \item{NextToken}{The token to use to retrieve the next page of results. The first call does not contain any tokens.}
 

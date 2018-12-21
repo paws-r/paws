@@ -4,15 +4,33 @@
 \alias{update_configuration_template}
 \title{Updates the specified configuration template to have the specified properties or configuration option values}
 \usage{
-update_configuration_template(ApplicationName, TemplateName,
-  Description = NULL, OptionSettings = NULL, OptionsToRemove = NULL)
+update_configuration_template(
+  ApplicationName = "string",
+  TemplateName = "string",
+  Description = "string",
+  OptionSettings = list(
+    list(
+      ResourceName = "string",
+      Namespace = "string",
+      OptionName = "string",
+      Value = "string"
+    )
+  ),
+  OptionsToRemove = list(
+    list(
+      ResourceName = "string",
+      Namespace = "string",
+      OptionName = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ApplicationName}{The name of the application associated with the configuration template to update.
+\item{ApplicationName}{[required] The name of the application associated with the configuration template to update.
 
 If no application is found with this name, \code{UpdateConfigurationTemplate} returns an \code{InvalidParameterValue} error.}
 
-\item{TemplateName}{The name of the configuration template to update.
+\item{TemplateName}{[required] The name of the configuration template to update.
 
 If no configuration template is found with this name, \code{UpdateConfigurationTemplate} returns an \code{InvalidParameterValue} error.}
 

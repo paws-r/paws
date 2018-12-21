@@ -4,10 +4,12 @@
 \alias{delete_cache_subnet_group}
 \title{Deletes a cache subnet group}
 \usage{
-delete_cache_subnet_group(CacheSubnetGroupName)
+delete_cache_subnet_group(
+  CacheSubnetGroupName = "string"
+)
 }
 \arguments{
-\item{CacheSubnetGroupName}{The name of the cache subnet group to delete.
+\item{CacheSubnetGroupName}{[required] The name of the cache subnet group to delete.
 
 Constraints: Must contain no more than 255 alphanumeric characters or hyphens.}
 }

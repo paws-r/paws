@@ -4,8 +4,24 @@
 \alias{search_devices}
 \title{Searches devices and lists the ones that meet a set of filter criteria}
 \usage{
-search_devices(NextToken = NULL, MaxResults = NULL, Filters = NULL,
-  SortCriteria = NULL)
+search_devices(
+  NextToken = "string",
+  MaxResults = 123,
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  SortCriteria = list(
+    list(
+      Key = "string",
+      Value = "ASC"|"DESC"
+    )
+  )
+)
 }
 \arguments{
 \item{NextToken}{An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by \code{MaxResults}.}

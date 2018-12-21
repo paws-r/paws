@@ -4,8 +4,22 @@
 \alias{start_export_task}
 \title{Begins the export of discovered data to an S3 bucket}
 \usage{
-start_export_task(exportDataFormat = NULL, filters = NULL,
-  startTime = NULL, endTime = NULL)
+start_export_task(
+  exportDataFormat = list(
+    "CSV"|"GRAPHML"
+  ),
+  filters = list(
+    list(
+      name = "string",
+      values = list(
+        "string"
+      ),
+      condition = "string"
+    )
+  ),
+  startTime = as.POSIXct("2015-01-01"),
+  endTime = as.POSIXct("2015-01-01")
+)
 }
 \arguments{
 \item{exportDataFormat}{The file format for the returned export data. Default value is \code{CSV}. \strong{Note:} \emph{The} \code{GRAPHML} \emph{option has been deprecated.}}

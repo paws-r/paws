@@ -4,13 +4,18 @@
 \alias{update_document}
 \title{Updates the specified attributes of a document}
 \usage{
-update_document(DocumentId, AuthenticationToken = NULL, Name = NULL,
-  ParentFolderId = NULL, ResourceState = NULL)
+update_document(
+  AuthenticationToken = "string",
+  DocumentId = "string",
+  Name = "string",
+  ParentFolderId = "string",
+  ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED"
+)
 }
 \arguments{
-\item{DocumentId}{The ID of the document.}
-
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
+
+\item{DocumentId}{[required] The ID of the document.}
 
 \item{Name}{The name of the document.}
 

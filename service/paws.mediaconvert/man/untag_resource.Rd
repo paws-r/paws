@@ -4,10 +4,15 @@
 \alias{untag_resource}
 \title{Remove tags from a MediaConvert queue, preset, or job template}
 \usage{
-untag_resource(Arn, TagKeys = NULL)
+untag_resource(
+  Arn = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{Arn}{The Amazon Resource Name (ARN) of the resource that you want to remove tags from. To get the ARN, send a GET request with the resource name.}
+\item{Arn}{[required] The Amazon Resource Name (ARN) of the resource that you want to remove tags from. To get the ARN, send a GET request with the resource name.}
 
 \item{TagKeys}{The keys of the tags that you want to remove from the resource.}
 }

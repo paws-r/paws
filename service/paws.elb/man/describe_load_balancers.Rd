@@ -4,8 +4,13 @@
 \alias{describe_load_balancers}
 \title{Describes the specified the load balancers}
 \usage{
-describe_load_balancers(LoadBalancerNames = NULL, Marker = NULL,
-  PageSize = NULL)
+describe_load_balancers(
+  LoadBalancerNames = list(
+    "string"
+  ),
+  Marker = "string",
+  PageSize = 123
+)
 }
 \arguments{
 \item{LoadBalancerNames}{The names of the load balancers.}

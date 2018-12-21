@@ -4,20 +4,27 @@
 \alias{synthesize_speech}
 \title{Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes}
 \usage{
-synthesize_speech(OutputFormat, Text, VoiceId, LexiconNames = NULL,
-  SampleRate = NULL, SpeechMarkTypes = NULL, TextType = NULL,
-  LanguageCode = NULL)
+synthesize_speech(
+  LexiconNames = list(
+    "string"
+  ),
+  OutputFormat = "json"|"mp3"|"ogg_vorbis"|"pcm",
+  SampleRate = "string",
+  SpeechMarkTypes = list(
+    "sentence"|"ssml"|"viseme"|"word"
+  ),
+  Text = "string",
+  TextType = "ssml"|"text",
+  VoiceId = "Geraint"|"Gwyneth"|"Mads"|"Naja"|"Hans"|"Marlene"|"Nicole"|"Russell"|"Amy"|"Brian"|"Emma"|"Raveena"|"Ivy"|"Joanna"|"Joey"|"Justin"|"Kendra"|"Kimberly"|"Matthew"|"Salli"|"Conchita"|"Enrique"|"Miguel"|"Penelope"|"Chantal"|"Celine"|"Lea"|"Mathieu"|"Dora"|"Karl"|"Carla"|"Giorgio"|"Mizuki"|"Liv"|"Lotte"|"Ruben"|"Ewa"|"Jacek"|"Jan"|"Maja"|"Ricardo"|"Vitoria"|"Cristiano"|"Ines"|"Carmen"|"Maxim"|"Tatyana"|"Astrid"|"Filiz"|"Vicki"|"Takumi"|"Seoyeon"|"Aditi"|"Zhiyu"|"Bianca"|"Lucia"|"Mia",
+  LanguageCode = "cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"
+)
 }
 \arguments{
-\item{OutputFormat}{The format in which the returned output will be encoded. For audio stream, this will be mp3, ogg\_vorbis, or pcm. For speech marks, this will be json.
+\item{LexiconNames}{List of one or more pronunciation lexicon names you want the service to apply during synthesis. Lexicons are applied only if the language of the lexicon is the same as the language of the voice. For information about storing lexicons, see \href{http://docs.aws.amazon.com/polly/latest/dg/API_PutLexicon.html}{PutLexicon}.}
+
+\item{OutputFormat}{[required] The format in which the returned output will be encoded. For audio stream, this will be mp3, ogg\_vorbis, or pcm. For speech marks, this will be json.
 
 When pcm is used, the content returned is audio/pcm in a signed 16-bit, 1 channel (mono), little-endian format.}
-
-\item{Text}{Input text to synthesize. If you specify \code{ssml} as the \code{TextType}, follow the SSML format for the input text.}
-
-\item{VoiceId}{Voice ID to use for the synthesis. You can get a list of available voice IDs by calling the \href{http://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html}{DescribeVoices} operation.}
-
-\item{LexiconNames}{List of one or more pronunciation lexicon names you want the service to apply during synthesis. Lexicons are applied only if the language of the lexicon is the same as the language of the voice. For information about storing lexicons, see \href{http://docs.aws.amazon.com/polly/latest/dg/API_PutLexicon.html}{PutLexicon}.}
 
 \item{SampleRate}{The audio frequency specified in Hz.
 
@@ -27,7 +34,11 @@ Valid values for \code{pcm} are "8000" and "16000" The default value is "16000".
 
 \item{SpeechMarkTypes}{The type of speech marks returned for the input text.}
 
+\item{Text}{[required] Input text to synthesize. If you specify \code{ssml} as the \code{TextType}, follow the SSML format for the input text.}
+
 \item{TextType}{Specifies whether the input text is plain text or SSML. The default value is plain text. For more information, see \href{http://docs.aws.amazon.com/polly/latest/dg/ssml.html}{Using SSML}.}
+
+\item{VoiceId}{[required] Voice ID to use for the synthesis. You can get a list of available voice IDs by calling the \href{http://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html}{DescribeVoices} operation.}
 
 \item{LanguageCode}{Optional language code for the Synthesize Speech request. This is only necessary if using a bilingual voice, such as Aditi, which can be used for either Indian English (en-IN) or Hindi (hi-IN).
 

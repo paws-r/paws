@@ -4,14 +4,22 @@
 \alias{create_case}
 \title{Creates a new case in the AWS Support Center}
 \usage{
-create_case(subject, communicationBody, serviceCode = NULL,
-  severityCode = NULL, categoryCode = NULL, ccEmailAddresses = NULL,
-  language = NULL, issueType = NULL, attachmentSetId = NULL)
+create_case(
+  subject = "string",
+  serviceCode = "string",
+  severityCode = "string",
+  categoryCode = "string",
+  communicationBody = "string",
+  ccEmailAddresses = list(
+    "string"
+  ),
+  language = "string",
+  issueType = "string",
+  attachmentSetId = "string"
+)
 }
 \arguments{
-\item{subject}{The title of the AWS Support case.}
-
-\item{communicationBody}{The communication body text when you create an AWS Support case by calling CreateCase.}
+\item{subject}{[required] The title of the AWS Support case.}
 
 \item{serviceCode}{The code for the AWS service returned by the call to DescribeServices.}
 
@@ -20,6 +28,8 @@ create_case(subject, communicationBody, serviceCode = NULL,
 The availability of severity levels depends on each customer's support subscription. In other words, your subscription may not necessarily require the urgent level of response time.}
 
 \item{categoryCode}{The category of problem for the AWS Support case.}
+
+\item{communicationBody}{[required] The communication body text when you create an AWS Support case by calling CreateCase.}
 
 \item{ccEmailAddresses}{A list of email addresses that AWS Support copies on case correspondence.}
 

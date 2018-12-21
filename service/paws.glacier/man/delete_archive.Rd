@@ -4,14 +4,18 @@
 \alias{delete_archive}
 \title{This operation deletes an archive from a vault}
 \usage{
-delete_archive(accountId, vaultName, archiveId)
+delete_archive(
+  accountId = "string",
+  vaultName = "string",
+  archiveId = "string"
+)
 }
 \arguments{
-\item{accountId}{The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
+\item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
 
-\item{vaultName}{The name of the vault.}
+\item{vaultName}{[required] The name of the vault.}
 
-\item{archiveId}{The ID of the archive to delete.}
+\item{archiveId}{[required] The ID of the archive to delete.}
 }
 \description{
 This operation deletes an archive from a vault. Subsequent requests to initiate a retrieval of this archive will fail. Archive retrievals that are in progress for this archive ID may or may not succeed according to the following scenarios:

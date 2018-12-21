@@ -4,10 +4,12 @@
 \alias{get_gcm_channel}
 \title{Returns information about the GCM channel for an app}
 \usage{
-get_gcm_channel(ApplicationId)
+get_gcm_channel(
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 }
 \description{
 Returns information about the GCM channel for an app.

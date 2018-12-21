@@ -4,36 +4,69 @@
 \alias{create_service}
 \title{Creates a service, which defines the configuration for the following entities:}
 \usage{
-create_service(Name, DnsConfig, CreatorRequestId = NULL, Description = NULL,
-  HealthCheckConfig = NULL, HealthCheckCustomConfig = NULL)
+create_service(
+  Name = "string",
+  NamespaceId = "string",
+  CreatorRequestId = "string",
+  Description = "string",
+  DnsConfig = list(
+    NamespaceId = "string",
+    RoutingPolicy = "MULTIVALUE"|"WEIGHTED",
+    DnsRecords = list(
+      list(
+        Type = "SRV"|"A"|"AAAA"|"CNAME",
+        TTL = 123
+      )
+    )
+  ),
+  HealthCheckConfig = list(
+    Type = "HTTP"|"HTTPS"|"TCP",
+    ResourcePath = "string",
+    FailureThreshold = 123
+  ),
+  HealthCheckCustomConfig = list(
+    FailureThreshold = 123
+  )
+)
 }
 \arguments{
-\item{Name}{The name that you want to assign to the service.}
+\item{Name}{[required] The name that you want to assign to the service.}
 
-\item{DnsConfig}{A complex type that contains information about the records that you want Route 53 to create when you register an instance.}
+\item{NamespaceId}{The ID of the namespace that you want to use to create the service.}
 
 \item{CreatorRequestId}{A unique string that identifies the request and that allows failed \code{CreateService} requests to be retried without the risk of executing the operation twice. \code{CreatorRequestId} can be any unique string, for example, a date/time stamp.}
 
 \item{Description}{A description for the service.}
 
-\item{HealthCheckConfig}{\emph{Public DNS namespaces only.} A complex type that contains settings for an optional health check. If you specify settings for a health check, Route 53 associates the health check with all the records that you specify in \code{DnsConfig}.
+\item{DnsConfig}{A complex type that contains information about the Amazon Route 53 records that you want AWS Cloud Map to create when you register an instance.}
 
-For information about the charges for health checks, see \href{http://aws.amazon.com/route53/pricing}{Route 53 Pricing}.}
+\item{HealthCheckConfig}{\emph{Public DNS namespaces only.} A complex type that contains settings for an optional Route 53 health check. If you specify settings for a health check, AWS Cloud Map associates the health check with all the Route 53 DNS records that you specify in \code{DnsConfig}.
 
-\item{HealthCheckCustomConfig}{}
+If you specify a health check configuration, you can specify either \code{HealthCheckCustomConfig} or \code{HealthCheckConfig} but not both.
+
+For information about the charges for health checks, see \href{http://aws.amazon.com/cloud-map/pricing/}{AWS Cloud Map Pricing}.}
+
+\item{HealthCheckCustomConfig}{A complex type that contains information about an optional custom health check.
+
+If you specify a health check configuration, you can specify either \code{HealthCheckCustomConfig} or \code{HealthCheckConfig} but not both.}
 }
 \description{
 Creates a service, which defines the configuration for the following entities:
 }
 \details{
 \itemize{
-\item Up to three records (A, AAAA, and SRV) or one CNAME record
+\item For public and private DNS namespaces, one of the following combinations of DNS records in Amazon Route 53:
+\item A
+\item AAAA
+\item A and AAAA
+\item SRV
+\item CNAME
 \item Optionally, a health check
 }
 
-After you create the service, you can submit a RegisterInstance request, and Amazon Route 53 uses the values in the configuration to create the specified entities.
+After you create the service, you can submit a RegisterInstance request, and AWS Cloud Map uses the values in the configuration to create the specified entities.
 
-For the current limit on the number of instances that you can register using the same namespace and using the same service, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming}{Limits on Auto Naming} in the \emph{Route 53 Developer Guide}.
+For the current limit on the number of instances that you can register using the same namespace and using the same service, see \href{http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map Limits} in the \emph{AWS Cloud Map Developer Guide}.
 }
 \examples{
 

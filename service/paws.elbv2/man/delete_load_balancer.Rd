@@ -4,10 +4,12 @@
 \alias{delete_load_balancer}
 \title{Deletes the specified Application Load Balancer or Network Load Balancer and its attached listeners}
 \usage{
-delete_load_balancer(LoadBalancerArn)
+delete_load_balancer(
+  LoadBalancerArn = "string"
+)
 }
 \arguments{
-\item{LoadBalancerArn}{The Amazon Resource Name (ARN) of the load balancer.}
+\item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
 }
 \description{
 Deletes the specified Application Load Balancer or Network Load Balancer and its attached listeners.

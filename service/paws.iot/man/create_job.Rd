@@ -4,18 +4,57 @@
 \alias{create_job}
 \title{Creates a job}
 \usage{
-create_job(jobId, targets, documentSource = NULL, document = NULL,
-  description = NULL, presignedUrlConfig = NULL, targetSelection = NULL,
-  jobExecutionsRolloutConfig = NULL, timeoutConfig = NULL)
+create_job(
+  jobId = "string",
+  targets = list(
+    "string"
+  ),
+  documentSource = "string",
+  document = "string",
+  description = "string",
+  presignedUrlConfig = list(
+    roleArn = "string",
+    expiresInSec = 123
+  ),
+  targetSelection = "CONTINUOUS"|"SNAPSHOT",
+  jobExecutionsRolloutConfig = list(
+    maximumPerMinute = 123,
+    exponentialRate = list(
+      baseRatePerMinute = 123,
+      incrementFactor = 123.0,
+      rateIncreaseCriteria = list(
+        numberOfNotifiedThings = 123,
+        numberOfSucceededThings = 123
+      )
+    )
+  ),
+  abortConfig = list(
+    criteriaList = list(
+      list(
+        failureType = "FAILED"|"REJECTED"|"TIMED_OUT"|"ALL",
+        action = "CANCEL",
+        thresholdPercentage = 123.0,
+        minNumberOfExecutedThings = 123
+      )
+    )
+  ),
+  timeoutConfig = list(
+    inProgressTimeoutInMinutes = 123
+  ),
+  tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{jobId}{A job identifier which must be unique for your AWS account. We recommend using a UUID. Alpha-numeric characters, "-" and "\_" are valid for use here.}
+\item{jobId}{[required] A job identifier which must be unique for your AWS account. We recommend using a UUID. Alpha-numeric characters, "-" and "\_" are valid for use here.}
 
-\item{targets}{A list of things and thing groups to which the job should be sent.}
+\item{targets}{[required] A list of things and thing groups to which the job should be sent.}
 
 \item{documentSource}{An S3 link to the job document.}
-
-\item{document}{The job document.}
 
 \item{description}{A short text description of the job.}
 
@@ -25,7 +64,11 @@ create_job(jobId, targets, documentSource = NULL, document = NULL,
 
 \item{jobExecutionsRolloutConfig}{Allows you to create a staged rollout of the job.}
 
+\item{abortConfig}{Allows you to create criteria to abort a job.}
+
 \item{timeoutConfig}{Specifies the amount of time each device has to finish its execution of the job. The timer is started when the job execution status is set to \code{IN_PROGRESS}. If the job execution status is not set to another terminal state before the time expires, it will be automatically set to \code{TIMED_OUT}.}
+
+\item{tags}{Metadata which can be used to manage the job.}
 }
 \description{
 Creates a job.

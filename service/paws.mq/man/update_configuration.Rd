@@ -4,10 +4,14 @@
 \alias{update_configuration}
 \title{Updates the specified configuration}
 \usage{
-update_configuration(ConfigurationId, Data = NULL, Description = NULL)
+update_configuration(
+  ConfigurationId = "string",
+  Data = "string",
+  Description = "string"
+)
 }
 \arguments{
-\item{ConfigurationId}{The unique ID that Amazon MQ generates for the configuration.}
+\item{ConfigurationId}{[required] The unique ID that Amazon MQ generates for the configuration.}
 
 \item{Data}{Required. The base64-encoded XML configuration.}
 

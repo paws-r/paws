@@ -4,10 +4,14 @@
 \alias{create_configuration_set}
 \title{Creates a configuration set}
 \usage{
-create_configuration_set(ConfigurationSet)
+create_configuration_set(
+  ConfigurationSet = list(
+    Name = "string"
+  )
+)
 }
 \arguments{
-\item{ConfigurationSet}{A data structure that contains the name of the configuration set.}
+\item{ConfigurationSet}{[required] A data structure that contains the name of the configuration set.}
 }
 \description{
 Creates a configuration set.

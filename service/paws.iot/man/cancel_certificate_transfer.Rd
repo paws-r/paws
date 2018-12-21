@@ -4,10 +4,12 @@
 \alias{cancel_certificate_transfer}
 \title{Cancels a pending transfer for the specified certificate}
 \usage{
-cancel_certificate_transfer(certificateId)
+cancel_certificate_transfer(
+  certificateId = "string"
+)
 }
 \arguments{
-\item{certificateId}{The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)}
+\item{certificateId}{[required] The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)}
 }
 \description{
 Cancels a pending transfer for the specified certificate.

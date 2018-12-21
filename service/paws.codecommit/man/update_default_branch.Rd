@@ -4,12 +4,15 @@
 \alias{update_default_branch}
 \title{Sets or changes the default branch name for the specified repository}
 \usage{
-update_default_branch(repositoryName, defaultBranchName)
+update_default_branch(
+  repositoryName = "string",
+  defaultBranchName = "string"
+)
 }
 \arguments{
-\item{repositoryName}{The name of the repository to set or change the default branch for.}
+\item{repositoryName}{[required] The name of the repository to set or change the default branch for.}
 
-\item{defaultBranchName}{The name of the branch to set as the default.}
+\item{defaultBranchName}{[required] The name of the branch to set as the default.}
 }
 \description{
 Sets or changes the default branch name for the specified repository.

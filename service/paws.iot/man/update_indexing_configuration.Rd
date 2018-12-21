@@ -4,8 +4,15 @@
 \alias{update_indexing_configuration}
 \title{Updates the search configuration}
 \usage{
-update_indexing_configuration(thingIndexingConfiguration = NULL,
-  thingGroupIndexingConfiguration = NULL)
+update_indexing_configuration(
+  thingIndexingConfiguration = list(
+    thingIndexingMode = "OFF"|"REGISTRY"|"REGISTRY_AND_SHADOW",
+    thingConnectivityIndexingMode = "OFF"|"STATUS"
+  ),
+  thingGroupIndexingConfiguration = list(
+    thingGroupIndexingMode = "OFF"|"ON"
+  )
+)
 }
 \arguments{
 \item{thingIndexingConfiguration}{Thing indexing configuration.}

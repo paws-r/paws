@@ -4,10 +4,13 @@
 \alias{list_remote_access_sessions}
 \title{Returns a list of all currently running remote access sessions}
 \usage{
-list_remote_access_sessions(arn, nextToken = NULL)
+list_remote_access_sessions(
+  arn = "string",
+  nextToken = "string"
+)
 }
 \arguments{
-\item{arn}{The Amazon Resource Name (ARN) of the remote access session about which you are requesting information.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of the remote access session about which you are requesting information.}
 
 \item{nextToken}{An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.}
 }

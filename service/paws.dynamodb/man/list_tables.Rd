@@ -4,7 +4,10 @@
 \alias{list_tables}
 \title{Returns an array of table names associated with the current account and endpoint}
 \usage{
-list_tables(ExclusiveStartTableName = NULL, Limit = NULL)
+list_tables(
+  ExclusiveStartTableName = "string",
+  Limit = 123
+)
 }
 \arguments{
 \item{ExclusiveStartTableName}{The first table name that this operation will evaluate. Use the value that was returned for \code{LastEvaluatedTableName} in a previous operation, so that you can obtain the next page of results.}

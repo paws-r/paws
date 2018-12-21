@@ -4,10 +4,14 @@
 \alias{list_thing_groups_for_thing}
 \title{List the thing groups to which the specified thing belongs}
 \usage{
-list_thing_groups_for_thing(thingName, nextToken = NULL, maxResults = NULL)
+list_thing_groups_for_thing(
+  thingName = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{thingName}{The thing name.}
+\item{thingName}{[required] The thing name.}
 
 \item{nextToken}{The token to retrieve the next set of results.}
 

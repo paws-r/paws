@@ -4,19 +4,80 @@
 \alias{update_partition}
 \title{Updates a partition}
 \usage{
-update_partition(DatabaseName, TableName, PartitionValueList, PartitionInput,
-  CatalogId = NULL)
+update_partition(
+  CatalogId = "string",
+  DatabaseName = "string",
+  TableName = "string",
+  PartitionValueList = list(
+    "string"
+  ),
+  PartitionInput = list(
+    Values = list(
+      "string"
+    ),
+    LastAccessTime = as.POSIXct("2015-01-01"),
+    StorageDescriptor = list(
+      Columns = list(
+        list(
+          Name = "string",
+          Type = "string",
+          Comment = "string"
+        )
+      ),
+      Location = "string",
+      InputFormat = "string",
+      OutputFormat = "string",
+      Compressed = TRUE|FALSE,
+      NumberOfBuckets = 123,
+      SerdeInfo = list(
+        Name = "string",
+        SerializationLibrary = "string",
+        Parameters = list(
+          "string"
+        )
+      ),
+      BucketColumns = list(
+        "string"
+      ),
+      SortColumns = list(
+        list(
+          Column = "string",
+          SortOrder = 123
+        )
+      ),
+      Parameters = list(
+        "string"
+      ),
+      SkewedInfo = list(
+        SkewedColumnNames = list(
+          "string"
+        ),
+        SkewedColumnValues = list(
+          "string"
+        ),
+        SkewedColumnValueLocationMaps = list(
+          "string"
+        )
+      ),
+      StoredAsSubDirectories = TRUE|FALSE
+    ),
+    Parameters = list(
+      "string"
+    ),
+    LastAnalyzedTime = as.POSIXct("2015-01-01")
+  )
+)
 }
 \arguments{
-\item{DatabaseName}{The name of the catalog database in which the table in question resides.}
-
-\item{TableName}{The name of the table where the partition to be updated is located.}
-
-\item{PartitionValueList}{A list of the values defining the partition.}
-
-\item{PartitionInput}{The new partition object to which to update the partition.}
-
 \item{CatalogId}{The ID of the Data Catalog where the partition to be updated resides. If none is supplied, the AWS account ID is used by default.}
+
+\item{DatabaseName}{[required] The name of the catalog database in which the table in question resides.}
+
+\item{TableName}{[required] The name of the table where the partition to be updated is located.}
+
+\item{PartitionValueList}{[required] A list of the values defining the partition.}
+
+\item{PartitionInput}{[required] The new partition object to which to update the partition.}
 }
 \description{
 Updates a partition.

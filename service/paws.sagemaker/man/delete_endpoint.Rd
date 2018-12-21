@@ -4,10 +4,12 @@
 \alias{delete_endpoint}
 \title{Deletes an endpoint}
 \usage{
-delete_endpoint(EndpointName)
+delete_endpoint(
+  EndpointName = "string"
+)
 }
 \arguments{
-\item{EndpointName}{The name of the endpoint that you want to delete.}
+\item{EndpointName}{[required] The name of the endpoint that you want to delete.}
 }
 \description{
 Deletes an endpoint. Amazon SageMaker frees up all of the resources that were deployed when the endpoint was created.

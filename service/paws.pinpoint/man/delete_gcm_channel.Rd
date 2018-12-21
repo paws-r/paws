@@ -4,10 +4,12 @@
 \alias{delete_gcm_channel}
 \title{Deletes the GCM channel for an app}
 \usage{
-delete_gcm_channel(ApplicationId)
+delete_gcm_channel(
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 }
 \description{
 Deletes the GCM channel for an app.

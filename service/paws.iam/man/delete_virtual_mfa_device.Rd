@@ -4,12 +4,14 @@
 \alias{delete_virtual_mfa_device}
 \title{Deletes a virtual MFA device}
 \usage{
-delete_virtual_mfa_device(SerialNumber)
+delete_virtual_mfa_device(
+  SerialNumber = "string"
+)
 }
 \arguments{
-\item{SerialNumber}{The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the same as the ARN.
+\item{SerialNumber}{[required] The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the same as the ARN.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@:/-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@:/-}
 }
 \description{
 Deletes a virtual MFA device.

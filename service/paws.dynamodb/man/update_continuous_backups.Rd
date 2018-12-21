@@ -4,12 +4,17 @@
 \alias{update_continuous_backups}
 \title{\code{UpdateContinuousBackups} enables or disables point in time recovery for the specified table}
 \usage{
-update_continuous_backups(TableName, PointInTimeRecoverySpecification)
+update_continuous_backups(
+  TableName = "string",
+  PointInTimeRecoverySpecification = list(
+    PointInTimeRecoveryEnabled = TRUE|FALSE
+  )
+)
 }
 \arguments{
-\item{TableName}{The name of the table.}
+\item{TableName}{[required] The name of the table.}
 
-\item{PointInTimeRecoverySpecification}{Represents the settings used to enable point in time recovery.}
+\item{PointInTimeRecoverySpecification}{[required] Represents the settings used to enable point in time recovery.}
 }
 \description{
 \code{UpdateContinuousBackups} enables or disables point in time recovery for the specified table. A successful \code{UpdateContinuousBackups} call returns the current \code{ContinuousBackupsDescription}. Continuous backups are \code{ENABLED} on all tables at table creation. If point in time recovery is enabled, \code{PointInTimeRecoveryStatus} will be set to ENABLED.

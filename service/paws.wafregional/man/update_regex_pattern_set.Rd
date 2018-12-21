@@ -4,14 +4,23 @@
 \alias{update_regex_pattern_set}
 \title{Inserts or deletes \code{RegexPatternString} objects in a RegexPatternSet}
 \usage{
-update_regex_pattern_set(RegexPatternSetId, Updates, ChangeToken)
+update_regex_pattern_set(
+  RegexPatternSetId = "string",
+  Updates = list(
+    list(
+      Action = "INSERT"|"DELETE",
+      RegexPatternString = "string"
+    )
+  ),
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{RegexPatternSetId}{The \code{RegexPatternSetId} of the RegexPatternSet that you want to update. \code{RegexPatternSetId} is returned by CreateRegexPatternSet and by ListRegexPatternSets.}
+\item{RegexPatternSetId}{[required] The \code{RegexPatternSetId} of the RegexPatternSet that you want to update. \code{RegexPatternSetId} is returned by CreateRegexPatternSet and by ListRegexPatternSets.}
 
-\item{Updates}{An array of \code{RegexPatternSetUpdate} objects that you want to insert into or delete from a RegexPatternSet.}
+\item{Updates}{[required] An array of \code{RegexPatternSetUpdate} objects that you want to insert into or delete from a RegexPatternSet.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Inserts or deletes \code{RegexPatternString} objects in a RegexPatternSet. For each \code{RegexPatternString} object, you specify the following values:

@@ -2,15 +2,23 @@
 % Please edit documentation in R/paws.batch_operations.R
 \name{list_jobs}
 \alias{list_jobs}
-\title{Returns a list of task jobs for a specified job queue}
+\title{Returns a list of AWS Batch jobs}
 \usage{
-list_jobs(jobQueue = NULL, arrayJobId = NULL, jobStatus = NULL,
-  maxResults = NULL, nextToken = NULL)
+list_jobs(
+  jobQueue = "string",
+  arrayJobId = "string",
+  multiNodeJobId = "string",
+  jobStatus = "SUBMITTED"|"PENDING"|"RUNNABLE"|"STARTING"|"RUNNING"|"SUCCEEDED"|"FAILED",
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
 \item{jobQueue}{The name or full Amazon Resource Name (ARN) of the job queue with which to list jobs.}
 
 \item{arrayJobId}{The job ID for an array job. Specifying an array job ID with this parameter lists all child jobs from within the specified array.}
+
+\item{multiNodeJobId}{The job ID for a multi-node parallel job. Specifying a multi-node parallel job ID with this parameter lists all nodes that are associated with the specified job.}
 
 \item{jobStatus}{The job status with which to filter jobs in the specified queue. If you do not specify a status, only \code{RUNNING} jobs are returned.}
 
@@ -21,7 +29,17 @@ list_jobs(jobQueue = NULL, arrayJobId = NULL, jobStatus = NULL,
 This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.}
 }
 \description{
-Returns a list of task jobs for a specified job queue. You can filter the results by job status with the \code{jobStatus} parameter. If you do not specify a status, only \code{RUNNING} jobs are returned.
+Returns a list of AWS Batch jobs.
+}
+\details{
+You must specify only one of the following:
+\itemize{
+\item a job queue ID to return a list of jobs in that job queue
+\item a multi-node parallel job ID to return a list of that job's nodes
+\item an array job ID to return a list of that job's children
+}
+
+You can filter the results by job status with the \code{jobStatus} parameter. If you do not specify a status, only \code{RUNNING} jobs are returned.
 }
 \examples{
 # This example lists the running jobs in the HighPriority job queue.

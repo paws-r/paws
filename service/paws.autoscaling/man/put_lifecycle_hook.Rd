@@ -2,17 +2,23 @@
 % Please edit documentation in R/paws.autoscaling_operations.R
 \name{put_lifecycle_hook}
 \alias{put_lifecycle_hook}
-\title{Creates or updates a lifecycle hook for the specified Auto Scaling Group}
+\title{Creates or updates a lifecycle hook for the specified Auto Scaling group}
 \usage{
-put_lifecycle_hook(LifecycleHookName, AutoScalingGroupName,
-  LifecycleTransition = NULL, RoleARN = NULL,
-  NotificationTargetARN = NULL, NotificationMetadata = NULL,
-  HeartbeatTimeout = NULL, DefaultResult = NULL)
+put_lifecycle_hook(
+  LifecycleHookName = "string",
+  AutoScalingGroupName = "string",
+  LifecycleTransition = "string",
+  RoleARN = "string",
+  NotificationTargetARN = "string",
+  NotificationMetadata = "string",
+  HeartbeatTimeout = 123,
+  DefaultResult = "string"
+)
 }
 \arguments{
-\item{LifecycleHookName}{The name of the lifecycle hook.}
+\item{LifecycleHookName}{[required] The name of the lifecycle hook.}
 
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
 \item{LifecycleTransition}{The instance state to which you want to attach the lifecycle hook. The possible values are:
 \itemize{
@@ -26,11 +32,11 @@ This parameter is required for new lifecycle hooks, but optional when updating e
 
 This parameter is required for new lifecycle hooks, but optional when updating existing hooks.}
 
-\item{NotificationTargetARN}{The ARN of the notification target that Amazon EC2 Auto Scaling will use to notify you when an instance is in the transition state for the lifecycle hook. This target can be either an SQS queue or an SNS topic. If you specify an empty string, this overrides the current ARN.
+\item{NotificationTargetARN}{The ARN of the notification target that Amazon EC2 Auto Scaling uses to notify you when an instance is in the transition state for the lifecycle hook. This target can be either an SQS queue or an SNS topic. If you specify an empty string, this overrides the current ARN.
 
-This operation uses the JSON format when sending notifications to an Amazon SQS queue, and an email key/value pair format when sending notifications to an Amazon SNS topic.
+This operation uses the JSON format when sending notifications to an Amazon SQS queue, and an email key-value pair format when sending notifications to an Amazon SNS topic.
 
-When you specify a notification target, Amazon EC2 Auto Scaling sends it a test message. Test messages contains the following additional key/value pair: \code{"Event": "autoscaling:TEST_NOTIFICATION"}.}
+When you specify a notification target, Amazon EC2 Auto Scaling sends it a test message. Test messages contain the following additional key-value pair: \code{"Event": "autoscaling:TEST_NOTIFICATION"}.}
 
 \item{NotificationMetadata}{Contains additional information that you want to include any time Amazon EC2 Auto Scaling sends a message to the notification target.}
 
@@ -41,10 +47,10 @@ If the lifecycle hook times out, Amazon EC2 Auto Scaling performs the default ac
 \item{DefaultResult}{Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses or if an unexpected failure occurs. This parameter can be either \code{CONTINUE} or \code{ABANDON}. The default value is \code{ABANDON}.}
 }
 \description{
-Creates or updates a lifecycle hook for the specified Auto Scaling Group.
+Creates or updates a lifecycle hook for the specified Auto Scaling group.
 }
 \details{
-A lifecycle hook tells Amazon EC2 Auto Scaling that you want to perform an action on an instance that is not actively in service; for example, either when the instance launches or before the instance terminates.
+A lifecycle hook tells Amazon EC2 Auto Scaling to perform an action on an instance that is not actively in service; for example, either when the instance launches or before the instance terminates.
 
 This step is a part of the procedure for adding a lifecycle hook to an Auto Scaling group:
 \enumerate{

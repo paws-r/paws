@@ -4,10 +4,12 @@
 \alias{get_change_token_status}
 \title{Returns the status of a \code{ChangeToken} that you got by calling GetChangeToken}
 \usage{
-get_change_token_status(ChangeToken)
+get_change_token_status(
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{ChangeToken}{The change token for which you want to get the status. This change token was previously returned in the \code{GetChangeToken} response.}
+\item{ChangeToken}{[required] The change token for which you want to get the status. This change token was previously returned in the \code{GetChangeToken} response.}
 }
 \description{
 Returns the status of a \code{ChangeToken} that you got by calling GetChangeToken. \code{ChangeTokenStatus} is one of the following values:

@@ -4,10 +4,12 @@
 \alias{describe_global_table}
 \title{Returns information about the specified global table}
 \usage{
-describe_global_table(GlobalTableName)
+describe_global_table(
+  GlobalTableName = "string"
+)
 }
 \arguments{
-\item{GlobalTableName}{The name of the global table.}
+\item{GlobalTableName}{[required] The name of the global table.}
 }
 \description{
 Returns information about the specified global table.

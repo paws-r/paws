@@ -6,14 +6,19 @@
 \alias{paws.kinesisanalytics-package}
 \title{paws.kinesisanalytics: Amazon Kinesis Analytics}
 \description{
-What the package does (one paragraph).
+
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

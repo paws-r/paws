@@ -4,10 +4,12 @@
 \alias{delete_verified_email_address}
 \title{Deprecated}
 \usage{
-delete_verified_email_address(EmailAddress)
+delete_verified_email_address(
+  EmailAddress = "string"
+)
 }
 \arguments{
-\item{EmailAddress}{An email address to be removed from the list of verified addresses.}
+\item{EmailAddress}{[required] An email address to be removed from the list of verified addresses.}
 }
 \description{
 Deprecated. Use the \code{DeleteIdentity} operation to delete email addresses and domains.

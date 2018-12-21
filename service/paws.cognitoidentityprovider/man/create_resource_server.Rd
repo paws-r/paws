@@ -4,14 +4,24 @@
 \alias{create_resource_server}
 \title{Creates a new OAuth2}
 \usage{
-create_resource_server(UserPoolId, Identifier, Name, Scopes = NULL)
+create_resource_server(
+  UserPoolId = "string",
+  Identifier = "string",
+  Name = "string",
+  Scopes = list(
+    list(
+      ScopeName = "string",
+      ScopeDescription = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The user pool ID for the user pool.}
 
-\item{Identifier}{A unique resource server identifier for the resource server. This could be an HTTPS endpoint where the resource server is located. For example, \code{https://my-weather-api.example.com}.}
+\item{Identifier}{[required] A unique resource server identifier for the resource server. This could be an HTTPS endpoint where the resource server is located. For example, \code{https://my-weather-api.example.com}.}
 
-\item{Name}{A friendly name for the resource server.}
+\item{Name}{[required] A friendly name for the resource server.}
 
 \item{Scopes}{A list of scopes. Each scope is map, where the keys are \code{name} and \code{description}.}
 }

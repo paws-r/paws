@@ -4,10 +4,12 @@
 \alias{start_stack}
 \title{Starts a stack's instances}
 \usage{
-start_stack(StackId)
+start_stack(
+  StackId = "string"
+)
 }
 \arguments{
-\item{StackId}{The stack ID.}
+\item{StackId}{[required] The stack ID.}
 }
 \description{
 Starts a stack's instances.

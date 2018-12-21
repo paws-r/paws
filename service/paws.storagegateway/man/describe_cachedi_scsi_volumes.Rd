@@ -4,10 +4,14 @@
 \alias{describe_cachedi_scsi_volumes}
 \title{Returns a description of the gateway volumes specified in the request}
 \usage{
-describe_cachedi_scsi_volumes(VolumeARNs)
+describe_cachedi_scsi_volumes(
+  VolumeARNs = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{VolumeARNs}{}
+\item{VolumeARNs}{[required]}
 }
 \description{
 Returns a description of the gateway volumes specified in the request. This operation is only supported in the cached volume gateway types.

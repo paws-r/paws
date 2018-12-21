@@ -4,12 +4,15 @@
 \alias{abort_vault_lock}
 \title{This operation aborts the vault locking process if the vault lock is not in the \code{Locked} state}
 \usage{
-abort_vault_lock(accountId, vaultName)
+abort_vault_lock(
+  accountId = "string",
+  vaultName = "string"
+)
 }
 \arguments{
-\item{accountId}{The \code{AccountId} value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.}
+\item{accountId}{[required] The \code{AccountId} value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.}
 
-\item{vaultName}{The name of the vault.}
+\item{vaultName}{[required] The name of the vault.}
 }
 \description{
 This operation aborts the vault locking process if the vault lock is not in the \code{Locked} state. If the vault lock is in the \code{Locked} state when this operation is requested, the operation returns an \code{AccessDeniedException} error. Aborting the vault locking process removes the vault lock policy from the specified vault.

@@ -4,7 +4,10 @@
 \alias{list_elasticsearch_versions}
 \title{List all supported Elasticsearch versions}
 \usage{
-list_elasticsearch_versions(MaxResults = NULL, NextToken = NULL)
+list_elasticsearch_versions(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{MaxResults}{Set this value to limit the number of results returned. Value provided must be greater than 10 else it wont be honored.}

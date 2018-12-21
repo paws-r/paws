@@ -6,8 +6,8 @@
 \alias{paws.elbv2-package}
 \title{paws.elbv2: Elastic Load Balancing}
 \description{
-A load balancer distributes incoming traffic across
-targets, such as your EC2 instances. This enables you to increase the
+A load balancer distributes incoming traffic across targets,
+such as your EC2 instances. This enables you to increase the
 availability of your application. The load balancer also monitors the
 health of its registered targets and ensures that it routes traffic
 only to healthy targets. You configure your load balancer to accept
@@ -23,7 +23,12 @@ health status of the targets.
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

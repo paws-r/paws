@@ -4,10 +4,16 @@
 \alias{update_datastore}
 \title{Updates the settings of a data store}
 \usage{
-update_datastore(datastoreName, retentionPeriod = NULL)
+update_datastore(
+  datastoreName = "string",
+  retentionPeriod = list(
+    unlimited = TRUE|FALSE,
+    numberOfDays = 123
+  )
+)
 }
 \arguments{
-\item{datastoreName}{The name of the data store to be updated.}
+\item{datastoreName}{[required] The name of the data store to be updated.}
 
 \item{retentionPeriod}{How long, in days, message data is kept for the data store.}
 }

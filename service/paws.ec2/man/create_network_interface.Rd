@@ -4,14 +4,30 @@
 \alias{create_network_interface}
 \title{Creates a network interface in the specified subnet}
 \usage{
-create_network_interface(SubnetId, Description = NULL, DryRun = NULL,
-  Groups = NULL, Ipv6AddressCount = NULL, Ipv6Addresses = NULL,
-  PrivateIpAddress = NULL, PrivateIpAddresses = NULL,
-  SecondaryPrivateIpAddressCount = NULL)
+create_network_interface(
+  Description = "string",
+  DryRun = TRUE|FALSE,
+  Groups = list(
+    "string"
+  ),
+  Ipv6AddressCount = 123,
+  Ipv6Addresses = list(
+    list(
+      Ipv6Address = "string"
+    )
+  ),
+  PrivateIpAddress = "string",
+  PrivateIpAddresses = list(
+    list(
+      Primary = TRUE|FALSE,
+      PrivateIpAddress = "string"
+    )
+  ),
+  SecondaryPrivateIpAddressCount = 123,
+  SubnetId = "string"
+)
 }
 \arguments{
-\item{SubnetId}{The ID of the subnet to associate with the network interface.}
-
 \item{Description}{A description for the network interface.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -29,6 +45,8 @@ create_network_interface(SubnetId, Description = NULL, DryRun = NULL,
 \item{SecondaryPrivateIpAddressCount}{The number of secondary private IPv4 addresses to assign to a network interface. When you specify a number of secondary IPv4 addresses, Amazon EC2 selects these IP addresses within the subnet's IPv4 CIDR range. You can't specify this option and specify more than one private IP address using \code{privateIpAddresses}.
 
 The number of IP addresses you can assign to a network interface varies by instance type. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI}{IP Addresses Per ENI Per Instance Type} in the \emph{Amazon Virtual Private Cloud User Guide}.}
+
+\item{SubnetId}{[required] The ID of the subnet to associate with the network interface.}
 }
 \description{
 Creates a network interface in the specified subnet.

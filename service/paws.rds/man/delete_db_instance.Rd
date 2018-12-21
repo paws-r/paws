@@ -4,38 +4,44 @@
 \alias{delete_db_instance}
 \title{The DeleteDBInstance action deletes a previously provisioned DB instance}
 \usage{
-delete_db_instance(DBInstanceIdentifier, SkipFinalSnapshot = NULL,
-  FinalDBSnapshotIdentifier = NULL)
+delete_db_instance(
+  DBInstanceIdentifier = "string",
+  SkipFinalSnapshot = TRUE|FALSE,
+  FinalDBSnapshotIdentifier = "string",
+  DeleteAutomatedBackups = TRUE|FALSE
+)
 }
 \arguments{
-\item{DBInstanceIdentifier}{The DB instance identifier for the DB instance to be deleted. This parameter isn't case-sensitive.
+\item{DBInstanceIdentifier}{[required] The DB instance identifier for the DB instance to be deleted. This parameter isn't case-sensitive.
 
 Constraints:
 \itemize{
 \item Must match the name of an existing DB instance.
 }}
 
-\item{SkipFinalSnapshot}{Determines whether a final DB snapshot is created before the DB instance is deleted. If \code{true} is specified, no DBSnapshot is created. If \code{false} is specified, a DB snapshot is created before the DB instance is deleted.
+\item{SkipFinalSnapshot}{A value that indicates whether a final DB snapshot is created before the DB instance is deleted. If \code{true} is specified, no DB snapshot is created. If \code{false} is specified, a DB snapshot is created before the DB instance is deleted.
 
-Note that when a DB instance is in a failure state and has a status of 'failed', 'incompatible-restore', or 'incompatible-network', it can only be deleted when the SkipFinalSnapshot parameter is set to "true".
+When a DB instance is in a failure state and has a status of \code{failed}, \code{incompatible-restore}, or \code{incompatible-network}, you can only delete it when the \code{SkipFinalSnapshot} parameter is set to \code{true}.
 
 Specify \code{true} when deleting a Read Replica.
 
-The FinalDBSnapshotIdentifier parameter must be specified if SkipFinalSnapshot is \code{false}.
+The \code{FinalDBSnapshotIdentifier} parameter must be specified if \code{SkipFinalSnapshot} is \code{false}.
 
 Default: \code{false}}
 
-\item{FinalDBSnapshotIdentifier}{The DBSnapshotIdentifier of the new DBSnapshot created when SkipFinalSnapshot is set to \code{false}.
+\item{FinalDBSnapshotIdentifier}{The \code{DBSnapshotIdentifier} of the new DB snapshot created when \code{SkipFinalSnapshot} is set to \code{false}.
 
-Specifying this parameter and also setting the SkipFinalShapshot parameter to true results in an error.
+Specifying this parameter and also setting the \code{SkipFinalShapshot} parameter to \code{true} results in an error.
 
 Constraints:
 \itemize{
 \item Must be 1 to 255 letters or numbers.
-\item First character must be a letter
-\item Can't end with a hyphen or contain two consecutive hyphens
+\item First character must be a letter.
+\item Can't end with a hyphen or contain two consecutive hyphens.
 \item Can't be specified when deleting a Read Replica.
 }}
+
+\item{DeleteAutomatedBackups}{A value that indicates whether to remove automated backups immediately after the DB instance is deleted. This parameter isn't case-sensitive. This parameter defaults to \code{true}.}
 }
 \description{
 The DeleteDBInstance action deletes a previously provisioned DB instance. When you delete a DB instance, all automated backups for that instance are deleted and can't be recovered. Manual DB snapshots of the DB instance to be deleted by \code{DeleteDBInstance} are not deleted.

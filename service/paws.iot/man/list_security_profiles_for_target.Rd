@@ -4,17 +4,21 @@
 \alias{list_security_profiles_for_target}
 \title{Lists the Device Defender security profiles attached to a target (thing group)}
 \usage{
-list_security_profiles_for_target(securityProfileTargetArn, nextToken = NULL,
-  maxResults = NULL, recursive = NULL)
+list_security_profiles_for_target(
+  nextToken = "string",
+  maxResults = 123,
+  recursive = TRUE|FALSE,
+  securityProfileTargetArn = "string"
+)
 }
 \arguments{
-\item{securityProfileTargetArn}{The ARN of the target (thing group) whose attached security profiles you want to get.}
-
 \item{nextToken}{The token for the next set of results.}
 
 \item{maxResults}{The maximum number of results to return at one time.}
 
 \item{recursive}{If true, return child groups as well.}
+
+\item{securityProfileTargetArn}{[required] The ARN of the target (thing group) whose attached security profiles you want to get.}
 }
 \description{
 Lists the Device Defender security profiles attached to a target (thing group).

@@ -4,7 +4,9 @@
 \alias{get_active_names}
 \title{Returns the names of all active (not deleted) resources}
 \usage{
-get_active_names(pageToken = NULL)
+get_active_names(
+  pageToken = "string"
+)
 }
 \arguments{
 \item{pageToken}{A token used for paginating results from your get active names request.}

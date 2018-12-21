@@ -4,12 +4,41 @@
 \alias{update_job}
 \title{Updates an existing job definition}
 \usage{
-update_job(JobName, JobUpdate)
+update_job(
+  JobName = "string",
+  JobUpdate = list(
+    Description = "string",
+    LogUri = "string",
+    Role = "string",
+    ExecutionProperty = list(
+      MaxConcurrentRuns = 123
+    ),
+    Command = list(
+      Name = "string",
+      ScriptLocation = "string"
+    ),
+    DefaultArguments = list(
+      "string"
+    ),
+    Connections = list(
+      Connections = list(
+        "string"
+      )
+    ),
+    MaxRetries = 123,
+    AllocatedCapacity = 123,
+    Timeout = 123,
+    NotificationProperty = list(
+      NotifyDelayAfter = 123
+    ),
+    SecurityConfiguration = "string"
+  )
+)
 }
 \arguments{
-\item{JobName}{Name of the job definition to update.}
+\item{JobName}{[required] Name of the job definition to update.}
 
-\item{JobUpdate}{Specifies the values with which to update the job definition.}
+\item{JobUpdate}{[required] Specifies the values with which to update the job definition.}
 }
 \description{
 Updates an existing job definition.

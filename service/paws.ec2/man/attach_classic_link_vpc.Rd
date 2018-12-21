@@ -4,16 +4,23 @@
 \alias{attach_classic_link_vpc}
 \title{Links an EC2-Classic instance to a ClassicLink-enabled VPC through one or more of the VPC's security groups}
 \usage{
-attach_classic_link_vpc(Groups, InstanceId, VpcId, DryRun = NULL)
+attach_classic_link_vpc(
+  DryRun = TRUE|FALSE,
+  Groups = list(
+    "string"
+  ),
+  InstanceId = "string",
+  VpcId = "string"
+)
 }
 \arguments{
-\item{Groups}{The ID of one or more of the VPC's security groups. You cannot specify security groups from a different VPC.}
-
-\item{InstanceId}{The ID of an EC2-Classic instance to link to the ClassicLink-enabled VPC.}
-
-\item{VpcId}{The ID of a ClassicLink-enabled VPC.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{Groups}{[required] The ID of one or more of the VPC's security groups. You cannot specify security groups from a different VPC.}
+
+\item{InstanceId}{[required] The ID of an EC2-Classic instance to link to the ClassicLink-enabled VPC.}
+
+\item{VpcId}{[required] The ID of a ClassicLink-enabled VPC.}
 }
 \description{
 Links an EC2-Classic instance to a ClassicLink-enabled VPC through one or more of the VPC's security groups. You cannot link an EC2-Classic instance to more than one VPC at a time. You can only link an instance that's in the \code{running} state. An instance is automatically unlinked from a VPC when it's stopped - you can link it to the VPC again when you restart it.

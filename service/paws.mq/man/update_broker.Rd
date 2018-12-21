@@ -4,17 +4,28 @@
 \alias{update_broker}
 \title{Adds a pending configuration change to a broker}
 \usage{
-update_broker(BrokerId, AutoMinorVersionUpgrade = NULL,
-  Configuration = NULL, EngineVersion = NULL, Logs = NULL)
+update_broker(
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  BrokerId = "string",
+  Configuration = list(
+    Id = "string",
+    Revision = 123
+  ),
+  EngineVersion = "string",
+  Logs = list(
+    Audit = TRUE|FALSE,
+    General = TRUE|FALSE
+  )
+)
 }
 \arguments{
-\item{BrokerId}{The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.}
-
 \item{AutoMinorVersionUpgrade}{Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.}
+
+\item{BrokerId}{[required] The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.}
 
 \item{Configuration}{A list of information about the configuration.}
 
-\item{EngineVersion}{The version of the broker engine. Note: Currently, Amazon MQ supports only 5.15.6 and 5.15.0.}
+\item{EngineVersion}{The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html}
 
 \item{Logs}{Enables Amazon CloudWatch logging for brokers.}
 }

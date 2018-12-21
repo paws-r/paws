@@ -4,10 +4,12 @@
 \alias{describe_address}
 \title{Takes an \code{AddressId} and returns specific details about that address in the form of an \code{Address} object}
 \usage{
-describe_address(AddressId)
+describe_address(
+  AddressId = "string"
+)
 }
 \arguments{
-\item{AddressId}{The automatically generated ID for a specific address.}
+\item{AddressId}{[required] The automatically generated ID for a specific address.}
 }
 \description{
 Takes an \code{AddressId} and returns specific details about that address in the form of an \code{Address} object.

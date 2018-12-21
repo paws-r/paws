@@ -4,12 +4,17 @@
 \alias{remove_tags_from_resource}
 \title{Removes metadata tags from a DMS resource}
 \usage{
-remove_tags_from_resource(ResourceArn, TagKeys)
+remove_tags_from_resource(
+  ResourceArn = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ResourceArn}{>The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be removed from.}
+\item{ResourceArn}{[required] >The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be removed from.}
 
-\item{TagKeys}{The tag key (name) of the tag to be removed.}
+\item{TagKeys}{[required] The tag key (name) of the tag to be removed.}
 }
 \description{
 Removes metadata tags from a DMS resource.

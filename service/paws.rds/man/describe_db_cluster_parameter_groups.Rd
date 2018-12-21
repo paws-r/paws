@@ -4,8 +4,19 @@
 \alias{describe_db_cluster_parameter_groups}
 \title{Returns a list of \code{DBClusterParameterGroup} descriptions}
 \usage{
-describe_db_cluster_parameter_groups(DBClusterParameterGroupName = NULL,
-  Filters = NULL, MaxRecords = NULL, Marker = NULL)
+describe_db_cluster_parameter_groups(
+  DBClusterParameterGroupName = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{DBClusterParameterGroupName}{The name of a specific DB cluster parameter group to return details for.

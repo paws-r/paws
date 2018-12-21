@@ -4,10 +4,13 @@
 \alias{delete_vpc}
 \title{Deletes the specified VPC}
 \usage{
-delete_vpc(VpcId, DryRun = NULL)
+delete_vpc(
+  VpcId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{VpcId}{The ID of the VPC.}
+\item{VpcId}{[required] The ID of the VPC.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

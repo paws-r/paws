@@ -4,12 +4,23 @@
 \alias{update_model}
 \title{Changes information about a model}
 \usage{
-update_model(restApiId, modelName, patchOperations = NULL)
+update_model(
+  restApiId = "string",
+  modelName = "string",
+  patchOperations = list(
+    list(
+      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
+      path = "string",
+      value = "string",
+      from = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{modelName}{[Required] The name of the model to update.}
+\item{modelName}{[required] [Required] The name of the model to update.}
 
 \item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
 }

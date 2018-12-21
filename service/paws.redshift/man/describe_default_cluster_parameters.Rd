@@ -4,11 +4,14 @@
 \alias{describe_default_cluster_parameters}
 \title{Returns a list of parameter settings for the specified parameter group family}
 \usage{
-describe_default_cluster_parameters(ParameterGroupFamily, MaxRecords = NULL,
-  Marker = NULL)
+describe_default_cluster_parameters(
+  ParameterGroupFamily = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
-\item{ParameterGroupFamily}{The name of the cluster parameter group family.}
+\item{ParameterGroupFamily}{[required] The name of the cluster parameter group family.}
 
 \item{MaxRecords}{The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified \code{MaxRecords} value, a value is returned in a \code{marker} field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.
 

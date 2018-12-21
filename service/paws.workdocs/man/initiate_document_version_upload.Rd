@@ -4,14 +4,18 @@
 \alias{initiate_document_version_upload}
 \title{Creates a new document object and version object}
 \usage{
-initiate_document_version_upload(ParentFolderId, AuthenticationToken = NULL,
-  Id = NULL, Name = NULL, ContentCreatedTimestamp = NULL,
-  ContentModifiedTimestamp = NULL, ContentType = NULL,
-  DocumentSizeInBytes = NULL)
+initiate_document_version_upload(
+  AuthenticationToken = "string",
+  Id = "string",
+  Name = "string",
+  ContentCreatedTimestamp = as.POSIXct("2015-01-01"),
+  ContentModifiedTimestamp = as.POSIXct("2015-01-01"),
+  ContentType = "string",
+  DocumentSizeInBytes = 123,
+  ParentFolderId = "string"
+)
 }
 \arguments{
-\item{ParentFolderId}{The ID of the parent folder.}
-
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
 
 \item{Id}{The ID of the document.}
@@ -25,6 +29,8 @@ initiate_document_version_upload(ParentFolderId, AuthenticationToken = NULL,
 \item{ContentType}{The content type of the document.}
 
 \item{DocumentSizeInBytes}{The size of the document, in bytes.}
+
+\item{ParentFolderId}{[required] The ID of the parent folder.}
 }
 \description{
 Creates a new document object and version object.

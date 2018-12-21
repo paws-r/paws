@@ -4,16 +4,30 @@
 \alias{create_stream}
 \title{Creates a stream for delivering one or more large files in chunks over MQTT}
 \usage{
-create_stream(streamId, files, roleArn, description = NULL)
+create_stream(
+  streamId = "string",
+  description = "string",
+  files = list(
+    list(
+      fileId = 123,
+      s3Location = list(
+        bucket = "string",
+        key = "string",
+        version = "string"
+      )
+    )
+  ),
+  roleArn = "string"
+)
 }
 \arguments{
-\item{streamId}{The stream ID.}
-
-\item{files}{The files to stream.}
-
-\item{roleArn}{An IAM role that allows the IoT service principal assumes to access your S3 files.}
+\item{streamId}{[required] The stream ID.}
 
 \item{description}{A description of the stream.}
+
+\item{files}{[required] The files to stream.}
+
+\item{roleArn}{[required] An IAM role that allows the IoT service principal assumes to access your S3 files.}
 }
 \description{
 Creates a stream for delivering one or more large files in chunks over MQTT. A stream transports data bytes in chunks or blocks packaged as MQTT messages from a source like S3. You can have one or more files associated with a stream. The total size of a file associated with the stream cannot exceed more than 2 MB. The stream will be created with version 0. If a stream is created with the same streamID as a stream that existed and was deleted within last 90 days, we will resurrect that old stream by incrementing the version by 1.

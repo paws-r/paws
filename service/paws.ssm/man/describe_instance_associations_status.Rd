@@ -4,11 +4,14 @@
 \alias{describe_instance_associations_status}
 \title{The status of the associations for the instance(s)}
 \usage{
-describe_instance_associations_status(InstanceId, MaxResults = NULL,
-  NextToken = NULL)
+describe_instance_associations_status(
+  InstanceId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{InstanceId}{The instance IDs for which you want association status information.}
+\item{InstanceId}{[required] The instance IDs for which you want association status information.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 

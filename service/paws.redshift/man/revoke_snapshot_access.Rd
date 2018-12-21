@@ -4,15 +4,18 @@
 \alias{revoke_snapshot_access}
 \title{Removes the ability of the specified AWS customer account to restore the specified snapshot}
 \usage{
-revoke_snapshot_access(SnapshotIdentifier, AccountWithRestoreAccess,
-  SnapshotClusterIdentifier = NULL)
+revoke_snapshot_access(
+  SnapshotIdentifier = "string",
+  SnapshotClusterIdentifier = "string",
+  AccountWithRestoreAccess = "string"
+)
 }
 \arguments{
-\item{SnapshotIdentifier}{The identifier of the snapshot that the account can no longer access.}
-
-\item{AccountWithRestoreAccess}{The identifier of the AWS customer account that can no longer restore the specified snapshot.}
+\item{SnapshotIdentifier}{[required] The identifier of the snapshot that the account can no longer access.}
 
 \item{SnapshotClusterIdentifier}{The identifier of the cluster the snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name.}
+
+\item{AccountWithRestoreAccess}{[required] The identifier of the AWS customer account that can no longer restore the specified snapshot.}
 }
 \description{
 Removes the ability of the specified AWS customer account to restore the specified snapshot. If the account is currently restoring the snapshot, the restore will run to completion.

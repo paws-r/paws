@@ -4,10 +4,12 @@
 \alias{delete_alias}
 \title{Deletes the specified alias}
 \usage{
-delete_alias(AliasName)
+delete_alias(
+  AliasName = "string"
+)
 }
 \arguments{
-\item{AliasName}{The alias to be deleted. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/aws" are reserved.}
+\item{AliasName}{[required] The alias to be deleted. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/aws" are reserved.}
 }
 \description{
 Deletes the specified alias. You cannot perform this operation on an alias in a different AWS account.

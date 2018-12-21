@@ -4,10 +4,12 @@
 \alias{delete_cors_policy}
 \title{Deletes the cross-origin resource sharing (CORS) configuration information that is set for the container}
 \usage{
-delete_cors_policy(ContainerName)
+delete_cors_policy(
+  ContainerName = "string"
+)
 }
 \arguments{
-\item{ContainerName}{The name of the container to remove the policy from.}
+\item{ContainerName}{[required] The name of the container to remove the policy from.}
 }
 \description{
 Deletes the cross-origin resource sharing (CORS) configuration information that is set for the container.

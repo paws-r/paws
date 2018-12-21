@@ -4,12 +4,15 @@
 \alias{delete_endpoint}
 \title{Deletes an endpoint}
 \usage{
-delete_endpoint(ApplicationId, EndpointId)
+delete_endpoint(
+  ApplicationId = "string",
+  EndpointId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 
-\item{EndpointId}{The unique ID of the endpoint.}
+\item{EndpointId}{[required] The unique ID of the endpoint.}
 }
 \description{
 Deletes an endpoint.

@@ -4,10 +4,12 @@
 \alias{cancel_job}
 \title{Permanently remove a job from a queue}
 \usage{
-cancel_job(Id)
+cancel_job(
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The Job ID of the job to be cancelled.}
+\item{Id}{[required] The Job ID of the job to be cancelled.}
 }
 \description{
 Permanently remove a job from a queue. Once you have canceled a job, you can't start it again. You can't delete a running job.

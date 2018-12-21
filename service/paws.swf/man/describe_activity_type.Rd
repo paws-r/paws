@@ -4,12 +4,18 @@
 \alias{describe_activity_type}
 \title{Returns information about the specified activity type}
 \usage{
-describe_activity_type(domain, activityType)
+describe_activity_type(
+  domain = "string",
+  activityType = list(
+    name = "string",
+    version = "string"
+  )
+)
 }
 \arguments{
-\item{domain}{The name of the domain in which the activity type is registered.}
+\item{domain}{[required] The name of the domain in which the activity type is registered.}
 
-\item{activityType}{The activity type to get information about. Activity types are identified by the \code{name} and \code{version} that were supplied when the activity was registered.}
+\item{activityType}{[required] The activity type to get information about. Activity types are identified by the \code{name} and \code{version} that were supplied when the activity was registered.}
 }
 \description{
 Returns information about the specified activity type. This includes configuration settings provided when the type was registered and other general information about the type.

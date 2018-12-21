@@ -4,7 +4,12 @@
 \alias{describe_account_attributes}
 \title{Describes attributes of your AWS account}
 \usage{
-describe_account_attributes(AttributeNames = NULL, DryRun = NULL)
+describe_account_attributes(
+  AttributeNames = list(
+    "supported-platforms"|"default-vpc"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{AttributeNames}{One or more account attribute names.}

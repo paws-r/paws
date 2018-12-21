@@ -4,10 +4,13 @@
 \alias{get_api_key}
 \title{Gets information about the current ApiKey resource}
 \usage{
-get_api_key(apiKey, includeValue = NULL)
+get_api_key(
+  apiKey = "string",
+  includeValue = TRUE|FALSE
+)
 }
 \arguments{
-\item{apiKey}{[Required] The identifier of the ApiKey resource.}
+\item{apiKey}{[required] [Required] The identifier of the ApiKey resource.}
 
 \item{includeValue}{A boolean flag to specify whether (\code{true}) or not (\code{false}) the result contains the key value.}
 }

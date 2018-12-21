@@ -4,11 +4,14 @@
 \alias{delete_db_instance}
 \title{The DeleteDBInstance action deletes a previously provisioned DB instance}
 \usage{
-delete_db_instance(DBInstanceIdentifier, SkipFinalSnapshot = NULL,
-  FinalDBSnapshotIdentifier = NULL)
+delete_db_instance(
+  DBInstanceIdentifier = "string",
+  SkipFinalSnapshot = TRUE|FALSE,
+  FinalDBSnapshotIdentifier = "string"
+)
 }
 \arguments{
-\item{DBInstanceIdentifier}{The DB instance identifier for the DB instance to be deleted. This parameter isn't case-sensitive.
+\item{DBInstanceIdentifier}{[required] The DB instance identifier for the DB instance to be deleted. This parameter isn't case-sensitive.
 
 Constraints:
 \itemize{

@@ -4,10 +4,19 @@
 \alias{detect_text}
 \title{Detects text in the input image and converts it into machine-readable text}
 \usage{
-detect_text(Image)
+detect_text(
+  Image = list(
+    Bytes = raw,
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{Image}{The input image as base64-encoded bytes or an Amazon S3 object. If you use the AWS CLI to call Amazon Rekognition operations, you can't pass image bytes.}
+\item{Image}{[required] The input image as base64-encoded bytes or an Amazon S3 object. If you use the AWS CLI to call Amazon Rekognition operations, you can't pass image bytes.}
 }
 \description{
 Detects text in the input image and converts it into machine-readable text.

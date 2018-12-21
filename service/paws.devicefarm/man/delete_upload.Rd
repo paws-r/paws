@@ -4,10 +4,12 @@
 \alias{delete_upload}
 \title{Deletes an upload given the upload ARN}
 \usage{
-delete_upload(arn)
+delete_upload(
+  arn = "string"
+)
 }
 \arguments{
-\item{arn}{Represents the Amazon Resource Name (ARN) of the Device Farm upload you wish to delete.}
+\item{arn}{[required] Represents the Amazon Resource Name (ARN) of the Device Farm upload you wish to delete.}
 }
 \description{
 Deletes an upload given the upload ARN.

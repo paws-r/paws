@@ -4,16 +4,21 @@
 \alias{create_customer_gateway}
 \title{Provides information to AWS about your VPN customer gateway device}
 \usage{
-create_customer_gateway(BgpAsn, PublicIp, Type, DryRun = NULL)
+create_customer_gateway(
+  BgpAsn = 123,
+  PublicIp = "string",
+  Type = "ipsec.1",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{BgpAsn}{For devices that support BGP, the customer gateway's BGP ASN.
+\item{BgpAsn}{[required] For devices that support BGP, the customer gateway's BGP ASN.
 
 Default: 65000}
 
-\item{PublicIp}{The Internet-routable IP address for the customer gateway's outside interface. The address must be static.}
+\item{PublicIp}{[required] The Internet-routable IP address for the customer gateway's outside interface. The address must be static.}
 
-\item{Type}{The type of VPN connection that this customer gateway supports (\code{ipsec.1}).}
+\item{Type}{[required] The type of VPN connection that this customer gateway supports (\code{ipsec.1}).}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

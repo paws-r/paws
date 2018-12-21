@@ -4,19 +4,32 @@
 \alias{describe_images}
 \title{Returns metadata about the images in a repository, including image size, image tags, and creation date}
 \usage{
-describe_images(repositoryName, registryId = NULL, imageIds = NULL,
-  nextToken = NULL, maxResults = NULL, filter = NULL)
+describe_images(
+  registryId = "string",
+  repositoryName = "string",
+  imageIds = list(
+    list(
+      imageDigest = "string",
+      imageTag = "string"
+    )
+  ),
+  nextToken = "string",
+  maxResults = 123,
+  filter = list(
+    tagStatus = "TAGGED"|"UNTAGGED"|"ANY"
+  )
+)
 }
 \arguments{
-\item{repositoryName}{A list of repositories to describe. If this parameter is omitted, then all repositories in a registry are described.}
-
 \item{registryId}{The AWS account ID associated with the registry that contains the repository in which to describe images. If you do not specify a registry, the default registry is assumed.}
+
+\item{repositoryName}{[required] A list of repositories to describe.}
 
 \item{imageIds}{The list of image IDs for the requested repository.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated \code{DescribeImages} request where \code{maxResults} was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the \code{nextToken} value. This value is \code{null} when there are no more results to return. This option cannot be used when you specify images with \code{imageIds}.}
 
-\item{maxResults}{The maximum number of repository results returned by \code{DescribeImages} in paginated output. When this parameter is used, \code{DescribeImages} only returns \code{maxResults} results in a single page along with a \code{nextToken} response element. The remaining results of the initial request can be seen by sending another \code{DescribeImages} request with the returned \code{nextToken} value. This value can be between 1 and 100. If this parameter is not used, then \code{DescribeImages} returns up to 100 results and a \code{nextToken} value, if applicable. This option cannot be used when you specify images with \code{imageIds}.}
+\item{maxResults}{The maximum number of repository results returned by \code{DescribeImages} in paginated output. When this parameter is used, \code{DescribeImages} only returns \code{maxResults} results in a single page along with a \code{nextToken} response element. The remaining results of the initial request can be seen by sending another \code{DescribeImages} request with the returned \code{nextToken} value. This value can be between 1 and 1000. If this parameter is not used, then \code{DescribeImages} returns up to 100 results and a \code{nextToken} value, if applicable. This option cannot be used when you specify images with \code{imageIds}.}
 
 \item{filter}{The filter key and value with which to filter your \code{DescribeImages} results.}
 }

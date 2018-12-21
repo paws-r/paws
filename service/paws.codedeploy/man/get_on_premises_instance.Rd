@@ -4,10 +4,12 @@
 \alias{get_on_premises_instance}
 \title{Gets information about an on-premises instance}
 \usage{
-get_on_premises_instance(instanceName)
+get_on_premises_instance(
+  instanceName = "string"
+)
 }
 \arguments{
-\item{instanceName}{The name of the on-premises instance about which to get information.}
+\item{instanceName}{[required] The name of the on-premises instance about which to get information.}
 }
 \description{
 Gets information about an on-premises instance.

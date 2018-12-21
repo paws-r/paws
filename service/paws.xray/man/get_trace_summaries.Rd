@@ -4,13 +4,18 @@
 \alias{get_trace_summaries}
 \title{Retrieves IDs and metadata for traces available for a specified time frame using an optional filter}
 \usage{
-get_trace_summaries(StartTime, EndTime, Sampling = NULL,
-  FilterExpression = NULL, NextToken = NULL)
+get_trace_summaries(
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  Sampling = TRUE|FALSE,
+  FilterExpression = "string",
+  NextToken = "string"
+)
 }
 \arguments{
-\item{StartTime}{The start of the time frame for which to retrieve traces.}
+\item{StartTime}{[required] The start of the time frame for which to retrieve traces.}
 
-\item{EndTime}{The end of the time frame for which to retrieve traces.}
+\item{EndTime}{[required] The end of the time frame for which to retrieve traces.}
 
 \item{Sampling}{Set to \code{true} to get summaries for only a subset of available traces.}
 

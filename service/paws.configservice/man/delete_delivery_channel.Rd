@@ -4,10 +4,12 @@
 \alias{delete_delivery_channel}
 \title{Deletes the delivery channel}
 \usage{
-delete_delivery_channel(DeliveryChannelName)
+delete_delivery_channel(
+  DeliveryChannelName = "string"
+)
 }
 \arguments{
-\item{DeliveryChannelName}{The name of the delivery channel to delete.}
+\item{DeliveryChannelName}{[required] The name of the delivery channel to delete.}
 }
 \description{
 Deletes the delivery channel.

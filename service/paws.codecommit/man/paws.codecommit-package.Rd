@@ -6,16 +6,21 @@
 \alias{paws.codecommit-package}
 \title{paws.codecommit: AWS CodeCommit}
 \description{
-This is the *AWS CodeCommit API Reference*. This
-reference provides descriptions of the operations and data types for
-AWS CodeCommit API along with usage examples.
+This is the *AWS CodeCommit API Reference*. This reference
+provides descriptions of the operations and data types for AWS
+CodeCommit API along with usage examples.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

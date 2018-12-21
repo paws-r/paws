@@ -4,10 +4,12 @@
 \alias{delete_identity}
 \title{Deletes the specified identity (an email address or a domain) from the list of verified identities}
 \usage{
-delete_identity(Identity)
+delete_identity(
+  Identity = "string"
+)
 }
 \arguments{
-\item{Identity}{The identity to be removed from the list of identities for the AWS Account.}
+\item{Identity}{[required] The identity to be removed from the list of identities for the AWS Account.}
 }
 \description{
 Deletes the specified identity (an email address or a domain) from the list of verified identities.

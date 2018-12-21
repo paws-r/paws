@@ -4,10 +4,12 @@
 \alias{get_preset}
 \title{Retrieve the JSON for a specific preset}
 \usage{
-get_preset(Name)
+get_preset(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the preset.}
+\item{Name}{[required] The name of the preset.}
 }
 \description{
 Retrieve the JSON for a specific preset.

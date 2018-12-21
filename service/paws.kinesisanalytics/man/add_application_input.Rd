@@ -4,14 +4,59 @@
 \alias{add_application_input}
 \title{Adds a streaming source to your Amazon Kinesis application}
 \usage{
-add_application_input(ApplicationName, CurrentApplicationVersionId, Input)
+add_application_input(
+  ApplicationName = "string",
+  CurrentApplicationVersionId = 123,
+  Input = list(
+    NamePrefix = "string",
+    InputProcessingConfiguration = list(
+      InputLambdaProcessor = list(
+        ResourceARN = "string",
+        RoleARN = "string"
+      )
+    ),
+    KinesisStreamsInput = list(
+      ResourceARN = "string",
+      RoleARN = "string"
+    ),
+    KinesisFirehoseInput = list(
+      ResourceARN = "string",
+      RoleARN = "string"
+    ),
+    InputParallelism = list(
+      Count = 123
+    ),
+    InputSchema = list(
+      RecordFormat = list(
+        RecordFormatType = "JSON"|"CSV",
+        MappingParameters = list(
+          JSONMappingParameters = list(
+            RecordRowPath = "string"
+          ),
+          CSVMappingParameters = list(
+            RecordRowDelimiter = "string",
+            RecordColumnDelimiter = "string"
+          )
+        )
+      ),
+      RecordEncoding = "string",
+      RecordColumns = list(
+        list(
+          Name = "string",
+          Mapping = "string",
+          SqlType = "string"
+        )
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{ApplicationName}{Name of your existing Amazon Kinesis Analytics application to which you want to add the streaming source.}
+\item{ApplicationName}{[required] Name of your existing Amazon Kinesis Analytics application to which you want to add the streaming source.}
 
-\item{CurrentApplicationVersionId}{Current version of your Amazon Kinesis Analytics application. You can use the DescribeApplication operation to find the current application version.}
+\item{CurrentApplicationVersionId}{[required] Current version of your Amazon Kinesis Analytics application. You can use the DescribeApplication operation to find the current application version.}
 
-\item{Input}{The Input to add.}
+\item{Input}{[required] The Input to add.}
 }
 \description{
 Adds a streaming source to your Amazon Kinesis application. For conceptual information, see \href{http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html}{Configuring Application Input}.

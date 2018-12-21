@@ -4,13 +4,19 @@
 \alias{describe_sessions}
 \title{Retrieves a list that describes the streaming sessions for a specified stack and fleet}
 \usage{
-describe_sessions(StackName, FleetName, UserId = NULL, NextToken = NULL,
-  Limit = NULL, AuthenticationType = NULL)
+describe_sessions(
+  StackName = "string",
+  FleetName = "string",
+  UserId = "string",
+  NextToken = "string",
+  Limit = 123,
+  AuthenticationType = "API"|"SAML"|"USERPOOL"
+)
 }
 \arguments{
-\item{StackName}{The name of the stack. This value is case-sensitive.}
+\item{StackName}{[required] The name of the stack. This value is case-sensitive.}
 
-\item{FleetName}{The name of the fleet. This value is case-sensitive.}
+\item{FleetName}{[required] The name of the fleet. This value is case-sensitive.}
 
 \item{UserId}{The user ID.}
 

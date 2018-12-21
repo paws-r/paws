@@ -4,11 +4,15 @@
 \alias{publish_version}
 \title{Publishes a version of your function from the current snapshot of \$LATEST}
 \usage{
-publish_version(FunctionName, CodeSha256 = NULL, Description = NULL,
-  RevisionId = NULL)
+publish_version(
+  FunctionName = "string",
+  CodeSha256 = "string",
+  Description = "string",
+  RevisionId = "string"
+)
 }
 \arguments{
-\item{FunctionName}{The name of the lambda function.
+\item{FunctionName}{[required] The name of the lambda function.
 
 \strong{Name formats}
 \itemize{

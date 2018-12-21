@@ -4,17 +4,22 @@
 \alias{send_bonus}
 \title{The \code{SendBonus} operation issues a payment of money from your account to a Worker}
 \usage{
-send_bonus(WorkerId, BonusAmount, AssignmentId, Reason,
-  UniqueRequestToken = NULL)
+send_bonus(
+  WorkerId = "string",
+  BonusAmount = "string",
+  AssignmentId = "string",
+  Reason = "string",
+  UniqueRequestToken = "string"
+)
 }
 \arguments{
-\item{WorkerId}{The ID of the Worker being paid the bonus.}
+\item{WorkerId}{[required] The ID of the Worker being paid the bonus.}
 
-\item{BonusAmount}{The Bonus amount is a US Dollar amount specified using a string (for example, "5" represents \$5.00 USD and "101.42" represents \$101.42 USD). Do not include currency symbols or currency codes.}
+\item{BonusAmount}{[required] The Bonus amount is a US Dollar amount specified using a string (for example, "5" represents \$5.00 USD and "101.42" represents \$101.42 USD). Do not include currency symbols or currency codes.}
 
-\item{AssignmentId}{The ID of the assignment for which this bonus is paid.}
+\item{AssignmentId}{[required] The ID of the assignment for which this bonus is paid.}
 
-\item{Reason}{A message that explains the reason for the bonus payment. The Worker receiving the bonus can see this message.}
+\item{Reason}{[required] A message that explains the reason for the bonus payment. The Worker receiving the bonus can see this message.}
 
 \item{UniqueRequestToken}{A unique identifier for this request, which allows you to retry the call on error without granting multiple bonuses. This is useful in cases such as network timeouts where it is unclear whether or not the call succeeded on the server. If the bonus already exists in the system from a previous call using the same UniqueRequestToken, subsequent calls will return an error with a message containing the request ID.}
 }

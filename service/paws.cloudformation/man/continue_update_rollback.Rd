@@ -4,11 +4,17 @@
 \alias{continue_update_rollback}
 \title{For a specified stack that is in the \code{UPDATE_ROLLBACK_FAILED} state, continues rolling it back to the \code{UPDATE_ROLLBACK_COMPLETE} state}
 \usage{
-continue_update_rollback(StackName, RoleARN = NULL, ResourcesToSkip = NULL,
-  ClientRequestToken = NULL)
+continue_update_rollback(
+  StackName = "string",
+  RoleARN = "string",
+  ResourcesToSkip = list(
+    "string"
+  ),
+  ClientRequestToken = "string"
+)
 }
 \arguments{
-\item{StackName}{The name or the unique ID of the stack that you want to continue rolling back.
+\item{StackName}{[required] The name or the unique ID of the stack that you want to continue rolling back.
 
 Don't specify the name of a nested stack (a stack that was created by using the \code{AWS::CloudFormation::Stack} resource). Instead, use this operation on the parent stack (the stack that contains the \code{AWS::CloudFormation::Stack} resource).}
 

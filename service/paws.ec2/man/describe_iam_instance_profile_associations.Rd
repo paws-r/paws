@@ -4,8 +4,21 @@
 \alias{describe_iam_instance_profile_associations}
 \title{Describes your IAM instance profile associations}
 \usage{
-describe_iam_instance_profile_associations(AssociationIds = NULL,
-  Filters = NULL, MaxResults = NULL, NextToken = NULL)
+describe_iam_instance_profile_associations(
+  AssociationIds = list(
+    "string"
+  ),
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{AssociationIds}{One or more IAM instance profile associations.}

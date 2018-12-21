@@ -4,8 +4,25 @@
 \alias{describe_security_groups}
 \title{Describes one or more of your security groups}
 \usage{
-describe_security_groups(Filters = NULL, GroupIds = NULL,
-  GroupNames = NULL, DryRun = NULL, NextToken = NULL, MaxResults = NULL)
+describe_security_groups(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  GroupIds = list(
+    "string"
+  ),
+  GroupNames = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE,
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{Filters}{One or more filters. If using multiple filters for rules, the results include security groups for which any combination of rules - not necessarily a single rule - match all filters.

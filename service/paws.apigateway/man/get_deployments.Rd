@@ -4,10 +4,14 @@
 \alias{get_deployments}
 \title{Gets information about a Deployments collection}
 \usage{
-get_deployments(restApiId, position = NULL, limit = NULL)
+get_deployments(
+  restApiId = "string",
+  position = "string",
+  limit = 123
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
 \item{position}{The current pagination position in the paged result set.}
 

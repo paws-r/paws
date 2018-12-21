@@ -4,7 +4,9 @@
 \alias{generate_client_certificate}
 \title{Generates a ClientCertificate resource}
 \usage{
-generate_client_certificate(description = NULL)
+generate_client_certificate(
+  description = "string"
+)
 }
 \arguments{
 \item{description}{The description of the ClientCertificate.}

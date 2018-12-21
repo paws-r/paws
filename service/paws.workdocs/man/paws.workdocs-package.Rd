@@ -6,19 +6,23 @@
 \alias{paws.workdocs-package}
 \title{paws.workdocs: Amazon WorkDocs}
 \description{
-- File Migration: File migration applications
-are supported for users who want to migrate their files from an
-on-premises or off-premises file system or service. Users can insert
-files into a user directory structure, as well as allow for basic
-metadata changes, such as modifications to the permissions of
-files.
+- File Migration: File migration applications are supported
+for users who want to migrate their files from an on-premises or
+off-premises file system or service. Users can insert files into a
+user directory structure, as well as allow for basic metadata changes,
+such as modifications to the permissions of files.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

@@ -5,13 +5,18 @@
 \alias{create_application_version}
 \title{Creates an application version}
 \usage{
-create_application_version(ApplicationId, SemanticVersion,
-  SourceCodeUrl = NULL, TemplateBody = NULL, TemplateUrl = NULL)
+create_application_version(
+  ApplicationId = "string",
+  SemanticVersion = "string",
+  SourceCodeUrl = "string",
+  TemplateBody = "string",
+  TemplateUrl = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The Amazon Resource Name (ARN) of the application.}
+\item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
 
-\item{SemanticVersion}{The semantic version of the new version.}
+\item{SemanticVersion}{[required] The semantic version of the new version.}
 
 \item{SourceCodeUrl}{A link to a public repository for the source code of your application.}
 

@@ -4,10 +4,12 @@
 \alias{describe_scaling_parameters}
 \title{Gets the scaling parameters configured for a domain}
 \usage{
-describe_scaling_parameters(DomainName)
+describe_scaling_parameters(
+  DomainName = "string"
+)
 }
 \arguments{
-\item{DomainName}{}
+\item{DomainName}{[required]}
 }
 \description{
 Gets the scaling parameters configured for a domain. A domain's scaling parameters specify the desired search instance type and replication count. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html}{Configuring Scaling Options} in the \emph{Amazon CloudSearch Developer Guide}.

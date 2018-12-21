@@ -4,10 +4,12 @@
 \alias{delete_endpoint}
 \title{Deletes the specified endpoint}
 \usage{
-delete_endpoint(EndpointArn)
+delete_endpoint(
+  EndpointArn = "string"
+)
 }
 \arguments{
-\item{EndpointArn}{The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.}
+\item{EndpointArn}{[required] The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.}
 }
 \description{
 Deletes the specified endpoint.

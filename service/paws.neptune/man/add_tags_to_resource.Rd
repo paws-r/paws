@@ -4,12 +4,20 @@
 \alias{add_tags_to_resource}
 \title{Adds metadata tags to an Amazon Neptune resource}
 \usage{
-add_tags_to_resource(ResourceName, Tags)
+add_tags_to_resource(
+  ResourceName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ResourceName}{The Amazon Neptune resource that the tags are added to. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see \href{http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing}{Constructing an Amazon Resource Name (ARN)}.}
+\item{ResourceName}{[required] The Amazon Neptune resource that the tags are added to. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see \href{http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing}{Constructing an Amazon Resource Name (ARN)}.}
 
-\item{Tags}{The tags to be assigned to the Amazon Neptune resource.}
+\item{Tags}{[required] The tags to be assigned to the Amazon Neptune resource.}
 }
 \description{
 Adds metadata tags to an Amazon Neptune resource. These tags can also be used with cost allocation reporting to track cost associated with Amazon Neptune resources, or used in a Condition statement in an IAM policy for Amazon Neptune.

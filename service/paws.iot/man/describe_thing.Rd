@@ -4,10 +4,12 @@
 \alias{describe_thing}
 \title{Gets information about the specified thing}
 \usage{
-describe_thing(thingName)
+describe_thing(
+  thingName = "string"
+)
 }
 \arguments{
-\item{thingName}{The name of the thing.}
+\item{thingName}{[required] The name of the thing.}
 }
 \description{
 Gets information about the specified thing.

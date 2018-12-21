@@ -4,16 +4,33 @@
 \alias{update_notification}
 \title{Updates a notification}
 \usage{
-update_notification(AccountId, BudgetName, OldNotification, NewNotification)
+update_notification(
+  AccountId = "string",
+  BudgetName = "string",
+  OldNotification = list(
+    NotificationType = "ACTUAL"|"FORECASTED",
+    ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
+    Threshold = 123.0,
+    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+    NotificationState = "OK"|"ALARM"
+  ),
+  NewNotification = list(
+    NotificationType = "ACTUAL"|"FORECASTED",
+    ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
+    Threshold = 123.0,
+    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+    NotificationState = "OK"|"ALARM"
+  )
+)
 }
 \arguments{
-\item{AccountId}{The \code{accountId} that is associated with the budget whose notification you want to update.}
+\item{AccountId}{[required] The \code{accountId} that is associated with the budget whose notification you want to update.}
 
-\item{BudgetName}{The name of the budget whose notification you want to update.}
+\item{BudgetName}{[required] The name of the budget whose notification you want to update.}
 
-\item{OldNotification}{The previous notification associated with a budget.}
+\item{OldNotification}{[required] The previous notification that is associated with a budget.}
 
-\item{NewNotification}{The updated notification to be associated with a budget.}
+\item{NewNotification}{[required] The updated notification to be associated with a budget.}
 }
 \description{
 Updates a notification.

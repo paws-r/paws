@@ -4,11 +4,16 @@
 \alias{describe_communications}
 \title{Returns communications (and attachments) for one or more support cases}
 \usage{
-describe_communications(caseId, beforeTime = NULL, afterTime = NULL,
-  nextToken = NULL, maxResults = NULL)
+describe_communications(
+  caseId = "string",
+  beforeTime = "string",
+  afterTime = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{caseId}{The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
+\item{caseId}{[required] The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
 
 \item{beforeTime}{The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.}
 

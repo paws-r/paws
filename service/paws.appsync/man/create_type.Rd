@@ -4,16 +4,20 @@
 \alias{create_type}
 \title{Creates a \code{Type} object}
 \usage{
-create_type(apiId, definition, format)
+create_type(
+  apiId = "string",
+  definition = "string",
+  format = "SDL"|"JSON"
+)
 }
 \arguments{
-\item{apiId}{The API ID.}
+\item{apiId}{[required] The API ID.}
 
-\item{definition}{The type definition, in GraphQL Schema Definition Language (SDL) format.
+\item{definition}{[required] The type definition, in GraphQL Schema Definition Language (SDL) format.
 
 For more information, see the \href{http://graphql.org/learn/schema/}{GraphQL SDL documentation}.}
 
-\item{format}{The type format: SDL or JSON.}
+\item{format}{[required] The type format: SDL or JSON.}
 }
 \description{
 Creates a \code{Type} object.

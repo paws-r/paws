@@ -4,10 +4,12 @@
 \alias{delete_configuration_recorder}
 \title{Deletes the configuration recorder}
 \usage{
-delete_configuration_recorder(ConfigurationRecorderName)
+delete_configuration_recorder(
+  ConfigurationRecorderName = "string"
+)
 }
 \arguments{
-\item{ConfigurationRecorderName}{The name of the configuration recorder to be deleted. You can retrieve the name of your configuration recorder by using the \code{DescribeConfigurationRecorders} action.}
+\item{ConfigurationRecorderName}{[required] The name of the configuration recorder to be deleted. You can retrieve the name of your configuration recorder by using the \code{DescribeConfigurationRecorders} action.}
 }
 \description{
 Deletes the configuration recorder.

@@ -4,14 +4,18 @@
 \alias{delete_integration}
 \title{Represents a delete integration}
 \usage{
-delete_integration(restApiId, resourceId, httpMethod)
+delete_integration(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string"
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[Required] Specifies a delete integration request's resource identifier.}
+\item{resourceId}{[required] [Required] Specifies a delete integration request's resource identifier.}
 
-\item{httpMethod}{[Required] Specifies a delete integration request's HTTP method.}
+\item{httpMethod}{[required] [Required] Specifies a delete integration request's HTTP method.}
 }
 \description{
 Represents a delete integration.

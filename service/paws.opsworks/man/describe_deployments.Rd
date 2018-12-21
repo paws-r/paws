@@ -4,7 +4,13 @@
 \alias{describe_deployments}
 \title{Requests a description of a specified set of deployments}
 \usage{
-describe_deployments(StackId = NULL, AppId = NULL, DeploymentIds = NULL)
+describe_deployments(
+  StackId = "string",
+  AppId = "string",
+  DeploymentIds = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{StackId}{The stack ID. If you include this parameter, the command returns a description of the commands associated with the specified stack.}

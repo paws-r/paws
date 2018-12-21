@@ -4,15 +4,20 @@
 \alias{describe_comments}
 \title{List all the comments for the specified document version}
 \usage{
-describe_comments(DocumentId, VersionId, AuthenticationToken = NULL,
-  Limit = NULL, Marker = NULL)
+describe_comments(
+  AuthenticationToken = "string",
+  DocumentId = "string",
+  VersionId = "string",
+  Limit = 123,
+  Marker = "string"
+)
 }
 \arguments{
-\item{DocumentId}{The ID of the document.}
-
-\item{VersionId}{The ID of the document version.}
-
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
+
+\item{DocumentId}{[required] The ID of the document.}
+
+\item{VersionId}{[required] The ID of the document version.}
 
 \item{Limit}{The maximum number of items to return.}
 

@@ -4,12 +4,17 @@
 \alias{exit_standby}
 \title{Moves the specified instances out of the standby state}
 \usage{
-exit_standby(AutoScalingGroupName, InstanceIds = NULL)
+exit_standby(
+  InstanceIds = list(
+    "string"
+  ),
+  AutoScalingGroupName = "string"
+)
 }
 \arguments{
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
-
 \item{InstanceIds}{The IDs of the instances. You can specify up to 20 instances.}
+
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 }
 \description{
 Moves the specified instances out of the standby state.

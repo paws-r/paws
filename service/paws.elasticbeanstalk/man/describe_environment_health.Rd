@@ -4,8 +4,13 @@
 \alias{describe_environment_health}
 \title{Returns information about the overall health of the specified environment}
 \usage{
-describe_environment_health(EnvironmentName = NULL, EnvironmentId = NULL,
-  AttributeNames = NULL)
+describe_environment_health(
+  EnvironmentName = "string",
+  EnvironmentId = "string",
+  AttributeNames = list(
+    "Status"|"Color"|"Causes"|"ApplicationMetrics"|"InstancesHealth"|"All"|"HealthStatus"|"RefreshedAt"
+  )
+)
 }
 \arguments{
 \item{EnvironmentName}{Specify the environment by name.

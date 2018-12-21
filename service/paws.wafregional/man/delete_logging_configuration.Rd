@@ -4,10 +4,12 @@
 \alias{delete_logging_configuration}
 \title{Permanently deletes the LoggingConfiguration from the specified web ACL}
 \usage{
-delete_logging_configuration(ResourceArn)
+delete_logging_configuration(
+  ResourceArn = "string"
+)
 }
 \arguments{
-\item{ResourceArn}{The Amazon Resource Name (ARN) of the web ACL from which you want to delete the LoggingConfiguration.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the web ACL from which you want to delete the LoggingConfiguration.}
 }
 \description{
 Permanently deletes the LoggingConfiguration from the specified web ACL.

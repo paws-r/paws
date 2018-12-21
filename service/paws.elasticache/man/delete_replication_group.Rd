@@ -4,11 +4,14 @@
 \alias{delete_replication_group}
 \title{Deletes an existing replication group}
 \usage{
-delete_replication_group(ReplicationGroupId, RetainPrimaryCluster = NULL,
-  FinalSnapshotIdentifier = NULL)
+delete_replication_group(
+  ReplicationGroupId = "string",
+  RetainPrimaryCluster = TRUE|FALSE,
+  FinalSnapshotIdentifier = "string"
+)
 }
 \arguments{
-\item{ReplicationGroupId}{The identifier for the cluster to be deleted. This parameter is not case sensitive.}
+\item{ReplicationGroupId}{[required] The identifier for the cluster to be deleted. This parameter is not case sensitive.}
 
 \item{RetainPrimaryCluster}{If set to \code{true}, all of the read replicas are deleted, but the primary node is retained.}
 

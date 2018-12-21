@@ -4,8 +4,22 @@
 \alias{describe_flow_logs}
 \title{Describes one or more flow logs}
 \usage{
-describe_flow_logs(DryRun = NULL, Filter = NULL, FlowLogIds = NULL,
-  MaxResults = NULL, NextToken = NULL)
+describe_flow_logs(
+  DryRun = TRUE|FALSE,
+  Filter = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  FlowLogIds = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}

@@ -4,10 +4,12 @@
 \alias{disable_rule}
 \title{Disables the specified rule}
 \usage{
-disable_rule(Name)
+disable_rule(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the rule.}
+\item{Name}{[required] The name of the rule.}
 }
 \description{
 Disables the specified rule. A disabled rule won't match any events, and won't self-trigger if it has a schedule expression.

@@ -4,10 +4,20 @@
 \alias{list_tags_for_resource}
 \title{Lists all tags on an Amazon RDS resource}
 \usage{
-list_tags_for_resource(ResourceName, Filters = NULL)
+list_tags_for_resource(
+  ResourceName = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{ResourceName}{The Amazon RDS resource with tags to be listed. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS} in the \emph{Amazon RDS User Guide}.}
+\item{ResourceName}{[required] The Amazon RDS resource with tags to be listed. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS} in the \emph{Amazon RDS User Guide}.}
 
 \item{Filters}{This parameter is not currently supported.}
 }

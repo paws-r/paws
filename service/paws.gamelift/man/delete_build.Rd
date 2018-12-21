@@ -4,10 +4,12 @@
 \alias{delete_build}
 \title{Deletes a build}
 \usage{
-delete_build(BuildId)
+delete_build(
+  BuildId = "string"
+)
 }
 \arguments{
-\item{BuildId}{Unique identifier for a build to delete.}
+\item{BuildId}{[required] Unique identifier for a build to delete.}
 }
 \description{
 Deletes a build. This action permanently deletes the build record and any uploaded build files.

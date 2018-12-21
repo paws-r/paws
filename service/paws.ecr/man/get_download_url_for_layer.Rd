@@ -4,14 +4,18 @@
 \alias{get_download_url_for_layer}
 \title{Retrieves the pre-signed Amazon S3 download URL corresponding to an image layer}
 \usage{
-get_download_url_for_layer(repositoryName, layerDigest, registryId = NULL)
+get_download_url_for_layer(
+  registryId = "string",
+  repositoryName = "string",
+  layerDigest = "string"
+)
 }
 \arguments{
-\item{repositoryName}{The name of the repository that is associated with the image layer to download.}
-
-\item{layerDigest}{The digest of the image layer to download.}
-
 \item{registryId}{The AWS account ID associated with the registry that contains the image layer to download. If you do not specify a registry, the default registry is assumed.}
+
+\item{repositoryName}{[required] The name of the repository that is associated with the image layer to download.}
+
+\item{layerDigest}{[required] The digest of the image layer to download.}
 }
 \description{
 Retrieves the pre-signed Amazon S3 download URL corresponding to an image layer. You can only get URLs for image layers that are referenced in an image.

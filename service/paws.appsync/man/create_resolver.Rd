@@ -4,23 +4,43 @@
 \alias{create_resolver}
 \title{Creates a \code{Resolver} object}
 \usage{
-create_resolver(apiId, typeName, fieldName, dataSourceName,
-  requestMappingTemplate, responseMappingTemplate = NULL)
+create_resolver(
+  apiId = "string",
+  typeName = "string",
+  fieldName = "string",
+  dataSourceName = "string",
+  requestMappingTemplate = "string",
+  responseMappingTemplate = "string",
+  kind = "UNIT"|"PIPELINE",
+  pipelineConfig = list(
+    functions = list(
+      "string"
+    )
+  )
+)
 }
 \arguments{
-\item{apiId}{The ID for the GraphQL API for which the resolver is being created.}
+\item{apiId}{[required] The ID for the GraphQL API for which the resolver is being created.}
 
-\item{typeName}{The name of the \code{Type}.}
+\item{typeName}{[required] The name of the \code{Type}.}
 
-\item{fieldName}{The name of the field to attach the resolver to.}
+\item{fieldName}{[required] The name of the field to attach the resolver to.}
 
 \item{dataSourceName}{The name of the data source for which the resolver is being created.}
 
-\item{requestMappingTemplate}{The mapping template to be used for requests.
+\item{requestMappingTemplate}{[required] The mapping template to be used for requests.
 
 A resolver uses a request mapping template to convert a GraphQL expression into a format that a data source can understand. Mapping templates are written in Apache Velocity Template Language (VTL).}
 
 \item{responseMappingTemplate}{The mapping template to be used for responses from the data source.}
+
+\item{kind}{The resolver type.
+\itemize{
+\item \strong{UNIT}: A UNIT resolver type. A UNIT resolver is the default resolver type. A UNIT resolver enables you to execute a GraphQL query against a single data source.
+\item \strong{PIPELINE}: A PIPELINE resolver type. A PIPELINE resolver enables you to execute a series of \code{Function} in a serial manner. You can use a pipeline resolver to execute a GraphQL query against multiple data sources.
+}}
+
+\item{pipelineConfig}{The \code{PipelineConfig}.}
 }
 \description{
 Creates a \code{Resolver} object.

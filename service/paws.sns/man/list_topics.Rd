@@ -4,7 +4,9 @@
 \alias{list_topics}
 \title{Returns a list of the requester's topics}
 \usage{
-list_topics(NextToken = NULL)
+list_topics(
+  NextToken = "string"
+)
 }
 \arguments{
 \item{NextToken}{Token returned by the previous \code{ListTopics} request.}

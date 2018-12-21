@@ -4,10 +4,12 @@
 \alias{get_usage_plan}
 \title{Gets a usage plan of a given plan identifier}
 \usage{
-get_usage_plan(usagePlanId)
+get_usage_plan(
+  usagePlanId = "string"
+)
 }
 \arguments{
-\item{usagePlanId}{[Required] The identifier of the UsagePlan resource to be retrieved.}
+\item{usagePlanId}{[required] [Required] The identifier of the UsagePlan resource to be retrieved.}
 }
 \description{
 Gets a usage plan of a given plan identifier.

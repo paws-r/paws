@@ -4,10 +4,12 @@
 \alias{register_cross_account_access_role}
 \title{Registers the IAM role that grants Amazon Inspector access to AWS Services needed to perform security assessments}
 \usage{
-register_cross_account_access_role(roleArn)
+register_cross_account_access_role(
+  roleArn = "string"
+)
 }
 \arguments{
-\item{roleArn}{The ARN of the IAM role that grants Amazon Inspector access to AWS Services needed to perform security assessments.}
+\item{roleArn}{[required] The ARN of the IAM role that grants Amazon Inspector access to AWS Services needed to perform security assessments.}
 }
 \description{
 Registers the IAM role that grants Amazon Inspector access to AWS Services needed to perform security assessments.

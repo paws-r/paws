@@ -4,8 +4,14 @@
 \alias{describe_rules}
 \title{Describes the specified rules or the rules for the specified listener}
 \usage{
-describe_rules(ListenerArn = NULL, RuleArns = NULL, Marker = NULL,
-  PageSize = NULL)
+describe_rules(
+  ListenerArn = "string",
+  RuleArns = list(
+    "string"
+  ),
+  Marker = "string",
+  PageSize = 123
+)
 }
 \arguments{
 \item{ListenerArn}{The Amazon Resource Name (ARN) of the listener.}

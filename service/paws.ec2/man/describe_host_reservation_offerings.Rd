@@ -4,9 +4,21 @@
 \alias{describe_host_reservation_offerings}
 \title{Describes the Dedicated Host reservations that are available to purchase}
 \usage{
-describe_host_reservation_offerings(Filter = NULL, MaxDuration = NULL,
-  MaxResults = NULL, MinDuration = NULL, NextToken = NULL,
-  OfferingId = NULL)
+describe_host_reservation_offerings(
+  Filter = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxDuration = 123,
+  MaxResults = 123,
+  MinDuration = 123,
+  NextToken = "string",
+  OfferingId = "string"
+)
 }
 \arguments{
 \item{Filter}{One or more filters.
@@ -29,7 +41,7 @@ describe_host_reservation_offerings(Filter = NULL, MaxDuration = NULL,
 Describes the Dedicated Host reservations that are available to purchase.
 }
 \details{
-The results describe all the Dedicated Host reservation offerings, including offerings that may not match the instance family and region of your Dedicated Hosts. When purchasing an offering, ensure that the instance family and Region of the offering matches that of the Dedicated Hosts with which it is to be associated. For more information about supported instance types, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html}{Dedicated Hosts Overview} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+The results describe all the Dedicated Host reservation offerings, including offerings that may not match the instance family and Region of your Dedicated Hosts. When purchasing an offering, ensure that the instance family and Region of the offering matches that of the Dedicated Hosts with which it is to be associated. For more information about supported instance types, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html}{Dedicated Hosts Overview} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \examples{
 

@@ -4,10 +4,14 @@
 \alias{list_placements}
 \title{Lists the placement(s) of a project}
 \usage{
-list_placements(projectName, nextToken = NULL, maxResults = NULL)
+list_placements(
+  projectName = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{projectName}{The project containing the placements to be listed.}
+\item{projectName}{[required] The project containing the placements to be listed.}
 
 \item{nextToken}{The token to retrieve the next set of results.}
 

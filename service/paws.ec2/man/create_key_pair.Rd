@@ -4,10 +4,13 @@
 \alias{create_key_pair}
 \title{Creates a 2048-bit RSA key pair with the specified name}
 \usage{
-create_key_pair(KeyName, DryRun = NULL)
+create_key_pair(
+  KeyName = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{KeyName}{A unique name for the key pair.
+\item{KeyName}{[required] A unique name for the key pair.
 
 Constraints: Up to 255 ASCII characters}
 

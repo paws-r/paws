@@ -4,12 +4,15 @@
 \alias{add_client_id_to_open_id_connect_provider}
 \title{Adds a new client ID (also known as audience) to the list of client IDs already registered for the specified IAM OpenID Connect (OIDC) provider resource}
 \usage{
-add_client_id_to_open_id_connect_provider(OpenIDConnectProviderArn, ClientID)
+add_client_id_to_open_id_connect_provider(
+  OpenIDConnectProviderArn = "string",
+  ClientID = "string"
+)
 }
 \arguments{
-\item{OpenIDConnectProviderArn}{The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC) provider resource to add the client ID to. You can get a list of OIDC provider ARNs by using the ListOpenIDConnectProviders operation.}
+\item{OpenIDConnectProviderArn}{[required] The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC) provider resource to add the client ID to. You can get a list of OIDC provider ARNs by using the ListOpenIDConnectProviders operation.}
 
-\item{ClientID}{The client ID (also known as audience) to add to the IAM OpenID Connect provider resource.}
+\item{ClientID}{[required] The client ID (also known as audience) to add to the IAM OpenID Connect provider resource.}
 }
 \description{
 Adds a new client ID (also known as audience) to the list of client IDs already registered for the specified IAM OpenID Connect (OIDC) provider resource.

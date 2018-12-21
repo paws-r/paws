@@ -4,14 +4,18 @@
 \alias{delete_method}
 \title{Deletes an existing Method resource}
 \usage{
-delete_method(restApiId, resourceId, httpMethod)
+delete_method(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string"
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[Required] The Resource identifier for the Method resource.}
+\item{resourceId}{[required] [Required] The Resource identifier for the Method resource.}
 
-\item{httpMethod}{[Required] The HTTP verb of the Method resource.}
+\item{httpMethod}{[required] [Required] The HTTP verb of the Method resource.}
 }
 \description{
 Deletes an existing Method resource.

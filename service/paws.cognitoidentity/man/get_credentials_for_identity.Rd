@@ -4,11 +4,16 @@
 \alias{get_credentials_for_identity}
 \title{Returns credentials for the provided identity ID}
 \usage{
-get_credentials_for_identity(IdentityId, Logins = NULL,
-  CustomRoleArn = NULL)
+get_credentials_for_identity(
+  IdentityId = "string",
+  Logins = list(
+    "string"
+  ),
+  CustomRoleArn = "string"
+)
 }
 \arguments{
-\item{IdentityId}{A unique identifier in the format REGION:GUID.}
+\item{IdentityId}{[required] A unique identifier in the format REGION:GUID.}
 
 \item{Logins}{A set of optional name-value pairs that map provider names to provider tokens.}
 

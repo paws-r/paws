@@ -4,16 +4,40 @@
 \alias{update_stack_instances}
 \title{Updates the parameter values for stack instances for the specified accounts, within the specified regions}
 \usage{
-update_stack_instances(StackSetName, Accounts, Regions,
-  ParameterOverrides = NULL, OperationPreferences = NULL,
-  OperationId = NULL)
+update_stack_instances(
+  StackSetName = "string",
+  Accounts = list(
+    "string"
+  ),
+  Regions = list(
+    "string"
+  ),
+  ParameterOverrides = list(
+    list(
+      ParameterKey = "string",
+      ParameterValue = "string",
+      UsePreviousValue = TRUE|FALSE,
+      ResolvedValue = "string"
+    )
+  ),
+  OperationPreferences = list(
+    RegionOrder = list(
+      "string"
+    ),
+    FailureToleranceCount = 123,
+    FailureTolerancePercentage = 123,
+    MaxConcurrentCount = 123,
+    MaxConcurrentPercentage = 123
+  ),
+  OperationId = "string"
+)
 }
 \arguments{
-\item{StackSetName}{The name or unique ID of the stack set associated with the stack instances.}
+\item{StackSetName}{[required] The name or unique ID of the stack set associated with the stack instances.}
 
-\item{Accounts}{The names of one or more AWS accounts for which you want to update parameter values for stack instances. The overridden parameter values will be applied to all stack instances in the specified accounts and regions.}
+\item{Accounts}{[required] The names of one or more AWS accounts for which you want to update parameter values for stack instances. The overridden parameter values will be applied to all stack instances in the specified accounts and regions.}
 
-\item{Regions}{The names of one or more regions in which you want to update parameter values for stack instances. The overridden parameter values will be applied to all stack instances in the specified accounts and regions.}
+\item{Regions}{[required] The names of one or more regions in which you want to update parameter values for stack instances. The overridden parameter values will be applied to all stack instances in the specified accounts and regions.}
 
 \item{ParameterOverrides}{A list of input parameters whose values you want to update for the specified stack instances.
 

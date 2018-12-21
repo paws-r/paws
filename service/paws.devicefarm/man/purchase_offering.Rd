@@ -4,8 +4,11 @@
 \alias{purchase_offering}
 \title{Immediately purchases offerings for an AWS account}
 \usage{
-purchase_offering(offeringId = NULL, quantity = NULL,
-  offeringPromotionId = NULL)
+purchase_offering(
+  offeringId = "string",
+  quantity = 123,
+  offeringPromotionId = "string"
+)
 }
 \arguments{
 \item{offeringId}{The ID of the offering.}

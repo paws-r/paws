@@ -4,10 +4,14 @@
 \alias{start_pipeline_reprocessing}
 \title{Starts the reprocessing of raw message data through the pipeline}
 \usage{
-start_pipeline_reprocessing(pipelineName, startTime = NULL, endTime = NULL)
+start_pipeline_reprocessing(
+  pipelineName = "string",
+  startTime = as.POSIXct("2015-01-01"),
+  endTime = as.POSIXct("2015-01-01")
+)
 }
 \arguments{
-\item{pipelineName}{The name of the pipeline on which to start reprocessing.}
+\item{pipelineName}{[required] The name of the pipeline on which to start reprocessing.}
 
 \item{startTime}{The start time (inclusive) of raw message data that is reprocessed.}
 

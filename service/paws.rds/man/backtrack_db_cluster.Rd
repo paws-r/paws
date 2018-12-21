@@ -4,11 +4,15 @@
 \alias{backtrack_db_cluster}
 \title{Backtracks a DB cluster to a specific time, without creating a new DB cluster}
 \usage{
-backtrack_db_cluster(DBClusterIdentifier, BacktrackTo, Force = NULL,
-  UseEarliestTimeOnPointInTimeUnavailable = NULL)
+backtrack_db_cluster(
+  DBClusterIdentifier = "string",
+  BacktrackTo = as.POSIXct("2015-01-01"),
+  Force = TRUE|FALSE,
+  UseEarliestTimeOnPointInTimeUnavailable = TRUE|FALSE
+)
 }
 \arguments{
-\item{DBClusterIdentifier}{The DB cluster identifier of the DB cluster to be backtracked. This parameter is stored as a lowercase string.
+\item{DBClusterIdentifier}{[required] The DB cluster identifier of the DB cluster to be backtracked. This parameter is stored as a lowercase string.
 
 Constraints:
 \itemize{
@@ -19,7 +23,7 @@ Constraints:
 
 Example: \code{my-cluster1}}
 
-\item{BacktrackTo}{The timestamp of the time to backtrack the DB cluster to, specified in ISO 8601 format. For more information about ISO 8601, see the \href{http://en.wikipedia.org/wiki/ISO_8601}{ISO8601 Wikipedia page.}
+\item{BacktrackTo}{[required] The timestamp of the time to backtrack the DB cluster to, specified in ISO 8601 format. For more information about ISO 8601, see the \href{http://en.wikipedia.org/wiki/ISO_8601}{ISO8601 Wikipedia page.}
 
 If the specified time is not a consistent time for the DB cluster, Aurora automatically chooses the nearest possible consistent time for the DB cluster.
 

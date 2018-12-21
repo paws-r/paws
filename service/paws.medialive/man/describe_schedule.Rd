@@ -4,10 +4,14 @@
 \alias{describe_schedule}
 \title{Get a channel schedule}
 \usage{
-describe_schedule(ChannelId, MaxResults = NULL, NextToken = NULL)
+describe_schedule(
+  ChannelId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{ChannelId}{Id of the channel whose schedule is being updated.}
+\item{ChannelId}{[required] Id of the channel whose schedule is being updated.}
 
 \item{MaxResults}{}
 

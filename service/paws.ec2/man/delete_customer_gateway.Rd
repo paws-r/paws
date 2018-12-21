@@ -4,10 +4,13 @@
 \alias{delete_customer_gateway}
 \title{Deletes the specified customer gateway}
 \usage{
-delete_customer_gateway(CustomerGatewayId, DryRun = NULL)
+delete_customer_gateway(
+  CustomerGatewayId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{CustomerGatewayId}{The ID of the customer gateway.}
+\item{CustomerGatewayId}{[required] The ID of the customer gateway.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

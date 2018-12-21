@@ -4,19 +4,26 @@
 \alias{create_user}
 \title{Creates an ActiveMQ user}
 \usage{
-create_user(Username, BrokerId, ConsoleAccess = NULL, Groups = NULL,
-  Password = NULL)
+create_user(
+  BrokerId = "string",
+  ConsoleAccess = TRUE|FALSE,
+  Groups = list(
+    "string"
+  ),
+  Password = "string",
+  Username = "string"
+)
 }
 \arguments{
-\item{Username}{The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.}
-
-\item{BrokerId}{The unique ID that Amazon MQ generates for the broker.}
+\item{BrokerId}{[required] The unique ID that Amazon MQ generates for the broker.}
 
 \item{ConsoleAccess}{Enables access to the the ActiveMQ Web Console for the ActiveMQ user.}
 
 \item{Groups}{The list of groups (20 maximum) to which the ActiveMQ user belongs. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.}
 
 \item{Password}{Required. The password of the user. This value must be at least 12 characters long, must contain at least 4 unique characters, and must not contain commas.}
+
+\item{Username}{[required] The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.}
 }
 \description{
 Creates an ActiveMQ user.

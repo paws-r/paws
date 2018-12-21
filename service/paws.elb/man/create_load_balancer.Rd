@@ -4,15 +4,41 @@
 \alias{create_load_balancer}
 \title{Creates a Classic Load Balancer}
 \usage{
-create_load_balancer(LoadBalancerName, Listeners, AvailabilityZones = NULL,
-  Subnets = NULL, SecurityGroups = NULL, Scheme = NULL, Tags = NULL)
+create_load_balancer(
+  LoadBalancerName = "string",
+  Listeners = list(
+    list(
+      Protocol = "string",
+      LoadBalancerPort = 123,
+      InstanceProtocol = "string",
+      InstancePort = 123,
+      SSLCertificateId = "string"
+    )
+  ),
+  AvailabilityZones = list(
+    "string"
+  ),
+  Subnets = list(
+    "string"
+  ),
+  SecurityGroups = list(
+    "string"
+  ),
+  Scheme = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{LoadBalancerName}{The name of the load balancer.
+\item{LoadBalancerName}{[required] The name of the load balancer.
 
 This name must be unique within your set of load balancers for the region, must have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and cannot begin or end with a hyphen.}
 
-\item{Listeners}{The listeners.
+\item{Listeners}{[required] The listeners.
 
 For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html}{Listeners for Your Classic Load Balancer} in the \emph{Classic Load Balancers Guide}.}
 

@@ -6,16 +6,20 @@
 \alias{paws.kinesis-package}
 \title{paws.kinesis: Amazon Kinesis}
 \description{
-Amazon Kinesis Data Streams is a managed service
-that scales elastically for real-time processing of streaming big
-data.
+Amazon Kinesis Data Streams is a managed service that scales
+elastically for real-time processing of streaming big data.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

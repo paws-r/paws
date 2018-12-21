@@ -4,10 +4,12 @@
 \alias{stop_matchmaking}
 \title{Cancels a matchmaking ticket that is currently being processed}
 \usage{
-stop_matchmaking(TicketId)
+stop_matchmaking(
+  TicketId = "string"
+)
 }
 \arguments{
-\item{TicketId}{Unique identifier for a matchmaking ticket.}
+\item{TicketId}{[required] Unique identifier for a matchmaking ticket.}
 }
 \description{
 Cancels a matchmaking ticket that is currently being processed. To stop the matchmaking operation, specify the ticket ID. If successful, work on the ticket is stopped, and the ticket status is changed to \code{CANCELLED}.

@@ -4,15 +4,86 @@
 \alias{create_dataset}
 \title{Creates a data set}
 \usage{
-create_dataset(datasetName, actions, triggers = NULL,
-  retentionPeriod = NULL, tags = NULL)
+create_dataset(
+  datasetName = "string",
+  actions = list(
+    list(
+      actionName = "string",
+      queryAction = list(
+        sqlQuery = "string",
+        filters = list(
+          list(
+            deltaTime = list(
+              offsetSeconds = 123,
+              timeExpression = "string"
+            )
+          )
+        )
+      ),
+      containerAction = list(
+        image = "string",
+        executionRoleArn = "string",
+        resourceConfiguration = list(
+          computeType = "ACU_1"|"ACU_2",
+          volumeSizeInGB = 123
+        ),
+        variables = list(
+          list(
+            name = "string",
+            stringValue = "string",
+            doubleValue = 123.0,
+            datasetContentVersionValue = list(
+              datasetName = "string"
+            ),
+            outputFileUriValue = list(
+              fileName = "string"
+            )
+          )
+        )
+      )
+    )
+  ),
+  triggers = list(
+    list(
+      schedule = list(
+        expression = "string"
+      ),
+      dataset = list(
+        name = "string"
+      )
+    )
+  ),
+  contentDeliveryRules = list(
+    list(
+      entryName = "string",
+      destination = list(
+        iotEventsDestinationConfiguration = list(
+          inputName = "string",
+          roleArn = "string"
+        )
+      )
+    )
+  ),
+  retentionPeriod = list(
+    unlimited = TRUE|FALSE,
+    numberOfDays = 123
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{datasetName}{The name of the data set.}
+\item{datasetName}{[required] The name of the data set.}
 
-\item{actions}{A list of actions that create the data set contents.}
+\item{actions}{[required] A list of actions that create the data set contents.}
 
 \item{triggers}{A list of triggers. A trigger causes data set contents to be populated at a specified time interval or when another data set's contents are created. The list of triggers can be empty or contain up to five \strong{DataSetTrigger} objects.}
+
+\item{contentDeliveryRules}{}
 
 \item{retentionPeriod}{[Optional] How long, in days, message data is kept for the data set. If not given or set to null, the latest version of the dataset content plus the latest succeeded version (if they are different) are retained for at most 90 days.}
 

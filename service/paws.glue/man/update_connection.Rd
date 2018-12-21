@@ -4,14 +4,35 @@
 \alias{update_connection}
 \title{Updates a connection definition in the Data Catalog}
 \usage{
-update_connection(Name, ConnectionInput, CatalogId = NULL)
+update_connection(
+  CatalogId = "string",
+  Name = "string",
+  ConnectionInput = list(
+    Name = "string",
+    Description = "string",
+    ConnectionType = "JDBC"|"SFTP",
+    MatchCriteria = list(
+      "string"
+    ),
+    ConnectionProperties = list(
+      "string"
+    ),
+    PhysicalConnectionRequirements = list(
+      SubnetId = "string",
+      SecurityGroupIdList = list(
+        "string"
+      ),
+      AvailabilityZone = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{Name}{The name of the connection definition to update.}
-
-\item{ConnectionInput}{A \code{ConnectionInput} object that redefines the connection in question.}
-
 \item{CatalogId}{The ID of the Data Catalog in which the connection resides. If none is supplied, the AWS account ID is used by default.}
+
+\item{Name}{[required] The name of the connection definition to update.}
+
+\item{ConnectionInput}{[required] A \code{ConnectionInput} object that redefines the connection in question.}
 }
 \description{
 Updates a connection definition in the Data Catalog.

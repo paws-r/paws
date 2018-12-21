@@ -4,7 +4,13 @@
 \alias{describe_tape_archives}
 \title{Returns a description of specified virtual tapes in the virtual tape shelf (VTS)}
 \usage{
-describe_tape_archives(TapeARNs = NULL, Marker = NULL, Limit = NULL)
+describe_tape_archives(
+  TapeARNs = list(
+    "string"
+  ),
+  Marker = "string",
+  Limit = 123
+)
 }
 \arguments{
 \item{TapeARNs}{Specifies one or more unique Amazon Resource Names (ARNs) that represent the virtual tapes you want to describe.}

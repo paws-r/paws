@@ -4,12 +4,30 @@
 \alias{compare_faces}
 \title{Compares a face in the \emph{source} input image with each of the 100 largest faces detected in the \emph{target} input image}
 \usage{
-compare_faces(SourceImage, TargetImage, SimilarityThreshold = NULL)
+compare_faces(
+  SourceImage = list(
+    Bytes = raw,
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  TargetImage = list(
+    Bytes = raw,
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  SimilarityThreshold = 123.0
+)
 }
 \arguments{
-\item{SourceImage}{The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.}
+\item{SourceImage}{[required] The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.}
 
-\item{TargetImage}{The target image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.}
+\item{TargetImage}{[required] The target image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.}
 
 \item{SimilarityThreshold}{The minimum level of confidence in the face matches that a match must meet to be included in the \code{FaceMatches} array.}
 }
@@ -23,7 +41,7 @@ You pass the input and target images either as base64-encoded image bytes or as 
 
 In response, the operation returns an array of face matches ordered by similarity score in descending order. For each face match, the response provides a bounding box of the face, facial landmarks, pose details (pitch, role, and yaw), quality (brightness and sharpness), and confidence value (indicating the level of confidence that the bounding box contains a face). The response also provides a similarity score, which indicates how closely the faces match.
 
-By default, only faces with a similarity score of greater than or equal to 80% are returned in the response. You can change this value by specifying the \code{SimilarityThreshold} parameter.
+By default, only faces with a similarity score of greater than or equal to 80\% are returned in the response. You can change this value by specifying the \code{SimilarityThreshold} parameter.
 
 \code{CompareFaces} also returns an array of faces that don't match the source image. For each face, it returns a bounding box, confidence value, landmarks, pose details, and quality. The response also returns information about the face in the source image, including the bounding box of the face and confidence value.
 

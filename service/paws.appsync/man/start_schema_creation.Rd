@@ -4,12 +4,15 @@
 \alias{start_schema_creation}
 \title{Adds a new schema to your GraphQL API}
 \usage{
-start_schema_creation(apiId, definition)
+start_schema_creation(
+  apiId = "string",
+  definition = raw
+)
 }
 \arguments{
-\item{apiId}{The API ID.}
+\item{apiId}{[required] The API ID.}
 
-\item{definition}{The schema definition, in GraphQL schema language format.}
+\item{definition}{[required] The schema definition, in GraphQL schema language format.}
 }
 \description{
 Adds a new schema to your GraphQL API.

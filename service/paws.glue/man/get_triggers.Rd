@@ -4,7 +4,11 @@
 \alias{get_triggers}
 \title{Gets all the triggers associated with a job}
 \usage{
-get_triggers(NextToken = NULL, DependentJobName = NULL, MaxResults = NULL)
+get_triggers(
+  NextToken = "string",
+  DependentJobName = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{NextToken}{A continuation token, if this is a continuation call.}

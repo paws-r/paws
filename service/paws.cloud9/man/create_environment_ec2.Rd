@@ -4,22 +4,28 @@
 \alias{create_environment_ec2}
 \title{Creates an AWS Cloud9 development environment, launches an Amazon Elastic Compute Cloud (Amazon EC2) instance, and then connects from the instance to the environment}
 \usage{
-create_environment_ec2(name, instanceType, description = NULL,
-  clientRequestToken = NULL, subnetId = NULL,
-  automaticStopTimeMinutes = NULL, ownerArn = NULL)
+create_environment_ec2(
+  name = "string",
+  description = "string",
+  clientRequestToken = "string",
+  instanceType = "string",
+  subnetId = "string",
+  automaticStopTimeMinutes = 123,
+  ownerArn = "string"
+)
 }
 \arguments{
-\item{name}{The name of the environment to create.
+\item{name}{[required] The name of the environment to create.
 
 This name is visible to other AWS IAM users in the same AWS account.}
-
-\item{instanceType}{The type of instance to connect to the environment (for example, \code{t2.micro}).}
 
 \item{description}{The description of the environment to create.}
 
 \item{clientRequestToken}{A unique, case-sensitive string that helps AWS Cloud9 to ensure this operation completes no more than one time.
 
 For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Client Tokens} in the \emph{Amazon EC2 API Reference}.}
+
+\item{instanceType}{[required] The type of instance to connect to the environment (for example, \code{t2.micro}).}
 
 \item{subnetId}{The ID of the subnet in Amazon VPC that AWS Cloud9 will use to communicate with the Amazon EC2 instance.}
 

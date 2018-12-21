@@ -4,8 +4,18 @@
 \alias{describe_reserved_instances_listings}
 \title{Describes your account's Reserved Instance listings in the Reserved Instance Marketplace}
 \usage{
-describe_reserved_instances_listings(Filters = NULL,
-  ReservedInstancesId = NULL, ReservedInstancesListingId = NULL)
+describe_reserved_instances_listings(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  ReservedInstancesId = "string",
+  ReservedInstancesListingId = "string"
+)
 }
 \arguments{
 \item{Filters}{One or more filters.

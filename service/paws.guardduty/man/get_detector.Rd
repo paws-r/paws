@@ -4,10 +4,12 @@
 \alias{get_detector}
 \title{Retrieves an Amazon GuardDuty detector specified by the detectorId}
 \usage{
-get_detector(DetectorId)
+get_detector(
+  DetectorId = "string"
+)
 }
 \arguments{
-\item{DetectorId}{The unique ID of the detector that you want to retrieve.}
+\item{DetectorId}{[required] The unique ID of the detector that you want to retrieve.}
 }
 \description{
 Retrieves an Amazon GuardDuty detector specified by the detectorId.

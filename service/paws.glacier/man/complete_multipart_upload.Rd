@@ -4,15 +4,20 @@
 \alias{complete_multipart_upload}
 \title{You call this operation to inform Amazon Glacier that all the archive parts have been uploaded and that Amazon Glacier can now assemble the archive from the uploaded parts}
 \usage{
-complete_multipart_upload(accountId, vaultName, uploadId, archiveSize = NULL,
-  checksum = NULL)
+complete_multipart_upload(
+  accountId = "string",
+  vaultName = "string",
+  uploadId = "string",
+  archiveSize = "string",
+  checksum = "string"
+)
 }
 \arguments{
-\item{accountId}{The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
+\item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
 
-\item{vaultName}{The name of the vault.}
+\item{vaultName}{[required] The name of the vault.}
 
-\item{uploadId}{The upload ID of the multipart upload.}
+\item{uploadId}{[required] The upload ID of the multipart upload.}
 
 \item{archiveSize}{The total size, in bytes, of the entire archive. This value should be the sum of all the sizes of the individual parts that you uploaded.}
 

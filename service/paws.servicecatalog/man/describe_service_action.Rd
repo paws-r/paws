@@ -4,10 +4,13 @@
 \alias{describe_service_action}
 \title{Describes a self-service action}
 \usage{
-describe_service_action(Id, AcceptLanguage = NULL)
+describe_service_action(
+  Id = "string",
+  AcceptLanguage = "string"
+)
 }
 \arguments{
-\item{Id}{The self-service action identifier.}
+\item{Id}{[required] The self-service action identifier.}
 
 \item{AcceptLanguage}{The language code.
 \itemize{

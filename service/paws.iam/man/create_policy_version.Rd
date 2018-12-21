@@ -4,14 +4,18 @@
 \alias{create_policy_version}
 \title{Creates a new version of the specified managed policy}
 \usage{
-create_policy_version(PolicyArn, PolicyDocument, SetAsDefault = NULL)
+create_policy_version(
+  PolicyArn = "string",
+  PolicyDocument = "string",
+  SetAsDefault = TRUE|FALSE
+)
 }
 \arguments{
-\item{PolicyArn}{The Amazon Resource Name (ARN) of the IAM policy to which you want to add a new version.
+\item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy to which you want to add a new version.
 
 For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces} in the \emph{AWS General Reference}.}
 
-\item{PolicyDocument}{The JSON policy document that you want to use as the content for this new version of the policy.
+\item{PolicyDocument}{[required] The JSON policy document that you want to use as the content for this new version of the policy.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate this parameter is a string of characters consisting of the following:
 \itemize{

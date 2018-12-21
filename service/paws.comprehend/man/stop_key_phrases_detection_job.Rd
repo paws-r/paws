@@ -4,10 +4,12 @@
 \alias{stop_key_phrases_detection_job}
 \title{Stops a key phrases detection job in progress}
 \usage{
-stop_key_phrases_detection_job(JobId)
+stop_key_phrases_detection_job(
+  JobId = "string"
+)
 }
 \arguments{
-\item{JobId}{The identifier of the key phrases detection job to stop.}
+\item{JobId}{[required] The identifier of the key phrases detection job to stop.}
 }
 \description{
 Stops a key phrases detection job in progress.

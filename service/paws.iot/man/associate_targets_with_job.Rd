@@ -4,12 +4,18 @@
 \alias{associate_targets_with_job}
 \title{Associates a group with a continuous job}
 \usage{
-associate_targets_with_job(targets, jobId, comment = NULL)
+associate_targets_with_job(
+  targets = list(
+    "string"
+  ),
+  jobId = "string",
+  comment = "string"
+)
 }
 \arguments{
-\item{targets}{A list of thing group ARNs that define the targets of the job.}
+\item{targets}{[required] A list of thing group ARNs that define the targets of the job.}
 
-\item{jobId}{The unique identifier you assigned to this job when it was created.}
+\item{jobId}{[required] The unique identifier you assigned to this job when it was created.}
 
 \item{comment}{An optional comment string describing why the job was associated with the targets.}
 }

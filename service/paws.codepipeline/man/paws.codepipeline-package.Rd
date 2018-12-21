@@ -6,8 +6,8 @@
 \alias{paws.codepipeline-package}
 \title{paws.codepipeline: AWS CodePipeline}
 \description{
-This is the AWS CodePipeline API Reference. This
-guide provides descriptions of the actions and data types for AWS
+This is the AWS CodePipeline API Reference. This guide
+provides descriptions of the actions and data types for AWS
 CodePipeline. Some functionality for your pipeline is only
 configurable through the API. For additional information, see the [AWS
 CodePipeline User
@@ -18,7 +18,12 @@ Guide](http://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html).
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

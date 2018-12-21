@@ -4,10 +4,22 @@
 \alias{create_channel}
 \title{Creates a channel}
 \usage{
-create_channel(channelName, retentionPeriod = NULL, tags = NULL)
+create_channel(
+  channelName = "string",
+  retentionPeriod = list(
+    unlimited = TRUE|FALSE,
+    numberOfDays = 123
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{channelName}{The name of the channel.}
+\item{channelName}{[required] The name of the channel.}
 
 \item{retentionPeriod}{How long, in days, message data is kept for the channel.}
 

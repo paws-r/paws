@@ -4,9 +4,14 @@
 \alias{describe_metric_filters}
 \title{Lists the specified metric filters}
 \usage{
-describe_metric_filters(logGroupName = NULL, filterNamePrefix = NULL,
-  nextToken = NULL, limit = NULL, metricName = NULL,
-  metricNamespace = NULL)
+describe_metric_filters(
+  logGroupName = "string",
+  filterNamePrefix = "string",
+  nextToken = "string",
+  limit = 123,
+  metricName = "string",
+  metricNamespace = "string"
+)
 }
 \arguments{
 \item{logGroupName}{The name of the log group.}

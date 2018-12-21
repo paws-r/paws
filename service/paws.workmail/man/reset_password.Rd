@@ -4,14 +4,18 @@
 \alias{reset_password}
 \title{Allows the administrator to reset the password for a user}
 \usage{
-reset_password(OrganizationId, UserId, Password)
+reset_password(
+  OrganizationId = "string",
+  UserId = "string",
+  Password = "string"
+)
 }
 \arguments{
-\item{OrganizationId}{The identifier of the organization that contains the user for which the password is reset.}
+\item{OrganizationId}{[required] The identifier of the organization that contains the user for which the password is reset.}
 
-\item{UserId}{The identifier of the user for whom the password is reset.}
+\item{UserId}{[required] The identifier of the user for whom the password is reset.}
 
-\item{Password}{The new password for the user.}
+\item{Password}{[required] The new password for the user.}
 }
 \description{
 Allows the administrator to reset the password for a user.

@@ -4,13 +4,16 @@
 \alias{create_additional_assignments_for_hit}
 \title{The \code{CreateAdditionalAssignmentsForHIT} operation increases the maximum number of assignments of an existing HIT}
 \usage{
-create_additional_assignments_for_hit(HITId, NumberOfAdditionalAssignments,
-  UniqueRequestToken = NULL)
+create_additional_assignments_for_hit(
+  HITId = "string",
+  NumberOfAdditionalAssignments = 123,
+  UniqueRequestToken = "string"
+)
 }
 \arguments{
-\item{HITId}{The ID of the HIT to extend.}
+\item{HITId}{[required] The ID of the HIT to extend.}
 
-\item{NumberOfAdditionalAssignments}{The number of additional assignments to request for this HIT.}
+\item{NumberOfAdditionalAssignments}{[required] The number of additional assignments to request for this HIT.}
 
 \item{UniqueRequestToken}{A unique identifier for this request, which allows you to retry the call on error without extending the HIT multiple times. This is useful in cases such as network timeouts where it is unclear whether or not the call succeeded on the server. If the extend HIT already exists in the system from a previous call using the same \code{UniqueRequestToken}, subsequent calls will return an error with a message containing the request ID.}
 }

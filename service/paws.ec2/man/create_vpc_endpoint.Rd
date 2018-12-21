@@ -4,21 +4,35 @@
 \alias{create_vpc_endpoint}
 \title{Creates a VPC endpoint for a specified service}
 \usage{
-create_vpc_endpoint(VpcId, ServiceName, DryRun = NULL,
-  VpcEndpointType = NULL, PolicyDocument = NULL, RouteTableIds = NULL,
-  SubnetIds = NULL, SecurityGroupIds = NULL, ClientToken = NULL,
-  PrivateDnsEnabled = NULL)
+create_vpc_endpoint(
+  DryRun = TRUE|FALSE,
+  VpcEndpointType = "Interface"|"Gateway",
+  VpcId = "string",
+  ServiceName = "string",
+  PolicyDocument = "string",
+  RouteTableIds = list(
+    "string"
+  ),
+  SubnetIds = list(
+    "string"
+  ),
+  SecurityGroupIds = list(
+    "string"
+  ),
+  ClientToken = "string",
+  PrivateDnsEnabled = TRUE|FALSE
+)
 }
 \arguments{
-\item{VpcId}{The ID of the VPC in which the endpoint will be used.}
-
-\item{ServiceName}{The service name. To get a list of available services, use the DescribeVpcEndpointServices request, or get the name from the service provider.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcEndpointType}{The type of endpoint.
 
 Default: Gateway}
+
+\item{VpcId}{[required] The ID of the VPC in which the endpoint will be used.}
+
+\item{ServiceName}{[required] The service name. To get a list of available services, use the DescribeVpcEndpointServices request, or get the name from the service provider.}
 
 \item{PolicyDocument}{(Gateway endpoint) A policy to attach to the endpoint that controls access to the service. The policy must be in valid JSON format. If this parameter is not specified, we attach a default policy that allows full access to the service.}
 

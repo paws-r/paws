@@ -4,10 +4,12 @@
 \alias{get_queue}
 \title{Retrieve the JSON for a specific queue}
 \usage{
-get_queue(Name)
+get_queue(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the queue that you want information about.}
+\item{Name}{[required] The name of the queue that you want information about.}
 }
 \description{
 Retrieve the JSON for a specific queue.

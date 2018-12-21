@@ -4,10 +4,22 @@
 \alias{detect_faces}
 \title{Detects faces within an image that is provided as input}
 \usage{
-detect_faces(Image, Attributes = NULL)
+detect_faces(
+  Image = list(
+    Bytes = raw,
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  Attributes = list(
+    "DEFAULT"|"ALL"
+  )
+)
 }
 \arguments{
-\item{Image}{The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.}
+\item{Image}{[required] The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.}
 
 \item{Attributes}{An array of facial attributes you want to be returned. This can be the default list of attributes or all attributes. If you don't specify a value for \code{Attributes} or if you specify \code{["DEFAULT"]}, the API returns the following subset of facial attributes: \code{BoundingBox}, \code{Confidence}, \code{Pose}, \code{Quality}, and \code{Landmarks}. If you provide \code{["ALL"]}, all facial attributes are returned, but the operation takes longer to complete.
 
@@ -21,7 +33,7 @@ Detects faces within an image that is provided as input.
 
 The face-detection algorithm is most effective on frontal faces. For non-frontal or obscured faces, the algorithm might not detect the faces or might detect faces with lower confidence.
 
-You pass the input image either as base64-encoded image bytes or as a reference to an image in an Amazon S3 bucket. If you use the AWS CLI to call Amazon Rekognition operations, passing image bytes is not supported. The image must be either a PNG or JPEG formatted file.
+You pass the input image either as base64-encoded image bytes or as a reference to an image in an Amazon S3 bucket. If you use the to call Amazon Rekognition operations, passing image bytes is not supported. The image must be either a PNG or JPEG formatted file.
 
 This is a stateless API operation. That is, the operation does not persist any data.
 

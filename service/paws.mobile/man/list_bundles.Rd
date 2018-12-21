@@ -4,7 +4,10 @@
 \alias{list_bundles}
 \title{List all available bundles}
 \usage{
-list_bundles(maxResults = NULL, nextToken = NULL)
+list_bundles(
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
 \item{maxResults}{Maximum number of records to list in a single response.}

@@ -4,16 +4,37 @@
 \alias{admin_respond_to_auth_challenge}
 \title{Responds to an authentication challenge, as an administrator}
 \usage{
-admin_respond_to_auth_challenge(UserPoolId, ClientId, ChallengeName,
-  ChallengeResponses = NULL, Session = NULL, AnalyticsMetadata = NULL,
-  ContextData = NULL)
+admin_respond_to_auth_challenge(
+  UserPoolId = "string",
+  ClientId = "string",
+  ChallengeName = "SMS_MFA"|"SOFTWARE_TOKEN_MFA"|"SELECT_MFA_TYPE"|"MFA_SETUP"|"PASSWORD_VERIFIER"|"CUSTOM_CHALLENGE"|"DEVICE_SRP_AUTH"|"DEVICE_PASSWORD_VERIFIER"|"ADMIN_NO_SRP_AUTH"|"NEW_PASSWORD_REQUIRED",
+  ChallengeResponses = list(
+    "string"
+  ),
+  Session = "string",
+  AnalyticsMetadata = list(
+    AnalyticsEndpointId = "string"
+  ),
+  ContextData = list(
+    IpAddress = "string",
+    ServerName = "string",
+    ServerPath = "string",
+    HttpHeaders = list(
+      list(
+        headerName = "string",
+        headerValue = "string"
+      )
+    ),
+    EncodedData = "string"
+  )
+)
 }
 \arguments{
-\item{UserPoolId}{The ID of the Amazon Cognito user pool.}
+\item{UserPoolId}{[required] The ID of the Amazon Cognito user pool.}
 
-\item{ClientId}{The app client ID.}
+\item{ClientId}{[required] The app client ID.}
 
-\item{ChallengeName}{The challenge name. For more information, see .}
+\item{ChallengeName}{[required] The challenge name. For more information, see .}
 
 \item{ChallengeResponses}{The challenge responses. These are inputs corresponding to the value of \code{ChallengeName}, for example:
 \itemize{

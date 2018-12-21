@@ -4,10 +4,12 @@
 \alias{get_xss_match_set}
 \title{Returns the XssMatchSet that is specified by \code{XssMatchSetId}}
 \usage{
-get_xss_match_set(XssMatchSetId)
+get_xss_match_set(
+  XssMatchSetId = "string"
+)
 }
 \arguments{
-\item{XssMatchSetId}{The \code{XssMatchSetId} of the XssMatchSet that you want to get. \code{XssMatchSetId} is returned by CreateXssMatchSet and by ListXssMatchSets.}
+\item{XssMatchSetId}{[required] The \code{XssMatchSetId} of the XssMatchSet that you want to get. \code{XssMatchSetId} is returned by CreateXssMatchSet and by ListXssMatchSets.}
 }
 \description{
 Returns the XssMatchSet that is specified by \code{XssMatchSetId}.

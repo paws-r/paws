@@ -4,15 +4,23 @@
 \alias{create_directory_config}
 \title{Creates a Directory Config object in AppStream 2}
 \usage{
-create_directory_config(DirectoryName, OrganizationalUnitDistinguishedNames,
-  ServiceAccountCredentials)
+create_directory_config(
+  DirectoryName = "string",
+  OrganizationalUnitDistinguishedNames = list(
+    "string"
+  ),
+  ServiceAccountCredentials = list(
+    AccountName = "string",
+    AccountPassword = "string"
+  )
+)
 }
 \arguments{
-\item{DirectoryName}{The fully qualified name of the directory (for example, corp.example.com).}
+\item{DirectoryName}{[required] The fully qualified name of the directory (for example, corp.example.com).}
 
-\item{OrganizationalUnitDistinguishedNames}{The distinguished names of the organizational units for computer accounts.}
+\item{OrganizationalUnitDistinguishedNames}{[required] The distinguished names of the organizational units for computer accounts.}
 
-\item{ServiceAccountCredentials}{The credentials for the service account used by the streaming instance to connect to the directory.}
+\item{ServiceAccountCredentials}{[required] The credentials for the service account used by the streaming instance to connect to the directory.}
 }
 \description{
 Creates a Directory Config object in AppStream 2.0. This object includes the information required to join streaming instances to an Active Directory domain.

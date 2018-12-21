@@ -4,10 +4,12 @@
 \alias{allocate_static_ip}
 \title{Allocates a static IP address}
 \usage{
-allocate_static_ip(staticIpName)
+allocate_static_ip(
+  staticIpName = "string"
+)
 }
 \arguments{
-\item{staticIpName}{The name of the static IP address.}
+\item{staticIpName}{[required] The name of the static IP address.}
 }
 \description{
 Allocates a static IP address.

@@ -4,10 +4,13 @@
 \alias{check_domain_transferability}
 \title{Checks whether a domain name can be transferred to Amazon Route 53}
 \usage{
-check_domain_transferability(DomainName, AuthCode = NULL)
+check_domain_transferability(
+  DomainName = "string",
+  AuthCode = "string"
+)
 }
 \arguments{
-\item{DomainName}{The name of the domain that you want to transfer to Amazon Route 53.
+\item{DomainName}{[required] The name of the domain that you want to transfer to Amazon Route 53.
 
 Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.}
 

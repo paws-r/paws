@@ -4,7 +4,10 @@
 \alias{describe_account_limits}
 \title{Describes the current Elastic Load Balancing resource limits for your AWS account}
 \usage{
-describe_account_limits(Marker = NULL, PageSize = NULL)
+describe_account_limits(
+  Marker = "string",
+  PageSize = 123
+)
 }
 \arguments{
 \item{Marker}{The marker for the next set of results. (You received this marker from a previous call.)}

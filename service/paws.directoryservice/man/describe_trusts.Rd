@@ -4,8 +4,14 @@
 \alias{describe_trusts}
 \title{Obtains information about the trust relationships for this account}
 \usage{
-describe_trusts(DirectoryId = NULL, TrustIds = NULL, NextToken = NULL,
-  Limit = NULL)
+describe_trusts(
+  DirectoryId = "string",
+  TrustIds = list(
+    "string"
+  ),
+  NextToken = "string",
+  Limit = 123
+)
 }
 \arguments{
 \item{DirectoryId}{The Directory ID of the AWS directory that is a part of the requested trust relationship.}

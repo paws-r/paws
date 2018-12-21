@@ -4,7 +4,12 @@
 \alias{describe_load_balancer_policies}
 \title{Describes the specified policies}
 \usage{
-describe_load_balancer_policies(LoadBalancerName = NULL, PolicyNames = NULL)
+describe_load_balancer_policies(
+  LoadBalancerName = "string",
+  PolicyNames = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{LoadBalancerName}{The name of the load balancer.}

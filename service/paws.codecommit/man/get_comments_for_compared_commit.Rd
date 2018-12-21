@@ -4,15 +4,20 @@
 \alias{get_comments_for_compared_commit}
 \title{Returns information about comments made on the comparison between two commits}
 \usage{
-get_comments_for_compared_commit(repositoryName, afterCommitId,
-  beforeCommitId = NULL, nextToken = NULL, maxResults = NULL)
+get_comments_for_compared_commit(
+  repositoryName = "string",
+  beforeCommitId = "string",
+  afterCommitId = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{repositoryName}{The name of the repository where you want to compare commits.}
-
-\item{afterCommitId}{To establish the directionality of the comparison, the full commit ID of the 'after' commit.}
+\item{repositoryName}{[required] The name of the repository where you want to compare commits.}
 
 \item{beforeCommitId}{To establish the directionality of the comparison, the full commit ID of the 'before' commit.}
+
+\item{afterCommitId}{[required] To establish the directionality of the comparison, the full commit ID of the 'after' commit.}
 
 \item{nextToken}{An enumeration token that when provided in a request, returns the next batch of the results.}
 

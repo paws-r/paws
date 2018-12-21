@@ -4,22 +4,27 @@
 \alias{create_custom_verification_email_template}
 \title{Creates a new custom verification email template}
 \usage{
-create_custom_verification_email_template(TemplateName, FromEmailAddress,
-  TemplateSubject, TemplateContent, SuccessRedirectionURL,
-  FailureRedirectionURL)
+create_custom_verification_email_template(
+  TemplateName = "string",
+  FromEmailAddress = "string",
+  TemplateSubject = "string",
+  TemplateContent = "string",
+  SuccessRedirectionURL = "string",
+  FailureRedirectionURL = "string"
+)
 }
 \arguments{
-\item{TemplateName}{The name of the custom verification email template.}
+\item{TemplateName}{[required] The name of the custom verification email template.}
 
-\item{FromEmailAddress}{The email address that the custom verification email is sent from.}
+\item{FromEmailAddress}{[required] The email address that the custom verification email is sent from.}
 
-\item{TemplateSubject}{The subject line of the custom verification email.}
+\item{TemplateSubject}{[required] The subject line of the custom verification email.}
 
-\item{TemplateContent}{The content of the custom verification email. The total size of the email must be less than 10 MB. The message body may contain HTML, with some limitations. For more information, see \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html#custom-verification-emails-faq}{Custom Verification Email Frequently Asked Questions} in the \emph{Amazon SES Developer Guide}.}
+\item{TemplateContent}{[required] The content of the custom verification email. The total size of the email must be less than 10 MB. The message body may contain HTML, with some limitations. For more information, see \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html#custom-verification-emails-faq}{Custom Verification Email Frequently Asked Questions} in the \emph{Amazon SES Developer Guide}.}
 
-\item{SuccessRedirectionURL}{The URL that the recipient of the verification email is sent to if his or her address is successfully verified.}
+\item{SuccessRedirectionURL}{[required] The URL that the recipient of the verification email is sent to if his or her address is successfully verified.}
 
-\item{FailureRedirectionURL}{The URL that the recipient of the verification email is sent to if his or her address is not successfully verified.}
+\item{FailureRedirectionURL}{[required] The URL that the recipient of the verification email is sent to if his or her address is not successfully verified.}
 }
 \description{
 Creates a new custom verification email template.

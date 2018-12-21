@@ -4,12 +4,24 @@
 \alias{create_import_job}
 \title{Creates or updates an import job}
 \usage{
-create_import_job(ApplicationId, ImportJobRequest)
+create_import_job(
+  ApplicationId = "string",
+  ImportJobRequest = list(
+    DefineSegment = TRUE|FALSE,
+    ExternalId = "string",
+    Format = "CSV"|"JSON",
+    RegisterEndpoints = TRUE|FALSE,
+    RoleArn = "string",
+    S3Url = "string",
+    SegmentId = "string",
+    SegmentName = "string"
+  )
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 
-\item{ImportJobRequest}{}
+\item{ImportJobRequest}{[required]}
 }
 \description{
 Creates or updates an import job.

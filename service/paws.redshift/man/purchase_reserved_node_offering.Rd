@@ -4,10 +4,13 @@
 \alias{purchase_reserved_node_offering}
 \title{Allows you to purchase reserved nodes}
 \usage{
-purchase_reserved_node_offering(ReservedNodeOfferingId, NodeCount = NULL)
+purchase_reserved_node_offering(
+  ReservedNodeOfferingId = "string",
+  NodeCount = 123
+)
 }
 \arguments{
-\item{ReservedNodeOfferingId}{The unique identifier of the reserved node offering you want to purchase.}
+\item{ReservedNodeOfferingId}{[required] The unique identifier of the reserved node offering you want to purchase.}
 
 \item{NodeCount}{The number of reserved nodes that you want to purchase.
 

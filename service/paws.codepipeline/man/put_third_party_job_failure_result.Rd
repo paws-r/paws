@@ -4,14 +4,22 @@
 \alias{put_third_party_job_failure_result}
 \title{Represents the failure of a third party job as returned to the pipeline by a job worker}
 \usage{
-put_third_party_job_failure_result(jobId, clientToken, failureDetails)
+put_third_party_job_failure_result(
+  jobId = "string",
+  clientToken = "string",
+  failureDetails = list(
+    type = "JobFailed"|"ConfigurationError"|"PermissionError"|"RevisionOutOfSync"|"RevisionUnavailable"|"SystemUnavailable",
+    message = "string",
+    externalExecutionId = "string"
+  )
+)
 }
 \arguments{
-\item{jobId}{The ID of the job that failed. This is the same ID returned from PollForThirdPartyJobs.}
+\item{jobId}{[required] The ID of the job that failed. This is the same ID returned from PollForThirdPartyJobs.}
 
-\item{clientToken}{The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.}
+\item{clientToken}{[required] The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.}
 
-\item{failureDetails}{Represents information about failure details.}
+\item{failureDetails}{[required] Represents information about failure details.}
 }
 \description{
 Represents the failure of a third party job as returned to the pipeline by a job worker. Only used for partner actions.

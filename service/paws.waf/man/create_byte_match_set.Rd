@@ -4,12 +4,15 @@
 \alias{create_byte_match_set}
 \title{Creates a \code{ByteMatchSet}}
 \usage{
-create_byte_match_set(Name, ChangeToken)
+create_byte_match_set(
+  Name = "string",
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{Name}{A friendly name or description of the ByteMatchSet. You can't change \code{Name} after you create a \code{ByteMatchSet}.}
+\item{Name}{[required] A friendly name or description of the ByteMatchSet. You can't change \code{Name} after you create a \code{ByteMatchSet}.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Creates a \code{ByteMatchSet}. You then use UpdateByteMatchSet to identify the part of a web request that you want AWS WAF to inspect, such as the values of the \code{User-Agent} header or the query string. For example, you can create a \code{ByteMatchSet} that matches any requests with \code{User-Agent} headers that contain the string \code{BadBot}. You can then configure AWS WAF to reject those requests.

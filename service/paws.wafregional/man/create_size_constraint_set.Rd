@@ -4,12 +4,15 @@
 \alias{create_size_constraint_set}
 \title{Creates a \code{SizeConstraintSet}}
 \usage{
-create_size_constraint_set(Name, ChangeToken)
+create_size_constraint_set(
+  Name = "string",
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{Name}{A friendly name or description of the SizeConstraintSet. You can't change \code{Name} after you create a \code{SizeConstraintSet}.}
+\item{Name}{[required] A friendly name or description of the SizeConstraintSet. You can't change \code{Name} after you create a \code{SizeConstraintSet}.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Creates a \code{SizeConstraintSet}. You then use UpdateSizeConstraintSet to identify the part of a web request that you want AWS WAF to check for length, such as the length of the \code{User-Agent} header or the length of the query string. For example, you can create a \code{SizeConstraintSet} that matches any requests that have a query string that is longer than 100 bytes. You can then configure AWS WAF to reject those requests.

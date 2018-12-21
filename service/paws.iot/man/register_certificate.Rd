@@ -4,11 +4,15 @@
 \alias{register_certificate}
 \title{Registers a device certificate with AWS IoT}
 \usage{
-register_certificate(certificatePem, caCertificatePem = NULL,
-  setAsActive = NULL, status = NULL)
+register_certificate(
+  certificatePem = "string",
+  caCertificatePem = "string",
+  setAsActive = TRUE|FALSE,
+  status = "ACTIVE"|"INACTIVE"|"REVOKED"|"PENDING_TRANSFER"|"REGISTER_INACTIVE"|"PENDING_ACTIVATION"
+)
 }
 \arguments{
-\item{certificatePem}{The certificate data, in PEM format.}
+\item{certificatePem}{[required] The certificate data, in PEM format.}
 
 \item{caCertificatePem}{The CA certificate used to sign the device certificate being registered.}
 

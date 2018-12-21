@@ -4,12 +4,17 @@
 \alias{enable_enhanced_monitoring}
 \title{Enables enhanced Kinesis data stream monitoring for shard-level metrics}
 \usage{
-enable_enhanced_monitoring(StreamName, ShardLevelMetrics)
+enable_enhanced_monitoring(
+  StreamName = "string",
+  ShardLevelMetrics = list(
+    "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
+  )
+)
 }
 \arguments{
-\item{StreamName}{The name of the stream for which to enable enhanced monitoring.}
+\item{StreamName}{[required] The name of the stream for which to enable enhanced monitoring.}
 
-\item{ShardLevelMetrics}{List of shard-level metrics to enable.
+\item{ShardLevelMetrics}{[required] List of shard-level metrics to enable.
 
 The following are the valid shard-level metrics. The value "\code{ALL}" enables every metric.
 \itemize{

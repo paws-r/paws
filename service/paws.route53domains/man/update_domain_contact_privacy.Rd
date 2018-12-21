@@ -4,11 +4,15 @@
 \alias{update_domain_contact_privacy}
 \title{This operation updates the specified domain contact's privacy setting}
 \usage{
-update_domain_contact_privacy(DomainName, AdminPrivacy = NULL,
-  RegistrantPrivacy = NULL, TechPrivacy = NULL)
+update_domain_contact_privacy(
+  DomainName = "string",
+  AdminPrivacy = TRUE|FALSE,
+  RegistrantPrivacy = TRUE|FALSE,
+  TechPrivacy = TRUE|FALSE
+)
 }
 \arguments{
-\item{DomainName}{The name of the domain that you want to update the privacy setting for.}
+\item{DomainName}{[required] The name of the domain that you want to update the privacy setting for.}
 
 \item{AdminPrivacy}{Whether you want to conceal contact information from WHOIS queries. If you specify \code{true}, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify \code{false}, WHOIS queries return the information that you entered for the admin contact.}
 

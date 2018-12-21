@@ -4,8 +4,19 @@
 \alias{describe_vpc_endpoint_connections}
 \title{Describes the VPC endpoint connections to your VPC endpoint services, including any endpoints that are pending your acceptance}
 \usage{
-describe_vpc_endpoint_connections(DryRun = NULL, Filters = NULL,
-  MaxResults = NULL, NextToken = NULL)
+describe_vpc_endpoint_connections(
+  DryRun = TRUE|FALSE,
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}

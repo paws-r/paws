@@ -4,13 +4,15 @@
 \alias{delete_direct_connect_gateway_association}
 \title{Deletes the association between the specified Direct Connect gateway and virtual private gateway}
 \usage{
-delete_direct_connect_gateway_association(directConnectGatewayId,
-  virtualGatewayId)
+delete_direct_connect_gateway_association(
+  directConnectGatewayId = "string",
+  virtualGatewayId = "string"
+)
 }
 \arguments{
-\item{directConnectGatewayId}{The ID of the Direct Connect gateway.}
+\item{directConnectGatewayId}{[required] The ID of the Direct Connect gateway.}
 
-\item{virtualGatewayId}{The ID of the virtual private gateway.}
+\item{virtualGatewayId}{[required] The ID of the virtual private gateway.}
 }
 \description{
 Deletes the association between the specified Direct Connect gateway and virtual private gateway.

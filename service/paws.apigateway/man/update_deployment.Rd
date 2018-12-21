@@ -4,12 +4,23 @@
 \alias{update_deployment}
 \title{Changes information about a Deployment resource}
 \usage{
-update_deployment(restApiId, deploymentId, patchOperations = NULL)
+update_deployment(
+  restApiId = "string",
+  deploymentId = "string",
+  patchOperations = list(
+    list(
+      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
+      path = "string",
+      value = "string",
+      from = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{deploymentId}{The replacement identifier for the Deployment resource to change information about.}
+\item{deploymentId}{[required] The replacement identifier for the Deployment resource to change information about.}
 
 \item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
 }

@@ -4,8 +4,17 @@
 \alias{describe_event_subscriptions}
 \title{Lists descriptions of all the Amazon Redshift event notification subscriptions for a customer account}
 \usage{
-describe_event_subscriptions(SubscriptionName = NULL, MaxRecords = NULL,
-  Marker = NULL, TagKeys = NULL, TagValues = NULL)
+describe_event_subscriptions(
+  SubscriptionName = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  TagKeys = list(
+    "string"
+  ),
+  TagValues = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{SubscriptionName}{The name of the Amazon Redshift event notification subscription to be described.}
