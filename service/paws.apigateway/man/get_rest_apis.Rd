@@ -4,7 +4,10 @@
 \alias{get_rest_apis}
 \title{Lists the RestApis resources for your collection}
 \usage{
-get_rest_apis(position = NULL, limit = NULL)
+get_rest_apis(
+  position = "string",
+  limit = 123
+)
 }
 \arguments{
 \item{position}{The current pagination position in the paged result set.}

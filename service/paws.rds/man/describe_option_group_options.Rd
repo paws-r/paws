@@ -4,11 +4,23 @@
 \alias{describe_option_group_options}
 \title{Describes all available options}
 \usage{
-describe_option_group_options(EngineName, MajorEngineVersion = NULL,
-  Filters = NULL, MaxRecords = NULL, Marker = NULL)
+describe_option_group_options(
+  EngineName = "string",
+  MajorEngineVersion = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
-\item{EngineName}{A required parameter. Options available for the given engine name are described.}
+\item{EngineName}{[required] A required parameter. Options available for the given engine name are described.}
 
 \item{MajorEngineVersion}{If specified, filters the results to include only options for the specified major engine version.}
 

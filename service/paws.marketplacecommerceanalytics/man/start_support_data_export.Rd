@@ -4,26 +4,34 @@
 \alias{start_support_data_export}
 \title{Given a data set type and a from date, asynchronously publishes the requested customer support data to the specified S3 bucket and notifies the specified SNS topic once the data is available}
 \usage{
-start_support_data_export(dataSetType, fromDate, roleNameArn,
-  destinationS3BucketName, snsTopicArn, destinationS3Prefix = NULL,
-  customerDefinedValues = NULL)
+start_support_data_export(
+  dataSetType = "customer_support_contacts_data"|"test_customer_support_contacts_data",
+  fromDate = as.POSIXct("2015-01-01"),
+  roleNameArn = "string",
+  destinationS3BucketName = "string",
+  destinationS3Prefix = "string",
+  snsTopicArn = "string",
+  customerDefinedValues = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{dataSetType}{Specifies the data set type to be written to the output csv file. The data set types customer\_support\_contacts\_data and test\_customer\_support\_contacts\_data both result in a csv file containing the following fields: Product Id, Product Code, Customer Guid, Subscription Guid, Subscription Start Date, Organization, AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code, Operation Type, and Operation Time.
+\item{dataSetType}{[required] Specifies the data set type to be written to the output csv file. The data set types customer\_support\_contacts\_data and test\_customer\_support\_contacts\_data both result in a csv file containing the following fields: Product Id, Product Code, Customer Guid, Subscription Guid, Subscription Start Date, Organization, AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code, Operation Type, and Operation Time.
 \itemize{
 \item \emph{customer\_support\_contacts\_data} Customer support contact data. The data set will contain all changes (Creates, Updates, and Deletes) to customer support contact data from the date specified in the from\_date parameter.
 \item \emph{test\_customer\_support\_contacts\_data} An example data set containing static test data in the same format as customer\_support\_contacts\_data
 }}
 
-\item{fromDate}{The start date from which to retrieve the data set in UTC. This parameter only affects the customer_support_contacts_data data set type.}
+\item{fromDate}{[required] The start date from which to retrieve the data set in UTC. This parameter only affects the customer_support_contacts_data data set type.}
 
-\item{roleNameArn}{The Amazon Resource Name (ARN) of the Role with an attached permissions policy to interact with the provided AWS services.}
+\item{roleNameArn}{[required] The Amazon Resource Name (ARN) of the Role with an attached permissions policy to interact with the provided AWS services.}
 
-\item{destinationS3BucketName}{The name (friendly name, not ARN) of the destination S3 bucket.}
-
-\item{snsTopicArn}{Amazon Resource Name (ARN) for the SNS Topic that will be notified when the data set has been published or if an error has occurred.}
+\item{destinationS3BucketName}{[required] The name (friendly name, not ARN) of the destination S3 bucket.}
 
 \item{destinationS3Prefix}{(Optional) The desired S3 prefix for the published data set, similar to a directory path in standard file systems. For example, if given the bucket name "mybucket" and the prefix "myprefix/mydatasets", the output file "outputfile" would be published to "s3://mybucket/myprefix/mydatasets/outputfile". If the prefix directory structure does not exist, it will be created. If no prefix is provided, the data set will be published to the S3 bucket root.}
+
+\item{snsTopicArn}{[required] Amazon Resource Name (ARN) for the SNS Topic that will be notified when the data set has been published or if an error has occurred.}
 
 \item{customerDefinedValues}{(Optional) Key-value pairs which will be returned, unmodified, in the Amazon SNS notification message and the data set metadata file.}
 }

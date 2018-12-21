@@ -4,10 +4,12 @@
 \alias{get_byte_match_set}
 \title{Returns the ByteMatchSet specified by \code{ByteMatchSetId}}
 \usage{
-get_byte_match_set(ByteMatchSetId)
+get_byte_match_set(
+  ByteMatchSetId = "string"
+)
 }
 \arguments{
-\item{ByteMatchSetId}{The \code{ByteMatchSetId} of the ByteMatchSet that you want to get. \code{ByteMatchSetId} is returned by CreateByteMatchSet and by ListByteMatchSets.}
+\item{ByteMatchSetId}{[required] The \code{ByteMatchSetId} of the ByteMatchSet that you want to get. \code{ByteMatchSetId} is returned by CreateByteMatchSet and by ListByteMatchSets.}
 }
 \description{
 Returns the ByteMatchSet specified by \code{ByteMatchSetId}.

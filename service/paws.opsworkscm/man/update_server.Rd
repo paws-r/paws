@@ -4,16 +4,20 @@
 \alias{update_server}
 \title{Updates settings for a server}
 \usage{
-update_server(ServerName, DisableAutomatedBackup = NULL,
-  BackupRetentionCount = NULL, PreferredMaintenanceWindow = NULL,
-  PreferredBackupWindow = NULL)
+update_server(
+  DisableAutomatedBackup = TRUE|FALSE,
+  BackupRetentionCount = 123,
+  ServerName = "string",
+  PreferredMaintenanceWindow = "string",
+  PreferredBackupWindow = "string"
+)
 }
 \arguments{
-\item{ServerName}{The name of the server to update.}
-
 \item{DisableAutomatedBackup}{Setting DisableAutomatedBackup to \code{true} disables automated or scheduled backups. Automated backups are enabled by default.}
 
 \item{BackupRetentionCount}{Sets the number of automated backups that you want to keep.}
+
+\item{ServerName}{[required] The name of the server to update.}
 
 \item{PreferredMaintenanceWindow}{}
 

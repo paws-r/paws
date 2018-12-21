@@ -4,10 +4,14 @@
 \alias{update_build}
 \title{Updates metadata in a build record, including the build name and version}
 \usage{
-update_build(BuildId, Name = NULL, Version = NULL)
+update_build(
+  BuildId = "string",
+  Name = "string",
+  Version = "string"
+)
 }
 \arguments{
-\item{BuildId}{Unique identifier for a build to update.}
+\item{BuildId}{[required] Unique identifier for a build to update.}
 
 \item{Name}{Descriptive label that is associated with a build. Build names do not need to be unique.}
 

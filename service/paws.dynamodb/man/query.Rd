@@ -4,16 +4,134 @@
 \alias{query}
 \title{The \code{Query} operation finds items based on primary key values}
 \usage{
-query(TableName, IndexName = NULL, Select = NULL, AttributesToGet = NULL,
-  Limit = NULL, ConsistentRead = NULL, KeyConditions = NULL,
-  QueryFilter = NULL, ConditionalOperator = NULL, ScanIndexForward = NULL,
-  ExclusiveStartKey = NULL, ReturnConsumedCapacity = NULL,
-  ProjectionExpression = NULL, FilterExpression = NULL,
-  KeyConditionExpression = NULL, ExpressionAttributeNames = NULL,
-  ExpressionAttributeValues = NULL)
+query(
+  TableName = "string",
+  IndexName = "string",
+  Select = "ALL_ATTRIBUTES"|"ALL_PROJECTED_ATTRIBUTES"|"SPECIFIC_ATTRIBUTES"|"COUNT",
+  AttributesToGet = list(
+    "string"
+  ),
+  Limit = 123,
+  ConsistentRead = TRUE|FALSE,
+  KeyConditions = list(
+    list(
+      AttributeValueList = list(
+        list(
+          S = "string",
+          N = "string",
+          B = raw,
+          SS = list(
+            "string"
+          ),
+          NS = list(
+            "string"
+          ),
+          BS = list(
+            raw
+          ),
+          M = list(
+            list()
+          ),
+          L = list(
+            list()
+          ),
+          NULL = TRUE|FALSE,
+          BOOL = TRUE|FALSE
+        )
+      ),
+      ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH"
+    )
+  ),
+  QueryFilter = list(
+    list(
+      AttributeValueList = list(
+        list(
+          S = "string",
+          N = "string",
+          B = raw,
+          SS = list(
+            "string"
+          ),
+          NS = list(
+            "string"
+          ),
+          BS = list(
+            raw
+          ),
+          M = list(
+            list()
+          ),
+          L = list(
+            list()
+          ),
+          NULL = TRUE|FALSE,
+          BOOL = TRUE|FALSE
+        )
+      ),
+      ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH"
+    )
+  ),
+  ConditionalOperator = "AND"|"OR",
+  ScanIndexForward = TRUE|FALSE,
+  ExclusiveStartKey = list(
+    list(
+      S = "string",
+      N = "string",
+      B = raw,
+      SS = list(
+        "string"
+      ),
+      NS = list(
+        "string"
+      ),
+      BS = list(
+        raw
+      ),
+      M = list(
+        list()
+      ),
+      L = list(
+        list()
+      ),
+      NULL = TRUE|FALSE,
+      BOOL = TRUE|FALSE
+    )
+  ),
+  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
+  ProjectionExpression = "string",
+  FilterExpression = "string",
+  KeyConditionExpression = "string",
+  ExpressionAttributeNames = list(
+    "string"
+  ),
+  ExpressionAttributeValues = list(
+    list(
+      S = "string",
+      N = "string",
+      B = raw,
+      SS = list(
+        "string"
+      ),
+      NS = list(
+        "string"
+      ),
+      BS = list(
+        raw
+      ),
+      M = list(
+        list()
+      ),
+      L = list(
+        list()
+      ),
+      NULL = TRUE|FALSE,
+      BOOL = TRUE|FALSE
+    )
+  )
+)
 }
 \arguments{
-\item{TableName}{The name of the table containing the requested items.}
+\item{TableName}{[required] The name of the table containing the requested items.}
 
 \item{IndexName}{The name of an index to query. This index can be any local secondary index or global secondary index on the table. Note that if you use the \code{IndexName} parameter, you must also provide \code{TableName.}}
 

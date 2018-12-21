@@ -4,10 +4,12 @@
 \alias{stop_entities_detection_job}
 \title{Stops an entities detection job in progress}
 \usage{
-stop_entities_detection_job(JobId)
+stop_entities_detection_job(
+  JobId = "string"
+)
 }
 \arguments{
-\item{JobId}{The identifier of the entities detection job to stop.}
+\item{JobId}{[required] The identifier of the entities detection job to stop.}
 }
 \description{
 Stops an entities detection job in progress.

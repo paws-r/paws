@@ -4,12 +4,22 @@
 \alias{add_tags}
 \title{Adds the specified tags to the specified load balancer}
 \usage{
-add_tags(LoadBalancerNames, Tags)
+add_tags(
+  LoadBalancerNames = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{LoadBalancerNames}{The name of the load balancer. You can specify one load balancer only.}
+\item{LoadBalancerNames}{[required] The name of the load balancer. You can specify one load balancer only.}
 
-\item{Tags}{The tags.}
+\item{Tags}{[required] The tags.}
 }
 \description{
 Adds the specified tags to the specified load balancer. Each load balancer can have a maximum of 10 tags.

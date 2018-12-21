@@ -4,10 +4,12 @@
 \alias{disable_key}
 \title{Sets the state of a customer master key (CMK) to disabled, thereby preventing its use for cryptographic operations}
 \usage{
-disable_key(KeyId)
+disable_key(
+  KeyId = "string"
+)
 }
 \arguments{
-\item{KeyId}{A unique identifier for the customer master key (CMK).
+\item{KeyId}{[required] A unique identifier for the customer master key (CMK).
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 

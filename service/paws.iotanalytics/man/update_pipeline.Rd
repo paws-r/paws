@@ -4,12 +4,79 @@
 \alias{update_pipeline}
 \title{Updates the settings of a pipeline}
 \usage{
-update_pipeline(pipelineName, pipelineActivities)
+update_pipeline(
+  pipelineName = "string",
+  pipelineActivities = list(
+    list(
+      channel = list(
+        name = "string",
+        channelName = "string",
+        next = "string"
+      ),
+      lambda = list(
+        name = "string",
+        lambdaName = "string",
+        batchSize = 123,
+        next = "string"
+      ),
+      datastore = list(
+        name = "string",
+        datastoreName = "string"
+      ),
+      addAttributes = list(
+        name = "string",
+        attributes = list(
+          "string"
+        ),
+        next = "string"
+      ),
+      removeAttributes = list(
+        name = "string",
+        attributes = list(
+          "string"
+        ),
+        next = "string"
+      ),
+      selectAttributes = list(
+        name = "string",
+        attributes = list(
+          "string"
+        ),
+        next = "string"
+      ),
+      filter = list(
+        name = "string",
+        filter = "string",
+        next = "string"
+      ),
+      math = list(
+        name = "string",
+        attribute = "string",
+        math = "string",
+        next = "string"
+      ),
+      deviceRegistryEnrich = list(
+        name = "string",
+        attribute = "string",
+        thingName = "string",
+        roleArn = "string",
+        next = "string"
+      ),
+      deviceShadowEnrich = list(
+        name = "string",
+        attribute = "string",
+        thingName = "string",
+        roleArn = "string",
+        next = "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{pipelineName}{The name of the pipeline to update.}
+\item{pipelineName}{[required] The name of the pipeline to update.}
 
-\item{pipelineActivities}{A list of "PipelineActivity" objects.
+\item{pipelineActivities}{[required] A list of "PipelineActivity" objects.
 
 The list can be 1-25 \strong{PipelineActivity} objects. Activities perform transformations on your messages, such as removing, renaming or adding message attributes; filtering messages based on attribute values; invoking your Lambda functions on messages for advanced processing; or performing mathematical transformations to normalize device data.}
 }

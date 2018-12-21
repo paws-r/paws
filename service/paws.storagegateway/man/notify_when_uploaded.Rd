@@ -4,10 +4,12 @@
 \alias{notify_when_uploaded}
 \title{Sends you notification through CloudWatch Events when all files written to your NFS file share have been uploaded to Amazon S3}
 \usage{
-notify_when_uploaded(FileShareARN)
+notify_when_uploaded(
+  FileShareARN = "string"
+)
 }
 \arguments{
-\item{FileShareARN}{}
+\item{FileShareARN}{[required]}
 }
 \description{
 Sends you notification through CloudWatch Events when all files written to your NFS file share have been uploaded to Amazon S3.

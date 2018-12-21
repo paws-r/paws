@@ -4,14 +4,18 @@
 \alias{subscribe_to_event}
 \title{Enables the process of sending Amazon Simple Notification Service (SNS) notifications about a specified event to a specified SNS topic}
 \usage{
-subscribe_to_event(resourceArn, event, topicArn)
+subscribe_to_event(
+  resourceArn = "string",
+  event = "ASSESSMENT_RUN_STARTED"|"ASSESSMENT_RUN_COMPLETED"|"ASSESSMENT_RUN_STATE_CHANGED"|"FINDING_REPORTED"|"OTHER",
+  topicArn = "string"
+)
 }
 \arguments{
-\item{resourceArn}{The ARN of the assessment template that is used during the event for which you want to receive SNS notifications.}
+\item{resourceArn}{[required] The ARN of the assessment template that is used during the event for which you want to receive SNS notifications.}
 
-\item{event}{The event for which you want to receive SNS notifications.}
+\item{event}{[required] The event for which you want to receive SNS notifications.}
 
-\item{topicArn}{The ARN of the SNS topic to which the SNS notifications are sent.}
+\item{topicArn}{[required] The ARN of the SNS topic to which the SNS notifications are sent.}
 }
 \description{
 Enables the process of sending Amazon Simple Notification Service (SNS) notifications about a specified event to a specified SNS topic.

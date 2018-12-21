@@ -4,18 +4,21 @@
 \alias{put_user_permissions_boundary}
 \title{Adds or updates the policy that is specified as the IAM user's permissions boundary}
 \usage{
-put_user_permissions_boundary(UserName, PermissionsBoundary)
+put_user_permissions_boundary(
+  UserName = "string",
+  PermissionsBoundary = "string"
+)
 }
 \arguments{
-\item{UserName}{The name (friendly name, not ARN) of the IAM user for which you want to set the permissions boundary.}
+\item{UserName}{[required] The name (friendly name, not ARN) of the IAM user for which you want to set the permissions boundary.}
 
-\item{PermissionsBoundary}{The ARN of the policy that is used to set the permissions boundary for the user.}
+\item{PermissionsBoundary}{[required] The ARN of the policy that is used to set the permissions boundary for the user.}
 }
 \description{
 Adds or updates the policy that is specified as the IAM user's permissions boundary. You can use an AWS managed policy or a customer managed policy to set the boundary for a user. Use the boundary to control the maximum permissions that the user can have. Setting a permissions boundary is an advanced feature that can affect the permissions for the user.
 }
 \details{
-Policies that are used as permissions boundaries do not provide permissions. You must also attach a permissions policy to the user. To learn how the effective permissions for a user are evaluated, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html}{IAM JSON Policy Evaluation Logic} in the IAM User Guide.
+Policies that are used as permissions boundaries do not provide permissions. You must also attach a permissions policy to the user. To learn how the effective permissions for a user are evaluated, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html}{IAM JSON Policy Evaluation Logic} in the IAM User Guide.
 }
 \examples{
 

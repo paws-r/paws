@@ -4,12 +4,15 @@
 \alias{copy_backup_to_region}
 \title{Copy an AWS CloudHSM cluster backup to a different region}
 \usage{
-copy_backup_to_region(DestinationRegion, BackupId)
+copy_backup_to_region(
+  DestinationRegion = "string",
+  BackupId = "string"
+)
 }
 \arguments{
-\item{DestinationRegion}{The AWS region that will contain your copied CloudHSM cluster backup.}
+\item{DestinationRegion}{[required] The AWS region that will contain your copied CloudHSM cluster backup.}
 
-\item{BackupId}{The ID of the backup that will be copied to the destination region.}
+\item{BackupId}{[required] The ID of the backup that will be copied to the destination region.}
 }
 \description{
 Copy an AWS CloudHSM cluster backup to a different region.

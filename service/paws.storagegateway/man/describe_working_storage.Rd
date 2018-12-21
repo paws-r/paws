@@ -4,10 +4,12 @@
 \alias{describe_working_storage}
 \title{Returns information about the working storage of a gateway}
 \usage{
-describe_working_storage(GatewayARN)
+describe_working_storage(
+  GatewayARN = "string"
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 }
 \description{
 Returns information about the working storage of a gateway. This operation is only supported in the stored volumes gateway type. This operation is deprecated in cached volumes API version (20120630). Use DescribeUploadBuffer instead.

@@ -4,10 +4,14 @@
 \alias{list_resources}
 \title{Lists resources associated with a project in AWS CodeStar}
 \usage{
-list_resources(projectId, nextToken = NULL, maxResults = NULL)
+list_resources(
+  projectId = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{projectId}{The ID of the project.}
+\item{projectId}{[required] The ID of the project.}
 
 \item{nextToken}{The continuation token for the next set of results, if the results cannot be returned in one response.}
 

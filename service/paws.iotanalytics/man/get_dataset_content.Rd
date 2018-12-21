@@ -4,10 +4,13 @@
 \alias{get_dataset_content}
 \title{Retrieves the contents of a data set as pre-signed URIs}
 \usage{
-get_dataset_content(datasetName, versionId = NULL)
+get_dataset_content(
+  datasetName = "string",
+  versionId = "string"
+)
 }
 \arguments{
-\item{datasetName}{The name of the data set whose contents are retrieved.}
+\item{datasetName}{[required] The name of the data set whose contents are retrieved.}
 
 \item{versionId}{The version of the data set whose contents are retrieved. You can also use the strings "\$LATEST" or "\$LATEST\_SUCCEEDED" to retrieve the contents of the latest or latest successfully completed data set. If not specified, "\$LATEST\_SUCCEEDED" is the default.}
 }

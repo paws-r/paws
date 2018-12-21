@@ -4,14 +4,53 @@
 \alias{update_elasticsearch_domain_config}
 \title{Modifies the cluster configuration of the specified Elasticsearch domain, setting as setting the instance type and the number of instances}
 \usage{
-update_elasticsearch_domain_config(DomainName,
-  ElasticsearchClusterConfig = NULL, EBSOptions = NULL,
-  SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL,
-  AdvancedOptions = NULL, AccessPolicies = NULL,
-  LogPublishingOptions = NULL)
+update_elasticsearch_domain_config(
+  DomainName = "string",
+  ElasticsearchClusterConfig = list(
+    InstanceType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
+    InstanceCount = 123,
+    DedicatedMasterEnabled = TRUE|FALSE,
+    ZoneAwarenessEnabled = TRUE|FALSE,
+    DedicatedMasterType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
+    DedicatedMasterCount = 123
+  ),
+  EBSOptions = list(
+    EBSEnabled = TRUE|FALSE,
+    VolumeType = "standard"|"gp2"|"io1",
+    VolumeSize = 123,
+    Iops = 123
+  ),
+  SnapshotOptions = list(
+    AutomatedSnapshotStartHour = 123
+  ),
+  VPCOptions = list(
+    SubnetIds = list(
+      "string"
+    ),
+    SecurityGroupIds = list(
+      "string"
+    )
+  ),
+  CognitoOptions = list(
+    Enabled = TRUE|FALSE,
+    UserPoolId = "string",
+    IdentityPoolId = "string",
+    RoleArn = "string"
+  ),
+  AdvancedOptions = list(
+    "string"
+  ),
+  AccessPolicies = "string",
+  LogPublishingOptions = list(
+    list(
+      CloudWatchLogsLogGroupArn = "string",
+      Enabled = TRUE|FALSE
+    )
+  )
+)
 }
 \arguments{
-\item{DomainName}{The name of the Elasticsearch domain that you are updating.}
+\item{DomainName}{[required] The name of the Elasticsearch domain that you are updating.}
 
 \item{ElasticsearchClusterConfig}{The type and number of instances to instantiate for the domain cluster.}
 

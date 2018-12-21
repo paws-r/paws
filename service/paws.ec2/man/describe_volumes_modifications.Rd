@@ -4,8 +4,22 @@
 \alias{describe_volumes_modifications}
 \title{Reports the current modification status of EBS volumes}
 \usage{
-describe_volumes_modifications(DryRun = NULL, VolumeIds = NULL,
-  Filters = NULL, NextToken = NULL, MaxResults = NULL)
+describe_volumes_modifications(
+  DryRun = TRUE|FALSE,
+  VolumeIds = list(
+    "string"
+  ),
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}

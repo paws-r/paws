@@ -3,4 +3,7 @@
 export(create_cluster)
 export(delete_cluster)
 export(describe_cluster)
+export(describe_update)
 export(list_clusters)
+export(list_updates)
+export(update_cluster_version)

@@ -70,6 +70,7 @@ Collate:
     'request.R'
     'signer_v4.R'
     'signer_s3.R'
+    'signer_s3v4.R'
     'signer_v2.R'
     'time.R'
     'util.R'

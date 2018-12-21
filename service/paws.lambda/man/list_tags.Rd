@@ -4,10 +4,12 @@
 \alias{list_tags}
 \title{Returns a list of tags assigned to a function when supplied the function ARN (Amazon Resource Name)}
 \usage{
-list_tags(Resource)
+list_tags(
+  Resource = "string"
+)
 }
 \arguments{
-\item{Resource}{The ARN (Amazon Resource Name) of the function. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{Tagging Lambda Functions} in the \strong{AWS Lambda Developer Guide}.}
+\item{Resource}{[required] The ARN (Amazon Resource Name) of the function. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{Tagging Lambda Functions} in the \strong{AWS Lambda Developer Guide}.}
 }
 \description{
 Returns a list of tags assigned to a function when supplied the function ARN (Amazon Resource Name). For more information on Tagging, see \href{http://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{Tagging Lambda Functions} in the \strong{AWS Lambda Developer Guide}.

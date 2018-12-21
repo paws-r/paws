@@ -4,10 +4,14 @@
 \alias{update_volume}
 \title{Updates an Amazon EBS volume's name or mount point}
 \usage{
-update_volume(VolumeId, Name = NULL, MountPoint = NULL)
+update_volume(
+  VolumeId = "string",
+  Name = "string",
+  MountPoint = "string"
+)
 }
 \arguments{
-\item{VolumeId}{The volume ID.}
+\item{VolumeId}{[required] The volume ID.}
 
 \item{Name}{The new name.}
 

@@ -4,12 +4,15 @@
 \alias{get_launch_template_data}
 \title{Retrieves the configuration data of the specified instance}
 \usage{
-get_launch_template_data(InstanceId, DryRun = NULL)
+get_launch_template_data(
+  DryRun = TRUE|FALSE,
+  InstanceId = "string"
+)
 }
 \arguments{
-\item{InstanceId}{The ID of the instance.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{InstanceId}{[required] The ID of the instance.}
 }
 \description{
 Retrieves the configuration data of the specified instance. You can use this data to create a launch template.

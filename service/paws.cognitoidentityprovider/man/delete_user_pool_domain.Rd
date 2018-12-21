@@ -4,12 +4,15 @@
 \alias{delete_user_pool_domain}
 \title{Deletes a domain for a user pool}
 \usage{
-delete_user_pool_domain(Domain, UserPoolId)
+delete_user_pool_domain(
+  Domain = "string",
+  UserPoolId = "string"
+)
 }
 \arguments{
-\item{Domain}{The domain string.}
+\item{Domain}{[required] The domain string.}
 
-\item{UserPoolId}{The user pool ID.}
+\item{UserPoolId}{[required] The user pool ID.}
 }
 \description{
 Deletes a domain for a user pool.

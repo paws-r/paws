@@ -4,18 +4,28 @@
 \alias{create_core_definition_version}
 \title{Creates a version of a core definition that has already been defined}
 \usage{
-create_core_definition_version(CoreDefinitionId, AmznClientToken = NULL,
-  Cores = NULL)
+create_core_definition_version(
+  AmznClientToken = "string",
+  CoreDefinitionId = "string",
+  Cores = list(
+    list(
+      CertificateArn = "string",
+      Id = "string",
+      SyncShadow = TRUE|FALSE,
+      ThingArn = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{CoreDefinitionId}{The ID of the core definition.}
-
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
+
+\item{CoreDefinitionId}{[required] The ID of the core definition.}
 
 \item{Cores}{A list of cores in the core definition version.}
 }
 \description{
-Creates a version of a core definition that has already been defined. AWS Greengrass groups must each contain exactly one AWS Greengrass core.
+Creates a version of a core definition that has already been defined. Greengrass groups must each contain exactly one Greengrass core.
 }
 \examples{
 

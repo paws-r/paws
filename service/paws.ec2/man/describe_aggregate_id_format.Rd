@@ -4,7 +4,9 @@
 \alias{describe_aggregate_id_format}
 \title{Describes the longer ID format settings for all resource types in a specific region}
 \usage{
-describe_aggregate_id_format(DryRun = NULL)
+describe_aggregate_id_format(
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}

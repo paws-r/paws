@@ -4,11 +4,23 @@
 \alias{describe_db_cluster_parameters}
 \title{Returns the detailed parameter list for a particular DB cluster parameter group}
 \usage{
-describe_db_cluster_parameters(DBClusterParameterGroupName, Source = NULL,
-  Filters = NULL, MaxRecords = NULL, Marker = NULL)
+describe_db_cluster_parameters(
+  DBClusterParameterGroupName = "string",
+  Source = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
-\item{DBClusterParameterGroupName}{The name of a specific DB cluster parameter group to return parameter details for.
+\item{DBClusterParameterGroupName}{[required] The name of a specific DB cluster parameter group to return parameter details for.
 
 Constraints:
 \itemize{

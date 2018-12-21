@@ -4,7 +4,10 @@
 \alias{list_gateways}
 \title{Lists gateways owned by an AWS account in a region specified in the request}
 \usage{
-list_gateways(Marker = NULL, Limit = NULL)
+list_gateways(
+  Marker = "string",
+  Limit = 123
+)
 }
 \arguments{
 \item{Marker}{An opaque string that indicates the position at which to begin the returned list of gateways.}

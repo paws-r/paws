@@ -4,8 +4,17 @@
 \alias{describe_images}
 \title{Retrieves a list that describes one or more specified images, if the image names or image ARNs are provided}
 \usage{
-describe_images(Names = NULL, Arns = NULL, Type = NULL,
-  NextToken = NULL, MaxResults = NULL)
+describe_images(
+  Names = list(
+    "string"
+  ),
+  Arns = list(
+    "string"
+  ),
+  Type = "PUBLIC"|"PRIVATE"|"SHARED",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{Names}{The names of the public or private images to describe.}
@@ -14,7 +23,7 @@ describe_images(Names = NULL, Arns = NULL, Type = NULL,
 
 \item{Type}{The type of image (public, private, or shared) to describe.}
 
-\item{NextToken}{The pagination token to use to retrieve the next page of results. If this value is empty, only the first page is retrieved.}
+\item{NextToken}{The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.}
 
 \item{MaxResults}{The maximum size of each page of results.}
 }

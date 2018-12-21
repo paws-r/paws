@@ -4,12 +4,15 @@
 \alias{update_batch_prediction}
 \title{Updates the \code{BatchPredictionName} of a \code{BatchPrediction}}
 \usage{
-update_batch_prediction(BatchPredictionId, BatchPredictionName)
+update_batch_prediction(
+  BatchPredictionId = "string",
+  BatchPredictionName = "string"
+)
 }
 \arguments{
-\item{BatchPredictionId}{The ID assigned to the \code{BatchPrediction} during creation.}
+\item{BatchPredictionId}{[required] The ID assigned to the \code{BatchPrediction} during creation.}
 
-\item{BatchPredictionName}{A new user-supplied name or description of the \code{BatchPrediction}.}
+\item{BatchPredictionName}{[required] A new user-supplied name or description of the \code{BatchPrediction}.}
 }
 \description{
 Updates the \code{BatchPredictionName} of a \code{BatchPrediction}.

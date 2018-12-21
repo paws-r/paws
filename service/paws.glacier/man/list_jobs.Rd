@@ -4,13 +4,19 @@
 \alias{list_jobs}
 \title{This operation lists jobs for a vault, including jobs that are in-progress and jobs that have recently finished}
 \usage{
-list_jobs(accountId, vaultName, limit = NULL, marker = NULL,
-  statuscode = NULL, completed = NULL)
+list_jobs(
+  accountId = "string",
+  vaultName = "string",
+  limit = "string",
+  marker = "string",
+  statuscode = "string",
+  completed = "string"
+)
 }
 \arguments{
-\item{accountId}{The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
+\item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
 
-\item{vaultName}{The name of the vault.}
+\item{vaultName}{[required] The name of the vault.}
 
 \item{limit}{The maximum number of jobs to be returned. The default limit is 50. The number of jobs returned might be fewer than the specified limit, but the number of returned jobs never exceeds the limit.}
 

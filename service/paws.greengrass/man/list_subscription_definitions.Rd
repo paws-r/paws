@@ -4,7 +4,10 @@
 \alias{list_subscription_definitions}
 \title{Retrieves a list of subscription definitions}
 \usage{
-list_subscription_definitions(MaxResults = NULL, NextToken = NULL)
+list_subscription_definitions(
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
 \arguments{
 \item{MaxResults}{The maximum number of results to be returned per request.}

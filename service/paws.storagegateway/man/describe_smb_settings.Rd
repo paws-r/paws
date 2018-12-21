@@ -4,10 +4,12 @@
 \alias{describe_smb_settings}
 \title{Gets a description of a Server Message Block (SMB) file share settings from a file gateway}
 \usage{
-describe_smb_settings(GatewayARN)
+describe_smb_settings(
+  GatewayARN = "string"
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 }
 \description{
 Gets a description of a Server Message Block (SMB) file share settings from a file gateway. This operation is only supported for file gateways.

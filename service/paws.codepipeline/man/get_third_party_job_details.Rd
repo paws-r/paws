@@ -4,12 +4,15 @@
 \alias{get_third_party_job_details}
 \title{Requests the details of a job for a third party action}
 \usage{
-get_third_party_job_details(jobId, clientToken)
+get_third_party_job_details(
+  jobId = "string",
+  clientToken = "string"
+)
 }
 \arguments{
-\item{jobId}{The unique system-generated ID used for identifying the job.}
+\item{jobId}{[required] The unique system-generated ID used for identifying the job.}
 
-\item{clientToken}{The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.}
+\item{clientToken}{[required] The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.}
 }
 \description{
 Requests the details of a job for a third party action. Only used for partner actions.

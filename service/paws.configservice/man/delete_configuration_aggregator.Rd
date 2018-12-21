@@ -4,10 +4,12 @@
 \alias{delete_configuration_aggregator}
 \title{Deletes the specified configuration aggregator and the aggregated data associated with the aggregator}
 \usage{
-delete_configuration_aggregator(ConfigurationAggregatorName)
+delete_configuration_aggregator(
+  ConfigurationAggregatorName = "string"
+)
 }
 \arguments{
-\item{ConfigurationAggregatorName}{The name of the configuration aggregator.}
+\item{ConfigurationAggregatorName}{[required] The name of the configuration aggregator.}
 }
 \description{
 Deletes the specified configuration aggregator and the aggregated data associated with the aggregator.

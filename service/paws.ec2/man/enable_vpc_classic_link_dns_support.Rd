@@ -4,7 +4,9 @@
 \alias{enable_vpc_classic_link_dns_support}
 \title{Enables a VPC to support DNS hostname resolution for ClassicLink}
 \usage{
-enable_vpc_classic_link_dns_support(VpcId = NULL)
+enable_vpc_classic_link_dns_support(
+  VpcId = "string"
+)
 }
 \arguments{
 \item{VpcId}{The ID of the VPC.}

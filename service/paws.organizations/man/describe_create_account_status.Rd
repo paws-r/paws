@@ -4,10 +4,12 @@
 \alias{describe_create_account_status}
 \title{Retrieves the current status of an asynchronous request to create an account}
 \usage{
-describe_create_account_status(CreateAccountRequestId)
+describe_create_account_status(
+  CreateAccountRequestId = "string"
+)
 }
 \arguments{
-\item{CreateAccountRequestId}{Specifies the \code{operationId} that uniquely identifies the request. You can get the ID from the response to an earlier CreateAccount request, or from the ListCreateAccountStatus operation.
+\item{CreateAccountRequestId}{[required] Specifies the \code{operationId} that uniquely identifies the request. You can get the ID from the response to an earlier CreateAccount request, or from the ListCreateAccountStatus operation.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for an create account request ID string requires "car-" followed by from 8 to 32 lower-case letters or digits.}
 }

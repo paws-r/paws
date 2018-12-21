@@ -4,13 +4,37 @@
 \alias{update_configuration_set_event_destination}
 \title{Updates the event destination of a configuration set}
 \usage{
-update_configuration_set_event_destination(ConfigurationSetName,
-  EventDestination)
+update_configuration_set_event_destination(
+  ConfigurationSetName = "string",
+  EventDestination = list(
+    Name = "string",
+    Enabled = TRUE|FALSE,
+    MatchingEventTypes = list(
+      "send"|"reject"|"bounce"|"complaint"|"delivery"|"open"|"click"|"renderingFailure"
+    ),
+    KinesisFirehoseDestination = list(
+      IAMRoleARN = "string",
+      DeliveryStreamARN = "string"
+    ),
+    CloudWatchDestination = list(
+      DimensionConfigurations = list(
+        list(
+          DimensionName = "string",
+          DimensionValueSource = "messageTag"|"emailHeader"|"linkTag",
+          DefaultDimensionValue = "string"
+        )
+      )
+    ),
+    SNSDestination = list(
+      TopicARN = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ConfigurationSetName}{The name of the configuration set that contains the event destination that you want to update.}
+\item{ConfigurationSetName}{[required] The name of the configuration set that contains the event destination that you want to update.}
 
-\item{EventDestination}{The event destination object that you want to apply to the specified configuration set.}
+\item{EventDestination}{[required] The event destination object that you want to apply to the specified configuration set.}
 }
 \description{
 Updates the event destination of a configuration set. Event destinations are associated with configuration sets, which enable you to publish email sending events to Amazon CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS). For information about using configuration sets, see \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Monitoring Your Amazon SES Sending Activity} in the \emph{Amazon SES Developer Guide.}

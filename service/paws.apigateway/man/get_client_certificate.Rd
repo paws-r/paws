@@ -4,10 +4,12 @@
 \alias{get_client_certificate}
 \title{Gets information about the current ClientCertificate resource}
 \usage{
-get_client_certificate(clientCertificateId)
+get_client_certificate(
+  clientCertificateId = "string"
+)
 }
 \arguments{
-\item{clientCertificateId}{[Required] The identifier of the ClientCertificate resource to be described.}
+\item{clientCertificateId}{[required] [Required] The identifier of the ClientCertificate resource to be described.}
 }
 \description{
 Gets information about the current ClientCertificate resource.

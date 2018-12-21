@@ -4,7 +4,10 @@
 \alias{list_templates}
 \title{Lists the email templates present in your Amazon SES account in the current AWS Region}
 \usage{
-list_templates(NextToken = NULL, MaxItems = NULL)
+list_templates(
+  NextToken = "string",
+  MaxItems = 123
+)
 }
 \arguments{
 \item{NextToken}{A token returned from a previous call to \code{ListTemplates} to indicate the position in the list of email templates.}

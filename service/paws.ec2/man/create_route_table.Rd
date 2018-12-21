@@ -4,12 +4,15 @@
 \alias{create_route_table}
 \title{Creates a route table for the specified VPC}
 \usage{
-create_route_table(VpcId, DryRun = NULL)
+create_route_table(
+  DryRun = TRUE|FALSE,
+  VpcId = "string"
+)
 }
 \arguments{
-\item{VpcId}{The ID of the VPC.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{VpcId}{[required] The ID of the VPC.}
 }
 \description{
 Creates a route table for the specified VPC. After you create a route table, you can add routes and associate the table with a subnet.

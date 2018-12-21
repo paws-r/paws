@@ -4,16 +4,66 @@
 \alias{modify_endpoint}
 \title{Modifies the specified endpoint}
 \usage{
-modify_endpoint(EndpointArn, EndpointIdentifier = NULL, EndpointType = NULL,
-  EngineName = NULL, Username = NULL, Password = NULL,
-  ServerName = NULL, Port = NULL, DatabaseName = NULL,
-  ExtraConnectionAttributes = NULL, CertificateArn = NULL, SslMode = NULL,
-  ServiceAccessRoleArn = NULL, ExternalTableDefinition = NULL,
-  DynamoDbSettings = NULL, S3Settings = NULL, DmsTransferSettings = NULL,
-  MongoDbSettings = NULL)
+modify_endpoint(
+  EndpointArn = "string",
+  EndpointIdentifier = "string",
+  EndpointType = "source"|"target",
+  EngineName = "string",
+  Username = "string",
+  Password = "string",
+  ServerName = "string",
+  Port = 123,
+  DatabaseName = "string",
+  ExtraConnectionAttributes = "string",
+  CertificateArn = "string",
+  SslMode = "none"|"require"|"verify-ca"|"verify-full",
+  ServiceAccessRoleArn = "string",
+  ExternalTableDefinition = "string",
+  DynamoDbSettings = list(
+    ServiceAccessRoleArn = "string"
+  ),
+  S3Settings = list(
+    ServiceAccessRoleArn = "string",
+    ExternalTableDefinition = "string",
+    CsvRowDelimiter = "string",
+    CsvDelimiter = "string",
+    BucketFolder = "string",
+    BucketName = "string",
+    CompressionType = "none"|"gzip"
+  ),
+  DmsTransferSettings = list(
+    ServiceAccessRoleArn = "string",
+    BucketName = "string"
+  ),
+  MongoDbSettings = list(
+    Username = "string",
+    Password = "string",
+    ServerName = "string",
+    Port = 123,
+    DatabaseName = "string",
+    AuthType = "no"|"password",
+    AuthMechanism = "default"|"mongodb_cr"|"scram_sha_1",
+    NestingLevel = "none"|"one",
+    ExtractDocId = "string",
+    DocsToInvestigate = "string",
+    AuthSource = "string",
+    KmsKeyId = "string"
+  ),
+  KinesisSettings = list(
+    StreamArn = "string",
+    MessageFormat = "json",
+    ServiceAccessRoleArn = "string"
+  ),
+  ElasticsearchSettings = list(
+    ServiceAccessRoleArn = "string",
+    EndpointUri = "string",
+    FullLoadErrorPercentage = 123,
+    ErrorRetryDuration = 123
+  )
+)
 }
 \arguments{
-\item{EndpointArn}{The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.}
+\item{EndpointArn}{[required] The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.}
 
 \item{EndpointIdentifier}{The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.}
 
@@ -45,13 +95,13 @@ The default value is none.}
 
 \item{ExternalTableDefinition}{The external table definition.}
 
-\item{DynamoDbSettings}{Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see the \strong{Using Object Mapping to Migrate Data to DynamoDB} section at \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html}{Using an Amazon DynamoDB Database as a Target for AWS Database Migration Service}.}
+\item{DynamoDbSettings}{Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html}{Using Object Mapping to Migrate Data to DynamoDB} in the \emph{AWS Database Migration Service User Guide.}}
 
-\item{S3Settings}{Settings in JSON format for the target S3 endpoint. For more information about the available settings, see the \strong{Extra Connection Attributes} section at \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html}{Using Amazon S3 as a Target for AWS Database Migration Service}.}
+\item{S3Settings}{Settings in JSON format for the target Amazon S3 endpoint. For more information about the available settings, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring}{Extra Connection Attributes When Using Amazon S3 as a Target for AWS DMS} in the \emph{AWS Database Migration Service User Guide.}}
 
-\item{DmsTransferSettings}{The settings in JSON format for the DMS Transfer type source endpoint.
+\item{DmsTransferSettings}{The settings in JSON format for the DMS transfer type of source endpoint.
 
-Attributes include:
+Attributes include the following:
 \itemize{
 \item serviceAccessRoleArn - The IAM role that has permission to access the Amazon S3 bucket.
 \item BucketName - The name of the S3 bucket to use.
@@ -64,7 +114,11 @@ JSON syntax:
 
 { "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" }}
 
-\item{MongoDbSettings}{Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the \strong{Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service} section at \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html}{Using Amazon S3 as a Target for AWS Database Migration Service}.}
+\item{MongoDbSettings}{Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the configuration properties section in \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html}{Using MongoDB as a Target for AWS Database Migration Service} in the \emph{AWS Database Migration Service User Guide.}}
+
+\item{KinesisSettings}{Settings in JSON format for the target Amazon Kinesis Data Streams endpoint. For more information about the available settings, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping%20}{Using Object Mapping to Migrate Data to a Kinesis Data Stream} in the \emph{AWS Database Migration User Guide.}}
+
+\item{ElasticsearchSettings}{Settings in JSON format for the target Elasticsearch endpoint. For more information about the available settings, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration}{Extra Connection Attributes When Using Elasticsearch as a Target for AWS DMS} in the \emph{AWS Database Migration User Guide.}}
 }
 \description{
 Modifies the specified endpoint.

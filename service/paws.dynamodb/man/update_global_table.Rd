@@ -4,12 +4,24 @@
 \alias{update_global_table}
 \title{Adds or removes replicas in the specified global table}
 \usage{
-update_global_table(GlobalTableName, ReplicaUpdates)
+update_global_table(
+  GlobalTableName = "string",
+  ReplicaUpdates = list(
+    list(
+      Create = list(
+        RegionName = "string"
+      ),
+      Delete = list(
+        RegionName = "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{GlobalTableName}{The global table name.}
+\item{GlobalTableName}{[required] The global table name.}
 
-\item{ReplicaUpdates}{A list of regions that should be added or removed from the global table.}
+\item{ReplicaUpdates}{[required] A list of regions that should be added or removed from the global table.}
 }
 \description{
 Adds or removes replicas in the specified global table. The global table must already exist to be able to use this operation. Any replica to be added must be empty, must have the same name as the global table, must have the same key schema, and must have DynamoDB Streams enabled and must have same provisioned and maximum write capacity units.

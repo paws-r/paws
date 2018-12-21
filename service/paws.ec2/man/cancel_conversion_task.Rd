@@ -4,11 +4,14 @@
 \alias{cancel_conversion_task}
 \title{Cancels an active conversion task}
 \usage{
-cancel_conversion_task(ConversionTaskId, DryRun = NULL,
-  ReasonMessage = NULL)
+cancel_conversion_task(
+  ConversionTaskId = "string",
+  DryRun = TRUE|FALSE,
+  ReasonMessage = "string"
+)
 }
 \arguments{
-\item{ConversionTaskId}{The ID of the conversion task.}
+\item{ConversionTaskId}{[required] The ID of the conversion task.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 

@@ -4,14 +4,24 @@
 \alias{create_ml_model}
 \title{Creates a new \code{MLModel} using the \code{DataSource} and the recipe as information sources}
 \usage{
-create_ml_model(MLModelId, MLModelType, TrainingDataSourceId,
-  MLModelName = NULL, Parameters = NULL, Recipe = NULL,
-  RecipeUri = NULL)
+create_ml_model(
+  MLModelId = "string",
+  MLModelName = "string",
+  MLModelType = "REGRESSION"|"BINARY"|"MULTICLASS",
+  Parameters = list(
+    "string"
+  ),
+  TrainingDataSourceId = "string",
+  Recipe = "string",
+  RecipeUri = "string"
+)
 }
 \arguments{
-\item{MLModelId}{A user-supplied ID that uniquely identifies the \code{MLModel}.}
+\item{MLModelId}{[required] A user-supplied ID that uniquely identifies the \code{MLModel}.}
 
-\item{MLModelType}{The category of supervised learning that this \code{MLModel} will address. Choose from the following types:
+\item{MLModelName}{A user-supplied name or description of the \code{MLModel}.}
+
+\item{MLModelType}{[required] The category of supervised learning that this \code{MLModel} will address. Choose from the following types:
 \itemize{
 \item Choose \code{REGRESSION} if the \code{MLModel} will be used to predict a numeric value.
 \item Choose \code{BINARY} if the \code{MLModel} result has two possible values.
@@ -19,10 +29,6 @@ create_ml_model(MLModelId, MLModelType, TrainingDataSourceId,
 }
 
 For more information, see the \href{http://docs.aws.amazon.com/machine-learning/latest/dg}{Amazon Machine Learning Developer Guide}.}
-
-\item{TrainingDataSourceId}{The \code{DataSource} that points to the training data.}
-
-\item{MLModelName}{A user-supplied name or description of the \code{MLModel}.}
 
 \item{Parameters}{A list of the training parameters in the \code{MLModel}. The list is implemented as a map of key-value pairs.
 
@@ -40,6 +46,8 @@ The value is a double that ranges from \code{0} to \code{MAX_DOUBLE}. The defaul
 
 The value is a double that ranges from \code{0} to \code{MAX_DOUBLE}. The default is to not use L2 normalization. This parameter can't be used when \code{L1} is specified. Use this parameter sparingly.
 }}
+
+\item{TrainingDataSourceId}{[required] The \code{DataSource} that points to the training data.}
 
 \item{Recipe}{The data recipe for creating the \code{MLModel}. You must specify either the recipe or its URI. If you don't specify a recipe or its URI, Amazon ML creates a default.}
 

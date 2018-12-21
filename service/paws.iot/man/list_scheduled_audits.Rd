@@ -4,7 +4,10 @@
 \alias{list_scheduled_audits}
 \title{Lists all of your scheduled audits}
 \usage{
-list_scheduled_audits(nextToken = NULL, maxResults = NULL)
+list_scheduled_audits(
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{nextToken}{The token for the next set of results.}

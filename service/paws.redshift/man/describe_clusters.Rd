@@ -4,8 +4,17 @@
 \alias{describe_clusters}
 \title{Returns properties of provisioned clusters including general cluster properties, cluster database properties, maintenance and backup properties, and security and access properties}
 \usage{
-describe_clusters(ClusterIdentifier = NULL, MaxRecords = NULL,
-  Marker = NULL, TagKeys = NULL, TagValues = NULL)
+describe_clusters(
+  ClusterIdentifier = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  TagKeys = list(
+    "string"
+  ),
+  TagValues = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{ClusterIdentifier}{The unique identifier of a cluster whose properties you are requesting. This parameter is case sensitive.

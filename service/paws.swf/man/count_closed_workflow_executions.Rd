@@ -4,12 +4,33 @@
 \alias{count_closed_workflow_executions}
 \title{Returns the number of closed workflow executions within the given domain that meet the specified filtering criteria}
 \usage{
-count_closed_workflow_executions(domain, startTimeFilter = NULL,
-  closeTimeFilter = NULL, executionFilter = NULL, typeFilter = NULL,
-  tagFilter = NULL, closeStatusFilter = NULL)
+count_closed_workflow_executions(
+  domain = "string",
+  startTimeFilter = list(
+    oldestDate = as.POSIXct("2015-01-01"),
+    latestDate = as.POSIXct("2015-01-01")
+  ),
+  closeTimeFilter = list(
+    oldestDate = as.POSIXct("2015-01-01"),
+    latestDate = as.POSIXct("2015-01-01")
+  ),
+  executionFilter = list(
+    workflowId = "string"
+  ),
+  typeFilter = list(
+    name = "string",
+    version = "string"
+  ),
+  tagFilter = list(
+    tag = "string"
+  ),
+  closeStatusFilter = list(
+    status = "COMPLETED"|"FAILED"|"CANCELED"|"TERMINATED"|"CONTINUED_AS_NEW"|"TIMED_OUT"
+  )
+)
 }
 \arguments{
-\item{domain}{The name of the domain containing the workflow executions to count.}
+\item{domain}{[required] The name of the domain containing the workflow executions to count.}
 
 \item{startTimeFilter}{If specified, only workflow executions that meet the start time criteria of the filter are counted.
 

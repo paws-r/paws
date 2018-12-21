@@ -4,10 +4,12 @@
 \alias{delete_topic}
 \title{Deletes a topic and all its subscriptions}
 \usage{
-delete_topic(TopicArn)
+delete_topic(
+  TopicArn = "string"
+)
 }
 \arguments{
-\item{TopicArn}{The ARN of the topic you want to delete.}
+\item{TopicArn}{[required] The ARN of the topic you want to delete.}
 }
 \description{
 Deletes a topic and all its subscriptions. Deleting a topic might prevent some messages previously sent to the topic from being delivered to subscribers. This action is idempotent, so deleting a topic that does not exist does not result in an error.

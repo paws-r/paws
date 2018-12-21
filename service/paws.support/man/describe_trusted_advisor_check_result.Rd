@@ -4,10 +4,13 @@
 \alias{describe_trusted_advisor_check_result}
 \title{Returns the results of the Trusted Advisor check that has the specified check ID}
 \usage{
-describe_trusted_advisor_check_result(checkId, language = NULL)
+describe_trusted_advisor_check_result(
+  checkId = "string",
+  language = "string"
+)
 }
 \arguments{
-\item{checkId}{The unique identifier for the Trusted Advisor check.}
+\item{checkId}{[required] The unique identifier for the Trusted Advisor check.}
 
 \item{language}{The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.}
 }

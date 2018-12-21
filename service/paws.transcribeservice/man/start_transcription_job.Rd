@@ -4,19 +4,33 @@
 \alias{start_transcription_job}
 \title{Starts an asynchronous job to transcribe speech to text}
 \usage{
-start_transcription_job(TranscriptionJobName, LanguageCode, MediaFormat, Media,
-  MediaSampleRateHertz = NULL, OutputBucketName = NULL, Settings = NULL)
+start_transcription_job(
+  TranscriptionJobName = "string",
+  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT",
+  MediaSampleRateHertz = 123,
+  MediaFormat = "mp3"|"mp4"|"wav"|"flac",
+  Media = list(
+    MediaFileUri = "string"
+  ),
+  OutputBucketName = "string",
+  Settings = list(
+    VocabularyName = "string",
+    ShowSpeakerLabels = TRUE|FALSE,
+    MaxSpeakerLabels = 123,
+    ChannelIdentification = TRUE|FALSE
+  )
+)
 }
 \arguments{
-\item{TranscriptionJobName}{The name of the job. You can't use the strings "." or ".." in the job name. The name must be unique within an AWS account.}
+\item{TranscriptionJobName}{[required] The name of the job. Note that you can't use the strings "." or ".." by themselves as the job name. The name must also be unique within an AWS account.}
 
-\item{LanguageCode}{The language code for the language used in the input media file.}
-
-\item{MediaFormat}{The format of the input media file.}
-
-\item{Media}{An object that describes the input media for a transcription job.}
+\item{LanguageCode}{[required] The language code for the language used in the input media file.}
 
 \item{MediaSampleRateHertz}{The sample rate, in Hertz, of the audio track in the input media file.}
+
+\item{MediaFormat}{[required] The format of the input media file.}
+
+\item{Media}{[required] An object that describes the input media for a transcription job.}
 
 \item{OutputBucketName}{The location where the transcription is stored.
 
@@ -27,7 +41,7 @@ If you don't set the \code{OutputBucketName}, Amazon Transcribe generates a pre-
 \item{Settings}{A \code{Settings} object that provides optional settings for a transcription job.}
 }
 \description{
-Starts an asynchronous job to transcribe speech to text. Note that en-AU, en-UK, and fr-CA languages are in preview and are only available to whitelisted customers.
+Starts an asynchronous job to transcribe speech to text.
 }
 \examples{
 

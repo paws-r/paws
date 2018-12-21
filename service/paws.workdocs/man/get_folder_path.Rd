@@ -4,13 +4,18 @@
 \alias{get_folder_path}
 \title{Retrieves the path information (the hierarchy from the root folder) for the specified folder}
 \usage{
-get_folder_path(FolderId, AuthenticationToken = NULL, Limit = NULL,
-  Fields = NULL, Marker = NULL)
+get_folder_path(
+  AuthenticationToken = "string",
+  FolderId = "string",
+  Limit = 123,
+  Fields = "string",
+  Marker = "string"
+)
 }
 \arguments{
-\item{FolderId}{The ID of the folder.}
-
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
+
+\item{FolderId}{[required] The ID of the folder.}
 
 \item{Limit}{The maximum number of levels in the hierarchy to return.}
 

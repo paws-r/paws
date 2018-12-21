@@ -4,10 +4,12 @@
 \alias{delete_app}
 \title{Deletes a specified app}
 \usage{
-delete_app(AppId)
+delete_app(
+  AppId = "string"
+)
 }
 \arguments{
-\item{AppId}{The app ID.}
+\item{AppId}{[required] The app ID.}
 }
 \description{
 Deletes a specified app.

@@ -4,12 +4,17 @@
 \alias{set_termination_protection}
 \title{SetTerminationProtection locks a cluster (job flow) so the EC2 instances in the cluster cannot be terminated by user intervention, an API call, or in the event of a job-flow error}
 \usage{
-set_termination_protection(JobFlowIds, TerminationProtected)
+set_termination_protection(
+  JobFlowIds = list(
+    "string"
+  ),
+  TerminationProtected = TRUE|FALSE
+)
 }
 \arguments{
-\item{JobFlowIds}{A list of strings that uniquely identify the clusters to protect. This identifier is returned by RunJobFlow and can also be obtained from DescribeJobFlows .}
+\item{JobFlowIds}{[required] A list of strings that uniquely identify the clusters to protect. This identifier is returned by RunJobFlow and can also be obtained from DescribeJobFlows .}
 
-\item{TerminationProtected}{A Boolean that indicates whether to protect the cluster and prevent the Amazon EC2 instances in the cluster from shutting down due to API calls, user intervention, or job-flow error.}
+\item{TerminationProtected}{[required] A Boolean that indicates whether to protect the cluster and prevent the Amazon EC2 instances in the cluster from shutting down due to API calls, user intervention, or job-flow error.}
 }
 \description{
 SetTerminationProtection locks a cluster (job flow) so the EC2 instances in the cluster cannot be terminated by user intervention, an API call, or in the event of a job-flow error. The cluster still terminates upon successful completion of the job flow. Calling \code{SetTerminationProtection} on a cluster is similar to calling the Amazon EC2 \code{DisableAPITermination} API on all EC2 instances in a cluster.

@@ -4,16 +4,24 @@
 \alias{remove_tags_from_certificate}
 \title{Remove one or more tags from an ACM certificate}
 \usage{
-remove_tags_from_certificate(CertificateArn, Tags)
+remove_tags_from_certificate(
+  CertificateArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{CertificateArn}{String that contains the ARN of the ACM Certificate with one or more tags that you want to remove. This must be of the form:
+\item{CertificateArn}{[required] String that contains the ARN of the ACM Certificate with one or more tags that you want to remove. This must be of the form:
 
 \code{arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012}
 
 For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
 
-\item{Tags}{The key-value pair that defines the tag to remove.}
+\item{Tags}{[required] The key-value pair that defines the tag to remove.}
 }
 \description{
 Remove one or more tags from an ACM certificate. A tag consists of a key-value pair. If you do not specify the value portion of the tag when calling this function, the tag will be removed regardless of value. If you specify a value, the tag is removed only if it is associated with the specified value.

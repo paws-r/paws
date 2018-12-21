@@ -4,12 +4,15 @@
 \alias{create_matchmaking_rule_set}
 \title{Creates a new rule set for FlexMatch matchmaking}
 \usage{
-create_matchmaking_rule_set(Name, RuleSetBody)
+create_matchmaking_rule_set(
+  Name = "string",
+  RuleSetBody = "string"
+)
 }
 \arguments{
-\item{Name}{Unique identifier for a matchmaking rule set. This name is used to identify the rule set associated with a matchmaking configuration.}
+\item{Name}{[required] Unique identifier for a matchmaking rule set. This name is used to identify the rule set associated with a matchmaking configuration.}
 
-\item{RuleSetBody}{Collection of matchmaking rules, formatted as a JSON string. (Note that comments are not allowed in JSON, but most elements support a description field.)}
+\item{RuleSetBody}{[required] Collection of matchmaking rules, formatted as a JSON string. (Note that comments are not allowed in JSON, but most elements support a description field.)}
 }
 \description{
 Creates a new rule set for FlexMatch matchmaking. A rule set describes the type of match to create, such as the number and size of teams, and sets the parameters for acceptable player matches, such as minimum skill level or character type. Rule sets are used in matchmaking configurations, which define how matchmaking requests are handled. Each MatchmakingConfiguration uses one rule set; you can set up multiple rule sets to handle the scenarios that suit your game (such as for different game modes), and create a separate matchmaking configuration for each rule set. See additional information on rule set content in the MatchmakingRuleSet structure. For help creating rule sets, including useful examples, see the topic \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html}{Adding FlexMatch to Your Game}.

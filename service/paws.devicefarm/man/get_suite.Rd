@@ -4,10 +4,12 @@
 \alias{get_suite}
 \title{Gets information about a suite}
 \usage{
-get_suite(arn)
+get_suite(
+  arn = "string"
+)
 }
 \arguments{
-\item{arn}{The suite's ARN.}
+\item{arn}{[required] The suite's ARN.}
 }
 \description{
 Gets information about a suite.

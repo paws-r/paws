@@ -4,13 +4,18 @@
 \alias{set_permission}
 \title{Specifies a user's permissions}
 \usage{
-set_permission(StackId, IamUserArn, AllowSsh = NULL, AllowSudo = NULL,
-  Level = NULL)
+set_permission(
+  StackId = "string",
+  IamUserArn = "string",
+  AllowSsh = TRUE|FALSE,
+  AllowSudo = TRUE|FALSE,
+  Level = "string"
+)
 }
 \arguments{
-\item{StackId}{The stack ID.}
+\item{StackId}{[required] The stack ID.}
 
-\item{IamUserArn}{The user's IAM ARN. This can also be a federated user's ARN.}
+\item{IamUserArn}{[required] The user's IAM ARN. This can also be a federated user's ARN.}
 
 \item{AllowSsh}{The user is allowed to use SSH to communicate with the instance.}
 

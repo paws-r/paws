@@ -4,11 +4,25 @@
 \alias{start_label_detection}
 \title{Starts asynchronous detection of labels in a stored video}
 \usage{
-start_label_detection(Video, ClientRequestToken = NULL,
-  MinConfidence = NULL, NotificationChannel = NULL, JobTag = NULL)
+start_label_detection(
+  Video = list(
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  ClientRequestToken = "string",
+  MinConfidence = 123.0,
+  NotificationChannel = list(
+    SNSTopicArn = "string",
+    RoleArn = "string"
+  ),
+  JobTag = "string"
+)
 }
 \arguments{
-\item{Video}{The video in which you want to detect labels. The video must be stored in an Amazon S3 bucket.}
+\item{Video}{[required] The video in which you want to detect labels. The video must be stored in an Amazon S3 bucket.}
 
 \item{ClientRequestToken}{Idempotent token used to identify the start request. If you use the same token with multiple \code{StartLabelDetection} requests, the same \code{JobId} is returned. Use \code{ClientRequestToken} to prevent the same job from being accidently started more than once.}
 

@@ -4,11 +4,15 @@
 \alias{list_resources_for_tag_option}
 \title{Lists the resources associated with the specified TagOption}
 \usage{
-list_resources_for_tag_option(TagOptionId, ResourceType = NULL,
-  PageSize = NULL, PageToken = NULL)
+list_resources_for_tag_option(
+  TagOptionId = "string",
+  ResourceType = "string",
+  PageSize = 123,
+  PageToken = "string"
+)
 }
 \arguments{
-\item{TagOptionId}{The TagOption identifier.}
+\item{TagOptionId}{[required] The TagOption identifier.}
 
 \item{ResourceType}{The resource type.
 \itemize{

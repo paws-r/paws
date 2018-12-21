@@ -4,18 +4,24 @@
 \alias{get_aggregate_compliance_details_by_config_rule}
 \title{Returns the evaluation results for the specified AWS Config rule for a specific resource in a rule}
 \usage{
-get_aggregate_compliance_details_by_config_rule(ConfigurationAggregatorName,
-  ConfigRuleName, AccountId, AwsRegion, ComplianceType = NULL, Limit = NULL,
-  NextToken = NULL)
+get_aggregate_compliance_details_by_config_rule(
+  ConfigurationAggregatorName = "string",
+  ConfigRuleName = "string",
+  AccountId = "string",
+  AwsRegion = "string",
+  ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
+  Limit = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{ConfigurationAggregatorName}{The name of the configuration aggregator.}
+\item{ConfigurationAggregatorName}{[required] The name of the configuration aggregator.}
 
-\item{ConfigRuleName}{The name of the AWS Config rule for which you want compliance information.}
+\item{ConfigRuleName}{[required] The name of the AWS Config rule for which you want compliance information.}
 
-\item{AccountId}{The 12-digit account ID of the source account.}
+\item{AccountId}{[required] The 12-digit account ID of the source account.}
 
-\item{AwsRegion}{The source region from where the data is aggregated.}
+\item{AwsRegion}{[required] The source region from where the data is aggregated.}
 
 \item{ComplianceType}{The resource compliance status.
 

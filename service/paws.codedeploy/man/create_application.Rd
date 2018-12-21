@@ -4,10 +4,13 @@
 \alias{create_application}
 \title{Creates an application}
 \usage{
-create_application(applicationName, computePlatform = NULL)
+create_application(
+  applicationName = "string",
+  computePlatform = "Server"|"Lambda"|"ECS"
+)
 }
 \arguments{
-\item{applicationName}{The name of the application. This name must be unique with the applicable IAM user or AWS account.}
+\item{applicationName}{[required] The name of the application. This name must be unique with the applicable IAM user or AWS account.}
 
 \item{computePlatform}{The destination platform type for the deployment (\code{Lambda} or \code{Server}).}
 }

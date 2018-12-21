@@ -4,10 +4,12 @@
 \alias{delete_nat_gateway}
 \title{Deletes the specified NAT gateway}
 \usage{
-delete_nat_gateway(NatGatewayId)
+delete_nat_gateway(
+  NatGatewayId = "string"
+)
 }
 \arguments{
-\item{NatGatewayId}{The ID of the NAT gateway.}
+\item{NatGatewayId}{[required] The ID of the NAT gateway.}
 }
 \description{
 Deletes the specified NAT gateway. Deleting a NAT gateway disassociates its Elastic IP address, but does not release the address from your account. Deleting a NAT gateway does not delete any NAT gateway routes in your route tables.

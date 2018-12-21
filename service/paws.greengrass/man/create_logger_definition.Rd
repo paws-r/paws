@@ -4,8 +4,21 @@
 \alias{create_logger_definition}
 \title{Creates a logger definition}
 \usage{
-create_logger_definition(AmznClientToken = NULL, InitialVersion = NULL,
-  Name = NULL)
+create_logger_definition(
+  AmznClientToken = "string",
+  InitialVersion = list(
+    Loggers = list(
+      list(
+        Component = "GreengrassSystem"|"Lambda",
+        Id = "string",
+        Level = "DEBUG"|"INFO"|"WARN"|"ERROR"|"FATAL",
+        Space = 123,
+        Type = "FileSystem"|"AWSCloudWatch"
+      )
+    )
+  ),
+  Name = "string"
+)
 }
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}

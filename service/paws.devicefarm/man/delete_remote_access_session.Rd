@@ -4,10 +4,12 @@
 \alias{delete_remote_access_session}
 \title{Deletes a completed remote access session and its results}
 \usage{
-delete_remote_access_session(arn)
+delete_remote_access_session(
+  arn = "string"
+)
 }
 \arguments{
-\item{arn}{The Amazon Resource Name (ARN) of the sesssion for which you want to delete remote access.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of the sesssion for which you want to delete remote access.}
 }
 \description{
 Deletes a completed remote access session and its results.

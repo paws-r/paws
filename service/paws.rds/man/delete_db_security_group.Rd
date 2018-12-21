@@ -4,10 +4,12 @@
 \alias{delete_db_security_group}
 \title{Deletes a DB security group}
 \usage{
-delete_db_security_group(DBSecurityGroupName)
+delete_db_security_group(
+  DBSecurityGroupName = "string"
+)
 }
 \arguments{
-\item{DBSecurityGroupName}{The name of the DB security group to delete.
+\item{DBSecurityGroupName}{[required] The name of the DB security group to delete.
 
 You can't delete the default DB security group.
 

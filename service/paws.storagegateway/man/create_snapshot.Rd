@@ -4,12 +4,15 @@
 \alias{create_snapshot}
 \title{Initiates a snapshot of a volume}
 \usage{
-create_snapshot(VolumeARN, SnapshotDescription)
+create_snapshot(
+  VolumeARN = "string",
+  SnapshotDescription = "string"
+)
 }
 \arguments{
-\item{VolumeARN}{The Amazon Resource Name (ARN) of the volume. Use the ListVolumes operation to return a list of gateway volumes.}
+\item{VolumeARN}{[required] The Amazon Resource Name (ARN) of the volume. Use the ListVolumes operation to return a list of gateway volumes.}
 
-\item{SnapshotDescription}{Textual description of the snapshot that appears in the Amazon EC2 console, Elastic Block Store snapshots panel in the \strong{Description} field, and in the AWS Storage Gateway snapshot \strong{Details} pane, \strong{Description} field}
+\item{SnapshotDescription}{[required] Textual description of the snapshot that appears in the Amazon EC2 console, Elastic Block Store snapshots panel in the \strong{Description} field, and in the AWS Storage Gateway snapshot \strong{Details} pane, \strong{Description} field}
 }
 \description{
 Initiates a snapshot of a volume.

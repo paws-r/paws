@@ -4,10 +4,39 @@
 \alias{put_policy}
 \title{Creates an AWS Firewall Manager policy}
 \usage{
-put_policy(Policy)
+put_policy(
+  Policy = list(
+    PolicyId = "string",
+    PolicyName = "string",
+    PolicyUpdateToken = "string",
+    SecurityServicePolicyData = list(
+      Type = "WAF",
+      ManagedServiceData = "string"
+    ),
+    ResourceType = "string",
+    ResourceTags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    ExcludeResourceTags = TRUE|FALSE,
+    RemediationEnabled = TRUE|FALSE,
+    IncludeMap = list(
+      list(
+        "string"
+      )
+    ),
+    ExcludeMap = list(
+      list(
+        "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{Policy}{The details of the AWS Firewall Manager policy to be created.}
+\item{Policy}{[required] The details of the AWS Firewall Manager policy to be created.}
 }
 \description{
 Creates an AWS Firewall Manager policy.

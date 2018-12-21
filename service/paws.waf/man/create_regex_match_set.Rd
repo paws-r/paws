@@ -4,12 +4,15 @@
 \alias{create_regex_match_set}
 \title{Creates a RegexMatchSet}
 \usage{
-create_regex_match_set(Name, ChangeToken)
+create_regex_match_set(
+  Name = "string",
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{Name}{A friendly name or description of the RegexMatchSet. You can't change \code{Name} after you create a \code{RegexMatchSet}.}
+\item{Name}{[required] A friendly name or description of the RegexMatchSet. You can't change \code{Name} after you create a \code{RegexMatchSet}.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Creates a RegexMatchSet. You then use UpdateRegexMatchSet to identify the part of a web request that you want AWS WAF to inspect, such as the values of the \code{User-Agent} header or the query string. For example, you can create a \code{RegexMatchSet} that contains a \code{RegexMatchTuple} that looks for any requests with \code{User-Agent} headers that match a \code{RegexPatternSet} with pattern \code{B[a@]dB[o0]t}. You can then configure AWS WAF to reject those requests.

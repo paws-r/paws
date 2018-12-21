@@ -4,11 +4,15 @@
 \alias{get_parameter_history}
 \title{Query a list of all parameters used by the AWS account}
 \usage{
-get_parameter_history(Name, WithDecryption = NULL, MaxResults = NULL,
-  NextToken = NULL)
+get_parameter_history(
+  Name = "string",
+  WithDecryption = TRUE|FALSE,
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{Name}{The name of a parameter you want to query.}
+\item{Name}{[required] The name of a parameter you want to query.}
 
 \item{WithDecryption}{Return decrypted values for secure string parameters. This flag is ignored for String and StringList parameter types.}
 

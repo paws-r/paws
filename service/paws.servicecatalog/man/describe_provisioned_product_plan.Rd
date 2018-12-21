@@ -4,18 +4,22 @@
 \alias{describe_provisioned_product_plan}
 \title{Gets information about the resource changes for the specified plan}
 \usage{
-describe_provisioned_product_plan(PlanId, AcceptLanguage = NULL,
-  PageSize = NULL, PageToken = NULL)
+describe_provisioned_product_plan(
+  AcceptLanguage = "string",
+  PlanId = "string",
+  PageSize = 123,
+  PageToken = "string"
+)
 }
 \arguments{
-\item{PlanId}{The plan identifier.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{PlanId}{[required] The plan identifier.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 

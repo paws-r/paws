@@ -4,11 +4,15 @@
 \alias{list_job_executions_for_job}
 \title{Lists the job executions for a job}
 \usage{
-list_job_executions_for_job(jobId, status = NULL, maxResults = NULL,
-  nextToken = NULL)
+list_job_executions_for_job(
+  jobId = "string",
+  status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
-\item{jobId}{The unique identifier you assigned to this job when it was created.}
+\item{jobId}{[required] The unique identifier you assigned to this job when it was created.}
 
 \item{status}{The status of the job.}
 

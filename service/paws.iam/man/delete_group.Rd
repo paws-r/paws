@@ -4,12 +4,14 @@
 \alias{delete_group}
 \title{Deletes the specified IAM group}
 \usage{
-delete_group(GroupName)
+delete_group(
+  GroupName = "string"
+)
 }
 \arguments{
-\item{GroupName}{The name of the IAM group to delete.
+\item{GroupName}{[required] The name of the IAM group to delete.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Deletes the specified IAM group. The group must not contain any users or have any attached policies.

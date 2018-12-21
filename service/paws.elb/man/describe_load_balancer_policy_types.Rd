@@ -4,7 +4,11 @@
 \alias{describe_load_balancer_policy_types}
 \title{Describes the specified load balancer policy types or all load balancer policy types}
 \usage{
-describe_load_balancer_policy_types(PolicyTypeNames = NULL)
+describe_load_balancer_policy_types(
+  PolicyTypeNames = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{PolicyTypeNames}{The names of the policy types. If no names are specified, describes all policy types defined by Elastic Load Balancing.}

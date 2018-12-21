@@ -4,16 +4,19 @@
 \alias{add_user_to_group}
 \title{Adds the specified user to the specified group}
 \usage{
-add_user_to_group(GroupName, UserName)
+add_user_to_group(
+  GroupName = "string",
+  UserName = "string"
+)
 }
 \arguments{
-\item{GroupName}{The name of the group to update.
+\item{GroupName}{[required] The name of the group to update.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
-\item{UserName}{The name of the user to add.
+\item{UserName}{[required] The name of the user to add.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Adds the specified user to the specified group.

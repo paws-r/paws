@@ -4,13 +4,26 @@
 \alias{list_inventory_entries}
 \title{A list of inventory items returned by the request}
 \usage{
-list_inventory_entries(InstanceId, TypeName, Filters = NULL,
-  NextToken = NULL, MaxResults = NULL)
+list_inventory_entries(
+  InstanceId = "string",
+  TypeName = "string",
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      ),
+      Type = "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"|"Exists"
+    )
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{InstanceId}{The instance ID for which you want inventory information.}
+\item{InstanceId}{[required] The instance ID for which you want inventory information.}
 
-\item{TypeName}{The type of inventory item for which you want information.}
+\item{TypeName}{[required] The type of inventory item for which you want information.}
 
 \item{Filters}{One or more filters. Use a filter to return a more specific list of results.}
 

@@ -4,10 +4,14 @@
 \alias{list_tags_for_project}
 \title{Gets the tags for a project}
 \usage{
-list_tags_for_project(id, nextToken = NULL, maxResults = NULL)
+list_tags_for_project(
+  id = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{id}{The ID of the project to get tags for.}
+\item{id}{[required] The ID of the project to get tags for.}
 
 \item{nextToken}{Reserved for future use.}
 

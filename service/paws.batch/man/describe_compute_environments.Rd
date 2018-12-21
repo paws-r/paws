@@ -4,8 +4,13 @@
 \alias{describe_compute_environments}
 \title{Describes one or more of your compute environments}
 \usage{
-describe_compute_environments(computeEnvironments = NULL, maxResults = NULL,
-  nextToken = NULL)
+describe_compute_environments(
+  computeEnvironments = list(
+    "string"
+  ),
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
 \item{computeEnvironments}{A list of up to 100 compute environment names or full Amazon Resource Name (ARN) entries.}

@@ -4,16 +4,27 @@
 \alias{create_device_pool}
 \title{Creates a device pool}
 \usage{
-create_device_pool(projectArn, name, rules, description = NULL)
+create_device_pool(
+  projectArn = "string",
+  name = "string",
+  description = "string",
+  rules = list(
+    list(
+      attribute = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE",
+      operator = "EQUALS"|"LESS_THAN"|"GREATER_THAN"|"IN"|"NOT_IN"|"CONTAINS",
+      value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{projectArn}{The ARN of the project for the device pool.}
+\item{projectArn}{[required] The ARN of the project for the device pool.}
 
-\item{name}{The device pool's name.}
-
-\item{rules}{The device pool's rules.}
+\item{name}{[required] The device pool's name.}
 
 \item{description}{The device pool's description.}
+
+\item{rules}{[required] The device pool's rules.}
 }
 \description{
 Creates a device pool.

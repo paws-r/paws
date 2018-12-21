@@ -4,7 +4,10 @@
 \alias{list_named_queries}
 \title{Provides a list of all available query IDs}
 \usage{
-list_named_queries(NextToken = NULL, MaxResults = NULL)
+list_named_queries(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{NextToken}{The token that specifies where to start pagination if a previous request was truncated.}

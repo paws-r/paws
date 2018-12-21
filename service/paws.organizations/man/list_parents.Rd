@@ -4,10 +4,14 @@
 \alias{list_parents}
 \title{Lists the root or organizational units (OUs) that serve as the immediate parent of the specified child OU or account}
 \usage{
-list_parents(ChildId, NextToken = NULL, MaxResults = NULL)
+list_parents(
+  ChildId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{ChildId}{The unique identifier (ID) of the OU or account whose parent containers you want to list. Do not specify a root.
+\item{ChildId}{[required] The unique identifier (ID) of the OU or account whose parent containers you want to list. Do not specify a root.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a child ID string requires one of the following:
 \itemize{

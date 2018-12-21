@@ -4,12 +4,15 @@
 \alias{get_vault_notifications}
 \title{This operation retrieves the \code{notification-configuration} subresource of the specified vault}
 \usage{
-get_vault_notifications(accountId, vaultName)
+get_vault_notifications(
+  accountId = "string",
+  vaultName = "string"
+)
 }
 \arguments{
-\item{accountId}{The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
+\item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
 
-\item{vaultName}{The name of the vault.}
+\item{vaultName}{[required] The name of the vault.}
 }
 \description{
 This operation retrieves the \code{notification-configuration} subresource of the specified vault.

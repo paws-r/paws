@@ -4,12 +4,15 @@
 \alias{attach_thing_principal}
 \title{Attaches the specified principal to the specified thing}
 \usage{
-attach_thing_principal(thingName, principal)
+attach_thing_principal(
+  thingName = "string",
+  principal = "string"
+)
 }
 \arguments{
-\item{thingName}{The name of the thing.}
+\item{thingName}{[required] The name of the thing.}
 
-\item{principal}{The principal, such as a certificate or other credential.}
+\item{principal}{[required] The principal, such as a certificate or other credential.}
 }
 \description{
 Attaches the specified principal to the specified thing.

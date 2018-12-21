@@ -4,14 +4,31 @@
 \alias{update_byte_match_set}
 \title{Inserts or deletes ByteMatchTuple objects (filters) in a ByteMatchSet}
 \usage{
-update_byte_match_set(ByteMatchSetId, ChangeToken, Updates)
+update_byte_match_set(
+  ByteMatchSetId = "string",
+  ChangeToken = "string",
+  Updates = list(
+    list(
+      Action = "INSERT"|"DELETE",
+      ByteMatchTuple = list(
+        FieldToMatch = list(
+          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+          Data = "string"
+        ),
+        TargetString = raw,
+        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
+        PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{ByteMatchSetId}{The \code{ByteMatchSetId} of the ByteMatchSet that you want to update. \code{ByteMatchSetId} is returned by CreateByteMatchSet and by ListByteMatchSets.}
+\item{ByteMatchSetId}{[required] The \code{ByteMatchSetId} of the ByteMatchSet that you want to update. \code{ByteMatchSetId} is returned by CreateByteMatchSet and by ListByteMatchSets.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 
-\item{Updates}{An array of \code{ByteMatchSetUpdate} objects that you want to insert into or delete from a ByteMatchSet. For more information, see the applicable data types:
+\item{Updates}{[required] An array of \code{ByteMatchSetUpdate} objects that you want to insert into or delete from a ByteMatchSet. For more information, see the applicable data types:
 \itemize{
 \item ByteMatchSetUpdate: Contains \code{Action} and \code{ByteMatchTuple}
 \item ByteMatchTuple: Contains \code{FieldToMatch}, \code{PositionalConstraint}, \code{TargetString}, and \code{TextTransformation}

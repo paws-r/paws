@@ -4,8 +4,13 @@
 \alias{describe_continuous_exports}
 \title{Lists exports as specified by ID}
 \usage{
-describe_continuous_exports(exportIds = NULL, maxResults = NULL,
-  nextToken = NULL)
+describe_continuous_exports(
+  exportIds = list(
+    "string"
+  ),
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
 \item{exportIds}{The unique IDs assigned to the exports.}

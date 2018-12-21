@@ -4,10 +4,13 @@
 \alias{delete_certificate}
 \title{Deletes the specified certificate}
 \usage{
-delete_certificate(certificateId, forceDelete = NULL)
+delete_certificate(
+  certificateId = "string",
+  forceDelete = TRUE|FALSE
+)
 }
 \arguments{
-\item{certificateId}{The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)}
+\item{certificateId}{[required] The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)}
 
 \item{forceDelete}{Forces a certificate request to be deleted.}
 }

@@ -6,17 +6,22 @@
 \alias{paws.mobile-package}
 \title{paws.mobile: AWS Mobile}
 \description{
-AWS Mobile Service provides mobile app and website
-developers with capabilities required to configure AWS resources and
-bootstrap their developer desktop projects with the necessary SDKs,
-constants, tools and samples to make use of those resources.
+AWS Mobile Service provides mobile app and website developers
+with capabilities required to configure AWS resources and bootstrap
+their developer desktop projects with the necessary SDKs, constants,
+tools and samples to make use of those resources.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

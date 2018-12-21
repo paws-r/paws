@@ -4,7 +4,9 @@
 \alias{delete_account_audit_configuration}
 \title{Restores the default settings for Device Defender audits for this account}
 \usage{
-delete_account_audit_configuration(deleteScheduledAudits = NULL)
+delete_account_audit_configuration(
+  deleteScheduledAudits = TRUE|FALSE
+)
 }
 \arguments{
 \item{deleteScheduledAudits}{If true, all scheduled audits are deleted.}

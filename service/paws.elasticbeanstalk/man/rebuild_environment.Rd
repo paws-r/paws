@@ -4,7 +4,10 @@
 \alias{rebuild_environment}
 \title{Deletes and recreates all of the AWS resources (for example: the Auto Scaling group, load balancer, etc}
 \usage{
-rebuild_environment(EnvironmentId = NULL, EnvironmentName = NULL)
+rebuild_environment(
+  EnvironmentId = "string",
+  EnvironmentName = "string"
+)
 }
 \arguments{
 \item{EnvironmentId}{The ID of the environment to rebuild.

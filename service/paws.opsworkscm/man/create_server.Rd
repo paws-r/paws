@@ -4,22 +4,36 @@
 \alias{create_server}
 \title{Creates and immedately starts a new server}
 \usage{
-create_server(ServerName, InstanceProfileArn, InstanceType, ServiceRoleArn,
-  AssociatePublicIpAddress = NULL, DisableAutomatedBackup = NULL,
-  Engine = NULL, EngineModel = NULL, EngineVersion = NULL,
-  EngineAttributes = NULL, BackupRetentionCount = NULL, KeyPair = NULL,
-  PreferredMaintenanceWindow = NULL, PreferredBackupWindow = NULL,
-  SecurityGroupIds = NULL, SubnetIds = NULL, BackupId = NULL)
+create_server(
+  AssociatePublicIpAddress = TRUE|FALSE,
+  DisableAutomatedBackup = TRUE|FALSE,
+  Engine = "string",
+  EngineModel = "string",
+  EngineVersion = "string",
+  EngineAttributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  BackupRetentionCount = 123,
+  ServerName = "string",
+  InstanceProfileArn = "string",
+  InstanceType = "string",
+  KeyPair = "string",
+  PreferredMaintenanceWindow = "string",
+  PreferredBackupWindow = "string",
+  SecurityGroupIds = list(
+    "string"
+  ),
+  ServiceRoleArn = "string",
+  SubnetIds = list(
+    "string"
+  ),
+  BackupId = "string"
+)
 }
 \arguments{
-\item{ServerName}{The name of the server. The server name must be unique within your AWS account, within each region. Server names must start with a letter; then letters, numbers, or hyphens (-) are allowed, up to a maximum of 40 characters.}
-
-\item{InstanceProfileArn}{The ARN of the instance profile that your Amazon EC2 instances use. Although the AWS OpsWorks console typically creates the instance profile for you, if you are using API commands instead, run the service-role-creation.yaml AWS CloudFormation template, located at https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-roles.yaml. This template creates a CloudFormation stack that includes the instance profile you need.}
-
-\item{InstanceType}{The Amazon EC2 instance type to use. For example, \code{m4.large}. Recommended instance types include \code{t2.medium} and greater, \code{m4.*}, or \code{c4.xlarge} and greater.}
-
-\item{ServiceRoleArn}{The service role that the AWS OpsWorks CM service backend uses to work with your account. Although the AWS OpsWorks management console typically creates the service role for you, if you are using the AWS CLI or API commands, run the service-role-creation.yaml AWS CloudFormation template, located at https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-roles.yaml. This template creates a CloudFormation stack that includes the service role and instance profile that you need.}
-
 \item{AssociatePublicIpAddress}{Associate a public IP address with a server that you are launching. Valid values are \code{true} or \code{false}. The default value is \code{true}.}
 
 \item{DisableAutomatedBackup}{Enable or disable scheduled backups. Valid values are \code{true} or \code{false}. The default value is \code{true}.}
@@ -45,6 +59,12 @@ create_server(ServerName, InstanceProfileArn, InstanceType, ServiceRoleArn,
 
 \item{BackupRetentionCount}{The number of automated backups that you want to keep. Whenever a new backup is created, AWS OpsWorks CM deletes the oldest backups if this number is exceeded. The default value is \code{1}.}
 
+\item{ServerName}{[required] The name of the server. The server name must be unique within your AWS account, within each region. Server names must start with a letter; then letters, numbers, or hyphens (-) are allowed, up to a maximum of 40 characters.}
+
+\item{InstanceProfileArn}{[required] The ARN of the instance profile that your Amazon EC2 instances use. Although the AWS OpsWorks console typically creates the instance profile for you, if you are using API commands instead, run the service-role-creation.yaml AWS CloudFormation template, located at https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-roles.yaml. This template creates a CloudFormation stack that includes the instance profile you need.}
+
+\item{InstanceType}{[required] The Amazon EC2 instance type to use. For example, \code{m4.large}. Recommended instance types include \code{t2.medium} and greater, \code{m4.*}, or \code{c4.xlarge} and greater.}
+
 \item{KeyPair}{The Amazon EC2 key pair to set for the instance. This parameter is optional; if desired, you may specify this parameter to connect to your instances by using SSH.}
 
 \item{PreferredMaintenanceWindow}{The start time for a one-hour period each week during which AWS OpsWorks CM performs maintenance on the instance. Valid values must be specified in the following format: \code{DDD:HH:MM}. The specified time is in coordinated universal time (UTC). The default value is a random one-hour period on Tuesday, Wednesday, or Friday. See \code{TimeWindowDefinition} for more information.
@@ -66,6 +86,8 @@ The specified time is in coordinated universal time (UTC). The default value is 
 \item{SecurityGroupIds}{A list of security group IDs to attach to the Amazon EC2 instance. If you add this parameter, the specified security groups must be within the VPC that is specified by \code{SubnetIds}.
 
 If you do not specify this parameter, AWS OpsWorks CM creates one new security group that uses TCP ports 22 and 443, open to 0.0.0.0/0 (everyone).}
+
+\item{ServiceRoleArn}{[required] The service role that the AWS OpsWorks CM service backend uses to work with your account. Although the AWS OpsWorks management console typically creates the service role for you, if you are using the AWS CLI or API commands, run the service-role-creation.yaml AWS CloudFormation template, located at https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-roles.yaml. This template creates a CloudFormation stack that includes the service role and instance profile that you need.}
 
 \item{SubnetIds}{The IDs of subnets in which to launch the server EC2 instance.
 

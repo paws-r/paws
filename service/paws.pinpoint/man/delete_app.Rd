@@ -4,10 +4,12 @@
 \alias{delete_app}
 \title{Deletes an app}
 \usage{
-delete_app(ApplicationId)
+delete_app(
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 }
 \description{
 Deletes an app.

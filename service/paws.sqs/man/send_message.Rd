@@ -4,16 +4,33 @@
 \alias{send_message}
 \title{Delivers a message to the specified queue}
 \usage{
-send_message(QueueUrl, MessageBody, DelaySeconds = NULL,
-  MessageAttributes = NULL, MessageDeduplicationId = NULL,
-  MessageGroupId = NULL)
+send_message(
+  QueueUrl = "string",
+  MessageBody = "string",
+  DelaySeconds = 123,
+  MessageAttributes = list(
+    list(
+      StringValue = "string",
+      BinaryValue = raw,
+      StringListValues = list(
+        "string"
+      ),
+      BinaryListValues = list(
+        raw
+      ),
+      DataType = "string"
+    )
+  ),
+  MessageDeduplicationId = "string",
+  MessageGroupId = "string"
+)
 }
 \arguments{
-\item{QueueUrl}{The URL of the Amazon SQS queue to which a message is sent.
+\item{QueueUrl}{[required] The URL of the Amazon SQS queue to which a message is sent.
 
 Queue URLs and names are case-sensitive.}
 
-\item{MessageBody}{The message to send. The maximum string size is 256 KB.
+\item{MessageBody}{[required] The message to send. The maximum string size is 256 KB.
 
 A message can include only XML, JSON, and unformatted text. The following Unicode characters are allowed:
 

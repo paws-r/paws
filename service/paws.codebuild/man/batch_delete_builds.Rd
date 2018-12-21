@@ -4,10 +4,14 @@
 \alias{batch_delete_builds}
 \title{Deletes one or more builds}
 \usage{
-batch_delete_builds(ids)
+batch_delete_builds(
+  ids = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ids}{The IDs of the builds to delete.}
+\item{ids}{[required] The IDs of the builds to delete.}
 }
 \description{
 Deletes one or more builds.

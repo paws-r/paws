@@ -4,8 +4,17 @@
 \alias{describe_cluster_parameter_groups}
 \title{Returns a list of Amazon Redshift parameter groups, including parameter groups you created and the default parameter group}
 \usage{
-describe_cluster_parameter_groups(ParameterGroupName = NULL,
-  MaxRecords = NULL, Marker = NULL, TagKeys = NULL, TagValues = NULL)
+describe_cluster_parameter_groups(
+  ParameterGroupName = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  TagKeys = list(
+    "string"
+  ),
+  TagValues = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{ParameterGroupName}{The name of a specific parameter group for which to return details. By default, details about all parameter groups and the default parameter group are returned.}

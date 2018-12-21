@@ -4,10 +4,14 @@
 \alias{list_targets_for_policy}
 \title{List targets for the specified policy}
 \usage{
-list_targets_for_policy(policyName, marker = NULL, pageSize = NULL)
+list_targets_for_policy(
+  policyName = "string",
+  marker = "string",
+  pageSize = 123
+)
 }
 \arguments{
-\item{policyName}{The policy name.}
+\item{policyName}{[required] The policy name.}
 
 \item{marker}{A marker used to get the next set of results.}
 

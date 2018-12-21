@@ -4,12 +4,20 @@
 \alias{create_tags}
 \title{Creates or overwrites tags associated with a file system}
 \usage{
-create_tags(FileSystemId, Tags)
+create_tags(
+  FileSystemId = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{FileSystemId}{ID of the file system whose tags you want to modify (String). This operation modifies the tags only, not the file system.}
+\item{FileSystemId}{[required] ID of the file system whose tags you want to modify (String). This operation modifies the tags only, not the file system.}
 
-\item{Tags}{Array of \code{Tag} objects to add. Each \code{Tag} object is a key-value pair.}
+\item{Tags}{[required] Array of \code{Tag} objects to add. Each \code{Tag} object is a key-value pair.}
 }
 \description{
 Creates or overwrites tags associated with a file system. Each tag is a key-value pair. If a tag key specified in the request already exists on the file system, this operation overwrites its value with the value provided in the request. If you add the \code{Name} tag to your file system, Amazon EFS returns it in the response to the DescribeFileSystems operation.

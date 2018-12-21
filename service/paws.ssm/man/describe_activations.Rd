@@ -4,7 +4,18 @@
 \alias{describe_activations}
 \title{Details about the activation, including: the date and time the activation was created, the expiration date, the IAM role assigned to the instances in the activation, and the number of instances activated by this registration}
 \usage{
-describe_activations(Filters = NULL, MaxResults = NULL, NextToken = NULL)
+describe_activations(
+  Filters = list(
+    list(
+      FilterKey = "ActivationIds"|"DefaultInstanceName"|"IamRole",
+      FilterValues = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{Filters}{A filter to view information about your activations.}

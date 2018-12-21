@@ -4,10 +4,12 @@
 \alias{stop_channel}
 \title{Stops a running channel}
 \usage{
-stop_channel(ChannelId)
+stop_channel(
+  ChannelId = "string"
+)
 }
 \arguments{
-\item{ChannelId}{A request to stop a running channel}
+\item{ChannelId}{[required] A request to stop a running channel}
 }
 \description{
 Stops a running channel

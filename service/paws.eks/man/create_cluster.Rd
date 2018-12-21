@@ -4,19 +4,31 @@
 \alias{create_cluster}
 \title{Creates an Amazon EKS control plane}
 \usage{
-create_cluster(name, roleArn, resourcesVpcConfig, version = NULL,
-  clientRequestToken = NULL)
+create_cluster(
+  name = "string",
+  version = "string",
+  roleArn = "string",
+  resourcesVpcConfig = list(
+    subnetIds = list(
+      "string"
+    ),
+    securityGroupIds = list(
+      "string"
+    )
+  ),
+  clientRequestToken = "string"
+)
 }
 \arguments{
-\item{name}{The unique name to give to your cluster.}
-
-\item{roleArn}{The Amazon Resource Name (ARN) of the IAM role that provides permissions for Amazon EKS to make calls to other AWS API operations on your behalf. For more information, see \href{http://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html}{Amazon EKS Service IAM Role} in the \strong{Amazon EKS User Guide} .}
-
-\item{resourcesVpcConfig}{The VPC subnets and security groups used by the cluster control plane. Amazon EKS VPC resources have specific requirements to work properly with Kubernetes. For more information, see \href{http://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html}{Cluster VPC Considerations} and \href{http://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html}{Cluster Security Group Considerations} in the \emph{Amazon EKS User Guide}. You must specify at least two subnets. You may specify up to 5 security groups, but we recommend that you use a dedicated security group for your cluster control plane.}
+\item{name}{[required] The unique name to give to your cluster.}
 
 \item{version}{The desired Kubernetes version for your cluster. If you do not specify a value here, the latest version available in Amazon EKS is used.}
 
-\item{clientRequestToken}{Unique, case-sensitive identifier you provide to ensure the idempotency of the request.}
+\item{roleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that provides permissions for Amazon EKS to make calls to other AWS API operations on your behalf. For more information, see \href{http://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html}{Amazon EKS Service IAM Role} in the \strong{Amazon EKS User Guide} .}
+
+\item{resourcesVpcConfig}{[required] The VPC subnets and security groups used by the cluster control plane. Amazon EKS VPC resources have specific requirements to work properly with Kubernetes. For more information, see \href{http://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html}{Cluster VPC Considerations} and \href{http://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html}{Cluster Security Group Considerations} in the \emph{Amazon EKS User Guide}. You must specify at least two subnets. You may specify up to five security groups, but we recommend that you use a dedicated security group for your cluster control plane.}
+
+\item{clientRequestToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.}
 }
 \description{
 Creates an Amazon EKS control plane.

@@ -4,14 +4,16 @@
 \alias{describe_fleet_history}
 \title{Describes the events for the specified EC2 Fleet during the specified time}
 \usage{
-describe_fleet_history(FleetId, StartTime, DryRun = NULL, EventType = NULL,
-  MaxResults = NULL, NextToken = NULL)
+describe_fleet_history(
+  DryRun = TRUE|FALSE,
+  EventType = "instance-change"|"fleet-change"|"service-error",
+  MaxResults = 123,
+  NextToken = "string",
+  FleetId = "string",
+  StartTime = as.POSIXct("2015-01-01")
+)
 }
 \arguments{
-\item{FleetId}{The ID of the EC2 Fleet.}
-
-\item{StartTime}{The start date and time for the events, in UTC format (for example, \emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{EventType}{The type of events to describe. By default, all events are described.}
@@ -19,6 +21,10 @@ describe_fleet_history(FleetId, StartTime, DryRun = NULL, EventType = NULL,
 \item{MaxResults}{The maximum number of results to return in a single call. Specify a value between 1 and 1000. The default value is 1000. To retrieve the remaining results, make another call with the returned \code{NextToken} value.}
 
 \item{NextToken}{The token for the next set of results.}
+
+\item{FleetId}{[required] The ID of the EC2 Fleet.}
+
+\item{StartTime}{[required] The start date and time for the events, in UTC format (for example, \emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
 }
 \description{
 Describes the events for the specified EC2 Fleet during the specified time.

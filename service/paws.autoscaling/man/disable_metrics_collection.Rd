@@ -4,10 +4,15 @@
 \alias{disable_metrics_collection}
 \title{Disables group metrics for the specified Auto Scaling group}
 \usage{
-disable_metrics_collection(AutoScalingGroupName, Metrics = NULL)
+disable_metrics_collection(
+  AutoScalingGroupName = "string",
+  Metrics = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
 \item{Metrics}{One or more of the following metrics. If you omit this parameter, all metrics are disabled.
 \itemize{

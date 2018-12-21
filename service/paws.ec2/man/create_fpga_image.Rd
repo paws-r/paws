@@ -4,14 +4,25 @@
 \alias{create_fpga_image}
 \title{Creates an Amazon FPGA Image (AFI) from the specified design checkpoint (DCP)}
 \usage{
-create_fpga_image(InputStorageLocation, DryRun = NULL,
-  LogsStorageLocation = NULL, Description = NULL, Name = NULL,
-  ClientToken = NULL)
+create_fpga_image(
+  DryRun = TRUE|FALSE,
+  InputStorageLocation = list(
+    Bucket = "string",
+    Key = "string"
+  ),
+  LogsStorageLocation = list(
+    Bucket = "string",
+    Key = "string"
+  ),
+  Description = "string",
+  Name = "string",
+  ClientToken = "string"
+)
 }
 \arguments{
-\item{InputStorageLocation}{The location of the encrypted design checkpoint in Amazon S3. The input must be a tarball.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{InputStorageLocation}{[required] The location of the encrypted design checkpoint in Amazon S3. The input must be a tarball.}
 
 \item{LogsStorageLocation}{The location in Amazon S3 for the output logs.}
 

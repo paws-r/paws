@@ -4,10 +4,12 @@
 \alias{stop_image_builder}
 \title{Stops the specified image builder}
 \usage{
-stop_image_builder(Name)
+stop_image_builder(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the image builder.}
+\item{Name}{[required] The name of the image builder.}
 }
 \description{
 Stops the specified image builder.

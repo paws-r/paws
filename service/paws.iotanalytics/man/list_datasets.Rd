@@ -4,7 +4,10 @@
 \alias{list_datasets}
 \title{Retrieves information about data sets}
 \usage{
-list_datasets(nextToken = NULL, maxResults = NULL)
+list_datasets(
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{nextToken}{The token for the next set of results.}

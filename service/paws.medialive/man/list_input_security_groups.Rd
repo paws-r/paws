@@ -4,7 +4,10 @@
 \alias{list_input_security_groups}
 \title{Produces a list of Input Security Groups for an account}
 \usage{
-list_input_security_groups(MaxResults = NULL, NextToken = NULL)
+list_input_security_groups(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{MaxResults}{}

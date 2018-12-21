@@ -4,13 +4,24 @@
 \alias{describe_maintenance_windows_for_target}
 \title{Retrieves information about the Maintenance Windows targets or tasks that an instance is associated with}
 \usage{
-describe_maintenance_windows_for_target(Targets, ResourceType,
-  MaxResults = NULL, NextToken = NULL)
+describe_maintenance_windows_for_target(
+  Targets = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  ResourceType = "INSTANCE",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{Targets}{The instance ID or key/value pair to retrieve information about.}
+\item{Targets}{[required] The instance ID or key/value pair to retrieve information about.}
 
-\item{ResourceType}{The type of resource you want to retrieve information about. For example, "INSTANCE".}
+\item{ResourceType}{[required] The type of resource you want to retrieve information about. For example, "INSTANCE".}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 

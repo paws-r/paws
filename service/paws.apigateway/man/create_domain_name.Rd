@@ -4,14 +4,24 @@
 \alias{create_domain_name}
 \title{Creates a new domain name}
 \usage{
-create_domain_name(domainName, certificateName = NULL,
-  certificateBody = NULL, certificatePrivateKey = NULL,
-  certificateChain = NULL, certificateArn = NULL,
-  regionalCertificateName = NULL, regionalCertificateArn = NULL,
-  endpointConfiguration = NULL)
+create_domain_name(
+  domainName = "string",
+  certificateName = "string",
+  certificateBody = "string",
+  certificatePrivateKey = "string",
+  certificateChain = "string",
+  certificateArn = "string",
+  regionalCertificateName = "string",
+  regionalCertificateArn = "string",
+  endpointConfiguration = list(
+    types = list(
+      "REGIONAL"|"EDGE"|"PRIVATE"
+    )
+  )
+)
 }
 \arguments{
-\item{domainName}{[Required] The name of the DomainName resource.}
+\item{domainName}{[required] [Required] The name of the DomainName resource.}
 
 \item{certificateName}{The user-friendly name of the certificate that will be used by edge-optimized endpoint for this domain name.}
 

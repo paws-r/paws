@@ -4,10 +4,12 @@
 \alias{get_certificate_authority_csr}
 \title{Retrieves the certificate signing request (CSR) for your private certificate authority (CA)}
 \usage{
-get_certificate_authority_csr(CertificateAuthorityArn)
+get_certificate_authority_csr(
+  CertificateAuthorityArn = "string"
+)
 }
 \arguments{
-\item{CertificateAuthorityArn}{The Amazon Resource Name (ARN) that was returned when you called the CreateCertificateAuthority operation. This must be of the form:
+\item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called the CreateCertificateAuthority operation. This must be of the form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }}
 }

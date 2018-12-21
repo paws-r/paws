@@ -4,10 +4,20 @@
 \alias{create_cluster_snapshot}
 \title{Creates a manual snapshot of the specified cluster}
 \usage{
-create_cluster_snapshot(SnapshotIdentifier, ClusterIdentifier, Tags = NULL)
+create_cluster_snapshot(
+  SnapshotIdentifier = "string",
+  ClusterIdentifier = "string",
+  ManualSnapshotRetentionPeriod = 123,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{SnapshotIdentifier}{A unique identifier for the snapshot that you are requesting. This identifier must be unique for all snapshots within the AWS account.
+\item{SnapshotIdentifier}{[required] A unique identifier for the snapshot that you are requesting. This identifier must be unique for all snapshots within the AWS account.
 
 Constraints:
 \itemize{
@@ -19,7 +29,13 @@ Constraints:
 
 Example: \code{my-snapshot-id}}
 
-\item{ClusterIdentifier}{The cluster identifier for which you want a snapshot.}
+\item{ClusterIdentifier}{[required] The cluster identifier for which you want a snapshot.}
+
+\item{ManualSnapshotRetentionPeriod}{The number of days that a manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely.
+
+The value must be either -1 or an integer between 1 and 3,653.
+
+The default value is -1.}
 
 \item{Tags}{A list of tag instances.}
 }

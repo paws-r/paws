@@ -4,11 +4,15 @@
 \alias{describe_parameters}
 \title{Returns the detailed parameter list for a particular parameter group}
 \usage{
-describe_parameters(ParameterGroupName, Source = NULL, MaxResults = NULL,
-  NextToken = NULL)
+describe_parameters(
+  ParameterGroupName = "string",
+  Source = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{ParameterGroupName}{The name of the parameter group.}
+\item{ParameterGroupName}{[required] The name of the parameter group.}
 
 \item{Source}{How the parameter is defined. For example, \code{system} denotes a system-defined parameter.}
 

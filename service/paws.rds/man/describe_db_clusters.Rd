@@ -4,8 +4,19 @@
 \alias{describe_db_clusters}
 \title{Returns information about provisioned Aurora DB clusters}
 \usage{
-describe_db_clusters(DBClusterIdentifier = NULL, Filters = NULL,
-  MaxRecords = NULL, Marker = NULL)
+describe_db_clusters(
+  DBClusterIdentifier = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{The user-supplied DB cluster identifier. If this parameter is specified, information from only the specific DB cluster is returned. This parameter isn't case-sensitive.

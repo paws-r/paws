@@ -4,10 +4,14 @@
 \alias{list_jobs_by_status}
 \title{The ListJobsByStatus operation gets a list of jobs that have a specified status}
 \usage{
-list_jobs_by_status(Status, Ascending = NULL, PageToken = NULL)
+list_jobs_by_status(
+  Status = "string",
+  Ascending = "string",
+  PageToken = "string"
+)
 }
 \arguments{
-\item{Status}{To get information about all of the jobs associated with the current AWS account that have a given status, specify the following status: \code{Submitted}, \code{Progressing}, \code{Complete}, \code{Canceled}, or \code{Error}.}
+\item{Status}{[required] To get information about all of the jobs associated with the current AWS account that have a given status, specify the following status: \code{Submitted}, \code{Progressing}, \code{Complete}, \code{Canceled}, or \code{Error}.}
 
 \item{Ascending}{To list jobs in chronological order by the date and time that they were submitted, enter \code{true}. To list jobs in reverse chronological order, enter \code{false}.}
 

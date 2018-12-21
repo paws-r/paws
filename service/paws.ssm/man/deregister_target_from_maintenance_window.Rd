@@ -4,13 +4,16 @@
 \alias{deregister_target_from_maintenance_window}
 \title{Removes a target from a Maintenance Window}
 \usage{
-deregister_target_from_maintenance_window(WindowId, WindowTargetId,
-  Safe = NULL)
+deregister_target_from_maintenance_window(
+  WindowId = "string",
+  WindowTargetId = "string",
+  Safe = TRUE|FALSE
+)
 }
 \arguments{
-\item{WindowId}{The ID of the Maintenance Window the target should be removed from.}
+\item{WindowId}{[required] The ID of the Maintenance Window the target should be removed from.}
 
-\item{WindowTargetId}{The ID of the target definition to remove.}
+\item{WindowTargetId}{[required] The ID of the target definition to remove.}
 
 \item{Safe}{The system checks if the target is being referenced by a task. If the target is being referenced, the system returns an error and does not deregister the target from the Maintenance Window.}
 }

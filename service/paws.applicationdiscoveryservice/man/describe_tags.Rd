@@ -4,7 +4,18 @@
 \alias{describe_tags}
 \title{Retrieves a list of configuration items that have tags as specified by the key-value pairs, name and value, passed to the optional parameter \code{filters}}
 \usage{
-describe_tags(filters = NULL, maxResults = NULL, nextToken = NULL)
+describe_tags(
+  filters = list(
+    list(
+      name = "string",
+      values = list(
+        "string"
+      )
+    )
+  ),
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
 \item{filters}{You can filter the list using a \emph{key}-\emph{value} format. You can separate these items by using logical operators. Allowed filters include \code{tagKey}, \code{tagValue}, and \code{configurationId}.}

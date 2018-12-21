@@ -4,7 +4,10 @@
 \alias{list_member_accounts}
 \title{Returns a \code{MemberAccounts} object that lists the member accounts in the administrator's AWS organization}
 \usage{
-list_member_accounts(NextToken = NULL, MaxResults = NULL)
+list_member_accounts(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{NextToken}{If you specify a value for \code{MaxResults} and you have more account IDs than the number that you specify for \code{MaxResults}, AWS Firewall Manager returns a \code{NextToken} value in the response that allows you to list another group of IDs. For the second and subsequent \code{ListMemberAccountsRequest} requests, specify the value of \code{NextToken} from the previous response to get information about another batch of member account IDs.}

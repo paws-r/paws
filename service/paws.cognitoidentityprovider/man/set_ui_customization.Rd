@@ -4,11 +4,15 @@
 \alias{set_ui_customization}
 \title{Sets the UI customization information for a user pool's built-in app UI}
 \usage{
-set_ui_customization(UserPoolId, ClientId = NULL, CSS = NULL,
-  ImageFile = NULL)
+set_ui_customization(
+  UserPoolId = "string",
+  ClientId = "string",
+  CSS = "string",
+  ImageFile = raw
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The user pool ID for the user pool.}
 
 \item{ClientId}{The client ID for the client app.}
 

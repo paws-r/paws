@@ -4,13 +4,15 @@
 \alias{get_resource_definition_version}
 \title{Retrieves information about a resource definition version, including which resources are included in the version}
 \usage{
-get_resource_definition_version(ResourceDefinitionVersionId,
-  ResourceDefinitionId)
+get_resource_definition_version(
+  ResourceDefinitionId = "string",
+  ResourceDefinitionVersionId = "string"
+)
 }
 \arguments{
-\item{ResourceDefinitionVersionId}{The ID of the resource definition version.}
+\item{ResourceDefinitionId}{[required] The ID of the resource definition.}
 
-\item{ResourceDefinitionId}{The ID of the resource definition.}
+\item{ResourceDefinitionVersionId}{[required] The ID of the resource definition version.}
 }
 \description{
 Retrieves information about a resource definition version, including which resources are included in the version.

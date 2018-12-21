@@ -4,11 +4,23 @@
 \alias{describe_instance_patch_states_for_patch_group}
 \title{Retrieves the high-level patch state for the instances in the specified patch group}
 \usage{
-describe_instance_patch_states_for_patch_group(PatchGroup, Filters = NULL,
-  NextToken = NULL, MaxResults = NULL)
+describe_instance_patch_states_for_patch_group(
+  PatchGroup = "string",
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      ),
+      Type = "Equal"|"NotEqual"|"LessThan"|"GreaterThan"
+    )
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{PatchGroup}{The name of the patch group for which the patch state information should be retrieved.}
+\item{PatchGroup}{[required] The name of the patch group for which the patch state information should be retrieved.}
 
 \item{Filters}{Each entry in the array is a structure containing:
 

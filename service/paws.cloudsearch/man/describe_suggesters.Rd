@@ -4,10 +4,16 @@
 \alias{describe_suggesters}
 \title{Gets the suggesters configured for a domain}
 \usage{
-describe_suggesters(DomainName, SuggesterNames = NULL, Deployed = NULL)
+describe_suggesters(
+  DomainName = "string",
+  SuggesterNames = list(
+    "string"
+  ),
+  Deployed = TRUE|FALSE
+)
 }
 \arguments{
-\item{DomainName}{The name of the domain you want to describe.}
+\item{DomainName}{[required] The name of the domain you want to describe.}
 
 \item{SuggesterNames}{The suggesters you want to describe.}
 

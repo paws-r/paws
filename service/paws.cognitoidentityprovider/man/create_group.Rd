@@ -4,13 +4,18 @@
 \alias{create_group}
 \title{Creates a new group in the specified user pool}
 \usage{
-create_group(GroupName, UserPoolId, Description = NULL, RoleArn = NULL,
-  Precedence = NULL)
+create_group(
+  GroupName = "string",
+  UserPoolId = "string",
+  Description = "string",
+  RoleArn = "string",
+  Precedence = 123
+)
 }
 \arguments{
-\item{GroupName}{The name of the group. Must be unique.}
+\item{GroupName}{[required] The name of the group. Must be unique.}
 
-\item{UserPoolId}{The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The user pool ID for the user pool.}
 
 \item{Description}{A string containing the description of the group.}
 

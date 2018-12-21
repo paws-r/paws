@@ -4,10 +4,12 @@
 \alias{delete_load_balancer}
 \title{Deletes the specified load balancer}
 \usage{
-delete_load_balancer(LoadBalancerName)
+delete_load_balancer(
+  LoadBalancerName = "string"
+)
 }
 \arguments{
-\item{LoadBalancerName}{The name of the load balancer.}
+\item{LoadBalancerName}{[required] The name of the load balancer.}
 }
 \description{
 Deletes the specified load balancer.

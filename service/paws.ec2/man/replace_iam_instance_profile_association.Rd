@@ -4,12 +4,18 @@
 \alias{replace_iam_instance_profile_association}
 \title{Replaces an IAM instance profile for the specified running instance}
 \usage{
-replace_iam_instance_profile_association(IamInstanceProfile, AssociationId)
+replace_iam_instance_profile_association(
+  IamInstanceProfile = list(
+    Arn = "string",
+    Name = "string"
+  ),
+  AssociationId = "string"
+)
 }
 \arguments{
-\item{IamInstanceProfile}{The IAM instance profile.}
+\item{IamInstanceProfile}{[required] The IAM instance profile.}
 
-\item{AssociationId}{The ID of the existing IAM instance profile association.}
+\item{AssociationId}{[required] The ID of the existing IAM instance profile association.}
 }
 \description{
 Replaces an IAM instance profile for the specified running instance. You can use this action to change the IAM instance profile that's associated with an instance without having to disassociate the existing IAM instance profile first.

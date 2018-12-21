@@ -4,14 +4,17 @@
 \alias{update_assume_role_policy}
 \title{Updates the policy that grants an IAM entity permission to assume a role}
 \usage{
-update_assume_role_policy(RoleName, PolicyDocument)
+update_assume_role_policy(
+  RoleName = "string",
+  PolicyDocument = "string"
+)
 }
 \arguments{
-\item{RoleName}{The name of the role to update with the new policy.
+\item{RoleName}{[required] The name of the role to update with the new policy.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
-\item{PolicyDocument}{The policy that grants an entity permission to assume the role.
+\item{PolicyDocument}{[required] The policy that grants an entity permission to assume the role.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate this parameter is a string of characters consisting of the following:
 \itemize{

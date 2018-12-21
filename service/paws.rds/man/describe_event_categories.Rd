@@ -4,7 +4,17 @@
 \alias{describe_event_categories}
 \title{Displays a list of categories for all event source types, or, if specified, for a specified source type}
 \usage{
-describe_event_categories(SourceType = NULL, Filters = NULL)
+describe_event_categories(
+  SourceType = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  )
+)
 }
 \arguments{
 \item{SourceType}{The type of source that is generating the events.

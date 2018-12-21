@@ -4,15 +4,80 @@
 \alias{update_dataset}
 \title{Updates the settings of a data set}
 \usage{
-update_dataset(datasetName, actions, triggers = NULL,
-  retentionPeriod = NULL)
+update_dataset(
+  datasetName = "string",
+  actions = list(
+    list(
+      actionName = "string",
+      queryAction = list(
+        sqlQuery = "string",
+        filters = list(
+          list(
+            deltaTime = list(
+              offsetSeconds = 123,
+              timeExpression = "string"
+            )
+          )
+        )
+      ),
+      containerAction = list(
+        image = "string",
+        executionRoleArn = "string",
+        resourceConfiguration = list(
+          computeType = "ACU_1"|"ACU_2",
+          volumeSizeInGB = 123
+        ),
+        variables = list(
+          list(
+            name = "string",
+            stringValue = "string",
+            doubleValue = 123.0,
+            datasetContentVersionValue = list(
+              datasetName = "string"
+            ),
+            outputFileUriValue = list(
+              fileName = "string"
+            )
+          )
+        )
+      )
+    )
+  ),
+  triggers = list(
+    list(
+      schedule = list(
+        expression = "string"
+      ),
+      dataset = list(
+        name = "string"
+      )
+    )
+  ),
+  contentDeliveryRules = list(
+    list(
+      entryName = "string",
+      destination = list(
+        iotEventsDestinationConfiguration = list(
+          inputName = "string",
+          roleArn = "string"
+        )
+      )
+    )
+  ),
+  retentionPeriod = list(
+    unlimited = TRUE|FALSE,
+    numberOfDays = 123
+  )
+)
 }
 \arguments{
-\item{datasetName}{The name of the data set to update.}
+\item{datasetName}{[required] The name of the data set to update.}
 
-\item{actions}{A list of "DatasetAction" objects.}
+\item{actions}{[required] A list of "DatasetAction" objects.}
 
 \item{triggers}{A list of "DatasetTrigger" objects. The list can be empty or can contain up to five \strong{DataSetTrigger} objects.}
+
+\item{contentDeliveryRules}{}
 
 \item{retentionPeriod}{How long, in days, message data is kept for the data set.}
 }

@@ -4,10 +4,16 @@
 \alias{start_workspaces}
 \title{Starts the specified WorkSpaces}
 \usage{
-start_workspaces(StartWorkspaceRequests)
+start_workspaces(
+  StartWorkspaceRequests = list(
+    list(
+      WorkspaceId = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{StartWorkspaceRequests}{The WorkSpaces to start. You can specify up to 25 WorkSpaces.}
+\item{StartWorkspaceRequests}{[required] The WorkSpaces to start. You can specify up to 25 WorkSpaces.}
 }
 \description{
 Starts the specified WorkSpaces.

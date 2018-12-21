@@ -4,16 +4,21 @@
 \alias{get_export}
 \title{Exports the contents of a Amazon Lex resource in a specified format}
 \usage{
-get_export(name, version, resourceType, exportType)
+get_export(
+  name = "string",
+  version = "string",
+  resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
+  exportType = "ALEXA_SKILLS_KIT"|"LEX"
+)
 }
 \arguments{
-\item{name}{The name of the bot to export.}
+\item{name}{[required] The name of the bot to export.}
 
-\item{version}{The version of the bot to export.}
+\item{version}{[required] The version of the bot to export.}
 
-\item{resourceType}{The type of resource to export.}
+\item{resourceType}{[required] The type of resource to export.}
 
-\item{exportType}{The format of the exported data.}
+\item{exportType}{[required] The format of the exported data.}
 }
 \description{
 Exports the contents of a Amazon Lex resource in a specified format.

@@ -4,7 +4,10 @@
 \alias{list_indices}
 \title{Lists the search indices}
 \usage{
-list_indices(nextToken = NULL, maxResults = NULL)
+list_indices(
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{nextToken}{The token used to get the next set of results, or \strong{null} if there are no additional results.}

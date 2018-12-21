@@ -4,10 +4,12 @@
 \alias{delete_cluster_parameter_group}
 \title{Deletes a specified Amazon Redshift parameter group}
 \usage{
-delete_cluster_parameter_group(ParameterGroupName)
+delete_cluster_parameter_group(
+  ParameterGroupName = "string"
+)
 }
 \arguments{
-\item{ParameterGroupName}{The name of the parameter group to be deleted.
+\item{ParameterGroupName}{[required] The name of the parameter group to be deleted.
 
 Constraints:
 \itemize{

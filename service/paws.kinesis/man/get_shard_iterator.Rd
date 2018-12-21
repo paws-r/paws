@@ -4,15 +4,20 @@
 \alias{get_shard_iterator}
 \title{Gets an Amazon Kinesis shard iterator}
 \usage{
-get_shard_iterator(StreamName, ShardId, ShardIteratorType,
-  StartingSequenceNumber = NULL, Timestamp = NULL)
+get_shard_iterator(
+  StreamName = "string",
+  ShardId = "string",
+  ShardIteratorType = "AT_SEQUENCE_NUMBER"|"AFTER_SEQUENCE_NUMBER"|"TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
+  StartingSequenceNumber = "string",
+  Timestamp = as.POSIXct("2015-01-01")
+)
 }
 \arguments{
-\item{StreamName}{The name of the Amazon Kinesis data stream.}
+\item{StreamName}{[required] The name of the Amazon Kinesis data stream.}
 
-\item{ShardId}{The shard ID of the Kinesis Data Streams shard to get the iterator for.}
+\item{ShardId}{[required] The shard ID of the Kinesis Data Streams shard to get the iterator for.}
 
-\item{ShardIteratorType}{Determines how the shard iterator is used to start reading data records from the shard.
+\item{ShardIteratorType}{[required] Determines how the shard iterator is used to start reading data records from the shard.
 
 The following are the valid Amazon Kinesis shard iterator types:
 \itemize{

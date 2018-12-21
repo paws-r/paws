@@ -4,10 +4,13 @@
 \alias{reject_certificate_transfer}
 \title{Rejects a pending certificate transfer}
 \usage{
-reject_certificate_transfer(certificateId, rejectReason = NULL)
+reject_certificate_transfer(
+  certificateId = "string",
+  rejectReason = "string"
+)
 }
 \arguments{
-\item{certificateId}{The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)}
+\item{certificateId}{[required] The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)}
 
 \item{rejectReason}{The reason the certificate transfer was rejected.}
 }

@@ -4,14 +4,18 @@
 \alias{get_method}
 \title{Describe an existing Method resource}
 \usage{
-get_method(restApiId, resourceId, httpMethod)
+get_method(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string"
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[Required] The Resource identifier for the Method resource.}
+\item{resourceId}{[required] [Required] The Resource identifier for the Method resource.}
 
-\item{httpMethod}{[Required] Specifies the method request's HTTP method type.}
+\item{httpMethod}{[required] [Required] Specifies the method request's HTTP method type.}
 }
 \description{
 Describe an existing Method resource.

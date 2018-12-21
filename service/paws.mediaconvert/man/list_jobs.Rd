@@ -4,8 +4,13 @@
 \alias{list_jobs}
 \title{Retrieve a JSON array of up to twenty of your most recently created jobs}
 \usage{
-list_jobs(MaxResults = NULL, NextToken = NULL, Order = NULL,
-  Queue = NULL, Status = NULL)
+list_jobs(
+  MaxResults = 123,
+  NextToken = "string",
+  Order = "ASCENDING"|"DESCENDING",
+  Queue = "string",
+  Status = "SUBMITTED"|"PROGRESSING"|"COMPLETE"|"CANCELED"|"ERROR"
+)
 }
 \arguments{
 \item{MaxResults}{Optional. Number of jobs, up to twenty, that will be returned at one time.}

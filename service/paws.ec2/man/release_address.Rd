@@ -4,7 +4,11 @@
 \alias{release_address}
 \title{Releases the specified Elastic IP address}
 \usage{
-release_address(AllocationId = NULL, PublicIp = NULL, DryRun = NULL)
+release_address(
+  AllocationId = "string",
+  PublicIp = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{AllocationId}{[EC2-VPC] The allocation ID. Required for EC2-VPC.}

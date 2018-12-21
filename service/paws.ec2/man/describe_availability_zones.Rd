@@ -4,8 +4,23 @@
 \alias{describe_availability_zones}
 \title{Describes one or more of the Availability Zones that are available to you}
 \usage{
-describe_availability_zones(Filters = NULL, ZoneNames = NULL,
-  DryRun = NULL)
+describe_availability_zones(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  ZoneNames = list(
+    "string"
+  ),
+  ZoneIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -13,10 +28,13 @@ describe_availability_zones(Filters = NULL, ZoneNames = NULL,
 \item \code{message} - Information about the Availability Zone.
 \item \code{region-name} - The name of the region for the Availability Zone (for example, \code{us-east-1}).
 \item \code{state} - The state of the Availability Zone (\code{available} | \code{information} | \code{impaired} | \code{unavailable}).
+\item \code{zone-id} - The ID of the Availability Zone (for example, \code{use1-az1}).
 \item \code{zone-name} - The name of the Availability Zone (for example, \code{us-east-1a}).
 }}
 
 \item{ZoneNames}{The names of one or more Availability Zones.}
+
+\item{ZoneIds}{The IDs of one or more Availability Zones.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

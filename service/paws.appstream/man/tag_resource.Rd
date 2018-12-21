@@ -4,12 +4,17 @@
 \alias{tag_resource}
 \title{Adds or overwrites one or more tags for the specified AppStream 2}
 \usage{
-tag_resource(ResourceArn, Tags)
+tag_resource(
+  ResourceArn = "string",
+  Tags = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ResourceArn}{The Amazon Resource Name (ARN) of the resource.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 
-\item{Tags}{The tags to associate. A tag is a key-value pair (the value is optional). For example, \code{Environment=Test}, or, if you do not specify a value, \code{Environment=}.
+\item{Tags}{[required] The tags to associate. A tag is a key-value pair (the value is optional). For example, \code{Environment=Test}, or, if you do not specify a value, \code{Environment=}.
 
 If you do not specify a value, we set the value to an empty string.}
 }

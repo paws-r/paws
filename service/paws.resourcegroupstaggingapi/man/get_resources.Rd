@@ -4,8 +4,22 @@
 \alias{get_resources}
 \title{Returns all the tagged resources that are associated with the specified tags (keys and values) located in the specified region for the AWS account}
 \usage{
-get_resources(PaginationToken = NULL, TagFilters = NULL,
-  ResourcesPerPage = NULL, TagsPerPage = NULL, ResourceTypeFilters = NULL)
+get_resources(
+  PaginationToken = "string",
+  TagFilters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  ResourcesPerPage = 123,
+  TagsPerPage = 123,
+  ResourceTypeFilters = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{PaginationToken}{A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a \code{PaginationToken}, use that string for this value to request an additional page of data.}

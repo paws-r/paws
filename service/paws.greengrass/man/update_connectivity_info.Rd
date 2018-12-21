@@ -4,12 +4,22 @@
 \alias{update_connectivity_info}
 \title{Updates the connectivity information for the core}
 \usage{
-update_connectivity_info(ThingName, ConnectivityInfo = NULL)
+update_connectivity_info(
+  ConnectivityInfo = list(
+    list(
+      HostAddress = "string",
+      Id = "string",
+      Metadata = "string",
+      PortNumber = 123
+    )
+  ),
+  ThingName = "string"
+)
 }
 \arguments{
-\item{ThingName}{The thing name.}
-
 \item{ConnectivityInfo}{A list of connectivity info.}
+
+\item{ThingName}{[required] The thing name.}
 }
 \description{
 Updates the connectivity information for the core. Any devices that belong to the group which has this core will receive this information in order to find the location of the core and connect to it.

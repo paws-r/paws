@@ -4,10 +4,12 @@
 \alias{restore_from_snapshot}
 \title{Restores a directory using an existing directory snapshot}
 \usage{
-restore_from_snapshot(SnapshotId)
+restore_from_snapshot(
+  SnapshotId = "string"
+)
 }
 \arguments{
-\item{SnapshotId}{The identifier of the snapshot to restore from.}
+\item{SnapshotId}{[required] The identifier of the snapshot to restore from.}
 }
 \description{
 Restores a directory using an existing directory snapshot.

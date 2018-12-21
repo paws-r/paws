@@ -4,14 +4,47 @@
 \alias{list_incoming_typed_links}
 \title{Returns a paginated list of all the incoming TypedLinkSpecifier information for an object}
 \usage{
-list_incoming_typed_links(DirectoryArn, ObjectReference,
-  FilterAttributeRanges = NULL, FilterTypedLink = NULL, NextToken = NULL,
-  MaxResults = NULL, ConsistencyLevel = NULL)
+list_incoming_typed_links(
+  DirectoryArn = "string",
+  ObjectReference = list(
+    Selector = "string"
+  ),
+  FilterAttributeRanges = list(
+    list(
+      AttributeName = "string",
+      Range = list(
+        StartMode = "FIRST"|"LAST"|"LAST_BEFORE_MISSING_VALUES"|"INCLUSIVE"|"EXCLUSIVE",
+        StartValue = list(
+          StringValue = "string",
+          BinaryValue = raw,
+          BooleanValue = TRUE|FALSE,
+          NumberValue = "string",
+          DatetimeValue = as.POSIXct("2015-01-01")
+        ),
+        EndMode = "FIRST"|"LAST"|"LAST_BEFORE_MISSING_VALUES"|"INCLUSIVE"|"EXCLUSIVE",
+        EndValue = list(
+          StringValue = "string",
+          BinaryValue = raw,
+          BooleanValue = TRUE|FALSE,
+          NumberValue = "string",
+          DatetimeValue = as.POSIXct("2015-01-01")
+        )
+      )
+    )
+  ),
+  FilterTypedLink = list(
+    SchemaArn = "string",
+    TypedLinkName = "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123,
+  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
+)
 }
 \arguments{
-\item{DirectoryArn}{The Amazon Resource Name (ARN) of the directory where you want to list the typed links.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory where you want to list the typed links.}
 
-\item{ObjectReference}{Reference that identifies the object whose attributes will be listed.}
+\item{ObjectReference}{[required] Reference that identifies the object whose attributes will be listed.}
 
 \item{FilterAttributeRanges}{Provides range filters for multiple attributes. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range.}
 
@@ -24,7 +57,7 @@ list_incoming_typed_links(DirectoryArn, ObjectReference,
 \item{ConsistencyLevel}{The consistency level to execute the request at.}
 }
 \description{
-Returns a paginated list of all the incoming TypedLinkSpecifier information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see \href{http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink}{Typed link}.
+Returns a paginated list of all the incoming TypedLinkSpecifier information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 }
 \examples{
 

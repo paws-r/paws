@@ -4,10 +4,12 @@
 \alias{get_associated_role}
 \title{Retrieves the role associated with a particular group}
 \usage{
-get_associated_role(GroupId)
+get_associated_role(
+  GroupId = "string"
+)
 }
 \arguments{
-\item{GroupId}{The ID of the AWS Greengrass group.}
+\item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \description{
 Retrieves the role associated with a particular group.

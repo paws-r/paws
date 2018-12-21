@@ -4,27 +4,62 @@
 \alias{create_fleet}
 \title{Creates a new fleet to run your game servers}
 \usage{
-create_fleet(Name, BuildId, EC2InstanceType, Description = NULL,
-  ServerLaunchPath = NULL, ServerLaunchParameters = NULL, LogPaths = NULL,
-  EC2InboundPermissions = NULL, NewGameSessionProtectionPolicy = NULL,
-  RuntimeConfiguration = NULL, ResourceCreationLimitPolicy = NULL,
-  MetricGroups = NULL, PeerVpcAwsAccountId = NULL, PeerVpcId = NULL,
-  FleetType = NULL)
+create_fleet(
+  Name = "string",
+  Description = "string",
+  BuildId = "string",
+  ServerLaunchPath = "string",
+  ServerLaunchParameters = "string",
+  LogPaths = list(
+    "string"
+  ),
+  EC2InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge",
+  EC2InboundPermissions = list(
+    list(
+      FromPort = 123,
+      ToPort = 123,
+      IpRange = "string",
+      Protocol = "TCP"|"UDP"
+    )
+  ),
+  NewGameSessionProtectionPolicy = "NoProtection"|"FullProtection",
+  RuntimeConfiguration = list(
+    ServerProcesses = list(
+      list(
+        LaunchPath = "string",
+        Parameters = "string",
+        ConcurrentExecutions = 123
+      )
+    ),
+    MaxConcurrentGameSessionActivations = 123,
+    GameSessionActivationTimeoutSeconds = 123
+  ),
+  ResourceCreationLimitPolicy = list(
+    NewGameSessionsPerCreator = 123,
+    PolicyPeriodInMinutes = 123
+  ),
+  MetricGroups = list(
+    "string"
+  ),
+  PeerVpcAwsAccountId = "string",
+  PeerVpcId = "string",
+  FleetType = "ON_DEMAND"|"SPOT"
+)
 }
 \arguments{
-\item{Name}{Descriptive label that is associated with a fleet. Fleet names do not need to be unique.}
-
-\item{BuildId}{Unique identifier for a build to be deployed on the new fleet. The build must have been successfully uploaded to Amazon GameLift and be in a \code{READY} status. This fleet setting cannot be changed once the fleet is created.}
-
-\item{EC2InstanceType}{Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See \href{http://aws.amazon.com/ec2/instance-types/}{Amazon EC2 Instance Types} for detailed descriptions.}
+\item{Name}{[required] Descriptive label that is associated with a fleet. Fleet names do not need to be unique.}
 
 \item{Description}{Human-readable description of a fleet.}
+
+\item{BuildId}{[required] Unique identifier for a build to be deployed on the new fleet. The build must have been successfully uploaded to Amazon GameLift and be in a \code{READY} status. This fleet setting cannot be changed once the fleet is created.}
 
 \item{ServerLaunchPath}{This parameter is no longer used. Instead, specify a server launch path using the \code{RuntimeConfiguration} parameter. (Requests that specify a server launch path and launch parameters instead of a run-time configuration will continue to work.)}
 
 \item{ServerLaunchParameters}{This parameter is no longer used. Instead, specify server launch parameters in the \code{RuntimeConfiguration} parameter. (Requests that specify a server launch path and launch parameters instead of a run-time configuration will continue to work.)}
 
 \item{LogPaths}{This parameter is no longer used. Instead, to specify where Amazon GameLift should store log files once a server process shuts down, use the Amazon GameLift server API \code{ProcessReady()} and specify one or more directory paths in \code{logParameters}. See more information in the \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process}{Server API Reference}.}
+
+\item{EC2InstanceType}{[required] Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See \href{http://aws.amazon.com/ec2/instance-types/}{Amazon EC2 Instance Types} for detailed descriptions.}
 
 \item{EC2InboundPermissions}{Range of IP addresses and port settings that permit inbound traffic to access server processes running on the fleet. If no inbound permissions are set, including both IP address range and port range, the server processes in the fleet cannot accept connections. You can specify one or more sets of permissions for a fleet.}
 

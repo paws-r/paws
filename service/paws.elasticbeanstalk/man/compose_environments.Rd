@@ -4,8 +4,13 @@
 \alias{compose_environments}
 \title{Create or update a group of environments that each run a separate component of a single application}
 \usage{
-compose_environments(ApplicationName = NULL, GroupName = NULL,
-  VersionLabels = NULL)
+compose_environments(
+  ApplicationName = "string",
+  GroupName = "string",
+  VersionLabels = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{ApplicationName}{The name of the application to which the specified source bundles belong.}

@@ -4,22 +4,33 @@
 \alias{create_provisioning_artifact}
 \title{Creates a provisioning artifact (also known as a version) for the specified product}
 \usage{
-create_provisioning_artifact(ProductId, Parameters, IdempotencyToken,
-  AcceptLanguage = NULL)
+create_provisioning_artifact(
+  AcceptLanguage = "string",
+  ProductId = "string",
+  Parameters = list(
+    Name = "string",
+    Description = "string",
+    Info = list(
+      "string"
+    ),
+    Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"
+  ),
+  IdempotencyToken = "string"
+)
 }
 \arguments{
-\item{ProductId}{The product identifier.}
-
-\item{Parameters}{The configuration for the provisioning artifact.}
-
-\item{IdempotencyToken}{A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{ProductId}{[required] The product identifier.}
+
+\item{Parameters}{[required] The configuration for the provisioning artifact.}
+
+\item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.}
 }
 \description{
 Creates a provisioning artifact (also known as a version) for the specified product.

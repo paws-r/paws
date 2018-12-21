@@ -4,12 +4,15 @@
 \alias{get_stage}
 \title{Gets information about a Stage resource}
 \usage{
-get_stage(restApiId, stageName)
+get_stage(
+  restApiId = "string",
+  stageName = "string"
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{stageName}{[Required] The name of the Stage resource to get information about.}
+\item{stageName}{[required] [Required] The name of the Stage resource to get information about.}
 }
 \description{
 Gets information about a Stage resource.

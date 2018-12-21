@@ -4,10 +4,12 @@
 \alias{start_configuration_recorder}
 \title{Starts recording configurations of the AWS resources you have selected to record in your AWS account}
 \usage{
-start_configuration_recorder(ConfigurationRecorderName)
+start_configuration_recorder(
+  ConfigurationRecorderName = "string"
+)
 }
 \arguments{
-\item{ConfigurationRecorderName}{The name of the recorder object that records each configuration change made to the resources.}
+\item{ConfigurationRecorderName}{[required] The name of the recorder object that records each configuration change made to the resources.}
 }
 \description{
 Starts recording configurations of the AWS resources you have selected to record in your AWS account.

@@ -4,10 +4,14 @@
 \alias{update_ml_model}
 \title{Updates the \code{MLModelName} and the \code{ScoreThreshold} of an \code{MLModel}}
 \usage{
-update_ml_model(MLModelId, MLModelName = NULL, ScoreThreshold = NULL)
+update_ml_model(
+  MLModelId = "string",
+  MLModelName = "string",
+  ScoreThreshold = 123.0
+)
 }
 \arguments{
-\item{MLModelId}{The ID assigned to the \code{MLModel} during creation.}
+\item{MLModelId}{[required] The ID assigned to the \code{MLModel} during creation.}
 
 \item{MLModelName}{A user-supplied name or description of the \code{MLModel}.}
 

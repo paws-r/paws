@@ -6,22 +6,27 @@
 \alias{paws.elb-package}
 \title{paws.elb: Elastic Load Balancing}
 \description{
-A load balancer can distribute incoming traffic
-across your EC2 instances. This enables you to increase the
-availability of your application. The load balancer also monitors the
-health of its registered instances and ensures that it routes traffic
-only to healthy instances. You configure your load balancer to accept
-incoming traffic by specifying one or more listeners, which are
-configured with a protocol and port number for connections from
-clients to the load balancer and a protocol and port number for
-connections from the load balancer to the instances.
+A load balancer can distribute incoming traffic across your
+EC2 instances. This enables you to increase the availability of your
+application. The load balancer also monitors the health of its
+registered instances and ensures that it routes traffic only to
+healthy instances. You configure your load balancer to accept incoming
+traffic by specifying one or more listeners, which are configured with
+a protocol and port number for connections from clients to the load
+balancer and a protocol and port number for connections from the load
+balancer to the instances.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

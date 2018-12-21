@@ -4,26 +4,33 @@
 \alias{restore_table_from_cluster_snapshot}
 \title{Creates a new table from a table in an Amazon Redshift cluster snapshot}
 \usage{
-restore_table_from_cluster_snapshot(ClusterIdentifier, SnapshotIdentifier,
-  SourceDatabaseName, SourceTableName, NewTableName, SourceSchemaName = NULL,
-  TargetDatabaseName = NULL, TargetSchemaName = NULL)
+restore_table_from_cluster_snapshot(
+  ClusterIdentifier = "string",
+  SnapshotIdentifier = "string",
+  SourceDatabaseName = "string",
+  SourceSchemaName = "string",
+  SourceTableName = "string",
+  TargetDatabaseName = "string",
+  TargetSchemaName = "string",
+  NewTableName = "string"
+)
 }
 \arguments{
-\item{ClusterIdentifier}{The identifier of the Amazon Redshift cluster to restore the table to.}
+\item{ClusterIdentifier}{[required] The identifier of the Amazon Redshift cluster to restore the table to.}
 
-\item{SnapshotIdentifier}{The identifier of the snapshot to restore the table from. This snapshot must have been created from the Amazon Redshift cluster specified by the \code{ClusterIdentifier} parameter.}
+\item{SnapshotIdentifier}{[required] The identifier of the snapshot to restore the table from. This snapshot must have been created from the Amazon Redshift cluster specified by the \code{ClusterIdentifier} parameter.}
 
-\item{SourceDatabaseName}{The name of the source database that contains the table to restore from.}
-
-\item{SourceTableName}{The name of the source table to restore from.}
-
-\item{NewTableName}{The name of the table to create as a result of the current request.}
+\item{SourceDatabaseName}{[required] The name of the source database that contains the table to restore from.}
 
 \item{SourceSchemaName}{The name of the source schema that contains the table to restore from. If you do not specify a \code{SourceSchemaName} value, the default is \code{public}.}
+
+\item{SourceTableName}{[required] The name of the source table to restore from.}
 
 \item{TargetDatabaseName}{The name of the database to restore the table to.}
 
 \item{TargetSchemaName}{The name of the schema to restore the table to.}
+
+\item{NewTableName}{[required] The name of the table to create as a result of the current request.}
 }
 \description{
 Creates a new table from a table in an Amazon Redshift cluster snapshot. You must create the new table within the Amazon Redshift cluster that the snapshot was taken from.

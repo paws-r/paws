@@ -4,8 +4,20 @@
 \alias{describe_vpn_connections}
 \title{Describes one or more of your VPN connections}
 \usage{
-describe_vpn_connections(Filters = NULL, VpnConnectionIds = NULL,
-  DryRun = NULL)
+describe_vpn_connections(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  VpnConnectionIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{Filters}{One or more filters.

@@ -4,12 +4,84 @@
 \alias{create_application}
 \title{Creates an Amazon Kinesis Analytics application}
 \usage{
-create_application(ApplicationName, ApplicationDescription = NULL,
-  Inputs = NULL, Outputs = NULL, CloudWatchLoggingOptions = NULL,
-  ApplicationCode = NULL)
+create_application(
+  ApplicationName = "string",
+  ApplicationDescription = "string",
+  Inputs = list(
+    list(
+      NamePrefix = "string",
+      InputProcessingConfiguration = list(
+        InputLambdaProcessor = list(
+          ResourceARN = "string",
+          RoleARN = "string"
+        )
+      ),
+      KinesisStreamsInput = list(
+        ResourceARN = "string",
+        RoleARN = "string"
+      ),
+      KinesisFirehoseInput = list(
+        ResourceARN = "string",
+        RoleARN = "string"
+      ),
+      InputParallelism = list(
+        Count = 123
+      ),
+      InputSchema = list(
+        RecordFormat = list(
+          RecordFormatType = "JSON"|"CSV",
+          MappingParameters = list(
+            JSONMappingParameters = list(
+              RecordRowPath = "string"
+            ),
+            CSVMappingParameters = list(
+              RecordRowDelimiter = "string",
+              RecordColumnDelimiter = "string"
+            )
+          )
+        ),
+        RecordEncoding = "string",
+        RecordColumns = list(
+          list(
+            Name = "string",
+            Mapping = "string",
+            SqlType = "string"
+          )
+        )
+      )
+    )
+  ),
+  Outputs = list(
+    list(
+      Name = "string",
+      KinesisStreamsOutput = list(
+        ResourceARN = "string",
+        RoleARN = "string"
+      ),
+      KinesisFirehoseOutput = list(
+        ResourceARN = "string",
+        RoleARN = "string"
+      ),
+      LambdaOutput = list(
+        ResourceARN = "string",
+        RoleARN = "string"
+      ),
+      DestinationSchema = list(
+        RecordFormatType = "JSON"|"CSV"
+      )
+    )
+  ),
+  CloudWatchLoggingOptions = list(
+    list(
+      LogStreamARN = "string",
+      RoleARN = "string"
+    )
+  ),
+  ApplicationCode = "string"
+)
 }
 \arguments{
-\item{ApplicationName}{Name of your Amazon Kinesis Analytics application (for example, \code{sample-app}).}
+\item{ApplicationName}{[required] Name of your Amazon Kinesis Analytics application (for example, \code{sample-app}).}
 
 \item{ApplicationDescription}{Summary description of the application.}
 
@@ -23,7 +95,7 @@ To create the in-application stream, you need to specify a schema to transform y
 
 \item{Outputs}{You can configure application output to write data from any of the in-application streams to up to three destinations.
 
-These destinations can be Amazon Kinesis streams, Amazon Kinesis Firehose delivery streams, Amazon Lambda destinations, or any combination of the three.
+These destinations can be Amazon Kinesis streams, Amazon Kinesis Firehose delivery streams, AWS Lambda destinations, or any combination of the three.
 
 In the configuration, you specify the in-application stream name, the destination stream or Lambda function Amazon Resource Name (ARN), and the format to use when writing data. You must also provide an IAM role that Amazon Kinesis Analytics can assume to write to the destination stream or Lambda function on your behalf.
 

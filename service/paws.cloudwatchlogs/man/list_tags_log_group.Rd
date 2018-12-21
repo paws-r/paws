@@ -4,10 +4,12 @@
 \alias{list_tags_log_group}
 \title{Lists the tags for the specified log group}
 \usage{
-list_tags_log_group(logGroupName)
+list_tags_log_group(
+  logGroupName = "string"
+)
 }
 \arguments{
-\item{logGroupName}{The name of the log group.}
+\item{logGroupName}{[required] The name of the log group.}
 }
 \description{
 Lists the tags for the specified log group.

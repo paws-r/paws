@@ -4,10 +4,13 @@
 \alias{invoke_async}
 \title{For asynchronous function invocation, use Invoke}
 \usage{
-invoke_async(FunctionName, InvokeArgs)
+invoke_async(
+  FunctionName = "string",
+  InvokeArgs = raw
+)
 }
 \arguments{
-\item{FunctionName}{The name of the lambda function.
+\item{FunctionName}{[required] The name of the Lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -18,7 +21,7 @@ invoke_async(FunctionName, InvokeArgs)
 
 The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
-\item{InvokeArgs}{JSON that you want to provide to your Lambda function as input.}
+\item{InvokeArgs}{[required] JSON that you want to provide to your Lambda function as input.}
 }
 \description{
 For asynchronous function invocation, use Invoke.

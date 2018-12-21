@@ -4,10 +4,13 @@
 \alias{schedule_key_deletion}
 \title{Schedules the deletion of a customer master key (CMK)}
 \usage{
-schedule_key_deletion(KeyId, PendingWindowInDays = NULL)
+schedule_key_deletion(
+  KeyId = "string",
+  PendingWindowInDays = 123
+)
 }
 \arguments{
-\item{KeyId}{The unique identifier of the customer master key (CMK) to delete.
+\item{KeyId}{[required] The unique identifier of the customer master key (CMK) to delete.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 
@@ -24,12 +27,14 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 This value is optional. If you include a value, it must be between 7 and 30, inclusive. If you do not include a value, it defaults to 30.}
 }
 \description{
-Schedules the deletion of a customer master key (CMK). You may provide a waiting period, specified in days, before deletion occurs. If you do not provide a waiting period, the default period of 30 days is used. When this operation is successful, the state of the CMK changes to \code{PendingDeletion}. Before the waiting period ends, you can use CancelKeyDeletion to cancel the deletion of the CMK. After the waiting period ends, AWS KMS deletes the CMK and all AWS KMS data associated with it, including all aliases that refer to it.
+Schedules the deletion of a customer master key (CMK). You may provide a waiting period, specified in days, before deletion occurs. If you do not provide a waiting period, the default period of 30 days is used. When this operation is successful, the key state of the CMK changes to \code{PendingDeletion}. Before the waiting period ends, you can use CancelKeyDeletion to cancel the deletion of the CMK. After the waiting period ends, AWS KMS deletes the CMK and all AWS KMS data associated with it, including all aliases that refer to it.
 }
 \details{
-You cannot perform this operation on a CMK in a different AWS account.
+Deleting a CMK is a destructive and potentially dangerous operation. When a CMK is deleted, all data that was encrypted under the CMK is unrecoverable. To prevent the use of a CMK without deleting it, use DisableKey.
 
-Deleting a CMK is a destructive and potentially dangerous operation. When a CMK is deleted, all data that was encrypted under the CMK is rendered unrecoverable. To restrict the use of a CMK without deleting it, use DisableKey.
+If you schedule deletion of a CMK from a \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html}{custom key store}, when the waiting period expires, \code{ScheduleKeyDeletion} deletes the CMK from AWS KMS. Then AWS KMS makes a best effort to delete the key material from the associated AWS CloudHSM cluster. However, you might need to manually \href{http://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html#fix-keystore-orphaned-key}{delete the orphaned key material} from the cluster and its backups.
+
+You cannot perform this operation on a CMK in a different AWS account.
 
 For more information about scheduling a CMK for deletion, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html}{Deleting Customer Master Keys} in the \emph{AWS Key Management Service Developer Guide}.
 

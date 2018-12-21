@@ -4,10 +4,14 @@
 \alias{get_models}
 \title{Describes existing Models defined for a RestApi resource}
 \usage{
-get_models(restApiId, position = NULL, limit = NULL)
+get_models(
+  restApiId = "string",
+  position = "string",
+  limit = 123
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
 \item{position}{The current pagination position in the paged result set.}
 

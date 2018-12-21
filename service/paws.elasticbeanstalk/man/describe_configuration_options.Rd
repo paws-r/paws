@@ -4,9 +4,20 @@
 \alias{describe_configuration_options}
 \title{Describes the configuration options that are used in a particular configuration template or environment, or that a specified solution stack defines}
 \usage{
-describe_configuration_options(ApplicationName = NULL, TemplateName = NULL,
-  EnvironmentName = NULL, SolutionStackName = NULL, PlatformArn = NULL,
-  Options = NULL)
+describe_configuration_options(
+  ApplicationName = "string",
+  TemplateName = "string",
+  EnvironmentName = "string",
+  SolutionStackName = "string",
+  PlatformArn = "string",
+  Options = list(
+    list(
+      ResourceName = "string",
+      Namespace = "string",
+      OptionName = "string"
+    )
+  )
+)
 }
 \arguments{
 \item{ApplicationName}{The name of the application associated with the configuration template or environment. Only needed if you want to describe the configuration options associated with either the configuration template or environment.}

@@ -4,15 +4,21 @@
 \alias{list_workflow_types}
 \title{Returns information about workflow types in the specified domain}
 \usage{
-list_workflow_types(domain, registrationStatus, name = NULL,
-  nextPageToken = NULL, maximumPageSize = NULL, reverseOrder = NULL)
+list_workflow_types(
+  domain = "string",
+  name = "string",
+  registrationStatus = "REGISTERED"|"DEPRECATED",
+  nextPageToken = "string",
+  maximumPageSize = 123,
+  reverseOrder = TRUE|FALSE
+)
 }
 \arguments{
-\item{domain}{The name of the domain in which the workflow types have been registered.}
-
-\item{registrationStatus}{Specifies the registration status of the workflow types to list.}
+\item{domain}{[required] The name of the domain in which the workflow types have been registered.}
 
 \item{name}{If specified, lists the workflow type with this name.}
+
+\item{registrationStatus}{[required] Specifies the registration status of the workflow types to list.}
 
 \item{nextPageToken}{If a \code{NextPageToken} was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in \code{nextPageToken}. Keep all other arguments unchanged.
 

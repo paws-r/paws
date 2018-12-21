@@ -4,10 +4,12 @@
 \alias{get_ota_update}
 \title{Gets an OTA update}
 \usage{
-get_ota_update(otaUpdateId)
+get_ota_update(
+  otaUpdateId = "string"
+)
 }
 \arguments{
-\item{otaUpdateId}{The OTA update ID.}
+\item{otaUpdateId}{[required] The OTA update ID.}
 }
 \description{
 Gets an OTA update.

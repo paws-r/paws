@@ -2,17 +2,23 @@
 % Please edit documentation in R/paws.sms_operations.R
 \name{start_on_demand_replication_run}
 \alias{start_on_demand_replication_run}
-\title{The StartOnDemandReplicationRun API is used to start a ReplicationRun on demand (in addition to those that are scheduled based on your frequency)}
+\title{Starts an on-demand replication run for the specified replication job}
 \usage{
-start_on_demand_replication_run(replicationJobId, description = NULL)
+start_on_demand_replication_run(
+  replicationJobId = "string",
+  description = "string"
+)
 }
 \arguments{
-\item{replicationJobId}{}
+\item{replicationJobId}{[required] The identifier of the replication job.}
 
-\item{description}{}
+\item{description}{The description of the replication run.}
 }
 \description{
-The StartOnDemandReplicationRun API is used to start a ReplicationRun on demand (in addition to those that are scheduled based on your frequency). This ReplicationRun will start immediately. StartOnDemandReplicationRun is subject to limits on how many on demand ReplicationRuns you may call per 24-hour period.
+Starts an on-demand replication run for the specified replication job. This replication run starts immediately. This replication run is in addition to the ones already scheduled.
+}
+\details{
+There is a limit on the number of on-demand replications runs you can request in a 24-hour period.
 }
 \examples{
 

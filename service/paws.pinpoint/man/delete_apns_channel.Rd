@@ -4,10 +4,12 @@
 \alias{delete_apns_channel}
 \title{Deletes the APNs channel for an app}
 \usage{
-delete_apns_channel(ApplicationId)
+delete_apns_channel(
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 }
 \description{
 Deletes the APNs channel for an app.

@@ -4,12 +4,23 @@
 \alias{update_usage}
 \title{Grants a temporary extension to the remaining quota of a usage plan associated with a specified API key}
 \usage{
-update_usage(usagePlanId, keyId, patchOperations = NULL)
+update_usage(
+  usagePlanId = "string",
+  keyId = "string",
+  patchOperations = list(
+    list(
+      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
+      path = "string",
+      value = "string",
+      from = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{usagePlanId}{[Required] The Id of the usage plan associated with the usage data.}
+\item{usagePlanId}{[required] [Required] The Id of the usage plan associated with the usage data.}
 
-\item{keyId}{[Required] The identifier of the API key associated with the usage plan in which a temporary extension is granted to the remaining quota.}
+\item{keyId}{[required] [Required] The identifier of the API key associated with the usage plan in which a temporary extension is granted to the remaining quota.}
 
 \item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
 }

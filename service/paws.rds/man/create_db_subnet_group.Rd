@@ -4,19 +4,30 @@
 \alias{create_db_subnet_group}
 \title{Creates a new DB subnet group}
 \usage{
-create_db_subnet_group(DBSubnetGroupName, DBSubnetGroupDescription, SubnetIds,
-  Tags = NULL)
+create_db_subnet_group(
+  DBSubnetGroupName = "string",
+  DBSubnetGroupDescription = "string",
+  SubnetIds = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{DBSubnetGroupName}{The name for the DB subnet group. This value is stored as a lowercase string.
+\item{DBSubnetGroupName}{[required] The name for the DB subnet group. This value is stored as a lowercase string.
 
 Constraints: Must contain no more than 255 letters, numbers, periods, underscores, spaces, or hyphens. Must not be default.
 
 Example: \code{mySubnetgroup}}
 
-\item{DBSubnetGroupDescription}{The description for the DB subnet group.}
+\item{DBSubnetGroupDescription}{[required] The description for the DB subnet group.}
 
-\item{SubnetIds}{The EC2 Subnet IDs for the DB subnet group.}
+\item{SubnetIds}{[required] The EC2 Subnet IDs for the DB subnet group.}
 
 \item{Tags}{}
 }

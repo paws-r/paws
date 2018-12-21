@@ -4,13 +4,68 @@
 \alias{describe_event_aggregates}
 \title{Returns the number of events of each event type (issue, scheduled change, and account notification)}
 \usage{
-describe_event_aggregates(aggregateField, filter = NULL, maxResults = NULL,
-  nextToken = NULL)
+describe_event_aggregates(
+  filter = list(
+    eventArns = list(
+      "string"
+    ),
+    eventTypeCodes = list(
+      "string"
+    ),
+    services = list(
+      "string"
+    ),
+    regions = list(
+      "string"
+    ),
+    availabilityZones = list(
+      "string"
+    ),
+    startTimes = list(
+      list(
+        from = as.POSIXct("2015-01-01"),
+        to = as.POSIXct("2015-01-01")
+      )
+    ),
+    endTimes = list(
+      list(
+        from = as.POSIXct("2015-01-01"),
+        to = as.POSIXct("2015-01-01")
+      )
+    ),
+    lastUpdatedTimes = list(
+      list(
+        from = as.POSIXct("2015-01-01"),
+        to = as.POSIXct("2015-01-01")
+      )
+    ),
+    entityArns = list(
+      "string"
+    ),
+    entityValues = list(
+      "string"
+    ),
+    eventTypeCategories = list(
+      "issue"|"accountNotification"|"scheduledChange"
+    ),
+    tags = list(
+      list(
+        "string"
+      )
+    ),
+    eventStatusCodes = list(
+      "open"|"closed"|"upcoming"
+    )
+  ),
+  aggregateField = "eventTypeCategory",
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
-\item{aggregateField}{The only currently supported value is \code{eventTypeCategory}.}
-
 \item{filter}{Values to narrow the results returned.}
+
+\item{aggregateField}{[required] The only currently supported value is \code{eventTypeCategory}.}
 
 \item{maxResults}{The maximum number of items to return in one batch, between 10 and 100, inclusive.}
 

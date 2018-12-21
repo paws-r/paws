@@ -4,10 +4,12 @@
 \alias{stop_run}
 \title{Initiates a stop request for the current test run}
 \usage{
-stop_run(arn)
+stop_run(
+  arn = "string"
+)
 }
 \arguments{
-\item{arn}{Represents the Amazon Resource Name (ARN) of the Device Farm run you wish to stop.}
+\item{arn}{[required] Represents the Amazon Resource Name (ARN) of the Device Farm run you wish to stop.}
 }
 \description{
 Initiates a stop request for the current test run. AWS Device Farm will immediately stop the run on devices where tests have not started executing, and you will not be billed for these devices. On devices where tests have started executing, Setup Suite and Teardown Suite tests will run to completion before stopping execution on those devices. You will be billed for Setup, Teardown, and any tests that were in progress or already completed.

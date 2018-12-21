@@ -4,10 +4,12 @@
 \alias{get_group_query}
 \title{Returns the resource query associated with the specified resource group}
 \usage{
-get_group_query(GroupName)
+get_group_query(
+  GroupName = "string"
+)
 }
 \arguments{
-\item{GroupName}{The name of the resource group.}
+\item{GroupName}{[required] The name of the resource group.}
 }
 \description{
 Returns the resource query associated with the specified resource group.

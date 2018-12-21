@@ -4,17 +4,20 @@
 \alias{describe_portfolio}
 \title{Gets information about the specified portfolio}
 \usage{
-describe_portfolio(Id, AcceptLanguage = NULL)
+describe_portfolio(
+  AcceptLanguage = "string",
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The portfolio identifier.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{Id}{[required] The portfolio identifier.}
 }
 \description{
 Gets information about the specified portfolio.

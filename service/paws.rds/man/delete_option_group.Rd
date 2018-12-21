@@ -4,10 +4,12 @@
 \alias{delete_option_group}
 \title{Deletes an existing option group}
 \usage{
-delete_option_group(OptionGroupName)
+delete_option_group(
+  OptionGroupName = "string"
+)
 }
 \arguments{
-\item{OptionGroupName}{The name of the option group to be deleted.
+\item{OptionGroupName}{[required] The name of the option group to be deleted.
 
 You can't delete default option groups.}
 }

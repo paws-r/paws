@@ -4,10 +4,14 @@
 \alias{list_schema_extensions}
 \title{Lists all schema extensions applied to a Microsoft AD Directory}
 \usage{
-list_schema_extensions(DirectoryId, NextToken = NULL, Limit = NULL)
+list_schema_extensions(
+  DirectoryId = "string",
+  NextToken = "string",
+  Limit = 123
+)
 }
 \arguments{
-\item{DirectoryId}{The identifier of the directory from which to retrieve the schema extension information.}
+\item{DirectoryId}{[required] The identifier of the directory from which to retrieve the schema extension information.}
 
 \item{NextToken}{The \code{ListSchemaExtensions.NextToken} value from a previous call to \code{ListSchemaExtensions}. Pass null if this is the first call.}
 

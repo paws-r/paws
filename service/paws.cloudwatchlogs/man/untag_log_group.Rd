@@ -4,12 +4,17 @@
 \alias{untag_log_group}
 \title{Removes the specified tags from the specified log group}
 \usage{
-untag_log_group(logGroupName, tags)
+untag_log_group(
+  logGroupName = "string",
+  tags = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{logGroupName}{The name of the log group.}
+\item{logGroupName}{[required] The name of the log group.}
 
-\item{tags}{The tag keys. The corresponding tags are removed from the log group.}
+\item{tags}{[required] The tag keys. The corresponding tags are removed from the log group.}
 }
 \description{
 Removes the specified tags from the specified log group.

@@ -4,10 +4,13 @@
 \alias{get_ui_customization}
 \title{Gets the UI Customization information for a particular app client's app UI, if there is something set}
 \usage{
-get_ui_customization(UserPoolId, ClientId = NULL)
+get_ui_customization(
+  UserPoolId = "string",
+  ClientId = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The user pool ID for the user pool.}
 
 \item{ClientId}{The client ID for the client app.}
 }

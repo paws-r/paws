@@ -4,10 +4,13 @@
 \alias{list_bootstrap_actions}
 \title{Provides information about the bootstrap actions associated with a cluster}
 \usage{
-list_bootstrap_actions(ClusterId, Marker = NULL)
+list_bootstrap_actions(
+  ClusterId = "string",
+  Marker = "string"
+)
 }
 \arguments{
-\item{ClusterId}{The cluster identifier for the bootstrap actions to list.}
+\item{ClusterId}{[required] The cluster identifier for the bootstrap actions to list.}
 
 \item{Marker}{The pagination token that indicates the next set of results to retrieve.}
 }

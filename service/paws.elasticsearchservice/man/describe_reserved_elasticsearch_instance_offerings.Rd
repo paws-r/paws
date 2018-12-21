@@ -4,9 +4,11 @@
 \alias{describe_reserved_elasticsearch_instance_offerings}
 \title{Lists available reserved Elasticsearch instance offerings}
 \usage{
-
-  describe_reserved_elasticsearch_instance_offerings(ReservedElasticsearchInstanceOfferingId = NULL,
-  MaxResults = NULL, NextToken = NULL)
+describe_reserved_elasticsearch_instance_offerings(
+  ReservedElasticsearchInstanceOfferingId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{ReservedElasticsearchInstanceOfferingId}{The offering identifier filter value. Use this parameter to show only the available offering that matches the specified reservation identifier.}

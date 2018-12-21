@@ -4,11 +4,30 @@
 \alias{put_configuration_aggregator}
 \title{Creates and updates the configuration aggregator with the selected source accounts and regions}
 \usage{
-put_configuration_aggregator(ConfigurationAggregatorName,
-  AccountAggregationSources = NULL, OrganizationAggregationSource = NULL)
+put_configuration_aggregator(
+  ConfigurationAggregatorName = "string",
+  AccountAggregationSources = list(
+    list(
+      AccountIds = list(
+        "string"
+      ),
+      AllAwsRegions = TRUE|FALSE,
+      AwsRegions = list(
+        "string"
+      )
+    )
+  ),
+  OrganizationAggregationSource = list(
+    RoleArn = "string",
+    AwsRegions = list(
+      "string"
+    ),
+    AllAwsRegions = TRUE|FALSE
+  )
+)
 }
 \arguments{
-\item{ConfigurationAggregatorName}{The name of the configuration aggregator.}
+\item{ConfigurationAggregatorName}{[required] The name of the configuration aggregator.}
 
 \item{AccountAggregationSources}{A list of AccountAggregationSource object.}
 

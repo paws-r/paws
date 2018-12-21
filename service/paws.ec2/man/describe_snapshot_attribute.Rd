@@ -4,12 +4,16 @@
 \alias{describe_snapshot_attribute}
 \title{Describes the specified attribute of the specified snapshot}
 \usage{
-describe_snapshot_attribute(Attribute, SnapshotId, DryRun = NULL)
+describe_snapshot_attribute(
+  Attribute = "productCodes"|"createVolumePermission",
+  SnapshotId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{Attribute}{The snapshot attribute you would like to view.}
+\item{Attribute}{[required] The snapshot attribute you would like to view.}
 
-\item{SnapshotId}{The ID of the EBS snapshot.}
+\item{SnapshotId}{[required] The ID of the EBS snapshot.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

@@ -4,11 +4,15 @@
 \alias{list_device_events}
 \title{Lists the device event history, including device connection status, for up to 30 days}
 \usage{
-list_device_events(DeviceArn, EventType = NULL, NextToken = NULL,
-  MaxResults = NULL)
+list_device_events(
+  DeviceArn = "string",
+  EventType = "CONNECTION_STATUS"|"DEVICE_STATUS",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{DeviceArn}{The ARN of a device.}
+\item{DeviceArn}{[required] The ARN of a device.}
 
 \item{EventType}{The event type to filter device events. If EventType isn't specified, this returns a list of all device events in reverse chronological order. If EventType is specified, this returns a list of device events for that EventType in reverse chronological order.}
 

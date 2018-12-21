@@ -4,14 +4,18 @@
 \alias{delete_bot_channel_association}
 \title{Deletes the association between an Amazon Lex bot and a messaging platform}
 \usage{
-delete_bot_channel_association(name, botName, botAlias)
+delete_bot_channel_association(
+  name = "string",
+  botName = "string",
+  botAlias = "string"
+)
 }
 \arguments{
-\item{name}{The name of the association. The name is case sensitive.}
+\item{name}{[required] The name of the association. The name is case sensitive.}
 
-\item{botName}{The name of the Amazon Lex bot.}
+\item{botName}{[required] The name of the Amazon Lex bot.}
 
-\item{botAlias}{An alias that points to the specific version of the Amazon Lex bot to which this association is being made.}
+\item{botAlias}{[required] An alias that points to the specific version of the Amazon Lex bot to which this association is being made.}
 }
 \description{
 Deletes the association between an Amazon Lex bot and a messaging platform.

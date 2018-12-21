@@ -4,12 +4,15 @@
 \alias{delete_ip_set}
 \title{Deletes the IPSet specified by the IPSet ID}
 \usage{
-delete_ip_set(DetectorId, IpSetId)
+delete_ip_set(
+  DetectorId = "string",
+  IpSetId = "string"
+)
 }
 \arguments{
-\item{DetectorId}{The detectorID that specifies the GuardDuty service whose IPSet you want to delete.}
+\item{DetectorId}{[required] The detectorID that specifies the GuardDuty service whose IPSet you want to delete.}
 
-\item{IpSetId}{The unique ID that specifies the IPSet that you want to delete.}
+\item{IpSetId}{[required] The unique ID that specifies the IPSet that you want to delete.}
 }
 \description{
 Deletes the IPSet specified by the IPSet ID.

@@ -4,12 +4,15 @@
 \alias{get_instance_access}
 \title{Requests remote access to a fleet instance}
 \usage{
-get_instance_access(FleetId, InstanceId)
+get_instance_access(
+  FleetId = "string",
+  InstanceId = "string"
+)
 }
 \arguments{
-\item{FleetId}{Unique identifier for a fleet that contains the instance you want access to. The fleet can be in any of the following statuses: \code{ACTIVATING}, \code{ACTIVE}, or \code{ERROR}. Fleets with an \code{ERROR} status may be accessible for a short time before they are deleted.}
+\item{FleetId}{[required] Unique identifier for a fleet that contains the instance you want access to. The fleet can be in any of the following statuses: \code{ACTIVATING}, \code{ACTIVE}, or \code{ERROR}. Fleets with an \code{ERROR} status may be accessible for a short time before they are deleted.}
 
-\item{InstanceId}{Unique identifier for an instance you want to get access to. You can access an instance in any status.}
+\item{InstanceId}{[required] Unique identifier for an instance you want to get access to. You can access an instance in any status.}
 }
 \description{
 Requests remote access to a fleet instance. Remote access is useful for debugging, gathering benchmarking data, or watching activity in real time.

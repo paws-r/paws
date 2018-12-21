@@ -4,10 +4,14 @@
 \alias{delete_identities}
 \title{Deletes identities from an identity pool}
 \usage{
-delete_identities(IdentityIdsToDelete)
+delete_identities(
+  IdentityIdsToDelete = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{IdentityIdsToDelete}{A list of 1-60 identities that you want to delete.}
+\item{IdentityIdsToDelete}{[required] A list of 1-60 identities that you want to delete.}
 }
 \description{
 Deletes identities from an identity pool. You can specify a list of 1-60 identities that you want to delete.

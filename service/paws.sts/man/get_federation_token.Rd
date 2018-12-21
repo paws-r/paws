@@ -4,10 +4,14 @@
 \alias{get_federation_token}
 \title{Returns a set of temporary security credentials (consisting of an access key ID, a secret access key, and a security token) for a federated user}
 \usage{
-get_federation_token(Name, Policy = NULL, DurationSeconds = NULL)
+get_federation_token(
+  Name = "string",
+  Policy = "string",
+  DurationSeconds = 123
+)
 }
 \arguments{
-\item{Name}{The name of the federated user. The name is used as an identifier for the temporary security credentials (such as \code{Bob}). For example, you can reference the federated user name in a resource-based policy, such as in an Amazon S3 bucket policy.
+\item{Name}{[required] The name of the federated user. The name is used as an identifier for the temporary security credentials (such as \code{Bob}). For example, you can reference the federated user name in a resource-based policy, such as in an Amazon S3 bucket policy.
 
 The regex used to validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-}
 

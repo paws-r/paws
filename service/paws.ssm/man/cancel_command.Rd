@@ -4,10 +4,15 @@
 \alias{cancel_command}
 \title{Attempts to cancel the command specified by the Command ID}
 \usage{
-cancel_command(CommandId, InstanceIds = NULL)
+cancel_command(
+  CommandId = "string",
+  InstanceIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{CommandId}{The ID of the command you want to cancel.}
+\item{CommandId}{[required] The ID of the command you want to cancel.}
 
 \item{InstanceIds}{(Optional) A list of instance IDs on which you want to cancel the command. If not provided, the command is canceled on every instance on which it was requested.}
 }

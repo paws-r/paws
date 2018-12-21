@@ -4,12 +4,15 @@
 \alias{associate_fleet}
 \title{Associates the specified fleet with the specified stack}
 \usage{
-associate_fleet(FleetName, StackName)
+associate_fleet(
+  FleetName = "string",
+  StackName = "string"
+)
 }
 \arguments{
-\item{FleetName}{The name of the fleet.}
+\item{FleetName}{[required] The name of the fleet.}
 
-\item{StackName}{The name of the stack.}
+\item{StackName}{[required] The name of the stack.}
 }
 \description{
 Associates the specified fleet with the specified stack.

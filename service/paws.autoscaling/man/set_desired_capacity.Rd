@@ -4,13 +4,16 @@
 \alias{set_desired_capacity}
 \title{Sets the size of the specified Auto Scaling group}
 \usage{
-set_desired_capacity(AutoScalingGroupName, DesiredCapacity,
-  HonorCooldown = NULL)
+set_desired_capacity(
+  AutoScalingGroupName = "string",
+  DesiredCapacity = 123,
+  HonorCooldown = TRUE|FALSE
+)
 }
 \arguments{
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{DesiredCapacity}{The number of EC2 instances that should be running in the Auto Scaling group.}
+\item{DesiredCapacity}{[required] The number of EC2 instances that should be running in the Auto Scaling group.}
 
 \item{HonorCooldown}{Indicates whether Amazon EC2 Auto Scaling waits for the cooldown period to complete before initiating a scaling activity to set your Auto Scaling group to its new capacity. By default, Amazon EC2 Auto Scaling does not honor the cooldown period during manual scaling activities.}
 }

@@ -4,16 +4,30 @@
 \alias{update_rate_based_rule}
 \title{Inserts or deletes Predicate objects in a rule and updates the \code{RateLimit} in the rule}
 \usage{
-update_rate_based_rule(RuleId, ChangeToken, Updates, RateLimit)
+update_rate_based_rule(
+  RuleId = "string",
+  ChangeToken = "string",
+  Updates = list(
+    list(
+      Action = "INSERT"|"DELETE",
+      Predicate = list(
+        Negated = TRUE|FALSE,
+        Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
+        DataId = "string"
+      )
+    )
+  ),
+  RateLimit = 123
+)
 }
 \arguments{
-\item{RuleId}{The \code{RuleId} of the \code{RateBasedRule} that you want to update. \code{RuleId} is returned by \code{CreateRateBasedRule} and by ListRateBasedRules.}
+\item{RuleId}{[required] The \code{RuleId} of the \code{RateBasedRule} that you want to update. \code{RuleId} is returned by \code{CreateRateBasedRule} and by ListRateBasedRules.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 
-\item{Updates}{An array of \code{RuleUpdate} objects that you want to insert into or delete from a RateBasedRule.}
+\item{Updates}{[required] An array of \code{RuleUpdate} objects that you want to insert into or delete from a RateBasedRule.}
 
-\item{RateLimit}{The maximum number of requests, which have an identical value in the field specified by the \code{RateKey}, allowed in a five-minute period. If the number of requests exceeds the \code{RateLimit} and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.}
+\item{RateLimit}{[required] The maximum number of requests, which have an identical value in the field specified by the \code{RateKey}, allowed in a five-minute period. If the number of requests exceeds the \code{RateLimit} and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.}
 }
 \description{
 Inserts or deletes Predicate objects in a rule and updates the \code{RateLimit} in the rule.

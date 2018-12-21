@@ -4,10 +4,13 @@
 \alias{delete_alias}
 \title{Deletes the specified Lambda function alias}
 \usage{
-delete_alias(FunctionName, Name)
+delete_alias(
+  FunctionName = "string",
+  Name = "string"
+)
 }
 \arguments{
-\item{FunctionName}{The name of the lambda function.
+\item{FunctionName}{[required] The name of the lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -18,7 +21,7 @@ delete_alias(FunctionName, Name)
 
 The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
-\item{Name}{Name of the alias to delete.}
+\item{Name}{[required] Name of the alias to delete.}
 }
 \description{
 Deletes the specified Lambda function alias. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html}{Introduction to AWS Lambda Aliases}.

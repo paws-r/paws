@@ -4,13 +4,18 @@
 \alias{modify_volume}
 \title{You can modify several parameters of an existing EBS volume, including volume size, volume type, and IOPS capacity}
 \usage{
-modify_volume(VolumeId, DryRun = NULL, Size = NULL, VolumeType = NULL,
-  Iops = NULL)
+modify_volume(
+  DryRun = TRUE|FALSE,
+  VolumeId = "string",
+  Size = 123,
+  VolumeType = "standard"|"io1"|"gp2"|"sc1"|"st1",
+  Iops = 123
+)
 }
 \arguments{
-\item{VolumeId}{The ID of the volume.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{VolumeId}{[required] The ID of the volume.}
 
 \item{Size}{The target size of the volume, in GiB. The target volume size must be greater than or equal to than the existing size of the volume. For information about available EBS volume sizes, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html}{Amazon EBS Volume Types}.
 

@@ -4,10 +4,14 @@
 \alias{update_role}
 \title{Updates the description or maximum session duration setting of a role}
 \usage{
-update_role(RoleName, Description = NULL, MaxSessionDuration = NULL)
+update_role(
+  RoleName = "string",
+  Description = "string",
+  MaxSessionDuration = 123
+)
 }
 \arguments{
-\item{RoleName}{The name of the role that you want to modify.}
+\item{RoleName}{[required] The name of the role that you want to modify.}
 
 \item{Description}{The new description that you want to apply to the specified role.}
 

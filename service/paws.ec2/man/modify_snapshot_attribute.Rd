@@ -4,13 +4,34 @@
 \alias{modify_snapshot_attribute}
 \title{Adds or removes permission settings for the specified snapshot}
 \usage{
-modify_snapshot_attribute(SnapshotId, Attribute = NULL,
-  CreateVolumePermission = NULL, GroupNames = NULL, OperationType = NULL,
-  UserIds = NULL, DryRun = NULL)
+modify_snapshot_attribute(
+  Attribute = "productCodes"|"createVolumePermission",
+  CreateVolumePermission = list(
+    Add = list(
+      list(
+        Group = "all",
+        UserId = "string"
+      )
+    ),
+    Remove = list(
+      list(
+        Group = "all",
+        UserId = "string"
+      )
+    )
+  ),
+  GroupNames = list(
+    "string"
+  ),
+  OperationType = "add"|"remove",
+  SnapshotId = "string",
+  UserIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{SnapshotId}{The ID of the snapshot.}
-
 \item{Attribute}{The snapshot attribute to modify. Only volume creation permissions can be modified.}
 
 \item{CreateVolumePermission}{A JSON representation of the snapshot attribute modification.}
@@ -18,6 +39,8 @@ modify_snapshot_attribute(SnapshotId, Attribute = NULL,
 \item{GroupNames}{The group to modify for the snapshot.}
 
 \item{OperationType}{The type of operation to perform to the attribute.}
+
+\item{SnapshotId}{[required] The ID of the snapshot.}
 
 \item{UserIds}{The account ID to modify for the snapshot.}
 

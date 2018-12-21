@@ -4,10 +4,14 @@
 \alias{list_tags_for_stream}
 \title{Lists the tags for the specified Kinesis data stream}
 \usage{
-list_tags_for_stream(StreamName, ExclusiveStartTagKey = NULL, Limit = NULL)
+list_tags_for_stream(
+  StreamName = "string",
+  ExclusiveStartTagKey = "string",
+  Limit = 123
+)
 }
 \arguments{
-\item{StreamName}{The name of the stream.}
+\item{StreamName}{[required] The name of the stream.}
 
 \item{ExclusiveStartTagKey}{The key to use as the starting point for the list of tags. If this parameter is set, \code{ListTagsForStream} gets all tags that occur after \code{ExclusiveStartTagKey}.}
 

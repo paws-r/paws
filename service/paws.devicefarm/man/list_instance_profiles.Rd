@@ -4,7 +4,10 @@
 \alias{list_instance_profiles}
 \title{Returns information about all the instance profiles in an AWS account}
 \usage{
-list_instance_profiles(maxResults = NULL, nextToken = NULL)
+list_instance_profiles(
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
 \item{maxResults}{An integer specifying the maximum number of items you want to return in the API response.}

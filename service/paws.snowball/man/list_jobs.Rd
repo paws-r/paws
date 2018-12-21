@@ -4,7 +4,10 @@
 \alias{list_jobs}
 \title{Returns an array of \code{JobListEntry} objects of the specified length}
 \usage{
-list_jobs(MaxResults = NULL, NextToken = NULL)
+list_jobs(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{MaxResults}{The number of \code{JobListEntry} objects to return.}

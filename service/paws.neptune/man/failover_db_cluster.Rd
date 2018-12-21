@@ -4,8 +4,10 @@
 \alias{failover_db_cluster}
 \title{Forces a failover for a DB cluster}
 \usage{
-failover_db_cluster(DBClusterIdentifier = NULL,
-  TargetDBInstanceIdentifier = NULL)
+failover_db_cluster(
+  DBClusterIdentifier = "string",
+  TargetDBInstanceIdentifier = "string"
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{A DB cluster identifier to force a failover for. This parameter is not case-sensitive.

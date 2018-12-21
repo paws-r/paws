@@ -4,13 +4,18 @@
 \alias{get_dev_endpoint}
 \title{Retrieves information about a specified DevEndpoint}
 \usage{
-get_dev_endpoint(EndpointName)
+get_dev_endpoint(
+  EndpointName = "string"
+)
 }
 \arguments{
-\item{EndpointName}{Name of the DevEndpoint for which to retrieve information.}
+\item{EndpointName}{[required] Name of the DevEndpoint for which to retrieve information.}
 }
 \description{
 Retrieves information about a specified DevEndpoint.
+}
+\details{
+When you create a development endpoint in a virtual private cloud (VPC), AWS Glue returns only a private IP address, and the public IP address field is not populated. When you create a non-VPC development endpoint, AWS Glue returns only a public IP address.
 }
 \examples{
 

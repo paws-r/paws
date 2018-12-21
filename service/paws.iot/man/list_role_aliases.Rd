@@ -4,7 +4,11 @@
 \alias{list_role_aliases}
 \title{Lists the role aliases registered in your account}
 \usage{
-list_role_aliases(pageSize = NULL, marker = NULL, ascendingOrder = NULL)
+list_role_aliases(
+  pageSize = 123,
+  marker = "string",
+  ascendingOrder = TRUE|FALSE
+)
 }
 \arguments{
 \item{pageSize}{The maximum number of results to return at one time.}

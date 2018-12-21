@@ -4,7 +4,10 @@
 \alias{list_member_accounts}
 \title{Lists all Amazon Macie member accounts for the current Amazon Macie master account}
 \usage{
-list_member_accounts(nextToken = NULL, maxResults = NULL)
+list_member_accounts(
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{nextToken}{Use this parameter when paginating results. Set the value of this parameter to null on your first call to the ListMemberAccounts action. Subsequent calls to the action fill nextToken in the request with the value of nextToken from the previous response to continue listing data.}

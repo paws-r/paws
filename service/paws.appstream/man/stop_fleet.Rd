@@ -4,10 +4,12 @@
 \alias{stop_fleet}
 \title{Stops the specified fleet}
 \usage{
-stop_fleet(Name)
+stop_fleet(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the fleet.}
+\item{Name}{[required] The name of the fleet.}
 }
 \description{
 Stops the specified fleet.

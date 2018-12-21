@@ -6,10 +6,10 @@
 \alias{paws.emr-package}
 \title{paws.emr: Amazon Elastic MapReduce}
 \description{
-Amazon EMR is a web service that makes it easy to
-process large amounts of data efficiently. Amazon EMR uses Hadoop
-processing combined with several AWS products to do tasks such as web
-indexing, data mining, log file analysis, machine learning, scientific
+Amazon EMR is a web service that makes it easy to process
+large amounts of data efficiently. Amazon EMR uses Hadoop processing
+combined with several AWS products to do tasks such as web indexing,
+data mining, log file analysis, machine learning, scientific
 simulation, and data warehousing.
 }
 \author{
@@ -17,7 +17,12 @@ simulation, and data warehousing.
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

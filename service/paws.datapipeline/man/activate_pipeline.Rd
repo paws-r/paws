@@ -4,10 +4,19 @@
 \alias{activate_pipeline}
 \title{Validates the specified pipeline and starts processing pipeline tasks}
 \usage{
-activate_pipeline(pipelineId, parameterValues = NULL, startTimestamp = NULL)
+activate_pipeline(
+  pipelineId = "string",
+  parameterValues = list(
+    list(
+      id = "string",
+      stringValue = "string"
+    )
+  ),
+  startTimestamp = as.POSIXct("2015-01-01")
+)
 }
 \arguments{
-\item{pipelineId}{The ID of the pipeline.}
+\item{pipelineId}{[required] The ID of the pipeline.}
 
 \item{parameterValues}{A list of parameter values to pass to the pipeline at activation.}
 

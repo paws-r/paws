@@ -4,13 +4,17 @@
 \alias{list_datasets}
 \title{Lists datasets for an identity}
 \usage{
-list_datasets(IdentityId, IdentityPoolId, NextToken = NULL,
-  MaxResults = NULL)
+list_datasets(
+  IdentityPoolId = "string",
+  IdentityId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{IdentityId}{A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
+\item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
 
-\item{IdentityPoolId}{A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
+\item{IdentityId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
 
 \item{NextToken}{A pagination token for obtaining the next page of results.}
 

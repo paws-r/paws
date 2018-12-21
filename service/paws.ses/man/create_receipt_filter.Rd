@@ -4,10 +4,18 @@
 \alias{create_receipt_filter}
 \title{Creates a new IP address filter}
 \usage{
-create_receipt_filter(Filter)
+create_receipt_filter(
+  Filter = list(
+    Name = "string",
+    IpFilter = list(
+      Policy = "Block"|"Allow",
+      Cidr = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{Filter}{A data structure that describes the IP address filter to create, which consists of a name, an IP address range, and whether to allow or block mail from it.}
+\item{Filter}{[required] A data structure that describes the IP address filter to create, which consists of a name, an IP address range, and whether to allow or block mail from it.}
 }
 \description{
 Creates a new IP address filter.

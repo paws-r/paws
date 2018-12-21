@@ -2,17 +2,26 @@
 % Please edit documentation in R/paws.wafregional_operations.R
 \name{associate_web_acl}
 \alias{associate_web_acl}
-\title{Associates a web ACL with a resource}
+\title{Associates a web ACL with a resource, either an application load balancer or Amazon API Gateway stage}
 \usage{
-associate_web_acl(WebACLId, ResourceArn)
+associate_web_acl(
+  WebACLId = "string",
+  ResourceArn = "string"
+)
 }
 \arguments{
-\item{WebACLId}{A unique identifier (ID) for the web ACL.}
+\item{WebACLId}{[required] A unique identifier (ID) for the web ACL.}
 
-\item{ResourceArn}{The ARN (Amazon Resource Name) of the resource to be protected.}
+\item{ResourceArn}{[required] The ARN (Amazon Resource Name) of the resource to be protected, either an application load balancer or Amazon API Gateway stage.
+
+The ARN should be in one of the following formats:
+\itemize{
+\item For an Application Load Balancer: \code{arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id }
+\item For an Amazon API Gateway stage: \code{arn:aws:apigateway:region::/restapis/api-id/stages/stage-name region::/restapis/api-id/stages/stage-name }
+}}
 }
 \description{
-Associates a web ACL with a resource.
+Associates a web ACL with a resource, either an application load balancer or Amazon API Gateway stage.
 }
 \examples{
 

@@ -4,12 +4,21 @@
 \alias{reload_tables}
 \title{Reloads the target database table with the source data}
 \usage{
-reload_tables(ReplicationTaskArn, TablesToReload, ReloadOption = NULL)
+reload_tables(
+  ReplicationTaskArn = "string",
+  TablesToReload = list(
+    list(
+      SchemaName = "string",
+      TableName = "string"
+    )
+  ),
+  ReloadOption = "data-reload"|"validate-only"
+)
 }
 \arguments{
-\item{ReplicationTaskArn}{The Amazon Resource Name (ARN) of the replication task.}
+\item{ReplicationTaskArn}{[required] The Amazon Resource Name (ARN) of the replication task.}
 
-\item{TablesToReload}{The name and schema of the table to be reloaded.}
+\item{TablesToReload}{[required] The name and schema of the table to be reloaded.}
 
 \item{ReloadOption}{Options for reload. Specify \code{data-reload} to reload the data and re-validate it if validation is enabled. Specify \code{validate-only} to re-validate the table. This option applies only when validation is enabled for the task.
 

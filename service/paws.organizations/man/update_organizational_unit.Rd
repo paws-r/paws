@@ -4,10 +4,13 @@
 \alias{update_organizational_unit}
 \title{Renames the specified organizational unit (OU)}
 \usage{
-update_organizational_unit(OrganizationalUnitId, Name = NULL)
+update_organizational_unit(
+  OrganizationalUnitId = "string",
+  Name = "string"
+)
 }
 \arguments{
-\item{OrganizationalUnitId}{The unique identifier (ID) of the OU that you want to rename. You can get the ID from the ListOrganizationalUnitsForParent operation.
+\item{OrganizationalUnitId}{[required] The unique identifier (ID) of the OU that you want to rename. You can get the ID from the ListOrganizationalUnitsForParent operation.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for an organizational unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.}
 

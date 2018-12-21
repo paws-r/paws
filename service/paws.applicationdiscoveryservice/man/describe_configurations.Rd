@@ -4,10 +4,14 @@
 \alias{describe_configurations}
 \title{Retrieves attributes for a list of configuration item IDs}
 \usage{
-describe_configurations(configurationIds)
+describe_configurations(
+  configurationIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{configurationIds}{One or more configuration IDs.}
+\item{configurationIds}{[required] One or more configuration IDs.}
 }
 \description{
 Retrieves attributes for a list of configuration item IDs.

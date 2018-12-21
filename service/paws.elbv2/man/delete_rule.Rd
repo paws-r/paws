@@ -4,10 +4,12 @@
 \alias{delete_rule}
 \title{Deletes the specified rule}
 \usage{
-delete_rule(RuleArn)
+delete_rule(
+  RuleArn = "string"
+)
 }
 \arguments{
-\item{RuleArn}{The Amazon Resource Name (ARN) of the rule.}
+\item{RuleArn}{[required] The Amazon Resource Name (ARN) of the rule.}
 }
 \description{
 Deletes the specified rule.

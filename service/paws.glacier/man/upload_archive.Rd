@@ -4,13 +4,18 @@
 \alias{upload_archive}
 \title{This operation adds an archive to a vault}
 \usage{
-upload_archive(vaultName, accountId, archiveDescription = NULL,
-  checksum = NULL, body = NULL)
+upload_archive(
+  vaultName = "string",
+  accountId = "string",
+  archiveDescription = "string",
+  checksum = "string",
+  body = raw
+)
 }
 \arguments{
-\item{vaultName}{The name of the vault.}
+\item{vaultName}{[required] The name of the vault.}
 
-\item{accountId}{The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
+\item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
 
 \item{archiveDescription}{The optional description of the archive you are uploading.}
 

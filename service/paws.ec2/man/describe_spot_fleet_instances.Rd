@@ -4,17 +4,21 @@
 \alias{describe_spot_fleet_instances}
 \title{Describes the running instances for the specified Spot Fleet}
 \usage{
-describe_spot_fleet_instances(SpotFleetRequestId, DryRun = NULL,
-  MaxResults = NULL, NextToken = NULL)
+describe_spot_fleet_instances(
+  DryRun = TRUE|FALSE,
+  MaxResults = 123,
+  NextToken = "string",
+  SpotFleetRequestId = "string"
+)
 }
 \arguments{
-\item{SpotFleetRequestId}{The ID of the Spot Fleet request.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{MaxResults}{The maximum number of results to return in a single call. Specify a value between 1 and 1000. The default value is 1000. To retrieve the remaining results, make another call with the returned \code{NextToken} value.}
 
 \item{NextToken}{The token for the next set of results.}
+
+\item{SpotFleetRequestId}{[required] The ID of the Spot Fleet request.}
 }
 \description{
 Describes the running instances for the specified Spot Fleet.

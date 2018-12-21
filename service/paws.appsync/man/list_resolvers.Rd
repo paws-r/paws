@@ -4,12 +4,17 @@
 \alias{list_resolvers}
 \title{Lists the resolvers for a given API and type}
 \usage{
-list_resolvers(apiId, typeName, nextToken = NULL, maxResults = NULL)
+list_resolvers(
+  apiId = "string",
+  typeName = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{apiId}{The API ID.}
+\item{apiId}{[required] The API ID.}
 
-\item{typeName}{The type name.}
+\item{typeName}{[required] The type name.}
 
 \item{nextToken}{An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.}
 

@@ -4,8 +4,14 @@
 \alias{list_streams}
 \title{Returns an array of \code{StreamInfo} objects}
 \usage{
-list_streams(MaxResults = NULL, NextToken = NULL,
-  StreamNameCondition = NULL)
+list_streams(
+  MaxResults = 123,
+  NextToken = "string",
+  StreamNameCondition = list(
+    ComparisonOperator = "BEGINS_WITH",
+    ComparisonValue = "string"
+  )
+)
 }
 \arguments{
 \item{MaxResults}{The maximum number of streams to return in the response. The default is 10,000.}

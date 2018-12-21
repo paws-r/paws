@@ -4,8 +4,13 @@
 \alias{list_job_templates}
 \title{Retrieve a JSON array of up to twenty of your job templates}
 \usage{
-list_job_templates(Category = NULL, ListBy = NULL, MaxResults = NULL,
-  NextToken = NULL, Order = NULL)
+list_job_templates(
+  Category = "string",
+  ListBy = "NAME"|"CREATION_DATE"|"SYSTEM",
+  MaxResults = 123,
+  NextToken = "string",
+  Order = "ASCENDING"|"DESCENDING"
+)
 }
 \arguments{
 \item{Category}{Optionally, specify a job template category to limit responses to only job templates from that category.}

@@ -4,12 +4,15 @@
 \alias{get_commit}
 \title{Returns information about a commit, including commit message and committer information}
 \usage{
-get_commit(repositoryName, commitId)
+get_commit(
+  repositoryName = "string",
+  commitId = "string"
+)
 }
 \arguments{
-\item{repositoryName}{The name of the repository to which the commit was made.}
+\item{repositoryName}{[required] The name of the repository to which the commit was made.}
 
-\item{commitId}{The commit ID. Commit IDs are the full SHA of the commit.}
+\item{commitId}{[required] The commit ID. Commit IDs are the full SHA of the commit.}
 }
 \description{
 Returns information about a commit, including commit message and committer information.

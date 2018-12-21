@@ -4,10 +4,17 @@
 \alias{set_rule_priorities}
 \title{Sets the priorities of the specified rules}
 \usage{
-set_rule_priorities(RulePriorities)
+set_rule_priorities(
+  RulePriorities = list(
+    list(
+      RuleArn = "string",
+      Priority = 123
+    )
+  )
+)
 }
 \arguments{
-\item{RulePriorities}{The rule priorities.}
+\item{RulePriorities}{[required] The rule priorities.}
 }
 \description{
 Sets the priorities of the specified rules.

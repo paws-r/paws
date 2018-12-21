@@ -4,12 +4,19 @@
 \alias{remove_tags}
 \title{Removes the specified tags from the specified Elastic Load Balancing resource}
 \usage{
-remove_tags(ResourceArns, TagKeys)
+remove_tags(
+  ResourceArns = list(
+    "string"
+  ),
+  TagKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ResourceArns}{The Amazon Resource Name (ARN) of the resource.}
+\item{ResourceArns}{[required] The Amazon Resource Name (ARN) of the resource.}
 
-\item{TagKeys}{The tag keys for the tags to remove.}
+\item{TagKeys}{[required] The tag keys for the tags to remove.}
 }
 \description{
 Removes the specified tags from the specified Elastic Load Balancing resource.

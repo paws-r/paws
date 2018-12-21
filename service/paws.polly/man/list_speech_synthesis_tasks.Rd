@@ -4,8 +4,11 @@
 \alias{list_speech_synthesis_tasks}
 \title{Returns a list of SpeechSynthesisTask objects ordered by their creation date}
 \usage{
-list_speech_synthesis_tasks(MaxResults = NULL, NextToken = NULL,
-  Status = NULL)
+list_speech_synthesis_tasks(
+  MaxResults = 123,
+  NextToken = "string",
+  Status = "scheduled"|"inProgress"|"completed"|"failed"
+)
 }
 \arguments{
 \item{MaxResults}{Maximum number of speech synthesis tasks returned in a List operation.}

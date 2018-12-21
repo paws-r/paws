@@ -4,9 +4,16 @@
 \alias{describe_alarms}
 \title{Retrieves the specified alarms}
 \usage{
-describe_alarms(AlarmNames = NULL, AlarmNamePrefix = NULL,
-  StateValue = NULL, ActionPrefix = NULL, MaxRecords = NULL,
-  NextToken = NULL)
+describe_alarms(
+  AlarmNames = list(
+    "string"
+  ),
+  AlarmNamePrefix = "string",
+  StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA",
+  ActionPrefix = "string",
+  MaxRecords = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{AlarmNames}{The names of the alarms.}

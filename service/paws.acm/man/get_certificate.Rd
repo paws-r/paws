@@ -4,10 +4,12 @@
 \alias{get_certificate}
 \title{Retrieves a certificate specified by an ARN and its certificate chain}
 \usage{
-get_certificate(CertificateArn)
+get_certificate(
+  CertificateArn = "string"
+)
 }
 \arguments{
-\item{CertificateArn}{String that contains a certificate ARN in the following format:
+\item{CertificateArn}{[required] String that contains a certificate ARN in the following format:
 
 \code{arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012}
 

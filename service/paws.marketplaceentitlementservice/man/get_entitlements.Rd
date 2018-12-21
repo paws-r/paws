@@ -4,11 +4,19 @@
 \alias{get_entitlements}
 \title{GetEntitlements retrieves entitlement values for a given product}
 \usage{
-get_entitlements(ProductCode, Filter = NULL, NextToken = NULL,
-  MaxResults = NULL)
+get_entitlements(
+  ProductCode = "string",
+  Filter = list(
+    list(
+      "string"
+    )
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{ProductCode}{Product code is used to uniquely identify a product in AWS Marketplace. The product code will be provided by AWS Marketplace when the product listing is created.}
+\item{ProductCode}{[required] Product code is used to uniquely identify a product in AWS Marketplace. The product code will be provided by AWS Marketplace when the product listing is created.}
 
 \item{Filter}{Filter is used to return entitlements for a specific customer or for a specific dimension. Filters are described as keys mapped to a lists of values. Filtered requests are \emph{unioned} for each value in the value list, and then \emph{intersected} for each filter key.}
 

@@ -4,14 +4,17 @@
 \alias{remove_permission}
 \title{Revokes any permissions in the queue policy that matches the specified \code{Label} parameter}
 \usage{
-remove_permission(QueueUrl, Label)
+remove_permission(
+  QueueUrl = "string",
+  Label = "string"
+)
 }
 \arguments{
-\item{QueueUrl}{The URL of the Amazon SQS queue from which permissions are removed.
+\item{QueueUrl}{[required] The URL of the Amazon SQS queue from which permissions are removed.
 
 Queue URLs and names are case-sensitive.}
 
-\item{Label}{The identification of the permission to remove. This is the label added using the \code{AddPermission AddPermission} action.}
+\item{Label}{[required] The identification of the permission to remove. This is the label added using the \code{AddPermission AddPermission} action.}
 }
 \description{
 Revokes any permissions in the queue policy that matches the specified \code{Label} parameter.

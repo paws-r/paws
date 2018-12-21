@@ -4,13 +4,16 @@
 \alias{deregister_container_instance}
 \title{Deregisters an Amazon ECS container instance from the specified cluster}
 \usage{
-deregister_container_instance(containerInstance, cluster = NULL,
-  force = NULL)
+deregister_container_instance(
+  cluster = "string",
+  containerInstance = "string",
+  force = TRUE|FALSE
+)
 }
 \arguments{
-\item{containerInstance}{The container instance ID or full ARN of the container instance to deregister. The ARN contains the \code{arn:aws:ecs} namespace, followed by the Region of the container instance, the AWS account ID of the container instance owner, the \code{container-instance} namespace, and then the container instance ID. For example, \code{arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID region:aws_account_id:container-instance/container_instance_ID }.}
-
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instance to deregister. If you do not specify a cluster, the default cluster is assumed.}
+
+\item{containerInstance}{[required] The container instance ID or full ARN of the container instance to deregister. The ARN contains the \code{arn:aws:ecs} namespace, followed by the Region of the container instance, the AWS account ID of the container instance owner, the \code{container-instance} namespace, and then the container instance ID. For example, \code{arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID region:aws_account_id:container-instance/container_instance_ID }.}
 
 \item{force}{Forces the deregistration of the container instance. If you have tasks running on the container instance when you deregister it with the \code{force} option, these tasks remain running until you terminate the instance or the tasks stop through some other means, but they are orphaned (no longer monitored or accounted for by Amazon ECS). If an orphaned task on your container instance is part of an Amazon ECS service, then the service scheduler starts another copy of that task, on a different container instance if possible.
 
@@ -22,7 +25,7 @@ Deregisters an Amazon ECS container instance from the specified cluster. This in
 \details{
 If you intend to use the container instance for some other purpose after deregistration, you should stop all of the tasks running on the container instance before deregistration. That prevents any orphaned tasks from consuming resources.
 
-Deregistering a container instance removes the instance from a cluster, but it does not terminate the EC2 instance; if you are finished using the instance, be sure to terminate it in the Amazon EC2 console to stop billing.
+Deregistering a container instance removes the instance from a cluster, but it does not terminate the EC2 instance. If you are finished using the instance, be sure to terminate it in the Amazon EC2 console to stop billing.
 
 If you terminate a running container instance, Amazon ECS automatically deregisters the instance from your cluster (stopped container instances or instances with disconnected agents are not automatically deregistered when terminated).
 }

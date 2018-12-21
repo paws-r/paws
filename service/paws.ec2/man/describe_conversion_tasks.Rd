@@ -4,7 +4,12 @@
 \alias{describe_conversion_tasks}
 \title{Describes one or more of your conversion tasks}
 \usage{
-describe_conversion_tasks(ConversionTaskIds = NULL, DryRun = NULL)
+describe_conversion_tasks(
+  ConversionTaskIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{ConversionTaskIds}{One or more conversion task IDs.}

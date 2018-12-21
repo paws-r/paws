@@ -4,14 +4,27 @@
 \alias{update_maintenance_window_target}
 \title{Modifies the target of an existing Maintenance Window}
 \usage{
-update_maintenance_window_target(WindowId, WindowTargetId, Targets = NULL,
-  OwnerInformation = NULL, Name = NULL, Description = NULL,
-  Replace = NULL)
+update_maintenance_window_target(
+  WindowId = "string",
+  WindowTargetId = "string",
+  Targets = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  OwnerInformation = "string",
+  Name = "string",
+  Description = "string",
+  Replace = TRUE|FALSE
+)
 }
 \arguments{
-\item{WindowId}{The Maintenance Window ID with which to modify the target.}
+\item{WindowId}{[required] The Maintenance Window ID with which to modify the target.}
 
-\item{WindowTargetId}{The target ID to modify.}
+\item{WindowTargetId}{[required] The target ID to modify.}
 
 \item{Targets}{The targets to add or replace.}
 

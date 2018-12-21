@@ -4,10 +4,15 @@
 \alias{get_parameters}
 \title{Get details of a parameter}
 \usage{
-get_parameters(Names, WithDecryption = NULL)
+get_parameters(
+  Names = list(
+    "string"
+  ),
+  WithDecryption = TRUE|FALSE
+)
 }
 \arguments{
-\item{Names}{Names of the parameters for which you want to query information.}
+\item{Names}{[required] Names of the parameters for which you want to query information.}
 
 \item{WithDecryption}{Return decrypted secure string value. Return decrypted values for secure string parameters. This flag is ignored for String and StringList parameter types.}
 }

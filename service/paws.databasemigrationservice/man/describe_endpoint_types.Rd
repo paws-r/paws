@@ -4,7 +4,18 @@
 \alias{describe_endpoint_types}
 \title{Returns information about the type of endpoints available}
 \usage{
-describe_endpoint_types(Filters = NULL, MaxRecords = NULL, Marker = NULL)
+describe_endpoint_types(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{Filters}{Filters applied to the describe action.

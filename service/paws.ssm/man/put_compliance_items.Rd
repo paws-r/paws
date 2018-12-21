@@ -4,19 +4,39 @@
 \alias{put_compliance_items}
 \title{Registers a compliance type and other compliance details on a designated resource}
 \usage{
-put_compliance_items(ResourceId, ResourceType, ComplianceType, ExecutionSummary,
-  Items, ItemContentHash = NULL)
+put_compliance_items(
+  ResourceId = "string",
+  ResourceType = "string",
+  ComplianceType = "string",
+  ExecutionSummary = list(
+    ExecutionTime = as.POSIXct("2015-01-01"),
+    ExecutionId = "string",
+    ExecutionType = "string"
+  ),
+  Items = list(
+    list(
+      Id = "string",
+      Title = "string",
+      Severity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+      Status = "COMPLIANT"|"NON_COMPLIANT",
+      Details = list(
+        "string"
+      )
+    )
+  ),
+  ItemContentHash = "string"
+)
 }
 \arguments{
-\item{ResourceId}{Specify an ID for this resource. For a managed instance, this is the instance ID.}
+\item{ResourceId}{[required] Specify an ID for this resource. For a managed instance, this is the instance ID.}
 
-\item{ResourceType}{Specify the type of resource. \code{ManagedInstance} is currently the only supported resource type.}
+\item{ResourceType}{[required] Specify the type of resource. \code{ManagedInstance} is currently the only supported resource type.}
 
-\item{ComplianceType}{Specify the compliance type. For example, specify Association (for a State Manager association), Patch, or Custom:\code{string}.}
+\item{ComplianceType}{[required] Specify the compliance type. For example, specify Association (for a State Manager association), Patch, or Custom:\code{string}.}
 
-\item{ExecutionSummary}{A summary of the call execution that includes an execution ID, the type of execution (for example, \code{Command}), and the date/time of the execution using a datetime object that is saved in the following format: yyyy-MM-dd'T'HH:mm:ss'Z'.}
+\item{ExecutionSummary}{[required] A summary of the call execution that includes an execution ID, the type of execution (for example, \code{Command}), and the date/time of the execution using a datetime object that is saved in the following format: yyyy-MM-dd'T'HH:mm:ss'Z'.}
 
-\item{Items}{Information about the compliance as defined by the resource type. For example, for a patch compliance type, \code{Items} includes information about the PatchSeverity, Classification, etc.}
+\item{Items}{[required] Information about the compliance as defined by the resource type. For example, for a patch compliance type, \code{Items} includes information about the PatchSeverity, Classification, etc.}
 
 \item{ItemContentHash}{MD5 or SHA-256 content hash. The content hash is used to determine if existing information should be overwritten or ignored. If the content hashes match, the request to put compliance information is ignored.}
 }

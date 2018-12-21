@@ -4,16 +4,46 @@
 \alias{modify_image_attribute}
 \title{Modifies the specified attribute of the specified AMI}
 \usage{
-modify_image_attribute(ImageId, Attribute = NULL, Description = NULL,
-  LaunchPermission = NULL, OperationType = NULL, ProductCodes = NULL,
-  UserGroups = NULL, UserIds = NULL, Value = NULL, DryRun = NULL)
+modify_image_attribute(
+  Attribute = "string",
+  Description = list(
+    Value = "string"
+  ),
+  ImageId = "string",
+  LaunchPermission = list(
+    Add = list(
+      list(
+        Group = "all",
+        UserId = "string"
+      )
+    ),
+    Remove = list(
+      list(
+        Group = "all",
+        UserId = "string"
+      )
+    )
+  ),
+  OperationType = "add"|"remove",
+  ProductCodes = list(
+    "string"
+  ),
+  UserGroups = list(
+    "string"
+  ),
+  UserIds = list(
+    "string"
+  ),
+  Value = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{ImageId}{The ID of the AMI.}
-
 \item{Attribute}{The name of the attribute to modify. The valid values are \code{description}, \code{launchPermission}, and \code{productCodes}.}
 
 \item{Description}{A new description for the AMI.}
+
+\item{ImageId}{[required] The ID of the AMI.}
 
 \item{LaunchPermission}{A new launch permission for the AMI.}
 

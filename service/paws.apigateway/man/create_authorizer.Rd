@@ -4,21 +4,31 @@
 \alias{create_authorizer}
 \title{Adds a new Authorizer resource to an existing RestApi resource}
 \usage{
-create_authorizer(restApiId, name, type, providerARNs = NULL,
-  authType = NULL, authorizerUri = NULL, authorizerCredentials = NULL,
-  identitySource = NULL, identityValidationExpression = NULL,
-  authorizerResultTtlInSeconds = NULL)
+create_authorizer(
+  restApiId = "string",
+  name = "string",
+  type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
+  providerARNs = list(
+    "string"
+  ),
+  authType = "string",
+  authorizerUri = "string",
+  authorizerCredentials = "string",
+  identitySource = "string",
+  identityValidationExpression = "string",
+  authorizerResultTtlInSeconds = 123
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{name}{[Required] The name of the authorizer.}
+\item{name}{[required] [Required] The name of the authorizer.}
 
-\item{type}{[Required] The authorizer type. Valid values are \code{TOKEN} for a Lambda function using a single authorization token submitted in a custom header, \code{REQUEST} for a Lambda function using incoming request parameters, and \code{COGNITO_USER_POOLS} for using an Amazon Cognito user pool.}
+\item{type}{[required] [Required] The authorizer type. Valid values are \code{TOKEN} for a Lambda function using a single authorization token submitted in a custom header, \code{REQUEST} for a Lambda function using incoming request parameters, and \code{COGNITO_USER_POOLS} for using an Amazon Cognito user pool.}
 
 \item{providerARNs}{A list of the Amazon Cognito user pool ARNs for the \code{COGNITO_USER_POOLS} authorizer. Each element is of this format: \code{arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}}. For a \code{TOKEN} or \code{REQUEST} authorizer, this is not defined.}
 
-\item{authType}{Optional customer-defined field, used in Swagger imports and exports without functional impact.}
+\item{authType}{Optional customer-defined field, used in OpenAPI imports and exports without functional impact.}
 
 \item{authorizerUri}{Specifies the authorizer's Uniform Resource Identifier (URI). For \code{TOKEN} or \code{REQUEST} authorizers, this must be a well-formed Lambda function URI, for example, \code{arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:{account_id}:function:{lambda_function_name}/invocations}. In general, the URI has this form \code{arn:aws:apigateway:{region}:lambda:path/{service_api}}, where \code{{region}} is the same as the region hosting the Lambda function, \code{path} indicates that the remaining substring in the URI should be treated as the path to the resource, including the initial \code{/}. For Lambda functions, this is usually of the form \code{/2015-03-31/functions/[FunctionARN]/invocations}.}
 
@@ -36,6 +46,11 @@ create_authorizer(restApiId, name, type, providerARNs = NULL,
 }
 \description{
 Adds a new Authorizer resource to an existing RestApi resource.
+}
+\details{
+::: {.seeAlso}
+\href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html}{AWS CLI}
+:::
 }
 \examples{
 

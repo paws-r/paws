@@ -4,10 +4,14 @@
 \alias{list_cluster_jobs}
 \title{Returns an array of \code{JobListEntry} objects of the specified length}
 \usage{
-list_cluster_jobs(ClusterId, MaxResults = NULL, NextToken = NULL)
+list_cluster_jobs(
+  ClusterId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{ClusterId}{The 39-character ID for the cluster that you want to list, for example \code{CID123e4567-e89b-12d3-a456-426655440000}.}
+\item{ClusterId}{[required] The 39-character ID for the cluster that you want to list, for example \code{CID123e4567-e89b-12d3-a456-426655440000}.}
 
 \item{MaxResults}{The number of \code{JobListEntry} objects to return.}
 

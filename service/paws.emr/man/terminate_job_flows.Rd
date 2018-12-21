@@ -4,10 +4,14 @@
 \alias{terminate_job_flows}
 \title{TerminateJobFlows shuts a list of clusters (job flows) down}
 \usage{
-terminate_job_flows(JobFlowIds)
+terminate_job_flows(
+  JobFlowIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{JobFlowIds}{A list of job flows to be shutdown.}
+\item{JobFlowIds}{[required] A list of job flows to be shutdown.}
 }
 \description{
 TerminateJobFlows shuts a list of clusters (job flows) down. When a job flow is shut down, any step not yet completed is canceled and the EC2 instances on which the cluster is running are stopped. Any log files not already saved are uploaded to Amazon S3 if a LogUri was specified when the cluster was created.

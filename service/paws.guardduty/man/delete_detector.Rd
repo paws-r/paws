@@ -4,10 +4,12 @@
 \alias{delete_detector}
 \title{Deletes a Amazon GuardDuty detector specified by the detector ID}
 \usage{
-delete_detector(DetectorId)
+delete_detector(
+  DetectorId = "string"
+)
 }
 \arguments{
-\item{DetectorId}{The unique ID that specifies the detector that you want to delete.}
+\item{DetectorId}{[required] The unique ID that specifies the detector that you want to delete.}
 }
 \description{
 Deletes a Amazon GuardDuty detector specified by the detector ID.

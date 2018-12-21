@@ -4,10 +4,15 @@
 \alias{get_face_search}
 \title{Gets the face search results for Amazon Rekognition Video face search started by}
 \usage{
-get_face_search(JobId, MaxResults = NULL, NextToken = NULL, SortBy = NULL)
+get_face_search(
+  JobId = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  SortBy = "INDEX"|"TIMESTAMP"
+)
 }
 \arguments{
-\item{JobId}{The job identifer for the search request. You get the job identifier from an initial call to \code{StartFaceSearch}.}
+\item{JobId}{[required] The job identifer for the search request. You get the job identifier from an initial call to \code{StartFaceSearch}.}
 
 \item{MaxResults}{Maximum number of results to return per paginated call. The largest value you can specify is 1000. If you specify a value greater than 1000, a maximum of 1000 results is returned. The default value is 1000.}
 

@@ -4,14 +4,26 @@
 \alias{update_integration}
 \title{Represents an update integration}
 \usage{
-update_integration(restApiId, resourceId, httpMethod, patchOperations = NULL)
+update_integration(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string",
+  patchOperations = list(
+    list(
+      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
+      path = "string",
+      value = "string",
+      from = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[Required] Represents an update integration request's resource identifier.}
+\item{resourceId}{[required] [Required] Represents an update integration request's resource identifier.}
 
-\item{httpMethod}{[Required] Represents an update integration request's HTTP method.}
+\item{httpMethod}{[required] [Required] Represents an update integration request's HTTP method.}
 
 \item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
 }

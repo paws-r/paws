@@ -4,10 +4,18 @@
 \alias{list_transform_jobs}
 \title{Lists transform jobs}
 \usage{
-list_transform_jobs(CreationTimeAfter = NULL, CreationTimeBefore = NULL,
-  LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL,
-  NameContains = NULL, StatusEquals = NULL, SortBy = NULL,
-  SortOrder = NULL, NextToken = NULL, MaxResults = NULL)
+list_transform_jobs(
+  CreationTimeAfter = as.POSIXct("2015-01-01"),
+  CreationTimeBefore = as.POSIXct("2015-01-01"),
+  LastModifiedTimeAfter = as.POSIXct("2015-01-01"),
+  LastModifiedTimeBefore = as.POSIXct("2015-01-01"),
+  NameContains = "string",
+  StatusEquals = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+  SortBy = "Name"|"CreationTime"|"Status",
+  SortOrder = "Ascending"|"Descending",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{CreationTimeAfter}{A filter that returns only transform jobs created after the specified time.}

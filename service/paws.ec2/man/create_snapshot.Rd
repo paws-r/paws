@@ -4,13 +4,27 @@
 \alias{create_snapshot}
 \title{Creates a snapshot of an EBS volume and stores it in Amazon S3}
 \usage{
-create_snapshot(VolumeId, Description = NULL, TagSpecifications = NULL,
-  DryRun = NULL)
+create_snapshot(
+  Description = "string",
+  VolumeId = "string",
+  TagSpecifications = list(
+    list(
+      ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{VolumeId}{The ID of the EBS volume.}
-
 \item{Description}{A description for the snapshot.}
+
+\item{VolumeId}{[required] The ID of the EBS volume.}
 
 \item{TagSpecifications}{The tags to apply to the snapshot during creation.}
 

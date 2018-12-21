@@ -4,16 +4,23 @@
 \alias{get_partition}
 \title{Retrieves information about a specified partition}
 \usage{
-get_partition(DatabaseName, TableName, PartitionValues, CatalogId = NULL)
+get_partition(
+  CatalogId = "string",
+  DatabaseName = "string",
+  TableName = "string",
+  PartitionValues = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{DatabaseName}{The name of the catalog database where the partition resides.}
-
-\item{TableName}{The name of the partition's table.}
-
-\item{PartitionValues}{The values that define the partition.}
-
 \item{CatalogId}{The ID of the Data Catalog where the partition in question resides. If none is supplied, the AWS account ID is used by default.}
+
+\item{DatabaseName}{[required] The name of the catalog database where the partition resides.}
+
+\item{TableName}{[required] The name of the partition's table.}
+
+\item{PartitionValues}{[required] The values that define the partition.}
 }
 \description{
 Retrieves information about a specified partition.

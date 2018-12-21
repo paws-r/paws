@@ -4,10 +4,12 @@
 \alias{describe_identity}
 \title{Returns metadata related to the given identity, including when the identity was created and any associated linked logins}
 \usage{
-describe_identity(IdentityId)
+describe_identity(
+  IdentityId = "string"
+)
 }
 \arguments{
-\item{IdentityId}{A unique identifier in the format REGION:GUID.}
+\item{IdentityId}{[required] A unique identifier in the format REGION:GUID.}
 }
 \description{
 Returns metadata related to the given identity, including when the identity was created and any associated linked logins.

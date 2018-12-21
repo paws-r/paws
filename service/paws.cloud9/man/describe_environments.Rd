@@ -4,10 +4,14 @@
 \alias{describe_environments}
 \title{Gets information about AWS Cloud9 development environments}
 \usage{
-describe_environments(environmentIds)
+describe_environments(
+  environmentIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{environmentIds}{The IDs of individual environments to get information about.}
+\item{environmentIds}{[required] The IDs of individual environments to get information about.}
 }
 \description{
 Gets information about AWS Cloud9 development environments.

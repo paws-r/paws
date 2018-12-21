@@ -4,17 +4,21 @@
 \alias{attach_network_interface}
 \title{Attaches a network interface to an instance}
 \usage{
-attach_network_interface(DeviceIndex, InstanceId, NetworkInterfaceId,
-  DryRun = NULL)
+attach_network_interface(
+  DeviceIndex = 123,
+  DryRun = TRUE|FALSE,
+  InstanceId = "string",
+  NetworkInterfaceId = "string"
+)
 }
 \arguments{
-\item{DeviceIndex}{The index of the device for the network interface attachment.}
-
-\item{InstanceId}{The ID of the instance.}
-
-\item{NetworkInterfaceId}{The ID of the network interface.}
+\item{DeviceIndex}{[required] The index of the device for the network interface attachment.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{InstanceId}{[required] The ID of the instance.}
+
+\item{NetworkInterfaceId}{[required] The ID of the network interface.}
 }
 \description{
 Attaches a network interface to an instance.

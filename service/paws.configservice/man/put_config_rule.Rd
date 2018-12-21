@@ -4,10 +4,40 @@
 \alias{put_config_rule}
 \title{Adds or updates an AWS Config rule for evaluating whether your AWS resources comply with your desired configurations}
 \usage{
-put_config_rule(ConfigRule)
+put_config_rule(
+  ConfigRule = list(
+    ConfigRuleName = "string",
+    ConfigRuleArn = "string",
+    ConfigRuleId = "string",
+    Description = "string",
+    Scope = list(
+      ComplianceResourceTypes = list(
+        "string"
+      ),
+      TagKey = "string",
+      TagValue = "string",
+      ComplianceResourceId = "string"
+    ),
+    Source = list(
+      Owner = "CUSTOM_LAMBDA"|"AWS",
+      SourceIdentifier = "string",
+      SourceDetails = list(
+        list(
+          EventSource = "aws.config",
+          MessageType = "ConfigurationItemChangeNotification"|"ConfigurationSnapshotDeliveryCompleted"|"ScheduledNotification"|"OversizedConfigurationItemChangeNotification",
+          MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours"
+        )
+      )
+    ),
+    InputParameters = "string",
+    MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
+    ConfigRuleState = "ACTIVE"|"DELETING"|"DELETING_RESULTS"|"EVALUATING",
+    CreatedBy = "string"
+  )
+)
 }
 \arguments{
-\item{ConfigRule}{The rule that you want to add to your account.}
+\item{ConfigRule}{[required] The rule that you want to add to your account.}
 }
 \description{
 Adds or updates an AWS Config rule for evaluating whether your AWS resources comply with your desired configurations.

@@ -4,12 +4,20 @@
 \alias{authorize_ip_rules}
 \title{Adds one or more rules to the specified IP access control group}
 \usage{
-authorize_ip_rules(GroupId, UserRules)
+authorize_ip_rules(
+  GroupId = "string",
+  UserRules = list(
+    list(
+      ipRule = "string",
+      ruleDesc = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{GroupId}{The ID of the group.}
+\item{GroupId}{[required] The identifier of the group.}
 
-\item{UserRules}{The rules to add to the group.}
+\item{UserRules}{[required] The rules to add to the group.}
 }
 \description{
 Adds one or more rules to the specified IP access control group.

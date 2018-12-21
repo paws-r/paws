@@ -4,12 +4,17 @@
 \alias{untag_resource}
 \title{Removes a tag from a given resource}
 \usage{
-untag_resource(resourceArn, tagKeys)
+untag_resource(
+  resourceArn = "string",
+  tagKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{resourceArn}{[Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present, Stage is the only taggable resource.}
+\item{resourceArn}{[required] [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present, Stage is the only taggable resource.}
 
-\item{tagKeys}{[Required] The Tag keys to delete.}
+\item{tagKeys}{[required] [Required] The Tag keys to delete.}
 }
 \description{
 Removes a tag from a given resource.

@@ -4,10 +4,21 @@
 \alias{update_device_pool}
 \title{Modifies the name, description, and rules in a device pool given the attributes and the pool ARN}
 \usage{
-update_device_pool(arn, name = NULL, description = NULL, rules = NULL)
+update_device_pool(
+  arn = "string",
+  name = "string",
+  description = "string",
+  rules = list(
+    list(
+      attribute = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE",
+      operator = "EQUALS"|"LESS_THAN"|"GREATER_THAN"|"IN"|"NOT_IN"|"CONTAINS",
+      value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{arn}{The Amazon Resourc Name (ARN) of the Device Farm device pool you wish to update.}
+\item{arn}{[required] The Amazon Resourc Name (ARN) of the Device Farm device pool you wish to update.}
 
 \item{name}{A string representing the name of the device pool you wish to update.}
 

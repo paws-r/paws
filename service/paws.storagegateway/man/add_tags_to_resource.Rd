@@ -4,12 +4,20 @@
 \alias{add_tags_to_resource}
 \title{Adds one or more tags to the specified resource}
 \usage{
-add_tags_to_resource(ResourceARN, Tags)
+add_tags_to_resource(
+  ResourceARN = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ResourceARN}{The Amazon Resource Name (ARN) of the resource you want to add tags to.}
+\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the resource you want to add tags to.}
 
-\item{Tags}{The key-value pair that represents the tag you want to add to the resource. The value can be an empty string.
+\item{Tags}{[required] The key-value pair that represents the tag you want to add to the resource. The value can be an empty string.
 
 Valid characters for key and value are letters, spaces, and numbers representable in UTF-8 format, and the following special characters: + - = . \_ : / @.}
 }

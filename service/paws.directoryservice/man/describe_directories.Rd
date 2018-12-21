@@ -4,7 +4,13 @@
 \alias{describe_directories}
 \title{Obtains information about the directories that belong to this account}
 \usage{
-describe_directories(DirectoryIds = NULL, NextToken = NULL, Limit = NULL)
+describe_directories(
+  DirectoryIds = list(
+    "string"
+  ),
+  NextToken = "string",
+  Limit = 123
+)
 }
 \arguments{
 \item{DirectoryIds}{A list of identifiers of the directories for which to obtain the information. If this member is null, all directories that belong to the current account are returned.

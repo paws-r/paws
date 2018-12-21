@@ -4,10 +4,12 @@
 \alias{get_regex_pattern_set}
 \title{Returns the RegexPatternSet specified by \code{RegexPatternSetId}}
 \usage{
-get_regex_pattern_set(RegexPatternSetId)
+get_regex_pattern_set(
+  RegexPatternSetId = "string"
+)
 }
 \arguments{
-\item{RegexPatternSetId}{The \code{RegexPatternSetId} of the RegexPatternSet that you want to get. \code{RegexPatternSetId} is returned by CreateRegexPatternSet and by ListRegexPatternSets.}
+\item{RegexPatternSetId}{[required] The \code{RegexPatternSetId} of the RegexPatternSet that you want to get. \code{RegexPatternSetId} is returned by CreateRegexPatternSet and by ListRegexPatternSets.}
 }
 \description{
 Returns the RegexPatternSet specified by \code{RegexPatternSetId}.

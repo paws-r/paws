@@ -4,7 +4,10 @@
 \alias{list_clusters}
 \title{Lists the Amazon EKS clusters in your AWS account in the specified Region}
 \usage{
-list_clusters(maxResults = NULL, nextToken = NULL)
+list_clusters(
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
 \item{maxResults}{The maximum number of cluster results returned by \code{ListClusters} in paginated output. When this parameter is used, \code{ListClusters} only returns \code{maxResults} results in a single page along with a \code{nextToken} response element. The remaining results of the initial request can be seen by sending another \code{ListClusters} request with the returned \code{nextToken} value. This value can be between 1 and 100. If this parameter is not used, then \code{ListClusters} returns up to 100 results and a \code{nextToken} value if applicable.}

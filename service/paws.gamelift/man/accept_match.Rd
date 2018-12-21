@@ -4,14 +4,20 @@
 \alias{accept_match}
 \title{Registers a player's acceptance or rejection of a proposed FlexMatch match}
 \usage{
-accept_match(TicketId, PlayerIds, AcceptanceType)
+accept_match(
+  TicketId = "string",
+  PlayerIds = list(
+    "string"
+  ),
+  AcceptanceType = "ACCEPT"|"REJECT"
+)
 }
 \arguments{
-\item{TicketId}{Unique identifier for a matchmaking ticket. The ticket must be in status \code{REQUIRES_ACCEPTANCE}; otherwise this request will fail.}
+\item{TicketId}{[required] Unique identifier for a matchmaking ticket. The ticket must be in status \code{REQUIRES_ACCEPTANCE}; otherwise this request will fail.}
 
-\item{PlayerIds}{Unique identifier for a player delivering the response. This parameter can include one or multiple player IDs.}
+\item{PlayerIds}{[required] Unique identifier for a player delivering the response. This parameter can include one or multiple player IDs.}
 
-\item{AcceptanceType}{Player response to the proposed match.}
+\item{AcceptanceType}{[required] Player response to the proposed match.}
 }
 \description{
 Registers a player's acceptance or rejection of a proposed FlexMatch match. A matchmaking configuration may require player acceptance; if so, then matches built with that configuration cannot be completed unless all players accept the proposed match within a specified time limit.

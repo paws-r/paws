@@ -4,12 +4,18 @@
 \alias{add_tags_to_vault}
 \title{This operation adds the specified tags to a vault}
 \usage{
-add_tags_to_vault(accountId, vaultName, Tags = NULL)
+add_tags_to_vault(
+  accountId = "string",
+  vaultName = "string",
+  Tags = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{accountId}{The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
+\item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
 
-\item{vaultName}{The name of the vault.}
+\item{vaultName}{[required] The name of the vault.}
 
 \item{Tags}{The tags to add to the vault. Each tag is composed of a key and a value. The value can be an empty string.}
 }

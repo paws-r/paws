@@ -2,17 +2,20 @@
 % Please edit documentation in R/paws.iam_operations.R
 \name{update_role_description}
 \alias{update_role_description}
-\title{Use instead}
+\title{Use UpdateRole instead}
 \usage{
-update_role_description(RoleName, Description)
+update_role_description(
+  RoleName = "string",
+  Description = "string"
+)
 }
 \arguments{
-\item{RoleName}{The name of the role that you want to modify.}
+\item{RoleName}{[required] The name of the role that you want to modify.}
 
-\item{Description}{The new description that you want to apply to the specified role.}
+\item{Description}{[required] The new description that you want to apply to the specified role.}
 }
 \description{
-Use instead.
+Use UpdateRole instead.
 }
 \details{
 Modifies only the description of a role. This operation performs the same function as the \code{Description} parameter in the \code{UpdateRole} operation.

@@ -4,13 +4,22 @@
 \alias{put_gateway_response}
 \title{Creates a customization of a GatewayResponse of a specified response type and status code on the given RestApi}
 \usage{
-put_gateway_response(restApiId, responseType, statusCode = NULL,
-  responseParameters = NULL, responseTemplates = NULL)
+put_gateway_response(
+  restApiId = "string",
+  responseType = "DEFAULT_4XX"|"DEFAULT_5XX"|"RESOURCE_NOT_FOUND"|"UNAUTHORIZED"|"INVALID_API_KEY"|"ACCESS_DENIED"|"AUTHORIZER_FAILURE"|"AUTHORIZER_CONFIGURATION_ERROR"|"INVALID_SIGNATURE"|"EXPIRED_TOKEN"|"MISSING_AUTHENTICATION_TOKEN"|"INTEGRATION_FAILURE"|"INTEGRATION_TIMEOUT"|"API_CONFIGURATION_ERROR"|"UNSUPPORTED_MEDIA_TYPE"|"BAD_REQUEST_PARAMETERS"|"BAD_REQUEST_BODY"|"REQUEST_TOO_LARGE"|"THROTTLED"|"QUOTA_EXCEEDED",
+  statusCode = "string",
+  responseParameters = list(
+    "string"
+  ),
+  responseTemplates = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{responseType}{[Required]
+\item{responseType}{[required] [Required]
 
 The response type of the associated GatewayResponse. Valid values are
 \itemize{

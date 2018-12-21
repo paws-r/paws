@@ -4,17 +4,52 @@
 \alias{create_security_profile}
 \title{Creates a Device Defender security profile}
 \usage{
-create_security_profile(securityProfileName, behaviors,
-  securityProfileDescription = NULL, alertTargets = NULL)
+create_security_profile(
+  securityProfileName = "string",
+  securityProfileDescription = "string",
+  behaviors = list(
+    list(
+      name = "string",
+      metric = "string",
+      criteria = list(
+        comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set",
+        value = list(
+          count = 123,
+          cidrs = list(
+            "string"
+          ),
+          ports = list(
+            123
+          )
+        ),
+        durationSeconds = 123
+      )
+    )
+  ),
+  alertTargets = list(
+    list(
+      alertTargetArn = "string",
+      roleArn = "string"
+    )
+  ),
+  tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{securityProfileName}{The name you are giving to the security profile.}
-
-\item{behaviors}{Specifies the behaviors that, when violated by a device (thing), cause an alert.}
+\item{securityProfileName}{[required] The name you are giving to the security profile.}
 
 \item{securityProfileDescription}{A description of the security profile.}
 
+\item{behaviors}{[required] Specifies the behaviors that, when violated by a device (thing), cause an alert.}
+
 \item{alertTargets}{Specifies the destinations to which alerts are sent. (Alerts are always sent to the console.) Alerts are generated when a device (thing) violates a behavior.}
+
+\item{tags}{Metadata which can be used to manage the security profile.}
 }
 \description{
 Creates a Device Defender security profile.

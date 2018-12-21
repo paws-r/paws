@@ -2,19 +2,23 @@
 % Please edit documentation in R/paws.sms_operations.R
 \name{get_replication_runs}
 \alias{get_replication_runs}
-\title{The GetReplicationRuns API will return all ReplicationRuns for a given ReplicationJob}
+\title{Describes the replication runs for the specified replication job}
 \usage{
-get_replication_runs(replicationJobId, nextToken = NULL, maxResults = NULL)
+get_replication_runs(
+  replicationJobId = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{replicationJobId}{}
+\item{replicationJobId}{[required] The identifier of the replication job.}
 
-\item{nextToken}{}
+\item{nextToken}{The token for the next set of results.}
 
-\item{maxResults}{}
+\item{maxResults}{The maximum number of results to return in a single call. The default value is 50. To retrieve the remaining results, make another call with the returned \code{NextToken} value.}
 }
 \description{
-The GetReplicationRuns API will return all ReplicationRuns for a given ReplicationJob. This API returns a paginated list, that may be consecutively called with nextToken to retrieve all ReplicationRuns for a ReplicationJob.
+Describes the replication runs for the specified replication job.
 }
 \examples{
 

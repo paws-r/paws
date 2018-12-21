@@ -4,12 +4,15 @@
 \alias{test_event_pattern}
 \title{Tests whether the specified event pattern matches the provided event}
 \usage{
-test_event_pattern(EventPattern, Event)
+test_event_pattern(
+  EventPattern = "string",
+  Event = "string"
+)
 }
 \arguments{
-\item{EventPattern}{The event pattern. For more information, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html}{Events and Event Patterns} in the \emph{Amazon CloudWatch Events User Guide}.}
+\item{EventPattern}{[required] The event pattern. For more information, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html}{Events and Event Patterns} in the \emph{Amazon CloudWatch Events User Guide}.}
 
-\item{Event}{The event, in JSON format, to test against the event pattern.}
+\item{Event}{[required] The event, in JSON format, to test against the event pattern.}
 }
 \description{
 Tests whether the specified event pattern matches the provided event.

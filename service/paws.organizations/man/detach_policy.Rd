@@ -4,14 +4,17 @@
 \alias{detach_policy}
 \title{Detaches a policy from a target root, organizational unit (OU), or account}
 \usage{
-detach_policy(PolicyId, TargetId)
+detach_policy(
+  PolicyId = "string",
+  TargetId = "string"
+)
 }
 \arguments{
-\item{PolicyId}{The unique identifier (ID) of the policy you want to detach. You can get the ID from the ListPolicies or ListPoliciesForTarget operations.
+\item{PolicyId}{[required] The unique identifier (ID) of the policy you want to detach. You can get the ID from the ListPolicies or ListPoliciesForTarget operations.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.}
 
-\item{TargetId}{The unique identifier (ID) of the root, OU, or account from which you want to detach the policy. You can get the ID from the ListRoots, ListOrganizationalUnitsForParent, or ListAccounts operations.
+\item{TargetId}{[required] The unique identifier (ID) of the root, OU, or account from which you want to detach the policy. You can get the ID from the ListRoots, ListOrganizationalUnitsForParent, or ListAccounts operations.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a target ID string requires one of the following:
 \itemize{

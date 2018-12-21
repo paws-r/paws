@@ -4,10 +4,12 @@
 \alias{delete_receipt_filter}
 \title{Deletes the specified IP address filter}
 \usage{
-delete_receipt_filter(FilterName)
+delete_receipt_filter(
+  FilterName = "string"
+)
 }
 \arguments{
-\item{FilterName}{The name of the IP address filter to delete.}
+\item{FilterName}{[required] The name of the IP address filter to delete.}
 }
 \description{
 Deletes the specified IP address filter.

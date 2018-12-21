@@ -4,10 +4,12 @@
 \alias{delete_named_query}
 \title{Deletes a named query}
 \usage{
-delete_named_query(NamedQueryId)
+delete_named_query(
+  NamedQueryId = "string"
+)
 }
 \arguments{
-\item{NamedQueryId}{The unique ID of the query to delete.}
+\item{NamedQueryId}{[required] The unique ID of the query to delete.}
 }
 \description{
 Deletes a named query.

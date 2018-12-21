@@ -6,18 +6,23 @@
 \alias{paws.support-package}
 \title{paws.support: AWS Support}
 \description{
-The AWS Support API reference is intended for
-programmers who need detailed information about the AWS Support
-operations and data types. This service enables you to manage your AWS
-Support cases programmatically. It uses HTTP methods that return
-results in JSON format.
+The AWS Support API reference is intended for programmers who
+need detailed information about the AWS Support operations and data
+types. This service enables you to manage your AWS Support cases
+programmatically. It uses HTTP methods that return results in JSON
+format.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

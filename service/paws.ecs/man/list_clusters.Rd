@@ -4,7 +4,10 @@
 \alias{list_clusters}
 \title{Returns a list of existing clusters}
 \usage{
-list_clusters(nextToken = NULL, maxResults = NULL)
+list_clusters(
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated \code{ListClusters} request where \code{maxResults} was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the \code{nextToken} value.

@@ -4,10 +4,12 @@
 \alias{delete_function_definition}
 \title{Deletes a Lambda function definition}
 \usage{
-delete_function_definition(FunctionDefinitionId)
+delete_function_definition(
+  FunctionDefinitionId = "string"
+)
 }
 \arguments{
-\item{FunctionDefinitionId}{The ID of the Lambda function definition.}
+\item{FunctionDefinitionId}{[required] The ID of the Lambda function definition.}
 }
 \description{
 Deletes a Lambda function definition.

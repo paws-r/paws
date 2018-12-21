@@ -4,10 +4,12 @@
 \alias{delete_evaluation}
 \title{Assigns the \code{DELETED} status to an \code{Evaluation}, rendering it unusable}
 \usage{
-delete_evaluation(EvaluationId)
+delete_evaluation(
+  EvaluationId = "string"
+)
 }
 \arguments{
-\item{EvaluationId}{A user-supplied ID that uniquely identifies the \code{Evaluation} to delete.}
+\item{EvaluationId}{[required] A user-supplied ID that uniquely identifies the \code{Evaluation} to delete.}
 }
 \description{
 Assigns the \code{DELETED} status to an \code{Evaluation}, rendering it unusable.

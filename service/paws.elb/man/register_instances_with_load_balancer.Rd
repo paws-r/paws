@@ -4,12 +4,19 @@
 \alias{register_instances_with_load_balancer}
 \title{Adds the specified instances to the specified load balancer}
 \usage{
-register_instances_with_load_balancer(LoadBalancerName, Instances)
+register_instances_with_load_balancer(
+  LoadBalancerName = "string",
+  Instances = list(
+    list(
+      InstanceId = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{LoadBalancerName}{The name of the load balancer.}
+\item{LoadBalancerName}{[required] The name of the load balancer.}
 
-\item{Instances}{The IDs of the instances.}
+\item{Instances}{[required] The IDs of the instances.}
 }
 \description{
 Adds the specified instances to the specified load balancer.

@@ -4,22 +4,31 @@
 \alias{create_profile}
 \title{Creates a new room profile with the specified details}
 \usage{
-create_profile(ProfileName, Timezone, Address, DistanceUnit, TemperatureUnit,
-  WakeWord, ClientRequestToken = NULL, SetupModeDisabled = NULL,
-  MaxVolumeLimit = NULL, PSTNEnabled = NULL)
+create_profile(
+  ProfileName = "string",
+  Timezone = "string",
+  Address = "string",
+  DistanceUnit = "METRIC"|"IMPERIAL",
+  TemperatureUnit = "FAHRENHEIT"|"CELSIUS",
+  WakeWord = "ALEXA"|"AMAZON"|"ECHO"|"COMPUTER",
+  ClientRequestToken = "string",
+  SetupModeDisabled = TRUE|FALSE,
+  MaxVolumeLimit = 123,
+  PSTNEnabled = TRUE|FALSE
+)
 }
 \arguments{
-\item{ProfileName}{The name of a room profile.}
+\item{ProfileName}{[required] The name of a room profile.}
 
-\item{Timezone}{The time zone used by a room profile.}
+\item{Timezone}{[required] The time zone used by a room profile.}
 
-\item{Address}{The valid address for the room.}
+\item{Address}{[required] The valid address for the room.}
 
-\item{DistanceUnit}{The distance unit to be used by devices in the profile.}
+\item{DistanceUnit}{[required] The distance unit to be used by devices in the profile.}
 
-\item{TemperatureUnit}{The temperature unit to be used by devices in the profile.}
+\item{TemperatureUnit}{[required] The temperature unit to be used by devices in the profile.}
 
-\item{WakeWord}{A wake word for Alexa, Echo, Amazon, or a computer.}
+\item{WakeWord}{[required] A wake word for Alexa, Echo, Amazon, or a computer.}
 
 \item{ClientRequestToken}{The user-specified token that is used during the creation of a profile.}
 

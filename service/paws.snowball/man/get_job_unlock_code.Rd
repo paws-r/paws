@@ -4,10 +4,12 @@
 \alias{get_job_unlock_code}
 \title{Returns the \code{UnlockCode} code value for the specified job}
 \usage{
-get_job_unlock_code(JobId)
+get_job_unlock_code(
+  JobId = "string"
+)
 }
 \arguments{
-\item{JobId}{The ID for the job that you want to get the \code{UnlockCode} value for, for example \code{JID123e4567-e89b-12d3-a456-426655440000}.}
+\item{JobId}{[required] The ID for the job that you want to get the \code{UnlockCode} value for, for example \code{JID123e4567-e89b-12d3-a456-426655440000}.}
 }
 \description{
 Returns the \code{UnlockCode} code value for the specified job. A particular \code{UnlockCode} value can be accessed for up to 90 days after the associated job has been created.

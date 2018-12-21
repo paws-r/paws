@@ -4,22 +4,45 @@
 \alias{attach_typed_link}
 \title{Attaches a typed link to a specified source and target object}
 \usage{
-attach_typed_link(DirectoryArn, SourceObjectReference, TargetObjectReference,
-  TypedLinkFacet, Attributes)
+attach_typed_link(
+  DirectoryArn = "string",
+  SourceObjectReference = list(
+    Selector = "string"
+  ),
+  TargetObjectReference = list(
+    Selector = "string"
+  ),
+  TypedLinkFacet = list(
+    SchemaArn = "string",
+    TypedLinkName = "string"
+  ),
+  Attributes = list(
+    list(
+      AttributeName = "string",
+      Value = list(
+        StringValue = "string",
+        BinaryValue = raw,
+        BooleanValue = TRUE|FALSE,
+        NumberValue = "string",
+        DatetimeValue = as.POSIXct("2015-01-01")
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{DirectoryArn}{The Amazon Resource Name (ARN) of the directory where you want to attach the typed link.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory where you want to attach the typed link.}
 
-\item{SourceObjectReference}{Identifies the source object that the typed link will attach to.}
+\item{SourceObjectReference}{[required] Identifies the source object that the typed link will attach to.}
 
-\item{TargetObjectReference}{Identifies the target object that the typed link will attach to.}
+\item{TargetObjectReference}{[required] Identifies the target object that the typed link will attach to.}
 
-\item{TypedLinkFacet}{Identifies the typed link facet that is associated with the typed link.}
+\item{TypedLinkFacet}{[required] Identifies the typed link facet that is associated with the typed link.}
 
-\item{Attributes}{A set of attributes that are associated with the typed link.}
+\item{Attributes}{[required] A set of attributes that are associated with the typed link.}
 }
 \description{
-Attaches a typed link to a specified source and target object. For more information, see \href{http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink}{Typed link}.
+Attaches a typed link to a specified source and target object. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 }
 \examples{
 

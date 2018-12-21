@@ -4,11 +4,35 @@
 \alias{set_load_based_auto_scaling}
 \title{Specify the load-based auto scaling configuration for a specified layer}
 \usage{
-set_load_based_auto_scaling(LayerId, Enable = NULL, UpScaling = NULL,
-  DownScaling = NULL)
+set_load_based_auto_scaling(
+  LayerId = "string",
+  Enable = TRUE|FALSE,
+  UpScaling = list(
+    InstanceCount = 123,
+    ThresholdsWaitTime = 123,
+    IgnoreMetricsTime = 123,
+    CpuThreshold = 123.0,
+    MemoryThreshold = 123.0,
+    LoadThreshold = 123.0,
+    Alarms = list(
+      "string"
+    )
+  ),
+  DownScaling = list(
+    InstanceCount = 123,
+    ThresholdsWaitTime = 123,
+    IgnoreMetricsTime = 123,
+    CpuThreshold = 123.0,
+    MemoryThreshold = 123.0,
+    LoadThreshold = 123.0,
+    Alarms = list(
+      "string"
+    )
+  )
+)
 }
 \arguments{
-\item{LayerId}{The layer ID.}
+\item{LayerId}{[required] The layer ID.}
 
 \item{Enable}{Enables load-based auto scaling for the layer.}
 

@@ -4,13 +4,28 @@
 \alias{count_open_workflow_executions}
 \title{Returns the number of open workflow executions within the given domain that meet the specified filtering criteria}
 \usage{
-count_open_workflow_executions(domain, startTimeFilter, typeFilter = NULL,
-  tagFilter = NULL, executionFilter = NULL)
+count_open_workflow_executions(
+  domain = "string",
+  startTimeFilter = list(
+    oldestDate = as.POSIXct("2015-01-01"),
+    latestDate = as.POSIXct("2015-01-01")
+  ),
+  typeFilter = list(
+    name = "string",
+    version = "string"
+  ),
+  tagFilter = list(
+    tag = "string"
+  ),
+  executionFilter = list(
+    workflowId = "string"
+  )
+)
 }
 \arguments{
-\item{domain}{The name of the domain containing the workflow executions to count.}
+\item{domain}{[required] The name of the domain containing the workflow executions to count.}
 
-\item{startTimeFilter}{Specifies the start time criteria that workflow executions must meet in order to be counted.}
+\item{startTimeFilter}{[required] Specifies the start time criteria that workflow executions must meet in order to be counted.}
 
 \item{typeFilter}{Specifies the type of the workflow executions to be counted.
 

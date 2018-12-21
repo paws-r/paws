@@ -4,12 +4,16 @@
 \alias{get_job_run}
 \title{Retrieves the metadata for a given job run}
 \usage{
-get_job_run(JobName, RunId, PredecessorsIncluded = NULL)
+get_job_run(
+  JobName = "string",
+  RunId = "string",
+  PredecessorsIncluded = TRUE|FALSE
+)
 }
 \arguments{
-\item{JobName}{Name of the job definition being run.}
+\item{JobName}{[required] Name of the job definition being run.}
 
-\item{RunId}{The ID of the job run.}
+\item{RunId}{[required] The ID of the job run.}
 
 \item{PredecessorsIncluded}{True if a list of predecessor runs should be returned.}
 }

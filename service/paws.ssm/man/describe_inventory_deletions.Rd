@@ -4,8 +4,11 @@
 \alias{describe_inventory_deletions}
 \title{Describes a specific delete inventory operation}
 \usage{
-describe_inventory_deletions(DeletionId = NULL, NextToken = NULL,
-  MaxResults = NULL)
+describe_inventory_deletions(
+  DeletionId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{DeletionId}{Specify the delete inventory ID for which you want information. This ID was returned by the \code{DeleteInventory} action.}

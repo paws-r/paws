@@ -4,10 +4,14 @@
 \alias{describe_jobs}
 \title{Describes a list of AWS Batch jobs}
 \usage{
-describe_jobs(jobs)
+describe_jobs(
+  jobs = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{jobs}{A space-separated list of up to 100 job IDs.}
+\item{jobs}{[required] A space-separated list of up to 100 job IDs.}
 }
 \description{
 Describes a list of AWS Batch jobs.

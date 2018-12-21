@@ -4,12 +4,15 @@
 \alias{describe_user}
 \title{Returns information about an ActiveMQ user}
 \usage{
-describe_user(Username, BrokerId)
+describe_user(
+  BrokerId = "string",
+  Username = "string"
+)
 }
 \arguments{
-\item{Username}{The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.}
+\item{BrokerId}{[required] The unique ID that Amazon MQ generates for the broker.}
 
-\item{BrokerId}{The unique ID that Amazon MQ generates for the broker.}
+\item{Username}{[required] The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.}
 }
 \description{
 Returns information about an ActiveMQ user.

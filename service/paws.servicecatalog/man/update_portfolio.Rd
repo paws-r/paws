@@ -4,19 +4,32 @@
 \alias{update_portfolio}
 \title{Updates the specified portfolio}
 \usage{
-update_portfolio(Id, AcceptLanguage = NULL, DisplayName = NULL,
-  Description = NULL, ProviderName = NULL, AddTags = NULL,
-  RemoveTags = NULL)
+update_portfolio(
+  AcceptLanguage = "string",
+  Id = "string",
+  DisplayName = "string",
+  Description = "string",
+  ProviderName = "string",
+  AddTags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  RemoveTags = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{Id}{The portfolio identifier.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{Id}{[required] The portfolio identifier.}
 
 \item{DisplayName}{The name to use for display purposes.}
 

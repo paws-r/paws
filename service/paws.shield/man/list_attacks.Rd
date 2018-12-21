@@ -4,8 +4,21 @@
 \alias{list_attacks}
 \title{Returns all ongoing DDoS attacks or all DDoS attacks during a specified time period}
 \usage{
-list_attacks(ResourceArns = NULL, StartTime = NULL, EndTime = NULL,
-  NextToken = NULL, MaxResults = NULL)
+list_attacks(
+  ResourceArns = list(
+    "string"
+  ),
+  StartTime = list(
+    FromInclusive = as.POSIXct("2015-01-01"),
+    ToExclusive = as.POSIXct("2015-01-01")
+  ),
+  EndTime = list(
+    FromInclusive = as.POSIXct("2015-01-01"),
+    ToExclusive = as.POSIXct("2015-01-01")
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{ResourceArns}{The ARN (Amazon Resource Name) of the resource that was attacked. If this is left blank, all applicable resources for this account will be included.}
@@ -16,7 +29,9 @@ list_attacks(ResourceArns = NULL, StartTime = NULL, EndTime = NULL,
 
 \item{NextToken}{The \code{ListAttacksRequest.NextMarker} value from a previous call to \code{ListAttacksRequest}. Pass null if this is the first call.}
 
-\item{MaxResults}{The maximum number of AttackSummary objects to be returned. If this is left blank, the first 20 results will be returned.}
+\item{MaxResults}{The maximum number of AttackSummary objects to be returned. If this is left blank, the first 20 results will be returned.
+
+This is a maximum value; it is possible that AWS WAF will return the results in smaller batches. That is, the number of AttackSummary objects returned could be less than \code{MaxResults}, even if there are still more AttackSummary objects yet to return. If there are more AttackSummary objects to return, AWS WAF will always also return a \code{NextToken}.}
 }
 \description{
 Returns all ongoing DDoS attacks or all DDoS attacks during a specified time period.

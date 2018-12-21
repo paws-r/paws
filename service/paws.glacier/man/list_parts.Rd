@@ -4,14 +4,20 @@
 \alias{list_parts}
 \title{This operation lists the parts of an archive that have been uploaded in a specific multipart upload}
 \usage{
-list_parts(accountId, vaultName, uploadId, marker = NULL, limit = NULL)
+list_parts(
+  accountId = "string",
+  vaultName = "string",
+  uploadId = "string",
+  marker = "string",
+  limit = "string"
+)
 }
 \arguments{
-\item{accountId}{The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
+\item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
 
-\item{vaultName}{The name of the vault.}
+\item{vaultName}{[required] The name of the vault.}
 
-\item{uploadId}{The upload ID of the multipart upload.}
+\item{uploadId}{[required] The upload ID of the multipart upload.}
 
 \item{marker}{An opaque string used for pagination. This value specifies the part at which the listing of parts should begin. Get the marker value from the response of a previous List Parts response. You need only include the marker if you are continuing the pagination of results started in a previous List Parts request.}
 

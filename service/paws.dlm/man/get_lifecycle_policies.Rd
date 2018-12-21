@@ -4,8 +4,21 @@
 \alias{get_lifecycle_policies}
 \title{Gets summary information about all or the specified data lifecycle policies}
 \usage{
-get_lifecycle_policies(PolicyIds = NULL, State = NULL,
-  ResourceTypes = NULL, TargetTags = NULL, TagsToAdd = NULL)
+get_lifecycle_policies(
+  PolicyIds = list(
+    "string"
+  ),
+  State = "ENABLED"|"DISABLED"|"ERROR",
+  ResourceTypes = list(
+    "VOLUME"
+  ),
+  TargetTags = list(
+    "string"
+  ),
+  TagsToAdd = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{PolicyIds}{The identifiers of the data lifecycle policies.}

@@ -4,10 +4,12 @@
 \alias{get_load_balancer}
 \title{Returns information about the specified Lightsail load balancer}
 \usage{
-get_load_balancer(loadBalancerName)
+get_load_balancer(
+  loadBalancerName = "string"
+)
 }
 \arguments{
-\item{loadBalancerName}{The name of the load balancer.}
+\item{loadBalancerName}{[required] The name of the load balancer.}
 }
 \description{
 Returns information about the specified Lightsail load balancer.

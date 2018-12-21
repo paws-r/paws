@@ -5,10 +5,14 @@
 \alias{list_application_versions}
 \title{Lists versions for the specified application}
 \usage{
-list_application_versions(ApplicationId, MaxItems = NULL, NextToken = NULL)
+list_application_versions(
+  ApplicationId = "string",
+  MaxItems = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The Amazon Resource Name (ARN) of the application.}
+\item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
 
 \item{MaxItems}{The total number of items to return.}
 

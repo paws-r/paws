@@ -4,16 +4,20 @@
 \alias{reset_instance_attribute}
 \title{Resets an attribute of an instance to its default value}
 \usage{
-reset_instance_attribute(Attribute, InstanceId, DryRun = NULL)
+reset_instance_attribute(
+  Attribute = "instanceType"|"kernel"|"ramdisk"|"userData"|"disableApiTermination"|"instanceInitiatedShutdownBehavior"|"rootDeviceName"|"blockDeviceMapping"|"productCodes"|"sourceDestCheck"|"groupSet"|"ebsOptimized"|"sriovNetSupport"|"enaSupport",
+  DryRun = TRUE|FALSE,
+  InstanceId = "string"
+)
 }
 \arguments{
-\item{Attribute}{The attribute to reset.
+\item{Attribute}{[required] The attribute to reset.
 
 You can only reset the following attributes: \code{kernel} | \code{ramdisk} | \code{sourceDestCheck}. To change an instance attribute, use ModifyInstanceAttribute.}
 
-\item{InstanceId}{The ID of the instance.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{InstanceId}{[required] The ID of the instance.}
 }
 \description{
 Resets an attribute of an instance to its default value. To reset the \code{kernel} or \code{ramdisk}, the instance must be in a stopped state. To reset the \code{sourceDestCheck}, the instance can be either running or stopped.

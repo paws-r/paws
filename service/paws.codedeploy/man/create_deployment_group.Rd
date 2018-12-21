@@ -4,20 +4,134 @@
 \alias{create_deployment_group}
 \title{Creates a deployment group to which application revisions will be deployed}
 \usage{
-create_deployment_group(applicationName, deploymentGroupName, serviceRoleArn,
-  deploymentConfigName = NULL, ec2TagFilters = NULL,
-  onPremisesInstanceTagFilters = NULL, autoScalingGroups = NULL,
-  triggerConfigurations = NULL, alarmConfiguration = NULL,
-  autoRollbackConfiguration = NULL, deploymentStyle = NULL,
-  blueGreenDeploymentConfiguration = NULL, loadBalancerInfo = NULL,
-  ec2TagSet = NULL, onPremisesTagSet = NULL)
+create_deployment_group(
+  applicationName = "string",
+  deploymentGroupName = "string",
+  deploymentConfigName = "string",
+  ec2TagFilters = list(
+    list(
+      Key = "string",
+      Value = "string",
+      Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
+    )
+  ),
+  onPremisesInstanceTagFilters = list(
+    list(
+      Key = "string",
+      Value = "string",
+      Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
+    )
+  ),
+  autoScalingGroups = list(
+    "string"
+  ),
+  serviceRoleArn = "string",
+  triggerConfigurations = list(
+    list(
+      triggerName = "string",
+      triggerTargetArn = "string",
+      triggerEvents = list(
+        "DeploymentStart"|"DeploymentSuccess"|"DeploymentFailure"|"DeploymentStop"|"DeploymentRollback"|"DeploymentReady"|"InstanceStart"|"InstanceSuccess"|"InstanceFailure"|"InstanceReady"
+      )
+    )
+  ),
+  alarmConfiguration = list(
+    enabled = TRUE|FALSE,
+    ignorePollAlarmFailure = TRUE|FALSE,
+    alarms = list(
+      list(
+        name = "string"
+      )
+    )
+  ),
+  autoRollbackConfiguration = list(
+    enabled = TRUE|FALSE,
+    events = list(
+      "DEPLOYMENT_FAILURE"|"DEPLOYMENT_STOP_ON_ALARM"|"DEPLOYMENT_STOP_ON_REQUEST"
+    )
+  ),
+  deploymentStyle = list(
+    deploymentType = "IN_PLACE"|"BLUE_GREEN",
+    deploymentOption = "WITH_TRAFFIC_CONTROL"|"WITHOUT_TRAFFIC_CONTROL"
+  ),
+  blueGreenDeploymentConfiguration = list(
+    terminateBlueInstancesOnDeploymentSuccess = list(
+      action = "TERMINATE"|"KEEP_ALIVE",
+      terminationWaitTimeInMinutes = 123
+    ),
+    deploymentReadyOption = list(
+      actionOnTimeout = "CONTINUE_DEPLOYMENT"|"STOP_DEPLOYMENT",
+      waitTimeInMinutes = 123
+    ),
+    greenFleetProvisioningOption = list(
+      action = "DISCOVER_EXISTING"|"COPY_AUTO_SCALING_GROUP"
+    )
+  ),
+  loadBalancerInfo = list(
+    elbInfoList = list(
+      list(
+        name = "string"
+      )
+    ),
+    targetGroupInfoList = list(
+      list(
+        name = "string"
+      )
+    ),
+    targetGroupPairInfoList = list(
+      list(
+        targetGroups = list(
+          list(
+            name = "string"
+          )
+        ),
+        prodTrafficRoute = list(
+          listenerArns = list(
+            "string"
+          )
+        ),
+        testTrafficRoute = list(
+          listenerArns = list(
+            "string"
+          )
+        )
+      )
+    )
+  ),
+  ec2TagSet = list(
+    ec2TagSetList = list(
+      list(
+        list(
+          Key = "string",
+          Value = "string",
+          Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
+        )
+      )
+    )
+  ),
+  ecsServices = list(
+    list(
+      serviceName = "string",
+      clusterName = "string"
+    )
+  ),
+  onPremisesTagSet = list(
+    onPremisesTagSetList = list(
+      list(
+        list(
+          Key = "string",
+          Value = "string",
+          Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
+        )
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{applicationName}{The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
+\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
 
-\item{deploymentGroupName}{The name of a new deployment group for the specified application.}
-
-\item{serviceRoleArn}{A service role ARN that allows AWS CodeDeploy to act on the user's behalf when interacting with AWS services.}
+\item{deploymentGroupName}{[required] The name of a new deployment group for the specified application.}
 
 \item{deploymentConfigName}{If specified, the deployment configuration name can be either one of the predefined configurations provided with AWS CodeDeploy or a custom deployment configuration that you create by calling the create deployment configuration operation.
 
@@ -30,6 +144,8 @@ For more information about the predefined deployment configurations in AWS CodeD
 \item{onPremisesInstanceTagFilters}{The on-premises instance tags on which to filter. The deployment group will include on-premises instances with any of the specified tags. Cannot be used in the same call as OnPremisesTagSet.}
 
 \item{autoScalingGroups}{A list of associated Auto Scaling groups.}
+
+\item{serviceRoleArn}{[required] A service role ARN that allows AWS CodeDeploy to act on the user's behalf when interacting with AWS services.}
 
 \item{triggerConfigurations}{Information about triggers to create when the deployment group is created. For examples, see \href{http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html}{Create a Trigger for an AWS CodeDeploy Event} in the AWS CodeDeploy User Guide.}
 
@@ -44,6 +160,8 @@ For more information about the predefined deployment configurations in AWS CodeD
 \item{loadBalancerInfo}{Information about the load balancer used in a deployment.}
 
 \item{ec2TagSet}{Information about groups of tags applied to EC2 instances. The deployment group will include only EC2 instances identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.}
+
+\item{ecsServices}{The target ECS services in the deployment group. This only applies to deployment groups that use the Amazon ECS compute platform. A target ECS service is specified as an Amazon ECS cluster and service name pair using the format \code{<clustername>:<servicename>}.}
 
 \item{onPremisesTagSet}{Information about groups of tags applied to on-premises instances. The deployment group will include only on-premises instances identified by all the tag groups. Cannot be used in the same call as onPremisesInstanceTagFilters.}
 }

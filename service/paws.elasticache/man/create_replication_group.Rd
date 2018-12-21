@@ -4,21 +4,62 @@
 \alias{create_replication_group}
 \title{Creates a Redis (cluster mode disabled) or a Redis (cluster mode enabled) replication group}
 \usage{
-create_replication_group(ReplicationGroupId, ReplicationGroupDescription,
-  PrimaryClusterId = NULL, AutomaticFailoverEnabled = NULL,
-  NumCacheClusters = NULL, PreferredCacheClusterAZs = NULL,
-  NumNodeGroups = NULL, ReplicasPerNodeGroup = NULL,
-  NodeGroupConfiguration = NULL, CacheNodeType = NULL, Engine = NULL,
-  EngineVersion = NULL, CacheParameterGroupName = NULL,
-  CacheSubnetGroupName = NULL, CacheSecurityGroupNames = NULL,
-  SecurityGroupIds = NULL, Tags = NULL, SnapshotArns = NULL,
-  SnapshotName = NULL, PreferredMaintenanceWindow = NULL, Port = NULL,
-  NotificationTopicArn = NULL, AutoMinorVersionUpgrade = NULL,
-  SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, AuthToken = NULL,
-  TransitEncryptionEnabled = NULL, AtRestEncryptionEnabled = NULL)
+create_replication_group(
+  ReplicationGroupId = "string",
+  ReplicationGroupDescription = "string",
+  PrimaryClusterId = "string",
+  AutomaticFailoverEnabled = TRUE|FALSE,
+  NumCacheClusters = 123,
+  PreferredCacheClusterAZs = list(
+    "string"
+  ),
+  NumNodeGroups = 123,
+  ReplicasPerNodeGroup = 123,
+  NodeGroupConfiguration = list(
+    list(
+      NodeGroupId = "string",
+      Slots = "string",
+      ReplicaCount = 123,
+      PrimaryAvailabilityZone = "string",
+      ReplicaAvailabilityZones = list(
+        "string"
+      )
+    )
+  ),
+  CacheNodeType = "string",
+  Engine = "string",
+  EngineVersion = "string",
+  CacheParameterGroupName = "string",
+  CacheSubnetGroupName = "string",
+  CacheSecurityGroupNames = list(
+    "string"
+  ),
+  SecurityGroupIds = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  SnapshotArns = list(
+    "string"
+  ),
+  SnapshotName = "string",
+  PreferredMaintenanceWindow = "string",
+  Port = 123,
+  NotificationTopicArn = "string",
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  SnapshotRetentionLimit = 123,
+  SnapshotWindow = "string",
+  AuthToken = "string",
+  TransitEncryptionEnabled = TRUE|FALSE,
+  AtRestEncryptionEnabled = TRUE|FALSE
+)
 }
 \arguments{
-\item{ReplicationGroupId}{The replication group identifier. This parameter is stored as a lowercase string.
+\item{ReplicationGroupId}{[required] The replication group identifier. This parameter is stored as a lowercase string.
 
 Constraints:
 \itemize{
@@ -27,7 +68,7 @@ Constraints:
 \item A name cannot end with a hyphen or contain two consecutive hyphens.
 }}
 
-\item{ReplicationGroupDescription}{A user-created description for the replication group.}
+\item{ReplicationGroupDescription}{[required] A user-created description for the replication group.}
 
 \item{PrimaryClusterId}{The identifier of the cluster that serves as the primary for this replication group. This cluster must already exist and have a status of \code{available}.
 

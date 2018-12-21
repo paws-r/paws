@@ -4,14 +4,18 @@
 \alias{create_alias}
 \title{Adds an alias to the set of a given member of Amazon WorkMail}
 \usage{
-create_alias(OrganizationId, EntityId, Alias)
+create_alias(
+  OrganizationId = "string",
+  EntityId = "string",
+  Alias = "string"
+)
 }
 \arguments{
-\item{OrganizationId}{The organization under which the member exists.}
+\item{OrganizationId}{[required] The organization under which the member exists.}
 
-\item{EntityId}{The alias is added to this Amazon WorkMail entity.}
+\item{EntityId}{[required] The alias is added to this Amazon WorkMail entity.}
 
-\item{Alias}{The alias to add to the user.}
+\item{Alias}{[required] The alias to add to the user.}
 }
 \description{
 Adds an alias to the set of a given member of Amazon WorkMail.

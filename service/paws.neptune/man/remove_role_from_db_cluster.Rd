@@ -4,12 +4,15 @@
 \alias{remove_role_from_db_cluster}
 \title{Disassociates an Identity and Access Management (IAM) role from a DB cluster}
 \usage{
-remove_role_from_db_cluster(DBClusterIdentifier, RoleArn)
+remove_role_from_db_cluster(
+  DBClusterIdentifier = "string",
+  RoleArn = "string"
+)
 }
 \arguments{
-\item{DBClusterIdentifier}{The name of the DB cluster to disassociate the IAM role from.}
+\item{DBClusterIdentifier}{[required] The name of the DB cluster to disassociate the IAM role from.}
 
-\item{RoleArn}{The Amazon Resource Name (ARN) of the IAM role to disassociate from the DB cluster, for example \code{arn:aws:iam::123456789012:role/NeptuneAccessRole}.}
+\item{RoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role to disassociate from the DB cluster, for example \code{arn:aws:iam::123456789012:role/NeptuneAccessRole}.}
 }
 \description{
 Disassociates an Identity and Access Management (IAM) role from a DB cluster.

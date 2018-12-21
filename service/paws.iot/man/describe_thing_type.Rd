@@ -4,10 +4,12 @@
 \alias{describe_thing_type}
 \title{Gets information about the specified thing type}
 \usage{
-describe_thing_type(thingTypeName)
+describe_thing_type(
+  thingTypeName = "string"
+)
 }
 \arguments{
-\item{thingTypeName}{The name of the thing type.}
+\item{thingTypeName}{[required] The name of the thing type.}
 }
 \description{
 Gets information about the specified thing type.

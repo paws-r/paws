@@ -4,10 +4,12 @@
 \alias{stop_build}
 \title{Attempts to stop running a build}
 \usage{
-stop_build(id)
+stop_build(
+  id = "string"
+)
 }
 \arguments{
-\item{id}{The ID of the build.}
+\item{id}{[required] The ID of the build.}
 }
 \description{
 Attempts to stop running a build.

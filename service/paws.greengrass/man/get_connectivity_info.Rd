@@ -4,10 +4,12 @@
 \alias{get_connectivity_info}
 \title{Retrieves the connectivity information for a core}
 \usage{
-get_connectivity_info(ThingName)
+get_connectivity_info(
+  ThingName = "string"
+)
 }
 \arguments{
-\item{ThingName}{The thing name.}
+\item{ThingName}{[required] The thing name.}
 }
 \description{
 Retrieves the connectivity information for a core.

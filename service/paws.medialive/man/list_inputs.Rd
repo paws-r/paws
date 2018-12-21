@@ -4,7 +4,10 @@
 \alias{list_inputs}
 \title{Produces list of inputs that have been created}
 \usage{
-list_inputs(MaxResults = NULL, NextToken = NULL)
+list_inputs(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{MaxResults}{}

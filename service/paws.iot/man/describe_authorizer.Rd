@@ -4,10 +4,12 @@
 \alias{describe_authorizer}
 \title{Describes an authorizer}
 \usage{
-describe_authorizer(authorizerName)
+describe_authorizer(
+  authorizerName = "string"
+)
 }
 \arguments{
-\item{authorizerName}{The name of the authorizer to describe.}
+\item{authorizerName}{[required] The name of the authorizer to describe.}
 }
 \description{
 Describes an authorizer.

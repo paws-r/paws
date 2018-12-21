@@ -4,16 +4,30 @@
 \alias{create_remote_access_session}
 \title{Specifies and starts a remote access session}
 \usage{
-create_remote_access_session(projectArn, deviceArn, instanceArn = NULL,
-  sshPublicKey = NULL, remoteDebugEnabled = NULL,
-  remoteRecordEnabled = NULL, remoteRecordAppArn = NULL, name = NULL,
-  clientId = NULL, configuration = NULL, interactionMode = NULL,
-  skipAppResign = NULL)
+create_remote_access_session(
+  projectArn = "string",
+  deviceArn = "string",
+  instanceArn = "string",
+  sshPublicKey = "string",
+  remoteDebugEnabled = TRUE|FALSE,
+  remoteRecordEnabled = TRUE|FALSE,
+  remoteRecordAppArn = "string",
+  name = "string",
+  clientId = "string",
+  configuration = list(
+    billingMethod = "METERED"|"UNMETERED",
+    vpceConfigurationArns = list(
+      "string"
+    )
+  ),
+  interactionMode = "INTERACTIVE"|"NO_VIDEO"|"VIDEO_ONLY",
+  skipAppResign = TRUE|FALSE
+)
 }
 \arguments{
-\item{projectArn}{The Amazon Resource Name (ARN) of the project for which you want to create a remote access session.}
+\item{projectArn}{[required] The Amazon Resource Name (ARN) of the project for which you want to create a remote access session.}
 
-\item{deviceArn}{The Amazon Resource Name (ARN) of the device for which you want to create a remote access session.}
+\item{deviceArn}{[required] The Amazon Resource Name (ARN) of the device for which you want to create a remote access session.}
 
 \item{instanceArn}{The Amazon Resource Name (ARN) of the device instance for which you want to create a remote access session.}
 

@@ -4,7 +4,10 @@
 \alias{list_builds}
 \title{Gets a list of build IDs, with each build ID representing a single build}
 \usage{
-list_builds(sortOrder = NULL, nextToken = NULL)
+list_builds(
+  sortOrder = "ASCENDING"|"DESCENDING",
+  nextToken = "string"
+)
 }
 \arguments{
 \item{sortOrder}{The order to list build IDs. Valid values include:

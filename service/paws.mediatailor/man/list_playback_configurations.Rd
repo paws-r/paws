@@ -4,7 +4,10 @@
 \alias{list_playback_configurations}
 \title{Returns a list of the configurations defined in AWS Elemental MediaTailor}
 \usage{
-list_playback_configurations(MaxResults = NULL, NextToken = NULL)
+list_playback_configurations(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{MaxResults}{Maximum number of records to return.}

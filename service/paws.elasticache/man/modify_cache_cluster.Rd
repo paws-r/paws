@@ -4,17 +4,36 @@
 \alias{modify_cache_cluster}
 \title{Modifies the settings for a cluster}
 \usage{
-modify_cache_cluster(CacheClusterId, NumCacheNodes = NULL,
-  CacheNodeIdsToRemove = NULL, AZMode = NULL, NewAvailabilityZones = NULL,
-  CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL,
-  PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL,
-  CacheParameterGroupName = NULL, NotificationTopicStatus = NULL,
-  ApplyImmediately = NULL, EngineVersion = NULL,
-  AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL,
-  SnapshotWindow = NULL, CacheNodeType = NULL)
+modify_cache_cluster(
+  CacheClusterId = "string",
+  NumCacheNodes = 123,
+  CacheNodeIdsToRemove = list(
+    "string"
+  ),
+  AZMode = "single-az"|"cross-az",
+  NewAvailabilityZones = list(
+    "string"
+  ),
+  CacheSecurityGroupNames = list(
+    "string"
+  ),
+  SecurityGroupIds = list(
+    "string"
+  ),
+  PreferredMaintenanceWindow = "string",
+  NotificationTopicArn = "string",
+  CacheParameterGroupName = "string",
+  NotificationTopicStatus = "string",
+  ApplyImmediately = TRUE|FALSE,
+  EngineVersion = "string",
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  SnapshotRetentionLimit = 123,
+  SnapshotWindow = "string",
+  CacheNodeType = "string"
+)
 }
 \arguments{
-\item{CacheClusterId}{The cluster identifier. This value is stored as a lowercase string.}
+\item{CacheClusterId}{[required] The cluster identifier. This value is stored as a lowercase string.}
 
 \item{NumCacheNodes}{The number of cache nodes that the cluster should have. If the value for \code{NumCacheNodes} is greater than the sum of the number of current cache nodes and the number of cache nodes pending creation (which may be zero), more nodes are added. If the value is less than the number of existing cache nodes, nodes are removed. If the value is equal to the number of current cache nodes, any pending add or remove requests are canceled.
 

@@ -4,17 +4,99 @@
 \alias{create_user_pool}
 \title{Creates a new Amazon Cognito user pool and sets the password policy for the pool}
 \usage{
-create_user_pool(PoolName, Policies = NULL, LambdaConfig = NULL,
-  AutoVerifiedAttributes = NULL, AliasAttributes = NULL,
-  UsernameAttributes = NULL, SmsVerificationMessage = NULL,
-  EmailVerificationMessage = NULL, EmailVerificationSubject = NULL,
-  VerificationMessageTemplate = NULL, SmsAuthenticationMessage = NULL,
-  MfaConfiguration = NULL, DeviceConfiguration = NULL,
-  EmailConfiguration = NULL, SmsConfiguration = NULL, UserPoolTags = NULL,
-  AdminCreateUserConfig = NULL, Schema = NULL, UserPoolAddOns = NULL)
+create_user_pool(
+  PoolName = "string",
+  Policies = list(
+    PasswordPolicy = list(
+      MinimumLength = 123,
+      RequireUppercase = TRUE|FALSE,
+      RequireLowercase = TRUE|FALSE,
+      RequireNumbers = TRUE|FALSE,
+      RequireSymbols = TRUE|FALSE
+    )
+  ),
+  LambdaConfig = list(
+    PreSignUp = "string",
+    CustomMessage = "string",
+    PostConfirmation = "string",
+    PreAuthentication = "string",
+    PostAuthentication = "string",
+    DefineAuthChallenge = "string",
+    CreateAuthChallenge = "string",
+    VerifyAuthChallengeResponse = "string",
+    PreTokenGeneration = "string",
+    UserMigration = "string"
+  ),
+  AutoVerifiedAttributes = list(
+    "phone_number"|"email"
+  ),
+  AliasAttributes = list(
+    "phone_number"|"email"|"preferred_username"
+  ),
+  UsernameAttributes = list(
+    "phone_number"|"email"
+  ),
+  SmsVerificationMessage = "string",
+  EmailVerificationMessage = "string",
+  EmailVerificationSubject = "string",
+  VerificationMessageTemplate = list(
+    SmsMessage = "string",
+    EmailMessage = "string",
+    EmailSubject = "string",
+    EmailMessageByLink = "string",
+    EmailSubjectByLink = "string",
+    DefaultEmailOption = "CONFIRM_WITH_LINK"|"CONFIRM_WITH_CODE"
+  ),
+  SmsAuthenticationMessage = "string",
+  MfaConfiguration = "OFF"|"ON"|"OPTIONAL",
+  DeviceConfiguration = list(
+    ChallengeRequiredOnNewDevice = TRUE|FALSE,
+    DeviceOnlyRememberedOnUserPrompt = TRUE|FALSE
+  ),
+  EmailConfiguration = list(
+    SourceArn = "string",
+    ReplyToEmailAddress = "string"
+  ),
+  SmsConfiguration = list(
+    SnsCallerArn = "string",
+    ExternalId = "string"
+  ),
+  UserPoolTags = list(
+    "string"
+  ),
+  AdminCreateUserConfig = list(
+    AllowAdminCreateUserOnly = TRUE|FALSE,
+    UnusedAccountValidityDays = 123,
+    InviteMessageTemplate = list(
+      SMSMessage = "string",
+      EmailMessage = "string",
+      EmailSubject = "string"
+    )
+  ),
+  Schema = list(
+    list(
+      Name = "string",
+      AttributeDataType = "String"|"Number"|"DateTime"|"Boolean",
+      DeveloperOnlyAttribute = TRUE|FALSE,
+      Mutable = TRUE|FALSE,
+      Required = TRUE|FALSE,
+      NumberAttributeConstraints = list(
+        MinValue = "string",
+        MaxValue = "string"
+      ),
+      StringAttributeConstraints = list(
+        MinLength = "string",
+        MaxLength = "string"
+      )
+    )
+  ),
+  UserPoolAddOns = list(
+    AdvancedSecurityMode = "OFF"|"AUDIT"|"ENFORCED"
+  )
+)
 }
 \arguments{
-\item{PoolName}{A string used to name the user pool.}
+\item{PoolName}{[required] A string used to name the user pool.}
 
 \item{Policies}{The policies associated with the new user pool.}
 

@@ -4,12 +4,15 @@
 \alias{reject_vpc_peering_connection}
 \title{Rejects a VPC peering connection request}
 \usage{
-reject_vpc_peering_connection(VpcPeeringConnectionId, DryRun = NULL)
+reject_vpc_peering_connection(
+  DryRun = TRUE|FALSE,
+  VpcPeeringConnectionId = "string"
+)
 }
 \arguments{
-\item{VpcPeeringConnectionId}{The ID of the VPC peering connection.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{VpcPeeringConnectionId}{[required] The ID of the VPC peering connection.}
 }
 \description{
 Rejects a VPC peering connection request. The VPC peering connection must be in the \code{pending-acceptance} state. Use the DescribeVpcPeeringConnections request to view your outstanding VPC peering connection requests. To delete an active VPC peering connection, or to delete a VPC peering connection request that you initiated, use DeleteVpcPeeringConnection.

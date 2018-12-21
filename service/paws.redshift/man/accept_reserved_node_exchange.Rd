@@ -4,12 +4,15 @@
 \alias{accept_reserved_node_exchange}
 \title{Exchanges a DC1 Reserved Node for a DC2 Reserved Node with no changes to the configuration (term, payment type, or number of nodes) and no additional costs}
 \usage{
-accept_reserved_node_exchange(ReservedNodeId, TargetReservedNodeOfferingId)
+accept_reserved_node_exchange(
+  ReservedNodeId = "string",
+  TargetReservedNodeOfferingId = "string"
+)
 }
 \arguments{
-\item{ReservedNodeId}{A string representing the node identifier of the DC1 Reserved Node to be exchanged.}
+\item{ReservedNodeId}{[required] A string representing the node identifier of the DC1 Reserved Node to be exchanged.}
 
-\item{TargetReservedNodeOfferingId}{The unique identifier of the DC2 Reserved Node offering to be used for the exchange. You can obtain the value for the parameter by calling GetReservedNodeExchangeOfferings}
+\item{TargetReservedNodeOfferingId}{[required] The unique identifier of the DC2 Reserved Node offering to be used for the exchange. You can obtain the value for the parameter by calling GetReservedNodeExchangeOfferings}
 }
 \description{
 Exchanges a DC1 Reserved Node for a DC2 Reserved Node with no changes to the configuration (term, payment type, or number of nodes) and no additional costs.

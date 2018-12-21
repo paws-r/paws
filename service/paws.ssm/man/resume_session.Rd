@@ -4,10 +4,12 @@
 \alias{resume_session}
 \title{Reconnects a session to an instance after it has been disconnected}
 \usage{
-resume_session(SessionId)
+resume_session(
+  SessionId = "string"
+)
 }
 \arguments{
-\item{SessionId}{The ID of the disconnected session to resume.}
+\item{SessionId}{[required] The ID of the disconnected session to resume.}
 }
 \description{
 Reconnects a session to an instance after it has been disconnected. Connections can be resumed for disconnected sessions, but not terminated sessions.

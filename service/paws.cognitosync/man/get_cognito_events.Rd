@@ -4,10 +4,12 @@
 \alias{get_cognito_events}
 \title{Gets the events and the corresponding Lambda functions associated with an identity pool}
 \usage{
-get_cognito_events(IdentityPoolId)
+get_cognito_events(
+  IdentityPoolId = "string"
+)
 }
 \arguments{
-\item{IdentityPoolId}{The Cognito Identity Pool ID for the request}
+\item{IdentityPoolId}{[required] The Cognito Identity Pool ID for the request}
 }
 \description{
 Gets the events and the corresponding Lambda functions associated with an identity pool.

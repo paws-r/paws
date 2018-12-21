@@ -4,10 +4,20 @@
 \alias{list_grants}
 \title{Gets a list of all grants for the specified customer master key (CMK)}
 \usage{
-list_grants(KeyId, Limit = NULL, Marker = NULL)
+list_grants(
+  Limit = 123,
+  Marker = "string",
+  KeyId = "string"
+)
 }
 \arguments{
-\item{KeyId}{A unique identifier for the customer master key (CMK).
+\item{Limit}{Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.
+
+This value is optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a value, it defaults to 50.}
+
+\item{Marker}{Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of \code{NextMarker} from the truncated response you just received.}
+
+\item{KeyId}{[required] A unique identifier for the customer master key (CMK).
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN.
 
@@ -18,12 +28,6 @@ For example:
 }
 
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
-
-\item{Limit}{Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.
-
-This value is optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a value, it defaults to 50.}
-
-\item{Marker}{Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of \code{NextMarker} from the truncated response you just received.}
 }
 \description{
 Gets a list of all grants for the specified customer master key (CMK).

@@ -4,12 +4,15 @@
 \alias{start_user_import_job}
 \title{Starts the user import}
 \usage{
-start_user_import_job(UserPoolId, JobId)
+start_user_import_job(
+  UserPoolId = "string",
+  JobId = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool that the users are being imported into.}
+\item{UserPoolId}{[required] The user pool ID for the user pool that the users are being imported into.}
 
-\item{JobId}{The job ID for the user import job.}
+\item{JobId}{[required] The job ID for the user import job.}
 }
 \description{
 Starts the user import.

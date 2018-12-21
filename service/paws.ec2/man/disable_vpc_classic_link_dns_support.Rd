@@ -4,7 +4,9 @@
 \alias{disable_vpc_classic_link_dns_support}
 \title{Disables ClassicLink DNS support for a VPC}
 \usage{
-disable_vpc_classic_link_dns_support(VpcId = NULL)
+disable_vpc_classic_link_dns_support(
+  VpcId = "string"
+)
 }
 \arguments{
 \item{VpcId}{The ID of the VPC.}

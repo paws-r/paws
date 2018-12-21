@@ -4,17 +4,22 @@
 \alias{create_stream}
 \title{Creates a new Kinesis video stream}
 \usage{
-create_stream(StreamName, DeviceName = NULL, MediaType = NULL,
-  KmsKeyId = NULL, DataRetentionInHours = NULL)
+create_stream(
+  DeviceName = "string",
+  StreamName = "string",
+  MediaType = "string",
+  KmsKeyId = "string",
+  DataRetentionInHours = 123
+)
 }
 \arguments{
-\item{StreamName}{A name for the stream that you are creating.
-
-The stream name is an identifier for the stream, and must be unique for each account and region.}
-
 \item{DeviceName}{The name of the device that is writing to the stream.
 
 In the current implementation, Kinesis Video Streams does not use this name.}
+
+\item{StreamName}{[required] A name for the stream that you are creating.
+
+The stream name is an identifier for the stream, and must be unique for each account and region.}
 
 \item{MediaType}{The media type of the stream. Consumers of the stream can use this information when processing the stream. For more information about media types, see \href{http://www.iana.org/assignments/media-types/media-types.xhtml}{Media Types}. If you choose to specify the \code{MediaType}, see \href{https://tools.ietf.org/html/rfc6838#section-4.2}{Naming Requirements} for guidelines.
 

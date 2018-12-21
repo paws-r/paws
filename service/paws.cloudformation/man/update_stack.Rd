@@ -4,16 +4,53 @@
 \alias{update_stack}
 \title{Updates a stack as specified in the template}
 \usage{
-update_stack(StackName, TemplateBody = NULL, TemplateURL = NULL,
-  UsePreviousTemplate = NULL, StackPolicyDuringUpdateBody = NULL,
-  StackPolicyDuringUpdateURL = NULL, Parameters = NULL,
-  Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL,
-  RollbackConfiguration = NULL, StackPolicyBody = NULL,
-  StackPolicyURL = NULL, NotificationARNs = NULL, Tags = NULL,
-  ClientRequestToken = NULL)
+update_stack(
+  StackName = "string",
+  TemplateBody = "string",
+  TemplateURL = "string",
+  UsePreviousTemplate = TRUE|FALSE,
+  StackPolicyDuringUpdateBody = "string",
+  StackPolicyDuringUpdateURL = "string",
+  Parameters = list(
+    list(
+      ParameterKey = "string",
+      ParameterValue = "string",
+      UsePreviousValue = TRUE|FALSE,
+      ResolvedValue = "string"
+    )
+  ),
+  Capabilities = list(
+    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
+  ),
+  ResourceTypes = list(
+    "string"
+  ),
+  RoleARN = "string",
+  RollbackConfiguration = list(
+    RollbackTriggers = list(
+      list(
+        Arn = "string",
+        Type = "string"
+      )
+    ),
+    MonitoringTimeInMinutes = 123
+  ),
+  StackPolicyBody = "string",
+  StackPolicyURL = "string",
+  NotificationARNs = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  ClientRequestToken = "string"
+)
 }
 \arguments{
-\item{StackName}{The name or unique stack ID of the stack to update.}
+\item{StackName}{[required] The name or unique stack ID of the stack to update.}
 
 \item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes. (For more information, go to \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy} in the AWS CloudFormation User Guide.)
 
@@ -37,13 +74,43 @@ If you want to update protected resources, specify a temporary overriding stack 
 
 \item{Parameters}{A list of \code{Parameter} structures that specify input parameters for the stack. For more information, see the \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html}{Parameter} data type.}
 
-\item{Capabilities}{A list of values that you must specify before AWS CloudFormation can update certain stacks. Some stack templates might include resources that can affect permissions in your AWS account, for example, by creating new AWS Identity and Access Management (IAM) users. For those stacks, you must explicitly acknowledge their capabilities by specifying this parameter.
+\item{Capabilities}{In some cases, you must explicity acknowledge that your stack template contains certain capabilities in order for AWS CloudFormation to update the stack.
+\itemize{
+\item \code{CAPABILITY_IAM} and \code{CAPABILITY_NAMED_IAM}
 
-The only valid values are \code{CAPABILITY_IAM} and \code{CAPABILITY_NAMED_IAM}. The following resources require you to specify this parameter: \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html}{AWS::IAM::AccessKey}, \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html}{AWS::IAM::Group}, \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}, \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html}{AWS::IAM::Policy}, \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}, \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html}{AWS::IAM::User}, and \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html}{AWS::IAM::UserToGrou
+Some stack templates might include resources that can affect permissions in your AWS account; for example, by creating new AWS Identity and Access Management (IAM) users. For those stacks, you must explicitly acknowledge this by specifying one of these capabilities.
 
-If you have IAM resources, you can specify either capability. If you have IAM resources with custom names, you must specify \code{CAPABILITY_NAMED_IAM}. If you don't specify this parameter, this action returns an \code{InsufficientCapabilities} error.
+The following IAM resources require you to specify either the \code{CAPABILITY_IAM} or \code{CAPABILITY_NAMED_IAM} capability.
+\itemize{
+\item If you have IAM resources, you can specify either capability.
+\item If you have IAM resources with custom names, you \emph{must} specify \code{CAPABILITY_NAMED_IAM}.
+\item If you don't specify either of these capabilities, AWS CloudFormation returns an \code{InsufficientCapabilities} error.
+}
 
-For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in AWS CloudFormation Templates}.}
+If your stack template contains these resources, we recommend that you review all permissions associated with them and edit their permissions if necessary.
+\itemize{
+\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html}{AWS::IAM::AccessKey}
+\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html}{AWS::IAM::Group}
+\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
+\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html}{AWS::IAM::Policy}
+\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
+\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html}{AWS::IAM::User}
+\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html}{AWS::IAM::UserToGroupAddition}
+}
+
+For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in AWS CloudFormation Templates}.
+\item \code{CAPABILITY_AUTO_EXPAND}
+
+Some template contain macros. Macros perform custom processing on templates; this can include simple actions like find-and-replace operations, all the way to extensive transformations of entire templates. Because of this, users typically create a change set from the processed template, so that they can review the changes resulting from the macros before actually updating the stack. If your stack template contains one or more macros, and you choose to update a stack directly from the processed template, without first reviewing the resulting changes in a change set, you must acknowledge this capability. This includes the \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html}{AWS::Include} and \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html}{AWS::Serverless} transforms, which are macros hosted by AWS CloudFormation.
+
+Change sets do not currently support nested stacks. If you want to update a stack from a stack template that contains macros \emph{and} nested stacks, you must update the stack directly from the template using this capability.
+
+You should only update stacks directly from a stack template that contains macros if you know what processing the macro performs.
+
+Each macro relies on an underlying Lambda service function for processing stack templates. Be aware that the Lambda function owner can update the function operation without AWS CloudFormation being notified.
+
+For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using AWS CloudFormation Macros to Perform Custom Processing on Templates}.
+}}
 
 \item{ResourceTypes}{The template resource types that you have permissions to work with for this update stack action, such as \code{AWS::EC2::Instance}, \code{AWS::EC2::*}, or \code{Custom::MyCustomInstance}.
 

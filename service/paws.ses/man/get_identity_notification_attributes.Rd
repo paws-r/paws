@@ -4,10 +4,14 @@
 \alias{get_identity_notification_attributes}
 \title{Given a list of verified identities (email addresses and/or domains), returns a structure describing identity notification attributes}
 \usage{
-get_identity_notification_attributes(Identities)
+get_identity_notification_attributes(
+  Identities = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{Identities}{A list of one or more identities. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: \code{user@example.com}, \code{example.com}, \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}.}
+\item{Identities}{[required] A list of one or more identities. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: \code{user@example.com}, \code{example.com}, \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}.}
 }
 \description{
 Given a list of verified identities (email addresses and/or domains), returns a structure describing identity notification attributes.

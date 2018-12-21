@@ -4,26 +4,58 @@
 \alias{modify_db_instance}
 \title{Modifies settings for a DB instance}
 \usage{
-modify_db_instance(DBInstanceIdentifier, AllocatedStorage = NULL,
-  DBInstanceClass = NULL, DBSubnetGroupName = NULL,
-  DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL,
-  ApplyImmediately = NULL, MasterUserPassword = NULL,
-  DBParameterGroupName = NULL, BackupRetentionPeriod = NULL,
-  PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL,
-  MultiAZ = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL,
-  AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, Iops = NULL,
-  OptionGroupName = NULL, NewDBInstanceIdentifier = NULL,
-  StorageType = NULL, TdeCredentialArn = NULL,
-  TdeCredentialPassword = NULL, CACertificateIdentifier = NULL,
-  Domain = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL,
-  DBPortNumber = NULL, PubliclyAccessible = NULL,
-  MonitoringRoleArn = NULL, DomainIAMRoleName = NULL,
-  PromotionTier = NULL, EnableIAMDatabaseAuthentication = NULL,
-  EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL,
-  CloudwatchLogsExportConfiguration = NULL)
+modify_db_instance(
+  DBInstanceIdentifier = "string",
+  AllocatedStorage = 123,
+  DBInstanceClass = "string",
+  DBSubnetGroupName = "string",
+  DBSecurityGroups = list(
+    "string"
+  ),
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  ApplyImmediately = TRUE|FALSE,
+  MasterUserPassword = "string",
+  DBParameterGroupName = "string",
+  BackupRetentionPeriod = 123,
+  PreferredBackupWindow = "string",
+  PreferredMaintenanceWindow = "string",
+  MultiAZ = TRUE|FALSE,
+  EngineVersion = "string",
+  AllowMajorVersionUpgrade = TRUE|FALSE,
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  LicenseModel = "string",
+  Iops = 123,
+  OptionGroupName = "string",
+  NewDBInstanceIdentifier = "string",
+  StorageType = "string",
+  TdeCredentialArn = "string",
+  TdeCredentialPassword = "string",
+  CACertificateIdentifier = "string",
+  Domain = "string",
+  CopyTagsToSnapshot = TRUE|FALSE,
+  MonitoringInterval = 123,
+  DBPortNumber = 123,
+  PubliclyAccessible = TRUE|FALSE,
+  MonitoringRoleArn = "string",
+  DomainIAMRoleName = "string",
+  PromotionTier = 123,
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  EnablePerformanceInsights = TRUE|FALSE,
+  PerformanceInsightsKMSKeyId = "string",
+  CloudwatchLogsExportConfiguration = list(
+    EnableLogTypes = list(
+      "string"
+    ),
+    DisableLogTypes = list(
+      "string"
+    )
+  )
+)
 }
 \arguments{
-\item{DBInstanceIdentifier}{The DB instance identifier. This value is stored as a lowercase string.
+\item{DBInstanceIdentifier}{[required] The DB instance identifier. This value is stored as a lowercase string.
 
 Constraints:
 \itemize{

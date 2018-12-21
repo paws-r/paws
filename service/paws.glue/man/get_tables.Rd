@@ -4,13 +4,18 @@
 \alias{get_tables}
 \title{Retrieves the definitions of some or all of the tables in a given \code{Database}}
 \usage{
-get_tables(DatabaseName, CatalogId = NULL, Expression = NULL,
-  NextToken = NULL, MaxResults = NULL)
+get_tables(
+  CatalogId = "string",
+  DatabaseName = "string",
+  Expression = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{DatabaseName}{The database in the catalog whose tables to list. For Hive compatibility, this name is entirely lowercase.}
-
 \item{CatalogId}{The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.}
+
+\item{DatabaseName}{[required] The database in the catalog whose tables to list. For Hive compatibility, this name is entirely lowercase.}
 
 \item{Expression}{A regular expression pattern. If present, only those tables whose names match the pattern are returned.}
 

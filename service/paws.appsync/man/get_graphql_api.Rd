@@ -4,10 +4,12 @@
 \alias{get_graphql_api}
 \title{Retrieves a \code{GraphqlApi} object}
 \usage{
-get_graphql_api(apiId)
+get_graphql_api(
+  apiId = "string"
+)
 }
 \arguments{
-\item{apiId}{The API ID for the GraphQL API.}
+\item{apiId}{[required] The API ID for the GraphQL API.}
 }
 \description{
 Retrieves a \code{GraphqlApi} object.

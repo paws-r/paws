@@ -4,12 +4,14 @@
 \alias{delete_server_certificate}
 \title{Deletes the specified server certificate}
 \usage{
-delete_server_certificate(ServerCertificateName)
+delete_server_certificate(
+  ServerCertificateName = "string"
+)
 }
 \arguments{
-\item{ServerCertificateName}{The name of the server certificate you want to delete.
+\item{ServerCertificateName}{[required] The name of the server certificate you want to delete.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Deletes the specified server certificate.

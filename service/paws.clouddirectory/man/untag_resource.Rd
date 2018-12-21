@@ -4,12 +4,17 @@
 \alias{untag_resource}
 \title{An API operation for removing tags from a resource}
 \usage{
-untag_resource(ResourceArn, TagKeys)
+untag_resource(
+  ResourceArn = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ResourceArn}{The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.}
 
-\item{TagKeys}{Keys of the tag that need to be removed from the resource.}
+\item{TagKeys}{[required] Keys of the tag that need to be removed from the resource.}
 }
 \description{
 An API operation for removing tags from a resource.

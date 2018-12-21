@@ -4,12 +4,20 @@
 \alias{generate_data_set}
 \title{Given a data set type and data set publication date, asynchronously publishes the requested data set to the specified S3 bucket and notifies the specified SNS topic once the data is available}
 \usage{
-generate_data_set(dataSetType, dataSetPublicationDate, roleNameArn,
-  destinationS3BucketName, snsTopicArn, destinationS3Prefix = NULL,
-  customerDefinedValues = NULL)
+generate_data_set(
+  dataSetType = "customer_subscriber_hourly_monthly_subscriptions"|"customer_subscriber_annual_subscriptions"|"daily_business_usage_by_instance_type"|"daily_business_fees"|"daily_business_free_trial_conversions"|"daily_business_new_instances"|"daily_business_new_product_subscribers"|"daily_business_canceled_product_subscribers"|"monthly_revenue_billing_and_revenue_data"|"monthly_revenue_annual_subscriptions"|"disbursed_amount_by_product"|"disbursed_amount_by_product_with_uncollected_funds"|"disbursed_amount_by_instance_hours"|"disbursed_amount_by_customer_geo"|"disbursed_amount_by_age_of_uncollected_funds"|"disbursed_amount_by_age_of_disbursed_funds"|"customer_profile_by_industry"|"customer_profile_by_revenue"|"customer_profile_by_geography"|"sales_compensation_billed_revenue"|"us_sales_and_use_tax_records",
+  dataSetPublicationDate = as.POSIXct("2015-01-01"),
+  roleNameArn = "string",
+  destinationS3BucketName = "string",
+  destinationS3Prefix = "string",
+  snsTopicArn = "string",
+  customerDefinedValues = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{dataSetType}{The desired data set type.
+\item{dataSetType}{[required] The desired data set type.
 \itemize{
 \item \strong{customer\_subscriber\_hourly\_monthly\_subscriptions}
 
@@ -90,15 +98,15 @@ From 2017-06 to present: Available monthly on the 15th day of the month by 5:00p
 From 2017-02-15 to present: Available monthly on the 15th day of the month by 5:00 PM Pacific Time.
 }}
 
-\item{dataSetPublicationDate}{The date a data set was published. For daily data sets, provide a date with day-level granularity for the desired day. For weekly data sets, provide a date with day-level granularity within the desired week (the day value will be ignored). For monthly data sets, provide a date with month-level granularity for the desired month (the day value will be ignored).}
+\item{dataSetPublicationDate}{[required] The date a data set was published. For daily data sets, provide a date with day-level granularity for the desired day. For weekly data sets, provide a date with day-level granularity within the desired week (the day value will be ignored). For monthly data sets, provide a date with month-level granularity for the desired month (the day value will be ignored).}
 
-\item{roleNameArn}{The Amazon Resource Name (ARN) of the Role with an attached permissions policy to interact with the provided AWS services.}
+\item{roleNameArn}{[required] The Amazon Resource Name (ARN) of the Role with an attached permissions policy to interact with the provided AWS services.}
 
-\item{destinationS3BucketName}{The name (friendly name, not ARN) of the destination S3 bucket.}
-
-\item{snsTopicArn}{Amazon Resource Name (ARN) for the SNS Topic that will be notified when the data set has been published or if an error has occurred.}
+\item{destinationS3BucketName}{[required] The name (friendly name, not ARN) of the destination S3 bucket.}
 
 \item{destinationS3Prefix}{(Optional) The desired S3 prefix for the published data set, similar to a directory path in standard file systems. For example, if given the bucket name "mybucket" and the prefix "myprefix/mydatasets", the output file "outputfile" would be published to "s3://mybucket/myprefix/mydatasets/outputfile". If the prefix directory structure does not exist, it will be created. If no prefix is provided, the data set will be published to the S3 bucket root.}
+
+\item{snsTopicArn}{[required] Amazon Resource Name (ARN) for the SNS Topic that will be notified when the data set has been published or if an error has occurred.}
 
 \item{customerDefinedValues}{(Optional) Key-value pairs which will be returned, unmodified, in the Amazon SNS notification message and the data set metadata file. These key-value pairs can be used to correlated responses with tracking information from other systems.}
 }

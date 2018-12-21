@@ -4,18 +4,29 @@
 \alias{copy_cluster_snapshot}
 \title{Copies the specified automated cluster snapshot to a new manual cluster snapshot}
 \usage{
-copy_cluster_snapshot(SourceSnapshotIdentifier, TargetSnapshotIdentifier,
-  SourceSnapshotClusterIdentifier = NULL)
+copy_cluster_snapshot(
+  SourceSnapshotIdentifier = "string",
+  SourceSnapshotClusterIdentifier = "string",
+  TargetSnapshotIdentifier = "string",
+  ManualSnapshotRetentionPeriod = 123
+)
 }
 \arguments{
-\item{SourceSnapshotIdentifier}{The identifier for the source snapshot.
+\item{SourceSnapshotIdentifier}{[required] The identifier for the source snapshot.
 
 Constraints:
 \itemize{
 \item Must be the identifier for a valid automated snapshot whose state is \code{available}.
 }}
 
-\item{TargetSnapshotIdentifier}{The identifier given to the new manual snapshot.
+\item{SourceSnapshotClusterIdentifier}{The identifier of the cluster the source snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name.
+
+Constraints:
+\itemize{
+\item Must be the identifier for a valid cluster.
+}}
+
+\item{TargetSnapshotIdentifier}{[required] The identifier given to the new manual snapshot.
 
 Constraints:
 \itemize{
@@ -26,12 +37,11 @@ Constraints:
 \item Must be unique for the AWS account that is making the request.
 }}
 
-\item{SourceSnapshotClusterIdentifier}{The identifier of the cluster the source snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name.
+\item{ManualSnapshotRetentionPeriod}{The number of days that a manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely.
 
-Constraints:
-\itemize{
-\item Must be the identifier for a valid cluster.
-}}
+The value must be either -1 or an integer between 1 and 3,653.
+
+The default value is -1.}
 }
 \description{
 Copies the specified automated cluster snapshot to a new manual cluster snapshot. The source must be an automated snapshot and it must be in the available state.

@@ -4,11 +4,19 @@
 \alias{reset_cache_parameter_group}
 \title{Modifies the parameters of a cache parameter group to the engine or system default value}
 \usage{
-reset_cache_parameter_group(CacheParameterGroupName,
-  ResetAllParameters = NULL, ParameterNameValues = NULL)
+reset_cache_parameter_group(
+  CacheParameterGroupName = "string",
+  ResetAllParameters = TRUE|FALSE,
+  ParameterNameValues = list(
+    list(
+      ParameterName = "string",
+      ParameterValue = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{CacheParameterGroupName}{The name of the cache parameter group to reset.}
+\item{CacheParameterGroupName}{[required] The name of the cache parameter group to reset.}
 
 \item{ResetAllParameters}{If \code{true}, all parameters in the cache parameter group are reset to their default values. If \code{false}, only the parameters listed by \code{ParameterNameValues} are reset to their default values.
 

@@ -4,18 +4,25 @@
 \alias{delete_tags}
 \title{Deletes the specified tags from an Amazon SageMaker resource}
 \usage{
-delete_tags(ResourceArn, TagKeys)
+delete_tags(
+  ResourceArn = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ResourceArn}{The Amazon Resource Name (ARN) of the resource whose tags you want to delete.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource whose tags you want to delete.}
 
-\item{TagKeys}{An array or one or more tag keys to delete.}
+\item{TagKeys}{[required] An array or one or more tag keys to delete.}
 }
 \description{
 Deletes the specified tags from an Amazon SageMaker resource.
 }
 \details{
 To list a resource's tags, use the \code{ListTags} API.
+
+When you call this API to delete tags from a hyperparameter tuning job, the deleted tags are not removed from training jobs that the hyperparameter tuning job launched before you called this API.
 }
 \examples{
 

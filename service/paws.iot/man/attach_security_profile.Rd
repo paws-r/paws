@@ -4,12 +4,15 @@
 \alias{attach_security_profile}
 \title{Associates a Device Defender security profile with a thing group or with this account}
 \usage{
-attach_security_profile(securityProfileName, securityProfileTargetArn)
+attach_security_profile(
+  securityProfileName = "string",
+  securityProfileTargetArn = "string"
+)
 }
 \arguments{
-\item{securityProfileName}{The security profile that is attached.}
+\item{securityProfileName}{[required] The security profile that is attached.}
 
-\item{securityProfileTargetArn}{The ARN of the target (thing group) to which the security profile is attached.}
+\item{securityProfileTargetArn}{[required] The ARN of the target (thing group) to which the security profile is attached.}
 }
 \description{
 Associates a Device Defender security profile with a thing group or with this account. Each thing group or account can have up to five security profiles associated with it.

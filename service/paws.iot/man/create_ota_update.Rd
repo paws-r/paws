@@ -4,24 +4,84 @@
 \alias{create_ota_update}
 \title{Creates an AWS IoT OTAUpdate on a target group of things or groups}
 \usage{
-create_ota_update(otaUpdateId, targets, files, roleArn, description = NULL,
-  targetSelection = NULL, awsJobExecutionsRolloutConfig = NULL,
-  additionalParameters = NULL)
+create_ota_update(
+  otaUpdateId = "string",
+  description = "string",
+  targets = list(
+    "string"
+  ),
+  targetSelection = "CONTINUOUS"|"SNAPSHOT",
+  awsJobExecutionsRolloutConfig = list(
+    maximumPerMinute = 123
+  ),
+  files = list(
+    list(
+      fileName = "string",
+      fileVersion = "string",
+      fileLocation = list(
+        stream = list(
+          streamId = "string",
+          fileId = 123
+        ),
+        s3Location = list(
+          bucket = "string",
+          key = "string",
+          version = "string"
+        )
+      ),
+      codeSigning = list(
+        awsSignerJobId = "string",
+        startSigningJobParameter = list(
+          signingProfileParameter = list(
+            certificateArn = "string",
+            platform = "string",
+            certificatePathOnDevice = "string"
+          ),
+          signingProfileName = "string",
+          destination = list(
+            s3Destination = list(
+              bucket = "string",
+              prefix = "string"
+            )
+          )
+        ),
+        customCodeSigning = list(
+          signature = list(
+            inlineDocument = raw
+          ),
+          certificateChain = list(
+            certificateName = "string",
+            inlineDocument = "string"
+          ),
+          hashAlgorithm = "string",
+          signatureAlgorithm = "string"
+        )
+      ),
+      attributes = list(
+        "string"
+      )
+    )
+  ),
+  roleArn = "string",
+  additionalParameters = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{otaUpdateId}{The ID of the OTA update to be created.}
-
-\item{targets}{The targeted devices to receive OTA updates.}
-
-\item{files}{The files to be streamed by the OTA update.}
-
-\item{roleArn}{The IAM role that allows access to the AWS IoT Jobs service.}
+\item{otaUpdateId}{[required] The ID of the OTA update to be created.}
 
 \item{description}{The description of the OTA update.}
+
+\item{targets}{[required] The targeted devices to receive OTA updates.}
 
 \item{targetSelection}{Specifies whether the update will continue to run (CONTINUOUS), or will be complete after all the things specified as targets have completed the update (SNAPSHOT). If continuous, the update may also be run on a thing when a change is detected in a target. For example, an update will run on a thing when the thing is added to a target group, even after the update was completed by all things originally in the group. Valid values: CONTINUOUS | SNAPSHOT.}
 
 \item{awsJobExecutionsRolloutConfig}{Configuration for the rollout of OTA updates.}
+
+\item{files}{[required] The files to be streamed by the OTA update.}
+
+\item{roleArn}{[required] The IAM role that allows access to the AWS IoT Jobs service.}
 
 \item{additionalParameters}{A list of additional OTA update parameters which are name-value pairs.}
 }

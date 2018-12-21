@@ -4,16 +4,53 @@
 \alias{create_lifecycle_policy}
 \title{Creates a policy to manage the lifecycle of the specified AWS resources}
 \usage{
-create_lifecycle_policy(ExecutionRoleArn, Description, State, PolicyDetails)
+create_lifecycle_policy(
+  ExecutionRoleArn = "string",
+  Description = "string",
+  State = "ENABLED"|"DISABLED",
+  PolicyDetails = list(
+    ResourceTypes = list(
+      "VOLUME"
+    ),
+    TargetTags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    Schedules = list(
+      list(
+        Name = "string",
+        CopyTags = TRUE|FALSE,
+        TagsToAdd = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        ),
+        CreateRule = list(
+          Interval = 123,
+          IntervalUnit = "HOURS",
+          Times = list(
+            "string"
+          )
+        ),
+        RetainRule = list(
+          Count = 123
+        )
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{ExecutionRoleArn}{The Amazon Resource Name (ARN) of the IAM role used to run the operations specified by the lifecycle policy.}
+\item{ExecutionRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role used to run the operations specified by the lifecycle policy.}
 
-\item{Description}{A description of the lifecycle policy. The characters ^[0-9A-Za-z \_-]+\$ are supported.}
+\item{Description}{[required] A description of the lifecycle policy. The characters ^[0-9A-Za-z \_-]+\$ are supported.}
 
-\item{State}{The desired activation state of the lifecycle policy after creation.}
+\item{State}{[required] The desired activation state of the lifecycle policy after creation.}
 
-\item{PolicyDetails}{The configuration details of the lifecycle policy.
+\item{PolicyDetails}{[required] The configuration details of the lifecycle policy.
 
 Target tags cannot be re-used across lifecycle policies.}
 }

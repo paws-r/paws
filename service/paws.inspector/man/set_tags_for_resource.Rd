@@ -4,10 +4,18 @@
 \alias{set_tags_for_resource}
 \title{Sets tags (key and value pairs) to the assessment template that is specified by the ARN of the assessment template}
 \usage{
-set_tags_for_resource(resourceArn, tags = NULL)
+set_tags_for_resource(
+  resourceArn = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{resourceArn}{The ARN of the assessment template that you want to set tags to.}
+\item{resourceArn}{[required] The ARN of the assessment template that you want to set tags to.}
 
 \item{tags}{A collection of key and value pairs that you want to set to the assessment template.}
 }

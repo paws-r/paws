@@ -4,10 +4,13 @@
 \alias{list_subscriptions_by_topic}
 \title{Returns a list of the subscriptions to a specific topic}
 \usage{
-list_subscriptions_by_topic(TopicArn, NextToken = NULL)
+list_subscriptions_by_topic(
+  TopicArn = "string",
+  NextToken = "string"
+)
 }
 \arguments{
-\item{TopicArn}{The ARN of the topic for which you wish to find subscriptions.}
+\item{TopicArn}{[required] The ARN of the topic for which you wish to find subscriptions.}
 
 \item{NextToken}{Token returned by the previous \code{ListSubscriptionsByTopic} request.}
 }

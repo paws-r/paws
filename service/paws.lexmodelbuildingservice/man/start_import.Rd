@@ -4,18 +4,22 @@
 \alias{start_import}
 \title{Starts a job to import a resource to Amazon Lex}
 \usage{
-start_import(payload, resourceType, mergeStrategy)
+start_import(
+  payload = raw,
+  resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
+  mergeStrategy = "OVERWRITE_LATEST"|"FAIL_ON_CONFLICT"
+)
 }
 \arguments{
-\item{payload}{A zip archive in binary format. The archive should contain one file, a JSON file containing the resource to import. The resource should match the type specified in the \code{resourceType} field.}
+\item{payload}{[required] A zip archive in binary format. The archive should contain one file, a JSON file containing the resource to import. The resource should match the type specified in the \code{resourceType} field.}
 
-\item{resourceType}{Specifies the type of resource to export. Each resource also exports any resources that it depends on.
+\item{resourceType}{[required] Specifies the type of resource to export. Each resource also exports any resources that it depends on.
 \itemize{
 \item A bot exports dependent intents.
 \item An intent exports dependent slot types.
 }}
 
-\item{mergeStrategy}{Specifies the action that the \code{StartImport} operation should take when there is an existing resource with the same name.
+\item{mergeStrategy}{[required] Specifies the action that the \code{StartImport} operation should take when there is an existing resource with the same name.
 \itemize{
 \item FAIL\_ON\_CONFLICT - The import operation is stopped on the first conflict between a resource in the import file and an existing resource. The name of the resource causing the conflict is in the \code{failureReason} field of the response to the \code{GetImport} operation.
 

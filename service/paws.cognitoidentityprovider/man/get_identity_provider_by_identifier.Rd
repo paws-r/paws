@@ -4,12 +4,15 @@
 \alias{get_identity_provider_by_identifier}
 \title{Gets the specified identity provider}
 \usage{
-get_identity_provider_by_identifier(UserPoolId, IdpIdentifier)
+get_identity_provider_by_identifier(
+  UserPoolId = "string",
+  IdpIdentifier = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID.}
+\item{UserPoolId}{[required] The user pool ID.}
 
-\item{IdpIdentifier}{The identity provider ID.}
+\item{IdpIdentifier}{[required] The identity provider ID.}
 }
 \description{
 Gets the specified identity provider.

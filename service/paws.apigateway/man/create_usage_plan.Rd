@@ -4,11 +4,34 @@
 \alias{create_usage_plan}
 \title{Creates a usage plan with the throttle and quota limits, as well as the associated API stages, specified in the payload}
 \usage{
-create_usage_plan(name, description = NULL, apiStages = NULL,
-  throttle = NULL, quota = NULL)
+create_usage_plan(
+  name = "string",
+  description = "string",
+  apiStages = list(
+    list(
+      apiId = "string",
+      stage = "string",
+      throttle = list(
+        list(
+          burstLimit = 123,
+          rateLimit = 123.0
+        )
+      )
+    )
+  ),
+  throttle = list(
+    burstLimit = 123,
+    rateLimit = 123.0
+  ),
+  quota = list(
+    limit = 123,
+    offset = 123,
+    period = "DAY"|"WEEK"|"MONTH"
+  )
+)
 }
 \arguments{
-\item{name}{[Required] The name of the usage plan.}
+\item{name}{[required] [Required] The name of the usage plan.}
 
 \item{description}{The description of the usage plan.}
 

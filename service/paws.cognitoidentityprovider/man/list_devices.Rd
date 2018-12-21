@@ -4,10 +4,14 @@
 \alias{list_devices}
 \title{Lists the devices}
 \usage{
-list_devices(AccessToken, Limit = NULL, PaginationToken = NULL)
+list_devices(
+  AccessToken = "string",
+  Limit = 123,
+  PaginationToken = "string"
+)
 }
 \arguments{
-\item{AccessToken}{The access tokens for the request to list devices.}
+\item{AccessToken}{[required] The access tokens for the request to list devices.}
 
 \item{Limit}{The limit of the device request.}
 

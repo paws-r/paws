@@ -4,10 +4,12 @@
 \alias{delete_run}
 \title{Deletes the run, given the run ARN}
 \usage{
-delete_run(arn)
+delete_run(
+  arn = "string"
+)
 }
 \arguments{
-\item{arn}{The Amazon Resource Name (ARN) for the run you wish to delete.}
+\item{arn}{[required] The Amazon Resource Name (ARN) for the run you wish to delete.}
 }
 \description{
 Deletes the run, given the run ARN.

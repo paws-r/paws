@@ -4,8 +4,11 @@
 \alias{list_streams}
 \title{Returns an array of stream ARNs associated with the current account and endpoint}
 \usage{
-list_streams(TableName = NULL, Limit = NULL,
-  ExclusiveStartStreamArn = NULL)
+list_streams(
+  TableName = "string",
+  Limit = 123,
+  ExclusiveStartStreamArn = "string"
+)
 }
 \arguments{
 \item{TableName}{If this parameter is provided, then only the streams associated with this table name are returned.}

@@ -4,7 +4,11 @@
 \alias{retire_grant}
 \title{Retires a grant}
 \usage{
-retire_grant(GrantToken = NULL, KeyId = NULL, GrantId = NULL)
+retire_grant(
+  GrantToken = "string",
+  KeyId = "string",
+  GrantId = "string"
+)
 }
 \arguments{
 \item{GrantToken}{Token that identifies the grant to be retired.}

@@ -4,15 +4,21 @@
 \alias{create_vpc_endpoint_service_configuration}
 \title{Creates a VPC endpoint service configuration to which service consumers (AWS accounts, IAM users, and IAM roles) can connect}
 \usage{
-create_vpc_endpoint_service_configuration(NetworkLoadBalancerArns,
-  DryRun = NULL, AcceptanceRequired = NULL, ClientToken = NULL)
+create_vpc_endpoint_service_configuration(
+  DryRun = TRUE|FALSE,
+  AcceptanceRequired = TRUE|FALSE,
+  NetworkLoadBalancerArns = list(
+    "string"
+  ),
+  ClientToken = "string"
+)
 }
 \arguments{
-\item{NetworkLoadBalancerArns}{The Amazon Resource Names (ARNs) of one or more Network Load Balancers for your service.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{AcceptanceRequired}{Indicate whether requests from service consumers to create an endpoint to your service must be accepted. To accept a request, use AcceptVpcEndpointConnections.}
+
+\item{NetworkLoadBalancerArns}{[required] The Amazon Resource Names (ARNs) of one or more Network Load Balancers for your service.}
 
 \item{ClientToken}{Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 }

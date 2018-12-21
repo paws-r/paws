@@ -4,10 +4,12 @@
 \alias{delete_apns_voip_sandbox_channel}
 \title{Delete an APNS VoIP sandbox channel}
 \usage{
-delete_apns_voip_sandbox_channel(ApplicationId)
+delete_apns_voip_sandbox_channel(
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 }
 \description{
 Delete an APNS VoIP sandbox channel

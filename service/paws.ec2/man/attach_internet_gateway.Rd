@@ -4,14 +4,18 @@
 \alias{attach_internet_gateway}
 \title{Attaches an internet gateway to a VPC, enabling connectivity between the internet and the VPC}
 \usage{
-attach_internet_gateway(InternetGatewayId, VpcId, DryRun = NULL)
+attach_internet_gateway(
+  DryRun = TRUE|FALSE,
+  InternetGatewayId = "string",
+  VpcId = "string"
+)
 }
 \arguments{
-\item{InternetGatewayId}{The ID of the internet gateway.}
-
-\item{VpcId}{The ID of the VPC.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{InternetGatewayId}{[required] The ID of the internet gateway.}
+
+\item{VpcId}{[required] The ID of the VPC.}
 }
 \description{
 Attaches an internet gateway to a VPC, enabling connectivity between the internet and the VPC. For more information about your VPC and internet gateway, see the \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/}{Amazon Virtual Private Cloud User Guide}.

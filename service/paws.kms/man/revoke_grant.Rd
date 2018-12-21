@@ -4,10 +4,13 @@
 \alias{revoke_grant}
 \title{Revokes the specified grant for the specified customer master key (CMK)}
 \usage{
-revoke_grant(KeyId, GrantId)
+revoke_grant(
+  KeyId = "string",
+  GrantId = "string"
+)
 }
 \arguments{
-\item{KeyId}{A unique identifier for the customer master key associated with the grant.
+\item{KeyId}{[required] A unique identifier for the customer master key associated with the grant.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN.
 
@@ -19,7 +22,7 @@ For example:
 
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 
-\item{GrantId}{Identifier of the grant to be revoked.}
+\item{GrantId}{[required] Identifier of the grant to be revoked.}
 }
 \description{
 Revokes the specified grant for the specified customer master key (CMK). You can revoke a grant to actively deny operations that depend on it.

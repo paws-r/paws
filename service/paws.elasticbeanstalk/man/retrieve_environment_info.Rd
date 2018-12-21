@@ -4,12 +4,13 @@
 \alias{retrieve_environment_info}
 \title{Retrieves the compiled information from a RequestEnvironmentInfo request}
 \usage{
-retrieve_environment_info(InfoType, EnvironmentId = NULL,
-  EnvironmentName = NULL)
+retrieve_environment_info(
+  EnvironmentId = "string",
+  EnvironmentName = "string",
+  InfoType = "tail"|"bundle"
+)
 }
 \arguments{
-\item{InfoType}{The type of information to retrieve.}
-
 \item{EnvironmentId}{The ID of the data's environment.
 
 If no such environment is found, returns an \code{InvalidParameterValue} error.
@@ -21,6 +22,8 @@ Condition: You must specify either this or an EnvironmentName, or both. If you d
 If no such environment is found, returns an \code{InvalidParameterValue} error.
 
 Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
+
+\item{InfoType}{[required] The type of information to retrieve.}
 }
 \description{
 Retrieves the compiled information from a RequestEnvironmentInfo request.

@@ -4,7 +4,10 @@
 \alias{list_webhooks}
 \title{Gets a listing of all the webhooks in this region for this account}
 \usage{
-list_webhooks(NextToken = NULL, MaxResults = NULL)
+list_webhooks(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{NextToken}{The token that was returned from the previous ListWebhooks call, which can be used to return the next set of webhooks in the list.}

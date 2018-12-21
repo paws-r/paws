@@ -4,14 +4,20 @@
 \alias{delete_tags}
 \title{Deletes the specified tags associated with an ML object}
 \usage{
-delete_tags(TagKeys, ResourceId, ResourceType)
+delete_tags(
+  TagKeys = list(
+    "string"
+  ),
+  ResourceId = "string",
+  ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
+)
 }
 \arguments{
-\item{TagKeys}{One or more tags to delete.}
+\item{TagKeys}{[required] One or more tags to delete.}
 
-\item{ResourceId}{The ID of the tagged ML object. For example, \code{exampleModelId}.}
+\item{ResourceId}{[required] The ID of the tagged ML object. For example, \code{exampleModelId}.}
 
-\item{ResourceType}{The type of the tagged ML object.}
+\item{ResourceType}{[required] The type of the tagged ML object.}
 }
 \description{
 Deletes the specified tags associated with an ML object. After this operation is complete, you can't recover deleted tags.

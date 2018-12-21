@@ -4,12 +4,18 @@
 \alias{poll_for_activity_task}
 \title{Used by workers to get an ActivityTask from the specified activity \code{taskList}}
 \usage{
-poll_for_activity_task(domain, taskList, identity = NULL)
+poll_for_activity_task(
+  domain = "string",
+  taskList = list(
+    name = "string"
+  ),
+  identity = "string"
+)
 }
 \arguments{
-\item{domain}{The name of the domain that contains the task lists being polled.}
+\item{domain}{[required] The name of the domain that contains the task lists being polled.}
 
-\item{taskList}{Specifies the task list to poll for activity tasks.
+\item{taskList}{[required] Specifies the task list to poll for activity tasks.
 
 The specified string must not start or end with whitespace. It must not contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control characters (\code{\u0000-\u001f} | \code{\u007f-\u009f}). Also, it must not contain the literal string \code{arn}.}
 

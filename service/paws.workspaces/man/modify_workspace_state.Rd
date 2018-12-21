@@ -4,12 +4,15 @@
 \alias{modify_workspace_state}
 \title{Sets the state of the specified WorkSpace}
 \usage{
-modify_workspace_state(WorkspaceId, WorkspaceState)
+modify_workspace_state(
+  WorkspaceId = "string",
+  WorkspaceState = "AVAILABLE"|"ADMIN_MAINTENANCE"
+)
 }
 \arguments{
-\item{WorkspaceId}{The ID of the WorkSpace.}
+\item{WorkspaceId}{[required] The identifier of the WorkSpace.}
 
-\item{WorkspaceState}{The WorkSpace state.}
+\item{WorkspaceState}{[required] The WorkSpace state.}
 }
 \description{
 Sets the state of the specified WorkSpace.

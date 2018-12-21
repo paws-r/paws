@@ -4,10 +4,14 @@
 \alias{batch_get_builds}
 \title{Gets information about builds}
 \usage{
-batch_get_builds(ids)
+batch_get_builds(
+  ids = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ids}{The IDs of the builds.}
+\item{ids}{[required] The IDs of the builds.}
 }
 \description{
 Gets information about builds.

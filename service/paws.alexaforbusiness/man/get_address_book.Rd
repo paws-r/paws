@@ -4,10 +4,12 @@
 \alias{get_address_book}
 \title{Gets address the book details by the address book ARN}
 \usage{
-get_address_book(AddressBookArn)
+get_address_book(
+  AddressBookArn = "string"
+)
 }
 \arguments{
-\item{AddressBookArn}{The ARN of the address book for which to request details.}
+\item{AddressBookArn}{[required] The ARN of the address book for which to request details.}
 }
 \description{
 Gets address the book details by the address book ARN.

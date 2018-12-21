@@ -4,7 +4,9 @@
 \alias{list_queues}
 \title{Returns a list of your queues}
 \usage{
-list_queues(QueueNamePrefix = NULL)
+list_queues(
+  QueueNamePrefix = "string"
+)
 }
 \arguments{
 \item{QueueNamePrefix}{A string to use for filtering the list results. Only those queues whose name begins with the specified string are returned.

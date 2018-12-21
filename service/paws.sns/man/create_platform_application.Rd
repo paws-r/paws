@@ -4,14 +4,20 @@
 \alias{create_platform_application}
 \title{Creates a platform application object for one of the supported push notification services, such as APNS and GCM, to which devices and mobile apps may register}
 \usage{
-create_platform_application(Name, Platform, Attributes)
+create_platform_application(
+  Name = "string",
+  Platform = "string",
+  Attributes = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{Name}{Application names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, hyphens, and periods, and must be between 1 and 256 characters long.}
+\item{Name}{[required] Application names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, hyphens, and periods, and must be between 1 and 256 characters long.}
 
-\item{Platform}{The following platforms are supported: ADM (Amazon Device Messaging), APNS (Apple Push Notification Service), APNS\_SANDBOX, and GCM (Google Cloud Messaging).}
+\item{Platform}{[required] The following platforms are supported: ADM (Amazon Device Messaging), APNS (Apple Push Notification Service), APNS\_SANDBOX, and GCM (Google Cloud Messaging).}
 
-\item{Attributes}{For a list of attributes, see \href{http://docs.aws.amazon.com/sns/latest/api/API_SetPlatformApplicationAttributes.html}{SetPlatformApplicationAttributes}}
+\item{Attributes}{[required] For a list of attributes, see \href{http://docs.aws.amazon.com/sns/latest/api/API_SetPlatformApplicationAttributes.html}{SetPlatformApplicationAttributes}}
 }
 \description{
 Creates a platform application object for one of the supported push notification services, such as APNS and GCM, to which devices and mobile apps may register. You must specify PlatformPrincipal and PlatformCredential attributes when using the \code{CreatePlatformApplication} action. The PlatformPrincipal is received from the notification service. For APNS/APNS\_SANDBOX, PlatformPrincipal is "SSL certificate". For GCM, PlatformPrincipal is not applicable. For ADM, PlatformPrincipal is "client id". The PlatformCredential is also received from the notification service. For WNS, PlatformPrincipal is "Package Security Identifier". For MPNS, PlatformPrincipal is "TLS certificate". For Baidu, PlatformPrincipal is "API key".

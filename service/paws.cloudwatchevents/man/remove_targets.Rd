@@ -4,12 +4,20 @@
 \alias{remove_targets}
 \title{Removes the specified targets from the specified rule}
 \usage{
-remove_targets(Rule, Ids)
+remove_targets(
+  Rule = "string",
+  Ids = list(
+    "string"
+  ),
+  Force = TRUE|FALSE
+)
 }
 \arguments{
-\item{Rule}{The name of the rule.}
+\item{Rule}{[required] The name of the rule.}
 
-\item{Ids}{The IDs of the targets to remove from the rule.}
+\item{Ids}{[required] The IDs of the targets to remove from the rule.}
+
+\item{Force}{If this is a managed rule, created by an AWS service on your behalf, you must specify \code{Force} as \code{True} to remove targets. This parameter is ignored for rules that are not managed rules. You can check whether a rule is a managed rule by using \code{DescribeRule} or \code{ListRules} and checking the \code{ManagedBy} field of the response.}
 }
 \description{
 Removes the specified targets from the specified rule. When the rule is triggered, those targets are no longer be invoked.

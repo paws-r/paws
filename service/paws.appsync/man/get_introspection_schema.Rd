@@ -4,12 +4,15 @@
 \alias{get_introspection_schema}
 \title{Retrieves the introspection schema for a GraphQL API}
 \usage{
-get_introspection_schema(apiId, format)
+get_introspection_schema(
+  apiId = "string",
+  format = "SDL"|"JSON"
+)
 }
 \arguments{
-\item{apiId}{The API ID.}
+\item{apiId}{[required] The API ID.}
 
-\item{format}{The schema format: SDL or JSON.}
+\item{format}{[required] The schema format: SDL or JSON.}
 }
 \description{
 Retrieves the introspection schema for a GraphQL API.

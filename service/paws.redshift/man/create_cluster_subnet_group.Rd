@@ -4,11 +4,22 @@
 \alias{create_cluster_subnet_group}
 \title{Creates a new Amazon Redshift subnet group}
 \usage{
-create_cluster_subnet_group(ClusterSubnetGroupName, Description, SubnetIds,
-  Tags = NULL)
+create_cluster_subnet_group(
+  ClusterSubnetGroupName = "string",
+  Description = "string",
+  SubnetIds = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ClusterSubnetGroupName}{The name for the subnet group. Amazon Redshift stores the value as a lowercase string.
+\item{ClusterSubnetGroupName}{[required] The name for the subnet group. Amazon Redshift stores the value as a lowercase string.
 
 Constraints:
 \itemize{
@@ -19,9 +30,9 @@ Constraints:
 
 Example: \code{examplesubnetgroup}}
 
-\item{Description}{A description for the subnet group.}
+\item{Description}{[required] A description for the subnet group.}
 
-\item{SubnetIds}{An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a single request.}
+\item{SubnetIds}{[required] An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a single request.}
 
 \item{Tags}{A list of tag instances.}
 }

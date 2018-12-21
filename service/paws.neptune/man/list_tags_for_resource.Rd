@@ -4,10 +4,20 @@
 \alias{list_tags_for_resource}
 \title{Lists all tags on an Amazon Neptune resource}
 \usage{
-list_tags_for_resource(ResourceName, Filters = NULL)
+list_tags_for_resource(
+  ResourceName = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{ResourceName}{The Amazon Neptune resource with tags to be listed. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see \href{http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing}{Constructing an Amazon Resource Name (ARN)}.}
+\item{ResourceName}{[required] The Amazon Neptune resource with tags to be listed. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see \href{http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing}{Constructing an Amazon Resource Name (ARN)}.}
 
 \item{Filters}{This parameter is not currently supported.}
 }

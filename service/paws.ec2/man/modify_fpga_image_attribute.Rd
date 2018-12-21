@@ -4,15 +4,42 @@
 \alias{modify_fpga_image_attribute}
 \title{Modifies the specified attribute of the specified Amazon FPGA Image (AFI)}
 \usage{
-modify_fpga_image_attribute(FpgaImageId, DryRun = NULL, Attribute = NULL,
-  OperationType = NULL, UserIds = NULL, UserGroups = NULL,
-  ProductCodes = NULL, LoadPermission = NULL, Description = NULL,
-  Name = NULL)
+modify_fpga_image_attribute(
+  DryRun = TRUE|FALSE,
+  FpgaImageId = "string",
+  Attribute = "description"|"name"|"loadPermission"|"productCodes",
+  OperationType = "add"|"remove",
+  UserIds = list(
+    "string"
+  ),
+  UserGroups = list(
+    "string"
+  ),
+  ProductCodes = list(
+    "string"
+  ),
+  LoadPermission = list(
+    Add = list(
+      list(
+        Group = "all",
+        UserId = "string"
+      )
+    ),
+    Remove = list(
+      list(
+        Group = "all",
+        UserId = "string"
+      )
+    )
+  ),
+  Description = "string",
+  Name = "string"
+)
 }
 \arguments{
-\item{FpgaImageId}{The ID of the AFI.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{FpgaImageId}{[required] The ID of the AFI.}
 
 \item{Attribute}{The name of the attribute.}
 

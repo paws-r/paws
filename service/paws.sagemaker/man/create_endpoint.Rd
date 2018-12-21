@@ -4,12 +4,21 @@
 \alias{create_endpoint}
 \title{Creates an endpoint using the endpoint configuration specified in the request}
 \usage{
-create_endpoint(EndpointName, EndpointConfigName, Tags = NULL)
+create_endpoint(
+  EndpointName = "string",
+  EndpointConfigName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{EndpointName}{The name of the endpoint. The name must be unique within an AWS Region in your AWS account.}
+\item{EndpointName}{[required] The name of the endpoint. The name must be unique within an AWS Region in your AWS account.}
 
-\item{EndpointConfigName}{The name of an endpoint configuration. For more information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html}{CreateEndpointConfig}.}
+\item{EndpointConfigName}{[required] The name of an endpoint configuration. For more information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html}{CreateEndpointConfig}.}
 
 \item{Tags}{An array of key-value pairs. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}in the \emph{AWS Billing and Cost Management User Guide}.}
 }

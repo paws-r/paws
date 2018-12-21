@@ -4,16 +4,24 @@
 \alias{search}
 \title{Retrieves a list of documents that match the specified search criteria}
 \usage{
-search(query, cursor = NULL, expr = NULL, facet = NULL,
-  filterQuery = NULL, highlight = NULL, partial = NULL,
-  queryOptions = NULL, queryParser = NULL, return = NULL, size = NULL,
-  sort = NULL, start = NULL, stats = NULL)
+search(
+  cursor = "string",
+  expr = "string",
+  facet = "string",
+  filterQuery = "string",
+  highlight = "string",
+  partial = TRUE|FALSE,
+  query = "string",
+  queryOptions = "string",
+  queryParser = "simple"|"structured"|"lucene"|"dismax",
+  return = "string",
+  size = 123,
+  sort = "string",
+  start = 123,
+  stats = "string"
+)
 }
 \arguments{
-\item{query}{Specifies the search criteria for the request. How you specify the search criteria depends on the query parser used for the request and the parser options specified in the \code{queryOptions} parameter. By default, the \code{simple} query parser is used to process requests. To use the \code{structured}, \code{lucene}, or \code{dismax} query parser, you must also specify the \code{queryParser} parameter.
-
-For more information about specifying search criteria, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching.html}{Searching Your Data} in the \emph{Amazon CloudSearch Developer Guide}.}
-
 \item{cursor}{Retrieves a cursor value you can use to page through large result sets. Use the \code{size} parameter to control the number of hits to include in each response. You can specify either the \code{cursor} or \code{start} parameter in a request; they are mutually exclusive. To get the first cursor, set the cursor value to \code{initial}. In subsequent requests, specify the cursor value returned in the hits section of the response.
 
 For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/paginating-results.html}{Paginating Results} in the \emph{Amazon CloudSearch Developer Guide}.}
@@ -31,6 +39,10 @@ For information about the variables, operators, and functions you can use in exp
 For more information about using filters, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/filtering-results.html}{Filtering Matching Documents} in the \emph{Amazon CloudSearch Developer Guide}.}
 
 \item{partial}{Enables partial results to be returned if one or more index partitions are unavailable. When your search index is partitioned across multiple search instances, by default Amazon CloudSearch only returns results if every partition can be queried. This means that the failure of a single search instance can result in 5xx (internal server) errors. When you enable partial results, Amazon CloudSearch returns whatever results are available and includes the percentage of documents searched in the search results (percent-searched). This enables you to more gracefully degrade your users' search experience. For example, rather than displaying no results, you could display the partial results and a message indicating that the results might be incomplete due to a temporary system outage.}
+
+\item{query}{[required] Specifies the search criteria for the request. How you specify the search criteria depends on the query parser used for the request and the parser options specified in the \code{queryOptions} parameter. By default, the \code{simple} query parser is used to process requests. To use the \code{structured}, \code{lucene}, or \code{dismax} query parser, you must also specify the \code{queryParser} parameter.
+
+For more information about specifying search criteria, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching.html}{Searching Your Data} in the \emph{Amazon CloudSearch Developer Guide}.}
 
 \item{queryOptions}{Configures options for the query parser specified in the \code{queryParser} parameter. You specify the options in JSON using the following form \code{{\"OPTION1\":\"VALUE1\",\"OPTION2\":VALUE2\"...\"OPTIONN\":\"VALUEN\"}.}
 

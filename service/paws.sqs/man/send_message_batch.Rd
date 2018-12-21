@@ -4,14 +4,38 @@
 \alias{send_message_batch}
 \title{Delivers up to ten messages to the specified queue}
 \usage{
-send_message_batch(QueueUrl, Entries)
+send_message_batch(
+  QueueUrl = "string",
+  Entries = list(
+    list(
+      Id = "string",
+      MessageBody = "string",
+      DelaySeconds = 123,
+      MessageAttributes = list(
+        list(
+          StringValue = "string",
+          BinaryValue = raw,
+          StringListValues = list(
+            "string"
+          ),
+          BinaryListValues = list(
+            raw
+          ),
+          DataType = "string"
+        )
+      ),
+      MessageDeduplicationId = "string",
+      MessageGroupId = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{QueueUrl}{The URL of the Amazon SQS queue to which batched messages are sent.
+\item{QueueUrl}{[required] The URL of the Amazon SQS queue to which batched messages are sent.
 
 Queue URLs and names are case-sensitive.}
 
-\item{Entries}{A list of \code{SendMessageBatchRequestEntry SendMessageBatchRequestEntry} items.}
+\item{Entries}{[required] A list of \code{SendMessageBatchRequestEntry SendMessageBatchRequestEntry} items.}
 }
 \description{
 Delivers up to ten messages to the specified queue. This is a batch version of \code{ SendMessage.SendMessage.} For a FIFO queue, multiple messages within a single batch are enqueued in the order they are sent.

@@ -4,8 +4,25 @@
 \alias{list_compliance_items}
 \title{For a specified resource ID, this API action returns a list of compliance statuses for different resource types}
 \usage{
-list_compliance_items(Filters = NULL, ResourceIds = NULL,
-  ResourceTypes = NULL, NextToken = NULL, MaxResults = NULL)
+list_compliance_items(
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      ),
+      Type = "EQUAL"|"NOT_EQUAL"|"BEGIN_WITH"|"LESS_THAN"|"GREATER_THAN"
+    )
+  ),
+  ResourceIds = list(
+    "string"
+  ),
+  ResourceTypes = list(
+    "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{Filters}{One or more compliance filters. Use a filter to return a more specific list of results.}

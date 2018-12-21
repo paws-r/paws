@@ -4,8 +4,15 @@
 \alias{describe_compliance_by_config_rule}
 \title{Indicates whether the specified AWS Config rules are compliant}
 \usage{
-describe_compliance_by_config_rule(ConfigRuleNames = NULL,
-  ComplianceTypes = NULL, NextToken = NULL)
+describe_compliance_by_config_rule(
+  ConfigRuleNames = list(
+    "string"
+  ),
+  ComplianceTypes = list(
+    "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA"
+  ),
+  NextToken = "string"
+)
 }
 \arguments{
 \item{ConfigRuleNames}{Specify one or more AWS Config rule names to filter the results by rule.}

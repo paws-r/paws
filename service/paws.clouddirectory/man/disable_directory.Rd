@@ -4,10 +4,12 @@
 \alias{disable_directory}
 \title{Disables the specified directory}
 \usage{
-disable_directory(DirectoryArn)
+disable_directory(
+  DirectoryArn = "string"
+)
 }
 \arguments{
-\item{DirectoryArn}{The ARN of the directory to disable.}
+\item{DirectoryArn}{[required] The ARN of the directory to disable.}
 }
 \description{
 Disables the specified directory. Disabled directories cannot be read or written to. Only enabled directories can be disabled. Disabled directories may be reenabled.

@@ -4,10 +4,13 @@
 \alias{create_snapshot}
 \title{Creates a snapshot of a Simple AD or Microsoft AD directory in the AWS cloud}
 \usage{
-create_snapshot(DirectoryId, Name = NULL)
+create_snapshot(
+  DirectoryId = "string",
+  Name = "string"
+)
 }
 \arguments{
-\item{DirectoryId}{The identifier of the directory of which to take a snapshot.}
+\item{DirectoryId}{[required] The identifier of the directory of which to take a snapshot.}
 
 \item{Name}{The descriptive name to apply to the snapshot.}
 }

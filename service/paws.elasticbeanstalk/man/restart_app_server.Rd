@@ -4,7 +4,10 @@
 \alias{restart_app_server}
 \title{Causes the environment to restart the application container server running on each Amazon EC2 instance}
 \usage{
-restart_app_server(EnvironmentId = NULL, EnvironmentName = NULL)
+restart_app_server(
+  EnvironmentId = "string",
+  EnvironmentName = "string"
+)
 }
 \arguments{
 \item{EnvironmentId}{The ID of the environment to restart the server for.

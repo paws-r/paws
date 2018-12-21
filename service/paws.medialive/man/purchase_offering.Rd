@@ -4,16 +4,24 @@
 \alias{purchase_offering}
 \title{Purchase an offering and create a reservation}
 \usage{
-purchase_offering(OfferingId, Count = NULL, Name = NULL, RequestId = NULL)
+purchase_offering(
+  Count = 123,
+  Name = "string",
+  OfferingId = "string",
+  RequestId = "string",
+  Start = "string"
+)
 }
 \arguments{
-\item{OfferingId}{Offering to purchase, e.g. '87654321'}
-
-\item{Count}{Number of resources}
+\item{Count}{[required] Number of resources}
 
 \item{Name}{Name for the new reservation}
 
+\item{OfferingId}{[required] Offering to purchase, e.g. '87654321'}
+
 \item{RequestId}{Unique request ID to be specified. This is needed to prevent retries from creating multiple resources.}
+
+\item{Start}{Requested reservation start time (UTC) in ISO-8601 format. The specified time must be between the first day of the current month and one year from now. If no value is given, the default is now.}
 }
 \description{
 Purchase an offering and create a reservation.

@@ -4,12 +4,32 @@
 \alias{create_connection}
 \title{Creates a connection definition in the Data Catalog}
 \usage{
-create_connection(ConnectionInput, CatalogId = NULL)
+create_connection(
+  CatalogId = "string",
+  ConnectionInput = list(
+    Name = "string",
+    Description = "string",
+    ConnectionType = "JDBC"|"SFTP",
+    MatchCriteria = list(
+      "string"
+    ),
+    ConnectionProperties = list(
+      "string"
+    ),
+    PhysicalConnectionRequirements = list(
+      SubnetId = "string",
+      SecurityGroupIdList = list(
+        "string"
+      ),
+      AvailabilityZone = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ConnectionInput}{A \code{ConnectionInput} object defining the connection to create.}
-
 \item{CatalogId}{The ID of the Data Catalog in which to create the connection. If none is supplied, the AWS account ID is used by default.}
+
+\item{ConnectionInput}{[required] A \code{ConnectionInput} object defining the connection to create.}
 }
 \description{
 Creates a connection definition in the Data Catalog.

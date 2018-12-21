@@ -4,7 +4,13 @@
 \alias{describe_fleet_attributes}
 \title{Retrieves fleet properties, including metadata, status, and configuration, for one or more fleets}
 \usage{
-describe_fleet_attributes(FleetIds = NULL, Limit = NULL, NextToken = NULL)
+describe_fleet_attributes(
+  FleetIds = list(
+    "string"
+  ),
+  Limit = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{FleetIds}{Unique identifier for a fleet(s) to retrieve attributes for. To request attributes for all fleets, leave this parameter empty.}

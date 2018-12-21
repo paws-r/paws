@@ -4,10 +4,12 @@
 \alias{delete_event_stream}
 \title{Deletes the event stream for an app}
 \usage{
-delete_event_stream(ApplicationId)
+delete_event_stream(
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 }
 \description{
 Deletes the event stream for an app.

@@ -4,10 +4,14 @@
 \alias{update_application}
 \title{Updates metadata about an application}
 \usage{
-update_application(configurationId, name = NULL, description = NULL)
+update_application(
+  configurationId = "string",
+  name = "string",
+  description = "string"
+)
 }
 \arguments{
-\item{configurationId}{Configuration ID of the application to be updated.}
+\item{configurationId}{[required] Configuration ID of the application to be updated.}
 
 \item{name}{New name of the application to be updated.}
 

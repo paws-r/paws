@@ -4,12 +4,17 @@
 \alias{tag_log_group}
 \title{Adds or updates the specified tags for the specified log group}
 \usage{
-tag_log_group(logGroupName, tags)
+tag_log_group(
+  logGroupName = "string",
+  tags = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{logGroupName}{The name of the log group.}
+\item{logGroupName}{[required] The name of the log group.}
 
-\item{tags}{The key-value pairs to use for the tags.}
+\item{tags}{[required] The key-value pairs to use for the tags.}
 }
 \description{
 Adds or updates the specified tags for the specified log group.

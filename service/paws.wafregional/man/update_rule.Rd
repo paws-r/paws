@@ -4,14 +4,27 @@
 \alias{update_rule}
 \title{Inserts or deletes Predicate objects in a \code{Rule}}
 \usage{
-update_rule(RuleId, ChangeToken, Updates)
+update_rule(
+  RuleId = "string",
+  ChangeToken = "string",
+  Updates = list(
+    list(
+      Action = "INSERT"|"DELETE",
+      Predicate = list(
+        Negated = TRUE|FALSE,
+        Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
+        DataId = "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{RuleId}{The \code{RuleId} of the \code{Rule} that you want to update. \code{RuleId} is returned by \code{CreateRule} and by ListRules.}
+\item{RuleId}{[required] The \code{RuleId} of the \code{Rule} that you want to update. \code{RuleId} is returned by \code{CreateRule} and by ListRules.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 
-\item{Updates}{An array of \code{RuleUpdate} objects that you want to insert into or delete from a Rule. For more information, see the applicable data types:
+\item{Updates}{[required] An array of \code{RuleUpdate} objects that you want to insert into or delete from a Rule. For more information, see the applicable data types:
 \itemize{
 \item RuleUpdate: Contains \code{Action} and \code{Predicate}
 \item Predicate: Contains \code{DataId}, \code{Negated}, and \code{Type}
@@ -19,7 +32,7 @@ update_rule(RuleId, ChangeToken, Updates)
 }}
 }
 \description{
-Inserts or deletes Predicate objects in a \code{Rule}. Each \code{Predicate} object identifies a predicate, such as a ByteMatchSet or an IPSet, that specifies the web requests that you want to allow, block, or count. If you add more than one predicate to a \code{Rule}, a request must match all of the specifications to be allowed, blocked, or counted. For example, suppose you add the following to a \code{Rule}:
+Inserts or deletes Predicate objects in a \code{Rule}. Each \code{Predicate} object identifies a predicate, such as a ByteMatchSet or an IPSet, that specifies the web requests that you want to allow, block, or count. If you add more than one predicate to a \code{Rule}, a request must match all of the specifications to be allowed, blocked, or counted. For example, suppose that you add the following to a \code{Rule}:
 }
 \details{
 \itemize{

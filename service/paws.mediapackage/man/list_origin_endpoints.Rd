@@ -4,8 +4,11 @@
 \alias{list_origin_endpoints}
 \title{Returns a collection of OriginEndpoint records}
 \usage{
-list_origin_endpoints(ChannelId = NULL, MaxResults = NULL,
-  NextToken = NULL)
+list_origin_endpoints(
+  ChannelId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{ChannelId}{When specified, the request will return only OriginEndpoints associated with the given Channel ID.}

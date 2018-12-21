@@ -4,10 +4,14 @@
 \alias{get_intent_versions}
 \title{Gets information about all of the versions of an intent}
 \usage{
-get_intent_versions(name, nextToken = NULL, maxResults = NULL)
+get_intent_versions(
+  name = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{name}{The name of the intent for which versions should be returned.}
+\item{name}{[required] The name of the intent for which versions should be returned.}
 
 \item{nextToken}{A pagination token for fetching the next page of intent versions. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of versions, specify the pagination token in the next request.}
 

@@ -4,12 +4,34 @@
 \alias{put_events}
 \title{The PutEvents operation records one or more events}
 \usage{
-put_events(events, clientContext, clientContextEncoding = NULL)
+put_events(
+  events = list(
+    list(
+      eventType = "string",
+      timestamp = "string",
+      session = list(
+        id = "string",
+        duration = 123,
+        startTimestamp = "string",
+        stopTimestamp = "string"
+      ),
+      version = "string",
+      attributes = list(
+        "string"
+      ),
+      metrics = list(
+        123.0
+      )
+    )
+  ),
+  clientContext = "string",
+  clientContextEncoding = "string"
+)
 }
 \arguments{
-\item{events}{An array of Event JSON objects}
+\item{events}{[required] An array of Event JSON objects}
 
-\item{clientContext}{The client context including the client ID, app title, app version and package name.}
+\item{clientContext}{[required] The client context including the client ID, app title, app version and package name.}
 
 \item{clientContextEncoding}{The encoding used for the client context.}
 }

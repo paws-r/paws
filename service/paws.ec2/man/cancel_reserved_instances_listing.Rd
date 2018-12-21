@@ -4,10 +4,12 @@
 \alias{cancel_reserved_instances_listing}
 \title{Cancels the specified Reserved Instance listing in the Reserved Instance Marketplace}
 \usage{
-cancel_reserved_instances_listing(ReservedInstancesListingId)
+cancel_reserved_instances_listing(
+  ReservedInstancesListingId = "string"
+)
 }
 \arguments{
-\item{ReservedInstancesListingId}{The ID of the Reserved Instance listing.}
+\item{ReservedInstancesListingId}{[required] The ID of the Reserved Instance listing.}
 }
 \description{
 Cancels the specified Reserved Instance listing in the Reserved Instance Marketplace.

@@ -4,10 +4,12 @@
 \alias{terminate_session}
 \title{Permanently ends a session and closes the data connection between the Session Manager client and SSM Agent on the instance}
 \usage{
-terminate_session(SessionId)
+terminate_session(
+  SessionId = "string"
+)
 }
 \arguments{
-\item{SessionId}{The ID of the session to terminate.}
+\item{SessionId}{[required] The ID of the session to terminate.}
 }
 \description{
 Permanently ends a session and closes the data connection between the Session Manager client and SSM Agent on the instance. A terminated session cannot be resumed.

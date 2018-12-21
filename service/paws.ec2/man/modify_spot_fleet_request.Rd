@@ -4,13 +4,16 @@
 \alias{modify_spot_fleet_request}
 \title{Modifies the specified Spot Fleet request}
 \usage{
-modify_spot_fleet_request(SpotFleetRequestId,
-  ExcessCapacityTerminationPolicy = NULL, TargetCapacity = NULL)
+modify_spot_fleet_request(
+  ExcessCapacityTerminationPolicy = "noTermination"|"default",
+  SpotFleetRequestId = "string",
+  TargetCapacity = 123
+)
 }
 \arguments{
-\item{SpotFleetRequestId}{The ID of the Spot Fleet request.}
-
 \item{ExcessCapacityTerminationPolicy}{Indicates whether running Spot Instances should be terminated if the target capacity of the Spot Fleet request is decreased below the current size of the Spot Fleet.}
+
+\item{SpotFleetRequestId}{[required] The ID of the Spot Fleet request.}
 
 \item{TargetCapacity}{The size of the fleet.}
 }

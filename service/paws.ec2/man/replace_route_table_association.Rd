@@ -4,14 +4,18 @@
 \alias{replace_route_table_association}
 \title{Changes the route table associated with a given subnet in a VPC}
 \usage{
-replace_route_table_association(AssociationId, RouteTableId, DryRun = NULL)
+replace_route_table_association(
+  AssociationId = "string",
+  DryRun = TRUE|FALSE,
+  RouteTableId = "string"
+)
 }
 \arguments{
-\item{AssociationId}{The association ID.}
-
-\item{RouteTableId}{The ID of the new route table to associate with the subnet.}
+\item{AssociationId}{[required] The association ID.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{RouteTableId}{[required] The ID of the new route table to associate with the subnet.}
 }
 \description{
 Changes the route table associated with a given subnet in a VPC. After the operation completes, the subnet uses the routes in the new route table it's associated with. For more information about route tables, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.

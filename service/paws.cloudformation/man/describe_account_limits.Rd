@@ -4,7 +4,9 @@
 \alias{describe_account_limits}
 \title{Retrieves your account's AWS CloudFormation limits, such as the maximum number of stacks that you can create in your account}
 \usage{
-describe_account_limits(NextToken = NULL)
+describe_account_limits(
+  NextToken = "string"
+)
 }
 \arguments{
 \item{NextToken}{A string that identifies the next page of limits that you want to retrieve.}

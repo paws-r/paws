@@ -4,7 +4,11 @@
 \alias{start_config_rules_evaluation}
 \title{Runs an on-demand evaluation for the specified AWS Config rules against the last known configuration state of the resources}
 \usage{
-start_config_rules_evaluation(ConfigRuleNames = NULL)
+start_config_rules_evaluation(
+  ConfigRuleNames = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{ConfigRuleNames}{The list of names of AWS Config rules that you want to run evaluations for.}

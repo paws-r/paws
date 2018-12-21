@@ -4,11 +4,18 @@
 \alias{modify_cluster_iam_roles}
 \title{Modifies the list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS services}
 \usage{
-modify_cluster_iam_roles(ClusterIdentifier, AddIamRoles = NULL,
-  RemoveIamRoles = NULL)
+modify_cluster_iam_roles(
+  ClusterIdentifier = "string",
+  AddIamRoles = list(
+    "string"
+  ),
+  RemoveIamRoles = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ClusterIdentifier}{The unique identifier of the cluster for which you want to associate or disassociate IAM roles.}
+\item{ClusterIdentifier}{[required] The unique identifier of the cluster for which you want to associate or disassociate IAM roles.}
 
 \item{AddIamRoles}{Zero or more IAM roles to associate with the cluster. The roles must be in their Amazon Resource Name (ARN) format. You can associate up to 10 IAM roles with a single cluster in a single request.}
 

@@ -2,22 +2,91 @@
 % Please edit documentation in R/paws.autoscalingplans_operations.R
 \name{update_scaling_plan}
 \alias{update_scaling_plan}
-\title{Updates the scaling plan for the specified scaling plan}
+\title{Updates the specified scaling plan}
 \usage{
-update_scaling_plan(ScalingPlanName, ScalingPlanVersion,
-  ApplicationSource = NULL, ScalingInstructions = NULL)
+update_scaling_plan(
+  ScalingPlanName = "string",
+  ScalingPlanVersion = 123,
+  ApplicationSource = list(
+    CloudFormationStackARN = "string",
+    TagFilters = list(
+      list(
+        Key = "string",
+        Values = list(
+          "string"
+        )
+      )
+    )
+  ),
+  ScalingInstructions = list(
+    list(
+      ServiceNamespace = "autoscaling"|"ecs"|"ec2"|"rds"|"dynamodb",
+      ResourceId = "string",
+      ScalableDimension = "autoscaling:autoScalingGroup:DesiredCapacity"|"ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"rds:cluster:ReadReplicaCount"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits",
+      MinCapacity = 123,
+      MaxCapacity = 123,
+      TargetTrackingConfigurations = list(
+        list(
+          PredefinedScalingMetricSpecification = list(
+            PredefinedScalingMetricType = "ASGAverageCPUUtilization"|"ASGAverageNetworkIn"|"ASGAverageNetworkOut"|"DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut",
+            ResourceLabel = "string"
+          ),
+          CustomizedScalingMetricSpecification = list(
+            MetricName = "string",
+            Namespace = "string",
+            Dimensions = list(
+              list(
+                Name = "string",
+                Value = "string"
+              )
+            ),
+            Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
+            Unit = "string"
+          ),
+          TargetValue = 123.0,
+          DisableScaleIn = TRUE|FALSE,
+          ScaleOutCooldown = 123,
+          ScaleInCooldown = 123,
+          EstimatedInstanceWarmup = 123
+        )
+      ),
+      PredefinedLoadMetricSpecification = list(
+        PredefinedLoadMetricType = "ASGTotalCPUUtilization"|"ASGTotalNetworkIn"|"ASGTotalNetworkOut"|"ALBTargetGroupRequestCount",
+        ResourceLabel = "string"
+      ),
+      CustomizedLoadMetricSpecification = list(
+        MetricName = "string",
+        Namespace = "string",
+        Dimensions = list(
+          list(
+            Name = "string",
+            Value = "string"
+          )
+        ),
+        Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
+        Unit = "string"
+      ),
+      ScheduledActionBufferTime = 123,
+      PredictiveScalingMaxCapacityBehavior = "SetForecastCapacityToMaxCapacity"|"SetMaxCapacityToForecastCapacity"|"SetMaxCapacityAboveForecastCapacity",
+      PredictiveScalingMaxCapacityBuffer = 123,
+      PredictiveScalingMode = "ForecastAndScale"|"ForecastOnly",
+      ScalingPolicyUpdateBehavior = "KeepExternalPolicies"|"ReplaceExternalPolicies",
+      DisableDynamicScaling = TRUE|FALSE
+    )
+  )
+)
 }
 \arguments{
-\item{ScalingPlanName}{The name of the scaling plan.}
+\item{ScalingPlanName}{[required] The name of the scaling plan.}
 
-\item{ScalingPlanVersion}{The version number.}
+\item{ScalingPlanVersion}{[required] The version number of the scaling plan.}
 
 \item{ApplicationSource}{A CloudFormation stack or set of tags.}
 
 \item{ScalingInstructions}{The scaling instructions.}
 }
 \description{
-Updates the scaling plan for the specified scaling plan.
+Updates the specified scaling plan.
 }
 \details{
 You cannot update a scaling plan if it is in the process of being created, updated, or deleted.

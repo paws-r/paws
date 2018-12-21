@@ -4,7 +4,12 @@
 \alias{cancel_steps}
 \title{Cancels a pending step or steps in a running cluster}
 \usage{
-cancel_steps(ClusterId = NULL, StepIds = NULL)
+cancel_steps(
+  ClusterId = "string",
+  StepIds = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{ClusterId}{The \code{ClusterID} for which specified steps will be canceled. Use RunJobFlow and ListClusters to get ClusterIDs.}

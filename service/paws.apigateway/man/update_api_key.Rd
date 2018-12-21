@@ -4,10 +4,20 @@
 \alias{update_api_key}
 \title{Changes information about an ApiKey resource}
 \usage{
-update_api_key(apiKey, patchOperations = NULL)
+update_api_key(
+  apiKey = "string",
+  patchOperations = list(
+    list(
+      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
+      path = "string",
+      value = "string",
+      from = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{apiKey}{[Required] The identifier of the ApiKey resource to be updated.}
+\item{apiKey}{[required] [Required] The identifier of the ApiKey resource to be updated.}
 
 \item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
 }

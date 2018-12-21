@@ -6,9 +6,9 @@
 \alias{paws.waf-package}
 \title{paws.waf: AWS WAF}
 \description{
-This is the *AWS WAF API Reference* for using AWS
-WAF with Amazon CloudFront. The AWS WAF actions and data types listed
-in the reference are available for protecting Amazon CloudFront
+This is the *AWS WAF API Reference* for using AWS WAF with
+Amazon CloudFront. The AWS WAF actions and data types listed in the
+reference are available for protecting Amazon CloudFront
 distributions. You can use these actions and data types via the
 endpoint *waf.amazonaws.com*. This guide is for developers who need
 detailed information about the AWS WAF API actions, data types, and
@@ -21,7 +21,12 @@ Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

@@ -4,10 +4,26 @@
 \alias{create_project}
 \title{Creates an empty project with a placement template}
 \usage{
-create_project(projectName, description = NULL, placementTemplate = NULL)
+create_project(
+  projectName = "string",
+  description = "string",
+  placementTemplate = list(
+    defaultAttributes = list(
+      "string"
+    ),
+    deviceTemplates = list(
+      list(
+        deviceType = "string",
+        callbackOverrides = list(
+          "string"
+        )
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{projectName}{The name of the project to create.}
+\item{projectName}{[required] The name of the project to create.}
 
 \item{description}{An optional description for the project.}
 

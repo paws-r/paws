@@ -4,8 +4,12 @@
 \alias{describe_backups}
 \title{Describes backups}
 \usage{
-describe_backups(BackupId = NULL, ServerName = NULL, NextToken = NULL,
-  MaxResults = NULL)
+describe_backups(
+  BackupId = "string",
+  ServerName = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{BackupId}{Describes a single backup.}

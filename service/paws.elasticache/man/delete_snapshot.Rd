@@ -4,10 +4,12 @@
 \alias{delete_snapshot}
 \title{Deletes an existing snapshot}
 \usage{
-delete_snapshot(SnapshotName)
+delete_snapshot(
+  SnapshotName = "string"
+)
 }
 \arguments{
-\item{SnapshotName}{The name of the snapshot to be deleted.}
+\item{SnapshotName}{[required] The name of the snapshot to be deleted.}
 }
 \description{
 Deletes an existing snapshot. When you receive a successful response from this operation, ElastiCache immediately begins deleting the snapshot; you cannot cancel or revert this operation.

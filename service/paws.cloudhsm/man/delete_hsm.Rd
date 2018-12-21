@@ -4,10 +4,12 @@
 \alias{delete_hsm}
 \title{This is documentation for \strong{AWS CloudHSM Classic}}
 \usage{
-delete_hsm(HsmArn)
+delete_hsm(
+  HsmArn = "string"
+)
 }
 \arguments{
-\item{HsmArn}{The ARN of the HSM to delete.}
+\item{HsmArn}{[required] The ARN of the HSM to delete.}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHSM Classic FAQs}, the \href{http://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide}, and the \href{http://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.

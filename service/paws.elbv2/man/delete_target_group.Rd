@@ -4,10 +4,12 @@
 \alias{delete_target_group}
 \title{Deletes the specified target group}
 \usage{
-delete_target_group(TargetGroupArn)
+delete_target_group(
+  TargetGroupArn = "string"
+)
 }
 \arguments{
-\item{TargetGroupArn}{The Amazon Resource Name (ARN) of the target group.}
+\item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
 }
 \description{
 Deletes the specified target group.

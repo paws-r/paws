@@ -4,10 +4,12 @@
 \alias{delete_retention_configuration}
 \title{Deletes the retention configuration}
 \usage{
-delete_retention_configuration(RetentionConfigurationName)
+delete_retention_configuration(
+  RetentionConfigurationName = "string"
+)
 }
 \arguments{
-\item{RetentionConfigurationName}{The name of the retention configuration to delete.}
+\item{RetentionConfigurationName}{[required] The name of the retention configuration to delete.}
 }
 \description{
 Deletes the retention configuration.

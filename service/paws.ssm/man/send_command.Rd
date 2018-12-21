@@ -4,20 +4,54 @@
 \alias{send_command}
 \title{Executes commands on one or more managed instances}
 \usage{
-send_command(DocumentName, InstanceIds = NULL, Targets = NULL,
-  DocumentVersion = NULL, DocumentHash = NULL, DocumentHashType = NULL,
-  TimeoutSeconds = NULL, Comment = NULL, Parameters = NULL,
-  OutputS3Region = NULL, OutputS3BucketName = NULL,
-  OutputS3KeyPrefix = NULL, MaxConcurrency = NULL, MaxErrors = NULL,
-  ServiceRoleArn = NULL, NotificationConfig = NULL,
-  CloudWatchOutputConfig = NULL)
+send_command(
+  InstanceIds = list(
+    "string"
+  ),
+  Targets = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DocumentName = "string",
+  DocumentVersion = "string",
+  DocumentHash = "string",
+  DocumentHashType = "Sha256"|"Sha1",
+  TimeoutSeconds = 123,
+  Comment = "string",
+  Parameters = list(
+    list(
+      "string"
+    )
+  ),
+  OutputS3Region = "string",
+  OutputS3BucketName = "string",
+  OutputS3KeyPrefix = "string",
+  MaxConcurrency = "string",
+  MaxErrors = "string",
+  ServiceRoleArn = "string",
+  NotificationConfig = list(
+    NotificationArn = "string",
+    NotificationEvents = list(
+      "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
+    ),
+    NotificationType = "Command"|"Invocation"
+  ),
+  CloudWatchOutputConfig = list(
+    CloudWatchLogGroupName = "string",
+    CloudWatchOutputEnabled = TRUE|FALSE
+  )
+)
 }
 \arguments{
-\item{DocumentName}{Required. The name of the Systems Manager document to execute. This can be a public document or a custom document.}
-
 \item{InstanceIds}{The instance IDs where the command should execute. You can specify a maximum of 50 IDs. If you prefer not to list individual instance IDs, you can instead send commands to a fleet of instances using the Targets parameter, which accepts EC2 tags. For more information about how to use targets, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Sending Commands to a Fleet} in the \emph{AWS Systems Manager User Guide}.}
 
 \item{Targets}{(Optional) An array of search criteria that targets instances using a Key,Value combination that you specify. Targets is required if you don't provide one or more instance IDs in the call. For more information about how to use targets, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Sending Commands to a Fleet} in the \emph{AWS Systems Manager User Guide}.}
+
+\item{DocumentName}{[required] Required. The name of the Systems Manager document to execute. This can be a public document or a custom document.}
 
 \item{DocumentVersion}{The SSM document version to use in the request. You can specify \$DEFAULT, \$LATEST, or a specific version number. If you execute commands by using the AWS CLI, then you must escape the first two options by using a backslash. If you specify a version number, then you don't need to use the backslash. For example:
 

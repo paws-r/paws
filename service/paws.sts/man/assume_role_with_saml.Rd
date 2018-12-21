@@ -4,15 +4,20 @@
 \alias{assume_role_with_saml}
 \title{Returns a set of temporary security credentials for users who have been authenticated via a SAML authentication response}
 \usage{
-assume_role_with_saml(RoleArn, PrincipalArn, SAMLAssertion, Policy = NULL,
-  DurationSeconds = NULL)
+assume_role_with_saml(
+  RoleArn = "string",
+  PrincipalArn = "string",
+  SAMLAssertion = "string",
+  Policy = "string",
+  DurationSeconds = 123
+)
 }
 \arguments{
-\item{RoleArn}{The Amazon Resource Name (ARN) of the role that the caller is assuming.}
+\item{RoleArn}{[required] The Amazon Resource Name (ARN) of the role that the caller is assuming.}
 
-\item{PrincipalArn}{The Amazon Resource Name (ARN) of the SAML provider in IAM that describes the IdP.}
+\item{PrincipalArn}{[required] The Amazon Resource Name (ARN) of the SAML provider in IAM that describes the IdP.}
 
-\item{SAMLAssertion}{The base-64 encoded SAML authentication response provided by the IdP.
+\item{SAMLAssertion}{[required] The base-64 encoded SAML authentication response provided by the IdP.
 
 For more information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/create-role-saml-IdP-tasks.html}{Configuring a Relying Party and Adding Claims} in the \emph{Using IAM} guide.}
 

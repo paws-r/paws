@@ -4,10 +4,12 @@
 \alias{delete_cluster}
 \title{Deletes the Amazon EKS cluster control plane}
 \usage{
-delete_cluster(name)
+delete_cluster(
+  name = "string"
+)
 }
 \arguments{
-\item{name}{The name of the cluster to delete.}
+\item{name}{[required] The name of the cluster to delete.}
 }
 \description{
 Deletes the Amazon EKS cluster control plane.

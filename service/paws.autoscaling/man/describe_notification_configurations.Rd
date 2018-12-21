@@ -4,8 +4,13 @@
 \alias{describe_notification_configurations}
 \title{Describes the notification actions associated with the specified Auto Scaling group}
 \usage{
-describe_notification_configurations(AutoScalingGroupNames = NULL,
-  NextToken = NULL, MaxRecords = NULL)
+describe_notification_configurations(
+  AutoScalingGroupNames = list(
+    "string"
+  ),
+  NextToken = "string",
+  MaxRecords = 123
+)
 }
 \arguments{
 \item{AutoScalingGroupNames}{The name of the Auto Scaling group.}

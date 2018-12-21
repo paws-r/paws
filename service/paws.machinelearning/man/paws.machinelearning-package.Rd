@@ -6,15 +6,20 @@
 \alias{paws.machinelearning-package}
 \title{paws.machinelearning: Amazon Machine Learning}
 \description{
-Definition of the public APIs exposed by
-Amazon Machine Learning
+Definition of the public APIs exposed by Amazon Machine
+Learning
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

@@ -4,10 +4,12 @@
 \alias{delete_destination}
 \title{Deletes the specified destination, and eventually disables all the subscription filters that publish to it}
 \usage{
-delete_destination(destinationName)
+delete_destination(
+  destinationName = "string"
+)
 }
 \arguments{
-\item{destinationName}{The name of the destination.}
+\item{destinationName}{[required] The name of the destination.}
 }
 \description{
 Deletes the specified destination, and eventually disables all the subscription filters that publish to it. This operation does not delete the physical resource encapsulated by the destination.

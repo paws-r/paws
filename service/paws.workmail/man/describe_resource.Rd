@@ -4,12 +4,15 @@
 \alias{describe_resource}
 \title{Returns the data available for the resource}
 \usage{
-describe_resource(OrganizationId, ResourceId)
+describe_resource(
+  OrganizationId = "string",
+  ResourceId = "string"
+)
 }
 \arguments{
-\item{OrganizationId}{The identifier associated with the organization for which the resource is described.}
+\item{OrganizationId}{[required] The identifier associated with the organization for which the resource is described.}
 
-\item{ResourceId}{The identifier of the resource to be described.}
+\item{ResourceId}{[required] The identifier of the resource to be described.}
 }
 \description{
 Returns the data available for the resource.

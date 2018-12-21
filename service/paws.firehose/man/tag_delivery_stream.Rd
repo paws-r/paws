@@ -4,15 +4,23 @@
 \alias{tag_delivery_stream}
 \title{Adds or updates tags for the specified delivery stream}
 \usage{
-tag_delivery_stream(DeliveryStreamName, Tags)
+tag_delivery_stream(
+  DeliveryStreamName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{DeliveryStreamName}{The name of the delivery stream to which you want to add the tags.}
+\item{DeliveryStreamName}{[required] The name of the delivery stream to which you want to add the tags.}
 
-\item{Tags}{A set of key-value pairs to use to create the tags.}
+\item{Tags}{[required] A set of key-value pairs to use to create the tags.}
 }
 \description{
-Adds or updates tags for the specified delivery stream. A tag is a key-value pair (the value is optional) that you can define and assign to AWS resources. If you specify a tag that already exists, the tag value is replaced with the value that you specify in the request. Tags are metadata. For example, you can add friendly names and descriptions or other types of information that can help you distinguish the delivery stream. For more information about tags, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags} in the \emph{AWS Billing and Cost Management User Guide}.
+Adds or updates tags for the specified delivery stream. A tag is a key-value pair that you can define and assign to AWS resources. If you specify a tag that already exists, the tag value is replaced with the value that you specify in the request. Tags are metadata. For example, you can add friendly names and descriptions or other types of information that can help you distinguish the delivery stream. For more information about tags, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags} in the \emph{AWS Billing and Cost Management User Guide}.
 }
 \details{
 Each delivery stream can have up to 50 tags.

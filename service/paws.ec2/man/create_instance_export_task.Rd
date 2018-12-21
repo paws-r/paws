@@ -4,15 +4,24 @@
 \alias{create_instance_export_task}
 \title{Exports a running or stopped instance to an S3 bucket}
 \usage{
-create_instance_export_task(InstanceId, Description = NULL,
-  ExportToS3Task = NULL, TargetEnvironment = NULL)
+create_instance_export_task(
+  Description = "string",
+  ExportToS3Task = list(
+    ContainerFormat = "ova",
+    DiskImageFormat = "VMDK"|"RAW"|"VHD",
+    S3Bucket = "string",
+    S3Prefix = "string"
+  ),
+  InstanceId = "string",
+  TargetEnvironment = "citrix"|"vmware"|"microsoft"
+)
 }
 \arguments{
-\item{InstanceId}{The ID of the instance.}
-
 \item{Description}{A description for the conversion task or the resource being exported. The maximum length is 255 bytes.}
 
 \item{ExportToS3Task}{The format and location for an instance export task.}
+
+\item{InstanceId}{[required] The ID of the instance.}
 
 \item{TargetEnvironment}{The target virtualization environment.}
 }

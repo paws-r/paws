@@ -4,11 +4,18 @@
 \alias{create_instance_profile}
 \title{Creates a profile that can be applied to one or more private fleet device instances}
 \usage{
-create_instance_profile(name, description = NULL, packageCleanup = NULL,
-  excludeAppPackagesFromCleanup = NULL, rebootAfterUse = NULL)
+create_instance_profile(
+  name = "string",
+  description = "string",
+  packageCleanup = TRUE|FALSE,
+  excludeAppPackagesFromCleanup = list(
+    "string"
+  ),
+  rebootAfterUse = TRUE|FALSE
+)
 }
 \arguments{
-\item{name}{The name of your instance profile.}
+\item{name}{[required] The name of your instance profile.}
 
 \item{description}{The description of your instance profile.}
 

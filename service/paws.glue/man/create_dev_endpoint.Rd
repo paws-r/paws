@@ -4,15 +4,27 @@
 \alias{create_dev_endpoint}
 \title{Creates a new DevEndpoint}
 \usage{
-create_dev_endpoint(EndpointName, RoleArn, SecurityGroupIds = NULL,
-  SubnetId = NULL, PublicKey = NULL, PublicKeys = NULL,
-  NumberOfNodes = NULL, ExtraPythonLibsS3Path = NULL,
-  ExtraJarsS3Path = NULL, SecurityConfiguration = NULL)
+create_dev_endpoint(
+  EndpointName = "string",
+  RoleArn = "string",
+  SecurityGroupIds = list(
+    "string"
+  ),
+  SubnetId = "string",
+  PublicKey = "string",
+  PublicKeys = list(
+    "string"
+  ),
+  NumberOfNodes = 123,
+  ExtraPythonLibsS3Path = "string",
+  ExtraJarsS3Path = "string",
+  SecurityConfiguration = "string"
+)
 }
 \arguments{
-\item{EndpointName}{The name to be assigned to the new DevEndpoint.}
+\item{EndpointName}{[required] The name to be assigned to the new DevEndpoint.}
 
-\item{RoleArn}{The IAM role for the DevEndpoint.}
+\item{RoleArn}{[required] The IAM role for the DevEndpoint.}
 
 \item{SecurityGroupIds}{Security group IDs for the security groups to be used by the new DevEndpoint.}
 

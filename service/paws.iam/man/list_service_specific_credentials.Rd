@@ -4,17 +4,20 @@
 \alias{list_service_specific_credentials}
 \title{Returns information about the service-specific credentials associated with the specified IAM user}
 \usage{
-list_service_specific_credentials(UserName = NULL, ServiceName = NULL)
+list_service_specific_credentials(
+  UserName = "string",
+  ServiceName = "string"
+)
 }
 \arguments{
 \item{UserName}{The name of the user whose service-specific credentials you want information about. If this value is not specified, then the operation assumes the user whose credentials are used to call the operation.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{ServiceName}{Filters the returned results to only those for the specified AWS service. If not specified, then AWS returns service-specific credentials for all services.}
 }
 \description{
-Returns information about the service-specific credentials associated with the specified IAM user. If there are none, the operation returns an empty list. The service-specific credentials returned by this operation are used only for authenticating the IAM user to a specific service. For more information about using service-specific credentials to authenticate to an AWS service, see \href{http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html}{Set Up service-specific credentials} in the AWS CodeCommit User Guide.
+Returns information about the service-specific credentials associated with the specified IAM user. If none exists, the operation returns an empty list. The service-specific credentials returned by this operation are used only for authenticating the IAM user to a specific service. For more information about using service-specific credentials to authenticate to an AWS service, see \href{http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html}{Set Up service-specific credentials} in the AWS CodeCommit User Guide.
 }
 \examples{
 

@@ -4,10 +4,14 @@
 \alias{select}
 \title{The \code{Select} operation returns a set of attributes for \code{ItemNames} that match the select expression}
 \usage{
-select(SelectExpression, NextToken = NULL, ConsistentRead = NULL)
+select(
+  SelectExpression = "string",
+  NextToken = "string",
+  ConsistentRead = TRUE|FALSE
+)
 }
 \arguments{
-\item{SelectExpression}{The expression used to query the domain.}
+\item{SelectExpression}{[required] The expression used to query the domain.}
 
 \item{NextToken}{A string informing Amazon SimpleDB where to start the next list of <code>ItemNames</code>.}
 

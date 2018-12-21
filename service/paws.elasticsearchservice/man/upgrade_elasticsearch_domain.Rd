@@ -4,13 +4,16 @@
 \alias{upgrade_elasticsearch_domain}
 \title{Allows you to either upgrade your domain or perform an Upgrade eligibility check to a compatible Elasticsearch version}
 \usage{
-upgrade_elasticsearch_domain(DomainName, TargetVersion,
-  PerformCheckOnly = NULL)
+upgrade_elasticsearch_domain(
+  DomainName = "string",
+  TargetVersion = "string",
+  PerformCheckOnly = TRUE|FALSE
+)
 }
 \arguments{
-\item{DomainName}{}
+\item{DomainName}{[required]}
 
-\item{TargetVersion}{The version of Elasticsearch that you intend to upgrade the domain to.}
+\item{TargetVersion}{[required] The version of Elasticsearch that you intend to upgrade the domain to.}
 
 \item{PerformCheckOnly}{This flag, when set to True, indicates that an Upgrade Eligibility Check needs to be performed. This will not actually perform the Upgrade.}
 }

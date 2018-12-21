@@ -4,12 +4,15 @@
 \alias{discover_poll_endpoint}
 \title{This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent}
 \usage{
-discover_poll_endpoint(containerInstance = NULL, cluster = NULL)
+discover_poll_endpoint(
+  containerInstance = "string",
+  cluster = "string"
+)
 }
 \arguments{
 \item{containerInstance}{The container instance ID or full ARN of the container instance. The ARN contains the \code{arn:aws:ecs} namespace, followed by the Region of the container instance, the AWS account ID of the container instance owner, the \code{container-instance} namespace, and then the container instance ID. For example, \code{arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID region:aws_account_id:container-instance/container_instance_ID }.}
 
-\item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that the container instance belongs to.}
+\item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster to which the container instance belongs.}
 }
 \description{
 This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.

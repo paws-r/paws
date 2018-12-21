@@ -4,10 +4,12 @@
 \alias{get_endpoint_attributes}
 \title{Retrieves the endpoint attributes for a device on one of the supported push notification services, such as GCM and APNS}
 \usage{
-get_endpoint_attributes(EndpointArn)
+get_endpoint_attributes(
+  EndpointArn = "string"
+)
 }
 \arguments{
-\item{EndpointArn}{EndpointArn for GetEndpointAttributes input.}
+\item{EndpointArn}{[required] EndpointArn for GetEndpointAttributes input.}
 }
 \description{
 Retrieves the endpoint attributes for a device on one of the supported push notification services, such as GCM and APNS. For more information, see \href{http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.

@@ -4,10 +4,12 @@
 \alias{get_regex_match_set}
 \title{Returns the RegexMatchSet specified by \code{RegexMatchSetId}}
 \usage{
-get_regex_match_set(RegexMatchSetId)
+get_regex_match_set(
+  RegexMatchSetId = "string"
+)
 }
 \arguments{
-\item{RegexMatchSetId}{The \code{RegexMatchSetId} of the RegexMatchSet that you want to get. \code{RegexMatchSetId} is returned by CreateRegexMatchSet and by ListRegexMatchSets.}
+\item{RegexMatchSetId}{[required] The \code{RegexMatchSetId} of the RegexMatchSet that you want to get. \code{RegexMatchSetId} is returned by CreateRegexMatchSet and by ListRegexMatchSets.}
 }
 \description{
 Returns the RegexMatchSet specified by \code{RegexMatchSetId}.

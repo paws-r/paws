@@ -4,10 +4,12 @@
 \alias{validate_matchmaking_rule_set}
 \title{Validates the syntax of a matchmaking rule or rule set}
 \usage{
-validate_matchmaking_rule_set(RuleSetBody)
+validate_matchmaking_rule_set(
+  RuleSetBody = "string"
+)
 }
 \arguments{
-\item{RuleSetBody}{Collection of matchmaking rules to validate, formatted as a JSON string.}
+\item{RuleSetBody}{[required] Collection of matchmaking rules to validate, formatted as a JSON string.}
 }
 \description{
 Validates the syntax of a matchmaking rule or rule set. This operation checks that the rule set uses syntactically correct JSON and that it conforms to allowed property expressions. To validate syntax, provide a rule set string.

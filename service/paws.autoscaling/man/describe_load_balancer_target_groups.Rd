@@ -4,11 +4,14 @@
 \alias{describe_load_balancer_target_groups}
 \title{Describes the target groups for the specified Auto Scaling group}
 \usage{
-describe_load_balancer_target_groups(AutoScalingGroupName, NextToken = NULL,
-  MaxRecords = NULL)
+describe_load_balancer_target_groups(
+  AutoScalingGroupName = "string",
+  NextToken = "string",
+  MaxRecords = 123
+)
 }
 \arguments{
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 

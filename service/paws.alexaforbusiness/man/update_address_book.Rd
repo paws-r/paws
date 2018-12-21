@@ -4,10 +4,14 @@
 \alias{update_address_book}
 \title{Updates address book details by the address book ARN}
 \usage{
-update_address_book(AddressBookArn, Name = NULL, Description = NULL)
+update_address_book(
+  AddressBookArn = "string",
+  Name = "string",
+  Description = "string"
+)
 }
 \arguments{
-\item{AddressBookArn}{The ARN of the room to update.}
+\item{AddressBookArn}{[required] The ARN of the room to update.}
 
 \item{Name}{The updated name of the room.}
 

@@ -4,12 +4,15 @@
 \alias{associate_subnet_cidr_block}
 \title{Associates a CIDR block with your subnet}
 \usage{
-associate_subnet_cidr_block(Ipv6CidrBlock, SubnetId)
+associate_subnet_cidr_block(
+  Ipv6CidrBlock = "string",
+  SubnetId = "string"
+)
 }
 \arguments{
-\item{Ipv6CidrBlock}{The IPv6 CIDR block for your subnet. The subnet must have a /64 prefix length.}
+\item{Ipv6CidrBlock}{[required] The IPv6 CIDR block for your subnet. The subnet must have a /64 prefix length.}
 
-\item{SubnetId}{The ID of your subnet.}
+\item{SubnetId}{[required] The ID of your subnet.}
 }
 \description{
 Associates a CIDR block with your subnet. You can only associate a single IPv6 CIDR block with your subnet. An IPv6 CIDR block must have a prefix length of /64.

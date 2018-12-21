@@ -4,11 +4,68 @@
 \alias{modify_listener}
 \title{Modifies the specified properties of the specified listener}
 \usage{
-modify_listener(ListenerArn, Port = NULL, Protocol = NULL,
-  SslPolicy = NULL, Certificates = NULL, DefaultActions = NULL)
+modify_listener(
+  ListenerArn = "string",
+  Port = 123,
+  Protocol = "HTTP"|"HTTPS"|"TCP",
+  SslPolicy = "string",
+  Certificates = list(
+    list(
+      CertificateArn = "string",
+      IsDefault = TRUE|FALSE
+    )
+  ),
+  DefaultActions = list(
+    list(
+      Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
+      TargetGroupArn = "string",
+      AuthenticateOidcConfig = list(
+        Issuer = "string",
+        AuthorizationEndpoint = "string",
+        TokenEndpoint = "string",
+        UserInfoEndpoint = "string",
+        ClientId = "string",
+        ClientSecret = "string",
+        SessionCookieName = "string",
+        Scope = "string",
+        SessionTimeout = 123,
+        AuthenticationRequestExtraParams = list(
+          "string"
+        ),
+        OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
+      ),
+      AuthenticateCognitoConfig = list(
+        UserPoolArn = "string",
+        UserPoolClientId = "string",
+        UserPoolDomain = "string",
+        SessionCookieName = "string",
+        Scope = "string",
+        SessionTimeout = 123,
+        AuthenticationRequestExtraParams = list(
+          "string"
+        ),
+        OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
+      ),
+      Order = 123,
+      RedirectConfig = list(
+        Protocol = "string",
+        Port = "string",
+        Host = "string",
+        Path = "string",
+        Query = "string",
+        StatusCode = "HTTP_301"|"HTTP_302"
+      ),
+      FixedResponseConfig = list(
+        MessageBody = "string",
+        StatusCode = "string",
+        ContentType = "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{ListenerArn}{The Amazon Resource Name (ARN) of the listener.}
+\item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
 
 \item{Port}{The port for connections from clients to the load balancer.}
 
@@ -16,19 +73,21 @@ modify_listener(ListenerArn, Port = NULL, Protocol = NULL,
 
 \item{SslPolicy}{[HTTPS listeners] The security policy that defines which protocols and ciphers are supported. For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies}{Security Policies} in the \emph{Application Load Balancers Guide}.}
 
-\item{Certificates}{[HTTPS listeners] The default SSL server certificate. You must provide exactly one default certificate. To create a certificate list, use AddListenerCertificates.}
+\item{Certificates}{[HTTPS listeners] The default SSL server certificate. You must provide exactly one certificate. Set \code{CertificateArn} to the certificate ARN but do not set \code{IsDefault}.
+
+To create a certificate list, use AddListenerCertificates.}
 
 \item{DefaultActions}{The actions for the default rule. The rule must include one forward action or one or more fixed-response actions.
 
-If the action type is \code{forward}, you can specify a single target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer or TCP for a Network Load Balancer.
+If the action type is \code{forward}, you specify a target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer or TCP for a Network Load Balancer.
 
-[HTTPS listener] If the action type is \code{authenticate-oidc}, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.
+[HTTPS listener] If the action type is \code{authenticate-oidc}, you authenticate users through an identity provider that is OpenID Connect (OIDC) compliant.
 
-[HTTPS listener] If the action type is \code{authenticate-cognito}, you can use Amazon Cognito to authenticate users as they access your application.
+[HTTPS listener] If the action type is \code{authenticate-cognito}, you authenticate users through the user pools supported by Amazon Cognito.
 
-[Application Load Balancer] If the action type is \code{redirect}, you can redirect HTTP and HTTPS requests.
+[Application Load Balancer] If the action type is \code{redirect}, you redirect specified client requests from one URL to another.
 
-[Application Load Balancer] If the action type is \code{fixed-response}, you can return a custom HTTP response.}
+[Application Load Balancer] If the action type is \code{fixed-response}, you drop specified client requests and return a custom HTTP response.}
 }
 \description{
 Modifies the specified properties of the specified listener.

@@ -4,10 +4,12 @@
 \alias{delete_api_key}
 \title{Deletes the ApiKey resource}
 \usage{
-delete_api_key(apiKey)
+delete_api_key(
+  apiKey = "string"
+)
 }
 \arguments{
-\item{apiKey}{[Required] The identifier of the ApiKey resource to be deleted.}
+\item{apiKey}{[required] [Required] The identifier of the ApiKey resource to be deleted.}
 }
 \description{
 Deletes the ApiKey resource.

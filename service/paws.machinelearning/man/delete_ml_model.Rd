@@ -4,10 +4,12 @@
 \alias{delete_ml_model}
 \title{Assigns the \code{DELETED} status to an \code{MLModel}, rendering it unusable}
 \usage{
-delete_ml_model(MLModelId)
+delete_ml_model(
+  MLModelId = "string"
+)
 }
 \arguments{
-\item{MLModelId}{A user-supplied ID that uniquely identifies the \code{MLModel}.}
+\item{MLModelId}{[required] A user-supplied ID that uniquely identifies the \code{MLModel}.}
 }
 \description{
 Assigns the \code{DELETED} status to an \code{MLModel}, rendering it unusable.

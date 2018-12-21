@@ -4,12 +4,22 @@
 \alias{batch_meter_usage}
 \title{BatchMeterUsage is called from a SaaS application listed on the AWS Marketplace to post metering records for a set of customers}
 \usage{
-batch_meter_usage(UsageRecords, ProductCode)
+batch_meter_usage(
+  UsageRecords = list(
+    list(
+      Timestamp = as.POSIXct("2015-01-01"),
+      CustomerIdentifier = "string",
+      Dimension = "string",
+      Quantity = 123
+    )
+  ),
+  ProductCode = "string"
+)
 }
 \arguments{
-\item{UsageRecords}{The set of UsageRecords to submit. BatchMeterUsage accepts up to 25 UsageRecords at a time.}
+\item{UsageRecords}{[required] The set of UsageRecords to submit. BatchMeterUsage accepts up to 25 UsageRecords at a time.}
 
-\item{ProductCode}{Product code is used to uniquely identify a product in AWS Marketplace. The product code should be the same as the one used during the publishing of a new product.}
+\item{ProductCode}{[required] Product code is used to uniquely identify a product in AWS Marketplace. The product code should be the same as the one used during the publishing of a new product.}
 }
 \description{
 BatchMeterUsage is called from a SaaS application listed on the AWS Marketplace to post metering records for a set of customers.

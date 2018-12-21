@@ -4,12 +4,21 @@
 \alias{configure_health_check}
 \title{Specifies the health check settings to use when evaluating the health state of your EC2 instances}
 \usage{
-configure_health_check(LoadBalancerName, HealthCheck)
+configure_health_check(
+  LoadBalancerName = "string",
+  HealthCheck = list(
+    Target = "string",
+    Interval = 123,
+    Timeout = 123,
+    UnhealthyThreshold = 123,
+    HealthyThreshold = 123
+  )
+)
 }
 \arguments{
-\item{LoadBalancerName}{The name of the load balancer.}
+\item{LoadBalancerName}{[required] The name of the load balancer.}
 
-\item{HealthCheck}{The configuration information.}
+\item{HealthCheck}{[required] The configuration information.}
 }
 \description{
 Specifies the health check settings to use when evaluating the health state of your EC2 instances.

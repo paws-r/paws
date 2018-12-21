@@ -4,12 +4,21 @@
 \alias{create_resource_data_sync}
 \title{Creates a resource data sync configuration to a single bucket in Amazon S3}
 \usage{
-create_resource_data_sync(SyncName, S3Destination)
+create_resource_data_sync(
+  SyncName = "string",
+  S3Destination = list(
+    BucketName = "string",
+    Prefix = "string",
+    SyncFormat = "JsonSerDe",
+    Region = "string",
+    AWSKMSKeyARN = "string"
+  )
+)
 }
 \arguments{
-\item{SyncName}{A name for the configuration.}
+\item{SyncName}{[required] A name for the configuration.}
 
-\item{S3Destination}{Amazon S3 configuration details for the sync.}
+\item{S3Destination}{[required] Amazon S3 configuration details for the sync.}
 }
 \description{
 Creates a resource data sync configuration to a single bucket in Amazon S3. This is an asynchronous operation that returns immediately. After a successful initial sync is completed, the system continuously syncs data to the Amazon S3 bucket. To check the status of the sync, use the ListResourceDataSync.

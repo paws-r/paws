@@ -2,15 +2,30 @@
 % Please edit documentation in R/paws.lightsail_operations.R
 \name{create_key_pair}
 \alias{create_key_pair}
-\title{Creates sn SSH key pair}
+\title{Creates an SSH key pair}
 \usage{
-create_key_pair(keyPairName)
+create_key_pair(
+  keyPairName = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{keyPairName}{The name for your new key pair.}
+\item{keyPairName}{[required] The name for your new key pair.}
+
+\item{tags}{The tag keys and optional values to add to the resource during create.
+
+To tag a resource after it has been created, see the \code{tag resource} operation.}
 }
 \description{
-Creates sn SSH key pair.
+Creates an SSH key pair.
+}
+\details{
+The \code{create key pair} operation supports tag-based access control via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \examples{
 

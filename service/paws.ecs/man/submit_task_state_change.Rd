@@ -4,9 +4,37 @@
 \alias{submit_task_state_change}
 \title{This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent}
 \usage{
-submit_task_state_change(cluster = NULL, task = NULL, status = NULL,
-  reason = NULL, containers = NULL, attachments = NULL,
-  pullStartedAt = NULL, pullStoppedAt = NULL, executionStoppedAt = NULL)
+submit_task_state_change(
+  cluster = "string",
+  task = "string",
+  status = "string",
+  reason = "string",
+  containers = list(
+    list(
+      containerName = "string",
+      exitCode = 123,
+      networkBindings = list(
+        list(
+          bindIP = "string",
+          containerPort = 123,
+          hostPort = 123,
+          protocol = "tcp"|"udp"
+        )
+      ),
+      reason = "string",
+      status = "string"
+    )
+  ),
+  attachments = list(
+    list(
+      attachmentArn = "string",
+      status = "string"
+    )
+  ),
+  pullStartedAt = as.POSIXct("2015-01-01"),
+  pullStoppedAt = as.POSIXct("2015-01-01"),
+  executionStoppedAt = as.POSIXct("2015-01-01")
+)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that hosts the task.}
@@ -21,11 +49,11 @@ submit_task_state_change(cluster = NULL, task = NULL, status = NULL,
 
 \item{attachments}{Any attachments associated with the state change request.}
 
-\item{pullStartedAt}{The Unix time stamp for when the container image pull began.}
+\item{pullStartedAt}{The Unix timestamp for when the container image pull began.}
 
-\item{pullStoppedAt}{The Unix time stamp for when the container image pull completed.}
+\item{pullStoppedAt}{The Unix timestamp for when the container image pull completed.}
 
-\item{executionStoppedAt}{The Unix time stamp for when the task execution stopped.}
+\item{executionStoppedAt}{The Unix timestamp for when the task execution stopped.}
 }
 \description{
 This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.

@@ -4,10 +4,12 @@
 \alias{delete_lifecycle_policy}
 \title{Deletes the specified lifecycle policy and halts the automated operations that the policy specified}
 \usage{
-delete_lifecycle_policy(PolicyId)
+delete_lifecycle_policy(
+  PolicyId = "string"
+)
 }
 \arguments{
-\item{PolicyId}{The identifier of the lifecycle policy.}
+\item{PolicyId}{[required] The identifier of the lifecycle policy.}
 }
 \description{
 Deletes the specified lifecycle policy and halts the automated operations that the policy specified.

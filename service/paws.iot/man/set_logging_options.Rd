@@ -4,10 +4,15 @@
 \alias{set_logging_options}
 \title{Sets the logging options}
 \usage{
-set_logging_options(loggingOptionsPayload)
+set_logging_options(
+  loggingOptionsPayload = list(
+    roleArn = "string",
+    logLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED"
+  )
+)
 }
 \arguments{
-\item{loggingOptionsPayload}{The logging options payload.}
+\item{loggingOptionsPayload}{[required] The logging options payload.}
 }
 \description{
 Sets the logging options.

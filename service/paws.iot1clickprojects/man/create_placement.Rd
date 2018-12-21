@@ -4,12 +4,18 @@
 \alias{create_placement}
 \title{Creates an empty placement}
 \usage{
-create_placement(placementName, projectName, attributes = NULL)
+create_placement(
+  placementName = "string",
+  projectName = "string",
+  attributes = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{placementName}{The name of the placement to be created.}
+\item{placementName}{[required] The name of the placement to be created.}
 
-\item{projectName}{The name of the project in which to create the placement.}
+\item{projectName}{[required] The name of the project in which to create the placement.}
 
 \item{attributes}{Optional user-defined key/value pairs providing contextual data (such as location or function) for the placement.}
 }

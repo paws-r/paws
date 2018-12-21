@@ -4,8 +4,12 @@
 \alias{describe_table_restore_status}
 \title{Lists the status of one or more table restore requests made using the RestoreTableFromClusterSnapshot API action}
 \usage{
-describe_table_restore_status(ClusterIdentifier = NULL,
-  TableRestoreRequestId = NULL, MaxRecords = NULL, Marker = NULL)
+describe_table_restore_status(
+  ClusterIdentifier = "string",
+  TableRestoreRequestId = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{ClusterIdentifier}{The Amazon Redshift cluster that the table is being restored to.}

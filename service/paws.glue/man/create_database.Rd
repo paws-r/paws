@@ -4,12 +4,22 @@
 \alias{create_database}
 \title{Creates a new database in a Data Catalog}
 \usage{
-create_database(DatabaseInput, CatalogId = NULL)
+create_database(
+  CatalogId = "string",
+  DatabaseInput = list(
+    Name = "string",
+    Description = "string",
+    LocationUri = "string",
+    Parameters = list(
+      "string"
+    )
+  )
+)
 }
 \arguments{
-\item{DatabaseInput}{A \code{DatabaseInput} object defining the metadata database to create in the catalog.}
-
 \item{CatalogId}{The ID of the Data Catalog in which to create the database. If none is supplied, the AWS account ID is used by default.}
+
+\item{DatabaseInput}{[required] A \code{DatabaseInput} object defining the metadata database to create in the catalog.}
 }
 \description{
 Creates a new database in a Data Catalog.

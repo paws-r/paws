@@ -4,11 +4,19 @@
 \alias{create_cluster_security_group}
 \title{Creates a new Amazon Redshift security group}
 \usage{
-create_cluster_security_group(ClusterSecurityGroupName, Description,
-  Tags = NULL)
+create_cluster_security_group(
+  ClusterSecurityGroupName = "string",
+  Description = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ClusterSecurityGroupName}{The name for the security group. Amazon Redshift stores the value as a lowercase string.
+\item{ClusterSecurityGroupName}{[required] The name for the security group. Amazon Redshift stores the value as a lowercase string.
 
 Constraints:
 \itemize{
@@ -19,7 +27,7 @@ Constraints:
 
 Example: \code{examplesecuritygroup}}
 
-\item{Description}{A description for the security group.}
+\item{Description}{[required] A description for the security group.}
 
 \item{Tags}{A list of tag instances.}
 }

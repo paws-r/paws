@@ -4,10 +4,17 @@
 \alias{get_resources}
 \title{Lists information about a collection of Resource resources}
 \usage{
-get_resources(restApiId, position = NULL, limit = NULL, embed = NULL)
+get_resources(
+  restApiId = "string",
+  position = "string",
+  limit = 123,
+  embed = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
 \item{position}{The current pagination position in the paged result set.}
 

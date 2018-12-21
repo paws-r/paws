@@ -4,11 +4,14 @@
 \alias{describe_notification_subscriptions}
 \title{Lists the specified notification subscriptions}
 \usage{
-describe_notification_subscriptions(OrganizationId, Marker = NULL,
-  Limit = NULL)
+describe_notification_subscriptions(
+  OrganizationId = "string",
+  Marker = "string",
+  Limit = 123
+)
 }
 \arguments{
-\item{OrganizationId}{The ID of the organization.}
+\item{OrganizationId}{[required] The ID of the organization.}
 
 \item{Marker}{The marker for the next set of results. (You received this marker from a previous call.)}
 

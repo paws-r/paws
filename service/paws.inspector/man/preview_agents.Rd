@@ -4,10 +4,14 @@
 \alias{preview_agents}
 \title{Previews the agents installed on the EC2 instances that are part of the specified assessment target}
 \usage{
-preview_agents(previewAgentsArn, nextToken = NULL, maxResults = NULL)
+preview_agents(
+  previewAgentsArn = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{previewAgentsArn}{The ARN of the assessment target whose agents you want to preview.}
+\item{previewAgentsArn}{[required] The ARN of the assessment target whose agents you want to preview.}
 
 \item{nextToken}{You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the \strong{PreviewAgents} action. Subsequent calls to the action fill \strong{nextToken} in the request with the value of \strong{NextToken} from the previous response to continue listing data.}
 

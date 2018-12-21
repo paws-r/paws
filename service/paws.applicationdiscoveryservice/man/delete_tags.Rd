@@ -4,10 +4,20 @@
 \alias{delete_tags}
 \title{Deletes the association between configuration items and one or more tags}
 \usage{
-delete_tags(configurationIds, tags = NULL)
+delete_tags(
+  configurationIds = list(
+    "string"
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{configurationIds}{A list of configuration items with tags that you want to delete.}
+\item{configurationIds}{[required] A list of configuration items with tags that you want to delete.}
 
 \item{tags}{Tags that you want to delete from one or more configuration items. Specify the tags that you want to delete in a \emph{key}-\emph{value} format. For example:
 

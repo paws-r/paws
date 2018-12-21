@@ -4,14 +4,18 @@
 \alias{delete_room_skill_parameter}
 \title{Deletes room skill parameter details by room, skill, and parameter key ID}
 \usage{
-delete_room_skill_parameter(SkillId, ParameterKey, RoomArn = NULL)
+delete_room_skill_parameter(
+  RoomArn = "string",
+  SkillId = "string",
+  ParameterKey = "string"
+)
 }
 \arguments{
-\item{SkillId}{The ID of the skill from which to remove the room skill parameter details.}
-
-\item{ParameterKey}{The room skill parameter key for which to remove details.}
-
 \item{RoomArn}{The ARN of the room from which to remove the room skill parameter details.}
+
+\item{SkillId}{[required] The ID of the skill from which to remove the room skill parameter details.}
+
+\item{ParameterKey}{[required] The room skill parameter key for which to remove details.}
 }
 \description{
 Deletes room skill parameter details by room, skill, and parameter key ID.

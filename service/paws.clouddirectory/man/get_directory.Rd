@@ -4,10 +4,12 @@
 \alias{get_directory}
 \title{Retrieves metadata about a directory}
 \usage{
-get_directory(DirectoryArn)
+get_directory(
+  DirectoryArn = "string"
+)
 }
 \arguments{
-\item{DirectoryArn}{The ARN of the directory.}
+\item{DirectoryArn}{[required] The ARN of the directory.}
 }
 \description{
 Retrieves metadata about a directory.

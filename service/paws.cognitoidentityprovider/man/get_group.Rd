@@ -4,12 +4,15 @@
 \alias{get_group}
 \title{Gets a group}
 \usage{
-get_group(GroupName, UserPoolId)
+get_group(
+  GroupName = "string",
+  UserPoolId = "string"
+)
 }
 \arguments{
-\item{GroupName}{The name of the group.}
+\item{GroupName}{[required] The name of the group.}
 
-\item{UserPoolId}{The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The user pool ID for the user pool.}
 }
 \description{
 Gets a group.

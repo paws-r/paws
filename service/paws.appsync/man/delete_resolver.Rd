@@ -4,14 +4,18 @@
 \alias{delete_resolver}
 \title{Deletes a \code{Resolver} object}
 \usage{
-delete_resolver(apiId, typeName, fieldName)
+delete_resolver(
+  apiId = "string",
+  typeName = "string",
+  fieldName = "string"
+)
 }
 \arguments{
-\item{apiId}{The API ID.}
+\item{apiId}{[required] The API ID.}
 
-\item{typeName}{The name of the resolver type.}
+\item{typeName}{[required] The name of the resolver type.}
 
-\item{fieldName}{The resolver field name.}
+\item{fieldName}{[required] The resolver field name.}
 }
 \description{
 Deletes a \code{Resolver} object.

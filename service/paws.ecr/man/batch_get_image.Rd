@@ -4,15 +4,26 @@
 \alias{batch_get_image}
 \title{Gets detailed information for specified images within a specified repository}
 \usage{
-batch_get_image(repositoryName, imageIds, registryId = NULL,
-  acceptedMediaTypes = NULL)
+batch_get_image(
+  registryId = "string",
+  repositoryName = "string",
+  imageIds = list(
+    list(
+      imageDigest = "string",
+      imageTag = "string"
+    )
+  ),
+  acceptedMediaTypes = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{repositoryName}{The repository that contains the images to describe.}
-
-\item{imageIds}{A list of image ID references that correspond to images to describe. The format of the \code{imageIds} reference is \code{imageTag=tag} or \code{imageDigest=digest}.}
-
 \item{registryId}{The AWS account ID associated with the registry that contains the images to describe. If you do not specify a registry, the default registry is assumed.}
+
+\item{repositoryName}{[required] The repository that contains the images to describe.}
+
+\item{imageIds}{[required] A list of image ID references that correspond to images to describe. The format of the \code{imageIds} reference is \code{imageTag=tag} or \code{imageDigest=digest}.}
 
 \item{acceptedMediaTypes}{The accepted media types for the request.
 

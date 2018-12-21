@@ -4,17 +4,27 @@
 \alias{admin_set_user_mfa_preference}
 \title{Sets the user's multi-factor authentication (MFA) preference}
 \usage{
-admin_set_user_mfa_preference(Username, UserPoolId, SMSMfaSettings = NULL,
-  SoftwareTokenMfaSettings = NULL)
+admin_set_user_mfa_preference(
+  SMSMfaSettings = list(
+    Enabled = TRUE|FALSE,
+    PreferredMfa = TRUE|FALSE
+  ),
+  SoftwareTokenMfaSettings = list(
+    Enabled = TRUE|FALSE,
+    PreferredMfa = TRUE|FALSE
+  ),
+  Username = "string",
+  UserPoolId = "string"
+)
 }
 \arguments{
-\item{Username}{The user pool username or alias.}
-
-\item{UserPoolId}{The user pool ID.}
-
 \item{SMSMfaSettings}{The SMS text message MFA settings.}
 
 \item{SoftwareTokenMfaSettings}{The time-based one-time password software token MFA settings.}
+
+\item{Username}{[required] The user pool username or alias.}
+
+\item{UserPoolId}{[required] The user pool ID.}
 }
 \description{
 Sets the user's multi-factor authentication (MFA) preference.

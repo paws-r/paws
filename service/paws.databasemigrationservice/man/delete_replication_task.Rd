@@ -4,10 +4,12 @@
 \alias{delete_replication_task}
 \title{Deletes the specified replication task}
 \usage{
-delete_replication_task(ReplicationTaskArn)
+delete_replication_task(
+  ReplicationTaskArn = "string"
+)
 }
 \arguments{
-\item{ReplicationTaskArn}{The Amazon Resource Name (ARN) of the replication task to be deleted.}
+\item{ReplicationTaskArn}{[required] The Amazon Resource Name (ARN) of the replication task to be deleted.}
 }
 \description{
 Deletes the specified replication task.

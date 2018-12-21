@@ -4,10 +4,12 @@
 \alias{describe_notebook_instance}
 \title{Returns information about a notebook instance}
 \usage{
-describe_notebook_instance(NotebookInstanceName)
+describe_notebook_instance(
+  NotebookInstanceName = "string"
+)
 }
 \arguments{
-\item{NotebookInstanceName}{The name of the notebook instance that you want information about.}
+\item{NotebookInstanceName}{[required] The name of the notebook instance that you want information about.}
 }
 \description{
 Returns information about a notebook instance.

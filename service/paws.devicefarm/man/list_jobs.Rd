@@ -4,10 +4,13 @@
 \alias{list_jobs}
 \title{Gets information about jobs for a given test run}
 \usage{
-list_jobs(arn, nextToken = NULL)
+list_jobs(
+  arn = "string",
+  nextToken = "string"
+)
 }
 \arguments{
-\item{arn}{The run's Amazon Resource Name (ARN).}
+\item{arn}{[required] The run's Amazon Resource Name (ARN).}
 
 \item{nextToken}{An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.}
 }

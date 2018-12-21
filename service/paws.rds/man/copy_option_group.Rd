@@ -4,11 +4,20 @@
 \alias{copy_option_group}
 \title{Copies the specified option group}
 \usage{
-copy_option_group(SourceOptionGroupIdentifier, TargetOptionGroupIdentifier,
-  TargetOptionGroupDescription, Tags = NULL)
+copy_option_group(
+  SourceOptionGroupIdentifier = "string",
+  TargetOptionGroupIdentifier = "string",
+  TargetOptionGroupDescription = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{SourceOptionGroupIdentifier}{The identifier or ARN for the source option group. For information about creating an ARN, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS} in the \emph{Amazon RDS User Guide}.
+\item{SourceOptionGroupIdentifier}{[required] The identifier or ARN for the source option group. For information about creating an ARN, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS} in the \emph{Amazon RDS User Guide}.
 
 Constraints:
 \itemize{
@@ -17,7 +26,7 @@ Constraints:
 \item If the source option group is in a different AWS Region than the copy, specify a valid option group ARN, for example \code{arn:aws:rds:us-west-2:123456789012:og:special-options}.
 }}
 
-\item{TargetOptionGroupIdentifier}{The identifier for the copied option group.
+\item{TargetOptionGroupIdentifier}{[required] The identifier for the copied option group.
 
 Constraints:
 \itemize{
@@ -29,7 +38,7 @@ Constraints:
 
 Example: \code{my-option-group}}
 
-\item{TargetOptionGroupDescription}{The description for the copied option group.}
+\item{TargetOptionGroupDescription}{[required] The description for the copied option group.}
 
 \item{Tags}{}
 }

@@ -4,12 +4,23 @@
 \alias{create_secret}
 \title{Creates a new secret}
 \usage{
-create_secret(Name, ClientRequestToken = NULL, Description = NULL,
-  KmsKeyId = NULL, SecretBinary = NULL, SecretString = NULL,
-  Tags = NULL)
+create_secret(
+  Name = "string",
+  ClientRequestToken = "string",
+  Description = "string",
+  KmsKeyId = "string",
+  SecretBinary = raw,
+  SecretString = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{Name}{Specifies the friendly name of the new secret.
+\item{Name}{[required] Specifies the friendly name of the new secret.
 
 The secret name must be ASCII letters, digits, or the following characters : /\_+=.@-
 
@@ -86,7 +97,7 @@ Secrets Manager stores the encrypted secret data in one of a collection of "vers
 
 You provide the secret data to be encrypted by putting text in either the \code{SecretString} parameter or binary data in the \code{SecretBinary} parameter, but not both. If you include \code{SecretString} or \code{SecretBinary} then Secrets Manager also creates an initial secret version and automatically attaches the staging label \code{AWSCURRENT} to the new version.
 \itemize{
-\item If you call an operation that needs to encrypt or decrypt the \code{SecretString} or \code{SecretBinary} for a secret in the same account as the calling user and that secret doesn't specify a AWS KMS encryption key, Secrets Manager uses the account's default AWS managed customer master key (CMK) with the alias \code{aws/secretsmanager}. If this key doesn't already exist in your account then Secrets Manager creates it for you automatically. All users in the same AWS account automatically have access to use the default CMK. Note that if an Secrets Manager API call results in AWS having to create the account's AWS-managed CMK, it can result in a one-time significant delay in returning the result.
+\item If you call an operation that needs to encrypt or decrypt the \code{SecretString} or \code{SecretBinary} for a secret in the same account as the calling user and that secret doesn't specify a AWS KMS encryption key, Secrets Manager uses the account's default AWS managed customer master key (CMK) with the alias \code{aws/secretsmanager}. If this key doesn't already exist in your account then Secrets Manager creates it for you automatically. All users and roles in the same AWS account automatically have access to use the default CMK. Note that if an Secrets Manager API call results in AWS having to create the account's AWS-managed CMK, it can result in a one-time significant delay in returning the result.
 \item If the secret is in a different AWS account from the credentials calling an API that requires encryption or decryption of the secret value then you must create and use a custom AWS KMS CMK because you can't access the default CMK for the account using credentials from a different AWS account. Store the ARN of the CMK in the secret when you create the secret or when you update it by including it in the \code{KMSKeyId}. If you call an API that must encrypt or decrypt \code{SecretString} or \code{SecretBinary} using credentials from a different account then the AWS KMS key policy must grant cross-account access to that other account's user or role for both the kms:GenerateDataKey and kms:Decrypt operations.
 }
 
@@ -97,6 +108,7 @@ To run this command, you must have the following permissions:
 \item secretsmanager:CreateSecret
 \item kms:GenerateDataKey - needed only if you use a customer-managed AWS KMS key to encrypt the secret. You do not need this permission to use the account's default AWS managed CMK for Secrets Manager.
 \item kms:Decrypt - needed only if you use a customer-managed AWS KMS key to encrypt the secret. You do not need this permission to use the account's default AWS managed CMK for Secrets Manager.
+\item secretsmanager:TagResource - needed only if you include the \code{Tags} parameter.
 }
 
 \strong{Related operations}

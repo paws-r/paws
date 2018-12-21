@@ -4,8 +4,20 @@
 \alias{describe_dhcp_options}
 \title{Describes one or more of your DHCP options sets}
 \usage{
-describe_dhcp_options(DhcpOptionsIds = NULL, Filters = NULL,
-  DryRun = NULL)
+describe_dhcp_options(
+  DhcpOptionsIds = list(
+    "string"
+  ),
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{DhcpOptionsIds}{The IDs of one or more DHCP options sets.
@@ -14,9 +26,10 @@ Default: Describes all your DHCP options sets.}
 
 \item{Filters}{One or more filters.
 \itemize{
-\item \code{dhcp-options-id} - The ID of a set of DHCP options.
+\item \code{dhcp-options-id} - The ID of a DHCP options set.
 \item \code{key} - The key for one of the options (for example, \code{domain-name}).
 \item \code{value} - The value for one of the options.
+\item \code{owner-id} - The ID of the AWS account that owns the DHCP options set.
 \item \code{tag}:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 }}

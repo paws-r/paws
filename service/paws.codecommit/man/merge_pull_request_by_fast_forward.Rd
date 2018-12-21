@@ -4,13 +4,16 @@
 \alias{merge_pull_request_by_fast_forward}
 \title{Closes a pull request and attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the fast-forward merge option}
 \usage{
-merge_pull_request_by_fast_forward(pullRequestId, repositoryName,
-  sourceCommitId = NULL)
+merge_pull_request_by_fast_forward(
+  pullRequestId = "string",
+  repositoryName = "string",
+  sourceCommitId = "string"
+)
 }
 \arguments{
-\item{pullRequestId}{The system-generated ID of the pull request. To get this ID, use ListPullRequests.}
+\item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use ListPullRequests.}
 
-\item{repositoryName}{The name of the repository where the pull request was created.}
+\item{repositoryName}{[required] The name of the repository where the pull request was created.}
 
 \item{sourceCommitId}{The full commit ID of the original or updated commit in the pull request source branch. Pass this value if you want an exception thrown if the current commit ID of the tip of the source branch does not match this commit ID.}
 }

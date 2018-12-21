@@ -4,10 +4,12 @@
 \alias{restore_certificate_authority}
 \title{Restores a certificate authority (CA) that is in the \code{DELETED} state}
 \usage{
-restore_certificate_authority(CertificateAuthorityArn)
+restore_certificate_authority(
+  CertificateAuthorityArn = "string"
+)
 }
 \arguments{
-\item{CertificateAuthorityArn}{The Amazon Resource Name (ARN) that was returned when you called the CreateCertificateAuthority operation. This must be of the form:
+\item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called the CreateCertificateAuthority operation. This must be of the form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }}
 }

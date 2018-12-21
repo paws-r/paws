@@ -4,12 +4,18 @@
 \alias{set_vault_access_policy}
 \title{This operation configures an access policy for a vault and will overwrite an existing policy}
 \usage{
-set_vault_access_policy(accountId, vaultName, policy = NULL)
+set_vault_access_policy(
+  accountId = "string",
+  vaultName = "string",
+  policy = list(
+    Policy = "string"
+  )
+)
 }
 \arguments{
-\item{accountId}{The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
+\item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
 
-\item{vaultName}{The name of the vault.}
+\item{vaultName}{[required] The name of the vault.}
 
 \item{policy}{The vault access policy as a JSON string.}
 }

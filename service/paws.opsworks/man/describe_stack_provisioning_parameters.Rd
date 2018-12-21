@@ -4,10 +4,12 @@
 \alias{describe_stack_provisioning_parameters}
 \title{Requests a description of a stack's provisioning parameters}
 \usage{
-describe_stack_provisioning_parameters(StackId)
+describe_stack_provisioning_parameters(
+  StackId = "string"
+)
 }
 \arguments{
-\item{StackId}{The stack ID.}
+\item{StackId}{[required] The stack ID.}
 }
 \description{
 Requests a description of a stack's provisioning parameters.

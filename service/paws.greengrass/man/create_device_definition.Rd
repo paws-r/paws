@@ -4,8 +4,20 @@
 \alias{create_device_definition}
 \title{Creates a device definition}
 \usage{
-create_device_definition(AmznClientToken = NULL, InitialVersion = NULL,
-  Name = NULL)
+create_device_definition(
+  AmznClientToken = "string",
+  InitialVersion = list(
+    Devices = list(
+      list(
+        CertificateArn = "string",
+        Id = "string",
+        SyncShadow = TRUE|FALSE,
+        ThingArn = "string"
+      )
+    )
+  ),
+  Name = "string"
+)
 }
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}

@@ -4,17 +4,20 @@
 \alias{delete_portfolio}
 \title{Deletes the specified portfolio}
 \usage{
-delete_portfolio(Id, AcceptLanguage = NULL)
+delete_portfolio(
+  AcceptLanguage = "string",
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The portfolio identifier.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{Id}{[required] The portfolio identifier.}
 }
 \description{
 Deletes the specified portfolio.

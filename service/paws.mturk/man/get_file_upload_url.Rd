@@ -4,12 +4,15 @@
 \alias{get_file_upload_url}
 \title{The \code{GetFileUploadURL} operation generates and returns a temporary URL}
 \usage{
-get_file_upload_url(AssignmentId, QuestionIdentifier)
+get_file_upload_url(
+  AssignmentId = "string",
+  QuestionIdentifier = "string"
+)
 }
 \arguments{
-\item{AssignmentId}{The ID of the assignment that contains the question with a FileUploadAnswer.}
+\item{AssignmentId}{[required] The ID of the assignment that contains the question with a FileUploadAnswer.}
 
-\item{QuestionIdentifier}{The identifier of the question with a FileUploadAnswer, as specified in the QuestionForm of the HIT.}
+\item{QuestionIdentifier}{[required] The identifier of the question with a FileUploadAnswer, as specified in the QuestionForm of the HIT.}
 }
 \description{
 The \code{GetFileUploadURL} operation generates and returns a temporary URL. You use the temporary URL to retrieve a file uploaded by a Worker as an answer to a FileUploadAnswer question for a HIT. The temporary URL is generated the instant the GetFileUploadURL operation is called, and is valid for 60 seconds. You can get a temporary file upload URL any time until the HIT is disposed. After the HIT is disposed, any uploaded files are deleted, and cannot be retrieved. Pending Deprecation on December 12, 2017. The Answer Specification structure will no longer support the \code{FileUploadAnswer} element to be used for the QuestionForm data structure. Instead, we recommend that Requesters who want to create HITs asking Workers to upload files to use Amazon S3.

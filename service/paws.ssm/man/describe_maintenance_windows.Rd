@@ -4,11 +4,21 @@
 \alias{describe_maintenance_windows}
 \title{Retrieves the Maintenance Windows in an AWS account}
 \usage{
-describe_maintenance_windows(Filters = NULL, MaxResults = NULL,
-  NextToken = NULL)
+describe_maintenance_windows(
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{Filters}{Optional filters used to narrow down the scope of the returned Maintenance Windows. Supported filter keys are Name and Enabled.}
+\item{Filters}{Optional filters used to narrow down the scope of the returned Maintenance Windows. Supported filter keys are \strong{Name} and \strong{Enabled}.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 

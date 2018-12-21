@@ -4,8 +4,18 @@
 \alias{describe_automation_executions}
 \title{Provides details about all active and terminated Automation executions}
 \usage{
-describe_automation_executions(Filters = NULL, MaxResults = NULL,
-  NextToken = NULL)
+describe_automation_executions(
+  Filters = list(
+    list(
+      Key = "DocumentNamePrefix"|"ExecutionStatus"|"ExecutionId"|"ParentExecutionId"|"CurrentAction"|"StartTimeBefore"|"StartTimeAfter"|"AutomationType",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{Filters}{Filters used to limit the scope of executions that are requested.}

@@ -4,12 +4,15 @@
 \alias{initiate_layer_upload}
 \title{Notify Amazon ECR that you intend to upload an image layer}
 \usage{
-initiate_layer_upload(repositoryName, registryId = NULL)
+initiate_layer_upload(
+  registryId = "string",
+  repositoryName = "string"
+)
 }
 \arguments{
-\item{repositoryName}{The name of the repository to which you intend to upload layers.}
-
 \item{registryId}{The AWS account ID associated with the registry to which you intend to upload layers. If you do not specify a registry, the default registry is assumed.}
+
+\item{repositoryName}{[required] The name of the repository to which you intend to upload layers.}
 }
 \description{
 Notify Amazon ECR that you intend to upload an image layer.

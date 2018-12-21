@@ -4,8 +4,19 @@
 \alias{describe_db_security_groups}
 \title{Returns a list of \code{DBSecurityGroup} descriptions}
 \usage{
-describe_db_security_groups(DBSecurityGroupName = NULL, Filters = NULL,
-  MaxRecords = NULL, Marker = NULL)
+describe_db_security_groups(
+  DBSecurityGroupName = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{DBSecurityGroupName}{The name of the DB security group to return details for.}

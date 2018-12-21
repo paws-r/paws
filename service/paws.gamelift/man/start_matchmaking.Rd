@@ -4,14 +4,38 @@
 \alias{start_matchmaking}
 \title{Uses FlexMatch to create a game match for a group of players based on custom matchmaking rules, and starts a new game for the matched players}
 \usage{
-start_matchmaking(ConfigurationName, Players, TicketId = NULL)
+start_matchmaking(
+  TicketId = "string",
+  ConfigurationName = "string",
+  Players = list(
+    list(
+      PlayerId = "string",
+      PlayerAttributes = list(
+        list(
+          S = "string",
+          N = 123.0,
+          SL = list(
+            "string"
+          ),
+          SDM = list(
+            123.0
+          )
+        )
+      ),
+      Team = "string",
+      LatencyInMs = list(
+        123
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{ConfigurationName}{Name of the matchmaking configuration to use for this request. Matchmaking configurations must exist in the same region as this request.}
-
-\item{Players}{Information on each player to be matched. This information must include a player ID, and may contain player attributes and latency data to be used in the matchmaking process. After a successful match, \code{Player} objects contain the name of the team the player is assigned to.}
-
 \item{TicketId}{Unique identifier for a matchmaking ticket. If no ticket ID is specified here, Amazon GameLift will generate one in the form of a UUID. Use this identifier to track the matchmaking ticket status and retrieve match results.}
+
+\item{ConfigurationName}{[required] Name of the matchmaking configuration to use for this request. Matchmaking configurations must exist in the same region as this request.}
+
+\item{Players}{[required] Information on each player to be matched. This information must include a player ID, and may contain player attributes and latency data to be used in the matchmaking process. After a successful match, \code{Player} objects contain the name of the team the player is assigned to.}
 }
 \description{
 Uses FlexMatch to create a game match for a group of players based on custom matchmaking rules, and starts a new game for the matched players. Each matchmaking request specifies the type of match to build (team configuration, rules for an acceptable match, etc.). The request also specifies the players to find a match for and where to host the new game session for optimal performance. A matchmaking request might start with a single player or a group of players who want to play together. FlexMatch finds additional players as needed to fill the match. Match type, rules, and the queue used to place a new game session are defined in a \code{MatchmakingConfiguration}. For complete information on setting up and using FlexMatch, see the topic \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html}{Adding FlexMatch to Your Game}.

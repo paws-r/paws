@@ -4,10 +4,12 @@
 \alias{get_signing_certificate}
 \title{This method takes a user pool ID, and returns the signing certificate}
 \usage{
-get_signing_certificate(UserPoolId)
+get_signing_certificate(
+  UserPoolId = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID.}
+\item{UserPoolId}{[required] The user pool ID.}
 }
 \description{
 This method takes a user pool ID, and returns the signing certificate.

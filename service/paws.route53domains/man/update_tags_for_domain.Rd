@@ -4,10 +4,18 @@
 \alias{update_tags_for_domain}
 \title{This operation adds or updates tags for a specified domain}
 \usage{
-update_tags_for_domain(DomainName, TagsToUpdate = NULL)
+update_tags_for_domain(
+  DomainName = "string",
+  TagsToUpdate = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{DomainName}{The domain for which you want to add or update tags.}
+\item{DomainName}{[required] The domain for which you want to add or update tags.}
 
 \item{TagsToUpdate}{A list of the tag keys and values that you want to add or update. If you specify a key that already exists, the corresponding value will be replaced.}
 }

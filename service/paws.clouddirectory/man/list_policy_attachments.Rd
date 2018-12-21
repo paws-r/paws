@@ -4,13 +4,20 @@
 \alias{list_policy_attachments}
 \title{Returns all of the \code{ObjectIdentifiers} to which a given policy is attached}
 \usage{
-list_policy_attachments(DirectoryArn, PolicyReference, NextToken = NULL,
-  MaxResults = NULL, ConsistencyLevel = NULL)
+list_policy_attachments(
+  DirectoryArn = "string",
+  PolicyReference = list(
+    Selector = "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123,
+  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
+)
 }
 \arguments{
-\item{DirectoryArn}{The Amazon Resource Name (ARN) that is associated with the Directory where objects reside. For more information, see arns.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where objects reside. For more information, see arns.}
 
-\item{PolicyReference}{The reference that identifies the policy object.}
+\item{PolicyReference}{[required] The reference that identifies the policy object.}
 
 \item{NextToken}{The pagination token.}
 

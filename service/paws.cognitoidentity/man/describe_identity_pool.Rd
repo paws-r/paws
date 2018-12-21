@@ -4,10 +4,12 @@
 \alias{describe_identity_pool}
 \title{Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users}
 \usage{
-describe_identity_pool(IdentityPoolId)
+describe_identity_pool(
+  IdentityPoolId = "string"
+)
 }
 \arguments{
-\item{IdentityPoolId}{An identity pool ID in the format REGION:GUID.}
+\item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
 }
 \description{
 Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users.

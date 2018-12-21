@@ -4,10 +4,15 @@
 \alias{modify_mount_target_security_groups}
 \title{Modifies the set of security groups in effect for a mount target}
 \usage{
-modify_mount_target_security_groups(MountTargetId, SecurityGroups = NULL)
+modify_mount_target_security_groups(
+  MountTargetId = "string",
+  SecurityGroups = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{MountTargetId}{ID of the mount target whose security groups you want to modify.}
+\item{MountTargetId}{[required] ID of the mount target whose security groups you want to modify.}
 
 \item{SecurityGroups}{Array of up to five VPC security group IDs.}
 }

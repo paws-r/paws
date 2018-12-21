@@ -4,10 +4,12 @@
 \alias{delete_compute_environment}
 \title{Deletes an AWS Batch compute environment}
 \usage{
-delete_compute_environment(computeEnvironment)
+delete_compute_environment(
+  computeEnvironment = "string"
+)
 }
 \arguments{
-\item{computeEnvironment}{The name or Amazon Resource Name (ARN) of the compute environment to delete.}
+\item{computeEnvironment}{[required] The name or Amazon Resource Name (ARN) of the compute environment to delete.}
 }
 \description{
 Deletes an AWS Batch compute environment.

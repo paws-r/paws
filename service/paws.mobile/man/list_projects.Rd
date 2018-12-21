@@ -4,7 +4,10 @@
 \alias{list_projects}
 \title{Lists projects in AWS Mobile Hub}
 \usage{
-list_projects(maxResults = NULL, nextToken = NULL)
+list_projects(
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
 \item{maxResults}{Maximum number of records to list in a single response.}

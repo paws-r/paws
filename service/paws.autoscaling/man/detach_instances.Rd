@@ -4,15 +4,20 @@
 \alias{detach_instances}
 \title{Removes one or more instances from the specified Auto Scaling group}
 \usage{
-detach_instances(AutoScalingGroupName, ShouldDecrementDesiredCapacity,
-  InstanceIds = NULL)
+detach_instances(
+  InstanceIds = list(
+    "string"
+  ),
+  AutoScalingGroupName = "string",
+  ShouldDecrementDesiredCapacity = TRUE|FALSE
+)
 }
 \arguments{
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
-
-\item{ShouldDecrementDesiredCapacity}{Indicates whether the Auto Scaling group decrements the desired capacity value by the number of instances detached.}
-
 \item{InstanceIds}{The IDs of the instances. You can specify up to 20 instances.}
+
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
+
+\item{ShouldDecrementDesiredCapacity}{[required] Indicates whether the Auto Scaling group decrements the desired capacity value by the number of instances detached.}
 }
 \description{
 Removes one or more instances from the specified Auto Scaling group.

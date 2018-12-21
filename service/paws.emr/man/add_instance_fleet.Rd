@@ -4,12 +4,57 @@
 \alias{add_instance_fleet}
 \title{Adds an instance fleet to a running cluster}
 \usage{
-add_instance_fleet(ClusterId, InstanceFleet)
+add_instance_fleet(
+  ClusterId = "string",
+  InstanceFleet = list(
+    Name = "string",
+    InstanceFleetType = "MASTER"|"CORE"|"TASK",
+    TargetOnDemandCapacity = 123,
+    TargetSpotCapacity = 123,
+    InstanceTypeConfigs = list(
+      list(
+        InstanceType = "string",
+        WeightedCapacity = 123,
+        BidPrice = "string",
+        BidPriceAsPercentageOfOnDemandPrice = 123.0,
+        EbsConfiguration = list(
+          EbsBlockDeviceConfigs = list(
+            list(
+              VolumeSpecification = list(
+                VolumeType = "string",
+                Iops = 123,
+                SizeInGB = 123
+              ),
+              VolumesPerInstance = 123
+            )
+          ),
+          EbsOptimized = TRUE|FALSE
+        ),
+        Configurations = list(
+          list(
+            Classification = "string",
+            Configurations = list(),
+            Properties = list(
+              "string"
+            )
+          )
+        )
+      )
+    ),
+    LaunchSpecifications = list(
+      SpotSpecification = list(
+        TimeoutDurationMinutes = 123,
+        TimeoutAction = "SWITCH_TO_ON_DEMAND"|"TERMINATE_CLUSTER",
+        BlockDurationMinutes = 123
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{ClusterId}{The unique identifier of the cluster.}
+\item{ClusterId}{[required] The unique identifier of the cluster.}
 
-\item{InstanceFleet}{Specifies the configuration of the instance fleet.}
+\item{InstanceFleet}{[required] Specifies the configuration of the instance fleet.}
 }
 \description{
 Adds an instance fleet to a running cluster.

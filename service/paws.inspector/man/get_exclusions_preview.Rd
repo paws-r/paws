@@ -4,13 +4,18 @@
 \alias{get_exclusions_preview}
 \title{Retrieves the exclusions preview (a list of ExclusionPreview objects) specified by the preview token}
 \usage{
-get_exclusions_preview(assessmentTemplateArn, previewToken, nextToken = NULL,
-  maxResults = NULL, locale = NULL)
+get_exclusions_preview(
+  assessmentTemplateArn = "string",
+  previewToken = "string",
+  nextToken = "string",
+  maxResults = 123,
+  locale = "EN_US"
+)
 }
 \arguments{
-\item{assessmentTemplateArn}{The ARN that specifies the assessment template for which the exclusions preview was requested.}
+\item{assessmentTemplateArn}{[required] The ARN that specifies the assessment template for which the exclusions preview was requested.}
 
-\item{previewToken}{The unique identifier associated of the exclusions preview.}
+\item{previewToken}{[required] The unique identifier associated of the exclusions preview.}
 
 \item{nextToken}{You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the GetExclusionsPreviewRequest action. Subsequent calls to the action fill nextToken in the request with the value of nextToken from the previous response to continue listing data.}
 

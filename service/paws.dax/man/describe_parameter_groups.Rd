@@ -4,8 +4,13 @@
 \alias{describe_parameter_groups}
 \title{Returns a list of parameter group descriptions}
 \usage{
-describe_parameter_groups(ParameterGroupNames = NULL, MaxResults = NULL,
-  NextToken = NULL)
+describe_parameter_groups(
+  ParameterGroupNames = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{ParameterGroupNames}{The names of the parameter groups.}

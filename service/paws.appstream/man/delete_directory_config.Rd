@@ -4,10 +4,12 @@
 \alias{delete_directory_config}
 \title{Deletes the specified Directory Config object from AppStream 2}
 \usage{
-delete_directory_config(DirectoryName)
+delete_directory_config(
+  DirectoryName = "string"
+)
 }
 \arguments{
-\item{DirectoryName}{The name of the directory configuration.}
+\item{DirectoryName}{[required] The name of the directory configuration.}
 }
 \description{
 Deletes the specified Directory Config object from AppStream 2.0. This object includes the information required to join streaming instances to an Active Directory domain.

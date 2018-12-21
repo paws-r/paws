@@ -4,11 +4,18 @@
 \alias{list_server_neighbors}
 \title{Retrieves a list of servers that are one network hop away from a specified server}
 \usage{
-list_server_neighbors(configurationId, portInformationNeeded = NULL,
-  neighborConfigurationIds = NULL, maxResults = NULL, nextToken = NULL)
+list_server_neighbors(
+  configurationId = "string",
+  portInformationNeeded = TRUE|FALSE,
+  neighborConfigurationIds = list(
+    "string"
+  ),
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
-\item{configurationId}{Configuration ID of the server for which neighbors are being listed.}
+\item{configurationId}{[required] Configuration ID of the server for which neighbors are being listed.}
 
 \item{portInformationNeeded}{Flag to indicate if port and protocol information is needed as part of the response.}
 

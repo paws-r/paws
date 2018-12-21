@@ -4,10 +4,13 @@
 \alias{describe_availability_options}
 \title{Gets the availability options configured for a domain}
 \usage{
-describe_availability_options(DomainName, Deployed = NULL)
+describe_availability_options(
+  DomainName = "string",
+  Deployed = TRUE|FALSE
+)
 }
 \arguments{
-\item{DomainName}{The name of the domain you want to describe.}
+\item{DomainName}{[required] The name of the domain you want to describe.}
 
 \item{Deployed}{Whether to display the deployed configuration (\code{true}) or include any pending changes (\code{false}). Defaults to \code{false}.}
 }

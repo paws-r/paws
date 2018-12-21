@@ -4,14 +4,18 @@
 \alias{start_stream_encryption}
 \title{Enables or updates server-side encryption using an AWS KMS key for a specified stream}
 \usage{
-start_stream_encryption(StreamName, EncryptionType, KeyId)
+start_stream_encryption(
+  StreamName = "string",
+  EncryptionType = "NONE"|"KMS",
+  KeyId = "string"
+)
 }
 \arguments{
-\item{StreamName}{The name of the stream for which to start encrypting records.}
+\item{StreamName}{[required] The name of the stream for which to start encrypting records.}
 
-\item{EncryptionType}{The encryption type to use. The only valid value is \code{KMS}.}
+\item{EncryptionType}{[required] The encryption type to use. The only valid value is \code{KMS}.}
 
-\item{KeyId}{The GUID for the customer-managed AWS KMS key to use for encryption. This value can be a globally unique identifier, a fully specified Amazon Resource Name (ARN) to either an alias or a key, or an alias name prefixed by "alias/".You can also use a master key owned by Kinesis Data Streams by specifying the alias \code{aws/kinesis}.
+\item{KeyId}{[required] The GUID for the customer-managed AWS KMS key to use for encryption. This value can be a globally unique identifier, a fully specified Amazon Resource Name (ARN) to either an alias or a key, or an alias name prefixed by "alias/".You can also use a master key owned by Kinesis Data Streams by specifying the alias \code{aws/kinesis}.
 \itemize{
 \item Key ARN example: \code{arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012}
 \item Alias ARN example: \code{arn:aws:kms:us-east-1:123456789012:alias/MyAliasName}

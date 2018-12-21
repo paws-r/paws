@@ -4,10 +4,13 @@
 \alias{list_instance_fleets}
 \title{Lists all available details about the instance fleets in a cluster}
 \usage{
-list_instance_fleets(ClusterId, Marker = NULL)
+list_instance_fleets(
+  ClusterId = "string",
+  Marker = "string"
+)
 }
 \arguments{
-\item{ClusterId}{The unique identifier of the cluster.}
+\item{ClusterId}{[required] The unique identifier of the cluster.}
 
 \item{Marker}{The pagination token that indicates the next set of results to retrieve.}
 }

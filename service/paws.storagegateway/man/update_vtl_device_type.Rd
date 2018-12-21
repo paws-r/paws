@@ -4,12 +4,15 @@
 \alias{update_vtl_device_type}
 \title{Updates the type of medium changer in a tape gateway}
 \usage{
-update_vtl_device_type(VTLDeviceARN, DeviceType)
+update_vtl_device_type(
+  VTLDeviceARN = "string",
+  DeviceType = "string"
+)
 }
 \arguments{
-\item{VTLDeviceARN}{The Amazon Resource Name (ARN) of the medium changer you want to select.}
+\item{VTLDeviceARN}{[required] The Amazon Resource Name (ARN) of the medium changer you want to select.}
 
-\item{DeviceType}{The type of medium changer you want to select.
+\item{DeviceType}{[required] The type of medium changer you want to select.
 
 Valid Values: "STK-L700", "AWS-Gateway-VTL"}
 }

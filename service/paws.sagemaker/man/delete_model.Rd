@@ -4,10 +4,12 @@
 \alias{delete_model}
 \title{Deletes a model}
 \usage{
-delete_model(ModelName)
+delete_model(
+  ModelName = "string"
+)
 }
 \arguments{
-\item{ModelName}{The name of the model to delete.}
+\item{ModelName}{[required] The name of the model to delete.}
 }
 \description{
 Deletes a model. The \code{DeleteModel} API deletes only the model entry that was created in Amazon SageMaker when you called the \href{http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html}{CreateModel} API. It does not delete model artifacts, inference code, or the IAM role that you specified when creating the model.

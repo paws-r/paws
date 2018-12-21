@@ -4,11 +4,27 @@
 \alias{reset_db_parameter_group}
 \title{Modifies the parameters of a DB parameter group to the engine/system default value}
 \usage{
-reset_db_parameter_group(DBParameterGroupName, ResetAllParameters = NULL,
-  Parameters = NULL)
+reset_db_parameter_group(
+  DBParameterGroupName = "string",
+  ResetAllParameters = TRUE|FALSE,
+  Parameters = list(
+    list(
+      ParameterName = "string",
+      ParameterValue = "string",
+      Description = "string",
+      Source = "string",
+      ApplyType = "string",
+      DataType = "string",
+      AllowedValues = "string",
+      IsModifiable = TRUE|FALSE,
+      MinimumEngineVersion = "string",
+      ApplyMethod = "immediate"|"pending-reboot"
+    )
+  )
+)
 }
 \arguments{
-\item{DBParameterGroupName}{The name of the DB parameter group.
+\item{DBParameterGroupName}{[required] The name of the DB parameter group.
 
 Constraints:
 \itemize{

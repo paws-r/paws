@@ -4,15 +4,18 @@
 \alias{apply_environment_managed_action}
 \title{Applies a scheduled managed action immediately}
 \usage{
-apply_environment_managed_action(ActionId, EnvironmentName = NULL,
-  EnvironmentId = NULL)
+apply_environment_managed_action(
+  EnvironmentName = "string",
+  EnvironmentId = "string",
+  ActionId = "string"
+)
 }
 \arguments{
-\item{ActionId}{The action ID of the scheduled managed action to execute.}
-
 \item{EnvironmentName}{The name of the target environment.}
 
 \item{EnvironmentId}{The environment ID of the target environment.}
+
+\item{ActionId}{[required] The action ID of the scheduled managed action to execute.}
 }
 \description{
 Applies a scheduled managed action immediately. A managed action can be applied only if its status is \code{Scheduled}. Get the status and action ID of a managed action with DescribeEnvironmentManagedActions.

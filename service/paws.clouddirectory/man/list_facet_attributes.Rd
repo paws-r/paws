@@ -4,12 +4,17 @@
 \alias{list_facet_attributes}
 \title{Retrieves attributes attached to the facet}
 \usage{
-list_facet_attributes(SchemaArn, Name, NextToken = NULL, MaxResults = NULL)
+list_facet_attributes(
+  SchemaArn = "string",
+  Name = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{SchemaArn}{The ARN of the schema where the facet resides.}
+\item{SchemaArn}{[required] The ARN of the schema where the facet resides.}
 
-\item{Name}{The name of the facet whose attributes will be retrieved.}
+\item{Name}{[required] The name of the facet whose attributes will be retrieved.}
 
 \item{NextToken}{The pagination token.}
 

@@ -4,10 +4,12 @@
 \alias{rotate_channel_credentials}
 \title{Changes the Channel's first IngestEndpoint's username and password}
 \usage{
-rotate_channel_credentials(Id)
+rotate_channel_credentials(
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The ID of the channel to update.}
+\item{Id}{[required] The ID of the channel to update.}
 }
 \description{
 Changes the Channel's first IngestEndpoint's username and password. WARNING - This API is deprecated. Please use RotateIngestEndpointCredentials instead

@@ -4,7 +4,13 @@
 \alias{list_tapes}
 \title{Lists virtual tapes in your virtual tape library (VTL) and your virtual tape shelf (VTS)}
 \usage{
-list_tapes(TapeARNs = NULL, Marker = NULL, Limit = NULL)
+list_tapes(
+  TapeARNs = list(
+    "string"
+  ),
+  Marker = "string",
+  Limit = 123
+)
 }
 \arguments{
 \item{TapeARNs}{}

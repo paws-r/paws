@@ -4,10 +4,12 @@
 \alias{delete_stack}
 \title{Deletes a specified stack}
 \usage{
-delete_stack(StackId)
+delete_stack(
+  StackId = "string"
+)
 }
 \arguments{
-\item{StackId}{The stack ID.}
+\item{StackId}{[required] The stack ID.}
 }
 \description{
 Deletes a specified stack. You must first delete all instances, layers, and apps or deregister registered instances. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-shutting.html}{Shut Down a Stack}.

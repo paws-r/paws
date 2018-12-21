@@ -4,10 +4,12 @@
 \alias{create_hapg}
 \title{This is documentation for \strong{AWS CloudHSM Classic}}
 \usage{
-create_hapg(Label)
+create_hapg(
+  Label = "string"
+)
 }
 \arguments{
-\item{Label}{The label of the new high-availability partition group.}
+\item{Label}{[required] The label of the new high-availability partition group.}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHSM Classic FAQs}, the \href{http://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide}, and the \href{http://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.

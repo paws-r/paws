@@ -4,14 +4,17 @@
 \alias{delete_message}
 \title{Deletes the specified message from the specified queue}
 \usage{
-delete_message(QueueUrl, ReceiptHandle)
+delete_message(
+  QueueUrl = "string",
+  ReceiptHandle = "string"
+)
 }
 \arguments{
-\item{QueueUrl}{The URL of the Amazon SQS queue from which messages are deleted.
+\item{QueueUrl}{[required] The URL of the Amazon SQS queue from which messages are deleted.
 
 Queue URLs and names are case-sensitive.}
 
-\item{ReceiptHandle}{The receipt handle associated with the message to delete.}
+\item{ReceiptHandle}{[required] The receipt handle associated with the message to delete.}
 }
 \description{
 Deletes the specified message from the specified queue. To select the message to delete, use the \code{ReceiptHandle} of the message (\emph{not} the \code{MessageId} which you receive when you send the message). Amazon SQS can delete a message from a queue even if a visibility timeout setting causes the message to be locked by another consumer. Amazon SQS automatically deletes messages left in a queue longer than the retention period configured for the queue.

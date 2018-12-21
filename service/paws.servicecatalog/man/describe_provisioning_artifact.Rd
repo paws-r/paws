@@ -4,20 +4,24 @@
 \alias{describe_provisioning_artifact}
 \title{Gets information about the specified provisioning artifact (also known as a version) for the specified product}
 \usage{
-describe_provisioning_artifact(ProvisioningArtifactId, ProductId,
-  AcceptLanguage = NULL, Verbose = NULL)
+describe_provisioning_artifact(
+  AcceptLanguage = "string",
+  ProvisioningArtifactId = "string",
+  ProductId = "string",
+  Verbose = TRUE|FALSE
+)
 }
 \arguments{
-\item{ProvisioningArtifactId}{The identifier of the provisioning artifact.}
-
-\item{ProductId}{The product identifier.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{ProvisioningArtifactId}{[required] The identifier of the provisioning artifact.}
+
+\item{ProductId}{[required] The product identifier.}
 
 \item{Verbose}{Indicates whether a verbose level of detail is enabled.}
 }

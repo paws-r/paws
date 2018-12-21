@@ -4,13 +4,28 @@
 \alias{index_faces}
 \title{Detects faces in the input image and adds them to the specified collection}
 \usage{
-index_faces(CollectionId, Image, ExternalImageId = NULL,
-  DetectionAttributes = NULL, MaxFaces = NULL, QualityFilter = NULL)
+index_faces(
+  CollectionId = "string",
+  Image = list(
+    Bytes = raw,
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  ExternalImageId = "string",
+  DetectionAttributes = list(
+    "DEFAULT"|"ALL"
+  ),
+  MaxFaces = 123,
+  QualityFilter = "NONE"|"AUTO"
+)
 }
 \arguments{
-\item{CollectionId}{The ID of an existing collection to which you want to add the faces that are detected in the input images.}
+\item{CollectionId}{[required] The ID of an existing collection to which you want to add the faces that are detected in the input images.}
 
-\item{Image}{The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes isn't supported.}
+\item{Image}{[required] The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes isn't supported.}
 
 \item{ExternalImageId}{The ID you want to assign to all the faces detected in the image.}
 
@@ -40,7 +55,11 @@ For more information, see Adding Faces to a Collection in the Amazon Rekognition
 
 To get the number of faces in a collection, call .
 
-If you're using version 1.0 of the face detection model, \code{IndexFaces} indexes the 15 largest faces in the input image. Later versions of the face detection model index the 100 largest faces in the input image. To determine which version of the model you're using, call and supply the collection ID. You can also get the model version from the value of \code{FaceModelVersion} in the response from \code{IndexFaces}.
+If you're using version 1.0 of the face detection model, \code{IndexFaces} indexes the 15 largest faces in the input image. Later versions of the face detection model index the 100 largest faces in the input image.
+
+If you're using version 4 or later of the face model, image orientation information is not returned in the \code{OrientationCorrection} field.
+
+To determine which version of the model you're using, call and supply the collection ID. You can also get the model version from the value of \code{FaceModelVersion} in the response from \code{IndexFaces}
 
 For more information, see Model Versioning in the Amazon Rekognition Developer Guide.
 

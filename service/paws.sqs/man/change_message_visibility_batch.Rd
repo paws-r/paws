@@ -4,14 +4,23 @@
 \alias{change_message_visibility_batch}
 \title{Changes the visibility timeout of multiple messages}
 \usage{
-change_message_visibility_batch(QueueUrl, Entries)
+change_message_visibility_batch(
+  QueueUrl = "string",
+  Entries = list(
+    list(
+      Id = "string",
+      ReceiptHandle = "string",
+      VisibilityTimeout = 123
+    )
+  )
+)
 }
 \arguments{
-\item{QueueUrl}{The URL of the Amazon SQS queue whose messages' visibility is changed.
+\item{QueueUrl}{[required] The URL of the Amazon SQS queue whose messages' visibility is changed.
 
 Queue URLs and names are case-sensitive.}
 
-\item{Entries}{A list of receipt handles of the messages for which the visibility timeout must be changed.}
+\item{Entries}{[required] A list of receipt handles of the messages for which the visibility timeout must be changed.}
 }
 \description{
 Changes the visibility timeout of multiple messages. This is a batch version of \code{ ChangeMessageVisibility.ChangeMessageVisibility.} The result of the action on each message is reported individually in the response. You can send up to 10 \code{ChangeMessageVisibility ChangeMessageVisibility} requests with each \code{ChangeMessageVisibilityBatch} action.

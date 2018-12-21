@@ -4,10 +4,12 @@
 \alias{check_if_phone_number_is_opted_out}
 \title{Accepts a phone number and indicates whether the phone holder has opted out of receiving SMS messages from your account}
 \usage{
-check_if_phone_number_is_opted_out(phoneNumber)
+check_if_phone_number_is_opted_out(
+  phoneNumber = "string"
+)
 }
 \arguments{
-\item{phoneNumber}{The phone number for which you want to check the opt out status.}
+\item{phoneNumber}{[required] The phone number for which you want to check the opt out status.}
 }
 \description{
 Accepts a phone number and indicates whether the phone holder has opted out of receiving SMS messages from your account. You cannot send SMS messages to a number that is opted out.

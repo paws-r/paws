@@ -4,8 +4,10 @@
 \alias{list_allowed_node_type_modifications}
 \title{Lists all available node types that you can scale your Redis cluster's or replication group's current node type up to}
 \usage{
-list_allowed_node_type_modifications(CacheClusterId = NULL,
-  ReplicationGroupId = NULL)
+list_allowed_node_type_modifications(
+  CacheClusterId = "string",
+  ReplicationGroupId = "string"
+)
 }
 \arguments{
 \item{CacheClusterId}{The name of the cluster you want to scale up to a larger node instanced type. ElastiCache uses the cluster id to identify the current node type of this cluster and from that to create a list of node types you can scale up to.

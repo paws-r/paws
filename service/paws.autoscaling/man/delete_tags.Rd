@@ -4,10 +4,20 @@
 \alias{delete_tags}
 \title{Deletes the specified tags}
 \usage{
-delete_tags(Tags)
+delete_tags(
+  Tags = list(
+    list(
+      ResourceId = "string",
+      ResourceType = "string",
+      Key = "string",
+      Value = "string",
+      PropagateAtLaunch = TRUE|FALSE
+    )
+  )
+)
 }
 \arguments{
-\item{Tags}{One or more tags.}
+\item{Tags}{[required] One or more tags.}
 }
 \description{
 Deletes the specified tags.

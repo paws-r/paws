@@ -4,13 +4,17 @@
 \alias{list_identities}
 \title{Lists the identities in a pool}
 \usage{
-list_identities(IdentityPoolId, MaxResults, NextToken = NULL,
-  HideDisabled = NULL)
+list_identities(
+  IdentityPoolId = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  HideDisabled = TRUE|FALSE
+)
 }
 \arguments{
-\item{IdentityPoolId}{An identity pool ID in the format REGION:GUID.}
+\item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
 
-\item{MaxResults}{The maximum number of identities to return.}
+\item{MaxResults}{[required] The maximum number of identities to return.}
 
 \item{NextToken}{A pagination token.}
 

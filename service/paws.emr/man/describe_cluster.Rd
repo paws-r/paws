@@ -4,10 +4,12 @@
 \alias{describe_cluster}
 \title{Provides cluster-level details including status, hardware and software configuration, VPC settings, and so on}
 \usage{
-describe_cluster(ClusterId)
+describe_cluster(
+  ClusterId = "string"
+)
 }
 \arguments{
-\item{ClusterId}{The identifier of the cluster to describe.}
+\item{ClusterId}{[required] The identifier of the cluster to describe.}
 }
 \description{
 Provides cluster-level details including status, hardware and software configuration, VPC settings, and so on.

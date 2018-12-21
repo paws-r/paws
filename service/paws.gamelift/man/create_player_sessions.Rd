@@ -4,12 +4,20 @@
 \alias{create_player_sessions}
 \title{Adds a group of players to a game session}
 \usage{
-create_player_sessions(GameSessionId, PlayerIds, PlayerDataMap = NULL)
+create_player_sessions(
+  GameSessionId = "string",
+  PlayerIds = list(
+    "string"
+  ),
+  PlayerDataMap = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{GameSessionId}{Unique identifier for the game session to add players to.}
+\item{GameSessionId}{[required] Unique identifier for the game session to add players to.}
 
-\item{PlayerIds}{List of unique identifiers for the players to be added.}
+\item{PlayerIds}{[required] List of unique identifiers for the players to be added.}
 
 \item{PlayerDataMap}{Map of string pairs, each specifying a player ID and a set of developer-defined information related to the player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game. Player data strings for player IDs not included in the \code{PlayerIds} parameter are ignored.}
 }

@@ -4,17 +4,26 @@
 \alias{create_job_queue}
 \title{Creates an AWS Batch job queue}
 \usage{
-create_job_queue(jobQueueName, priority, computeEnvironmentOrder,
-  state = NULL)
+create_job_queue(
+  jobQueueName = "string",
+  state = "ENABLED"|"DISABLED",
+  priority = 123,
+  computeEnvironmentOrder = list(
+    list(
+      order = 123,
+      computeEnvironment = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{jobQueueName}{The name of the job queue.}
-
-\item{priority}{The priority of the job queue. Job queues with a higher priority (or a higher integer value for the \code{priority} parameter) are evaluated first when associated with same compute environment. Priority is determined in descending order, for example, a job queue with a priority value of \code{10} is given scheduling preference over a job queue with a priority value of \code{1}.}
-
-\item{computeEnvironmentOrder}{The set of compute environments mapped to a job queue and their order relative to each other. The job scheduler uses this parameter to determine which compute environment should execute a given job. Compute environments must be in the \code{VALID} state before you can associate them with a job queue. You can associate up to three compute environments with a job queue.}
+\item{jobQueueName}{[required] The name of the job queue.}
 
 \item{state}{The state of the job queue. If the job queue state is \code{ENABLED}, it is able to accept jobs.}
+
+\item{priority}{[required] The priority of the job queue. Job queues with a higher priority (or a higher integer value for the \code{priority} parameter) are evaluated first when associated with the same compute environment. Priority is determined in descending order, for example, a job queue with a priority value of \code{10} is given scheduling preference over a job queue with a priority value of \code{1}.}
+
+\item{computeEnvironmentOrder}{[required] The set of compute environments mapped to a job queue and their order relative to each other. The job scheduler uses this parameter to determine which compute environment should execute a given job. Compute environments must be in the \code{VALID} state before you can associate them with a job queue. You can associate up to three compute environments with a job queue.}
 }
 \description{
 Creates an AWS Batch job queue. When you create a job queue, you associate one or more compute environments to the queue and assign an order of preference for the compute environments.

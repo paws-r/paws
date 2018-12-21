@@ -4,19 +4,90 @@
 \alias{schedule_run}
 \title{Schedules a run}
 \usage{
-schedule_run(projectArn, devicePoolArn, test, appArn = NULL, name = NULL,
-  configuration = NULL, executionConfiguration = NULL)
+schedule_run(
+  projectArn = "string",
+  appArn = "string",
+  devicePoolArn = "string",
+  deviceSelectionConfiguration = list(
+    filters = list(
+      list(
+        attribute = "ARN"|"PLATFORM"|"OS_VERSION"|"MODEL"|"AVAILABILITY"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE",
+        operator = "EQUALS"|"LESS_THAN"|"LESS_THAN_OR_EQUALS"|"GREATER_THAN"|"GREATER_THAN_OR_EQUALS"|"IN"|"NOT_IN"|"CONTAINS",
+        values = list(
+          "string"
+        )
+      )
+    ),
+    maxDevices = 123
+  ),
+  name = "string",
+  test = list(
+    type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+    testPackageArn = "string",
+    testSpecArn = "string",
+    filter = "string",
+    parameters = list(
+      "string"
+    )
+  ),
+  configuration = list(
+    extraDataPackageArn = "string",
+    networkProfileArn = "string",
+    locale = "string",
+    location = list(
+      latitude = 123.0,
+      longitude = 123.0
+    ),
+    vpceConfigurationArns = list(
+      "string"
+    ),
+    customerArtifactPaths = list(
+      iosPaths = list(
+        "string"
+      ),
+      androidPaths = list(
+        "string"
+      ),
+      deviceHostPaths = list(
+        "string"
+      )
+    ),
+    radios = list(
+      wifi = TRUE|FALSE,
+      bluetooth = TRUE|FALSE,
+      nfc = TRUE|FALSE,
+      gps = TRUE|FALSE
+    ),
+    auxiliaryApps = list(
+      "string"
+    ),
+    billingMethod = "METERED"|"UNMETERED"
+  ),
+  executionConfiguration = list(
+    jobTimeoutMinutes = 123,
+    accountsCleanup = TRUE|FALSE,
+    appPackagesCleanup = TRUE|FALSE,
+    videoCapture = TRUE|FALSE,
+    skipAppResign = TRUE|FALSE
+  )
+)
 }
 \arguments{
-\item{projectArn}{The ARN of the project for the run to be scheduled.}
-
-\item{devicePoolArn}{The ARN of the device pool for the run to be scheduled.}
-
-\item{test}{Information about the test for the run to be scheduled.}
+\item{projectArn}{[required] The ARN of the project for the run to be scheduled.}
 
 \item{appArn}{The ARN of the app to schedule a run.}
 
+\item{devicePoolArn}{The ARN of the device pool for the run to be scheduled.
+
+Either \strong{\code{devicePoolArn}} or \strong{\code{deviceSelectionConfiguration}} are required in a request.}
+
+\item{deviceSelectionConfiguration}{The filter criteria used to dynamically select a set of devices for a test run, as well as the maximum number of devices to be included in the run.
+
+Either \strong{\code{devicePoolArn}} or \strong{\code{deviceSelectionConfiguration}} are required in a request.}
+
 \item{name}{The name for the run to be scheduled.}
+
+\item{test}{[required] Information about the test for the run to be scheduled.}
 
 \item{configuration}{Information about the settings for the run to be scheduled.}
 

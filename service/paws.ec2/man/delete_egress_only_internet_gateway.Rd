@@ -4,13 +4,15 @@
 \alias{delete_egress_only_internet_gateway}
 \title{Deletes an egress-only internet gateway}
 \usage{
-delete_egress_only_internet_gateway(EgressOnlyInternetGatewayId,
-  DryRun = NULL)
+delete_egress_only_internet_gateway(
+  DryRun = TRUE|FALSE,
+  EgressOnlyInternetGatewayId = "string"
+)
 }
 \arguments{
-\item{EgressOnlyInternetGatewayId}{The ID of the egress-only internet gateway.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{EgressOnlyInternetGatewayId}{[required] The ID of the egress-only internet gateway.}
 }
 \description{
 Deletes an egress-only internet gateway.

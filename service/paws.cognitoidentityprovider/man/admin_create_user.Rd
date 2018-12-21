@@ -4,15 +4,33 @@
 \alias{admin_create_user}
 \title{Creates a new user in the specified user pool}
 \usage{
-admin_create_user(UserPoolId, Username, UserAttributes = NULL,
-  ValidationData = NULL, TemporaryPassword = NULL,
-  ForceAliasCreation = NULL, MessageAction = NULL,
-  DesiredDeliveryMediums = NULL)
+admin_create_user(
+  UserPoolId = "string",
+  Username = "string",
+  UserAttributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  ValidationData = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  TemporaryPassword = "string",
+  ForceAliasCreation = TRUE|FALSE,
+  MessageAction = "RESEND"|"SUPPRESS",
+  DesiredDeliveryMediums = list(
+    "SMS"|"EMAIL"
+  )
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool where the user will be created.}
+\item{UserPoolId}{[required] The user pool ID for the user pool where the user will be created.}
 
-\item{Username}{The username for the user. Must be unique within the user pool. Must be a UTF-8 string between 1 and 128 characters. After the user is created, the username cannot be changed.}
+\item{Username}{[required] The username for the user. Must be unique within the user pool. Must be a UTF-8 string between 1 and 128 characters. After the user is created, the username cannot be changed.}
 
 \item{UserAttributes}{An array of name-value pairs that contain user attributes and attribute values to be set for the user to be created. You can create a user without specifying any attributes other than \code{Username}. However, any attributes that you specify as required (in or in the \strong{Attributes} tab of the console) must be supplied either by you (in your call to \code{AdminCreateUser}) or by the user (when he or she signs up in response to your welcome message).
 

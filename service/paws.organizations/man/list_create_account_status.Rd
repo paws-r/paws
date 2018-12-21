@@ -4,8 +4,13 @@
 \alias{list_create_account_status}
 \title{Lists the account creation requests that match the specified status that is currently being tracked for the organization}
 \usage{
-list_create_account_status(States = NULL, NextToken = NULL,
-  MaxResults = NULL)
+list_create_account_status(
+  States = list(
+    "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{States}{A list of one or more states that you want included in the response. If this parameter is not present, then all requests are included in the response.}

@@ -4,12 +4,22 @@
 \alias{start_application}
 \title{Starts the specified Amazon Kinesis Analytics application}
 \usage{
-start_application(ApplicationName, InputConfigurations)
+start_application(
+  ApplicationName = "string",
+  InputConfigurations = list(
+    list(
+      Id = "string",
+      InputStartingPositionConfiguration = list(
+        InputStartingPosition = "NOW"|"TRIM_HORIZON"|"LAST_STOPPED_POINT"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{ApplicationName}{Name of the application.}
+\item{ApplicationName}{[required] Name of the application.}
 
-\item{InputConfigurations}{Identifies the specific input, by ID, that the application starts consuming. Amazon Kinesis Analytics starts reading the streaming source associated with the input. You can also specify where in the streaming source you want Amazon Kinesis Analytics to start reading.}
+\item{InputConfigurations}{[required] Identifies the specific input, by ID, that the application starts consuming. Amazon Kinesis Analytics starts reading the streaming source associated with the input. You can also specify where in the streaming source you want Amazon Kinesis Analytics to start reading.}
 }
 \description{
 Starts the specified Amazon Kinesis Analytics application. After creating an application, you must exclusively call this operation to start your application.

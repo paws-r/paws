@@ -4,12 +4,17 @@
 \alias{count_pending_decision_tasks}
 \title{Returns the estimated number of decision tasks in the specified task list}
 \usage{
-count_pending_decision_tasks(domain, taskList)
+count_pending_decision_tasks(
+  domain = "string",
+  taskList = list(
+    name = "string"
+  )
+)
 }
 \arguments{
-\item{domain}{The name of the domain that contains the task list.}
+\item{domain}{[required] The name of the domain that contains the task list.}
 
-\item{taskList}{The name of the task list.}
+\item{taskList}{[required] The name of the task list.}
 }
 \description{
 Returns the estimated number of decision tasks in the specified task list. The count returned is an approximation and isn't guaranteed to be exact. If you specify a task list that no decision task was ever scheduled in then \code{0} is returned.

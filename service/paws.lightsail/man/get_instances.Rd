@@ -4,7 +4,9 @@
 \alias{get_instances}
 \title{Returns information about all Amazon Lightsail virtual private servers, or \emph{instances}}
 \usage{
-get_instances(pageToken = NULL)
+get_instances(
+  pageToken = "string"
+)
 }
 \arguments{
 \item{pageToken}{A token used for advancing to the next page of results from your get instances request.}

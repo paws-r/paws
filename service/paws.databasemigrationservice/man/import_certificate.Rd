@@ -4,11 +4,20 @@
 \alias{import_certificate}
 \title{Uploads the specified certificate}
 \usage{
-import_certificate(CertificateIdentifier, CertificatePem = NULL,
-  CertificateWallet = NULL, Tags = NULL)
+import_certificate(
+  CertificateIdentifier = "string",
+  CertificatePem = "string",
+  CertificateWallet = raw,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{CertificateIdentifier}{The customer-assigned name of the certificate. Valid characters are A-z and 0-9.}
+\item{CertificateIdentifier}{[required] The customer-assigned name of the certificate. Valid characters are A-z and 0-9.}
 
 \item{CertificatePem}{The contents of the .pem X.509 certificate file for the certificate.}
 

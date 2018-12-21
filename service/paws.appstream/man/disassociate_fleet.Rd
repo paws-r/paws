@@ -4,12 +4,15 @@
 \alias{disassociate_fleet}
 \title{Disassociates the specified fleet from the specified stack}
 \usage{
-disassociate_fleet(FleetName, StackName)
+disassociate_fleet(
+  FleetName = "string",
+  StackName = "string"
+)
 }
 \arguments{
-\item{FleetName}{The name of the fleet.}
+\item{FleetName}{[required] The name of the fleet.}
 
-\item{StackName}{The name of the stack.}
+\item{StackName}{[required] The name of the stack.}
 }
 \description{
 Disassociates the specified fleet from the specified stack.

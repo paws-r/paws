@@ -4,8 +4,16 @@
 \alias{list_associations}
 \title{Lists the associations for the specified Systems Manager document or instance}
 \usage{
-list_associations(AssociationFilterList = NULL, MaxResults = NULL,
-  NextToken = NULL)
+list_associations(
+  AssociationFilterList = list(
+    list(
+      key = "InstanceId"|"Name"|"AssociationId"|"AssociationStatusName"|"LastExecutedBefore"|"LastExecutedAfter"|"AssociationName",
+      value = "string"
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{AssociationFilterList}{One or more filters. Use a filter to return a more specific list of results.}

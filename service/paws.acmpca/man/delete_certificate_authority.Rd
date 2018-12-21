@@ -4,11 +4,13 @@
 \alias{delete_certificate_authority}
 \title{Deletes a private certificate authority (CA)}
 \usage{
-delete_certificate_authority(CertificateAuthorityArn,
-  PermanentDeletionTimeInDays = NULL)
+delete_certificate_authority(
+  CertificateAuthorityArn = "string",
+  PermanentDeletionTimeInDays = 123
+)
 }
 \arguments{
-\item{CertificateAuthorityArn}{The Amazon Resource Name (ARN) that was returned when you called CreateCertificateAuthority. This must have the following form:
+\item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called CreateCertificateAuthority. This must have the following form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }.}
 

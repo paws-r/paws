@@ -4,10 +4,12 @@
 \alias{disassociate_from_master_account}
 \title{Disassociates the current GuardDuty member account from its master account}
 \usage{
-disassociate_from_master_account(DetectorId)
+disassociate_from_master_account(
+  DetectorId = "string"
+)
 }
 \arguments{
-\item{DetectorId}{The unique ID of the detector of the GuardDuty member account.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.}
 }
 \description{
 Disassociates the current GuardDuty member account from its master account.

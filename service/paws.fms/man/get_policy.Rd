@@ -4,10 +4,12 @@
 \alias{get_policy}
 \title{Returns information about the specified AWS Firewall Manager policy}
 \usage{
-get_policy(PolicyId)
+get_policy(
+  PolicyId = "string"
+)
 }
 \arguments{
-\item{PolicyId}{The ID of the AWS Firewall Manager policy that you want the details for.}
+\item{PolicyId}{[required] The ID of the AWS Firewall Manager policy that you want the details for.}
 }
 \description{
 Returns information about the specified AWS Firewall Manager policy.

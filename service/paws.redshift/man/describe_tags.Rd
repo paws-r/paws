@@ -4,8 +4,18 @@
 \alias{describe_tags}
 \title{Returns a list of tags}
 \usage{
-describe_tags(ResourceName = NULL, ResourceType = NULL, MaxRecords = NULL,
-  Marker = NULL, TagKeys = NULL, TagValues = NULL)
+describe_tags(
+  ResourceName = "string",
+  ResourceType = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  TagKeys = list(
+    "string"
+  ),
+  TagValues = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{ResourceName}{The Amazon Resource Name (ARN) for which you want to describe the tag or tags. For example, \code{arn:aws:redshift:us-east-1:123456789:cluster:t1}.}

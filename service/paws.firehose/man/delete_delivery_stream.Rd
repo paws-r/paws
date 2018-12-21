@@ -4,10 +4,12 @@
 \alias{delete_delivery_stream}
 \title{Deletes a delivery stream and its data}
 \usage{
-delete_delivery_stream(DeliveryStreamName)
+delete_delivery_stream(
+  DeliveryStreamName = "string"
+)
 }
 \arguments{
-\item{DeliveryStreamName}{The name of the delivery stream.}
+\item{DeliveryStreamName}{[required] The name of the delivery stream.}
 }
 \description{
 Deletes a delivery stream and its data.

@@ -4,10 +4,12 @@
 \alias{describe_stream}
 \title{Gets information about a stream}
 \usage{
-describe_stream(streamId)
+describe_stream(
+  streamId = "string"
+)
 }
 \arguments{
-\item{streamId}{The stream ID.}
+\item{streamId}{[required] The stream ID.}
 }
 \description{
 Gets information about a stream.

@@ -4,14 +4,17 @@
 \alias{attach_group_policy}
 \title{Attaches the specified managed policy to the specified IAM group}
 \usage{
-attach_group_policy(GroupName, PolicyArn)
+attach_group_policy(
+  GroupName = "string",
+  PolicyArn = "string"
+)
 }
 \arguments{
-\item{GroupName}{The name (friendly name, not ARN) of the group to attach the policy to.
+\item{GroupName}{[required] The name (friendly name, not ARN) of the group to attach the policy to.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
-\item{PolicyArn}{The Amazon Resource Name (ARN) of the IAM policy you want to attach.
+\item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 
 For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces} in the \emph{AWS General Reference}.}
 }

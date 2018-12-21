@@ -5,10 +5,13 @@
 \alias{get_application}
 \title{Gets the specified application}
 \usage{
-get_application(ApplicationId, SemanticVersion = NULL)
+get_application(
+  ApplicationId = "string",
+  SemanticVersion = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The Amazon Resource Name (ARN) of the application.}
+\item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
 
 \item{SemanticVersion}{The semantic version of the application to get.}
 }

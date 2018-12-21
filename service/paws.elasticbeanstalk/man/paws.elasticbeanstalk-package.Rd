@@ -6,16 +6,21 @@
 \alias{paws.elasticbeanstalk-package}
 \title{paws.elasticbeanstalk: AWS Elastic Beanstalk}
 \description{
-AWS Elastic Beanstalk makes it easy for you to
-create, deploy, and manage scalable, fault-tolerant applications
-running on the Amazon Web Services cloud.
+AWS Elastic Beanstalk makes it easy for you to create,
+deploy, and manage scalable, fault-tolerant applications running on
+the Amazon Web Services cloud.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

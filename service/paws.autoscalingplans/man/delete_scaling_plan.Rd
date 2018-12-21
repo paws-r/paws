@@ -4,15 +4,23 @@
 \alias{delete_scaling_plan}
 \title{Deletes the specified scaling plan}
 \usage{
-delete_scaling_plan(ScalingPlanName, ScalingPlanVersion)
+delete_scaling_plan(
+  ScalingPlanName = "string",
+  ScalingPlanVersion = 123
+)
 }
 \arguments{
-\item{ScalingPlanName}{The name of the scaling plan.}
+\item{ScalingPlanName}{[required] The name of the scaling plan.}
 
-\item{ScalingPlanVersion}{The version of the scaling plan.}
+\item{ScalingPlanVersion}{[required] The version number of the scaling plan.}
 }
 \description{
 Deletes the specified scaling plan.
+}
+\details{
+Deleting a scaling plan deletes the underlying ScalingInstruction for all of the scalable resources that are covered by the plan.
+
+If the plan has launched resources or has scaling activities in progress, you must delete those resources separately.
 }
 \examples{
 

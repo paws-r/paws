@@ -4,10 +4,14 @@
 \alias{delete_invitations}
 \title{Deletes invitations sent to the current member account by AWS accounts specified by their account IDs}
 \usage{
-delete_invitations(AccountIds)
+delete_invitations(
+  AccountIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{AccountIds}{A list of account IDs of the AWS accounts that sent invitations to the current member account that you want to delete invitations from.}
+\item{AccountIds}{[required] A list of account IDs of the AWS accounts that sent invitations to the current member account that you want to delete invitations from.}
 }
 \description{
 Deletes invitations sent to the current member account by AWS accounts specified by their account IDs.

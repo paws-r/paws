@@ -4,10 +4,12 @@
 \alias{list_tags_for_resource}
 \title{Lists all tags for an AWS DMS resource}
 \usage{
-list_tags_for_resource(ResourceArn)
+list_tags_for_resource(
+  ResourceArn = "string"
+)
 }
 \arguments{
-\item{ResourceArn}{The Amazon Resource Name (ARN) string that uniquely identifies the AWS DMS resource.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) string that uniquely identifies the AWS DMS resource.}
 }
 \description{
 Lists all tags for an AWS DMS resource.

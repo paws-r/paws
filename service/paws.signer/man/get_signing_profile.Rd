@@ -4,10 +4,12 @@
 \alias{get_signing_profile}
 \title{Returns information on a specific signing profile}
 \usage{
-get_signing_profile(profileName)
+get_signing_profile(
+  profileName = "string"
+)
 }
 \arguments{
-\item{profileName}{The name of the target signing profile.}
+\item{profileName}{[required] The name of the target signing profile.}
 }
 \description{
 Returns information on a specific signing profile.

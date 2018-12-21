@@ -4,14 +4,23 @@
 \alias{associate_node}
 \title{Associates a new node with the server}
 \usage{
-associate_node(ServerName, NodeName, EngineAttributes)
+associate_node(
+  ServerName = "string",
+  NodeName = "string",
+  EngineAttributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ServerName}{The name of the server with which to associate the node.}
+\item{ServerName}{[required] The name of the server with which to associate the node.}
 
-\item{NodeName}{The name of the node.}
+\item{NodeName}{[required] The name of the node.}
 
-\item{EngineAttributes}{Engine attributes used for associating the node.
+\item{EngineAttributes}{[required] Engine attributes used for associating the node.
 
 \strong{Attributes accepted in a AssociateNode request for Chef}
 \itemize{

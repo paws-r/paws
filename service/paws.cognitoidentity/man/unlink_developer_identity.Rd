@@ -4,17 +4,21 @@
 \alias{unlink_developer_identity}
 \title{Unlinks a \code{DeveloperUserIdentifier} from an existing identity}
 \usage{
-unlink_developer_identity(IdentityId, IdentityPoolId, DeveloperProviderName,
-  DeveloperUserIdentifier)
+unlink_developer_identity(
+  IdentityId = "string",
+  IdentityPoolId = "string",
+  DeveloperProviderName = "string",
+  DeveloperUserIdentifier = "string"
+)
 }
 \arguments{
-\item{IdentityId}{A unique identifier in the format REGION:GUID.}
+\item{IdentityId}{[required] A unique identifier in the format REGION:GUID.}
 
-\item{IdentityPoolId}{An identity pool ID in the format REGION:GUID.}
+\item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
 
-\item{DeveloperProviderName}{The "domain" by which Cognito will refer to your users.}
+\item{DeveloperProviderName}{[required] The "domain" by which Cognito will refer to your users.}
 
-\item{DeveloperUserIdentifier}{A unique ID used by your backend authentication process to identify a user.}
+\item{DeveloperUserIdentifier}{[required] A unique ID used by your backend authentication process to identify a user.}
 }
 \description{
 Unlinks a \code{DeveloperUserIdentifier} from an existing identity. Unlinked developer users will be considered new identities next time they are seen. If, for a given Cognito identity, you remove all federated identities as well as the developer user identifier, the Cognito identity becomes inaccessible.

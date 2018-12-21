@@ -4,10 +4,13 @@
 \alias{get_pipeline_definition}
 \title{Gets the definition of the specified pipeline}
 \usage{
-get_pipeline_definition(pipelineId, version = NULL)
+get_pipeline_definition(
+  pipelineId = "string",
+  version = "string"
+)
 }
 \arguments{
-\item{pipelineId}{The ID of the pipeline.}
+\item{pipelineId}{[required] The ID of the pipeline.}
 
 \item{version}{The version of the pipeline definition to retrieve. Set this parameter to \code{latest} (default) to use the last definition saved to the pipeline or \code{active} to use the last definition that was activated.}
 }

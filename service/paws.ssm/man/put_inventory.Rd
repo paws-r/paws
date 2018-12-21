@@ -4,12 +4,30 @@
 \alias{put_inventory}
 \title{Bulk update custom inventory items on one more instance}
 \usage{
-put_inventory(InstanceId, Items)
+put_inventory(
+  InstanceId = "string",
+  Items = list(
+    list(
+      TypeName = "string",
+      SchemaVersion = "string",
+      CaptureTime = "string",
+      ContentHash = "string",
+      Content = list(
+        list(
+          "string"
+        )
+      ),
+      Context = list(
+        "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{InstanceId}{One or more instance IDs where you want to add or update inventory items.}
+\item{InstanceId}{[required] One or more instance IDs where you want to add or update inventory items.}
 
-\item{Items}{The inventory items that you want to add or update on instances.}
+\item{Items}{[required] The inventory items that you want to add or update on instances.}
 }
 \description{
 Bulk update custom inventory items on one more instance. The request adds an inventory item, if it doesn't already exist, or updates an inventory item, if it does exist.

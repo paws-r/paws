@@ -4,10 +4,13 @@
 \alias{list_tags_of_resource}
 \title{List all tags on an Amazon DynamoDB resource}
 \usage{
-list_tags_of_resource(ResourceArn, NextToken = NULL)
+list_tags_of_resource(
+  ResourceArn = "string",
+  NextToken = "string"
+)
 }
 \arguments{
-\item{ResourceArn}{The Amazon DynamoDB resource with tags to be listed. This value is an Amazon Resource Name (ARN).}
+\item{ResourceArn}{[required] The Amazon DynamoDB resource with tags to be listed. This value is an Amazon Resource Name (ARN).}
 
 \item{NextToken}{An optional string that, if supplied, must be copied from the output of a previous call to ListTagOfResource. When provided in this manner, this API fetches the next page of results.}
 }

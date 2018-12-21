@@ -4,17 +4,45 @@
 \alias{get_metric_data}
 \title{You can use the \code{GetMetricData} API to retrieve as many as 100 different metrics in a single request, with a total of as many as 100,800 datapoints}
 \usage{
-get_metric_data(MetricDataQueries, StartTime, EndTime, NextToken = NULL,
-  ScanBy = NULL, MaxDatapoints = NULL)
+get_metric_data(
+  MetricDataQueries = list(
+    list(
+      Id = "string",
+      MetricStat = list(
+        Metric = list(
+          Namespace = "string",
+          MetricName = "string",
+          Dimensions = list(
+            list(
+              Name = "string",
+              Value = "string"
+            )
+          )
+        ),
+        Period = 123,
+        Stat = "string",
+        Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
+      ),
+      Expression = "string",
+      Label = "string",
+      ReturnData = TRUE|FALSE
+    )
+  ),
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  NextToken = "string",
+  ScanBy = "TimestampDescending"|"TimestampAscending",
+  MaxDatapoints = 123
+)
 }
 \arguments{
-\item{MetricDataQueries}{The metric queries to be returned. A single \code{GetMetricData} call can include as many as 100 \code{MetricDataQuery} structures. Each of these structures can specify either a metric to retrieve, or a math expression to perform on retrieved data.}
+\item{MetricDataQueries}{[required] The metric queries to be returned. A single \code{GetMetricData} call can include as many as 100 \code{MetricDataQuery} structures. Each of these structures can specify either a metric to retrieve, or a math expression to perform on retrieved data.}
 
-\item{StartTime}{The time stamp indicating the earliest data to be returned.
+\item{StartTime}{[required] The time stamp indicating the earliest data to be returned.
 
 For better performance, specify \code{StartTime} and \code{EndTime} values that align with the value of the metric's \code{Period} and sync up with the beginning and end of an hour. For example, if the \code{Period} of a metric is 5 minutes, specifying 12:05 or 12:30 as \code{StartTime} can get a faster response from CloudWatch then setting 12:07 or 12:29 as the \code{StartTime}.}
 
-\item{EndTime}{The time stamp indicating the latest data to be returned.
+\item{EndTime}{[required] The time stamp indicating the latest data to be returned.
 
 For better performance, specify \code{StartTime} and \code{EndTime} values that align with the value of the metric's \code{Period} and sync up with the beginning and end of an hour. For example, if the \code{Period} of a metric is 5 minutes, specifying 12:05 or 12:30 as \code{EndTime} can get a faster response from CloudWatch then setting 12:07 or 12:29 as the \code{EndTime}.}
 

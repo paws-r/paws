@@ -4,8 +4,11 @@
 \alias{describe_replication_task_assessment_results}
 \title{Returns the task assessment results from Amazon S3}
 \usage{
-describe_replication_task_assessment_results(ReplicationTaskArn = NULL,
-  MaxRecords = NULL, Marker = NULL)
+describe_replication_task_assessment_results(
+  ReplicationTaskArn = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{ReplicationTaskArn}{- The Amazon Resource Name (ARN) string that uniquely identifies the task. When this input parameter is specified the API will return only one result and ignore the values of the max-records and marker parameters.}

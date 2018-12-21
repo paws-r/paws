@@ -4,7 +4,10 @@
 \alias{list_streams}
 \title{Lists your Kinesis data streams}
 \usage{
-list_streams(Limit = NULL, ExclusiveStartStreamName = NULL)
+list_streams(
+  Limit = 123,
+  ExclusiveStartStreamName = "string"
+)
 }
 \arguments{
 \item{Limit}{The maximum number of streams to list.}

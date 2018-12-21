@@ -4,10 +4,12 @@
 \alias{list_dead_letter_source_queues}
 \title{Returns a list of your queues that have the \code{RedrivePolicy} queue attribute configured with a dead-letter queue}
 \usage{
-list_dead_letter_source_queues(QueueUrl)
+list_dead_letter_source_queues(
+  QueueUrl = "string"
+)
 }
 \arguments{
-\item{QueueUrl}{The URL of a dead-letter queue.
+\item{QueueUrl}{[required] The URL of a dead-letter queue.
 
 Queue URLs and names are case-sensitive.}
 }

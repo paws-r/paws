@@ -4,10 +4,12 @@
 \alias{delete_configuration_set_tracking_options}
 \title{Deletes an association between a configuration set and a custom domain for open and click event tracking}
 \usage{
-delete_configuration_set_tracking_options(ConfigurationSetName)
+delete_configuration_set_tracking_options(
+  ConfigurationSetName = "string"
+)
 }
 \arguments{
-\item{ConfigurationSetName}{The name of the configuration set from which you want to delete the tracking options.}
+\item{ConfigurationSetName}{[required] The name of the configuration set from which you want to delete the tracking options.}
 }
 \description{
 Deletes an association between a configuration set and a custom domain for open and click event tracking.

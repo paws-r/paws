@@ -4,10 +4,12 @@
 \alias{describe_account}
 \title{Retrieves Organizations-related information about the specified account}
 \usage{
-describe_account(AccountId)
+describe_account(
+  AccountId = "string"
+)
 }
 \arguments{
-\item{AccountId}{The unique identifier (ID) of the AWS account that you want information about. You can get the ID from the ListAccounts or ListAccountsForParent operations.
+\item{AccountId}{[required] The unique identifier (ID) of the AWS account that you want information about. You can get the ID from the ListAccounts or ListAccountsForParent operations.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for an account ID string requires exactly 12 digits.}
 }

@@ -4,18 +4,22 @@
 \alias{download_db_log_file_portion}
 \title{Downloads all or a portion of the specified log file, up to 1 MB in size}
 \usage{
-download_db_log_file_portion(DBInstanceIdentifier, LogFileName, Marker = NULL,
-  NumberOfLines = NULL)
+download_db_log_file_portion(
+  DBInstanceIdentifier = "string",
+  LogFileName = "string",
+  Marker = "string",
+  NumberOfLines = 123
+)
 }
 \arguments{
-\item{DBInstanceIdentifier}{The customer-assigned name of the DB instance that contains the log files you want to list.
+\item{DBInstanceIdentifier}{[required] The customer-assigned name of the DB instance that contains the log files you want to list.
 
 Constraints:
 \itemize{
 \item Must match the identifier of an existing DBInstance.
 }}
 
-\item{LogFileName}{The name of the log file to be downloaded.}
+\item{LogFileName}{[required] The name of the log file to be downloaded.}
 
 \item{Marker}{The pagination token provided in the previous request or "0". If the Marker parameter is specified the response includes only records beyond the marker until the end of the file or up to NumberOfLines.}
 

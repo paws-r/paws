@@ -4,7 +4,10 @@
 \alias{put_resource_policy}
 \title{Creates or updates a resource policy allowing other AWS services to put log events to this account, such as Amazon Route 53}
 \usage{
-put_resource_policy(policyName = NULL, policyDocument = NULL)
+put_resource_policy(
+  policyName = "string",
+  policyDocument = "string"
+)
 }
 \arguments{
 \item{policyName}{Name of the new policy. This parameter is required.}

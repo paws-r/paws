@@ -4,11 +4,17 @@
 \alias{modify_hsm}
 \title{This is documentation for \strong{AWS CloudHSM Classic}}
 \usage{
-modify_hsm(HsmArn, SubnetId = NULL, EniIp = NULL, IamRoleArn = NULL,
-  ExternalId = NULL, SyslogIp = NULL)
+modify_hsm(
+  HsmArn = "string",
+  SubnetId = "string",
+  EniIp = "string",
+  IamRoleArn = "string",
+  ExternalId = "string",
+  SyslogIp = "string"
+)
 }
 \arguments{
-\item{HsmArn}{The ARN of the HSM to modify.}
+\item{HsmArn}{[required] The ARN of the HSM to modify.}
 
 \item{SubnetId}{The new identifier of the subnet that the HSM is in. The new subnet must be in the same Availability Zone as the current subnet.}
 

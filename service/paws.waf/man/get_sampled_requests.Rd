@@ -4,20 +4,28 @@
 \alias{get_sampled_requests}
 \title{Gets detailed information about a specified number of requests--a sample--that AWS WAF randomly selects from among the first 5,000 requests that your AWS resource received during a time range that you choose}
 \usage{
-get_sampled_requests(WebAclId, RuleId, TimeWindow, MaxItems)
+get_sampled_requests(
+  WebAclId = "string",
+  RuleId = "string",
+  TimeWindow = list(
+    StartTime = as.POSIXct("2015-01-01"),
+    EndTime = as.POSIXct("2015-01-01")
+  ),
+  MaxItems = 123
+)
 }
 \arguments{
-\item{WebAclId}{The \code{WebACLId} of the \code{WebACL} for which you want \code{GetSampledRequests} to return a sample of requests.}
+\item{WebAclId}{[required] The \code{WebACLId} of the \code{WebACL} for which you want \code{GetSampledRequests} to return a sample of requests.}
 
-\item{RuleId}{\code{RuleId} is one of three values:
+\item{RuleId}{[required] \code{RuleId} is one of three values:
 \itemize{
 \item The \code{RuleId} of the \code{Rule} or the \code{RuleGroupId} of the \code{RuleGroup} for which you want \code{GetSampledRequests} to return a sample of requests.
 \item \code{Default_Action}, which causes \code{GetSampledRequests} to return a sample of the requests that didn't match any of the rules in the specified \code{WebACL}.
 }}
 
-\item{TimeWindow}{The start date and time and the end date and time of the range for which you want \code{GetSampledRequests} to return a sample of requests. Specify the date and time in the following format: \code{"2016-09-27T14:50Z"}. You can specify any time range in the previous three hours.}
+\item{TimeWindow}{[required] The start date and time and the end date and time of the range for which you want \code{GetSampledRequests} to return a sample of requests. Specify the date and time in the following format: \code{"2016-09-27T14:50Z"}. You can specify any time range in the previous three hours.}
 
-\item{MaxItems}{The number of requests that you want AWS WAF to return from among the first 5,000 requests that your AWS resource received during the time range. If your resource received fewer requests than the value of \code{MaxItems}, \code{GetSampledRequests} returns information about all of them.}
+\item{MaxItems}{[required] The number of requests that you want AWS WAF to return from among the first 5,000 requests that your AWS resource received during the time range. If your resource received fewer requests than the value of \code{MaxItems}, \code{GetSampledRequests} returns information about all of them.}
 }
 \description{
 Gets detailed information about a specified number of requests--a sample--that AWS WAF randomly selects from among the first 5,000 requests that your AWS resource received during a time range that you choose. You can specify a sample size of up to 500 requests, and you can specify any time range in the previous three hours.

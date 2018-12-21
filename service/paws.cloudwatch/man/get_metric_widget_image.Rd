@@ -4,10 +4,13 @@
 \alias{get_metric_widget_image}
 \title{You can use the \code{GetMetricWidgetImage} API to retrieve a snapshot graph of one or more Amazon CloudWatch metrics as a bitmap image}
 \usage{
-get_metric_widget_image(MetricWidget, OutputFormat = NULL)
+get_metric_widget_image(
+  MetricWidget = "string",
+  OutputFormat = "string"
+)
 }
 \arguments{
-\item{MetricWidget}{A JSON string that defines the bitmap graph to be retrieved. The string includes the metrics to include in the graph, statistics, annotations, title, axis limits, and so on. You can include only one \code{MetricWidget} parameter in each \code{GetMetricWidgetImage} call.
+\item{MetricWidget}{[required] A JSON string that defines the bitmap graph to be retrieved. The string includes the metrics to include in the graph, statistics, annotations, title, axis limits, and so on. You can include only one \code{MetricWidget} parameter in each \code{GetMetricWidgetImage} call.
 
 For more information about the syntax of \code{MetricWidget} see CloudWatch-Metric-Widget-Structure.
 

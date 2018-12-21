@@ -4,14 +4,17 @@
 \alias{attach_user_policy}
 \title{Attaches the specified managed policy to the specified user}
 \usage{
-attach_user_policy(UserName, PolicyArn)
+attach_user_policy(
+  UserName = "string",
+  PolicyArn = "string"
+)
 }
 \arguments{
-\item{UserName}{The name (friendly name, not ARN) of the IAM user to attach the policy to.
+\item{UserName}{[required] The name (friendly name, not ARN) of the IAM user to attach the policy to.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
-\item{PolicyArn}{The Amazon Resource Name (ARN) of the IAM policy you want to attach.
+\item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 
 For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces} in the \emph{AWS General Reference}.}
 }

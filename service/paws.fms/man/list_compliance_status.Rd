@@ -4,10 +4,14 @@
 \alias{list_compliance_status}
 \title{Returns an array of \code{PolicyComplianceStatus} objects in the response}
 \usage{
-list_compliance_status(PolicyId, NextToken = NULL, MaxResults = NULL)
+list_compliance_status(
+  PolicyId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{PolicyId}{The ID of the AWS Firewall Manager policy that you want the details for.}
+\item{PolicyId}{[required] The ID of the AWS Firewall Manager policy that you want the details for.}
 
 \item{NextToken}{If you specify a value for \code{MaxResults} and you have more \code{PolicyComplianceStatus} objects than the number that you specify for \code{MaxResults}, AWS Firewall Manager returns a \code{NextToken} value in the response that allows you to list another group of \code{PolicyComplianceStatus} objects. For the second and subsequent \code{ListComplianceStatus} requests, specify the value of \code{NextToken} from the previous response to get information about another batch of \code{PolicyComplianceStatus} objects.}
 

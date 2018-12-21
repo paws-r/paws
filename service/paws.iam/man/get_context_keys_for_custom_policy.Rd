@@ -4,10 +4,14 @@
 \alias{get_context_keys_for_custom_policy}
 \title{Gets a list of all of the context keys referenced in the input policies}
 \usage{
-get_context_keys_for_custom_policy(PolicyInputList)
+get_context_keys_for_custom_policy(
+  PolicyInputList = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{PolicyInputList}{A list of policies for which you want the list of context keys referenced in those policies. Each document is specified as a string containing the complete, valid JSON text of an IAM policy.
+\item{PolicyInputList}{[required] A list of policies for which you want the list of context keys referenced in those policies. Each document is specified as a string containing the complete, valid JSON text of an IAM policy.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate this parameter is a string of characters consisting of the following:
 \itemize{

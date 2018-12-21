@@ -4,11 +4,42 @@
 \alias{modify_option_group}
 \title{Modifies an existing option group}
 \usage{
-modify_option_group(OptionGroupName, OptionsToInclude = NULL,
-  OptionsToRemove = NULL, ApplyImmediately = NULL)
+modify_option_group(
+  OptionGroupName = "string",
+  OptionsToInclude = list(
+    list(
+      OptionName = "string",
+      Port = 123,
+      OptionVersion = "string",
+      DBSecurityGroupMemberships = list(
+        "string"
+      ),
+      VpcSecurityGroupMemberships = list(
+        "string"
+      ),
+      OptionSettings = list(
+        list(
+          Name = "string",
+          Value = "string",
+          DefaultValue = "string",
+          Description = "string",
+          ApplyType = "string",
+          DataType = "string",
+          AllowedValues = "string",
+          IsModifiable = TRUE|FALSE,
+          IsCollection = TRUE|FALSE
+        )
+      )
+    )
+  ),
+  OptionsToRemove = list(
+    "string"
+  ),
+  ApplyImmediately = TRUE|FALSE
+)
 }
 \arguments{
-\item{OptionGroupName}{The name of the option group to be modified.
+\item{OptionGroupName}{[required] The name of the option group to be modified.
 
 Permanent options, such as the TDE option for Oracle Advanced Security TDE, can't be removed from an option group, and that option group can't be removed from a DB instance once it is associated with a DB instance}
 

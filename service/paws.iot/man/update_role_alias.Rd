@@ -4,11 +4,14 @@
 \alias{update_role_alias}
 \title{Updates a role alias}
 \usage{
-update_role_alias(roleAlias, roleArn = NULL,
-  credentialDurationSeconds = NULL)
+update_role_alias(
+  roleAlias = "string",
+  roleArn = "string",
+  credentialDurationSeconds = 123
+)
 }
 \arguments{
-\item{roleAlias}{The role alias to update.}
+\item{roleAlias}{[required] The role alias to update.}
 
 \item{roleArn}{The role ARN.}
 

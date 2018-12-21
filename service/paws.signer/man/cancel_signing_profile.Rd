@@ -4,10 +4,12 @@
 \alias{cancel_signing_profile}
 \title{Changes the state of an \code{ACTIVE} signing profile to \code{CANCELED}}
 \usage{
-cancel_signing_profile(profileName)
+cancel_signing_profile(
+  profileName = "string"
+)
 }
 \arguments{
-\item{profileName}{The name of the signing profile to be canceled.}
+\item{profileName}{[required] The name of the signing profile to be canceled.}
 }
 \description{
 Changes the state of an \code{ACTIVE} signing profile to \code{CANCELED}. A canceled profile is still viewable with the \code{ListSigningProfiles} operation, but it cannot perform new signing jobs, and is deleted two years after cancelation.

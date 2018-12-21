@@ -4,10 +4,13 @@
 \alias{list_branches}
 \title{Gets information about one or more branches in a repository}
 \usage{
-list_branches(repositoryName, nextToken = NULL)
+list_branches(
+  repositoryName = "string",
+  nextToken = "string"
+)
 }
 \arguments{
-\item{repositoryName}{The name of the repository that contains the branches.}
+\item{repositoryName}{[required] The name of the repository that contains the branches.}
 
 \item{nextToken}{An enumeration token that allows the operation to batch the results.}
 }

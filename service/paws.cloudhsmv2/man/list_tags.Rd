@@ -4,10 +4,14 @@
 \alias{list_tags}
 \title{Gets a list of tags for the specified AWS CloudHSM cluster}
 \usage{
-list_tags(ResourceId, NextToken = NULL, MaxResults = NULL)
+list_tags(
+  ResourceId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{ResourceId}{The cluster identifier (ID) for the cluster whose tags you are getting. To find the cluster ID, use DescribeClusters.}
+\item{ResourceId}{[required] The cluster identifier (ID) for the cluster whose tags you are getting. To find the cluster ID, use DescribeClusters.}
 
 \item{NextToken}{The \code{NextToken} value that you received in the previous response. Use this value to get more tags.}
 

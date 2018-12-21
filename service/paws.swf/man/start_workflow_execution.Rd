@@ -4,19 +4,35 @@
 \alias{start_workflow_execution}
 \title{Starts an execution of the workflow type in the specified domain using the provided \code{workflowId} and input data}
 \usage{
-start_workflow_execution(domain, workflowId, workflowType, taskList = NULL,
-  taskPriority = NULL, input = NULL, executionStartToCloseTimeout = NULL,
-  tagList = NULL, taskStartToCloseTimeout = NULL, childPolicy = NULL,
-  lambdaRole = NULL)
+start_workflow_execution(
+  domain = "string",
+  workflowId = "string",
+  workflowType = list(
+    name = "string",
+    version = "string"
+  ),
+  taskList = list(
+    name = "string"
+  ),
+  taskPriority = "string",
+  input = "string",
+  executionStartToCloseTimeout = "string",
+  tagList = list(
+    "string"
+  ),
+  taskStartToCloseTimeout = "string",
+  childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
+  lambdaRole = "string"
+)
 }
 \arguments{
-\item{domain}{The name of the domain in which the workflow execution is created.}
+\item{domain}{[required] The name of the domain in which the workflow execution is created.}
 
-\item{workflowId}{The user defined identifier associated with the workflow execution. You can use this to associate a custom identifier with the workflow execution. You may specify the same identifier if a workflow execution is logically a \emph{restart} of a previous execution. You cannot have two open workflow executions with the same \code{workflowId} at the same time.
+\item{workflowId}{[required] The user defined identifier associated with the workflow execution. You can use this to associate a custom identifier with the workflow execution. You may specify the same identifier if a workflow execution is logically a \emph{restart} of a previous execution. You cannot have two open workflow executions with the same \code{workflowId} at the same time.
 
 The specified string must not start or end with whitespace. It must not contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control characters (\code{\u0000-\u001f} | \code{\u007f-\u009f}). Also, it must not contain the literal string \code{arn}.}
 
-\item{workflowType}{The type of the workflow to start.}
+\item{workflowType}{[required] The type of the workflow to start.}
 
 \item{taskList}{The task list to use for the decision tasks generated for this workflow execution. This overrides the \code{defaultTaskList} specified when registering the workflow type.
 

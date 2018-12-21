@@ -4,12 +4,15 @@
 \alias{deregister_event_topic}
 \title{Removes the specified directory as a publisher to the specified SNS topic}
 \usage{
-deregister_event_topic(DirectoryId, TopicName)
+deregister_event_topic(
+  DirectoryId = "string",
+  TopicName = "string"
+)
 }
 \arguments{
-\item{DirectoryId}{The Directory ID to remove as a publisher. This directory will no longer send messages to the specified SNS topic.}
+\item{DirectoryId}{[required] The Directory ID to remove as a publisher. This directory will no longer send messages to the specified SNS topic.}
 
-\item{TopicName}{The name of the SNS topic from which to remove the directory as a publisher.}
+\item{TopicName}{[required] The name of the SNS topic from which to remove the directory as a publisher.}
 }
 \description{
 Removes the specified directory as a publisher to the specified SNS topic.

@@ -4,10 +4,13 @@
 \alias{activate_user}
 \title{Activates the specified user}
 \usage{
-activate_user(UserId, AuthenticationToken = NULL)
+activate_user(
+  UserId = "string",
+  AuthenticationToken = "string"
+)
 }
 \arguments{
-\item{UserId}{The ID of the user.}
+\item{UserId}{[required] The ID of the user.}
 
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
 }

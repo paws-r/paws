@@ -6,18 +6,23 @@
 \alias{paws.opsworkscm-package}
 \title{paws.opsworkscm: AWS OpsWorks for Chef Automate}
 \description{
-AWS OpsWorks for configuration management (CM) is a
-service that runs and manages configuration management servers. You
-can use AWS OpsWorks CM to create and manage AWS OpsWorks for Chef
-Automate and AWS OpsWorks for Puppet Enterprise servers, and add or
-remove nodes for the servers to manage.
+AWS OpsWorks for configuration management (CM) is a service
+that runs and manages configuration management servers. You can use
+AWS OpsWorks CM to create and manage AWS OpsWorks for Chef Automate
+and AWS OpsWorks for Puppet Enterprise servers, and add or remove
+nodes for the servers to manage.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

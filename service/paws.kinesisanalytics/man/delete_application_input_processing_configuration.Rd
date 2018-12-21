@@ -4,15 +4,18 @@
 \alias{delete_application_input_processing_configuration}
 \title{Deletes an InputProcessingConfiguration from an input}
 \usage{
-delete_application_input_processing_configuration(ApplicationName,
-  CurrentApplicationVersionId, InputId)
+delete_application_input_processing_configuration(
+  ApplicationName = "string",
+  CurrentApplicationVersionId = 123,
+  InputId = "string"
+)
 }
 \arguments{
-\item{ApplicationName}{The Kinesis Analytics application name.}
+\item{ApplicationName}{[required] The Kinesis Analytics application name.}
 
-\item{CurrentApplicationVersionId}{The version ID of the Kinesis Analytics application.}
+\item{CurrentApplicationVersionId}{[required] The version ID of the Kinesis Analytics application.}
 
-\item{InputId}{The ID of the input configuration from which to delete the input processing configuration. You can get a list of the input IDs for an application by using the DescribeApplication operation.}
+\item{InputId}{[required] The ID of the input configuration from which to delete the input processing configuration. You can get a list of the input IDs for an application by using the DescribeApplication operation.}
 }
 \description{
 Deletes an InputProcessingConfiguration from an input.

@@ -4,12 +4,20 @@
 \alias{tag_resource}
 \title{Adds metadata tags to a specified resource}
 \usage{
-tag_resource(Arn, Tags)
+tag_resource(
+  Arn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{Arn}{The ARN of the resource to which to add metadata tags. Required.}
+\item{Arn}{[required] The ARN of the resource to which to add metadata tags. Required.}
 
-\item{Tags}{The tags to be added to the specified resource. Do not provide system tags. Required.}
+\item{Tags}{[required] The tags to be added to the specified resource. Do not provide system tags. Required.}
 }
 \description{
 Adds metadata tags to a specified resource.

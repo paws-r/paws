@@ -4,11 +4,17 @@
 \alias{delete_stack}
 \title{Deletes a specified stack}
 \usage{
-delete_stack(StackName, RetainResources = NULL, RoleARN = NULL,
-  ClientRequestToken = NULL)
+delete_stack(
+  StackName = "string",
+  RetainResources = list(
+    "string"
+  ),
+  RoleARN = "string",
+  ClientRequestToken = "string"
+)
 }
 \arguments{
-\item{StackName}{The name or the unique stack ID that is associated with the stack.}
+\item{StackName}{[required] The name or the unique stack ID that is associated with the stack.}
 
 \item{RetainResources}{For stacks in the \code{DELETE_FAILED} state, a list of resource logical IDs that are associated with the resources you want to retain. During deletion, AWS CloudFormation deletes the stack but does not delete the retained resources.
 

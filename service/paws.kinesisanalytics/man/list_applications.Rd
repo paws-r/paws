@@ -4,7 +4,10 @@
 \alias{list_applications}
 \title{Returns a list of Amazon Kinesis Analytics applications in your account}
 \usage{
-list_applications(Limit = NULL, ExclusiveStartApplicationName = NULL)
+list_applications(
+  Limit = 123,
+  ExclusiveStartApplicationName = "string"
+)
 }
 \arguments{
 \item{Limit}{Maximum number of applications to list.}

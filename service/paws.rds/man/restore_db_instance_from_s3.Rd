@@ -4,27 +4,72 @@
 \alias{restore_db_instance_from_s3}
 \title{Amazon Relational Database Service (Amazon RDS) supports importing MySQL databases by using backup files}
 \usage{
-restore_db_instance_from_s3(DBInstanceIdentifier, DBInstanceClass, Engine,
-  SourceEngine, SourceEngineVersion, S3BucketName, S3IngestionRoleArn,
-  DBName = NULL, AllocatedStorage = NULL, MasterUsername = NULL,
-  MasterUserPassword = NULL, DBSecurityGroups = NULL,
-  VpcSecurityGroupIds = NULL, AvailabilityZone = NULL,
-  DBSubnetGroupName = NULL, PreferredMaintenanceWindow = NULL,
-  DBParameterGroupName = NULL, BackupRetentionPeriod = NULL,
-  PreferredBackupWindow = NULL, Port = NULL, MultiAZ = NULL,
-  EngineVersion = NULL, AutoMinorVersionUpgrade = NULL,
-  LicenseModel = NULL, Iops = NULL, OptionGroupName = NULL,
-  PubliclyAccessible = NULL, Tags = NULL, StorageType = NULL,
-  StorageEncrypted = NULL, KmsKeyId = NULL, CopyTagsToSnapshot = NULL,
-  MonitoringInterval = NULL, MonitoringRoleArn = NULL,
-  EnableIAMDatabaseAuthentication = NULL, S3Prefix = NULL,
-  EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL,
-  PerformanceInsightsRetentionPeriod = NULL,
-  EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL,
-  UseDefaultProcessorFeatures = NULL, DeletionProtection = NULL)
+restore_db_instance_from_s3(
+  DBName = "string",
+  DBInstanceIdentifier = "string",
+  AllocatedStorage = 123,
+  DBInstanceClass = "string",
+  Engine = "string",
+  MasterUsername = "string",
+  MasterUserPassword = "string",
+  DBSecurityGroups = list(
+    "string"
+  ),
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  AvailabilityZone = "string",
+  DBSubnetGroupName = "string",
+  PreferredMaintenanceWindow = "string",
+  DBParameterGroupName = "string",
+  BackupRetentionPeriod = 123,
+  PreferredBackupWindow = "string",
+  Port = 123,
+  MultiAZ = TRUE|FALSE,
+  EngineVersion = "string",
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  LicenseModel = "string",
+  Iops = 123,
+  OptionGroupName = "string",
+  PubliclyAccessible = TRUE|FALSE,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  StorageType = "string",
+  StorageEncrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  CopyTagsToSnapshot = TRUE|FALSE,
+  MonitoringInterval = 123,
+  MonitoringRoleArn = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  SourceEngine = "string",
+  SourceEngineVersion = "string",
+  S3BucketName = "string",
+  S3Prefix = "string",
+  S3IngestionRoleArn = "string",
+  EnablePerformanceInsights = TRUE|FALSE,
+  PerformanceInsightsKMSKeyId = "string",
+  PerformanceInsightsRetentionPeriod = 123,
+  EnableCloudwatchLogsExports = list(
+    "string"
+  ),
+  ProcessorFeatures = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  UseDefaultProcessorFeatures = TRUE|FALSE,
+  DeletionProtection = TRUE|FALSE
+)
 }
 \arguments{
-\item{DBInstanceIdentifier}{The DB instance identifier. This parameter is stored as a lowercase string.
+\item{DBName}{The name of the database to create when the DB instance is created. Follow the naming rules specified in CreateDBInstance.}
+
+\item{DBInstanceIdentifier}{[required] The DB instance identifier. This parameter is stored as a lowercase string.
 
 Constraints:
 \itemize{
@@ -35,31 +80,17 @@ Constraints:
 
 Example: \code{mydbinstance}}
 
-\item{DBInstanceClass}{The compute and memory capacity of the DB instance, for example, \code{db.m4.large}. Not all DB instance classes are available in all AWS Regions, or for all database engines. For the full list of DB instance classes, and availability for your engine, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class} in the \emph{Amazon RDS User Guide.}
-
-Importing from Amazon S3 is not supported on the db.t2.micro DB instance class.}
-
-\item{Engine}{The name of the database engine to be used for this instance.
-
-Valid Values: \code{mysql}}
-
-\item{SourceEngine}{The name of the engine of your source database.
-
-Valid Values: \code{mysql}}
-
-\item{SourceEngineVersion}{The engine version of your source database.
-
-Valid Values: \code{5.6}}
-
-\item{S3BucketName}{The name of your Amazon S3 bucket that contains your database backup file.}
-
-\item{S3IngestionRoleArn}{An AWS Identity and Access Management (IAM) role to allow Amazon RDS to access your Amazon S3 bucket.}
-
-\item{DBName}{The name of the database to create when the DB instance is created. Follow the naming rules specified in CreateDBInstance.}
-
 \item{AllocatedStorage}{The amount of storage (in gigabytes) to allocate initially for the DB instance. Follow the allocation rules specified in CreateDBInstance.
 
 Be sure to allocate enough memory for your new DB instance so that the restore operation can succeed. You can also allocate additional memory for future growth.}
+
+\item{DBInstanceClass}{[required] The compute and memory capacity of the DB instance, for example, \code{db.m4.large}. Not all DB instance classes are available in all AWS Regions, or for all database engines. For the full list of DB instance classes, and availability for your engine, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class} in the \emph{Amazon RDS User Guide.}
+
+Importing from Amazon S3 is not supported on the db.t2.micro DB instance class.}
+
+\item{Engine}{[required] The name of the database engine to be used for this instance.
+
+Valid Values: \code{mysql}}
 
 \item{MasterUsername}{The name for the master user.
 
@@ -177,7 +208,19 @@ If \code{MonitoringInterval} is set to a value other than 0, then you must suppl
 
 Default: \code{false}}
 
+\item{SourceEngine}{[required] The name of the engine of your source database.
+
+Valid Values: \code{mysql}}
+
+\item{SourceEngineVersion}{[required] The engine version of your source database.
+
+Valid Values: \code{5.6}}
+
+\item{S3BucketName}{[required] The name of your Amazon S3 bucket that contains your database backup file.}
+
 \item{S3Prefix}{The prefix of your Amazon S3 bucket.}
+
+\item{S3IngestionRoleArn}{[required] An AWS Identity and Access Management (IAM) role to allow Amazon RDS to access your Amazon S3 bucket.}
 
 \item{EnablePerformanceInsights}{True to enable Performance Insights for the DB instance, and otherwise false.
 

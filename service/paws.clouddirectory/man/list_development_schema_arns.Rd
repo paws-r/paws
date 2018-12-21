@@ -4,7 +4,10 @@
 \alias{list_development_schema_arns}
 \title{Retrieves each Amazon Resource Name (ARN) of schemas in the development state}
 \usage{
-list_development_schema_arns(NextToken = NULL, MaxResults = NULL)
+list_development_schema_arns(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{NextToken}{The pagination token.}

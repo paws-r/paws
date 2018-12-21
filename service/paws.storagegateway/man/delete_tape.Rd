@@ -4,12 +4,15 @@
 \alias{delete_tape}
 \title{Deletes the specified virtual tape}
 \usage{
-delete_tape(GatewayARN, TapeARN)
+delete_tape(
+  GatewayARN = "string",
+  TapeARN = "string"
+)
 }
 \arguments{
-\item{GatewayARN}{The unique Amazon Resource Name (ARN) of the gateway that the virtual tape to delete is associated with. Use the ListGateways operation to return a list of gateways for your account and region.}
+\item{GatewayARN}{[required] The unique Amazon Resource Name (ARN) of the gateway that the virtual tape to delete is associated with. Use the ListGateways operation to return a list of gateways for your account and region.}
 
-\item{TapeARN}{The Amazon Resource Name (ARN) of the virtual tape to delete.}
+\item{TapeARN}{[required] The Amazon Resource Name (ARN) of the virtual tape to delete.}
 }
 \description{
 Deletes the specified virtual tape. This operation is only supported in the tape gateway type.

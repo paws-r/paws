@@ -4,14 +4,20 @@
 \alias{reject_vpc_endpoint_connections}
 \title{Rejects one or more VPC endpoint connection requests to your VPC endpoint service}
 \usage{
-reject_vpc_endpoint_connections(ServiceId, VpcEndpointIds, DryRun = NULL)
+reject_vpc_endpoint_connections(
+  DryRun = TRUE|FALSE,
+  ServiceId = "string",
+  VpcEndpointIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ServiceId}{The ID of the service.}
-
-\item{VpcEndpointIds}{The IDs of one or more VPC endpoints.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{ServiceId}{[required] The ID of the service.}
+
+\item{VpcEndpointIds}{[required] The IDs of one or more VPC endpoints.}
 }
 \description{
 Rejects one or more VPC endpoint connection requests to your VPC endpoint service.

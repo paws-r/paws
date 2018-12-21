@@ -4,7 +4,11 @@
 \alias{describe_configuration_recorders}
 \title{Returns the details for the specified configuration recorders}
 \usage{
-describe_configuration_recorders(ConfigurationRecorderNames = NULL)
+describe_configuration_recorders(
+  ConfigurationRecorderNames = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{ConfigurationRecorderNames}{A list of configuration recorder names.}

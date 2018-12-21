@@ -4,8 +4,17 @@
 \alias{describe_cluster_security_groups}
 \title{Returns information about Amazon Redshift security groups}
 \usage{
-describe_cluster_security_groups(ClusterSecurityGroupName = NULL,
-  MaxRecords = NULL, Marker = NULL, TagKeys = NULL, TagValues = NULL)
+describe_cluster_security_groups(
+  ClusterSecurityGroupName = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  TagKeys = list(
+    "string"
+  ),
+  TagValues = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{ClusterSecurityGroupName}{The name of a cluster security group for which you are requesting details. You can specify either the \strong{Marker} parameter or a \strong{ClusterSecurityGroupName} parameter, but not both.

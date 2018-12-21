@@ -4,7 +4,11 @@
 \alias{disassociate_address}
 \title{Disassociates an Elastic IP address from the instance or network interface it's associated with}
 \usage{
-disassociate_address(AssociationId = NULL, PublicIp = NULL, DryRun = NULL)
+disassociate_address(
+  AssociationId = "string",
+  PublicIp = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{AssociationId}{[EC2-VPC] The association ID. Required for EC2-VPC.}

@@ -4,10 +4,12 @@
 \alias{describe_topics_detection_job}
 \title{Gets the properties associated with a topic detection job}
 \usage{
-describe_topics_detection_job(JobId)
+describe_topics_detection_job(
+  JobId = "string"
+)
 }
 \arguments{
-\item{JobId}{The identifier assigned by the user to the detection job.}
+\item{JobId}{[required] The identifier assigned by the user to the detection job.}
 }
 \description{
 Gets the properties associated with a topic detection job. Use this operation to get the status of a detection job.

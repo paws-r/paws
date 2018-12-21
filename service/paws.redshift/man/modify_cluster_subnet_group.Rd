@@ -4,15 +4,20 @@
 \alias{modify_cluster_subnet_group}
 \title{Modifies a cluster subnet group to include the specified list of VPC subnets}
 \usage{
-modify_cluster_subnet_group(ClusterSubnetGroupName, SubnetIds,
-  Description = NULL)
+modify_cluster_subnet_group(
+  ClusterSubnetGroupName = "string",
+  Description = "string",
+  SubnetIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ClusterSubnetGroupName}{The name of the subnet group to be modified.}
-
-\item{SubnetIds}{An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a single request.}
+\item{ClusterSubnetGroupName}{[required] The name of the subnet group to be modified.}
 
 \item{Description}{A text description of the subnet group to be modified.}
+
+\item{SubnetIds}{[required] An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a single request.}
 }
 \description{
 Modifies a cluster subnet group to include the specified list of VPC subnets. The operation replaces the existing list of subnets with the new list of subnets.

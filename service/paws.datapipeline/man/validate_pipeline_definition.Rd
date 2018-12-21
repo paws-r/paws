@@ -4,13 +4,44 @@
 \alias{validate_pipeline_definition}
 \title{Validates the specified pipeline definition to ensure that it is well formed and can be run without error}
 \usage{
-validate_pipeline_definition(pipelineId, pipelineObjects,
-  parameterObjects = NULL, parameterValues = NULL)
+validate_pipeline_definition(
+  pipelineId = "string",
+  pipelineObjects = list(
+    list(
+      id = "string",
+      name = "string",
+      fields = list(
+        list(
+          key = "string",
+          stringValue = "string",
+          refValue = "string"
+        )
+      )
+    )
+  ),
+  parameterObjects = list(
+    list(
+      id = "string",
+      attributes = list(
+        list(
+          key = "string",
+          stringValue = "string"
+        )
+      )
+    )
+  ),
+  parameterValues = list(
+    list(
+      id = "string",
+      stringValue = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{pipelineId}{The ID of the pipeline.}
+\item{pipelineId}{[required] The ID of the pipeline.}
 
-\item{pipelineObjects}{The objects that define the pipeline changes to validate against the pipeline.}
+\item{pipelineObjects}{[required] The objects that define the pipeline changes to validate against the pipeline.}
 
 \item{parameterObjects}{The parameter objects used with the pipeline.}
 

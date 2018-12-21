@@ -4,10 +4,12 @@
 \alias{delete_db_cluster_parameter_group}
 \title{Deletes a specified DB cluster parameter group}
 \usage{
-delete_db_cluster_parameter_group(DBClusterParameterGroupName)
+delete_db_cluster_parameter_group(
+  DBClusterParameterGroupName = "string"
+)
 }
 \arguments{
-\item{DBClusterParameterGroupName}{The name of the DB cluster parameter group.
+\item{DBClusterParameterGroupName}{[required] The name of the DB cluster parameter group.
 
 Constraints:
 \itemize{

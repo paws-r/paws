@@ -4,10 +4,12 @@
 \alias{delete_matchmaking_configuration}
 \title{Permanently removes a FlexMatch matchmaking configuration}
 \usage{
-delete_matchmaking_configuration(Name)
+delete_matchmaking_configuration(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{Unique identifier for a matchmaking configuration}
+\item{Name}{[required] Unique identifier for a matchmaking configuration}
 }
 \description{
 Permanently removes a FlexMatch matchmaking configuration. To delete, specify the configuration name. A matchmaking configuration cannot be deleted if it is being used in any active matchmaking tickets.

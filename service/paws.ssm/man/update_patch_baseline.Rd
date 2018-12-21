@@ -4,15 +4,62 @@
 \alias{update_patch_baseline}
 \title{Modifies an existing patch baseline}
 \usage{
-update_patch_baseline(BaselineId, Name = NULL, GlobalFilters = NULL,
-  ApprovalRules = NULL, ApprovedPatches = NULL,
-  ApprovedPatchesComplianceLevel = NULL,
-  ApprovedPatchesEnableNonSecurity = NULL, RejectedPatches = NULL,
-  RejectedPatchesAction = NULL, Description = NULL, Sources = NULL,
-  Replace = NULL)
+update_patch_baseline(
+  BaselineId = "string",
+  Name = "string",
+  GlobalFilters = list(
+    PatchFilters = list(
+      list(
+        Key = "PRODUCT"|"CLASSIFICATION"|"MSRC_SEVERITY"|"PATCH_ID"|"SECTION"|"PRIORITY"|"SEVERITY",
+        Values = list(
+          "string"
+        )
+      )
+    )
+  ),
+  ApprovalRules = list(
+    PatchRules = list(
+      list(
+        PatchFilterGroup = list(
+          PatchFilters = list(
+            list(
+              Key = "PRODUCT"|"CLASSIFICATION"|"MSRC_SEVERITY"|"PATCH_ID"|"SECTION"|"PRIORITY"|"SEVERITY",
+              Values = list(
+                "string"
+              )
+            )
+          )
+        ),
+        ComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+        ApproveAfterDays = 123,
+        EnableNonSecurity = TRUE|FALSE
+      )
+    )
+  ),
+  ApprovedPatches = list(
+    "string"
+  ),
+  ApprovedPatchesComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+  ApprovedPatchesEnableNonSecurity = TRUE|FALSE,
+  RejectedPatches = list(
+    "string"
+  ),
+  RejectedPatchesAction = "ALLOW_AS_DEPENDENCY"|"BLOCK",
+  Description = "string",
+  Sources = list(
+    list(
+      Name = "string",
+      Products = list(
+        "string"
+      ),
+      Configuration = "string"
+    )
+  ),
+  Replace = TRUE|FALSE
+)
 }
 \arguments{
-\item{BaselineId}{The ID of the patch baseline to update.}
+\item{BaselineId}{[required] The ID of the patch baseline to update.}
 
 \item{Name}{The name of the patch baseline.}
 

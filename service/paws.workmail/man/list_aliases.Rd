@@ -4,12 +4,17 @@
 \alias{list_aliases}
 \title{Creates a paginated call to list the aliases associated with a given entity}
 \usage{
-list_aliases(OrganizationId, EntityId, NextToken = NULL, MaxResults = NULL)
+list_aliases(
+  OrganizationId = "string",
+  EntityId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{OrganizationId}{The identifier for the organization under which the entity exists.}
+\item{OrganizationId}{[required] The identifier for the organization under which the entity exists.}
 
-\item{EntityId}{The identifier for the entity for which to list the aliases.}
+\item{EntityId}{[required] The identifier for the entity for which to list the aliases.}
 
 \item{NextToken}{The token to use to retrieve the next page of results. The first call does not contain any tokens.}
 

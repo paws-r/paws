@@ -4,8 +4,13 @@
 \alias{get_discovered_resource_counts}
 \title{Returns the resource types, the number of each resource type, and the total number of resources that AWS Config is recording in this region for your AWS account}
 \usage{
-get_discovered_resource_counts(resourceTypes = NULL, limit = NULL,
-  nextToken = NULL)
+get_discovered_resource_counts(
+  resourceTypes = list(
+    "string"
+  ),
+  limit = 123,
+  nextToken = "string"
+)
 }
 \arguments{
 \item{resourceTypes}{The comma-separated list that specifies the resource types that you want AWS Config to return (for example, \code{"AWS::EC2::Instance"}, \code{"AWS::IAM::User"}).

@@ -4,8 +4,11 @@
 \alias{describe_replication_groups}
 \title{Returns information about a particular replication group}
 \usage{
-describe_replication_groups(ReplicationGroupId = NULL, MaxRecords = NULL,
-  Marker = NULL)
+describe_replication_groups(
+  ReplicationGroupId = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{ReplicationGroupId}{The identifier for the replication group to be described. This parameter is not case sensitive.

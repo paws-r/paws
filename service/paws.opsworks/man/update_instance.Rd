@@ -4,13 +4,25 @@
 \alias{update_instance}
 \title{Updates a specified instance}
 \usage{
-update_instance(InstanceId, LayerIds = NULL, InstanceType = NULL,
-  AutoScalingType = NULL, Hostname = NULL, Os = NULL, AmiId = NULL,
-  SshKeyName = NULL, Architecture = NULL, InstallUpdatesOnBoot = NULL,
-  EbsOptimized = NULL, AgentVersion = NULL)
+update_instance(
+  InstanceId = "string",
+  LayerIds = list(
+    "string"
+  ),
+  InstanceType = "string",
+  AutoScalingType = "load"|"timer",
+  Hostname = "string",
+  Os = "string",
+  AmiId = "string",
+  SshKeyName = "string",
+  Architecture = "x86_64"|"i386",
+  InstallUpdatesOnBoot = TRUE|FALSE,
+  EbsOptimized = TRUE|FALSE,
+  AgentVersion = "string"
+)
 }
 \arguments{
-\item{InstanceId}{The instance ID.}
+\item{InstanceId}{[required] The instance ID.}
 
 \item{LayerIds}{The instance's layer IDs.}
 

@@ -4,11 +4,15 @@
 \alias{remove_permission}
 \title{Removes permissions from a function}
 \usage{
-remove_permission(FunctionName, StatementId, Qualifier = NULL,
-  RevisionId = NULL)
+remove_permission(
+  FunctionName = "string",
+  StatementId = "string",
+  Qualifier = "string",
+  RevisionId = "string"
+)
 }
 \arguments{
-\item{FunctionName}{The name of the lambda function.
+\item{FunctionName}{[required] The name of the Lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -19,7 +23,7 @@ remove_permission(FunctionName, StatementId, Qualifier = NULL,
 
 The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
-\item{StatementId}{Statement ID of the permission to remove.}
+\item{StatementId}{[required] Statement ID of the permission to remove.}
 
 \item{Qualifier}{Specify a version or alias to remove permissions from a published version of the function.}
 

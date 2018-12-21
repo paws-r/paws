@@ -4,10 +4,12 @@
 \alias{get_size_constraint_set}
 \title{Returns the SizeConstraintSet specified by \code{SizeConstraintSetId}}
 \usage{
-get_size_constraint_set(SizeConstraintSetId)
+get_size_constraint_set(
+  SizeConstraintSetId = "string"
+)
 }
 \arguments{
-\item{SizeConstraintSetId}{The \code{SizeConstraintSetId} of the SizeConstraintSet that you want to get. \code{SizeConstraintSetId} is returned by CreateSizeConstraintSet and by ListSizeConstraintSets.}
+\item{SizeConstraintSetId}{[required] The \code{SizeConstraintSetId} of the SizeConstraintSet that you want to get. \code{SizeConstraintSetId} is returned by CreateSizeConstraintSet and by ListSizeConstraintSets.}
 }
 \description{
 Returns the SizeConstraintSet specified by \code{SizeConstraintSetId}.

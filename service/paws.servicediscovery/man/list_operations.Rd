@@ -4,16 +4,28 @@
 \alias{list_operations}
 \title{Lists operations that match the criteria that you specify}
 \usage{
-list_operations(NextToken = NULL, MaxResults = NULL, Filters = NULL)
+list_operations(
+  NextToken = "string",
+  MaxResults = 123,
+  Filters = list(
+    list(
+      Name = "NAMESPACE_ID"|"SERVICE_ID"|"STATUS"|"TYPE"|"UPDATE_DATE",
+      Values = list(
+        "string"
+      ),
+      Condition = "EQ"|"IN"|"BETWEEN"
+    )
+  )
+)
 }
 \arguments{
 \item{NextToken}{For the first \code{ListOperations} request, omit this value.
 
 If the response contains \code{NextToken}, submit another \code{ListOperations} request to get the next group of results. Specify the value of \code{NextToken} from the previous response in the next request.
 
-Route 53 gets \code{MaxResults} operations and then filters them based on the specified criteria. It's possible that no operations in the first \code{MaxResults} operations matched the specified criteria but that subsequent groups of \code{MaxResults} operations do contain operations that match the criteria.}
+AWS Cloud Map gets \code{MaxResults} operations and then filters them based on the specified criteria. It's possible that no operations in the first \code{MaxResults} operations matched the specified criteria but that subsequent groups of \code{MaxResults} operations do contain operations that match the criteria.}
 
-\item{MaxResults}{The maximum number of items that you want Amazon Route 53 to return in the response to a \code{ListOperations} request. If you don't specify a value for \code{MaxResults}, Route 53 returns up to 100 operations.}
+\item{MaxResults}{The maximum number of items that you want AWS Cloud Map to return in the response to a \code{ListOperations} request. If you don't specify a value for \code{MaxResults}, AWS Cloud Map returns up to 100 operations.}
 
 \item{Filters}{A complex type that contains specifications for the operations that you want to list, for example, operations that you started between a specified start date and end date.
 

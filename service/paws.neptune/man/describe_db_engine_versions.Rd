@@ -4,10 +4,24 @@
 \alias{describe_db_engine_versions}
 \title{Returns a list of the available DB engines}
 \usage{
-describe_db_engine_versions(Engine = NULL, EngineVersion = NULL,
-  DBParameterGroupFamily = NULL, Filters = NULL, MaxRecords = NULL,
-  Marker = NULL, DefaultOnly = NULL, ListSupportedCharacterSets = NULL,
-  ListSupportedTimezones = NULL)
+describe_db_engine_versions(
+  Engine = "string",
+  EngineVersion = "string",
+  DBParameterGroupFamily = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string",
+  DefaultOnly = TRUE|FALSE,
+  ListSupportedCharacterSets = TRUE|FALSE,
+  ListSupportedTimezones = TRUE|FALSE
+)
 }
 \arguments{
 \item{Engine}{The database engine to return.}

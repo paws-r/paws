@@ -4,29 +4,42 @@
 \alias{restore_db_cluster_to_point_in_time}
 \title{Restores a DB cluster to an arbitrary point in time}
 \usage{
-restore_db_cluster_to_point_in_time(DBClusterIdentifier,
-  SourceDBClusterIdentifier, RestoreType = NULL, RestoreToTime = NULL,
-  UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL,
-  OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL,
-  KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL,
-  BacktrackWindow = NULL, EnableCloudwatchLogsExports = NULL,
-  DBClusterParameterGroupName = NULL, DeletionProtection = NULL)
+restore_db_cluster_to_point_in_time(
+  DBClusterIdentifier = "string",
+  RestoreType = "string",
+  SourceDBClusterIdentifier = "string",
+  RestoreToTime = as.POSIXct("2015-01-01"),
+  UseLatestRestorableTime = TRUE|FALSE,
+  Port = 123,
+  DBSubnetGroupName = "string",
+  OptionGroupName = "string",
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  KmsKeyId = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  BacktrackWindow = 123,
+  EnableCloudwatchLogsExports = list(
+    "string"
+  ),
+  DBClusterParameterGroupName = "string",
+  DeletionProtection = TRUE|FALSE
+)
 }
 \arguments{
-\item{DBClusterIdentifier}{The name of the new DB cluster to be created.
+\item{DBClusterIdentifier}{[required] The name of the new DB cluster to be created.
 
 Constraints:
 \itemize{
 \item Must contain from 1 to 63 letters, numbers, or hyphens
 \item First character must be a letter
 \item Can't end with a hyphen or contain two consecutive hyphens
-}}
-
-\item{SourceDBClusterIdentifier}{The identifier of the source DB cluster from which to restore.
-
-Constraints:
-\itemize{
-\item Must match the identifier of an existing DBCluster.
 }}
 
 \item{RestoreType}{The type of restore to be performed. You can specify one of the following values:
@@ -38,6 +51,13 @@ Constraints:
 Constraints: You can't specify \code{copy-on-write} if the engine version of the source DB cluster is earlier than 1.11.
 
 If you don't specify a \code{RestoreType} value, then the new DB cluster is restored as a full copy of the source DB cluster.}
+
+\item{SourceDBClusterIdentifier}{[required] The identifier of the source DB cluster from which to restore.
+
+Constraints:
+\itemize{
+\item Must match the identifier of an existing DBCluster.
+}}
 
 \item{RestoreToTime}{The date and time to restore the DB cluster to.
 

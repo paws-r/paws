@@ -4,8 +4,12 @@
 \alias{get_builtin_slot_types}
 \title{Gets a list of built-in slot types that meet the specified criteria}
 \usage{
-get_builtin_slot_types(locale = NULL, signatureContains = NULL,
-  nextToken = NULL, maxResults = NULL)
+get_builtin_slot_types(
+  locale = "en-US"|"en-GB"|"de-DE",
+  signatureContains = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{locale}{A list of locales that the slot type supports.}

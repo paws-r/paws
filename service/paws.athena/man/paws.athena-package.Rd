@@ -6,10 +6,10 @@
 \alias{paws.athena-package}
 \title{paws.athena: Amazon Athena}
 \description{
-Amazon Athena is an interactive query service that
-lets you use standard SQL to analyze data directly in Amazon S3. You
-can point Athena at your data in Amazon S3 and run ad-hoc queries and
-get results in seconds. Athena is serverless, so there is no
+Amazon Athena is an interactive query service that lets you
+use standard SQL to analyze data directly in Amazon S3. You can point
+Athena at your data in Amazon S3 and run ad-hoc queries and get
+results in seconds. Athena is serverless, so there is no
 infrastructure to set up or manage. You pay only for the queries you
 run. Athena scales automatically---executing queries in parallel---so
 results are fast, even with large datasets and complex queries. For
@@ -22,7 +22,12 @@ the *Amazon Athena User Guide*.
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

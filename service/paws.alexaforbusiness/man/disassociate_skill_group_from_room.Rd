@@ -4,7 +4,10 @@
 \alias{disassociate_skill_group_from_room}
 \title{Disassociates a skill group from a specified room}
 \usage{
-disassociate_skill_group_from_room(SkillGroupArn = NULL, RoomArn = NULL)
+disassociate_skill_group_from_room(
+  SkillGroupArn = "string",
+  RoomArn = "string"
+)
 }
 \arguments{
 \item{SkillGroupArn}{The ARN of the skill group to disassociate from a room. Required.}

@@ -4,12 +4,20 @@
 \alias{tag_resource}
 \title{Adds the specified tags to the specified AWS Direct Connect resource}
 \usage{
-tag_resource(resourceArn, tags)
+tag_resource(
+  resourceArn = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{resourceArn}{The Amazon Resource Name (ARN) of the resource.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 
-\item{tags}{The tags to add.}
+\item{tags}{[required] The tags to add.}
 }
 \description{
 Adds the specified tags to the specified AWS Direct Connect resource. Each resource can have a maximum of 50 tags.

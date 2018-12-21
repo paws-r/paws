@@ -4,13 +4,24 @@
 \alias{update_identity_provider}
 \title{Updates identity provider information for a user pool}
 \usage{
-update_identity_provider(UserPoolId, ProviderName, ProviderDetails = NULL,
-  AttributeMapping = NULL, IdpIdentifiers = NULL)
+update_identity_provider(
+  UserPoolId = "string",
+  ProviderName = "string",
+  ProviderDetails = list(
+    "string"
+  ),
+  AttributeMapping = list(
+    "string"
+  ),
+  IdpIdentifiers = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID.}
+\item{UserPoolId}{[required] The user pool ID.}
 
-\item{ProviderName}{The identity provider name.}
+\item{ProviderName}{[required] The identity provider name.}
 
 \item{ProviderDetails}{The identity provider details to be updated, such as \code{MetadataURL} and \code{MetadataFile}.}
 

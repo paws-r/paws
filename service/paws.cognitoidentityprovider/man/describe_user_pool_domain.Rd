@@ -4,10 +4,12 @@
 \alias{describe_user_pool_domain}
 \title{Gets information about a domain}
 \usage{
-describe_user_pool_domain(Domain)
+describe_user_pool_domain(
+  Domain = "string"
+)
 }
 \arguments{
-\item{Domain}{The domain string.}
+\item{Domain}{[required] The domain string.}
 }
 \description{
 Gets information about a domain.

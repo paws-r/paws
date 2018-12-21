@@ -4,34 +4,56 @@
 \alias{describe_dimension_keys}
 \title{For a specific time period, retrieve the top \code{N} dimension keys for a metric}
 \usage{
-describe_dimension_keys(ServiceType, Identifier, StartTime, EndTime, Metric,
-  GroupBy, PeriodInSeconds = NULL, PartitionBy = NULL, Filter = NULL,
-  MaxResults = NULL, NextToken = NULL)
+describe_dimension_keys(
+  ServiceType = "RDS",
+  Identifier = "string",
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  Metric = "string",
+  PeriodInSeconds = 123,
+  GroupBy = list(
+    Group = "string",
+    Dimensions = list(
+      "string"
+    ),
+    Limit = 123
+  ),
+  PartitionBy = list(
+    Group = "string",
+    Dimensions = list(
+      "string"
+    ),
+    Limit = 123
+  ),
+  Filter = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{ServiceType}{The AWS service for which Performance Insights will return metrics. The only valid value for \emph{ServiceType} is: \code{RDS}}
+\item{ServiceType}{[required] The AWS service for which Performance Insights will return metrics. The only valid value for \emph{ServiceType} is: \code{RDS}}
 
-\item{Identifier}{An immutable, AWS Region-unique identifier for a data source. Performance Insights gathers metrics from this data source.
+\item{Identifier}{[required] An immutable, AWS Region-unique identifier for a data source. Performance Insights gathers metrics from this data source.
 
 To use an Amazon RDS instance as a data source, you specify its \code{DbiResourceId} value - for example: \code{db-FAIHNTYBKTGAUSUZQYPDS2GW4A}}
 
-\item{StartTime}{The date and time specifying the beginning of the requested time series data. You can't specify a \code{StartTime} that's earlier than 7 days ago. The value specified is \emph{inclusive} - data points equal to or greater than \code{StartTime} will be returned.
+\item{StartTime}{[required] The date and time specifying the beginning of the requested time series data. You can't specify a \code{StartTime} that's earlier than 7 days ago. The value specified is \emph{inclusive} - data points equal to or greater than \code{StartTime} will be returned.
 
 The value for \code{StartTime} must be earlier than the value for \code{EndTime}.}
 
-\item{EndTime}{The date and time specifying the end of the requested time series data. The value specified is \emph{exclusive} - data points less than (but not equal to) \code{EndTime} will be returned.
+\item{EndTime}{[required] The date and time specifying the end of the requested time series data. The value specified is \emph{exclusive} - data points less than (but not equal to) \code{EndTime} will be returned.
 
 The value for \code{EndTime} must be later than the value for \code{StartTime}.}
 
-\item{Metric}{The name of a Performance Insights metric to be measured.
+\item{Metric}{[required] The name of a Performance Insights metric to be measured.
 
 Valid values for \code{Metric} are:
 \itemize{
 \item \code{db.load.avg} - a scaled representation of the number of active sessions for the database engine.
 \item \code{db.sampledload.avg} - the raw number of active sessions for the database engine.
 }}
-
-\item{GroupBy}{A specification for how to aggregate the data points from a query result. You must specify a valid dimension group. Performance Insights will return all of the dimensions within that group, unless you provide the names of specific dimensions within that group. You can also request that Performance Insights return a limited number of values for a dimension.}
 
 \item{PeriodInSeconds}{The granularity, in seconds, of the data points returned from Performance Insights. A period can be as short as one second, or as long as one day (86400 seconds). Valid values are:
 \itemize{
@@ -43,6 +65,8 @@ Valid values for \code{Metric} are:
 }
 
 If you don't specify \code{PeriodInSeconds}, then Performance Insights will choose a value for you, with a goal of returning roughly 100-200 data points in the response.}
+
+\item{GroupBy}{[required] A specification for how to aggregate the data points from a query result. You must specify a valid dimension group. Performance Insights will return all of the dimensions within that group, unless you provide the names of specific dimensions within that group. You can also request that Performance Insights return a limited number of values for a dimension.}
 
 \item{PartitionBy}{For each dimension specified in \code{GroupBy}, specify a secondary dimension to further subdivide the partition keys in the response.}
 

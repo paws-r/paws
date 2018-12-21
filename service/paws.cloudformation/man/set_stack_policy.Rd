@@ -4,10 +4,14 @@
 \alias{set_stack_policy}
 \title{Sets a stack policy for a specified stack}
 \usage{
-set_stack_policy(StackName, StackPolicyBody = NULL, StackPolicyURL = NULL)
+set_stack_policy(
+  StackName = "string",
+  StackPolicyBody = "string",
+  StackPolicyURL = "string"
+)
 }
 \arguments{
-\item{StackName}{The name or unique stack ID that you want to associate a policy with.}
+\item{StackName}{[required] The name or unique stack ID that you want to associate a policy with.}
 
 \item{StackPolicyBody}{Structure containing the stack policy body. For more information, go to \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html}{Prevent Updates to Stack Resources} in the AWS CloudFormation User Guide. You can specify either the \code{StackPolicyBody} or the \code{StackPolicyURL} parameter, but not both.}
 

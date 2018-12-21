@@ -4,11 +4,15 @@
 \alias{list_aliases}
 \title{Returns list of aliases created for a Lambda function}
 \usage{
-list_aliases(FunctionName, FunctionVersion = NULL, Marker = NULL,
-  MaxItems = NULL)
+list_aliases(
+  FunctionName = "string",
+  FunctionVersion = "string",
+  Marker = "string",
+  MaxItems = 123
+)
 }
 \arguments{
-\item{FunctionName}{The name of the lambda function.
+\item{FunctionName}{[required] The name of the lambda function.
 
 \strong{Name formats}
 \itemize{

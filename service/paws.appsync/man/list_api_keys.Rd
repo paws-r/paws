@@ -4,10 +4,14 @@
 \alias{list_api_keys}
 \title{Lists the API keys for a given API}
 \usage{
-list_api_keys(apiId, nextToken = NULL, maxResults = NULL)
+list_api_keys(
+  apiId = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{apiId}{The API ID.}
+\item{apiId}{[required] The API ID.}
 
 \item{nextToken}{An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.}
 

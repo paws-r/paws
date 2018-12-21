@@ -4,12 +4,15 @@
 \alias{add_source_identifier_to_subscription}
 \title{Adds a source identifier to an existing RDS event notification subscription}
 \usage{
-add_source_identifier_to_subscription(SubscriptionName, SourceIdentifier)
+add_source_identifier_to_subscription(
+  SubscriptionName = "string",
+  SourceIdentifier = "string"
+)
 }
 \arguments{
-\item{SubscriptionName}{The name of the RDS event notification subscription you want to add a source identifier to.}
+\item{SubscriptionName}{[required] The name of the RDS event notification subscription you want to add a source identifier to.}
 
-\item{SourceIdentifier}{The identifier of the event source to be added.
+\item{SourceIdentifier}{[required] The identifier of the event source to be added.
 
 Constraints:
 \itemize{

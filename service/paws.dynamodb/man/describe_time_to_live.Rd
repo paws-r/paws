@@ -4,10 +4,12 @@
 \alias{describe_time_to_live}
 \title{Gives a description of the Time to Live (TTL) status on the specified table}
 \usage{
-describe_time_to_live(TableName)
+describe_time_to_live(
+  TableName = "string"
+)
 }
 \arguments{
-\item{TableName}{The name of the table to be described.}
+\item{TableName}{[required] The name of the table to be described.}
 }
 \description{
 Gives a description of the Time to Live (TTL) status on the specified table.

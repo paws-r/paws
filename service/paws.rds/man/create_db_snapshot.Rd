@@ -4,10 +4,19 @@
 \alias{create_db_snapshot}
 \title{Creates a DBSnapshot}
 \usage{
-create_db_snapshot(DBSnapshotIdentifier, DBInstanceIdentifier, Tags = NULL)
+create_db_snapshot(
+  DBSnapshotIdentifier = "string",
+  DBInstanceIdentifier = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{DBSnapshotIdentifier}{The identifier for the DB snapshot.
+\item{DBSnapshotIdentifier}{[required] The identifier for the DB snapshot.
 
 Constraints:
 \itemize{
@@ -19,7 +28,7 @@ Constraints:
 
 Example: \code{my-snapshot-id}}
 
-\item{DBInstanceIdentifier}{The identifier of the DB instance that you want to create the snapshot of.
+\item{DBInstanceIdentifier}{[required] The identifier of the DB instance that you want to create the snapshot of.
 
 Constraints:
 \itemize{

@@ -4,10 +4,14 @@
 \alias{list_user_pool_clients}
 \title{Lists the clients that have been created for the specified user pool}
 \usage{
-list_user_pool_clients(UserPoolId, MaxResults = NULL, NextToken = NULL)
+list_user_pool_clients(
+  UserPoolId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool where you want to list user pool clients.}
+\item{UserPoolId}{[required] The user pool ID for the user pool where you want to list user pool clients.}
 
 \item{MaxResults}{The maximum number of results you want the request to return when listing the user pool clients.}
 

@@ -4,19 +4,37 @@
 \alias{create_image_builder}
 \title{Creates an image builder}
 \usage{
-create_image_builder(Name, InstanceType, ImageName = NULL, ImageArn = NULL,
-  Description = NULL, DisplayName = NULL, VpcConfig = NULL,
-  EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL,
-  AppstreamAgentVersion = NULL)
+create_image_builder(
+  Name = "string",
+  ImageName = "string",
+  ImageArn = "string",
+  InstanceType = "string",
+  Description = "string",
+  DisplayName = "string",
+  VpcConfig = list(
+    SubnetIds = list(
+      "string"
+    ),
+    SecurityGroupIds = list(
+      "string"
+    )
+  ),
+  EnableDefaultInternetAccess = TRUE|FALSE,
+  DomainJoinInfo = list(
+    DirectoryName = "string",
+    OrganizationalUnitDistinguishedName = "string"
+  ),
+  AppstreamAgentVersion = "string"
+)
 }
 \arguments{
-\item{Name}{A unique name for the image builder.}
-
-\item{InstanceType}{The instance type to use when launching the image builder.}
+\item{Name}{[required] A unique name for the image builder.}
 
 \item{ImageName}{The name of the image used to create the builder.}
 
 \item{ImageArn}{The ARN of the public, private, or shared image to use.}
+
+\item{InstanceType}{[required] The instance type to use when launching the image builder.}
 
 \item{Description}{The description for display.}
 

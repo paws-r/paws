@@ -4,15 +4,19 @@
 \alias{create_base_path_mapping}
 \title{Creates a new BasePathMapping resource}
 \usage{
-create_base_path_mapping(domainName, restApiId, basePath = NULL,
-  stage = NULL)
+create_base_path_mapping(
+  domainName = "string",
+  basePath = "string",
+  restApiId = "string",
+  stage = "string"
+)
 }
 \arguments{
-\item{domainName}{[Required] The domain name of the BasePathMapping resource to create.}
-
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{domainName}{[required] [Required] The domain name of the BasePathMapping resource to create.}
 
 \item{basePath}{The base path name that callers of the API must provide as part of the URL after the domain name. This value must be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify a base path name after the domain name.}
+
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
 \item{stage}{The name of the API's stage that you want to use for this mapping. Leave this blank if you do not want callers to explicitly specify the stage name after any base path name.}
 }

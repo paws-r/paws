@@ -4,12 +4,18 @@
 \alias{get_id}
 \title{Generates (or retrieves) a Cognito ID}
 \usage{
-get_id(IdentityPoolId, AccountId = NULL, Logins = NULL)
+get_id(
+  AccountId = "string",
+  IdentityPoolId = "string",
+  Logins = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{IdentityPoolId}{An identity pool ID in the format REGION:GUID.}
-
 \item{AccountId}{A standard AWS account ID (9+ digits).}
+
+\item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
 
 \item{Logins}{A set of optional name-value pairs that map provider names to provider tokens. The available provider names for \code{Logins} are as follows:
 \itemize{

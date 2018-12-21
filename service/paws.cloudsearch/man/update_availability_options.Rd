@@ -4,12 +4,15 @@
 \alias{update_availability_options}
 \title{Configures the availability options for a domain}
 \usage{
-update_availability_options(DomainName, MultiAZ)
+update_availability_options(
+  DomainName = "string",
+  MultiAZ = TRUE|FALSE
+)
 }
 \arguments{
-\item{DomainName}{}
+\item{DomainName}{[required]}
 
-\item{MultiAZ}{You expand an existing search domain to a second Availability Zone by setting the Multi-AZ option to true. Similarly, you can turn off the Multi-AZ option to downgrade the domain to a single Availability Zone by setting the Multi-AZ option to \code{false}.}
+\item{MultiAZ}{[required] You expand an existing search domain to a second Availability Zone by setting the Multi-AZ option to true. Similarly, you can turn off the Multi-AZ option to downgrade the domain to a single Availability Zone by setting the Multi-AZ option to \code{false}.}
 }
 \description{
 Configures the availability options for a domain. Enabling the Multi-AZ option expands an Amazon CloudSearch domain to an additional Availability Zone in the same Region to increase fault tolerance in the event of a service disruption. Changes to the Multi-AZ option can take about half an hour to become active. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html}{Configuring Availability Options} in the \emph{Amazon CloudSearch Developer Guide}.

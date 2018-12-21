@@ -4,10 +4,12 @@
 \alias{describe_tags}
 \title{Describes the specified tags for the specified WorkSpace}
 \usage{
-describe_tags(ResourceId)
+describe_tags(
+  ResourceId = "string"
+)
 }
 \arguments{
-\item{ResourceId}{The ID of the WorkSpace. To find this ID, use DescribeWorkspaces.}
+\item{ResourceId}{[required] The identifier of the WorkSpace. To find this ID, use DescribeWorkspaces.}
 }
 \description{
 Describes the specified tags for the specified WorkSpace.

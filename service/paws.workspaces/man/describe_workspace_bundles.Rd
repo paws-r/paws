@@ -2,22 +2,27 @@
 % Please edit documentation in R/paws.workspaces_operations.R
 \name{describe_workspace_bundles}
 \alias{describe_workspace_bundles}
-\title{Describes the available WorkSpace bundles}
+\title{Retrieves a list that describes the available WorkSpace bundles}
 \usage{
-describe_workspace_bundles(BundleIds = NULL, Owner = NULL,
-  NextToken = NULL)
+describe_workspace_bundles(
+  BundleIds = list(
+    "string"
+  ),
+  Owner = "string",
+  NextToken = "string"
+)
 }
 \arguments{
-\item{BundleIds}{The IDs of the bundles. This parameter cannot be combined with any other filter.}
+\item{BundleIds}{The identifiers of the bundles. You cannot combine this parameter with any other filter.}
 
-\item{Owner}{The owner of the bundles. This parameter cannot be combined with any other filter.
+\item{Owner}{The owner of the bundles. You cannot combine this parameter with any other filter.
 
 Specify \code{AMAZON} to describe the bundles provided by AWS or null to describe the bundles that belong to your account.}
 
 \item{NextToken}{The token for the next set of results. (You received this token from a previous call.)}
 }
 \description{
-Describes the available WorkSpace bundles.
+Retrieves a list that describes the available WorkSpace bundles.
 }
 \details{
 You can filter the results using either bundle ID or owner, but not both.

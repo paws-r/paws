@@ -4,12 +4,15 @@
 \alias{delete_ip_set}
 \title{Permanently deletes an IPSet}
 \usage{
-delete_ip_set(IPSetId, ChangeToken)
+delete_ip_set(
+  IPSetId = "string",
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{IPSetId}{The \code{IPSetId} of the IPSet that you want to delete. \code{IPSetId} is returned by CreateIPSet and by ListIPSets.}
+\item{IPSetId}{[required] The \code{IPSetId} of the IPSet that you want to delete. \code{IPSetId} is returned by CreateIPSet and by ListIPSets.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Permanently deletes an IPSet. You can't delete an \code{IPSet} if it's still used in any \code{Rules} or if it still includes any IP addresses.

@@ -4,14 +4,35 @@
 \alias{restore_db_cluster_from_snapshot}
 \title{Creates a new DB cluster from a DB snapshot or DB cluster snapshot}
 \usage{
-restore_db_cluster_from_snapshot(DBClusterIdentifier, SnapshotIdentifier,
-  Engine, AvailabilityZones = NULL, EngineVersion = NULL, Port = NULL,
-  DBSubnetGroupName = NULL, DatabaseName = NULL, OptionGroupName = NULL,
-  VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL,
-  EnableIAMDatabaseAuthentication = NULL)
+restore_db_cluster_from_snapshot(
+  AvailabilityZones = list(
+    "string"
+  ),
+  DBClusterIdentifier = "string",
+  SnapshotIdentifier = "string",
+  Engine = "string",
+  EngineVersion = "string",
+  Port = 123,
+  DBSubnetGroupName = "string",
+  DatabaseName = "string",
+  OptionGroupName = "string",
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  KmsKeyId = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE
+)
 }
 \arguments{
-\item{DBClusterIdentifier}{The name of the DB cluster to create from the DB snapshot or DB cluster snapshot. This parameter isn't case-sensitive.
+\item{AvailabilityZones}{Provides the list of EC2 Availability Zones that instances in the restored DB cluster can be created in.}
+
+\item{DBClusterIdentifier}{[required] The name of the DB cluster to create from the DB snapshot or DB cluster snapshot. This parameter isn't case-sensitive.
 
 Constraints:
 \itemize{
@@ -22,7 +43,7 @@ Constraints:
 
 Example: \code{my-snapshot-id}}
 
-\item{SnapshotIdentifier}{The identifier for the DB snapshot or DB cluster snapshot to restore from.
+\item{SnapshotIdentifier}{[required] The identifier for the DB snapshot or DB cluster snapshot to restore from.
 
 You can use either the name or the Amazon Resource Name (ARN) to specify a DB cluster snapshot. However, you can use only the ARN to specify a DB snapshot.
 
@@ -31,13 +52,11 @@ Constraints:
 \item Must match the identifier of an existing Snapshot.
 }}
 
-\item{Engine}{The database engine to use for the new DB cluster.
+\item{Engine}{[required] The database engine to use for the new DB cluster.
 
 Default: The same as source
 
 Constraint: Must be compatible with the engine of the source}
-
-\item{AvailabilityZones}{Provides the list of EC2 Availability Zones that instances in the restored DB cluster can be created in.}
 
 \item{EngineVersion}{The version of the database engine to use for the new DB cluster.}
 

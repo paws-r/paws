@@ -4,21 +4,29 @@
 \alias{create_qualification_type}
 \title{The \code{CreateQualificationType} operation creates a new Qualification type, which is represented by a \code{QualificationType} data structure}
 \usage{
-create_qualification_type(Name, Description, QualificationTypeStatus,
-  Keywords = NULL, RetryDelayInSeconds = NULL, Test = NULL,
-  AnswerKey = NULL, TestDurationInSeconds = NULL, AutoGranted = NULL,
-  AutoGrantedValue = NULL)
+create_qualification_type(
+  Name = "string",
+  Keywords = "string",
+  Description = "string",
+  QualificationTypeStatus = "Active"|"Inactive",
+  RetryDelayInSeconds = 123,
+  Test = "string",
+  AnswerKey = "string",
+  TestDurationInSeconds = 123,
+  AutoGranted = TRUE|FALSE,
+  AutoGrantedValue = 123
+)
 }
 \arguments{
-\item{Name}{The name you give to the Qualification type. The type name is used to represent the Qualification to Workers, and to find the type using a Qualification type search. It must be unique across all of your Qualification types.}
-
-\item{Description}{A long description for the Qualification type. On the Amazon Mechanical Turk website, the long description is displayed when a Worker examines a Qualification type.}
-
-\item{QualificationTypeStatus}{The initial status of the Qualification type.
-
-Constraints: Valid values are: Active | Inactive}
+\item{Name}{[required] The name you give to the Qualification type. The type name is used to represent the Qualification to Workers, and to find the type using a Qualification type search. It must be unique across all of your Qualification types.}
 
 \item{Keywords}{One or more words or phrases that describe the Qualification type, separated by commas. The keywords of a type make the type easier to find during a search.}
+
+\item{Description}{[required] A long description for the Qualification type. On the Amazon Mechanical Turk website, the long description is displayed when a Worker examines a Qualification type.}
+
+\item{QualificationTypeStatus}{[required] The initial status of the Qualification type.
+
+Constraints: Valid values are: Active | Inactive}
 
 \item{RetryDelayInSeconds}{The number of seconds that a Worker must wait after requesting a Qualification of the Qualification type before the worker can retry the Qualification request.
 

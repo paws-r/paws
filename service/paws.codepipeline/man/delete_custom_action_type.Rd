@@ -4,14 +4,18 @@
 \alias{delete_custom_action_type}
 \title{Marks a custom action as deleted}
 \usage{
-delete_custom_action_type(category, provider, version)
+delete_custom_action_type(
+  category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+  provider = "string",
+  version = "string"
+)
 }
 \arguments{
-\item{category}{The category of the custom action that you want to delete, such as source or deploy.}
+\item{category}{[required] The category of the custom action that you want to delete, such as source or deploy.}
 
-\item{provider}{The provider of the service used in the custom action, such as AWS CodeDeploy.}
+\item{provider}{[required] The provider of the service used in the custom action, such as AWS CodeDeploy.}
 
-\item{version}{The version of the custom action to delete.}
+\item{version}{[required] The version of the custom action to delete.}
 }
 \description{
 Marks a custom action as deleted. PollForJobs for the custom action will fail after the action is marked for deletion. Only used for custom actions.

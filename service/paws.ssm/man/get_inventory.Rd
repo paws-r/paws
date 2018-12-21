@@ -4,8 +4,44 @@
 \alias{get_inventory}
 \title{Query inventory information}
 \usage{
-get_inventory(Filters = NULL, Aggregators = NULL, ResultAttributes = NULL,
-  NextToken = NULL, MaxResults = NULL)
+get_inventory(
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      ),
+      Type = "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"|"Exists"
+    )
+  ),
+  Aggregators = list(
+    list(
+      Expression = "string",
+      Aggregators = list(),
+      Groups = list(
+        list(
+          Name = "string",
+          Filters = list(
+            list(
+              Key = "string",
+              Values = list(
+                "string"
+              ),
+              Type = "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"|"Exists"
+            )
+          )
+        )
+      )
+    )
+  ),
+  ResultAttributes = list(
+    list(
+      TypeName = "string"
+    )
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{Filters}{One or more filters. Use a filter to return a more specific list of results.}

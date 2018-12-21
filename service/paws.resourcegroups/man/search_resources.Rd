@@ -4,10 +4,17 @@
 \alias{search_resources}
 \title{Returns a list of AWS resource identifiers that matches a specified query}
 \usage{
-search_resources(ResourceQuery, MaxResults = NULL, NextToken = NULL)
+search_resources(
+  ResourceQuery = list(
+    Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
+    Query = "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{ResourceQuery}{The search query, using the same formats that are supported for resource group definition.}
+\item{ResourceQuery}{[required] The search query, using the same formats that are supported for resource group definition.}
 
 \item{MaxResults}{The maximum number of group member ARNs returned by \code{SearchResources} in paginated output. By default, this number is 50.}
 

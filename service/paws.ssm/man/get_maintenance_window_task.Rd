@@ -4,12 +4,15 @@
 \alias{get_maintenance_window_task}
 \title{Lists the tasks in a Maintenance Window}
 \usage{
-get_maintenance_window_task(WindowId, WindowTaskId)
+get_maintenance_window_task(
+  WindowId = "string",
+  WindowTaskId = "string"
+)
 }
 \arguments{
-\item{WindowId}{The Maintenance Window ID that includes the task to retrieve.}
+\item{WindowId}{[required] The Maintenance Window ID that includes the task to retrieve.}
 
-\item{WindowTaskId}{The Maintenance Window task ID to retrieve.}
+\item{WindowTaskId}{[required] The Maintenance Window task ID to retrieve.}
 }
 \description{
 Lists the tasks in a Maintenance Window.

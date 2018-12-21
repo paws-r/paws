@@ -4,14 +4,18 @@
 \alias{create_resource}
 \title{Creates a Resource resource}
 \usage{
-create_resource(restApiId, parentId, pathPart)
+create_resource(
+  restApiId = "string",
+  parentId = "string",
+  pathPart = "string"
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{parentId}{[Required] The parent resource's identifier.}
+\item{parentId}{[required] [Required] The parent resource's identifier.}
 
-\item{pathPart}{The last path segment for this resource.}
+\item{pathPart}{[required] The last path segment for this resource.}
 }
 \description{
 Creates a Resource resource.

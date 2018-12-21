@@ -4,7 +4,9 @@
 \alias{disassociate_device_from_room}
 \title{Disassociates a device from its current room}
 \usage{
-disassociate_device_from_room(DeviceArn = NULL)
+disassociate_device_from_room(
+  DeviceArn = "string"
+)
 }
 \arguments{
 \item{DeviceArn}{The ARN of the device to disassociate from a room. Required.}

@@ -2,12 +2,14 @@
 % Please edit documentation in R/paws.rds_operations.R
 \name{delete_db_parameter_group}
 \alias{delete_db_parameter_group}
-\title{Deletes a specified DBParameterGroup}
+\title{Deletes a specified DB parameter group}
 \usage{
-delete_db_parameter_group(DBParameterGroupName)
+delete_db_parameter_group(
+  DBParameterGroupName = "string"
+)
 }
 \arguments{
-\item{DBParameterGroupName}{The name of the DB parameter group.
+\item{DBParameterGroupName}{[required] The name of the DB parameter group.
 
 Constraints:
 \itemize{
@@ -17,7 +19,7 @@ Constraints:
 }}
 }
 \description{
-Deletes a specified DBParameterGroup. The DBParameterGroup to be deleted can't be associated with any DB instances.
+Deletes a specified DB parameter group. The DB parameter group to be deleted can't be associated with any DB instances.
 }
 \examples{
 

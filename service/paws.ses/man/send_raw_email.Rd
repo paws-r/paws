@@ -4,12 +4,36 @@
 \alias{send_raw_email}
 \title{Composes an email message and immediately queues it for sending}
 \usage{
-send_raw_email(RawMessage, Source = NULL, Destinations = NULL,
-  FromArn = NULL, SourceArn = NULL, ReturnPathArn = NULL, Tags = NULL,
-  ConfigurationSetName = NULL)
+send_raw_email(
+  Source = "string",
+  Destinations = list(
+    "string"
+  ),
+  RawMessage = list(
+    Data = raw
+  ),
+  FromArn = "string",
+  SourceArn = "string",
+  ReturnPathArn = "string",
+  Tags = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  ConfigurationSetName = "string"
+)
 }
 \arguments{
-\item{RawMessage}{The raw email message itself. The message has to meet the following criteria:
+\item{Source}{The identity's email address. If you do not provide a value for this parameter, you must specify a "From" address in the raw text of the message. (You can also specify both.)
+
+Amazon SES does not support the SMTPUTF8 extension, as described in\href{https://tools.ietf.org/html/rfc6531}{RFC6531}. For this reason, the \emph{local part} of a source email address (the part of the email address that precedes the @ sign) may only contain \href{https://en.wikipedia.org/wiki/Email_address#Local-part}{7-bit ASCII characters}. If the \emph{domain part} of an address (the part after the @ sign) contains non-ASCII characters, they must be encoded using Punycode, as described in \href{https://tools.ietf.org/html/rfc3492.html}{RFC3492}. The sender name (also known as the \emph{friendly name}) may contain non-ASCII characters. These characters must be encoded using MIME encoded-word syntax, as described in \href{https://tools.ietf.org/html/rfc2047}{RFC 2047}. MIME encoded-word syntax uses the following form: \code{=?charset?encoding?encoded-text?=}.
+
+If you specify the \code{Source} parameter and have feedback forwarding enabled, then bounces and complaints will be sent to this email address. This takes precedence over any Return-Path header that you might include in the raw text of the message.}
+
+\item{Destinations}{A list of destinations for the message, consisting of To:, CC:, and BCC: addresses.}
+
+\item{RawMessage}{[required] The raw email message itself. The message has to meet the following criteria:
 \itemize{
 \item The message has to contain a header and a body, separated by a blank line.
 \item All of the required header fields must be present in the message.
@@ -19,14 +43,6 @@ send_raw_email(RawMessage, Source = NULL, Destinations = NULL,
 \item If any of the MIME parts in your message contain content that is outside of the 7-bit ASCII character range, we highly recommend that you encode that content. For more information, see \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html}{Sending Raw Email} in the \emph{Amazon SES Developer Guide}.
 \item Per \href{https://tools.ietf.org/html/rfc5321#section-4.5.3.1.6}{RFC 5321}, the maximum length of each line of text, including the <CRLF>, must not exceed 1,000 characters.
 }}
-
-\item{Source}{The identity's email address. If you do not provide a value for this parameter, you must specify a "From" address in the raw text of the message. (You can also specify both.)
-
-Amazon SES does not support the SMTPUTF8 extension, as described in\href{https://tools.ietf.org/html/rfc6531}{RFC6531}. For this reason, the \emph{local part} of a source email address (the part of the email address that precedes the @ sign) may only contain \href{https://en.wikipedia.org/wiki/Email_address#Local-part}{7-bit ASCII characters}. If the \emph{domain part} of an address (the part after the @ sign) contains non-ASCII characters, they must be encoded using Punycode, as described in \href{https://tools.ietf.org/html/rfc3492.html}{RFC3492}. The sender name (also known as the \emph{friendly name}) may contain non-ASCII characters. These characters must be encoded using MIME encoded-word syntax, as described in \href{https://tools.ietf.org/html/rfc2047}{RFC 2047}. MIME encoded-word syntax uses the following form: \code{=?charset?encoding?encoded-text?=}.
-
-If you specify the \code{Source} parameter and have feedback forwarding enabled, then bounces and complaints will be sent to this email address. This takes precedence over any Return-Path header that you might include in the raw text of the message.}
-
-\item{Destinations}{A list of destinations for the message, consisting of To:, CC:, and BCC: addresses.}
 
 \item{FromArn}{This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to specify a particular "From" address in the header of the raw email.
 

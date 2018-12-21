@@ -4,10 +4,12 @@
 \alias{describe_policy}
 \title{Retrieves information about a policy}
 \usage{
-describe_policy(PolicyId)
+describe_policy(
+  PolicyId = "string"
+)
 }
 \arguments{
-\item{PolicyId}{The unique identifier (ID) of the policy that you want details about. You can get the ID from the ListPolicies or ListPoliciesForTarget operations.
+\item{PolicyId}{[required] The unique identifier (ID) of the policy that you want details about. You can get the ID from the ListPolicies or ListPoliciesForTarget operations.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.}
 }

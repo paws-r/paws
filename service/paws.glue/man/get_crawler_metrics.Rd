@@ -4,8 +4,13 @@
 \alias{get_crawler_metrics}
 \title{Retrieves metrics about specified crawlers}
 \usage{
-get_crawler_metrics(CrawlerNameList = NULL, MaxResults = NULL,
-  NextToken = NULL)
+get_crawler_metrics(
+  CrawlerNameList = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{CrawlerNameList}{A list of the names of crawlers about which to retrieve metrics.}

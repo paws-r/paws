@@ -4,19 +4,26 @@
 \alias{activate_gateway}
 \title{Activates the gateway you previously deployed on your host}
 \usage{
-activate_gateway(ActivationKey, GatewayName, GatewayTimezone, GatewayRegion,
-  GatewayType = NULL, TapeDriveType = NULL, MediumChangerType = NULL)
+activate_gateway(
+  ActivationKey = "string",
+  GatewayName = "string",
+  GatewayTimezone = "string",
+  GatewayRegion = "string",
+  GatewayType = "string",
+  TapeDriveType = "string",
+  MediumChangerType = "string"
+)
 }
 \arguments{
-\item{ActivationKey}{Your gateway activation key. You can obtain the activation key by sending an HTTP GET request with redirects enabled to the gateway IP address (port 80). The redirect URL returned in the response provides you the activation key for your gateway in the query string parameter \code{activationKey}. It may also include other activation-related parameters, however, these are merely defaults -- the arguments you pass to the \code{ActivateGateway} API call determine the actual configuration of your gateway.
+\item{ActivationKey}{[required] Your gateway activation key. You can obtain the activation key by sending an HTTP GET request with redirects enabled to the gateway IP address (port 80). The redirect URL returned in the response provides you the activation key for your gateway in the query string parameter \code{activationKey}. It may also include other activation-related parameters, however, these are merely defaults -- the arguments you pass to the \code{ActivateGateway} API call determine the actual configuration of your gateway.
 
 For more information, see https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html in the Storage Gateway User Guide.}
 
-\item{GatewayName}{The name you configured for your gateway.}
+\item{GatewayName}{[required] The name you configured for your gateway.}
 
-\item{GatewayTimezone}{A value that indicates the time zone you want to set for the gateway. The time zone is of the format "GMT-hr:mm" or "GMT+hr:mm". For example, GMT-4:00 indicates the time is 4 hours behind GMT. GMT+2:00 indicates the time is 2 hours ahead of GMT. The time zone is used, for example, for scheduling snapshots and your gateway's maintenance schedule.}
+\item{GatewayTimezone}{[required] A value that indicates the time zone you want to set for the gateway. The time zone is of the format "GMT-hr:mm" or "GMT+hr:mm". For example, GMT-4:00 indicates the time is 4 hours behind GMT. GMT+2:00 indicates the time is 2 hours ahead of GMT. The time zone is used, for example, for scheduling snapshots and your gateway's maintenance schedule.}
 
-\item{GatewayRegion}{A value that indicates the region where you want to store your data. The gateway region specified must be the same region as the region in your \code{Host} header in the request. For more information about available regions and endpoints for AWS Storage Gateway, see \href{http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region}{Regions and Endpoints} in the \emph{Amazon Web Services Glossary}.
+\item{GatewayRegion}{[required] A value that indicates the region where you want to store your data. The gateway region specified must be the same region as the region in your \code{Host} header in the request. For more information about available regions and endpoints for AWS Storage Gateway, see \href{http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region}{Regions and Endpoints} in the \emph{Amazon Web Services Glossary}.
 
 Valid Values: "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1", "eu-west-1", "eu-central-1", "eu-west-2", "eu-west-3", "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2", "ap-south-1", "sa-east-1"}
 

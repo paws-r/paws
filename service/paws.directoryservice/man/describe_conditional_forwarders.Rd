@@ -4,10 +4,15 @@
 \alias{describe_conditional_forwarders}
 \title{Obtains information about the conditional forwarders for this account}
 \usage{
-describe_conditional_forwarders(DirectoryId, RemoteDomainNames = NULL)
+describe_conditional_forwarders(
+  DirectoryId = "string",
+  RemoteDomainNames = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{DirectoryId}{The directory ID for which to get the list of associated conditional forwarders.}
+\item{DirectoryId}{[required] The directory ID for which to get the list of associated conditional forwarders.}
 
 \item{RemoteDomainNames}{The fully qualified domain names (FQDN) of the remote domains for which to get the list of associated conditional forwarders. If this member is null, all conditional forwarders are returned.}
 }

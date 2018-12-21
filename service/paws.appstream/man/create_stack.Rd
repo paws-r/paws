@@ -4,12 +4,35 @@
 \alias{create_stack}
 \title{Creates a stack to start streaming applications to users}
 \usage{
-create_stack(Name, Description = NULL, DisplayName = NULL,
-  StorageConnectors = NULL, RedirectURL = NULL, FeedbackURL = NULL,
-  UserSettings = NULL, ApplicationSettings = NULL)
+create_stack(
+  Name = "string",
+  Description = "string",
+  DisplayName = "string",
+  StorageConnectors = list(
+    list(
+      ConnectorType = "HOMEFOLDERS"|"GOOGLE_DRIVE"|"ONE_DRIVE",
+      ResourceIdentifier = "string",
+      Domains = list(
+        "string"
+      )
+    )
+  ),
+  RedirectURL = "string",
+  FeedbackURL = "string",
+  UserSettings = list(
+    list(
+      Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"FILE_UPLOAD"|"FILE_DOWNLOAD"|"PRINTING_TO_LOCAL_DEVICE",
+      Permission = "ENABLED"|"DISABLED"
+    )
+  ),
+  ApplicationSettings = list(
+    Enabled = TRUE|FALSE,
+    SettingsGroup = "string"
+  )
+)
 }
 \arguments{
-\item{Name}{The name of the stack.}
+\item{Name}{[required] The name of the stack.}
 
 \item{Description}{The description for display.}
 

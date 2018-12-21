@@ -4,10 +4,12 @@
 \alias{stop_thing_registration_task}
 \title{Cancels a bulk thing provisioning task}
 \usage{
-stop_thing_registration_task(taskId)
+stop_thing_registration_task(
+  taskId = "string"
+)
 }
 \arguments{
-\item{taskId}{The bulk thing provisioning task ID.}
+\item{taskId}{[required] The bulk thing provisioning task ID.}
 }
 \description{
 Cancels a bulk thing provisioning task.

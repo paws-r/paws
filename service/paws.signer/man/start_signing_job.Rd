@@ -4,16 +4,32 @@
 \alias{start_signing_job}
 \title{Initiates a signing job to be performed on the code provided}
 \usage{
-start_signing_job(source, destination, clientRequestToken, profileName = NULL)
+start_signing_job(
+  source = list(
+    s3 = list(
+      bucketName = "string",
+      key = "string",
+      version = "string"
+    )
+  ),
+  destination = list(
+    s3 = list(
+      bucketName = "string",
+      prefix = "string"
+    )
+  ),
+  profileName = "string",
+  clientRequestToken = "string"
+)
 }
 \arguments{
-\item{source}{The S3 bucket that contains the object to sign or a BLOB that contains your raw code.}
+\item{source}{[required] The S3 bucket that contains the object to sign or a BLOB that contains your raw code.}
 
-\item{destination}{The S3 bucket in which to save your signed object. The destination contains the name of your bucket and an optional prefix.}
-
-\item{clientRequestToken}{String that identifies the signing request. All calls after the first that use this token return the same response as the first call.}
+\item{destination}{[required] The S3 bucket in which to save your signed object. The destination contains the name of your bucket and an optional prefix.}
 
 \item{profileName}{The name of the signing profile.}
+
+\item{clientRequestToken}{[required] String that identifies the signing request. All calls after the first that use this token return the same response as the first call.}
 }
 \description{
 Initiates a signing job to be performed on the code provided. Signing jobs are viewable by the \code{ListSigningJobs} operation for two years after they are performed. Note the following requirements:

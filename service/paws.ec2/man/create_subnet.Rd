@@ -4,19 +4,27 @@
 \alias{create_subnet}
 \title{Creates a subnet in an existing VPC}
 \usage{
-create_subnet(CidrBlock, VpcId, AvailabilityZone = NULL,
-  Ipv6CidrBlock = NULL, DryRun = NULL)
+create_subnet(
+  AvailabilityZone = "string",
+  AvailabilityZoneId = "string",
+  CidrBlock = "string",
+  Ipv6CidrBlock = "string",
+  VpcId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{CidrBlock}{The IPv4 network range for the subnet, in CIDR notation. For example, \code{10.0.0.0/24}.}
-
-\item{VpcId}{The ID of the VPC.}
-
 \item{AvailabilityZone}{The Availability Zone for the subnet.
 
 Default: AWS selects one for you. If you create more than one subnet in your VPC, we may not necessarily select a different zone for each subnet.}
 
+\item{AvailabilityZoneId}{The AZ ID of the subnet.}
+
+\item{CidrBlock}{[required] The IPv4 network range for the subnet, in CIDR notation. For example, \code{10.0.0.0/24}.}
+
 \item{Ipv6CidrBlock}{The IPv6 network range for the subnet, in CIDR notation. The subnet size must use a /64 prefix length.}
+
+\item{VpcId}{[required] The ID of the VPC.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

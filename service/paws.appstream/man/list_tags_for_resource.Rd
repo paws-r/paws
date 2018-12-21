@@ -4,10 +4,12 @@
 \alias{list_tags_for_resource}
 \title{Retrieves a list of all tags for the specified AppStream 2}
 \usage{
-list_tags_for_resource(ResourceArn)
+list_tags_for_resource(
+  ResourceArn = "string"
+)
 }
 \arguments{
-\item{ResourceArn}{The Amazon Resource Name (ARN) of the resource.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 }
 \description{
 Retrieves a list of all tags for the specified AppStream 2.0 resource. You can tag AppStream 2.0 image builders, images, fleets, and stacks.

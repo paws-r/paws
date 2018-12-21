@@ -4,10 +4,14 @@
 \alias{list_rule_names_by_target}
 \title{Lists the rules for the specified target}
 \usage{
-list_rule_names_by_target(TargetArn, NextToken = NULL, Limit = NULL)
+list_rule_names_by_target(
+  TargetArn = "string",
+  NextToken = "string",
+  Limit = 123
+)
 }
 \arguments{
-\item{TargetArn}{The Amazon Resource Name (ARN) of the target resource.}
+\item{TargetArn}{[required] The Amazon Resource Name (ARN) of the target resource.}
 
 \item{NextToken}{The token returned by a previous call to retrieve the next set of results.}
 

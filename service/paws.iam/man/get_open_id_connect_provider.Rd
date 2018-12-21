@@ -4,10 +4,12 @@
 \alias{get_open_id_connect_provider}
 \title{Returns information about the specified OpenID Connect (OIDC) provider resource object in IAM}
 \usage{
-get_open_id_connect_provider(OpenIDConnectProviderArn)
+get_open_id_connect_provider(
+  OpenIDConnectProviderArn = "string"
+)
 }
 \arguments{
-\item{OpenIDConnectProviderArn}{The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to get information for. You can get a list of OIDC provider resource ARNs by using the ListOpenIDConnectProviders operation.
+\item{OpenIDConnectProviderArn}{[required] The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to get information for. You can get a list of OIDC provider resource ARNs by using the ListOpenIDConnectProviders operation.
 
 For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces} in the \emph{AWS General Reference}.}
 }

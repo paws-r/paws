@@ -4,10 +4,13 @@
 \alias{update_core_definition}
 \title{Updates a core definition}
 \usage{
-update_core_definition(CoreDefinitionId, Name = NULL)
+update_core_definition(
+  CoreDefinitionId = "string",
+  Name = "string"
+)
 }
 \arguments{
-\item{CoreDefinitionId}{The ID of the core definition.}
+\item{CoreDefinitionId}{[required] The ID of the core definition.}
 
 \item{Name}{The name of the definition.}
 }

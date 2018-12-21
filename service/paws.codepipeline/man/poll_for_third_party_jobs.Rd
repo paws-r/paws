@@ -4,10 +4,18 @@
 \alias{poll_for_third_party_jobs}
 \title{Determines whether there are any third party jobs for a job worker to act on}
 \usage{
-poll_for_third_party_jobs(actionTypeId, maxBatchSize = NULL)
+poll_for_third_party_jobs(
+  actionTypeId = list(
+    category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+    owner = "AWS"|"ThirdParty"|"Custom",
+    provider = "string",
+    version = "string"
+  ),
+  maxBatchSize = 123
+)
 }
 \arguments{
-\item{actionTypeId}{Represents information about an action type.}
+\item{actionTypeId}{[required] Represents information about an action type.}
 
 \item{maxBatchSize}{The maximum number of jobs to return in a poll for jobs call.}
 }

@@ -4,10 +4,12 @@
 \alias{unassign_instance}
 \title{Unassigns a registered instance from all layers that are using the instance}
 \usage{
-unassign_instance(InstanceId)
+unassign_instance(
+  InstanceId = "string"
+)
 }
 \arguments{
-\item{InstanceId}{The instance ID.}
+\item{InstanceId}{[required] The instance ID.}
 }
 \description{
 Unassigns a registered instance from all layers that are using the instance. The instance remains in the stack as an unassigned instance, and can be assigned to another layer as needed. You cannot use this action with instances that were created with AWS OpsWorks Stacks.

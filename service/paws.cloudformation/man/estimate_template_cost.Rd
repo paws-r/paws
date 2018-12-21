@@ -4,8 +4,18 @@
 \alias{estimate_template_cost}
 \title{Returns the estimated monthly cost of a template}
 \usage{
-estimate_template_cost(TemplateBody = NULL, TemplateURL = NULL,
-  Parameters = NULL)
+estimate_template_cost(
+  TemplateBody = "string",
+  TemplateURL = "string",
+  Parameters = list(
+    list(
+      ParameterKey = "string",
+      ParameterValue = "string",
+      UsePreviousValue = TRUE|FALSE,
+      ResolvedValue = "string"
+    )
+  )
+)
 }
 \arguments{
 \item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes. (For more information, go to \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy} in the AWS CloudFormation User Guide.)

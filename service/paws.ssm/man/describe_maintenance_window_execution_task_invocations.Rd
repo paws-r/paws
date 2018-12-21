@@ -4,13 +4,25 @@
 \alias{describe_maintenance_window_execution_task_invocations}
 \title{Retrieves the individual task executions (one per target) for a particular task executed as part of a Maintenance Window execution}
 \usage{
-describe_maintenance_window_execution_task_invocations(WindowExecutionId,
-  TaskId, Filters = NULL, MaxResults = NULL, NextToken = NULL)
+describe_maintenance_window_execution_task_invocations(
+  WindowExecutionId = "string",
+  TaskId = "string",
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{WindowExecutionId}{The ID of the Maintenance Window execution the task is part of.}
+\item{WindowExecutionId}{[required] The ID of the Maintenance Window execution the task is part of.}
 
-\item{TaskId}{The ID of the specific task in the Maintenance Window task that should be retrieved.}
+\item{TaskId}{[required] The ID of the specific task in the Maintenance Window task that should be retrieved.}
 
 \item{Filters}{Optional filters used to scope down the returned task invocations. The supported filter key is STATUS with the corresponding values PENDING, IN\_PROGRESS, SUCCESS, FAILED, TIMED\_OUT, CANCELLING, and CANCELLED.}
 

@@ -4,12 +4,15 @@
 \alias{decrease_stream_retention_period}
 \title{Decreases the Kinesis data stream's retention period, which is the length of time data records are accessible after they are added to the stream}
 \usage{
-decrease_stream_retention_period(StreamName, RetentionPeriodHours)
+decrease_stream_retention_period(
+  StreamName = "string",
+  RetentionPeriodHours = 123
+)
 }
 \arguments{
-\item{StreamName}{The name of the stream to modify.}
+\item{StreamName}{[required] The name of the stream to modify.}
 
-\item{RetentionPeriodHours}{The new retention period of the stream, in hours. Must be less than the current retention period.}
+\item{RetentionPeriodHours}{[required] The new retention period of the stream, in hours. Must be less than the current retention period.}
 }
 \description{
 Decreases the Kinesis data stream's retention period, which is the length of time data records are accessible after they are added to the stream. The minimum value of a stream's retention period is 24 hours.

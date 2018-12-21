@@ -4,12 +4,25 @@
 \alias{batch_delete_attributes}
 \title{Performs multiple DeleteAttributes operations in a single call, which reduces round trips and latencies}
 \usage{
-batch_delete_attributes(DomainName, Items)
+batch_delete_attributes(
+  DomainName = "string",
+  Items = list(
+    list(
+      Name = "string",
+      Attributes = list(
+        list(
+          Name = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{DomainName}{The name of the domain in which the attributes are being deleted.}
+\item{DomainName}{[required] The name of the domain in which the attributes are being deleted.}
 
-\item{Items}{A list of items on which to perform the operation.}
+\item{Items}{[required] A list of items on which to perform the operation.}
 }
 \description{
 Performs multiple DeleteAttributes operations in a single call, which reduces round trips and latencies. This enables Amazon SimpleDB to optimize requests, which generally yields better throughput.

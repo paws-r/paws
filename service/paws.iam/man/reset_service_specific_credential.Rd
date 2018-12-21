@@ -4,17 +4,19 @@
 \alias{reset_service_specific_credential}
 \title{Resets the password for a service-specific credential}
 \usage{
-reset_service_specific_credential(ServiceSpecificCredentialId,
-  UserName = NULL)
+reset_service_specific_credential(
+  UserName = "string",
+  ServiceSpecificCredentialId = "string"
+)
 }
 \arguments{
-\item{ServiceSpecificCredentialId}{The unique identifier of the service-specific credential.
-
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
-
 \item{UserName}{The name of the IAM user associated with the service-specific credential. If this value is not specified, then the operation assumes the user whose credentials are used to call the operation.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+
+\item{ServiceSpecificCredentialId}{[required] The unique identifier of the service-specific credential.
+
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
 }
 \description{
 Resets the password for a service-specific credential. The new password is AWS generated and cryptographically strong. It cannot be configured by the user. Resetting the password immediately invalidates the previous password associated with this user.

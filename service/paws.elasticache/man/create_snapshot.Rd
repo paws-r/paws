@@ -4,15 +4,18 @@
 \alias{create_snapshot}
 \title{Creates a copy of an entire cluster or replication group at a specific moment in time}
 \usage{
-create_snapshot(SnapshotName, ReplicationGroupId = NULL,
-  CacheClusterId = NULL)
+create_snapshot(
+  ReplicationGroupId = "string",
+  CacheClusterId = "string",
+  SnapshotName = "string"
+)
 }
 \arguments{
-\item{SnapshotName}{A name for the snapshot being created.}
-
 \item{ReplicationGroupId}{The identifier of an existing replication group. The snapshot is created from this replication group.}
 
 \item{CacheClusterId}{The identifier of an existing cluster. The snapshot is created from this cluster.}
+
+\item{SnapshotName}{[required] A name for the snapshot being created.}
 }
 \description{
 Creates a copy of an entire cluster or replication group at a specific moment in time.

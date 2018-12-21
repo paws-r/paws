@@ -4,12 +4,15 @@
 \alias{delete_scaling_policy}
 \title{Deletes a fleet scaling policy}
 \usage{
-delete_scaling_policy(Name, FleetId)
+delete_scaling_policy(
+  Name = "string",
+  FleetId = "string"
+)
 }
 \arguments{
-\item{Name}{Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.}
+\item{Name}{[required] Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.}
 
-\item{FleetId}{Unique identifier for a fleet to be deleted.}
+\item{FleetId}{[required] Unique identifier for a fleet to be deleted.}
 }
 \description{
 Deletes a fleet scaling policy. This action means that the policy is no longer in force and removes all record of it. To delete a scaling policy, specify both the scaling policy name and the fleet ID it is associated with.

@@ -4,7 +4,13 @@
 \alias{describe_job_queues}
 \title{Describes one or more of your job queues}
 \usage{
-describe_job_queues(jobQueues = NULL, maxResults = NULL, nextToken = NULL)
+describe_job_queues(
+  jobQueues = list(
+    "string"
+  ),
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
 \item{jobQueues}{A list of up to 100 queue names or full queue Amazon Resource Name (ARN) entries.}

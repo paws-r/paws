@@ -4,12 +4,17 @@
 \alias{untag_resource}
 \title{Removes metadata tags from a specified resource}
 \usage{
-untag_resource(Arn, TagKeys)
+untag_resource(
+  Arn = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{Arn}{The ARN of the resource from which to remove metadata tags. Required.}
+\item{Arn}{[required] The ARN of the resource from which to remove metadata tags. Required.}
 
-\item{TagKeys}{The tags to be removed from the specified resource. Do not provide system tags. Required.}
+\item{TagKeys}{[required] The tags to be removed from the specified resource. Do not provide system tags. Required.}
 }
 \description{
 Removes metadata tags from a specified resource.

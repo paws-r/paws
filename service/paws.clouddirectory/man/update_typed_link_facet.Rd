@@ -4,20 +4,51 @@
 \alias{update_typed_link_facet}
 \title{Updates a TypedLinkFacet}
 \usage{
-update_typed_link_facet(SchemaArn, Name, AttributeUpdates,
-  IdentityAttributeOrder)
+update_typed_link_facet(
+  SchemaArn = "string",
+  Name = "string",
+  AttributeUpdates = list(
+    list(
+      Attribute = list(
+        Name = "string",
+        Type = "STRING"|"BINARY"|"BOOLEAN"|"NUMBER"|"DATETIME"|"VARIANT",
+        DefaultValue = list(
+          StringValue = "string",
+          BinaryValue = raw,
+          BooleanValue = TRUE|FALSE,
+          NumberValue = "string",
+          DatetimeValue = as.POSIXct("2015-01-01")
+        ),
+        IsImmutable = TRUE|FALSE,
+        Rules = list(
+          list(
+            Type = "BINARY_LENGTH"|"NUMBER_COMPARISON"|"STRING_FROM_SET"|"STRING_LENGTH",
+            Parameters = list(
+              "string"
+            )
+          )
+        ),
+        RequiredBehavior = "REQUIRED_ALWAYS"|"NOT_REQUIRED"
+      ),
+      Action = "CREATE_OR_UPDATE"|"DELETE"
+    )
+  ),
+  IdentityAttributeOrder = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{SchemaArn}{The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.}
+\item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.}
 
-\item{Name}{The unique name of the typed link facet.}
+\item{Name}{[required] The unique name of the typed link facet.}
 
-\item{AttributeUpdates}{Attributes update structure.}
+\item{AttributeUpdates}{[required] Attributes update structure.}
 
-\item{IdentityAttributeOrder}{The order of identity attributes for the facet, from most significant to least significant. The ability to filter typed links considers the order that the attributes are defined on the typed link facet. When providing ranges to a typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range. Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls. For more information about identity attributes, see \href{http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink}{Typed link}.}
+\item{IdentityAttributeOrder}{[required] The order of identity attributes for the facet, from most significant to least significant. The ability to filter typed links considers the order that the attributes are defined on the typed link facet. When providing ranges to a typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range. Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls. For more information about identity attributes, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.}
 }
 \description{
-Updates a TypedLinkFacet. For more information, see \href{http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink}{Typed link}.
+Updates a TypedLinkFacet. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 }
 \examples{
 

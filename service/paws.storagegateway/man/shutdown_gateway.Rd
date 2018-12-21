@@ -4,10 +4,12 @@
 \alias{shutdown_gateway}
 \title{Shuts down a gateway}
 \usage{
-shutdown_gateway(GatewayARN)
+shutdown_gateway(
+  GatewayARN = "string"
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 }
 \description{
 Shuts down a gateway. To specify which gateway to shut down, use the Amazon Resource Name (ARN) of the gateway in the body of your request.

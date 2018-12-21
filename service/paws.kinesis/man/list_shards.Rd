@@ -4,9 +4,13 @@
 \alias{list_shards}
 \title{Lists the shards in a stream and provides information about each shard}
 \usage{
-list_shards(StreamName = NULL, NextToken = NULL,
-  ExclusiveStartShardId = NULL, MaxResults = NULL,
-  StreamCreationTimestamp = NULL)
+list_shards(
+  StreamName = "string",
+  NextToken = "string",
+  ExclusiveStartShardId = "string",
+  MaxResults = 123,
+  StreamCreationTimestamp = as.POSIXct("2015-01-01")
+)
 }
 \arguments{
 \item{StreamName}{The name of the data stream whose shards you want to list.

@@ -4,9 +4,15 @@
 \alias{describe_snapshots}
 \title{Returns information about cluster or replication group snapshots}
 \usage{
-describe_snapshots(ReplicationGroupId = NULL, CacheClusterId = NULL,
-  SnapshotName = NULL, SnapshotSource = NULL, Marker = NULL,
-  MaxRecords = NULL, ShowNodeGroupConfig = NULL)
+describe_snapshots(
+  ReplicationGroupId = "string",
+  CacheClusterId = "string",
+  SnapshotName = "string",
+  SnapshotSource = "string",
+  Marker = "string",
+  MaxRecords = 123,
+  ShowNodeGroupConfig = TRUE|FALSE
+)
 }
 \arguments{
 \item{ReplicationGroupId}{A user-supplied replication group identifier. If this parameter is specified, only snapshots associated with that specific replication group are described.}

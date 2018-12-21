@@ -4,10 +4,12 @@
 \alias{deregister_ecs_cluster}
 \title{Deregisters a specified Amazon ECS cluster from a stack}
 \usage{
-deregister_ecs_cluster(EcsClusterArn)
+deregister_ecs_cluster(
+  EcsClusterArn = "string"
+)
 }
 \arguments{
-\item{EcsClusterArn}{The cluster's Amazon Resource Number (ARN).}
+\item{EcsClusterArn}{[required] The cluster's Amazon Resource Number (ARN).}
 }
 \description{
 Deregisters a specified Amazon ECS cluster from a stack. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html#workinglayers-ecscluster-delete}{Resource Management}.

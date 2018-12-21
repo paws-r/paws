@@ -4,10 +4,19 @@
 \alias{create_ip_group}
 \title{Creates an IP access control group}
 \usage{
-create_ip_group(GroupName, GroupDesc = NULL, UserRules = NULL)
+create_ip_group(
+  GroupName = "string",
+  GroupDesc = "string",
+  UserRules = list(
+    list(
+      ipRule = "string",
+      ruleDesc = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{GroupName}{The name of the group.}
+\item{GroupName}{[required] The name of the group.}
 
 \item{GroupDesc}{The description of the group.}
 

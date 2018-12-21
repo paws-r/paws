@@ -4,13 +4,24 @@
 \alias{list_object_attributes}
 \title{Lists all attributes that are associated with an object}
 \usage{
-list_object_attributes(DirectoryArn, ObjectReference, NextToken = NULL,
-  MaxResults = NULL, ConsistencyLevel = NULL, FacetFilter = NULL)
+list_object_attributes(
+  DirectoryArn = "string",
+  ObjectReference = list(
+    Selector = "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123,
+  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL",
+  FacetFilter = list(
+    SchemaArn = "string",
+    FacetName = "string"
+  )
+)
 }
 \arguments{
-\item{DirectoryArn}{The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.}
 
-\item{ObjectReference}{The reference that identifies the object whose attributes will be listed.}
+\item{ObjectReference}{[required] The reference that identifies the object whose attributes will be listed.}
 
 \item{NextToken}{The pagination token.}
 

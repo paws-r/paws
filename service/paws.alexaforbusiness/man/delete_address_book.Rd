@@ -4,10 +4,12 @@
 \alias{delete_address_book}
 \title{Deletes an address book by the address book ARN}
 \usage{
-delete_address_book(AddressBookArn)
+delete_address_book(
+  AddressBookArn = "string"
+)
 }
 \arguments{
-\item{AddressBookArn}{The ARN of the address book to delete.}
+\item{AddressBookArn}{[required] The ARN of the address book to delete.}
 }
 \description{
 Deletes an address book by the address book ARN.

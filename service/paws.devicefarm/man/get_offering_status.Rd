@@ -4,7 +4,9 @@
 \alias{get_offering_status}
 \title{Gets the current status and future status of all offerings purchased by an AWS account}
 \usage{
-get_offering_status(nextToken = NULL)
+get_offering_status(
+  nextToken = "string"
+)
 }
 \arguments{
 \item{nextToken}{An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.}

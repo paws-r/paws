@@ -4,12 +4,20 @@
 \alias{tag_resource}
 \title{Associates a set of tags with a DAX resource}
 \usage{
-tag_resource(ResourceName, Tags)
+tag_resource(
+  ResourceName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ResourceName}{The name of the DAX resource to which tags should be added.}
+\item{ResourceName}{[required] The name of the DAX resource to which tags should be added.}
 
-\item{Tags}{The tags to be assigned to the DAX resource.}
+\item{Tags}{[required] The tags to be assigned to the DAX resource.}
 }
 \description{
 Associates a set of tags with a DAX resource. You can call \code{TagResource} up to 5 times per second, per account.

@@ -4,11 +4,22 @@
 \alias{describe_maintenance_window_execution_tasks}
 \title{For a given Maintenance Window execution, lists the tasks that were executed}
 \usage{
-describe_maintenance_window_execution_tasks(WindowExecutionId, Filters = NULL,
-  MaxResults = NULL, NextToken = NULL)
+describe_maintenance_window_execution_tasks(
+  WindowExecutionId = "string",
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{WindowExecutionId}{The ID of the Maintenance Window execution whose task executions should be retrieved.}
+\item{WindowExecutionId}{[required] The ID of the Maintenance Window execution whose task executions should be retrieved.}
 
 \item{Filters}{Optional filters used to scope down the returned tasks. The supported filter key is STATUS with the corresponding values PENDING, IN\_PROGRESS, SUCCESS, FAILED, TIMED\_OUT, CANCELLING, and CANCELLED.}
 

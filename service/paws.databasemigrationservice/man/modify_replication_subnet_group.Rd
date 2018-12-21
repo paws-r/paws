@@ -4,15 +4,20 @@
 \alias{modify_replication_subnet_group}
 \title{Modifies the settings for the specified replication subnet group}
 \usage{
-modify_replication_subnet_group(ReplicationSubnetGroupIdentifier, SubnetIds,
-  ReplicationSubnetGroupDescription = NULL)
+modify_replication_subnet_group(
+  ReplicationSubnetGroupIdentifier = "string",
+  ReplicationSubnetGroupDescription = "string",
+  SubnetIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ReplicationSubnetGroupIdentifier}{The name of the replication instance subnet group.}
-
-\item{SubnetIds}{A list of subnet IDs.}
+\item{ReplicationSubnetGroupIdentifier}{[required] The name of the replication instance subnet group.}
 
 \item{ReplicationSubnetGroupDescription}{The description of the replication instance subnet group.}
+
+\item{SubnetIds}{[required] A list of subnet IDs.}
 }
 \description{
 Modifies the settings for the specified replication subnet group.

@@ -4,10 +4,12 @@
 \alias{cancel_cluster}
 \title{Cancels a cluster job}
 \usage{
-cancel_cluster(ClusterId)
+cancel_cluster(
+  ClusterId = "string"
+)
 }
 \arguments{
-\item{ClusterId}{The 39-character ID for the cluster that you want to cancel, for example \code{CID123e4567-e89b-12d3-a456-426655440000}.}
+\item{ClusterId}{[required] The 39-character ID for the cluster that you want to cancel, for example \code{CID123e4567-e89b-12d3-a456-426655440000}.}
 }
 \description{
 Cancels a cluster job. You can only cancel a cluster job while it's in the \code{AwaitingQuorum} status. You'll have at least an hour after creating a cluster job to cancel it.

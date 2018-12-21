@@ -4,13 +4,23 @@
 \alias{create_device_definition_version}
 \title{Creates a version of a device definition that has already been defined}
 \usage{
-create_device_definition_version(DeviceDefinitionId, AmznClientToken = NULL,
-  Devices = NULL)
+create_device_definition_version(
+  AmznClientToken = "string",
+  DeviceDefinitionId = "string",
+  Devices = list(
+    list(
+      CertificateArn = "string",
+      Id = "string",
+      SyncShadow = TRUE|FALSE,
+      ThingArn = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{DeviceDefinitionId}{The ID of the device definition.}
-
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
+
+\item{DeviceDefinitionId}{[required] The ID of the device definition.}
 
 \item{Devices}{A list of devices in the definition version.}
 }

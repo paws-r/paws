@@ -4,12 +4,20 @@
 \alias{copy_db_cluster_parameter_group}
 \title{Copies the specified DB cluster parameter group}
 \usage{
-copy_db_cluster_parameter_group(SourceDBClusterParameterGroupIdentifier,
-  TargetDBClusterParameterGroupIdentifier,
-  TargetDBClusterParameterGroupDescription, Tags = NULL)
+copy_db_cluster_parameter_group(
+  SourceDBClusterParameterGroupIdentifier = "string",
+  TargetDBClusterParameterGroupIdentifier = "string",
+  TargetDBClusterParameterGroupDescription = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{SourceDBClusterParameterGroupIdentifier}{The identifier or Amazon Resource Name (ARN) for the source DB cluster parameter group. For information about creating an ARN, see \href{http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing}{Constructing an Amazon Resource Name (ARN)}.
+\item{SourceDBClusterParameterGroupIdentifier}{[required] The identifier or Amazon Resource Name (ARN) for the source DB cluster parameter group. For information about creating an ARN, see \href{http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing}{Constructing an Amazon Resource Name (ARN)}.
 
 Constraints:
 \itemize{
@@ -18,7 +26,7 @@ Constraints:
 \item If the source DB parameter group is in a different AWS Region than the copy, specify a valid DB cluster parameter group ARN, for example \code{arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1}.
 }}
 
-\item{TargetDBClusterParameterGroupIdentifier}{The identifier for the copied DB cluster parameter group.
+\item{TargetDBClusterParameterGroupIdentifier}{[required] The identifier for the copied DB cluster parameter group.
 
 Constraints:
 \itemize{
@@ -30,7 +38,7 @@ Constraints:
 
 Example: \code{my-cluster-param-group1}}
 
-\item{TargetDBClusterParameterGroupDescription}{A description for the copied DB cluster parameter group.}
+\item{TargetDBClusterParameterGroupDescription}{[required] A description for the copied DB cluster parameter group.}
 
 \item{Tags}{}
 }

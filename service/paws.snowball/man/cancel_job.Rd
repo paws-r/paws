@@ -4,10 +4,12 @@
 \alias{cancel_job}
 \title{Cancels the specified job}
 \usage{
-cancel_job(JobId)
+cancel_job(
+  JobId = "string"
+)
 }
 \arguments{
-\item{JobId}{The 39-character job ID for the job that you want to cancel, for example \code{JID123e4567-e89b-12d3-a456-426655440000}.}
+\item{JobId}{[required] The 39-character job ID for the job that you want to cancel, for example \code{JID123e4567-e89b-12d3-a456-426655440000}.}
 }
 \description{
 Cancels the specified job. You can only cancel a job before its \code{JobState} value changes to \code{PreparingAppliance}. Requesting the \code{ListJobs} or \code{DescribeJob} action returns a job's \code{JobState} as part of the response element data returned.

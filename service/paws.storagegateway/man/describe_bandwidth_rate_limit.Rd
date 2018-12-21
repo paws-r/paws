@@ -4,10 +4,12 @@
 \alias{describe_bandwidth_rate_limit}
 \title{Returns the bandwidth rate limits of a gateway}
 \usage{
-describe_bandwidth_rate_limit(GatewayARN)
+describe_bandwidth_rate_limit(
+  GatewayARN = "string"
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 }
 \description{
 Returns the bandwidth rate limits of a gateway. By default, these limits are not set, which means no bandwidth rate limiting is in effect.

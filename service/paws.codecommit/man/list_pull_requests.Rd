@@ -4,11 +4,16 @@
 \alias{list_pull_requests}
 \title{Returns a list of pull requests for a specified repository}
 \usage{
-list_pull_requests(repositoryName, authorArn = NULL,
-  pullRequestStatus = NULL, nextToken = NULL, maxResults = NULL)
+list_pull_requests(
+  repositoryName = "string",
+  authorArn = "string",
+  pullRequestStatus = "OPEN"|"CLOSED",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{repositoryName}{The name of the repository for which you want to list pull requests.}
+\item{repositoryName}{[required] The name of the repository for which you want to list pull requests.}
 
 \item{authorArn}{Optional. The Amazon Resource Name (ARN) of the user who created the pull request. If used, this filters the results to pull requests created by that user.}
 

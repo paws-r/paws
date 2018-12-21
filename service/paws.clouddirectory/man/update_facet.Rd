@@ -4,12 +4,48 @@
 \alias{update_facet}
 \title{Does the following:}
 \usage{
-update_facet(SchemaArn, Name, AttributeUpdates = NULL, ObjectType = NULL)
+update_facet(
+  SchemaArn = "string",
+  Name = "string",
+  AttributeUpdates = list(
+    list(
+      Attribute = list(
+        Name = "string",
+        AttributeDefinition = list(
+          Type = "STRING"|"BINARY"|"BOOLEAN"|"NUMBER"|"DATETIME"|"VARIANT",
+          DefaultValue = list(
+            StringValue = "string",
+            BinaryValue = raw,
+            BooleanValue = TRUE|FALSE,
+            NumberValue = "string",
+            DatetimeValue = as.POSIXct("2015-01-01")
+          ),
+          IsImmutable = TRUE|FALSE,
+          Rules = list(
+            list(
+              Type = "BINARY_LENGTH"|"NUMBER_COMPARISON"|"STRING_FROM_SET"|"STRING_LENGTH",
+              Parameters = list(
+                "string"
+              )
+            )
+          )
+        ),
+        AttributeReference = list(
+          TargetFacetName = "string",
+          TargetAttributeName = "string"
+        ),
+        RequiredBehavior = "REQUIRED_ALWAYS"|"NOT_REQUIRED"
+      ),
+      Action = "CREATE_OR_UPDATE"|"DELETE"
+    )
+  ),
+  ObjectType = "NODE"|"LEAF_NODE"|"POLICY"|"INDEX"
+)
 }
 \arguments{
-\item{SchemaArn}{The Amazon Resource Name (ARN) that is associated with the Facet. For more information, see arns.}
+\item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the Facet. For more information, see arns.}
 
-\item{Name}{The name of the facet.}
+\item{Name}{[required] The name of the facet.}
 
 \item{AttributeUpdates}{List of attributes that need to be updated in a given schema Facet. Each attribute is followed by \code{AttributeAction}, which specifies the type of update operation to perform.}
 

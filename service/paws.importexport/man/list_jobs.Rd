@@ -4,7 +4,11 @@
 \alias{list_jobs}
 \title{This operation returns the jobs associated with the requester}
 \usage{
-list_jobs(MaxJobs = NULL, Marker = NULL, APIVersion = NULL)
+list_jobs(
+  MaxJobs = 123,
+  Marker = "string",
+  APIVersion = "string"
+)
 }
 \arguments{
 \item{MaxJobs}{}

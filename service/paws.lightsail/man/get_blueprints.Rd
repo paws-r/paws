@@ -4,7 +4,10 @@
 \alias{get_blueprints}
 \title{Returns the list of available instance images, or \emph{blueprints}}
 \usage{
-get_blueprints(includeInactive = NULL, pageToken = NULL)
+get_blueprints(
+  includeInactive = TRUE|FALSE,
+  pageToken = "string"
+)
 }
 \arguments{
 \item{includeInactive}{A Boolean value indicating whether to include inactive results in your request.}

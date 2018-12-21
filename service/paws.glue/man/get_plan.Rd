@@ -4,12 +4,57 @@
 \alias{get_plan}
 \title{Gets code to perform a specified mapping}
 \usage{
-get_plan(Mapping, Source, Sinks = NULL, Location = NULL, Language = NULL)
+get_plan(
+  Mapping = list(
+    list(
+      SourceTable = "string",
+      SourcePath = "string",
+      SourceType = "string",
+      TargetTable = "string",
+      TargetPath = "string",
+      TargetType = "string"
+    )
+  ),
+  Source = list(
+    DatabaseName = "string",
+    TableName = "string"
+  ),
+  Sinks = list(
+    list(
+      DatabaseName = "string",
+      TableName = "string"
+    )
+  ),
+  Location = list(
+    Jdbc = list(
+      list(
+        Name = "string",
+        Value = "string",
+        Param = TRUE|FALSE
+      )
+    ),
+    S3 = list(
+      list(
+        Name = "string",
+        Value = "string",
+        Param = TRUE|FALSE
+      )
+    ),
+    DynamoDB = list(
+      list(
+        Name = "string",
+        Value = "string",
+        Param = TRUE|FALSE
+      )
+    )
+  ),
+  Language = "PYTHON"|"SCALA"
+)
 }
 \arguments{
-\item{Mapping}{The list of mappings from a source table to target tables.}
+\item{Mapping}{[required] The list of mappings from a source table to target tables.}
 
-\item{Source}{The source table.}
+\item{Source}{[required] The source table.}
 
 \item{Sinks}{The target tables.}
 

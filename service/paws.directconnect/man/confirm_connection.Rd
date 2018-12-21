@@ -4,10 +4,12 @@
 \alias{confirm_connection}
 \title{Confirms the creation of the specified hosted connection on an interconnect}
 \usage{
-confirm_connection(connectionId)
+confirm_connection(
+  connectionId = "string"
+)
 }
 \arguments{
-\item{connectionId}{The ID of the hosted connection.}
+\item{connectionId}{[required] The ID of the hosted connection.}
 }
 \description{
 Confirms the creation of the specified hosted connection on an interconnect.

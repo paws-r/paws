@@ -4,12 +4,15 @@
 \alias{admin_reset_user_password}
 \title{Resets the specified user's password in a user pool as an administrator}
 \usage{
-admin_reset_user_password(UserPoolId, Username)
+admin_reset_user_password(
+  UserPoolId = "string",
+  Username = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool where you want to reset the user's password.}
+\item{UserPoolId}{[required] The user pool ID for the user pool where you want to reset the user's password.}
 
-\item{Username}{The user name of the user whose password you wish to reset.}
+\item{Username}{[required] The user name of the user whose password you wish to reset.}
 }
 \description{
 Resets the specified user's password in a user pool as an administrator. Works on any user.

@@ -4,10 +4,12 @@
 \alias{delete_policy}
 \title{Deletes the specified policy}
 \usage{
-delete_policy(policyName)
+delete_policy(
+  policyName = "string"
+)
 }
 \arguments{
-\item{policyName}{The name of the policy to delete.}
+\item{policyName}{[required] The name of the policy to delete.}
 }
 \description{
 Deletes the specified policy.

@@ -4,13 +4,19 @@
 \alias{assign_private_ip_addresses}
 \title{Assigns one or more secondary private IP addresses to the specified network interface}
 \usage{
-assign_private_ip_addresses(NetworkInterfaceId, AllowReassignment = NULL,
-  PrivateIpAddresses = NULL, SecondaryPrivateIpAddressCount = NULL)
+assign_private_ip_addresses(
+  AllowReassignment = TRUE|FALSE,
+  NetworkInterfaceId = "string",
+  PrivateIpAddresses = list(
+    "string"
+  ),
+  SecondaryPrivateIpAddressCount = 123
+)
 }
 \arguments{
-\item{NetworkInterfaceId}{The ID of the network interface.}
-
 \item{AllowReassignment}{Indicates whether to allow an IP address that is already assigned to another network interface or instance to be reassigned to the specified network interface.}
+
+\item{NetworkInterfaceId}{[required] The ID of the network interface.}
 
 \item{PrivateIpAddresses}{One or more IP addresses to be assigned as a secondary private IP address to the network interface. You can't specify this parameter when also specifying a number of secondary IP addresses.
 
@@ -19,10 +25,14 @@ If you don't specify an IP address, Amazon EC2 automatically selects an IP addre
 \item{SecondaryPrivateIpAddressCount}{The number of secondary IP addresses to assign to the network interface. You can't specify this parameter when also specifying private IP addresses.}
 }
 \description{
-Assigns one or more secondary private IP addresses to the specified network interface. You can specify one or more specific secondary IP addresses, or you can specify the number of secondary IP addresses to be automatically assigned within the subnet's CIDR block range. The number of secondary IP addresses that you can assign to an instance varies by instance type. For information about instance types, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance Types} in the \emph{Amazon Elastic Compute Cloud User Guide}. For more information about Elastic IP addresses, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Assigns one or more secondary private IP addresses to the specified network interface.
 }
 \details{
-AssignPrivateIpAddresses is available only in EC2-VPC.
+You can specify one or more specific secondary IP addresses, or you can specify the number of secondary IP addresses to be automatically assigned within the subnet's CIDR block range. The number of secondary IP addresses that you can assign to an instance varies by instance type. For information about instance types, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance Types} in the \emph{Amazon Elastic Compute Cloud User Guide}. For more information about Elastic IP addresses, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+
+When you move a secondary private IP address to another network interface, any Elastic IP address that is associated with the IP address is also moved.
+
+Remapping an IP address is an asynchronous operation. When you move an IP address from one network interface to another, check \code{network/interfaces/macs/mac/local-ipv4s} in the instance metadata to confirm that the remapping is complete.
 }
 \examples{
 # This example assigns the specified secondary private IP address to the

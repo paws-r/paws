@@ -4,12 +4,15 @@
 \alias{set_smb_guest_password}
 \title{Sets the password for the guest user \code{smbguest}}
 \usage{
-set_smb_guest_password(GatewayARN, Password)
+set_smb_guest_password(
+  GatewayARN = "string",
+  Password = "string"
+)
 }
 \arguments{
-\item{GatewayARN}{The Amazon Resource Name (ARN) of the file gateway the SMB file share is associated with.}
+\item{GatewayARN}{[required] The Amazon Resource Name (ARN) of the file gateway the SMB file share is associated with.}
 
-\item{Password}{The password that you want to set for your SMB Server.}
+\item{Password}{[required] The password that you want to set for your SMB Server.}
 }
 \description{
 Sets the password for the guest user \code{smbguest}. The \code{smbguest} user is the user when the authentication method for the file share is set to \code{GuestAccess}.

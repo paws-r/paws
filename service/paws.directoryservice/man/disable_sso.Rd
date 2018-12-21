@@ -4,10 +4,14 @@
 \alias{disable_sso}
 \title{Disables single-sign on for a directory}
 \usage{
-disable_sso(DirectoryId, UserName = NULL, Password = NULL)
+disable_sso(
+  DirectoryId = "string",
+  UserName = "string",
+  Password = "string"
+)
 }
 \arguments{
-\item{DirectoryId}{The identifier of the directory for which to disable single-sign on.}
+\item{DirectoryId}{[required] The identifier of the directory for which to disable single-sign on.}
 
 \item{UserName}{The username of an alternate account to use to disable single-sign on. This is only used for AD Connector directories. This account must have privileges to remove a service principal name.
 

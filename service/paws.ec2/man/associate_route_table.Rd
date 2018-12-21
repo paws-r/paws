@@ -4,14 +4,18 @@
 \alias{associate_route_table}
 \title{Associates a subnet with a route table}
 \usage{
-associate_route_table(RouteTableId, SubnetId, DryRun = NULL)
+associate_route_table(
+  DryRun = TRUE|FALSE,
+  RouteTableId = "string",
+  SubnetId = "string"
+)
 }
 \arguments{
-\item{RouteTableId}{The ID of the route table.}
-
-\item{SubnetId}{The ID of the subnet.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{RouteTableId}{[required] The ID of the route table.}
+
+\item{SubnetId}{[required] The ID of the subnet.}
 }
 \description{
 Associates a subnet with a route table. The subnet and route table must be in the same VPC. This association causes traffic originating from the subnet to be routed according to the routes in the route table. The action returns an association ID, which you need in order to disassociate the route table from the subnet later. A route table can be associated with multiple subnets.

@@ -4,7 +4,9 @@
 \alias{create_internet_gateway}
 \title{Creates an internet gateway for use with a VPC}
 \usage{
-create_internet_gateway(DryRun = NULL)
+create_internet_gateway(
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}

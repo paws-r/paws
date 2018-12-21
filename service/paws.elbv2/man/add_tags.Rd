@@ -4,12 +4,22 @@
 \alias{add_tags}
 \title{Adds the specified tags to the specified Elastic Load Balancing resource}
 \usage{
-add_tags(ResourceArns, Tags)
+add_tags(
+  ResourceArns = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ResourceArns}{The Amazon Resource Name (ARN) of the resource.}
+\item{ResourceArns}{[required] The Amazon Resource Name (ARN) of the resource.}
 
-\item{Tags}{The tags. Each resource can have a maximum of 10 tags.}
+\item{Tags}{[required] The tags. Each resource can have a maximum of 10 tags.}
 }
 \description{
 Adds the specified tags to the specified Elastic Load Balancing resource. You can tag your Application Load Balancers, Network Load Balancers, and your target groups.

@@ -4,10 +4,13 @@
 \alias{disassociate_route_table}
 \title{Disassociates a subnet from a route table}
 \usage{
-disassociate_route_table(AssociationId, DryRun = NULL)
+disassociate_route_table(
+  AssociationId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{AssociationId}{The association ID representing the current association between the route table and subnet.}
+\item{AssociationId}{[required] The association ID representing the current association between the route table and subnet.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

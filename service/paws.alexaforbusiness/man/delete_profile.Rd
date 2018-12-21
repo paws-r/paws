@@ -4,7 +4,9 @@
 \alias{delete_profile}
 \title{Deletes a room profile by the profile ARN}
 \usage{
-delete_profile(ProfileArn = NULL)
+delete_profile(
+  ProfileArn = "string"
+)
 }
 \arguments{
 \item{ProfileArn}{The ARN of the room profile to delete. Required.}

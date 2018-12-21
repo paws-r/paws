@@ -4,10 +4,12 @@
 \alias{stop_training_job}
 \title{Stops a training job}
 \usage{
-stop_training_job(TrainingJobName)
+stop_training_job(
+  TrainingJobName = "string"
+)
 }
 \arguments{
-\item{TrainingJobName}{The name of the training job to stop.}
+\item{TrainingJobName}{[required] The name of the training job to stop.}
 }
 \description{
 Stops a training job. To stop a job, Amazon SageMaker sends the algorithm the \code{SIGTERM} signal, which delays job termination for 120 seconds. Algorithms might use this 120-second window to save the model artifacts, so the results of the training is not lost.

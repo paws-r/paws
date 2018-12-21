@@ -4,14 +4,18 @@
 \alias{create_app_cookie_stickiness_policy}
 \title{Generates a stickiness policy with sticky session lifetimes that follow that of an application-generated cookie}
 \usage{
-create_app_cookie_stickiness_policy(LoadBalancerName, PolicyName, CookieName)
+create_app_cookie_stickiness_policy(
+  LoadBalancerName = "string",
+  PolicyName = "string",
+  CookieName = "string"
+)
 }
 \arguments{
-\item{LoadBalancerName}{The name of the load balancer.}
+\item{LoadBalancerName}{[required] The name of the load balancer.}
 
-\item{PolicyName}{The name of the policy being created. Policy names must consist of alphanumeric characters and dashes (-). This name must be unique within the set of policies for this load balancer.}
+\item{PolicyName}{[required] The name of the policy being created. Policy names must consist of alphanumeric characters and dashes (-). This name must be unique within the set of policies for this load balancer.}
 
-\item{CookieName}{The name of the application cookie used for stickiness.}
+\item{CookieName}{[required] The name of the application cookie used for stickiness.}
 }
 \description{
 Generates a stickiness policy with sticky session lifetimes that follow that of an application-generated cookie. This policy can be associated only with HTTP/HTTPS listeners.

@@ -4,12 +4,16 @@
 \alias{update_device_status}
 \title{Updates the device status}
 \usage{
-update_device_status(AccessToken, DeviceKey, DeviceRememberedStatus = NULL)
+update_device_status(
+  AccessToken = "string",
+  DeviceKey = "string",
+  DeviceRememberedStatus = "remembered"|"not_remembered"
+)
 }
 \arguments{
-\item{AccessToken}{The access token.}
+\item{AccessToken}{[required] The access token.}
 
-\item{DeviceKey}{The device key.}
+\item{DeviceKey}{[required] The device key.}
 
 \item{DeviceRememberedStatus}{The status of whether a device is remembered.}
 }

@@ -4,12 +4,15 @@
 \alias{update_container_agent}
 \title{Updates the Amazon ECS container agent on a specified container instance}
 \usage{
-update_container_agent(containerInstance, cluster = NULL)
+update_container_agent(
+  cluster = "string",
+  containerInstance = "string"
+)
 }
 \arguments{
-\item{containerInstance}{The container instance ID or full ARN entries for the container instance on which you would like to update the Amazon ECS container agent.}
-
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that your container instance is running on. If you do not specify a cluster, the default cluster is assumed.}
+
+\item{containerInstance}{[required] The container instance ID or full ARN entries for the container instance on which you would like to update the Amazon ECS container agent.}
 }
 \description{
 Updates the Amazon ECS container agent on a specified container instance. Updating the Amazon ECS container agent does not interrupt running tasks or services on the container instance. The process for updating the agent differs depending on whether your container instance was launched with the Amazon ECS-optimized AMI or another operating system.

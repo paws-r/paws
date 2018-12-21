@@ -4,11 +4,14 @@
 \alias{register_on_premises_instance}
 \title{Registers an on-premises instance}
 \usage{
-register_on_premises_instance(instanceName, iamSessionArn = NULL,
-  iamUserArn = NULL)
+register_on_premises_instance(
+  instanceName = "string",
+  iamSessionArn = "string",
+  iamUserArn = "string"
+)
 }
 \arguments{
-\item{instanceName}{The name of the on-premises instance to register.}
+\item{instanceName}{[required] The name of the on-premises instance to register.}
 
 \item{iamSessionArn}{The ARN of the IAM session to associate with the on-premises instance.}
 

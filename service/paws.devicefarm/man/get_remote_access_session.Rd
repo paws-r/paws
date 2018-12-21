@@ -4,10 +4,12 @@
 \alias{get_remote_access_session}
 \title{Returns a link to a currently running remote access session}
 \usage{
-get_remote_access_session(arn)
+get_remote_access_session(
+  arn = "string"
+)
 }
 \arguments{
-\item{arn}{The Amazon Resource Name (ARN) of the remote access session about which you want to get session information.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of the remote access session about which you want to get session information.}
 }
 \description{
 Returns a link to a currently running remote access session.

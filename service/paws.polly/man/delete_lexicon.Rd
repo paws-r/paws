@@ -4,10 +4,12 @@
 \alias{delete_lexicon}
 \title{Deletes the specified pronunciation lexicon stored in an AWS Region}
 \usage{
-delete_lexicon(Name)
+delete_lexicon(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the lexicon to delete. Must be an existing lexicon in the region.}
+\item{Name}{[required] The name of the lexicon to delete. Must be an existing lexicon in the region.}
 }
 \description{
 Deletes the specified pronunciation lexicon stored in an AWS Region. A lexicon which has been deleted is not available for speech synthesis, nor is it possible to retrieve it using either the \code{GetLexicon} or \code{ListLexicon} APIs.

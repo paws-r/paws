@@ -4,8 +4,26 @@
 \alias{describe_images}
 \title{Describes one or more of the images (AMIs, AKIs, and ARIs) available to you}
 \usage{
-describe_images(ExecutableUsers = NULL, Filters = NULL, ImageIds = NULL,
-  Owners = NULL, DryRun = NULL)
+describe_images(
+  ExecutableUsers = list(
+    "string"
+  ),
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  ImageIds = list(
+    "string"
+  ),
+  Owners = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{ExecutableUsers}{Scopes the images by users with explicit launch permissions. Specify an AWS account ID, \code{self} (the sender of the request), or \code{all} (public AMIs).}

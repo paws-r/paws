@@ -4,17 +4,22 @@
 \alias{create_network_interface_permission}
 \title{Grants an AWS-authorized account permission to attach the specified network interface to an instance in their account}
 \usage{
-create_network_interface_permission(NetworkInterfaceId, Permission,
-  AwsAccountId = NULL, AwsService = NULL, DryRun = NULL)
+create_network_interface_permission(
+  NetworkInterfaceId = "string",
+  AwsAccountId = "string",
+  AwsService = "string",
+  Permission = "INSTANCE-ATTACH"|"EIP-ASSOCIATE",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{NetworkInterfaceId}{The ID of the network interface.}
-
-\item{Permission}{The type of permission to grant.}
+\item{NetworkInterfaceId}{[required] The ID of the network interface.}
 
 \item{AwsAccountId}{The AWS account ID.}
 
 \item{AwsService}{The AWS service. Currently not supported.}
+
+\item{Permission}{[required] The type of permission to grant.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

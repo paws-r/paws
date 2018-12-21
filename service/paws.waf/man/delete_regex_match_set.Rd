@@ -4,12 +4,15 @@
 \alias{delete_regex_match_set}
 \title{Permanently deletes a RegexMatchSet}
 \usage{
-delete_regex_match_set(RegexMatchSetId, ChangeToken)
+delete_regex_match_set(
+  RegexMatchSetId = "string",
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{RegexMatchSetId}{The \code{RegexMatchSetId} of the RegexMatchSet that you want to delete. \code{RegexMatchSetId} is returned by CreateRegexMatchSet and by ListRegexMatchSets.}
+\item{RegexMatchSetId}{[required] The \code{RegexMatchSetId} of the RegexMatchSet that you want to delete. \code{RegexMatchSetId} is returned by CreateRegexMatchSet and by ListRegexMatchSets.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Permanently deletes a RegexMatchSet. You can't delete a \code{RegexMatchSet} if it's still used in any \code{Rules} or if it still includes any \code{RegexMatchTuples} objects (any filters).

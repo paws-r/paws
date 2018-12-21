@@ -4,10 +4,12 @@
 \alias{deprecate_domain}
 \title{Deprecates the specified domain}
 \usage{
-deprecate_domain(name)
+deprecate_domain(
+  name = "string"
+)
 }
 \arguments{
-\item{name}{The name of the domain to deprecate.}
+\item{name}{[required] The name of the domain to deprecate.}
 }
 \description{
 Deprecates the specified domain. After a domain has been deprecated it cannot be used to create new workflow executions or register new types. However, you can still use visibility actions on this domain. Deprecating a domain also deprecates all activity and workflow types registered in the domain. Executions that were started before the domain was deprecated continues to run.

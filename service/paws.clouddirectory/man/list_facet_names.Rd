@@ -4,10 +4,14 @@
 \alias{list_facet_names}
 \title{Retrieves the names of facets that exist in a schema}
 \usage{
-list_facet_names(SchemaArn, NextToken = NULL, MaxResults = NULL)
+list_facet_names(
+  SchemaArn = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{SchemaArn}{The Amazon Resource Name (ARN) to retrieve facet names from.}
+\item{SchemaArn}{[required] The Amazon Resource Name (ARN) to retrieve facet names from.}
 
 \item{NextToken}{The pagination token.}
 

@@ -4,10 +4,12 @@
 \alias{delete_interconnect}
 \title{Deletes the specified interconnect}
 \usage{
-delete_interconnect(interconnectId)
+delete_interconnect(
+  interconnectId = "string"
+)
 }
 \arguments{
-\item{interconnectId}{The ID of the interconnect.}
+\item{interconnectId}{[required] The ID of the interconnect.}
 }
 \description{
 Deletes the specified interconnect.

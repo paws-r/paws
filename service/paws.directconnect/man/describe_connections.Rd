@@ -4,7 +4,9 @@
 \alias{describe_connections}
 \title{Displays the specified connection or all connections in this Region}
 \usage{
-describe_connections(connectionId = NULL)
+describe_connections(
+  connectionId = "string"
+)
 }
 \arguments{
 \item{connectionId}{The ID of the connection.}

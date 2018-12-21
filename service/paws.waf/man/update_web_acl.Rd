@@ -4,19 +4,46 @@
 \alias{update_web_acl}
 \title{Inserts or deletes ActivatedRule objects in a \code{WebACL}}
 \usage{
-update_web_acl(WebACLId, ChangeToken, Updates = NULL, DefaultAction = NULL)
+update_web_acl(
+  WebACLId = "string",
+  ChangeToken = "string",
+  Updates = list(
+    list(
+      Action = "INSERT"|"DELETE",
+      ActivatedRule = list(
+        Priority = 123,
+        RuleId = "string",
+        Action = list(
+          Type = "BLOCK"|"ALLOW"|"COUNT"
+        ),
+        OverrideAction = list(
+          Type = "NONE"|"COUNT"
+        ),
+        Type = "REGULAR"|"RATE_BASED"|"GROUP",
+        ExcludedRules = list(
+          list(
+            RuleId = "string"
+          )
+        )
+      )
+    )
+  ),
+  DefaultAction = list(
+    Type = "BLOCK"|"ALLOW"|"COUNT"
+  )
+)
 }
 \arguments{
-\item{WebACLId}{The \code{WebACLId} of the WebACL that you want to update. \code{WebACLId} is returned by CreateWebACL and by ListWebACLs.}
+\item{WebACLId}{[required] The \code{WebACLId} of the WebACL that you want to update. \code{WebACLId} is returned by CreateWebACL and by ListWebACLs.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 
 \item{Updates}{An array of updates to make to the WebACL.
 
 An array of \code{WebACLUpdate} objects that you want to insert into or delete from a WebACL. For more information, see the applicable data types:
 \itemize{
 \item WebACLUpdate: Contains \code{Action} and \code{ActivatedRule}
-\item ActivatedRule: Contains \code{Action}, \code{OverrideAction}, \code{Priority}, \code{RuleId}, and \code{Type}. \code{ActivatedRule|OverrideAction} applies only when updating or adding a \code{RuleGroup} to a \code{WebACL}. In this case you do not use \code{ActivatedRule|Action}. For all other update requests, \code{ActivatedRule|Action} is used instead of \code{ActivatedRule|OverrideAction}.
+\item ActivatedRule: Contains \code{Action}, \code{OverrideAction}, \code{Priority}, \code{RuleId}, and \code{Type}. \code{ActivatedRule|OverrideAction} applies only when updating or adding a \code{RuleGroup} to a \code{WebACL}. In this case, you do not use \code{ActivatedRule|Action}. For all other update requests, \code{ActivatedRule|Action} is used instead of \code{ActivatedRule|OverrideAction}.
 \item WafAction: Contains \code{Type}
 }}
 
@@ -28,9 +55,9 @@ Inserts or deletes ActivatedRule objects in a \code{WebACL}. Each \code{Rule} id
 \details{
 \itemize{
 \item A default action for the \code{WebACL}, either \code{ALLOW} or \code{BLOCK}. AWS WAF performs the default action if a request doesn't match the criteria in any of the \code{Rules} in a \code{WebACL}.
-\item The \code{Rules} that you want to add and/or delete. If you want to replace one \code{Rule} with another, you delete the existing \code{Rule} and add the new one.
+\item The \code{Rules} that you want to add or delete. If you want to replace one \code{Rule} with another, you delete the existing \code{Rule} and add the new one.
 \item For each \code{Rule}, whether you want AWS WAF to allow requests, block requests, or count requests that match the conditions in the \code{Rule}.
-\item The order in which you want AWS WAF to evaluate the \code{Rules} in a \code{WebACL}. If you add more than one \code{Rule} to a \code{WebACL}, AWS WAF evaluates each request against the \code{Rules} in order based on the value of \code{Priority}. (The \code{Rule} that has the lowest value for \code{Priority} is evaluated first.) When a web request matches all of the predicates (such as \code{ByteMatchSets} and \code{IPSets}) in a \code{Rule}, AWS WAF immediately takes the corresponding action, allow or block, and doesn't evaluate the request against the remaining \code{Rules} in the \code{WebACL}, if any.
+\item The order in which you want AWS WAF to evaluate the \code{Rules} in a \code{WebACL}. If you add more than one \code{Rule} to a \code{WebACL}, AWS WAF evaluates each request against the \code{Rules} in order based on the value of \code{Priority}. (The \code{Rule} that has the lowest value for \code{Priority} is evaluated first.) When a web request matches all the predicates (such as \code{ByteMatchSets} and \code{IPSets}) in a \code{Rule}, AWS WAF immediately takes the corresponding action, allow or block, and doesn't evaluate the request against the remaining \code{Rules} in the \code{WebACL}, if any.
 }
 
 To create and configure a \code{WebACL}, perform the following steps:
@@ -41,6 +68,10 @@ To create and configure a \code{WebACL}, perform the following steps:
 \item Use \code{GetChangeToken} to get the change token that you provide in the \code{ChangeToken} parameter of an UpdateWebACL request.
 \item Submit an \code{UpdateWebACL} request to specify the \code{Rules} that you want to include in the \code{WebACL}, to specify the default action, and to associate the \code{WebACL} with a CloudFront distribution.
 }
+
+The \code{ActivatedRule} can be a rule group. If you specify a rule group as your \code{ActivatedRule}, you can exclude specific rules from that rule group.
+
+If you already have a rule group associated with a web ACL and want to submit an \code{UpdateWebACL} request to exclude certain rules from that rule group, you must first remove the rule group from the web ACL, the re-insert it again, specifying the excluded rules. For details, see ActivatedRule\$ExcludedRules.
 
 Be aware that if you try to add a RATE\_BASED rule to a web ACL without setting the rule type when first creating the rule, the UpdateWebACL request will fail because the request tries to add a REGULAR rule (the default rule type) with the specified ID, which does not exist.
 

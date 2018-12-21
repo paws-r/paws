@@ -4,7 +4,10 @@
 \alias{list_roots}
 \title{Lists the roots that are defined in the current organization}
 \usage{
-list_roots(NextToken = NULL, MaxResults = NULL)
+list_roots(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{NextToken}{Use this parameter if you receive a \code{NextToken} response in a previous request that indicates that there is more output available. Set it to the value of the previous call's \code{NextToken} response to indicate where the output should continue from.}

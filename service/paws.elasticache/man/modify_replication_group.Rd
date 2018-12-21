@@ -4,18 +4,33 @@
 \alias{modify_replication_group}
 \title{Modifies the settings for a replication group}
 \usage{
-modify_replication_group(ReplicationGroupId,
-  ReplicationGroupDescription = NULL, PrimaryClusterId = NULL,
-  SnapshottingClusterId = NULL, AutomaticFailoverEnabled = NULL,
-  CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL,
-  PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL,
-  CacheParameterGroupName = NULL, NotificationTopicStatus = NULL,
-  ApplyImmediately = NULL, EngineVersion = NULL,
-  AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL,
-  SnapshotWindow = NULL, CacheNodeType = NULL, NodeGroupId = NULL)
+modify_replication_group(
+  ReplicationGroupId = "string",
+  ReplicationGroupDescription = "string",
+  PrimaryClusterId = "string",
+  SnapshottingClusterId = "string",
+  AutomaticFailoverEnabled = TRUE|FALSE,
+  CacheSecurityGroupNames = list(
+    "string"
+  ),
+  SecurityGroupIds = list(
+    "string"
+  ),
+  PreferredMaintenanceWindow = "string",
+  NotificationTopicArn = "string",
+  CacheParameterGroupName = "string",
+  NotificationTopicStatus = "string",
+  ApplyImmediately = TRUE|FALSE,
+  EngineVersion = "string",
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  SnapshotRetentionLimit = 123,
+  SnapshotWindow = "string",
+  CacheNodeType = "string",
+  NodeGroupId = "string"
+)
 }
 \arguments{
-\item{ReplicationGroupId}{The identifier of the replication group to modify.}
+\item{ReplicationGroupId}{[required] The identifier of the replication group to modify.}
 
 \item{ReplicationGroupDescription}{A description for the replication group. Maximum length is 255 characters.}
 

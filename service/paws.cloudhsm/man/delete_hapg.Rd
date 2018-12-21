@@ -4,10 +4,12 @@
 \alias{delete_hapg}
 \title{This is documentation for \strong{AWS CloudHSM Classic}}
 \usage{
-delete_hapg(HapgArn)
+delete_hapg(
+  HapgArn = "string"
+)
 }
 \arguments{
-\item{HapgArn}{The ARN of the high-availability partition group to delete.}
+\item{HapgArn}{[required] The ARN of the high-availability partition group to delete.}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHSM Classic FAQs}, the \href{http://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide}, and the \href{http://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.

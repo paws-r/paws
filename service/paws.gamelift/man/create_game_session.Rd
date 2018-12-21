@@ -4,16 +4,29 @@
 \alias{create_game_session}
 \title{Creates a multiplayer game session for players}
 \usage{
-create_game_session(MaximumPlayerSessionCount, FleetId = NULL,
-  AliasId = NULL, Name = NULL, GameProperties = NULL, CreatorId = NULL,
-  GameSessionId = NULL, IdempotencyToken = NULL, GameSessionData = NULL)
+create_game_session(
+  FleetId = "string",
+  AliasId = "string",
+  MaximumPlayerSessionCount = 123,
+  Name = "string",
+  GameProperties = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  CreatorId = "string",
+  GameSessionId = "string",
+  IdempotencyToken = "string",
+  GameSessionData = "string"
+)
 }
 \arguments{
-\item{MaximumPlayerSessionCount}{Maximum number of players that can be connected simultaneously to the game session.}
-
 \item{FleetId}{Unique identifier for a fleet to create a game session in. Each request must reference either a fleet ID or alias ID, but not both.}
 
 \item{AliasId}{Unique identifier for an alias associated with the fleet to create a game session in. Each request must reference either a fleet ID or alias ID, but not both.}
+
+\item{MaximumPlayerSessionCount}{[required] Maximum number of players that can be connected simultaneously to the game session.}
 
 \item{Name}{Descriptive label that is associated with a game session. Session names do not need to be unique.}
 

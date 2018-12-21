@@ -4,10 +4,12 @@
 \alias{describe_runtime_configuration}
 \title{Retrieves the current run-time configuration for the specified fleet}
 \usage{
-describe_runtime_configuration(FleetId)
+describe_runtime_configuration(
+  FleetId = "string"
+)
 }
 \arguments{
-\item{FleetId}{Unique identifier for a fleet to get the run-time configuration for.}
+\item{FleetId}{[required] Unique identifier for a fleet to get the run-time configuration for.}
 }
 \description{
 Retrieves the current run-time configuration for the specified fleet. The run-time configuration tells Amazon GameLift how to launch server processes on instances in the fleet.

@@ -4,13 +4,27 @@
 \alias{start_content_moderation}
 \title{Starts asynchronous detection of explicit or suggestive adult content in a stored video}
 \usage{
-start_content_moderation(Video, MinConfidence = NULL,
-  ClientRequestToken = NULL, NotificationChannel = NULL, JobTag = NULL)
+start_content_moderation(
+  Video = list(
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  MinConfidence = 123.0,
+  ClientRequestToken = "string",
+  NotificationChannel = list(
+    SNSTopicArn = "string",
+    RoleArn = "string"
+  ),
+  JobTag = "string"
+)
 }
 \arguments{
-\item{Video}{The video in which you want to moderate content. The video must be stored in an Amazon S3 bucket.}
+\item{Video}{[required] The video in which you want to moderate content. The video must be stored in an Amazon S3 bucket.}
 
-\item{MinConfidence}{Specifies the minimum confidence that Amazon Rekognition must have in order to return a moderated content label. Confidence represents how certain Amazon Rekognition is that the moderated content is correctly identified. 0 is the lowest confidence. 100 is the highest confidence. Amazon Rekognition doesn't return any moderated content labels with a confidence level lower than this specified value.}
+\item{MinConfidence}{Specifies the minimum confidence that Amazon Rekognition must have in order to return a moderated content label. Confidence represents how certain Amazon Rekognition is that the moderated content is correctly identified. 0 is the lowest confidence. 100 is the highest confidence. Amazon Rekognition doesn't return any moderated content labels with a confidence level lower than this specified value. If you don't specify \code{MinConfidence}, \code{GetContentModeration} returns labels with confidence values greater than or equal to 50 percent.}
 
 \item{ClientRequestToken}{Idempotent token used to identify the start request. If you use the same token with multiple \code{StartContentModeration} requests, the same \code{JobId} is returned. Use \code{ClientRequestToken} to prevent the same job from being accidently started more than once.}
 

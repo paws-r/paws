@@ -4,15 +4,20 @@
 \alias{get_user_defined_functions}
 \title{Retrieves a multiple function definitions from the Data Catalog}
 \usage{
-get_user_defined_functions(DatabaseName, Pattern, CatalogId = NULL,
-  NextToken = NULL, MaxResults = NULL)
+get_user_defined_functions(
+  CatalogId = "string",
+  DatabaseName = "string",
+  Pattern = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{DatabaseName}{The name of the catalog database where the functions are located.}
-
-\item{Pattern}{An optional function-name pattern string that filters the function definitions returned.}
-
 \item{CatalogId}{The ID of the Data Catalog where the functions to be retrieved are located. If none is supplied, the AWS account ID is used by default.}
+
+\item{DatabaseName}{[required] The name of the catalog database where the functions are located.}
+
+\item{Pattern}{[required] An optional function-name pattern string that filters the function definitions returned.}
 
 \item{NextToken}{A continuation token, if this is a continuation call.}
 

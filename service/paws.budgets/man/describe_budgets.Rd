@@ -2,19 +2,23 @@
 % Please edit documentation in R/paws.budgets_operations.R
 \name{describe_budgets}
 \alias{describe_budgets}
-\title{Lists the budgets associated with an account}
+\title{Lists the budgets that are associated with an account}
 \usage{
-describe_budgets(AccountId, MaxResults = NULL, NextToken = NULL)
+describe_budgets(
+  AccountId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{AccountId}{The \code{accountId} that is associated with the budgets that you want descriptions of.}
+\item{AccountId}{[required] The \code{accountId} that is associated with the budgets that you want descriptions of.}
 
-\item{MaxResults}{Optional integer. Specifies the maximum number of results to return in response.}
+\item{MaxResults}{An optional integer that represents how many entries a paginated response contains. The maximum is 100.}
 
-\item{NextToken}{The pagination token that indicates the next set of results to retrieve.}
+\item{NextToken}{The pagination token that you include in your request to indicate the next set of results that you want to retrieve.}
 }
 \description{
-Lists the budgets associated with an account.
+Lists the budgets that are associated with an account.
 }
 \examples{
 

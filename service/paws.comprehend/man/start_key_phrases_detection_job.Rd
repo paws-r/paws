@@ -4,20 +4,30 @@
 \alias{start_key_phrases_detection_job}
 \title{Starts an asynchronous key phrase detection job for a collection of documents}
 \usage{
-start_key_phrases_detection_job(InputDataConfig, OutputDataConfig,
-  DataAccessRoleArn, LanguageCode, JobName = NULL,
-  ClientRequestToken = NULL)
+start_key_phrases_detection_job(
+  InputDataConfig = list(
+    S3Uri = "string",
+    InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+  ),
+  OutputDataConfig = list(
+    S3Uri = "string"
+  ),
+  DataAccessRoleArn = "string",
+  JobName = "string",
+  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
+  ClientRequestToken = "string"
+)
 }
 \arguments{
-\item{InputDataConfig}{Specifies the format and location of the input data for the job.}
+\item{InputDataConfig}{[required] Specifies the format and location of the input data for the job.}
 
-\item{OutputDataConfig}{Specifies where to send the output files.}
+\item{OutputDataConfig}{[required] Specifies where to send the output files.}
 
-\item{DataAccessRoleArn}{The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants Amazon Comprehend read access to your input data. For more information, see \url{https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions}.}
-
-\item{LanguageCode}{The language of the input documents. You can specify English ("en") or Spanish ("es"). All documents must be in the same language.}
+\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants Amazon Comprehend read access to your input data. For more information, see \url{https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions}.}
 
 \item{JobName}{The identifier of the job.}
+
+\item{LanguageCode}{[required] The language of the input documents. You can specify English ("en") or Spanish ("es"). All documents must be in the same language.}
 
 \item{ClientRequestToken}{A unique identifier for the request. If you don't set the client request token, Amazon Comprehend generates one.}
 }

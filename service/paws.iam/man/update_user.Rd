@@ -4,20 +4,24 @@
 \alias{update_user}
 \title{Updates the name and/or the path of the specified IAM user}
 \usage{
-update_user(UserName, NewPath = NULL, NewUserName = NULL)
+update_user(
+  UserName = "string",
+  NewPath = "string",
+  NewUserName = "string"
+)
 }
 \arguments{
-\item{UserName}{Name of the user to update. If you're changing the name of the user, this is the original user name.
+\item{UserName}{[required] Name of the user to update. If you're changing the name of the user, this is the original user name.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{NewPath}{New path for the IAM user. Include this parameter only if you're changing the user's path.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.}
 
 \item{NewUserName}{New name for the user. Include this parameter only if you're changing the user's name.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Updates the name and/or the path of the specified IAM user.

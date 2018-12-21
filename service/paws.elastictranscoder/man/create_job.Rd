@@ -4,12 +4,303 @@
 \alias{create_job}
 \title{When you create a job, Elastic Transcoder returns JSON data that includes the values that you specified plus information about the job that is created}
 \usage{
-create_job(PipelineId, Input = NULL, Inputs = NULL, Output = NULL,
-  Outputs = NULL, OutputKeyPrefix = NULL, Playlists = NULL,
-  UserMetadata = NULL)
+create_job(
+  PipelineId = "string",
+  Input = list(
+    Key = "string",
+    FrameRate = "string",
+    Resolution = "string",
+    AspectRatio = "string",
+    Interlaced = "string",
+    Container = "string",
+    Encryption = list(
+      Mode = "string",
+      Key = "string",
+      KeyMd5 = "string",
+      InitializationVector = "string"
+    ),
+    TimeSpan = list(
+      StartTime = "string",
+      Duration = "string"
+    ),
+    InputCaptions = list(
+      MergePolicy = "string",
+      CaptionSources = list(
+        list(
+          Key = "string",
+          Language = "string",
+          TimeOffset = "string",
+          Label = "string",
+          Encryption = list(
+            Mode = "string",
+            Key = "string",
+            KeyMd5 = "string",
+            InitializationVector = "string"
+          )
+        )
+      )
+    ),
+    DetectedProperties = list(
+      Width = 123,
+      Height = 123,
+      FrameRate = "string",
+      FileSize = 123,
+      DurationMillis = 123
+    )
+  ),
+  Inputs = list(
+    list(
+      Key = "string",
+      FrameRate = "string",
+      Resolution = "string",
+      AspectRatio = "string",
+      Interlaced = "string",
+      Container = "string",
+      Encryption = list(
+        Mode = "string",
+        Key = "string",
+        KeyMd5 = "string",
+        InitializationVector = "string"
+      ),
+      TimeSpan = list(
+        StartTime = "string",
+        Duration = "string"
+      ),
+      InputCaptions = list(
+        MergePolicy = "string",
+        CaptionSources = list(
+          list(
+            Key = "string",
+            Language = "string",
+            TimeOffset = "string",
+            Label = "string",
+            Encryption = list(
+              Mode = "string",
+              Key = "string",
+              KeyMd5 = "string",
+              InitializationVector = "string"
+            )
+          )
+        )
+      ),
+      DetectedProperties = list(
+        Width = 123,
+        Height = 123,
+        FrameRate = "string",
+        FileSize = 123,
+        DurationMillis = 123
+      )
+    )
+  ),
+  Output = list(
+    Key = "string",
+    ThumbnailPattern = "string",
+    ThumbnailEncryption = list(
+      Mode = "string",
+      Key = "string",
+      KeyMd5 = "string",
+      InitializationVector = "string"
+    ),
+    Rotate = "string",
+    PresetId = "string",
+    SegmentDuration = "string",
+    Watermarks = list(
+      list(
+        PresetWatermarkId = "string",
+        InputKey = "string",
+        Encryption = list(
+          Mode = "string",
+          Key = "string",
+          KeyMd5 = "string",
+          InitializationVector = "string"
+        )
+      )
+    ),
+    AlbumArt = list(
+      MergePolicy = "string",
+      Artwork = list(
+        list(
+          InputKey = "string",
+          MaxWidth = "string",
+          MaxHeight = "string",
+          SizingPolicy = "string",
+          PaddingPolicy = "string",
+          AlbumArtFormat = "string",
+          Encryption = list(
+            Mode = "string",
+            Key = "string",
+            KeyMd5 = "string",
+            InitializationVector = "string"
+          )
+        )
+      )
+    ),
+    Composition = list(
+      list(
+        TimeSpan = list(
+          StartTime = "string",
+          Duration = "string"
+        )
+      )
+    ),
+    Captions = list(
+      MergePolicy = "string",
+      CaptionSources = list(
+        list(
+          Key = "string",
+          Language = "string",
+          TimeOffset = "string",
+          Label = "string",
+          Encryption = list(
+            Mode = "string",
+            Key = "string",
+            KeyMd5 = "string",
+            InitializationVector = "string"
+          )
+        )
+      ),
+      CaptionFormats = list(
+        list(
+          Format = "string",
+          Pattern = "string",
+          Encryption = list(
+            Mode = "string",
+            Key = "string",
+            KeyMd5 = "string",
+            InitializationVector = "string"
+          )
+        )
+      )
+    ),
+    Encryption = list(
+      Mode = "string",
+      Key = "string",
+      KeyMd5 = "string",
+      InitializationVector = "string"
+    )
+  ),
+  Outputs = list(
+    list(
+      Key = "string",
+      ThumbnailPattern = "string",
+      ThumbnailEncryption = list(
+        Mode = "string",
+        Key = "string",
+        KeyMd5 = "string",
+        InitializationVector = "string"
+      ),
+      Rotate = "string",
+      PresetId = "string",
+      SegmentDuration = "string",
+      Watermarks = list(
+        list(
+          PresetWatermarkId = "string",
+          InputKey = "string",
+          Encryption = list(
+            Mode = "string",
+            Key = "string",
+            KeyMd5 = "string",
+            InitializationVector = "string"
+          )
+        )
+      ),
+      AlbumArt = list(
+        MergePolicy = "string",
+        Artwork = list(
+          list(
+            InputKey = "string",
+            MaxWidth = "string",
+            MaxHeight = "string",
+            SizingPolicy = "string",
+            PaddingPolicy = "string",
+            AlbumArtFormat = "string",
+            Encryption = list(
+              Mode = "string",
+              Key = "string",
+              KeyMd5 = "string",
+              InitializationVector = "string"
+            )
+          )
+        )
+      ),
+      Composition = list(
+        list(
+          TimeSpan = list(
+            StartTime = "string",
+            Duration = "string"
+          )
+        )
+      ),
+      Captions = list(
+        MergePolicy = "string",
+        CaptionSources = list(
+          list(
+            Key = "string",
+            Language = "string",
+            TimeOffset = "string",
+            Label = "string",
+            Encryption = list(
+              Mode = "string",
+              Key = "string",
+              KeyMd5 = "string",
+              InitializationVector = "string"
+            )
+          )
+        ),
+        CaptionFormats = list(
+          list(
+            Format = "string",
+            Pattern = "string",
+            Encryption = list(
+              Mode = "string",
+              Key = "string",
+              KeyMd5 = "string",
+              InitializationVector = "string"
+            )
+          )
+        )
+      ),
+      Encryption = list(
+        Mode = "string",
+        Key = "string",
+        KeyMd5 = "string",
+        InitializationVector = "string"
+      )
+    )
+  ),
+  OutputKeyPrefix = "string",
+  Playlists = list(
+    list(
+      Name = "string",
+      Format = "string",
+      OutputKeys = list(
+        "string"
+      ),
+      HlsContentProtection = list(
+        Method = "string",
+        Key = "string",
+        KeyMd5 = "string",
+        InitializationVector = "string",
+        LicenseAcquisitionUrl = "string",
+        KeyStoragePolicy = "string"
+      ),
+      PlayReadyDrm = list(
+        Format = "string",
+        Key = "string",
+        KeyMd5 = "string",
+        KeyId = "string",
+        InitializationVector = "string",
+        LicenseAcquisitionUrl = "string"
+      )
+    )
+  ),
+  UserMetadata = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{PipelineId}{The \code{Id} of the pipeline that you want Elastic Transcoder to use for transcoding. The pipeline determines several settings, including the Amazon S3 bucket from which Elastic Transcoder gets the files to transcode and the bucket into which Elastic Transcoder puts the transcoded files.}
+\item{PipelineId}{[required] The \code{Id} of the pipeline that you want Elastic Transcoder to use for transcoding. The pipeline determines several settings, including the Amazon S3 bucket from which Elastic Transcoder gets the files to transcode and the bucket into which Elastic Transcoder puts the transcoded files.}
 
 \item{Input}{A section of the request body that provides information about the file that is being transcoded.}
 

@@ -4,12 +4,17 @@
 \alias{untag_resource}
 \title{Removes the association of tags from a DAX resource}
 \usage{
-untag_resource(ResourceName, TagKeys)
+untag_resource(
+  ResourceName = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ResourceName}{The name of the DAX resource from which the tags should be removed.}
+\item{ResourceName}{[required] The name of the DAX resource from which the tags should be removed.}
 
-\item{TagKeys}{A list of tag keys. If the DAX cluster has any tags with these keys, then the tags are removed from the cluster.}
+\item{TagKeys}{[required] A list of tag keys. If the DAX cluster has any tags with these keys, then the tags are removed from the cluster.}
 }
 \description{
 Removes the association of tags from a DAX resource. You can call \code{UntagResource} up to 5 times per second, per account.

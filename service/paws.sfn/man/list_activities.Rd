@@ -4,22 +4,25 @@
 \alias{list_activities}
 \title{Lists the existing activities}
 \usage{
-list_activities(maxResults = NULL, nextToken = NULL)
+list_activities(
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
-\item{maxResults}{The maximum number of results that are returned per call. You can use \code{nextToken} to obtain further pages of results. The default is 100 and the maximum allowed page size is 100. A value of 0 uses the default.
+\item{maxResults}{The maximum number of results that are returned per call. You can use \code{nextToken} to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000. A value of 0 uses the default.
 
 This is only an upper limit. The actual number of results returned per call might be fewer than the specified maximum.}
 
-\item{nextToken}{If a \code{nextToken} is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in \code{nextToken}. Keep all other arguments unchanged.
-
-The configured \code{maxResults} determines how many results can be returned in a single call.}
+\item{nextToken}{If \code{nextToken} is returned, there are more results available. The value of \code{nextToken} is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 60 seconds. Using an expired pagination token will return an \emph{HTTP 400 InvalidToken} error.}
 }
 \description{
 Lists the existing activities.
 }
 \details{
-If a \code{nextToken} is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in \code{nextToken}. Keep all other arguments unchanged.
+If \code{nextToken} is returned, there are more results available. The value of \code{nextToken} is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 60 seconds. Using an expired pagination token will return an \emph{HTTP 400 InvalidToken} error.
+
+This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.
 }
 \examples{
 

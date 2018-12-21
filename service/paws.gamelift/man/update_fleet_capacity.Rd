@@ -4,11 +4,15 @@
 \alias{update_fleet_capacity}
 \title{Updates capacity settings for a fleet}
 \usage{
-update_fleet_capacity(FleetId, DesiredInstances = NULL, MinSize = NULL,
-  MaxSize = NULL)
+update_fleet_capacity(
+  FleetId = "string",
+  DesiredInstances = 123,
+  MinSize = 123,
+  MaxSize = 123
+)
 }
 \arguments{
-\item{FleetId}{Unique identifier for a fleet to update capacity for.}
+\item{FleetId}{[required] Unique identifier for a fleet to update capacity for.}
 
 \item{DesiredInstances}{Number of EC2 instances you want this fleet to host.}
 

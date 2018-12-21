@@ -4,12 +4,15 @@
 \alias{create_network_acl}
 \title{Creates a network ACL in a VPC}
 \usage{
-create_network_acl(VpcId, DryRun = NULL)
+create_network_acl(
+  DryRun = TRUE|FALSE,
+  VpcId = "string"
+)
 }
 \arguments{
-\item{VpcId}{The ID of the VPC.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{VpcId}{[required] The ID of the VPC.}
 }
 \description{
 Creates a network ACL in a VPC. Network ACLs provide an optional layer of security (in addition to security groups) for the instances in your VPC.

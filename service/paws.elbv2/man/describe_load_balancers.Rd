@@ -4,8 +4,16 @@
 \alias{describe_load_balancers}
 \title{Describes the specified load balancers or all of your load balancers}
 \usage{
-describe_load_balancers(LoadBalancerArns = NULL, Names = NULL,
-  Marker = NULL, PageSize = NULL)
+describe_load_balancers(
+  LoadBalancerArns = list(
+    "string"
+  ),
+  Names = list(
+    "string"
+  ),
+  Marker = "string",
+  PageSize = 123
+)
 }
 \arguments{
 \item{LoadBalancerArns}{The Amazon Resource Names (ARN) of the load balancers. You can specify up to 20 load balancers in a single call.}

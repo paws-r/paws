@@ -4,14 +4,18 @@
 \alias{stop_execution}
 \title{Stops an execution}
 \usage{
-stop_execution(executionArn, error = NULL, cause = NULL)
+stop_execution(
+  executionArn = "string",
+  error = "string",
+  cause = "string"
+)
 }
 \arguments{
-\item{executionArn}{The Amazon Resource Name (ARN) of the execution to stop.}
+\item{executionArn}{[required] The Amazon Resource Name (ARN) of the execution to stop.}
 
-\item{error}{An arbitrary error code that identifies the cause of the termination.}
+\item{error}{The error code of the failure.}
 
-\item{cause}{A more detailed explanation of the cause of the termination.}
+\item{cause}{A more detailed explanation of the cause of the failure.}
 }
 \description{
 Stops an execution.

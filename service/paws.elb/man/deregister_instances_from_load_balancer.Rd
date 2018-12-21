@@ -4,12 +4,19 @@
 \alias{deregister_instances_from_load_balancer}
 \title{Deregisters the specified instances from the specified load balancer}
 \usage{
-deregister_instances_from_load_balancer(LoadBalancerName, Instances)
+deregister_instances_from_load_balancer(
+  LoadBalancerName = "string",
+  Instances = list(
+    list(
+      InstanceId = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{LoadBalancerName}{The name of the load balancer.}
+\item{LoadBalancerName}{[required] The name of the load balancer.}
 
-\item{Instances}{The IDs of the instances.}
+\item{Instances}{[required] The IDs of the instances.}
 }
 \description{
 Deregisters the specified instances from the specified load balancer. After the instance is deregistered, it no longer receives traffic from the load balancer.

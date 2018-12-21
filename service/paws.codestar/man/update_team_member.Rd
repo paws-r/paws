@@ -4,13 +4,17 @@
 \alias{update_team_member}
 \title{Updates a team member's attributes in an AWS CodeStar project}
 \usage{
-update_team_member(projectId, userArn, projectRole = NULL,
-  remoteAccessAllowed = NULL)
+update_team_member(
+  projectId = "string",
+  userArn = "string",
+  projectRole = "string",
+  remoteAccessAllowed = TRUE|FALSE
+)
 }
 \arguments{
-\item{projectId}{The ID of the project.}
+\item{projectId}{[required] The ID of the project.}
 
-\item{userArn}{The Amazon Resource Name (ARN) of the user for whom you want to change team membership attributes.}
+\item{userArn}{[required] The Amazon Resource Name (ARN) of the user for whom you want to change team membership attributes.}
 
 \item{projectRole}{The role assigned to the user in the project. Project roles have different levels of access. For more information, see \href{http://docs.aws.amazon.com/codestar/latest/userguide/working-with-teams.html}{Working with Teams} in the \emph{AWS CodeStar User Guide}.}
 

@@ -4,10 +4,12 @@
 \alias{get_celebrity_info}
 \title{Gets the name and additional information about a celebrity based on his or her Amazon Rekognition ID}
 \usage{
-get_celebrity_info(Id)
+get_celebrity_info(
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The ID for the celebrity. You get the celebrity ID from a call to the operation, which recognizes celebrities in an image.}
+\item{Id}{[required] The ID for the celebrity. You get the celebrity ID from a call to the operation, which recognizes celebrities in an image.}
 }
 \description{
 Gets the name and additional information about a celebrity based on his or her Amazon Rekognition ID. The additional information is returned as an array of URLs. If there is no additional information about the celebrity, this list is empty.

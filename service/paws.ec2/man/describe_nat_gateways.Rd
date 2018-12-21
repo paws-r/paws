@@ -4,8 +4,21 @@
 \alias{describe_nat_gateways}
 \title{Describes one or more of your NAT gateways}
 \usage{
-describe_nat_gateways(Filter = NULL, MaxResults = NULL,
-  NatGatewayIds = NULL, NextToken = NULL)
+describe_nat_gateways(
+  Filter = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NatGatewayIds = list(
+    "string"
+  ),
+  NextToken = "string"
+)
 }
 \arguments{
 \item{Filter}{One or more filters.

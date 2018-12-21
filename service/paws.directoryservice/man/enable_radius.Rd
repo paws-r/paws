@@ -4,12 +4,26 @@
 \alias{enable_radius}
 \title{Enables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD directory}
 \usage{
-enable_radius(DirectoryId, RadiusSettings)
+enable_radius(
+  DirectoryId = "string",
+  RadiusSettings = list(
+    RadiusServers = list(
+      "string"
+    ),
+    RadiusPort = 123,
+    RadiusTimeout = 123,
+    RadiusRetries = 123,
+    SharedSecret = "string",
+    AuthenticationProtocol = "PAP"|"CHAP"|"MS-CHAPv1"|"MS-CHAPv2",
+    DisplayLabel = "string",
+    UseSameUsername = TRUE|FALSE
+  )
+)
 }
 \arguments{
-\item{DirectoryId}{The identifier of the directory for which to enable MFA.}
+\item{DirectoryId}{[required] The identifier of the directory for which to enable MFA.}
 
-\item{RadiusSettings}{A RadiusSettings object that contains information about the RADIUS server.}
+\item{RadiusSettings}{[required] A RadiusSettings object that contains information about the RADIUS server.}
 }
 \description{
 Enables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD directory.

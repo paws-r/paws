@@ -4,10 +4,12 @@
 \alias{list_tags_for_resource}
 \title{This is documentation for \strong{AWS CloudHSM Classic}}
 \usage{
-list_tags_for_resource(ResourceArn)
+list_tags_for_resource(
+  ResourceArn = "string"
+)
 }
 \arguments{
-\item{ResourceArn}{The Amazon Resource Name (ARN) of the AWS CloudHSM resource.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the AWS CloudHSM resource.}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHSM Classic FAQs}, the \href{http://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide}, and the \href{http://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.

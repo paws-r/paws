@@ -4,15 +4,31 @@
 \alias{create_configuration_template}
 \title{Creates a configuration template}
 \usage{
-create_configuration_template(ApplicationName, TemplateName,
-  SolutionStackName = NULL, PlatformArn = NULL,
-  SourceConfiguration = NULL, EnvironmentId = NULL, Description = NULL,
-  OptionSettings = NULL)
+create_configuration_template(
+  ApplicationName = "string",
+  TemplateName = "string",
+  SolutionStackName = "string",
+  PlatformArn = "string",
+  SourceConfiguration = list(
+    ApplicationName = "string",
+    TemplateName = "string"
+  ),
+  EnvironmentId = "string",
+  Description = "string",
+  OptionSettings = list(
+    list(
+      ResourceName = "string",
+      Namespace = "string",
+      OptionName = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ApplicationName}{The name of the application to associate with this configuration template. If no application is found with this name, AWS Elastic Beanstalk returns an \code{InvalidParameterValue} error.}
+\item{ApplicationName}{[required] The name of the application to associate with this configuration template. If no application is found with this name, AWS Elastic Beanstalk returns an \code{InvalidParameterValue} error.}
 
-\item{TemplateName}{The name of the configuration template.
+\item{TemplateName}{[required] The name of the configuration template.
 
 Constraint: This name must be unique per application.
 

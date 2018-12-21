@@ -4,14 +4,31 @@
 \alias{list_open_workflow_executions}
 \title{Returns a list of open workflow executions in the specified domain that meet the filtering criteria}
 \usage{
-list_open_workflow_executions(domain, startTimeFilter, typeFilter = NULL,
-  tagFilter = NULL, nextPageToken = NULL, maximumPageSize = NULL,
-  reverseOrder = NULL, executionFilter = NULL)
+list_open_workflow_executions(
+  domain = "string",
+  startTimeFilter = list(
+    oldestDate = as.POSIXct("2015-01-01"),
+    latestDate = as.POSIXct("2015-01-01")
+  ),
+  typeFilter = list(
+    name = "string",
+    version = "string"
+  ),
+  tagFilter = list(
+    tag = "string"
+  ),
+  nextPageToken = "string",
+  maximumPageSize = 123,
+  reverseOrder = TRUE|FALSE,
+  executionFilter = list(
+    workflowId = "string"
+  )
+)
 }
 \arguments{
-\item{domain}{The name of the domain that contains the workflow executions to list.}
+\item{domain}{[required] The name of the domain that contains the workflow executions to list.}
 
-\item{startTimeFilter}{Workflow executions are included in the returned results based on whether their start times are within the range specified by this filter.}
+\item{startTimeFilter}{[required] Workflow executions are included in the returned results based on whether their start times are within the range specified by this filter.}
 
 \item{typeFilter}{If specified, only executions of the type specified in the filter are returned.
 

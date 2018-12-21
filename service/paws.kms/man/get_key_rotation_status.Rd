@@ -4,10 +4,12 @@
 \alias{get_key_rotation_status}
 \title{Gets a Boolean value that indicates whether \link{automatic rotation of the key material}(http://docs}
 \usage{
-get_key_rotation_status(KeyId)
+get_key_rotation_status(
+  KeyId = "string"
+)
 }
 \arguments{
-\item{KeyId}{A unique identifier for the customer master key (CMK).
+\item{KeyId}{[required] A unique identifier for the customer master key (CMK).
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN.
 

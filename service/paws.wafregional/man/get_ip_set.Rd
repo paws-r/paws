@@ -4,10 +4,12 @@
 \alias{get_ip_set}
 \title{Returns the IPSet that is specified by \code{IPSetId}}
 \usage{
-get_ip_set(IPSetId)
+get_ip_set(
+  IPSetId = "string"
+)
 }
 \arguments{
-\item{IPSetId}{The \code{IPSetId} of the IPSet that you want to get. \code{IPSetId} is returned by CreateIPSet and by ListIPSets.}
+\item{IPSetId}{[required] The \code{IPSetId} of the IPSet that you want to get. \code{IPSetId} is returned by CreateIPSet and by ListIPSets.}
 }
 \description{
 Returns the IPSet that is specified by \code{IPSetId}.

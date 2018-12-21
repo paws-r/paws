@@ -6,12 +6,11 @@
 \alias{paws.wafregional-package}
 \title{paws.wafregional: AWS WAF Regional}
 \description{
-This is the *AWS WAF Regional API Reference* for
-using AWS WAF with Elastic Load Balancing (ELB) Application Load
-Balancers. The AWS WAF actions and data types listed in the reference
-are available for protecting Application Load Balancers. You can use
-these actions and data types by means of the endpoints listed in [AWS
-Regions and
+This is the *AWS WAF Regional API Reference* for using AWS
+WAF with Elastic Load Balancing (ELB) Application Load Balancers. The
+AWS WAF actions and data types listed in the reference are available
+for protecting Application Load Balancers. You can use these actions
+and data types by means of the endpoints listed in [AWS Regions and
 Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#waf_region).
 This guide is for developers who need detailed information about the
 AWS WAF API actions, data types, and errors. For detailed information
@@ -24,7 +23,12 @@ Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

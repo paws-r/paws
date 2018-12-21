@@ -4,10 +4,14 @@
 \alias{batch_get_repositories}
 \title{Returns information about one or more repositories}
 \usage{
-batch_get_repositories(repositoryNames)
+batch_get_repositories(
+  repositoryNames = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{repositoryNames}{The names of the repositories to get information about.}
+\item{repositoryNames}{[required] The names of the repositories to get information about.}
 }
 \description{
 Returns information about one or more repositories.

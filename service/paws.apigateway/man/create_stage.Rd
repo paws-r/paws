@@ -4,17 +4,37 @@
 \alias{create_stage}
 \title{Creates a new Stage resource that references a pre-existing Deployment for the API}
 \usage{
-create_stage(restApiId, stageName, deploymentId, description = NULL,
-  cacheClusterEnabled = NULL, cacheClusterSize = NULL, variables = NULL,
-  documentationVersion = NULL, canarySettings = NULL,
-  tracingEnabled = NULL, tags = NULL)
+create_stage(
+  restApiId = "string",
+  stageName = "string",
+  deploymentId = "string",
+  description = "string",
+  cacheClusterEnabled = TRUE|FALSE,
+  cacheClusterSize = "0.5"|"1.6"|"6.1"|"13.5"|"28.4"|"58.2"|"118"|"237",
+  variables = list(
+    "string"
+  ),
+  documentationVersion = "string",
+  canarySettings = list(
+    percentTraffic = 123.0,
+    deploymentId = "string",
+    stageVariableOverrides = list(
+      "string"
+    ),
+    useStageCache = TRUE|FALSE
+  ),
+  tracingEnabled = TRUE|FALSE,
+  tags = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{stageName}{[Required] The name for the Stage resource.}
+\item{stageName}{[required] [Required] The name for the Stage resource.}
 
-\item{deploymentId}{[Required] The identifier of the Deployment resource for the Stage resource.}
+\item{deploymentId}{[required] [Required] The identifier of the Deployment resource for the Stage resource.}
 
 \item{description}{The description of the Stage resource.}
 

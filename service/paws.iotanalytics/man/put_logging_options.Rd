@@ -4,10 +4,16 @@
 \alias{put_logging_options}
 \title{Sets or updates the AWS IoT Analytics logging options}
 \usage{
-put_logging_options(loggingOptions)
+put_logging_options(
+  loggingOptions = list(
+    roleArn = "string",
+    level = "ERROR",
+    enabled = TRUE|FALSE
+  )
+)
 }
 \arguments{
-\item{loggingOptions}{The new values of the AWS IoT Analytics logging options.}
+\item{loggingOptions}{[required] The new values of the AWS IoT Analytics logging options.}
 }
 \description{
 Sets or updates the AWS IoT Analytics logging options.

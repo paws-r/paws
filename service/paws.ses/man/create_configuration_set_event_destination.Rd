@@ -4,13 +4,37 @@
 \alias{create_configuration_set_event_destination}
 \title{Creates a configuration set event destination}
 \usage{
-create_configuration_set_event_destination(ConfigurationSetName,
-  EventDestination)
+create_configuration_set_event_destination(
+  ConfigurationSetName = "string",
+  EventDestination = list(
+    Name = "string",
+    Enabled = TRUE|FALSE,
+    MatchingEventTypes = list(
+      "send"|"reject"|"bounce"|"complaint"|"delivery"|"open"|"click"|"renderingFailure"
+    ),
+    KinesisFirehoseDestination = list(
+      IAMRoleARN = "string",
+      DeliveryStreamARN = "string"
+    ),
+    CloudWatchDestination = list(
+      DimensionConfigurations = list(
+        list(
+          DimensionName = "string",
+          DimensionValueSource = "messageTag"|"emailHeader"|"linkTag",
+          DefaultDimensionValue = "string"
+        )
+      )
+    ),
+    SNSDestination = list(
+      TopicARN = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ConfigurationSetName}{The name of the configuration set that the event destination should be associated with.}
+\item{ConfigurationSetName}{[required] The name of the configuration set that the event destination should be associated with.}
 
-\item{EventDestination}{An object that describes the AWS service that email sending event information will be published to.}
+\item{EventDestination}{[required] An object that describes the AWS service that email sending event information will be published to.}
 }
 \description{
 Creates a configuration set event destination.

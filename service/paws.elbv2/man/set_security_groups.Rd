@@ -4,12 +4,17 @@
 \alias{set_security_groups}
 \title{Associates the specified security groups with the specified Application Load Balancer}
 \usage{
-set_security_groups(LoadBalancerArn, SecurityGroups)
+set_security_groups(
+  LoadBalancerArn = "string",
+  SecurityGroups = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{LoadBalancerArn}{The Amazon Resource Name (ARN) of the load balancer.}
+\item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
 
-\item{SecurityGroups}{The IDs of the security groups.}
+\item{SecurityGroups}{[required] The IDs of the security groups.}
 }
 \description{
 Associates the specified security groups with the specified Application Load Balancer. The specified security groups override the previously associated security groups.

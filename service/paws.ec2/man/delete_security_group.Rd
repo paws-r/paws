@@ -4,7 +4,11 @@
 \alias{delete_security_group}
 \title{Deletes a security group}
 \usage{
-delete_security_group(GroupId = NULL, GroupName = NULL, DryRun = NULL)
+delete_security_group(
+  GroupId = "string",
+  GroupName = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{GroupId}{The ID of the security group. Required for a nondefault VPC.}

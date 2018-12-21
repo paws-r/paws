@@ -4,10 +4,12 @@
 \alias{get_repository_triggers}
 \title{Gets information about triggers configured for a repository}
 \usage{
-get_repository_triggers(repositoryName)
+get_repository_triggers(
+  repositoryName = "string"
+)
 }
 \arguments{
-\item{repositoryName}{The name of the repository for which the trigger is configured.}
+\item{repositoryName}{[required] The name of the repository for which the trigger is configured.}
 }
 \description{
 Gets information about triggers configured for a repository.

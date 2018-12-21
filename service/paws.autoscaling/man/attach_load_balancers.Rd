@@ -4,12 +4,17 @@
 \alias{attach_load_balancers}
 \title{Attaches one or more Classic Load Balancers to the specified Auto Scaling group}
 \usage{
-attach_load_balancers(AutoScalingGroupName, LoadBalancerNames)
+attach_load_balancers(
+  AutoScalingGroupName = "string",
+  LoadBalancerNames = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{LoadBalancerNames}{The names of the load balancers. You can specify up to 10 load balancers.}
+\item{LoadBalancerNames}{[required] The names of the load balancers. You can specify up to 10 load balancers.}
 }
 \description{
 Attaches one or more Classic Load Balancers to the specified Auto Scaling group.

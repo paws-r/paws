@@ -4,17 +4,21 @@
 \alias{create_rule}
 \title{Creates a \code{Rule}, which contains the \code{IPSet} objects, \code{ByteMatchSet} objects, and other predicates that identify the requests that you want to block}
 \usage{
-create_rule(Name, MetricName, ChangeToken)
+create_rule(
+  Name = "string",
+  MetricName = "string",
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{Name}{A friendly name or description of the Rule. You can't change the name of a \code{Rule} after you create it.}
+\item{Name}{[required] A friendly name or description of the Rule. You can't change the name of a \code{Rule} after you create it.}
 
-\item{MetricName}{A friendly name or description for the metrics for this \code{Rule}. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the \code{Rule}.}
+\item{MetricName}{[required] A friendly name or description for the metrics for this \code{Rule}. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain white space. You can't change the name of the metric after you create the \code{Rule}.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
-Creates a \code{Rule}, which contains the \code{IPSet} objects, \code{ByteMatchSet} objects, and other predicates that identify the requests that you want to block. If you add more than one predicate to a \code{Rule}, a request must match all of the specifications to be allowed or blocked. For example, suppose you add the following to a \code{Rule}:
+Creates a \code{Rule}, which contains the \code{IPSet} objects, \code{ByteMatchSet} objects, and other predicates that identify the requests that you want to block. If you add more than one predicate to a \code{Rule}, a request must match all of the specifications to be allowed or blocked. For example, suppose that you add the following to a \code{Rule}:
 }
 \details{
 \itemize{

@@ -4,10 +4,12 @@
 \alias{get_import}
 \title{Gets information about an import job started with the \code{StartImport} operation}
 \usage{
-get_import(importId)
+get_import(
+  importId = "string"
+)
 }
 \arguments{
-\item{importId}{The identifier of the import job information to return.}
+\item{importId}{[required] The identifier of the import job information to return.}
 }
 \description{
 Gets information about an import job started with the \code{StartImport} operation.

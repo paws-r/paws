@@ -4,8 +4,12 @@
 \alias{describe_environment_managed_action_history}
 \title{Lists an environment's completed and failed managed actions}
 \usage{
-describe_environment_managed_action_history(EnvironmentId = NULL,
-  EnvironmentName = NULL, NextToken = NULL, MaxItems = NULL)
+describe_environment_managed_action_history(
+  EnvironmentId = "string",
+  EnvironmentName = "string",
+  NextToken = "string",
+  MaxItems = 123
+)
 }
 \arguments{
 \item{EnvironmentId}{The environment ID of the target environment.}

@@ -4,12 +4,15 @@
 \alias{delete_deployment}
 \title{Deletes a Deployment resource}
 \usage{
-delete_deployment(restApiId, deploymentId)
+delete_deployment(
+  restApiId = "string",
+  deploymentId = "string"
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{deploymentId}{[Required] The identifier of the Deployment resource to delete.}
+\item{deploymentId}{[required] [Required] The identifier of the Deployment resource to delete.}
 }
 \description{
 Deletes a Deployment resource. Deleting a deployment will only succeed if there are no Stage resources associated with it.

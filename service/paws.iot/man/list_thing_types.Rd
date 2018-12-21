@@ -4,8 +4,11 @@
 \alias{list_thing_types}
 \title{Lists the existing thing types}
 \usage{
-list_thing_types(nextToken = NULL, maxResults = NULL,
-  thingTypeName = NULL)
+list_thing_types(
+  nextToken = "string",
+  maxResults = 123,
+  thingTypeName = "string"
+)
 }
 \arguments{
 \item{nextToken}{The token to retrieve the next set of results.}

@@ -4,8 +4,23 @@
 \alias{describe_addresses}
 \title{Describes one or more of your Elastic IP addresses}
 \usage{
-describe_addresses(Filters = NULL, PublicIps = NULL, AllocationIds = NULL,
-  DryRun = NULL)
+describe_addresses(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  PublicIps = list(
+    "string"
+  ),
+  AllocationIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{Filters}{One or more filters. Filter names and values are case-sensitive.

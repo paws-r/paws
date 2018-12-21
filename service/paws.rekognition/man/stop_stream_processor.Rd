@@ -4,10 +4,12 @@
 \alias{stop_stream_processor}
 \title{Stops a running stream processor that was created by}
 \usage{
-stop_stream_processor(Name)
+stop_stream_processor(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of a stream processor created by .}
+\item{Name}{[required] The name of a stream processor created by .}
 }
 \description{
 Stops a running stream processor that was created by .

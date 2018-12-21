@@ -4,12 +4,22 @@
 \alias{start_job_run}
 \title{Starts a job run using a job definition}
 \usage{
-start_job_run(JobName, JobRunId = NULL, Arguments = NULL,
-  AllocatedCapacity = NULL, Timeout = NULL, NotificationProperty = NULL,
-  SecurityConfiguration = NULL)
+start_job_run(
+  JobName = "string",
+  JobRunId = "string",
+  Arguments = list(
+    "string"
+  ),
+  AllocatedCapacity = 123,
+  Timeout = 123,
+  NotificationProperty = list(
+    NotifyDelayAfter = 123
+  ),
+  SecurityConfiguration = "string"
+)
 }
 \arguments{
-\item{JobName}{The name of the job definition to use.}
+\item{JobName}{[required] The name of the job definition to use.}
 
 \item{JobRunId}{The ID of a previous JobRun to retry.}
 

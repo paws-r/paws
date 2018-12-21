@@ -4,7 +4,10 @@
 \alias{list_projects}
 \title{Gets information about projects}
 \usage{
-list_projects(arn = NULL, nextToken = NULL)
+list_projects(
+  arn = "string",
+  nextToken = "string"
+)
 }
 \arguments{
 \item{arn}{Optional. If no Amazon Resource Name (ARN) is specified, then AWS Device Farm returns a list of all projects for the AWS account. You can also specify a project ARN.}

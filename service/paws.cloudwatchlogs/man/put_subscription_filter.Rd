@@ -4,17 +4,23 @@
 \alias{put_subscription_filter}
 \title{Creates or updates a subscription filter and associates it with the specified log group}
 \usage{
-put_subscription_filter(logGroupName, filterName, filterPattern, destinationArn,
-  roleArn = NULL, distribution = NULL)
+put_subscription_filter(
+  logGroupName = "string",
+  filterName = "string",
+  filterPattern = "string",
+  destinationArn = "string",
+  roleArn = "string",
+  distribution = "Random"|"ByLogStream"
+)
 }
 \arguments{
-\item{logGroupName}{The name of the log group.}
+\item{logGroupName}{[required] The name of the log group.}
 
-\item{filterName}{A name for the subscription filter. If you are updating an existing filter, you must specify the correct name in \code{filterName}. Otherwise, the call fails because you cannot associate a second filter with a log group. To find the name of the filter currently associated with a log group, use DescribeSubscriptionFilters.}
+\item{filterName}{[required] A name for the subscription filter. If you are updating an existing filter, you must specify the correct name in \code{filterName}. Otherwise, the call fails because you cannot associate a second filter with a log group. To find the name of the filter currently associated with a log group, use DescribeSubscriptionFilters.}
 
-\item{filterPattern}{A filter pattern for subscribing to a filtered stream of log events.}
+\item{filterPattern}{[required] A filter pattern for subscribing to a filtered stream of log events.}
 
-\item{destinationArn}{The ARN of the destination to deliver matching log events to. Currently, the supported destinations are:
+\item{destinationArn}{[required] The ARN of the destination to deliver matching log events to. Currently, the supported destinations are:
 \itemize{
 \item An Amazon Kinesis stream belonging to the same account as the subscription filter, for same-account delivery.
 \item A logical destination (specified using an ARN) belonging to a different account, for cross-account delivery.

@@ -4,7 +4,9 @@
 \alias{describe_severity_levels}
 \title{Returns the list of severity levels that you can assign to an AWS Support case}
 \usage{
-describe_severity_levels(language = NULL)
+describe_severity_levels(
+  language = "string"
+)
 }
 \arguments{
 \item{language}{The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.}

@@ -4,10 +4,12 @@
 \alias{get_job_manifest}
 \title{Returns a link to an Amazon S3 presigned URL for the manifest file associated with the specified \code{JobId} value}
 \usage{
-get_job_manifest(JobId)
+get_job_manifest(
+  JobId = "string"
+)
 }
 \arguments{
-\item{JobId}{The ID for a job that you want to get the manifest file for, for example \code{JID123e4567-e89b-12d3-a456-426655440000}.}
+\item{JobId}{[required] The ID for a job that you want to get the manifest file for, for example \code{JID123e4567-e89b-12d3-a456-426655440000}.}
 }
 \description{
 Returns a link to an Amazon S3 presigned URL for the manifest file associated with the specified \code{JobId} value. You can access the manifest file for up to 60 minutes after this request has been made. To access the manifest file after 60 minutes have passed, you'll have to make another call to the \code{GetJobManifest} action.

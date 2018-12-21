@@ -4,14 +4,18 @@
 \alias{detach_classic_link_vpc}
 \title{Unlinks (detaches) a linked EC2-Classic instance from a VPC}
 \usage{
-detach_classic_link_vpc(InstanceId, VpcId, DryRun = NULL)
+detach_classic_link_vpc(
+  DryRun = TRUE|FALSE,
+  InstanceId = "string",
+  VpcId = "string"
+)
 }
 \arguments{
-\item{InstanceId}{The ID of the instance to unlink from the VPC.}
-
-\item{VpcId}{The ID of the VPC to which the instance is linked.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{InstanceId}{[required] The ID of the instance to unlink from the VPC.}
+
+\item{VpcId}{[required] The ID of the VPC to which the instance is linked.}
 }
 \description{
 Unlinks (detaches) a linked EC2-Classic instance from a VPC. After the instance has been unlinked, the VPC security groups are no longer associated with it. An instance is automatically unlinked from a VPC when it's stopped.

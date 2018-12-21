@@ -4,12 +4,15 @@
 \alias{create_tag_option}
 \title{Creates a TagOption}
 \usage{
-create_tag_option(Key, Value)
+create_tag_option(
+  Key = "string",
+  Value = "string"
+)
 }
 \arguments{
-\item{Key}{The TagOption key.}
+\item{Key}{[required] The TagOption key.}
 
-\item{Value}{The TagOption value.}
+\item{Value}{[required] The TagOption value.}
 }
 \description{
 Creates a TagOption.

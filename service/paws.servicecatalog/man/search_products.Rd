@@ -4,8 +4,18 @@
 \alias{search_products}
 \title{Gets information about the products to which the caller has access}
 \usage{
-search_products(AcceptLanguage = NULL, Filters = NULL, PageSize = NULL,
-  SortBy = NULL, SortOrder = NULL, PageToken = NULL)
+search_products(
+  AcceptLanguage = "string",
+  Filters = list(
+    list(
+      "string"
+    )
+  ),
+  PageSize = 123,
+  SortBy = "Title"|"VersionCount"|"CreationDate",
+  SortOrder = "ASCENDING"|"DESCENDING",
+  PageToken = "string"
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.

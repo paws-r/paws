@@ -4,14 +4,18 @@
 \alias{admin_remove_user_from_group}
 \title{Removes the specified user from the specified group}
 \usage{
-admin_remove_user_from_group(UserPoolId, Username, GroupName)
+admin_remove_user_from_group(
+  UserPoolId = "string",
+  Username = "string",
+  GroupName = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The user pool ID for the user pool.}
 
-\item{Username}{The username for the user.}
+\item{Username}{[required] The username for the user.}
 
-\item{GroupName}{The group name.}
+\item{GroupName}{[required] The group name.}
 }
 \description{
 Removes the specified user from the specified group.

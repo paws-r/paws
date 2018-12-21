@@ -4,10 +4,12 @@
 \alias{describe_hapg}
 \title{This is documentation for \strong{AWS CloudHSM Classic}}
 \usage{
-describe_hapg(HapgArn)
+describe_hapg(
+  HapgArn = "string"
+)
 }
 \arguments{
-\item{HapgArn}{The ARN of the high-availability partition group to describe.}
+\item{HapgArn}{[required] The ARN of the high-availability partition group to describe.}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHSM Classic FAQs}, the \href{http://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide}, and the \href{http://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.

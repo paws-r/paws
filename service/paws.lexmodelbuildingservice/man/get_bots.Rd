@@ -4,7 +4,11 @@
 \alias{get_bots}
 \title{Returns bot information as follows:}
 \usage{
-get_bots(nextToken = NULL, maxResults = NULL, nameContains = NULL)
+get_bots(
+  nextToken = "string",
+  maxResults = 123,
+  nameContains = "string"
+)
 }
 \arguments{
 \item{nextToken}{A pagination token that fetches the next page of bots. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of bots, specify the pagination token in the next request.}

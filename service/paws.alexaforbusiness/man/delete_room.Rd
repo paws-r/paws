@@ -4,7 +4,9 @@
 \alias{delete_room}
 \title{Deletes a room by the room ARN}
 \usage{
-delete_room(RoomArn = NULL)
+delete_room(
+  RoomArn = "string"
+)
 }
 \arguments{
 \item{RoomArn}{The ARN of the room to delete. Required.}

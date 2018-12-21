@@ -4,16 +4,20 @@
 \alias{change_message_visibility}
 \title{Changes the visibility timeout of a specified message in a queue to a new value}
 \usage{
-change_message_visibility(QueueUrl, ReceiptHandle, VisibilityTimeout)
+change_message_visibility(
+  QueueUrl = "string",
+  ReceiptHandle = "string",
+  VisibilityTimeout = 123
+)
 }
 \arguments{
-\item{QueueUrl}{The URL of the Amazon SQS queue whose message's visibility is changed.
+\item{QueueUrl}{[required] The URL of the Amazon SQS queue whose message's visibility is changed.
 
 Queue URLs and names are case-sensitive.}
 
-\item{ReceiptHandle}{The receipt handle associated with the message whose visibility timeout is changed. This parameter is returned by the \code{ReceiveMessage ReceiveMessage} action.}
+\item{ReceiptHandle}{[required] The receipt handle associated with the message whose visibility timeout is changed. This parameter is returned by the \code{ReceiveMessage ReceiveMessage} action.}
 
-\item{VisibilityTimeout}{The new value for the message's visibility timeout (in seconds). Values values: \code{0} to \code{43200}. Maximum: 12 hours.}
+\item{VisibilityTimeout}{[required] The new value for the message's visibility timeout (in seconds). Values values: \code{0} to \code{43200}. Maximum: 12 hours.}
 }
 \description{
 Changes the visibility timeout of a specified message in a queue to a new value. The maximum allowed timeout value is 12 hours. For more information, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html}{Visibility Timeout} in the \emph{Amazon Simple Queue Service Developer Guide}.

@@ -4,17 +4,32 @@
 \alias{test_invoke_method}
 \title{Simulate the execution of a Method in your RestApi with headers, parameters, and an incoming request body}
 \usage{
-test_invoke_method(restApiId, resourceId, httpMethod,
-  pathWithQueryString = NULL, body = NULL, headers = NULL,
-  multiValueHeaders = NULL, clientCertificateId = NULL,
-  stageVariables = NULL)
+test_invoke_method(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string",
+  pathWithQueryString = "string",
+  body = "string",
+  headers = list(
+    "string"
+  ),
+  multiValueHeaders = list(
+    list(
+      "string"
+    )
+  ),
+  clientCertificateId = "string",
+  stageVariables = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[Required] Specifies a test invoke method request's resource ID.}
+\item{resourceId}{[required] [Required] Specifies a test invoke method request's resource ID.}
 
-\item{httpMethod}{[Required] Specifies a test invoke method request's HTTP method.}
+\item{httpMethod}{[required] [Required] Specifies a test invoke method request's HTTP method.}
 
 \item{pathWithQueryString}{The URI path, including query string, of the simulated invocation request. Use this to specify path parameters and query string parameters.}
 

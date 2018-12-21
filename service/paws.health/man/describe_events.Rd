@@ -4,8 +4,63 @@
 \alias{describe_events}
 \title{Returns information about events that meet the specified filter criteria}
 \usage{
-describe_events(filter = NULL, nextToken = NULL, maxResults = NULL,
-  locale = NULL)
+describe_events(
+  filter = list(
+    eventArns = list(
+      "string"
+    ),
+    eventTypeCodes = list(
+      "string"
+    ),
+    services = list(
+      "string"
+    ),
+    regions = list(
+      "string"
+    ),
+    availabilityZones = list(
+      "string"
+    ),
+    startTimes = list(
+      list(
+        from = as.POSIXct("2015-01-01"),
+        to = as.POSIXct("2015-01-01")
+      )
+    ),
+    endTimes = list(
+      list(
+        from = as.POSIXct("2015-01-01"),
+        to = as.POSIXct("2015-01-01")
+      )
+    ),
+    lastUpdatedTimes = list(
+      list(
+        from = as.POSIXct("2015-01-01"),
+        to = as.POSIXct("2015-01-01")
+      )
+    ),
+    entityArns = list(
+      "string"
+    ),
+    entityValues = list(
+      "string"
+    ),
+    eventTypeCategories = list(
+      "issue"|"accountNotification"|"scheduledChange"
+    ),
+    tags = list(
+      list(
+        "string"
+      )
+    ),
+    eventStatusCodes = list(
+      "open"|"closed"|"upcoming"
+    )
+  ),
+  nextToken = "string",
+  maxResults = 123,
+  locale = "string"
+)
 }
 \arguments{
 \item{filter}{Values to narrow the results returned.}

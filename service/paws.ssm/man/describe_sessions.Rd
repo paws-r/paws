@@ -4,11 +4,20 @@
 \alias{describe_sessions}
 \title{Retrieves a list of all active sessions (both connected and disconnected) or terminated sessions from the past 30 days}
 \usage{
-describe_sessions(State, MaxResults = NULL, NextToken = NULL,
-  Filters = NULL)
+describe_sessions(
+  State = "Active"|"History",
+  MaxResults = 123,
+  NextToken = "string",
+  Filters = list(
+    list(
+      key = "InvokedAfter"|"InvokedBefore"|"Target"|"Owner"|"Status",
+      value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{State}{The session status to retrieve a list of sessions for. For example, "Active".}
+\item{State}{[required] The session status to retrieve a list of sessions for. For example, "Active".}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 

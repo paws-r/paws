@@ -4,10 +4,12 @@
 \alias{get_group}
 \title{Returns information about a specified resource group}
 \usage{
-get_group(GroupName)
+get_group(
+  GroupName = "string"
+)
 }
 \arguments{
-\item{GroupName}{The name of the resource group.}
+\item{GroupName}{[required] The name of the resource group.}
 }
 \description{
 Returns information about a specified resource group.

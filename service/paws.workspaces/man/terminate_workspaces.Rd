@@ -4,10 +4,16 @@
 \alias{terminate_workspaces}
 \title{Terminates the specified WorkSpaces}
 \usage{
-terminate_workspaces(TerminateWorkspaceRequests)
+terminate_workspaces(
+  TerminateWorkspaceRequests = list(
+    list(
+      WorkspaceId = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{TerminateWorkspaceRequests}{The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.}
+\item{TerminateWorkspaceRequests}{[required] The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.}
 }
 \description{
 Terminates the specified WorkSpaces.

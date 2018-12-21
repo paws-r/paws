@@ -4,24 +4,34 @@
 \alias{create_provisioned_product_plan}
 \title{Creates a plan}
 \usage{
-create_provisioned_product_plan(PlanName, PlanType, ProductId,
-  ProvisionedProductName, ProvisioningArtifactId, IdempotencyToken,
-  AcceptLanguage = NULL, NotificationArns = NULL, PathId = NULL,
-  ProvisioningParameters = NULL, Tags = NULL)
+create_provisioned_product_plan(
+  AcceptLanguage = "string",
+  PlanName = "string",
+  PlanType = "CLOUDFORMATION",
+  NotificationArns = list(
+    "string"
+  ),
+  PathId = "string",
+  ProductId = "string",
+  ProvisionedProductName = "string",
+  ProvisioningArtifactId = "string",
+  ProvisioningParameters = list(
+    list(
+      Key = "string",
+      Value = "string",
+      UsePreviousValue = TRUE|FALSE
+    )
+  ),
+  IdempotencyToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{PlanName}{The name of the plan.}
-
-\item{PlanType}{The plan type.}
-
-\item{ProductId}{The product identifier.}
-
-\item{ProvisionedProductName}{A user-friendly name for the provisioned product. This value must be unique for the AWS account and cannot be updated after the product is provisioned.}
-
-\item{ProvisioningArtifactId}{The identifier of the provisioning artifact.}
-
-\item{IdempotencyToken}{A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
@@ -29,11 +39,23 @@ create_provisioned_product_plan(PlanName, PlanType, ProductId,
 \item \code{zh} - Chinese
 }}
 
+\item{PlanName}{[required] The name of the plan.}
+
+\item{PlanType}{[required] The plan type.}
+
 \item{NotificationArns}{Passed to CloudFormation. The SNS topic ARNs to which to publish stack-related events.}
 
 \item{PathId}{The path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path. To list the paths for a product, use ListLaunchPaths.}
 
+\item{ProductId}{[required] The product identifier.}
+
+\item{ProvisionedProductName}{[required] A user-friendly name for the provisioned product. This value must be unique for the AWS account and cannot be updated after the product is provisioned.}
+
+\item{ProvisioningArtifactId}{[required] The identifier of the provisioning artifact.}
+
 \item{ProvisioningParameters}{Parameters specified by the administrator that are required for provisioning the product.}
+
+\item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.}
 
 \item{Tags}{One or more tags.}
 }

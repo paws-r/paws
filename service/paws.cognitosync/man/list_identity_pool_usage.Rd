@@ -4,7 +4,10 @@
 \alias{list_identity_pool_usage}
 \title{Gets a list of identity pools registered with Cognito}
 \usage{
-list_identity_pool_usage(NextToken = NULL, MaxResults = NULL)
+list_identity_pool_usage(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{NextToken}{A pagination token for obtaining the next page of results.}

@@ -4,10 +4,19 @@
 \alias{describe_target_health}
 \title{Describes the health of the specified targets or all of your targets}
 \usage{
-describe_target_health(TargetGroupArn, Targets = NULL)
+describe_target_health(
+  TargetGroupArn = "string",
+  Targets = list(
+    list(
+      Id = "string",
+      Port = 123,
+      AvailabilityZone = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{TargetGroupArn}{The Amazon Resource Name (ARN) of the target group.}
+\item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
 
 \item{Targets}{The targets.}
 }

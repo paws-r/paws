@@ -4,10 +4,34 @@
 \alias{create_workspaces}
 \title{Creates one or more WorkSpaces}
 \usage{
-create_workspaces(Workspaces)
+create_workspaces(
+  Workspaces = list(
+    list(
+      DirectoryId = "string",
+      UserName = "string",
+      BundleId = "string",
+      VolumeEncryptionKey = "string",
+      UserVolumeEncryptionEnabled = TRUE|FALSE,
+      RootVolumeEncryptionEnabled = TRUE|FALSE,
+      WorkspaceProperties = list(
+        RunningMode = "AUTO_STOP"|"ALWAYS_ON",
+        RunningModeAutoStopTimeoutInMinutes = 123,
+        RootVolumeSizeGib = 123,
+        UserVolumeSizeGib = 123,
+        ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{Workspaces}{The WorkSpaces to create. You can specify up to 25 WorkSpaces.}
+\item{Workspaces}{[required] The WorkSpaces to create. You can specify up to 25 WorkSpaces.}
 }
 \description{
 Creates one or more WorkSpaces.

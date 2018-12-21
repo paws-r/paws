@@ -4,10 +4,20 @@
 \alias{update_usage_plan}
 \title{Updates a usage plan of a given plan Id}
 \usage{
-update_usage_plan(usagePlanId, patchOperations = NULL)
+update_usage_plan(
+  usagePlanId = "string",
+  patchOperations = list(
+    list(
+      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
+      path = "string",
+      value = "string",
+      from = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{usagePlanId}{[Required] The Id of the to-be-updated usage plan.}
+\item{usagePlanId}{[required] [Required] The Id of the to-be-updated usage plan.}
 
 \item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
 }

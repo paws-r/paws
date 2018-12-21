@@ -4,12 +4,19 @@
 \alias{admin_disable_provider_for_user}
 \title{Disables the user from signing in with the specified external (SAML or social) identity provider}
 \usage{
-admin_disable_provider_for_user(UserPoolId, User)
+admin_disable_provider_for_user(
+  UserPoolId = "string",
+  User = list(
+    ProviderName = "string",
+    ProviderAttributeName = "string",
+    ProviderAttributeValue = "string"
+  )
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The user pool ID for the user pool.}
 
-\item{User}{The user to be disabled.}
+\item{User}{[required] The user to be disabled.}
 }
 \description{
 Disables the user from signing in with the specified external (SAML or social) identity provider. If the user to disable is a Cognito User Pools native username + password user, they are not permitted to use their password to sign-in. If the user to disable is a linked external IdP user, any link between that user and an existing user is removed. The next time the external user (no longer attached to the previously linked \code{DestinationUser}) signs in, they must create a new user account. See .

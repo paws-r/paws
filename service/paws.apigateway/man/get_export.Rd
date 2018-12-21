@@ -4,19 +4,26 @@
 \alias{get_export}
 \title{Exports a deployed version of a RestApi in a specified format}
 \usage{
-get_export(restApiId, stageName, exportType, parameters = NULL,
-  accepts = NULL)
+get_export(
+  restApiId = "string",
+  stageName = "string",
+  exportType = "string",
+  parameters = list(
+    "string"
+  ),
+  accepts = "string"
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{stageName}{[Required] The name of the Stage that will be exported.}
+\item{stageName}{[required] [Required] The name of the Stage that will be exported.}
 
-\item{exportType}{[Required] The type of export. Currently only 'swagger' is supported.}
+\item{exportType}{[required] [Required] The type of export. Acceptable values are 'oas30' for OpenAPI 3.0.x and 'swagger' for Swagger/OpenAPI 2.0.}
 
-\item{parameters}{A key-value map of query string parameters that specify properties of the export, depending on the requested \code{exportType}. For \code{exportType} \code{swagger}, any combination of the following parameters are supported: \code{extensions='integrations'} or \code{extensions='apigateway'} will export the API with x-amazon-apigateway-integration extensions. \code{extensions='authorizers'} will export the API with x-amazon-apigateway-authorizer extensions. \code{postman} will export the API with Postman extensions, allowing for import to the Postman tool}
+\item{parameters}{A key-value map of query string parameters that specify properties of the export, depending on the requested \code{exportType}. For \code{exportType} \code{oas30} and \code{swagger}, any combination of the following parameters are supported: \code{extensions='integrations'} or \code{extensions='apigateway'} will export the API with x-amazon-apigateway-integration extensions. \code{extensions='authorizers'} will export the API with x-amazon-apigateway-authorizer extensions. \code{postman} will export the API with Postman extensions, allowing for import to the Postman tool}
 
-\item{accepts}{The content-type of the export, for example \code{application/json}. Currently \code{application/json} and \code{application/yaml} are supported for \code{exportType} of \code{swagger}. This should be specified in the \code{Accept} header for direct API requests.}
+\item{accepts}{The content-type of the export, for example \code{application/json}. Currently \code{application/json} and \code{application/yaml} are supported for \code{exportType} of\code{oas30} and \code{swagger}. This should be specified in the \code{Accept} header for direct API requests.}
 }
 \description{
 Exports a deployed version of a RestApi in a specified format.

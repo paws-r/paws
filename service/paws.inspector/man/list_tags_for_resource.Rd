@@ -4,10 +4,12 @@
 \alias{list_tags_for_resource}
 \title{Lists all tags associated with an assessment template}
 \usage{
-list_tags_for_resource(resourceArn)
+list_tags_for_resource(
+  resourceArn = "string"
+)
 }
 \arguments{
-\item{resourceArn}{The ARN that specifies the assessment template whose tags you want to list.}
+\item{resourceArn}{[required] The ARN that specifies the assessment template whose tags you want to list.}
 }
 \description{
 Lists all tags associated with an assessment template.

@@ -4,10 +4,12 @@
 \alias{delete_organizational_unit}
 \title{Deletes an organizational unit (OU) from a root or another OU}
 \usage{
-delete_organizational_unit(OrganizationalUnitId)
+delete_organizational_unit(
+  OrganizationalUnitId = "string"
+)
 }
 \arguments{
-\item{OrganizationalUnitId}{The unique identifier (ID) of the organizational unit that you want to delete. You can get the ID from the ListOrganizationalUnitsForParent operation.
+\item{OrganizationalUnitId}{[required] The unique identifier (ID) of the organizational unit that you want to delete. You can get the ID from the ListOrganizationalUnitsForParent operation.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for an organizational unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.}
 }

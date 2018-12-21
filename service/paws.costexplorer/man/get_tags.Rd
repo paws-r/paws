@@ -4,13 +4,20 @@
 \alias{get_tags}
 \title{Queries for available tag keys and tag values for a specified period}
 \usage{
-get_tags(TimePeriod, SearchString = NULL, TagKey = NULL,
-  NextPageToken = NULL)
+get_tags(
+  SearchString = "string",
+  TimePeriod = list(
+    Start = "string",
+    End = "string"
+  ),
+  TagKey = "string",
+  NextPageToken = "string"
+)
 }
 \arguments{
-\item{TimePeriod}{The start and end dates for retrieving the dimension values. The start date is inclusive, but the end date is exclusive. For example, if \code{start} is \code{2017-01-01} and \code{end} is \code{2017-05-01}, then the cost and usage data is retrieved from \code{2017-01-01} up to and including \code{2017-04-30} but not including \code{2017-05-01}.}
-
 \item{SearchString}{The value that you want to search for.}
+
+\item{TimePeriod}{[required] The start and end dates for retrieving the dimension values. The start date is inclusive, but the end date is exclusive. For example, if \code{start} is \code{2017-01-01} and \code{end} is \code{2017-05-01}, then the cost and usage data is retrieved from \code{2017-01-01} up to and including \code{2017-04-30} but not including \code{2017-05-01}.}
 
 \item{TagKey}{The key of the tag that you want to return values for.}
 

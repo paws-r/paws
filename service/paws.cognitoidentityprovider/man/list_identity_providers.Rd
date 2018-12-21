@@ -4,10 +4,14 @@
 \alias{list_identity_providers}
 \title{Lists information about all identity providers for a user pool}
 \usage{
-list_identity_providers(UserPoolId, MaxResults = NULL, NextToken = NULL)
+list_identity_providers(
+  UserPoolId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID.}
+\item{UserPoolId}{[required] The user pool ID.}
 
 \item{MaxResults}{The maximum number of identity providers to return.}
 

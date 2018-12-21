@@ -4,10 +4,19 @@
 \alias{recognize_celebrities}
 \title{Returns an array of celebrities recognized in the input image}
 \usage{
-recognize_celebrities(Image)
+recognize_celebrities(
+  Image = list(
+    Bytes = raw,
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{Image}{The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.}
+\item{Image}{[required] The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.}
 }
 \description{
 Returns an array of celebrities recognized in the input image. For more information, see Recognizing Celebrities in the Amazon Rekognition Developer Guide.

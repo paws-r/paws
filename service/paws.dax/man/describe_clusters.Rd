@@ -4,8 +4,13 @@
 \alias{describe_clusters}
 \title{Returns information about all provisioned DAX clusters if no cluster identifier is specified, or about a specific DAX cluster if a cluster identifier is supplied}
 \usage{
-describe_clusters(ClusterNames = NULL, MaxResults = NULL,
-  NextToken = NULL)
+describe_clusters(
+  ClusterNames = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{ClusterNames}{The names of the DAX clusters being described.}

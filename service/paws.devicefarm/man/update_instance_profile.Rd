@@ -4,12 +4,19 @@
 \alias{update_instance_profile}
 \title{Updates information about an existing private device instance profile}
 \usage{
-update_instance_profile(arn, name = NULL, description = NULL,
-  packageCleanup = NULL, excludeAppPackagesFromCleanup = NULL,
-  rebootAfterUse = NULL)
+update_instance_profile(
+  arn = "string",
+  name = "string",
+  description = "string",
+  packageCleanup = TRUE|FALSE,
+  excludeAppPackagesFromCleanup = list(
+    "string"
+  ),
+  rebootAfterUse = TRUE|FALSE
+)
 }
 \arguments{
-\item{arn}{The Amazon Resource Name (ARN) of the instance profile.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of the instance profile.}
 
 \item{name}{The updated name for your instance profile.}
 

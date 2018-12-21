@@ -4,12 +4,15 @@
 \alias{delete_configuration_template}
 \title{Deletes the specified configuration template}
 \usage{
-delete_configuration_template(ApplicationName, TemplateName)
+delete_configuration_template(
+  ApplicationName = "string",
+  TemplateName = "string"
+)
 }
 \arguments{
-\item{ApplicationName}{The name of the application to delete the configuration template from.}
+\item{ApplicationName}{[required] The name of the application to delete the configuration template from.}
 
-\item{TemplateName}{The name of the configuration template to delete.}
+\item{TemplateName}{[required] The name of the configuration template to delete.}
 }
 \description{
 Deletes the specified configuration template.

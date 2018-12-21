@@ -4,7 +4,11 @@
 \alias{list_builds}
 \title{Retrieves build records for all builds associated with the AWS account in use}
 \usage{
-list_builds(Status = NULL, Limit = NULL, NextToken = NULL)
+list_builds(
+  Status = "INITIALIZED"|"READY"|"FAILED",
+  Limit = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{Status}{Build status to filter results by. To retrieve all builds, leave this parameter empty.

@@ -4,10 +4,12 @@
 \alias{decline_handshake}
 \title{Declines a handshake request}
 \usage{
-decline_handshake(HandshakeId)
+decline_handshake(
+  HandshakeId = "string"
+)
 }
 \arguments{
-\item{HandshakeId}{The unique identifier (ID) of the handshake that you want to decline. You can get the ID from the ListHandshakesForAccount operation.
+\item{HandshakeId}{[required] The unique identifier (ID) of the handshake that you want to decline. You can get the ID from the ListHandshakesForAccount operation.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.}
 }

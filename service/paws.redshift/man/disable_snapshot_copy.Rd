@@ -4,10 +4,12 @@
 \alias{disable_snapshot_copy}
 \title{Disables the automatic copying of snapshots from one region to another region for a specified cluster}
 \usage{
-disable_snapshot_copy(ClusterIdentifier)
+disable_snapshot_copy(
+  ClusterIdentifier = "string"
+)
 }
 \arguments{
-\item{ClusterIdentifier}{The unique identifier of the source cluster that you want to disable copying of snapshots to a destination region.
+\item{ClusterIdentifier}{[required] The unique identifier of the source cluster that you want to disable copying of snapshots to a destination region.
 
 Constraints: Must be the valid name of an existing cluster that has cross-region snapshot copy enabled.}
 }

@@ -4,11 +4,17 @@
 \alias{invoke_device_method}
 \title{Given a device ID, issues a request to invoke a named device method (with possible parameters)}
 \usage{
-invoke_device_method(DeviceId, DeviceMethod = NULL,
-  DeviceMethodParameters = NULL)
+invoke_device_method(
+  DeviceId = "string",
+  DeviceMethod = list(
+    DeviceType = "string",
+    MethodName = "string"
+  ),
+  DeviceMethodParameters = "string"
+)
 }
 \arguments{
-\item{DeviceId}{The unique identifier of the device.}
+\item{DeviceId}{[required] The unique identifier of the device.}
 
 \item{DeviceMethod}{The device method to invoke.}
 

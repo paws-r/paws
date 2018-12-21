@@ -4,7 +4,17 @@
 \alias{describe_event_categories}
 \title{Lists categories for all event source types, or, if specified, for a specified source type}
 \usage{
-describe_event_categories(SourceType = NULL, Filters = NULL)
+describe_event_categories(
+  SourceType = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  )
+)
 }
 \arguments{
 \item{SourceType}{The type of AWS DMS resource that generates events.
@@ -14,7 +24,7 @@ Valid values: replication-instance | migration-task}
 \item{Filters}{Filters applied to the action.}
 }
 \description{
-Lists categories for all event source types, or, if specified, for a specified source type. You can see a list of the event categories and source types in \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html}{Working with Events and Notifications} in the AWS Database Migration Service User Guide.
+Lists categories for all event source types, or, if specified, for a specified source type. You can see a list of the event categories and source types in \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html}{Working with Events and Notifications} in the \emph{AWS Database Migration Service User Guide.}
 }
 \examples{
 

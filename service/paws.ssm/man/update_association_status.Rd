@@ -4,14 +4,23 @@
 \alias{update_association_status}
 \title{Updates the status of the Systems Manager document associated with the specified instance}
 \usage{
-update_association_status(Name, InstanceId, AssociationStatus)
+update_association_status(
+  Name = "string",
+  InstanceId = "string",
+  AssociationStatus = list(
+    Date = as.POSIXct("2015-01-01"),
+    Name = "Pending"|"Success"|"Failed",
+    Message = "string",
+    AdditionalInfo = "string"
+  )
+)
 }
 \arguments{
-\item{Name}{The name of the Systems Manager document.}
+\item{Name}{[required] The name of the Systems Manager document.}
 
-\item{InstanceId}{The ID of the instance.}
+\item{InstanceId}{[required] The ID of the instance.}
 
-\item{AssociationStatus}{The association status.}
+\item{AssociationStatus}{[required] The association status.}
 }
 \description{
 Updates the status of the Systems Manager document associated with the specified instance.

@@ -4,10 +4,12 @@
 \alias{get_speech_synthesis_task}
 \title{Retrieves a specific SpeechSynthesisTask object based on its TaskID}
 \usage{
-get_speech_synthesis_task(TaskId)
+get_speech_synthesis_task(
+  TaskId = "string"
+)
 }
 \arguments{
-\item{TaskId}{The Amazon Polly generated identifier for a speech synthesis task.}
+\item{TaskId}{[required] The Amazon Polly generated identifier for a speech synthesis task.}
 }
 \description{
 Retrieves a specific SpeechSynthesisTask object based on its TaskID. This object contains information about the given speech synthesis task, including the status of the task, and a link to the S3 bucket containing the output of the task.

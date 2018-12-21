@@ -4,11 +4,14 @@
 \alias{describe_configuration_settings}
 \title{Returns a description of the settings for the specified configuration set, that is, either a configuration template or the configuration set associated with a running environment}
 \usage{
-describe_configuration_settings(ApplicationName, TemplateName = NULL,
-  EnvironmentName = NULL)
+describe_configuration_settings(
+  ApplicationName = "string",
+  TemplateName = "string",
+  EnvironmentName = "string"
+)
 }
 \arguments{
-\item{ApplicationName}{The application for the environment or configuration template.}
+\item{ApplicationName}{[required] The application for the environment or configuration template.}
 
 \item{TemplateName}{The name of the configuration template to describe.
 

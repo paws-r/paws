@@ -4,10 +4,12 @@
 \alias{delete_snapshot}
 \title{Deletes a directory snapshot}
 \usage{
-delete_snapshot(SnapshotId)
+delete_snapshot(
+  SnapshotId = "string"
+)
 }
 \arguments{
-\item{SnapshotId}{The identifier of the directory snapshot to be deleted.}
+\item{SnapshotId}{[required] The identifier of the directory snapshot to be deleted.}
 }
 \description{
 Deletes a directory snapshot.

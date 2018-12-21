@@ -4,10 +4,13 @@
 \alias{get_policy}
 \title{Returns the resource policy associated with the specified Lambda function}
 \usage{
-get_policy(FunctionName, Qualifier = NULL)
+get_policy(
+  FunctionName = "string",
+  Qualifier = "string"
+)
 }
 \arguments{
-\item{FunctionName}{The name of the lambda function.
+\item{FunctionName}{[required] The name of the lambda function.
 
 \strong{Name formats}
 \itemize{

@@ -4,8 +4,13 @@
 \alias{describe_export_configurations}
 \title{\code{DescribeExportConfigurations} is deprecated}
 \usage{
-describe_export_configurations(exportIds = NULL, maxResults = NULL,
-  nextToken = NULL)
+describe_export_configurations(
+  exportIds = list(
+    "string"
+  ),
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
 \item{exportIds}{A list of continuous export ids to search for.}

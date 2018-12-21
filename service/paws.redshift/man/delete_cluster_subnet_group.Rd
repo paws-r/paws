@@ -4,10 +4,12 @@
 \alias{delete_cluster_subnet_group}
 \title{Deletes the specified cluster subnet group}
 \usage{
-delete_cluster_subnet_group(ClusterSubnetGroupName)
+delete_cluster_subnet_group(
+  ClusterSubnetGroupName = "string"
+)
 }
 \arguments{
-\item{ClusterSubnetGroupName}{The name of the cluster subnet group name to be deleted.}
+\item{ClusterSubnetGroupName}{[required] The name of the cluster subnet group name to be deleted.}
 }
 \description{
 Deletes the specified cluster subnet group.

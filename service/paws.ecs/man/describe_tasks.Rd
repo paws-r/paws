@@ -4,12 +4,22 @@
 \alias{describe_tasks}
 \title{Describes a specified task or tasks}
 \usage{
-describe_tasks(tasks, cluster = NULL)
+describe_tasks(
+  cluster = "string",
+  tasks = list(
+    "string"
+  ),
+  include = list(
+    "TAGS"
+  )
+)
 }
 \arguments{
-\item{tasks}{A list of up to 100 task IDs or full ARN entries.}
-
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that hosts the task to describe. If you do not specify a cluster, the default cluster is assumed.}
+
+\item{tasks}{[required] A list of up to 100 task IDs or full ARN entries.}
+
+\item{include}{Specifies whether you want to see the resource tags for the task. If \code{TAGS} is specified, the tags are included in the response. If this field is omitted, tags are not included in the response.}
 }
 \description{
 Describes a specified task or tasks.

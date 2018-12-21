@@ -4,12 +4,15 @@
 \alias{create_luna_client}
 \title{This is documentation for \strong{AWS CloudHSM Classic}}
 \usage{
-create_luna_client(Certificate, Label = NULL)
+create_luna_client(
+  Label = "string",
+  Certificate = "string"
+)
 }
 \arguments{
-\item{Certificate}{The contents of a Base64-Encoded X.509 v3 certificate to be installed on the HSMs used by this client.}
-
 \item{Label}{The label for the client.}
+
+\item{Certificate}{[required] The contents of a Base64-Encoded X.509 v3 certificate to be installed on the HSMs used by this client.}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHSM Classic FAQs}, the \href{http://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide}, and the \href{http://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.

@@ -4,12 +4,20 @@
 \alias{add_tags}
 \title{Attaches tags to an existing Elasticsearch domain}
 \usage{
-add_tags(ARN, TagList)
+add_tags(
+  ARN = "string",
+  TagList = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ARN}{Specify the \code{ARN} for which you want to add the tags.}
+\item{ARN}{[required] Specify the \code{ARN} for which you want to add the tags.}
 
-\item{TagList}{List of \code{Tag} that need to be added for the Elasticsearch domain.}
+\item{TagList}{[required] List of \code{Tag} that need to be added for the Elasticsearch domain.}
 }
 \description{
 Attaches tags to an existing Elasticsearch domain. Tags are a set of case-sensitive key value pairs. An Elasticsearch domain may have up to 10 tags. See \href{http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-awsresorcetagging}{Tagging Amazon Elasticsearch Service Domains for more information.}

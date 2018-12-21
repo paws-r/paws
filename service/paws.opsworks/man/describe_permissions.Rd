@@ -4,7 +4,10 @@
 \alias{describe_permissions}
 \title{Describes the permissions for a specified stack}
 \usage{
-describe_permissions(IamUserArn = NULL, StackId = NULL)
+describe_permissions(
+  IamUserArn = "string",
+  StackId = "string"
+)
 }
 \arguments{
 \item{IamUserArn}{The user's IAM ARN. This can also be a federated user's ARN. For more information about IAM ARNs, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}

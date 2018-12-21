@@ -4,8 +4,16 @@
 \alias{update_thing_groups_for_thing}
 \title{Updates the groups to which the thing belongs}
 \usage{
-update_thing_groups_for_thing(thingName = NULL, thingGroupsToAdd = NULL,
-  thingGroupsToRemove = NULL)
+update_thing_groups_for_thing(
+  thingName = "string",
+  thingGroupsToAdd = list(
+    "string"
+  ),
+  thingGroupsToRemove = list(
+    "string"
+  ),
+  overrideDynamicGroups = TRUE|FALSE
+)
 }
 \arguments{
 \item{thingName}{The thing whose group memberships will be updated.}
@@ -13,6 +21,8 @@ update_thing_groups_for_thing(thingName = NULL, thingGroupsToAdd = NULL,
 \item{thingGroupsToAdd}{The groups to which the thing will be added.}
 
 \item{thingGroupsToRemove}{The groups from which the thing will be removed.}
+
+\item{overrideDynamicGroups}{Override dynamic thing groups with static thing groups when 10-group limit is reached. If a thing belongs to 10 thing groups, and one or more of those groups are dynamic thing groups, adding a thing to a static group removes the thing from the last dynamic group.}
 }
 \description{
 Updates the groups to which the thing belongs.

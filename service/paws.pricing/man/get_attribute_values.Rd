@@ -4,13 +4,17 @@
 \alias{get_attribute_values}
 \title{Returns a list of attribute values}
 \usage{
-get_attribute_values(ServiceCode, AttributeName, NextToken = NULL,
-  MaxResults = NULL)
+get_attribute_values(
+  ServiceCode = "string",
+  AttributeName = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{ServiceCode}{The service code for the service whose attributes you want to retrieve. For example, if you want the retrieve an EC2 attribute, use \code{AmazonEC2}.}
+\item{ServiceCode}{[required] The service code for the service whose attributes you want to retrieve. For example, if you want the retrieve an EC2 attribute, use \code{AmazonEC2}.}
 
-\item{AttributeName}{The name of the attribute that you want to retrieve the values for, such as \code{volumeType}.}
+\item{AttributeName}{[required] The name of the attribute that you want to retrieve the values for, such as \code{volumeType}.}
 
 \item{NextToken}{The pagination token that indicates the next set of results that you want to retrieve.}
 

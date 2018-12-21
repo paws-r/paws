@@ -4,12 +4,18 @@
 \alias{update_time_to_live}
 \title{The UpdateTimeToLive method will enable or disable TTL for the specified table}
 \usage{
-update_time_to_live(TableName, TimeToLiveSpecification)
+update_time_to_live(
+  TableName = "string",
+  TimeToLiveSpecification = list(
+    Enabled = TRUE|FALSE,
+    AttributeName = "string"
+  )
+)
 }
 \arguments{
-\item{TableName}{The name of the table to be configured.}
+\item{TableName}{[required] The name of the table to be configured.}
 
-\item{TimeToLiveSpecification}{Represents the settings used to enable or disable Time to Live for the specified table.}
+\item{TimeToLiveSpecification}{[required] Represents the settings used to enable or disable Time to Live for the specified table.}
 }
 \description{
 The UpdateTimeToLive method will enable or disable TTL for the specified table. A successful \code{UpdateTimeToLive} call returns the current \code{TimeToLiveSpecification}; it may take up to one hour for the change to fully process. Any additional \code{UpdateTimeToLive} calls for the same table during this one hour duration result in a \code{ValidationException}.

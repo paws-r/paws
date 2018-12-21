@@ -4,10 +4,14 @@
 \alias{batch_get_deployments}
 \title{Gets information about one or more deployments}
 \usage{
-batch_get_deployments(deploymentIds)
+batch_get_deployments(
+  deploymentIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{deploymentIds}{A list of deployment IDs, separated by spaces.}
+\item{deploymentIds}{[required] A list of deployment IDs, separated by spaces.}
 }
 \description{
 Gets information about one or more deployments.

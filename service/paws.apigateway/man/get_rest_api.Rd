@@ -4,10 +4,12 @@
 \alias{get_rest_api}
 \title{Lists the RestApi resource in the collection}
 \usage{
-get_rest_api(restApiId)
+get_rest_api(
+  restApiId = "string"
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 }
 \description{
 Lists the RestApi resource in the collection.

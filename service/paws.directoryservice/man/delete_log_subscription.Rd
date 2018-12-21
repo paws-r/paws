@@ -4,10 +4,12 @@
 \alias{delete_log_subscription}
 \title{Deletes the specified log subscription}
 \usage{
-delete_log_subscription(DirectoryId)
+delete_log_subscription(
+  DirectoryId = "string"
+)
 }
 \arguments{
-\item{DirectoryId}{Identifier (ID) of the directory whose log subscription you want to delete.}
+\item{DirectoryId}{[required] Identifier (ID) of the directory whose log subscription you want to delete.}
 }
 \description{
 Deletes the specified log subscription.

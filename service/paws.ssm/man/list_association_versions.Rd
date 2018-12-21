@@ -4,11 +4,14 @@
 \alias{list_association_versions}
 \title{Retrieves all versions of an association for a specific association ID}
 \usage{
-list_association_versions(AssociationId, MaxResults = NULL,
-  NextToken = NULL)
+list_association_versions(
+  AssociationId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{AssociationId}{The association ID for which you want to view all versions.}
+\item{AssociationId}{[required] The association ID for which you want to view all versions.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 

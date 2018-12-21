@@ -4,11 +4,29 @@
 \alias{list_configurations}
 \title{Retrieves a list of configuration items as specified by the value passed to the required paramater \code{configurationType}}
 \usage{
-list_configurations(configurationType, filters = NULL, maxResults = NULL,
-  nextToken = NULL, orderBy = NULL)
+list_configurations(
+  configurationType = "SERVER"|"PROCESS"|"CONNECTION"|"APPLICATION",
+  filters = list(
+    list(
+      name = "string",
+      values = list(
+        "string"
+      ),
+      condition = "string"
+    )
+  ),
+  maxResults = 123,
+  nextToken = "string",
+  orderBy = list(
+    list(
+      fieldName = "string",
+      sortOrder = "ASC"|"DESC"
+    )
+  )
+)
 }
 \arguments{
-\item{configurationType}{A valid configuration identified by Application Discovery Service.}
+\item{configurationType}{[required] A valid configuration identified by Application Discovery Service.}
 
 \item{filters}{You can filter the request using various logical operators and a \emph{key}-\emph{value} format. For example:
 

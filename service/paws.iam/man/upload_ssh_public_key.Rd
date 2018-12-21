@@ -4,14 +4,17 @@
 \alias{upload_ssh_public_key}
 \title{Uploads an SSH public key and associates it with the specified IAM user}
 \usage{
-upload_ssh_public_key(UserName, SSHPublicKeyBody)
+upload_ssh_public_key(
+  UserName = "string",
+  SSHPublicKeyBody = "string"
+)
 }
 \arguments{
-\item{UserName}{The name of the IAM user to associate the SSH public key with.
+\item{UserName}{[required] The name of the IAM user to associate the SSH public key with.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
-\item{SSHPublicKeyBody}{The SSH public key. The public key must be encoded in ssh-rsa format or PEM format. The miminum bit-length of the public key is 2048 bits. For example, you can generate a 2048-bit key, and the resulting PEM file is 1679 bytes long.
+\item{SSHPublicKeyBody}{[required] The SSH public key. The public key must be encoded in ssh-rsa format or PEM format. The minimum bit-length of the public key is 2048 bits. For example, you can generate a 2048-bit key, and the resulting PEM file is 1679 bytes long.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate this parameter is a string of characters consisting of the following:
 \itemize{

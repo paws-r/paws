@@ -4,12 +4,15 @@
 \alias{associate_kms_key}
 \title{Associates the specified AWS Key Management Service (AWS KMS) customer master key (CMK) with the specified log group}
 \usage{
-associate_kms_key(logGroupName, kmsKeyId)
+associate_kms_key(
+  logGroupName = "string",
+  kmsKeyId = "string"
+)
 }
 \arguments{
-\item{logGroupName}{The name of the log group.}
+\item{logGroupName}{[required] The name of the log group.}
 
-\item{kmsKeyId}{The Amazon Resource Name (ARN) of the CMK to use when encrypting log data. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms}{Amazon Resource Names - AWS Key Management Service (AWS KMS)}.}
+\item{kmsKeyId}{[required] The Amazon Resource Name (ARN) of the CMK to use when encrypting log data. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms}{Amazon Resource Names - AWS Key Management Service (AWS KMS)}.}
 }
 \description{
 Associates the specified AWS Key Management Service (AWS KMS) customer master key (CMK) with the specified log group.

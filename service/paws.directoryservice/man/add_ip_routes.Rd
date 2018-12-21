@@ -4,13 +4,21 @@
 \alias{add_ip_routes}
 \title{If the DNS server for your on-premises domain uses a publicly addressable IP address, you must add a CIDR address block to correctly route traffic to and from your Microsoft AD on Amazon Web Services}
 \usage{
-add_ip_routes(DirectoryId, IpRoutes,
-  UpdateSecurityGroupForDirectoryControllers = NULL)
+add_ip_routes(
+  DirectoryId = "string",
+  IpRoutes = list(
+    list(
+      CidrIp = "string",
+      Description = "string"
+    )
+  ),
+  UpdateSecurityGroupForDirectoryControllers = TRUE|FALSE
+)
 }
 \arguments{
-\item{DirectoryId}{Identifier (ID) of the directory to which to add the address block.}
+\item{DirectoryId}{[required] Identifier (ID) of the directory to which to add the address block.}
 
-\item{IpRoutes}{IP address blocks, using CIDR format, of the traffic to route. This is often the IP address block of the DNS server used for your on-premises domain.}
+\item{IpRoutes}{[required] IP address blocks, using CIDR format, of the traffic to route. This is often the IP address block of the DNS server used for your on-premises domain.}
 
 \item{UpdateSecurityGroupForDirectoryControllers}{If set to true, updates the inbound and outbound rules of the security group that has the description: "AWS created security group for \emph{directory ID} directory controllers." Following are the new rules:
 

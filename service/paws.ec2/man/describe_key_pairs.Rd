@@ -4,7 +4,20 @@
 \alias{describe_key_pairs}
 \title{Describes one or more of your key pairs}
 \usage{
-describe_key_pairs(Filters = NULL, KeyNames = NULL, DryRun = NULL)
+describe_key_pairs(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  KeyNames = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{Filters}{One or more filters.

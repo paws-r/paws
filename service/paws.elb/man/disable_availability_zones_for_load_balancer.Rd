@@ -4,13 +4,17 @@
 \alias{disable_availability_zones_for_load_balancer}
 \title{Removes the specified Availability Zones from the set of Availability Zones for the specified load balancer in EC2-Classic or a default VPC}
 \usage{
-disable_availability_zones_for_load_balancer(LoadBalancerName,
-  AvailabilityZones)
+disable_availability_zones_for_load_balancer(
+  LoadBalancerName = "string",
+  AvailabilityZones = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{LoadBalancerName}{The name of the load balancer.}
+\item{LoadBalancerName}{[required] The name of the load balancer.}
 
-\item{AvailabilityZones}{The Availability Zones.}
+\item{AvailabilityZones}{[required] The Availability Zones.}
 }
 \description{
 Removes the specified Availability Zones from the set of Availability Zones for the specified load balancer in EC2-Classic or a default VPC.

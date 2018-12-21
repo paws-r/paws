@@ -4,12 +4,15 @@
 \alias{put_notification_channel}
 \title{Designates the IAM role and Amazon Simple Notification Service (SNS) topic that AWS Firewall Manager uses to record SNS logs}
 \usage{
-put_notification_channel(SnsTopicArn, SnsRoleName)
+put_notification_channel(
+  SnsTopicArn = "string",
+  SnsRoleName = "string"
+)
 }
 \arguments{
-\item{SnsTopicArn}{The Amazon Resource Name (ARN) of the SNS topic that collects notifications from AWS Firewall Manager.}
+\item{SnsTopicArn}{[required] The Amazon Resource Name (ARN) of the SNS topic that collects notifications from AWS Firewall Manager.}
 
-\item{SnsRoleName}{The Amazon Resource Name (ARN) of the IAM role that allows Amazon SNS to record AWS Firewall Manager activity.}
+\item{SnsRoleName}{[required] The Amazon Resource Name (ARN) of the IAM role that allows Amazon SNS to record AWS Firewall Manager activity.}
 }
 \description{
 Designates the IAM role and Amazon Simple Notification Service (SNS) topic that AWS Firewall Manager uses to record SNS logs.

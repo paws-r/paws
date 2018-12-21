@@ -4,10 +4,14 @@
 \alias{list_stack_set_operations}
 \title{Returns summary information about operations performed on a stack set}
 \usage{
-list_stack_set_operations(StackSetName, NextToken = NULL, MaxResults = NULL)
+list_stack_set_operations(
+  StackSetName = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{StackSetName}{The name or unique ID of the stack set that you want to get operation summaries for.}
+\item{StackSetName}{[required] The name or unique ID of the stack set that you want to get operation summaries for.}
 
 \item{NextToken}{If the previous paginated request didn't return all of the remaining results, the response object's \code{NextToken} parameter value is set to a token. To retrieve the next set of results, call \code{ListStackSetOperations} again and assign that token to the request object's \code{NextToken} parameter. If there are no remaining results, the previous response object's \code{NextToken} parameter is set to \code{null}.}
 

@@ -6,15 +6,20 @@
 \alias{paws.mobileanalytics-package}
 \title{paws.mobileanalytics: Amazon Mobile Analytics}
 \description{
-Amazon Mobile Analytics is a service for
-collecting, visualizing, and understanding app usage data at scale.
+Amazon Mobile Analytics is a service for collecting,
+visualizing, and understanding app usage data at scale.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

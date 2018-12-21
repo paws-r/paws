@@ -4,13 +4,18 @@
 \alias{put_object}
 \title{Uploads an object to the specified path}
 \usage{
-put_object(Body, Path, ContentType = NULL, CacheControl = NULL,
-  StorageClass = NULL)
+put_object(
+  Body = raw,
+  Path = "string",
+  ContentType = "string",
+  CacheControl = "string",
+  StorageClass = "TEMPORAL"
+)
 }
 \arguments{
-\item{Body}{The bytes to be stored.}
+\item{Body}{[required] The bytes to be stored.}
 
-\item{Path}{The path (including the file name) where the object is stored in the container. Format: <folder name>/<folder name>/<file name>
+\item{Path}{[required] The path (including the file name) where the object is stored in the container. Format: <folder name>/<folder name>/<file name>
 
 For example, to upload the file \code{mlaw.avi} to the folder path \code{premium\canada} in the container \code{movies}, enter the path \code{premium/canada/mlaw.avi}.
 
@@ -33,7 +38,7 @@ Headers with a custom user-defined value are also accepted.}
 \item{StorageClass}{Indicates the storage class of a \code{Put} request. Defaults to high-performance temporal storage class, and objects are persisted into durable storage shortly after being received.}
 }
 \description{
-Uploads an object to the specified path. Object sizes are limited to 10 MB.
+Uploads an object to the specified path. Object sizes are limited to 25 MB.
 }
 \examples{
 

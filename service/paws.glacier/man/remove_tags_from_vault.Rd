@@ -4,12 +4,18 @@
 \alias{remove_tags_from_vault}
 \title{This operation removes one or more tags from the set of tags attached to a vault}
 \usage{
-remove_tags_from_vault(accountId, vaultName, TagKeys = NULL)
+remove_tags_from_vault(
+  accountId = "string",
+  vaultName = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{accountId}{The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
+\item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
 
-\item{vaultName}{The name of the vault.}
+\item{vaultName}{[required] The name of the vault.}
 
 \item{TagKeys}{A list of tag keys. Each corresponding tag is removed from the vault.}
 }

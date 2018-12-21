@@ -4,17 +4,26 @@
 \alias{modify_fleet}
 \title{Modifies the specified EC2 Fleet}
 \usage{
-modify_fleet(FleetId, TargetCapacitySpecification, DryRun = NULL,
-  ExcessCapacityTerminationPolicy = NULL)
+modify_fleet(
+  DryRun = TRUE|FALSE,
+  ExcessCapacityTerminationPolicy = "no-termination"|"termination",
+  FleetId = "string",
+  TargetCapacitySpecification = list(
+    TotalTargetCapacity = 123,
+    OnDemandTargetCapacity = 123,
+    SpotTargetCapacity = 123,
+    DefaultTargetCapacityType = "spot"|"on-demand"
+  )
+)
 }
 \arguments{
-\item{FleetId}{The ID of the EC2 Fleet.}
-
-\item{TargetCapacitySpecification}{The size of the EC2 Fleet.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ExcessCapacityTerminationPolicy}{Indicates whether running instances should be terminated if the total target capacity of the EC2 Fleet is decreased below the current size of the EC2 Fleet.}
+
+\item{FleetId}{[required] The ID of the EC2 Fleet.}
+
+\item{TargetCapacitySpecification}{[required] The size of the EC2 Fleet.}
 }
 \description{
 Modifies the specified EC2 Fleet.

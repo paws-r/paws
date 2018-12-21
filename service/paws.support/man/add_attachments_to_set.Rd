@@ -4,12 +4,20 @@
 \alias{add_attachments_to_set}
 \title{Adds one or more attachments to an attachment set}
 \usage{
-add_attachments_to_set(attachments, attachmentSetId = NULL)
+add_attachments_to_set(
+  attachmentSetId = "string",
+  attachments = list(
+    list(
+      fileName = "string",
+      data = raw
+    )
+  )
+)
 }
 \arguments{
-\item{attachments}{One or more attachments to add to the set. The limit is 3 attachments per set, and the size limit is 5 MB per attachment.}
-
 \item{attachmentSetId}{The ID of the attachment set. If an \code{attachmentSetId} is not specified, a new attachment set is created, and the ID of the set is returned in the response. If an \code{attachmentSetId} is specified, the attachments are added to the specified set, if it exists.}
+
+\item{attachments}{[required] One or more attachments to add to the set. The limit is 3 attachments per set, and the size limit is 5 MB per attachment.}
 }
 \description{
 Adds one or more attachments to an attachment set. If an \code{attachmentSetId} is not specified, a new attachment set is created, and the ID of the set is returned in the response. If an \code{attachmentSetId} is specified, the attachments are added to the specified set, if it exists.

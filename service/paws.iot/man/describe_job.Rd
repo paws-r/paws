@@ -4,10 +4,12 @@
 \alias{describe_job}
 \title{Describes a job}
 \usage{
-describe_job(jobId)
+describe_job(
+  jobId = "string"
+)
 }
 \arguments{
-\item{jobId}{The unique identifier you assigned to this job when it was created.}
+\item{jobId}{[required] The unique identifier you assigned to this job when it was created.}
 }
 \description{
 Describes a job.

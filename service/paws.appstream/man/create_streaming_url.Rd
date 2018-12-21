@@ -4,15 +4,21 @@
 \alias{create_streaming_url}
 \title{Creates a temporary URL to start an AppStream 2}
 \usage{
-create_streaming_url(StackName, FleetName, UserId, ApplicationId = NULL,
-  Validity = NULL, SessionContext = NULL)
+create_streaming_url(
+  StackName = "string",
+  FleetName = "string",
+  UserId = "string",
+  ApplicationId = "string",
+  Validity = 123,
+  SessionContext = "string"
+)
 }
 \arguments{
-\item{StackName}{The name of the stack.}
+\item{StackName}{[required] The name of the stack.}
 
-\item{FleetName}{The name of the fleet.}
+\item{FleetName}{[required] The name of the fleet.}
 
-\item{UserId}{The ID of the user.}
+\item{UserId}{[required] The ID of the user.}
 
 \item{ApplicationId}{The name of the application to launch after the session starts. This is the name that you specified as \strong{Name} in the Image Assistant.}
 

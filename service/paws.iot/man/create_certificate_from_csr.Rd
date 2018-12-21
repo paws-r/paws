@@ -4,10 +4,13 @@
 \alias{create_certificate_from_csr}
 \title{Creates an X}
 \usage{
-create_certificate_from_csr(certificateSigningRequest, setAsActive = NULL)
+create_certificate_from_csr(
+  certificateSigningRequest = "string",
+  setAsActive = TRUE|FALSE
+)
 }
 \arguments{
-\item{certificateSigningRequest}{The certificate signing request (CSR).}
+\item{certificateSigningRequest}{[required] The certificate signing request (CSR).}
 
 \item{setAsActive}{Specifies whether the certificate is active.}
 }
@@ -35,7 +38,7 @@ The aws iot create-certificate-from-csr part of the command can also be run in p
 
 On Windows PowerShell, the command to create certificates for all CSRs in my-csr-directory is:
 
-> ls -Name my-csr-directory | %{aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/\$\_}
+> ls -Name my-csr-directory | \%{aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/\$\_}
 
 On a Windows command prompt, the command to create certificates for all CSRs in my-csr-directory is:
 

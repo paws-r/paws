@@ -4,15 +4,34 @@
 \alias{create_thing_group}
 \title{Create a thing group}
 \usage{
-create_thing_group(thingGroupName, parentGroupName = NULL,
-  thingGroupProperties = NULL)
+create_thing_group(
+  thingGroupName = "string",
+  parentGroupName = "string",
+  thingGroupProperties = list(
+    thingGroupDescription = "string",
+    attributePayload = list(
+      attributes = list(
+        "string"
+      ),
+      merge = TRUE|FALSE
+    )
+  ),
+  tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{thingGroupName}{The thing group name to create.}
+\item{thingGroupName}{[required] The thing group name to create.}
 
 \item{parentGroupName}{The name of the parent thing group.}
 
 \item{thingGroupProperties}{The thing group properties.}
+
+\item{tags}{Metadata which can be used to manage the thing group.}
 }
 \description{
 Create a thing group.

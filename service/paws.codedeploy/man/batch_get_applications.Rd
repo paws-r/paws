@@ -4,10 +4,14 @@
 \alias{batch_get_applications}
 \title{Gets information about one or more applications}
 \usage{
-batch_get_applications(applicationNames)
+batch_get_applications(
+  applicationNames = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{applicationNames}{A list of application names separated by spaces.}
+\item{applicationNames}{[required] A list of application names separated by spaces.}
 }
 \description{
 Gets information about one or more applications.

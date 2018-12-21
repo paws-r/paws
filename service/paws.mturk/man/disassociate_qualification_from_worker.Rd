@@ -4,13 +4,16 @@
 \alias{disassociate_qualification_from_worker}
 \title{The \code{DisassociateQualificationFromWorker} revokes a previously granted Qualification from a user}
 \usage{
-disassociate_qualification_from_worker(WorkerId, QualificationTypeId,
-  Reason = NULL)
+disassociate_qualification_from_worker(
+  WorkerId = "string",
+  QualificationTypeId = "string",
+  Reason = "string"
+)
 }
 \arguments{
-\item{WorkerId}{The ID of the Worker who possesses the Qualification to be revoked.}
+\item{WorkerId}{[required] The ID of the Worker who possesses the Qualification to be revoked.}
 
-\item{QualificationTypeId}{The ID of the Qualification type of the Qualification to be revoked.}
+\item{QualificationTypeId}{[required] The ID of the Qualification type of the Qualification to be revoked.}
 
 \item{Reason}{A text message that explains why the Qualification was revoked. The user who had the Qualification sees this message.}
 }

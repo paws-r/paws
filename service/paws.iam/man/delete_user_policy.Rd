@@ -4,16 +4,19 @@
 \alias{delete_user_policy}
 \title{Deletes the specified inline policy that is embedded in the specified IAM user}
 \usage{
-delete_user_policy(UserName, PolicyName)
+delete_user_policy(
+  UserName = "string",
+  PolicyName = "string"
+)
 }
 \arguments{
-\item{UserName}{The name (friendly name, not ARN) identifying the user that the policy is embedded in.
+\item{UserName}{[required] The name (friendly name, not ARN) identifying the user that the policy is embedded in.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
-\item{PolicyName}{The name identifying the policy document to delete.
+\item{PolicyName}{[required] The name identifying the policy document to delete.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Deletes the specified inline policy that is embedded in the specified IAM user.

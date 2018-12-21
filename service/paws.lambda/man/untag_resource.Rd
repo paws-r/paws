@@ -4,12 +4,17 @@
 \alias{untag_resource}
 \title{Removes tags from a Lambda function}
 \usage{
-untag_resource(Resource, TagKeys)
+untag_resource(
+  Resource = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{Resource}{The ARN (Amazon Resource Name) of the function. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{Tagging Lambda Functions} in the \strong{AWS Lambda Developer Guide}.}
+\item{Resource}{[required] The ARN (Amazon Resource Name) of the function. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{Tagging Lambda Functions} in the \strong{AWS Lambda Developer Guide}.}
 
-\item{TagKeys}{The list of tag keys to be deleted from the function. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{Tagging Lambda Functions} in the \strong{AWS Lambda Developer Guide}.}
+\item{TagKeys}{[required] The list of tag keys to be deleted from the function. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{Tagging Lambda Functions} in the \strong{AWS Lambda Developer Guide}.}
 }
 \description{
 Removes tags from a Lambda function. Requires the function ARN (Amazon Resource Name). For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{Tagging Lambda Functions} in the \strong{AWS Lambda Developer Guide}.

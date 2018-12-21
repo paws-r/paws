@@ -4,7 +4,10 @@
 \alias{list_progress_update_streams}
 \title{Lists progress update streams associated with the user account making this call}
 \usage{
-list_progress_update_streams(NextToken = NULL, MaxResults = NULL)
+list_progress_update_streams(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{NextToken}{If a \code{NextToken} was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in \code{NextToken}.}

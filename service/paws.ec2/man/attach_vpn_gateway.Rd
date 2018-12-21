@@ -4,12 +4,16 @@
 \alias{attach_vpn_gateway}
 \title{Attaches a virtual private gateway to a VPC}
 \usage{
-attach_vpn_gateway(VpcId, VpnGatewayId, DryRun = NULL)
+attach_vpn_gateway(
+  VpcId = "string",
+  VpnGatewayId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{VpcId}{The ID of the VPC.}
+\item{VpcId}{[required] The ID of the VPC.}
 
-\item{VpnGatewayId}{The ID of the virtual private gateway.}
+\item{VpnGatewayId}{[required] The ID of the virtual private gateway.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

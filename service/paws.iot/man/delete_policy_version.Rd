@@ -4,12 +4,15 @@
 \alias{delete_policy_version}
 \title{Deletes the specified version of the specified policy}
 \usage{
-delete_policy_version(policyName, policyVersionId)
+delete_policy_version(
+  policyName = "string",
+  policyVersionId = "string"
+)
 }
 \arguments{
-\item{policyName}{The name of the policy.}
+\item{policyName}{[required] The name of the policy.}
 
-\item{policyVersionId}{The policy version ID.}
+\item{policyVersionId}{[required] The policy version ID.}
 }
 \description{
 Deletes the specified version of the specified policy. You cannot delete the default version of a policy using this API. To delete the default version of a policy, use DeletePolicy. To find out which version of a policy is marked as the default version, use ListPolicyVersions.

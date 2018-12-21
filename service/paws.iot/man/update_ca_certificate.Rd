@@ -4,12 +4,19 @@
 \alias{update_ca_certificate}
 \title{Updates a registered CA certificate}
 \usage{
-update_ca_certificate(certificateId, newStatus = NULL,
-  newAutoRegistrationStatus = NULL, registrationConfig = NULL,
-  removeAutoRegistration = NULL)
+update_ca_certificate(
+  certificateId = "string",
+  newStatus = "ACTIVE"|"INACTIVE",
+  newAutoRegistrationStatus = "ENABLE"|"DISABLE",
+  registrationConfig = list(
+    templateBody = "string",
+    roleArn = "string"
+  ),
+  removeAutoRegistration = TRUE|FALSE
+)
 }
 \arguments{
-\item{certificateId}{The CA certificate identifier.}
+\item{certificateId}{[required] The CA certificate identifier.}
 
 \item{newStatus}{The updated status of the CA certificate.
 

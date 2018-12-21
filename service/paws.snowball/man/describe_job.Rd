@@ -4,10 +4,12 @@
 \alias{describe_job}
 \title{Returns information about a specific job including shipping information, job status, and other important metadata}
 \usage{
-describe_job(JobId)
+describe_job(
+  JobId = "string"
+)
 }
 \arguments{
-\item{JobId}{The automatically generated ID for a job, for example \code{JID123e4567-e89b-12d3-a456-426655440000}.}
+\item{JobId}{[required] The automatically generated ID for a job, for example \code{JID123e4567-e89b-12d3-a456-426655440000}.}
 }
 \description{
 Returns information about a specific job including shipping information, job status, and other important metadata.

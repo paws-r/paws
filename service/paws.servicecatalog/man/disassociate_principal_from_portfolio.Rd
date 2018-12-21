@@ -4,20 +4,23 @@
 \alias{disassociate_principal_from_portfolio}
 \title{Disassociates a previously associated principal ARN from a specified portfolio}
 \usage{
-disassociate_principal_from_portfolio(PortfolioId, PrincipalARN,
-  AcceptLanguage = NULL)
+disassociate_principal_from_portfolio(
+  AcceptLanguage = "string",
+  PortfolioId = "string",
+  PrincipalARN = "string"
+)
 }
 \arguments{
-\item{PortfolioId}{The portfolio identifier.}
-
-\item{PrincipalARN}{The ARN of the principal (IAM user, role, or group).}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{PortfolioId}{[required] The portfolio identifier.}
+
+\item{PrincipalARN}{[required] The ARN of the principal (IAM user, role, or group).}
 }
 \description{
 Disassociates a previously associated principal ARN from a specified portfolio.

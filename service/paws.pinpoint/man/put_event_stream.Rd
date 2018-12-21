@@ -4,12 +4,18 @@
 \alias{put_event_stream}
 \title{Use to create or update the event stream for an app}
 \usage{
-put_event_stream(ApplicationId, WriteEventStream)
+put_event_stream(
+  ApplicationId = "string",
+  WriteEventStream = list(
+    DestinationStreamArn = "string",
+    RoleArn = "string"
+  )
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 
-\item{WriteEventStream}{}
+\item{WriteEventStream}{[required]}
 }
 \description{
 Use to create or update the event stream for an app.

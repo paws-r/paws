@@ -4,17 +4,36 @@
 \alias{modify_db_parameter_group}
 \title{Modifies the parameters of a DB parameter group}
 \usage{
-modify_db_parameter_group(DBParameterGroupName, Parameters)
+modify_db_parameter_group(
+  DBParameterGroupName = "string",
+  Parameters = list(
+    list(
+      ParameterName = "string",
+      ParameterValue = "string",
+      Description = "string",
+      Source = "string",
+      ApplyType = "string",
+      DataType = "string",
+      AllowedValues = "string",
+      IsModifiable = TRUE|FALSE,
+      MinimumEngineVersion = "string",
+      ApplyMethod = "immediate"|"pending-reboot",
+      SupportedEngineModes = list(
+        "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{DBParameterGroupName}{The name of the DB parameter group.
+\item{DBParameterGroupName}{[required] The name of the DB parameter group.
 
 Constraints:
 \itemize{
 \item If supplied, must match the name of an existing DBParameterGroup.
 }}
 
-\item{Parameters}{An array of parameter names, values, and the apply method for the parameter update. At least one parameter name, value, and apply method must be supplied; subsequent arguments are optional. A maximum of 20 parameters can be modified in a single request.
+\item{Parameters}{[required] An array of parameter names, values, and the apply method for the parameter update. At least one parameter name, value, and apply method must be supplied; subsequent arguments are optional. A maximum of 20 parameters can be modified in a single request.
 
 Valid Values (for the application method): \code{immediate | pending-reboot}
 

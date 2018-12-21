@@ -4,10 +4,12 @@
 \alias{cancel_key_deletion}
 \title{Cancels the deletion of a customer master key (CMK)}
 \usage{
-cancel_key_deletion(KeyId)
+cancel_key_deletion(
+  KeyId = "string"
+)
 }
 \arguments{
-\item{KeyId}{The unique identifier for the customer master key (CMK) for which to cancel deletion.
+\item{KeyId}{[required] The unique identifier for the customer master key (CMK) for which to cancel deletion.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 

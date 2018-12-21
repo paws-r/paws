@@ -4,10 +4,13 @@
 \alias{describe_stack_resource}
 \title{Returns a description of the specified resource in the specified stack}
 \usage{
-describe_stack_resource(StackName, LogicalResourceId)
+describe_stack_resource(
+  StackName = "string",
+  LogicalResourceId = "string"
+)
 }
 \arguments{
-\item{StackName}{The name or the unique stack ID that is associated with the stack, which are not always interchangeable:
+\item{StackName}{[required] The name or the unique stack ID that is associated with the stack, which are not always interchangeable:
 \itemize{
 \item Running stacks: You can specify either the stack's name or its unique stack ID.
 \item Deleted stacks: You must specify the unique stack ID.
@@ -15,7 +18,7 @@ describe_stack_resource(StackName, LogicalResourceId)
 
 Default: There is no default value.}
 
-\item{LogicalResourceId}{The logical name of the resource as specified in the template.
+\item{LogicalResourceId}{[required] The logical name of the resource as specified in the template.
 
 Default: There is no default value.}
 }

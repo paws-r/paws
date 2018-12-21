@@ -4,11 +4,14 @@
 \alias{list_targets_for_security_profile}
 \title{Lists the targets (thing groups) associated with a given Device Defender security profile}
 \usage{
-list_targets_for_security_profile(securityProfileName, nextToken = NULL,
-  maxResults = NULL)
+list_targets_for_security_profile(
+  securityProfileName = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{securityProfileName}{The security profile.}
+\item{securityProfileName}{[required] The security profile.}
 
 \item{nextToken}{The token for the next set of results.}
 

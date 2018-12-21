@@ -4,11 +4,16 @@
 \alias{describe_analysis_schemes}
 \title{Gets the analysis schemes configured for a domain}
 \usage{
-describe_analysis_schemes(DomainName, AnalysisSchemeNames = NULL,
-  Deployed = NULL)
+describe_analysis_schemes(
+  DomainName = "string",
+  AnalysisSchemeNames = list(
+    "string"
+  ),
+  Deployed = TRUE|FALSE
+)
 }
 \arguments{
-\item{DomainName}{The name of the domain you want to describe.}
+\item{DomainName}{[required] The name of the domain you want to describe.}
 
 \item{AnalysisSchemeNames}{The analysis schemes you want to describe.}
 

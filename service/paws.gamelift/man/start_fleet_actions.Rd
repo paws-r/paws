@@ -4,12 +4,17 @@
 \alias{start_fleet_actions}
 \title{Resumes activity on a fleet that was suspended with StopFleetActions}
 \usage{
-start_fleet_actions(FleetId, Actions)
+start_fleet_actions(
+  FleetId = "string",
+  Actions = list(
+    "AUTO_SCALING"
+  )
+)
 }
 \arguments{
-\item{FleetId}{Unique identifier for a fleet}
+\item{FleetId}{[required] Unique identifier for a fleet}
 
-\item{Actions}{List of actions to restart on the fleet.}
+\item{Actions}{[required] List of actions to restart on the fleet.}
 }
 \description{
 Resumes activity on a fleet that was suspended with StopFleetActions. Currently, this operation is used to restart a fleet's auto-scaling activity.

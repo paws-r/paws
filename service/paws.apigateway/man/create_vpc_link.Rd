@@ -4,14 +4,20 @@
 \alias{create_vpc_link}
 \title{Creates a VPC link, under the caller's account in a selected region, in an asynchronous operation that typically takes 2-4 minutes to complete and become operational}
 \usage{
-create_vpc_link(name, targetArns, description = NULL)
+create_vpc_link(
+  name = "string",
+  description = "string",
+  targetArns = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{name}{[Required] The name used to label and identify the VPC link.}
-
-\item{targetArns}{[Required] The ARNs of network load balancers of the VPC targeted by the VPC link. The network load balancers must be owned by the same AWS account of the API owner.}
+\item{name}{[required] [Required] The name used to label and identify the VPC link.}
 
 \item{description}{The description of the VPC link.}
+
+\item{targetArns}{[required] [Required] The ARNs of network load balancers of the VPC targeted by the VPC link. The network load balancers must be owned by the same AWS account of the API owner.}
 }
 \description{
 Creates a VPC link, under the caller's account in a selected region, in an asynchronous operation that typically takes 2-4 minutes to complete and become operational. The caller must have permissions to create and update VPC Endpoint services.

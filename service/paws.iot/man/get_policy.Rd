@@ -4,10 +4,12 @@
 \alias{get_policy}
 \title{Gets information about the specified policy with the policy document of the default version}
 \usage{
-get_policy(policyName)
+get_policy(
+  policyName = "string"
+)
 }
 \arguments{
-\item{policyName}{The name of the policy.}
+\item{policyName}{[required] The name of the policy.}
 }
 \description{
 Gets information about the specified policy with the policy document of the default version.

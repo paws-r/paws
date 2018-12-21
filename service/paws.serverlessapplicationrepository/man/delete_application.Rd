@@ -5,10 +5,12 @@
 \alias{delete_application}
 \title{Deletes the specified application}
 \usage{
-delete_application(ApplicationId)
+delete_application(
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The Amazon Resource Name (ARN) of the application.}
+\item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
 }
 \description{
 Deletes the specified application.

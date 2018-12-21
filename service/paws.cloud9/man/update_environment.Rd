@@ -4,10 +4,14 @@
 \alias{update_environment}
 \title{Changes the settings of an existing AWS Cloud9 development environment}
 \usage{
-update_environment(environmentId, name = NULL, description = NULL)
+update_environment(
+  environmentId = "string",
+  name = "string",
+  description = "string"
+)
 }
 \arguments{
-\item{environmentId}{The ID of the environment to change settings.}
+\item{environmentId}{[required] The ID of the environment to change settings.}
 
 \item{name}{A replacement name for the environment.}
 

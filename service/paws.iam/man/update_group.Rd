@@ -4,20 +4,24 @@
 \alias{update_group}
 \title{Updates the name and/or the path of the specified IAM group}
 \usage{
-update_group(GroupName, NewPath = NULL, NewGroupName = NULL)
+update_group(
+  GroupName = "string",
+  NewPath = "string",
+  NewGroupName = "string"
+)
 }
 \arguments{
-\item{GroupName}{Name of the IAM group to update. If you're changing the name of the group, this is the original name.
+\item{GroupName}{[required] Name of the IAM group to update. If you're changing the name of the group, this is the original name.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{NewPath}{New path for the IAM group. Only include this if changing the group's path.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.}
 
 \item{NewGroupName}{New name for the IAM group. Only include this if changing the group's name.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Updates the name and/or the path of the specified IAM group.

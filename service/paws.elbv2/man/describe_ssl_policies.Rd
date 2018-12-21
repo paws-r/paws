@@ -4,7 +4,13 @@
 \alias{describe_ssl_policies}
 \title{Describes the specified policies or all policies used for SSL negotiation}
 \usage{
-describe_ssl_policies(Names = NULL, Marker = NULL, PageSize = NULL)
+describe_ssl_policies(
+  Names = list(
+    "string"
+  ),
+  Marker = "string",
+  PageSize = 123
+)
 }
 \arguments{
 \item{Names}{The names of the policies.}

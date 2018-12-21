@@ -4,10 +4,12 @@
 \alias{describe_stack_summary}
 \title{Describes the number of layers and apps in a specified stack, and the number of instances in each state, such as \code{running_setup} or \code{online}}
 \usage{
-describe_stack_summary(StackId)
+describe_stack_summary(
+  StackId = "string"
+)
 }
 \arguments{
-\item{StackId}{The stack ID.}
+\item{StackId}{[required] The stack ID.}
 }
 \description{
 Describes the number of layers and apps in a specified stack, and the number of instances in each state, such as \code{running_setup} or \code{online}.

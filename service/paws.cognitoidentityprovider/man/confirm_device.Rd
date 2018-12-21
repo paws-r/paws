@@ -4,13 +4,20 @@
 \alias{confirm_device}
 \title{Confirms tracking of the device}
 \usage{
-confirm_device(AccessToken, DeviceKey, DeviceSecretVerifierConfig = NULL,
-  DeviceName = NULL)
+confirm_device(
+  AccessToken = "string",
+  DeviceKey = "string",
+  DeviceSecretVerifierConfig = list(
+    PasswordVerifier = "string",
+    Salt = "string"
+  ),
+  DeviceName = "string"
+)
 }
 \arguments{
-\item{AccessToken}{The access token.}
+\item{AccessToken}{[required] The access token.}
 
-\item{DeviceKey}{The device key.}
+\item{DeviceKey}{[required] The device key.}
 
 \item{DeviceSecretVerifierConfig}{The configuration of the device secret verifier.}
 

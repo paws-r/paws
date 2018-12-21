@@ -4,17 +4,22 @@
 \alias{create_tape_with_barcode}
 \title{Creates a virtual tape by using your own barcode}
 \usage{
-create_tape_with_barcode(GatewayARN, TapeSizeInBytes, TapeBarcode,
-  KMSEncrypted = NULL, KMSKey = NULL)
+create_tape_with_barcode(
+  GatewayARN = "string",
+  TapeSizeInBytes = 123,
+  TapeBarcode = "string",
+  KMSEncrypted = TRUE|FALSE,
+  KMSKey = "string"
+)
 }
 \arguments{
-\item{GatewayARN}{The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tape with. Use the ListGateways operation to return a list of gateways for your account and region.}
+\item{GatewayARN}{[required] The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tape with. Use the ListGateways operation to return a list of gateways for your account and region.}
 
-\item{TapeSizeInBytes}{The size, in bytes, of the virtual tape that you want to create.
+\item{TapeSizeInBytes}{[required] The size, in bytes, of the virtual tape that you want to create.
 
 The size must be aligned by gigabyte (1024*1024*1024 byte).}
 
-\item{TapeBarcode}{The barcode that you want to assign to the tape.
+\item{TapeBarcode}{[required] The barcode that you want to assign to the tape.
 
 Barcodes cannot be reused. This includes barcodes used for tapes that have been deleted.}
 

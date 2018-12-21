@@ -4,12 +4,15 @@
 \alias{delete_user_pool_client}
 \title{Allows the developer to delete the user pool client}
 \usage{
-delete_user_pool_client(UserPoolId, ClientId)
+delete_user_pool_client(
+  UserPoolId = "string",
+  ClientId = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool where you want to delete the client.}
+\item{UserPoolId}{[required] The user pool ID for the user pool where you want to delete the client.}
 
-\item{ClientId}{The app client ID of the app associated with the user pool.}
+\item{ClientId}{[required] The app client ID of the app associated with the user pool.}
 }
 \description{
 Allows the developer to delete the user pool client.

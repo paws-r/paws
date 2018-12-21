@@ -4,11 +4,14 @@
 \alias{describe_connection_loa}
 \title{Deprecated}
 \usage{
-describe_connection_loa(connectionId, providerName = NULL,
-  loaContentType = NULL)
+describe_connection_loa(
+  connectionId = "string",
+  providerName = "string",
+  loaContentType = "application/pdf"
+)
 }
 \arguments{
-\item{connectionId}{The ID of the connection.}
+\item{connectionId}{[required] The ID of the connection.}
 
 \item{providerName}{The name of the APN partner or service provider who establishes connectivity on your behalf. If you specify this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.}
 

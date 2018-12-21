@@ -4,12 +4,17 @@
 \alias{assign_instance}
 \title{Assign a registered instance to a layer}
 \usage{
-assign_instance(InstanceId, LayerIds)
+assign_instance(
+  InstanceId = "string",
+  LayerIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{InstanceId}{The instance ID.}
+\item{InstanceId}{[required] The instance ID.}
 
-\item{LayerIds}{The layer ID, which must correspond to a custom layer. You cannot assign a registered instance to a built-in layer.}
+\item{LayerIds}{[required] The layer ID, which must correspond to a custom layer. You cannot assign a registered instance to a built-in layer.}
 }
 \description{
 Assign a registered instance to a layer.

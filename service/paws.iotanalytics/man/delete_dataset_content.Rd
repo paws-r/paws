@@ -4,10 +4,13 @@
 \alias{delete_dataset_content}
 \title{Deletes the content of the specified data set}
 \usage{
-delete_dataset_content(datasetName, versionId = NULL)
+delete_dataset_content(
+  datasetName = "string",
+  versionId = "string"
+)
 }
 \arguments{
-\item{datasetName}{The name of the data set whose content is deleted.}
+\item{datasetName}{[required] The name of the data set whose content is deleted.}
 
 \item{versionId}{The version of the data set whose content is deleted. You can also use the strings "\$LATEST" or "\$LATEST\_SUCCEEDED" to delete the latest or latest successfully completed data set. If not specified, "\$LATEST\_SUCCEEDED" is the default.}
 }

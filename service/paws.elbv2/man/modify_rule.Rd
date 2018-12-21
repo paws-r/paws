@@ -4,10 +4,67 @@
 \alias{modify_rule}
 \title{Modifies the specified rule}
 \usage{
-modify_rule(RuleArn, Conditions = NULL, Actions = NULL)
+modify_rule(
+  RuleArn = "string",
+  Conditions = list(
+    list(
+      Field = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  Actions = list(
+    list(
+      Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
+      TargetGroupArn = "string",
+      AuthenticateOidcConfig = list(
+        Issuer = "string",
+        AuthorizationEndpoint = "string",
+        TokenEndpoint = "string",
+        UserInfoEndpoint = "string",
+        ClientId = "string",
+        ClientSecret = "string",
+        SessionCookieName = "string",
+        Scope = "string",
+        SessionTimeout = 123,
+        AuthenticationRequestExtraParams = list(
+          "string"
+        ),
+        OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
+      ),
+      AuthenticateCognitoConfig = list(
+        UserPoolArn = "string",
+        UserPoolClientId = "string",
+        UserPoolDomain = "string",
+        SessionCookieName = "string",
+        Scope = "string",
+        SessionTimeout = 123,
+        AuthenticationRequestExtraParams = list(
+          "string"
+        ),
+        OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
+      ),
+      Order = 123,
+      RedirectConfig = list(
+        Protocol = "string",
+        Port = "string",
+        Host = "string",
+        Path = "string",
+        Query = "string",
+        StatusCode = "HTTP_301"|"HTTP_302"
+      ),
+      FixedResponseConfig = list(
+        MessageBody = "string",
+        StatusCode = "string",
+        ContentType = "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{RuleArn}{The Amazon Resource Name (ARN) of the rule.}
+\item{RuleArn}{[required] The Amazon Resource Name (ARN) of the rule.}
 
 \item{Conditions}{The conditions. Each condition specifies a field name and a single value.
 
@@ -30,11 +87,15 @@ If the field name is \code{path-pattern}, you can specify a single path pattern.
 
 \item{Actions}{The actions.
 
-If the action type is \code{forward}, you can specify a single target group.
+If the action type is \code{forward}, you specify a target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer or TCP for a Network Load Balancer.
 
-If the action type is \code{authenticate-oidc}, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.
+[HTTPS listener] If the action type is \code{authenticate-oidc}, you authenticate users through an identity provider that is OpenID Connect (OIDC) compliant.
 
-If the action type is \code{authenticate-cognito}, you can use Amazon Cognito to authenticate users as they access your application.}
+[HTTPS listener] If the action type is \code{authenticate-cognito}, you authenticate users through the user pools supported by Amazon Cognito.
+
+[Application Load Balancer] If the action type is \code{redirect}, you redirect specified client requests from one URL to another.
+
+[Application Load Balancer] If the action type is \code{fixed-response}, you drop specified client requests and return a custom HTTP response.}
 }
 \description{
 Modifies the specified rule.

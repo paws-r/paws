@@ -4,11 +4,15 @@
 \alias{create_request_validator}
 \title{Creates a ReqeustValidator of a given RestApi}
 \usage{
-create_request_validator(restApiId, name = NULL, validateRequestBody = NULL,
-  validateRequestParameters = NULL)
+create_request_validator(
+  restApiId = "string",
+  name = "string",
+  validateRequestBody = TRUE|FALSE,
+  validateRequestParameters = TRUE|FALSE
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
 \item{name}{The name of the to-be-created RequestValidator.}
 

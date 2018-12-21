@@ -4,17 +4,21 @@
 \alias{update_constraint}
 \title{Updates the specified constraint}
 \usage{
-update_constraint(Id, AcceptLanguage = NULL, Description = NULL)
+update_constraint(
+  AcceptLanguage = "string",
+  Id = "string",
+  Description = "string"
+)
 }
 \arguments{
-\item{Id}{The identifier of the constraint.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{Id}{[required] The identifier of the constraint.}
 
 \item{Description}{The updated description of the constraint.}
 }

@@ -4,10 +4,13 @@
 \alias{cancel_update_stack}
 \title{Cancels an update on the specified stack}
 \usage{
-cancel_update_stack(StackName, ClientRequestToken = NULL)
+cancel_update_stack(
+  StackName = "string",
+  ClientRequestToken = "string"
+)
 }
 \arguments{
-\item{StackName}{The name or the unique stack ID that is associated with the stack.}
+\item{StackName}{[required] The name or the unique stack ID that is associated with the stack.}
 
 \item{ClientRequestToken}{A unique identifier for this \code{CancelUpdateStack} request. Specify this token if you plan to retry requests so that AWS CloudFormation knows that you're not attempting to cancel an update on a stack with the same name. You might retry \code{CancelUpdateStack} requests to ensure that AWS CloudFormation successfully received them.}
 }

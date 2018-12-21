@@ -4,10 +4,12 @@
 \alias{describe_configuration}
 \title{Returns information about the specified configuration}
 \usage{
-describe_configuration(ConfigurationId)
+describe_configuration(
+  ConfigurationId = "string"
+)
 }
 \arguments{
-\item{ConfigurationId}{The unique ID that Amazon MQ generates for the configuration.}
+\item{ConfigurationId}{[required] The unique ID that Amazon MQ generates for the configuration.}
 }
 \description{
 Returns information about the specified configuration.

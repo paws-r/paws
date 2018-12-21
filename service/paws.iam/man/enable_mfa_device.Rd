@@ -4,25 +4,29 @@
 \alias{enable_mfa_device}
 \title{Enables the specified MFA device and associates it with the specified IAM user}
 \usage{
-enable_mfa_device(UserName, SerialNumber, AuthenticationCode1,
-  AuthenticationCode2)
+enable_mfa_device(
+  UserName = "string",
+  SerialNumber = "string",
+  AuthenticationCode1 = "string",
+  AuthenticationCode2 = "string"
+)
 }
 \arguments{
-\item{UserName}{The name of the IAM user for whom you want to enable the MFA device.
+\item{UserName}{[required] The name of the IAM user for whom you want to enable the MFA device.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
-\item{SerialNumber}{The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the device ARN.
+\item{SerialNumber}{[required] The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the device ARN.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@:/-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@:/-}
 
-\item{AuthenticationCode1}{An authentication code emitted by the device.
+\item{AuthenticationCode1}{[required] An authentication code emitted by the device.
 
 The format for this parameter is a string of six digits.
 
 Submit your request immediately after generating the authentication codes. If you generate the codes and then wait too long to submit the request, the MFA device successfully associates with the user but the MFA device becomes out of sync. This happens because time-based one-time passwords (TOTP) expire after a short period of time. If this happens, you can \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html}{resync the device}.}
 
-\item{AuthenticationCode2}{A subsequent authentication code emitted by the device.
+\item{AuthenticationCode2}{[required] A subsequent authentication code emitted by the device.
 
 The format for this parameter is a string of six digits.
 

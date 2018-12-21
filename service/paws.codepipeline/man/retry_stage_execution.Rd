@@ -4,16 +4,21 @@
 \alias{retry_stage_execution}
 \title{Resumes the pipeline execution by retrying the last failed actions in a stage}
 \usage{
-retry_stage_execution(pipelineName, stageName, pipelineExecutionId, retryMode)
+retry_stage_execution(
+  pipelineName = "string",
+  stageName = "string",
+  pipelineExecutionId = "string",
+  retryMode = "FAILED_ACTIONS"
+)
 }
 \arguments{
-\item{pipelineName}{The name of the pipeline that contains the failed stage.}
+\item{pipelineName}{[required] The name of the pipeline that contains the failed stage.}
 
-\item{stageName}{The name of the failed stage to be retried.}
+\item{stageName}{[required] The name of the failed stage to be retried.}
 
-\item{pipelineExecutionId}{The ID of the pipeline execution in the failed stage to be retried. Use the GetPipelineState action to retrieve the current pipelineExecutionId of the failed stage}
+\item{pipelineExecutionId}{[required] The ID of the pipeline execution in the failed stage to be retried. Use the GetPipelineState action to retrieve the current pipelineExecutionId of the failed stage}
 
-\item{retryMode}{The scope of the retry attempt. Currently, the only supported value is FAILED\_ACTIONS.}
+\item{retryMode}{[required] The scope of the retry attempt. Currently, the only supported value is FAILED\_ACTIONS.}
 }
 \description{
 Resumes the pipeline execution by retrying the last failed actions in a stage.

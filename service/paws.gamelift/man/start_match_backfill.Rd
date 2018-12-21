@@ -4,21 +4,45 @@
 \alias{start_match_backfill}
 \title{Finds new players to fill open slots in an existing game session}
 \usage{
-start_match_backfill(ConfigurationName, GameSessionArn, Players,
-  TicketId = NULL)
+start_match_backfill(
+  TicketId = "string",
+  ConfigurationName = "string",
+  GameSessionArn = "string",
+  Players = list(
+    list(
+      PlayerId = "string",
+      PlayerAttributes = list(
+        list(
+          S = "string",
+          N = 123.0,
+          SL = list(
+            "string"
+          ),
+          SDM = list(
+            123.0
+          )
+        )
+      ),
+      Team = "string",
+      LatencyInMs = list(
+        123
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{ConfigurationName}{Name of the matchmaker to use for this request. The name of the matchmaker that was used with the original game session is listed in the GameSession object, \code{MatchmakerData} property. This property contains a matchmaking configuration ARN value, which includes the matchmaker name. (In the ARN value "arn:aws:gamelift:us-west-2:111122223333:matchmakingconfiguration/MM-4v4", the matchmaking configuration name is "MM-4v4".) Use only the name for this parameter.}
+\item{TicketId}{Unique identifier for a matchmaking ticket. If no ticket ID is specified here, Amazon GameLift will generate one in the form of a UUID. Use this identifier to track the match backfill ticket status and retrieve match results.}
 
-\item{GameSessionArn}{Amazon Resource Name (\href{http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html}{ARN}) that is assigned to a game session and uniquely identifies it.}
+\item{ConfigurationName}{[required] Name of the matchmaker to use for this request. The name of the matchmaker that was used with the original game session is listed in the GameSession object, \code{MatchmakerData} property. This property contains a matchmaking configuration ARN value, which includes the matchmaker name. (In the ARN value "arn:aws:gamelift:us-west-2:111122223333:matchmakingconfiguration/MM-4v4", the matchmaking configuration name is "MM-4v4".) Use only the name for this parameter.}
 
-\item{Players}{Match information on all players that are currently assigned to the game session. This information is used by the matchmaker to find new players and add them to the existing game.
+\item{GameSessionArn}{[required] Amazon Resource Name (\href{http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html}{ARN}) that is assigned to a game session and uniquely identifies it.}
+
+\item{Players}{[required] Match information on all players that are currently assigned to the game session. This information is used by the matchmaker to find new players and add them to the existing game.
 \itemize{
 \item PlayerID, PlayerAttributes, Team -\\- This information is maintained in the GameSession object, \code{MatchmakerData} property, for all players who are currently assigned to the game session. The matchmaker data is in JSON syntax, formatted as a string. For more details, see \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/match-server.html#match-server-data}{Match Data}.
 \item LatencyInMs -\\- If the matchmaker uses player latency, include a latency value, in milliseconds, for the region that the game session is currently in. Do not include latency values for any other region.
 }}
-
-\item{TicketId}{Unique identifier for a matchmaking ticket. If no ticket ID is specified here, Amazon GameLift will generate one in the form of a UUID. Use this identifier to track the match backfill ticket status and retrieve match results.}
 }
 \description{
 Finds new players to fill open slots in an existing game session. This operation can be used to add players to matched games that start with fewer than the maximum number of players or to replace players when they drop out. By backfilling with the same matchmaker used to create the original match, you ensure that new players meet the match criteria and maintain a consistent experience throughout the game session. You can backfill a match anytime after a game session has been created.

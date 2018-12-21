@@ -4,10 +4,21 @@
 \alias{update_tags_for_resource}
 \title{Update the list of tags applied to an AWS Elastic Beanstalk resource}
 \usage{
-update_tags_for_resource(ResourceArn, TagsToAdd = NULL, TagsToRemove = NULL)
+update_tags_for_resource(
+  ResourceArn = "string",
+  TagsToAdd = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  TagsToRemove = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ResourceArn}{The Amazon Resource Name (ARN) of the resouce to be updated.
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resouce to be updated.
 
 Must be the ARN of an Elastic Beanstalk environment.}
 

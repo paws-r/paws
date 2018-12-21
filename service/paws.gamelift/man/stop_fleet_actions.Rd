@@ -4,12 +4,17 @@
 \alias{stop_fleet_actions}
 \title{Suspends activity on a fleet}
 \usage{
-stop_fleet_actions(FleetId, Actions)
+stop_fleet_actions(
+  FleetId = "string",
+  Actions = list(
+    "AUTO_SCALING"
+  )
+)
 }
 \arguments{
-\item{FleetId}{Unique identifier for a fleet}
+\item{FleetId}{[required] Unique identifier for a fleet}
 
-\item{Actions}{List of actions to suspend on the fleet.}
+\item{Actions}{[required] List of actions to suspend on the fleet.}
 }
 \description{
 Suspends activity on a fleet. Currently, this operation is used to stop a fleet's auto-scaling activity. It is used to temporarily stop scaling events triggered by the fleet's scaling policies. The policies can be retained and auto-scaling activity can be restarted using StartFleetActions. You can view a fleet's stopped actions using DescribeFleetAttributes.

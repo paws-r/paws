@@ -4,10 +4,12 @@
 \alias{describe_cache}
 \title{Returns information about the cache of a gateway}
 \usage{
-describe_cache(GatewayARN)
+describe_cache(
+  GatewayARN = "string"
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 }
 \description{
 Returns information about the cache of a gateway. This operation is only supported in the cached volume, tape and file gateway types.

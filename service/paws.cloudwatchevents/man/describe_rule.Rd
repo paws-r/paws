@@ -4,10 +4,12 @@
 \alias{describe_rule}
 \title{Describes the specified rule}
 \usage{
-describe_rule(Name)
+describe_rule(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the rule.}
+\item{Name}{[required] The name of the rule.}
 }
 \description{
 Describes the specified rule.

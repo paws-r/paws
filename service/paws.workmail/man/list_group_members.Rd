@@ -4,13 +4,17 @@
 \alias{list_group_members}
 \title{Returns an overview of the members of a group}
 \usage{
-list_group_members(OrganizationId, GroupId, NextToken = NULL,
-  MaxResults = NULL)
+list_group_members(
+  OrganizationId = "string",
+  GroupId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{OrganizationId}{The identifier for the organization under which the group exists.}
+\item{OrganizationId}{[required] The identifier for the organization under which the group exists.}
 
-\item{GroupId}{The identifier for the group to which the members are associated.}
+\item{GroupId}{[required] The identifier for the group to which the members are associated.}
 
 \item{NextToken}{The token to use to retrieve the next page of results. The first call does not contain any tokens.}
 

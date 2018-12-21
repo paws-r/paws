@@ -4,10 +4,12 @@
 \alias{get_data_retrieval_policy}
 \title{This operation returns the current data retrieval policy for the account and region specified in the GET request}
 \usage{
-get_data_retrieval_policy(accountId)
+get_data_retrieval_policy(
+  accountId = "string"
+)
 }
 \arguments{
-\item{accountId}{The \code{AccountId} value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.}
+\item{accountId}{[required] The \code{AccountId} value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.}
 }
 \description{
 This operation returns the current data retrieval policy for the account and region specified in the GET request. For more information about data retrieval policies, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html}{Amazon Glacier Data Retrieval Policies}.

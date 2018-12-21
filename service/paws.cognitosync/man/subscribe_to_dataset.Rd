@@ -4,16 +4,21 @@
 \alias{subscribe_to_dataset}
 \title{Subscribes to receive notifications when a dataset is modified by another device}
 \usage{
-subscribe_to_dataset(IdentityPoolId, IdentityId, DatasetName, DeviceId)
+subscribe_to_dataset(
+  IdentityPoolId = "string",
+  IdentityId = "string",
+  DatasetName = "string",
+  DeviceId = "string"
+)
 }
 \arguments{
-\item{IdentityPoolId}{A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. The ID of the pool to which the identity belongs.}
+\item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. The ID of the pool to which the identity belongs.}
 
-\item{IdentityId}{Unique ID for this identity.}
+\item{IdentityId}{[required] Unique ID for this identity.}
 
-\item{DatasetName}{The name of the dataset to subcribe to.}
+\item{DatasetName}{[required] The name of the dataset to subcribe to.}
 
-\item{DeviceId}{The unique ID generated for this device by Cognito.}
+\item{DeviceId}{[required] The unique ID generated for this device by Cognito.}
 }
 \description{
 Subscribes to receive notifications when a dataset is modified by another device.

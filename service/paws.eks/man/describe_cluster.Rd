@@ -4,10 +4,12 @@
 \alias{describe_cluster}
 \title{Returns descriptive information about an Amazon EKS cluster}
 \usage{
-describe_cluster(name)
+describe_cluster(
+  name = "string"
+)
 }
 \arguments{
-\item{name}{The name of the cluster to describe.}
+\item{name}{[required] The name of the cluster to describe.}
 }
 \description{
 Returns descriptive information about an Amazon EKS cluster.

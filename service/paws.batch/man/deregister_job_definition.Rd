@@ -4,10 +4,12 @@
 \alias{deregister_job_definition}
 \title{Deregisters an AWS Batch job definition}
 \usage{
-deregister_job_definition(jobDefinition)
+deregister_job_definition(
+  jobDefinition = "string"
+)
 }
 \arguments{
-\item{jobDefinition}{The name and revision (\code{name:revision}) or full Amazon Resource Name (ARN) of the job definition to deregister.}
+\item{jobDefinition}{[required] The name and revision (\code{name:revision}) or full Amazon Resource Name (ARN) of the job definition to deregister.}
 }
 \description{
 Deregisters an AWS Batch job definition.

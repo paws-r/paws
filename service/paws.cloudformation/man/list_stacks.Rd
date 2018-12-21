@@ -4,7 +4,12 @@
 \alias{list_stacks}
 \title{Returns the summary information for stacks whose status matches the specified StackStatusFilter}
 \usage{
-list_stacks(NextToken = NULL, StackStatusFilter = NULL)
+list_stacks(
+  NextToken = "string",
+  StackStatusFilter = list(
+    "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_FAILED"|"ROLLBACK_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE_CLEANUP_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_ROLLBACK_IN_PROGRESS"|"UPDATE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS"|"UPDATE_ROLLBACK_COMPLETE"|"REVIEW_IN_PROGRESS"
+  )
+)
 }
 \arguments{
 \item{NextToken}{A string that identifies the next page of stacks that you want to retrieve.}

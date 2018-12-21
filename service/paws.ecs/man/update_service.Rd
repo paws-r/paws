@@ -2,17 +2,37 @@
 % Please edit documentation in R/paws.ecs_operations.R
 \name{update_service}
 \alias{update_service}
-\title{Modifies the desired count, deployment configuration, network configuration, or task definition used in a service}
+\title{Modifies the parameters of a service}
 \usage{
-update_service(service, cluster = NULL, desiredCount = NULL,
-  taskDefinition = NULL, deploymentConfiguration = NULL,
-  networkConfiguration = NULL, platformVersion = NULL,
-  forceNewDeployment = NULL, healthCheckGracePeriodSeconds = NULL)
+update_service(
+  cluster = "string",
+  service = "string",
+  desiredCount = 123,
+  taskDefinition = "string",
+  deploymentConfiguration = list(
+    maximumPercent = 123,
+    minimumHealthyPercent = 123
+  ),
+  networkConfiguration = list(
+    awsvpcConfiguration = list(
+      subnets = list(
+        "string"
+      ),
+      securityGroups = list(
+        "string"
+      ),
+      assignPublicIp = "ENABLED"|"DISABLED"
+    )
+  ),
+  platformVersion = "string",
+  forceNewDeployment = TRUE|FALSE,
+  healthCheckGracePeriodSeconds = 123
+)
 }
 \arguments{
-\item{service}{The name of the service to update.}
-
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that your service is running on. If you do not specify a cluster, the default cluster is assumed.}
+
+\item{service}{[required] The name of the service to update.}
 
 \item{desiredCount}{The number of instantiations of the task to place and keep running in your service.}
 
@@ -24,16 +44,20 @@ update_service(service, cluster = NULL, desiredCount = NULL,
 
 Updating a service to add a subnet to a list of existing subnets does not trigger a service deployment. For example, if your network configuration change is to keep the existing subnets and simply add another subnet to the network configuration, this does not trigger a new service deployment.}
 
-\item{platformVersion}{The platform version that your service should run.}
+\item{platformVersion}{The platform version on which your tasks in the service are running. A platform version is only specified for tasks using the Fargate launch type. If one is not specified, the \code{LATEST} platform version is used by default. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html}{AWS Fargate Platform Versions} in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{forceNewDeployment}{Whether to force a new deployment of the service. Deployments are not forced by default. You can use this option to trigger a new deployment with no service definition changes. For example, you can update a service's tasks to use a newer Docker image with the same image/tag combination (\code{my_image:latest}) or to roll Fargate tasks onto a newer platform version.}
 
-\item{healthCheckGracePeriodSeconds}{The period of time, in seconds, that the Amazon ECS service scheduler should ignore unhealthy Elastic Load Balancing target health checks after a task has first started. This is only valid if your service is configured to use a load balancer. If your service's tasks take a while to start and respond to Elastic Load Balancing health checks, you can specify a health check grace period of up to 1,800 seconds during which the ECS service scheduler ignores the Elastic Load Balancing health check status. This grace period can prevent the ECS service scheduler from marking tasks as unhealthy and stopping them before they have time to come up.}
+\item{healthCheckGracePeriodSeconds}{The period of time, in seconds, that the Amazon ECS service scheduler should ignore unhealthy Elastic Load Balancing target health checks after a task has first started. This is only valid if your service is configured to use a load balancer. If your service's tasks take a while to start and respond to Elastic Load Balancing health checks, you can specify a health check grace period of up to 1,800 seconds. During that time, the ECS service scheduler ignores the Elastic Load Balancing health check status. This grace period can prevent the ECS service scheduler from marking tasks as unhealthy and stopping them before they have time to come up.}
 }
 \description{
-Modifies the desired count, deployment configuration, network configuration, or task definition used in a service.
+Modifies the parameters of a service.
 }
 \details{
+For services using the rolling update (\code{ECS}) deployment controller, the desired count, deployment configuration, network configuration, or task definition used can be updated.
+
+For services using the blue/green (\code{CODE_DEPLOY}) deployment controller, only the desired count, deployment configuration, and health check grace period can be updated using this API. If the network configuration, platform version, or task definition need to be updated, a new AWS CodeDeploy deployment should be created. For more information, see \href{https://docs.aws.amazon.com/codedeploy/latest/APIReference/API_CreateDeployment.html}{CreateDeployment} in the \emph{AWS CodeDeploy API Reference}.
+
 You can add to or subtract from the number of instantiations of a task definition in a service by specifying the cluster that the service is running in and a new \code{desiredCount} parameter.
 
 If you have updated the Docker image of your application, you can create a new task definition with that image and deploy it to your service. The service scheduler uses the minimum healthy percent and maximum percent parameters (in the service's deployment configuration) to determine the deployment strategy.
@@ -42,8 +66,8 @@ If your updated Docker image uses the same tag as what is in the existing task d
 
 You can also update the deployment configuration of a service. When a deployment is triggered by updating the task definition of a service, the service scheduler uses the deployment configuration parameters, \code{minimumHealthyPercent} and \code{maximumPercent}, to determine the deployment strategy.
 \itemize{
-\item If \code{minimumHealthyPercent} is below 100%, the scheduler can ignore \code{desiredCount} temporarily during a deployment. For example, if \code{desiredCount} is four tasks, a minimum of 50% allows the scheduler to stop two existing tasks before starting two new tasks. Tasks for services that do not use a load balancer are considered healthy if they are in the \code{RUNNING} state. Tasks for services that use a load balancer are considered healthy if they are in the \code{RUNNING} state and the container instance they are hosted on is reported as healthy by the load balancer.
-\item The \code{maximumPercent} parameter represents an upper limit on the number of running tasks during a deployment, which enables you to define the deployment batch size. For example, if \code{desiredCount} is four tasks, a maximum of 200% starts four new tasks before stopping the four older tasks (provided that the cluster resources required to do this are available).
+\item If \code{minimumHealthyPercent} is below 100\%, the scheduler can ignore \code{desiredCount} temporarily during a deployment. For example, if \code{desiredCount} is four tasks, a minimum of 50\% allows the scheduler to stop two existing tasks before starting two new tasks. Tasks for services that do not use a load balancer are considered healthy if they are in the \code{RUNNING} state. Tasks for services that use a load balancer are considered healthy if they are in the \code{RUNNING} state and the container instance they are hosted on is reported as healthy by the load balancer.
+\item The \code{maximumPercent} parameter represents an upper limit on the number of running tasks during a deployment, which enables you to define the deployment batch size. For example, if \code{desiredCount} is four tasks, a maximum of 200\% starts four new tasks before stopping the four older tasks (provided that the cluster resources required to do this are available).
 }
 
 When UpdateService stops a task during a deployment, the equivalent of \code{docker stop} is issued to the containers running in the task. This results in a \code{SIGTERM} and a 30-second timeout, after which \code{SIGKILL} is sent and the containers are forcibly stopped. If the container handles the \code{SIGTERM} gracefully and exits within 30 seconds from receiving it, no \code{SIGKILL} is sent.

@@ -4,10 +4,12 @@
 \alias{describe_bundle}
 \title{Get the bundle details for the requested bundle id}
 \usage{
-describe_bundle(bundleId)
+describe_bundle(
+  bundleId = "string"
+)
 }
 \arguments{
-\item{bundleId}{Unique bundle identifier.}
+\item{bundleId}{[required] Unique bundle identifier.}
 }
 \description{
 Get the bundle details for the requested bundle id.

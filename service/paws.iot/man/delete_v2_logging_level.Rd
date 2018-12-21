@@ -4,12 +4,15 @@
 \alias{delete_v2_logging_level}
 \title{Deletes a logging level}
 \usage{
-delete_v2_logging_level(targetType, targetName)
+delete_v2_logging_level(
+  targetType = "DEFAULT"|"THING_GROUP",
+  targetName = "string"
+)
 }
 \arguments{
-\item{targetType}{The type of resource for which you are configuring logging. Must be \code{THING_Group}.}
+\item{targetType}{[required] The type of resource for which you are configuring logging. Must be \code{THING_Group}.}
 
-\item{targetName}{The name of the resource for which you are configuring logging.}
+\item{targetName}{[required] The name of the resource for which you are configuring logging.}
 }
 \description{
 Deletes a logging level.

@@ -4,12 +4,15 @@
 \alias{delete_vpn_connection_route}
 \title{Deletes the specified static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway}
 \usage{
-delete_vpn_connection_route(DestinationCidrBlock, VpnConnectionId)
+delete_vpn_connection_route(
+  DestinationCidrBlock = "string",
+  VpnConnectionId = "string"
+)
 }
 \arguments{
-\item{DestinationCidrBlock}{The CIDR block associated with the local subnet of the customer network.}
+\item{DestinationCidrBlock}{[required] The CIDR block associated with the local subnet of the customer network.}
 
-\item{VpnConnectionId}{The ID of the VPN connection.}
+\item{VpnConnectionId}{[required] The ID of the VPN connection.}
 }
 \description{
 Deletes the specified static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway.

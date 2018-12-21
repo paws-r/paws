@@ -4,10 +4,12 @@
 \alias{deregister_instance}
 \title{Deregister a registered Amazon EC2 or on-premises instance}
 \usage{
-deregister_instance(InstanceId)
+deregister_instance(
+  InstanceId = "string"
+)
 }
 \arguments{
-\item{InstanceId}{The instance ID.}
+\item{InstanceId}{[required] The instance ID.}
 }
 \description{
 Deregister a registered Amazon EC2 or on-premises instance. This action removes the instance from the stack and returns it to your control. This action cannot be used with instances that were created with AWS OpsWorks Stacks.

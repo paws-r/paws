@@ -4,14 +4,18 @@
 \alias{list_service_actions_for_provisioning_artifact}
 \title{Returns a paginated list of self-service actions associated with the specified Product ID and Provisioning Artifact ID}
 \usage{
-list_service_actions_for_provisioning_artifact(ProductId,
-  ProvisioningArtifactId, PageSize = NULL, PageToken = NULL,
-  AcceptLanguage = NULL)
+list_service_actions_for_provisioning_artifact(
+  ProductId = "string",
+  ProvisioningArtifactId = "string",
+  PageSize = 123,
+  PageToken = "string",
+  AcceptLanguage = "string"
+)
 }
 \arguments{
-\item{ProductId}{The product identifier. For example, \code{prod-abcdzk7xy33qa}.}
+\item{ProductId}{[required] The product identifier. For example, \code{prod-abcdzk7xy33qa}.}
 
-\item{ProvisioningArtifactId}{The identifier of the provisioning artifact. For example, \code{pa-4abcdjnxjj6ne}.}
+\item{ProvisioningArtifactId}{[required] The identifier of the provisioning artifact. For example, \code{pa-4abcdjnxjj6ne}.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 

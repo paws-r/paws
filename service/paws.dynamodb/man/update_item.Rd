@@ -4,16 +4,150 @@
 \alias{update_item}
 \title{Edits an existing item's attributes, or adds a new item to the table if it does not already exist}
 \usage{
-update_item(TableName, Key, AttributeUpdates = NULL, Expected = NULL,
-  ConditionalOperator = NULL, ReturnValues = NULL,
-  ReturnConsumedCapacity = NULL, ReturnItemCollectionMetrics = NULL,
-  UpdateExpression = NULL, ConditionExpression = NULL,
-  ExpressionAttributeNames = NULL, ExpressionAttributeValues = NULL)
+update_item(
+  TableName = "string",
+  Key = list(
+    list(
+      S = "string",
+      N = "string",
+      B = raw,
+      SS = list(
+        "string"
+      ),
+      NS = list(
+        "string"
+      ),
+      BS = list(
+        raw
+      ),
+      M = list(
+        list()
+      ),
+      L = list(
+        list()
+      ),
+      NULL = TRUE|FALSE,
+      BOOL = TRUE|FALSE
+    )
+  ),
+  AttributeUpdates = list(
+    list(
+      Value = list(
+        S = "string",
+        N = "string",
+        B = raw,
+        SS = list(
+          "string"
+        ),
+        NS = list(
+          "string"
+        ),
+        BS = list(
+          raw
+        ),
+        M = list(
+          list()
+        ),
+        L = list(
+          list()
+        ),
+        NULL = TRUE|FALSE,
+        BOOL = TRUE|FALSE
+      ),
+      Action = "ADD"|"PUT"|"DELETE"
+    )
+  ),
+  Expected = list(
+    list(
+      Value = list(
+        S = "string",
+        N = "string",
+        B = raw,
+        SS = list(
+          "string"
+        ),
+        NS = list(
+          "string"
+        ),
+        BS = list(
+          raw
+        ),
+        M = list(
+          list()
+        ),
+        L = list(
+          list()
+        ),
+        NULL = TRUE|FALSE,
+        BOOL = TRUE|FALSE
+      ),
+      Exists = TRUE|FALSE,
+      ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH",
+      AttributeValueList = list(
+        list(
+          S = "string",
+          N = "string",
+          B = raw,
+          SS = list(
+            "string"
+          ),
+          NS = list(
+            "string"
+          ),
+          BS = list(
+            raw
+          ),
+          M = list(
+            list()
+          ),
+          L = list(
+            list()
+          ),
+          NULL = TRUE|FALSE,
+          BOOL = TRUE|FALSE
+        )
+      )
+    )
+  ),
+  ConditionalOperator = "AND"|"OR",
+  ReturnValues = "NONE"|"ALL_OLD"|"UPDATED_OLD"|"ALL_NEW"|"UPDATED_NEW",
+  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
+  ReturnItemCollectionMetrics = "SIZE"|"NONE",
+  UpdateExpression = "string",
+  ConditionExpression = "string",
+  ExpressionAttributeNames = list(
+    "string"
+  ),
+  ExpressionAttributeValues = list(
+    list(
+      S = "string",
+      N = "string",
+      B = raw,
+      SS = list(
+        "string"
+      ),
+      NS = list(
+        "string"
+      ),
+      BS = list(
+        raw
+      ),
+      M = list(
+        list()
+      ),
+      L = list(
+        list()
+      ),
+      NULL = TRUE|FALSE,
+      BOOL = TRUE|FALSE
+    )
+  )
+)
 }
 \arguments{
-\item{TableName}{The name of the table containing the item to update.}
+\item{TableName}{[required] The name of the table containing the item to update.}
 
-\item{Key}{The primary key of the item to be updated. Each element consists of an attribute name and a value for that attribute.
+\item{Key}{[required] The primary key of the item to be updated. Each element consists of an attribute name and a value for that attribute.
 
 For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for both the partition key and the sort key.}
 

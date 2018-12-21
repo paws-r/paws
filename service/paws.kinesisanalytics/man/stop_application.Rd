@@ -4,10 +4,12 @@
 \alias{stop_application}
 \title{Stops the application from processing input data}
 \usage{
-stop_application(ApplicationName)
+stop_application(
+  ApplicationName = "string"
+)
 }
 \arguments{
-\item{ApplicationName}{Name of the running application to stop.}
+\item{ApplicationName}{[required] Name of the running application to stop.}
 }
 \description{
 Stops the application from processing input data. You can stop an application only if it is in the running state. You can use the DescribeApplication operation to find the application state. After the application is stopped, Amazon Kinesis Analytics stops reading data from the input, the application stops processing data, and there is no output written to the destination.

@@ -4,12 +4,22 @@
 \alias{add_attributes_to_findings}
 \title{Assigns attributes (key and value pairs) to the findings that are specified by the ARNs of the findings}
 \usage{
-add_attributes_to_findings(findingArns, attributes)
+add_attributes_to_findings(
+  findingArns = list(
+    "string"
+  ),
+  attributes = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{findingArns}{The ARNs that specify the findings that you want to assign attributes to.}
+\item{findingArns}{[required] The ARNs that specify the findings that you want to assign attributes to.}
 
-\item{attributes}{The array of attributes that you want to assign to specified findings.}
+\item{attributes}{[required] The array of attributes that you want to assign to specified findings.}
 }
 \description{
 Assigns attributes (key and value pairs) to the findings that are specified by the ARNs of the findings.

@@ -4,13 +4,15 @@
 \alias{get_schema_as_json}
 \title{Retrieves a JSON representation of the schema}
 \usage{
-get_schema_as_json(SchemaArn)
+get_schema_as_json(
+  SchemaArn = "string"
+)
 }
 \arguments{
-\item{SchemaArn}{The ARN of the schema to retrieve.}
+\item{SchemaArn}{[required] The ARN of the schema to retrieve.}
 }
 \description{
-Retrieves a JSON representation of the schema. See \href{http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_schemas.html#jsonformat}{JSON Schema Format} for more information.
+Retrieves a JSON representation of the schema. See \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_jsonformat.html#schemas_json}{JSON Schema Format} for more information.
 }
 \examples{
 

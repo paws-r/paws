@@ -4,9 +4,21 @@
 \alias{describe_option_groups}
 \title{Describes the available option groups}
 \usage{
-describe_option_groups(OptionGroupName = NULL, Filters = NULL,
-  Marker = NULL, MaxRecords = NULL, EngineName = NULL,
-  MajorEngineVersion = NULL)
+describe_option_groups(
+  OptionGroupName = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  Marker = "string",
+  MaxRecords = 123,
+  EngineName = "string",
+  MajorEngineVersion = "string"
+)
 }
 \arguments{
 \item{OptionGroupName}{The name of the option group to describe. Can't be supplied together with EngineName or MajorEngineVersion.}

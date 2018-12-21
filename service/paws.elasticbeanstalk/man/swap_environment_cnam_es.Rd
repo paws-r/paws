@@ -4,9 +4,12 @@
 \alias{swap_environment_cnam_es}
 \title{Swaps the CNAMEs of two environments}
 \usage{
-swap_environment_cnam_es(SourceEnvironmentId = NULL,
-  SourceEnvironmentName = NULL, DestinationEnvironmentId = NULL,
-  DestinationEnvironmentName = NULL)
+swap_environment_cnam_es(
+  SourceEnvironmentId = "string",
+  SourceEnvironmentName = "string",
+  DestinationEnvironmentId = "string",
+  DestinationEnvironmentName = "string"
+)
 }
 \arguments{
 \item{SourceEnvironmentId}{The ID of the source environment.

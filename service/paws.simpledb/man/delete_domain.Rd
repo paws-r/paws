@@ -4,10 +4,12 @@
 \alias{delete_domain}
 \title{The \code{DeleteDomain} operation deletes a domain}
 \usage{
-delete_domain(DomainName)
+delete_domain(
+  DomainName = "string"
+)
 }
 \arguments{
-\item{DomainName}{The name of the domain to delete.}
+\item{DomainName}{[required] The name of the domain to delete.}
 }
 \description{
 The \code{DeleteDomain} operation deletes a domain. Any items (and their attributes) in the domain are deleted as well. The \code{DeleteDomain} operation might take 10 or more seconds to complete.

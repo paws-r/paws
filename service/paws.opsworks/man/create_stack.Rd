@@ -4,25 +4,49 @@
 \alias{create_stack}
 \title{Creates a new stack}
 \usage{
-create_stack(Name, Region, ServiceRoleArn, DefaultInstanceProfileArn,
-  VpcId = NULL, Attributes = NULL, DefaultOs = NULL,
-  HostnameTheme = NULL, DefaultAvailabilityZone = NULL,
-  DefaultSubnetId = NULL, CustomJson = NULL, ConfigurationManager = NULL,
-  ChefConfiguration = NULL, UseCustomCookbooks = NULL,
-  UseOpsworksSecurityGroups = NULL, CustomCookbooksSource = NULL,
-  DefaultSshKeyName = NULL, DefaultRootDeviceType = NULL,
-  AgentVersion = NULL)
+create_stack(
+  Name = "string",
+  Region = "string",
+  VpcId = "string",
+  Attributes = list(
+    "string"
+  ),
+  ServiceRoleArn = "string",
+  DefaultInstanceProfileArn = "string",
+  DefaultOs = "string",
+  HostnameTheme = "string",
+  DefaultAvailabilityZone = "string",
+  DefaultSubnetId = "string",
+  CustomJson = "string",
+  ConfigurationManager = list(
+    Name = "string",
+    Version = "string"
+  ),
+  ChefConfiguration = list(
+    ManageBerkshelf = TRUE|FALSE,
+    BerkshelfVersion = "string"
+  ),
+  UseCustomCookbooks = TRUE|FALSE,
+  UseOpsworksSecurityGroups = TRUE|FALSE,
+  CustomCookbooksSource = list(
+    Type = "git"|"svn"|"archive"|"s3",
+    Url = "string",
+    Username = "string",
+    Password = "string",
+    SshKey = "string",
+    Revision = "string"
+  ),
+  DefaultSshKeyName = "string",
+  DefaultRootDeviceType = "ebs"|"instance-store",
+  AgentVersion = "string"
+)
 }
 \arguments{
-\item{Name}{The stack name.}
+\item{Name}{[required] The stack name.}
 
-\item{Region}{The stack's AWS region, such as \code{ap-south-1}. For more information about Amazon regions, see \href{http://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}.
+\item{Region}{[required] The stack's AWS region, such as \code{ap-south-1}. For more information about Amazon regions, see \href{http://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}.
 
 In the AWS CLI, this API maps to the \code{--stack-region} parameter. If the \code{--stack-region} parameter and the AWS CLI common parameter \code{--region} are set to the same value, the stack uses a \emph{regional} endpoint. If the \code{--stack-region} parameter is not set, but the AWS CLI \code{--region} parameter is, this also results in a stack with a \emph{regional} endpoint. However, if the \code{--region} parameter is set to \code{us-east-1}, and the \code{--stack-region} parameter is set to one of the following, then the stack uses a legacy or \emph{classic} region: \code{us-west-1, us-west-2, sa-east-1, eu-central-1, eu-west-1, ap-northeast-1, ap-southeast-1, ap-southeast-2}. In this case, the actual API endpoint of the stack is in \code{us-east-1}. Only the preceding regions are supported as classic regions in the \code{us-east-1} API endpoint. Because it is a best practice to choose the regional endpoint that is closest to where you manage AWS, we recommend that you use r}
-
-\item{ServiceRoleArn}{The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role. For more information about IAM ARNs, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
-
-\item{DefaultInstanceProfileArn}{The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2 instances. For more information about IAM ARNs, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
 
 \item{VpcId}{The ID of the VPC that the stack is to be launched into. The VPC must be in the stack's region. All instances are launched into this VPC. You cannot change the ID later.
 \itemize{
@@ -41,6 +65,10 @@ If you specify a nondefault VPC ID, note the following:
 For more information about how to use AWS OpsWorks Stacks with a VPC, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html}{Running a Stack in a VPC}. For more information about default VPC and EC2-Classic, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html}{Supported Platforms}.}
 
 \item{Attributes}{One or more user-defined key-value pairs to be added to the stack attributes.}
+
+\item{ServiceRoleArn}{[required] The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role. For more information about IAM ARNs, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
+
+\item{DefaultInstanceProfileArn}{[required] The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2 instances. For more information about IAM ARNs, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
 
 \item{DefaultOs}{The stack's default operating system, which is installed on every instance unless you specify a different operating system when you create the instance. You can specify one of the following.
 \itemize{

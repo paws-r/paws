@@ -4,10 +4,12 @@
 \alias{delete_platform_application}
 \title{Deletes a platform application object for one of the supported push notification services, such as APNS and GCM}
 \usage{
-delete_platform_application(PlatformApplicationArn)
+delete_platform_application(
+  PlatformApplicationArn = "string"
+)
 }
 \arguments{
-\item{PlatformApplicationArn}{PlatformApplicationArn of platform application object to delete.}
+\item{PlatformApplicationArn}{[required] PlatformApplicationArn of platform application object to delete.}
 }
 \description{
 Deletes a platform application object for one of the supported push notification services, such as APNS and GCM. For more information, see \href{http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.

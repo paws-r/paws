@@ -4,17 +4,130 @@
 \alias{create_origin_endpoint}
 \title{Creates a new OriginEndpoint record}
 \usage{
-create_origin_endpoint(ChannelId, Id, CmafPackage = NULL,
-  DashPackage = NULL, Description = NULL, HlsPackage = NULL,
-  ManifestName = NULL, MssPackage = NULL, StartoverWindowSeconds = NULL,
-  TimeDelaySeconds = NULL, Whitelist = NULL)
+create_origin_endpoint(
+  ChannelId = "string",
+  CmafPackage = list(
+    Encryption = list(
+      KeyRotationIntervalSeconds = 123,
+      SpekeKeyProvider = list(
+        CertificateArn = "string",
+        ResourceId = "string",
+        RoleArn = "string",
+        SystemIds = list(
+          "string"
+        ),
+        Url = "string"
+      )
+    ),
+    HlsManifests = list(
+      list(
+        AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH",
+        Id = "string",
+        IncludeIframeOnlyStream = TRUE|FALSE,
+        ManifestName = "string",
+        PlaylistType = "NONE"|"EVENT"|"VOD",
+        PlaylistWindowSeconds = 123,
+        ProgramDateTimeIntervalSeconds = 123
+      )
+    ),
+    SegmentDurationSeconds = 123,
+    SegmentPrefix = "string",
+    StreamSelection = list(
+      MaxVideoBitsPerSecond = 123,
+      MinVideoBitsPerSecond = 123,
+      StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+    )
+  ),
+  DashPackage = list(
+    Encryption = list(
+      KeyRotationIntervalSeconds = 123,
+      SpekeKeyProvider = list(
+        CertificateArn = "string",
+        ResourceId = "string",
+        RoleArn = "string",
+        SystemIds = list(
+          "string"
+        ),
+        Url = "string"
+      )
+    ),
+    ManifestWindowSeconds = 123,
+    MinBufferTimeSeconds = 123,
+    MinUpdatePeriodSeconds = 123,
+    PeriodTriggers = list(
+      "ADS"
+    ),
+    Profile = "NONE"|"HBBTV_1_5",
+    SegmentDurationSeconds = 123,
+    StreamSelection = list(
+      MaxVideoBitsPerSecond = 123,
+      MinVideoBitsPerSecond = 123,
+      StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+    ),
+    SuggestedPresentationDelaySeconds = 123
+  ),
+  Description = "string",
+  HlsPackage = list(
+    AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH",
+    Encryption = list(
+      ConstantInitializationVector = "string",
+      EncryptionMethod = "AES_128"|"SAMPLE_AES",
+      KeyRotationIntervalSeconds = 123,
+      RepeatExtXKey = TRUE|FALSE,
+      SpekeKeyProvider = list(
+        CertificateArn = "string",
+        ResourceId = "string",
+        RoleArn = "string",
+        SystemIds = list(
+          "string"
+        ),
+        Url = "string"
+      )
+    ),
+    IncludeIframeOnlyStream = TRUE|FALSE,
+    PlaylistType = "NONE"|"EVENT"|"VOD",
+    PlaylistWindowSeconds = 123,
+    ProgramDateTimeIntervalSeconds = 123,
+    SegmentDurationSeconds = 123,
+    StreamSelection = list(
+      MaxVideoBitsPerSecond = 123,
+      MinVideoBitsPerSecond = 123,
+      StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+    ),
+    UseAudioRenditionGroup = TRUE|FALSE
+  ),
+  Id = "string",
+  ManifestName = "string",
+  MssPackage = list(
+    Encryption = list(
+      SpekeKeyProvider = list(
+        CertificateArn = "string",
+        ResourceId = "string",
+        RoleArn = "string",
+        SystemIds = list(
+          "string"
+        ),
+        Url = "string"
+      )
+    ),
+    ManifestWindowSeconds = 123,
+    SegmentDurationSeconds = 123,
+    StreamSelection = list(
+      MaxVideoBitsPerSecond = 123,
+      MinVideoBitsPerSecond = 123,
+      StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+    )
+  ),
+  StartoverWindowSeconds = 123,
+  TimeDelaySeconds = 123,
+  Whitelist = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ChannelId}{The ID of the Channel that the OriginEndpoint will be associated with.
+\item{ChannelId}{[required] The ID of the Channel that the OriginEndpoint will be associated with.
 This cannot be changed after the OriginEndpoint is created.}
-
-\item{Id}{The ID of the OriginEndpoint.  The ID must be unique within the region
-and it cannot be changed after the OriginEndpoint is created.}
 
 \item{CmafPackage}{}
 
@@ -23,6 +136,9 @@ and it cannot be changed after the OriginEndpoint is created.}
 \item{Description}{A short text description of the OriginEndpoint.}
 
 \item{HlsPackage}{}
+
+\item{Id}{[required] The ID of the OriginEndpoint.  The ID must be unique within the region
+and it cannot be changed after the OriginEndpoint is created.}
 
 \item{ManifestName}{A short string that will be used as the filename of the OriginEndpoint URL (defaults to "index").}
 

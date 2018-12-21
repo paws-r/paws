@@ -4,8 +4,13 @@
 \alias{list_thing_groups}
 \title{List the thing groups in your account}
 \usage{
-list_thing_groups(nextToken = NULL, maxResults = NULL, parentGroup = NULL,
-  namePrefixFilter = NULL, recursive = NULL)
+list_thing_groups(
+  nextToken = "string",
+  maxResults = 123,
+  parentGroup = "string",
+  namePrefixFilter = "string",
+  recursive = TRUE|FALSE
+)
 }
 \arguments{
 \item{nextToken}{The token to retrieve the next set of results.}

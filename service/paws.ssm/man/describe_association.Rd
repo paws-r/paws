@@ -4,8 +4,12 @@
 \alias{describe_association}
 \title{Describes the association for the specified target or instance}
 \usage{
-describe_association(Name = NULL, InstanceId = NULL, AssociationId = NULL,
-  AssociationVersion = NULL)
+describe_association(
+  Name = "string",
+  InstanceId = "string",
+  AssociationId = "string",
+  AssociationVersion = "string"
+)
 }
 \arguments{
 \item{Name}{The name of the Systems Manager document.}

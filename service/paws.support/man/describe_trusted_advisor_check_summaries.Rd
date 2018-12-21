@@ -4,10 +4,14 @@
 \alias{describe_trusted_advisor_check_summaries}
 \title{Returns the summaries of the results of the Trusted Advisor checks that have the specified check IDs}
 \usage{
-describe_trusted_advisor_check_summaries(checkIds)
+describe_trusted_advisor_check_summaries(
+  checkIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{checkIds}{The IDs of the Trusted Advisor checks.}
+\item{checkIds}{[required] The IDs of the Trusted Advisor checks.}
 }
 \description{
 Returns the summaries of the results of the Trusted Advisor checks that have the specified check IDs. Check IDs can be obtained by calling DescribeTrustedAdvisorChecks.

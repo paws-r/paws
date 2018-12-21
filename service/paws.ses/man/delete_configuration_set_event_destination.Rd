@@ -4,13 +4,15 @@
 \alias{delete_configuration_set_event_destination}
 \title{Deletes a configuration set event destination}
 \usage{
-delete_configuration_set_event_destination(ConfigurationSetName,
-  EventDestinationName)
+delete_configuration_set_event_destination(
+  ConfigurationSetName = "string",
+  EventDestinationName = "string"
+)
 }
 \arguments{
-\item{ConfigurationSetName}{The name of the configuration set from which to delete the event destination.}
+\item{ConfigurationSetName}{[required] The name of the configuration set from which to delete the event destination.}
 
-\item{EventDestinationName}{The name of the event destination to delete.}
+\item{EventDestinationName}{[required] The name of the event destination to delete.}
 }
 \description{
 Deletes a configuration set event destination. Configuration set event destinations are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Amazon SES Developer Guide}.

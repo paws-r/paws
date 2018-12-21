@@ -4,13 +4,20 @@
 \alias{assume_role}
 \title{Returns a set of temporary security credentials (consisting of an access key ID, a secret access key, and a security token) that you can use to access AWS resources that you might not normally have access to}
 \usage{
-assume_role(RoleArn, RoleSessionName, Policy = NULL, DurationSeconds = NULL,
-  ExternalId = NULL, SerialNumber = NULL, TokenCode = NULL)
+assume_role(
+  RoleArn = "string",
+  RoleSessionName = "string",
+  Policy = "string",
+  DurationSeconds = 123,
+  ExternalId = "string",
+  SerialNumber = "string",
+  TokenCode = "string"
+)
 }
 \arguments{
-\item{RoleArn}{The Amazon Resource Name (ARN) of the role to assume.}
+\item{RoleArn}{[required] The Amazon Resource Name (ARN) of the role to assume.}
 
-\item{RoleSessionName}{An identifier for the assumed role session.
+\item{RoleSessionName}{[required] An identifier for the assumed role session.
 
 Use the role session name to uniquely identify a session when the same role is assumed by different principals or for different reasons. In cross-account scenarios, the role session name is visible to, and can be logged by the account that owns the role. The role session name is also used in the ARN of the assumed role principal. This means that subsequent cross-account API requests using the temporary security credentials will expose the role session name to the external account in their CloudTrail logs.
 

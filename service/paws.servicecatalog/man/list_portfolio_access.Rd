@@ -4,17 +4,20 @@
 \alias{list_portfolio_access}
 \title{Lists the account IDs that have access to the specified portfolio}
 \usage{
-list_portfolio_access(PortfolioId, AcceptLanguage = NULL)
+list_portfolio_access(
+  AcceptLanguage = "string",
+  PortfolioId = "string"
+)
 }
 \arguments{
-\item{PortfolioId}{The portfolio identifier.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{PortfolioId}{[required] The portfolio identifier.}
 }
 \description{
 Lists the account IDs that have access to the specified portfolio.

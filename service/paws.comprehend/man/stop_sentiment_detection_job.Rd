@@ -4,10 +4,12 @@
 \alias{stop_sentiment_detection_job}
 \title{Stops a sentiment detection job in progress}
 \usage{
-stop_sentiment_detection_job(JobId)
+stop_sentiment_detection_job(
+  JobId = "string"
+)
 }
 \arguments{
-\item{JobId}{The identifier of the sentiment detection job to stop.}
+\item{JobId}{[required] The identifier of the sentiment detection job to stop.}
 }
 \description{
 Stops a sentiment detection job in progress.

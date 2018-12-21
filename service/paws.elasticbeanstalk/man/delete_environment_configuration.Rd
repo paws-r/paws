@@ -4,12 +4,15 @@
 \alias{delete_environment_configuration}
 \title{Deletes the draft configuration associated with the running environment}
 \usage{
-delete_environment_configuration(ApplicationName, EnvironmentName)
+delete_environment_configuration(
+  ApplicationName = "string",
+  EnvironmentName = "string"
+)
 }
 \arguments{
-\item{ApplicationName}{The name of the application the environment is associated with.}
+\item{ApplicationName}{[required] The name of the application the environment is associated with.}
 
-\item{EnvironmentName}{The name of the environment to delete the draft configuration from.}
+\item{EnvironmentName}{[required] The name of the environment to delete the draft configuration from.}
 }
 \description{
 Deletes the draft configuration associated with the running environment.

@@ -4,12 +4,17 @@
 \alias{untag_resource}
 \title{Removes one or more tags from the specified AWS Direct Connect resource}
 \usage{
-untag_resource(resourceArn, tagKeys)
+untag_resource(
+  resourceArn = "string",
+  tagKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{resourceArn}{The Amazon Resource Name (ARN) of the resource.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 
-\item{tagKeys}{The tag keys of the tags to remove.}
+\item{tagKeys}{[required] The tag keys of the tags to remove.}
 }
 \description{
 Removes one or more tags from the specified AWS Direct Connect resource.

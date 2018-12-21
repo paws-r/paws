@@ -4,10 +4,12 @@
 \alias{delete_subnet_group}
 \title{Deletes a subnet group}
 \usage{
-delete_subnet_group(SubnetGroupName)
+delete_subnet_group(
+  SubnetGroupName = "string"
+)
 }
 \arguments{
-\item{SubnetGroupName}{The name of the subnet group to delete.}
+\item{SubnetGroupName}{[required] The name of the subnet group to delete.}
 }
 \description{
 Deletes a subnet group.

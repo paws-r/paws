@@ -4,12 +4,17 @@
 \alias{create_configuration_set_tracking_options}
 \title{Creates an association between a configuration set and a custom domain for open and click event tracking}
 \usage{
-create_configuration_set_tracking_options(ConfigurationSetName, TrackingOptions)
+create_configuration_set_tracking_options(
+  ConfigurationSetName = "string",
+  TrackingOptions = list(
+    CustomRedirectDomain = "string"
+  )
+)
 }
 \arguments{
-\item{ConfigurationSetName}{The name of the configuration set that the tracking options should be associated with.}
+\item{ConfigurationSetName}{[required] The name of the configuration set that the tracking options should be associated with.}
 
-\item{TrackingOptions}{}
+\item{TrackingOptions}{[required]}
 }
 \description{
 Creates an association between a configuration set and a custom domain for open and click event tracking.

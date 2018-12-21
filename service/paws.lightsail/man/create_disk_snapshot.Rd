@@ -4,18 +4,33 @@
 \alias{create_disk_snapshot}
 \title{Creates a snapshot of a block storage disk}
 \usage{
-create_disk_snapshot(diskName, diskSnapshotName)
+create_disk_snapshot(
+  diskName = "string",
+  diskSnapshotName = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{diskName}{The unique name of the source disk (e.g., \code{my-source-disk}).}
+\item{diskName}{[required] The unique name of the source disk (e.g., \code{my-source-disk}).}
 
-\item{diskSnapshotName}{The name of the destination disk snapshot (e.g., \code{my-disk-snapshot}) based on the source disk.}
+\item{diskSnapshotName}{[required] The name of the destination disk snapshot (e.g., \code{my-disk-snapshot}) based on the source disk.}
+
+\item{tags}{The tag keys and optional values to add to the resource during create.
+
+To tag a resource after it has been created, see the \code{tag resource} operation.}
 }
 \description{
 Creates a snapshot of a block storage disk. You can use snapshots for backups, to make copies of disks, and to save data before shutting down a Lightsail instance.
 }
 \details{
 You can take a snapshot of an attached disk that is in use; however, snapshots only capture data that has been written to your disk at the time the snapshot command is issued. This may exclude any data that has been cached by any applications or the operating system. If you can pause any file systems on the disk long enough to take a snapshot, your snapshot should be complete. Nevertheless, if you cannot pause all file writes to the disk, you should unmount the disk from within the Lightsail instance, issue the create disk snapshot command, and then remount the disk to ensure a consistent and complete snapshot. You may remount and use your disk while the snapshot status is pending.
+
+The \code{create disk snapshot} operation supports tag-based access control via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \examples{
 

@@ -4,12 +4,26 @@
 \alias{create_private_virtual_interface}
 \title{Creates a private virtual interface}
 \usage{
-create_private_virtual_interface(connectionId, newPrivateVirtualInterface)
+create_private_virtual_interface(
+  connectionId = "string",
+  newPrivateVirtualInterface = list(
+    virtualInterfaceName = "string",
+    vlan = 123,
+    asn = 123,
+    mtu = 123,
+    authKey = "string",
+    amazonAddress = "string",
+    customerAddress = "string",
+    addressFamily = "ipv4"|"ipv6",
+    virtualGatewayId = "string",
+    directConnectGatewayId = "string"
+  )
+)
 }
 \arguments{
-\item{connectionId}{The ID of the connection.}
+\item{connectionId}{[required] The ID of the connection.}
 
-\item{newPrivateVirtualInterface}{Information about the private virtual interface.}
+\item{newPrivateVirtualInterface}{[required] Information about the private virtual interface.}
 }
 \description{
 Creates a private virtual interface. A virtual interface is the VLAN that transports AWS Direct Connect traffic. A private virtual interface can be connected to either a Direct Connect gateway or a Virtual Private Gateway (VGW). Connecting the private virtual interface to a Direct Connect gateway enables the possibility for connecting to multiple VPCs, including VPCs in different AWS Regions. Connecting the private virtual interface to a VGW only provides access to a single VPC within the same Region.

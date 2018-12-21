@@ -4,12 +4,20 @@
 \alias{create_export_job}
 \title{Creates an export job}
 \usage{
-create_export_job(ApplicationId, ExportJobRequest)
+create_export_job(
+  ApplicationId = "string",
+  ExportJobRequest = list(
+    RoleArn = "string",
+    S3UrlPrefix = "string",
+    SegmentId = "string",
+    SegmentVersion = 123
+  )
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 
-\item{ExportJobRequest}{}
+\item{ExportJobRequest}{[required]}
 }
 \description{
 Creates an export job.

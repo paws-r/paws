@@ -6,8 +6,8 @@
 \alias{paws.ssm-package}
 \title{paws.ssm: Amazon Simple Systems Manager (SSM)}
 \description{
-AWS Systems Manager is a collection of capabilities
-that helps you automate management tasks such as collecting system
+AWS Systems Manager is a collection of capabilities that
+helps you automate management tasks such as collecting system
 inventory, applying operating system (OS) patches, automating the
 creation of Amazon Machine Images (AMIs), and configuring operating
 systems (OSs) and applications at scale. Systems Manager lets you
@@ -21,7 +21,12 @@ configured for Systems Manager.
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

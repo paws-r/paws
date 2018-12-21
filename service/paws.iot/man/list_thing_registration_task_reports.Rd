@@ -4,13 +4,17 @@
 \alias{list_thing_registration_task_reports}
 \title{Information about the thing registration tasks}
 \usage{
-list_thing_registration_task_reports(taskId, reportType, nextToken = NULL,
-  maxResults = NULL)
+list_thing_registration_task_reports(
+  taskId = "string",
+  reportType = "ERRORS"|"RESULTS",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{taskId}{The id of the task.}
+\item{taskId}{[required] The id of the task.}
 
-\item{reportType}{The type of task report.}
+\item{reportType}{[required] The type of task report.}
 
 \item{nextToken}{The token to retrieve the next set of results.}
 

@@ -4,18 +4,27 @@
 \alias{add_permission}
 \title{Adds a permission to a queue for a specific \link{principal}(http://docs}
 \usage{
-add_permission(QueueUrl, Label, AWSAccountIds, Actions)
+add_permission(
+  QueueUrl = "string",
+  Label = "string",
+  AWSAccountIds = list(
+    "string"
+  ),
+  Actions = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{QueueUrl}{The URL of the Amazon SQS queue to which permissions are added.
+\item{QueueUrl}{[required] The URL of the Amazon SQS queue to which permissions are added.
 
 Queue URLs and names are case-sensitive.}
 
-\item{Label}{The unique identification of the permission you're setting (for example, \code{AliceSendMessage}). Maximum 80 characters. Allowed characters include alphanumeric characters, hyphens (\code{-}), and underscores (\code{_}).}
+\item{Label}{[required] The unique identification of the permission you're setting (for example, \code{AliceSendMessage}). Maximum 80 characters. Allowed characters include alphanumeric characters, hyphens (\code{-}), and underscores (\code{_}).}
 
-\item{AWSAccountIds}{The AWS account number of the \href{http://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P}{principal} who is given permission. The principal must have an AWS account, but does not need to be signed up for Amazon SQS. For information about locating the AWS account identification, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html#sqs-api-request-authentication}{Your AWS Identifiers} in the \emph{Amazon Simple Queue Service Developer Guide}.}
+\item{AWSAccountIds}{[required] The AWS account number of the \href{http://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P}{principal} who is given permission. The principal must have an AWS account, but does not need to be signed up for Amazon SQS. For information about locating the AWS account identification, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html#sqs-api-request-authentication}{Your AWS Identifiers} in the \emph{Amazon Simple Queue Service Developer Guide}.}
 
-\item{Actions}{The action the client wants to allow for the specified principal. Valid values: the name of any action or \code{*}.
+\item{Actions}{[required] The action the client wants to allow for the specified principal. Valid values: the name of any action or \code{*}.
 
 For more information about these actions, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-overview-of-managing-access.html}{Overview of Managing Access Permissions to Your Amazon Simple Queue Service Resource} in the \emph{Amazon Simple Queue Service Developer Guide}.
 

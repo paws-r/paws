@@ -4,10 +4,13 @@
 \alias{update_group}
 \title{Updates an existing group with a new or changed description}
 \usage{
-update_group(GroupName, Description = NULL)
+update_group(
+  GroupName = "string",
+  Description = "string"
+)
 }
 \arguments{
-\item{GroupName}{The name of the resource group for which you want to update its description.}
+\item{GroupName}{[required] The name of the resource group for which you want to update its description.}
 
 \item{Description}{The description of the resource group. Descriptions can have a maximum of 511 characters, including letters, numbers, hyphens, underscores, punctuation, and spaces.}
 }

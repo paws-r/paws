@@ -4,14 +4,18 @@
 \alias{delete_mailbox_permissions}
 \title{Deletes permissions granted to a user or group}
 \usage{
-delete_mailbox_permissions(OrganizationId, EntityId, GranteeId)
+delete_mailbox_permissions(
+  OrganizationId = "string",
+  EntityId = "string",
+  GranteeId = "string"
+)
 }
 \arguments{
-\item{OrganizationId}{The identifier of the organization under which the entity (user or group) exists.}
+\item{OrganizationId}{[required] The identifier of the organization under which the entity (user or group) exists.}
 
-\item{EntityId}{The identifier of the entity (user or group) for which to delete mailbox permissions.}
+\item{EntityId}{[required] The identifier of the entity (user or group) for which to delete mailbox permissions.}
 
-\item{GranteeId}{The identifier of the entity (user or group) for which to delete granted permissions.}
+\item{GranteeId}{[required] The identifier of the entity (user or group) for which to delete granted permissions.}
 }
 \description{
 Deletes permissions granted to a user or group.

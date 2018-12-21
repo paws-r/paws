@@ -4,15 +4,30 @@
 \alias{create_platform_version}
 \title{Create a new version of your custom platform}
 \usage{
-create_platform_version(PlatformName, PlatformVersion, PlatformDefinitionBundle,
-  EnvironmentName = NULL, OptionSettings = NULL)
+create_platform_version(
+  PlatformName = "string",
+  PlatformVersion = "string",
+  PlatformDefinitionBundle = list(
+    S3Bucket = "string",
+    S3Key = "string"
+  ),
+  EnvironmentName = "string",
+  OptionSettings = list(
+    list(
+      ResourceName = "string",
+      Namespace = "string",
+      OptionName = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{PlatformName}{The name of your custom platform.}
+\item{PlatformName}{[required] The name of your custom platform.}
 
-\item{PlatformVersion}{The number, such as 1.0.2, for the new platform version.}
+\item{PlatformVersion}{[required] The number, such as 1.0.2, for the new platform version.}
 
-\item{PlatformDefinitionBundle}{The location of the platform definition archive in Amazon S3.}
+\item{PlatformDefinitionBundle}{[required] The location of the platform definition archive in Amazon S3.}
 
 \item{EnvironmentName}{The name of the builder environment.}
 

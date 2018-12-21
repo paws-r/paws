@@ -4,10 +4,14 @@
 \alias{delete_instance}
 \title{Deletes a specified instance, which terminates the associated Amazon EC2 instance}
 \usage{
-delete_instance(InstanceId, DeleteElasticIp = NULL, DeleteVolumes = NULL)
+delete_instance(
+  InstanceId = "string",
+  DeleteElasticIp = TRUE|FALSE,
+  DeleteVolumes = TRUE|FALSE
+)
 }
 \arguments{
-\item{InstanceId}{The instance ID.}
+\item{InstanceId}{[required] The instance ID.}
 
 \item{DeleteElasticIp}{Whether to delete the instance Elastic IP address.}
 

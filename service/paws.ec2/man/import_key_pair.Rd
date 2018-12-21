@@ -4,14 +4,18 @@
 \alias{import_key_pair}
 \title{Imports the public key from an RSA key pair that you created with a third-party tool}
 \usage{
-import_key_pair(KeyName, PublicKeyMaterial, DryRun = NULL)
+import_key_pair(
+  DryRun = TRUE|FALSE,
+  KeyName = "string",
+  PublicKeyMaterial = raw
+)
 }
 \arguments{
-\item{KeyName}{A unique name for the key pair.}
-
-\item{PublicKeyMaterial}{The public key. For API calls, the text must be base64-encoded. For command line tools, base64 encoding is performed for you.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{KeyName}{[required] A unique name for the key pair.}
+
+\item{PublicKeyMaterial}{[required] The public key. For API calls, the text must be base64-encoded. For command line tools, base64 encoding is performed for you.}
 }
 \description{
 Imports the public key from an RSA key pair that you created with a third-party tool. Compare this with CreateKeyPair, in which AWS creates the key pair and gives the keys to you (AWS keeps a copy of the public key). With ImportKeyPair, you create the key pair and give AWS just the public key. The private key is never transferred between you and AWS.

@@ -4,12 +4,15 @@
 \alias{get_request_validator}
 \title{Gets a RequestValidator of a given RestApi}
 \usage{
-get_request_validator(restApiId, requestValidatorId)
+get_request_validator(
+  restApiId = "string",
+  requestValidatorId = "string"
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{requestValidatorId}{[Required] The identifier of the RequestValidator to be retrieved.}
+\item{requestValidatorId}{[required] [Required] The identifier of the RequestValidator to be retrieved.}
 }
 \description{
 Gets a RequestValidator of a given RestApi.

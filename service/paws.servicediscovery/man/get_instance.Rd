@@ -4,12 +4,15 @@
 \alias{get_instance}
 \title{Gets information about a specified instance}
 \usage{
-get_instance(ServiceId, InstanceId)
+get_instance(
+  ServiceId = "string",
+  InstanceId = "string"
+)
 }
 \arguments{
-\item{ServiceId}{The ID of the service that the instance is associated with.}
+\item{ServiceId}{[required] The ID of the service that the instance is associated with.}
 
-\item{InstanceId}{The ID of the instance that you want to get information about.}
+\item{InstanceId}{[required] The ID of the instance that you want to get information about.}
 }
 \description{
 Gets information about a specified instance.

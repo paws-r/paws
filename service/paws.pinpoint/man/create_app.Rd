@@ -4,10 +4,14 @@
 \alias{create_app}
 \title{Creates or updates an app}
 \usage{
-create_app(CreateApplicationRequest)
+create_app(
+  CreateApplicationRequest = list(
+    Name = "string"
+  )
+)
 }
 \arguments{
-\item{CreateApplicationRequest}{}
+\item{CreateApplicationRequest}{[required]}
 }
 \description{
 Creates or updates an app.

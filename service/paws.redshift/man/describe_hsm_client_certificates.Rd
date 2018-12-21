@@ -4,8 +4,17 @@
 \alias{describe_hsm_client_certificates}
 \title{Returns information about the specified HSM client certificate}
 \usage{
-describe_hsm_client_certificates(HsmClientCertificateIdentifier = NULL,
-  MaxRecords = NULL, Marker = NULL, TagKeys = NULL, TagValues = NULL)
+describe_hsm_client_certificates(
+  HsmClientCertificateIdentifier = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  TagKeys = list(
+    "string"
+  ),
+  TagValues = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{HsmClientCertificateIdentifier}{The identifier of a specific HSM client certificate for which you want information. If no identifier is specified, information is returned for all HSM client certificates owned by your AWS customer account.}

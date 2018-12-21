@@ -4,12 +4,15 @@
 \alias{delete_placement}
 \title{Deletes a placement}
 \usage{
-delete_placement(placementName, projectName)
+delete_placement(
+  placementName = "string",
+  projectName = "string"
+)
 }
 \arguments{
-\item{placementName}{The name of the empty placement to delete.}
+\item{placementName}{[required] The name of the empty placement to delete.}
 
-\item{projectName}{The project containing the empty placement to delete.}
+\item{projectName}{[required] The project containing the empty placement to delete.}
 }
 \description{
 Deletes a placement. To delete a placement, it must not have any devices associated with it.

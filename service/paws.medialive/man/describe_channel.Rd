@@ -4,10 +4,12 @@
 \alias{describe_channel}
 \title{Gets details about a channel}
 \usage{
-describe_channel(ChannelId)
+describe_channel(
+  ChannelId = "string"
+)
 }
 \arguments{
-\item{ChannelId}{channel ID}
+\item{ChannelId}{[required] channel ID}
 }
 \description{
 Gets details about a channel

@@ -4,10 +4,13 @@
 \alias{accept_qualification_request}
 \title{The \code{AcceptQualificationRequest} operation approves a Worker's request for a Qualification}
 \usage{
-accept_qualification_request(QualificationRequestId, IntegerValue = NULL)
+accept_qualification_request(
+  QualificationRequestId = "string",
+  IntegerValue = 123
+)
 }
 \arguments{
-\item{QualificationRequestId}{The ID of the Qualification request, as returned by the \code{GetQualificationRequests} operation.}
+\item{QualificationRequestId}{[required] The ID of the Qualification request, as returned by the \code{GetQualificationRequests} operation.}
 
 \item{IntegerValue}{The value of the Qualification. You can omit this value if you are using the presence or absence of the Qualification as the basis for a HIT requirement.}
 }

@@ -4,16 +4,23 @@
 \alias{update_findings_feedback}
 \title{Marks specified Amazon GuardDuty findings as useful or not useful}
 \usage{
-update_findings_feedback(DetectorId, Feedback, FindingIds, Comments = NULL)
+update_findings_feedback(
+  Comments = "string",
+  DetectorId = "string",
+  Feedback = "USEFUL"|"NOT_USEFUL",
+  FindingIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{DetectorId}{The ID of the detector that specifies the GuardDuty service whose findings you want to mark as useful or not useful.}
-
-\item{Feedback}{Valid values: USEFUL | NOT_USEFUL}
-
-\item{FindingIds}{IDs of the findings that you want to mark as useful or not useful.}
-
 \item{Comments}{Additional feedback about the GuardDuty findings.}
+
+\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose findings you want to mark as useful or not useful.}
+
+\item{Feedback}{[required] Valid values: USEFUL | NOT_USEFUL}
+
+\item{FindingIds}{[required] IDs of the findings that you want to mark as useful or not useful.}
 }
 \description{
 Marks specified Amazon GuardDuty findings as useful or not useful.

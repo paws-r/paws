@@ -4,7 +4,9 @@
 \alias{send_invitation}
 \title{Sends an enrollment invitation email with a URL to a user}
 \usage{
-send_invitation(UserArn = NULL)
+send_invitation(
+  UserArn = "string"
+)
 }
 \arguments{
 \item{UserArn}{The ARN of the user to whom to send an invitation. Required.}

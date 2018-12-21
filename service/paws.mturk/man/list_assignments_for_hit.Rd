@@ -4,11 +4,17 @@
 \alias{list_assignments_for_hit}
 \title{The \code{ListAssignmentsForHIT} operation retrieves completed assignments for a HIT}
 \usage{
-list_assignments_for_hit(HITId, NextToken = NULL, MaxResults = NULL,
-  AssignmentStatuses = NULL)
+list_assignments_for_hit(
+  HITId = "string",
+  NextToken = "string",
+  MaxResults = 123,
+  AssignmentStatuses = list(
+    "Submitted"|"Approved"|"Rejected"
+  )
+)
 }
 \arguments{
-\item{HITId}{The ID of the HIT.}
+\item{HITId}{[required] The ID of the HIT.}
 
 \item{NextToken}{Pagination token}
 

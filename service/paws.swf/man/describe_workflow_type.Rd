@@ -4,12 +4,18 @@
 \alias{describe_workflow_type}
 \title{Returns information about the specified \emph{workflow type}}
 \usage{
-describe_workflow_type(domain, workflowType)
+describe_workflow_type(
+  domain = "string",
+  workflowType = list(
+    name = "string",
+    version = "string"
+  )
+)
 }
 \arguments{
-\item{domain}{The name of the domain in which this workflow type is registered.}
+\item{domain}{[required] The name of the domain in which this workflow type is registered.}
 
-\item{workflowType}{The workflow type to describe.}
+\item{workflowType}{[required] The workflow type to describe.}
 }
 \description{
 Returns information about the specified \emph{workflow type}. This includes configuration settings specified when the type was registered and other information such as creation date, current status, etc.

@@ -4,13 +4,18 @@
 \alias{get_document_path}
 \title{Retrieves the path information (the hierarchy from the root folder) for the requested document}
 \usage{
-get_document_path(DocumentId, AuthenticationToken = NULL, Limit = NULL,
-  Fields = NULL, Marker = NULL)
+get_document_path(
+  AuthenticationToken = "string",
+  DocumentId = "string",
+  Limit = 123,
+  Fields = "string",
+  Marker = "string"
+)
 }
 \arguments{
-\item{DocumentId}{The ID of the document.}
-
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
+
+\item{DocumentId}{[required] The ID of the document.}
 
 \item{Limit}{The maximum number of levels in the hierarchy to return.}
 

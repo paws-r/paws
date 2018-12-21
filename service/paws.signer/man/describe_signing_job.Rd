@@ -4,10 +4,12 @@
 \alias{describe_signing_job}
 \title{Returns information about a specific code signing job}
 \usage{
-describe_signing_job(jobId)
+describe_signing_job(
+  jobId = "string"
+)
 }
 \arguments{
-\item{jobId}{The ID of the signing job on input.}
+\item{jobId}{[required] The ID of the signing job on input.}
 }
 \description{
 Returns information about a specific code signing job. You specify the job by using the \code{jobId} value that is returned by the StartSigningJob operation.

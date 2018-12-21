@@ -4,10 +4,15 @@
 \alias{get_open_id_token}
 \title{Gets an OpenID token, using a known Cognito ID}
 \usage{
-get_open_id_token(IdentityId, Logins = NULL)
+get_open_id_token(
+  IdentityId = "string",
+  Logins = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{IdentityId}{A unique identifier in the format REGION:GUID.}
+\item{IdentityId}{[required] A unique identifier in the format REGION:GUID.}
 
 \item{Logins}{A set of optional name-value pairs that map provider names to provider tokens. When using graph.facebook.com and www.amazon.com, supply the access\_token returned from the provider's authflow. For accounts.google.com, an Amazon Cognito Identity Provider, or any other OpenId Connect provider, always include the \code{id_token}.}
 }

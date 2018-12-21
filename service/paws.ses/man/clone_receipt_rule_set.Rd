@@ -4,17 +4,20 @@
 \alias{clone_receipt_rule_set}
 \title{Creates a receipt rule set by cloning an existing one}
 \usage{
-clone_receipt_rule_set(RuleSetName, OriginalRuleSetName)
+clone_receipt_rule_set(
+  RuleSetName = "string",
+  OriginalRuleSetName = "string"
+)
 }
 \arguments{
-\item{RuleSetName}{The name of the rule set to create. The name must:
+\item{RuleSetName}{[required] The name of the rule set to create. The name must:
 \itemize{
 \item This value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (\_), or dashes (-).
 \item Start and end with a letter or number.
 \item Contain less than 64 characters.
 }}
 
-\item{OriginalRuleSetName}{The name of the rule set to clone.}
+\item{OriginalRuleSetName}{[required] The name of the rule set to clone.}
 }
 \description{
 Creates a receipt rule set by cloning an existing one. All receipt rules and configurations are copied to the new receipt rule set and are completely independent of the source rule set.

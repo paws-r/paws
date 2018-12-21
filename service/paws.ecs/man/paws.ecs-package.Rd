@@ -6,9 +6,9 @@
 \alias{paws.ecs-package}
 \title{paws.ecs: Amazon EC2 Container Service}
 \description{
-Amazon Elastic Container Service (Amazon ECS) is a
-highly scalable, fast, container management service that makes it easy
-to run, stop, and manage Docker containers on a cluster. You can host
+Amazon Elastic Container Service (Amazon ECS) is a highly
+scalable, fast, container management service that makes it easy to
+run, stop, and manage Docker containers on a cluster. You can host
 your cluster on a serverless infrastructure that is managed by Amazon
 ECS by launching your services or tasks using the Fargate launch type.
 For more control, you can host your tasks on a cluster of Amazon
@@ -22,7 +22,12 @@ Types](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.h
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

@@ -4,12 +4,15 @@
 \alias{delete_application}
 \title{Deletes the specified application}
 \usage{
-delete_application(ApplicationName, CreateTimestamp)
+delete_application(
+  ApplicationName = "string",
+  CreateTimestamp = as.POSIXct("2015-01-01")
+)
 }
 \arguments{
-\item{ApplicationName}{Name of the Amazon Kinesis Analytics application to delete.}
+\item{ApplicationName}{[required] Name of the Amazon Kinesis Analytics application to delete.}
 
-\item{CreateTimestamp}{You can use the \code{DescribeApplication} operation to get this value.}
+\item{CreateTimestamp}{[required] You can use the \code{DescribeApplication} operation to get this value.}
 }
 \description{
 Deletes the specified application. Amazon Kinesis Analytics halts application execution and deletes the application, including any application artifacts (such as in-application streams, reference table, and application code).

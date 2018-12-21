@@ -4,10 +4,13 @@
 \alias{delete_key_pair}
 \title{Deletes the specified key pair, by removing the public key from Amazon EC2}
 \usage{
-delete_key_pair(KeyName, DryRun = NULL)
+delete_key_pair(
+  KeyName = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{KeyName}{The name of the key pair.}
+\item{KeyName}{[required] The name of the key pair.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

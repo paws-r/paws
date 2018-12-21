@@ -4,10 +4,12 @@
 \alias{get_device_methods}
 \title{Given a device ID, returns the invokable methods associated with the device}
 \usage{
-get_device_methods(DeviceId)
+get_device_methods(
+  DeviceId = "string"
+)
 }
 \arguments{
-\item{DeviceId}{The unique identifier of the device.}
+\item{DeviceId}{[required] The unique identifier of the device.}
 }
 \description{
 Given a device ID, returns the invokable methods associated with the device.

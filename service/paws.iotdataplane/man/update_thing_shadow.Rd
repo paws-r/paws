@@ -4,12 +4,15 @@
 \alias{update_thing_shadow}
 \title{Updates the thing shadow for the specified thing}
 \usage{
-update_thing_shadow(thingName, payload)
+update_thing_shadow(
+  thingName = "string",
+  payload = raw
+)
 }
 \arguments{
-\item{thingName}{The name of the thing.}
+\item{thingName}{[required] The name of the thing.}
 
-\item{payload}{The state information, in JSON format.}
+\item{payload}{[required] The state information, in JSON format.}
 }
 \description{
 Updates the thing shadow for the specified thing.

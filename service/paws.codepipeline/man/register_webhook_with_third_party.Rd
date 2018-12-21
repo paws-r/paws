@@ -4,7 +4,9 @@
 \alias{register_webhook_with_third_party}
 \title{Configures a connection between the webhook that was created and the external tool with events to be detected}
 \usage{
-register_webhook_with_third_party(webhookName = NULL)
+register_webhook_with_third_party(
+  webhookName = "string"
+)
 }
 \arguments{
 \item{webhookName}{The name of an existing webhook created with PutWebhook to register with a supported third party.}

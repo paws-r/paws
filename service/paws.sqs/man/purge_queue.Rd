@@ -4,10 +4,12 @@
 \alias{purge_queue}
 \title{Deletes the messages in a queue specified by the \code{QueueURL} parameter}
 \usage{
-purge_queue(QueueUrl)
+purge_queue(
+  QueueUrl = "string"
+)
 }
 \arguments{
-\item{QueueUrl}{The URL of the queue from which the \code{PurgeQueue} action deletes messages.
+\item{QueueUrl}{[required] The URL of the queue from which the \code{PurgeQueue} action deletes messages.
 
 Queue URLs and names are case-sensitive.}
 }

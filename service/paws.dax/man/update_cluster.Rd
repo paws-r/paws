@@ -4,13 +4,20 @@
 \alias{update_cluster}
 \title{Modifies the settings for a DAX cluster}
 \usage{
-update_cluster(ClusterName, Description = NULL,
-  PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL,
-  NotificationTopicStatus = NULL, ParameterGroupName = NULL,
-  SecurityGroupIds = NULL)
+update_cluster(
+  ClusterName = "string",
+  Description = "string",
+  PreferredMaintenanceWindow = "string",
+  NotificationTopicArn = "string",
+  NotificationTopicStatus = "string",
+  ParameterGroupName = "string",
+  SecurityGroupIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ClusterName}{The name of the DAX cluster to be modified.}
+\item{ClusterName}{[required] The name of the DAX cluster to be modified.}
 
 \item{Description}{A description of the changes being made to the cluster.}
 

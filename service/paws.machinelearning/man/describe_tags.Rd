@@ -4,12 +4,15 @@
 \alias{describe_tags}
 \title{Describes one or more of the tags for your Amazon ML object}
 \usage{
-describe_tags(ResourceId, ResourceType)
+describe_tags(
+  ResourceId = "string",
+  ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
+)
 }
 \arguments{
-\item{ResourceId}{The ID of the ML object. For example, \code{exampleModelId}.}
+\item{ResourceId}{[required] The ID of the ML object. For example, \code{exampleModelId}.}
 
-\item{ResourceType}{The type of the ML object.}
+\item{ResourceType}{[required] The type of the ML object.}
 }
 \description{
 Describes one or more of the tags for your Amazon ML object.

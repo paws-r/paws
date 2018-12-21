@@ -4,12 +4,42 @@
 \alias{update_trigger}
 \title{Updates a trigger definition}
 \usage{
-update_trigger(Name, TriggerUpdate)
+update_trigger(
+  Name = "string",
+  TriggerUpdate = list(
+    Name = "string",
+    Description = "string",
+    Schedule = "string",
+    Actions = list(
+      list(
+        JobName = "string",
+        Arguments = list(
+          "string"
+        ),
+        Timeout = 123,
+        NotificationProperty = list(
+          NotifyDelayAfter = 123
+        ),
+        SecurityConfiguration = "string"
+      )
+    ),
+    Predicate = list(
+      Logical = "AND"|"ANY",
+      Conditions = list(
+        list(
+          LogicalOperator = "EQUALS",
+          JobName = "string",
+          State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"
+        )
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{Name}{The name of the trigger to update.}
+\item{Name}{[required] The name of the trigger to update.}
 
-\item{TriggerUpdate}{The new values with which to update the trigger.}
+\item{TriggerUpdate}{[required] The new values with which to update the trigger.}
 }
 \description{
 Updates a trigger definition.

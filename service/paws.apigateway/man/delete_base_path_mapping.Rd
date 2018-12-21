@@ -4,12 +4,15 @@
 \alias{delete_base_path_mapping}
 \title{Deletes the BasePathMapping resource}
 \usage{
-delete_base_path_mapping(domainName, basePath)
+delete_base_path_mapping(
+  domainName = "string",
+  basePath = "string"
+)
 }
 \arguments{
-\item{domainName}{[Required] The domain name of the BasePathMapping resource to delete.}
+\item{domainName}{[required] [Required] The domain name of the BasePathMapping resource to delete.}
 
-\item{basePath}{[Required] The base path name of the BasePathMapping resource to delete.}
+\item{basePath}{[required] [Required] The base path name of the BasePathMapping resource to delete.}
 }
 \description{
 Deletes the BasePathMapping resource.

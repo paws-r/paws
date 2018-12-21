@@ -4,10 +4,12 @@
 \alias{delete_function_concurrency}
 \title{Removes concurrent execution limits from this function}
 \usage{
-delete_function_concurrency(FunctionName)
+delete_function_concurrency(
+  FunctionName = "string"
+)
 }
 \arguments{
-\item{FunctionName}{The name of the lambda function.
+\item{FunctionName}{[required] The name of the Lambda function.
 
 \strong{Name formats}
 \itemize{

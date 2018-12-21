@@ -4,10 +4,12 @@
 \alias{delete_project}
 \title{Deletes an AWS Device Farm project, given the project ARN}
 \usage{
-delete_project(arn)
+delete_project(
+  arn = "string"
+)
 }
 \arguments{
-\item{arn}{Represents the Amazon Resource Name (ARN) of the Device Farm project you wish to delete.}
+\item{arn}{[required] Represents the Amazon Resource Name (ARN) of the Device Farm project you wish to delete.}
 }
 \description{
 Deletes an AWS Device Farm project, given the project ARN.

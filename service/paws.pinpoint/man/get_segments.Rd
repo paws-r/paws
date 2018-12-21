@@ -4,10 +4,14 @@
 \alias{get_segments}
 \title{Used to get information about your segments}
 \usage{
-get_segments(ApplicationId, PageSize = NULL, Token = NULL)
+get_segments(
+  ApplicationId = "string",
+  PageSize = "string",
+  Token = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 
 \item{PageSize}{The number of entries you want on each page in the response.}
 

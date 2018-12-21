@@ -4,10 +4,14 @@
 \alias{list_groups}
 \title{Returns summaries of the organization's groups}
 \usage{
-list_groups(OrganizationId, NextToken = NULL, MaxResults = NULL)
+list_groups(
+  OrganizationId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{OrganizationId}{The identifier for the organization under which the groups exist.}
+\item{OrganizationId}{[required] The identifier for the organization under which the groups exist.}
 
 \item{NextToken}{The token to use to retrieve the next page of results. The first call does not contain any tokens.}
 

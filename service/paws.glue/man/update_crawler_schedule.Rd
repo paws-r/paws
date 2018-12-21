@@ -4,10 +4,13 @@
 \alias{update_crawler_schedule}
 \title{Updates the schedule of a crawler using a \code{cron} expression}
 \usage{
-update_crawler_schedule(CrawlerName, Schedule = NULL)
+update_crawler_schedule(
+  CrawlerName = "string",
+  Schedule = "string"
+)
 }
 \arguments{
-\item{CrawlerName}{Name of the crawler whose schedule to update.}
+\item{CrawlerName}{[required] Name of the crawler whose schedule to update.}
 
 \item{Schedule}{The updated \code{cron} expression used to specify the schedule (see \href{http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html}{Time-Based Schedules for Jobs and Crawlers}. For example, to run something every day at 12:15 UTC, you would specify: \code{cron(15 12 * * ? *)}.}
 }

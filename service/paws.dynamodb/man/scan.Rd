@@ -4,15 +4,105 @@
 \alias{scan}
 \title{The \code{Scan} operation returns one or more items and item attributes by accessing every item in a table or a secondary index}
 \usage{
-scan(TableName, IndexName = NULL, AttributesToGet = NULL, Limit = NULL,
-  Select = NULL, ScanFilter = NULL, ConditionalOperator = NULL,
-  ExclusiveStartKey = NULL, ReturnConsumedCapacity = NULL,
-  TotalSegments = NULL, Segment = NULL, ProjectionExpression = NULL,
-  FilterExpression = NULL, ExpressionAttributeNames = NULL,
-  ExpressionAttributeValues = NULL, ConsistentRead = NULL)
+scan(
+  TableName = "string",
+  IndexName = "string",
+  AttributesToGet = list(
+    "string"
+  ),
+  Limit = 123,
+  Select = "ALL_ATTRIBUTES"|"ALL_PROJECTED_ATTRIBUTES"|"SPECIFIC_ATTRIBUTES"|"COUNT",
+  ScanFilter = list(
+    list(
+      AttributeValueList = list(
+        list(
+          S = "string",
+          N = "string",
+          B = raw,
+          SS = list(
+            "string"
+          ),
+          NS = list(
+            "string"
+          ),
+          BS = list(
+            raw
+          ),
+          M = list(
+            list()
+          ),
+          L = list(
+            list()
+          ),
+          NULL = TRUE|FALSE,
+          BOOL = TRUE|FALSE
+        )
+      ),
+      ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH"
+    )
+  ),
+  ConditionalOperator = "AND"|"OR",
+  ExclusiveStartKey = list(
+    list(
+      S = "string",
+      N = "string",
+      B = raw,
+      SS = list(
+        "string"
+      ),
+      NS = list(
+        "string"
+      ),
+      BS = list(
+        raw
+      ),
+      M = list(
+        list()
+      ),
+      L = list(
+        list()
+      ),
+      NULL = TRUE|FALSE,
+      BOOL = TRUE|FALSE
+    )
+  ),
+  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
+  TotalSegments = 123,
+  Segment = 123,
+  ProjectionExpression = "string",
+  FilterExpression = "string",
+  ExpressionAttributeNames = list(
+    "string"
+  ),
+  ExpressionAttributeValues = list(
+    list(
+      S = "string",
+      N = "string",
+      B = raw,
+      SS = list(
+        "string"
+      ),
+      NS = list(
+        "string"
+      ),
+      BS = list(
+        raw
+      ),
+      M = list(
+        list()
+      ),
+      L = list(
+        list()
+      ),
+      NULL = TRUE|FALSE,
+      BOOL = TRUE|FALSE
+    )
+  ),
+  ConsistentRead = TRUE|FALSE
+)
 }
 \arguments{
-\item{TableName}{The name of the table containing the requested items; or, if you provide \code{IndexName}, the name of the table to which that index belongs.}
+\item{TableName}{[required] The name of the table containing the requested items; or, if you provide \code{IndexName}, the name of the table to which that index belongs.}
 
 \item{IndexName}{The name of a secondary index to scan. This index can be any local secondary index or global secondary index. Note that if you use the \code{IndexName} parameter, you must also provide \code{TableName}.}
 

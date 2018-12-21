@@ -4,12 +4,15 @@
 \alias{detect_key_phrases}
 \title{Detects the key noun phrases found in the text}
 \usage{
-detect_key_phrases(Text, LanguageCode)
+detect_key_phrases(
+  Text = "string",
+  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+)
 }
 \arguments{
-\item{Text}{A UTF-8 text string. Each string must contain fewer that 5,000 bytes of UTF-8 encoded characters.}
+\item{Text}{[required] A UTF-8 text string. Each string must contain fewer that 5,000 bytes of UTF-8 encoded characters.}
 
-\item{LanguageCode}{The language of the input documents. You can specify English ("en") or Spanish ("es"). All documents must be in the same language.}
+\item{LanguageCode}{[required] The language of the input documents. You can specify English ("en") or Spanish ("es"). All documents must be in the same language.}
 }
 \description{
 Detects the key noun phrases found in the text.

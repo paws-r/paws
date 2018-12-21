@@ -4,12 +4,79 @@
 \alias{run_pipeline_activity}
 \title{Simulates the results of running a pipeline activity on a message payload}
 \usage{
-run_pipeline_activity(pipelineActivity, payloads)
+run_pipeline_activity(
+  pipelineActivity = list(
+    channel = list(
+      name = "string",
+      channelName = "string",
+      next = "string"
+    ),
+    lambda = list(
+      name = "string",
+      lambdaName = "string",
+      batchSize = 123,
+      next = "string"
+    ),
+    datastore = list(
+      name = "string",
+      datastoreName = "string"
+    ),
+    addAttributes = list(
+      name = "string",
+      attributes = list(
+        "string"
+      ),
+      next = "string"
+    ),
+    removeAttributes = list(
+      name = "string",
+      attributes = list(
+        "string"
+      ),
+      next = "string"
+    ),
+    selectAttributes = list(
+      name = "string",
+      attributes = list(
+        "string"
+      ),
+      next = "string"
+    ),
+    filter = list(
+      name = "string",
+      filter = "string",
+      next = "string"
+    ),
+    math = list(
+      name = "string",
+      attribute = "string",
+      math = "string",
+      next = "string"
+    ),
+    deviceRegistryEnrich = list(
+      name = "string",
+      attribute = "string",
+      thingName = "string",
+      roleArn = "string",
+      next = "string"
+    ),
+    deviceShadowEnrich = list(
+      name = "string",
+      attribute = "string",
+      thingName = "string",
+      roleArn = "string",
+      next = "string"
+    )
+  ),
+  payloads = list(
+    raw
+  )
+)
 }
 \arguments{
-\item{pipelineActivity}{The pipeline activity that is run. This must not be a 'channel' activity or a 'datastore' activity because these activities are used in a pipeline only to load the original message and to store the (possibly) transformed message. If a 'lambda' activity is specified, only short-running Lambda functions (those with a timeout of less than 30 seconds or less) can be used.}
+\item{pipelineActivity}{[required] The pipeline activity that is run. This must not be a 'channel' activity or a 'datastore' activity because these activities are used in a pipeline only to load the original message and to store the (possibly) transformed message. If a 'lambda' activity is specified, only short-running Lambda functions (those with a timeout of less than 30 seconds or less) can be used.}
 
-\item{payloads}{The sample message payloads on which the pipeline activity is run.}
+\item{payloads}{[required] The sample message payloads on which the pipeline activity is run.}
 }
 \description{
 Simulates the results of running a pipeline activity on a message payload.

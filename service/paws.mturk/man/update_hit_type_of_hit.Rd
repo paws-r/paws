@@ -4,12 +4,15 @@
 \alias{update_hit_type_of_hit}
 \title{The \code{UpdateHITTypeOfHIT} operation allows you to change the HITType properties of a HIT}
 \usage{
-update_hit_type_of_hit(HITId, HITTypeId)
+update_hit_type_of_hit(
+  HITId = "string",
+  HITTypeId = "string"
+)
 }
 \arguments{
-\item{HITId}{The HIT to update.}
+\item{HITId}{[required] The HIT to update.}
 
-\item{HITTypeId}{The ID of the new HIT type.}
+\item{HITTypeId}{[required] The ID of the new HIT type.}
 }
 \description{
 The \code{UpdateHITTypeOfHIT} operation allows you to change the HITType properties of a HIT. This operation disassociates the HIT from its old HITType properties and associates it with the new HITType properties. The HIT takes on the properties of the new HITType in place of the old ones.

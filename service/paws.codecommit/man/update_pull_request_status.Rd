@@ -4,12 +4,15 @@
 \alias{update_pull_request_status}
 \title{Updates the status of a pull request}
 \usage{
-update_pull_request_status(pullRequestId, pullRequestStatus)
+update_pull_request_status(
+  pullRequestId = "string",
+  pullRequestStatus = "OPEN"|"CLOSED"
+)
 }
 \arguments{
-\item{pullRequestId}{The system-generated ID of the pull request. To get this ID, use ListPullRequests.}
+\item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use ListPullRequests.}
 
-\item{pullRequestStatus}{The status of the pull request. The only valid operations are to update the status from \code{OPEN} to \code{OPEN}, \code{OPEN} to \code{CLOSED} or from from \code{CLOSED} to \code{CLOSED}.}
+\item{pullRequestStatus}{[required] The status of the pull request. The only valid operations are to update the status from \code{OPEN} to \code{OPEN}, \code{OPEN} to \code{CLOSED} or from from \code{CLOSED} to \code{CLOSED}.}
 }
 \description{
 Updates the status of a pull request.

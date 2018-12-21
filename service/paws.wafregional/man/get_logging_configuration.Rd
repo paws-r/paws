@@ -4,10 +4,12 @@
 \alias{get_logging_configuration}
 \title{Returns the LoggingConfiguration for the specified web ACL}
 \usage{
-get_logging_configuration(ResourceArn)
+get_logging_configuration(
+  ResourceArn = "string"
+)
 }
 \arguments{
-\item{ResourceArn}{The Amazon Resource Name (ARN) of the web ACL for which you want to get the LoggingConfiguration.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the web ACL for which you want to get the LoggingConfiguration.}
 }
 \description{
 Returns the LoggingConfiguration for the specified web ACL.

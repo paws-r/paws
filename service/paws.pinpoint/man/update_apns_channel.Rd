@@ -4,12 +4,24 @@
 \alias{update_apns_channel}
 \title{Use to update the APNs channel for an app}
 \usage{
-update_apns_channel(ApplicationId, APNSChannelRequest)
+update_apns_channel(
+  APNSChannelRequest = list(
+    BundleId = "string",
+    Certificate = "string",
+    DefaultAuthenticationMethod = "string",
+    Enabled = TRUE|FALSE,
+    PrivateKey = "string",
+    TeamId = "string",
+    TokenKey = "string",
+    TokenKeyId = "string"
+  ),
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{APNSChannelRequest}{[required]}
 
-\item{APNSChannelRequest}{}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 }
 \description{
 Use to update the APNs channel for an app.

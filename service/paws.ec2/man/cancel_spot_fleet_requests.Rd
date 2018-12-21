@@ -4,15 +4,20 @@
 \alias{cancel_spot_fleet_requests}
 \title{Cancels the specified Spot Fleet requests}
 \usage{
-cancel_spot_fleet_requests(SpotFleetRequestIds, TerminateInstances,
-  DryRun = NULL)
+cancel_spot_fleet_requests(
+  DryRun = TRUE|FALSE,
+  SpotFleetRequestIds = list(
+    "string"
+  ),
+  TerminateInstances = TRUE|FALSE
+)
 }
 \arguments{
-\item{SpotFleetRequestIds}{The IDs of the Spot Fleet requests.}
-
-\item{TerminateInstances}{Indicates whether to terminate instances for a Spot Fleet request if it is canceled successfully.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{SpotFleetRequestIds}{[required] The IDs of the Spot Fleet requests.}
+
+\item{TerminateInstances}{[required] Indicates whether to terminate instances for a Spot Fleet request if it is canceled successfully.}
 }
 \description{
 Cancels the specified Spot Fleet requests.

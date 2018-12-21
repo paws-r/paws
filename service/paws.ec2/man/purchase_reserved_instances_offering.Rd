@@ -4,13 +4,20 @@
 \alias{purchase_reserved_instances_offering}
 \title{Purchases a Reserved Instance for use with your account}
 \usage{
-purchase_reserved_instances_offering(InstanceCount, ReservedInstancesOfferingId,
-  DryRun = NULL, LimitPrice = NULL)
+purchase_reserved_instances_offering(
+  InstanceCount = 123,
+  ReservedInstancesOfferingId = "string",
+  DryRun = TRUE|FALSE,
+  LimitPrice = list(
+    Amount = 123.0,
+    CurrencyCode = "USD"
+  )
+)
 }
 \arguments{
-\item{InstanceCount}{The number of Reserved Instances to purchase.}
+\item{InstanceCount}{[required] The number of Reserved Instances to purchase.}
 
-\item{ReservedInstancesOfferingId}{The ID of the Reserved Instance offering to purchase.}
+\item{ReservedInstancesOfferingId}{[required] The ID of the Reserved Instance offering to purchase.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 

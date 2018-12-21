@@ -4,10 +4,13 @@
 \alias{create_intent_version}
 \title{Creates a new version of an intent based on the \code{$LATEST} version of the intent}
 \usage{
-create_intent_version(name, checksum = NULL)
+create_intent_version(
+  name = "string",
+  checksum = "string"
+)
 }
 \arguments{
-\item{name}{The name of the intent that you want to create a new version of. The name is case sensitive.}
+\item{name}{[required] The name of the intent that you want to create a new version of. The name is case sensitive.}
 
 \item{checksum}{Checksum of the \code{$LATEST} version of the intent that should be used to create the new version. If you specify a checksum and the \code{$LATEST} version of the intent has a different checksum, Amazon Lex returns a \code{PreconditionFailedException} exception and doesn't publish a new version. If you don't specify a checksum, Amazon Lex publishes the \code{$LATEST} version.}
 }

@@ -4,18 +4,20 @@
 \alias{create_access_key}
 \title{Creates a new AWS secret access key and corresponding AWS access key ID for the specified user}
 \usage{
-create_access_key(UserName = NULL)
+create_access_key(
+  UserName = "string"
+)
 }
 \arguments{
 \item{UserName}{The name of the IAM user that the new key will belong to.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Creates a new AWS secret access key and corresponding AWS access key ID for the specified user. The default status for new keys is \code{Active}.
 }
 \details{
-If you do not specify a user name, IAM determines the user name implicitly based on the AWS access key ID signing the request. Because this operation works for access keys under the AWS account, you can use this operation to manage AWS account root user credentials. This is true even if the AWS account has no associated users.
+If you do not specify a user name, IAM determines the user name implicitly based on the AWS access key ID signing the request. This operation works for access keys under the AWS account. Consequently, you can use this operation to manage AWS account root user credentials. This is true even if the AWS account has no associated users.
 
 For information about limits on the number of keys you can create, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities} in the \emph{IAM User Guide}.
 

@@ -4,9 +4,13 @@
 \alias{describe_cache_clusters}
 \title{Returns information about all provisioned clusters if no cluster identifier is specified, or about a specific cache cluster if a cluster identifier is supplied}
 \usage{
-describe_cache_clusters(CacheClusterId = NULL, MaxRecords = NULL,
-  Marker = NULL, ShowCacheNodeInfo = NULL,
-  ShowCacheClustersNotInReplicationGroups = NULL)
+describe_cache_clusters(
+  CacheClusterId = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  ShowCacheNodeInfo = TRUE|FALSE,
+  ShowCacheClustersNotInReplicationGroups = TRUE|FALSE
+)
 }
 \arguments{
 \item{CacheClusterId}{The user-supplied cluster identifier. If this parameter is specified, only information about that specific cluster is returned. This parameter isn't case sensitive.}

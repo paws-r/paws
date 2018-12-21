@@ -4,11 +4,15 @@
 \alias{list_transcription_jobs}
 \title{Lists transcription jobs with the specified status}
 \usage{
-list_transcription_jobs(Status = NULL, JobNameContains = NULL,
-  NextToken = NULL, MaxResults = NULL)
+list_transcription_jobs(
+  Status = "IN_PROGRESS"|"FAILED"|"COMPLETED",
+  JobNameContains = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{Status}{When specified, returns only transcription jobs with the specified status.}
+\item{Status}{When specified, returns only transcription jobs with the specified status. Jobs are ordered by creation date, with the newest jobs returned first. If you don't specify a status, Amazon Transcribe returns all transcription jobs ordered by creation date.}
 
 \item{JobNameContains}{When specified, the jobs returned in the list are limited to jobs whose name contains the specified string.}
 

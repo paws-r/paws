@@ -4,12 +4,39 @@
 \alias{update_security_profile}
 \title{Updates a Device Defender security profile}
 \usage{
-update_security_profile(securityProfileName,
-  securityProfileDescription = NULL, behaviors = NULL,
-  alertTargets = NULL, expectedVersion = NULL)
+update_security_profile(
+  securityProfileName = "string",
+  securityProfileDescription = "string",
+  behaviors = list(
+    list(
+      name = "string",
+      metric = "string",
+      criteria = list(
+        comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set",
+        value = list(
+          count = 123,
+          cidrs = list(
+            "string"
+          ),
+          ports = list(
+            123
+          )
+        ),
+        durationSeconds = 123
+      )
+    )
+  ),
+  alertTargets = list(
+    list(
+      alertTargetArn = "string",
+      roleArn = "string"
+    )
+  ),
+  expectedVersion = 123
+)
 }
 \arguments{
-\item{securityProfileName}{The name of the security profile you want to update.}
+\item{securityProfileName}{[required] The name of the security profile you want to update.}
 
 \item{securityProfileDescription}{A description of the security profile.}
 

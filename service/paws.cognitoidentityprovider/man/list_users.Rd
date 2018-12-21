@@ -4,11 +4,18 @@
 \alias{list_users}
 \title{Lists the users in the Amazon Cognito user pool}
 \usage{
-list_users(UserPoolId, AttributesToGet = NULL, Limit = NULL,
-  PaginationToken = NULL, Filter = NULL)
+list_users(
+  UserPoolId = "string",
+  AttributesToGet = list(
+    "string"
+  ),
+  Limit = 123,
+  PaginationToken = "string",
+  Filter = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool on which the search should be performed.}
+\item{UserPoolId}{[required] The user pool ID for the user pool on which the search should be performed.}
 
 \item{AttributesToGet}{An array of strings, where each string is the name of a user attribute to be returned for each user in the search results. If the array is null, all attributes are returned.}
 

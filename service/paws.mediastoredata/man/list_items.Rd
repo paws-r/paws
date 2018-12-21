@@ -4,14 +4,22 @@
 \alias{list_items}
 \title{Provides a list of metadata entries about folders and objects in the specified folder}
 \usage{
-list_items(Path = NULL, MaxResults = NULL, NextToken = NULL)
+list_items(
+  Path = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{Path}{The path in the container from which to retrieve items. Format: <folder name>/<folder name>/<file name>}
 
-\item{MaxResults}{The maximum results to return. The service might return fewer results.}
+\item{MaxResults}{The maximum number of results to return per API request. For example, you submit a \code{ListItems} request with \code{MaxResults} set at 500. Although 2,000 items match your request, the service returns no more than the first 500 items. (The service also returns a \code{NextToken} value that you can use to fetch the next batch of results.) The service might return fewer results than the \code{MaxResults} value.
 
-\item{NextToken}{The \code{NextToken} received in the \code{ListItemsResponse} for the same container and path. Tokens expire after 15 minutes.}
+If \code{MaxResults} is not included in the request, the service defaults to pagination with a maximum of 1,000 results per page.}
+
+\item{NextToken}{The token that identifies which batch of results that you want to see. For example, you submit a \code{ListItems} request with \code{MaxResults} set at 500. The service returns the first batch of results (up to 500) and a \code{NextToken} value. To see the next batch of results, you can submit the \code{ListItems} request a second time and specify the \code{NextToken} value.
+
+Tokens expire after 15 minutes.}
 }
 \description{
 Provides a list of metadata entries about folders and objects in the specified folder.

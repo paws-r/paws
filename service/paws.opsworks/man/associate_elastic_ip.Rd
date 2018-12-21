@@ -4,10 +4,13 @@
 \alias{associate_elastic_ip}
 \title{Associates one of the stack's registered Elastic IP addresses with a specified instance}
 \usage{
-associate_elastic_ip(ElasticIp, InstanceId = NULL)
+associate_elastic_ip(
+  ElasticIp = "string",
+  InstanceId = "string"
+)
 }
 \arguments{
-\item{ElasticIp}{The Elastic IP address.}
+\item{ElasticIp}{[required] The Elastic IP address.}
 
 \item{InstanceId}{The instance ID.}
 }

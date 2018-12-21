@@ -4,8 +4,19 @@
 \alias{describe_db_subnet_groups}
 \title{Returns a list of DBSubnetGroup descriptions}
 \usage{
-describe_db_subnet_groups(DBSubnetGroupName = NULL, Filters = NULL,
-  MaxRecords = NULL, Marker = NULL)
+describe_db_subnet_groups(
+  DBSubnetGroupName = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{DBSubnetGroupName}{The name of the DB subnet group to return details for.}

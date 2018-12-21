@@ -4,17 +4,28 @@
 \alias{put_metric_filter}
 \title{Creates or updates a metric filter and associates it with the specified log group}
 \usage{
-put_metric_filter(logGroupName, filterName, filterPattern,
-  metricTransformations)
+put_metric_filter(
+  logGroupName = "string",
+  filterName = "string",
+  filterPattern = "string",
+  metricTransformations = list(
+    list(
+      metricName = "string",
+      metricNamespace = "string",
+      metricValue = "string",
+      defaultValue = 123.0
+    )
+  )
+)
 }
 \arguments{
-\item{logGroupName}{The name of the log group.}
+\item{logGroupName}{[required] The name of the log group.}
 
-\item{filterName}{A name for the metric filter.}
+\item{filterName}{[required] A name for the metric filter.}
 
-\item{filterPattern}{A filter pattern for extracting metric data out of ingested log events.}
+\item{filterPattern}{[required] A filter pattern for extracting metric data out of ingested log events.}
 
-\item{metricTransformations}{A collection of information that defines how metric data gets emitted.}
+\item{metricTransformations}{[required] A collection of information that defines how metric data gets emitted.}
 }
 \description{
 Creates or updates a metric filter and associates it with the specified log group. Metric filters allow you to configure rules to extract metric data from log events ingested through PutLogEvents.

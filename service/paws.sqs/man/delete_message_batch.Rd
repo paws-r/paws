@@ -4,14 +4,22 @@
 \alias{delete_message_batch}
 \title{Deletes up to ten messages from the specified queue}
 \usage{
-delete_message_batch(QueueUrl, Entries)
+delete_message_batch(
+  QueueUrl = "string",
+  Entries = list(
+    list(
+      Id = "string",
+      ReceiptHandle = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{QueueUrl}{The URL of the Amazon SQS queue from which messages are deleted.
+\item{QueueUrl}{[required] The URL of the Amazon SQS queue from which messages are deleted.
 
 Queue URLs and names are case-sensitive.}
 
-\item{Entries}{A list of receipt handles for the messages to be deleted.}
+\item{Entries}{[required] A list of receipt handles for the messages to be deleted.}
 }
 \description{
 Deletes up to ten messages from the specified queue. This is a batch version of \code{ DeleteMessage.DeleteMessage.} The result of the action on each message is reported individually in the response.

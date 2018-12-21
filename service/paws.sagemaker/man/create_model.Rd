@@ -4,21 +4,64 @@
 \alias{create_model}
 \title{Creates a model in Amazon SageMaker}
 \usage{
-create_model(ModelName, PrimaryContainer, ExecutionRoleArn, Tags = NULL,
-  VpcConfig = NULL)
+create_model(
+  ModelName = "string",
+  PrimaryContainer = list(
+    ContainerHostname = "string",
+    Image = "string",
+    ModelDataUrl = "string",
+    Environment = list(
+      "string"
+    ),
+    ModelPackageName = "string"
+  ),
+  Containers = list(
+    list(
+      ContainerHostname = "string",
+      Image = "string",
+      ModelDataUrl = "string",
+      Environment = list(
+        "string"
+      ),
+      ModelPackageName = "string"
+    )
+  ),
+  ExecutionRoleArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  VpcConfig = list(
+    SecurityGroupIds = list(
+      "string"
+    ),
+    Subnets = list(
+      "string"
+    )
+  ),
+  EnableNetworkIsolation = TRUE|FALSE
+)
 }
 \arguments{
-\item{ModelName}{The name of the new model.}
+\item{ModelName}{[required] The name of the new model.}
 
 \item{PrimaryContainer}{The location of the primary docker image containing inference code, associated artifacts, and custom environment map that the inference code uses when the model is deployed for predictions.}
 
-\item{ExecutionRoleArn}{The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can assume to access model artifacts and docker image for deployment on ML compute instances or for batch transform jobs. Deploying on ML compute instances is part of model hosting. For more information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{Amazon SageMaker Roles}.
+\item{Containers}{Specifies the containers in the inference pipeline.}
+
+\item{ExecutionRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can assume to access model artifacts and docker image for deployment on ML compute instances or for batch transform jobs. Deploying on ML compute instances is part of model hosting. For more information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{Amazon SageMaker Roles}.
 
 To be able to pass this role to Amazon SageMaker, the caller of this API must have the \code{iam:PassRole} permission.}
 
 \item{Tags}{An array of key-value pairs. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags} in the \emph{AWS Billing and Cost Management User Guide}.}
 
-\item{VpcConfig}{A VpcConfig object that specifies the VPC that you want your model to connect to. Control access to and from your model container by configuring the VPC. \code{VpcConfig} is currently used in hosting services but not in batch transform. For more information, see host-vpc.}
+\item{VpcConfig}{A VpcConfig object that specifies the VPC that you want your model to connect to. Control access to and from your model container by configuring the VPC. \code{VpcConfig} is used in hosting services and in batch transform. For more information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html}{Protect Endpoints by Using an Amazon Virtual Private Cloud} and \href{http://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html}{Protect Data in Batch Transform Jobs by Using an Amazon Virtual Private Cloud}.}
+
+\item{EnableNetworkIsolation}{Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
+
+The Semantic Segmentation built-in algorithm does not support network isolation.}
 }
 \description{
 Creates a model in Amazon SageMaker. In the request, you name the model and describe a primary container. For the primary container, you specify the docker image containing inference code, artifacts (from prior training), and custom environment map that the inference code uses when you deploy the model for predictions.

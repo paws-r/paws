@@ -4,12 +4,15 @@
 \alias{get_group_version}
 \title{Retrieves information about a group version}
 \usage{
-get_group_version(GroupVersionId, GroupId)
+get_group_version(
+  GroupId = "string",
+  GroupVersionId = "string"
+)
 }
 \arguments{
-\item{GroupVersionId}{The ID of the group version.}
+\item{GroupId}{[required] The ID of the Greengrass group.}
 
-\item{GroupId}{The ID of the AWS Greengrass group.}
+\item{GroupVersionId}{[required] The ID of the group version.}
 }
 \description{
 Retrieves information about a group version.

@@ -4,11 +4,19 @@
 \alias{update_alias}
 \title{Updates properties for an alias}
 \usage{
-update_alias(AliasId, Name = NULL, Description = NULL,
-  RoutingStrategy = NULL)
+update_alias(
+  AliasId = "string",
+  Name = "string",
+  Description = "string",
+  RoutingStrategy = list(
+    Type = "SIMPLE"|"TERMINAL",
+    FleetId = "string",
+    Message = "string"
+  )
+)
 }
 \arguments{
-\item{AliasId}{Unique identifier for a fleet alias. Specify the alias you want to update.}
+\item{AliasId}{[required] Unique identifier for a fleet alias. Specify the alias you want to update.}
 
 \item{Name}{Descriptive label that is associated with an alias. Alias names do not need to be unique.}
 

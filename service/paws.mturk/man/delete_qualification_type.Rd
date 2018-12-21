@@ -4,10 +4,12 @@
 \alias{delete_qualification_type}
 \title{The \code{DeleteQualificationType} deletes a Qualification type and deletes any HIT types that are associated with the Qualification type}
 \usage{
-delete_qualification_type(QualificationTypeId)
+delete_qualification_type(
+  QualificationTypeId = "string"
+)
 }
 \arguments{
-\item{QualificationTypeId}{The ID of the QualificationType to dispose.}
+\item{QualificationTypeId}{[required] The ID of the QualificationType to dispose.}
 }
 \description{
 The \code{DeleteQualificationType} deletes a Qualification type and deletes any HIT types that are associated with the Qualification type.

@@ -4,19 +4,22 @@
 \alias{update_service_specific_credential}
 \title{Sets the status of a service-specific credential to \code{Active} or \code{Inactive}}
 \usage{
-update_service_specific_credential(ServiceSpecificCredentialId, Status,
-  UserName = NULL)
+update_service_specific_credential(
+  UserName = "string",
+  ServiceSpecificCredentialId = "string",
+  Status = "Active"|"Inactive"
+)
 }
 \arguments{
-\item{ServiceSpecificCredentialId}{The unique identifier of the service-specific credential.
-
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
-
-\item{Status}{The status to be assigned to the service-specific credential.}
-
 \item{UserName}{The name of the IAM user associated with the service-specific credential. If you do not specify this value, then the operation assumes the user whose credentials are used to call the operation.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+
+\item{ServiceSpecificCredentialId}{[required] The unique identifier of the service-specific credential.
+
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
+
+\item{Status}{[required] The status to be assigned to the service-specific credential.}
 }
 \description{
 Sets the status of a service-specific credential to \code{Active} or \code{Inactive}. Service-specific credentials that are inactive cannot be used for authentication to the service. This operation can be used to disable a user's service-specific credential as part of a credential rotation work flow.

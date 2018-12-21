@@ -4,13 +4,19 @@
 \alias{terminate_workflow_execution}
 \title{Records a \code{WorkflowExecutionTerminated} event and forces closure of the workflow execution identified by the given domain, runId, and workflowId}
 \usage{
-terminate_workflow_execution(domain, workflowId, runId = NULL,
-  reason = NULL, details = NULL, childPolicy = NULL)
+terminate_workflow_execution(
+  domain = "string",
+  workflowId = "string",
+  runId = "string",
+  reason = "string",
+  details = "string",
+  childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON"
+)
 }
 \arguments{
-\item{domain}{The domain of the workflow execution to terminate.}
+\item{domain}{[required] The domain of the workflow execution to terminate.}
 
-\item{workflowId}{The workflowId of the workflow execution to terminate.}
+\item{workflowId}{[required] The workflowId of the workflow execution to terminate.}
 
 \item{runId}{The runId of the workflow execution to terminate.}
 

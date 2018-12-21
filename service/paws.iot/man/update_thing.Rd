@@ -4,11 +4,21 @@
 \alias{update_thing}
 \title{Updates the data for a thing}
 \usage{
-update_thing(thingName, thingTypeName = NULL, attributePayload = NULL,
-  expectedVersion = NULL, removeThingType = NULL)
+update_thing(
+  thingName = "string",
+  thingTypeName = "string",
+  attributePayload = list(
+    attributes = list(
+      "string"
+    ),
+    merge = TRUE|FALSE
+  ),
+  expectedVersion = 123,
+  removeThingType = TRUE|FALSE
+)
 }
 \arguments{
-\item{thingName}{The name of the thing to update.}
+\item{thingName}{[required] The name of the thing to update.}
 
 \item{thingTypeName}{The name of the thing type.}
 

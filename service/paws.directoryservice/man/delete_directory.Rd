@@ -4,10 +4,12 @@
 \alias{delete_directory}
 \title{Deletes an AWS Directory Service directory}
 \usage{
-delete_directory(DirectoryId)
+delete_directory(
+  DirectoryId = "string"
+)
 }
 \arguments{
-\item{DirectoryId}{The identifier of the directory to delete.}
+\item{DirectoryId}{[required] The identifier of the directory to delete.}
 }
 \description{
 Deletes an AWS Directory Service directory.

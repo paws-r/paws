@@ -4,10 +4,12 @@
 \alias{describe_hyper_parameter_tuning_job}
 \title{Gets a description of a hyperparameter tuning job}
 \usage{
-describe_hyper_parameter_tuning_job(HyperParameterTuningJobName)
+describe_hyper_parameter_tuning_job(
+  HyperParameterTuningJobName = "string"
+)
 }
 \arguments{
-\item{HyperParameterTuningJobName}{The name of the tuning job to describe.}
+\item{HyperParameterTuningJobName}{[required] The name of the tuning job to describe.}
 }
 \description{
 Gets a description of a hyperparameter tuning job.

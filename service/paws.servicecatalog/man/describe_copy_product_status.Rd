@@ -4,17 +4,20 @@
 \alias{describe_copy_product_status}
 \title{Gets the status of the specified copy product operation}
 \usage{
-describe_copy_product_status(CopyProductToken, AcceptLanguage = NULL)
+describe_copy_product_status(
+  AcceptLanguage = "string",
+  CopyProductToken = "string"
+)
 }
 \arguments{
-\item{CopyProductToken}{The token for the copy product operation. This token is returned by CopyProduct.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{CopyProductToken}{[required] The token for the copy product operation. This token is returned by CopyProduct.}
 }
 \description{
 Gets the status of the specified copy product operation.

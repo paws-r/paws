@@ -4,21 +4,36 @@
 \alias{update_records}
 \title{Posts updates to records and adds and deletes records for a dataset and user}
 \usage{
-update_records(IdentityPoolId, IdentityId, DatasetName, SyncSessionToken,
-  DeviceId = NULL, RecordPatches = NULL, ClientContext = NULL)
+update_records(
+  IdentityPoolId = "string",
+  IdentityId = "string",
+  DatasetName = "string",
+  DeviceId = "string",
+  RecordPatches = list(
+    list(
+      Op = "replace"|"remove",
+      Key = "string",
+      Value = "string",
+      SyncCount = 123,
+      DeviceLastModifiedDate = as.POSIXct("2015-01-01")
+    )
+  ),
+  SyncSessionToken = "string",
+  ClientContext = "string"
+)
 }
 \arguments{
-\item{IdentityPoolId}{A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
+\item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
 
-\item{IdentityId}{A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
+\item{IdentityId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
 
-\item{DatasetName}{A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).}
-
-\item{SyncSessionToken}{The SyncSessionToken returned by a previous call to ListRecords for this dataset and identity.}
+\item{DatasetName}{[required] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).}
 
 \item{DeviceId}{The unique ID generated for this device by Cognito.}
 
 \item{RecordPatches}{A list of patch operations.}
+
+\item{SyncSessionToken}{[required] The SyncSessionToken returned by a previous call to ListRecords for this dataset and identity.}
 
 \item{ClientContext}{Intended to supply a device ID that will populate the lastModifiedBy field referenced in other methods. The ClientContext field is not yet implemented.}
 }

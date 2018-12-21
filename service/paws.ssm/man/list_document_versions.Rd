@@ -4,10 +4,14 @@
 \alias{list_document_versions}
 \title{List all versions for a document}
 \usage{
-list_document_versions(Name, MaxResults = NULL, NextToken = NULL)
+list_document_versions(
+  Name = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the document about which you want version information.}
+\item{Name}{[required] The name of the document about which you want version information.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 

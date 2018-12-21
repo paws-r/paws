@@ -4,14 +4,47 @@
 \alias{get_item}
 \title{The \code{GetItem} operation returns a set of attributes for the item with the given primary key}
 \usage{
-get_item(TableName, Key, AttributesToGet = NULL, ConsistentRead = NULL,
-  ReturnConsumedCapacity = NULL, ProjectionExpression = NULL,
-  ExpressionAttributeNames = NULL)
+get_item(
+  TableName = "string",
+  Key = list(
+    list(
+      S = "string",
+      N = "string",
+      B = raw,
+      SS = list(
+        "string"
+      ),
+      NS = list(
+        "string"
+      ),
+      BS = list(
+        raw
+      ),
+      M = list(
+        list()
+      ),
+      L = list(
+        list()
+      ),
+      NULL = TRUE|FALSE,
+      BOOL = TRUE|FALSE
+    )
+  ),
+  AttributesToGet = list(
+    "string"
+  ),
+  ConsistentRead = TRUE|FALSE,
+  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
+  ProjectionExpression = "string",
+  ExpressionAttributeNames = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{TableName}{The name of the table containing the requested item.}
+\item{TableName}{[required] The name of the table containing the requested item.}
 
-\item{Key}{A map of attribute names to \code{AttributeValue} objects, representing the primary key of the item to retrieve.
+\item{Key}{[required] A map of attribute names to \code{AttributeValue} objects, representing the primary key of the item to retrieve.
 
 For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for both the partition key and the sort key.}
 

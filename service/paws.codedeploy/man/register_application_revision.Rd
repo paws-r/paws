@@ -4,14 +4,39 @@
 \alias{register_application_revision}
 \title{Registers with AWS CodeDeploy a revision for the specified application}
 \usage{
-register_application_revision(applicationName, revision, description = NULL)
+register_application_revision(
+  applicationName = "string",
+  description = "string",
+  revision = list(
+    revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
+    s3Location = list(
+      bucket = "string",
+      key = "string",
+      bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
+      version = "string",
+      eTag = "string"
+    ),
+    gitHubLocation = list(
+      repository = "string",
+      commitId = "string"
+    ),
+    string = list(
+      content = "string",
+      sha256 = "string"
+    ),
+    appSpecContent = list(
+      content = "string",
+      sha256 = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{applicationName}{The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
-
-\item{revision}{Information about the application revision to register, including type and location.}
+\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
 
 \item{description}{A comment about the revision.}
+
+\item{revision}{[required] Information about the application revision to register, including type and location.}
 }
 \description{
 Registers with AWS CodeDeploy a revision for the specified application.

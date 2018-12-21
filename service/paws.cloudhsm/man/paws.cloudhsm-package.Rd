@@ -6,8 +6,8 @@
 \alias{paws.cloudhsm-package}
 \title{paws.cloudhsm: Amazon CloudHSM}
 \description{
-This is documentation for **AWS CloudHSM Classic**.
-For more information, see [AWS CloudHSM Classic
+This is documentation for **AWS CloudHSM Classic**. For more
+information, see [AWS CloudHSM Classic
 FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM
 Classic User
 Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and
@@ -19,7 +19,12 @@ Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

@@ -4,12 +4,16 @@
 \alias{associate_dhcp_options}
 \title{Associates a set of DHCP options (that you've previously created) with the specified VPC, or associates no DHCP options with the VPC}
 \usage{
-associate_dhcp_options(DhcpOptionsId, VpcId, DryRun = NULL)
+associate_dhcp_options(
+  DhcpOptionsId = "string",
+  VpcId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{DhcpOptionsId}{The ID of the DHCP options set, or \code{default} to associate no DHCP options with the VPC.}
+\item{DhcpOptionsId}{[required] The ID of the DHCP options set, or \code{default} to associate no DHCP options with the VPC.}
 
-\item{VpcId}{The ID of the VPC.}
+\item{VpcId}{[required] The ID of the VPC.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

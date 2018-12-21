@@ -4,7 +4,9 @@
 \alias{get_default_patch_baseline}
 \title{Retrieves the default patch baseline}
 \usage{
-get_default_patch_baseline(OperatingSystem = NULL)
+get_default_patch_baseline(
+  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"
+)
 }
 \arguments{
 \item{OperatingSystem}{Returns the default patch baseline for the specified operating system.}

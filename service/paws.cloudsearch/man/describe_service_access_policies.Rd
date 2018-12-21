@@ -4,10 +4,13 @@
 \alias{describe_service_access_policies}
 \title{Gets information about the access policies that control access to the domain's document and search endpoints}
 \usage{
-describe_service_access_policies(DomainName, Deployed = NULL)
+describe_service_access_policies(
+  DomainName = "string",
+  Deployed = TRUE|FALSE
+)
 }
 \arguments{
-\item{DomainName}{The name of the domain you want to describe.}
+\item{DomainName}{[required] The name of the domain you want to describe.}
 
 \item{Deployed}{Whether to display the deployed configuration (\code{true}) or include any pending changes (\code{false}). Defaults to \code{false}.}
 }

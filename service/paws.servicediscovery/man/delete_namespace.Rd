@@ -4,10 +4,12 @@
 \alias{delete_namespace}
 \title{Deletes a namespace from the current account}
 \usage{
-delete_namespace(Id)
+delete_namespace(
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The ID of the namespace that you want to delete.}
+\item{Id}{[required] The ID of the namespace that you want to delete.}
 }
 \description{
 Deletes a namespace from the current account. If the namespace still contains one or more services, the request fails.

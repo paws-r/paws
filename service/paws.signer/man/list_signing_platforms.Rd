@@ -4,8 +4,13 @@
 \alias{list_signing_platforms}
 \title{Lists all signing platforms available in AWS Signer that match the request parameters}
 \usage{
-list_signing_platforms(category = NULL, partner = NULL, target = NULL,
-  maxResults = NULL, nextToken = NULL)
+list_signing_platforms(
+  category = "string",
+  partner = "string",
+  target = "string",
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
 \item{category}{The category type of a signing platform.}

@@ -4,12 +4,17 @@
 \alias{attach_instances}
 \title{Attaches one or more EC2 instances to the specified Auto Scaling group}
 \usage{
-attach_instances(AutoScalingGroupName, InstanceIds = NULL)
+attach_instances(
+  InstanceIds = list(
+    "string"
+  ),
+  AutoScalingGroupName = "string"
+)
 }
 \arguments{
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
-
 \item{InstanceIds}{The IDs of the instances. You can specify up to 20 instances.}
+
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 }
 \description{
 Attaches one or more EC2 instances to the specified Auto Scaling group.

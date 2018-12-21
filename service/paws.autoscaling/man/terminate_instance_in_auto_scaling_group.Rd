@@ -4,13 +4,15 @@
 \alias{terminate_instance_in_auto_scaling_group}
 \title{Terminates the specified instance and optionally adjusts the desired group size}
 \usage{
-terminate_instance_in_auto_scaling_group(InstanceId,
-  ShouldDecrementDesiredCapacity)
+terminate_instance_in_auto_scaling_group(
+  InstanceId = "string",
+  ShouldDecrementDesiredCapacity = TRUE|FALSE
+)
 }
 \arguments{
-\item{InstanceId}{The ID of the instance.}
+\item{InstanceId}{[required] The ID of the instance.}
 
-\item{ShouldDecrementDesiredCapacity}{Indicates whether terminating the instance also decrements the size of the Auto Scaling group.}
+\item{ShouldDecrementDesiredCapacity}{[required] Indicates whether terminating the instance also decrements the size of the Auto Scaling group.}
 }
 \description{
 Terminates the specified instance and optionally adjusts the desired group size.

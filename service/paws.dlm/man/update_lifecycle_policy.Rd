@@ -4,11 +4,48 @@
 \alias{update_lifecycle_policy}
 \title{Updates the specified lifecycle policy}
 \usage{
-update_lifecycle_policy(PolicyId, ExecutionRoleArn = NULL, State = NULL,
-  Description = NULL, PolicyDetails = NULL)
+update_lifecycle_policy(
+  PolicyId = "string",
+  ExecutionRoleArn = "string",
+  State = "ENABLED"|"DISABLED",
+  Description = "string",
+  PolicyDetails = list(
+    ResourceTypes = list(
+      "VOLUME"
+    ),
+    TargetTags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    Schedules = list(
+      list(
+        Name = "string",
+        CopyTags = TRUE|FALSE,
+        TagsToAdd = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        ),
+        CreateRule = list(
+          Interval = 123,
+          IntervalUnit = "HOURS",
+          Times = list(
+            "string"
+          )
+        ),
+        RetainRule = list(
+          Count = 123
+        )
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{PolicyId}{The identifier of the lifecycle policy.}
+\item{PolicyId}{[required] The identifier of the lifecycle policy.}
 
 \item{ExecutionRoleArn}{The Amazon Resource Name (ARN) of the IAM role used to run the operations specified by the lifecycle policy.}
 

@@ -4,11 +4,16 @@
 \alias{describe_pull_request_events}
 \title{Returns information about one or more pull request events}
 \usage{
-describe_pull_request_events(pullRequestId, pullRequestEventType = NULL,
-  actorArn = NULL, nextToken = NULL, maxResults = NULL)
+describe_pull_request_events(
+  pullRequestId = "string",
+  pullRequestEventType = "PULL_REQUEST_CREATED"|"PULL_REQUEST_STATUS_CHANGED"|"PULL_REQUEST_SOURCE_REFERENCE_UPDATED"|"PULL_REQUEST_MERGE_STATE_CHANGED",
+  actorArn = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{pullRequestId}{The system-generated ID of the pull request. To get this ID, use ListPullRequests.}
+\item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use ListPullRequests.}
 
 \item{pullRequestEventType}{Optional. The pull request event type about which you want to return information.}
 

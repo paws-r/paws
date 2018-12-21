@@ -4,12 +4,15 @@
 \alias{delete_placement_group}
 \title{Deletes the specified placement group}
 \usage{
-delete_placement_group(GroupName, DryRun = NULL)
+delete_placement_group(
+  DryRun = TRUE|FALSE,
+  GroupName = "string"
+)
 }
 \arguments{
-\item{GroupName}{The name of the placement group.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{GroupName}{[required] The name of the placement group.}
 }
 \description{
 Deletes the specified placement group. You must terminate all instances in the placement group before you can delete the placement group. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement Groups} in the \emph{Amazon Elastic Compute Cloud User Guide}.

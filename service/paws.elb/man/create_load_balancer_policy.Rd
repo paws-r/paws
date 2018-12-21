@@ -4,15 +4,24 @@
 \alias{create_load_balancer_policy}
 \title{Creates a policy with the specified attributes for the specified load balancer}
 \usage{
-create_load_balancer_policy(LoadBalancerName, PolicyName, PolicyTypeName,
-  PolicyAttributes = NULL)
+create_load_balancer_policy(
+  LoadBalancerName = "string",
+  PolicyName = "string",
+  PolicyTypeName = "string",
+  PolicyAttributes = list(
+    list(
+      AttributeName = "string",
+      AttributeValue = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{LoadBalancerName}{The name of the load balancer.}
+\item{LoadBalancerName}{[required] The name of the load balancer.}
 
-\item{PolicyName}{The name of the load balancer policy to be created. This name must be unique within the set of policies for this load balancer.}
+\item{PolicyName}{[required] The name of the load balancer policy to be created. This name must be unique within the set of policies for this load balancer.}
 
-\item{PolicyTypeName}{The name of the base policy type. To get the list of policy types, use DescribeLoadBalancerPolicyTypes.}
+\item{PolicyTypeName}{[required] The name of the base policy type. To get the list of policy types, use DescribeLoadBalancerPolicyTypes.}
 
 \item{PolicyAttributes}{The policy attributes.}
 }

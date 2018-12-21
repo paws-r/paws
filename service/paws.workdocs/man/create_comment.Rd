@@ -4,22 +4,29 @@
 \alias{create_comment}
 \title{Adds a new comment to the specified document version}
 \usage{
-create_comment(DocumentId, VersionId, Text, AuthenticationToken = NULL,
-  ParentId = NULL, ThreadId = NULL, Visibility = NULL,
-  NotifyCollaborators = NULL)
+create_comment(
+  AuthenticationToken = "string",
+  DocumentId = "string",
+  VersionId = "string",
+  ParentId = "string",
+  ThreadId = "string",
+  Text = "string",
+  Visibility = "PUBLIC"|"PRIVATE",
+  NotifyCollaborators = TRUE|FALSE
+)
 }
 \arguments{
-\item{DocumentId}{The ID of the document.}
-
-\item{VersionId}{The ID of the document version.}
-
-\item{Text}{The text of the comment.}
-
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
+
+\item{DocumentId}{[required] The ID of the document.}
+
+\item{VersionId}{[required] The ID of the document version.}
 
 \item{ParentId}{The ID of the parent comment.}
 
 \item{ThreadId}{The ID of the root comment in the thread.}
+
+\item{Text}{[required] The text of the comment.}
 
 \item{Visibility}{The visibility of the comment. Options are either PRIVATE, where the comment is visible only to the comment author and document owner and co-owners, or PUBLIC, where the comment is visible to document owners, co-owners, and contributors.}
 

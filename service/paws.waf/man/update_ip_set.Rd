@@ -4,14 +4,26 @@
 \alias{update_ip_set}
 \title{Inserts or deletes IPSetDescriptor objects in an \code{IPSet}}
 \usage{
-update_ip_set(IPSetId, ChangeToken, Updates)
+update_ip_set(
+  IPSetId = "string",
+  ChangeToken = "string",
+  Updates = list(
+    list(
+      Action = "INSERT"|"DELETE",
+      IPSetDescriptor = list(
+        Type = "IPV4"|"IPV6",
+        Value = "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{IPSetId}{The \code{IPSetId} of the IPSet that you want to update. \code{IPSetId} is returned by CreateIPSet and by ListIPSets.}
+\item{IPSetId}{[required] The \code{IPSetId} of the IPSet that you want to update. \code{IPSetId} is returned by CreateIPSet and by ListIPSets.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 
-\item{Updates}{An array of \code{IPSetUpdate} objects that you want to insert into or delete from an IPSet. For more information, see the applicable data types:
+\item{Updates}{[required] An array of \code{IPSetUpdate} objects that you want to insert into or delete from an IPSet. For more information, see the applicable data types:
 \itemize{
 \item IPSetUpdate: Contains \code{Action} and \code{IPSetDescriptor}
 \item IPSetDescriptor: Contains \code{Type} and \code{Value}

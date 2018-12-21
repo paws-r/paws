@@ -4,10 +4,12 @@
 \alias{start_fleet}
 \title{Starts the specified fleet}
 \usage{
-start_fleet(Name)
+start_fleet(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the fleet.}
+\item{Name}{[required] The name of the fleet.}
 }
 \description{
 Starts the specified fleet.

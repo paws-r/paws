@@ -4,10 +4,20 @@
 \alias{describe_events}
 \title{Returns list of event descriptions matching criteria up to the last 6 weeks}
 \usage{
-describe_events(ApplicationName = NULL, VersionLabel = NULL,
-  TemplateName = NULL, EnvironmentId = NULL, EnvironmentName = NULL,
-  PlatformArn = NULL, RequestId = NULL, Severity = NULL,
-  StartTime = NULL, EndTime = NULL, MaxRecords = NULL, NextToken = NULL)
+describe_events(
+  ApplicationName = "string",
+  VersionLabel = "string",
+  TemplateName = "string",
+  EnvironmentId = "string",
+  EnvironmentName = "string",
+  PlatformArn = "string",
+  RequestId = "string",
+  Severity = "TRACE"|"DEBUG"|"INFO"|"WARN"|"ERROR"|"FATAL",
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  MaxRecords = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{ApplicationName}{If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those associated with this application.}

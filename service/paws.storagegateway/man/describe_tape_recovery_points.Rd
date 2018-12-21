@@ -4,10 +4,14 @@
 \alias{describe_tape_recovery_points}
 \title{Returns a list of virtual tape recovery points that are available for the specified tape gateway}
 \usage{
-describe_tape_recovery_points(GatewayARN, Marker = NULL, Limit = NULL)
+describe_tape_recovery_points(
+  GatewayARN = "string",
+  Marker = "string",
+  Limit = 123
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 
 \item{Marker}{An opaque string that indicates the position at which to begin describing the virtual tape recovery points.}
 

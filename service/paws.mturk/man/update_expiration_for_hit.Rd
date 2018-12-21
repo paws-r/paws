@@ -4,12 +4,15 @@
 \alias{update_expiration_for_hit}
 \title{The \code{UpdateExpirationForHIT} operation allows you update the expiration time of a HIT}
 \usage{
-update_expiration_for_hit(HITId, ExpireAt)
+update_expiration_for_hit(
+  HITId = "string",
+  ExpireAt = as.POSIXct("2015-01-01")
+)
 }
 \arguments{
-\item{HITId}{The HIT to update.}
+\item{HITId}{[required] The HIT to update.}
 
-\item{ExpireAt}{The date and time at which you want the HIT to expire}
+\item{ExpireAt}{[required] The date and time at which you want the HIT to expire}
 }
 \description{
 The \code{UpdateExpirationForHIT} operation allows you update the expiration time of a HIT. If you update it to a time in the past, the HIT will be immediately expired.

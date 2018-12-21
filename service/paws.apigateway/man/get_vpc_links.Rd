@@ -4,7 +4,10 @@
 \alias{get_vpc_links}
 \title{Gets the VpcLinks collection under the caller's account in a selected region}
 \usage{
-get_vpc_links(position = NULL, limit = NULL)
+get_vpc_links(
+  position = "string",
+  limit = 123
+)
 }
 \arguments{
 \item{position}{The current pagination position in the paged result set.}

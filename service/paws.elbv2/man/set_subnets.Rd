@@ -4,10 +4,21 @@
 \alias{set_subnets}
 \title{Enables the Availability Zone for the specified public subnets for the specified Application Load Balancer}
 \usage{
-set_subnets(LoadBalancerArn, Subnets = NULL, SubnetMappings = NULL)
+set_subnets(
+  LoadBalancerArn = "string",
+  Subnets = list(
+    "string"
+  ),
+  SubnetMappings = list(
+    list(
+      SubnetId = "string",
+      AllocationId = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{LoadBalancerArn}{The Amazon Resource Name (ARN) of the load balancer.}
+\item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
 
 \item{Subnets}{The IDs of the public subnets. You must specify subnets from at least two Availability Zones. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings.}
 

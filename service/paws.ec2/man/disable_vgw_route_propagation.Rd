@@ -4,12 +4,15 @@
 \alias{disable_vgw_route_propagation}
 \title{Disables a virtual private gateway (VGW) from propagating routes to a specified route table of a VPC}
 \usage{
-disable_vgw_route_propagation(GatewayId, RouteTableId)
+disable_vgw_route_propagation(
+  GatewayId = "string",
+  RouteTableId = "string"
+)
 }
 \arguments{
-\item{GatewayId}{The ID of the virtual private gateway.}
+\item{GatewayId}{[required] The ID of the virtual private gateway.}
 
-\item{RouteTableId}{The ID of the route table.}
+\item{RouteTableId}{[required] The ID of the route table.}
 }
 \description{
 Disables a virtual private gateway (VGW) from propagating routes to a specified route table of a VPC.

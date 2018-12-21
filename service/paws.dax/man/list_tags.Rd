@@ -4,10 +4,13 @@
 \alias{list_tags}
 \title{List all of the tags for a DAX cluster}
 \usage{
-list_tags(ResourceName, NextToken = NULL)
+list_tags(
+  ResourceName = "string",
+  NextToken = "string"
+)
 }
 \arguments{
-\item{ResourceName}{The name of the DAX resource to which the tags belong.}
+\item{ResourceName}{[required] The name of the DAX resource to which the tags belong.}
 
 \item{NextToken}{An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token.}
 }

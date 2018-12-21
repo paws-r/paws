@@ -4,7 +4,10 @@
 \alias{describe_report_definitions}
 \title{Describe a list of report definitions owned by the account}
 \usage{
-describe_report_definitions(MaxResults = NULL, NextToken = NULL)
+describe_report_definitions(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{MaxResults}{}

@@ -4,15 +4,25 @@
 \alias{post_text}
 \title{Sends user input (text-only) to Amazon Lex}
 \usage{
-post_text(botName, botAlias, userId, inputText, sessionAttributes = NULL,
-  requestAttributes = NULL)
+post_text(
+  botName = "string",
+  botAlias = "string",
+  userId = "string",
+  sessionAttributes = list(
+    "string"
+  ),
+  requestAttributes = list(
+    "string"
+  ),
+  inputText = "string"
+)
 }
 \arguments{
-\item{botName}{The name of the Amazon Lex bot.}
+\item{botName}{[required] The name of the Amazon Lex bot.}
 
-\item{botAlias}{The alias of the Amazon Lex bot.}
+\item{botAlias}{[required] The alias of the Amazon Lex bot.}
 
-\item{userId}{The ID of the client application user. Amazon Lex uses this to identify a user's conversation with your bot. At runtime, each request must contain the \code{userID} field.
+\item{userId}{[required] The ID of the client application user. Amazon Lex uses this to identify a user's conversation with your bot. At runtime, each request must contain the \code{userID} field.
 
 To decide the user ID to use for your application, consider the following factors.
 \itemize{
@@ -21,8 +31,6 @@ To decide the user ID to use for your application, consider the following factor
 \item If you want the same user to be able to have two independent conversations on two different devices, choose a device-specific identifier.
 \item A user can't have two independent conversations with two different versions of the same bot. For example, a user can't have a conversation with the PROD and BETA versions of the same bot. If you anticipate that a user will need to have conversation with two different versions, for example, while testing, include the bot alias in the user ID to separate the two conversations.
 }}
-
-\item{inputText}{The text that the user entered (Amazon Lex interprets this text).}
 
 \item{sessionAttributes}{Application-specific information passed between Amazon Lex and a client application.
 
@@ -33,6 +41,8 @@ For more information, see \href{http://docs.aws.amazon.com/lex/latest/dg/context
 The namespace \code{x-amz-lex:} is reserved for special attributes. Don't create any request attributes with the prefix \code{x-amz-lex:}.
 
 For more information, see \href{http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs}{Setting Request Attributes}.}
+
+\item{inputText}{[required] The text that the user entered (Amazon Lex interprets this text).}
 }
 \description{
 Sends user input (text-only) to Amazon Lex. Client applications can use this API to send requests to Amazon Lex at runtime. Amazon Lex then interprets the user input using the machine learning model it built for the bot.

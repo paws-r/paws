@@ -4,12 +4,15 @@
 \alias{flush_stage_authorizers_cache}
 \title{Flushes all authorizer cache entries on a stage}
 \usage{
-flush_stage_authorizers_cache(restApiId, stageName)
+flush_stage_authorizers_cache(
+  restApiId = "string",
+  stageName = "string"
+)
 }
 \arguments{
-\item{restApiId}{The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{stageName}{The name of the stage to flush.}
+\item{stageName}{[required] The name of the stage to flush.}
 }
 \description{
 Flushes all authorizer cache entries on a stage.

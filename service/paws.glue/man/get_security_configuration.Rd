@@ -4,10 +4,12 @@
 \alias{get_security_configuration}
 \title{Retrieves a specified security configuration}
 \usage{
-get_security_configuration(Name)
+get_security_configuration(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the security configuration to retrieve.}
+\item{Name}{[required] The name of the security configuration to retrieve.}
 }
 \description{
 Retrieves a specified security configuration.

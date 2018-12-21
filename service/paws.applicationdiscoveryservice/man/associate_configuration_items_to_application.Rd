@@ -4,13 +4,17 @@
 \alias{associate_configuration_items_to_application}
 \title{Associates one or more configuration items with an application}
 \usage{
-associate_configuration_items_to_application(applicationConfigurationId,
-  configurationIds)
+associate_configuration_items_to_application(
+  applicationConfigurationId = "string",
+  configurationIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{applicationConfigurationId}{The configuration ID of an application with which items are to be associated.}
+\item{applicationConfigurationId}{[required] The configuration ID of an application with which items are to be associated.}
 
-\item{configurationIds}{The ID of each configuration item to be associated with an application.}
+\item{configurationIds}{[required] The ID of each configuration item to be associated with an application.}
 }
 \description{
 Associates one or more configuration items with an application.

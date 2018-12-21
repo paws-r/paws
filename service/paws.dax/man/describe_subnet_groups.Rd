@@ -4,8 +4,13 @@
 \alias{describe_subnet_groups}
 \title{Returns a list of subnet group descriptions}
 \usage{
-describe_subnet_groups(SubnetGroupNames = NULL, MaxResults = NULL,
-  NextToken = NULL)
+describe_subnet_groups(
+  SubnetGroupNames = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{SubnetGroupNames}{The name of the subnet group.}

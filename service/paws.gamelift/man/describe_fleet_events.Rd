@@ -4,11 +4,16 @@
 \alias{describe_fleet_events}
 \title{Retrieves entries from the specified fleet's event log}
 \usage{
-describe_fleet_events(FleetId, StartTime = NULL, EndTime = NULL,
-  Limit = NULL, NextToken = NULL)
+describe_fleet_events(
+  FleetId = "string",
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  Limit = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{FleetId}{Unique identifier for a fleet to get event logs for.}
+\item{FleetId}{[required] Unique identifier for a fleet to get event logs for.}
 
 \item{StartTime}{Earliest date to retrieve event logs for. If no start time is specified, this call returns entries starting from when the fleet was created to the specified end time. Format is a number expressed in Unix time as milliseconds (ex: "1469498468.057").}
 

@@ -4,21 +4,39 @@
 \alias{delete_stack_instances}
 \title{Deletes stack instances for the specified accounts, in the specified regions}
 \usage{
-delete_stack_instances(StackSetName, Accounts, Regions, RetainStacks,
-  OperationPreferences = NULL, OperationId = NULL)
+delete_stack_instances(
+  StackSetName = "string",
+  Accounts = list(
+    "string"
+  ),
+  Regions = list(
+    "string"
+  ),
+  OperationPreferences = list(
+    RegionOrder = list(
+      "string"
+    ),
+    FailureToleranceCount = 123,
+    FailureTolerancePercentage = 123,
+    MaxConcurrentCount = 123,
+    MaxConcurrentPercentage = 123
+  ),
+  RetainStacks = TRUE|FALSE,
+  OperationId = "string"
+)
 }
 \arguments{
-\item{StackSetName}{The name or unique ID of the stack set that you want to delete stack instances for.}
+\item{StackSetName}{[required] The name or unique ID of the stack set that you want to delete stack instances for.}
 
-\item{Accounts}{The names of the AWS accounts that you want to delete stack instances for.}
+\item{Accounts}{[required] The names of the AWS accounts that you want to delete stack instances for.}
 
-\item{Regions}{The regions where you want to delete stack set instances.}
-
-\item{RetainStacks}{Removes the stack instances from the specified stack set, but doesn't delete the stacks. You can't reassociate a retained stack or add an existing, saved stack to a new stack set.
-
-For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options}{Stack set operation options}.}
+\item{Regions}{[required] The regions where you want to delete stack set instances.}
 
 \item{OperationPreferences}{Preferences for how AWS CloudFormation performs this stack set operation.}
+
+\item{RetainStacks}{[required] Removes the stack instances from the specified stack set, but doesn't delete the stacks. You can't reassociate a retained stack or add an existing, saved stack to a new stack set.
+
+For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options}{Stack set operation options}.}
 
 \item{OperationId}{The unique identifier for this stack set operation.
 

@@ -4,8 +4,11 @@
 \alias{list_migration_tasks}
 \title{Lists all, or filtered by resource name, migration tasks associated with the user account making this call}
 \usage{
-list_migration_tasks(NextToken = NULL, MaxResults = NULL,
-  ResourceName = NULL)
+list_migration_tasks(
+  NextToken = "string",
+  MaxResults = 123,
+  ResourceName = "string"
+)
 }
 \arguments{
 \item{NextToken}{If a \code{NextToken} was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in \code{NextToken}.}

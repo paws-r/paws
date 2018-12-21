@@ -4,12 +4,84 @@
 \alias{initiate_job}
 \title{This operation initiates a job of the specified type, which can be a select, an archival retrieval, or a vault retrieval}
 \usage{
-initiate_job(accountId, vaultName, jobParameters = NULL)
+initiate_job(
+  accountId = "string",
+  vaultName = "string",
+  jobParameters = list(
+    Format = "string",
+    Type = "string",
+    ArchiveId = "string",
+    Description = "string",
+    SNSTopic = "string",
+    RetrievalByteRange = "string",
+    Tier = "string",
+    InventoryRetrievalParameters = list(
+      StartDate = "string",
+      EndDate = "string",
+      Limit = "string",
+      Marker = "string"
+    ),
+    SelectParameters = list(
+      InputSerialization = list(
+        csv = list(
+          FileHeaderInfo = "USE"|"IGNORE"|"NONE",
+          Comments = "string",
+          QuoteEscapeCharacter = "string",
+          RecordDelimiter = "string",
+          FieldDelimiter = "string",
+          QuoteCharacter = "string"
+        )
+      ),
+      ExpressionType = "SQL",
+      Expression = "string",
+      OutputSerialization = list(
+        csv = list(
+          QuoteFields = "ALWAYS"|"ASNEEDED",
+          QuoteEscapeCharacter = "string",
+          RecordDelimiter = "string",
+          FieldDelimiter = "string",
+          QuoteCharacter = "string"
+        )
+      )
+    ),
+    OutputLocation = list(
+      S3 = list(
+        BucketName = "string",
+        Prefix = "string",
+        Encryption = list(
+          EncryptionType = "aws:kms"|"AES256",
+          KMSKeyId = "string",
+          KMSContext = "string"
+        ),
+        CannedACL = "private"|"public-read"|"public-read-write"|"aws-exec-read"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control",
+        AccessControlList = list(
+          list(
+            Grantee = list(
+              Type = "AmazonCustomerByEmail"|"CanonicalUser"|"Group",
+              DisplayName = "string",
+              URI = "string",
+              ID = "string",
+              EmailAddress = "string"
+            ),
+            Permission = "FULL_CONTROL"|"WRITE"|"WRITE_ACP"|"READ"|"READ_ACP"
+          )
+        ),
+        Tagging = list(
+          "string"
+        ),
+        UserMetadata = list(
+          "string"
+        ),
+        StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{accountId}{The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
+\item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
 
-\item{vaultName}{The name of the vault.}
+\item{vaultName}{[required] The name of the vault.}
 
 \item{jobParameters}{Provides options for specifying job information.}
 }

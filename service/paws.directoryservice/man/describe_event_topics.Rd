@@ -4,7 +4,12 @@
 \alias{describe_event_topics}
 \title{Obtains information about which SNS topics receive status messages from the specified directory}
 \usage{
-describe_event_topics(DirectoryId = NULL, TopicNames = NULL)
+describe_event_topics(
+  DirectoryId = "string",
+  TopicNames = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{DirectoryId}{The Directory ID for which to get the list of associated SNS topics. If this member is null, associations for all Directory IDs are returned.}

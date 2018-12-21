@@ -4,10 +4,12 @@
 \alias{describe_alias}
 \title{Retrieves properties for an alias}
 \usage{
-describe_alias(AliasId)
+describe_alias(
+  AliasId = "string"
+)
 }
 \arguments{
-\item{AliasId}{Unique identifier for a fleet alias. Specify the alias you want to retrieve.}
+\item{AliasId}{[required] Unique identifier for a fleet alias. Specify the alias you want to retrieve.}
 }
 \description{
 Retrieves properties for an alias. This operation returns all alias metadata and settings. To get an alias's target fleet ID only, use \code{ResolveAlias}.

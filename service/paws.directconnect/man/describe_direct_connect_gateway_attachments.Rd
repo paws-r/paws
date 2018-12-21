@@ -4,8 +4,12 @@
 \alias{describe_direct_connect_gateway_attachments}
 \title{Lists the attachments between your Direct Connect gateways and virtual interfaces}
 \usage{
-describe_direct_connect_gateway_attachments(directConnectGatewayId = NULL,
-  virtualInterfaceId = NULL, maxResults = NULL, nextToken = NULL)
+describe_direct_connect_gateway_attachments(
+  directConnectGatewayId = "string",
+  virtualInterfaceId = "string",
+  maxResults = 123,
+  nextToken = "string"
+)
 }
 \arguments{
 \item{directConnectGatewayId}{The ID of the Direct Connect gateway.}

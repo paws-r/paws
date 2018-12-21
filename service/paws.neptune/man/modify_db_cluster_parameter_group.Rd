@@ -4,12 +4,28 @@
 \alias{modify_db_cluster_parameter_group}
 \title{Modifies the parameters of a DB cluster parameter group}
 \usage{
-modify_db_cluster_parameter_group(DBClusterParameterGroupName, Parameters)
+modify_db_cluster_parameter_group(
+  DBClusterParameterGroupName = "string",
+  Parameters = list(
+    list(
+      ParameterName = "string",
+      ParameterValue = "string",
+      Description = "string",
+      Source = "string",
+      ApplyType = "string",
+      DataType = "string",
+      AllowedValues = "string",
+      IsModifiable = TRUE|FALSE,
+      MinimumEngineVersion = "string",
+      ApplyMethod = "immediate"|"pending-reboot"
+    )
+  )
+)
 }
 \arguments{
-\item{DBClusterParameterGroupName}{The name of the DB cluster parameter group to modify.}
+\item{DBClusterParameterGroupName}{[required] The name of the DB cluster parameter group to modify.}
 
-\item{Parameters}{A list of parameters in the DB cluster parameter group to modify.}
+\item{Parameters}{[required] A list of parameters in the DB cluster parameter group to modify.}
 }
 \description{
 Modifies the parameters of a DB cluster parameter group. To modify more than one parameter, submit a list of the following: \code{ParameterName}, \code{ParameterValue}, and \code{ApplyMethod}. A maximum of 20 parameters can be modified in a single request.

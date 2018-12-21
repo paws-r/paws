@@ -4,10 +4,12 @@
 \alias{get_telemetry_metadata}
 \title{Information about the data that is collected for the specified assessment run}
 \usage{
-get_telemetry_metadata(assessmentRunArn)
+get_telemetry_metadata(
+  assessmentRunArn = "string"
+)
 }
 \arguments{
-\item{assessmentRunArn}{The ARN that specifies the assessment run that has the telemetry data that you want to obtain.}
+\item{assessmentRunArn}{[required] The ARN that specifies the assessment run that has the telemetry data that you want to obtain.}
 }
 \description{
 Information about the data that is collected for the specified assessment run.

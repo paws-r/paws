@@ -4,7 +4,9 @@
 \alias{update_subscription}
 \title{Updates the details of an existing subscription}
 \usage{
-update_subscription(AutoRenew = NULL)
+update_subscription(
+  AutoRenew = "ENABLED"|"DISABLED"
+)
 }
 \arguments{
 \item{AutoRenew}{When you initally create a subscription, \code{AutoRenew} is set to \code{ENABLED}. If \code{ENABLED}, the subscription will be automatically renewed at the end of the existing subscription period. You can change this by submitting an \code{UpdateSubscription} request. If the \code{UpdateSubscription} request does not included a value for \code{AutoRenew}, the existing value for \code{AutoRenew} remains unchanged.}

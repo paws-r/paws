@@ -4,15 +4,23 @@
 \alias{purchase_scheduled_instances}
 \title{Purchases one or more Scheduled Instances with the specified schedule}
 \usage{
-purchase_scheduled_instances(PurchaseRequests, ClientToken = NULL,
-  DryRun = NULL)
+purchase_scheduled_instances(
+  ClientToken = "string",
+  DryRun = TRUE|FALSE,
+  PurchaseRequests = list(
+    list(
+      InstanceCount = 123,
+      PurchaseToken = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{PurchaseRequests}{One or more purchase requests.}
-
 \item{ClientToken}{Unique, case-sensitive identifier that ensures the idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{PurchaseRequests}{[required] One or more purchase requests.}
 }
 \description{
 Purchases one or more Scheduled Instances with the specified schedule.

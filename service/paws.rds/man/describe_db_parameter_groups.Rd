@@ -4,8 +4,19 @@
 \alias{describe_db_parameter_groups}
 \title{Returns a list of \code{DBParameterGroup} descriptions}
 \usage{
-describe_db_parameter_groups(DBParameterGroupName = NULL, Filters = NULL,
-  MaxRecords = NULL, Marker = NULL)
+describe_db_parameter_groups(
+  DBParameterGroupName = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{DBParameterGroupName}{The name of a specific DB parameter group to return details for.

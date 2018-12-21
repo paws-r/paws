@@ -4,10 +4,12 @@
 \alias{describe_load_balancer_attributes}
 \title{Describes the attributes for the specified load balancer}
 \usage{
-describe_load_balancer_attributes(LoadBalancerName)
+describe_load_balancer_attributes(
+  LoadBalancerName = "string"
+)
 }
 \arguments{
-\item{LoadBalancerName}{The name of the load balancer.}
+\item{LoadBalancerName}{[required] The name of the load balancer.}
 }
 \description{
 Describes the attributes for the specified load balancer.

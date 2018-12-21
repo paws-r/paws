@@ -4,8 +4,20 @@
 \alias{describe_customer_gateways}
 \title{Describes one or more of your VPN customer gateways}
 \usage{
-describe_customer_gateways(CustomerGatewayIds = NULL, Filters = NULL,
-  DryRun = NULL)
+describe_customer_gateways(
+  CustomerGatewayIds = list(
+    "string"
+  ),
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{CustomerGatewayIds}{One or more customer gateway IDs.

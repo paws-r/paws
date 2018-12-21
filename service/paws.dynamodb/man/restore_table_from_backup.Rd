@@ -4,12 +4,15 @@
 \alias{restore_table_from_backup}
 \title{Creates a new table from an existing backup}
 \usage{
-restore_table_from_backup(TargetTableName, BackupArn)
+restore_table_from_backup(
+  TargetTableName = "string",
+  BackupArn = "string"
+)
 }
 \arguments{
-\item{TargetTableName}{The name of the new table to which the backup must be restored.}
+\item{TargetTableName}{[required] The name of the new table to which the backup must be restored.}
 
-\item{BackupArn}{The ARN associated with the backup.}
+\item{BackupArn}{[required] The ARN associated with the backup.}
 }
 \description{
 Creates a new table from an existing backup. Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account.

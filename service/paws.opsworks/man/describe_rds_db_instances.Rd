@@ -4,10 +4,15 @@
 \alias{describe_rds_db_instances}
 \title{Describes Amazon RDS instances}
 \usage{
-describe_rds_db_instances(StackId, RdsDbInstanceArns = NULL)
+describe_rds_db_instances(
+  StackId = "string",
+  RdsDbInstanceArns = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{StackId}{The ID of the stack with which the instances are registered. The operation returns descriptions of all registered Amazon RDS instances.}
+\item{StackId}{[required] The ID of the stack with which the instances are registered. The operation returns descriptions of all registered Amazon RDS instances.}
 
 \item{RdsDbInstanceArns}{An array containing the ARNs of the instances to be described.}
 }

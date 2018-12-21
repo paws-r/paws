@@ -6,16 +6,21 @@
 \alias{paws.codestar-package}
 \title{paws.codestar: AWS CodeStar}
 \description{
-This is the API reference for AWS CodeStar. This
-reference provides descriptions of the operations and data types for
-the AWS CodeStar API along with usage examples.
+This is the API reference for AWS CodeStar. This reference
+provides descriptions of the operations and data types for the AWS
+CodeStar API along with usage examples.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

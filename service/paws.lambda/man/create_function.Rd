@@ -4,13 +4,51 @@
 \alias{create_function}
 \title{Creates a new Lambda function}
 \usage{
-create_function(FunctionName, Runtime, Role, Handler, Code,
-  Description = NULL, Timeout = NULL, MemorySize = NULL, Publish = NULL,
-  VpcConfig = NULL, DeadLetterConfig = NULL, Environment = NULL,
-  KMSKeyArn = NULL, TracingConfig = NULL, Tags = NULL)
+create_function(
+  FunctionName = "string",
+  Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
+  Role = "string",
+  Handler = "string",
+  Code = list(
+    ZipFile = raw,
+    S3Bucket = "string",
+    S3Key = "string",
+    S3ObjectVersion = "string"
+  ),
+  Description = "string",
+  Timeout = 123,
+  MemorySize = 123,
+  Publish = TRUE|FALSE,
+  VpcConfig = list(
+    SubnetIds = list(
+      "string"
+    ),
+    SecurityGroupIds = list(
+      "string"
+    )
+  ),
+  DeadLetterConfig = list(
+    TargetArn = "string"
+  ),
+  Environment = list(
+    Variables = list(
+      "string"
+    )
+  ),
+  KMSKeyArn = "string",
+  TracingConfig = list(
+    Mode = "Active"|"PassThrough"
+  ),
+  Tags = list(
+    "string"
+  ),
+  Layers = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{FunctionName}{The name of the lambda function.
+\item{FunctionName}{[required] The name of the Lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -21,13 +59,13 @@ create_function(FunctionName, Runtime, Role, Handler, Code,
 
 The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
-\item{Runtime}{The runtime version for the function.}
+\item{Runtime}{[required] The runtime version for the function.}
 
-\item{Role}{The Amazon Resource Name (ARN) of the function's \href{http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role}{execution role}.}
+\item{Role}{[required] The Amazon Resource Name (ARN) of the function's \href{http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role}{execution role}.}
 
-\item{Handler}{The name of the method within your code that Lambda calls to execute your function. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/programming-model-v2.html}{Programming Model}.}
+\item{Handler}{[required] The name of the method within your code that Lambda calls to execute your function. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/programming-model-v2.html}{Programming Model}.}
 
-\item{Code}{The code for the function.}
+\item{Code}{[required] The code for the function.}
 
 \item{Description}{A description of the function.}
 
@@ -48,6 +86,8 @@ The length constraint applies only to the full ARN. If you specify only the func
 \item{TracingConfig}{Set \code{Mode} to \code{Active} to sample and trace a subset of incoming requests with AWS X-Ray.}
 
 \item{Tags}{The list of tags (key-value pairs) assigned to the new function. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{Tagging Lambda Functions} in the \strong{AWS Lambda Developer Guide}.}
+
+\item{Layers}{A list of \href{http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{function layers} to add to the function's execution environment.}
 }
 \description{
 Creates a new Lambda function. The function configuration is created from the request parameters, and the code for the function is provided by a .zip file. The function name is case-sensitive.

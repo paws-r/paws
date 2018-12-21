@@ -4,13 +4,19 @@
 \alias{get_attributes}
 \title{Returns all of the attributes associated with the specified item}
 \usage{
-get_attributes(DomainName, ItemName, AttributeNames = NULL,
-  ConsistentRead = NULL)
+get_attributes(
+  DomainName = "string",
+  ItemName = "string",
+  AttributeNames = list(
+    "string"
+  ),
+  ConsistentRead = TRUE|FALSE
+)
 }
 \arguments{
-\item{DomainName}{The name of the domain in which to perform the operation.}
+\item{DomainName}{[required] The name of the domain in which to perform the operation.}
 
-\item{ItemName}{The name of the item.}
+\item{ItemName}{[required] The name of the item.}
 
 \item{AttributeNames}{The names of the attributes.}
 

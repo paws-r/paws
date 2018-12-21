@@ -4,12 +4,15 @@
 \alias{put_container_policy}
 \title{Creates an access policy for the specified container to restrict the users and clients that can access it}
 \usage{
-put_container_policy(ContainerName, Policy)
+put_container_policy(
+  ContainerName = "string",
+  Policy = "string"
+)
 }
 \arguments{
-\item{ContainerName}{The name of the container.}
+\item{ContainerName}{[required] The name of the container.}
 
-\item{Policy}{The contents of the policy, which includes the following:
+\item{Policy}{[required] The contents of the policy, which includes the following:
 \itemize{
 \item One \code{Version} tag
 \item One \code{Statement} tag that contains the standard tags for the policy.

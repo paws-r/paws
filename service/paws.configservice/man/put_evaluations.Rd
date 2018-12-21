@@ -4,12 +4,24 @@
 \alias{put_evaluations}
 \title{Used by an AWS Lambda function to deliver evaluation results to AWS Config}
 \usage{
-put_evaluations(ResultToken, Evaluations = NULL, TestMode = NULL)
+put_evaluations(
+  Evaluations = list(
+    list(
+      ComplianceResourceType = "string",
+      ComplianceResourceId = "string",
+      ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
+      Annotation = "string",
+      OrderingTimestamp = as.POSIXct("2015-01-01")
+    )
+  ),
+  ResultToken = "string",
+  TestMode = TRUE|FALSE
+)
 }
 \arguments{
-\item{ResultToken}{An encrypted token that associates an evaluation with an AWS Config rule. Identifies the rule and the event that triggered the evaluation.}
-
 \item{Evaluations}{The assessments that the AWS Lambda function performs. Each evaluation identifies an AWS resource and indicates whether it complies with the AWS Config rule that invokes the AWS Lambda function.}
+
+\item{ResultToken}{[required] An encrypted token that associates an evaluation with an AWS Config rule. Identifies the rule and the event that triggered the evaluation.}
 
 \item{TestMode}{Use this parameter to specify a test run for \code{PutEvaluations}. You can verify whether your AWS Lambda function will deliver evaluation results to AWS Config. No updates occur to your existing evaluations, and evaluation results are not sent to AWS Config.
 

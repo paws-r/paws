@@ -4,14 +4,34 @@
 \alias{create_application_version}
 \title{Creates an application version for the specified application}
 \usage{
-create_application_version(ApplicationName, VersionLabel, Description = NULL,
-  SourceBuildInformation = NULL, SourceBundle = NULL,
-  BuildConfiguration = NULL, AutoCreateApplication = NULL, Process = NULL)
+create_application_version(
+  ApplicationName = "string",
+  VersionLabel = "string",
+  Description = "string",
+  SourceBuildInformation = list(
+    SourceType = "Git"|"Zip",
+    SourceRepository = "CodeCommit"|"S3",
+    SourceLocation = "string"
+  ),
+  SourceBundle = list(
+    S3Bucket = "string",
+    S3Key = "string"
+  ),
+  BuildConfiguration = list(
+    ArtifactName = "string",
+    CodeBuildServiceRole = "string",
+    ComputeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE",
+    Image = "string",
+    TimeoutInMinutes = 123
+  ),
+  AutoCreateApplication = TRUE|FALSE,
+  Process = TRUE|FALSE
+)
 }
 \arguments{
-\item{ApplicationName}{The name of the application. If no application is found with this name, and \code{AutoCreateApplication} is \code{false}, returns an \code{InvalidParameterValue} error.}
+\item{ApplicationName}{[required] The name of the application. If no application is found with this name, and \code{AutoCreateApplication} is \code{false}, returns an \code{InvalidParameterValue} error.}
 
-\item{VersionLabel}{A label identifying this version.
+\item{VersionLabel}{[required] A label identifying this version.
 
 Constraint: Must be unique per application. If an application version already exists with this label for the specified application, AWS Elastic Beanstalk returns an \code{InvalidParameterValue} error.}
 

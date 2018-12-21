@@ -4,15 +4,24 @@
 \alias{update_job_queue}
 \title{Updates a job queue}
 \usage{
-update_job_queue(jobQueue, state = NULL, priority = NULL,
-  computeEnvironmentOrder = NULL)
+update_job_queue(
+  jobQueue = "string",
+  state = "ENABLED"|"DISABLED",
+  priority = 123,
+  computeEnvironmentOrder = list(
+    list(
+      order = 123,
+      computeEnvironment = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{jobQueue}{The name or the Amazon Resource Name (ARN) of the job queue.}
+\item{jobQueue}{[required] The name or the Amazon Resource Name (ARN) of the job queue.}
 
 \item{state}{Describes the queue's ability to accept new jobs.}
 
-\item{priority}{The priority of the job queue. Job queues with a higher priority (or a higher integer value for the \code{priority} parameter) are evaluated first when associated with same compute environment. Priority is determined in descending order, for example, a job queue with a priority value of \code{10} is given scheduling preference over a job queue with a priority value of \code{1}.}
+\item{priority}{The priority of the job queue. Job queues with a higher priority (or a higher integer value for the \code{priority} parameter) are evaluated first when associated with the same compute environment. Priority is determined in descending order, for example, a job queue with a priority value of \code{10} is given scheduling preference over a job queue with a priority value of \code{1}.}
 
 \item{computeEnvironmentOrder}{Details the set of compute environments mapped to a job queue and their order relative to each other. This is one of the parameters used by the job scheduler to determine which compute environment should execute a given job.}
 }

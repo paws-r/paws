@@ -4,13 +4,17 @@
 \alias{list_mailbox_permissions}
 \title{Lists the mailbox permissions associated with a mailbox}
 \usage{
-list_mailbox_permissions(OrganizationId, EntityId, NextToken = NULL,
-  MaxResults = NULL)
+list_mailbox_permissions(
+  OrganizationId = "string",
+  EntityId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{OrganizationId}{The identifier of the organization under which the entity (user or group) exists.}
+\item{OrganizationId}{[required] The identifier of the organization under which the entity (user or group) exists.}
 
-\item{EntityId}{The identifier of the entity (user or group) for which to list mailbox permissions.}
+\item{EntityId}{[required] The identifier of the entity (user or group) for which to list mailbox permissions.}
 
 \item{NextToken}{The token to use to retrieve the next page of results. The first call does not contain any tokens.}
 

@@ -4,11 +4,15 @@
 \alias{describe_cluster_parameters}
 \title{Returns a detailed list of parameters contained within the specified Amazon Redshift parameter group}
 \usage{
-describe_cluster_parameters(ParameterGroupName, Source = NULL,
-  MaxRecords = NULL, Marker = NULL)
+describe_cluster_parameters(
+  ParameterGroupName = "string",
+  Source = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
-\item{ParameterGroupName}{The name of a cluster parameter group for which to return details.}
+\item{ParameterGroupName}{[required] The name of a cluster parameter group for which to return details.}
 
 \item{Source}{The parameter types to return. Specify \code{user} to show parameters that are different form the default. Similarly, specify \code{engine-default} to show parameters that are the same as the default parameter group.
 

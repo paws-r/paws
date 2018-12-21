@@ -4,10 +4,14 @@
 \alias{list_tags_for_resource}
 \title{Lists all tags on a directory}
 \usage{
-list_tags_for_resource(ResourceId, NextToken = NULL, Limit = NULL)
+list_tags_for_resource(
+  ResourceId = "string",
+  NextToken = "string",
+  Limit = 123
+)
 }
 \arguments{
-\item{ResourceId}{Identifier (ID) of the directory for which you want to retrieve tags.}
+\item{ResourceId}{[required] Identifier (ID) of the directory for which you want to retrieve tags.}
 
 \item{NextToken}{Reserved for future use.}
 

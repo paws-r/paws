@@ -4,14 +4,20 @@
 \alias{notify_workers}
 \title{The \code{NotifyWorkers} operation sends an email to one or more Workers that you specify with the Worker ID}
 \usage{
-notify_workers(Subject, MessageText, WorkerIds)
+notify_workers(
+  Subject = "string",
+  MessageText = "string",
+  WorkerIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{Subject}{The subject line of the email message to send. Can include up to 200 characters.}
+\item{Subject}{[required] The subject line of the email message to send. Can include up to 200 characters.}
 
-\item{MessageText}{The text of the email message to send. Can include up to 4,096 characters}
+\item{MessageText}{[required] The text of the email message to send. Can include up to 4,096 characters}
 
-\item{WorkerIds}{A list of Worker IDs you wish to notify. You can notify upto 100 Workers at a time.}
+\item{WorkerIds}{[required] A list of Worker IDs you wish to notify. You can notify upto 100 Workers at a time.}
 }
 \description{
 The \code{NotifyWorkers} operation sends an email to one or more Workers that you specify with the Worker ID. You can specify up to 100 Worker IDs to send the same message with a single call to the NotifyWorkers operation. The NotifyWorkers operation will send a notification email to a Worker only if you have previously approved or rejected work from the Worker.

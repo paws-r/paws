@@ -4,11 +4,14 @@
 \alias{list_logger_definition_versions}
 \title{Lists the versions of a logger definition}
 \usage{
-list_logger_definition_versions(LoggerDefinitionId, MaxResults = NULL,
-  NextToken = NULL)
+list_logger_definition_versions(
+  LoggerDefinitionId = "string",
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
 \arguments{
-\item{LoggerDefinitionId}{The ID of the logger definition.}
+\item{LoggerDefinitionId}{[required] The ID of the logger definition.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 

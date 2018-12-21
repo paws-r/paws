@@ -4,10 +4,12 @@
 \alias{delete_ip_group}
 \title{Deletes the specified IP access control group}
 \usage{
-delete_ip_group(GroupId)
+delete_ip_group(
+  GroupId = "string"
+)
 }
 \arguments{
-\item{GroupId}{The ID of the IP access control group.}
+\item{GroupId}{[required] The identifier of the IP access control group.}
 }
 \description{
 Deletes the specified IP access control group.

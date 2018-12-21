@@ -4,8 +4,21 @@
 \alias{describe_host_reservations}
 \title{Describes reservations that are associated with Dedicated Hosts in your account}
 \usage{
-describe_host_reservations(Filter = NULL, HostReservationIdSet = NULL,
-  MaxResults = NULL, NextToken = NULL)
+describe_host_reservations(
+  Filter = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  HostReservationIdSet = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{Filter}{One or more filters.

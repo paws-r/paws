@@ -4,10 +4,12 @@
 \alias{get_operation}
 \title{Gets information about any operation that returns an operation ID in the response, such as a \code{CreateService} request}
 \usage{
-get_operation(OperationId)
+get_operation(
+  OperationId = "string"
+)
 }
 \arguments{
-\item{OperationId}{The ID of the operation that you want to get more information about.}
+\item{OperationId}{[required] The ID of the operation that you want to get more information about.}
 }
 \description{
 Gets information about any operation that returns an operation ID in the response, such as a \code{CreateService} request.

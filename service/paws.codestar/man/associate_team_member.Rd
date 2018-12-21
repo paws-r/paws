@@ -4,17 +4,22 @@
 \alias{associate_team_member}
 \title{Adds an IAM user to the team for an AWS CodeStar project}
 \usage{
-associate_team_member(projectId, userArn, projectRole,
-  clientRequestToken = NULL, remoteAccessAllowed = NULL)
+associate_team_member(
+  projectId = "string",
+  clientRequestToken = "string",
+  userArn = "string",
+  projectRole = "string",
+  remoteAccessAllowed = TRUE|FALSE
+)
 }
 \arguments{
-\item{projectId}{The ID of the project to which you will add the IAM user.}
-
-\item{userArn}{The Amazon Resource Name (ARN) for the IAM user you want to add to the AWS CodeStar project.}
-
-\item{projectRole}{The AWS CodeStar project role that will apply to this user. This role determines what actions a user can take in an AWS CodeStar project.}
+\item{projectId}{[required] The ID of the project to which you will add the IAM user.}
 
 \item{clientRequestToken}{A user- or system-generated token that identifies the entity that requested the team member association to the project. This token can be used to repeat the request.}
+
+\item{userArn}{[required] The Amazon Resource Name (ARN) for the IAM user you want to add to the AWS CodeStar project.}
+
+\item{projectRole}{[required] The AWS CodeStar project role that will apply to this user. This role determines what actions a user can take in an AWS CodeStar project.}
 
 \item{remoteAccessAllowed}{Whether the team member is allowed to use an SSH public/private key pair to remotely access project resources, for example Amazon EC2 instances.}
 }

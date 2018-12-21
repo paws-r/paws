@@ -4,14 +4,57 @@
 \alias{revoke_security_group_egress}
 \title{[EC2-VPC only] Removes one or more egress rules from a security group for EC2-VPC}
 \usage{
-revoke_security_group_egress(GroupId, DryRun = NULL, IpPermissions = NULL,
-  CidrIp = NULL, FromPort = NULL, IpProtocol = NULL, ToPort = NULL,
-  SourceSecurityGroupName = NULL, SourceSecurityGroupOwnerId = NULL)
+revoke_security_group_egress(
+  DryRun = TRUE|FALSE,
+  GroupId = "string",
+  IpPermissions = list(
+    list(
+      FromPort = 123,
+      IpProtocol = "string",
+      IpRanges = list(
+        list(
+          CidrIp = "string",
+          Description = "string"
+        )
+      ),
+      Ipv6Ranges = list(
+        list(
+          CidrIpv6 = "string",
+          Description = "string"
+        )
+      ),
+      PrefixListIds = list(
+        list(
+          Description = "string",
+          PrefixListId = "string"
+        )
+      ),
+      ToPort = 123,
+      UserIdGroupPairs = list(
+        list(
+          Description = "string",
+          GroupId = "string",
+          GroupName = "string",
+          PeeringStatus = "string",
+          UserId = "string",
+          VpcId = "string",
+          VpcPeeringConnectionId = "string"
+        )
+      )
+    )
+  ),
+  CidrIp = "string",
+  FromPort = 123,
+  IpProtocol = "string",
+  ToPort = 123,
+  SourceSecurityGroupName = "string",
+  SourceSecurityGroupOwnerId = "string"
+)
 }
 \arguments{
-\item{GroupId}{The ID of the security group.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{GroupId}{[required] The ID of the security group.}
 
 \item{IpPermissions}{One or more sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in the same set of permissions.}
 

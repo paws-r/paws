@@ -4,10 +4,12 @@
 \alias{delete_network_profile}
 \title{Deletes a network profile}
 \usage{
-delete_network_profile(arn)
+delete_network_profile(
+  arn = "string"
+)
 }
 \arguments{
-\item{arn}{The Amazon Resource Name (ARN) of the network profile you want to delete.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of the network profile you want to delete.}
 }
 \description{
 Deletes a network profile.

@@ -4,12 +4,15 @@
 \alias{set_local_console_password}
 \title{Sets the password for your VM local console}
 \usage{
-set_local_console_password(GatewayARN, LocalConsolePassword)
+set_local_console_password(
+  GatewayARN = "string",
+  LocalConsolePassword = "string"
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 
-\item{LocalConsolePassword}{The password you want to set for your VM local console.}
+\item{LocalConsolePassword}{[required] The password you want to set for your VM local console.}
 }
 \description{
 Sets the password for your VM local console. When you log in to the local console for the first time, you log in to the VM with the default credentials. We recommend that you set a new password. You don't need to know the default password to set a new password.

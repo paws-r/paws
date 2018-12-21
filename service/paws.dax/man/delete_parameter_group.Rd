@@ -4,10 +4,12 @@
 \alias{delete_parameter_group}
 \title{Deletes the specified parameter group}
 \usage{
-delete_parameter_group(ParameterGroupName)
+delete_parameter_group(
+  ParameterGroupName = "string"
+)
 }
 \arguments{
-\item{ParameterGroupName}{The name of the parameter group to delete.}
+\item{ParameterGroupName}{[required] The name of the parameter group to delete.}
 }
 \description{
 Deletes the specified parameter group. You cannot delete a parameter group if it is associated with any DAX clusters.

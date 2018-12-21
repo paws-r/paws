@@ -4,17 +4,23 @@
 \alias{batch_delete_table_version}
 \title{Deletes a specified batch of versions of a table}
 \usage{
-batch_delete_table_version(DatabaseName, TableName, VersionIds,
-  CatalogId = NULL)
+batch_delete_table_version(
+  CatalogId = "string",
+  DatabaseName = "string",
+  TableName = "string",
+  VersionIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{DatabaseName}{The database in the catalog in which the table resides. For Hive compatibility, this name is entirely lowercase.}
-
-\item{TableName}{The name of the table. For Hive compatibility, this name is entirely lowercase.}
-
-\item{VersionIds}{A list of the IDs of versions to be deleted.}
-
 \item{CatalogId}{The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.}
+
+\item{DatabaseName}{[required] The database in the catalog in which the table resides. For Hive compatibility, this name is entirely lowercase.}
+
+\item{TableName}{[required] The name of the table. For Hive compatibility, this name is entirely lowercase.}
+
+\item{VersionIds}{[required] A list of the IDs of versions to be deleted. A \code{VersionId} is a string representation of an integer. Each version is incremented by 1.}
 }
 \description{
 Deletes a specified batch of versions of a table.

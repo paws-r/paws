@@ -4,16 +4,21 @@
 \alias{register_rds_db_instance}
 \title{Registers an Amazon RDS instance with a stack}
 \usage{
-register_rds_db_instance(StackId, RdsDbInstanceArn, DbUser, DbPassword)
+register_rds_db_instance(
+  StackId = "string",
+  RdsDbInstanceArn = "string",
+  DbUser = "string",
+  DbPassword = "string"
+)
 }
 \arguments{
-\item{StackId}{The stack ID.}
+\item{StackId}{[required] The stack ID.}
 
-\item{RdsDbInstanceArn}{The Amazon RDS instance's ARN.}
+\item{RdsDbInstanceArn}{[required] The Amazon RDS instance's ARN.}
 
-\item{DbUser}{The database's master user name.}
+\item{DbUser}{[required] The database's master user name.}
 
-\item{DbPassword}{The database password.}
+\item{DbPassword}{[required] The database password.}
 }
 \description{
 Registers an Amazon RDS instance with a stack.

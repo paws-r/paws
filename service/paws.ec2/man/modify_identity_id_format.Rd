@@ -4,16 +4,20 @@
 \alias{modify_identity_id_format}
 \title{Modifies the ID format of a resource for a specified IAM user, IAM role, or the root user for an account; or all IAM users, IAM roles, and the root user for an account}
 \usage{
-modify_identity_id_format(PrincipalArn, Resource, UseLongIds)
+modify_identity_id_format(
+  PrincipalArn = "string",
+  Resource = "string",
+  UseLongIds = TRUE|FALSE
+)
 }
 \arguments{
-\item{PrincipalArn}{The ARN of the principal, which can be an IAM user, IAM role, or the root user. Specify \code{all} to modify the ID format for all IAM users, IAM roles, and the root user of the account.}
+\item{PrincipalArn}{[required] The ARN of the principal, which can be an IAM user, IAM role, or the root user. Specify \code{all} to modify the ID format for all IAM users, IAM roles, and the root user of the account.}
 
-\item{Resource}{The type of resource: \code{bundle} | \code{conversion-task} | \code{customer-gateway} | \code{dhcp-options} | \code{elastic-ip-allocation} | \code{elastic-ip-association} | \code{export-task} | \code{flow-log} | \code{image} | \code{import-task} | \code{internet-gateway} | \code{network-acl} | \code{network-acl-association} | \code{network-interface} | \code{network-interface-attachment} | \code{prefix-list} | \code{route-table} | \code{route-table-association} | \code{security-group} | \code{subnet} | \code{subnet-cidr-block-association} | \code{vpc} | \code{vpc-cidr-block-association} | \code{vpc-endpoint} | \code{vpc-peering-connection} | \code{vpn-connection} | \code{vpn-gateway}.
+\item{Resource}{[required] The type of resource: \code{bundle} | \code{conversion-task} | \code{customer-gateway} | \code{dhcp-options} | \code{elastic-ip-allocation} | \code{elastic-ip-association} | \code{export-task} | \code{flow-log} | \code{image} | \code{import-task} | \code{internet-gateway} | \code{network-acl} | \code{network-acl-association} | \code{network-interface} | \code{network-interface-attachment} | \code{prefix-list} | \code{route-table} | \code{route-table-association} | \code{security-group} | \code{subnet} | \code{subnet-cidr-block-association} | \code{vpc} | \code{vpc-cidr-block-association} | \code{vpc-endpoint} | \code{vpc-peering-connection} | \code{vpn-connection} | \code{vpn-gateway}.
 
 Alternatively, use the \code{all-current} option to include all resource types that are currently within their opt-in period for longer IDs.}
 
-\item{UseLongIds}{Indicates whether the resource should use longer IDs (17-character IDs)}
+\item{UseLongIds}{[required] Indicates whether the resource should use longer IDs (17-character IDs)}
 }
 \description{
 Modifies the ID format of a resource for a specified IAM user, IAM role, or the root user for an account; or all IAM users, IAM roles, and the root user for an account. You can specify that resources should receive longer IDs (17-character IDs) when they are created.

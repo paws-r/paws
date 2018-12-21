@@ -4,10 +4,14 @@
 \alias{list_tags}
 \title{Lists all tags for the specified resource}
 \usage{
-list_tags(Arn, NextToken = NULL, MaxResults = NULL)
+list_tags(
+  Arn = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{Arn}{The ARN of the specified resource for which to list tags.}
+\item{Arn}{[required] The ARN of the specified resource for which to list tags.}
 
 \item{NextToken}{An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by \code{MaxResults}.}
 

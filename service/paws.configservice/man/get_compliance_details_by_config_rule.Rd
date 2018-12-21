@@ -4,11 +4,17 @@
 \alias{get_compliance_details_by_config_rule}
 \title{Returns the evaluation results for the specified AWS Config rule}
 \usage{
-get_compliance_details_by_config_rule(ConfigRuleName, ComplianceTypes = NULL,
-  Limit = NULL, NextToken = NULL)
+get_compliance_details_by_config_rule(
+  ConfigRuleName = "string",
+  ComplianceTypes = list(
+    "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA"
+  ),
+  Limit = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{ConfigRuleName}{The name of the AWS Config rule for which you want compliance information.}
+\item{ConfigRuleName}{[required] The name of the AWS Config rule for which you want compliance information.}
 
 \item{ComplianceTypes}{Filters the results by compliance.
 

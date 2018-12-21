@@ -4,10 +4,13 @@
 \alias{create_backup}
 \title{Creates an application-level backup of a server}
 \usage{
-create_backup(ServerName, Description = NULL)
+create_backup(
+  ServerName = "string",
+  Description = "string"
+)
 }
 \arguments{
-\item{ServerName}{The name of the server that you want to back up.}
+\item{ServerName}{[required] The name of the server that you want to back up.}
 
 \item{Description}{A user-defined description of the backup.}
 }

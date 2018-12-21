@@ -4,12 +4,16 @@
 \alias{confirm_product_instance}
 \title{Determines whether a product code is associated with an instance}
 \usage{
-confirm_product_instance(InstanceId, ProductCode, DryRun = NULL)
+confirm_product_instance(
+  InstanceId = "string",
+  ProductCode = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{InstanceId}{The ID of the instance.}
+\item{InstanceId}{[required] The ID of the instance.}
 
-\item{ProductCode}{The product code. This must be a product code that you own.}
+\item{ProductCode}{[required] The product code. This must be a product code that you own.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

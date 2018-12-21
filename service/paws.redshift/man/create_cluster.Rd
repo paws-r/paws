@@ -4,56 +4,51 @@
 \alias{create_cluster}
 \title{Creates a new cluster}
 \usage{
-create_cluster(ClusterIdentifier, NodeType, MasterUsername, MasterUserPassword,
-  DBName = NULL, ClusterType = NULL, ClusterSecurityGroups = NULL,
-  VpcSecurityGroupIds = NULL, ClusterSubnetGroupName = NULL,
-  AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL,
-  ClusterParameterGroupName = NULL, AutomatedSnapshotRetentionPeriod = NULL,
-  Port = NULL, ClusterVersion = NULL, AllowVersionUpgrade = NULL,
-  NumberOfNodes = NULL, PubliclyAccessible = NULL, Encrypted = NULL,
-  HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL,
-  ElasticIp = NULL, Tags = NULL, KmsKeyId = NULL,
-  EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL,
-  MaintenanceTrackName = NULL)
+create_cluster(
+  DBName = "string",
+  ClusterIdentifier = "string",
+  ClusterType = "string",
+  NodeType = "string",
+  MasterUsername = "string",
+  MasterUserPassword = "string",
+  ClusterSecurityGroups = list(
+    "string"
+  ),
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  ClusterSubnetGroupName = "string",
+  AvailabilityZone = "string",
+  PreferredMaintenanceWindow = "string",
+  ClusterParameterGroupName = "string",
+  AutomatedSnapshotRetentionPeriod = 123,
+  ManualSnapshotRetentionPeriod = 123,
+  Port = 123,
+  ClusterVersion = "string",
+  AllowVersionUpgrade = TRUE|FALSE,
+  NumberOfNodes = 123,
+  PubliclyAccessible = TRUE|FALSE,
+  Encrypted = TRUE|FALSE,
+  HsmClientCertificateIdentifier = "string",
+  HsmConfigurationIdentifier = "string",
+  ElasticIp = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  KmsKeyId = "string",
+  EnhancedVpcRouting = TRUE|FALSE,
+  AdditionalInfo = "string",
+  IamRoles = list(
+    "string"
+  ),
+  MaintenanceTrackName = "string",
+  SnapshotScheduleIdentifier = "string"
+)
 }
 \arguments{
-\item{ClusterIdentifier}{A unique identifier for the cluster. You use this identifier to refer to the cluster for any subsequent cluster operations such as deleting or modifying. The identifier also appears in the Amazon Redshift console.
-
-Constraints:
-\itemize{
-\item Must contain from 1 to 63 alphanumeric characters or hyphens.
-\item Alphabetic characters must be lowercase.
-\item First character must be a letter.
-\item Cannot end with a hyphen or contain two consecutive hyphens.
-\item Must be unique for all clusters within an AWS account.
-}
-
-Example: \code{myexamplecluster}}
-
-\item{NodeType}{The node type to be provisioned for the cluster. For information about node types, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes}{Working with Clusters} in the \emph{Amazon Redshift Cluster Management Guide}.
-
-Valid Values: \code{ds2.xlarge} | \code{ds2.8xlarge} | \code{ds2.xlarge} | \code{ds2.8xlarge} | \code{dc1.large} | \code{dc1.8xlarge} | \code{dc2.large} | \code{dc2.8xlarge}}
-
-\item{MasterUsername}{The user name associated with the master user account for the cluster that is being created.
-
-Constraints:
-\itemize{
-\item Must be 1 - 128 alphanumeric characters. The user name can't be \code{PUBLIC}.
-\item First character must be a letter.
-\item Cannot be a reserved word. A list of reserved words can be found in \href{http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html}{Reserved Words} in the Amazon Redshift Database Developer Guide.
-}}
-
-\item{MasterUserPassword}{The password associated with the master user account for the cluster that is being created.
-
-Constraints:
-\itemize{
-\item Must be between 8 and 64 characters in length.
-\item Must contain at least one uppercase letter.
-\item Must contain at least one lowercase letter.
-\item Must contain one number.
-\item Can be any printable ASCII character (ASCII code 33 to 126) except ' (single quote), " (double quote), \, /, @, or space.
-}}
-
 \item{DBName}{The name of the first database to be created when the cluster is created.
 
 To create additional databases after the cluster is created, connect to the cluster with a SQL client and use SQL commands to create a database. For more information, go to \href{http://docs.aws.amazon.com/redshift/latest/dg/t_creating_database.html}{Create a Database} in the Amazon Redshift Database Developer Guide.
@@ -67,6 +62,19 @@ Constraints:
 \item Cannot be a word that is reserved by the service. A list of reserved words can be found in \href{http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html}{Reserved Words} in the Amazon Redshift Database Developer Guide.
 }}
 
+\item{ClusterIdentifier}{[required] A unique identifier for the cluster. You use this identifier to refer to the cluster for any subsequent cluster operations such as deleting or modifying. The identifier also appears in the Amazon Redshift console.
+
+Constraints:
+\itemize{
+\item Must contain from 1 to 63 alphanumeric characters or hyphens.
+\item Alphabetic characters must be lowercase.
+\item First character must be a letter.
+\item Cannot end with a hyphen or contain two consecutive hyphens.
+\item Must be unique for all clusters within an AWS account.
+}
+
+Example: \code{myexamplecluster}}
+
 \item{ClusterType}{The type of the cluster. When cluster type is specified as
 \itemize{
 \item \code{single-node}, the \strong{NumberOfNodes} parameter is not required.
@@ -76,6 +84,30 @@ Constraints:
 Valid Values: \code{multi-node} | \code{single-node}
 
 Default: \code{multi-node}}
+
+\item{NodeType}{[required] The node type to be provisioned for the cluster. For information about node types, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes}{Working with Clusters} in the \emph{Amazon Redshift Cluster Management Guide}.
+
+Valid Values: \code{ds2.xlarge} | \code{ds2.8xlarge} | \code{ds2.xlarge} | \code{ds2.8xlarge} | \code{dc1.large} | \code{dc1.8xlarge} | \code{dc2.large} | \code{dc2.8xlarge}}
+
+\item{MasterUsername}{[required] The user name associated with the master user account for the cluster that is being created.
+
+Constraints:
+\itemize{
+\item Must be 1 - 128 alphanumeric characters. The user name can't be \code{PUBLIC}.
+\item First character must be a letter.
+\item Cannot be a reserved word. A list of reserved words can be found in \href{http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html}{Reserved Words} in the Amazon Redshift Database Developer Guide.
+}}
+
+\item{MasterUserPassword}{[required] The password associated with the master user account for the cluster that is being created.
+
+Constraints:
+\itemize{
+\item Must be between 8 and 64 characters in length.
+\item Must contain at least one uppercase letter.
+\item Must contain at least one lowercase letter.
+\item Must contain one number.
+\item Can be any printable ASCII character (ASCII code 33 to 126) except ' (single quote), " (double quote), \, /, @, or space.
+}}
 
 \item{ClusterSecurityGroups}{A list of security groups to be associated with this cluster.
 
@@ -123,6 +155,10 @@ Constraints:
 Default: \code{1}
 
 Constraints: Must be a value from 0 to 35.}
+
+\item{ManualSnapshotRetentionPeriod}{The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained indefinitely. This setting doesn't change the retention period of existing snapshots.
+
+The value must be either -1 or an integer between 1 and 3,653.}
 
 \item{Port}{The port number on which the cluster accepts incoming connections.
 
@@ -187,6 +223,8 @@ Default: false}
 A cluster can have up to 10 IAM roles associated with it at any time.}
 
 \item{MaintenanceTrackName}{An optional parameter for the name of the maintenance track for the cluster. If you don't provide a maintenance track name, the cluster is assigned to the \code{current} track.}
+
+\item{SnapshotScheduleIdentifier}{A unique identifier for the snapshot schedule.}
 }
 \description{
 Creates a new cluster.

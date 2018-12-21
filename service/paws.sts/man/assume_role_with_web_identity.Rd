@@ -4,17 +4,23 @@
 \alias{assume_role_with_web_identity}
 \title{Returns a set of temporary security credentials for users who have been authenticated in a mobile or web application with a web identity provider, such as Amazon Cognito, Login with Amazon, Facebook, Google, or any OpenID Connect-compatible identity provider}
 \usage{
-assume_role_with_web_identity(RoleArn, RoleSessionName, WebIdentityToken,
-  ProviderId = NULL, Policy = NULL, DurationSeconds = NULL)
+assume_role_with_web_identity(
+  RoleArn = "string",
+  RoleSessionName = "string",
+  WebIdentityToken = "string",
+  ProviderId = "string",
+  Policy = "string",
+  DurationSeconds = 123
+)
 }
 \arguments{
-\item{RoleArn}{The Amazon Resource Name (ARN) of the role that the caller is assuming.}
+\item{RoleArn}{[required] The Amazon Resource Name (ARN) of the role that the caller is assuming.}
 
-\item{RoleSessionName}{An identifier for the assumed role session. Typically, you pass the name or identifier that is associated with the user who is using your application. That way, the temporary security credentials that your application will use are associated with that user. This session name is included as part of the ARN and assumed role ID in the \code{AssumedRoleUser} response element.
+\item{RoleSessionName}{[required] An identifier for the assumed role session. Typically, you pass the name or identifier that is associated with the user who is using your application. That way, the temporary security credentials that your application will use are associated with that user. This session name is included as part of the ARN and assumed role ID in the \code{AssumedRoleUser} response element.
 
 The regex used to validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-}
 
-\item{WebIdentityToken}{The OAuth 2.0 access token or OpenID Connect ID token that is provided by the identity provider. Your application must get this token by authenticating the user who is using your application with a web identity provider before the application makes an \code{AssumeRoleWithWebIdentity} call.}
+\item{WebIdentityToken}{[required] The OAuth 2.0 access token or OpenID Connect ID token that is provided by the identity provider. Your application must get this token by authenticating the user who is using your application with a web identity provider before the application makes an \code{AssumeRoleWithWebIdentity} call.}
 
 \item{ProviderId}{The fully qualified host component of the domain name of the identity provider.
 

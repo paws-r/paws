@@ -4,10 +4,14 @@
 \alias{get_gateway_responses}
 \title{Gets the GatewayResponses collection on the given RestApi}
 \usage{
-get_gateway_responses(restApiId, position = NULL, limit = NULL)
+get_gateway_responses(
+  restApiId = "string",
+  position = "string",
+  limit = 123
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
 \item{position}{The current pagination position in the paged result set. The GatewayResponse collection does not support pagination and the position does not apply here.}
 

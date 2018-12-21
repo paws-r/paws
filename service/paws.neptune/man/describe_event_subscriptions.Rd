@@ -4,8 +4,19 @@
 \alias{describe_event_subscriptions}
 \title{Lists all the subscription descriptions for a customer account}
 \usage{
-describe_event_subscriptions(SubscriptionName = NULL, Filters = NULL,
-  MaxRecords = NULL, Marker = NULL)
+describe_event_subscriptions(
+  SubscriptionName = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{SubscriptionName}{The name of the event notification subscription you want to describe.}

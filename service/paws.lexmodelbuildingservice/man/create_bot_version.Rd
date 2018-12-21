@@ -4,10 +4,13 @@
 \alias{create_bot_version}
 \title{Creates a new version of the bot based on the \code{$LATEST} version}
 \usage{
-create_bot_version(name, checksum = NULL)
+create_bot_version(
+  name = "string",
+  checksum = "string"
+)
 }
 \arguments{
-\item{name}{The name of the bot that you want to create a new version of. The name is case sensitive.}
+\item{name}{[required] The name of the bot that you want to create a new version of. The name is case sensitive.}
 
 \item{checksum}{Identifies a specific revision of the \code{$LATEST} version of the bot. If you specify a checksum and the \code{$LATEST} version of the bot has a different checksum, a \code{PreconditionFailedException} exception is returned and Amazon Lex doesn't publish a new version. If you don't specify a checksum, Amazon Lex publishes the \code{$LATEST} version.}
 }

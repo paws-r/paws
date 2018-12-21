@@ -4,10 +4,12 @@
 \alias{describe_index}
 \title{Describes a search index}
 \usage{
-describe_index(indexName)
+describe_index(
+  indexName = "string"
+)
 }
 \arguments{
-\item{indexName}{The index name.}
+\item{indexName}{[required] The index name.}
 }
 \description{
 Describes a search index.

@@ -4,19 +4,37 @@
 \alias{create_graphql_api}
 \title{Creates a \code{GraphqlApi} object}
 \usage{
-create_graphql_api(name, authenticationType, logConfig = NULL,
-  userPoolConfig = NULL, openIDConnectConfig = NULL)
+create_graphql_api(
+  name = "string",
+  logConfig = list(
+    fieldLogLevel = "NONE"|"ERROR"|"ALL",
+    cloudWatchLogsRoleArn = "string"
+  ),
+  authenticationType = "API_KEY"|"AWS_IAM"|"AMAZON_COGNITO_USER_POOLS"|"OPENID_CONNECT",
+  userPoolConfig = list(
+    userPoolId = "string",
+    awsRegion = "string",
+    defaultAction = "ALLOW"|"DENY",
+    appIdClientRegex = "string"
+  ),
+  openIDConnectConfig = list(
+    issuer = "string",
+    clientId = "string",
+    iatTTL = 123,
+    authTTL = 123
+  )
+)
 }
 \arguments{
-\item{name}{A user-supplied name for the \code{GraphqlApi}.}
+\item{name}{[required] A user-supplied name for the \code{GraphqlApi}.}
 
-\item{authenticationType}{The authentication type: API key, IAM, or Amazon Cognito User Pools.}
+\item{logConfig}{The Amazon CloudWatch Logs configuration.}
 
-\item{logConfig}{The Amazon CloudWatch logs configuration.}
+\item{authenticationType}{[required] The authentication type: API key, AWS IAM, or Amazon Cognito user pools.}
 
-\item{userPoolConfig}{The Amazon Cognito User Pool configuration.}
+\item{userPoolConfig}{The Amazon Cognito user pool configuration.}
 
-\item{openIDConnectConfig}{The Open Id Connect configuration configuration.}
+\item{openIDConnectConfig}{The OpenID Connect configuration.}
 }
 \description{
 Creates a \code{GraphqlApi} object.

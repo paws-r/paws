@@ -4,11 +4,19 @@
 \alias{get_cluster_credentials}
 \title{Returns a database user name and temporary password with temporary authorization to log on to an Amazon Redshift database}
 \usage{
-get_cluster_credentials(DbUser, ClusterIdentifier, DbName = NULL,
-  DurationSeconds = NULL, AutoCreate = NULL, DbGroups = NULL)
+get_cluster_credentials(
+  DbUser = "string",
+  DbName = "string",
+  ClusterIdentifier = "string",
+  DurationSeconds = 123,
+  AutoCreate = TRUE|FALSE,
+  DbGroups = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{DbUser}{The name of a database user. If a user name matching \code{DbUser} exists in the database, the temporary user credentials have the same permissions as the existing user. If \code{DbUser} doesn't exist in the database and \code{Autocreate} is \code{True}, a new user is created using the value for \code{DbUser} with PUBLIC permissions. If a database user matching the value for \code{DbUser} doesn't exist and \code{Autocreate} is \code{False}, then the command succeeds but the connection attempt will fail because the user doesn't exist in the database.
+\item{DbUser}{[required] The name of a database user. If a user name matching \code{DbUser} exists in the database, the temporary user credentials have the same permissions as the existing user. If \code{DbUser} doesn't exist in the database and \code{Autocreate} is \code{True}, a new user is created using the value for \code{DbUser} with PUBLIC permissions. If a database user matching the value for \code{DbUser} doesn't exist and \code{Autocreate} is \code{False}, then the command succeeds but the connection attempt will fail because the user doesn't exist in the database.
 
 For more information, see \href{http://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html}{CREATE USER} in the Amazon Redshift Database Developer Guide.
 
@@ -21,8 +29,6 @@ Constraints:
 \item Cannot be a reserved word. A list of reserved words can be found in \href{http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html}{Reserved Words} in the Amazon Redshift Database Developer Guide.
 }}
 
-\item{ClusterIdentifier}{The unique identifier of the cluster that contains the database for which your are requesting credentials. This parameter is case sensitive.}
-
 \item{DbName}{The name of a database that \code{DbUser} is authorized to log on to. If \code{DbName} is not specified, \code{DbUser} can log on to any existing database.
 
 Constraints:
@@ -33,6 +39,8 @@ Constraints:
 \item Must not contain a colon ( : ) or slash ( / ).
 \item Cannot be a reserved word. A list of reserved words can be found in \href{http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html}{Reserved Words} in the Amazon Redshift Database Developer Guide.
 }}
+
+\item{ClusterIdentifier}{[required] The unique identifier of the cluster that contains the database for which your are requesting credentials. This parameter is case sensitive.}
 
 \item{DurationSeconds}{The number of seconds until the returned temporary password expires.
 

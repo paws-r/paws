@@ -4,10 +4,13 @@
 \alias{get_ml_model}
 \title{Returns an \code{MLModel} that includes detailed metadata, data source information, and the current status of the \code{MLModel}}
 \usage{
-get_ml_model(MLModelId, Verbose = NULL)
+get_ml_model(
+  MLModelId = "string",
+  Verbose = TRUE|FALSE
+)
 }
 \arguments{
-\item{MLModelId}{The ID assigned to the \code{MLModel} at creation.}
+\item{MLModelId}{[required] The ID assigned to the \code{MLModel} at creation.}
 
 \item{Verbose}{Specifies whether the \code{GetMLModel} operation should return \code{Recipe}.
 

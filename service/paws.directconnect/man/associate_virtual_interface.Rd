@@ -4,12 +4,15 @@
 \alias{associate_virtual_interface}
 \title{Associates a virtual interface with a specified link aggregation group (LAG) or connection}
 \usage{
-associate_virtual_interface(virtualInterfaceId, connectionId)
+associate_virtual_interface(
+  virtualInterfaceId = "string",
+  connectionId = "string"
+)
 }
 \arguments{
-\item{virtualInterfaceId}{The ID of the virtual interface.}
+\item{virtualInterfaceId}{[required] The ID of the virtual interface.}
 
-\item{connectionId}{The ID of the LAG or connection.}
+\item{connectionId}{[required] The ID of the LAG or connection.}
 }
 \description{
 Associates a virtual interface with a specified link aggregation group (LAG) or connection. Connectivity to AWS is temporarily interrupted as the virtual interface is being migrated. If the target connection or LAG has an associated virtual interface with a conflicting VLAN number or a conflicting IP address, the operation fails.

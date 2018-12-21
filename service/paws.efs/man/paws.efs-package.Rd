@@ -6,9 +6,9 @@
 \alias{paws.efs-package}
 \title{paws.efs: Amazon Elastic File System}
 \description{
-Amazon Elastic File System (Amazon EFS) provides
-simple, scalable file storage for use with Amazon EC2 instances in the
-AWS Cloud. With Amazon EFS, storage capacity is elastic, growing and
+Amazon Elastic File System (Amazon EFS) provides simple,
+scalable file storage for use with Amazon EC2 instances in the AWS
+Cloud. With Amazon EFS, storage capacity is elastic, growing and
 shrinking automatically as you add and remove files, so your
 applications have the storage they need, when they need it. For more
 information, see the [User
@@ -19,7 +19,12 @@ Guide](http://docs.aws.amazon.com/efs/latest/ug/api-reference.html).
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

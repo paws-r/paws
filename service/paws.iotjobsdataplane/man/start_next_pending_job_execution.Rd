@@ -4,11 +4,16 @@
 \alias{start_next_pending_job_execution}
 \title{Gets and starts the next pending (status IN\_PROGRESS or QUEUED) job execution for a thing}
 \usage{
-start_next_pending_job_execution(thingName, statusDetails = NULL,
-  stepTimeoutInMinutes = NULL)
+start_next_pending_job_execution(
+  thingName = "string",
+  statusDetails = list(
+    "string"
+  ),
+  stepTimeoutInMinutes = 123
+)
 }
 \arguments{
-\item{thingName}{The name of the thing associated with the device.}
+\item{thingName}{[required] The name of the thing associated with the device.}
 
 \item{statusDetails}{A collection of name/value pairs that describe the status of the job execution. If not specified, the statusDetails are unchanged.}
 

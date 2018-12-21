@@ -4,10 +4,12 @@
 \alias{get_run}
 \title{Gets information about a run}
 \usage{
-get_run(arn)
+get_run(
+  arn = "string"
+)
 }
 \arguments{
-\item{arn}{The run's ARN.}
+\item{arn}{[required] The run's ARN.}
 }
 \description{
 Gets information about a run.

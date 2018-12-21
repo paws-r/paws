@@ -4,12 +4,14 @@
 \alias{delete_instance_profile}
 \title{Deletes the specified instance profile}
 \usage{
-delete_instance_profile(InstanceProfileName)
+delete_instance_profile(
+  InstanceProfileName = "string"
+)
 }
 \arguments{
-\item{InstanceProfileName}{The name of the instance profile to delete.
+\item{InstanceProfileName}{[required] The name of the instance profile to delete.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Deletes the specified instance profile. The instance profile must not have an associated role.

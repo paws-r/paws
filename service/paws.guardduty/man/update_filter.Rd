@@ -4,17 +4,38 @@
 \alias{update_filter}
 \title{Updates the filter specified by the filter name}
 \usage{
-update_filter(DetectorId, FilterName, Action = NULL, Description = NULL,
-  FindingCriteria = NULL, Rank = NULL)
+update_filter(
+  Action = "NOOP"|"ARCHIVE",
+  Description = "string",
+  DetectorId = "string",
+  FilterName = "string",
+  FindingCriteria = list(
+    Criterion = list(
+      list(
+        Eq = list(
+          "string"
+        ),
+        Gt = 123,
+        Gte = 123,
+        Lt = 123,
+        Lte = 123,
+        Neq = list(
+          "string"
+        )
+      )
+    )
+  ),
+  Rank = 123
+)
 }
 \arguments{
-\item{DetectorId}{The unique ID of the detector that specifies the GuardDuty service where you want to update a filter.}
-
-\item{FilterName}{The name of the filter.}
-
 \item{Action}{Specifies the action that is to be applied to the findings that match the filter.}
 
 \item{Description}{The description of the filter.}
+
+\item{DetectorId}{[required] The unique ID of the detector that specifies the GuardDuty service where you want to update a filter.}
+
+\item{FilterName}{[required] The name of the filter.}
 
 \item{FindingCriteria}{Represents the criteria to be used in the filter for querying findings.}
 

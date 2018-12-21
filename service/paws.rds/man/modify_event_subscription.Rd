@@ -4,11 +4,18 @@
 \alias{modify_event_subscription}
 \title{Modifies an existing RDS event notification subscription}
 \usage{
-modify_event_subscription(SubscriptionName, SnsTopicArn = NULL,
-  SourceType = NULL, EventCategories = NULL, Enabled = NULL)
+modify_event_subscription(
+  SubscriptionName = "string",
+  SnsTopicArn = "string",
+  SourceType = "string",
+  EventCategories = list(
+    "string"
+  ),
+  Enabled = TRUE|FALSE
+)
 }
 \arguments{
-\item{SubscriptionName}{The name of the RDS event notification subscription.}
+\item{SubscriptionName}{[required] The name of the RDS event notification subscription.}
 
 \item{SnsTopicArn}{The Amazon Resource Name (ARN) of the SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it.}
 

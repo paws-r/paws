@@ -4,12 +4,15 @@
 \alias{detect_sentiment}
 \title{Inspects text and returns an inference of the prevailing sentiment (\code{POSITIVE}, \code{NEUTRAL}, \code{MIXED}, or \code{NEGATIVE})}
 \usage{
-detect_sentiment(Text, LanguageCode)
+detect_sentiment(
+  Text = "string",
+  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+)
 }
 \arguments{
-\item{Text}{A UTF-8 text string. Each string must contain fewer that 5,000 bytes of UTF-8 encoded characters.}
+\item{Text}{[required] A UTF-8 text string. Each string must contain fewer that 5,000 bytes of UTF-8 encoded characters.}
 
-\item{LanguageCode}{The language of the input documents. You can specify English ("en") or Spanish ("es"). All documents must be in the same language.}
+\item{LanguageCode}{[required] The language of the input documents. You can specify English ("en") or Spanish ("es"). All documents must be in the same language.}
 }
 \description{
 Inspects text and returns an inference of the prevailing sentiment (\code{POSITIVE}, \code{NEUTRAL}, \code{MIXED}, or \code{NEGATIVE}).

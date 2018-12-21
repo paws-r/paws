@@ -4,15 +4,18 @@
 \alias{get_maintenance_window_execution_task_invocation}
 \title{Retrieves a task invocation}
 \usage{
-get_maintenance_window_execution_task_invocation(WindowExecutionId, TaskId,
-  InvocationId)
+get_maintenance_window_execution_task_invocation(
+  WindowExecutionId = "string",
+  TaskId = "string",
+  InvocationId = "string"
+)
 }
 \arguments{
-\item{WindowExecutionId}{The ID of the Maintenance Window execution for which the task is a part.}
+\item{WindowExecutionId}{[required] The ID of the Maintenance Window execution for which the task is a part.}
 
-\item{TaskId}{The ID of the specific task in the Maintenance Window task that should be retrieved.}
+\item{TaskId}{[required] The ID of the specific task in the Maintenance Window task that should be retrieved.}
 
-\item{InvocationId}{The invocation ID to retrieve.}
+\item{InvocationId}{[required] The invocation ID to retrieve.}
 }
 \description{
 Retrieves a task invocation. A task invocation is a specific task executing on a specific target. Maintenance Windows report status for all invocations.

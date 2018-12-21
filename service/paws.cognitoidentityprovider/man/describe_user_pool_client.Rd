@@ -4,12 +4,15 @@
 \alias{describe_user_pool_client}
 \title{Client method for returning the configuration information and metadata of the specified user pool app client}
 \usage{
-describe_user_pool_client(UserPoolId, ClientId)
+describe_user_pool_client(
+  UserPoolId = "string",
+  ClientId = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool you want to describe.}
+\item{UserPoolId}{[required] The user pool ID for the user pool you want to describe.}
 
-\item{ClientId}{The app client ID of the app associated with the user pool.}
+\item{ClientId}{[required] The app client ID of the app associated with the user pool.}
 }
 \description{
 Client method for returning the configuration information and metadata of the specified user pool app client.

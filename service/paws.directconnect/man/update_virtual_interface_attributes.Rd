@@ -4,10 +4,13 @@
 \alias{update_virtual_interface_attributes}
 \title{Updates the specified attributes of the specified virtual private interface}
 \usage{
-update_virtual_interface_attributes(virtualInterfaceId, mtu = NULL)
+update_virtual_interface_attributes(
+  virtualInterfaceId = "string",
+  mtu = 123
+)
 }
 \arguments{
-\item{virtualInterfaceId}{The ID of the virtual private interface.}
+\item{virtualInterfaceId}{[required] The ID of the virtual private interface.}
 
 \item{mtu}{The maximum transmission unit (MTU), in bytes. The supported values are 1500 and 9001. The default value is 1500.}
 }

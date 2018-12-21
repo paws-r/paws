@@ -4,11 +4,14 @@
 \alias{list_device_definition_versions}
 \title{Lists the versions of a device definition}
 \usage{
-list_device_definition_versions(DeviceDefinitionId, MaxResults = NULL,
-  NextToken = NULL)
+list_device_definition_versions(
+  DeviceDefinitionId = "string",
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
 \arguments{
-\item{DeviceDefinitionId}{The ID of the device definition.}
+\item{DeviceDefinitionId}{[required] The ID of the device definition.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 

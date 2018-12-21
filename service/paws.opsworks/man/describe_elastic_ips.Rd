@@ -4,7 +4,13 @@
 \alias{describe_elastic_ips}
 \title{Describes \link{Elastic IP addresses}(http://docs}
 \usage{
-describe_elastic_ips(InstanceId = NULL, StackId = NULL, Ips = NULL)
+describe_elastic_ips(
+  InstanceId = "string",
+  StackId = "string",
+  Ips = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{InstanceId}{The instance ID. If you include this parameter, \code{DescribeElasticIps} returns a description of the Elastic IP addresses associated with the specified instance.}

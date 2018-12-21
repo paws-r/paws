@@ -4,18 +4,22 @@
 \alias{list_portfolios_for_product}
 \title{Lists all portfolios that the specified product is associated with}
 \usage{
-list_portfolios_for_product(ProductId, AcceptLanguage = NULL,
-  PageToken = NULL, PageSize = NULL)
+list_portfolios_for_product(
+  AcceptLanguage = "string",
+  ProductId = "string",
+  PageToken = "string",
+  PageSize = 123
+)
 }
 \arguments{
-\item{ProductId}{The product identifier.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{ProductId}{[required] The product identifier.}
 
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of results, use null.}
 

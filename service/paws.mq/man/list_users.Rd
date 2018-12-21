@@ -4,10 +4,14 @@
 \alias{list_users}
 \title{Returns a list of all ActiveMQ users}
 \usage{
-list_users(BrokerId, MaxResults = NULL, NextToken = NULL)
+list_users(
+  BrokerId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{BrokerId}{The unique ID that Amazon MQ generates for the broker.}
+\item{BrokerId}{[required] The unique ID that Amazon MQ generates for the broker.}
 
 \item{MaxResults}{The maximum number of ActiveMQ users that can be returned per page (20 by default). This value must be an integer from 5 to 100.}
 

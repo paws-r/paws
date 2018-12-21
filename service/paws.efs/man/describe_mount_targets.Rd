@@ -4,8 +4,12 @@
 \alias{describe_mount_targets}
 \title{Returns the descriptions of all the current mount targets, or a specific mount target, for a file system}
 \usage{
-describe_mount_targets(MaxItems = NULL, Marker = NULL,
-  FileSystemId = NULL, MountTargetId = NULL)
+describe_mount_targets(
+  MaxItems = 123,
+  Marker = "string",
+  FileSystemId = "string",
+  MountTargetId = "string"
+)
 }
 \arguments{
 \item{MaxItems}{(Optional) Maximum number of mount targets to return in the response. It must be an integer with a value greater than zero.}

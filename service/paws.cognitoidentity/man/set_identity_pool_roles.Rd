@@ -4,12 +4,33 @@
 \alias{set_identity_pool_roles}
 \title{Sets the roles for an identity pool}
 \usage{
-set_identity_pool_roles(IdentityPoolId, Roles, RoleMappings = NULL)
+set_identity_pool_roles(
+  IdentityPoolId = "string",
+  Roles = list(
+    "string"
+  ),
+  RoleMappings = list(
+    list(
+      Type = "Token"|"Rules",
+      AmbiguousRoleResolution = "AuthenticatedRole"|"Deny",
+      RulesConfiguration = list(
+        Rules = list(
+          list(
+            Claim = "string",
+            MatchType = "Equals"|"Contains"|"StartsWith"|"NotEqual",
+            Value = "string",
+            RoleARN = "string"
+          )
+        )
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{IdentityPoolId}{An identity pool ID in the format REGION:GUID.}
+\item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
 
-\item{Roles}{The map of roles associated with this pool. For a given role, the key will be either "authenticated" or "unauthenticated" and the value will be the Role ARN.}
+\item{Roles}{[required] The map of roles associated with this pool. For a given role, the key will be either "authenticated" or "unauthenticated" and the value will be the Role ARN.}
 
 \item{RoleMappings}{How users for a specific identity provider are to mapped to roles. This is a string to RoleMapping object map. The string identifies the identity provider, for example, "graph.facebook.com" or "cognito-idp-east-1.amazonaws.com/us-east-1\_abcdefghi:app\_client\_id".
 

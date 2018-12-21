@@ -4,10 +4,12 @@
 \alias{stop_crawler_schedule}
 \title{Sets the schedule state of the specified crawler to \code{NOT_SCHEDULED}, but does not stop the crawler if it is already running}
 \usage{
-stop_crawler_schedule(CrawlerName)
+stop_crawler_schedule(
+  CrawlerName = "string"
+)
 }
 \arguments{
-\item{CrawlerName}{Name of the crawler whose schedule state to set.}
+\item{CrawlerName}{[required] Name of the crawler whose schedule state to set.}
 }
 \description{
 Sets the schedule state of the specified crawler to \code{NOT_SCHEDULED}, but does not stop the crawler if it is already running.

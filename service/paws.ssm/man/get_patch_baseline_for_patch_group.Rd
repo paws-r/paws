@@ -4,10 +4,13 @@
 \alias{get_patch_baseline_for_patch_group}
 \title{Retrieves the patch baseline that should be used for the specified patch group}
 \usage{
-get_patch_baseline_for_patch_group(PatchGroup, OperatingSystem = NULL)
+get_patch_baseline_for_patch_group(
+  PatchGroup = "string",
+  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"
+)
 }
 \arguments{
-\item{PatchGroup}{The name of the patch group whose patch baseline should be retrieved.}
+\item{PatchGroup}{[required] The name of the patch group whose patch baseline should be retrieved.}
 
 \item{OperatingSystem}{Returns he operating system rule specified for patch groups using the patch baseline.}
 }

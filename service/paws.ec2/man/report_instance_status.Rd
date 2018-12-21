@@ -4,13 +4,30 @@
 \alias{report_instance_status}
 \title{Submits feedback about the status of an instance}
 \usage{
-report_instance_status(Instances, ReasonCodes, Status, Description = NULL,
-  DryRun = NULL, EndTime = NULL, StartTime = NULL)
+report_instance_status(
+  Description = "string",
+  DryRun = TRUE|FALSE,
+  EndTime = as.POSIXct("2015-01-01"),
+  Instances = list(
+    "string"
+  ),
+  ReasonCodes = list(
+    "instance-stuck-in-state"|"unresponsive"|"not-accepting-credentials"|"password-not-available"|"performance-network"|"performance-instance-store"|"performance-ebs-volume"|"performance-other"|"other"
+  ),
+  StartTime = as.POSIXct("2015-01-01"),
+  Status = "ok"|"impaired"
+)
 }
 \arguments{
-\item{Instances}{One or more instances.}
+\item{Description}{Descriptive text about the health state of your instance.}
 
-\item{ReasonCodes}{One or more reason codes that describe the health state of your instance.
+\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{EndTime}{The time at which the reported instance health state ended.}
+
+\item{Instances}{[required] One or more instances.}
+
+\item{ReasonCodes}{[required] One or more reason codes that describe the health state of your instance.
 \itemize{
 \item \code{instance-stuck-in-state}: My instance is stuck in a state.
 \item \code{unresponsive}: My instance is unresponsive.
@@ -23,15 +40,9 @@ report_instance_status(Instances, ReasonCodes, Status, Description = NULL,
 \item \code{other}: [explain using the description parameter]
 }}
 
-\item{Status}{The status of all instances listed.}
-
-\item{Description}{Descriptive text about the health state of your instance.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{EndTime}{The time at which the reported instance health state ended.}
-
 \item{StartTime}{The time at which the reported instance health state began.}
+
+\item{Status}{[required] The status of all instances listed.}
 }
 \description{
 Submits feedback about the status of an instance. The instance must be in the \code{running} state. If your experience with the instance differs from the instance status returned by DescribeInstanceStatus, use ReportInstanceStatus to report your experience with the instance. Amazon EC2 collects this information to improve the accuracy of status checks.

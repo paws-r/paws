@@ -4,10 +4,16 @@
 \alias{start_instances}
 \title{Starts an Amazon EBS-backed instance that you've previously stopped}
 \usage{
-start_instances(InstanceIds, AdditionalInfo = NULL, DryRun = NULL)
+start_instances(
+  InstanceIds = list(
+    "string"
+  ),
+  AdditionalInfo = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{InstanceIds}{One or more instance IDs.}
+\item{InstanceIds}{[required] One or more instance IDs.}
 
 \item{AdditionalInfo}{Reserved.}
 

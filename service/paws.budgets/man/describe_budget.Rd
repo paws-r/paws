@@ -4,12 +4,15 @@
 \alias{describe_budget}
 \title{Describes a budget}
 \usage{
-describe_budget(AccountId, BudgetName)
+describe_budget(
+  AccountId = "string",
+  BudgetName = "string"
+)
 }
 \arguments{
-\item{AccountId}{The \code{accountId} that is associated with the budget that you want a description of.}
+\item{AccountId}{[required] The \code{accountId} that is associated with the budget that you want a description of.}
 
-\item{BudgetName}{The name of the budget that you want a description of.}
+\item{BudgetName}{[required] The name of the budget that you want a description of.}
 }
 \description{
 Describes a budget.

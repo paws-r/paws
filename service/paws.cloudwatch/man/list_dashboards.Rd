@@ -4,7 +4,10 @@
 \alias{list_dashboards}
 \title{Returns a list of the dashboards for your account}
 \usage{
-list_dashboards(DashboardNamePrefix = NULL, NextToken = NULL)
+list_dashboards(
+  DashboardNamePrefix = "string",
+  NextToken = "string"
+)
 }
 \arguments{
 \item{DashboardNamePrefix}{If you specify this parameter, only the dashboards with names starting with the specified string are listed. The maximum length is 255, and valid characters are A-Z, a-z, 0-9, ".", "-", and "\_".}

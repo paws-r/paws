@@ -4,10 +4,12 @@
 \alias{unassign_volume}
 \title{Unassigns an assigned Amazon EBS volume}
 \usage{
-unassign_volume(VolumeId)
+unassign_volume(
+  VolumeId = "string"
+)
 }
 \arguments{
-\item{VolumeId}{The volume ID.}
+\item{VolumeId}{[required] The volume ID.}
 }
 \description{
 Unassigns an assigned Amazon EBS volume. The volume remains registered with the stack. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.

@@ -4,10 +4,12 @@
 \alias{get_device_definition}
 \title{Retrieves information about a device definition}
 \usage{
-get_device_definition(DeviceDefinitionId)
+get_device_definition(
+  DeviceDefinitionId = "string"
+)
 }
 \arguments{
-\item{DeviceDefinitionId}{The ID of the device definition.}
+\item{DeviceDefinitionId}{[required] The ID of the device definition.}
 }
 \description{
 Retrieves information about a device definition.

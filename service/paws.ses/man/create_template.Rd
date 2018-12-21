@@ -4,10 +4,17 @@
 \alias{create_template}
 \title{Creates an email template}
 \usage{
-create_template(Template)
+create_template(
+  Template = list(
+    TemplateName = "string",
+    SubjectPart = "string",
+    TextPart = "string",
+    HtmlPart = "string"
+  )
+)
 }
 \arguments{
-\item{Template}{The content of the email, composed of a subject line, an HTML part, and a text-only part.}
+\item{Template}{[required] The content of the email, composed of a subject line, an HTML part, and a text-only part.}
 }
 \description{
 Creates an email template. Email templates enable you to send personalized email to one or more destinations in a single API operation. For more information, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html}{Amazon SES Developer Guide}.

@@ -4,7 +4,11 @@
 \alias{describe_domains}
 \title{Gets information about the search domains owned by this account}
 \usage{
-describe_domains(DomainNames = NULL)
+describe_domains(
+  DomainNames = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{DomainNames}{The names of the domains you want to include in the response.}

@@ -2,12 +2,14 @@
 % Please edit documentation in R/paws.kms_operations.R
 \name{enable_key}
 \alias{enable_key}
-\title{Sets the state of a customer master key (CMK) to enabled, thereby permitting its use for cryptographic operations}
+\title{Sets the key state of a customer master key (CMK) to enabled}
 \usage{
-enable_key(KeyId)
+enable_key(
+  KeyId = "string"
+)
 }
 \arguments{
-\item{KeyId}{A unique identifier for the customer master key (CMK).
+\item{KeyId}{[required] A unique identifier for the customer master key (CMK).
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 
@@ -20,7 +22,7 @@ For example:
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 }
 \description{
-Sets the state of a customer master key (CMK) to enabled, thereby permitting its use for cryptographic operations. You cannot perform this operation on a CMK in a different AWS account.
+Sets the key state of a customer master key (CMK) to enabled. This allows you to use the CMK for cryptographic operations. You cannot perform this operation on a CMK in a different AWS account.
 }
 \details{
 The result of this operation varies with the key state of the CMK. For details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key} in the \emph{AWS Key Management Service Developer Guide}.

@@ -4,8 +4,23 @@
 \alias{list_assessment_templates}
 \title{Lists the assessment templates that correspond to the assessment targets that are specified by the ARNs of the assessment targets}
 \usage{
-list_assessment_templates(assessmentTargetArns = NULL, filter = NULL,
-  nextToken = NULL, maxResults = NULL)
+list_assessment_templates(
+  assessmentTargetArns = list(
+    "string"
+  ),
+  filter = list(
+    namePattern = "string",
+    durationRange = list(
+      minSeconds = 123,
+      maxSeconds = 123
+    ),
+    rulesPackageArns = list(
+      "string"
+    )
+  ),
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{assessmentTargetArns}{A list of ARNs that specifies the assessment targets whose assessment templates you want to list.}

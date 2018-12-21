@@ -4,10 +4,14 @@
 \alias{describe_matchmaking}
 \title{Retrieves one or more matchmaking tickets}
 \usage{
-describe_matchmaking(TicketIds)
+describe_matchmaking(
+  TicketIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{TicketIds}{Unique identifier for a matchmaking ticket. You can include up to 10 ID values.}
+\item{TicketIds}{[required] Unique identifier for a matchmaking ticket. You can include up to 10 ID values.}
 }
 \description{
 Retrieves one or more matchmaking tickets. Use this operation to retrieve ticket information, including status and--once a successful match is made--acquire connection information for the resulting new game session.

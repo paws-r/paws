@@ -4,13 +4,18 @@
 \alias{get_subscription_definition_version}
 \title{Retrieves information about a subscription definition version}
 \usage{
-get_subscription_definition_version(SubscriptionDefinitionId,
-  SubscriptionDefinitionVersionId)
+get_subscription_definition_version(
+  NextToken = "string",
+  SubscriptionDefinitionId = "string",
+  SubscriptionDefinitionVersionId = "string"
+)
 }
 \arguments{
-\item{SubscriptionDefinitionId}{The ID of the subscription definition.}
+\item{NextToken}{The token for the next set of results, or ''null'' if there are no additional results.}
 
-\item{SubscriptionDefinitionVersionId}{The ID of the subscription definition version.}
+\item{SubscriptionDefinitionId}{[required] The ID of the subscription definition.}
+
+\item{SubscriptionDefinitionVersionId}{[required] The ID of the subscription definition version.}
 }
 \description{
 Retrieves information about a subscription definition version.

@@ -4,12 +4,15 @@
 \alias{get_endpoint}
 \title{Returns information about an endpoint}
 \usage{
-get_endpoint(ApplicationId, EndpointId)
+get_endpoint(
+  ApplicationId = "string",
+  EndpointId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 
-\item{EndpointId}{The unique ID of the endpoint.}
+\item{EndpointId}{[required] The unique ID of the endpoint.}
 }
 \description{
 Returns information about an endpoint.

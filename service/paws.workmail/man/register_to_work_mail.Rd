@@ -4,14 +4,18 @@
 \alias{register_to_work_mail}
 \title{Registers an existing and disabled user, group, or resource/entity for Amazon WorkMail use by associating a mailbox and calendaring capabilities}
 \usage{
-register_to_work_mail(OrganizationId, EntityId, Email)
+register_to_work_mail(
+  OrganizationId = "string",
+  EntityId = "string",
+  Email = "string"
+)
 }
 \arguments{
-\item{OrganizationId}{The identifier for the organization under which the Amazon WorkMail entity exists.}
+\item{OrganizationId}{[required] The identifier for the organization under which the Amazon WorkMail entity exists.}
 
-\item{EntityId}{The identifier for the entity to be updated.}
+\item{EntityId}{[required] The identifier for the entity to be updated.}
 
-\item{Email}{The email for the entity to be updated.}
+\item{Email}{[required] The email for the entity to be updated.}
 }
 \description{
 Registers an existing and disabled user, group, or resource/entity for Amazon WorkMail use by associating a mailbox and calendaring capabilities. It performs no change if the entity is enabled and fails if the entity is deleted. This operation results in the accumulation of costs. For more information, see \href{http://aws.amazon.com/workmail/pricing}{Pricing}. The equivalent console functionality for this operation is \emph{Enable}. Users can either be created by calling the CreateUser API or they can be synchronized from your directory. For more information, see DeregisterFromWorkMail.

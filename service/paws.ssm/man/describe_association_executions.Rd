@@ -4,11 +4,21 @@
 \alias{describe_association_executions}
 \title{Use this API action to view all executions for a specific association ID}
 \usage{
-describe_association_executions(AssociationId, Filters = NULL,
-  MaxResults = NULL, NextToken = NULL)
+describe_association_executions(
+  AssociationId = "string",
+  Filters = list(
+    list(
+      Key = "ExecutionId"|"Status"|"CreatedTime",
+      Value = "string",
+      Type = "EQUAL"|"LESS_THAN"|"GREATER_THAN"
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{AssociationId}{The association ID for which you want to view execution history details.}
+\item{AssociationId}{[required] The association ID for which you want to view execution history details.}
 
 \item{Filters}{Filters for the request. You can specify the following filters and values.
 

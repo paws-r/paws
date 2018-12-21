@@ -4,7 +4,10 @@
 \alias{list_graphql_apis}
 \title{Lists your GraphQL APIs}
 \usage{
-list_graphql_apis(nextToken = NULL, maxResults = NULL)
+list_graphql_apis(
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{nextToken}{An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.}

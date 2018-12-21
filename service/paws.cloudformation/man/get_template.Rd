@@ -4,7 +4,11 @@
 \alias{get_template}
 \title{Returns the template body for a specified stack}
 \usage{
-get_template(StackName = NULL, ChangeSetName = NULL, TemplateStage = NULL)
+get_template(
+  StackName = "string",
+  ChangeSetName = "string",
+  TemplateStage = "Original"|"Processed"
+)
 }
 \arguments{
 \item{StackName}{The name or the unique stack ID that is associated with the stack, which are not always interchangeable:

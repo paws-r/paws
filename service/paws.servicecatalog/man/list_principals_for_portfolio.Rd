@@ -4,18 +4,22 @@
 \alias{list_principals_for_portfolio}
 \title{Lists all principal ARNs associated with the specified portfolio}
 \usage{
-list_principals_for_portfolio(PortfolioId, AcceptLanguage = NULL,
-  PageSize = NULL, PageToken = NULL)
+list_principals_for_portfolio(
+  AcceptLanguage = "string",
+  PortfolioId = "string",
+  PageSize = 123,
+  PageToken = "string"
+)
 }
 \arguments{
-\item{PortfolioId}{The portfolio identifier.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{PortfolioId}{[required] The portfolio identifier.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 

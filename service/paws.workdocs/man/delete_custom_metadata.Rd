@@ -4,13 +4,20 @@
 \alias{delete_custom_metadata}
 \title{Deletes custom metadata from the specified resource}
 \usage{
-delete_custom_metadata(ResourceId, AuthenticationToken = NULL,
-  VersionId = NULL, Keys = NULL, DeleteAll = NULL)
+delete_custom_metadata(
+  AuthenticationToken = "string",
+  ResourceId = "string",
+  VersionId = "string",
+  Keys = list(
+    "string"
+  ),
+  DeleteAll = TRUE|FALSE
+)
 }
 \arguments{
-\item{ResourceId}{The ID of the resource, either a document or folder.}
-
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
+
+\item{ResourceId}{[required] The ID of the resource, either a document or folder.}
 
 \item{VersionId}{The ID of the version, if the custom metadata is being deleted from a document version.}
 

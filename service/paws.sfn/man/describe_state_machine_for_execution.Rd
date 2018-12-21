@@ -4,13 +4,18 @@
 \alias{describe_state_machine_for_execution}
 \title{Describes the state machine associated with a specific execution}
 \usage{
-describe_state_machine_for_execution(executionArn)
+describe_state_machine_for_execution(
+  executionArn = "string"
+)
 }
 \arguments{
-\item{executionArn}{The Amazon Resource Name (ARN) of the execution you want state machine information for.}
+\item{executionArn}{[required] The Amazon Resource Name (ARN) of the execution you want state machine information for.}
 }
 \description{
 Describes the state machine associated with a specific execution.
+}
+\details{
+This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.
 }
 \examples{
 

@@ -4,14 +4,19 @@
 \alias{set_queue_attributes}
 \title{Sets the value of one or more queue attributes}
 \usage{
-set_queue_attributes(QueueUrl, Attributes)
+set_queue_attributes(
+  QueueUrl = "string",
+  Attributes = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{QueueUrl}{The URL of the Amazon SQS queue whose attributes are set.
+\item{QueueUrl}{[required] The URL of the Amazon SQS queue whose attributes are set.
 
 Queue URLs and names are case-sensitive.}
 
-\item{Attributes}{A map of attributes to set.
+\item{Attributes}{[required] A map of attributes to set.
 
 The following lists the names, descriptions, and values of the special request parameters that the \code{SetQueueAttributes} action uses:
 \itemize{

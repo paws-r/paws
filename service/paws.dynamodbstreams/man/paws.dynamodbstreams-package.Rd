@@ -6,10 +6,9 @@
 \alias{paws.dynamodbstreams-package}
 \title{paws.dynamodbstreams: Amazon DynamoDB Streams}
 \description{
-Amazon DynamoDB Streams provides API actions for
-accessing streams and processing stream records. To learn more about
-application development with Streams, see [Capturing Table Activity
-with DynamoDB
+Amazon DynamoDB Streams provides API actions for accessing
+streams and processing stream records. To learn more about application
+development with Streams, see [Capturing Table Activity with DynamoDB
 Streams](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html)
 in the Amazon DynamoDB Developer Guide.
 }
@@ -18,7 +17,12 @@ in the Amazon DynamoDB Developer Guide.
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

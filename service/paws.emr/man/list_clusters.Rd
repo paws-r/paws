@@ -4,8 +4,14 @@
 \alias{list_clusters}
 \title{Provides the status of all clusters visible to this AWS account}
 \usage{
-list_clusters(CreatedAfter = NULL, CreatedBefore = NULL,
-  ClusterStates = NULL, Marker = NULL)
+list_clusters(
+  CreatedAfter = as.POSIXct("2015-01-01"),
+  CreatedBefore = as.POSIXct("2015-01-01"),
+  ClusterStates = list(
+    "STARTING"|"BOOTSTRAPPING"|"RUNNING"|"WAITING"|"TERMINATING"|"TERMINATED"|"TERMINATED_WITH_ERRORS"
+  ),
+  Marker = "string"
+)
 }
 \arguments{
 \item{CreatedAfter}{The creation date and time beginning value filter for listing clusters.}

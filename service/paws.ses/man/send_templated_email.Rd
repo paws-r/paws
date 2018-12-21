@@ -4,23 +4,45 @@
 \alias{send_templated_email}
 \title{Composes an email message using an email template and immediately queues it for sending}
 \usage{
-send_templated_email(Source, Destination, Template, TemplateData,
-  ReplyToAddresses = NULL, ReturnPath = NULL, SourceArn = NULL,
-  ReturnPathArn = NULL, Tags = NULL, ConfigurationSetName = NULL,
-  TemplateArn = NULL)
+send_templated_email(
+  Source = "string",
+  Destination = list(
+    ToAddresses = list(
+      "string"
+    ),
+    CcAddresses = list(
+      "string"
+    ),
+    BccAddresses = list(
+      "string"
+    )
+  ),
+  ReplyToAddresses = list(
+    "string"
+  ),
+  ReturnPath = "string",
+  SourceArn = "string",
+  ReturnPathArn = "string",
+  Tags = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  ConfigurationSetName = "string",
+  Template = "string",
+  TemplateArn = "string",
+  TemplateData = "string"
+)
 }
 \arguments{
-\item{Source}{The email address that is sending the email. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. For information about verifying identities, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html}{Amazon SES Developer Guide}.
+\item{Source}{[required] The email address that is sending the email. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. For information about verifying identities, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html}{Amazon SES Developer Guide}.
 
 If you are sending on behalf of another user and have been permitted to do so by a sending authorization policy, then you must also specify the \code{SourceArn} parameter. For more information about sending authorization, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.
 
 Amazon SES does not support the SMTPUTF8 extension, as described in \href{https://tools.ietf.org/html/rfc6531}{RFC6531}. For this reason, the \emph{local part} of a source email address (the part of the email address that precedes the @ sign) may only contain \href{https://en.wikipedia.org/wiki/Email_address#Local-part}{7-bit ASCII characters}. If the \emph{domain part} of an address (the part after the @ sign) contains non-ASCII characters, they must be encoded using Punycode, as described in \href{https://tools.ietf.org/html/rfc3492.html}{RFC3492}. The sender name (also known as the \emph{friendly name}) may contain non-ASCII characters. These characters must be encoded using MIME encoded-word syntax, as described in\href{https://tools.ietf.org/html/rfc2047}{RFC 2047}. MIME encoded-word syntax uses the following form: \code{=?charset?encoding?encoded-text?=}.}
 
-\item{Destination}{The destination for this email, composed of To:, CC:, and BCC: fields. A Destination can include up to 50 recipients across these three fields.}
-
-\item{Template}{The template to use when sending this email.}
-
-\item{TemplateData}{A list of replacement values to apply to the template. This parameter is a JSON object, typically consisting of key-value pairs in which the keys correspond to replacement tags in the email template.}
+\item{Destination}{[required] The destination for this email, composed of To:, CC:, and BCC: fields. A Destination can include up to 50 recipients across these three fields.}
 
 \item{ReplyToAddresses}{The reply-to email address(es) for the message. If the recipient replies to the message, each reply-to address will receive the reply.}
 
@@ -42,7 +64,11 @@ For more information about sending authorization, see the \href{http://docs.aws.
 
 \item{ConfigurationSetName}{The name of the configuration set to use when you send an email using \code{SendTemplatedEmail}.}
 
+\item{Template}{[required] The template to use when sending this email.}
+
 \item{TemplateArn}{The ARN of the template to use when sending this email.}
+
+\item{TemplateData}{[required] A list of replacement values to apply to the template. This parameter is a JSON object, typically consisting of key-value pairs in which the keys correspond to replacement tags in the email template.}
 }
 \description{
 Composes an email message using an email template and immediately queues it for sending.

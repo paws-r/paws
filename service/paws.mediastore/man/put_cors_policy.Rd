@@ -4,12 +4,31 @@
 \alias{put_cors_policy}
 \title{Sets the cross-origin resource sharing (CORS) configuration on a container so that the container can service cross-origin requests}
 \usage{
-put_cors_policy(ContainerName, CorsPolicy)
+put_cors_policy(
+  ContainerName = "string",
+  CorsPolicy = list(
+    list(
+      AllowedOrigins = list(
+        "string"
+      ),
+      AllowedMethods = list(
+        "PUT"|"GET"|"DELETE"|"HEAD"
+      ),
+      AllowedHeaders = list(
+        "string"
+      ),
+      MaxAgeSeconds = 123,
+      ExposeHeaders = list(
+        "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{ContainerName}{The name of the container that you want to assign the CORS policy to.}
+\item{ContainerName}{[required] The name of the container that you want to assign the CORS policy to.}
 
-\item{CorsPolicy}{The CORS policy to apply to the container.}
+\item{CorsPolicy}{[required] The CORS policy to apply to the container.}
 }
 \description{
 Sets the cross-origin resource sharing (CORS) configuration on a container so that the container can service cross-origin requests. For example, you might want to enable a request whose origin is http://www.example.com to access your AWS Elemental MediaStore container at my.example.container.com by using the browser's XMLHttpRequest capability.

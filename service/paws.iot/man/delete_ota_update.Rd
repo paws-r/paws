@@ -4,11 +4,14 @@
 \alias{delete_ota_update}
 \title{Delete an OTA update}
 \usage{
-delete_ota_update(otaUpdateId, deleteStream = NULL,
-  forceDeleteAWSJob = NULL)
+delete_ota_update(
+  otaUpdateId = "string",
+  deleteStream = TRUE|FALSE,
+  forceDeleteAWSJob = TRUE|FALSE
+)
 }
 \arguments{
-\item{otaUpdateId}{The OTA update ID to delete.}
+\item{otaUpdateId}{[required] The OTA update ID to delete.}
 
 \item{deleteStream}{Specifies if the stream associated with an OTA update should be deleted when the OTA update is deleted.}
 

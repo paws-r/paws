@@ -4,10 +4,14 @@
 \alias{list_accounts_for_parent}
 \title{Lists the accounts in an organization that are contained by the specified target root or organizational unit (OU)}
 \usage{
-list_accounts_for_parent(ParentId, NextToken = NULL, MaxResults = NULL)
+list_accounts_for_parent(
+  ParentId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{ParentId}{The unique identifier (ID) for the parent root or organization unit (OU) whose accounts you want to list.}
+\item{ParentId}{[required] The unique identifier (ID) for the parent root or organization unit (OU) whose accounts you want to list.}
 
 \item{NextToken}{Use this parameter if you receive a \code{NextToken} response in a previous request that indicates that there is more output available. Set it to the value of the previous call's \code{NextToken} response to indicate where the output should continue from.}
 

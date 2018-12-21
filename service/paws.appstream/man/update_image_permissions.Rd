@@ -4,14 +4,21 @@
 \alias{update_image_permissions}
 \title{Adds or updates permissions for the specified private image}
 \usage{
-update_image_permissions(Name, SharedAccountId, ImagePermissions)
+update_image_permissions(
+  Name = "string",
+  SharedAccountId = "string",
+  ImagePermissions = list(
+    allowFleet = TRUE|FALSE,
+    allowImageBuilder = TRUE|FALSE
+  )
+)
 }
 \arguments{
-\item{Name}{The name of the private image.}
+\item{Name}{[required] The name of the private image.}
 
-\item{SharedAccountId}{The 12-digit ID of the AWS account for which you want add or update image permissions.}
+\item{SharedAccountId}{[required] The 12-digit ID of the AWS account for which you want add or update image permissions.}
 
-\item{ImagePermissions}{The permissions for the image.}
+\item{ImagePermissions}{[required] The permissions for the image.}
 }
 \description{
 Adds or updates permissions for the specified private image.

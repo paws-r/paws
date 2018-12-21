@@ -4,12 +4,15 @@
 \alias{reject_assignment}
 \title{The \code{RejectAssignment} operation rejects the results of a completed assignment}
 \usage{
-reject_assignment(AssignmentId, RequesterFeedback)
+reject_assignment(
+  AssignmentId = "string",
+  RequesterFeedback = "string"
+)
 }
 \arguments{
-\item{AssignmentId}{The ID of the assignment. The assignment must correspond to a HIT created by the Requester.}
+\item{AssignmentId}{[required] The ID of the assignment. The assignment must correspond to a HIT created by the Requester.}
 
-\item{RequesterFeedback}{A message for the Worker, which the Worker can see in the Status section of the web site.}
+\item{RequesterFeedback}{[required] A message for the Worker, which the Worker can see in the Status section of the web site.}
 }
 \description{
 The \code{RejectAssignment} operation rejects the results of a completed assignment.

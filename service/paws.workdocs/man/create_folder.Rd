@@ -4,14 +4,18 @@
 \alias{create_folder}
 \title{Creates a folder with the specified name and parent folder}
 \usage{
-create_folder(ParentFolderId, AuthenticationToken = NULL, Name = NULL)
+create_folder(
+  AuthenticationToken = "string",
+  Name = "string",
+  ParentFolderId = "string"
+)
 }
 \arguments{
-\item{ParentFolderId}{The ID of the parent folder.}
-
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
 
 \item{Name}{The name of the new folder.}
+
+\item{ParentFolderId}{[required] The ID of the parent folder.}
 }
 \description{
 Creates a folder with the specified name and parent folder.

@@ -4,28 +4,44 @@
 \alias{create_product}
 \title{Creates a product}
 \usage{
-create_product(Name, Owner, ProductType, ProvisioningArtifactParameters,
-  IdempotencyToken, AcceptLanguage = NULL, Description = NULL,
-  Distributor = NULL, SupportDescription = NULL, SupportEmail = NULL,
-  SupportUrl = NULL, Tags = NULL)
+create_product(
+  AcceptLanguage = "string",
+  Name = "string",
+  Owner = "string",
+  Description = "string",
+  Distributor = "string",
+  SupportDescription = "string",
+  SupportEmail = "string",
+  SupportUrl = "string",
+  ProductType = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  ProvisioningArtifactParameters = list(
+    Name = "string",
+    Description = "string",
+    Info = list(
+      "string"
+    ),
+    Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"
+  ),
+  IdempotencyToken = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the product.}
-
-\item{Owner}{The owner of the product.}
-
-\item{ProductType}{The type of product.}
-
-\item{ProvisioningArtifactParameters}{The configuration of the provisioning artifact.}
-
-\item{IdempotencyToken}{A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{Name}{[required] The name of the product.}
+
+\item{Owner}{[required] The owner of the product.}
 
 \item{Description}{The description of the product.}
 
@@ -37,7 +53,13 @@ create_product(Name, Owner, ProductType, ProvisioningArtifactParameters,
 
 \item{SupportUrl}{The contact URL for product support.}
 
+\item{ProductType}{[required] The type of product.}
+
 \item{Tags}{One or more tags.}
+
+\item{ProvisioningArtifactParameters}{[required] The configuration of the provisioning artifact.}
+
+\item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.}
 }
 \description{
 Creates a product.

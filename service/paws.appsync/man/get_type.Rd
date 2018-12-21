@@ -4,14 +4,18 @@
 \alias{get_type}
 \title{Retrieves a \code{Type} object}
 \usage{
-get_type(apiId, typeName, format)
+get_type(
+  apiId = "string",
+  typeName = "string",
+  format = "SDL"|"JSON"
+)
 }
 \arguments{
-\item{apiId}{The API ID.}
+\item{apiId}{[required] The API ID.}
 
-\item{typeName}{The type name.}
+\item{typeName}{[required] The type name.}
 
-\item{format}{The type format: SDL or JSON.}
+\item{format}{[required] The type format: SDL or JSON.}
 }
 \description{
 Retrieves a \code{Type} object.

@@ -4,7 +4,11 @@
 \alias{list_volumes}
 \title{Lists the iSCSI stored volumes of a gateway}
 \usage{
-list_volumes(GatewayARN = NULL, Marker = NULL, Limit = NULL)
+list_volumes(
+  GatewayARN = "string",
+  Marker = "string",
+  Limit = 123
+)
 }
 \arguments{
 \item{GatewayARN}{}

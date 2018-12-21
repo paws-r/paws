@@ -4,16 +4,24 @@
 \alias{add_tags_to_certificate}
 \title{Adds one or more tags to an ACM certificate}
 \usage{
-add_tags_to_certificate(CertificateArn, Tags)
+add_tags_to_certificate(
+  CertificateArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{CertificateArn}{String that contains the ARN of the ACM certificate to which the tag is to be applied. This must be of the form:
+\item{CertificateArn}{[required] String that contains the ARN of the ACM certificate to which the tag is to be applied. This must be of the form:
 
 \code{arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012}
 
 For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
 
-\item{Tags}{The key-value pair that defines the tag. The tag value is optional.}
+\item{Tags}{[required] The key-value pair that defines the tag. The tag value is optional.}
 }
 \description{
 Adds one or more tags to an ACM certificate. Tags are labels that you can use to identify and organize your AWS resources. Each tag consists of a \code{key} and an optional \code{value}. You specify the certificate on input by its Amazon Resource Name (ARN). You specify the tag by using a key-value pair.

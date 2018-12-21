@@ -4,12 +4,15 @@
 \alias{get_base_path_mapping}
 \title{Describe a BasePathMapping resource}
 \usage{
-get_base_path_mapping(domainName, basePath)
+get_base_path_mapping(
+  domainName = "string",
+  basePath = "string"
+)
 }
 \arguments{
-\item{domainName}{[Required] The domain name of the BasePathMapping resource to be described.}
+\item{domainName}{[required] [Required] The domain name of the BasePathMapping resource to be described.}
 
-\item{basePath}{[Required] The base path name that callers of the API must provide as part of the URL after the domain name. This value must be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify any base path name after the domain name.}
+\item{basePath}{[required] [Required] The base path name that callers of the API must provide as part of the URL after the domain name. This value must be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify any base path name after the domain name.}
 }
 \description{
 Describe a BasePathMapping resource.

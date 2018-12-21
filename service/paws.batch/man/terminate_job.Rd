@@ -4,12 +4,15 @@
 \alias{terminate_job}
 \title{Terminates a job in a job queue}
 \usage{
-terminate_job(jobId, reason)
+terminate_job(
+  jobId = "string",
+  reason = "string"
+)
 }
 \arguments{
-\item{jobId}{The AWS Batch job ID of the job to terminate.}
+\item{jobId}{[required] The AWS Batch job ID of the job to terminate.}
 
-\item{reason}{A message to attach to the job that explains the reason for canceling it. This message is returned by future DescribeJobs operations on the job. This message is also recorded in the AWS Batch activity logs.}
+\item{reason}{[required] A message to attach to the job that explains the reason for canceling it. This message is returned by future DescribeJobs operations on the job. This message is also recorded in the AWS Batch activity logs.}
 }
 \description{
 Terminates a job in a job queue. Jobs that are in the \code{STARTING} or \code{RUNNING} state are terminated, which causes them to transition to \code{FAILED}. Jobs that have not progressed to the \code{STARTING} state are cancelled.

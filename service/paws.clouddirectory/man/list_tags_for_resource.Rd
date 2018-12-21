@@ -4,10 +4,14 @@
 \alias{list_tags_for_resource}
 \title{Returns tags for a resource}
 \usage{
-list_tags_for_resource(ResourceArn, NextToken = NULL, MaxResults = NULL)
+list_tags_for_resource(
+  ResourceArn = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{ResourceArn}{The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.}
 
 \item{NextToken}{The pagination token. This is for future use. Currently pagination is not supported for tagging.}
 

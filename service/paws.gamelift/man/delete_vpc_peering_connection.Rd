@@ -4,12 +4,15 @@
 \alias{delete_vpc_peering_connection}
 \title{Removes a VPC peering connection}
 \usage{
-delete_vpc_peering_connection(FleetId, VpcPeeringConnectionId)
+delete_vpc_peering_connection(
+  FleetId = "string",
+  VpcPeeringConnectionId = "string"
+)
 }
 \arguments{
-\item{FleetId}{Unique identifier for a fleet. This value must match the fleet ID referenced in the VPC peering connection record.}
+\item{FleetId}{[required] Unique identifier for a fleet. This value must match the fleet ID referenced in the VPC peering connection record.}
 
-\item{VpcPeeringConnectionId}{Unique identifier for a VPC peering connection. This value is included in the VpcPeeringConnection object, which can be retrieved by calling DescribeVpcPeeringConnections.}
+\item{VpcPeeringConnectionId}{[required] Unique identifier for a VPC peering connection. This value is included in the VpcPeeringConnection object, which can be retrieved by calling DescribeVpcPeeringConnections.}
 }
 \description{
 Removes a VPC peering connection. To delete the connection, you must have a valid authorization for the VPC peering connection that you want to delete. You can check for an authorization by calling DescribeVpcPeeringAuthorizations or request a new one using CreateVpcPeeringAuthorization.

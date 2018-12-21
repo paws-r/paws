@@ -4,12 +4,15 @@
 \alias{create_worker_block}
 \title{The \code{CreateWorkerBlock} operation allows you to prevent a Worker from working on your HITs}
 \usage{
-create_worker_block(WorkerId, Reason)
+create_worker_block(
+  WorkerId = "string",
+  Reason = "string"
+)
 }
 \arguments{
-\item{WorkerId}{The ID of the Worker to block.}
+\item{WorkerId}{[required] The ID of the Worker to block.}
 
-\item{Reason}{A message explaining the reason for blocking the Worker. This parameter enables you to keep track of your Workers. The Worker does not see this message.}
+\item{Reason}{[required] A message explaining the reason for blocking the Worker. This parameter enables you to keep track of your Workers. The Worker does not see this message.}
 }
 \description{
 The \code{CreateWorkerBlock} operation allows you to prevent a Worker from working on your HITs. For example, you can block a Worker who is producing poor quality work. You can block up to 100,000 Workers.

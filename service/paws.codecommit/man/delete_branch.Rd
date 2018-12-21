@@ -4,12 +4,15 @@
 \alias{delete_branch}
 \title{Deletes a branch from a repository, unless that branch is the default branch for the repository}
 \usage{
-delete_branch(repositoryName, branchName)
+delete_branch(
+  repositoryName = "string",
+  branchName = "string"
+)
 }
 \arguments{
-\item{repositoryName}{The name of the repository that contains the branch to be deleted.}
+\item{repositoryName}{[required] The name of the repository that contains the branch to be deleted.}
 
-\item{branchName}{The name of the branch to delete.}
+\item{branchName}{[required] The name of the branch to delete.}
 }
 \description{
 Deletes a branch from a repository, unless that branch is the default branch for the repository.

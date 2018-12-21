@@ -4,10 +4,12 @@
 \alias{get_trigger}
 \title{Retrieves the definition of a trigger}
 \usage{
-get_trigger(Name)
+get_trigger(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the trigger to retrieve.}
+\item{Name}{[required] The name of the trigger to retrieve.}
 }
 \description{
 Retrieves the definition of a trigger.

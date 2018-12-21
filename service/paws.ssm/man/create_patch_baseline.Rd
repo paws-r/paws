@@ -4,17 +4,64 @@
 \alias{create_patch_baseline}
 \title{Creates a patch baseline}
 \usage{
-create_patch_baseline(Name, OperatingSystem = NULL, GlobalFilters = NULL,
-  ApprovalRules = NULL, ApprovedPatches = NULL,
-  ApprovedPatchesComplianceLevel = NULL,
-  ApprovedPatchesEnableNonSecurity = NULL, RejectedPatches = NULL,
-  RejectedPatchesAction = NULL, Description = NULL, Sources = NULL,
-  ClientToken = NULL)
+create_patch_baseline(
+  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS",
+  Name = "string",
+  GlobalFilters = list(
+    PatchFilters = list(
+      list(
+        Key = "PRODUCT"|"CLASSIFICATION"|"MSRC_SEVERITY"|"PATCH_ID"|"SECTION"|"PRIORITY"|"SEVERITY",
+        Values = list(
+          "string"
+        )
+      )
+    )
+  ),
+  ApprovalRules = list(
+    PatchRules = list(
+      list(
+        PatchFilterGroup = list(
+          PatchFilters = list(
+            list(
+              Key = "PRODUCT"|"CLASSIFICATION"|"MSRC_SEVERITY"|"PATCH_ID"|"SECTION"|"PRIORITY"|"SEVERITY",
+              Values = list(
+                "string"
+              )
+            )
+          )
+        ),
+        ComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+        ApproveAfterDays = 123,
+        EnableNonSecurity = TRUE|FALSE
+      )
+    )
+  ),
+  ApprovedPatches = list(
+    "string"
+  ),
+  ApprovedPatchesComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+  ApprovedPatchesEnableNonSecurity = TRUE|FALSE,
+  RejectedPatches = list(
+    "string"
+  ),
+  RejectedPatchesAction = "ALLOW_AS_DEPENDENCY"|"BLOCK",
+  Description = "string",
+  Sources = list(
+    list(
+      Name = "string",
+      Products = list(
+        "string"
+      ),
+      Configuration = "string"
+    )
+  ),
+  ClientToken = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the patch baseline.}
-
 \item{OperatingSystem}{Defines the operating system the patch baseline applies to. The Default value is WINDOWS.}
+
+\item{Name}{[required] The name of the patch baseline.}
 
 \item{GlobalFilters}{A set of global filters used to exclude patches from the baseline.}
 

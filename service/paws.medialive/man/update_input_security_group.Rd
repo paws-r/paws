@@ -4,10 +4,17 @@
 \alias{update_input_security_group}
 \title{Update an Input Security Group's Whilelists}
 \usage{
-update_input_security_group(InputSecurityGroupId, WhitelistRules = NULL)
+update_input_security_group(
+  InputSecurityGroupId = "string",
+  WhitelistRules = list(
+    list(
+      Cidr = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{InputSecurityGroupId}{The id of the Input Security Group to update.}
+\item{InputSecurityGroupId}{[required] The id of the Input Security Group to update.}
 
 \item{WhitelistRules}{List of IPv4 CIDR addresses to whitelist}
 }

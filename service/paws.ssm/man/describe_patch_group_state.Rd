@@ -4,10 +4,12 @@
 \alias{describe_patch_group_state}
 \title{Returns high-level aggregated patch compliance state for a patch group}
 \usage{
-describe_patch_group_state(PatchGroup)
+describe_patch_group_state(
+  PatchGroup = "string"
+)
 }
 \arguments{
-\item{PatchGroup}{The name of the patch group whose patch snapshot should be retrieved.}
+\item{PatchGroup}{[required] The name of the patch group whose patch snapshot should be retrieved.}
 }
 \description{
 Returns high-level aggregated patch compliance state for a patch group.

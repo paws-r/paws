@@ -4,11 +4,14 @@
 \alias{promote_read_replica}
 \title{Promotes a Read Replica DB instance to a standalone DB instance}
 \usage{
-promote_read_replica(DBInstanceIdentifier, BackupRetentionPeriod = NULL,
-  PreferredBackupWindow = NULL)
+promote_read_replica(
+  DBInstanceIdentifier = "string",
+  BackupRetentionPeriod = 123,
+  PreferredBackupWindow = "string"
+)
 }
 \arguments{
-\item{DBInstanceIdentifier}{The DB instance identifier. This value is stored as a lowercase string.
+\item{DBInstanceIdentifier}{[required] The DB instance identifier. This value is stored as a lowercase string.
 
 Constraints:
 \itemize{

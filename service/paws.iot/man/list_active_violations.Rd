@@ -4,8 +4,12 @@
 \alias{list_active_violations}
 \title{Lists the active violations for a given Device Defender security profile}
 \usage{
-list_active_violations(thingName = NULL, securityProfileName = NULL,
-  nextToken = NULL, maxResults = NULL)
+list_active_violations(
+  thingName = "string",
+  securityProfileName = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{thingName}{The name of the thing whose active violations are listed.}

@@ -4,12 +4,18 @@
 \alias{update_placement}
 \title{Updates a placement with the given attributes}
 \usage{
-update_placement(placementName, projectName, attributes = NULL)
+update_placement(
+  placementName = "string",
+  projectName = "string",
+  attributes = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{placementName}{The name of the placement to update.}
+\item{placementName}{[required] The name of the placement to update.}
 
-\item{projectName}{The name of the project containing the placement to be updated.}
+\item{projectName}{[required] The name of the project containing the placement to be updated.}
 
 \item{attributes}{The user-defined object of attributes used to update the placement. The maximum number of key/value pairs is 50.}
 }

@@ -4,21 +4,40 @@
 \alias{update_graphql_api}
 \title{Updates a \code{GraphqlApi} object}
 \usage{
-update_graphql_api(apiId, name, logConfig = NULL, authenticationType = NULL,
-  userPoolConfig = NULL, openIDConnectConfig = NULL)
+update_graphql_api(
+  apiId = "string",
+  name = "string",
+  logConfig = list(
+    fieldLogLevel = "NONE"|"ERROR"|"ALL",
+    cloudWatchLogsRoleArn = "string"
+  ),
+  authenticationType = "API_KEY"|"AWS_IAM"|"AMAZON_COGNITO_USER_POOLS"|"OPENID_CONNECT",
+  userPoolConfig = list(
+    userPoolId = "string",
+    awsRegion = "string",
+    defaultAction = "ALLOW"|"DENY",
+    appIdClientRegex = "string"
+  ),
+  openIDConnectConfig = list(
+    issuer = "string",
+    clientId = "string",
+    iatTTL = 123,
+    authTTL = 123
+  )
+)
 }
 \arguments{
-\item{apiId}{The API ID.}
+\item{apiId}{[required] The API ID.}
 
-\item{name}{The new name for the \code{GraphqlApi} object.}
+\item{name}{[required] The new name for the \code{GraphqlApi} object.}
 
-\item{logConfig}{The Amazon CloudWatch logs configuration for the \code{GraphqlApi} object.}
+\item{logConfig}{The Amazon CloudWatch Logs configuration for the \code{GraphqlApi} object.}
 
 \item{authenticationType}{The new authentication type for the \code{GraphqlApi} object.}
 
-\item{userPoolConfig}{The new Amazon Cognito User Pool configuration for the \code{GraphqlApi} object.}
+\item{userPoolConfig}{The new Amazon Cognito user pool configuration for the \code{GraphqlApi} object.}
 
-\item{openIDConnectConfig}{The Open Id Connect configuration configuration for the \code{GraphqlApi} object.}
+\item{openIDConnectConfig}{The OpenID Connect configuration for the \code{GraphqlApi} object.}
 }
 \description{
 Updates a \code{GraphqlApi} object.

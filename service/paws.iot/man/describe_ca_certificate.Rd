@@ -4,10 +4,12 @@
 \alias{describe_ca_certificate}
 \title{Describes a registered CA certificate}
 \usage{
-describe_ca_certificate(certificateId)
+describe_ca_certificate(
+  certificateId = "string"
+)
 }
 \arguments{
-\item{certificateId}{The CA certificate identifier.}
+\item{certificateId}{[required] The CA certificate identifier.}
 }
 \description{
 Describes a registered CA certificate.

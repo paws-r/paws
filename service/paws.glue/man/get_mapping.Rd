@@ -4,10 +4,44 @@
 \alias{get_mapping}
 \title{Creates mappings}
 \usage{
-get_mapping(Source, Sinks = NULL, Location = NULL)
+get_mapping(
+  Source = list(
+    DatabaseName = "string",
+    TableName = "string"
+  ),
+  Sinks = list(
+    list(
+      DatabaseName = "string",
+      TableName = "string"
+    )
+  ),
+  Location = list(
+    Jdbc = list(
+      list(
+        Name = "string",
+        Value = "string",
+        Param = TRUE|FALSE
+      )
+    ),
+    S3 = list(
+      list(
+        Name = "string",
+        Value = "string",
+        Param = TRUE|FALSE
+      )
+    ),
+    DynamoDB = list(
+      list(
+        Name = "string",
+        Value = "string",
+        Param = TRUE|FALSE
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{Source}{Specifies the source table.}
+\item{Source}{[required] Specifies the source table.}
 
 \item{Sinks}{A list of target tables.}
 

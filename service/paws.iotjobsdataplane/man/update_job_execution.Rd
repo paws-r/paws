@@ -4,17 +4,26 @@
 \alias{update_job_execution}
 \title{Updates the status of a job execution}
 \usage{
-update_job_execution(jobId, thingName, status, statusDetails = NULL,
-  stepTimeoutInMinutes = NULL, expectedVersion = NULL,
-  includeJobExecutionState = NULL, includeJobDocument = NULL,
-  executionNumber = NULL)
+update_job_execution(
+  jobId = "string",
+  thingName = "string",
+  status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
+  statusDetails = list(
+    "string"
+  ),
+  stepTimeoutInMinutes = 123,
+  expectedVersion = 123,
+  includeJobExecutionState = TRUE|FALSE,
+  includeJobDocument = TRUE|FALSE,
+  executionNumber = 123
+)
 }
 \arguments{
-\item{jobId}{The unique identifier assigned to this job when it was created.}
+\item{jobId}{[required] The unique identifier assigned to this job when it was created.}
 
-\item{thingName}{The name of the thing associated with the device.}
+\item{thingName}{[required] The name of the thing associated with the device.}
 
-\item{status}{The new status for the job execution (IN\_PROGRESS, FAILED, SUCCESS, or REJECTED). This must be specified on every update.}
+\item{status}{[required] The new status for the job execution (IN\_PROGRESS, FAILED, SUCCESS, or REJECTED). This must be specified on every update.}
 
 \item{statusDetails}{Optional. A collection of name/value pairs that describe the status of the job execution. If not specified, the statusDetails are unchanged.}
 

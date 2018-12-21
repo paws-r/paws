@@ -4,12 +4,17 @@
 \alias{unarchive_findings}
 \title{Unarchives Amazon GuardDuty findings specified by the list of finding IDs}
 \usage{
-unarchive_findings(DetectorId, FindingIds)
+unarchive_findings(
+  DetectorId = "string",
+  FindingIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{DetectorId}{The ID of the detector that specifies the GuardDuty service whose findings you want to unarchive.}
+\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose findings you want to unarchive.}
 
-\item{FindingIds}{IDs of the findings that you want to unarchive.}
+\item{FindingIds}{[required] IDs of the findings that you want to unarchive.}
 }
 \description{
 Unarchives Amazon GuardDuty findings specified by the list of finding IDs.

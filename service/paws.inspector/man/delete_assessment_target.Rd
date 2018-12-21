@@ -4,10 +4,12 @@
 \alias{delete_assessment_target}
 \title{Deletes the assessment target that is specified by the ARN of the assessment target}
 \usage{
-delete_assessment_target(assessmentTargetArn)
+delete_assessment_target(
+  assessmentTargetArn = "string"
+)
 }
 \arguments{
-\item{assessmentTargetArn}{The ARN that specifies the assessment target that you want to delete.}
+\item{assessmentTargetArn}{[required] The ARN that specifies the assessment target that you want to delete.}
 }
 \description{
 Deletes the assessment target that is specified by the ARN of the assessment target.

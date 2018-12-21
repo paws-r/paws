@@ -4,7 +4,9 @@
 \alias{get_key_pairs}
 \title{Returns information about all key pairs in the user's account}
 \usage{
-get_key_pairs(pageToken = NULL)
+get_key_pairs(
+  pageToken = "string"
+)
 }
 \arguments{
 \item{pageToken}{A token used for advancing to the next page of results from your get key pairs request.}

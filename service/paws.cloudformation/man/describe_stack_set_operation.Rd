@@ -4,12 +4,15 @@
 \alias{describe_stack_set_operation}
 \title{Returns the description of the specified stack set operation}
 \usage{
-describe_stack_set_operation(StackSetName, OperationId)
+describe_stack_set_operation(
+  StackSetName = "string",
+  OperationId = "string"
+)
 }
 \arguments{
-\item{StackSetName}{The name or the unique stack ID of the stack set for the stack operation.}
+\item{StackSetName}{[required] The name or the unique stack ID of the stack set for the stack operation.}
 
-\item{OperationId}{The unique ID of the stack set operation.}
+\item{OperationId}{[required] The unique ID of the stack set operation.}
 }
 \description{
 Returns the description of the specified stack set operation.

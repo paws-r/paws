@@ -4,10 +4,12 @@
 \alias{disassociate_drt_log_bucket}
 \title{Removes the DDoS Response team's (DRT) access to the specified Amazon S3 bucket containing your flow logs}
 \usage{
-disassociate_drt_log_bucket(LogBucket)
+disassociate_drt_log_bucket(
+  LogBucket = "string"
+)
 }
 \arguments{
-\item{LogBucket}{The Amazon S3 bucket that contains your flow logs.}
+\item{LogBucket}{[required] The Amazon S3 bucket that contains your flow logs.}
 }
 \description{
 Removes the DDoS Response team's (DRT) access to the specified Amazon S3 bucket containing your flow logs.

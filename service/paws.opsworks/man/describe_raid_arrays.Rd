@@ -4,8 +4,13 @@
 \alias{describe_raid_arrays}
 \title{Describe an instance's RAID arrays}
 \usage{
-describe_raid_arrays(InstanceId = NULL, StackId = NULL,
-  RaidArrayIds = NULL)
+describe_raid_arrays(
+  InstanceId = "string",
+  StackId = "string",
+  RaidArrayIds = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{InstanceId}{The instance ID. If you use this parameter, \code{DescribeRaidArrays} returns descriptions of the RAID arrays associated with the specified instance.}

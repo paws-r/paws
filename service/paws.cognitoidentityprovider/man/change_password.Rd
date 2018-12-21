@@ -4,14 +4,18 @@
 \alias{change_password}
 \title{Changes the password for a specified user in a user pool}
 \usage{
-change_password(PreviousPassword, ProposedPassword, AccessToken)
+change_password(
+  PreviousPassword = "string",
+  ProposedPassword = "string",
+  AccessToken = "string"
+)
 }
 \arguments{
-\item{PreviousPassword}{The old password.}
+\item{PreviousPassword}{[required] The old password.}
 
-\item{ProposedPassword}{The new password.}
+\item{ProposedPassword}{[required] The new password.}
 
-\item{AccessToken}{The access token.}
+\item{AccessToken}{[required] The access token.}
 }
 \description{
 Changes the password for a specified user in a user pool.

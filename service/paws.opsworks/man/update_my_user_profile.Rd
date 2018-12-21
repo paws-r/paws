@@ -4,7 +4,9 @@
 \alias{update_my_user_profile}
 \title{Updates a user's SSH public key}
 \usage{
-update_my_user_profile(SshPublicKey = NULL)
+update_my_user_profile(
+  SshPublicKey = "string"
+)
 }
 \arguments{
 \item{SshPublicKey}{The user's SSH public key.}

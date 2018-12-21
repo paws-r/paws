@@ -4,7 +4,11 @@
 \alias{list_rules}
 \title{Lists your Amazon CloudWatch Events rules}
 \usage{
-list_rules(NamePrefix = NULL, NextToken = NULL, Limit = NULL)
+list_rules(
+  NamePrefix = "string",
+  NextToken = "string",
+  Limit = 123
+)
 }
 \arguments{
 \item{NamePrefix}{The prefix matching the rule name.}

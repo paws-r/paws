@@ -4,9 +4,19 @@
 \alias{describe_cases}
 \title{Returns a list of cases that you specify by passing one or more case IDs}
 \usage{
-describe_cases(caseIdList = NULL, displayId = NULL, afterTime = NULL,
-  beforeTime = NULL, includeResolvedCases = NULL, nextToken = NULL,
-  maxResults = NULL, language = NULL, includeCommunications = NULL)
+describe_cases(
+  caseIdList = list(
+    "string"
+  ),
+  displayId = "string",
+  afterTime = "string",
+  beforeTime = "string",
+  includeResolvedCases = TRUE|FALSE,
+  nextToken = "string",
+  maxResults = 123,
+  language = "string",
+  includeCommunications = TRUE|FALSE
+)
 }
 \arguments{
 \item{caseIdList}{A list of ID numbers of the support cases you want returned. The maximum number of cases is 100.}

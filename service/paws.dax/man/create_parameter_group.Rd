@@ -4,10 +4,13 @@
 \alias{create_parameter_group}
 \title{Creates a new parameter group}
 \usage{
-create_parameter_group(ParameterGroupName, Description = NULL)
+create_parameter_group(
+  ParameterGroupName = "string",
+  Description = "string"
+)
 }
 \arguments{
-\item{ParameterGroupName}{The name of the parameter group to apply to all of the clusters in this replication group.}
+\item{ParameterGroupName}{[required] The name of the parameter group to apply to all of the clusters in this replication group.}
 
 \item{Description}{A description of the parameter group.}
 }

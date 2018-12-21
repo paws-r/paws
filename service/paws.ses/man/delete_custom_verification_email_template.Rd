@@ -4,10 +4,12 @@
 \alias{delete_custom_verification_email_template}
 \title{Deletes an existing custom verification email template}
 \usage{
-delete_custom_verification_email_template(TemplateName)
+delete_custom_verification_email_template(
+  TemplateName = "string"
+)
 }
 \arguments{
-\item{TemplateName}{The name of the custom verification email template that you want to delete.}
+\item{TemplateName}{[required] The name of the custom verification email template that you want to delete.}
 }
 \description{
 Deletes an existing custom verification email template.

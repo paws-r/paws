@@ -4,12 +4,15 @@
 \alias{create_regex_pattern_set}
 \title{Creates a \code{RegexPatternSet}}
 \usage{
-create_regex_pattern_set(Name, ChangeToken)
+create_regex_pattern_set(
+  Name = "string",
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{Name}{A friendly name or description of the RegexPatternSet. You can't change \code{Name} after you create a \code{RegexPatternSet}.}
+\item{Name}{[required] A friendly name or description of the RegexPatternSet. You can't change \code{Name} after you create a \code{RegexPatternSet}.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Creates a \code{RegexPatternSet}. You then use UpdateRegexPatternSet to specify the regular expression (regex) pattern that you want AWS WAF to search for, such as \code{B[a@]dB[o0]t}. You can then configure AWS WAF to reject those requests.

@@ -4,15 +4,61 @@
 \alias{create_elasticsearch_domain}
 \title{Creates a new Elasticsearch domain}
 \usage{
-create_elasticsearch_domain(DomainName, ElasticsearchVersion = NULL,
-  ElasticsearchClusterConfig = NULL, EBSOptions = NULL,
-  AccessPolicies = NULL, SnapshotOptions = NULL, VPCOptions = NULL,
-  CognitoOptions = NULL, EncryptionAtRestOptions = NULL,
-  NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL,
-  LogPublishingOptions = NULL)
+create_elasticsearch_domain(
+  DomainName = "string",
+  ElasticsearchVersion = "string",
+  ElasticsearchClusterConfig = list(
+    InstanceType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
+    InstanceCount = 123,
+    DedicatedMasterEnabled = TRUE|FALSE,
+    ZoneAwarenessEnabled = TRUE|FALSE,
+    DedicatedMasterType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
+    DedicatedMasterCount = 123
+  ),
+  EBSOptions = list(
+    EBSEnabled = TRUE|FALSE,
+    VolumeType = "standard"|"gp2"|"io1",
+    VolumeSize = 123,
+    Iops = 123
+  ),
+  AccessPolicies = "string",
+  SnapshotOptions = list(
+    AutomatedSnapshotStartHour = 123
+  ),
+  VPCOptions = list(
+    SubnetIds = list(
+      "string"
+    ),
+    SecurityGroupIds = list(
+      "string"
+    )
+  ),
+  CognitoOptions = list(
+    Enabled = TRUE|FALSE,
+    UserPoolId = "string",
+    IdentityPoolId = "string",
+    RoleArn = "string"
+  ),
+  EncryptionAtRestOptions = list(
+    Enabled = TRUE|FALSE,
+    KmsKeyId = "string"
+  ),
+  NodeToNodeEncryptionOptions = list(
+    Enabled = TRUE|FALSE
+  ),
+  AdvancedOptions = list(
+    "string"
+  ),
+  LogPublishingOptions = list(
+    list(
+      CloudWatchLogsLogGroupArn = "string",
+      Enabled = TRUE|FALSE
+    )
+  )
+)
 }
 \arguments{
-\item{DomainName}{The name of the Elasticsearch domain that you are creating. Domain names are unique across the domains owned by an account within an AWS region. Domain names must start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).}
+\item{DomainName}{[required] The name of the Elasticsearch domain that you are creating. Domain names are unique across the domains owned by an account within an AWS region. Domain names must start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).}
 
 \item{ElasticsearchVersion}{String of format X.Y to specify version for the Elasticsearch domain eg. "1.5" or "2.3". For more information, see \href{http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains}{Creating Elasticsearch Domains} in the \emph{Amazon Elasticsearch Service Developer Guide}.}
 

@@ -4,10 +4,12 @@
 \alias{delete_preset}
 \title{Permanently delete a preset you have created}
 \usage{
-delete_preset(Name)
+delete_preset(
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the preset to be deleted.}
+\item{Name}{[required] The name of the preset to be deleted.}
 }
 \description{
 Permanently delete a preset you have created.

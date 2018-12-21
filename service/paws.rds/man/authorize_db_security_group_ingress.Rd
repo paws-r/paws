@@ -4,12 +4,16 @@
 \alias{authorize_db_security_group_ingress}
 \title{Enables ingress to a DBSecurityGroup using one of two forms of authorization}
 \usage{
-authorize_db_security_group_ingress(DBSecurityGroupName, CIDRIP = NULL,
-  EC2SecurityGroupName = NULL, EC2SecurityGroupId = NULL,
-  EC2SecurityGroupOwnerId = NULL)
+authorize_db_security_group_ingress(
+  DBSecurityGroupName = "string",
+  CIDRIP = "string",
+  EC2SecurityGroupName = "string",
+  EC2SecurityGroupId = "string",
+  EC2SecurityGroupOwnerId = "string"
+)
 }
 \arguments{
-\item{DBSecurityGroupName}{The name of the DB security group to add authorization to.}
+\item{DBSecurityGroupName}{[required] The name of the DB security group to add authorization to.}
 
 \item{CIDRIP}{The IP range to authorize.}
 

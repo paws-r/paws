@@ -6,16 +6,19 @@
 \alias{paws.appstream-package}
 \title{paws.appstream: Amazon AppStream}
 \description{
-You can use Amazon AppStream 2.0 to stream desktop
-applications to any device running a web browser, without rewriting
-them.
+Amazon AppStream 2.0
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

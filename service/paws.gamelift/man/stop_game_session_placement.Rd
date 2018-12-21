@@ -4,10 +4,12 @@
 \alias{stop_game_session_placement}
 \title{Cancels a game session placement that is in \code{PENDING} status}
 \usage{
-stop_game_session_placement(PlacementId)
+stop_game_session_placement(
+  PlacementId = "string"
+)
 }
 \arguments{
-\item{PlacementId}{Unique identifier for a game session placement to cancel.}
+\item{PlacementId}{[required] Unique identifier for a game session placement to cancel.}
 }
 \description{
 Cancels a game session placement that is in \code{PENDING} status. To stop a placement, provide the placement ID values. If successful, the placement is moved to \code{CANCELLED} status.

@@ -4,8 +4,19 @@
 \alias{list_resource_compliance_summaries}
 \title{Returns a resource-level summary count}
 \usage{
-list_resource_compliance_summaries(Filters = NULL, NextToken = NULL,
-  MaxResults = NULL)
+list_resource_compliance_summaries(
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      ),
+      Type = "EQUAL"|"NOT_EQUAL"|"BEGIN_WITH"|"LESS_THAN"|"GREATER_THAN"
+    )
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{Filters}{One or more filters. Use a filter to return a more specific list of results.}

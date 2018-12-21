@@ -4,11 +4,15 @@
 \alias{list_stream_consumers}
 \title{Lists the consumers registered to receive data from a stream using enhanced fan-out, and provides information about each consumer}
 \usage{
-list_stream_consumers(StreamARN, NextToken = NULL, MaxResults = NULL,
-  StreamCreationTimestamp = NULL)
+list_stream_consumers(
+  StreamARN = "string",
+  NextToken = "string",
+  MaxResults = 123,
+  StreamCreationTimestamp = as.POSIXct("2015-01-01")
+)
 }
 \arguments{
-\item{StreamARN}{The ARN of the Kinesis data stream for which you want to list the registered consumers. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
+\item{StreamARN}{[required] The ARN of the Kinesis data stream for which you want to list the registered consumers. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
 
 \item{NextToken}{When the number of consumers that are registered with the data stream is greater than the default value for the \code{MaxResults} parameter, or if you explicitly specify a value for \code{MaxResults} that is less than the number of consumers that are registered with the data stream, the response includes a pagination token named \code{NextToken}. You can specify this \code{NextToken} value in a subsequent call to \code{ListStreamConsumers} to list the next set of registered consumers.
 

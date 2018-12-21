@@ -4,18 +4,21 @@
 \alias{delete_provisioned_product_plan}
 \title{Deletes the specified plan}
 \usage{
-delete_provisioned_product_plan(PlanId, AcceptLanguage = NULL,
-  IgnoreErrors = NULL)
+delete_provisioned_product_plan(
+  AcceptLanguage = "string",
+  PlanId = "string",
+  IgnoreErrors = TRUE|FALSE
+)
 }
 \arguments{
-\item{PlanId}{The plan identifier.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{PlanId}{[required] The plan identifier.}
 
 \item{IgnoreErrors}{If set to true, AWS Service Catalog stops managing the specified provisioned product even if it cannot delete the underlying resources.}
 }

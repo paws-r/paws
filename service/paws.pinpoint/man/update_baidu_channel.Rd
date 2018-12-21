@@ -4,12 +4,19 @@
 \alias{update_baidu_channel}
 \title{Update a BAIDU GCM channel}
 \usage{
-update_baidu_channel(ApplicationId, BaiduChannelRequest)
+update_baidu_channel(
+  ApplicationId = "string",
+  BaiduChannelRequest = list(
+    ApiKey = "string",
+    Enabled = TRUE|FALSE,
+    SecretKey = "string"
+  )
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 
-\item{BaiduChannelRequest}{}
+\item{BaiduChannelRequest}{[required]}
 }
 \description{
 Update a BAIDU GCM channel

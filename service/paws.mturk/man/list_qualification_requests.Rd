@@ -4,8 +4,11 @@
 \alias{list_qualification_requests}
 \title{The \code{ListQualificationRequests} operation retrieves requests for Qualifications of a particular Qualification type}
 \usage{
-list_qualification_requests(QualificationTypeId = NULL, NextToken = NULL,
-  MaxResults = NULL)
+list_qualification_requests(
+  QualificationTypeId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{QualificationTypeId}{The ID of the QualificationType.}

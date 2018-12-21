@@ -4,17 +4,22 @@
 \alias{complete_lifecycle_action}
 \title{Completes the lifecycle action for the specified token or instance with the specified result}
 \usage{
-complete_lifecycle_action(LifecycleHookName, AutoScalingGroupName,
-  LifecycleActionResult, LifecycleActionToken = NULL, InstanceId = NULL)
+complete_lifecycle_action(
+  LifecycleHookName = "string",
+  AutoScalingGroupName = "string",
+  LifecycleActionToken = "string",
+  LifecycleActionResult = "string",
+  InstanceId = "string"
+)
 }
 \arguments{
-\item{LifecycleHookName}{The name of the lifecycle hook.}
+\item{LifecycleHookName}{[required] The name of the lifecycle hook.}
 
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
-
-\item{LifecycleActionResult}{The action for the group to take. This parameter can be either \code{CONTINUE} or \code{ABANDON}.}
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
 \item{LifecycleActionToken}{A universally unique identifier (UUID) that identifies a specific lifecycle action associated with an instance. Amazon EC2 Auto Scaling sends this token to the notification target you specified when you created the lifecycle hook.}
+
+\item{LifecycleActionResult}{[required] The action for the group to take. This parameter can be either \code{CONTINUE} or \code{ABANDON}.}
 
 \item{InstanceId}{The ID of the instance.}
 }

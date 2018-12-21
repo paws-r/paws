@@ -4,14 +4,18 @@
 \alias{evaluate_expression}
 \title{Task runners call \code{EvaluateExpression} to evaluate a string in the context of the specified object}
 \usage{
-evaluate_expression(pipelineId, objectId, expression)
+evaluate_expression(
+  pipelineId = "string",
+  objectId = "string",
+  expression = "string"
+)
 }
 \arguments{
-\item{pipelineId}{The ID of the pipeline.}
+\item{pipelineId}{[required] The ID of the pipeline.}
 
-\item{objectId}{The ID of the object.}
+\item{objectId}{[required] The ID of the object.}
 
-\item{expression}{The expression to evaluate.}
+\item{expression}{[required] The expression to evaluate.}
 }
 \description{
 Task runners call \code{EvaluateExpression} to evaluate a string in the context of the specified object. For example, a task runner can evaluate SQL queries stored in Amazon S3.

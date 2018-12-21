@@ -4,10 +4,12 @@
 \alias{describe_project}
 \title{Returns an object describing a project}
 \usage{
-describe_project(projectName)
+describe_project(
+  projectName = "string"
+)
 }
 \arguments{
-\item{projectName}{The name of the project to be described.}
+\item{projectName}{[required] The name of the project to be described.}
 }
 \description{
 Returns an object describing a project.

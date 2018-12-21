@@ -4,10 +4,12 @@
 \alias{delete_user_profile}
 \title{Deletes a user profile in AWS CodeStar, including all personal preference data associated with that profile, such as display name and email address}
 \usage{
-delete_user_profile(userArn)
+delete_user_profile(
+  userArn = "string"
+)
 }
 \arguments{
-\item{userArn}{The Amazon Resource Name (ARN) of the user to delete from AWS CodeStar.}
+\item{userArn}{[required] The Amazon Resource Name (ARN) of the user to delete from AWS CodeStar.}
 }
 \description{
 Deletes a user profile in AWS CodeStar, including all personal preference data associated with that profile, such as display name and email address. It does not delete the history of that user, for example the history of commits made by that user.

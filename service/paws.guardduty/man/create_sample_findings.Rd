@@ -4,10 +4,15 @@
 \alias{create_sample_findings}
 \title{Generates example findings of types specified by the list of finding types}
 \usage{
-create_sample_findings(DetectorId, FindingTypes = NULL)
+create_sample_findings(
+  DetectorId = "string",
+  FindingTypes = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{DetectorId}{The ID of the detector to create sample findings for.}
+\item{DetectorId}{[required] The ID of the detector to create sample findings for.}
 
 \item{FindingTypes}{Types of sample findings that you want to generate.}
 }

@@ -4,10 +4,12 @@
 \alias{stop_configuration_recorder}
 \title{Stops recording configurations of the AWS resources you have selected to record in your AWS account}
 \usage{
-stop_configuration_recorder(ConfigurationRecorderName)
+stop_configuration_recorder(
+  ConfigurationRecorderName = "string"
+)
 }
 \arguments{
-\item{ConfigurationRecorderName}{The name of the recorder object that records each configuration change made to the resources.}
+\item{ConfigurationRecorderName}{[required] The name of the recorder object that records each configuration change made to the resources.}
 }
 \description{
 Stops recording configurations of the AWS resources you have selected to record in your AWS account.

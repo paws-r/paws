@@ -4,14 +4,69 @@
 \alias{create_deployment}
 \title{Deploys an application revision through the specified deployment group}
 \usage{
-create_deployment(applicationName, deploymentGroupName = NULL,
-  revision = NULL, deploymentConfigName = NULL, description = NULL,
-  ignoreApplicationStopFailures = NULL, targetInstances = NULL,
-  autoRollbackConfiguration = NULL, updateOutdatedInstancesOnly = NULL,
-  fileExistsBehavior = NULL)
+create_deployment(
+  applicationName = "string",
+  deploymentGroupName = "string",
+  revision = list(
+    revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
+    s3Location = list(
+      bucket = "string",
+      key = "string",
+      bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
+      version = "string",
+      eTag = "string"
+    ),
+    gitHubLocation = list(
+      repository = "string",
+      commitId = "string"
+    ),
+    string = list(
+      content = "string",
+      sha256 = "string"
+    ),
+    appSpecContent = list(
+      content = "string",
+      sha256 = "string"
+    )
+  ),
+  deploymentConfigName = "string",
+  description = "string",
+  ignoreApplicationStopFailures = TRUE|FALSE,
+  targetInstances = list(
+    tagFilters = list(
+      list(
+        Key = "string",
+        Value = "string",
+        Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
+      )
+    ),
+    autoScalingGroups = list(
+      "string"
+    ),
+    ec2TagSet = list(
+      ec2TagSetList = list(
+        list(
+          list(
+            Key = "string",
+            Value = "string",
+            Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
+          )
+        )
+      )
+    )
+  ),
+  autoRollbackConfiguration = list(
+    enabled = TRUE|FALSE,
+    events = list(
+      "DEPLOYMENT_FAILURE"|"DEPLOYMENT_STOP_ON_ALARM"|"DEPLOYMENT_STOP_ON_REQUEST"
+    )
+  ),
+  updateOutdatedInstancesOnly = TRUE|FALSE,
+  fileExistsBehavior = "DISALLOW"|"OVERWRITE"|"RETAIN"
+)
 }
 \arguments{
-\item{applicationName}{The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
+\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
 
 \item{deploymentGroupName}{The name of the deployment group.}
 

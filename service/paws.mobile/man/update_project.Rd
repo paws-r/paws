@@ -4,12 +4,15 @@
 \alias{update_project}
 \title{Update an existing project}
 \usage{
-update_project(projectId, contents = NULL)
+update_project(
+  contents = raw,
+  projectId = "string"
+)
 }
 \arguments{
-\item{projectId}{Unique project identifier.}
-
 \item{contents}{ZIP or YAML file which contains project configuration to be updated. This should be the contents of the file downloaded from the URL provided in an export project operation.}
+
+\item{projectId}{[required] Unique project identifier.}
 }
 \description{
 Update an existing project.

@@ -4,14 +4,30 @@
 \alias{update_regex_match_set}
 \title{Inserts or deletes RegexMatchTuple objects (filters) in a RegexMatchSet}
 \usage{
-update_regex_match_set(RegexMatchSetId, Updates, ChangeToken)
+update_regex_match_set(
+  RegexMatchSetId = "string",
+  Updates = list(
+    list(
+      Action = "INSERT"|"DELETE",
+      RegexMatchTuple = list(
+        FieldToMatch = list(
+          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+          Data = "string"
+        ),
+        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
+        RegexPatternSetId = "string"
+      )
+    )
+  ),
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{RegexMatchSetId}{The \code{RegexMatchSetId} of the RegexMatchSet that you want to update. \code{RegexMatchSetId} is returned by CreateRegexMatchSet and by ListRegexMatchSets.}
+\item{RegexMatchSetId}{[required] The \code{RegexMatchSetId} of the RegexMatchSet that you want to update. \code{RegexMatchSetId} is returned by CreateRegexMatchSet and by ListRegexMatchSets.}
 
-\item{Updates}{An array of \code{RegexMatchSetUpdate} objects that you want to insert into or delete from a RegexMatchSet. For more information, see RegexMatchTuple.}
+\item{Updates}{[required] An array of \code{RegexMatchSetUpdate} objects that you want to insert into or delete from a RegexMatchSet. For more information, see RegexMatchTuple.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Inserts or deletes RegexMatchTuple objects (filters) in a RegexMatchSet. For each \code{RegexMatchSetUpdate} object, you specify the following values:

@@ -4,14 +4,19 @@
 \alias{get_job_output}
 \title{This operation downloads the output of the job you initiated using InitiateJob}
 \usage{
-get_job_output(accountId, vaultName, jobId, range = NULL)
+get_job_output(
+  accountId = "string",
+  vaultName = "string",
+  jobId = "string",
+  range = "string"
+)
 }
 \arguments{
-\item{accountId}{The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
+\item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
 
-\item{vaultName}{The name of the vault.}
+\item{vaultName}{[required] The name of the vault.}
 
-\item{jobId}{The job ID whose data is downloaded.}
+\item{jobId}{[required] The job ID whose data is downloaded.}
 
 \item{range}{The range of bytes to retrieve from the output. For example, if you want to download the first 1,048,576 bytes, specify the range as \code{bytes=0-1048575}. By default, this operation downloads the entire output.
 

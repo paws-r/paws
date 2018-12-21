@@ -4,8 +4,21 @@
 \alias{describe_hosts}
 \title{Describes one or more of your Dedicated Hosts}
 \usage{
-describe_hosts(Filter = NULL, HostIds = NULL, MaxResults = NULL,
-  NextToken = NULL)
+describe_hosts(
+  Filter = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  HostIds = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{Filter}{One or more filters.
@@ -29,7 +42,7 @@ describe_hosts(Filter = NULL, HostIds = NULL, MaxResults = NULL,
 Describes one or more of your Dedicated Hosts.
 }
 \details{
-The results describe only the Dedicated Hosts in the region you're currently using. All listed instances consume capacity on your Dedicated Host. Dedicated Hosts that have recently been released are listed with the state \code{released}.
+The results describe only the Dedicated Hosts in the Region you're currently using. All listed instances consume capacity on your Dedicated Host. Dedicated Hosts that have recently been released are listed with the state \code{released}.
 }
 \examples{
 

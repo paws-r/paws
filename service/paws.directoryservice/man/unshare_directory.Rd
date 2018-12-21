@@ -4,12 +4,18 @@
 \alias{unshare_directory}
 \title{Stops the directory sharing between the directory owner and consumer accounts}
 \usage{
-unshare_directory(DirectoryId, UnshareTarget)
+unshare_directory(
+  DirectoryId = "string",
+  UnshareTarget = list(
+    Id = "string",
+    Type = "ACCOUNT"
+  )
+)
 }
 \arguments{
-\item{DirectoryId}{The identifier of the AWS Managed Microsoft AD directory that you want to stop sharing.}
+\item{DirectoryId}{[required] The identifier of the AWS Managed Microsoft AD directory that you want to stop sharing.}
 
-\item{UnshareTarget}{Identifier for the directory consumer account with whom the directory has to be unshared.}
+\item{UnshareTarget}{[required] Identifier for the directory consumer account with whom the directory has to be unshared.}
 }
 \description{
 Stops the directory sharing between the directory owner and consumer accounts.

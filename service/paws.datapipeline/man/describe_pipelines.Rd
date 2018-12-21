@@ -4,10 +4,14 @@
 \alias{describe_pipelines}
 \title{Retrieves metadata about one or more pipelines}
 \usage{
-describe_pipelines(pipelineIds)
+describe_pipelines(
+  pipelineIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{pipelineIds}{The IDs of the pipelines to describe. You can pass as many as 25 identifiers in a single call. To obtain pipeline IDs, call ListPipelines.}
+\item{pipelineIds}{[required] The IDs of the pipelines to describe. You can pass as many as 25 identifiers in a single call. To obtain pipeline IDs, call ListPipelines.}
 }
 \description{
 Retrieves metadata about one or more pipelines. The information retrieved includes the name of the pipeline, the pipeline identifier, its current state, and the user account that owns the pipeline. Using account credentials, you can retrieve metadata about pipelines that you or your IAM users have created. If you are using an IAM user account, you can retrieve metadata about only those pipelines for which you have read permissions.

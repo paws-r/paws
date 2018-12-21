@@ -4,10 +4,14 @@
 \alias{get_parameters_for_import}
 \title{Returns the items you need in order to import key material into AWS KMS from your existing key management infrastructure}
 \usage{
-get_parameters_for_import(KeyId, WrappingAlgorithm, WrappingKeySpec)
+get_parameters_for_import(
+  KeyId = "string",
+  WrappingAlgorithm = "RSAES_PKCS1_V1_5"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256",
+  WrappingKeySpec = "RSA_2048"
+)
 }
 \arguments{
-\item{KeyId}{The identifier of the CMK into which you will import key material. The CMK's \code{Origin} must be \code{EXTERNAL}.
+\item{KeyId}{[required] The identifier of the CMK into which you will import key material. The CMK's \code{Origin} must be \code{EXTERNAL}.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 
@@ -19,9 +23,9 @@ For example:
 
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 
-\item{WrappingAlgorithm}{The algorithm you use to encrypt the key material before importing it with ImportKeyMaterial. For more information, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html}{Encrypt the Key Material} in the \emph{AWS Key Management Service Developer Guide}.}
+\item{WrappingAlgorithm}{[required] The algorithm you will use to encrypt the key material before importing it with ImportKeyMaterial. For more information, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html}{Encrypt the Key Material} in the \emph{AWS Key Management Service Developer Guide}.}
 
-\item{WrappingKeySpec}{The type of wrapping key (public key) to return in the response. Only 2048-bit RSA public keys are supported.}
+\item{WrappingKeySpec}{[required] The type of wrapping key (public key) to return in the response. Only 2048-bit RSA public keys are supported.}
 }
 \description{
 Returns the items you need in order to import key material into AWS KMS from your existing key management infrastructure. For more information about importing key material into AWS KMS, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material} in the \emph{AWS Key Management Service Developer Guide}.

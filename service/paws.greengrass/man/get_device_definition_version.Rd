@@ -4,12 +4,18 @@
 \alias{get_device_definition_version}
 \title{Retrieves information about a device definition version}
 \usage{
-get_device_definition_version(DeviceDefinitionVersionId, DeviceDefinitionId)
+get_device_definition_version(
+  DeviceDefinitionId = "string",
+  DeviceDefinitionVersionId = "string",
+  NextToken = "string"
+)
 }
 \arguments{
-\item{DeviceDefinitionVersionId}{The ID of the device definition version.}
+\item{DeviceDefinitionId}{[required] The ID of the device definition.}
 
-\item{DeviceDefinitionId}{The ID of the device definition.}
+\item{DeviceDefinitionVersionId}{[required] The ID of the device definition version.}
+
+\item{NextToken}{The token for the next set of results, or ''null'' if there are no additional results.}
 }
 \description{
 Retrieves information about a device definition version.

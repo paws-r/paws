@@ -4,12 +4,17 @@
 \alias{set_platform_application_attributes}
 \title{Sets the attributes of the platform application object for the supported push notification services, such as APNS and GCM}
 \usage{
-set_platform_application_attributes(PlatformApplicationArn, Attributes)
+set_platform_application_attributes(
+  PlatformApplicationArn = "string",
+  Attributes = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{PlatformApplicationArn}{PlatformApplicationArn for SetPlatformApplicationAttributes action.}
+\item{PlatformApplicationArn}{[required] PlatformApplicationArn for SetPlatformApplicationAttributes action.}
 
-\item{Attributes}{A map of the platform application attributes. Attributes in this map include the following:
+\item{Attributes}{[required] A map of the platform application attributes. Attributes in this map include the following:
 \itemize{
 \item \code{PlatformCredential} -- The credential received from the notification service. For APNS/APNS\_SANDBOX, PlatformCredential is private key. For GCM, PlatformCredential is "API key". For ADM, PlatformCredential is "client secret".
 \item \code{PlatformPrincipal} -- The principal received from the notification service. For APNS/APNS\_SANDBOX, PlatformPrincipal is SSL certificate. For GCM, PlatformPrincipal is not applicable. For ADM, PlatformPrincipal is "client id".

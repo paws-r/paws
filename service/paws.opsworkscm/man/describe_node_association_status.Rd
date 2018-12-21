@@ -4,12 +4,15 @@
 \alias{describe_node_association_status}
 \title{Returns the current status of an existing association or disassociation request}
 \usage{
-describe_node_association_status(NodeAssociationStatusToken, ServerName)
+describe_node_association_status(
+  NodeAssociationStatusToken = "string",
+  ServerName = "string"
+)
 }
 \arguments{
-\item{NodeAssociationStatusToken}{The token returned in either the AssociateNodeResponse or the DisassociateNodeResponse.}
+\item{NodeAssociationStatusToken}{[required] The token returned in either the AssociateNodeResponse or the DisassociateNodeResponse.}
 
-\item{ServerName}{The name of the server from which to disassociate the node.}
+\item{ServerName}{[required] The name of the server from which to disassociate the node.}
 }
 \description{
 Returns the current status of an existing association or disassociation request.

@@ -4,11 +4,15 @@
 \alias{list_things_in_thing_group}
 \title{Lists the things in the specified group}
 \usage{
-list_things_in_thing_group(thingGroupName, recursive = NULL,
-  nextToken = NULL, maxResults = NULL)
+list_things_in_thing_group(
+  thingGroupName = "string",
+  recursive = TRUE|FALSE,
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
-\item{thingGroupName}{The thing group name.}
+\item{thingGroupName}{[required] The thing group name.}
 
 \item{recursive}{When true, list things in this thing group and in all child groups as well.}
 

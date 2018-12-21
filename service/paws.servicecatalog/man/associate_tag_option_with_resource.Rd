@@ -4,12 +4,15 @@
 \alias{associate_tag_option_with_resource}
 \title{Associate the specified TagOption with the specified portfolio or product}
 \usage{
-associate_tag_option_with_resource(ResourceId, TagOptionId)
+associate_tag_option_with_resource(
+  ResourceId = "string",
+  TagOptionId = "string"
+)
 }
 \arguments{
-\item{ResourceId}{The resource identifier.}
+\item{ResourceId}{[required] The resource identifier.}
 
-\item{TagOptionId}{The TagOption identifier.}
+\item{TagOptionId}{[required] The TagOption identifier.}
 }
 \description{
 Associate the specified TagOption with the specified portfolio or product.

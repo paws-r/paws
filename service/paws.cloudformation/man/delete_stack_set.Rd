@@ -4,10 +4,12 @@
 \alias{delete_stack_set}
 \title{Deletes a stack set}
 \usage{
-delete_stack_set(StackSetName)
+delete_stack_set(
+  StackSetName = "string"
+)
 }
 \arguments{
-\item{StackSetName}{The name or unique ID of the stack set that you're deleting. You can obtain this value by running ListStackSets.}
+\item{StackSetName}{[required] The name or unique ID of the stack set that you're deleting. You can obtain this value by running ListStackSets.}
 }
 \description{
 Deletes a stack set. Before you can delete a stack set, all of its member stack instances must be deleted. For more information about how to do this, see DeleteStackInstances.

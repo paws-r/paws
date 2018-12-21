@@ -4,13 +4,21 @@
 \alias{decrease_replication_factor}
 \title{Removes one or more nodes from a DAX cluster}
 \usage{
-decrease_replication_factor(ClusterName, NewReplicationFactor,
-  AvailabilityZones = NULL, NodeIdsToRemove = NULL)
+decrease_replication_factor(
+  ClusterName = "string",
+  NewReplicationFactor = 123,
+  AvailabilityZones = list(
+    "string"
+  ),
+  NodeIdsToRemove = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ClusterName}{The name of the DAX cluster from which you want to remove nodes.}
+\item{ClusterName}{[required] The name of the DAX cluster from which you want to remove nodes.}
 
-\item{NewReplicationFactor}{The new number of nodes for the DAX cluster.}
+\item{NewReplicationFactor}{[required] The new number of nodes for the DAX cluster.}
 
 \item{AvailabilityZones}{The Availability Zone(s) from which to remove nodes.}
 

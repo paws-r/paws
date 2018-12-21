@@ -4,15 +4,109 @@
 \alias{put_intent}
 \title{Creates an intent or replaces an existing intent}
 \usage{
-put_intent(name, description = NULL, slots = NULL,
-  sampleUtterances = NULL, confirmationPrompt = NULL,
-  rejectionStatement = NULL, followUpPrompt = NULL,
-  conclusionStatement = NULL, dialogCodeHook = NULL,
-  fulfillmentActivity = NULL, parentIntentSignature = NULL,
-  checksum = NULL, createVersion = NULL)
+put_intent(
+  name = "string",
+  description = "string",
+  slots = list(
+    list(
+      name = "string",
+      description = "string",
+      slotConstraint = "Required"|"Optional",
+      slotType = "string",
+      slotTypeVersion = "string",
+      valueElicitationPrompt = list(
+        messages = list(
+          list(
+            contentType = "PlainText"|"SSML"|"CustomPayload",
+            content = "string",
+            groupNumber = 123
+          )
+        ),
+        maxAttempts = 123,
+        responseCard = "string"
+      ),
+      priority = 123,
+      sampleUtterances = list(
+        "string"
+      ),
+      responseCard = "string"
+    )
+  ),
+  sampleUtterances = list(
+    "string"
+  ),
+  confirmationPrompt = list(
+    messages = list(
+      list(
+        contentType = "PlainText"|"SSML"|"CustomPayload",
+        content = "string",
+        groupNumber = 123
+      )
+    ),
+    maxAttempts = 123,
+    responseCard = "string"
+  ),
+  rejectionStatement = list(
+    messages = list(
+      list(
+        contentType = "PlainText"|"SSML"|"CustomPayload",
+        content = "string",
+        groupNumber = 123
+      )
+    ),
+    responseCard = "string"
+  ),
+  followUpPrompt = list(
+    prompt = list(
+      messages = list(
+        list(
+          contentType = "PlainText"|"SSML"|"CustomPayload",
+          content = "string",
+          groupNumber = 123
+        )
+      ),
+      maxAttempts = 123,
+      responseCard = "string"
+    ),
+    rejectionStatement = list(
+      messages = list(
+        list(
+          contentType = "PlainText"|"SSML"|"CustomPayload",
+          content = "string",
+          groupNumber = 123
+        )
+      ),
+      responseCard = "string"
+    )
+  ),
+  conclusionStatement = list(
+    messages = list(
+      list(
+        contentType = "PlainText"|"SSML"|"CustomPayload",
+        content = "string",
+        groupNumber = 123
+      )
+    ),
+    responseCard = "string"
+  ),
+  dialogCodeHook = list(
+    uri = "string",
+    messageVersion = "string"
+  ),
+  fulfillmentActivity = list(
+    type = "ReturnIntent"|"CodeHook",
+    codeHook = list(
+      uri = "string",
+      messageVersion = "string"
+    )
+  ),
+  parentIntentSignature = "string",
+  checksum = "string",
+  createVersion = TRUE|FALSE
+)
 }
 \arguments{
-\item{name}{The name of the intent. The name is \emph{not} case sensitive.
+\item{name}{[required] The name of the intent. The name is \emph{not} case sensitive.
 
 The name can't match a built-in intent name, or a built-in intent name with "AMAZON." removed. For example, because there is a built-in intent called \code{AMAZON.HelpIntent}, you can't create a custom intent called \code{HelpIntent}.
 

@@ -4,12 +4,26 @@
 \alias{batch_put_attributes}
 \title{The \code{BatchPutAttributes} operation creates or replaces attributes within one or more items}
 \usage{
-batch_put_attributes(DomainName, Items)
+batch_put_attributes(
+  DomainName = "string",
+  Items = list(
+    list(
+      Name = "string",
+      Attributes = list(
+        list(
+          Name = "string",
+          Value = "string",
+          Replace = TRUE|FALSE
+        )
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{DomainName}{The name of the domain in which the attributes are being stored.}
+\item{DomainName}{[required] The name of the domain in which the attributes are being stored.}
 
-\item{Items}{A list of items on which to perform the operation.}
+\item{Items}{[required] A list of items on which to perform the operation.}
 }
 \description{
 The \code{BatchPutAttributes} operation creates or replaces attributes within one or more items. By using this operation, the client can perform multiple PutAttribute operation with a single call. This helps yield savings in round trips and latencies, enabling Amazon SimpleDB to optimize requests and generally produce better throughput.

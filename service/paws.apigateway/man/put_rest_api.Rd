@@ -4,19 +4,26 @@
 \alias{put_rest_api}
 \title{A feature of the API Gateway control service for updating an existing API with an input of external API definitions}
 \usage{
-put_rest_api(restApiId, body, mode = NULL, failOnWarnings = NULL,
-  parameters = NULL)
+put_rest_api(
+  restApiId = "string",
+  mode = "merge"|"overwrite",
+  failOnWarnings = TRUE|FALSE,
+  parameters = list(
+    "string"
+  ),
+  body = raw
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
-
-\item{body}{[Required] The PUT request body containing external API definitions. Currently, only Swagger definition JSON files are supported. The maximum size of the API definition file is 2MB.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
 \item{mode}{The \code{mode} query parameter to specify the update mode. Valid values are "merge" and "overwrite". By default, the update mode is "merge".}
 
 \item{failOnWarnings}{A query parameter to indicate whether to rollback the API update (\code{true}) or not (\code{false}) when a warning is encountered. The default value is \code{false}.}
 
 \item{parameters}{Custom header parameters as part of the request. For example, to exclude DocumentationParts from an imported API, set \code{ignore=documentation} as a \code{parameters} value, as in the AWS CLI command of \code{aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'}.}
+
+\item{body}{[required] [Required] The PUT request body containing external API definitions. Currently, only OpenAPI definition JSON/YAML files are supported. The maximum size of the API definition file is 2MB.}
 }
 \description{
 A feature of the API Gateway control service for updating an existing API with an input of external API definitions. The update can take the form of merging the supplied definition into the existing API or overwriting the existing API.

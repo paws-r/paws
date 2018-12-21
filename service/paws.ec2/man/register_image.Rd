@@ -4,17 +4,40 @@
 \alias{register_image}
 \title{Registers an AMI}
 \usage{
-register_image(Name, ImageLocation = NULL, Architecture = NULL,
-  BlockDeviceMappings = NULL, Description = NULL, DryRun = NULL,
-  EnaSupport = NULL, KernelId = NULL, BillingProducts = NULL,
-  RamdiskId = NULL, RootDeviceName = NULL, SriovNetSupport = NULL,
-  VirtualizationType = NULL)
+register_image(
+  ImageLocation = "string",
+  Architecture = "i386"|"x86_64"|"arm64",
+  BlockDeviceMappings = list(
+    list(
+      DeviceName = "string",
+      VirtualName = "string",
+      Ebs = list(
+        DeleteOnTermination = TRUE|FALSE,
+        Iops = 123,
+        SnapshotId = "string",
+        VolumeSize = 123,
+        VolumeType = "standard"|"io1"|"gp2"|"sc1"|"st1",
+        Encrypted = TRUE|FALSE,
+        KmsKeyId = "string"
+      ),
+      NoDevice = "string"
+    )
+  ),
+  Description = "string",
+  DryRun = TRUE|FALSE,
+  EnaSupport = TRUE|FALSE,
+  KernelId = "string",
+  Name = "string",
+  BillingProducts = list(
+    "string"
+  ),
+  RamdiskId = "string",
+  RootDeviceName = "string",
+  SriovNetSupport = "string",
+  VirtualizationType = "string"
+)
 }
 \arguments{
-\item{Name}{A name for your AMI.
-
-Constraints: 3-128 alphanumeric characters, parentheses (()), square brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-), single quotes ('), at-signs (@), or underscores(\_)}
-
 \item{ImageLocation}{The full path to your AMI manifest in Amazon S3 storage.}
 
 \item{Architecture}{The architecture of the AMI.
@@ -32,6 +55,10 @@ Default: For Amazon EBS-backed AMIs, \code{i386}. For instance store-backed AMIs
 This option is supported only for HVM AMIs. Specifying this option with a PV AMI can make instances launched from the AMI unreachable.}
 
 \item{KernelId}{The ID of the kernel.}
+
+\item{Name}{[required] A name for your AMI.
+
+Constraints: 3-128 alphanumeric characters, parentheses (()), square brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-), single quotes ('), at-signs (@), or underscores(\_)}
 
 \item{BillingProducts}{The billing product codes. Your account must be authorized to specify billing product codes. Otherwise, you can use the AWS Marketplace to bill for the use of an AMI.}
 

@@ -4,10 +4,15 @@
 \alias{phone_number_validate}
 \title{Returns information about the specified phone number}
 \usage{
-phone_number_validate(NumberValidateRequest)
+phone_number_validate(
+  NumberValidateRequest = list(
+    IsoCountryCode = "string",
+    PhoneNumber = "string"
+  )
+)
 }
 \arguments{
-\item{NumberValidateRequest}{}
+\item{NumberValidateRequest}{[required]}
 }
 \description{
 Returns information about the specified phone number.

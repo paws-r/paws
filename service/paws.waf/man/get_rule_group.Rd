@@ -4,10 +4,12 @@
 \alias{get_rule_group}
 \title{Returns the RuleGroup that is specified by the \code{RuleGroupId} that you included in the \code{GetRuleGroup} request}
 \usage{
-get_rule_group(RuleGroupId)
+get_rule_group(
+  RuleGroupId = "string"
+)
 }
 \arguments{
-\item{RuleGroupId}{The \code{RuleGroupId} of the RuleGroup that you want to get. \code{RuleGroupId} is returned by CreateRuleGroup and by ListRuleGroups.}
+\item{RuleGroupId}{[required] The \code{RuleGroupId} of the RuleGroup that you want to get. \code{RuleGroupId} is returned by CreateRuleGroup and by ListRuleGroups.}
 }
 \description{
 Returns the RuleGroup that is specified by the \code{RuleGroupId} that you included in the \code{GetRuleGroup} request.

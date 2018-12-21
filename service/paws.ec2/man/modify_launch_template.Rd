@@ -4,9 +4,13 @@
 \alias{modify_launch_template}
 \title{Modifies a launch template}
 \usage{
-modify_launch_template(DryRun = NULL, ClientToken = NULL,
-  LaunchTemplateId = NULL, LaunchTemplateName = NULL,
-  DefaultVersion = NULL)
+modify_launch_template(
+  DryRun = TRUE|FALSE,
+  ClientToken = "string",
+  LaunchTemplateId = "string",
+  LaunchTemplateName = "string",
+  DefaultVersion = "string"
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}

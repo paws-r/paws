@@ -4,12 +4,22 @@
 \alias{describe_services}
 \title{Describes the specified services running in your cluster}
 \usage{
-describe_services(services, cluster = NULL)
+describe_services(
+  cluster = "string",
+  services = list(
+    "string"
+  ),
+  include = list(
+    "TAGS"
+  )
+)
 }
 \arguments{
-\item{services}{A list of services to describe. You may specify up to 10 services to describe in a single operation.}
-
 \item{cluster}{The short name or full Amazon Resource Name (ARN)the cluster that hosts the service to describe. If you do not specify a cluster, the default cluster is assumed.}
+
+\item{services}{[required] A list of services to describe. You may specify up to 10 services to describe in a single operation.}
+
+\item{include}{Specifies whether you want to see the resource tags for the service. If \code{TAGS} is specified, the tags are included in the response. If this field is omitted, tags are not included in the response.}
 }
 \description{
 Describes the specified services running in your cluster.

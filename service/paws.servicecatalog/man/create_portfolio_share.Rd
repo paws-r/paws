@@ -2,24 +2,34 @@
 % Please edit documentation in R/paws.servicecatalog_operations.R
 \name{create_portfolio_share}
 \alias{create_portfolio_share}
-\title{Shares the specified portfolio with the specified account}
+\title{Shares the specified portfolio with the specified account or organization node}
 \usage{
-create_portfolio_share(PortfolioId, AccountId, AcceptLanguage = NULL)
+create_portfolio_share(
+  AcceptLanguage = "string",
+  PortfolioId = "string",
+  AccountId = "string",
+  OrganizationNode = list(
+    Type = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
+    Value = "string"
+  )
+)
 }
 \arguments{
-\item{PortfolioId}{The portfolio identifier.}
-
-\item{AccountId}{The AWS account ID.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{PortfolioId}{[required] The portfolio identifier.}
+
+\item{AccountId}{The AWS account ID. For example, \code{123456789012}.}
+
+\item{OrganizationNode}{The organization node to whom you are going to share. If \code{OrganizationNode} is passed in, \code{PortfolioShare} will be created for the node and its children (when applies), and a \code{PortfolioShareToken} will be returned in the output in order for the administrator to monitor the status of the \code{PortfolioShare} creation process.}
 }
 \description{
-Shares the specified portfolio with the specified account.
+Shares the specified portfolio with the specified account or organization node. Shares to an organization node can only be created by the master account of an Organization. AWSOrganizationsAccess must be enabled in order to create a portfolio share to an organization node.
 }
 \examples{
 

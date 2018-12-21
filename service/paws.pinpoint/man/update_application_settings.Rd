@@ -4,12 +4,32 @@
 \alias{update_application_settings}
 \title{Used to update the settings for an app}
 \usage{
-update_application_settings(ApplicationId, WriteApplicationSettingsRequest)
+update_application_settings(
+  ApplicationId = "string",
+  WriteApplicationSettingsRequest = list(
+    CampaignHook = list(
+      LambdaFunctionName = "string",
+      Mode = "DELIVERY"|"FILTER",
+      WebUrl = "string"
+    ),
+    CloudWatchMetricsEnabled = TRUE|FALSE,
+    Limits = list(
+      Daily = 123,
+      MaximumDuration = 123,
+      MessagesPerSecond = 123,
+      Total = 123
+    ),
+    QuietTime = list(
+      End = "string",
+      Start = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 
-\item{WriteApplicationSettingsRequest}{}
+\item{WriteApplicationSettingsRequest}{[required]}
 }
 \description{
 Used to update the settings for an app.

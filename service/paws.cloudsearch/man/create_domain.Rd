@@ -4,10 +4,12 @@
 \alias{create_domain}
 \title{Creates a new search domain}
 \usage{
-create_domain(DomainName)
+create_domain(
+  DomainName = "string"
+)
 }
 \arguments{
-\item{DomainName}{A name for the domain you are creating. Allowed characters are a-z (lower-case letters), 0-9, and hyphen (-). Domain names must start with a letter or number and be at least 3 and no more than 28 characters long.}
+\item{DomainName}{[required] A name for the domain you are creating. Allowed characters are a-z (lower-case letters), 0-9, and hyphen (-). Domain names must start with a letter or number and be at least 3 and no more than 28 characters long.}
 }
 \description{
 Creates a new search domain. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html}{Creating a Search Domain} in the \emph{Amazon CloudSearch Developer Guide}.

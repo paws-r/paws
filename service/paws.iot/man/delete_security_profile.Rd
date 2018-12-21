@@ -4,10 +4,13 @@
 \alias{delete_security_profile}
 \title{Deletes a Device Defender security profile}
 \usage{
-delete_security_profile(securityProfileName, expectedVersion = NULL)
+delete_security_profile(
+  securityProfileName = "string",
+  expectedVersion = 123
+)
 }
 \arguments{
-\item{securityProfileName}{The name of the security profile to be deleted.}
+\item{securityProfileName}{[required] The name of the security profile to be deleted.}
 
 \item{expectedVersion}{The expected version of the security profile. A new version is generated whenever the security profile is updated. If you specify a value that is different than the actual version, a \code{VersionConflictException} is thrown.}
 }

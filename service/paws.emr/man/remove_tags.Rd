@@ -4,12 +4,17 @@
 \alias{remove_tags}
 \title{Removes tags from an Amazon EMR resource}
 \usage{
-remove_tags(ResourceId, TagKeys)
+remove_tags(
+  ResourceId = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ResourceId}{The Amazon EMR resource identifier from which tags will be removed. This value must be a cluster identifier.}
+\item{ResourceId}{[required] The Amazon EMR resource identifier from which tags will be removed. This value must be a cluster identifier.}
 
-\item{TagKeys}{A list of tag keys to remove from a resource.}
+\item{TagKeys}{[required] A list of tag keys to remove from a resource.}
 }
 \description{
 Removes tags from an Amazon EMR resource. Tags make it easier to associate clusters in various ways, such as grouping clusters to track your Amazon EMR resource allocation costs. For more information, see \href{http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html}{Tag Clusters}.

@@ -4,10 +4,12 @@
 \alias{disassociate_kms_key}
 \title{Disassociates the associated AWS Key Management Service (AWS KMS) customer master key (CMK) from the specified log group}
 \usage{
-disassociate_kms_key(logGroupName)
+disassociate_kms_key(
+  logGroupName = "string"
+)
 }
 \arguments{
-\item{logGroupName}{The name of the log group.}
+\item{logGroupName}{[required] The name of the log group.}
 }
 \description{
 Disassociates the associated AWS Key Management Service (AWS KMS) customer master key (CMK) from the specified log group.

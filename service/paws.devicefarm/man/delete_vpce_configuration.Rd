@@ -4,10 +4,12 @@
 \alias{delete_vpce_configuration}
 \title{Deletes a configuration for your Amazon Virtual Private Cloud (VPC) endpoint}
 \usage{
-delete_vpce_configuration(arn)
+delete_vpce_configuration(
+  arn = "string"
+)
 }
 \arguments{
-\item{arn}{The Amazon Resource Name (ARN) of the VPC endpoint configuration you want to delete.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of the VPC endpoint configuration you want to delete.}
 }
 \description{
 Deletes a configuration for your Amazon Virtual Private Cloud (VPC) endpoint.

@@ -4,10 +4,12 @@
 \alias{claim_devices_by_claim_code}
 \title{Adds device(s) to your account (i}
 \usage{
-claim_devices_by_claim_code(ClaimCode)
+claim_devices_by_claim_code(
+  ClaimCode = "string"
+)
 }
 \arguments{
-\item{ClaimCode}{The claim code, starting with "C-", as provided by the device manufacturer.}
+\item{ClaimCode}{[required] The claim code, starting with "C-", as provided by the device manufacturer.}
 }
 \description{
 Adds device(s) to your account (i.e., claim one or more devices) if and only if you received a claim code with the device(s).

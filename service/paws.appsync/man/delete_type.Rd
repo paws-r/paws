@@ -4,12 +4,15 @@
 \alias{delete_type}
 \title{Deletes a \code{Type} object}
 \usage{
-delete_type(apiId, typeName)
+delete_type(
+  apiId = "string",
+  typeName = "string"
+)
 }
 \arguments{
-\item{apiId}{The API ID.}
+\item{apiId}{[required] The API ID.}
 
-\item{typeName}{The type name.}
+\item{typeName}{[required] The type name.}
 }
 \description{
 Deletes a \code{Type} object.

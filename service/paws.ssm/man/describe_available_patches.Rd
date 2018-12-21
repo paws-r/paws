@@ -4,8 +4,18 @@
 \alias{describe_available_patches}
 \title{Lists all patches that could possibly be included in a patch baseline}
 \usage{
-describe_available_patches(Filters = NULL, MaxResults = NULL,
-  NextToken = NULL)
+describe_available_patches(
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{Filters}{Filters used to scope down the returned patches.}

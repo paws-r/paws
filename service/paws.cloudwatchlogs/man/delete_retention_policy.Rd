@@ -4,10 +4,12 @@
 \alias{delete_retention_policy}
 \title{Deletes the specified retention policy}
 \usage{
-delete_retention_policy(logGroupName)
+delete_retention_policy(
+  logGroupName = "string"
+)
 }
 \arguments{
-\item{logGroupName}{The name of the log group.}
+\item{logGroupName}{[required] The name of the log group.}
 }
 \description{
 Deletes the specified retention policy.

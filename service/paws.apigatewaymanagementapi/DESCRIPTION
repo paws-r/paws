@@ -1,0 +1,72 @@
+Package: paws.apigatewaymanagementapi
+Title: AmazonApiGatewayManagementApi
+Version: 0.0.1
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: The Amazon API Gateway Management API allows you to directly
+    manage runtime aspects of your deployed APIs. To use it, you must
+    explicitly set the SDK\'s endpoint to point to the endpoint of your
+    deployed API. The endpoint will be of the form
+    https://{api-id}.execute-api.{region}.amazonaws.com/{stage}, or will
+    be the endpoint corresponding to your API\'s custom domain and base
+    path, if applicable.
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.5.1)
+Imports: 
+    base64enc,
+    digest,
+    httr,
+    ini,
+    jsonlite,
+    xml2
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
+RoxygenNote: 6.0.1
+Collate: 
+    'struct.R'
+    'handlers.R'
+    'url.R'
+    'net.R'
+    'credential_providers.R'
+    'credentials.R'
+    'client.R'
+    'config.R'
+    'convert.R'
+    'dateutil.R'
+    'error.R'
+    'handlers_core.R'
+    'handlers_ec2query.R'
+    'handlers_jsonrpc.R'
+    'handlers_query.R'
+    'handlers_rest.R'
+    'handlers_restjson.R'
+    'handlers_restxml.R'
+    'idempotency.R'
+    'jsonutil.R'
+    'paws.apigatewaymanagementapi_interfaces.R'
+    'paws.apigatewaymanagementapi_operations.R'
+    'paws.apigatewaymanagementapi_package.R'
+    'signer_v4.R'
+    'paws.apigatewaymanagementapi_service.R'
+    'populate.R'
+    'populateutil.R'
+    'tags.R'
+    'queryutil.R'
+    'request.R'
+    'signer_s3.R'
+    'signer_s3v4.R'
+    'signer_v2.R'
+    'time.R'
+    'util.R'
+    'xmlutil.R'

@@ -4,12 +4,17 @@
 \alias{stop_monitoring_members}
 \title{Disables GuardDuty from monitoring findings of the member accounts specified by the account IDs}
 \usage{
-stop_monitoring_members(DetectorId, AccountIds)
+stop_monitoring_members(
+  AccountIds = list(
+    "string"
+  ),
+  DetectorId = "string"
+)
 }
 \arguments{
-\item{DetectorId}{The unique ID of the detector of the GuardDuty account that you want to stop from monitor members' findings.}
+\item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts whose findings you want the master account to stop monitoring.}
 
-\item{AccountIds}{A list of account IDs of the GuardDuty member accounts whose findings you want the master account to stop monitoring.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account that you want to stop from monitor members' findings.}
 }
 \description{
 Disables GuardDuty from monitoring findings of the member accounts specified by the account IDs. After running this command, a master GuardDuty account can run StartMonitoringMembers to re-enable GuardDuty to monitor these members’ findings.

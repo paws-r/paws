@@ -4,13 +4,25 @@
 \alias{update_smb_file_share}
 \title{Updates a Server Message Block (SMB) file share}
 \usage{
-update_smb_file_share(FileShareARN, KMSEncrypted = NULL, KMSKey = NULL,
-  DefaultStorageClass = NULL, ObjectACL = NULL, ReadOnly = NULL,
-  GuessMIMETypeEnabled = NULL, RequesterPays = NULL, ValidUserList = NULL,
-  InvalidUserList = NULL)
+update_smb_file_share(
+  FileShareARN = "string",
+  KMSEncrypted = TRUE|FALSE,
+  KMSKey = "string",
+  DefaultStorageClass = "string",
+  ObjectACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"|"aws-exec-read",
+  ReadOnly = TRUE|FALSE,
+  GuessMIMETypeEnabled = TRUE|FALSE,
+  RequesterPays = TRUE|FALSE,
+  ValidUserList = list(
+    "string"
+  ),
+  InvalidUserList = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{FileShareARN}{The Amazon Resource Name (ARN) of the SMB file share that you want to update.}
+\item{FileShareARN}{[required] The Amazon Resource Name (ARN) of the SMB file share that you want to update.}
 
 \item{KMSEncrypted}{True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.}
 

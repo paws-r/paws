@@ -4,14 +4,19 @@
 \alias{attach_volume}
 \title{Attaches an EBS volume to a running or stopped instance and exposes it to the instance with the specified device name}
 \usage{
-attach_volume(Device, InstanceId, VolumeId, DryRun = NULL)
+attach_volume(
+  Device = "string",
+  InstanceId = "string",
+  VolumeId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{Device}{The device name (for example, \code{/dev/sdh} or \code{xvdh}).}
+\item{Device}{[required] The device name (for example, \code{/dev/sdh} or \code{xvdh}).}
 
-\item{InstanceId}{The ID of the instance.}
+\item{InstanceId}{[required] The ID of the instance.}
 
-\item{VolumeId}{The ID of the EBS volume. The volume and instance must be within the same Availability Zone.}
+\item{VolumeId}{[required] The ID of the EBS volume. The volume and instance must be within the same Availability Zone.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

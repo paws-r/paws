@@ -4,13 +4,20 @@
 \alias{list_object_children}
 \title{Returns a paginated list of child objects that are associated with a given object}
 \usage{
-list_object_children(DirectoryArn, ObjectReference, NextToken = NULL,
-  MaxResults = NULL, ConsistencyLevel = NULL)
+list_object_children(
+  DirectoryArn = "string",
+  ObjectReference = list(
+    Selector = "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123,
+  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
+)
 }
 \arguments{
-\item{DirectoryArn}{The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.}
 
-\item{ObjectReference}{The reference that identifies the object for which child objects are being listed.}
+\item{ObjectReference}{[required] The reference that identifies the object for which child objects are being listed.}
 
 \item{NextToken}{The pagination token.}
 

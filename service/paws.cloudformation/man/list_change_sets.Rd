@@ -4,10 +4,13 @@
 \alias{list_change_sets}
 \title{Returns the ID and status of each active change set for a stack}
 \usage{
-list_change_sets(StackName, NextToken = NULL)
+list_change_sets(
+  StackName = "string",
+  NextToken = "string"
+)
 }
 \arguments{
-\item{StackName}{The name or the Amazon Resource Name (ARN) of the stack for which you want to list change sets.}
+\item{StackName}{[required] The name or the Amazon Resource Name (ARN) of the stack for which you want to list change sets.}
 
 \item{NextToken}{A string (provided by the ListChangeSets response output) that identifies the next page of change sets that you want to retrieve.}
 }

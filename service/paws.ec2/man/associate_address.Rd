@@ -4,9 +4,15 @@
 \alias{associate_address}
 \title{Associates an Elastic IP address with an instance or a network interface}
 \usage{
-associate_address(AllocationId = NULL, InstanceId = NULL, PublicIp = NULL,
-  AllowReassociation = NULL, DryRun = NULL, NetworkInterfaceId = NULL,
-  PrivateIpAddress = NULL)
+associate_address(
+  AllocationId = "string",
+  InstanceId = "string",
+  PublicIp = "string",
+  AllowReassociation = TRUE|FALSE,
+  DryRun = TRUE|FALSE,
+  NetworkInterfaceId = "string",
+  PrivateIpAddress = "string"
+)
 }
 \arguments{
 \item{AllocationId}{[EC2-VPC] The allocation ID. This is required for EC2-VPC.}

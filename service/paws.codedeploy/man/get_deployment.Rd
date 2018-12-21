@@ -4,10 +4,12 @@
 \alias{get_deployment}
 \title{Gets information about a deployment}
 \usage{
-get_deployment(deploymentId)
+get_deployment(
+  deploymentId = "string"
+)
 }
 \arguments{
-\item{deploymentId}{A deployment ID associated with the applicable IAM user or AWS account.}
+\item{deploymentId}{[required] The unique ID of a deployment associated with the applicable IAM user or AWS account.}
 }
 \description{
 Gets information about a deployment.

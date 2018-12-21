@@ -4,10 +4,12 @@
 \alias{get_web_acl}
 \title{Returns the WebACL that is specified by \code{WebACLId}}
 \usage{
-get_web_acl(WebACLId)
+get_web_acl(
+  WebACLId = "string"
+)
 }
 \arguments{
-\item{WebACLId}{The \code{WebACLId} of the WebACL that you want to get. \code{WebACLId} is returned by CreateWebACL and by ListWebACLs.}
+\item{WebACLId}{[required] The \code{WebACLId} of the WebACL that you want to get. \code{WebACLId} is returned by CreateWebACL and by ListWebACLs.}
 }
 \description{
 Returns the WebACL that is specified by \code{WebACLId}.

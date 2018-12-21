@@ -4,10 +4,12 @@
 \alias{get_device_instance}
 \title{Returns information about a device instance belonging to a private device fleet}
 \usage{
-get_device_instance(arn)
+get_device_instance(
+  arn = "string"
+)
 }
 \arguments{
-\item{arn}{The Amazon Resource Name (ARN) of the instance you're requesting information about.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of the instance you're requesting information about.}
 }
 \description{
 Returns information about a device instance belonging to a private device fleet.

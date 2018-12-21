@@ -4,13 +4,22 @@
 \alias{validate_configuration_settings}
 \title{Takes a set of configuration settings and either a configuration template or environment, and determines whether those values are valid}
 \usage{
-validate_configuration_settings(ApplicationName, OptionSettings,
-  TemplateName = NULL, EnvironmentName = NULL)
+validate_configuration_settings(
+  ApplicationName = "string",
+  TemplateName = "string",
+  EnvironmentName = "string",
+  OptionSettings = list(
+    list(
+      ResourceName = "string",
+      Namespace = "string",
+      OptionName = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ApplicationName}{The name of the application that the configuration template or environment belongs to.}
-
-\item{OptionSettings}{A list of the options and desired values to evaluate.}
+\item{ApplicationName}{[required] The name of the application that the configuration template or environment belongs to.}
 
 \item{TemplateName}{The name of the configuration template to validate the settings against.
 
@@ -19,6 +28,8 @@ Condition: You cannot specify both this and an environment name.}
 \item{EnvironmentName}{The name of the environment to validate the settings against.
 
 Condition: You cannot specify both this and a configuration template name.}
+
+\item{OptionSettings}{[required] A list of the options and desired values to evaluate.}
 }
 \description{
 Takes a set of configuration settings and either a configuration template or environment, and determines whether those values are valid.

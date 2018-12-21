@@ -4,17 +4,22 @@
 \alias{update_stream}
 \title{Updates stream metadata, such as the device name and media type}
 \usage{
-update_stream(CurrentVersion, StreamName = NULL, StreamARN = NULL,
-  DeviceName = NULL, MediaType = NULL)
+update_stream(
+  StreamName = "string",
+  StreamARN = "string",
+  CurrentVersion = "string",
+  DeviceName = "string",
+  MediaType = "string"
+)
 }
 \arguments{
-\item{CurrentVersion}{The version of the stream whose metadata you want to update.}
-
 \item{StreamName}{The name of the stream whose metadata you want to update.
 
 The stream name is an identifier for the stream, and must be unique for each account and region.}
 
 \item{StreamARN}{The ARN of the stream whose metadata you want to update.}
+
+\item{CurrentVersion}{[required] The version of the stream whose metadata you want to update.}
 
 \item{DeviceName}{The name of the device that is writing to the stream.
 

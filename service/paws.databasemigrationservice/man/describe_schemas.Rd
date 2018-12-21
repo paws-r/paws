@@ -4,10 +4,14 @@
 \alias{describe_schemas}
 \title{Returns information about the schema for the specified endpoint}
 \usage{
-describe_schemas(EndpointArn, MaxRecords = NULL, Marker = NULL)
+describe_schemas(
+  EndpointArn = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
-\item{EndpointArn}{The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.}
+\item{EndpointArn}{[required] The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more records exist than the specified \code{MaxRecords} value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.
 

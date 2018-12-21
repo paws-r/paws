@@ -4,11 +4,28 @@
 \alias{create_deployment_config}
 \title{Creates a deployment configuration}
 \usage{
-create_deployment_config(deploymentConfigName, minimumHealthyHosts = NULL,
-  trafficRoutingConfig = NULL, computePlatform = NULL)
+create_deployment_config(
+  deploymentConfigName = "string",
+  minimumHealthyHosts = list(
+    value = 123,
+    type = "HOST_COUNT"|"FLEET_PERCENT"
+  ),
+  trafficRoutingConfig = list(
+    type = "TimeBasedCanary"|"TimeBasedLinear"|"AllAtOnce",
+    timeBasedCanary = list(
+      canaryPercentage = 123,
+      canaryInterval = 123
+    ),
+    timeBasedLinear = list(
+      linearPercentage = 123,
+      linearInterval = 123
+    )
+  ),
+  computePlatform = "Server"|"Lambda"|"ECS"
+)
 }
 \arguments{
-\item{deploymentConfigName}{The name of the deployment configuration to create.}
+\item{deploymentConfigName}{[required] The name of the deployment configuration to create.}
 
 \item{minimumHealthyHosts}{The minimum number of healthy instances that should be available at any time during the deployment. There are two parameters expected in the input: type and value.
 

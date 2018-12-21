@@ -4,16 +4,20 @@
 \alias{resend_validation_email}
 \title{Resends the email that requests domain ownership validation}
 \usage{
-resend_validation_email(CertificateArn, Domain, ValidationDomain)
+resend_validation_email(
+  CertificateArn = "string",
+  Domain = "string",
+  ValidationDomain = "string"
+)
 }
 \arguments{
-\item{CertificateArn}{String that contains the ARN of the requested certificate. The certificate ARN is generated and returned by the RequestCertificate action as soon as the request is made. By default, using this parameter causes email to be sent to all top-level domains you specified in the certificate request. The ARN must be of the form:
+\item{CertificateArn}{[required] String that contains the ARN of the requested certificate. The certificate ARN is generated and returned by the RequestCertificate action as soon as the request is made. By default, using this parameter causes email to be sent to all top-level domains you specified in the certificate request. The ARN must be of the form:
 
 \code{arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012}}
 
-\item{Domain}{The fully qualified domain name (FQDN) of the certificate that needs to be validated.}
+\item{Domain}{[required] The fully qualified domain name (FQDN) of the certificate that needs to be validated.}
 
-\item{ValidationDomain}{The base validation domain that will act as the suffix of the email addresses that are used to send the emails. This must be the same as the \code{Domain} value or a superdomain of the \code{Domain} value. For example, if you requested a certificate for \code{site.subdomain.example.com} and specify a \strong{ValidationDomain} of \code{subdomain.example.com}, ACM sends email to the domain registrant, technical contact, and administrative contact in WHOIS and the following five addresses:
+\item{ValidationDomain}{[required] The base validation domain that will act as the suffix of the email addresses that are used to send the emails. This must be the same as the \code{Domain} value or a superdomain of the \code{Domain} value. For example, if you requested a certificate for \code{site.subdomain.example.com} and specify a \strong{ValidationDomain} of \code{subdomain.example.com}, ACM sends email to the domain registrant, technical contact, and administrative contact in WHOIS and the following five addresses:
 \itemize{
 \item admin@subdomain.example.com
 \item administrator@subdomain.example.com

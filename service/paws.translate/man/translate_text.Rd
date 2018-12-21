@@ -4,28 +4,52 @@
 \alias{translate_text}
 \title{Translates input text from the source language to the target language}
 \usage{
-translate_text(Text, SourceLanguageCode, TargetLanguageCode)
+translate_text(
+  Text = "string",
+  TerminologyNames = list(
+    "string"
+  ),
+  SourceLanguageCode = "string",
+  TargetLanguageCode = "string"
+)
 }
 \arguments{
-\item{Text}{The text to translate.}
+\item{Text}{[required] The text to translate. The text string can be a maximum of 5,000 bytes long. Depending on your character set, this may be fewer than 5,000 characters.}
 
-\item{SourceLanguageCode}{One of the supported language codes for the source text. If the \code{TargetLanguageCode} is not "en", the \code{SourceLanguageCode} must be "en".
+\item{TerminologyNames}{The TerminologyNames list that is taken as input to the TranslateText request. This has a minimum length of 0 and a maximum length of 1.}
+
+\item{SourceLanguageCode}{[required] The language code for the language of the source text. The language must be a language supported by Amazon Translate.
 
 To have Amazon Translate determine the source language of your text, you can specify \code{auto} in the \code{SourceLanguageCode} field. If you specify \code{auto}, Amazon Translate will call Amazon Comprehend to determine the source language.}
 
-\item{TargetLanguageCode}{One of the supported language codes for the target text. If the \code{SourceLanguageCode} is not "en", the \code{TargetLanguageCode} must be "en".}
+\item{TargetLanguageCode}{[required] The language code requested for the language of the target text. The language must be a language supported by Amazon Translate.}
 }
 \description{
-Translates input text from the source language to the target language. You can translate between English (en) and one of the following languages, or between one of the following languages and English.
+Translates input text from the source language to the target language. It is not necessary to use English (en) as either the source or the target language but not all language combinations are supported by Amazon Translate. For more information, see \href{http://docs.aws.amazon.com/translate/latest/dg/pairs.html}{Supported Language Pairs}.
 }
 \details{
 \itemize{
 \item Arabic (ar)
 \item Chinese (Simplified) (zh)
+\item Chinese (Traditional) (zh-TW)
+\item Czech (cs)
+\item Danish (da)
+\item Dutch (nl)
+\item English (en)
+\item Finnish (fi)
 \item French (fr)
 \item German (de)
+\item Hebrew (he)
+\item Indonesian (id)
+\item Italian (it)
+\item Japanese (ja)
+\item Korean (ko)
+\item Polish (pl)
 \item Portuguese (pt)
+\item Russian (ru)
 \item Spanish (es)
+\item Swedish (sv)
+\item Turkish (tr)
 }
 
 To have Amazon Translate determine the source language of your text, you can specify \code{auto} in the \code{SourceLanguageCode} field. If you specify \code{auto}, Amazon Translate will call Amazon Comprehend to determine the source language.

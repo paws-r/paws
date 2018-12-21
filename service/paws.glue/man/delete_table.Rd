@@ -4,14 +4,18 @@
 \alias{delete_table}
 \title{Removes a table definition from the Data Catalog}
 \usage{
-delete_table(DatabaseName, Name, CatalogId = NULL)
+delete_table(
+  CatalogId = "string",
+  DatabaseName = "string",
+  Name = "string"
+)
 }
 \arguments{
-\item{DatabaseName}{The name of the catalog database in which the table resides. For Hive compatibility, this name is entirely lowercase.}
-
-\item{Name}{The name of the table to be deleted. For Hive compatibility, this name is entirely lowercase.}
-
 \item{CatalogId}{The ID of the Data Catalog where the table resides. If none is supplied, the AWS account ID is used by default.}
+
+\item{DatabaseName}{[required] The name of the catalog database in which the table resides. For Hive compatibility, this name is entirely lowercase.}
+
+\item{Name}{[required] The name of the table to be deleted. For Hive compatibility, this name is entirely lowercase.}
 }
 \description{
 Removes a table definition from the Data Catalog.

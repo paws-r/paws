@@ -4,7 +4,10 @@
 \alias{describe_virtual_interfaces}
 \title{Displays all virtual interfaces for an AWS account}
 \usage{
-describe_virtual_interfaces(connectionId = NULL, virtualInterfaceId = NULL)
+describe_virtual_interfaces(
+  connectionId = "string",
+  virtualInterfaceId = "string"
+)
 }
 \arguments{
 \item{connectionId}{The ID of the connection.}

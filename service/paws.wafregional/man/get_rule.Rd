@@ -4,10 +4,12 @@
 \alias{get_rule}
 \title{Returns the Rule that is specified by the \code{RuleId} that you included in the \code{GetRule} request}
 \usage{
-get_rule(RuleId)
+get_rule(
+  RuleId = "string"
+)
 }
 \arguments{
-\item{RuleId}{The \code{RuleId} of the Rule that you want to get. \code{RuleId} is returned by CreateRule and by ListRules.}
+\item{RuleId}{[required] The \code{RuleId} of the Rule that you want to get. \code{RuleId} is returned by CreateRule and by ListRules.}
 }
 \description{
 Returns the Rule that is specified by the \code{RuleId} that you included in the \code{GetRule} request.

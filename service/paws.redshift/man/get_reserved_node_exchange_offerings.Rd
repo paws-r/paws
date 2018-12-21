@@ -4,11 +4,14 @@
 \alias{get_reserved_node_exchange_offerings}
 \title{Returns an array of DC2 ReservedNodeOfferings that matches the payment type, term, and usage price of the given DC1 reserved node}
 \usage{
-get_reserved_node_exchange_offerings(ReservedNodeId, MaxRecords = NULL,
-  Marker = NULL)
+get_reserved_node_exchange_offerings(
+  ReservedNodeId = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
-\item{ReservedNodeId}{A string representing the node identifier for the DC1 Reserved Node to be exchanged.}
+\item{ReservedNodeId}{[required] A string representing the node identifier for the DC1 Reserved Node to be exchanged.}
 
 \item{MaxRecords}{An integer setting the maximum number of ReservedNodeOfferings to retrieve.}
 

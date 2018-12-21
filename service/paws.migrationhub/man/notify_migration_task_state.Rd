@@ -4,19 +4,29 @@
 \alias{notify_migration_task_state}
 \title{Notifies Migration Hub of the current status, progress, or other detail regarding a migration task}
 \usage{
-notify_migration_task_state(ProgressUpdateStream, MigrationTaskName, Task,
-  UpdateDateTime, NextUpdateSeconds, DryRun = NULL)
+notify_migration_task_state(
+  ProgressUpdateStream = "string",
+  MigrationTaskName = "string",
+  Task = list(
+    Status = "NOT_STARTED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
+    StatusDetail = "string",
+    ProgressPercent = 123
+  ),
+  UpdateDateTime = as.POSIXct("2015-01-01"),
+  NextUpdateSeconds = 123,
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{ProgressUpdateStream}{The name of the ProgressUpdateStream.}
+\item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
 
-\item{MigrationTaskName}{Unique identifier that references the migration task.}
+\item{MigrationTaskName}{[required] Unique identifier that references the migration task.}
 
-\item{Task}{Information about the task's progress and status.}
+\item{Task}{[required] Information about the task's progress and status.}
 
-\item{UpdateDateTime}{The timestamp when the task was gathered.}
+\item{UpdateDateTime}{[required] The timestamp when the task was gathered.}
 
-\item{NextUpdateSeconds}{Number of seconds after the UpdateDateTime within which the Migration Hub can expect an update. If Migration Hub does not receive an update within the specified interval, then the migration task will be considered stale.}
+\item{NextUpdateSeconds}{[required] Number of seconds after the UpdateDateTime within which the Migration Hub can expect an update. If Migration Hub does not receive an update within the specified interval, then the migration task will be considered stale.}
 
 \item{DryRun}{Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.}
 }

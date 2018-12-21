@@ -4,12 +4,21 @@
 \alias{disassociate_node}
 \title{Disassociates a node from an AWS OpsWorks CM server, and removes the node from the server's managed nodes}
 \usage{
-disassociate_node(ServerName, NodeName, EngineAttributes = NULL)
+disassociate_node(
+  ServerName = "string",
+  NodeName = "string",
+  EngineAttributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{ServerName}{The name of the server from which to disassociate the node.}
+\item{ServerName}{[required] The name of the server from which to disassociate the node.}
 
-\item{NodeName}{The name of the client node.}
+\item{NodeName}{[required] The name of the client node.}
 
 \item{EngineAttributes}{Engine attributes that are used for disassociating the node. No attributes are required for Puppet.
 

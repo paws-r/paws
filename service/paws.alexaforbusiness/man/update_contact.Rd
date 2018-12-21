@@ -4,11 +4,16 @@
 \alias{update_contact}
 \title{Updates the contact details by the contact ARN}
 \usage{
-update_contact(ContactArn, DisplayName = NULL, FirstName = NULL,
-  LastName = NULL, PhoneNumber = NULL)
+update_contact(
+  ContactArn = "string",
+  DisplayName = "string",
+  FirstName = "string",
+  LastName = "string",
+  PhoneNumber = "string"
+)
 }
 \arguments{
-\item{ContactArn}{The ARN of the contact to update.}
+\item{ContactArn}{[required] The ARN of the contact to update.}
 
 \item{DisplayName}{The updated display name of the contact.}
 

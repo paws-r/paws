@@ -4,10 +4,12 @@
 \alias{get_instance_profile}
 \title{Returns information about the specified instance profile}
 \usage{
-get_instance_profile(arn)
+get_instance_profile(
+  arn = "string"
+)
 }
 \arguments{
-\item{arn}{The Amazon Resource Name (ARN) of your instance profile.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of your instance profile.}
 }
 \description{
 Returns information about the specified instance profile.

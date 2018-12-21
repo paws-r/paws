@@ -4,7 +4,13 @@
 \alias{update_event_configurations}
 \title{Updates the event configurations}
 \usage{
-update_event_configurations(eventConfigurations = NULL)
+update_event_configurations(
+  eventConfigurations = list(
+    list(
+      Enabled = TRUE|FALSE
+    )
+  )
+)
 }
 \arguments{
 \item{eventConfigurations}{The new event configuration values.}

@@ -4,10 +4,12 @@
 \alias{stop_replication_task}
 \title{Stops the replication task}
 \usage{
-stop_replication_task(ReplicationTaskArn)
+stop_replication_task(
+  ReplicationTaskArn = "string"
+)
 }
 \arguments{
-\item{ReplicationTaskArn}{The Amazon Resource Name(ARN) of the replication task to be stopped.}
+\item{ReplicationTaskArn}{[required] The Amazon Resource Name(ARN) of the replication task to be stopped.}
 }
 \description{
 Stops the replication task.

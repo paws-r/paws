@@ -4,16 +4,32 @@
 \alias{test_authorization}
 \title{Tests if a specified principal is authorized to perform an AWS IoT action on a specified resource}
 \usage{
-test_authorization(authInfos, principal = NULL,
-  cognitoIdentityPoolId = NULL, clientId = NULL, policyNamesToAdd = NULL,
-  policyNamesToSkip = NULL)
+test_authorization(
+  principal = "string",
+  cognitoIdentityPoolId = "string",
+  authInfos = list(
+    list(
+      actionType = "PUBLISH"|"SUBSCRIBE"|"RECEIVE"|"CONNECT",
+      resources = list(
+        "string"
+      )
+    )
+  ),
+  clientId = "string",
+  policyNamesToAdd = list(
+    "string"
+  ),
+  policyNamesToSkip = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{authInfos}{A list of authorization info objects. Simulating authorization will create a response for each \code{authInfo} object in the list.}
-
 \item{principal}{The principal.}
 
 \item{cognitoIdentityPoolId}{The Cognito identity pool ID.}
+
+\item{authInfos}{[required] A list of authorization info objects. Simulating authorization will create a response for each \code{authInfo} object in the list.}
 
 \item{clientId}{The MQTT client ID.}
 

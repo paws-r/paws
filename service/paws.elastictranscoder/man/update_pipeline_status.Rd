@@ -4,12 +4,15 @@
 \alias{update_pipeline_status}
 \title{The UpdatePipelineStatus operation pauses or reactivates a pipeline, so that the pipeline stops or restarts the processing of jobs}
 \usage{
-update_pipeline_status(Id, Status)
+update_pipeline_status(
+  Id = "string",
+  Status = "string"
+)
 }
 \arguments{
-\item{Id}{The identifier of the pipeline to update.}
+\item{Id}{[required] The identifier of the pipeline to update.}
 
-\item{Status}{The desired status of the pipeline:
+\item{Status}{[required] The desired status of the pipeline:
 \itemize{
 \item \code{Active}: The pipeline is processing jobs.
 \item \code{Paused}: The pipeline is not currently processing jobs.

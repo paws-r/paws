@@ -4,15 +4,18 @@
 \alias{delete_application_reference_data_source}
 \title{Deletes a reference data source configuration from the specified application configuration}
 \usage{
-delete_application_reference_data_source(ApplicationName,
-  CurrentApplicationVersionId, ReferenceId)
+delete_application_reference_data_source(
+  ApplicationName = "string",
+  CurrentApplicationVersionId = 123,
+  ReferenceId = "string"
+)
 }
 \arguments{
-\item{ApplicationName}{Name of an existing application.}
+\item{ApplicationName}{[required] Name of an existing application.}
 
-\item{CurrentApplicationVersionId}{Version of the application. You can use the DescribeApplication operation to get the current application version. If the version specified is not the current version, the \code{ConcurrentModificationException} is returned.}
+\item{CurrentApplicationVersionId}{[required] Version of the application. You can use the DescribeApplication operation to get the current application version. If the version specified is not the current version, the \code{ConcurrentModificationException} is returned.}
 
-\item{ReferenceId}{ID of the reference data source. When you add a reference data source to your application using the AddApplicationReferenceDataSource, Amazon Kinesis Analytics assigns an ID. You can use the DescribeApplication operation to get the reference ID.}
+\item{ReferenceId}{[required] ID of the reference data source. When you add a reference data source to your application using the AddApplicationReferenceDataSource, Amazon Kinesis Analytics assigns an ID. You can use the DescribeApplication operation to get the reference ID.}
 }
 \description{
 Deletes a reference data source configuration from the specified application configuration.

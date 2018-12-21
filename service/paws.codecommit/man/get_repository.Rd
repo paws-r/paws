@@ -4,10 +4,12 @@
 \alias{get_repository}
 \title{Returns information about a repository}
 \usage{
-get_repository(repositoryName)
+get_repository(
+  repositoryName = "string"
+)
 }
 \arguments{
-\item{repositoryName}{The name of the repository to get information about.}
+\item{repositoryName}{[required] The name of the repository to get information about.}
 }
 \description{
 Returns information about a repository.

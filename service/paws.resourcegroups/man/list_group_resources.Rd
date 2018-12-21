@@ -4,11 +4,22 @@
 \alias{list_group_resources}
 \title{Returns a list of ARNs of resources that are members of a specified resource group}
 \usage{
-list_group_resources(GroupName, Filters = NULL, MaxResults = NULL,
-  NextToken = NULL)
+list_group_resources(
+  GroupName = "string",
+  Filters = list(
+    list(
+      Name = "resource-type",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{GroupName}{The name of the resource group.}
+\item{GroupName}{[required] The name of the resource group.}
 
 \item{Filters}{Filters, formatted as ResourceFilter objects, that you want to apply to a ListGroupResources operation.
 \itemize{

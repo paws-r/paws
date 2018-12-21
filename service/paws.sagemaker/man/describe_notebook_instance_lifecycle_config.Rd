@@ -4,17 +4,18 @@
 \alias{describe_notebook_instance_lifecycle_config}
 \title{Returns a description of a notebook instance lifecycle configuration}
 \usage{
-
-  describe_notebook_instance_lifecycle_config(NotebookInstanceLifecycleConfigName)
+describe_notebook_instance_lifecycle_config(
+  NotebookInstanceLifecycleConfigName = "string"
+)
 }
 \arguments{
-\item{NotebookInstanceLifecycleConfigName}{The name of the lifecycle configuration to describe.}
+\item{NotebookInstanceLifecycleConfigName}{[required] The name of the lifecycle configuration to describe.}
 }
 \description{
 Returns a description of a notebook instance lifecycle configuration.
 }
 \details{
-For information about notebook instance lifestyle configurations, see notebook-lifecycle-config.
+For information about notebook instance lifestyle configurations, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html}{Step 2.1: (Optional) Customize a Notebook Instance}.
 }
 \examples{
 

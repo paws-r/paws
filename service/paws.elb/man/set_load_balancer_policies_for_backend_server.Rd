@@ -4,15 +4,20 @@
 \alias{set_load_balancer_policies_for_backend_server}
 \title{Replaces the set of policies associated with the specified port on which the EC2 instance is listening with a new set of policies}
 \usage{
-set_load_balancer_policies_for_backend_server(LoadBalancerName, InstancePort,
-  PolicyNames)
+set_load_balancer_policies_for_backend_server(
+  LoadBalancerName = "string",
+  InstancePort = 123,
+  PolicyNames = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{LoadBalancerName}{The name of the load balancer.}
+\item{LoadBalancerName}{[required] The name of the load balancer.}
 
-\item{InstancePort}{The port number associated with the EC2 instance.}
+\item{InstancePort}{[required] The port number associated with the EC2 instance.}
 
-\item{PolicyNames}{The names of the policies. If the list is empty, then all current polices are removed from the EC2 instance.}
+\item{PolicyNames}{[required] The names of the policies. If the list is empty, then all current polices are removed from the EC2 instance.}
 }
 \description{
 Replaces the set of policies associated with the specified port on which the EC2 instance is listening with a new set of policies. At this time, only the back-end server authentication policy type can be applied to the instance ports; this policy type is composed of multiple public key policies.

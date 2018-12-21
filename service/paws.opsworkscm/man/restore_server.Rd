@@ -4,12 +4,17 @@
 \alias{restore_server}
 \title{Restores a backup to a server that is in a \code{CONNECTION_LOST}, \code{HEALTHY}, \code{RUNNING}, \code{UNHEALTHY}, or \code{TERMINATED} state}
 \usage{
-restore_server(BackupId, ServerName, InstanceType = NULL, KeyPair = NULL)
+restore_server(
+  BackupId = "string",
+  ServerName = "string",
+  InstanceType = "string",
+  KeyPair = "string"
+)
 }
 \arguments{
-\item{BackupId}{The ID of the backup that you want to use to restore a server.}
+\item{BackupId}{[required] The ID of the backup that you want to use to restore a server.}
 
-\item{ServerName}{The name of the server that you want to restore.}
+\item{ServerName}{[required] The name of the server that you want to restore.}
 
 \item{InstanceType}{The type of the instance to create. Valid values must be specified in the following format: \code{^([cm][34]|t2).*} For example, \code{m4.large}. Valid values are \code{t2.medium}, \code{m4.large}, and \code{m4.2xlarge}. If you do not specify this parameter, RestoreServer uses the instance type from the specified backup.}
 

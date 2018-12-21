@@ -4,10 +4,14 @@
 \alias{update_project}
 \title{Modifies the specified project name, given the project ARN and a new name}
 \usage{
-update_project(arn, name = NULL, defaultJobTimeoutMinutes = NULL)
+update_project(
+  arn = "string",
+  name = "string",
+  defaultJobTimeoutMinutes = 123
+)
 }
 \arguments{
-\item{arn}{The Amazon Resource Name (ARN) of the project whose name you wish to update.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of the project whose name you wish to update.}
 
 \item{name}{A string representing the new name of the project that you are updating.}
 

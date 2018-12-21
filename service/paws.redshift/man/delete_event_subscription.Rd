@@ -4,10 +4,12 @@
 \alias{delete_event_subscription}
 \title{Deletes an Amazon Redshift event notification subscription}
 \usage{
-delete_event_subscription(SubscriptionName)
+delete_event_subscription(
+  SubscriptionName = "string"
+)
 }
 \arguments{
-\item{SubscriptionName}{The name of the Amazon Redshift event notification subscription to be deleted.}
+\item{SubscriptionName}{[required] The name of the Amazon Redshift event notification subscription to be deleted.}
 }
 \description{
 Deletes an Amazon Redshift event notification subscription.

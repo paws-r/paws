@@ -4,7 +4,11 @@
 \alias{list_streams}
 \title{Lists all of the streams in your AWS account}
 \usage{
-list_streams(maxResults = NULL, nextToken = NULL, ascendingOrder = NULL)
+list_streams(
+  maxResults = 123,
+  nextToken = "string",
+  ascendingOrder = TRUE|FALSE
+)
 }
 \arguments{
 \item{maxResults}{The maximum number of results to return at a time.}

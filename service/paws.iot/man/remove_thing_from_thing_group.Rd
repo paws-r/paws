@@ -4,8 +4,12 @@
 \alias{remove_thing_from_thing_group}
 \title{Remove the specified thing from the specified group}
 \usage{
-remove_thing_from_thing_group(thingGroupName = NULL, thingGroupArn = NULL,
-  thingName = NULL, thingArn = NULL)
+remove_thing_from_thing_group(
+  thingGroupName = "string",
+  thingGroupArn = "string",
+  thingName = "string",
+  thingArn = "string"
+)
 }
 \arguments{
 \item{thingGroupName}{The group name.}

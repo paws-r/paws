@@ -4,7 +4,9 @@
 \alias{describe_spot_datafeed_subscription}
 \title{Describes the data feed for Spot Instances}
 \usage{
-describe_spot_datafeed_subscription(DryRun = NULL)
+describe_spot_datafeed_subscription(
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}

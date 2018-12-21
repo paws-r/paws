@@ -4,11 +4,15 @@
 \alias{update_user_profile}
 \title{Updates a specified user profile}
 \usage{
-update_user_profile(IamUserArn, SshUsername = NULL, SshPublicKey = NULL,
-  AllowSelfManagement = NULL)
+update_user_profile(
+  IamUserArn = "string",
+  SshUsername = "string",
+  SshPublicKey = "string",
+  AllowSelfManagement = TRUE|FALSE
+)
 }
 \arguments{
-\item{IamUserArn}{The user IAM ARN. This can also be a federated user's ARN.}
+\item{IamUserArn}{[required] The user IAM ARN. This can also be a federated user's ARN.}
 
 \item{SshUsername}{The user's SSH user name. The allowable characters are [a-z], [A-Z], [0-9], '-', and '\_'. If the specified name includes other punctuation marks, AWS OpsWorks Stacks removes them. For example, \code{my.name} will be changed to \code{myname}. If you do not specify an SSH user name, AWS OpsWorks Stacks generates one from the IAM user name.}
 

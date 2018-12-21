@@ -4,26 +4,34 @@
 \alias{create_cachedi_scsi_volume}
 \title{Creates a cached volume on a specified cached volume gateway}
 \usage{
-create_cachedi_scsi_volume(GatewayARN, VolumeSizeInBytes, TargetName,
-  NetworkInterfaceId, ClientToken, SnapshotId = NULL,
-  SourceVolumeARN = NULL, KMSEncrypted = NULL, KMSKey = NULL)
+create_cachedi_scsi_volume(
+  GatewayARN = "string",
+  VolumeSizeInBytes = 123,
+  SnapshotId = "string",
+  TargetName = "string",
+  SourceVolumeARN = "string",
+  NetworkInterfaceId = "string",
+  ClientToken = "string",
+  KMSEncrypted = TRUE|FALSE,
+  KMSKey = "string"
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 
-\item{VolumeSizeInBytes}{The size of the volume in bytes.}
-
-\item{TargetName}{The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. For example, specifying \code{TargetName} as \emph{myvolume} results in the target ARN of arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume. The target name must be unique across all volumes of a gateway.}
-
-\item{NetworkInterfaceId}{The network interface of the gateway on which to expose the iSCSI target. Only IPv4 addresses are accepted. Use DescribeGatewayInformation to get a list of the network interfaces available on a gateway.
-
-Valid Values: A valid IP address.}
-
-\item{ClientToken}{A unique identifier that you use to retry a request. If you retry a request, use the same \code{ClientToken} you specified in the initial request.}
+\item{VolumeSizeInBytes}{[required] The size of the volume in bytes.}
 
 \item{SnapshotId}{The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as the new cached volume. Specify this field if you want to create the iSCSI storage volume from a snapshot otherwise do not include this field. To list snapshots for your account use \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html}{DescribeSnapshots} in the \emph{Amazon Elastic Compute Cloud API Reference}.}
 
+\item{TargetName}{[required] The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. For example, specifying \code{TargetName} as \emph{myvolume} results in the target ARN of arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume. The target name must be unique across all volumes of a gateway.}
+
 \item{SourceVolumeARN}{The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the specified existing volume's latest recovery point. The \code{VolumeSizeInBytes} value for this new volume must be equal to or larger than the size of the existing volume, in bytes.}
+
+\item{NetworkInterfaceId}{[required] The network interface of the gateway on which to expose the iSCSI target. Only IPv4 addresses are accepted. Use DescribeGatewayInformation to get a list of the network interfaces available on a gateway.
+
+Valid Values: A valid IP address.}
+
+\item{ClientToken}{[required] A unique identifier that you use to retry a request. If you retry a request, use the same \code{ClientToken} you specified in the initial request.}
 
 \item{KMSEncrypted}{True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.}
 

@@ -4,7 +4,9 @@
 \alias{get_disk_snapshots}
 \title{Returns information about all block storage disk snapshots in your AWS account and region}
 \usage{
-get_disk_snapshots(pageToken = NULL)
+get_disk_snapshots(
+  pageToken = "string"
+)
 }
 \arguments{
 \item{pageToken}{A token used for advancing to the next page of results from your GetDiskSnapshots request.}

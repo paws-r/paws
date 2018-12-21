@@ -4,7 +4,11 @@
 \alias{get_compliance_summary_by_resource_type}
 \title{Returns the number of resources that are compliant and the number that are noncompliant}
 \usage{
-get_compliance_summary_by_resource_type(ResourceTypes = NULL)
+get_compliance_summary_by_resource_type(
+  ResourceTypes = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{ResourceTypes}{Specify one or more resource types to get the number of resources that are compliant and the number that are noncompliant for each resource type.

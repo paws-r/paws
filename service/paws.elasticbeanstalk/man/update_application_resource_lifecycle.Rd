@@ -4,12 +4,29 @@
 \alias{update_application_resource_lifecycle}
 \title{Modifies lifecycle settings for an application}
 \usage{
-update_application_resource_lifecycle(ApplicationName, ResourceLifecycleConfig)
+update_application_resource_lifecycle(
+  ApplicationName = "string",
+  ResourceLifecycleConfig = list(
+    ServiceRole = "string",
+    VersionLifecycleConfig = list(
+      MaxCountRule = list(
+        Enabled = TRUE|FALSE,
+        MaxCount = 123,
+        DeleteSourceFromS3 = TRUE|FALSE
+      ),
+      MaxAgeRule = list(
+        Enabled = TRUE|FALSE,
+        MaxAgeInDays = 123,
+        DeleteSourceFromS3 = TRUE|FALSE
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{ApplicationName}{The name of the application.}
+\item{ApplicationName}{[required] The name of the application.}
 
-\item{ResourceLifecycleConfig}{The lifecycle configuration.}
+\item{ResourceLifecycleConfig}{[required] The lifecycle configuration.}
 }
 \description{
 Modifies lifecycle settings for an application.

@@ -4,12 +4,21 @@
 \alias{deregister_targets}
 \title{Deregisters the specified targets from the specified target group}
 \usage{
-deregister_targets(TargetGroupArn, Targets)
+deregister_targets(
+  TargetGroupArn = "string",
+  Targets = list(
+    list(
+      Id = "string",
+      Port = 123,
+      AvailabilityZone = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{TargetGroupArn}{The Amazon Resource Name (ARN) of the target group.}
+\item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
 
-\item{Targets}{The targets. If you specified a port override when you registered a target, you must specify both the target ID and the port when you deregister it.}
+\item{Targets}{[required] The targets. If you specified a port override when you registered a target, you must specify both the target ID and the port when you deregister it.}
 }
 \description{
 Deregisters the specified targets from the specified target group. After the targets are deregistered, they no longer receive traffic from the load balancer.

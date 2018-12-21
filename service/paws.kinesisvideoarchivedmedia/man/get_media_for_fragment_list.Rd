@@ -4,12 +4,17 @@
 \alias{get_media_for_fragment_list}
 \title{Gets media for a list of fragments (specified by fragment number) from the archived data in an Amazon Kinesis video stream}
 \usage{
-get_media_for_fragment_list(StreamName, Fragments)
+get_media_for_fragment_list(
+  StreamName = "string",
+  Fragments = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{StreamName}{The name of the stream from which to retrieve fragment media.}
+\item{StreamName}{[required] The name of the stream from which to retrieve fragment media.}
 
-\item{Fragments}{A list of the numbers of fragments for which to retrieve media. You retrieve these values with ListFragments.}
+\item{Fragments}{[required] A list of the numbers of fragments for which to retrieve media. You retrieve these values with ListFragments.}
 }
 \description{
 Gets media for a list of fragments (specified by fragment number) from the archived data in an Amazon Kinesis video stream.

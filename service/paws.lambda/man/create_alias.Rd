@@ -4,11 +4,20 @@
 \alias{create_alias}
 \title{Creates an alias that points to the specified Lambda function version}
 \usage{
-create_alias(FunctionName, Name, FunctionVersion, Description = NULL,
-  RoutingConfig = NULL)
+create_alias(
+  FunctionName = "string",
+  Name = "string",
+  FunctionVersion = "string",
+  Description = "string",
+  RoutingConfig = list(
+    AdditionalVersionWeights = list(
+      123.0
+    )
+  )
+)
 }
 \arguments{
-\item{FunctionName}{The name of the lambda function.
+\item{FunctionName}{[required] The name of the lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -19,9 +28,9 @@ create_alias(FunctionName, Name, FunctionVersion, Description = NULL,
 
 The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
-\item{Name}{Name for the alias you are creating.}
+\item{Name}{[required] Name for the alias you are creating.}
 
-\item{FunctionVersion}{Lambda function version for which you are creating the alias.}
+\item{FunctionVersion}{[required] Lambda function version for which you are creating the alias.}
 
 \item{Description}{Description of the alias.}
 

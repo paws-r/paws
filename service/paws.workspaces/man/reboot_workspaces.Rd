@@ -4,10 +4,16 @@
 \alias{reboot_workspaces}
 \title{Reboots the specified WorkSpaces}
 \usage{
-reboot_workspaces(RebootWorkspaceRequests)
+reboot_workspaces(
+  RebootWorkspaceRequests = list(
+    list(
+      WorkspaceId = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{RebootWorkspaceRequests}{The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.}
+\item{RebootWorkspaceRequests}{[required] The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.}
 }
 \description{
 Reboots the specified WorkSpaces.

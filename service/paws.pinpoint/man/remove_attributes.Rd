@@ -4,14 +4,22 @@
 \alias{remove_attributes}
 \title{Used to remove the attributes for an app}
 \usage{
-remove_attributes(AttributeType, ApplicationId, UpdateAttributesRequest)
+remove_attributes(
+  ApplicationId = "string",
+  AttributeType = "string",
+  UpdateAttributesRequest = list(
+    Blacklist = list(
+      "string"
+    )
+  )
+)
 }
 \arguments{
-\item{AttributeType}{Type of attribute. Can be endpoint-custom-attributes, endpoint-custom-metrics, endpoint-user-attributes.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{AttributeType}{[required] Type of attribute. Can be endpoint-custom-attributes, endpoint-custom-metrics, endpoint-user-attributes.}
 
-\item{UpdateAttributesRequest}{}
+\item{UpdateAttributesRequest}{[required]}
 }
 \description{
 Used to remove the attributes for an app

@@ -4,8 +4,15 @@
 \alias{scan_provisioned_products}
 \title{Lists the provisioned products that are available (not terminated)}
 \usage{
-scan_provisioned_products(AcceptLanguage = NULL, AccessLevelFilter = NULL,
-  PageSize = NULL, PageToken = NULL)
+scan_provisioned_products(
+  AcceptLanguage = "string",
+  AccessLevelFilter = list(
+    Key = "Account"|"Role"|"User",
+    Value = "string"
+  ),
+  PageSize = 123,
+  PageToken = "string"
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.

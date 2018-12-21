@@ -4,10 +4,12 @@
 \alias{delete_dataset}
 \title{Deletes the specified data set}
 \usage{
-delete_dataset(datasetName)
+delete_dataset(
+  datasetName = "string"
+)
 }
 \arguments{
-\item{datasetName}{The name of the data set to delete.}
+\item{datasetName}{[required] The name of the data set to delete.}
 }
 \description{
 Deletes the specified data set.

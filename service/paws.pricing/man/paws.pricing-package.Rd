@@ -6,9 +6,9 @@
 \alias{paws.pricing-package}
 \title{paws.pricing: AWS Price List Service}
 \description{
-AWS Price List Service API (AWS Price List Service)
-is a centralized and convenient way to programmatically query Amazon
-Web Services for services, products, and pricing information. The AWS
+AWS Price List Service API (AWS Price List Service) is a
+centralized and convenient way to programmatically query Amazon Web
+Services for services, products, and pricing information. The AWS
 Price List Service uses standardized product attributes such as
 `Location`, `Storage Class`, and `Operating System`, and provides
 prices at the SKU level. You can use the AWS Price List Service to
@@ -21,7 +21,12 @@ benefit analysis that compare your internal workloads with AWS.
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

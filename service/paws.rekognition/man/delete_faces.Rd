@@ -4,12 +4,17 @@
 \alias{delete_faces}
 \title{Deletes faces from a collection}
 \usage{
-delete_faces(CollectionId, FaceIds)
+delete_faces(
+  CollectionId = "string",
+  FaceIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{CollectionId}{Collection from which to remove the specific faces.}
+\item{CollectionId}{[required] Collection from which to remove the specific faces.}
 
-\item{FaceIds}{An array of face IDs to delete.}
+\item{FaceIds}{[required] An array of face IDs to delete.}
 }
 \description{
 Deletes faces from a collection. You specify a collection ID and an array of face IDs to remove from the collection.

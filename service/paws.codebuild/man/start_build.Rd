@@ -4,32 +4,110 @@
 \alias{start_build}
 \title{Starts running a build}
 \usage{
-start_build(projectName, secondarySourcesOverride = NULL,
-  secondarySourcesVersionOverride = NULL, sourceVersion = NULL,
-  artifactsOverride = NULL, secondaryArtifactsOverride = NULL,
-  environmentVariablesOverride = NULL, sourceTypeOverride = NULL,
-  sourceLocationOverride = NULL, sourceAuthOverride = NULL,
-  gitCloneDepthOverride = NULL, buildspecOverride = NULL,
-  insecureSslOverride = NULL, reportBuildStatusOverride = NULL,
-  environmentTypeOverride = NULL, imageOverride = NULL,
-  computeTypeOverride = NULL, certificateOverride = NULL,
-  cacheOverride = NULL, serviceRoleOverride = NULL,
-  privilegedModeOverride = NULL, timeoutInMinutesOverride = NULL,
-  idempotencyToken = NULL, logsConfigOverride = NULL)
+start_build(
+  projectName = "string",
+  secondarySourcesOverride = list(
+    list(
+      type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+      location = "string",
+      gitCloneDepth = 123,
+      buildspec = "string",
+      auth = list(
+        type = "OAUTH",
+        resource = "string"
+      ),
+      reportBuildStatus = TRUE|FALSE,
+      insecureSsl = TRUE|FALSE,
+      sourceIdentifier = "string"
+    )
+  ),
+  secondarySourcesVersionOverride = list(
+    list(
+      sourceIdentifier = "string",
+      sourceVersion = "string"
+    )
+  ),
+  sourceVersion = "string",
+  artifactsOverride = list(
+    type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+    location = "string",
+    path = "string",
+    namespaceType = "NONE"|"BUILD_ID",
+    name = "string",
+    packaging = "NONE"|"ZIP",
+    overrideArtifactName = TRUE|FALSE,
+    encryptionDisabled = TRUE|FALSE,
+    artifactIdentifier = "string"
+  ),
+  secondaryArtifactsOverride = list(
+    list(
+      type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+      location = "string",
+      path = "string",
+      namespaceType = "NONE"|"BUILD_ID",
+      name = "string",
+      packaging = "NONE"|"ZIP",
+      overrideArtifactName = TRUE|FALSE,
+      encryptionDisabled = TRUE|FALSE,
+      artifactIdentifier = "string"
+    )
+  ),
+  environmentVariablesOverride = list(
+    list(
+      name = "string",
+      value = "string",
+      type = "PLAINTEXT"|"PARAMETER_STORE"
+    )
+  ),
+  sourceTypeOverride = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+  sourceLocationOverride = "string",
+  sourceAuthOverride = list(
+    type = "OAUTH",
+    resource = "string"
+  ),
+  gitCloneDepthOverride = 123,
+  buildspecOverride = "string",
+  insecureSslOverride = TRUE|FALSE,
+  reportBuildStatusOverride = TRUE|FALSE,
+  environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER",
+  imageOverride = "string",
+  computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE",
+  certificateOverride = "string",
+  cacheOverride = list(
+    type = "NO_CACHE"|"S3",
+    location = "string"
+  ),
+  serviceRoleOverride = "string",
+  privilegedModeOverride = TRUE|FALSE,
+  timeoutInMinutesOverride = 123,
+  queuedTimeoutInMinutesOverride = 123,
+  idempotencyToken = "string",
+  logsConfigOverride = list(
+    cloudWatchLogs = list(
+      status = "ENABLED"|"DISABLED",
+      groupName = "string",
+      streamName = "string"
+    ),
+    s3Logs = list(
+      status = "ENABLED"|"DISABLED",
+      location = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{projectName}{The name of the AWS CodeBuild build project to start running a build.}
+\item{projectName}{[required] The name of the AWS CodeBuild build project to start running a build.}
 
 \item{secondarySourcesOverride}{An array of \code{ProjectSource} objects.}
 
 \item{secondarySourcesVersionOverride}{An array of \code{ProjectSourceVersion} objects that specify one or more versions of the project's secondary sources to be used for this build only.}
 
-\item{sourceVersion}{A version of the build input to be built, for this build only. If not specified, the latest version will be used. If specified, must be one of:
+\item{sourceVersion}{A version of the build input to be built, for this build only. If not specified, the latest version is used. If specified, must be one of:
 \itemize{
 \item For AWS CodeCommit: the commit ID to use.
-\item For GitHub: the commit ID, pull request ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a pull request ID is specified, it must use the format \code{pr/pull-request-ID} (for example \code{pr/25}). If a branch name is specified, the branch's HEAD commit ID will be used. If not specified, the default branch's HEAD commit ID will be used.
-\item For Bitbucket: the commit ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a branch name is specified, the branch's HEAD commit ID will be used. If not specified, the default branch's HEAD commit ID will be used.
-\item For Amazon Simple Storage Service (Amazon S3): the version ID of the object representing the build input ZIP file to use.
+\item For GitHub: the commit ID, pull request ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a pull request ID is specified, it must use the format \code{pr/pull-request-ID} (for example \code{pr/25}). If a branch name is specified, the branch's HEAD commit ID is used. If not specified, the default branch's HEAD commit ID is used.
+\item For Bitbucket: the commit ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a branch name is specified, the branch's HEAD commit ID is used. If not specified, the default branch's HEAD commit ID is used.
+\item For Amazon Simple Storage Service (Amazon S3): the version ID of the object that represents the build input ZIP file to use.
 }}
 
 \item{artifactsOverride}{Build output artifact settings that override, for this build only, the latest ones already defined in the build project.}
@@ -38,9 +116,9 @@ start_build(projectName, secondarySourcesOverride = NULL,
 
 \item{environmentVariablesOverride}{A set of environment variables that overrides, for this build only, the latest ones already defined in the build project.}
 
-\item{sourceTypeOverride}{A source input type for this build that overrides the source input defined in the build project.}
+\item{sourceTypeOverride}{A source input type, for this build, that overrides the source input defined in the build project.}
 
-\item{sourceLocationOverride}{A location that overrides for this build the source location for the one defined in the build project.}
+\item{sourceLocationOverride}{A location that overrides, for this build, the source location for the one defined in the build project.}
 
 \item{sourceAuthOverride}{An authorization type for this build that overrides the one defined in the build project. This override applies only if the build project's source is BitBucket or GitHub.}
 
@@ -50,7 +128,7 @@ start_build(projectName, secondarySourcesOverride = NULL,
 
 \item{insecureSslOverride}{Enable this flag to override the insecure SSL setting that is specified in the build project. The insecure SSL setting determines whether to ignore SSL warnings while connecting to the project source code. This override applies only if the build's source is GitHub Enterprise.}
 
-\item{reportBuildStatusOverride}{Set to true to report to your source provider the status of a build's start and completion. If you use this option with a source provider other than GitHub, an invalidInputException is thrown.}
+\item{reportBuildStatusOverride}{Set to true to report to your source provider the status of a build's start and completion. If you use this option with a source provider other than GitHub, GitHub Enterprise, or Bitbucket, an invalidInputException is thrown.}
 
 \item{environmentTypeOverride}{A container type for this build that overrides the one specified in the build project.}
 
@@ -67,6 +145,8 @@ start_build(projectName, secondarySourcesOverride = NULL,
 \item{privilegedModeOverride}{Enable this flag to override privileged mode in the build project.}
 
 \item{timeoutInMinutesOverride}{The number of build timeout minutes, from 5 to 480 (8 hours), that overrides, for this build only, the latest setting already defined in the build project.}
+
+\item{queuedTimeoutInMinutesOverride}{The number of minutes a build is allowed to be queued before it times out.}
 
 \item{idempotencyToken}{A unique, case sensitive identifier you provide to ensure the idempotency of the StartBuild request. The token is included in the StartBuild request and is valid for 12 hours. If you repeat the StartBuild request with the same token, but change a parameter, AWS CodeBuild returns a parameter mismatch error.}
 

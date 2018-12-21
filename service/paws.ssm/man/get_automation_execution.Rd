@@ -4,10 +4,12 @@
 \alias{get_automation_execution}
 \title{Get detailed information about a particular Automation execution}
 \usage{
-get_automation_execution(AutomationExecutionId)
+get_automation_execution(
+  AutomationExecutionId = "string"
+)
 }
 \arguments{
-\item{AutomationExecutionId}{The unique identifier for an existing automation execution to examine. The execution ID is returned by StartAutomationExecution when the execution of an Automation document is initiated.}
+\item{AutomationExecutionId}{[required] The unique identifier for an existing automation execution to examine. The execution ID is returned by StartAutomationExecution when the execution of an Automation document is initiated.}
 }
 \description{
 Get detailed information about a particular Automation execution.

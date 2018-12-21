@@ -4,10 +4,12 @@
 \alias{deliver_config_snapshot}
 \title{Schedules delivery of a configuration snapshot to the Amazon S3 bucket in the specified delivery channel}
 \usage{
-deliver_config_snapshot(deliveryChannelName)
+deliver_config_snapshot(
+  deliveryChannelName = "string"
+)
 }
 \arguments{
-\item{deliveryChannelName}{The name of the delivery channel through which the snapshot is delivered.}
+\item{deliveryChannelName}{[required] The name of the delivery channel through which the snapshot is delivered.}
 }
 \description{
 Schedules delivery of a configuration snapshot to the Amazon S3 bucket in the specified delivery channel. After the delivery has started, AWS Config sends the following notifications using an Amazon SNS topic that you have specified.

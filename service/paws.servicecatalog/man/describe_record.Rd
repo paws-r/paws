@@ -4,18 +4,22 @@
 \alias{describe_record}
 \title{Gets information about the specified request operation}
 \usage{
-describe_record(Id, AcceptLanguage = NULL, PageToken = NULL,
-  PageSize = NULL)
+describe_record(
+  AcceptLanguage = "string",
+  Id = "string",
+  PageToken = "string",
+  PageSize = 123
+)
 }
 \arguments{
-\item{Id}{The record identifier of the provisioned product. This identifier is returned by the request operation.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{Id}{[required] The record identifier of the provisioned product. This identifier is returned by the request operation.}
 
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of results, use null.}
 

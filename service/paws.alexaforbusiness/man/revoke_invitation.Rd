@@ -4,7 +4,10 @@
 \alias{revoke_invitation}
 \title{Revokes an invitation and invalidates the enrollment URL}
 \usage{
-revoke_invitation(UserArn = NULL, EnrollmentId = NULL)
+revoke_invitation(
+  UserArn = "string",
+  EnrollmentId = "string"
+)
 }
 \arguments{
 \item{UserArn}{The ARN of the user for whom to revoke an enrollment invitation. Required.}

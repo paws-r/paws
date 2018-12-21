@@ -4,10 +4,12 @@
 \alias{get_service}
 \title{Gets the settings for a specified service}
 \usage{
-get_service(Id)
+get_service(
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The ID of the service that you want to get settings for.}
+\item{Id}{[required] The ID of the service that you want to get settings for.}
 }
 \description{
 Gets the settings for a specified service.

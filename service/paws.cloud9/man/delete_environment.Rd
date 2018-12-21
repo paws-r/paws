@@ -4,10 +4,12 @@
 \alias{delete_environment}
 \title{Deletes an AWS Cloud9 development environment}
 \usage{
-delete_environment(environmentId)
+delete_environment(
+  environmentId = "string"
+)
 }
 \arguments{
-\item{environmentId}{The ID of the environment to delete.}
+\item{environmentId}{[required] The ID of the environment to delete.}
 }
 \description{
 Deletes an AWS Cloud9 development environment. If an Amazon EC2 instance is connected to the environment, also terminates the instance.

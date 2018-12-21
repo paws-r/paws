@@ -4,9 +4,17 @@
 \alias{list_reservations}
 \title{List purchased reservations}
 \usage{
-list_reservations(Codec = NULL, MaxResults = NULL, MaximumBitrate = NULL,
-  MaximumFramerate = NULL, NextToken = NULL, Resolution = NULL,
-  ResourceType = NULL, SpecialFeature = NULL, VideoQuality = NULL)
+list_reservations(
+  Codec = "string",
+  MaxResults = 123,
+  MaximumBitrate = "string",
+  MaximumFramerate = "string",
+  NextToken = "string",
+  Resolution = "string",
+  ResourceType = "string",
+  SpecialFeature = "string",
+  VideoQuality = "string"
+)
 }
 \arguments{
 \item{Codec}{Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'}

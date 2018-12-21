@@ -4,7 +4,10 @@
 \alias{list_secrets}
 \title{Lists all of the secrets that are stored by Secrets Manager in the AWS account}
 \usage{
-list_secrets(MaxResults = NULL, NextToken = NULL)
+list_secrets(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{MaxResults}{(Optional) Limits the number of results that you want to include in the response. If you don't include this parameter, it defaults to a value that's specific to the operation. If additional items exist beyond the maximum you specify, the \code{NextToken} response element is present and has a value (isn't null). Include that value as the \code{NextToken} request parameter in the next call to the operation to get the next part of the results. Note that Secrets Manager might return fewer results than the maximum even when there are more results available. You should check \code{NextToken} after every operation to ensure that you receive all of the results.}

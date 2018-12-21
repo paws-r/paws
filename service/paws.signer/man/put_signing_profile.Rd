@@ -4,15 +4,29 @@
 \alias{put_signing_profile}
 \title{Creates a signing profile}
 \usage{
-put_signing_profile(profileName, signingMaterial, platformId,
-  overrides = NULL, signingParameters = NULL)
+put_signing_profile(
+  profileName = "string",
+  signingMaterial = list(
+    certificateArn = "string"
+  ),
+  platformId = "string",
+  overrides = list(
+    signingConfiguration = list(
+      encryptionAlgorithm = "RSA"|"ECDSA",
+      hashAlgorithm = "SHA1"|"SHA256"
+    )
+  ),
+  signingParameters = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{profileName}{The name of the signing profile to be created.}
+\item{profileName}{[required] The name of the signing profile to be created.}
 
-\item{signingMaterial}{The AWS Certificate Manager certificate that will be used to sign code with the new signing profile.}
+\item{signingMaterial}{[required] The AWS Certificate Manager certificate that will be used to sign code with the new signing profile.}
 
-\item{platformId}{The ID of the signing profile to be created.}
+\item{platformId}{[required] The ID of the signing profile to be created.}
 
 \item{overrides}{A subfield of \code{platform}. This specifies any different configuration options that you want to apply to the chosen platform (such as a different \code{hash-algorithm} or \code{signing-algorithm}).}
 

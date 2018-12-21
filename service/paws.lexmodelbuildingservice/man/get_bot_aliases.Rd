@@ -4,11 +4,15 @@
 \alias{get_bot_aliases}
 \title{Returns a list of aliases for a specified Amazon Lex bot}
 \usage{
-get_bot_aliases(botName, nextToken = NULL, maxResults = NULL,
-  nameContains = NULL)
+get_bot_aliases(
+  botName = "string",
+  nextToken = "string",
+  maxResults = 123,
+  nameContains = "string"
+)
 }
 \arguments{
-\item{botName}{The name of the bot.}
+\item{botName}{[required] The name of the bot.}
 
 \item{nextToken}{A pagination token for fetching the next page of aliases. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of aliases, specify the pagination token in the next request.}
 

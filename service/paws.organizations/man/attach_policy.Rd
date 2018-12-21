@@ -4,14 +4,17 @@
 \alias{attach_policy}
 \title{Attaches a policy to a root, an organizational unit (OU), or an individual account}
 \usage{
-attach_policy(PolicyId, TargetId)
+attach_policy(
+  PolicyId = "string",
+  TargetId = "string"
+)
 }
 \arguments{
-\item{PolicyId}{The unique identifier (ID) of the policy that you want to attach to the target. You can get the ID for the policy by calling the ListPolicies operation.
+\item{PolicyId}{[required] The unique identifier (ID) of the policy that you want to attach to the target. You can get the ID for the policy by calling the ListPolicies operation.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.}
 
-\item{TargetId}{The unique identifier (ID) of the root, OU, or account that you want to attach the policy to. You can get the ID by calling the ListRoots, ListOrganizationalUnitsForParent, or ListAccounts operations.
+\item{TargetId}{[required] The unique identifier (ID) of the root, OU, or account that you want to attach the policy to. You can get the ID by calling the ListRoots, ListOrganizationalUnitsForParent, or ListAccounts operations.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a target ID string requires one of the following:
 \itemize{

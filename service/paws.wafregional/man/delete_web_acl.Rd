@@ -4,12 +4,15 @@
 \alias{delete_web_acl}
 \title{Permanently deletes a WebACL}
 \usage{
-delete_web_acl(WebACLId, ChangeToken)
+delete_web_acl(
+  WebACLId = "string",
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{WebACLId}{The \code{WebACLId} of the WebACL that you want to delete. \code{WebACLId} is returned by CreateWebACL and by ListWebACLs.}
+\item{WebACLId}{[required] The \code{WebACLId} of the WebACL that you want to delete. \code{WebACLId} is returned by CreateWebACL and by ListWebACLs.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Permanently deletes a WebACL. You can't delete a \code{WebACL} if it still contains any \code{Rules}.

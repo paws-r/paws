@@ -4,10 +4,18 @@
 \alias{tag_resource}
 \title{Adds or edits tags for a customer master key (CMK)}
 \usage{
-tag_resource(KeyId, Tags)
+tag_resource(
+  KeyId = "string",
+  Tags = list(
+    list(
+      TagKey = "string",
+      TagValue = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{KeyId}{A unique identifier for the CMK you are tagging.
+\item{KeyId}{[required] A unique identifier for the CMK you are tagging.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 
@@ -19,7 +27,7 @@ For example:
 
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 
-\item{Tags}{One or more tags. Each tag consists of a tag key and a tag value.}
+\item{Tags}{[required] One or more tags. Each tag consists of a tag key and a tag value.}
 }
 \description{
 Adds or edits tags for a customer master key (CMK). You cannot perform this operation on a CMK in a different AWS account.

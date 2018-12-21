@@ -4,11 +4,16 @@
 \alias{describe_instance_patch_states}
 \title{Retrieves the high-level patch state of one or more instances}
 \usage{
-describe_instance_patch_states(InstanceIds, NextToken = NULL,
-  MaxResults = NULL)
+describe_instance_patch_states(
+  InstanceIds = list(
+    "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{InstanceIds}{The ID of the instance whose patch state information should be retrieved.}
+\item{InstanceIds}{[required] The ID of the instance whose patch state information should be retrieved.}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 

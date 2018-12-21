@@ -4,10 +4,12 @@
 \alias{get_tags}
 \title{Returns a list of tags that are associated with a resource, specified by an ARN}
 \usage{
-get_tags(Arn)
+get_tags(
+  Arn = "string"
+)
 }
 \arguments{
-\item{Arn}{The ARN of the resource for which you want a list of tags. The resource must exist within the account you are using.}
+\item{Arn}{[required] The ARN of the resource for which you want a list of tags. The resource must exist within the account you are using.}
 }
 \description{
 Returns a list of tags that are associated with a resource, specified by an ARN.

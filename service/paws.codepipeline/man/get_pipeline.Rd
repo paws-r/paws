@@ -4,10 +4,13 @@
 \alias{get_pipeline}
 \title{Returns the metadata, structure, stages, and actions of a pipeline}
 \usage{
-get_pipeline(name, version = NULL)
+get_pipeline(
+  name = "string",
+  version = 123
+)
 }
 \arguments{
-\item{name}{The name of the pipeline for which you want to get information. Pipeline names must be unique under an Amazon Web Services (AWS) user account.}
+\item{name}{[required] The name of the pipeline for which you want to get information. Pipeline names must be unique under an Amazon Web Services (AWS) user account.}
 
 \item{version}{The version number of the pipeline. If you do not specify a version, defaults to the most current version.}
 }

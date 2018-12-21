@@ -4,18 +4,26 @@
 \alias{put_file}
 \title{Adds or updates a file in a branch in an AWS CodeCommit repository, and generates a commit for the addition in the specified branch}
 \usage{
-put_file(repositoryName, branchName, fileContent, filePath, fileMode = NULL,
-  parentCommitId = NULL, commitMessage = NULL, name = NULL,
-  email = NULL)
+put_file(
+  repositoryName = "string",
+  branchName = "string",
+  fileContent = raw,
+  filePath = "string",
+  fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK",
+  parentCommitId = "string",
+  commitMessage = "string",
+  name = "string",
+  email = "string"
+)
 }
 \arguments{
-\item{repositoryName}{The name of the repository where you want to add or update the file.}
+\item{repositoryName}{[required] The name of the repository where you want to add or update the file.}
 
-\item{branchName}{The name of the branch where you want to add or update the file. If this is an empty repository, this branch will be created.}
+\item{branchName}{[required] The name of the branch where you want to add or update the file. If this is an empty repository, this branch will be created.}
 
-\item{fileContent}{The content of the file, in binary object format.}
+\item{fileContent}{[required] The content of the file, in binary object format.}
 
-\item{filePath}{The name of the file you want to add or update, including the relative path to the file in the repository.
+\item{filePath}{[required] The name of the file you want to add or update, including the relative path to the file in the repository.
 
 If the path does not currently exist in the repository, the path will be created as part of adding the file.}
 

@@ -4,18 +4,49 @@
 \alias{publish}
 \title{Sends a message to an Amazon SNS topic or sends a text message (SMS message) directly to a phone number}
 \usage{
-publish(Message, TopicArn = NULL, TargetArn = NULL, PhoneNumber = NULL,
-  Subject = NULL, MessageStructure = NULL, MessageAttributes = NULL)
+publish(
+  TopicArn = "string",
+  TargetArn = "string",
+  PhoneNumber = "string",
+  Message = "string",
+  Subject = "string",
+  MessageStructure = "string",
+  MessageAttributes = list(
+    list(
+      DataType = "string",
+      StringValue = "string",
+      BinaryValue = raw
+    )
+  )
+)
 }
 \arguments{
-\item{Message}{The message you want to send.
+\item{TopicArn}{The topic you want to publish to.
+
+If you don't specify a value for the \code{TopicArn} parameter, you must specify a value for the \code{PhoneNumber} or \code{TargetArn} parameters.}
+
+\item{TargetArn}{Either TopicArn or EndpointArn, but not both.
+
+If you don't specify a value for the \code{TargetArn} parameter, you must specify a value for the \code{PhoneNumber} or \code{TopicArn} parameters.}
+
+\item{PhoneNumber}{The phone number to which you want to deliver an SMS message. Use E.164 format.
+
+If you don't specify a value for the \code{PhoneNumber} parameter, you must specify a value for the \code{TargetArn} or \code{TopicArn} parameters.}
+
+\item{Message}{[required] The message you want to send.
+
+The \code{Message} parameter is always a string. If you set \code{MessageStructure} to \code{json}, you must string-encode the \code{Message} parameter.
 
 If you are publishing to a topic and you want to send the same message to all transport protocols, include the text of the message as a String value. If you want to send different messages for each transport protocol, set the value of the \code{MessageStructure} parameter to \code{json} and use a JSON object for the \code{Message} parameter.
 
 Constraints:
 \itemize{
-\item With the exception of SMS, messages must be UTF-8 encoded strings and at most 256 KB in size (262144 bytes, not 262144 characters).
-\item For SMS, each message can contain up to 140 bytes, and the character limit depends on the encoding scheme. For example, an SMS message can contain 160 GSM characters, 140 ASCII characters, or 70 UCS-2 characters. If you publish a message that exceeds the size limit, Amazon SNS sends it as multiple messages, each fitting within the size limit. Messages are not cut off in the middle of a word but on whole-word boundaries. The total size limit for a single SMS publish action is 1600 bytes.
+\item With the exception of SMS, messages must be UTF-8 encoded strings and at most 256 KB in size (262,144 bytes, not 262,144 characters).
+\item For SMS, each message can contain up to 140 characters. This character limit depends on the encoding schema. For example, an SMS message can contain 160 GSM characters, 140 ASCII characters, or 70 UCS-2 characters.
+
+If you publish a message that exceeds this size limit, Amazon SNS sends the message as multiple messages, each fitting within the size limit. Messages aren't truncated mid-word but are cut off at whole-word boundaries.
+
+The total size limit for a single SMS \code{Publish} action is 1,600 characters.
 }
 
 JSON-specific constraints:
@@ -30,18 +61,6 @@ JSON-specific constraints:
 \item Duplicate keys are not allowed.
 \item Failure to parse or validate any key or value in the message will cause the \code{Publish} call to return an error (no partial delivery).
 }}
-
-\item{TopicArn}{The topic you want to publish to.
-
-If you don't specify a value for the \code{TopicArn} parameter, you must specify a value for the \code{PhoneNumber} or \code{TargetArn} parameters.}
-
-\item{TargetArn}{Either TopicArn or EndpointArn, but not both.
-
-If you don't specify a value for the \code{TargetArn} parameter, you must specify a value for the \code{PhoneNumber} or \code{TopicArn} parameters.}
-
-\item{PhoneNumber}{The phone number to which you want to deliver an SMS message. Use E.164 format.
-
-If you don't specify a value for the \code{PhoneNumber} parameter, you must specify a value for the \code{TargetArn} or \code{TopicArn} parameters.}
 
 \item{Subject}{Optional parameter to be used as the "Subject" line when the message is delivered to email endpoints. This field will also be included, if present, in the standard JSON messages delivered to other endpoints.
 

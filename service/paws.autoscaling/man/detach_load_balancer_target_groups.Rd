@@ -4,12 +4,17 @@
 \alias{detach_load_balancer_target_groups}
 \title{Detaches one or more target groups from the specified Auto Scaling group}
 \usage{
-detach_load_balancer_target_groups(AutoScalingGroupName, TargetGroupARNs)
+detach_load_balancer_target_groups(
+  AutoScalingGroupName = "string",
+  TargetGroupARNs = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{TargetGroupARNs}{The Amazon Resource Names (ARN) of the target groups. You can specify up to 10 target groups.}
+\item{TargetGroupARNs}{[required] The Amazon Resource Names (ARN) of the target groups. You can specify up to 10 target groups.}
 }
 \description{
 Detaches one or more target groups from the specified Auto Scaling group.

@@ -4,13 +4,19 @@
 \alias{create_mount_target}
 \title{Creates a mount target for a file system}
 \usage{
-create_mount_target(FileSystemId, SubnetId, IpAddress = NULL,
-  SecurityGroups = NULL)
+create_mount_target(
+  FileSystemId = "string",
+  SubnetId = "string",
+  IpAddress = "string",
+  SecurityGroups = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{FileSystemId}{ID of the file system for which to create the mount target.}
+\item{FileSystemId}{[required] ID of the file system for which to create the mount target.}
 
-\item{SubnetId}{ID of the subnet to add the mount target in.}
+\item{SubnetId}{[required] ID of the subnet to add the mount target in.}
 
 \item{IpAddress}{Valid IPv4 address within the address range of the specified subnet.}
 

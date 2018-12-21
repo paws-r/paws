@@ -4,13 +4,40 @@
 \alias{create_data_source_from_rds}
 \title{Creates a \code{DataSource} object from an \link{Amazon Relational Database Service}(http://aws}
 \usage{
-create_data_source_from_rds(DataSourceId, RDSData, RoleARN,
-  DataSourceName = NULL, ComputeStatistics = NULL)
+create_data_source_from_rds(
+  DataSourceId = "string",
+  DataSourceName = "string",
+  RDSData = list(
+    DatabaseInformation = list(
+      InstanceIdentifier = "string",
+      DatabaseName = "string"
+    ),
+    SelectSqlQuery = "string",
+    DatabaseCredentials = list(
+      Username = "string",
+      Password = "string"
+    ),
+    S3StagingLocation = "string",
+    DataRearrangement = "string",
+    DataSchema = "string",
+    DataSchemaUri = "string",
+    ResourceRole = "string",
+    ServiceRole = "string",
+    SubnetId = "string",
+    SecurityGroupIds = list(
+      "string"
+    )
+  ),
+  RoleARN = "string",
+  ComputeStatistics = TRUE|FALSE
+)
 }
 \arguments{
-\item{DataSourceId}{A user-supplied ID that uniquely identifies the \code{DataSource}. Typically, an Amazon Resource Number (ARN) becomes the ID for a \code{DataSource}.}
+\item{DataSourceId}{[required] A user-supplied ID that uniquely identifies the \code{DataSource}. Typically, an Amazon Resource Number (ARN) becomes the ID for a \code{DataSource}.}
 
-\item{RDSData}{The data specification of an Amazon RDS \code{DataSource}:
+\item{DataSourceName}{A user-supplied name or description of the \code{DataSource}.}
+
+\item{RDSData}{[required] The data specification of an Amazon RDS \code{DataSource}:
 \itemize{
 \item DatabaseInformation -
 \itemize{
@@ -32,9 +59,7 @@ create_data_source_from_rds(DataSourceId, RDSData, RoleARN,
 Sample - \code{ "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"}
 }}
 
-\item{RoleARN}{The role that Amazon ML assumes on behalf of the user to create and activate a data pipeline in the user's account and copy data using the \code{SelectSqlQuery} query from Amazon RDS to Amazon S3.}
-
-\item{DataSourceName}{A user-supplied name or description of the \code{DataSource}.}
+\item{RoleARN}{[required] The role that Amazon ML assumes on behalf of the user to create and activate a data pipeline in the user's account and copy data using the \code{SelectSqlQuery} query from Amazon RDS to Amazon S3.}
 
 \item{ComputeStatistics}{The compute statistics for a \code{DataSource}. The statistics are generated from the observation data referenced by a \code{DataSource}. Amazon ML uses the statistics internally during \code{MLModel} training. This parameter must be set to \code{true} if the \code{DataSource} needs to be used for \code{MLModel} training.}
 }

@@ -4,17 +4,24 @@
 \alias{create_authorizer}
 \title{Creates an authorizer}
 \usage{
-create_authorizer(authorizerName, authorizerFunctionArn, tokenKeyName,
-  tokenSigningPublicKeys, status = NULL)
+create_authorizer(
+  authorizerName = "string",
+  authorizerFunctionArn = "string",
+  tokenKeyName = "string",
+  tokenSigningPublicKeys = list(
+    "string"
+  ),
+  status = "ACTIVE"|"INACTIVE"
+)
 }
 \arguments{
-\item{authorizerName}{The authorizer name.}
+\item{authorizerName}{[required] The authorizer name.}
 
-\item{authorizerFunctionArn}{The ARN of the authorizer's Lambda function.}
+\item{authorizerFunctionArn}{[required] The ARN of the authorizer's Lambda function.}
 
-\item{tokenKeyName}{The name of the token key used to extract the token from the HTTP headers.}
+\item{tokenKeyName}{[required] The name of the token key used to extract the token from the HTTP headers.}
 
-\item{tokenSigningPublicKeys}{The public keys used to verify the digital signature returned by your custom authentication service.}
+\item{tokenSigningPublicKeys}{[required] The public keys used to verify the digital signature returned by your custom authentication service.}
 
 \item{status}{The status of the create authorizer request.}
 }

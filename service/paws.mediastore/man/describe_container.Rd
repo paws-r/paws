@@ -4,7 +4,9 @@
 \alias{describe_container}
 \title{Retrieves the properties of the requested container}
 \usage{
-describe_container(ContainerName = NULL)
+describe_container(
+  ContainerName = "string"
+)
 }
 \arguments{
 \item{ContainerName}{The name of the container to query.}

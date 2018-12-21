@@ -4,10 +4,12 @@
 \alias{get_policy}
 \title{Retrieves information about the specified managed policy, including the policy's default version and the total number of IAM users, groups, and roles to which the policy is attached}
 \usage{
-get_policy(PolicyArn)
+get_policy(
+  PolicyArn = "string"
+)
 }
 \arguments{
-\item{PolicyArn}{The Amazon Resource Name (ARN) of the managed policy that you want information about.
+\item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the managed policy that you want information about.
 
 For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces} in the \emph{AWS General Reference}.}
 }

@@ -4,16 +4,21 @@
 \alias{update_maintenance_start_time}
 \title{Updates a gateway's weekly maintenance start time information, including day and time of the week}
 \usage{
-update_maintenance_start_time(GatewayARN, HourOfDay, MinuteOfHour, DayOfWeek)
+update_maintenance_start_time(
+  GatewayARN = "string",
+  HourOfDay = 123,
+  MinuteOfHour = 123,
+  DayOfWeek = 123
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 
-\item{HourOfDay}{The hour component of the maintenance start time represented as \emph{hh}, where \emph{hh} is the hour (00 to 23). The hour of the day is in the time zone of the gateway.}
+\item{HourOfDay}{[required] The hour component of the maintenance start time represented as \emph{hh}, where \emph{hh} is the hour (00 to 23). The hour of the day is in the time zone of the gateway.}
 
-\item{MinuteOfHour}{The minute component of the maintenance start time represented as \emph{mm}, where \emph{mm} is the minute (00 to 59). The minute of the hour is in the time zone of the gateway.}
+\item{MinuteOfHour}{[required] The minute component of the maintenance start time represented as \emph{mm}, where \emph{mm} is the minute (00 to 59). The minute of the hour is in the time zone of the gateway.}
 
-\item{DayOfWeek}{The maintenance start time day of the week represented as an ordinal number from 0 to 6, where 0 represents Sunday and 6 Saturday.}
+\item{DayOfWeek}{[required] The maintenance start time day of the week represented as an ordinal number from 0 to 6, where 0 represents Sunday and 6 Saturday.}
 }
 \description{
 Updates a gateway's weekly maintenance start time information, including day and time of the week. The maintenance time is the time in your gateway's time zone.

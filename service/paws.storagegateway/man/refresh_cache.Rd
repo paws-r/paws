@@ -4,10 +4,16 @@
 \alias{refresh_cache}
 \title{Refreshes the cache for the specified file share}
 \usage{
-refresh_cache(FileShareARN, FolderList = NULL, Recursive = NULL)
+refresh_cache(
+  FileShareARN = "string",
+  FolderList = list(
+    "string"
+  ),
+  Recursive = TRUE|FALSE
+)
 }
 \arguments{
-\item{FileShareARN}{}
+\item{FileShareARN}{[required]}
 
 \item{FolderList}{}
 

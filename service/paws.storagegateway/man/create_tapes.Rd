@@ -4,23 +4,30 @@
 \alias{create_tapes}
 \title{Creates one or more virtual tapes}
 \usage{
-create_tapes(GatewayARN, TapeSizeInBytes, ClientToken, NumTapesToCreate,
-  TapeBarcodePrefix, KMSEncrypted = NULL, KMSKey = NULL)
+create_tapes(
+  GatewayARN = "string",
+  TapeSizeInBytes = 123,
+  ClientToken = "string",
+  NumTapesToCreate = 123,
+  TapeBarcodePrefix = "string",
+  KMSEncrypted = TRUE|FALSE,
+  KMSKey = "string"
+)
 }
 \arguments{
-\item{GatewayARN}{The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tapes with. Use the ListGateways operation to return a list of gateways for your account and region.}
+\item{GatewayARN}{[required] The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tapes with. Use the ListGateways operation to return a list of gateways for your account and region.}
 
-\item{TapeSizeInBytes}{The size, in bytes, of the virtual tapes that you want to create.
+\item{TapeSizeInBytes}{[required] The size, in bytes, of the virtual tapes that you want to create.
 
 The size must be aligned by gigabyte (1024*1024*1024 byte).}
 
-\item{ClientToken}{A unique identifier that you use to retry a request. If you retry a request, use the same \code{ClientToken} you specified in the initial request.
+\item{ClientToken}{[required] A unique identifier that you use to retry a request. If you retry a request, use the same \code{ClientToken} you specified in the initial request.
 
 Using the same \code{ClientToken} prevents creating the tape multiple times.}
 
-\item{NumTapesToCreate}{The number of virtual tapes that you want to create.}
+\item{NumTapesToCreate}{[required] The number of virtual tapes that you want to create.}
 
-\item{TapeBarcodePrefix}{A prefix that you append to the barcode of the virtual tape you are creating. This prefix makes the barcode unique.
+\item{TapeBarcodePrefix}{[required] A prefix that you append to the barcode of the virtual tape you are creating. This prefix makes the barcode unique.
 
 The prefix must be 1 to 4 characters in length and must be one of the uppercase letters from A to Z.}
 

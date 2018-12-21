@@ -4,12 +4,15 @@
 \alias{increase_stream_retention_period}
 \title{Increases the Kinesis data stream's retention period, which is the length of time data records are accessible after they are added to the stream}
 \usage{
-increase_stream_retention_period(StreamName, RetentionPeriodHours)
+increase_stream_retention_period(
+  StreamName = "string",
+  RetentionPeriodHours = 123
+)
 }
 \arguments{
-\item{StreamName}{The name of the stream to modify.}
+\item{StreamName}{[required] The name of the stream to modify.}
 
-\item{RetentionPeriodHours}{The new retention period of the stream, in hours. Must be more than the current retention period.}
+\item{RetentionPeriodHours}{[required] The new retention period of the stream, in hours. Must be more than the current retention period.}
 }
 \description{
 Increases the Kinesis data stream's retention period, which is the length of time data records are accessible after they are added to the stream. The maximum value of a stream's retention period is 168 hours (7 days).

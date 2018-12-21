@@ -4,14 +4,18 @@
 \alias{disassociate_delegate_from_resource}
 \title{Removes a member from the resource's set of delegates}
 \usage{
-disassociate_delegate_from_resource(OrganizationId, ResourceId, EntityId)
+disassociate_delegate_from_resource(
+  OrganizationId = "string",
+  ResourceId = "string",
+  EntityId = "string"
+)
 }
 \arguments{
-\item{OrganizationId}{The identifier for the organization under which the resource exists.}
+\item{OrganizationId}{[required] The identifier for the organization under which the resource exists.}
 
-\item{ResourceId}{The identifier of the resource from which delegates' set members are removed.}
+\item{ResourceId}{[required] The identifier of the resource from which delegates' set members are removed.}
 
-\item{EntityId}{The identifier for the member (user, group) to be removed from the resource's delegates.}
+\item{EntityId}{[required] The identifier for the member (user, group) to be removed from the resource's delegates.}
 }
 \description{
 Removes a member from the resource's set of delegates.

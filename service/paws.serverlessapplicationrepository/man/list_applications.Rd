@@ -5,7 +5,10 @@
 \alias{list_applications}
 \title{Lists applications owned by the requester}
 \usage{
-list_applications(MaxItems = NULL, NextToken = NULL)
+list_applications(
+  MaxItems = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{MaxItems}{The total number of items to return.}

@@ -4,10 +4,21 @@
 \alias{poll_for_jobs}
 \title{Returns information about any jobs for AWS CodePipeline to act upon}
 \usage{
-poll_for_jobs(actionTypeId, maxBatchSize = NULL, queryParam = NULL)
+poll_for_jobs(
+  actionTypeId = list(
+    category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+    owner = "AWS"|"ThirdParty"|"Custom",
+    provider = "string",
+    version = "string"
+  ),
+  maxBatchSize = 123,
+  queryParam = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{actionTypeId}{Represents information about an action type.}
+\item{actionTypeId}{[required] Represents information about an action type.}
 
 \item{maxBatchSize}{The maximum number of jobs to return in a poll for jobs call.}
 

@@ -4,10 +4,12 @@
 \alias{get_sql_injection_match_set}
 \title{Returns the SqlInjectionMatchSet that is specified by \code{SqlInjectionMatchSetId}}
 \usage{
-get_sql_injection_match_set(SqlInjectionMatchSetId)
+get_sql_injection_match_set(
+  SqlInjectionMatchSetId = "string"
+)
 }
 \arguments{
-\item{SqlInjectionMatchSetId}{The \code{SqlInjectionMatchSetId} of the SqlInjectionMatchSet that you want to get. \code{SqlInjectionMatchSetId} is returned by CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets.}
+\item{SqlInjectionMatchSetId}{[required] The \code{SqlInjectionMatchSetId} of the SqlInjectionMatchSet that you want to get. \code{SqlInjectionMatchSetId} is returned by CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets.}
 }
 \description{
 Returns the SqlInjectionMatchSet that is specified by \code{SqlInjectionMatchSetId}.

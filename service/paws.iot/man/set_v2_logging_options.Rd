@@ -4,8 +4,11 @@
 \alias{set_v2_logging_options}
 \title{Sets the logging options for the V2 logging service}
 \usage{
-set_v2_logging_options(roleArn = NULL, defaultLogLevel = NULL,
-  disableAllLogs = NULL)
+set_v2_logging_options(
+  roleArn = "string",
+  defaultLogLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED",
+  disableAllLogs = TRUE|FALSE
+)
 }
 \arguments{
 \item{roleArn}{The ARN of the role that allows IoT to write to Cloudwatch logs.}

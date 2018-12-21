@@ -4,10 +4,12 @@
 \alias{delete_cluster_security_group}
 \title{Deletes an Amazon Redshift security group}
 \usage{
-delete_cluster_security_group(ClusterSecurityGroupName)
+delete_cluster_security_group(
+  ClusterSecurityGroupName = "string"
+)
 }
 \arguments{
-\item{ClusterSecurityGroupName}{The name of the cluster security group to be deleted.}
+\item{ClusterSecurityGroupName}{[required] The name of the cluster security group to be deleted.}
 }
 \description{
 Deletes an Amazon Redshift security group.

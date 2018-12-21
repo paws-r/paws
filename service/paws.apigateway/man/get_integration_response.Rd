@@ -4,16 +4,21 @@
 \alias{get_integration_response}
 \title{Represents a get integration response}
 \usage{
-get_integration_response(restApiId, resourceId, httpMethod, statusCode)
+get_integration_response(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string",
+  statusCode = "string"
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[Required] Specifies a get integration response request's resource identifier.}
+\item{resourceId}{[required] [Required] Specifies a get integration response request's resource identifier.}
 
-\item{httpMethod}{[Required] Specifies a get integration response request's HTTP method.}
+\item{httpMethod}{[required] [Required] Specifies a get integration response request's HTTP method.}
 
-\item{statusCode}{[Required] Specifies a get integration response request's status code.}
+\item{statusCode}{[required] [Required] Specifies a get integration response request's status code.}
 }
 \description{
 Represents a get integration response.

@@ -6,17 +6,21 @@
 \alias{paws.migrationhub-package}
 \title{paws.migrationhub: AWS Migration Hub}
 \description{
-The AWS Migration Hub API methods help to obtain
-server and application migration status and integrate your
-resource-specific migration tool by providing a programmatic interface
-to Migration Hub.
+The AWS Migration Hub API methods help to obtain server and
+application migration status and integrate your resource-specific
+migration tool by providing a programmatic interface to Migration Hub.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

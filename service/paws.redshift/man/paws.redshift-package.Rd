@@ -6,8 +6,8 @@
 \alias{paws.redshift-package}
 \title{paws.redshift: Amazon Redshift}
 \description{
-This is an interface reference for Amazon Redshift.
-It contains documentation for one of the programming or command line
+This is an interface reference for Amazon Redshift. It
+contains documentation for one of the programming or command line
 interfaces you can use to manage Amazon Redshift clusters. Note that
 Amazon Redshift is asynchronous, which means that some interfaces may
 require techniques, such as polling or asynchronous callback handlers,
@@ -23,7 +23,12 @@ Interfaces](http://docs.aws.amazon.com/redshift/latest/mgmt/using-aws-sdk.html).
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

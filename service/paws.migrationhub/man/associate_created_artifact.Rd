@@ -4,15 +4,22 @@
 \alias{associate_created_artifact}
 \title{Associates a created artifact of an AWS cloud resource, the target receiving the migration, with the migration task performed by a migration tool}
 \usage{
-associate_created_artifact(ProgressUpdateStream, MigrationTaskName,
-  CreatedArtifact, DryRun = NULL)
+associate_created_artifact(
+  ProgressUpdateStream = "string",
+  MigrationTaskName = "string",
+  CreatedArtifact = list(
+    Name = "string",
+    Description = "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{ProgressUpdateStream}{The name of the ProgressUpdateStream.}
+\item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
 
-\item{MigrationTaskName}{Unique identifier that references the migration task.}
+\item{MigrationTaskName}{[required] Unique identifier that references the migration task.}
 
-\item{CreatedArtifact}{An ARN of the AWS resource related to the migration (e.g., AMI, EC2 instance, RDS instance, etc.)}
+\item{CreatedArtifact}{[required] An ARN of the AWS resource related to the migration (e.g., AMI, EC2 instance, RDS instance, etc.)}
 
 \item{DryRun}{Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.}
 }

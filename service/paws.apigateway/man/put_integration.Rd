@@ -4,33 +4,51 @@
 \alias{put_integration}
 \title{Sets up a method's integration}
 \usage{
-put_integration(restApiId, resourceId, httpMethod, type,
-  integrationHttpMethod = NULL, uri = NULL, connectionType = NULL,
-  connectionId = NULL, credentials = NULL, requestParameters = NULL,
-  requestTemplates = NULL, passthroughBehavior = NULL,
-  cacheNamespace = NULL, cacheKeyParameters = NULL,
-  contentHandling = NULL, timeoutInMillis = NULL)
+put_integration(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string",
+  type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
+  integrationHttpMethod = "string",
+  uri = "string",
+  connectionType = "INTERNET"|"VPC_LINK",
+  connectionId = "string",
+  credentials = "string",
+  requestParameters = list(
+    "string"
+  ),
+  requestTemplates = list(
+    "string"
+  ),
+  passthroughBehavior = "string",
+  cacheNamespace = "string",
+  cacheKeyParameters = list(
+    "string"
+  ),
+  contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+  timeoutInMillis = 123
+)
 }
 \arguments{
-\item{restApiId}{[Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[Required] Specifies a put integration request's resource ID.}
+\item{resourceId}{[required] [Required] Specifies a put integration request's resource ID.}
 
-\item{httpMethod}{[Required] Specifies a put integration request's HTTP method.}
+\item{httpMethod}{[required] [Required] Specifies a put integration request's HTTP method.}
 
-\item{type}{[Required] Specifies a put integration input's type.}
+\item{type}{[required] [Required] Specifies a put integration input's type.}
 
 \item{integrationHttpMethod}{Specifies a put integration HTTP method. When the integration type is HTTP or AWS, this field is required.}
 
 \item{uri}{Specifies Uniform Resource Identifier (URI) of the integration endpoint.
 \itemize{
-\item For \code{HTTP} or \code{HTTP_PROXY} integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the \href{%5B%5BUriEntryWikipediaUrl%5D%5D}{RFC-3986 specification}, for either standard integration, where \code{connectionType} is not \code{VPC_LINK}, or private integration, where \code{connectionType} is \code{VPC_LINK}. For a private HTTP integration, the URI is not used for routing.
+\item For \code{HTTP} or \code{HTTP_PROXY} integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the \href{https://en.wikipedia.org/wiki/Uniform_Resource_Identifier}{RFC-3986 specification}, for either standard integration, where \code{connectionType} is not \code{VPC_LINK}, or private integration, where \code{connectionType} is \code{VPC_LINK}. For a private HTTP integration, the URI is not used for routing.
 \item For \code{AWS} or \code{AWS_PROXY} integrations, the URI is of the form \code{arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}}. Here, \code{{Region}} is the API Gateway region (e.g., \code{us-east-1}); \code{{service}} is the name of the integrated AWS service (e.g., \code{s3}); and \code{{subdomain}} is a designated subdomain supported by certain AWS service for fast host-name lookup. \code{action} can be used for an AWS service action-based API, using an \code{Action={name}&{p1}={v1}&p2={v2}...} query string. The ensuing \code{{service_api}} refers to a supported action \code{{name}} plus any required input parameters. Alternatively, \code{path} can be used for an AWS service path-based API. The ensuing \code{service_api} refers to the path to an AWS service resource, including the region of the integrated AWS service, if applicable. For example, for integration with the S3 API of \code{GetObject}, the \code{uri} can be either \code{arn:aws:api
 }}
 
 \item{connectionType}{The type of the network connection to the integration endpoint. The valid value is \code{INTERNET} for connections through the public routable internet or \code{VPC_LINK} for private connections between API Gateway and a network load balancer in a VPC. The default value is \code{INTERNET}.}
 
-\item{connectionId}{The (\href{%5B%5BAwsDocsUrlPrefix%5D%5D/apigateway/api-reference/resource/vpc-link/#id}{id}) of the VpcLink used for the integration when \code{connectionType=VPC_LINK} and undefined, otherwise.}
+\item{connectionId}{The (\href{https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id}{id}) of the VpcLink used for the integration when \code{connectionType=VPC_LINK} and undefined, otherwise.}
 
 \item{credentials}{Specifies whether credentials are required for a put integration.}
 

@@ -4,7 +4,9 @@
 \alias{get_tag_keys}
 \title{Returns all tag keys in the specified region for the AWS account}
 \usage{
-get_tag_keys(PaginationToken = NULL)
+get_tag_keys(
+  PaginationToken = "string"
+)
 }
 \arguments{
 \item{PaginationToken}{A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a PaginationToken, use that string for this value to request an additional page of data.}

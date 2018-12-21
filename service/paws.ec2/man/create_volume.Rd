@@ -4,16 +4,34 @@
 \alias{create_volume}
 \title{Creates an EBS volume that can be attached to an instance in the same Availability Zone}
 \usage{
-create_volume(AvailabilityZone, Encrypted = NULL, Iops = NULL,
-  KmsKeyId = NULL, Size = NULL, SnapshotId = NULL, VolumeType = NULL,
-  DryRun = NULL, TagSpecifications = NULL)
+create_volume(
+  AvailabilityZone = "string",
+  Encrypted = TRUE|FALSE,
+  Iops = 123,
+  KmsKeyId = "string",
+  Size = 123,
+  SnapshotId = "string",
+  VolumeType = "standard"|"io1"|"gp2"|"sc1"|"st1",
+  DryRun = TRUE|FALSE,
+  TagSpecifications = list(
+    list(
+      ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{AvailabilityZone}{The Availability Zone in which to create the volume. Use DescribeAvailabilityZones to list the Availability Zones that are currently available to you.}
+\item{AvailabilityZone}{[required] The Availability Zone in which to create the volume. Use DescribeAvailabilityZones to list the Availability Zones that are currently available to you.}
 
 \item{Encrypted}{Specifies whether the volume should be encrypted. Encrypted Amazon EBS volumes may only be attached to instances that support Amazon EBS encryption. Volumes that are created from encrypted snapshots are automatically encrypted. There is no way to create an encrypted volume from an unencrypted snapshot or vice versa. If your AMI uses encrypted volumes, you can only launch it on supported instance types. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
-\item{Iops}{The number of I/O operations per second (IOPS) to provision for the volume, with a maximum ratio of 50 IOPS/GiB. Range is 100 to 32000 IOPS for volumes in most regions. For exceptions, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html}{Amazon EBS Volume Types} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+\item{Iops}{The number of I/O operations per second (IOPS) to provision for the volume, with a maximum ratio of 50 IOPS/GiB. Range is 100 to 64,000 IOPS for volumes in most regions. Maximum IOPS of 64,000 is guaranteed only on \href{AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{Nitro-based instances}. Other instance families guarantee performance up to 32,000 IOPS. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html}{Amazon EBS Volume Types} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 This parameter is valid only for Provisioned IOPS SSD (io1) volumes.}
 
@@ -31,7 +49,7 @@ AWS parses \code{KmsKeyId} asynchronously, meaning that the action you call may 
 
 \item{Size}{The size of the volume, in GiBs.
 
-Constraints: 1-16384 for \code{gp2}, 4-16384 for \code{io1}, 500-16384 for \code{st1}, 500-16384 for \code{sc1}, and 1-1024 for \code{standard}. If you specify a snapshot, the volume size must be equal to or larger than the snapshot size.
+Constraints: 1-16,384 for \code{gp2}, 4-16,384 for \code{io1}, 500-16,384 for \code{st1}, 500-16,384 for \code{sc1}, and 1-1,024 for \code{standard}. If you specify a snapshot, the volume size must be equal to or larger than the snapshot size.
 
 Default: If you're creating the volume from a snapshot and don't specify a volume size, the default is the snapshot size.}
 

@@ -4,12 +4,17 @@
 \alias{enable_availability_zones_for_load_balancer}
 \title{Adds the specified Availability Zones to the set of Availability Zones for the specified load balancer in EC2-Classic or a default VPC}
 \usage{
-enable_availability_zones_for_load_balancer(LoadBalancerName, AvailabilityZones)
+enable_availability_zones_for_load_balancer(
+  LoadBalancerName = "string",
+  AvailabilityZones = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{LoadBalancerName}{The name of the load balancer.}
+\item{LoadBalancerName}{[required] The name of the load balancer.}
 
-\item{AvailabilityZones}{The Availability Zones. These must be in the same region as the load balancer.}
+\item{AvailabilityZones}{[required] The Availability Zones. These must be in the same region as the load balancer.}
 }
 \description{
 Adds the specified Availability Zones to the set of Availability Zones for the specified load balancer in EC2-Classic or a default VPC.

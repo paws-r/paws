@@ -4,15 +4,19 @@
 \alias{import_certificate}
 \title{Imports a certificate into AWS Certificate Manager (ACM) to use with services that are integrated with ACM}
 \usage{
-import_certificate(Certificate, PrivateKey, CertificateArn = NULL,
-  CertificateChain = NULL)
+import_certificate(
+  CertificateArn = "string",
+  Certificate = raw,
+  PrivateKey = raw,
+  CertificateChain = raw
+)
 }
 \arguments{
-\item{Certificate}{The certificate to import.}
-
-\item{PrivateKey}{The private key that matches the public key in the certificate.}
-
 \item{CertificateArn}{The \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)} of an imported certificate to replace. To import a new certificate, omit this field.}
+
+\item{Certificate}{[required] The certificate to import.}
+
+\item{PrivateKey}{[required] The private key that matches the public key in the certificate.}
 
 \item{CertificateChain}{The PEM encoded certificate chain.}
 }

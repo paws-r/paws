@@ -4,14 +4,83 @@
 \alias{create_table}
 \title{Creates a new table definition in the Data Catalog}
 \usage{
-create_table(DatabaseName, TableInput, CatalogId = NULL)
+create_table(
+  CatalogId = "string",
+  DatabaseName = "string",
+  TableInput = list(
+    Name = "string",
+    Description = "string",
+    Owner = "string",
+    LastAccessTime = as.POSIXct("2015-01-01"),
+    LastAnalyzedTime = as.POSIXct("2015-01-01"),
+    Retention = 123,
+    StorageDescriptor = list(
+      Columns = list(
+        list(
+          Name = "string",
+          Type = "string",
+          Comment = "string"
+        )
+      ),
+      Location = "string",
+      InputFormat = "string",
+      OutputFormat = "string",
+      Compressed = TRUE|FALSE,
+      NumberOfBuckets = 123,
+      SerdeInfo = list(
+        Name = "string",
+        SerializationLibrary = "string",
+        Parameters = list(
+          "string"
+        )
+      ),
+      BucketColumns = list(
+        "string"
+      ),
+      SortColumns = list(
+        list(
+          Column = "string",
+          SortOrder = 123
+        )
+      ),
+      Parameters = list(
+        "string"
+      ),
+      SkewedInfo = list(
+        SkewedColumnNames = list(
+          "string"
+        ),
+        SkewedColumnValues = list(
+          "string"
+        ),
+        SkewedColumnValueLocationMaps = list(
+          "string"
+        )
+      ),
+      StoredAsSubDirectories = TRUE|FALSE
+    ),
+    PartitionKeys = list(
+      list(
+        Name = "string",
+        Type = "string",
+        Comment = "string"
+      )
+    ),
+    ViewOriginalText = "string",
+    ViewExpandedText = "string",
+    TableType = "string",
+    Parameters = list(
+      "string"
+    )
+  )
+)
 }
 \arguments{
-\item{DatabaseName}{The catalog database in which to create the new table. For Hive compatibility, this name is entirely lowercase.}
-
-\item{TableInput}{The \code{TableInput} object that defines the metadata table to create in the catalog.}
-
 \item{CatalogId}{The ID of the Data Catalog in which to create the \code{Table}. If none is supplied, the AWS account ID is used by default.}
+
+\item{DatabaseName}{[required] The catalog database in which to create the new table. For Hive compatibility, this name is entirely lowercase.}
+
+\item{TableInput}{[required] The \code{TableInput} object that defines the metadata table to create in the catalog.}
 }
 \description{
 Creates a new table definition in the Data Catalog.

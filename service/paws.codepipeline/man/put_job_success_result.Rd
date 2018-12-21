@@ -4,11 +4,24 @@
 \alias{put_job_success_result}
 \title{Represents the success of a job as returned to the pipeline by a job worker}
 \usage{
-put_job_success_result(jobId, currentRevision = NULL,
-  continuationToken = NULL, executionDetails = NULL)
+put_job_success_result(
+  jobId = "string",
+  currentRevision = list(
+    revision = "string",
+    changeIdentifier = "string",
+    created = as.POSIXct("2015-01-01"),
+    revisionSummary = "string"
+  ),
+  continuationToken = "string",
+  executionDetails = list(
+    summary = "string",
+    externalExecutionId = "string",
+    percentComplete = 123
+  )
+)
 }
 \arguments{
-\item{jobId}{The unique system-generated ID of the job that succeeded. This is the same ID returned from PollForJobs.}
+\item{jobId}{[required] The unique system-generated ID of the job that succeeded. This is the same ID returned from PollForJobs.}
 
 \item{currentRevision}{The ID of the current revision of the artifact successfully worked upon by the job.}
 

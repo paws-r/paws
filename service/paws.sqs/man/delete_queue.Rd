@@ -4,10 +4,12 @@
 \alias{delete_queue}
 \title{Deletes the queue specified by the \code{QueueUrl}, regardless of the queue's contents}
 \usage{
-delete_queue(QueueUrl)
+delete_queue(
+  QueueUrl = "string"
+)
 }
 \arguments{
-\item{QueueUrl}{The URL of the Amazon SQS queue to delete.
+\item{QueueUrl}{[required] The URL of the Amazon SQS queue to delete.
 
 Queue URLs and names are case-sensitive.}
 }

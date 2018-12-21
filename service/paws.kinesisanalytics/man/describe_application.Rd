@@ -4,10 +4,12 @@
 \alias{describe_application}
 \title{Returns information about a specific Amazon Kinesis Analytics application}
 \usage{
-describe_application(ApplicationName)
+describe_application(
+  ApplicationName = "string"
+)
 }
 \arguments{
-\item{ApplicationName}{Name of the application.}
+\item{ApplicationName}{[required] Name of the application.}
 }
 \description{
 Returns information about a specific Amazon Kinesis Analytics application.

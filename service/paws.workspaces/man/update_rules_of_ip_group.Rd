@@ -4,12 +4,20 @@
 \alias{update_rules_of_ip_group}
 \title{Replaces the current rules of the specified IP access control group with the specified rules}
 \usage{
-update_rules_of_ip_group(GroupId, UserRules)
+update_rules_of_ip_group(
+  GroupId = "string",
+  UserRules = list(
+    list(
+      ipRule = "string",
+      ruleDesc = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{GroupId}{The ID of the group.}
+\item{GroupId}{[required] The identifier of the group.}
 
-\item{UserRules}{One or more rules.}
+\item{UserRules}{[required] One or more rules.}
 }
 \description{
 Replaces the current rules of the specified IP access control group with the specified rules.

@@ -4,12 +4,21 @@
 \alias{register_instance}
 \title{Registers instances that were created outside of AWS OpsWorks Stacks with a specified stack}
 \usage{
-register_instance(StackId, Hostname = NULL, PublicIp = NULL,
-  PrivateIp = NULL, RsaPublicKey = NULL, RsaPublicKeyFingerprint = NULL,
-  InstanceIdentity = NULL)
+register_instance(
+  StackId = "string",
+  Hostname = "string",
+  PublicIp = "string",
+  PrivateIp = "string",
+  RsaPublicKey = "string",
+  RsaPublicKeyFingerprint = "string",
+  InstanceIdentity = list(
+    Document = "string",
+    Signature = "string"
+  )
+)
 }
 \arguments{
-\item{StackId}{The ID of the stack that the instance is to be registered with.}
+\item{StackId}{[required] The ID of the stack that the instance is to be registered with.}
 
 \item{Hostname}{The instance's hostname.}
 

@@ -4,13 +4,19 @@
 \alias{get_compliance_details_by_resource}
 \title{Returns the evaluation results for the specified AWS resource}
 \usage{
-get_compliance_details_by_resource(ResourceType, ResourceId,
-  ComplianceTypes = NULL, NextToken = NULL)
+get_compliance_details_by_resource(
+  ResourceType = "string",
+  ResourceId = "string",
+  ComplianceTypes = list(
+    "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA"
+  ),
+  NextToken = "string"
+)
 }
 \arguments{
-\item{ResourceType}{The type of the AWS resource for which you want compliance information.}
+\item{ResourceType}{[required] The type of the AWS resource for which you want compliance information.}
 
-\item{ResourceId}{The ID of the AWS resource for which you want compliance information.}
+\item{ResourceId}{[required] The ID of the AWS resource for which you want compliance information.}
 
 \item{ComplianceTypes}{Filters the results by compliance.
 

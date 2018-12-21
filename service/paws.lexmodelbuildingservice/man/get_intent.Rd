@@ -4,12 +4,15 @@
 \alias{get_intent}
 \title{Returns information about an intent}
 \usage{
-get_intent(name, version)
+get_intent(
+  name = "string",
+  version = "string"
+)
 }
 \arguments{
-\item{name}{The name of the intent. The name is case sensitive.}
+\item{name}{[required] The name of the intent. The name is case sensitive.}
 
-\item{version}{The version of the intent.}
+\item{version}{[required] The version of the intent.}
 }
 \description{
 Returns information about an intent. In addition to the intent name, you must specify the intent version.

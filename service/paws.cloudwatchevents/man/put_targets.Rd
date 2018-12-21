@@ -4,12 +4,73 @@
 \alias{put_targets}
 \title{Adds the specified targets to the specified rule, or updates the targets if they are already associated with the rule}
 \usage{
-put_targets(Rule, Targets)
+put_targets(
+  Rule = "string",
+  Targets = list(
+    list(
+      Id = "string",
+      Arn = "string",
+      RoleArn = "string",
+      Input = "string",
+      InputPath = "string",
+      InputTransformer = list(
+        InputPathsMap = list(
+          "string"
+        ),
+        InputTemplate = "string"
+      ),
+      KinesisParameters = list(
+        PartitionKeyPath = "string"
+      ),
+      RunCommandParameters = list(
+        RunCommandTargets = list(
+          list(
+            Key = "string",
+            Values = list(
+              "string"
+            )
+          )
+        )
+      ),
+      EcsParameters = list(
+        TaskDefinitionArn = "string",
+        TaskCount = 123,
+        LaunchType = "EC2"|"FARGATE",
+        NetworkConfiguration = list(
+          awsvpcConfiguration = list(
+            Subnets = list(
+              "string"
+            ),
+            SecurityGroups = list(
+              "string"
+            ),
+            AssignPublicIp = "ENABLED"|"DISABLED"
+          )
+        ),
+        PlatformVersion = "string",
+        Group = "string"
+      ),
+      BatchParameters = list(
+        JobDefinition = "string",
+        JobName = "string",
+        ArrayProperties = list(
+          Size = 123
+        ),
+        RetryStrategy = list(
+          Attempts = 123
+        )
+      ),
+      SqsParameters = list(
+        MessageGroupId = "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{Rule}{The name of the rule.}
+\item{Rule}{[required] The name of the rule.}
 
-\item{Targets}{The targets to update or add to the rule.}
+\item{Targets}{[required] The targets to update or add to the rule.}
 }
 \description{
 Adds the specified targets to the specified rule, or updates the targets if they are already associated with the rule.
@@ -43,6 +104,8 @@ For some target types, \code{PutTargets} provides target-specific parameters. If
 To be able to make API calls against the resources that you own, Amazon CloudWatch Events needs the appropriate permissions. For AWS Lambda and Amazon SNS resources, CloudWatch Events relies on resource-based policies. For EC2 instances, Kinesis data streams, and AWS Step Functions state machines, CloudWatch Events relies on IAM roles that you specify in the \code{RoleARN} argument in \code{PutTargets}. For more information, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/auth-and-access-control-cwe.html}{Authentication and Access Control} in the \emph{Amazon CloudWatch Events User Guide}.
 
 If another AWS account is in the same region and has granted you permission (using \code{PutPermission}), you can send events to that account. Set that account's event bus as a target of the rules in your account. To send the matched events to the other account, specify that account's event bus as the \code{Arn} value when you run \code{PutTargets}. If your account sends events to another account, your account is charged for each sent event. Each event sent to another account is charged as a custom event. The account receiving the event is not charged. For more information, see \href{https://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.
+
+If you are setting the event bus of another account as the target, and that account granted permission to your account through an organization instead of directly by the account ID, then you must specify a \code{RoleArn} with proper permissions in the \code{Target} structure. For more information, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html}{Sending and Receiving Events Between AWS Accounts} in the \emph{Amazon CloudWatch Events User Guide}.
 
 For more information about enabling cross-account events, see PutPermission.
 

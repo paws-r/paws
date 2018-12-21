@@ -4,10 +4,13 @@
 \alias{start_assessment_run}
 \title{Starts the assessment run specified by the ARN of the assessment template}
 \usage{
-start_assessment_run(assessmentTemplateArn, assessmentRunName = NULL)
+start_assessment_run(
+  assessmentTemplateArn = "string",
+  assessmentRunName = "string"
+)
 }
 \arguments{
-\item{assessmentTemplateArn}{The ARN of the assessment template of the assessment run that you want to start.}
+\item{assessmentTemplateArn}{[required] The ARN of the assessment template of the assessment run that you want to start.}
 
 \item{assessmentRunName}{You can specify the name for the assessment run. The name must be unique for the assessment template whose ARN is used to start the assessment run.}
 }

@@ -4,8 +4,24 @@
 \alias{list_documents}
 \title{Describes one or more of your Systems Manager documents}
 \usage{
-list_documents(DocumentFilterList = NULL, Filters = NULL,
-  MaxResults = NULL, NextToken = NULL)
+list_documents(
+  DocumentFilterList = list(
+    list(
+      key = "Name"|"Owner"|"PlatformTypes"|"DocumentType",
+      value = "string"
+    )
+  ),
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{DocumentFilterList}{One or more filters. Use a filter to return a more specific list of results.}

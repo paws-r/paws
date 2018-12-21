@@ -4,8 +4,17 @@
 \alias{describe_target_groups}
 \title{Describes the specified target groups or all of your target groups}
 \usage{
-describe_target_groups(LoadBalancerArn = NULL, TargetGroupArns = NULL,
-  Names = NULL, Marker = NULL, PageSize = NULL)
+describe_target_groups(
+  LoadBalancerArn = "string",
+  TargetGroupArns = list(
+    "string"
+  ),
+  Names = list(
+    "string"
+  ),
+  Marker = "string",
+  PageSize = 123
+)
 }
 \arguments{
 \item{LoadBalancerArn}{The Amazon Resource Name (ARN) of the load balancer.}

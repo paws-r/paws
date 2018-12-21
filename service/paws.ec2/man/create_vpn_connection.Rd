@@ -4,15 +4,31 @@
 \alias{create_vpn_connection}
 \title{Creates a VPN connection between an existing virtual private gateway and a VPN customer gateway}
 \usage{
-create_vpn_connection(CustomerGatewayId, Type, VpnGatewayId, DryRun = NULL,
-  Options = NULL)
+create_vpn_connection(
+  CustomerGatewayId = "string",
+  Type = "string",
+  VpnGatewayId = "string",
+  TransitGatewayId = "string",
+  DryRun = TRUE|FALSE,
+  Options = list(
+    StaticRoutesOnly = TRUE|FALSE,
+    TunnelOptions = list(
+      list(
+        TunnelInsideCidr = "string",
+        PreSharedKey = "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{CustomerGatewayId}{The ID of the customer gateway.}
+\item{CustomerGatewayId}{[required] The ID of the customer gateway.}
 
-\item{Type}{The type of VPN connection (\code{ipsec.1}).}
+\item{Type}{[required] The type of VPN connection (\code{ipsec.1}).}
 
-\item{VpnGatewayId}{The ID of the virtual private gateway.}
+\item{VpnGatewayId}{The ID of the virtual private gateway. If you specify a virtual private gateway, you cannot specify a transit gateway.}
+
+\item{TransitGatewayId}{The ID of the transit gateway. If you specify a transit gateway, you cannot specify a virtual private gateway.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 

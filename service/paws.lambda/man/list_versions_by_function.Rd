@@ -4,10 +4,14 @@
 \alias{list_versions_by_function}
 \title{Lists all versions of a function}
 \usage{
-list_versions_by_function(FunctionName, Marker = NULL, MaxItems = NULL)
+list_versions_by_function(
+  FunctionName = "string",
+  Marker = "string",
+  MaxItems = 123
+)
 }
 \arguments{
-\item{FunctionName}{The name of the lambda function.
+\item{FunctionName}{[required] The name of the lambda function.
 
 \strong{Name formats}
 \itemize{

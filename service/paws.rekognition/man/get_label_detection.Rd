@@ -4,11 +4,15 @@
 \alias{get_label_detection}
 \title{Gets the label detection results of a Amazon Rekognition Video analysis started by}
 \usage{
-get_label_detection(JobId, MaxResults = NULL, NextToken = NULL,
-  SortBy = NULL)
+get_label_detection(
+  JobId = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  SortBy = "NAME"|"TIMESTAMP"
+)
 }
 \arguments{
-\item{JobId}{Job identifier for the label detection operation for which you want results returned. You get the job identifer from an initial call to \code{StartlabelDetection}.}
+\item{JobId}{[required] Job identifier for the label detection operation for which you want results returned. You get the job identifer from an initial call to \code{StartlabelDetection}.}
 
 \item{MaxResults}{Maximum number of results to return per paginated call. The largest value you can specify is 1000. If you specify a value greater than 1000, a maximum of 1000 results is returned. The default value is 1000.}
 
@@ -27,6 +31,8 @@ The label detection operation is started by a call to which returns a job identi
 The labels returned include the label name, the percentage confidence in the accuracy of the detected label, and the time the label was detected in the video.
 
 Use MaxResults parameter to limit the number of labels returned. If there are more results than specified in \code{MaxResults}, the value of \code{NextToken} in the operation response contains a pagination token for getting the next set of results. To get the next page of results, call \code{GetlabelDetection} and populate the \code{NextToken} request parameter with the token value returned from the previous call to \code{GetLabelDetection}.
+
+\code{GetLabelDetection} doesn't return a hierarchical taxonomy, or bounding box information, for detected labels. \code{GetLabelDetection} returns \code{null} for the \code{Parents} and \code{Instances} attributes of the object which is returned in the \code{Labels} array.
 }
 \examples{
 

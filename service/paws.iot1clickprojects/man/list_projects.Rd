@@ -4,7 +4,10 @@
 \alias{list_projects}
 \title{Lists the AWS IoT 1-Click project(s) associated with your AWS account and region}
 \usage{
-list_projects(nextToken = NULL, maxResults = NULL)
+list_projects(
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{nextToken}{The token to retrieve the next set of results.}

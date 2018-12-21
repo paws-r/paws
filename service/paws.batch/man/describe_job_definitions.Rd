@@ -4,8 +4,15 @@
 \alias{describe_job_definitions}
 \title{Describes a list of job definitions}
 \usage{
-describe_job_definitions(jobDefinitions = NULL, maxResults = NULL,
-  jobDefinitionName = NULL, status = NULL, nextToken = NULL)
+describe_job_definitions(
+  jobDefinitions = list(
+    "string"
+  ),
+  maxResults = 123,
+  jobDefinitionName = "string",
+  status = "string",
+  nextToken = "string"
+)
 }
 \arguments{
 \item{jobDefinitions}{A space-separated list of up to 100 job definition names or full Amazon Resource Name (ARN) entries.}

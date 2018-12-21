@@ -4,17 +4,27 @@
 \alias{create_reserved_instances_listing}
 \title{Creates a listing for Amazon EC2 Standard Reserved Instances to be sold in the Reserved Instance Marketplace}
 \usage{
-create_reserved_instances_listing(ClientToken, InstanceCount, PriceSchedules,
-  ReservedInstancesId)
+create_reserved_instances_listing(
+  ClientToken = "string",
+  InstanceCount = 123,
+  PriceSchedules = list(
+    list(
+      CurrencyCode = "USD",
+      Price = 123.0,
+      Term = 123
+    )
+  ),
+  ReservedInstancesId = "string"
+)
 }
 \arguments{
-\item{ClientToken}{Unique, case-sensitive identifier you provide to ensure idempotency of your listings. This helps avoid duplicate listings. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
+\item{ClientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of your listings. This helps avoid duplicate listings. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
 
-\item{InstanceCount}{The number of instances that are a part of a Reserved Instance account to be listed in the Reserved Instance Marketplace. This number should be less than or equal to the instance count associated with the Reserved Instance ID specified in this call.}
+\item{InstanceCount}{[required] The number of instances that are a part of a Reserved Instance account to be listed in the Reserved Instance Marketplace. This number should be less than or equal to the instance count associated with the Reserved Instance ID specified in this call.}
 
-\item{PriceSchedules}{A list specifying the price of the Standard Reserved Instance for each month remaining in the Reserved Instance term.}
+\item{PriceSchedules}{[required] A list specifying the price of the Standard Reserved Instance for each month remaining in the Reserved Instance term.}
 
-\item{ReservedInstancesId}{The ID of the active Standard Reserved Instance.}
+\item{ReservedInstancesId}{[required] The ID of the active Standard Reserved Instance.}
 }
 \description{
 Creates a listing for Amazon EC2 Standard Reserved Instances to be sold in the Reserved Instance Marketplace. You can submit one Standard Reserved Instance listing at a time. To get a list of your Standard Reserved Instances, you can use the DescribeReservedInstances operation.

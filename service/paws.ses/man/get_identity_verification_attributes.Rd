@@ -4,10 +4,14 @@
 \alias{get_identity_verification_attributes}
 \title{Given a list of identities (email addresses and/or domains), returns the verification status and (for domain identities) the verification token for each identity}
 \usage{
-get_identity_verification_attributes(Identities)
+get_identity_verification_attributes(
+  Identities = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{Identities}{A list of identities.}
+\item{Identities}{[required] A list of identities.}
 }
 \description{
 Given a list of identities (email addresses and/or domains), returns the verification status and (for domain identities) the verification token for each identity.

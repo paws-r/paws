@@ -4,14 +4,31 @@
 \alias{update_size_constraint_set}
 \title{Inserts or deletes SizeConstraint objects (filters) in a SizeConstraintSet}
 \usage{
-update_size_constraint_set(SizeConstraintSetId, ChangeToken, Updates)
+update_size_constraint_set(
+  SizeConstraintSetId = "string",
+  ChangeToken = "string",
+  Updates = list(
+    list(
+      Action = "INSERT"|"DELETE",
+      SizeConstraint = list(
+        FieldToMatch = list(
+          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+          Data = "string"
+        ),
+        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
+        ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
+        Size = 123
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{SizeConstraintSetId}{The \code{SizeConstraintSetId} of the SizeConstraintSet that you want to update. \code{SizeConstraintSetId} is returned by CreateSizeConstraintSet and by ListSizeConstraintSets.}
+\item{SizeConstraintSetId}{[required] The \code{SizeConstraintSetId} of the SizeConstraintSet that you want to update. \code{SizeConstraintSetId} is returned by CreateSizeConstraintSet and by ListSizeConstraintSets.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 
-\item{Updates}{An array of \code{SizeConstraintSetUpdate} objects that you want to insert into or delete from a SizeConstraintSet. For more information, see the applicable data types:
+\item{Updates}{[required] An array of \code{SizeConstraintSetUpdate} objects that you want to insert into or delete from a SizeConstraintSet. For more information, see the applicable data types:
 \itemize{
 \item SizeConstraintSetUpdate: Contains \code{Action} and \code{SizeConstraint}
 \item SizeConstraint: Contains \code{FieldToMatch}, \code{TextTransformation}, \code{ComparisonOperator}, and \code{Size}

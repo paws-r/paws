@@ -4,7 +4,10 @@
 \alias{list_domains}
 \title{The \code{ListDomains} operation lists all domains associated with the Access Key ID}
 \usage{
-list_domains(MaxNumberOfDomains = NULL, NextToken = NULL)
+list_domains(
+  MaxNumberOfDomains = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{MaxNumberOfDomains}{The maximum number of domain names you want returned. The range is 1 to 100. The default setting is 100.}

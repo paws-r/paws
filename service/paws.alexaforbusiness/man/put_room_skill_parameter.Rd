@@ -4,14 +4,21 @@
 \alias{put_room_skill_parameter}
 \title{Updates room skill parameter details by room, skill, and parameter key ID}
 \usage{
-put_room_skill_parameter(SkillId, RoomSkillParameter, RoomArn = NULL)
+put_room_skill_parameter(
+  RoomArn = "string",
+  SkillId = "string",
+  RoomSkillParameter = list(
+    ParameterKey = "string",
+    ParameterValue = "string"
+  )
+)
 }
 \arguments{
-\item{SkillId}{The ARN of the skill associated with the room skill parameter. Required.}
-
-\item{RoomSkillParameter}{The updated room skill parameter. Required.}
-
 \item{RoomArn}{The ARN of the room associated with the room skill parameter. Required.}
+
+\item{SkillId}{[required] The ARN of the skill associated with the room skill parameter. Required.}
+
+\item{RoomSkillParameter}{[required] The updated room skill parameter. Required.}
 }
 \description{
 Updates room skill parameter details by room, skill, and parameter key ID. Not all skills have a room skill parameter.

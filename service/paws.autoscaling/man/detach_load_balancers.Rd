@@ -4,20 +4,25 @@
 \alias{detach_load_balancers}
 \title{Detaches one or more Classic Load Balancers from the specified Auto Scaling group}
 \usage{
-detach_load_balancers(AutoScalingGroupName, LoadBalancerNames)
+detach_load_balancers(
+  AutoScalingGroupName = "string",
+  LoadBalancerNames = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{LoadBalancerNames}{The names of the load balancers. You can specify up to 10 load balancers.}
+\item{LoadBalancerNames}{[required] The names of the load balancers. You can specify up to 10 load balancers.}
 }
 \description{
 Detaches one or more Classic Load Balancers from the specified Auto Scaling group.
 }
 \details{
-Note that this operation detaches only Classic Load Balancers. If you have Application Load Balancers, use DetachLoadBalancerTargetGroups instead.
+This operation detaches only Classic Load Balancers. If you have Application Load Balancers, use DetachLoadBalancerTargetGroups instead.
 
-When you detach a load balancer, it enters the \code{Removing} state while deregistering the instances in the group. When all instances are deregistered, then you can no longer describe the load balancer using DescribeLoadBalancers. Note that the instances remain running.
+When you detach a load balancer, it enters the \code{Removing} state while deregistering the instances in the group. When all instances are deregistered, then you can no longer describe the load balancer using DescribeLoadBalancers. The instances remain running.
 }
 \examples{
 # This example detaches the specified load balancer from the specified

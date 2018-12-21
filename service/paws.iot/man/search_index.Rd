@@ -4,13 +4,18 @@
 \alias{search_index}
 \title{The query search index}
 \usage{
-search_index(queryString, indexName = NULL, nextToken = NULL,
-  maxResults = NULL, queryVersion = NULL)
+search_index(
+  indexName = "string",
+  queryString = "string",
+  nextToken = "string",
+  maxResults = 123,
+  queryVersion = "string"
+)
 }
 \arguments{
-\item{queryString}{The search query string.}
-
 \item{indexName}{The search index name.}
+
+\item{queryString}{[required] The search query string.}
 
 \item{nextToken}{The token used to get the next set of results, or \strong{null} if there are no additional results.}
 

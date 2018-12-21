@@ -4,10 +4,12 @@
 \alias{get_cors_policy}
 \title{Returns the cross-origin resource sharing (CORS) configuration information that is set for the container}
 \usage{
-get_cors_policy(ContainerName)
+get_cors_policy(
+  ContainerName = "string"
+)
 }
 \arguments{
-\item{ContainerName}{The name of the container that the policy is assigned to.}
+\item{ContainerName}{[required] The name of the container that the policy is assigned to.}
 }
 \description{
 Returns the cross-origin resource sharing (CORS) configuration information that is set for the container.

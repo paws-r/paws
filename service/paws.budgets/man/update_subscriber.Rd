@@ -4,19 +4,36 @@
 \alias{update_subscriber}
 \title{Updates a subscriber}
 \usage{
-update_subscriber(AccountId, BudgetName, Notification, OldSubscriber,
-  NewSubscriber)
+update_subscriber(
+  AccountId = "string",
+  BudgetName = "string",
+  Notification = list(
+    NotificationType = "ACTUAL"|"FORECASTED",
+    ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
+    Threshold = 123.0,
+    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+    NotificationState = "OK"|"ALARM"
+  ),
+  OldSubscriber = list(
+    SubscriptionType = "SNS"|"EMAIL",
+    Address = "string"
+  ),
+  NewSubscriber = list(
+    SubscriptionType = "SNS"|"EMAIL",
+    Address = "string"
+  )
+)
 }
 \arguments{
-\item{AccountId}{The \code{accountId} that is associated with the budget whose subscriber you want to update.}
+\item{AccountId}{[required] The \code{accountId} that is associated with the budget whose subscriber you want to update.}
 
-\item{BudgetName}{The name of the budget whose subscriber you want to update.}
+\item{BudgetName}{[required] The name of the budget whose subscriber you want to update.}
 
-\item{Notification}{The notification whose subscriber you want to update.}
+\item{Notification}{[required] The notification whose subscriber you want to update.}
 
-\item{OldSubscriber}{The previous subscriber associated with a budget notification.}
+\item{OldSubscriber}{[required] The previous subscriber that is associated with a budget notification.}
 
-\item{NewSubscriber}{The updated subscriber associated with a budget notification.}
+\item{NewSubscriber}{[required] The updated subscriber that is associated with a budget notification.}
 }
 \description{
 Updates a subscriber.

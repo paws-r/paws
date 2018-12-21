@@ -4,8 +4,19 @@
 \alias{describe_db_instances}
 \title{Returns information about provisioned RDS instances}
 \usage{
-describe_db_instances(DBInstanceIdentifier = NULL, Filters = NULL,
-  MaxRecords = NULL, Marker = NULL)
+describe_db_instances(
+  DBInstanceIdentifier = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{DBInstanceIdentifier}{The user-supplied instance identifier. If this parameter is specified, information from only the specific DB instance is returned. This parameter isn't case-sensitive.

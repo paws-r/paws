@@ -4,7 +4,20 @@
 \alias{describe_vpn_gateways}
 \title{Describes one or more of your virtual private gateways}
 \usage{
-describe_vpn_gateways(Filters = NULL, VpnGatewayIds = NULL, DryRun = NULL)
+describe_vpn_gateways(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  VpnGatewayIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{Filters}{One or more filters.

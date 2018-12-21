@@ -4,16 +4,19 @@
 \alias{create_cache_security_group}
 \title{Creates a new cache security group}
 \usage{
-create_cache_security_group(CacheSecurityGroupName, Description)
+create_cache_security_group(
+  CacheSecurityGroupName = "string",
+  Description = "string"
+)
 }
 \arguments{
-\item{CacheSecurityGroupName}{A name for the cache security group. This value is stored as a lowercase string.
+\item{CacheSecurityGroupName}{[required] A name for the cache security group. This value is stored as a lowercase string.
 
 Constraints: Must contain no more than 255 alphanumeric characters. Cannot be the word "Default".
 
 Example: \code{mysecuritygroup}}
 
-\item{Description}{A description for the cache security group.}
+\item{Description}{[required] A description for the cache security group.}
 }
 \description{
 Creates a new cache security group. Use a cache security group to control access to one or more clusters.

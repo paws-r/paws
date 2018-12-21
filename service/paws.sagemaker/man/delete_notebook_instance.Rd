@@ -4,10 +4,12 @@
 \alias{delete_notebook_instance}
 \title{Deletes an Amazon SageMaker notebook instance}
 \usage{
-delete_notebook_instance(NotebookInstanceName)
+delete_notebook_instance(
+  NotebookInstanceName = "string"
+)
 }
 \arguments{
-\item{NotebookInstanceName}{The name of the Amazon SageMaker notebook instance to delete.}
+\item{NotebookInstanceName}{[required] The name of the Amazon SageMaker notebook instance to delete.}
 }
 \description{
 Deletes an Amazon SageMaker notebook instance. Before you can delete a notebook instance, you must call the \code{StopNotebookInstance} API.

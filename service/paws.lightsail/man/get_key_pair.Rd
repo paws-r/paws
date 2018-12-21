@@ -4,10 +4,12 @@
 \alias{get_key_pair}
 \title{Returns information about a specific key pair}
 \usage{
-get_key_pair(keyPairName)
+get_key_pair(
+  keyPairName = "string"
+)
 }
 \arguments{
-\item{keyPairName}{The name of the key pair for which you are requesting information.}
+\item{keyPairName}{[required] The name of the key pair for which you are requesting information.}
 }
 \description{
 Returns information about a specific key pair.

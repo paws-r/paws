@@ -4,33 +4,41 @@
 \alias{create_db_cluster}
 \title{Creates a new Amazon Neptune DB cluster}
 \usage{
-create_db_cluster(DBClusterIdentifier, Engine, AvailabilityZones = NULL,
-  BackupRetentionPeriod = NULL, CharacterSetName = NULL,
-  DatabaseName = NULL, DBClusterParameterGroupName = NULL,
-  VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL,
-  EngineVersion = NULL, Port = NULL, MasterUsername = NULL,
-  MasterUserPassword = NULL, OptionGroupName = NULL,
-  PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL,
-  ReplicationSourceIdentifier = NULL, Tags = NULL,
-  StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL,
-  EnableIAMDatabaseAuthentication = NULL)
+create_db_cluster(
+  AvailabilityZones = list(
+    "string"
+  ),
+  BackupRetentionPeriod = 123,
+  CharacterSetName = "string",
+  DatabaseName = "string",
+  DBClusterIdentifier = "string",
+  DBClusterParameterGroupName = "string",
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  DBSubnetGroupName = "string",
+  Engine = "string",
+  EngineVersion = "string",
+  Port = 123,
+  MasterUsername = "string",
+  MasterUserPassword = "string",
+  OptionGroupName = "string",
+  PreferredBackupWindow = "string",
+  PreferredMaintenanceWindow = "string",
+  ReplicationSourceIdentifier = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  StorageEncrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  PreSignedUrl = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE
+)
 }
 \arguments{
-\item{DBClusterIdentifier}{The DB cluster identifier. This parameter is stored as a lowercase string.
-
-Constraints:
-\itemize{
-\item Must contain from 1 to 63 letters, numbers, or hyphens.
-\item First character must be a letter.
-\item Cannot end with a hyphen or contain two consecutive hyphens.
-}
-
-Example: \code{my-cluster1}}
-
-\item{Engine}{The name of the database engine to be used for this DB cluster.
-
-Valid Values: \code{neptune}}
-
 \item{AvailabilityZones}{A list of EC2 Availability Zones that instances in the DB cluster can be created in.}
 
 \item{BackupRetentionPeriod}{The number of days for which automated backups are retained. You must specify a minimum value of 1.
@@ -46,6 +54,17 @@ Constraints:
 
 \item{DatabaseName}{The name for your database of up to 64 alpha-numeric characters. If you do not provide a name, Amazon Neptune will not create a database in the DB cluster you are creating.}
 
+\item{DBClusterIdentifier}{[required] The DB cluster identifier. This parameter is stored as a lowercase string.
+
+Constraints:
+\itemize{
+\item Must contain from 1 to 63 letters, numbers, or hyphens.
+\item First character must be a letter.
+\item Cannot end with a hyphen or contain two consecutive hyphens.
+}
+
+Example: \code{my-cluster1}}
+
 \item{DBClusterParameterGroupName}{The name of the DB cluster parameter group to associate with this DB cluster. If this argument is omitted, the default is used.
 
 Constraints:
@@ -60,6 +79,10 @@ Constraints:
 Constraints: Must match the name of an existing DBSubnetGroup. Must not be default.
 
 Example: \code{mySubnetgroup}}
+
+\item{Engine}{[required] The name of the database engine to be used for this DB cluster.
+
+Valid Values: \code{neptune}}
 
 \item{EngineVersion}{The version number of the database engine to use.
 

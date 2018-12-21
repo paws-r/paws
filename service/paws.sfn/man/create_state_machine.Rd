@@ -4,10 +4,14 @@
 \alias{create_state_machine}
 \title{Creates a state machine}
 \usage{
-create_state_machine(name, definition, roleArn)
+create_state_machine(
+  name = "string",
+  definition = "string",
+  roleArn = "string"
+)
 }
 \arguments{
-\item{name}{The name of the state machine. This name must be unique for your AWS account and region for 90 days. For more information, see \href{http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions} in the \emph{AWS Step Functions Developer Guide}.
+\item{name}{[required] The name of the state machine.
 
 A name must \emph{not} contain:
 \itemize{
@@ -20,9 +24,9 @@ A name must \emph{not} contain:
 
 [ ]: R:%20}
 
-\item{definition}{The Amazon States Language definition of the state machine.}
+\item{definition}{[required] The Amazon States Language definition of the state machine. See \href{http://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html}{Amazon States Language}.}
 
-\item{roleArn}{The Amazon Resource Name (ARN) of the IAM role to use for this state machine.}
+\item{roleArn}{[required] The Amazon Resource Name (ARN) of the IAM role to use for this state machine.}
 }
 \description{
 Creates a state machine. A state machine consists of a collection of states that can do work (\code{Task} states), determine to which states to transition next (\code{Choice} states), stop an execution with an error (\code{Fail} states), and so on. State machines are specified using a JSON-based, structured language.

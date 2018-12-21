@@ -4,16 +4,32 @@
 \alias{modify_replication_group_shard_configuration}
 \title{Modifies a replication group's shards (node groups) by allowing you to add shards, remove shards, or rebalance the keyspaces among exisiting shards}
 \usage{
-modify_replication_group_shard_configuration(ReplicationGroupId, NodeGroupCount,
-  ApplyImmediately, ReshardingConfiguration = NULL,
-  NodeGroupsToRemove = NULL, NodeGroupsToRetain = NULL)
+modify_replication_group_shard_configuration(
+  ReplicationGroupId = "string",
+  NodeGroupCount = 123,
+  ApplyImmediately = TRUE|FALSE,
+  ReshardingConfiguration = list(
+    list(
+      NodeGroupId = "string",
+      PreferredAvailabilityZones = list(
+        "string"
+      )
+    )
+  ),
+  NodeGroupsToRemove = list(
+    "string"
+  ),
+  NodeGroupsToRetain = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ReplicationGroupId}{The name of the Redis (cluster mode enabled) cluster (replication group) on which the shards are to be configured.}
+\item{ReplicationGroupId}{[required] The name of the Redis (cluster mode enabled) cluster (replication group) on which the shards are to be configured.}
 
-\item{NodeGroupCount}{The number of node groups (shards) that results from the modification of the shard configuration.}
+\item{NodeGroupCount}{[required] The number of node groups (shards) that results from the modification of the shard configuration.}
 
-\item{ApplyImmediately}{Indicates that the shard reconfiguration process begins immediately. At present, the only permitted value for this parameter is \code{true}.
+\item{ApplyImmediately}{[required] Indicates that the shard reconfiguration process begins immediately. At present, the only permitted value for this parameter is \code{true}.
 
 Value: true}
 

@@ -4,10 +4,14 @@
 \alias{describe_nfs_file_shares}
 \title{Gets a description for one or more Network File System (NFS) file shares from a file gateway}
 \usage{
-describe_nfs_file_shares(FileShareARNList)
+describe_nfs_file_shares(
+  FileShareARNList = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{FileShareARNList}{An array containing the Amazon Resource Name (ARN) of each file share to be described.}
+\item{FileShareARNList}{[required] An array containing the Amazon Resource Name (ARN) of each file share to be described.}
 }
 \description{
 Gets a description for one or more Network File System (NFS) file shares from a file gateway. This operation is only supported for file gateways.

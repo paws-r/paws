@@ -4,10 +4,14 @@
 \alias{release_hosts}
 \title{When you no longer want to use an On-Demand Dedicated Host it can be released}
 \usage{
-release_hosts(HostIds)
+release_hosts(
+  HostIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{HostIds}{The IDs of the Dedicated Hosts to release.}
+\item{HostIds}{[required] The IDs of the Dedicated Hosts to release.}
 }
 \description{
 When you no longer want to use an On-Demand Dedicated Host it can be released. On-Demand billing is stopped and the host goes into \code{released} state. The host ID of Dedicated Hosts that have been released can no longer be specified in another request, for example, to modify the host. You must stop or terminate all instances on a host before it can be released.

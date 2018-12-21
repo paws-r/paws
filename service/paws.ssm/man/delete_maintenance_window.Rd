@@ -4,10 +4,12 @@
 \alias{delete_maintenance_window}
 \title{Deletes a Maintenance Window}
 \usage{
-delete_maintenance_window(WindowId)
+delete_maintenance_window(
+  WindowId = "string"
+)
 }
 \arguments{
-\item{WindowId}{The ID of the Maintenance Window to delete.}
+\item{WindowId}{[required] The ID of the Maintenance Window to delete.}
 }
 \description{
 Deletes a Maintenance Window.

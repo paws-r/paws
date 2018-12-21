@@ -4,12 +4,17 @@
 \alias{remove_tags_from_resource}
 \title{This is documentation for \strong{AWS CloudHSM Classic}}
 \usage{
-remove_tags_from_resource(ResourceArn, TagKeyList)
+remove_tags_from_resource(
+  ResourceArn = "string",
+  TagKeyList = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{ResourceArn}{The Amazon Resource Name (ARN) of the AWS CloudHSM resource.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the AWS CloudHSM resource.}
 
-\item{TagKeyList}{The tag key or keys to remove.
+\item{TagKeyList}{[required] The tag key or keys to remove.
 
 Specify only the tag key to remove (not the value). To overwrite the value for an existing tag, use AddTagsToResource.}
 }

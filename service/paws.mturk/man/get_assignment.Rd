@@ -4,10 +4,12 @@
 \alias{get_assignment}
 \title{The \code{GetAssignment} operation retrieves the details of the specified Assignment}
 \usage{
-get_assignment(AssignmentId)
+get_assignment(
+  AssignmentId = "string"
+)
 }
 \arguments{
-\item{AssignmentId}{The ID of the Assignment to be retrieved.}
+\item{AssignmentId}{[required] The ID of the Assignment to be retrieved.}
 }
 \description{
 The \code{GetAssignment} operation retrieves the details of the specified Assignment.

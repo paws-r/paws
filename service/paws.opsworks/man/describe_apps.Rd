@@ -4,7 +4,12 @@
 \alias{describe_apps}
 \title{Requests a description of a specified set of apps}
 \usage{
-describe_apps(StackId = NULL, AppIds = NULL)
+describe_apps(
+  StackId = "string",
+  AppIds = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{StackId}{The app stack ID. If you use this parameter, \code{DescribeApps} returns a description of the apps in the specified stack.}

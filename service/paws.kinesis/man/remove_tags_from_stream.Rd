@@ -4,12 +4,17 @@
 \alias{remove_tags_from_stream}
 \title{Removes tags from the specified Kinesis data stream}
 \usage{
-remove_tags_from_stream(StreamName, TagKeys)
+remove_tags_from_stream(
+  StreamName = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{StreamName}{The name of the stream.}
+\item{StreamName}{[required] The name of the stream.}
 
-\item{TagKeys}{A list of tag keys. Each corresponding tag is removed from the stream.}
+\item{TagKeys}{[required] A list of tag keys. Each corresponding tag is removed from the stream.}
 }
 \description{
 Removes tags from the specified Kinesis data stream. Removed tags are deleted and cannot be recovered after this operation successfully completes.

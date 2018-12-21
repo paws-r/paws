@@ -4,9 +4,15 @@
 \alias{describe_reserved_cache_nodes_offerings}
 \title{Lists available reserved cache node offerings}
 \usage{
-describe_reserved_cache_nodes_offerings(ReservedCacheNodesOfferingId = NULL,
-  CacheNodeType = NULL, Duration = NULL, ProductDescription = NULL,
-  OfferingType = NULL, MaxRecords = NULL, Marker = NULL)
+describe_reserved_cache_nodes_offerings(
+  ReservedCacheNodesOfferingId = "string",
+  CacheNodeType = "string",
+  Duration = "string",
+  ProductDescription = "string",
+  OfferingType = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{ReservedCacheNodesOfferingId}{The offering identifier filter value. Use this parameter to show only the available offering that matches the specified reservation identifier.

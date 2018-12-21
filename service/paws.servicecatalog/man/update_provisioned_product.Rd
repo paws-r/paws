@@ -4,14 +4,37 @@
 \alias{update_provisioned_product}
 \title{Requests updates to the configuration of the specified provisioned product}
 \usage{
-update_provisioned_product(UpdateToken, AcceptLanguage = NULL,
-  ProvisionedProductName = NULL, ProvisionedProductId = NULL,
-  ProductId = NULL, ProvisioningArtifactId = NULL, PathId = NULL,
-  ProvisioningParameters = NULL)
+update_provisioned_product(
+  AcceptLanguage = "string",
+  ProvisionedProductName = "string",
+  ProvisionedProductId = "string",
+  ProductId = "string",
+  ProvisioningArtifactId = "string",
+  PathId = "string",
+  ProvisioningParameters = list(
+    list(
+      Key = "string",
+      Value = "string",
+      UsePreviousValue = TRUE|FALSE
+    )
+  ),
+  ProvisioningPreferences = list(
+    StackSetAccounts = list(
+      "string"
+    ),
+    StackSetRegions = list(
+      "string"
+    ),
+    StackSetFailureToleranceCount = 123,
+    StackSetFailureTolerancePercentage = 123,
+    StackSetMaxConcurrencyCount = 123,
+    StackSetMaxConcurrencyPercentage = 123,
+    StackSetOperationType = "CREATE"|"UPDATE"|"DELETE"
+  ),
+  UpdateToken = "string"
+)
 }
 \arguments{
-\item{UpdateToken}{The idempotency token that uniquely identifies the provisioning update request.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
@@ -23,13 +46,17 @@ update_provisioned_product(UpdateToken, AcceptLanguage = NULL,
 
 \item{ProvisionedProductId}{The identifier of the provisioned product. You cannot specify both \code{ProvisionedProductName} and \code{ProvisionedProductId}.}
 
-\item{ProductId}{The identifier of the provisioned product.}
+\item{ProductId}{The identifier of the product.}
 
 \item{ProvisioningArtifactId}{The identifier of the provisioning artifact.}
 
 \item{PathId}{The new path identifier. This value is optional if the product has a default path, and required if the product has more than one path.}
 
 \item{ProvisioningParameters}{The new parameters.}
+
+\item{ProvisioningPreferences}{An object that contains information about the provisioning preferences for a stack set.}
+
+\item{UpdateToken}{[required] The idempotency token that uniquely identifies the provisioning update request.}
 }
 \description{
 Requests updates to the configuration of the specified provisioned product.

@@ -4,10 +4,13 @@
 \alias{get_device}
 \title{Gets the device}
 \usage{
-get_device(DeviceKey, AccessToken = NULL)
+get_device(
+  DeviceKey = "string",
+  AccessToken = "string"
+)
 }
 \arguments{
-\item{DeviceKey}{The device key.}
+\item{DeviceKey}{[required] The device key.}
 
 \item{AccessToken}{The access token.}
 }

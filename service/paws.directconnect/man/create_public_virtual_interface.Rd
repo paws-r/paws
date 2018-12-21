@@ -4,12 +4,28 @@
 \alias{create_public_virtual_interface}
 \title{Creates a public virtual interface}
 \usage{
-create_public_virtual_interface(connectionId, newPublicVirtualInterface)
+create_public_virtual_interface(
+  connectionId = "string",
+  newPublicVirtualInterface = list(
+    virtualInterfaceName = "string",
+    vlan = 123,
+    asn = 123,
+    authKey = "string",
+    amazonAddress = "string",
+    customerAddress = "string",
+    addressFamily = "ipv4"|"ipv6",
+    routeFilterPrefixes = list(
+      list(
+        cidr = "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{connectionId}{The ID of the connection.}
+\item{connectionId}{[required] The ID of the connection.}
 
-\item{newPublicVirtualInterface}{Information about the public virtual interface.}
+\item{newPublicVirtualInterface}{[required] Information about the public virtual interface.}
 }
 \description{
 Creates a public virtual interface. A virtual interface is the VLAN that transports AWS Direct Connect traffic. A public virtual interface supports sending traffic to public services of AWS such as Amazon S3.

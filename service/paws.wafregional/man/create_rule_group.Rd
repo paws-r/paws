@@ -4,14 +4,18 @@
 \alias{create_rule_group}
 \title{Creates a \code{RuleGroup}}
 \usage{
-create_rule_group(Name, MetricName, ChangeToken)
+create_rule_group(
+  Name = "string",
+  MetricName = "string",
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{Name}{A friendly name or description of the RuleGroup. You can't change \code{Name} after you create a \code{RuleGroup}.}
+\item{Name}{[required] A friendly name or description of the RuleGroup. You can't change \code{Name} after you create a \code{RuleGroup}.}
 
-\item{MetricName}{A friendly name or description for the metrics for this \code{RuleGroup}. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the \code{RuleGroup}.}
+\item{MetricName}{[required] A friendly name or description for the metrics for this \code{RuleGroup}. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the \code{RuleGroup}.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Creates a \code{RuleGroup}. A rule group is a collection of predefined rules that you add to a web ACL. You use UpdateRuleGroup to add rules to the rule group.

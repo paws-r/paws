@@ -4,10 +4,12 @@
 \alias{delete_launch_configuration}
 \title{Deletes the specified launch configuration}
 \usage{
-delete_launch_configuration(LaunchConfigurationName)
+delete_launch_configuration(
+  LaunchConfigurationName = "string"
+)
 }
 \arguments{
-\item{LaunchConfigurationName}{The name of the launch configuration.}
+\item{LaunchConfigurationName}{[required] The name of the launch configuration.}
 }
 \description{
 Deletes the specified launch configuration.

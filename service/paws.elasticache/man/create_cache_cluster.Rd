@@ -4,19 +4,47 @@
 \alias{create_cache_cluster}
 \title{Creates a cluster}
 \usage{
-create_cache_cluster(CacheClusterId, ReplicationGroupId = NULL,
-  AZMode = NULL, PreferredAvailabilityZone = NULL,
-  PreferredAvailabilityZones = NULL, NumCacheNodes = NULL,
-  CacheNodeType = NULL, Engine = NULL, EngineVersion = NULL,
-  CacheParameterGroupName = NULL, CacheSubnetGroupName = NULL,
-  CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, Tags = NULL,
-  SnapshotArns = NULL, SnapshotName = NULL,
-  PreferredMaintenanceWindow = NULL, Port = NULL,
-  NotificationTopicArn = NULL, AutoMinorVersionUpgrade = NULL,
-  SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, AuthToken = NULL)
+create_cache_cluster(
+  CacheClusterId = "string",
+  ReplicationGroupId = "string",
+  AZMode = "single-az"|"cross-az",
+  PreferredAvailabilityZone = "string",
+  PreferredAvailabilityZones = list(
+    "string"
+  ),
+  NumCacheNodes = 123,
+  CacheNodeType = "string",
+  Engine = "string",
+  EngineVersion = "string",
+  CacheParameterGroupName = "string",
+  CacheSubnetGroupName = "string",
+  CacheSecurityGroupNames = list(
+    "string"
+  ),
+  SecurityGroupIds = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  SnapshotArns = list(
+    "string"
+  ),
+  SnapshotName = "string",
+  PreferredMaintenanceWindow = "string",
+  Port = 123,
+  NotificationTopicArn = "string",
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  SnapshotRetentionLimit = 123,
+  SnapshotWindow = "string",
+  AuthToken = "string"
+)
 }
 \arguments{
-\item{CacheClusterId}{The node group (shard) identifier. This parameter is stored as a lowercase string.
+\item{CacheClusterId}{[required] The node group (shard) identifier. This parameter is stored as a lowercase string.
 
 \strong{Constraints:}
 \itemize{

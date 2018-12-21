@@ -4,12 +4,15 @@
 \alias{update_managed_instance_role}
 \title{Assigns or changes an Amazon Identity and Access Management (IAM) role to the managed instance}
 \usage{
-update_managed_instance_role(InstanceId, IamRole)
+update_managed_instance_role(
+  InstanceId = "string",
+  IamRole = "string"
+)
 }
 \arguments{
-\item{InstanceId}{The ID of the managed instance where you want to update the role.}
+\item{InstanceId}{[required] The ID of the managed instance where you want to update the role.}
 
-\item{IamRole}{The IAM role you want to assign or change.}
+\item{IamRole}{[required] The IAM role you want to assign or change.}
 }
 \description{
 Assigns or changes an Amazon Identity and Access Management (IAM) role to the managed instance.

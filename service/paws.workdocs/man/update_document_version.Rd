@@ -4,15 +4,19 @@
 \alias{update_document_version}
 \title{Changes the status of the document version to ACTIVE}
 \usage{
-update_document_version(DocumentId, VersionId, AuthenticationToken = NULL,
-  VersionStatus = NULL)
+update_document_version(
+  AuthenticationToken = "string",
+  DocumentId = "string",
+  VersionId = "string",
+  VersionStatus = "ACTIVE"
+)
 }
 \arguments{
-\item{DocumentId}{The ID of the document.}
-
-\item{VersionId}{The version ID of the document.}
-
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
+
+\item{DocumentId}{[required] The ID of the document.}
+
+\item{VersionId}{[required] The version ID of the document.}
 
 \item{VersionStatus}{The status of the version.}
 }

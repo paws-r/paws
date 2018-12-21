@@ -4,12 +4,15 @@
 \alias{get_database}
 \title{Retrieves the definition of a specified database}
 \usage{
-get_database(Name, CatalogId = NULL)
+get_database(
+  CatalogId = "string",
+  Name = "string"
+)
 }
 \arguments{
-\item{Name}{The name of the database to retrieve. For Hive compatibility, this should be all lowercase.}
-
 \item{CatalogId}{The ID of the Data Catalog in which the database resides. If none is supplied, the AWS account ID is used by default.}
+
+\item{Name}{[required] The name of the database to retrieve. For Hive compatibility, this should be all lowercase.}
 }
 \description{
 Retrieves the definition of a specified database.

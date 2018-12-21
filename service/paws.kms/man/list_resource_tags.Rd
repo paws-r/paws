@@ -4,10 +4,14 @@
 \alias{list_resource_tags}
 \title{Returns a list of all tags for the specified customer master key (CMK)}
 \usage{
-list_resource_tags(KeyId, Limit = NULL, Marker = NULL)
+list_resource_tags(
+  KeyId = "string",
+  Limit = 123,
+  Marker = "string"
+)
 }
 \arguments{
-\item{KeyId}{A unique identifier for the customer master key (CMK).
+\item{KeyId}{[required] A unique identifier for the customer master key (CMK).
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 

@@ -4,7 +4,9 @@
 \alias{list_lexicons}
 \title{Returns a list of pronunciation lexicons stored in an AWS Region}
 \usage{
-list_lexicons(NextToken = NULL)
+list_lexicons(
+  NextToken = "string"
+)
 }
 \arguments{
 \item{NextToken}{An opaque pagination token returned from previous \code{ListLexicons} operation. If present, indicates where to continue the list of lexicons.}

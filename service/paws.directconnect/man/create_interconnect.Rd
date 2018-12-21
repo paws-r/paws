@@ -4,14 +4,19 @@
 \alias{create_interconnect}
 \title{Creates an interconnect between an AWS Direct Connect partner's network and a specific AWS Direct Connect location}
 \usage{
-create_interconnect(interconnectName, bandwidth, location, lagId = NULL)
+create_interconnect(
+  interconnectName = "string",
+  bandwidth = "string",
+  location = "string",
+  lagId = "string"
+)
 }
 \arguments{
-\item{interconnectName}{The name of the interconnect.}
+\item{interconnectName}{[required] The name of the interconnect.}
 
-\item{bandwidth}{The port bandwidth, in Gbps. The possible values are 1 and 10.}
+\item{bandwidth}{[required] The port bandwidth, in Gbps. The possible values are 1 and 10.}
 
-\item{location}{The location of the interconnect.}
+\item{location}{[required] The location of the interconnect.}
 
 \item{lagId}{The ID of the LAG.}
 }

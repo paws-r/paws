@@ -4,12 +4,15 @@
 \alias{delete_group}
 \title{Deletes a group from Amazon WorkMail}
 \usage{
-delete_group(OrganizationId, GroupId)
+delete_group(
+  OrganizationId = "string",
+  GroupId = "string"
+)
 }
 \arguments{
-\item{OrganizationId}{The organization that contains the group.}
+\item{OrganizationId}{[required] The organization that contains the group.}
 
-\item{GroupId}{The identifier of the group to be deleted.}
+\item{GroupId}{[required] The identifier of the group to be deleted.}
 }
 \description{
 Deletes a group from Amazon WorkMail.

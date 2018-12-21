@@ -4,10 +4,13 @@
 \alias{update_hit_review_status}
 \title{The \code{UpdateHITReviewStatus} operation updates the status of a HIT}
 \usage{
-update_hit_review_status(HITId, Revert = NULL)
+update_hit_review_status(
+  HITId = "string",
+  Revert = TRUE|FALSE
+)
 }
 \arguments{
-\item{HITId}{The ID of the HIT to update.}
+\item{HITId}{[required] The ID of the HIT to update.}
 
 \item{Revert}{Specifies how to update the HIT status. Default is \code{False}.
 \itemize{

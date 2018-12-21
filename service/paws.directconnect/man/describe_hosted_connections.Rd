@@ -4,10 +4,12 @@
 \alias{describe_hosted_connections}
 \title{Lists the hosted connections that have been provisioned on the specified interconnect or link aggregation group (LAG)}
 \usage{
-describe_hosted_connections(connectionId)
+describe_hosted_connections(
+  connectionId = "string"
+)
 }
 \arguments{
-\item{connectionId}{The ID of the interconnect or LAG.}
+\item{connectionId}{[required] The ID of the interconnect or LAG.}
 }
 \description{
 Lists the hosted connections that have been provisioned on the specified interconnect or link aggregation group (LAG).

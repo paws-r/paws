@@ -4,12 +4,16 @@
 \alias{describe_vpc_attribute}
 \title{Describes the specified attribute of the specified VPC}
 \usage{
-describe_vpc_attribute(Attribute, VpcId, DryRun = NULL)
+describe_vpc_attribute(
+  Attribute = "enableDnsSupport"|"enableDnsHostnames",
+  VpcId = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{Attribute}{The VPC attribute.}
+\item{Attribute}{[required] The VPC attribute.}
 
-\item{VpcId}{The ID of the VPC.}
+\item{VpcId}{[required] The ID of the VPC.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

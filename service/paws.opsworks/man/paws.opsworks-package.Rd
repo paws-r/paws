@@ -6,8 +6,8 @@
 \alias{paws.opsworks-package}
 \title{paws.opsworks: AWS OpsWorks}
 \description{
-Welcome to the *AWS OpsWorks Stacks API Reference*.
-This guide provides descriptions, syntax, and usage examples for AWS
+Welcome to the *AWS OpsWorks Stacks API Reference*. This
+guide provides descriptions, syntax, and usage examples for AWS
 OpsWorks Stacks actions and data types, including common parameters
 and error codes.
 }
@@ -16,7 +16,12 @@ and error codes.
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

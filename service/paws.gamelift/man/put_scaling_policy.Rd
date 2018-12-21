@@ -4,30 +4,25 @@
 \alias{put_scaling_policy}
 \title{Creates or updates a scaling policy for a fleet}
 \usage{
-put_scaling_policy(Name, FleetId, MetricName, ScalingAdjustment = NULL,
-  ScalingAdjustmentType = NULL, Threshold = NULL,
-  ComparisonOperator = NULL, EvaluationPeriods = NULL, PolicyType = NULL,
-  TargetConfiguration = NULL)
+put_scaling_policy(
+  Name = "string",
+  FleetId = "string",
+  ScalingAdjustment = 123,
+  ScalingAdjustmentType = "ChangeInCapacity"|"ExactCapacity"|"PercentChangeInCapacity",
+  Threshold = 123.0,
+  ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
+  EvaluationPeriods = 123,
+  MetricName = "ActivatingGameSessions"|"ActiveGameSessions"|"ActiveInstances"|"AvailableGameSessions"|"AvailablePlayerSessions"|"CurrentPlayerSessions"|"IdleInstances"|"PercentAvailableGameSessions"|"PercentIdleInstances"|"QueueDepth"|"WaitTime",
+  PolicyType = "RuleBased"|"TargetBased",
+  TargetConfiguration = list(
+    TargetValue = 123.0
+  )
+)
 }
 \arguments{
-\item{Name}{Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A fleet can have only one scaling policy with the same name.}
+\item{Name}{[required] Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A fleet can have only one scaling policy with the same name.}
 
-\item{FleetId}{Unique identifier for a fleet to apply this policy to. The fleet cannot be in any of the following statuses: ERROR or DELETING.}
-
-\item{MetricName}{Name of the Amazon GameLift-defined metric that is used to trigger a scaling adjustment. For detailed descriptions of fleet metrics, see \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html}{Monitor Amazon GameLift with Amazon CloudWatch}.
-\itemize{
-\item \strong{ActivatingGameSessions} -- Game sessions in the process of being created.
-\item \strong{ActiveGameSessions} -- Game sessions that are currently running.
-\item \strong{ActiveInstances} -- Fleet instances that are currently running at least one game session.
-\item \strong{AvailableGameSessions} -- Additional game sessions that fleet could host simultaneously, given current capacity.
-\item \strong{AvailablePlayerSessions} -- Empty player slots in currently active game sessions. This includes game sessions that are not currently accepting players. Reserved player slots are not included.
-\item \strong{CurrentPlayerSessions} -- Player slots in active game sessions that are being used by a player or are reserved for a player.
-\item \strong{IdleInstances} -- Active instances that are currently hosting zero game sessions.
-\item \strong{PercentAvailableGameSessions} -- Unused percentage of the total number of game sessions that a fleet could host simultaneously, given current capacity. Use this metric for a target-based scaling policy.
-\item \strong{PercentIdleInstances} -- Percentage of the total number of active instances that are hosting zero game sessions.
-\item \strong{QueueDepth} -- Pending game session placement requests, in any queue, where the current fleet is the top-priority destination.
-\item \strong{WaitTime} -- Current wait time for pending game session placement requests, in any queue, where the current fleet is the top-priority destination.
-}}
+\item{FleetId}{[required] Unique identifier for a fleet to apply this policy to. The fleet cannot be in any of the following statuses: ERROR or DELETING.}
 
 \item{ScalingAdjustment}{Amount of adjustment to make, based on the scaling adjustment type.}
 
@@ -43,6 +38,21 @@ put_scaling_policy(Name, FleetId, MetricName, ScalingAdjustment = NULL,
 \item{ComparisonOperator}{Comparison operator to use when measuring the metric against the threshold value.}
 
 \item{EvaluationPeriods}{Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is triggered.}
+
+\item{MetricName}{[required] Name of the Amazon GameLift-defined metric that is used to trigger a scaling adjustment. For detailed descriptions of fleet metrics, see \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html}{Monitor Amazon GameLift with Amazon CloudWatch}.
+\itemize{
+\item \strong{ActivatingGameSessions} -- Game sessions in the process of being created.
+\item \strong{ActiveGameSessions} -- Game sessions that are currently running.
+\item \strong{ActiveInstances} -- Fleet instances that are currently running at least one game session.
+\item \strong{AvailableGameSessions} -- Additional game sessions that fleet could host simultaneously, given current capacity.
+\item \strong{AvailablePlayerSessions} -- Empty player slots in currently active game sessions. This includes game sessions that are not currently accepting players. Reserved player slots are not included.
+\item \strong{CurrentPlayerSessions} -- Player slots in active game sessions that are being used by a player or are reserved for a player.
+\item \strong{IdleInstances} -- Active instances that are currently hosting zero game sessions.
+\item \strong{PercentAvailableGameSessions} -- Unused percentage of the total number of game sessions that a fleet could host simultaneously, given current capacity. Use this metric for a target-based scaling policy.
+\item \strong{PercentIdleInstances} -- Percentage of the total number of active instances that are hosting zero game sessions.
+\item \strong{QueueDepth} -- Pending game session placement requests, in any queue, where the current fleet is the top-priority destination.
+\item \strong{WaitTime} -- Current wait time for pending game session placement requests, in any queue, where the current fleet is the top-priority destination.
+}}
 
 \item{PolicyType}{Type of scaling policy to create. For a target-based policy, set the parameter \emph{MetricName} to 'PercentAvailableGameSessions' and specify a \emph{TargetConfiguration}. For a rule-based policy set the following parameters: \emph{MetricName}, \emph{ComparisonOperator}, \emph{Threshold}, \emph{EvaluationPeriods}, \emph{ScalingAdjustmentType}, and \emph{ScalingAdjustment}.}
 
@@ -62,7 +72,7 @@ Learn more about how to work with auto-scaling in \href{http://docs.aws.amazon.c
 
 A target-based policy tracks a single metric: PercentAvailableGameSessions. This metric tells us how much of a fleet's hosting capacity is ready to host game sessions but is not currently in use. This is the fleet's buffer; it measures the additional player demand that the fleet could handle at current capacity. With a target-based policy, you set your ideal buffer size and leave it to Amazon GameLift to take whatever action is needed to maintain that target.
 
-For example, you might choose to maintain a 10% buffer for a fleet that has the capacity to host 100 simultaneous game sessions. This policy tells Amazon GameLift to take action whenever the fleet's available capacity falls below or rises above 10 game sessions. Amazon GameLift will start new instances or stop unused instances in order to return to the 10% buffer.
+For example, you might choose to maintain a 10\% buffer for a fleet that has the capacity to host 100 simultaneous game sessions. This policy tells Amazon GameLift to take action whenever the fleet's available capacity falls below or rises above 10 game sessions. Amazon GameLift will start new instances or stop unused instances in order to return to the 10\% buffer.
 
 To create or update a target-based policy, specify a fleet ID and name, and set the policy type to "TargetBased". Specify the metric to track (PercentAvailableGameSessions) and reference a TargetConfiguration object with your desired buffer value. Exclude all other parameters. On a successful request, the policy name is returned. The scaling policy is automatically in force as soon as it's successfully created. If the fleet's auto-scaling actions are temporarily suspended, the new policy will be in force once the fleet actions are restarted.
 
@@ -70,7 +80,7 @@ To create or update a target-based policy, specify a fleet ID and name, and set 
 
 A rule-based policy tracks specified fleet metric, sets a threshold value, and specifies the type of action to initiate when triggered. With a rule-based policy, you can select from several available fleet metrics. Each policy specifies whether to scale up or scale down (and by how much), so you need one policy for each type of action.
 
-For example, a policy may make the following statement: "If the percentage of idle instances is greater than 20% for more than 15 minutes, then reduce the fleet capacity by 10%."
+For example, a policy may make the following statement: "If the percentage of idle instances is greater than 20\% for more than 15 minutes, then reduce the fleet capacity by 10\%."
 
 A policy's rule statement has the following structure:
 

@@ -4,12 +4,17 @@
 \alias{put_record}
 \title{Writes a single data record into an Amazon Kinesis Data Firehose delivery stream}
 \usage{
-put_record(DeliveryStreamName, Record)
+put_record(
+  DeliveryStreamName = "string",
+  Record = list(
+    Data = raw
+  )
+)
 }
 \arguments{
-\item{DeliveryStreamName}{The name of the delivery stream.}
+\item{DeliveryStreamName}{[required] The name of the delivery stream.}
 
-\item{Record}{The record.}
+\item{Record}{[required] The record.}
 }
 \description{
 Writes a single data record into an Amazon Kinesis Data Firehose delivery stream. To write multiple data records into a delivery stream, use PutRecordBatch. Applications using these operations are referred to as producers.
@@ -26,6 +31,8 @@ The \code{PutRecord} operation returns a \code{RecordId}, which is a unique stri
 If the \code{PutRecord} operation throws a \code{ServiceUnavailableException}, back off and retry. If the exception persists, it is possible that the throughput limits have been exceeded for the delivery stream.
 
 Data records sent to Kinesis Data Firehose are stored for 24 hours from the time they are added to a delivery stream as it tries to send the records to the destination. If the destination is unreachable for more than 24 hours, the data is no longer available.
+
+Don't concatenate two or more base64 strings to form the data fields of your records. Instead, concatenate the raw data, then perform base64 encoding.
 }
 \examples{
 

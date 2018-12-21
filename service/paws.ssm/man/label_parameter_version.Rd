@@ -4,14 +4,20 @@
 \alias{label_parameter_version}
 \title{A parameter label is a user-defined alias to help you manage different versions of a parameter}
 \usage{
-label_parameter_version(Name, Labels, ParameterVersion = NULL)
+label_parameter_version(
+  Name = "string",
+  ParameterVersion = 123,
+  Labels = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{Name}{The parameter name on which you want to attach one or more labels.}
-
-\item{Labels}{One or more labels to attach to the specified parameter version.}
+\item{Name}{[required] The parameter name on which you want to attach one or more labels.}
 
 \item{ParameterVersion}{The specific version of the parameter on which you want to attach one or more labels. If no version is specified, the system attaches the label to the latest version.)}
+
+\item{Labels}{[required] One or more labels to attach to the specified parameter version.}
 }
 \description{
 A parameter label is a user-defined alias to help you manage different versions of a parameter. When you modify a parameter, Systems Manager automatically saves a new version and increments the version number by one. A label can help you remember the purpose of a parameter when there are multiple versions.

@@ -4,10 +4,12 @@
 \alias{get_certificate_authority_certificate}
 \title{Retrieves the certificate and certificate chain for your private certificate authority (CA)}
 \usage{
-get_certificate_authority_certificate(CertificateAuthorityArn)
+get_certificate_authority_certificate(
+  CertificateAuthorityArn = "string"
+)
 }
 \arguments{
-\item{CertificateAuthorityArn}{The Amazon Resource Name (ARN) of your private CA. This is of the form:
+\item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) of your private CA. This is of the form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }.}
 }

@@ -6,10 +6,10 @@
 \alias{paws.mq-package}
 \title{paws.mq: AmazonMQ}
 \description{
-Amazon MQ is a managed message broker service for
-Apache ActiveMQ that makes it easy to set up and operate message
-brokers in the cloud. A message broker allows software applications
-and components to communicate using various programming languages,
+Amazon MQ is a managed message broker service for Apache
+ActiveMQ that makes it easy to set up and operate message brokers in
+the cloud. A message broker allows software applications and
+components to communicate using various programming languages,
 operating systems, and formal messaging protocols.
 }
 \author{
@@ -17,7 +17,12 @@ operating systems, and formal messaging protocols.
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

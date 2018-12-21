@@ -4,9 +4,28 @@
 \alias{describe_maintenance_window_schedule}
 \title{Retrieves information about upcoming executions of a Maintenance Window}
 \usage{
-describe_maintenance_window_schedule(WindowId = NULL, Targets = NULL,
-  ResourceType = NULL, Filters = NULL, MaxResults = NULL,
-  NextToken = NULL)
+describe_maintenance_window_schedule(
+  WindowId = "string",
+  Targets = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  ResourceType = "INSTANCE",
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{WindowId}{The ID of the Maintenance Window to retrieve information about.}

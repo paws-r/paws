@@ -4,7 +4,12 @@
 \alias{describe_elastic_load_balancers}
 \title{Describes a stack's Elastic Load Balancing instances}
 \usage{
-describe_elastic_load_balancers(StackId = NULL, LayerIds = NULL)
+describe_elastic_load_balancers(
+  StackId = "string",
+  LayerIds = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{StackId}{A stack ID. The action describes the stack's Elastic Load Balancing instances.}

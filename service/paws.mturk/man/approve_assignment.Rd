@@ -4,11 +4,14 @@
 \alias{approve_assignment}
 \title{The \code{ApproveAssignment} operation approves the results of a completed assignment}
 \usage{
-approve_assignment(AssignmentId, RequesterFeedback = NULL,
-  OverrideRejection = NULL)
+approve_assignment(
+  AssignmentId = "string",
+  RequesterFeedback = "string",
+  OverrideRejection = TRUE|FALSE
+)
 }
 \arguments{
-\item{AssignmentId}{The ID of the assignment. The assignment must correspond to a HIT created by the Requester.}
+\item{AssignmentId}{[required] The ID of the assignment. The assignment must correspond to a HIT created by the Requester.}
 
 \item{RequesterFeedback}{A message for the Worker, which the Worker can see in the Status section of the web site.}
 

@@ -4,10 +4,15 @@
 \alias{update_policy}
 \title{Updates an existing policy with a new name, description, or content}
 \usage{
-update_policy(PolicyId, Name = NULL, Description = NULL, Content = NULL)
+update_policy(
+  PolicyId = "string",
+  Name = "string",
+  Description = "string",
+  Content = "string"
+)
 }
 \arguments{
-\item{PolicyId}{The unique identifier (ID) of the policy that you want to update.
+\item{PolicyId}{[required] The unique identifier (ID) of the policy that you want to update.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.}
 

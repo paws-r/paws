@@ -4,10 +4,14 @@
 \alias{describe_tags}
 \title{Describes the tags associated with the specified load balancers}
 \usage{
-describe_tags(LoadBalancerNames)
+describe_tags(
+  LoadBalancerNames = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{LoadBalancerNames}{The names of the load balancers.}
+\item{LoadBalancerNames}{[required] The names of the load balancers.}
 }
 \description{
 Describes the tags associated with the specified load balancers.

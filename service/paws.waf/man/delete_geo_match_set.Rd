@@ -4,12 +4,15 @@
 \alias{delete_geo_match_set}
 \title{Permanently deletes a GeoMatchSet}
 \usage{
-delete_geo_match_set(GeoMatchSetId, ChangeToken)
+delete_geo_match_set(
+  GeoMatchSetId = "string",
+  ChangeToken = "string"
+)
 }
 \arguments{
-\item{GeoMatchSetId}{The \code{GeoMatchSetID} of the GeoMatchSet that you want to delete. \code{GeoMatchSetId} is returned by CreateGeoMatchSet and by ListGeoMatchSets.}
+\item{GeoMatchSetId}{[required] The \code{GeoMatchSetID} of the GeoMatchSet that you want to delete. \code{GeoMatchSetId} is returned by CreateGeoMatchSet and by ListGeoMatchSets.}
 
-\item{ChangeToken}{The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
 Permanently deletes a GeoMatchSet. You can't delete a \code{GeoMatchSet} if it's still used in any \code{Rules} or if it still includes any countries.

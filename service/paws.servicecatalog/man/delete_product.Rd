@@ -4,17 +4,20 @@
 \alias{delete_product}
 \title{Deletes the specified product}
 \usage{
-delete_product(Id, AcceptLanguage = NULL)
+delete_product(
+  AcceptLanguage = "string",
+  Id = "string"
+)
 }
 \arguments{
-\item{Id}{The product identifier.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{Id}{[required] The product identifier.}
 }
 \description{
 Deletes the specified product.

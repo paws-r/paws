@@ -2,15 +2,20 @@
 % Please edit documentation in R/paws.workdocs_operations.R
 \name{describe_groups}
 \alias{describe_groups}
-\title{Describes the groups specified by query}
+\title{Describes the groups specified by the query}
 \usage{
-describe_groups(SearchQuery, AuthenticationToken = NULL,
-  OrganizationId = NULL, Marker = NULL, Limit = NULL)
+describe_groups(
+  AuthenticationToken = "string",
+  SearchQuery = "string",
+  OrganizationId = "string",
+  Marker = "string",
+  Limit = 123
+)
 }
 \arguments{
-\item{SearchQuery}{A query to describe groups by group name.}
-
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
+
+\item{SearchQuery}{[required] A query to describe groups by group name.}
 
 \item{OrganizationId}{The ID of the organization.}
 
@@ -19,7 +24,7 @@ describe_groups(SearchQuery, AuthenticationToken = NULL,
 \item{Limit}{The maximum number of items to return with this call.}
 }
 \description{
-Describes the groups specified by query.
+Describes the groups specified by the query. Groups are defined by the underlying Active Directory.
 }
 \examples{
 

@@ -4,18 +4,22 @@
 \alias{get_ssh_public_key}
 \title{Retrieves the specified SSH public key, including metadata about the key}
 \usage{
-get_ssh_public_key(UserName, SSHPublicKeyId, Encoding)
+get_ssh_public_key(
+  UserName = "string",
+  SSHPublicKeyId = "string",
+  Encoding = "SSH"|"PEM"
+)
 }
 \arguments{
-\item{UserName}{The name of the IAM user associated with the SSH public key.
+\item{UserName}{[required] The name of the IAM user associated with the SSH public key.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
-\item{SSHPublicKeyId}{The unique identifier for the SSH public key.
+\item{SSHPublicKeyId}{[required] The unique identifier for the SSH public key.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
 
-\item{Encoding}{Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use \code{SSH}. To retrieve the public key in PEM format, use \code{PEM}.}
+\item{Encoding}{[required] Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use \code{SSH}. To retrieve the public key in PEM format, use \code{PEM}.}
 }
 \description{
 Retrieves the specified SSH public key, including metadata about the key.

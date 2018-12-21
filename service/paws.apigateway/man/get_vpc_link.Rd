@@ -4,10 +4,12 @@
 \alias{get_vpc_link}
 \title{Gets a specified VPC link under the caller's account in a region}
 \usage{
-get_vpc_link(vpcLinkId)
+get_vpc_link(
+  vpcLinkId = "string"
+)
 }
 \arguments{
-\item{vpcLinkId}{[Required] The identifier of the VpcLink. It is used in an Integration to reference this VpcLink.}
+\item{vpcLinkId}{[required] [Required] The identifier of the VpcLink. It is used in an Integration to reference this VpcLink.}
 }
 \description{
 Gets a specified VPC link under the caller's account in a region.

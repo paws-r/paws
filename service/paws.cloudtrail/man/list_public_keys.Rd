@@ -4,7 +4,11 @@
 \alias{list_public_keys}
 \title{Returns all public keys whose private keys were used to sign the digest files within the specified time range}
 \usage{
-list_public_keys(StartTime = NULL, EndTime = NULL, NextToken = NULL)
+list_public_keys(
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  NextToken = "string"
+)
 }
 \arguments{
 \item{StartTime}{Optionally specifies, in UTC, the start of the time range to look up public keys for CloudTrail digest files. If not specified, the current time is used, and the current public key is returned.}

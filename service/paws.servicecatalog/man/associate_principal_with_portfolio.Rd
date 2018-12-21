@@ -4,22 +4,26 @@
 \alias{associate_principal_with_portfolio}
 \title{Associates the specified principal ARN with the specified portfolio}
 \usage{
-associate_principal_with_portfolio(PortfolioId, PrincipalARN, PrincipalType,
-  AcceptLanguage = NULL)
+associate_principal_with_portfolio(
+  AcceptLanguage = "string",
+  PortfolioId = "string",
+  PrincipalARN = "string",
+  PrincipalType = "IAM"
+)
 }
 \arguments{
-\item{PortfolioId}{The portfolio identifier.}
-
-\item{PrincipalARN}{The ARN of the principal (IAM user, role, or group).}
-
-\item{PrincipalType}{The principal type. The supported value is \code{IAM}.}
-
 \item{AcceptLanguage}{The language code.
 \itemize{
 \item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{PortfolioId}{[required] The portfolio identifier.}
+
+\item{PrincipalARN}{[required] The ARN of the principal (IAM user, role, or group).}
+
+\item{PrincipalType}{[required] The principal type. The supported value is \code{IAM}.}
 }
 \description{
 Associates the specified principal ARN with the specified portfolio.

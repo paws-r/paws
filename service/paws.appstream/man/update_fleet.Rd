@@ -4,12 +4,36 @@
 \alias{update_fleet}
 \title{Updates the specified fleet}
 \usage{
-update_fleet(ImageName = NULL, ImageArn = NULL, Name = NULL,
-  InstanceType = NULL, ComputeCapacity = NULL, VpcConfig = NULL,
-  MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL,
-  DeleteVpcConfig = NULL, Description = NULL, DisplayName = NULL,
-  EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL,
-  AttributesToDelete = NULL)
+update_fleet(
+  ImageName = "string",
+  ImageArn = "string",
+  Name = "string",
+  InstanceType = "string",
+  ComputeCapacity = list(
+    DesiredInstances = 123
+  ),
+  VpcConfig = list(
+    SubnetIds = list(
+      "string"
+    ),
+    SecurityGroupIds = list(
+      "string"
+    )
+  ),
+  MaxUserDurationInSeconds = 123,
+  DisconnectTimeoutInSeconds = 123,
+  DeleteVpcConfig = TRUE|FALSE,
+  Description = "string",
+  DisplayName = "string",
+  EnableDefaultInternetAccess = TRUE|FALSE,
+  DomainJoinInfo = list(
+    DirectoryName = "string",
+    OrganizationalUnitDistinguishedName = "string"
+  ),
+  AttributesToDelete = list(
+    "VPC_CONFIGURATION"|"VPC_CONFIGURATION_SECURITY_GROUP_IDS"|"DOMAIN_JOIN_INFO"
+  )
+)
 }
 \arguments{
 \item{ImageName}{The name of the image used to create the fleet.}

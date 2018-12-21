@@ -4,14 +4,17 @@
 \alias{disable_policy_type}
 \title{Disables an organizational control policy type in a root}
 \usage{
-disable_policy_type(RootId, PolicyType)
+disable_policy_type(
+  RootId = "string",
+  PolicyType = "SERVICE_CONTROL_POLICY"
+)
 }
 \arguments{
-\item{RootId}{The unique identifier (ID) of the root in which you want to disable a policy type. You can get the ID from the ListRoots operation.
+\item{RootId}{[required] The unique identifier (ID) of the root in which you want to disable a policy type. You can get the ID from the ListRoots operation.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a root ID string requires "r-" followed by from 4 to 32 lower-case letters or digits.}
 
-\item{PolicyType}{The policy type that you want to disable in this root.}
+\item{PolicyType}{[required] The policy type that you want to disable in this root.}
 }
 \description{
 Disables an organizational control policy type in a root. A policy of a certain type can be attached to entities in a root only if that type is enabled in the root. After you perform this operation, you no longer can attach policies of the specified type to that root or to any organizational unit (OU) or account in that root. You can undo this by using the EnablePolicyType operation.

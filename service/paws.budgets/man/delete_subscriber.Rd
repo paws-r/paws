@@ -4,22 +4,36 @@
 \alias{delete_subscriber}
 \title{Deletes a subscriber}
 \usage{
-delete_subscriber(AccountId, BudgetName, Notification, Subscriber)
+delete_subscriber(
+  AccountId = "string",
+  BudgetName = "string",
+  Notification = list(
+    NotificationType = "ACTUAL"|"FORECASTED",
+    ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
+    Threshold = 123.0,
+    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+    NotificationState = "OK"|"ALARM"
+  ),
+  Subscriber = list(
+    SubscriptionType = "SNS"|"EMAIL",
+    Address = "string"
+  )
+)
 }
 \arguments{
-\item{AccountId}{The \code{accountId} that is associated with the budget whose subscriber you want to delete.}
+\item{AccountId}{[required] The \code{accountId} that is associated with the budget whose subscriber you want to delete.}
 
-\item{BudgetName}{The name of the budget whose subscriber you want to delete.}
+\item{BudgetName}{[required] The name of the budget whose subscriber you want to delete.}
 
-\item{Notification}{The notification whose subscriber you want to delete.}
+\item{Notification}{[required] The notification whose subscriber you want to delete.}
 
-\item{Subscriber}{The subscriber that you want to delete.}
+\item{Subscriber}{[required] The subscriber that you want to delete.}
 }
 \description{
 Deletes a subscriber.
 }
 \details{
-\strong{Deleting the last subscriber to a notification also deletes the notification.}
+Deleting the last subscriber to a notification also deletes the notification.
 }
 \examples{
 

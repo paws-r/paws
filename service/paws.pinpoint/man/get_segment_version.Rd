@@ -4,14 +4,18 @@
 \alias{get_segment_version}
 \title{Returns information about a segment version}
 \usage{
-get_segment_version(SegmentId, Version, ApplicationId)
+get_segment_version(
+  ApplicationId = "string",
+  SegmentId = "string",
+  Version = "string"
+)
 }
 \arguments{
-\item{SegmentId}{The unique ID of the segment.}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 
-\item{Version}{The segment version.}
+\item{SegmentId}{[required] The unique ID of the segment.}
 
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{Version}{[required] The segment version.}
 }
 \description{
 Returns information about a segment version.

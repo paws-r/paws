@@ -4,8 +4,12 @@
 \alias{describe_services}
 \title{Returns the metadata for one service or a list of the metadata for all services}
 \usage{
-describe_services(ServiceCode = NULL, FormatVersion = NULL,
-  NextToken = NULL, MaxResults = NULL)
+describe_services(
+  ServiceCode = "string",
+  FormatVersion = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{ServiceCode}{The code for the service whose information you want to retrieve, such as \code{AmazonEC2}. You can use the \code{ServiceCode} to filter the results in a \code{GetProducts} call. To retrieve a list of all services, leave this blank.}

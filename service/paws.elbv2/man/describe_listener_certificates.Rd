@@ -4,10 +4,14 @@
 \alias{describe_listener_certificates}
 \title{Describes the certificates for the specified secure listener}
 \usage{
-describe_listener_certificates(ListenerArn, Marker = NULL, PageSize = NULL)
+describe_listener_certificates(
+  ListenerArn = "string",
+  Marker = "string",
+  PageSize = 123
+)
 }
 \arguments{
-\item{ListenerArn}{The Amazon Resource Names (ARN) of the listener.}
+\item{ListenerArn}{[required] The Amazon Resource Names (ARN) of the listener.}
 
 \item{Marker}{The marker for the next set of results. (You received this marker from a previous call.)}
 

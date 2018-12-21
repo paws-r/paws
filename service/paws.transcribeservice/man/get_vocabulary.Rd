@@ -4,13 +4,15 @@
 \alias{get_vocabulary}
 \title{Gets information about a vocabulary}
 \usage{
-get_vocabulary(VocabularyName)
+get_vocabulary(
+  VocabularyName = "string"
+)
 }
 \arguments{
-\item{VocabularyName}{The name of the vocabulary to return information about. The name is case-sensitive.}
+\item{VocabularyName}{[required] The name of the vocabulary to return information about. The name is case-sensitive.}
 }
 \description{
-Gets information about a vocabulary. Note that vocabularies for en-AU, en-UK, and fr-CA languages that are in preview are not available. In the console, the vocabulary section will be greyed-out and SDK will return error message.
+Gets information about a vocabulary.
 }
 \examples{
 

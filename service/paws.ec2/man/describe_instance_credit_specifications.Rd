@@ -4,8 +4,22 @@
 \alias{describe_instance_credit_specifications}
 \title{Describes the credit option for CPU usage of one or more of your T2 or T3 instances}
 \usage{
-describe_instance_credit_specifications(DryRun = NULL, Filters = NULL,
-  InstanceIds = NULL, MaxResults = NULL, NextToken = NULL)
+describe_instance_credit_specifications(
+  DryRun = TRUE|FALSE,
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  InstanceIds = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}

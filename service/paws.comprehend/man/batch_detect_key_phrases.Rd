@@ -4,12 +4,17 @@
 \alias{batch_detect_key_phrases}
 \title{Detects the key noun phrases found in a batch of documents}
 \usage{
-batch_detect_key_phrases(TextList, LanguageCode)
+batch_detect_key_phrases(
+  TextList = list(
+    "string"
+  ),
+  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+)
 }
 \arguments{
-\item{TextList}{A list containing the text of the input documents. The list can contain a maximum of 25 documents. Each document must contain fewer that 5,000 bytes of UTF-8 encoded characters.}
+\item{TextList}{[required] A list containing the text of the input documents. The list can contain a maximum of 25 documents. Each document must contain fewer that 5,000 bytes of UTF-8 encoded characters.}
 
-\item{LanguageCode}{The language of the input documents. You can specify English ("en") or Spanish ("es"). All documents must be in the same language.}
+\item{LanguageCode}{[required] The language of the input documents. You can specify English ("en") or Spanish ("es"). All documents must be in the same language.}
 }
 \description{
 Detects the key noun phrases found in a batch of documents.

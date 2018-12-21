@@ -4,10 +4,12 @@
 \alias{get_maintenance_window}
 \title{Retrieves a Maintenance Window}
 \usage{
-get_maintenance_window(WindowId)
+get_maintenance_window(
+  WindowId = "string"
+)
 }
 \arguments{
-\item{WindowId}{The ID of the desired Maintenance Window.}
+\item{WindowId}{[required] The ID of the desired Maintenance Window.}
 }
 \description{
 Retrieves a Maintenance Window.

@@ -4,19 +4,48 @@
 \alias{create_instance}
 \title{Creates an instance in a specified stack}
 \usage{
-create_instance(StackId, LayerIds, InstanceType, AutoScalingType = NULL,
-  Hostname = NULL, Os = NULL, AmiId = NULL, SshKeyName = NULL,
-  AvailabilityZone = NULL, VirtualizationType = NULL, SubnetId = NULL,
-  Architecture = NULL, RootDeviceType = NULL, BlockDeviceMappings = NULL,
-  InstallUpdatesOnBoot = NULL, EbsOptimized = NULL, AgentVersion = NULL,
-  Tenancy = NULL)
+create_instance(
+  StackId = "string",
+  LayerIds = list(
+    "string"
+  ),
+  InstanceType = "string",
+  AutoScalingType = "load"|"timer",
+  Hostname = "string",
+  Os = "string",
+  AmiId = "string",
+  SshKeyName = "string",
+  AvailabilityZone = "string",
+  VirtualizationType = "string",
+  SubnetId = "string",
+  Architecture = "x86_64"|"i386",
+  RootDeviceType = "ebs"|"instance-store",
+  BlockDeviceMappings = list(
+    list(
+      DeviceName = "string",
+      NoDevice = "string",
+      VirtualName = "string",
+      Ebs = list(
+        SnapshotId = "string",
+        Iops = 123,
+        VolumeSize = 123,
+        VolumeType = "gp2"|"io1"|"standard",
+        DeleteOnTermination = TRUE|FALSE
+      )
+    )
+  ),
+  InstallUpdatesOnBoot = TRUE|FALSE,
+  EbsOptimized = TRUE|FALSE,
+  AgentVersion = "string",
+  Tenancy = "string"
+)
 }
 \arguments{
-\item{StackId}{The stack ID.}
+\item{StackId}{[required] The stack ID.}
 
-\item{LayerIds}{An array that contains the instance's layer IDs.}
+\item{LayerIds}{[required] An array that contains the instance's layer IDs.}
 
-\item{InstanceType}{The instance type, such as \code{t2.micro}. For a list of supported instance types, open the stack in the console, choose \strong{Instances}, and choose \strong{+ Instance}. The \strong{Size} list contains the currently supported types. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance Families and Types}. The parameter values that you use to specify the various types are in the \strong{API Name} column of the \strong{Available Instance Types} table.}
+\item{InstanceType}{[required] The instance type, such as \code{t2.micro}. For a list of supported instance types, open the stack in the console, choose \strong{Instances}, and choose \strong{+ Instance}. The \strong{Size} list contains the currently supported types. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance Families and Types}. The parameter values that you use to specify the various types are in the \strong{API Name} column of the \strong{Available Instance Types} table.}
 
 \item{AutoScalingType}{For load-based or time-based instances, the type. Windows stacks can use only time-based instances.}
 

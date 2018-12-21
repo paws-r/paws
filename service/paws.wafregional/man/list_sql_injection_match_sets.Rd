@@ -4,7 +4,10 @@
 \alias{list_sql_injection_match_sets}
 \title{Returns an array of SqlInjectionMatchSet objects}
 \usage{
-list_sql_injection_match_sets(NextMarker = NULL, Limit = NULL)
+list_sql_injection_match_sets(
+  NextMarker = "string",
+  Limit = 123
+)
 }
 \arguments{
 \item{NextMarker}{If you specify a value for \code{Limit} and you have more SqlInjectionMatchSet objects than the value of \code{Limit}, AWS WAF returns a \code{NextMarker} value in the response that allows you to list another group of \code{SqlInjectionMatchSets}. For the second and subsequent \code{ListSqlInjectionMatchSets} requests, specify the value of \code{NextMarker} from the previous response to get information about another batch of \code{SqlInjectionMatchSets}.}

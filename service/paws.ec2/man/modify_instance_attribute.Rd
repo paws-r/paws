@@ -4,17 +4,58 @@
 \alias{modify_instance_attribute}
 \title{Modifies the specified attribute of the specified instance}
 \usage{
-modify_instance_attribute(InstanceId, SourceDestCheck = NULL,
-  Attribute = NULL, BlockDeviceMappings = NULL,
-  DisableApiTermination = NULL, DryRun = NULL, EbsOptimized = NULL,
-  EnaSupport = NULL, Groups = NULL,
-  InstanceInitiatedShutdownBehavior = NULL, InstanceType = NULL,
-  Kernel = NULL, Ramdisk = NULL, SriovNetSupport = NULL,
-  UserData = NULL, Value = NULL)
+modify_instance_attribute(
+  SourceDestCheck = list(
+    Value = TRUE|FALSE
+  ),
+  Attribute = "instanceType"|"kernel"|"ramdisk"|"userData"|"disableApiTermination"|"instanceInitiatedShutdownBehavior"|"rootDeviceName"|"blockDeviceMapping"|"productCodes"|"sourceDestCheck"|"groupSet"|"ebsOptimized"|"sriovNetSupport"|"enaSupport",
+  BlockDeviceMappings = list(
+    list(
+      DeviceName = "string",
+      Ebs = list(
+        DeleteOnTermination = TRUE|FALSE,
+        VolumeId = "string"
+      ),
+      NoDevice = "string",
+      VirtualName = "string"
+    )
+  ),
+  DisableApiTermination = list(
+    Value = TRUE|FALSE
+  ),
+  DryRun = TRUE|FALSE,
+  EbsOptimized = list(
+    Value = TRUE|FALSE
+  ),
+  EnaSupport = list(
+    Value = TRUE|FALSE
+  ),
+  Groups = list(
+    "string"
+  ),
+  InstanceId = "string",
+  InstanceInitiatedShutdownBehavior = list(
+    Value = "string"
+  ),
+  InstanceType = list(
+    Value = "string"
+  ),
+  Kernel = list(
+    Value = "string"
+  ),
+  Ramdisk = list(
+    Value = "string"
+  ),
+  SriovNetSupport = list(
+    Value = "string"
+  ),
+  UserData = list(
+    Value = raw
+  ),
+  Value = "string"
+)
 }
 \arguments{
-\item{InstanceId}{The ID of the instance.}
-
 \item{SourceDestCheck}{Specifies whether source/destination checking is enabled. A value of \code{true} means that checking is enabled, and \code{false} means that checking is disabled. This value must be \code{false} for a NAT instance to perform NAT.}
 
 \item{Attribute}{The name of the attribute.}
@@ -34,6 +75,8 @@ To add instance store volumes to an Amazon EBS-backed instance, you must add the
 This option is supported only for HVM instances. Specifying this option with a PV instance can make it unreachable.}
 
 \item{Groups}{[EC2-VPC] Changes the security groups of the instance. You must specify at least one security group, even if it's just the default security group for the VPC. You must specify the security group ID, not the security group name.}
+
+\item{InstanceId}{[required] The ID of the instance.}
 
 \item{InstanceInitiatedShutdownBehavior}{Specifies whether an instance stops or terminates when you initiate shutdown from the instance (using the operating system command for system shutdown).}
 

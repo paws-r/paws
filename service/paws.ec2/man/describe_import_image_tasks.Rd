@@ -4,8 +4,22 @@
 \alias{describe_import_image_tasks}
 \title{Displays details about an import virtual machine or import snapshot tasks that are already created}
 \usage{
-describe_import_image_tasks(DryRun = NULL, Filters = NULL,
-  ImportTaskIds = NULL, MaxResults = NULL, NextToken = NULL)
+describe_import_image_tasks(
+  DryRun = TRUE|FALSE,
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  ImportTaskIds = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}

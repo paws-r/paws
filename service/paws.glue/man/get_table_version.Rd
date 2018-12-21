@@ -4,17 +4,21 @@
 \alias{get_table_version}
 \title{Retrieves a specified version of a table}
 \usage{
-get_table_version(DatabaseName, TableName, CatalogId = NULL,
-  VersionId = NULL)
+get_table_version(
+  CatalogId = "string",
+  DatabaseName = "string",
+  TableName = "string",
+  VersionId = "string"
+)
 }
 \arguments{
-\item{DatabaseName}{The database in the catalog in which the table resides. For Hive compatibility, this name is entirely lowercase.}
-
-\item{TableName}{The name of the table. For Hive compatibility, this name is entirely lowercase.}
-
 \item{CatalogId}{The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.}
 
-\item{VersionId}{The ID value of the table version to be retrieved.}
+\item{DatabaseName}{[required] The database in the catalog in which the table resides. For Hive compatibility, this name is entirely lowercase.}
+
+\item{TableName}{[required] The name of the table. For Hive compatibility, this name is entirely lowercase.}
+
+\item{VersionId}{The ID value of the table version to be retrieved. A \code{VersionID} is a string representation of an integer. Each version is incremented by 1.}
 }
 \description{
 Retrieves a specified version of a table.

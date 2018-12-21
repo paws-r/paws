@@ -4,10 +4,12 @@
 \alias{get_thing_shadow}
 \title{Gets the thing shadow for the specified thing}
 \usage{
-get_thing_shadow(thingName)
+get_thing_shadow(
+  thingName = "string"
+)
 }
 \arguments{
-\item{thingName}{The name of the thing.}
+\item{thingName}{[required] The name of the thing.}
 }
 \description{
 Gets the thing shadow for the specified thing.

@@ -4,7 +4,11 @@
 \alias{describe_applications}
 \title{Returns the descriptions of existing applications}
 \usage{
-describe_applications(ApplicationNames = NULL)
+describe_applications(
+  ApplicationNames = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{ApplicationNames}{If specified, AWS Elastic Beanstalk restricts the returned descriptions to only include those with the specified names.}

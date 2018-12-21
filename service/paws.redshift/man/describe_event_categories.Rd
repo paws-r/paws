@@ -4,7 +4,9 @@
 \alias{describe_event_categories}
 \title{Displays a list of event categories for all event source types, or for a specified source type}
 \usage{
-describe_event_categories(SourceType = NULL)
+describe_event_categories(
+  SourceType = "string"
+)
 }
 \arguments{
 \item{SourceType}{The source type, such as cluster or parameter group, to which the described event categories apply.

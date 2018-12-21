@@ -4,14 +4,21 @@
 \alias{register_ca_certificate}
 \title{Registers a CA certificate with AWS IoT}
 \usage{
-register_ca_certificate(caCertificate, verificationCertificate,
-  setAsActive = NULL, allowAutoRegistration = NULL,
-  registrationConfig = NULL)
+register_ca_certificate(
+  caCertificate = "string",
+  verificationCertificate = "string",
+  setAsActive = TRUE|FALSE,
+  allowAutoRegistration = TRUE|FALSE,
+  registrationConfig = list(
+    templateBody = "string",
+    roleArn = "string"
+  )
+)
 }
 \arguments{
-\item{caCertificate}{The CA certificate.}
+\item{caCertificate}{[required] The CA certificate.}
 
-\item{verificationCertificate}{The private key verification certificate.}
+\item{verificationCertificate}{[required] The private key verification certificate.}
 
 \item{setAsActive}{A boolean value that specifies if the CA certificate is set to active.}
 

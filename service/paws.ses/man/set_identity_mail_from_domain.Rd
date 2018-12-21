@@ -4,11 +4,14 @@
 \alias{set_identity_mail_from_domain}
 \title{Enables or disables the custom MAIL FROM domain setup for a verified identity (an email address or a domain)}
 \usage{
-set_identity_mail_from_domain(Identity, MailFromDomain = NULL,
-  BehaviorOnMXFailure = NULL)
+set_identity_mail_from_domain(
+  Identity = "string",
+  MailFromDomain = "string",
+  BehaviorOnMXFailure = "UseDefaultValue"|"RejectMessage"
+)
 }
 \arguments{
-\item{Identity}{The verified identity for which you want to enable or disable the specified custom MAIL FROM domain.}
+\item{Identity}{[required] The verified identity for which you want to enable or disable the specified custom MAIL FROM domain.}
 
 \item{MailFromDomain}{The custom MAIL FROM domain that you want the verified identity to use. The MAIL FROM domain must 1) be a subdomain of the verified identity, 2) not be used in a "From" address if the MAIL FROM domain is the destination of email feedback forwarding (for more information, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html}{Amazon SES Developer Guide}), and 3) not be used to receive emails. A value of \code{null} disables the custom MAIL FROM setting for the identity.}
 

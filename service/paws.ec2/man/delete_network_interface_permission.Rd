@@ -4,11 +4,14 @@
 \alias{delete_network_interface_permission}
 \title{Deletes a permission for a network interface}
 \usage{
-delete_network_interface_permission(NetworkInterfacePermissionId,
-  Force = NULL, DryRun = NULL)
+delete_network_interface_permission(
+  NetworkInterfacePermissionId = "string",
+  Force = TRUE|FALSE,
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{NetworkInterfacePermissionId}{The ID of the network interface permission.}
+\item{NetworkInterfacePermissionId}{[required] The ID of the network interface permission.}
 
 \item{Force}{Specify \code{true} to remove the permission even if the network interface is attached to an instance.}
 

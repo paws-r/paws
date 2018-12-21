@@ -4,10 +4,12 @@
 \alias{delete_assessment_template}
 \title{Deletes the assessment template that is specified by the ARN of the assessment template}
 \usage{
-delete_assessment_template(assessmentTemplateArn)
+delete_assessment_template(
+  assessmentTemplateArn = "string"
+)
 }
 \arguments{
-\item{assessmentTemplateArn}{The ARN that specifies the assessment template that you want to delete.}
+\item{assessmentTemplateArn}{[required] The ARN that specifies the assessment template that you want to delete.}
 }
 \description{
 Deletes the assessment template that is specified by the ARN of the assessment template.

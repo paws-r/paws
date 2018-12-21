@@ -4,10 +4,17 @@
 \alias{describe_instance_health}
 \title{Describes the state of the specified instances with respect to the specified load balancer}
 \usage{
-describe_instance_health(LoadBalancerName, Instances = NULL)
+describe_instance_health(
+  LoadBalancerName = "string",
+  Instances = list(
+    list(
+      InstanceId = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{LoadBalancerName}{The name of the load balancer.}
+\item{LoadBalancerName}{[required] The name of the load balancer.}
 
 \item{Instances}{The IDs of the instances.}
 }

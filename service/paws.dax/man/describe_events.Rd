@@ -4,8 +4,15 @@
 \alias{describe_events}
 \title{Returns events related to DAX clusters and parameter groups}
 \usage{
-describe_events(SourceName = NULL, SourceType = NULL, StartTime = NULL,
-  EndTime = NULL, Duration = NULL, MaxResults = NULL, NextToken = NULL)
+describe_events(
+  SourceName = "string",
+  SourceType = "CLUSTER"|"PARAMETER_GROUP"|"SUBNET_GROUP",
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  Duration = 123,
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{SourceName}{The identifier of the event source for which events will be returned. If not specified, then all sources are included in the response.}

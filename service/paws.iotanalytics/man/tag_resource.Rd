@@ -4,12 +4,20 @@
 \alias{tag_resource}
 \title{Adds to or modifies the tags of the given resource}
 \usage{
-tag_resource(resourceArn, tags)
+tag_resource(
+  resourceArn = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{resourceArn}{The ARN of the resource whose tags will be modified.}
+\item{resourceArn}{[required] The ARN of the resource whose tags will be modified.}
 
-\item{tags}{The new or modified tags for the resource.}
+\item{tags}{[required] The new or modified tags for the resource.}
 }
 \description{
 Adds to or modifies the tags of the given resource. Tags are metadata which can be used to manage a resource.

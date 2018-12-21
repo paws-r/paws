@@ -4,10 +4,13 @@
 \alias{describe_channel}
 \title{Retrieves information about a channel}
 \usage{
-describe_channel(channelName, includeStatistics = NULL)
+describe_channel(
+  channelName = "string",
+  includeStatistics = TRUE|FALSE
+)
 }
 \arguments{
-\item{channelName}{The name of the channel whose information is retrieved.}
+\item{channelName}{[required] The name of the channel whose information is retrieved.}
 
 \item{includeStatistics}{If true, additional statistical information about the channel is included in the response.}
 }

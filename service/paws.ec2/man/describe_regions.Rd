@@ -4,7 +4,20 @@
 \alias{describe_regions}
 \title{Describes one or more regions that are currently available to you}
 \usage{
-describe_regions(Filters = NULL, RegionNames = NULL, DryRun = NULL)
+describe_regions(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  RegionNames = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
 \item{Filters}{One or more filters.

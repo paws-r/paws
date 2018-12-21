@@ -4,15 +4,20 @@
 \alias{enter_standby}
 \title{Moves the specified instances into the standby state}
 \usage{
-enter_standby(AutoScalingGroupName, ShouldDecrementDesiredCapacity,
-  InstanceIds = NULL)
+enter_standby(
+  InstanceIds = list(
+    "string"
+  ),
+  AutoScalingGroupName = "string",
+  ShouldDecrementDesiredCapacity = TRUE|FALSE
+)
 }
 \arguments{
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
-
-\item{ShouldDecrementDesiredCapacity}{Indicates whether to decrement the desired capacity of the Auto Scaling group by the number of instances moved to \code{Standby} mode.}
-
 \item{InstanceIds}{The IDs of the instances. You can specify up to 20 instances.}
+
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
+
+\item{ShouldDecrementDesiredCapacity}{[required] Indicates whether to decrement the desired capacity of the Auto Scaling group by the number of instances moved to \code{Standby} mode.}
 }
 \description{
 Moves the specified instances into the standby state.

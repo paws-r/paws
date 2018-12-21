@@ -4,10 +4,12 @@
 \alias{export_project}
 \title{Exports project configuration to a snapshot which can be downloaded and shared}
 \usage{
-export_project(projectId)
+export_project(
+  projectId = "string"
+)
 }
 \arguments{
-\item{projectId}{Unique project identifier.}
+\item{projectId}{[required] Unique project identifier.}
 }
 \description{
 Exports project configuration to a snapshot which can be downloaded and shared. Note that mobile app push credentials are encrypted in exported projects, so they can only be shared successfully within the same AWS account.

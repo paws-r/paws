@@ -4,10 +4,12 @@
 \alias{disassociate_role_from_group}
 \title{Disassociates the role from a group}
 \usage{
-disassociate_role_from_group(GroupId)
+disassociate_role_from_group(
+  GroupId = "string"
+)
 }
 \arguments{
-\item{GroupId}{The ID of the AWS Greengrass group.}
+\item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \description{
 Disassociates the role from a group.

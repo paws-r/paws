@@ -4,12 +4,16 @@
 \alias{import_migration_task}
 \title{Registers a new migration task which represents a server, database, etc}
 \usage{
-import_migration_task(ProgressUpdateStream, MigrationTaskName, DryRun = NULL)
+import_migration_task(
+  ProgressUpdateStream = "string",
+  MigrationTaskName = "string",
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{ProgressUpdateStream}{The name of the ProgressUpdateStream.}
+\item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
 
-\item{MigrationTaskName}{Unique identifier that references the migration task.}
+\item{MigrationTaskName}{[required] Unique identifier that references the migration task.}
 
 \item{DryRun}{Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.}
 }

@@ -4,12 +4,18 @@
 \alias{get_logger_definition_version}
 \title{Retrieves information about a logger definition version}
 \usage{
-get_logger_definition_version(LoggerDefinitionVersionId, LoggerDefinitionId)
+get_logger_definition_version(
+  LoggerDefinitionId = "string",
+  LoggerDefinitionVersionId = "string",
+  NextToken = "string"
+)
 }
 \arguments{
-\item{LoggerDefinitionVersionId}{The ID of the logger definition version.}
+\item{LoggerDefinitionId}{[required] The ID of the logger definition.}
 
-\item{LoggerDefinitionId}{The ID of the logger definition.}
+\item{LoggerDefinitionVersionId}{[required] The ID of the logger definition version.}
+
+\item{NextToken}{The token for the next set of results, or ''null'' if there are no additional results.}
 }
 \description{
 Retrieves information about a logger definition version.

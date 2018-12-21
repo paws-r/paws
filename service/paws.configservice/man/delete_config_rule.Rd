@@ -4,10 +4,12 @@
 \alias{delete_config_rule}
 \title{Deletes the specified AWS Config rule and all of its evaluation results}
 \usage{
-delete_config_rule(ConfigRuleName)
+delete_config_rule(
+  ConfigRuleName = "string"
+)
 }
 \arguments{
-\item{ConfigRuleName}{The name of the AWS Config rule that you want to delete.}
+\item{ConfigRuleName}{[required] The name of the AWS Config rule that you want to delete.}
 }
 \description{
 Deletes the specified AWS Config rule and all of its evaluation results.

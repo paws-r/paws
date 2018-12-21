@@ -4,10 +4,12 @@
 \alias{describe_training_job}
 \title{Returns information about a training job}
 \usage{
-describe_training_job(TrainingJobName)
+describe_training_job(
+  TrainingJobName = "string"
+)
 }
 \arguments{
-\item{TrainingJobName}{The name of the training job.}
+\item{TrainingJobName}{[required] The name of the training job.}
 }
 \description{
 Returns information about a training job.

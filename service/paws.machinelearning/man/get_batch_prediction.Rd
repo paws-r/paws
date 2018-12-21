@@ -4,10 +4,12 @@
 \alias{get_batch_prediction}
 \title{Returns a \code{BatchPrediction} that includes detailed metadata, status, and data file information for a \code{Batch Prediction} request}
 \usage{
-get_batch_prediction(BatchPredictionId)
+get_batch_prediction(
+  BatchPredictionId = "string"
+)
 }
 \arguments{
-\item{BatchPredictionId}{An ID assigned to the \code{BatchPrediction} at creation.}
+\item{BatchPredictionId}{[required] An ID assigned to the \code{BatchPrediction} at creation.}
 }
 \description{
 Returns a \code{BatchPrediction} that includes detailed metadata, status, and data file information for a \code{Batch Prediction} request.

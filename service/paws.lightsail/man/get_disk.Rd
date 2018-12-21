@@ -4,10 +4,12 @@
 \alias{get_disk}
 \title{Returns information about a specific block storage disk}
 \usage{
-get_disk(diskName)
+get_disk(
+  diskName = "string"
+)
 }
 \arguments{
-\item{diskName}{The name of the disk (e.g., \code{my-disk}).}
+\item{diskName}{[required] The name of the disk (e.g., \code{my-disk}).}
 }
 \description{
 Returns information about a specific block storage disk.

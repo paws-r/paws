@@ -4,11 +4,22 @@
 \alias{describe_maintenance_window_executions}
 \title{Lists the executions of a Maintenance Window}
 \usage{
-describe_maintenance_window_executions(WindowId, Filters = NULL,
-  MaxResults = NULL, NextToken = NULL)
+describe_maintenance_window_executions(
+  WindowId = "string",
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
-\item{WindowId}{The ID of the Maintenance Window whose executions should be retrieved.}
+\item{WindowId}{[required] The ID of the Maintenance Window whose executions should be retrieved.}
 
 \item{Filters}{Each entry in the array is a structure containing:
 

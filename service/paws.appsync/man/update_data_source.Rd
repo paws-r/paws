@@ -4,28 +4,66 @@
 \alias{update_data_source}
 \title{Updates a \code{DataSource} object}
 \usage{
-update_data_source(apiId, name, type, description = NULL,
-  serviceRoleArn = NULL, dynamodbConfig = NULL, lambdaConfig = NULL,
-  elasticsearchConfig = NULL, httpConfig = NULL)
+update_data_source(
+  apiId = "string",
+  name = "string",
+  description = "string",
+  type = "AWS_LAMBDA"|"AMAZON_DYNAMODB"|"AMAZON_ELASTICSEARCH"|"NONE"|"HTTP"|"RELATIONAL_DATABASE",
+  serviceRoleArn = "string",
+  dynamodbConfig = list(
+    tableName = "string",
+    awsRegion = "string",
+    useCallerCredentials = TRUE|FALSE
+  ),
+  lambdaConfig = list(
+    lambdaFunctionArn = "string"
+  ),
+  elasticsearchConfig = list(
+    endpoint = "string",
+    awsRegion = "string"
+  ),
+  httpConfig = list(
+    endpoint = "string",
+    authorizationConfig = list(
+      authorizationType = "AWS_IAM",
+      awsIamConfig = list(
+        signingRegion = "string",
+        signingServiceName = "string"
+      )
+    )
+  ),
+  relationalDatabaseConfig = list(
+    relationalDatabaseSourceType = "RDS_HTTP_ENDPOINT",
+    rdsHttpEndpointConfig = list(
+      awsRegion = "string",
+      dbClusterIdentifier = "string",
+      databaseName = "string",
+      schema = "string",
+      awsSecretStoreArn = "string"
+    )
+  )
+)
 }
 \arguments{
-\item{apiId}{The API ID.}
+\item{apiId}{[required] The API ID.}
 
-\item{name}{The new name for the data source.}
-
-\item{type}{The new data source type.}
+\item{name}{[required] The new name for the data source.}
 
 \item{description}{The new description for the data source.}
 
+\item{type}{[required] The new data source type.}
+
 \item{serviceRoleArn}{The new service role ARN for the data source.}
 
-\item{dynamodbConfig}{The new DynamoDB configuration.}
+\item{dynamodbConfig}{The new Amazon DynamoDB configuration.}
 
-\item{lambdaConfig}{The new Lambda configuration.}
+\item{lambdaConfig}{The new AWS Lambda configuration.}
 
-\item{elasticsearchConfig}{The new Elasticsearch configuration.}
+\item{elasticsearchConfig}{The new Elasticsearch Service configuration.}
 
-\item{httpConfig}{The new http endpoint configuration}
+\item{httpConfig}{The new HTTP endpoint configuration.}
+
+\item{relationalDatabaseConfig}{The new relational database configuration.}
 }
 \description{
 Updates a \code{DataSource} object.

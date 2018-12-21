@@ -4,12 +4,24 @@
 \alias{update_apns_voip_channel}
 \title{Update an APNS VoIP channel}
 \usage{
-update_apns_voip_channel(ApplicationId, APNSVoipChannelRequest)
+update_apns_voip_channel(
+  APNSVoipChannelRequest = list(
+    BundleId = "string",
+    Certificate = "string",
+    DefaultAuthenticationMethod = "string",
+    Enabled = TRUE|FALSE,
+    PrivateKey = "string",
+    TeamId = "string",
+    TokenKey = "string",
+    TokenKeyId = "string"
+  ),
+  ApplicationId = "string"
+)
 }
 \arguments{
-\item{ApplicationId}{The unique ID of your Amazon Pinpoint application.}
+\item{APNSVoipChannelRequest}{[required]}
 
-\item{APNSVoipChannelRequest}{}
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
 }
 \description{
 Update an APNS VoIP channel

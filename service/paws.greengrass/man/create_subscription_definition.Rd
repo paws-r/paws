@@ -4,8 +4,20 @@
 \alias{create_subscription_definition}
 \title{Creates a subscription definition}
 \usage{
-create_subscription_definition(AmznClientToken = NULL,
-  InitialVersion = NULL, Name = NULL)
+create_subscription_definition(
+  AmznClientToken = "string",
+  InitialVersion = list(
+    Subscriptions = list(
+      list(
+        Id = "string",
+        Source = "string",
+        Subject = "string",
+        Target = "string"
+      )
+    )
+  ),
+  Name = "string"
+)
 }
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}

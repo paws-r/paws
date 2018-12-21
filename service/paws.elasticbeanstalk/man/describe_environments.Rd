@@ -4,9 +4,20 @@
 \alias{describe_environments}
 \title{Returns descriptions for existing environments}
 \usage{
-describe_environments(ApplicationName = NULL, VersionLabel = NULL,
-  EnvironmentIds = NULL, EnvironmentNames = NULL, IncludeDeleted = NULL,
-  IncludedDeletedBackTo = NULL, MaxRecords = NULL, NextToken = NULL)
+describe_environments(
+  ApplicationName = "string",
+  VersionLabel = "string",
+  EnvironmentIds = list(
+    "string"
+  ),
+  EnvironmentNames = list(
+    "string"
+  ),
+  IncludeDeleted = TRUE|FALSE,
+  IncludedDeletedBackTo = as.POSIXct("2015-01-01"),
+  MaxRecords = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{ApplicationName}{If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that are associated with this application.}

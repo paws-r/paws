@@ -4,10 +4,13 @@
 \alias{get_records}
 \title{Gets data records from a Kinesis data stream's shard}
 \usage{
-get_records(ShardIterator, Limit = NULL)
+get_records(
+  ShardIterator = "string",
+  Limit = 123
+)
 }
 \arguments{
-\item{ShardIterator}{The position in the shard from which you want to start sequentially reading data records. A shard iterator specifies this position using the sequence number of a data record in the shard.}
+\item{ShardIterator}{[required] The position in the shard from which you want to start sequentially reading data records. A shard iterator specifies this position using the sequence number of a data record in the shard.}
 
 \item{Limit}{The maximum number of records to return. Specify a value of up to 10,000. If you specify a value that is greater than 10,000, GetRecords throws \code{InvalidArgumentException}.}
 }

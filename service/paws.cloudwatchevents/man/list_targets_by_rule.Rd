@@ -4,10 +4,14 @@
 \alias{list_targets_by_rule}
 \title{Lists the targets assigned to the specified rule}
 \usage{
-list_targets_by_rule(Rule, NextToken = NULL, Limit = NULL)
+list_targets_by_rule(
+  Rule = "string",
+  NextToken = "string",
+  Limit = 123
+)
 }
 \arguments{
-\item{Rule}{The name of the rule.}
+\item{Rule}{[required] The name of the rule.}
 
 \item{NextToken}{The token returned by a previous call to retrieve the next set of results.}
 

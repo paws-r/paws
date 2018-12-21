@@ -4,17 +4,44 @@
 \alias{update_stack}
 \title{Updates a specified stack}
 \usage{
-update_stack(StackId, Name = NULL, Attributes = NULL,
-  ServiceRoleArn = NULL, DefaultInstanceProfileArn = NULL,
-  DefaultOs = NULL, HostnameTheme = NULL, DefaultAvailabilityZone = NULL,
-  DefaultSubnetId = NULL, CustomJson = NULL, ConfigurationManager = NULL,
-  ChefConfiguration = NULL, UseCustomCookbooks = NULL,
-  CustomCookbooksSource = NULL, DefaultSshKeyName = NULL,
-  DefaultRootDeviceType = NULL, UseOpsworksSecurityGroups = NULL,
-  AgentVersion = NULL)
+update_stack(
+  StackId = "string",
+  Name = "string",
+  Attributes = list(
+    "string"
+  ),
+  ServiceRoleArn = "string",
+  DefaultInstanceProfileArn = "string",
+  DefaultOs = "string",
+  HostnameTheme = "string",
+  DefaultAvailabilityZone = "string",
+  DefaultSubnetId = "string",
+  CustomJson = "string",
+  ConfigurationManager = list(
+    Name = "string",
+    Version = "string"
+  ),
+  ChefConfiguration = list(
+    ManageBerkshelf = TRUE|FALSE,
+    BerkshelfVersion = "string"
+  ),
+  UseCustomCookbooks = TRUE|FALSE,
+  CustomCookbooksSource = list(
+    Type = "git"|"svn"|"archive"|"s3",
+    Url = "string",
+    Username = "string",
+    Password = "string",
+    SshKey = "string",
+    Revision = "string"
+  ),
+  DefaultSshKeyName = "string",
+  DefaultRootDeviceType = "ebs"|"instance-store",
+  UseOpsworksSecurityGroups = TRUE|FALSE,
+  AgentVersion = "string"
+)
 }
 \arguments{
-\item{StackId}{The stack ID.}
+\item{StackId}{[required] The stack ID.}
 
 \item{Name}{The stack's new name.}
 

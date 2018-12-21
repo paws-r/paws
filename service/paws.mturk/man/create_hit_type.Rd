@@ -4,22 +4,44 @@
 \alias{create_hit_type}
 \title{The \code{CreateHITType} operation creates a new HIT type}
 \usage{
-create_hit_type(AssignmentDurationInSeconds, Reward, Title, Description,
-  AutoApprovalDelayInSeconds = NULL, Keywords = NULL,
-  QualificationRequirements = NULL)
+create_hit_type(
+  AutoApprovalDelayInSeconds = 123,
+  AssignmentDurationInSeconds = 123,
+  Reward = "string",
+  Title = "string",
+  Keywords = "string",
+  Description = "string",
+  QualificationRequirements = list(
+    list(
+      QualificationTypeId = "string",
+      Comparator = "LessThan"|"LessThanOrEqualTo"|"GreaterThan"|"GreaterThanOrEqualTo"|"EqualTo"|"NotEqualTo"|"Exists"|"DoesNotExist"|"In"|"NotIn",
+      IntegerValues = list(
+        123
+      ),
+      LocaleValues = list(
+        list(
+          Country = "string",
+          Subdivision = "string"
+        )
+      ),
+      RequiredToPreview = TRUE|FALSE,
+      ActionsGuarded = "Accept"|"PreviewAndAccept"|"DiscoverPreviewAndAccept"
+    )
+  )
+)
 }
 \arguments{
-\item{AssignmentDurationInSeconds}{The amount of time, in seconds, that a Worker has to complete the HIT after accepting it. If a Worker does not complete the assignment within the specified duration, the assignment is considered abandoned. If the HIT is still active (that is, its lifetime has not elapsed), the assignment becomes available for other users to find and accept.}
-
-\item{Reward}{The amount of money the Requester will pay a Worker for successfully completing the HIT.}
-
-\item{Title}{The title of the HIT. A title should be short and descriptive about the kind of task the HIT contains. On the Amazon Mechanical Turk web site, the HIT title appears in search results, and everywhere the HIT is mentioned.}
-
-\item{Description}{A general description of the HIT. A description includes detailed information about the kind of task the HIT contains. On the Amazon Mechanical Turk web site, the HIT description appears in the expanded view of search results, and in the HIT and assignment screens. A good description gives the user enough information to evaluate the HIT before accepting it.}
-
 \item{AutoApprovalDelayInSeconds}{The number of seconds after an assignment for the HIT has been submitted, after which the assignment is considered Approved automatically unless the Requester explicitly rejects it.}
 
+\item{AssignmentDurationInSeconds}{[required] The amount of time, in seconds, that a Worker has to complete the HIT after accepting it. If a Worker does not complete the assignment within the specified duration, the assignment is considered abandoned. If the HIT is still active (that is, its lifetime has not elapsed), the assignment becomes available for other users to find and accept.}
+
+\item{Reward}{[required] The amount of money the Requester will pay a Worker for successfully completing the HIT.}
+
+\item{Title}{[required] The title of the HIT. A title should be short and descriptive about the kind of task the HIT contains. On the Amazon Mechanical Turk web site, the HIT title appears in search results, and everywhere the HIT is mentioned.}
+
 \item{Keywords}{One or more words or phrases that describe the HIT, separated by commas. These words are used in searches to find HITs.}
+
+\item{Description}{[required] A general description of the HIT. A description includes detailed information about the kind of task the HIT contains. On the Amazon Mechanical Turk web site, the HIT description appears in the expanded view of search results, and in the HIT and assignment screens. A good description gives the user enough information to evaluate the HIT before accepting it.}
 
 \item{QualificationRequirements}{Conditions that a Worker's Qualifications must meet in order to accept the HIT. A HIT can have between zero and ten Qualification requirements. All requirements must be met in order for a Worker to accept the HIT. Additionally, other actions can be restricted using the \code{ActionsGuarded} field on each \code{QualificationRequirement} structure.}
 }

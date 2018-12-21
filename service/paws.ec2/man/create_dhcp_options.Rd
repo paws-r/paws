@@ -4,10 +4,20 @@
 \alias{create_dhcp_options}
 \title{Creates a set of DHCP options for your VPC}
 \usage{
-create_dhcp_options(DhcpConfigurations, DryRun = NULL)
+create_dhcp_options(
+  DhcpConfigurations = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE
+)
 }
 \arguments{
-\item{DhcpConfigurations}{A DHCP configuration option.}
+\item{DhcpConfigurations}{[required] A DHCP configuration option.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }

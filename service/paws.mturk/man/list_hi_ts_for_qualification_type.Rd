@@ -4,11 +4,14 @@
 \alias{list_hi_ts_for_qualification_type}
 \title{The \code{ListHITsForQualificationType} operation returns the HITs that use the given Qualification type for a Qualification requirement}
 \usage{
-list_hi_ts_for_qualification_type(QualificationTypeId, NextToken = NULL,
-  MaxResults = NULL)
+list_hi_ts_for_qualification_type(
+  QualificationTypeId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{QualificationTypeId}{The ID of the Qualification type to use when querying HITs.}
+\item{QualificationTypeId}{[required] The ID of the Qualification type to use when querying HITs.}
 
 \item{NextToken}{Pagination Token}
 

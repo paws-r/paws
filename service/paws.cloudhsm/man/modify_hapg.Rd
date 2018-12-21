@@ -4,10 +4,16 @@
 \alias{modify_hapg}
 \title{This is documentation for \strong{AWS CloudHSM Classic}}
 \usage{
-modify_hapg(HapgArn, Label = NULL, PartitionSerialList = NULL)
+modify_hapg(
+  HapgArn = "string",
+  Label = "string",
+  PartitionSerialList = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{HapgArn}{The ARN of the high-availability partition group to modify.}
+\item{HapgArn}{[required] The ARN of the high-availability partition group to modify.}
 
 \item{Label}{The new label for the high-availability partition group.}
 

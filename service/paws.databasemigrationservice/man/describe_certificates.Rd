@@ -4,7 +4,18 @@
 \alias{describe_certificates}
 \title{Provides a description of the certificate}
 \usage{
-describe_certificates(Filters = NULL, MaxRecords = NULL, Marker = NULL)
+describe_certificates(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{Filters}{Filters applied to the certificate described in the form of key-value pairs.}

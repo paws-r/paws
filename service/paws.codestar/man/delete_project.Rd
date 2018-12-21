@@ -4,10 +4,14 @@
 \alias{delete_project}
 \title{Deletes a project, including project resources}
 \usage{
-delete_project(id, clientRequestToken = NULL, deleteStack = NULL)
+delete_project(
+  id = "string",
+  clientRequestToken = "string",
+  deleteStack = TRUE|FALSE
+)
 }
 \arguments{
-\item{id}{The ID of the project to be deleted in AWS CodeStar.}
+\item{id}{[required] The ID of the project to be deleted in AWS CodeStar.}
 
 \item{clientRequestToken}{A user- or system-generated token that identifies the entity that requested project deletion. This token can be used to repeat the request.}
 

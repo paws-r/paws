@@ -4,10 +4,13 @@
 \alias{delete_job}
 \title{Deletes a job and its related job executions}
 \usage{
-delete_job(jobId, force = NULL)
+delete_job(
+  jobId = "string",
+  force = TRUE|FALSE
+)
 }
 \arguments{
-\item{jobId}{The ID of the job to be deleted.
+\item{jobId}{[required] The ID of the job to be deleted.
 
 After a job deletion is completed, you may reuse this jobId when you create a new job. However, this is not recommended, and you must ensure that your devices are not using the jobId to refer to the deleted job.}
 

@@ -4,12 +4,17 @@
 \alias{set_cognito_events}
 \title{Sets the AWS Lambda function for a given event type for an identity pool}
 \usage{
-set_cognito_events(IdentityPoolId, Events)
+set_cognito_events(
+  IdentityPoolId = "string",
+  Events = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{IdentityPoolId}{The Cognito Identity Pool to use when configuring Cognito Events}
+\item{IdentityPoolId}{[required] The Cognito Identity Pool to use when configuring Cognito Events}
 
-\item{Events}{The events to configure}
+\item{Events}{[required] The events to configure}
 }
 \description{
 Sets the AWS Lambda function for a given event type for an identity pool. This request only updates the key/value pair specified. Other key/values pairs are not updated. To remove a key value pair, pass a empty value for the particular key.

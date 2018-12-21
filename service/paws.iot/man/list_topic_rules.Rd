@@ -4,8 +4,12 @@
 \alias{list_topic_rules}
 \title{Lists the rules for the specific topic}
 \usage{
-list_topic_rules(topic = NULL, maxResults = NULL, nextToken = NULL,
-  ruleDisabled = NULL)
+list_topic_rules(
+  topic = "string",
+  maxResults = 123,
+  nextToken = "string",
+  ruleDisabled = TRUE|FALSE
+)
 }
 \arguments{
 \item{topic}{The topic.}

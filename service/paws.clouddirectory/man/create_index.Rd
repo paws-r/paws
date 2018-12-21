@@ -4,22 +4,35 @@
 \alias{create_index}
 \title{Creates an index object}
 \usage{
-create_index(DirectoryArn, OrderedIndexedAttributeList, IsUnique,
-  ParentReference = NULL, LinkName = NULL)
+create_index(
+  DirectoryArn = "string",
+  OrderedIndexedAttributeList = list(
+    list(
+      SchemaArn = "string",
+      FacetName = "string",
+      Name = "string"
+    )
+  ),
+  IsUnique = TRUE|FALSE,
+  ParentReference = list(
+    Selector = "string"
+  ),
+  LinkName = "string"
+)
 }
 \arguments{
-\item{DirectoryArn}{The ARN of the directory where the index should be created.}
+\item{DirectoryArn}{[required] The ARN of the directory where the index should be created.}
 
-\item{OrderedIndexedAttributeList}{Specifies the attributes that should be indexed on. Currently only a single attribute is supported.}
+\item{OrderedIndexedAttributeList}{[required] Specifies the attributes that should be indexed on. Currently only a single attribute is supported.}
 
-\item{IsUnique}{Indicates whether the attribute that is being indexed has unique values or not.}
+\item{IsUnique}{[required] Indicates whether the attribute that is being indexed has unique values or not.}
 
 \item{ParentReference}{A reference to the parent object that contains the index object.}
 
 \item{LinkName}{The name of the link between the parent object and the index object.}
 }
 \description{
-Creates an index object. See \href{http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_indexing.html}{Indexing} for more information.
+Creates an index object. See \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.html}{Indexing and search} for more information.
 }
 \examples{
 

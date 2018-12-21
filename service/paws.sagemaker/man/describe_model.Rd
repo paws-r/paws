@@ -4,10 +4,12 @@
 \alias{describe_model}
 \title{Describes a model that you created using the \code{CreateModel} API}
 \usage{
-describe_model(ModelName)
+describe_model(
+  ModelName = "string"
+)
 }
 \arguments{
-\item{ModelName}{The name of the model.}
+\item{ModelName}{[required] The name of the model.}
 }
 \description{
 Describes a model that you created using the \code{CreateModel} API.

@@ -4,8 +4,13 @@
 \alias{list_assessment_targets}
 \title{Lists the ARNs of the assessment targets within this AWS account}
 \usage{
-list_assessment_targets(filter = NULL, nextToken = NULL,
-  maxResults = NULL)
+list_assessment_targets(
+  filter = list(
+    assessmentTargetNamePattern = "string"
+  ),
+  nextToken = "string",
+  maxResults = 123
+)
 }
 \arguments{
 \item{filter}{You can use this parameter to specify a subset of data to be included in the action's response.

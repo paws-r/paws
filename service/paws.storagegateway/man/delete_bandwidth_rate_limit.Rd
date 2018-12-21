@@ -4,12 +4,15 @@
 \alias{delete_bandwidth_rate_limit}
 \title{Deletes the bandwidth rate limits of a gateway}
 \usage{
-delete_bandwidth_rate_limit(GatewayARN, BandwidthType)
+delete_bandwidth_rate_limit(
+  GatewayARN = "string",
+  BandwidthType = "string"
+)
 }
 \arguments{
-\item{GatewayARN}{}
+\item{GatewayARN}{[required]}
 
-\item{BandwidthType}{One of the BandwidthType values that indicates the gateway bandwidth rate limit to delete.
+\item{BandwidthType}{[required] One of the BandwidthType values that indicates the gateway bandwidth rate limit to delete.
 
 Valid Values: \code{Upload}, \code{Download}, \code{All}.}
 }

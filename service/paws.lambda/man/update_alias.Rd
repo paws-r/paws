@@ -4,11 +4,21 @@
 \alias{update_alias}
 \title{Using this API you can update the function version to which the alias points and the alias description}
 \usage{
-update_alias(FunctionName, Name, FunctionVersion = NULL, Description = NULL,
-  RoutingConfig = NULL, RevisionId = NULL)
+update_alias(
+  FunctionName = "string",
+  Name = "string",
+  FunctionVersion = "string",
+  Description = "string",
+  RoutingConfig = list(
+    AdditionalVersionWeights = list(
+      123.0
+    )
+  ),
+  RevisionId = "string"
+)
 }
 \arguments{
-\item{FunctionName}{The name of the lambda function.
+\item{FunctionName}{[required] The name of the lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -19,7 +29,7 @@ update_alias(FunctionName, Name, FunctionVersion = NULL, Description = NULL,
 
 The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
-\item{Name}{The alias name.}
+\item{Name}{[required] The alias name.}
 
 \item{FunctionVersion}{Using this parameter you can change the Lambda function version to which the alias points.}
 

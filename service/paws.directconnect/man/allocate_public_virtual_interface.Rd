@@ -4,15 +4,31 @@
 \alias{allocate_public_virtual_interface}
 \title{Provisions a public virtual interface to be owned by the specified AWS account}
 \usage{
-allocate_public_virtual_interface(connectionId, ownerAccount,
-  newPublicVirtualInterfaceAllocation)
+allocate_public_virtual_interface(
+  connectionId = "string",
+  ownerAccount = "string",
+  newPublicVirtualInterfaceAllocation = list(
+    virtualInterfaceName = "string",
+    vlan = 123,
+    asn = 123,
+    authKey = "string",
+    amazonAddress = "string",
+    customerAddress = "string",
+    addressFamily = "ipv4"|"ipv6",
+    routeFilterPrefixes = list(
+      list(
+        cidr = "string"
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{connectionId}{The ID of the connection on which the public virtual interface is provisioned.}
+\item{connectionId}{[required] The ID of the connection on which the public virtual interface is provisioned.}
 
-\item{ownerAccount}{The ID of the AWS account that owns the public virtual interface.}
+\item{ownerAccount}{[required] The ID of the AWS account that owns the public virtual interface.}
 
-\item{newPublicVirtualInterfaceAllocation}{Information about the public virtual interface.}
+\item{newPublicVirtualInterfaceAllocation}{[required] Information about the public virtual interface.}
 }
 \description{
 Provisions a public virtual interface to be owned by the specified AWS account.

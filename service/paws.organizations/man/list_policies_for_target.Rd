@@ -4,11 +4,15 @@
 \alias{list_policies_for_target}
 \title{Lists the policies that are directly attached to the specified target root, organizational unit (OU), or account}
 \usage{
-list_policies_for_target(TargetId, Filter, NextToken = NULL,
-  MaxResults = NULL)
+list_policies_for_target(
+  TargetId = "string",
+  Filter = "SERVICE_CONTROL_POLICY",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{TargetId}{The unique identifier (ID) of the root, organizational unit, or account whose policies you want to list.
+\item{TargetId}{[required] The unique identifier (ID) of the root, organizational unit, or account whose policies you want to list.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a target ID string requires one of the following:
 \itemize{
@@ -17,7 +21,7 @@ The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a target ID string
 \item Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
 }}
 
-\item{Filter}{The type of policy that you want to include in the returned list.}
+\item{Filter}{[required] The type of policy that you want to include in the returned list.}
 
 \item{NextToken}{Use this parameter if you receive a \code{NextToken} response in a previous request that indicates that there is more output available. Set it to the value of the previous call's \code{NextToken} response to indicate where the output should continue from.}
 

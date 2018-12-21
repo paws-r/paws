@@ -4,19 +4,24 @@
 \alias{update_threat_intel_set}
 \title{Updates the ThreatIntelSet specified by ThreatIntelSet ID}
 \usage{
-update_threat_intel_set(ThreatIntelSetId, DetectorId, Activate = NULL,
-  Location = NULL, Name = NULL)
+update_threat_intel_set(
+  Activate = TRUE|FALSE,
+  DetectorId = "string",
+  Location = "string",
+  Name = "string",
+  ThreatIntelSetId = "string"
+)
 }
 \arguments{
-\item{ThreatIntelSetId}{The unique ID that specifies the ThreatIntelSet that you want to update.}
-
-\item{DetectorId}{The detectorID that specifies the GuardDuty service whose ThreatIntelSet you want to update.}
-
 \item{Activate}{The updated boolean value that specifies whether the ThreateIntelSet is active or not.}
+
+\item{DetectorId}{[required] The detectorID that specifies the GuardDuty service whose ThreatIntelSet you want to update.}
 
 \item{Location}{The updated URI of the file that contains the ThreateIntelSet. For example (https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key)}
 
 \item{Name}{The unique ID that specifies the ThreatIntelSet that you want to update.}
+
+\item{ThreatIntelSetId}{[required] The unique ID that specifies the ThreatIntelSet that you want to update.}
 }
 \description{
 Updates the ThreatIntelSet specified by ThreatIntelSet ID.

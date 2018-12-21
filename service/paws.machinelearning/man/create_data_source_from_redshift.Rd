@@ -4,13 +4,34 @@
 \alias{create_data_source_from_redshift}
 \title{Creates a \code{DataSource} from a database hosted on an Amazon Redshift cluster}
 \usage{
-create_data_source_from_redshift(DataSourceId, DataSpec, RoleARN,
-  DataSourceName = NULL, ComputeStatistics = NULL)
+create_data_source_from_redshift(
+  DataSourceId = "string",
+  DataSourceName = "string",
+  DataSpec = list(
+    DatabaseInformation = list(
+      DatabaseName = "string",
+      ClusterIdentifier = "string"
+    ),
+    SelectSqlQuery = "string",
+    DatabaseCredentials = list(
+      Username = "string",
+      Password = "string"
+    ),
+    S3StagingLocation = "string",
+    DataRearrangement = "string",
+    DataSchema = "string",
+    DataSchemaUri = "string"
+  ),
+  RoleARN = "string",
+  ComputeStatistics = TRUE|FALSE
+)
 }
 \arguments{
-\item{DataSourceId}{A user-supplied ID that uniquely identifies the \code{DataSource}.}
+\item{DataSourceId}{[required] A user-supplied ID that uniquely identifies the \code{DataSource}.}
 
-\item{DataSpec}{The data specification of an Amazon Redshift \code{DataSource}:
+\item{DataSourceName}{A user-supplied name or description of the \code{DataSource}.}
+
+\item{DataSpec}{[required] The data specification of an Amazon Redshift \code{DataSource}:
 \itemize{
 \item DatabaseInformation -
 \itemize{
@@ -27,13 +48,11 @@ create_data_source_from_redshift(DataSourceId, DataSpec, RoleARN,
 Sample - \code{ "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"}
 }}
 
-\item{RoleARN}{A fully specified role Amazon Resource Name (ARN). Amazon ML assumes the role on behalf of the user to create the following:
+\item{RoleARN}{[required] A fully specified role Amazon Resource Name (ARN). Amazon ML assumes the role on behalf of the user to create the following:
 \itemize{
 \item A security group to allow Amazon ML to execute the \code{SelectSqlQuery} query on an Amazon Redshift cluster
 \item An Amazon S3 bucket policy to grant Amazon ML read/write permissions on the \code{S3StagingLocation}
 }}
-
-\item{DataSourceName}{A user-supplied name or description of the \code{DataSource}.}
 
 \item{ComputeStatistics}{The compute statistics for a \code{DataSource}. The statistics are generated from the observation data referenced by a \code{DataSource}. Amazon ML uses the statistics internally during \code{MLModel} training. This parameter must be set to \code{true} if the \code{DataSource} needs to be used for \code{MLModel} training.}
 }

@@ -4,10 +4,21 @@
 \alias{update_notification_settings}
 \title{The \code{UpdateNotificationSettings} operation creates, updates, disables or re-enables notifications for a HIT type}
 \usage{
-update_notification_settings(HITTypeId, Notification = NULL, Active = NULL)
+update_notification_settings(
+  HITTypeId = "string",
+  Notification = list(
+    Destination = "string",
+    Transport = "Email"|"SQS"|"SNS",
+    Version = "string",
+    EventTypes = list(
+      "AssignmentAccepted"|"AssignmentAbandoned"|"AssignmentReturned"|"AssignmentSubmitted"|"AssignmentRejected"|"AssignmentApproved"|"HITCreated"|"HITExpired"|"HITReviewable"|"HITExtended"|"HITDisposed"|"Ping"
+    )
+  ),
+  Active = TRUE|FALSE
+)
 }
 \arguments{
-\item{HITTypeId}{The ID of the HIT type whose notification specification is being updated.}
+\item{HITTypeId}{[required] The ID of the HIT type whose notification specification is being updated.}
 
 \item{Notification}{The notification specification for the HIT type.}
 

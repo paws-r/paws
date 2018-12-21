@@ -4,16 +4,19 @@
 \alias{remove_user_from_group}
 \title{Removes the specified user from the specified group}
 \usage{
-remove_user_from_group(GroupName, UserName)
+remove_user_from_group(
+  GroupName = "string",
+  UserName = "string"
+)
 }
 \arguments{
-\item{GroupName}{The name of the group to update.
+\item{GroupName}{[required] The name of the group to update.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
-\item{UserName}{The name of the user to remove.
+\item{UserName}{[required] The name of the user to remove.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Removes the specified user from the specified group.

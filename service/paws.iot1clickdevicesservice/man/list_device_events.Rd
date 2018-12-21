@@ -4,19 +4,24 @@
 \alias{list_device_events}
 \title{Using a device ID, returns a DeviceEventsResponse object containing an array of events for the device}
 \usage{
-list_device_events(DeviceId, FromTimeStamp, ToTimeStamp, MaxResults = NULL,
-  NextToken = NULL)
+list_device_events(
+  DeviceId = "string",
+  FromTimeStamp = as.POSIXct("2015-01-01"),
+  MaxResults = 123,
+  NextToken = "string",
+  ToTimeStamp = as.POSIXct("2015-01-01")
+)
 }
 \arguments{
-\item{DeviceId}{The unique identifier of the device.}
+\item{DeviceId}{[required] The unique identifier of the device.}
 
-\item{FromTimeStamp}{The start date for the device event query, in ISO8061 format. For example, 2018-03-28T15:45:12.880Z}
-
-\item{ToTimeStamp}{The end date for the device event query, in ISO8061 format. For example, 2018-03-28T15:45:12.880Z}
+\item{FromTimeStamp}{[required] The start date for the device event query, in ISO8061 format. For example, 2018-03-28T15:45:12.880Z}
 
 \item{MaxResults}{The maximum number of results to return per request. If not set, a default value of 100 is used.}
 
 \item{NextToken}{The token to retrieve the next set of results.}
+
+\item{ToTimeStamp}{[required] The end date for the device event query, in ISO8061 format. For example, 2018-03-28T15:45:12.880Z}
 }
 \description{
 Using a device ID, returns a DeviceEventsResponse object containing an array of events for the device.

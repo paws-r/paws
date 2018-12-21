@@ -6,16 +6,21 @@
 \alias{paws.mediastoredata-package}
 \title{paws.mediastoredata: AWS Elemental MediaStore Data Plane}
 \description{
-An AWS Elemental MediaStore asset is an object,
-similar to an object in the Amazon S3 service. Objects are the
-fundamental entities that are stored in AWS Elemental MediaStore.
+An AWS Elemental MediaStore asset is an object, similar to an
+object in the Amazon S3 service. Objects are the fundamental entities
+that are stored in AWS Elemental MediaStore.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
 
 Authors:
 \itemize{
-  \item Adam Banker
+  \item Adam Banker \email{adam.banker39@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Amazon.com, Inc. [copyright holder]
 }
 
 }

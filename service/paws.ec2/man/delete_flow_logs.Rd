@@ -4,12 +4,17 @@
 \alias{delete_flow_logs}
 \title{Deletes one or more flow logs}
 \usage{
-delete_flow_logs(FlowLogIds, DryRun = NULL)
+delete_flow_logs(
+  DryRun = TRUE|FALSE,
+  FlowLogIds = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{FlowLogIds}{One or more flow log IDs.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{FlowLogIds}{[required] One or more flow log IDs.}
 }
 \description{
 Deletes one or more flow logs.

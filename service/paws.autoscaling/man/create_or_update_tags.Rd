@@ -4,10 +4,20 @@
 \alias{create_or_update_tags}
 \title{Creates or updates tags for the specified Auto Scaling group}
 \usage{
-create_or_update_tags(Tags)
+create_or_update_tags(
+  Tags = list(
+    list(
+      ResourceId = "string",
+      ResourceType = "string",
+      Key = "string",
+      Value = "string",
+      PropagateAtLaunch = TRUE|FALSE
+    )
+  )
+)
 }
 \arguments{
-\item{Tags}{One or more tags.}
+\item{Tags}{[required] One or more tags.}
 }
 \description{
 Creates or updates tags for the specified Auto Scaling group.

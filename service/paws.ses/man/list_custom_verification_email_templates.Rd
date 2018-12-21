@@ -4,8 +4,10 @@
 \alias{list_custom_verification_email_templates}
 \title{Lists the existing custom verification email templates for your account in the current AWS Region}
 \usage{
-list_custom_verification_email_templates(NextToken = NULL,
-  MaxResults = NULL)
+list_custom_verification_email_templates(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{NextToken}{An array the contains the name and creation time stamp for each template in your Amazon SES account.}

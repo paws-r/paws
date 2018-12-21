@@ -4,10 +4,12 @@
 \alias{describe_user_pool}
 \title{Returns the configuration information and metadata of the specified user pool}
 \usage{
-describe_user_pool(UserPoolId)
+describe_user_pool(
+  UserPoolId = "string"
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool you want to describe.}
+\item{UserPoolId}{[required] The user pool ID for the user pool you want to describe.}
 }
 \description{
 Returns the configuration information and metadata of the specified user pool.

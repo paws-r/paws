@@ -4,10 +4,14 @@
 \alias{list_targets_for_policy}
 \title{Lists all the roots, organizaitonal units (OUs), and accounts to which the specified policy is attached}
 \usage{
-list_targets_for_policy(PolicyId, NextToken = NULL, MaxResults = NULL)
+list_targets_for_policy(
+  PolicyId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{PolicyId}{The unique identifier (ID) of the policy for which you want to know its attachments.
+\item{PolicyId}{[required] The unique identifier (ID) of the policy for which you want to know its attachments.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.}
 

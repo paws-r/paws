@@ -4,21 +4,47 @@
 \alias{put_bot}
 \title{Creates an Amazon Lex conversational bot or replaces an existing bot}
 \usage{
-put_bot(name, locale, childDirected, description = NULL, intents = NULL,
-  clarificationPrompt = NULL, abortStatement = NULL,
-  idleSessionTTLInSeconds = NULL, voiceId = NULL, checksum = NULL,
-  processBehavior = NULL, createVersion = NULL)
+put_bot(
+  name = "string",
+  description = "string",
+  intents = list(
+    list(
+      intentName = "string",
+      intentVersion = "string"
+    )
+  ),
+  clarificationPrompt = list(
+    messages = list(
+      list(
+        contentType = "PlainText"|"SSML"|"CustomPayload",
+        content = "string",
+        groupNumber = 123
+      )
+    ),
+    maxAttempts = 123,
+    responseCard = "string"
+  ),
+  abortStatement = list(
+    messages = list(
+      list(
+        contentType = "PlainText"|"SSML"|"CustomPayload",
+        content = "string",
+        groupNumber = 123
+      )
+    ),
+    responseCard = "string"
+  ),
+  idleSessionTTLInSeconds = 123,
+  voiceId = "string",
+  checksum = "string",
+  processBehavior = "SAVE"|"BUILD",
+  locale = "en-US"|"en-GB"|"de-DE",
+  childDirected = TRUE|FALSE,
+  createVersion = TRUE|FALSE
+)
 }
 \arguments{
-\item{name}{The name of the bot. The name is \emph{not} case sensitive.}
-
-\item{locale}{Specifies the target locale for the bot. Any intent used in the bot must be compatible with the locale of the bot.
-
-The default is \code{en-US}.}
-
-\item{childDirected}{For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying \code{true} or \code{false} in the \code{childDirected} field. By specifying \code{true} in the \code{childDirected} field, you confirm that your use of Amazon Lex \strong{is} related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying \code{false} in the \code{childDirected} field, you confirm that your use of Amazon Lex \strong{is not} related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the \code{childDirected} field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA.
-
-If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the \href{https://aws.amazon.com/lex/faqs#data-security}{Amazon Lex FAQ.}}
+\item{name}{[required] The name of the bot. The name is \emph{not} case sensitive.}
 
 \item{description}{A description of the bot.}
 
@@ -55,6 +81,14 @@ When you want to update a bot, set the \code{checksum} field to the checksum of 
 \item{processBehavior}{If you set the \code{processBehavior} element to \code{BUILD}, Amazon Lex builds the bot so that it can be run. If you set the element to \code{SAVE} Amazon Lex saves the bot, but doesn't build it.
 
 If you don't specify this value, the default value is \code{BUILD}.}
+
+\item{locale}{[required] Specifies the target locale for the bot. Any intent used in the bot must be compatible with the locale of the bot.
+
+The default is \code{en-US}.}
+
+\item{childDirected}{[required] For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying \code{true} or \code{false} in the \code{childDirected} field. By specifying \code{true} in the \code{childDirected} field, you confirm that your use of Amazon Lex \strong{is} related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying \code{false} in the \code{childDirected} field, you confirm that your use of Amazon Lex \strong{is not} related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the \code{childDirected} field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA.
+
+If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the \href{https://aws.amazon.com/lex/faqs#data-security}{Amazon Lex FAQ.}}
 
 \item{createVersion}{}
 }

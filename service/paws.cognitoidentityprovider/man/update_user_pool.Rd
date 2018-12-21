@@ -4,16 +4,76 @@
 \alias{update_user_pool}
 \title{Updates the specified user pool with the specified attributes}
 \usage{
-update_user_pool(UserPoolId, Policies = NULL, LambdaConfig = NULL,
-  AutoVerifiedAttributes = NULL, SmsVerificationMessage = NULL,
-  EmailVerificationMessage = NULL, EmailVerificationSubject = NULL,
-  VerificationMessageTemplate = NULL, SmsAuthenticationMessage = NULL,
-  MfaConfiguration = NULL, DeviceConfiguration = NULL,
-  EmailConfiguration = NULL, SmsConfiguration = NULL, UserPoolTags = NULL,
-  AdminCreateUserConfig = NULL, UserPoolAddOns = NULL)
+update_user_pool(
+  UserPoolId = "string",
+  Policies = list(
+    PasswordPolicy = list(
+      MinimumLength = 123,
+      RequireUppercase = TRUE|FALSE,
+      RequireLowercase = TRUE|FALSE,
+      RequireNumbers = TRUE|FALSE,
+      RequireSymbols = TRUE|FALSE
+    )
+  ),
+  LambdaConfig = list(
+    PreSignUp = "string",
+    CustomMessage = "string",
+    PostConfirmation = "string",
+    PreAuthentication = "string",
+    PostAuthentication = "string",
+    DefineAuthChallenge = "string",
+    CreateAuthChallenge = "string",
+    VerifyAuthChallengeResponse = "string",
+    PreTokenGeneration = "string",
+    UserMigration = "string"
+  ),
+  AutoVerifiedAttributes = list(
+    "phone_number"|"email"
+  ),
+  SmsVerificationMessage = "string",
+  EmailVerificationMessage = "string",
+  EmailVerificationSubject = "string",
+  VerificationMessageTemplate = list(
+    SmsMessage = "string",
+    EmailMessage = "string",
+    EmailSubject = "string",
+    EmailMessageByLink = "string",
+    EmailSubjectByLink = "string",
+    DefaultEmailOption = "CONFIRM_WITH_LINK"|"CONFIRM_WITH_CODE"
+  ),
+  SmsAuthenticationMessage = "string",
+  MfaConfiguration = "OFF"|"ON"|"OPTIONAL",
+  DeviceConfiguration = list(
+    ChallengeRequiredOnNewDevice = TRUE|FALSE,
+    DeviceOnlyRememberedOnUserPrompt = TRUE|FALSE
+  ),
+  EmailConfiguration = list(
+    SourceArn = "string",
+    ReplyToEmailAddress = "string"
+  ),
+  SmsConfiguration = list(
+    SnsCallerArn = "string",
+    ExternalId = "string"
+  ),
+  UserPoolTags = list(
+    "string"
+  ),
+  AdminCreateUserConfig = list(
+    AllowAdminCreateUserOnly = TRUE|FALSE,
+    UnusedAccountValidityDays = 123,
+    InviteMessageTemplate = list(
+      SMSMessage = "string",
+      EmailMessage = "string",
+      EmailSubject = "string"
+    )
+  ),
+  UserPoolAddOns = list(
+    AdvancedSecurityMode = "OFF"|"AUDIT"|"ENFORCED"
+  )
+)
 }
 \arguments{
-\item{UserPoolId}{The user pool ID for the user pool you want to update.}
+\item{UserPoolId}{[required] The user pool ID for the user pool you want to update.}
 
 \item{Policies}{A container with the policies you wish to update in a user pool.}
 

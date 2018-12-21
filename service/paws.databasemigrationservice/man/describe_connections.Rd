@@ -4,7 +4,18 @@
 \alias{describe_connections}
 \title{Describes the status of the connections that have been made between the replication instance and an endpoint}
 \usage{
-describe_connections(Filters = NULL, MaxRecords = NULL, Marker = NULL)
+describe_connections(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
 \arguments{
 \item{Filters}{The filters applied to the connection.

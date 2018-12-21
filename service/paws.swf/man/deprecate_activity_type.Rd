@@ -4,12 +4,18 @@
 \alias{deprecate_activity_type}
 \title{Deprecates the specified \emph{activity type}}
 \usage{
-deprecate_activity_type(domain, activityType)
+deprecate_activity_type(
+  domain = "string",
+  activityType = list(
+    name = "string",
+    version = "string"
+  )
+)
 }
 \arguments{
-\item{domain}{The name of the domain in which the activity type is registered.}
+\item{domain}{[required] The name of the domain in which the activity type is registered.}
 
-\item{activityType}{The activity type to deprecate.}
+\item{activityType}{[required] The activity type to deprecate.}
 }
 \description{
 Deprecates the specified \emph{activity type}. After an activity type has been deprecated, you cannot create new tasks of that activity type. Tasks of this type that were scheduled before the type was deprecated continue to run.

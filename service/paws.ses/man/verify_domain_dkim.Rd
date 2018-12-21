@@ -4,10 +4,12 @@
 \alias{verify_domain_dkim}
 \title{Returns a set of DKIM tokens for a domain}
 \usage{
-verify_domain_dkim(Domain)
+verify_domain_dkim(
+  Domain = "string"
+)
 }
 \arguments{
-\item{Domain}{The name of the domain to be verified for Easy DKIM signing.}
+\item{Domain}{[required] The name of the domain to be verified for Easy DKIM signing.}
 }
 \description{
 Returns a set of DKIM tokens for a domain. DKIM \emph{tokens} are character strings that represent your domain's identity. Using these tokens, you will need to create DNS CNAME records that point to DKIM public keys hosted by Amazon SES. Amazon Web Services will eventually detect that you have updated your DNS records; this detection process may take up to 72 hours. Upon successful detection, Amazon SES will be able to DKIM-sign email originating from that domain.

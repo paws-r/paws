@@ -4,12 +4,15 @@
 \alias{associate_contact_with_address_book}
 \title{Associates a contact with a given address book}
 \usage{
-associate_contact_with_address_book(ContactArn, AddressBookArn)
+associate_contact_with_address_book(
+  ContactArn = "string",
+  AddressBookArn = "string"
+)
 }
 \arguments{
-\item{ContactArn}{The ARN of the contact to associate with an address book.}
+\item{ContactArn}{[required] The ARN of the contact to associate with an address book.}
 
-\item{AddressBookArn}{The ARN of the address book with which to associate the contact.}
+\item{AddressBookArn}{[required] The ARN of the address book with which to associate the contact.}
 }
 \description{
 Associates a contact with a given address book.

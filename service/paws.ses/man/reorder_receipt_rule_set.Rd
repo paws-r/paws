@@ -4,12 +4,17 @@
 \alias{reorder_receipt_rule_set}
 \title{Reorders the receipt rules within a receipt rule set}
 \usage{
-reorder_receipt_rule_set(RuleSetName, RuleNames)
+reorder_receipt_rule_set(
+  RuleSetName = "string",
+  RuleNames = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{RuleSetName}{The name of the receipt rule set to reorder.}
+\item{RuleSetName}{[required] The name of the receipt rule set to reorder.}
 
-\item{RuleNames}{A list of the specified receipt rule set's receipt rules in the order that you want to put them.}
+\item{RuleNames}{[required] A list of the specified receipt rule set's receipt rules in the order that you want to put them.}
 }
 \description{
 Reorders the receipt rules within a receipt rule set.

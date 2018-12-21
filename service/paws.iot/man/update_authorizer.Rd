@@ -4,11 +4,18 @@
 \alias{update_authorizer}
 \title{Updates an authorizer}
 \usage{
-update_authorizer(authorizerName, authorizerFunctionArn = NULL,
-  tokenKeyName = NULL, tokenSigningPublicKeys = NULL, status = NULL)
+update_authorizer(
+  authorizerName = "string",
+  authorizerFunctionArn = "string",
+  tokenKeyName = "string",
+  tokenSigningPublicKeys = list(
+    "string"
+  ),
+  status = "ACTIVE"|"INACTIVE"
+)
 }
 \arguments{
-\item{authorizerName}{The authorizer name.}
+\item{authorizerName}{[required] The authorizer name.}
 
 \item{authorizerFunctionArn}{The ARN of the authorizer's Lambda function.}
 

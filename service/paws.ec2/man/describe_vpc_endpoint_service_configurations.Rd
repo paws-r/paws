@@ -4,9 +4,22 @@
 \alias{describe_vpc_endpoint_service_configurations}
 \title{Describes the VPC endpoint service configurations in your account (your services)}
 \usage{
-describe_vpc_endpoint_service_configurations(DryRun = NULL,
-  ServiceIds = NULL, Filters = NULL, MaxResults = NULL,
-  NextToken = NULL)
+describe_vpc_endpoint_service_configurations(
+  DryRun = TRUE|FALSE,
+  ServiceIds = list(
+    "string"
+  ),
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}

@@ -4,9 +4,15 @@
 \alias{list_models}
 \title{Lists models created with the \link{CreateModel}(http://docs}
 \usage{
-list_models(SortBy = NULL, SortOrder = NULL, NextToken = NULL,
-  MaxResults = NULL, NameContains = NULL, CreationTimeBefore = NULL,
-  CreationTimeAfter = NULL)
+list_models(
+  SortBy = "Name"|"CreationTime",
+  SortOrder = "Ascending"|"Descending",
+  NextToken = "string",
+  MaxResults = 123,
+  NameContains = "string",
+  CreationTimeBefore = as.POSIXct("2015-01-01"),
+  CreationTimeAfter = as.POSIXct("2015-01-01")
+)
 }
 \arguments{
 \item{SortBy}{Sorts the list of results. The default is \code{CreationTime}.}

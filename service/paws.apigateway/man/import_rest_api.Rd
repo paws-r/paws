@@ -4,11 +4,15 @@
 \alias{import_rest_api}
 \title{A feature of the API Gateway control service for creating a new API from an external API definition file}
 \usage{
-import_rest_api(body, failOnWarnings = NULL, parameters = NULL)
+import_rest_api(
+  failOnWarnings = TRUE|FALSE,
+  parameters = list(
+    "string"
+  ),
+  body = raw
+)
 }
 \arguments{
-\item{body}{[Required] The POST request body containing external API definitions. Currently, only Swagger definition JSON files are supported. The maximum size of the API definition file is 2MB.}
-
 \item{failOnWarnings}{A query parameter to indicate whether to rollback the API creation (\code{true}) or not (\code{false}) when a warning is encountered. The default value is \code{false}.}
 
 \item{parameters}{A key-value map of context-specific query string parameters specifying the behavior of different API importing operations. The following shows operation-specific parameters and their supported values.
@@ -24,6 +28,8 @@ For example, the AWS CLI command to exclude documentation from the imported API 
 
 The AWS CLI command to set the regional endpoint on the imported API is:\preformatted{aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json'
 }}
+
+\item{body}{[required] [Required] The POST request body containing external API definitions. Currently, only OpenAPI definition JSON/YAML files are supported. The maximum size of the API definition file is 2MB.}
 }
 \description{
 A feature of the API Gateway control service for creating a new API from an external API definition file.

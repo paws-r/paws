@@ -4,8 +4,11 @@
 \alias{delete_launch_template}
 \title{Deletes a launch template}
 \usage{
-delete_launch_template(DryRun = NULL, LaunchTemplateId = NULL,
-  LaunchTemplateName = NULL)
+delete_launch_template(
+  DryRun = TRUE|FALSE,
+  LaunchTemplateId = "string",
+  LaunchTemplateName = "string"
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}

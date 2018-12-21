@@ -4,10 +4,13 @@
 \alias{stop_instance}
 \title{Stops a specified instance}
 \usage{
-stop_instance(InstanceId, Force = NULL)
+stop_instance(
+  InstanceId = "string",
+  Force = TRUE|FALSE
+)
 }
 \arguments{
-\item{InstanceId}{The instance ID.}
+\item{InstanceId}{[required] The instance ID.}
 
 \item{Force}{Specifies whether to force an instance to stop.}
 }

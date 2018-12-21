@@ -4,10 +4,14 @@
 \alias{list_tags}
 \title{Returns the tags for the specified Amazon SageMaker resource}
 \usage{
-list_tags(ResourceArn, NextToken = NULL, MaxResults = NULL)
+list_tags(
+  ResourceArn = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
-\item{ResourceArn}{The Amazon Resource Name (ARN) of the resource whose tags you want to retrieve.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource whose tags you want to retrieve.}
 
 \item{NextToken}{If the response to the previous \code{ListTags} request is truncated, Amazon SageMaker returns this token. To retrieve the next set of tags, use it in the subsequent request.}
 

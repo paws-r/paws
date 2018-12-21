@@ -4,12 +4,48 @@
 \alias{update_pipeline}
 \title{Use the \code{UpdatePipeline} operation to update settings for a pipeline}
 \usage{
-update_pipeline(Id, Name = NULL, InputBucket = NULL, Role = NULL,
-  AwsKmsKeyArn = NULL, Notifications = NULL, ContentConfig = NULL,
-  ThumbnailConfig = NULL)
+update_pipeline(
+  Id = "string",
+  Name = "string",
+  InputBucket = "string",
+  Role = "string",
+  AwsKmsKeyArn = "string",
+  Notifications = list(
+    Progressing = "string",
+    Completed = "string",
+    Warning = "string",
+    Error = "string"
+  ),
+  ContentConfig = list(
+    Bucket = "string",
+    StorageClass = "string",
+    Permissions = list(
+      list(
+        GranteeType = "string",
+        Grantee = "string",
+        Access = list(
+          "string"
+        )
+      )
+    )
+  ),
+  ThumbnailConfig = list(
+    Bucket = "string",
+    StorageClass = "string",
+    Permissions = list(
+      list(
+        GranteeType = "string",
+        Grantee = "string",
+        Access = list(
+          "string"
+        )
+      )
+    )
+  )
+)
 }
 \arguments{
-\item{Id}{The ID of the pipeline that you want to update.}
+\item{Id}{[required] The ID of the pipeline that you want to update.}
 
 \item{Name}{The name of the pipeline. We recommend that the name be unique within the AWS account, but uniqueness is not enforced.
 

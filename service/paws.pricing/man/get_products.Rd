@@ -4,8 +4,19 @@
 \alias{get_products}
 \title{Returns a list of all products that match the filter criteria}
 \usage{
-get_products(ServiceCode = NULL, Filters = NULL, FormatVersion = NULL,
-  NextToken = NULL, MaxResults = NULL)
+get_products(
+  ServiceCode = "string",
+  Filters = list(
+    list(
+      Type = "TERM_MATCH",
+      Field = "string",
+      Value = "string"
+    )
+  ),
+  FormatVersion = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
 \arguments{
 \item{ServiceCode}{The code for the service whose products you want to retrieve.}

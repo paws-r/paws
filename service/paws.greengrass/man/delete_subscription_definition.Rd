@@ -4,10 +4,12 @@
 \alias{delete_subscription_definition}
 \title{Deletes a subscription definition}
 \usage{
-delete_subscription_definition(SubscriptionDefinitionId)
+delete_subscription_definition(
+  SubscriptionDefinitionId = "string"
+)
 }
 \arguments{
-\item{SubscriptionDefinitionId}{The ID of the subscription definition.}
+\item{SubscriptionDefinitionId}{[required] The ID of the subscription definition.}
 }
 \description{
 Deletes a subscription definition.

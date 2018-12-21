@@ -4,7 +4,12 @@
 \alias{describe_layers}
 \title{Requests a description of one or more layers in a specified stack}
 \usage{
-describe_layers(StackId = NULL, LayerIds = NULL)
+describe_layers(
+  StackId = "string",
+  LayerIds = list(
+    "string"
+  )
+)
 }
 \arguments{
 \item{StackId}{The stack ID.}

@@ -4,10 +4,12 @@
 \alias{get_bulk_publish_details}
 \title{Get the status of the last BulkPublish operation for an identity pool}
 \usage{
-get_bulk_publish_details(IdentityPoolId)
+get_bulk_publish_details(
+  IdentityPoolId = "string"
+)
 }
 \arguments{
-\item{IdentityPoolId}{A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
+\item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
 }
 \description{
 Get the status of the last BulkPublish operation for an identity pool.

@@ -4,12 +4,17 @@
 \alias{unassign_private_ip_addresses}
 \title{Unassigns one or more secondary private IP addresses from a network interface}
 \usage{
-unassign_private_ip_addresses(NetworkInterfaceId, PrivateIpAddresses)
+unassign_private_ip_addresses(
+  NetworkInterfaceId = "string",
+  PrivateIpAddresses = list(
+    "string"
+  )
+)
 }
 \arguments{
-\item{NetworkInterfaceId}{The ID of the network interface.}
+\item{NetworkInterfaceId}{[required] The ID of the network interface.}
 
-\item{PrivateIpAddresses}{The secondary private IP addresses to unassign from the network interface. You can specify this option multiple times to unassign more than one IP address.}
+\item{PrivateIpAddresses}{[required] The secondary private IP addresses to unassign from the network interface. You can specify this option multiple times to unassign more than one IP address.}
 }
 \description{
 Unassigns one or more secondary private IP addresses from a network interface.
