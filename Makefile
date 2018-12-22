@@ -17,7 +17,7 @@ else
 endif
 export R_USER
 
-.PHONY: help list build unit integration docs codegen deps
+.PHONY: help list build unit integration docs codegen deps update-deps
 
 help:
 	@echo "  list               list available packages"
@@ -29,6 +29,7 @@ help:
 	@echo "  docs               build project docs"
 	@echo "  codegen            build and install the code generator"
 	@echo "  deps               get project dependencies"
+	@echo "  update-deps        update project dependencies"
 
 list:
 	@echo "available packages"
@@ -78,4 +79,8 @@ codegen:
 deps:
 	@echo "get project dependencies"
 	@cd ${IN_DIR}; git submodule init; git submodule update
+
+update-deps: deps
+	@echo "update project dependencies"
+	@cd ${IN_DIR}; git pull origin master
 	@Rscript -e "library(make.paws); make_package_list('${IN_DIR}')" > PACKAGES.txt
