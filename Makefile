@@ -78,7 +78,7 @@ codegen:
 
 deps:
 	@echo "get project dependencies"
-	@cd ${IN_DIR}; git submodule init; git submodule update
+	@git submodule init; git submodule update
 
 update-deps: deps
 	@echo "update project dependencies"
