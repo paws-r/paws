@@ -1,6 +1,6 @@
 Package: paws.ecr
 Title: Amazon EC2 Container Registry
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",

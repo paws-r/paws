@@ -1,6 +1,6 @@
 Package: paws.cloudhsmv2
 Title: AWS CloudHSM V2
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",

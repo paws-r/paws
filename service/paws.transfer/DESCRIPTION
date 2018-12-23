@@ -1,6 +1,6 @@
 Package: paws.transfer
 Title: AWS Transfer for SFTP
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",

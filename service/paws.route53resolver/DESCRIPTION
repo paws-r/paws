@@ -1,6 +1,6 @@
 Package: paws.route53resolver
 Title: Amazon Route 53 Resolver
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",

@@ -1,6 +1,6 @@
 Package: paws.resourcegroupstaggingapi
 Title: AWS Resource Groups Tagging API
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",

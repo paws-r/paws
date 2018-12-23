@@ -1,6 +1,6 @@
 Package: paws.iot1clickdevicesservice
 Title: AWS IoT 1-Click Devices Service
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
