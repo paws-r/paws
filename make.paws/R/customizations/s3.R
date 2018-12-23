@@ -2,7 +2,6 @@
 NULL
 
 ################################################################################
-# update_endpoint_for_s3_config
 
 bucket_name_from_req_params <- function(request) {
   request_params <- request$params
@@ -38,7 +37,6 @@ update_endpoint_for_s3_config <- function(request) {
 }
 
 ################################################################################
-# populate_location_constraint
 
 populate_location_constraint <- function(request) {
 
@@ -56,16 +54,12 @@ populate_location_constraint <- function(request) {
   return(request)
 }
 
-
-
-
 ################################################################################
-# contentMD5
 
 content_md5 <- function(request) {
   operation_name <- request$operation$name
-  
-  if (!(operation_name %in% c("PutBucketCors", "PutBucketLifecycle", 
+
+  if (!(operation_name %in% c("PutBucketCors", "PutBucketLifecycle",
                               "PutBucketPolicy", "PutBucketTagging",
                               "DeleteObjects",
                               "PutBucketLifecycleConfiguration",
@@ -86,6 +80,35 @@ content_md5 <- function(request) {
 
 ################################################################################
 
+s3_unmarshal_error <- function(request) {
+
+  data <- tryCatch(
+    decode_xml(request$http_response$body),
+    error = function(e) NULL
+  )
+
+  if (is.null(data)) {
+    request$error <- Error("SerializationError",
+                           "failed to read from query HTTP response body")
+    return(request)
+  }
+
+  code <- unlist(data$Error$Code)
+  message <- unlist(data$Error$Message)
+
+  if (is.null(message) && is.null(code)) {
+    request$error <- Error("SerializationError",
+                           "failed to decode query XML error response")
+    return(request)
+  }
+
+  request$error <- Error(code, message)
+  return(request)
+}
+
+
+################################################################################
+
 HANDLERS$build <- add_handlers_front(HANDLERS$build,
                                      update_endpoint_for_s3_config)
 
@@ -93,4 +116,6 @@ HANDLERS$build <- add_handlers_front(HANDLERS$build,
                                      populate_location_constraint)
 
 HANDLERS$build <- add_handlers_back(HANDLERS$build,
-                                     content_md5)
+                                    content_md5)
+
+HANDLERS$unmarshal_error <- HandlerList(s3_unmarshal_error)
