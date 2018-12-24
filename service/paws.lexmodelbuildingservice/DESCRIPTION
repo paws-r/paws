@@ -1,6 +1,6 @@
 Package: paws.lexmodelbuildingservice
 Title: Amazon Lex Model Building Service
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",

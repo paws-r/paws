@@ -1,6 +1,6 @@
 Package: paws.mediaconvert
 Title: AWS Elemental MediaConvert
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",

@@ -1,6 +1,6 @@
 Package: paws.dax
 Title: Amazon DynamoDB Accelerator (DAX)
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",

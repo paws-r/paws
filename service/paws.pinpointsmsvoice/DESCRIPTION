@@ -1,6 +1,6 @@
 Package: paws.pinpointsmsvoice
 Title: Amazon Pinpoint SMS and Voice Service
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",

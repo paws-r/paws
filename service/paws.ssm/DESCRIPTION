@@ -1,6 +1,6 @@
 Package: paws.ssm
 Title: Amazon Simple Systems Manager (SSM)
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",

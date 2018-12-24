@@ -1,6 +1,6 @@
 Package: paws.kinesisanalyticsv2
 Title: Amazon Kinesis Analytics
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
