@@ -2,7 +2,8 @@
 #' @include struct.R
 NULL
 
-# An operation is the service API operation to be made.
+#' An operation is the service API operation to be made.
+#' @export
 Operation <- struct(
   name = "",
   http_method = "",
@@ -11,7 +12,8 @@ Operation <- struct(
   before_presign_fn = function() {}
 )
 
-# A request is a service request to be made.
+#' A request is a service request to be made.
+#' @export
 Request <- struct(
   config = Config(),
   client_info = ClientInfo(),
@@ -45,7 +47,8 @@ Request <- struct(
   safe_body = ""
 )
 
-# Returns a new request for the service API operation and parameters.
+#' Returns a new request for the service API operation and parameters.
+#' @export
 new_request <- function(client, operation, params, data) {
 
   method <- operation$http_method
@@ -82,8 +85,9 @@ new_request <- function(client, operation, params, data) {
   return(r)
 }
 
-# Send a request to the service.
-# TODO: Retry the request in case of error.
+#' Send a request to the service.
+#' TODO: Retry the request in case of error.
+#' @export
 send_request <- function(request) {
 
   request <- sign(request)

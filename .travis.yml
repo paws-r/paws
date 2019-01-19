@@ -3,7 +3,7 @@ language: r
 cache: packages
 
 before_install:
-  - cd paws.codegen
+  - cd paws.common
 
 r_github_packages:
   - r-lib/covr
