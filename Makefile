@@ -51,7 +51,7 @@ ${INSTALL_PACKAGES}:
 	@PACKAGE=$(patsubst install-%,%,$@) && \
 	make -s $$PACKAGE && \
 	echo "install $$PACKAGE" && \
-	Rscript -e "devtools::install('${OUT_DIR}/$$PACKAGE', quiet = TRUE)"
+	Rscript -e "devtools::install('${OUT_DIR}/$$PACKAGE', upgrade = FALSE, quiet = TRUE)"
 
 unit:
 	@echo "run unit tests"
@@ -74,7 +74,7 @@ docs:
 
 codegen:
 	@echo "build and install the code generator"
-	@Rscript -e "devtools::document('paws.codegen'); devtools::install('paws.codegen')"
+	@cd paws.codegen && Rscript -e "devtools::document(); devtools::install(upgrade = FALSE)"
 
 deps:
 	@echo "get project dependencies"
