@@ -20,7 +20,6 @@ make_package <- function(api_name, in_dir, out_dir) {
   write_operations(api, r_path)
   write_interfaces(api, r_path)
   write_service(api, r_path)
-  copy_supporting_functions(api, r_path)
   copy_customizations(api, r_path)
   write_tests(api, package_path)
   write_documentation(api, package_path)
@@ -80,16 +79,6 @@ write_service <- function(api, path) {
   filename <- paste0(package, "_service.R")
   service <- add_edit_warning(service)
   write_list(service, file.path(path, filename))
-}
-
-# Copy supporting functions to the package.
-copy_supporting_functions <- function(api, path) {
-  path_in <- system_file("src", package = methods::getPackageName())
-  files <- list.files(path_in, full.names = TRUE, include.dirs = FALSE)
-  src_files <- files[grep("^make", basename(files), invert = TRUE)]
-  if (length(src_files) > 0) {
-    lapply(src_files, file.copy, to = path)
-  }
 }
 
 # Copy customizations for a given package, if there are any.
@@ -215,7 +204,7 @@ make_description <- function(api) {
   contains_period <- function(x) grepl("\\.", x)
   desc <- documentation[which.max(contains_period(documentation))]
 
-  # If the description ends with a ":", e.g."You can do the following:", then
+  # If the description ends with a ":", e.g. "You can do the following:", then
   # remove the sentence, provided it is not the only sentence.
   if (endsWith(desc, ":")) {
     sentences <- strsplit(desc, "\\.")[[1]]
@@ -237,8 +226,12 @@ make_description <- function(api) {
 # Returns a version; the existing package's if present, otherwise a default.
 make_version <- function(path) {
   version <- "0.0.0.9000"
-  if (dir.exists(path)) {
-    version <- desc::desc_get_version(file.path(path, "DESCRIPTION"))
+  description <- file.path(path, "DESCRIPTION")
+  if (file.exists(description)) {
+    version <- tryCatch({
+      desc::desc_get_version(description)
+    }, error = function(e) version
+    )
   }
   return(version)
 }
@@ -255,9 +248,7 @@ make_authors <- function(authors) {
 # package's DESCRIPTION file Imports section.
 make_imports <- function() {
   package <- methods::getPackageName()
-  imports_file <- system_file("extdata/imports.csv", package = package)
-  imports <- readLines(imports_file)
-  defaults <- rownames(utils::installed.packages(priority="high"))
-  description <- paste(setdiff(imports, defaults), collapse = ",\n")
-  return(description)
+  description <- utils::packageDescription(package)
+  imports <- description$`Suggests`
+  return(imports)
 }

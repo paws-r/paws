@@ -93,17 +93,6 @@ test_that("make_package", {
   expect_true(dir.exists(file.path(package_dir, "man")))
 })
 
-# Requires that `R/handlers.R` exists.
-test_that("copy supporting functions", {
-  api <- list(
-    name = "dynamodb"
-  )
-  path <- tempdir()
-
-  copy_supporting_functions(api, path)
-  expect_true(file.exists(file.path(path, "handlers.R")))
-})
-
 # Requires that `R/customizations/aws.dynamodb.R` exists.
 test_that("copy customizations", {
   api <- list(
@@ -127,5 +116,5 @@ test_that("copy customizations -- no customizations for package", {
 
 test_that("make_imports returns a string-ified list separated by commas", {
   imports <- make_imports()
-  expect_match(imports, "(.+,\n)+.+")
+  expect_match(imports, "([a-zA-Z0-9\\.]+,\n)*[a-zA-Z0-9\\.]+")
 })

@@ -1,4 +1,6 @@
 #' @include make_function.R
+#' @importFrom paws.common is_empty
+#' @importFrom paws.common tag_add
 
 # Returns a function which translates an R object into a given API input/output
 # shape.

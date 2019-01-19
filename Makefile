@@ -26,8 +26,9 @@ help:
 	@echo "  install-<package>  build and install <package>"
 	@echo "  unit               run unit tests"
 	@echo "  integration        run integration tests"
-	@echo "  docs               build project docs"
+	@echo "  common             build and install common functions"
 	@echo "  codegen            build and install the code generator"
+	@echo "  docs               build project docs"
 	@echo "  deps               get project dependencies"
 	@echo "  update-deps        update project dependencies"
 
@@ -55,7 +56,7 @@ ${INSTALL_PACKAGES}:
 
 unit:
 	@echo "run unit tests"
-	@Rscript -e "devtools::test('paws.codegen')"
+	@Rscript -e "devtools::test('paws.common')"
 
 integration: ${INTEGRATION_TESTS}
 	@echo "run integration tests"
@@ -68,13 +69,21 @@ ${INTEGRATION_TESTS}:
 	  echo "$$PACKAGE: no tests"; \
 	fi
 
-docs:
-	@echo "build project docs"
-	@Rscript -e "rmarkdown::render('README.Rmd')"
+common:
+	@echo "build and install common functions"
+	@cd paws.common && Rscript -e "devtools::document(); devtools::install(upgrade = FALSE)"
 
 codegen:
 	@echo "build and install the code generator"
 	@cd paws.codegen && Rscript -e "devtools::document(); devtools::install(upgrade = FALSE)"
+
+test-codegen:
+	@echo "run unit tests for the code generator"
+	@Rscript -e "devtools::test('paws.codegen')"
+
+docs:
+	@echo "build project docs"
+	@Rscript -e "rmarkdown::render('README.Rmd')"
 
 deps:
 	@echo "get project dependencies"

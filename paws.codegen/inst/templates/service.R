@@ -1,6 +1,4 @@
-#' @include handlers.R
-#' @include .PROTOCOL_HANDLER_FILE
-#' @include .SIGN_HANDLER_FILE
+#' @import paws.common
 NULL
 
 HANDLERS <- Handlers(
