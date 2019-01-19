@@ -41,7 +41,7 @@ build: ${PACKAGES}
 ${PACKAGES}:
 	@echo "build $@"
 	@API=$$(grep -e "^$@\b" PACKAGES.txt | awk '{ print $$2 }') && \
-	Rscript -e "library(make.paws); make_package('$$API', '${IN_DIR}', '${OUT_DIR}')" && \
+	Rscript -e "library(paws.codegen); make_package('$$API', '${IN_DIR}', '${OUT_DIR}')" && \
 	${SCRIPT_DIR}/update_version.sh $@
 
 install: ${INSTALL_PACKAGES}
@@ -55,7 +55,7 @@ ${INSTALL_PACKAGES}:
 
 unit:
 	@echo "run unit tests"
-	@Rscript -e "devtools::test('make.paws')"
+	@Rscript -e "devtools::test('paws.codegen')"
 
 integration: ${INTEGRATION_TESTS}
 	@echo "run integration tests"
@@ -74,7 +74,7 @@ docs:
 
 codegen:
 	@echo "build and install the code generator"
-	@Rscript -e "devtools::document('make.paws'); devtools::install('make.paws')"
+	@Rscript -e "devtools::document('paws.codegen'); devtools::install('paws.codegen')"
 
 deps:
 	@echo "get project dependencies"
@@ -83,4 +83,4 @@ deps:
 update-deps: deps
 	@echo "update project dependencies"
 	@cd ${IN_DIR}; git pull origin master
-	@Rscript -e "library(make.paws); make_package_list('${IN_DIR}')" > PACKAGES.txt
+	@Rscript -e "library(paws.codegen); make_package_list('${IN_DIR}')" > PACKAGES.txt
