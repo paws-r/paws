@@ -43,9 +43,9 @@ devtools::install_github("paws-r/paws/service/paws.ec2")
 
 ### Credentials
 
-First, set up your credentials and region. See 
-[credentials.md](docs/credentials.md) for the different ways you can do this.
-Here we set them within R.
+First, set up your credentials and region. Here we set them within R. Paws also
+supports OS envrionment variables, AWS credential files, and IAM roles. See 
+[docs/credentials.md](docs/credentials.md) for more info.
 
 ```{r, eval = FALSE}
 Sys.setenv(
@@ -57,7 +57,8 @@ Sys.setenv(
 
 ### Run an operation
 
-Here we launch an EC2 instance using the `run_instances` function.
+Here we launch an EC2 instance using the `run_instances` function. See the
+[examples](examples) folder for more examples.
 
 ```{r, eval = FALSE}
 ec2 <- paws.ec2::run_instances(
@@ -98,3 +99,8 @@ the package documentation.
 ```{r, eval = FALSE}
 help(package = "paws.ec2")
 ```
+
+We also have examples for [EC2](examples/ec2.R), [S3](examples/s3.R), 
+[SQS](examples/sqs.R), [SNS](examples/sns.R), [DynamoDB](examples/dynamodb.R),
+[Lambda](examples/lambda.R), [Batch](examples/batch.R), and
+[Comprehend](examples/comprehend.R).
