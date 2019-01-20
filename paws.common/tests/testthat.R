@@ -1,4 +1,4 @@
 library(testthat)
-library(paws.codegen)
+library(paws.common)
 
-test_check("paws.codegen")
+test_check("paws.common")
