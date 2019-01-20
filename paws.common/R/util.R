@@ -1,5 +1,4 @@
 #' Return whether x is empty, i.e. null or has a default value.
-#' @export
 is_empty <- function(x) {
   if (is.null(x) || length(x) == 0) return(TRUE)
   # Use `switch` rather than `UseMethod` because the latter requires exporting

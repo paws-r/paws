@@ -5,7 +5,6 @@ NULL
 #'
 #' A handler list is a list of functions to apply to a request at a given stage
 #' of a service request (e.g. validate, build, etc.).
-#' @export
 HandlerList <- function(..., after_each_fn = NULL) {
   args <- list(...)
   arg_refs <- substitute(list(...))[-1]
@@ -28,7 +27,6 @@ HandlerList <- function(..., after_each_fn = NULL) {
 }
 
 #' Return a wrapped request handler.
-#' @export
 Handler <- function(fn, name = NULL) {
   handler <- list(
     fn = fn,
@@ -41,7 +39,6 @@ Handler <- function(fn, name = NULL) {
 #' 
 #' A handlers object stores the handler lists for each stage of handling a
 #' service request.
-#' @export
 Handlers <- struct(
   validate = HandlerList(),
   build = HandlerList(),
@@ -59,7 +56,6 @@ Handlers <- struct(
 #-------------------------------------------------------------------------------
 
 #' Add a list of functions to an existing HandlerList.
-#' @export
 add_handlers_back <- function(existing, ...) {
   h <- existing
   n <- HandlerList(...)
@@ -67,7 +63,6 @@ add_handlers_back <- function(existing, ...) {
   return(h)
 }
 
-#' @export
 add_handlers_front <- function(existing, ...) {
   h <- existing
   n <- HandlerList(...)

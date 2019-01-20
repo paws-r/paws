@@ -4,7 +4,6 @@
 NULL
 
 #' A Config object provides service configuration for service clients.
-#' @export
 Config <- struct(
   credentials = Credentials(),
   endpoint = "",
@@ -27,7 +26,6 @@ Config <- struct(
 )
 
 #' A Session object stores configuration and request handlers for a service.
-#' @export
 Session <- struct(
   config = Config(),
   handlers = Handlers()
@@ -35,7 +33,6 @@ Session <- struct(
 
 #' A ClientConfig object stores the information required to configure a service
 #' client instance.
-#' @export
 ClientConfig <- struct(
   config = Config(),
   handlers = Handlers(),
@@ -46,7 +43,6 @@ ClientConfig <- struct(
 )
 
 #' A ClientInfo object stores immutable data about a service.
-#' @export
 ClientInfo <- struct(
   service_name = "",
   service_id = "",
@@ -59,7 +55,6 @@ ClientInfo <- struct(
 )
 
 #' A Client object stores everything needed to create a service client.
-#' @export
 Client <- struct(
   retryer = NULL,
   client_info = ClientInfo(),
@@ -93,7 +88,6 @@ resolver_endpoint <- function(service, region, endpoints, scheme = "https") {
 }
 
 #' client_config returns a ClientConfig configured for the service.
-#' @export
 client_config <- function(service_name, endpoints) {
   s <- new_session()
   region <- s$config$region

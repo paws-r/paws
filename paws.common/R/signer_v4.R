@@ -59,7 +59,6 @@ SigningContext <- struct(
 
 #' Signs an SDK request with the V4 signature.
 #' See https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
-#' @export
 v4_sign_request_handler <- function(request) {
   return(sign_sdk_request_with_curr_time(request))
 }

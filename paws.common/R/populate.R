@@ -51,7 +51,6 @@ populate_scalar <- function(input, interface) {
   return(interface)
 }
 
-#' @export
 populate <- function(input, interface) {
   t <- tag_get(interface, "type")
   populate_fn <- switch(

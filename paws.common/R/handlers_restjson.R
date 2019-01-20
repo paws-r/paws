@@ -1,5 +1,4 @@
 #' Build the request body for the REST JSON protocol.
-#' @export
 restjson_build <- function(request) {
   request <- rest_build(request)
   t <- rest_payload_type(request$params)
@@ -10,14 +9,12 @@ restjson_build <- function(request) {
 }
 
 #' Unmarshal metadata from a REST JSON protocol API response.
-#' @export
 restjson_unmarshal_meta <- function(request) {
   request <- rest_unmarshal_meta(request)
   return(request)
 }
 
 #' Unmarshal a REST JSON protocol API response.
-#' @export
 restjson_unmarshal <- function(request) {
   if (rest_payload_type(request$data) %in% c("structure", "")) {
     request <- jsonrpc_unmarshal(request)
@@ -28,7 +25,6 @@ restjson_unmarshal <- function(request) {
 }
 
 #' Unmarshal errors from a REST JSON protocol API response.
-#' @export
 restjson_unmarshal_error <- function(request) {
   error <- decode_json(request$http_response$body)
 

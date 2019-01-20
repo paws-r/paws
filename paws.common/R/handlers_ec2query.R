@@ -1,5 +1,4 @@
 #' Build the request for the EC2 protocol.
-#' @export
 ec2query_build <- function(request) {
   body <- list(
     Action = request$operation$name,
@@ -21,7 +20,6 @@ ec2query_build <- function(request) {
 }
 
 #' Unmarshal the response from an EC2 protocol response.
-#' @export
 ec2query_unmarshal <- function(request) {
   body <- decode_xml(request$http_response$body)
   data <- body[[1]]
@@ -31,13 +29,11 @@ ec2query_unmarshal <- function(request) {
 
 #' Unmarshal metadata from an EC2 protocol response.
 #' Do nothing; the EC2 protocol does not require unmarshalling metadata.
-#' @export
 ec2query_unmarshal_meta <- function(request) {
   return(request)
 }
 
 #' Unmarshal errors from an EC2 protocol response.
-#' @export
 ec2query_unmarshal_error <- function(request) {
   body <- decode_xml(request$http_response$body)
   data <- body[[1]]

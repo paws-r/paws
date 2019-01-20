@@ -1,5 +1,4 @@
 #' Add the name/version to the User-Agent request header.
-#' @export
 sdk_version_user_agent_handler <- function(request) {
   paws_version <- utils::packageVersion(methods::getPackageName())
   r_version <- getRversion()
@@ -13,13 +12,11 @@ sdk_version_user_agent_handler <- function(request) {
 
 #' Add the execution environment to the User-Agent request header.
 #' TODO: Implement.
-#' @export
 add_host_exec_env_user_agent_handler <- function(request) {
   return(request)
 }
 
 #' Finds the length of the HTTP request body and adds it to the request.
-#' @export
 build_content_length_handler <- function(request) {
   content_length <- request$http_request$header[["Content-Length"]]
   if (!is.null(content_length) && content_length != "") {
@@ -41,7 +38,6 @@ build_content_length_handler <- function(request) {
   return(request)
 }
 
-#' @export
 get_content_length <- function(content) {
   if (is.character(content)) {
     return(nchar(content, type = "bytes"))
@@ -52,7 +48,6 @@ get_content_length <- function(content) {
 }
 
 #' Ensure that the request's signature doesn't expire before it is sent.
-#' @export
 validate_req_sig_handler <- function(request) {
 
   # TODO: Implement anonymous access.
@@ -76,7 +71,6 @@ validate_req_sig_handler <- function(request) {
 }
 
 #' Send a service request using an HTTP client.
-#' @export
 send_handler <- function(request) {
   sender <- send_follow_redirects
   if (request$disable_follow_redirects) {
@@ -107,7 +101,6 @@ send_without_follow_redirects <- function(request) {
 }
 
 #' Check whether the AWS region and service endpoint are valid.
-#' @export
 validate_endpoint_handler <- function(request) {
   if (request$client_info$signing_region == "" && request$config$region == "") {
     request$error <- Error("MissingRegion", "missing region")
@@ -119,13 +112,11 @@ validate_endpoint_handler <- function(request) {
 
 #' Check whether the parameters are valid prior to being sent.
 #' TODO: Implement.
-#' @export
 validate_parameters_handler <- function(request) {
   return(request)
 }
 
 #' Check whether the service's response was ok.
-#' @export
 validate_response_handler <- function(request) {
   status_code <- as.integer(request$http_response$status_code)
   if (status_code == 0 | status_code >= 300) {

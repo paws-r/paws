@@ -1,5 +1,4 @@
 #' Build the request body for the REST XML protocol.
-#' @export
 restxml_build <- function(request) {
   request <- rest_build(request)
   t <- rest_payload_type(request$params)
@@ -10,14 +9,12 @@ restxml_build <- function(request) {
 }
 
 #' Unmarshal metadata from a REST XML response.
-#' @export
 restxml_unmarshal_meta <- function(request) {
   request <- rest_unmarshal_meta(request)
   return(request)
 }
 
 #' Unmarshal the body of a REST XML response.
-#' @export
 restxml_unmarshal <- function(request) {
   t <- rest_payload_type(request$data)
   if (t == "structure" || t == "") {
@@ -32,7 +29,6 @@ restxml_unmarshal <- function(request) {
 }
 
 #' Unmarshal errors from a REST XML response.
-#' @export
 restxml_unmarshal_error <- function(request) {
   request <- query_unmarshal_error(request)
   return(request)
