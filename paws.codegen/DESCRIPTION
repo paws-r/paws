@@ -12,7 +12,8 @@ License: Apache License (>= 2.0)
 Encoding: UTF-8
 LazyData: true
 Suggests: 
-    paws.common
+    paws.common,
+    testthat
 Imports:
     callr,
     desc,
@@ -26,8 +27,6 @@ Imports:
     roxygen2,
     stringr,
     xml2
-Suggests:
-    testthat
 SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
 RoxygenNote: 6.0.1
 Collate: 
