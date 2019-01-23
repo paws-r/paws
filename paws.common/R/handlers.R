@@ -1,10 +1,10 @@
-#' @include struct.R
+# @include struct.R
 NULL
 
-#' Create a list of request handlers.
-#'
-#' A handler list is a list of functions to apply to a request at a given stage
-#' of a service request (e.g. validate, build, etc.).
+# Create a list of request handlers.
+#
+# A handler list is a list of functions to apply to a request at a given stage
+# of a service request (e.g. validate, build, etc.).
 HandlerList <- function(..., after_each_fn = NULL) {
   args <- list(...)
   arg_refs <- substitute(list(...))[-1]
@@ -26,7 +26,7 @@ HandlerList <- function(..., after_each_fn = NULL) {
   return(l)
 }
 
-#' Return a wrapped request handler.
+# Return a wrapped request handler.
 Handler <- function(fn, name = NULL) {
   handler <- list(
     fn = fn,
@@ -35,10 +35,10 @@ Handler <- function(fn, name = NULL) {
   return(handler)
 }
 
-#' Create the list of request handlers for each stage of a request.
-#' 
-#' A handlers object stores the handler lists for each stage of handling a
-#' service request.
+# Create the list of request handlers for each stage of a request.
+# 
+# A handlers object stores the handler lists for each stage of handling a
+# service request.
 Handlers <- struct(
   validate = HandlerList(),
   build = HandlerList(),
@@ -55,7 +55,7 @@ Handlers <- struct(
 
 #-------------------------------------------------------------------------------
 
-#' Add a list of functions to an existing HandlerList.
+# Add a list of functions to an existing HandlerList.
 add_handlers_back <- function(existing, ...) {
   h <- existing
   n <- HandlerList(...)

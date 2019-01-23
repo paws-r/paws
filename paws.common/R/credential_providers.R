@@ -1,4 +1,4 @@
-#' @include net.R
+# @include net.R
 
 # Retrieve credentials stored in R environment variables.
 r_env_provider <- function() {

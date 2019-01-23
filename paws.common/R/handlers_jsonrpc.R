@@ -1,6 +1,6 @@
 EMPTY_JSON <- "{}"
 
-#' Build the request body for the JSON RPC protocol.
+# Build the request body for the JSON RPC protocol.
 jsonrpc_build <- function(request) {
   if (params_filled(request)) {
     body <- json_build(request$params)
@@ -24,13 +24,13 @@ jsonrpc_build <- function(request) {
   return(request)
 }
 
-#' Unmarshal metadata from a JSON RPC response.
+# Unmarshal metadata from a JSON RPC response.
 jsonrpc_unmarshal_meta <- function(request) {
   request <- rest_unmarshal_meta(request)
   return(request)
 }
 
-#' Unmarshal the body of a JSON RPC response.
+# Unmarshal the body of a JSON RPC response.
 jsonrpc_unmarshal <- function(request) {
   body <- request$http_response$body
   if (data_filled(request) && length(body) > 0) {
@@ -40,7 +40,7 @@ jsonrpc_unmarshal <- function(request) {
   return(request)
 }
 
-#' Unmarshal errors from a JSON RPC response.
+# Unmarshal errors from a JSON RPC response.
 jsonrpc_unmarshal_error <- function(request) {
   error <- decode_json(request$http_response$body)
   if (length(error) == 0) {

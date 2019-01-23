@@ -1,9 +1,9 @@
-#' @include credentials.R
-#' @include handlers.R
-#' @include struct.R
+# @include credentials.R
+# @include handlers.R
+# @include struct.R
 NULL
 
-#' A Config object provides service configuration for service clients.
+# A Config object provides service configuration for service clients.
 Config <- struct(
   credentials = Credentials(),
   endpoint = "",
@@ -25,14 +25,14 @@ Config <- struct(
   disable_rest_protocol_uri_cleaning = FALSE
 )
 
-#' A Session object stores configuration and request handlers for a service.
+# A Session object stores configuration and request handlers for a service.
 Session <- struct(
   config = Config(),
   handlers = Handlers()
 )
 
-#' A ClientConfig object stores the information required to configure a service
-#' client instance.
+# A ClientConfig object stores the information required to configure a service
+# client instance.
 ClientConfig <- struct(
   config = Config(),
   handlers = Handlers(),
@@ -42,7 +42,7 @@ ClientConfig <- struct(
   signing_name_derived = FALSE
 )
 
-#' A ClientInfo object stores immutable data about a service.
+# A ClientInfo object stores immutable data about a service.
 ClientInfo <- struct(
   service_name = "",
   service_id = "",
@@ -54,7 +54,7 @@ ClientInfo <- struct(
   target_prefix = ""
 )
 
-#' A Client object stores everything needed to create a service client.
+# A Client object stores everything needed to create a service client.
 Client <- struct(
   retryer = NULL,
   client_info = ClientInfo(),
@@ -87,7 +87,7 @@ resolver_endpoint <- function(service, region, endpoints, scheme = "https") {
   return(endpoint)
 }
 
-#' client_config returns a ClientConfig configured for the service.
+# client_config returns a ClientConfig configured for the service.
 client_config <- function(service_name, endpoints) {
   s <- new_session()
   region <- s$config$region

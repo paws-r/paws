@@ -1,5 +1,5 @@
-#' @include credentials.R
-#' @include struct.R
+# @include credentials.R
+# @include struct.R
 NULL
 
 # AWS Signature Version 4 signing process.
@@ -57,8 +57,8 @@ SigningContext <- struct(
   authorization = ""
 )
 
-#' Signs an SDK request with the V4 signature.
-#' See https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
+# Signs an SDK request with the V4 signature.
+# See https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
 v4_sign_request_handler <- function(request) {
   return(sign_sdk_request_with_curr_time(request))
 }

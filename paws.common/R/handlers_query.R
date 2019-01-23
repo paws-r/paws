@@ -1,4 +1,4 @@
-#' Build the request for the Query protocol.
+# Build the request for the Query protocol.
 query_build <- function(request) {
   body <- list(
     Action = request$operation$name,
@@ -22,7 +22,7 @@ query_build <- function(request) {
   return(request)
 }
 
-#' Unmarshal the response from a Query protocol response.
+# Unmarshal the response from a Query protocol response.
 query_unmarshal <- function(request) {
   data <- decode_xml(request$http_response$body)
   interface <- request$data
@@ -31,13 +31,13 @@ query_unmarshal <- function(request) {
   return(request)
 }
 
-#' Unmarshal metadata from a Query protocol response.
+# Unmarshal metadata from a Query protocol response.
 query_unmarshal_meta <- function(request) {
   request$request_id <- request$http_response$header[["X-Amzn-Requestid"]]
   return(request)
 }
 
-#' Unmarshal errors from a Query protocol response.
+# Unmarshal errors from a Query protocol response.
 query_unmarshal_error <- function(request) {
   
   data <- tryCatch(
