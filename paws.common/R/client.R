@@ -1,6 +1,6 @@
-# @include credentials.R
-# @include handlers.R
-# @include struct.R
+#' @include credentials.R
+#' @include handlers.R
+#' @include struct.R
 NULL
 
 # A Config object provides service configuration for service clients.

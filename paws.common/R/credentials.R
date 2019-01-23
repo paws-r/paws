@@ -1,5 +1,5 @@
-# @include struct.R
-# @include credential_providers.R
+#' @include struct.R
+#' @include credential_providers.R
 NULL
 
 Credentials <- struct(

@@ -1,4 +1,4 @@
-# @include struct.R
+#' @include struct.R
 NULL
 
 # Create a list of request handlers.

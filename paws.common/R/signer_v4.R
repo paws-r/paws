@@ -1,5 +1,5 @@
-# @include credentials.R
-# @include struct.R
+#' @include credentials.R
+#' @include struct.R
 NULL
 
 # AWS Signature Version 4 signing process.

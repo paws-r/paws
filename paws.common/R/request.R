@@ -1,5 +1,5 @@
-# @include client.R
-# @include struct.R
+#' @include client.R
+#' @include struct.R
 NULL
 
 # An operation is the service API operation to be made.
