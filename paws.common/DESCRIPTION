@@ -50,6 +50,7 @@ Collate:
     'tags.R'
     'queryutil.R'
     'request.R'
+    'service.R'
     'signer_v4.R'
     'signer_s3.R'
     'signer_s3v4.R'

@@ -73,7 +73,7 @@ common:
 	@echo "build and install common functions"
 	@cd paws.common && Rscript -e "devtools::document(); devtools::install(upgrade = FALSE)"
 
-codegen:
+codegen: common
 	@echo "build and install the code generator"
 	@cd paws.codegen && Rscript -e "devtools::document(); devtools::install(upgrade = FALSE)"
 

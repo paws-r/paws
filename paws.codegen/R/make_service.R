@@ -12,15 +12,10 @@ make_service <- function(api) {
   service <- translate(
     template,
     list(
-      .PROTOCOL_HANDLER_FILE = paste0("handlers_", protocol, ".R"),
-      .BUILD_HANDLER = paste0(protocol, "_build"),
-      .SIGN_HANDLER = paste0(signature, "_sign_request_handler"),
-      .SIGN_HANDLER_FILE = paste0("signer_", signature, ".R"),
-      .UNMARSHAL_HANDLER = paste0(protocol, "_unmarshal"),
-      .UNMARSHAL_META_HANDLER = paste0(protocol, "_unmarshal_meta"),
-      .UNMARSHAL_ERROR_HANDLER = paste0(protocol, "_unmarshal_error"),
+      .PROTOCOL = protocol_package(api),
+      .SIGNER = signature,
       .SERVICE_NAME = service_name(api),
-      .ENDPOINT_DATA = endpoint_data(api),
+      .ENDPOINTS = endpoint_data(api),
       .SERVICE_ID = service_id(api),
       .API_VERSION = api$metadata$apiVersion,
       .SIGNING_NAME = signing_name(api),
@@ -47,7 +42,7 @@ protocol_package <- function(api) {
 signing_name <- function(api) {
   name <- api$metadata$signingName
   if (!is.null(name)) return(quoted(name))
-  return("cfg$signing_name")
+  return("NULL")
 }
 
 endpoint_data <- function(api) {

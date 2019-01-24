@@ -1,6 +1,5 @@
 #' @include make_function.R
-#' @importFrom paws.common is_empty
-#' @importFrom paws.common tag_add
+#' @importFrom paws.common is_empty tag_add
 
 # Returns a function which translates an R object into a given API input/output
 # shape.
@@ -53,6 +52,10 @@ make_interfaces <- function(api) {
     output <- make_interface(output_name, output_shape, api)
     interfaces <- c(interfaces, output)
   }
+  interfaces <- add_header_comment(
+    comment = "@importFrom paws.common populate",
+    text = interfaces
+  )
   return(interfaces)
 }
 

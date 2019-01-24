@@ -11,6 +11,13 @@ Operation <- struct(
   before_presign_fn = function() {}
 )
 
+#' @export
+new_operation <- function(name, http_method, http_path, paginator, before_presign_fn = NULL) {
+  args <- as.list(environment())
+  args[sapply(args, is.null)] <- NULL
+  return(do.call(Operation, args))
+}
+
 # A request is a service request to be made.
 Request <- struct(
   config = Config(),
@@ -46,6 +53,7 @@ Request <- struct(
 )
 
 # Returns a new request for the service API operation and parameters.
+#' @export
 new_request <- function(client, operation, params, data) {
 
   method <- operation$http_method
@@ -84,6 +92,7 @@ new_request <- function(client, operation, params, data) {
 
 # Send a request to the service.
 # TODO: Retry the request in case of error.
+#' @export
 send_request <- function(request) {
 
   request <- sign(request)
