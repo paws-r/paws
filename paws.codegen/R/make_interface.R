@@ -8,7 +8,7 @@ make_interface <- function(name, shape_name, api) {
   interface_template <- function(...) {
     args <- c(as.list(environment()), list(...))
     shape <- .SHAPE
-    return(populate(args, shape))
+    return(paws.common::populate(args, shape))
   }
   shape <- make_shape(list(shape = shape_name), api)
   params <- c("..." = bquote())
@@ -52,10 +52,6 @@ make_interfaces <- function(api) {
     output <- make_interface(output_name, output_shape, api)
     interfaces <- c(interfaces, output)
   }
-  interfaces <- add_header_comment(
-    comment = "@importFrom paws.common populate",
-    text = interfaces
-  )
   return(interfaces)
 }
 

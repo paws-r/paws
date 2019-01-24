@@ -36,7 +36,7 @@ Handler <- function(fn, name = NULL) {
 }
 
 # Create the list of request handlers for each stage of a request.
-# 
+#
 # A handlers object stores the handler lists for each stage of handling a
 # service request.
 Handlers <- struct(
@@ -55,7 +55,14 @@ Handlers <- struct(
 
 #-------------------------------------------------------------------------------
 
+#' @export
+set_handlers <- function(...) {
+  h <- HandlerList(...)
+  return(h)
+}
+
 # Add a list of functions to an existing HandlerList.
+#' @export
 add_handlers_back <- function(existing, ...) {
   h <- existing
   n <- HandlerList(...)
@@ -63,6 +70,7 @@ add_handlers_back <- function(existing, ...) {
   return(h)
 }
 
+#' @export
 add_handlers_front <- function(existing, ...) {
   h <- existing
   n <- HandlerList(...)

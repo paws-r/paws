@@ -118,4 +118,4 @@ HANDLERS$build <- add_handlers_front(HANDLERS$build,
 HANDLERS$build <- add_handlers_back(HANDLERS$build,
                                     content_md5)
 
-HANDLERS$unmarshal_error <- HandlerList(s3_unmarshal_error)
+HANDLERS$unmarshal_error <- set_handlers(s3_unmarshal_error)

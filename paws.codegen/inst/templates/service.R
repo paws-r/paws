@@ -1,6 +1,3 @@
-#' @importFrom paws.common new_handlers new_service
-NULL
-
 METADATA <- list(
   service_name = ".SERVICE_NAME",
   endpoints = .ENDPOINTS,
@@ -11,8 +8,8 @@ METADATA <- list(
   target_prefix = ".TARGET_PREFIX"
 )
 
-HANDLERS <- new_handlers(".PROTOCOL", ".SIGNER")
+HANDLERS <- paws.common::new_handlers(".PROTOCOL", ".SIGNER")
 
 service <- function() {
-  return(new_service(METADATA, HANDLERS))
+  return(paws.common::new_service(METADATA, HANDLERS))
 }
