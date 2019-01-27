@@ -1,2 +1,2 @@
 fixes:
-  - "::paws.codegen/"
+  - "::paws.common/"
