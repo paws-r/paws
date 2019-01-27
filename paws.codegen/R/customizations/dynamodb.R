@@ -6,4 +6,4 @@ disable_compression <- function(request) {
   return(request)
 }
 
-HANDLERS$build <- add_handlers_back(HANDLERS$build, disable_compression)
+HANDLERS$build <- handlers_add_back(HANDLERS$build, disable_compression)

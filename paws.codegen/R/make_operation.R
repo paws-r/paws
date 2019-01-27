@@ -3,7 +3,7 @@ NULL
 
 # A template for R functions calling AWS API operations
 operation_template <- function() {
-  op <- Operation(
+  op <- paws.common::new_operation(
     name = .OPERATION_NAME,
     http_method = .HTTP_METHOD,
     http_path = .HTTP_PATH,
@@ -12,8 +12,8 @@ operation_template <- function() {
   input <- .OPERATION_INPUT
   output <- .OPERATION_OUTPUT
   svc <- service()
-  request <- new_request(svc, op, input, output)
-  response <- send_request(request)
+  request <- paws.common::new_request(svc, op, input, output)
+  response <- paws.common::send_request(request)
   return(response)
 }
 

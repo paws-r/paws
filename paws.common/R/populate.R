@@ -51,6 +51,16 @@ populate_scalar <- function(input, interface) {
   return(interface)
 }
 
+#' Populate a list with data from another list
+#'
+#' `populate` copies data from a list (e.g. input by a user) to another list
+#' with a similar shape. The second list, called the `interface`, will generally
+#' also contain extra metadata for making API requests, such as names or types.
+#'
+#' @param input A list with data to copy.
+#' @param interface A list of a similar shape to copy data into.
+#'
+#' @export
 populate <- function(input, interface) {
   t <- tag_get(interface, "type")
   populate_fn <- switch(

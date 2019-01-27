@@ -11,6 +11,21 @@ Operation <- struct(
   before_presign_fn = function() {}
 )
 
+#' Return an API operation object
+#'
+#' @param name The API operation name.
+#' @param http_method The HTTP method, e.g. `"GET"` or `"POST"`.
+#' @param http_path The HTTP path.
+#' @param paginator Currently unusued.
+#' @param before_presign_fn Currently unused.
+#'
+#' @export
+new_operation <- function(name, http_method, http_path, paginator, before_presign_fn = NULL) {
+  args <- as.list(environment())
+  args[sapply(args, is.null)] <- NULL
+  return(do.call(Operation, args))
+}
+
 # A request is a service request to be made.
 Request <- struct(
   config = Config(),
@@ -45,7 +60,16 @@ Request <- struct(
   safe_body = ""
 )
 
-# Returns a new request for the service API operation and parameters.
+#' Return an API request object
+#'
+#' Return an API request object, with everything needed to make a request.
+#'
+#' @param client A service client, e.g. from `new_service`.
+#' @param operation An operation, e.g. from `new_operation`.
+#' @param params A populated input object.
+#' @param data An empty output object.
+#'
+#' @export
 new_request <- function(client, operation, params, data) {
 
   method <- operation$http_method
@@ -82,8 +106,15 @@ new_request <- function(client, operation, params, data) {
   return(r)
 }
 
-# Send a request to the service.
-# TODO: Retry the request in case of error.
+#' Send a request and handle the response
+#'
+#' Send a request and handle the response, returning an output object
+#' for the API operation that has been populated with the data received in the
+#' response.
+#'
+#' @param request A request, e.g. from `new_request`.
+#'
+#' @export
 send_request <- function(request) {
 
   request <- sign(request)

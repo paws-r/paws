@@ -24,10 +24,11 @@ help:
 	@echo "  build              build the AWS SDK packages"
 	@echo "  <package>          build <package>"
 	@echo "  install-<package>  build and install <package>"
+	@echo "  common             build and install common functions"
+	@echo "  codegen            build and install the code generator"
 	@echo "  unit               run unit tests"
 	@echo "  integration        run integration tests"
 	@echo "  docs               build project docs"
-	@echo "  codegen            build and install the code generator"
 	@echo "  deps               get project dependencies"
 	@echo "  update-deps        update project dependencies"
 
@@ -51,11 +52,9 @@ ${INSTALL_PACKAGES}:
 	@PACKAGE=$(patsubst install-%,%,$@) && \
 	make -s $$PACKAGE && \
 	echo "install $$PACKAGE" && \
-	Rscript -e "devtools::install('${OUT_DIR}/$$PACKAGE', quiet = TRUE)"
+	Rscript -e "devtools::install('${OUT_DIR}/$$PACKAGE', upgrade = FALSE, quiet = TRUE)"
 
-unit:
-	@echo "run unit tests"
-	@Rscript -e "devtools::test('paws.codegen')"
+unit: test-common test-codegen
 
 integration: ${INTEGRATION_TESTS}
 	@echo "run integration tests"
@@ -68,13 +67,25 @@ ${INTEGRATION_TESTS}:
 	  echo "$$PACKAGE: no tests"; \
 	fi
 
+common:
+	@echo "build and install common functions"
+	@cd paws.common && Rscript -e "devtools::document(); devtools::install(upgrade = FALSE)"
+
+test-common:
+	@echo "run unit tests for common functions"
+	@Rscript -e "devtools::test('paws.common')"
+
+codegen: common
+	@echo "build and install the code generator"
+	@cd paws.codegen && Rscript -e "devtools::document(); devtools::install(upgrade = FALSE)"
+
+test-codegen:
+	@echo "run unit tests for the code generator"
+	@Rscript -e "devtools::test('paws.codegen')"
+
 docs:
 	@echo "build project docs"
 	@Rscript -e "rmarkdown::render('README.Rmd')"
-
-codegen:
-	@echo "build and install the code generator"
-	@Rscript -e "devtools::document('paws.codegen'); devtools::install('paws.codegen')"
 
 deps:
 	@echo "get project dependencies"

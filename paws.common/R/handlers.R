@@ -1,6 +1,8 @@
 #' @include struct.R
 NULL
 
+# Create a list of request handlers.
+#
 # A handler list is a list of functions to apply to a request at a given stage
 # of a service request (e.g. validate, build, etc.).
 HandlerList <- function(..., after_each_fn = NULL) {
@@ -24,6 +26,7 @@ HandlerList <- function(..., after_each_fn = NULL) {
   return(l)
 }
 
+# Return a wrapped request handler.
 Handler <- function(fn, name = NULL) {
   handler <- list(
     fn = fn,
@@ -32,6 +35,8 @@ Handler <- function(fn, name = NULL) {
   return(handler)
 }
 
+# Create the list of request handlers for each stage of a request.
+#
 # A handlers object stores the handler lists for each stage of handling a
 # service request.
 Handlers <- struct(
@@ -50,15 +55,37 @@ Handlers <- struct(
 
 #-------------------------------------------------------------------------------
 
+#' Set or add to handler lists
+#'
+#' Set or add to a list of request-handling functions. Request-handling
+#' functions must take a request and return a request.
+#'
+#' @param existing An existing request handler list.
+#' @param ... One or more request-handling functions to add.
+#'
+#' @name handlers
+NULL
+
+#' @rdname handlers
+#' @export
+handlers_set <- function(...) {
+  h <- HandlerList(...)
+  return(h)
+}
+
 # Add a list of functions to an existing HandlerList.
-add_handlers_back <- function(existing, ...) {
+#' @rdname handlers
+#' @export
+handlers_add_back <- function(existing, ...) {
   h <- existing
   n <- HandlerList(...)
   h$list <- c(h$list, n$list)
   return(h)
 }
 
-add_handlers_front <- function(existing, ...) {
+#' @rdname handlers
+#' @export
+handlers_add_front <- function(existing, ...) {
   h <- existing
   n <- HandlerList(...)
   h$list <- c(n$list, h$list)

@@ -1,12 +1,10 @@
 # Build the request body for the REST XML protocol.
 restxml_build <- function(request) {
-
   request <- rest_build(request)
   t <- rest_payload_type(request$params)
   if (t == "structure" || t == "") {
     request <- xml_build_body(request)
   }
-
   return(request)
 }
 

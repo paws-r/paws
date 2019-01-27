@@ -1,4 +1,5 @@
 #' @include make_function.R
+#' @importFrom paws.common is_empty tag_add
 
 # Returns a function which translates an R object into a given API input/output
 # shape.
@@ -7,7 +8,7 @@ make_interface <- function(name, shape_name, api) {
   interface_template <- function(...) {
     args <- c(as.list(environment()), list(...))
     shape <- .SHAPE
-    return(populate(args, shape))
+    return(paws.common::populate(args, shape))
   }
   shape <- make_shape(list(shape = shape_name), api)
   params <- c("..." = bquote())

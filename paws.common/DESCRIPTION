@@ -1,0 +1,61 @@
+Package: paws.common
+Type: Package
+Title: Paws AWS SDK Common Functions
+Version: 0.1.0
+Authors@R: c(
+    person("David", "Kretch", email = "david.kretch@gmail.com", role = c("aut", "cre")),
+    person("Adam", "Banker", email = "adam.banker39@gmail.com", role = "aut"),
+    person("Amazon.com, Inc.", role = "cph")
+  )
+Description: paws.common provides common functions for the Paws AWS SDKs.
+License: Apache License (>= 2.0)
+Encoding: UTF-8
+LazyData: true
+Imports:
+    base64enc,
+    digest,
+    httr,
+    ini,
+    jsonlite,
+    methods,
+    utils,
+    xml2
+Suggests:
+    testthat
+SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
+RoxygenNote: 6.0.1
+Collate: 
+    'struct.R'
+    'handlers.R'
+    'url.R'
+    'net.R'
+    'credential_providers.R'
+    'credentials.R'
+    'client.R'
+    'config.R'
+    'convert.R'
+    'dateutil.R'
+    'error.R'
+    'handlers_core.R'
+    'handlers_ec2query.R'
+    'handlers_jsonrpc.R'
+    'handlers_query.R'
+    'handlers_rest.R'
+    'handlers_restjson.R'
+    'handlers_restxml.R'
+    'idempotency.R'
+    'jsonutil.R'
+    'populate.R'
+    'populateutil.R'
+    'tags.R'
+    'queryutil.R'
+    'request.R'
+    'service.R'
+    'signer_v4.R'
+    'signer_s3.R'
+    'signer_s3v4.R'
+    'signer_v2.R'
+    'time.R'
+    'util.R'
+    'xmlutil.R'
