@@ -11,9 +11,6 @@ Description: paws.codegen generates the Paws AWS SDKs for R.
 License: Apache License (>= 2.0)
 Encoding: UTF-8
 LazyData: true
-Suggests: 
-    paws.common,
-    testthat
 Imports:
     callr,
     desc,
@@ -22,11 +19,18 @@ Imports:
     glue,
     jsonlite,
     methods,
+    paws.common,
     rlang,
     rmarkdown,
     roxygen2,
     stringr,
     xml2
+Suggests: 
+    covr,
+    testthat
+Remotes:
+    paws-r/paws/paws.common@feature/common_package,
+    r-lib/covr
 SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 6.0.1
