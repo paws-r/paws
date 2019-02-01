@@ -4,8 +4,8 @@ cache: packages
 
 install:
   - R -e "devtools::install_deps('paws.common', dep = T)"
-  - R -e "devtools::install_deps('paws.codegen', dep = T)"
   - R -e "devtools::install('paws.common')"
+  - R -e "install.packages(setdiff(strsplit(packageDescription('paws.codegen', '.')\$Imports, ', ?\n?', perl = T)[[1]], 'paws.common'))"
 
 script:
   - R CMD build paws.common && R CMD check paws.common*.tar.gz
