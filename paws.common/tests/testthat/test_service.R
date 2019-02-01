@@ -33,6 +33,8 @@ test_that("new_service", {
     target_prefix = "baz"
   )
   handlers <- new_handlers("restxml", "v4")
+  # new_service needs a region.
+  Sys.setenv("AWS_REGION" = "region")
   service <- new_service(metadata, handlers)
 
   expect_equal(names(service$client_info), names(ClientInfo()))
