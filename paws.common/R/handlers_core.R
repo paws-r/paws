@@ -27,7 +27,7 @@ build_content_length_handler <- function(request) {
     }
   }
 
-  if (exists("len")) {
+  if (exists("len") && !is.null(len)) {
     request$http_request$content_length <- len
     request$http_request$header["Content-Length"] <- as.character(len)
   } else {

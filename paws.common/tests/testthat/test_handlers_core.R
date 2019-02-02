@@ -31,6 +31,12 @@ test_that("build_content_length_handler", {
   expect_equal(out$http_request$header[["Content-Length"]], "3")
 
   r <- Request()
+  r$body <- 123
+  out <- build_content_length_handler(r)
+  expect_equal(out$http_request$content_length, 0)
+  expect_null(out$http_request$header[["Content-Length"]])
+
+  r <- Request()
   r$http_request$header[["Content-Length"]] <- "123"
   out <- build_content_length_handler(r)
   expect_equal(out$http_request$content_length, 123)
