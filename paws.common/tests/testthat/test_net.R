@@ -8,5 +8,5 @@ test_that("issue", {
   resp <- issue(req)
   expect_equal(resp$status_code, 200)
   expect_error(body <- jsonlite::fromJSON(rawToChar(resp$body)), NA)
-  expect_equal(body$userId, 1)
+  expect_equal(body$id, 1)
 })
