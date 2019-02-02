@@ -1,6 +1,6 @@
 # Get code coverage for one or more directories, combine, and upload to Codecov.
 # Directories are provided as command line arguments.
-# e.g. `Rscript script/codecov.R paws.common paws.codegen`
+# e.g. `Rscript script/codecov.R paws.common make.paws`
 
 args <- commandArgs(trailingOnly = TRUE)
 
