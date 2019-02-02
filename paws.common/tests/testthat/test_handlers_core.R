@@ -44,12 +44,17 @@ test_that("build_content_length_handler", {
 
 test_that("validate_response_handler", {
   r <- Request()
+  r$http_response <- HttpResponse(status_code = 200)
+  out <- validate_response_handler(r)
+  expect_null(out$error)
+
+  r <- Request()
   r$http_response <- HttpResponse(status_code = "200")
   out <- validate_response_handler(r)
   expect_null(out$error)
 
   r <- Request()
-  r$http_response <- HttpResponse(status_code = "400")
+  r$http_response <- HttpResponse(status_code = 400)
   out <- validate_response_handler(r)
   expect_true(!is.null(out$error))
 
