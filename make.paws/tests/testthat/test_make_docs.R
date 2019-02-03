@@ -148,7 +148,7 @@ test_that("make_doc_desc with percent sign", {
   expect_equal(make_doc_desc(operation), expected)
 })
 
-test_that("make_doc_usage", {
+test_that("make_doc_accepted_params", {
   operation <- list(
     name = "operation",
     input = list(
@@ -206,18 +206,18 @@ test_that("make_doc_usage", {
     )
   )
 
-  actual <- make_doc_usage(operation, api)
+  actual <- make_doc_accepted_params(operation, api)
   expected <- paste(
-    "#' @usage",
-    "#' operation(",
-    "#'   Foo = \"string\",",
-    "#'   Bar = list(",
-    "#'     Baz = 123,",
-    "#'     Qux = 123.0,",
-    "#'     Quux = TRUE|FALSE,",
-    "#'     Quuz = \"a\"|\"b\"|\"c\"",
-    "#'   )",
-    "#' )",
+    "# Accepted parameters (not a runnable example):",
+    "operation(",
+    "  Foo = \"string\",",
+    "  Bar = list(",
+    "    Baz = 123,",
+    "    Qux = 123.0,",
+    "    Quux = TRUE|FALSE,",
+    "    Quuz = \"a\"|\"b\"|\"c\"",
+    "  )",
+    ")",
     sep = "\n"
   )
   expect_equal(actual, expected)

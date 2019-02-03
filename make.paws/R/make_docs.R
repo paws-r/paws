@@ -72,7 +72,7 @@ make_doc_accepted_params <- function(operation, api) {
     args <- mask(args, masks)
     call <- gsub("^list", op_name, list_to_string(args, quote = FALSE))
     call <- unmask(clean_example(call), masks)
-    accepted_params <- paste("# Accepted parameters (not a runnable example): ",
+    accepted_params <- paste("# Accepted parameters (not a runnable example):",
                              call, sep = "\n")
     return(accepted_params)
   }
@@ -110,7 +110,9 @@ make_doc_examples <- function(operation, api) {
   examples <- lapply(operation$examples, make_doc_example, op_name = func)
   result <- paste(examples, collapse = "\n\n")
   accepted_params <- make_doc_accepted_params(operation, api)
-  result <- paste(c(accepted_params, result), collapse = "\n\n")
+  if (nchar(accepted_params)) {
+    result <- paste(c(accepted_params, result), collapse = "\n\n")
+  }
   result <- paste(c("@examples", result), collapse = "\n")
   result <- comment(result, "#'")
   return(result)
