@@ -2,15 +2,13 @@
 make_docs <- function(operation, api) {
   title <- make_doc_title(operation)
   description <- make_doc_desc(operation)
-  usage <- make_doc_usage(operation, api)
   params <- make_doc_params(operation, api)
   return <- make_doc_return(operation)
-  examples <- make_doc_examples(operation)
+  examples <- make_doc_examples(operation, api)
   export <- "#' @export"
   docs <- glue::glue_collapse(
     c(title,
       description,
-      usage,
       params,
       # return,
       examples,
@@ -63,8 +61,8 @@ make_doc_params <- function(operation, api) {
   return(as.character(params))
 }
 
-# Return a string showing the operation's usage, including all parameters.
-make_doc_usage <- function(operation, api) {
+# Return a string showing the operation's accepted parameters.
+make_doc_accepted_params <- function(operation, api) {
   op_name <- get_operation_name(operation)
   shape_name <- operation$input$shape
   if (!is.null(shape_name)) {
@@ -74,8 +72,9 @@ make_doc_usage <- function(operation, api) {
     args <- mask(args, masks)
     call <- gsub("^list", op_name, list_to_string(args, quote = FALSE))
     call <- unmask(clean_example(call), masks)
-    usage <- comment(paste(c("@usage", call), collapse = "\n"), "#'")
-    return(usage)
+    accepted_params <- paste("# Accepted parameters (not a runnable example): ",
+                             call, sep = "\n")
+    return(accepted_params)
   }
   return("")
 }
@@ -106,10 +105,12 @@ make_doc_example <- function(example, op_name) {
 }
 
 # Make all operation examples provided in the operation object.
-make_doc_examples <- function(operation) {
+make_doc_examples <- function(operation, api) {
   func <- get_operation_name(operation)
   examples <- lapply(operation$examples, make_doc_example, op_name = func)
   result <- paste(examples, collapse = "\n\n")
+  accepted_params <- make_doc_accepted_params(operation, api)
+  result <- paste(c(accepted_params, result), collapse = "\n\n")
   result <- paste(c("@examples", result), collapse = "\n")
   result <- comment(result, "#'")
   return(result)
