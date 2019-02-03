@@ -1,4 +1,4 @@
-Package: paws.codegen
+Package: make.paws
 Type: Package
 Title: Generate Paws AWS SDKs for R
 Version: 0.1.0
@@ -7,7 +7,7 @@ Authors@R: c(
     person("Adam", "Banker", email = "adam.banker39@gmail.com", role = "aut"),
     person("Amazon.com, Inc.", role = "cph")
   )
-Description: paws.codegen generates the Paws AWS SDKs for R.
+Description: make.paws generates the Paws AWS SDKs for R.
 License: Apache License (>= 2.0)
 Encoding: UTF-8
 LazyData: true

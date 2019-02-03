@@ -4,12 +4,12 @@ cache: packages
 
 install:
   - R -e "devtools::install_deps('paws.common', dep = T)"
-  - R -e "devtools::install_deps('paws.codegen', dep = T)"
+  - R -e "devtools::install_deps('make.paws', dep = T)"
   - R -e "devtools::install('paws.common')"
 
 script:
   - R CMD build paws.common && R CMD check paws.common*.tar.gz
-  - R CMD build paws.codegen && R CMD check paws.codegen*.tar.gz
+  - R CMD build make.paws && R CMD check make.paws*.tar.gz
 
 after_success:
-  - Rscript script/codecov.R paws.common paws.codegen
+  - Rscript script/codecov.R paws.common make.paws
