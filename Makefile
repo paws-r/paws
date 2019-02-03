@@ -42,7 +42,7 @@ build: ${PACKAGES}
 ${PACKAGES}:
 	@echo "build $@"
 	@API=$$(grep -e "^$@\b" PACKAGES.txt | awk '{ print $$2 }') && \
-	Rscript -e "library(make.paws); make_package('$$API', '${IN_DIR}', '${OUT_DIR}')" && \
+	Rscript -e "library(paws.codegen); make_package('$$API', '${IN_DIR}', '${OUT_DIR}')" && \
 	${SCRIPT_DIR}/update_version.sh $@
 
 install: ${INSTALL_PACKAGES}
@@ -77,11 +77,11 @@ test-common:
 
 codegen: common
 	@echo "build and install the code generator"
-	@cd make.paws && Rscript -e "devtools::document(); devtools::install(upgrade = FALSE)"
+	@cd paws.codegen && Rscript -e "devtools::document(); devtools::install(upgrade = FALSE)"
 
 test-codegen:
 	@echo "run unit tests for the code generator"
-	@Rscript -e "devtools::test('make.paws')"
+	@Rscript -e "devtools::test('paws.codegen')"
 
 docs:
 	@echo "build project docs"
@@ -94,4 +94,4 @@ deps:
 update-deps: deps
 	@echo "update project dependencies"
 	@cd ${IN_DIR}; git pull origin master
-	@Rscript -e "library(make.paws); make_package_list('${IN_DIR}')" > PACKAGES.txt
+	@Rscript -e "library(paws.codegen); make_package_list('${IN_DIR}')" > PACKAGES.txt
