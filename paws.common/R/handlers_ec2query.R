@@ -1,0 +1,44 @@
+# Build the request for the EC2 protocol.
+ec2query_build <- function(request) {
+  body <- list(
+    Action = request$operation$name,
+    Version = request$client_info$api_version
+  )
+
+  body <- query_parse(body, request$params, TRUE)
+
+  if (!is_presigned(request)) {
+    request$http_request$method <- "POST"
+    request$http_request$header["Content-Type"] <- "application/x-www-form-urlencoded; charset=utf-8"
+    request$body <- encode(body)
+    request$http_request$body <- request$body
+  } else {
+    request$http_request$method <- "GET"
+    request$http_request$url$raw_query <- encode(body)
+  }
+  return(request)
+}
+
+# Unmarshal the response from an EC2 protocol response.
+ec2query_unmarshal <- function(request) {
+  body <- decode_xml(request$http_response$body)
+  data <- body[[1]]
+  request$data <- xml_parse(data, request$data)
+  return(request)
+}
+
+# Unmarshal metadata from an EC2 protocol response.
+# Do nothing; the EC2 protocol does not require unmarshalling metadata.
+ec2query_unmarshal_meta <- function(request) {
+  return(request)
+}
+
+# Unmarshal errors from an EC2 protocol response.
+ec2query_unmarshal_error <- function(request) {
+  body <- decode_xml(request$http_response$body)
+  data <- body[[1]]
+  code <- data$Errors$Error$Code
+  message <- data$Errors$Error$Message
+  request$error <- Error(code, message)
+  return(request)
+}

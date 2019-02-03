@@ -6,9 +6,9 @@ skip_branch_with_pr: true
 # Download script file from GitHub
 init:
   ps: |
-        $ErrorActionPreference = "Stop"
-        Invoke-WebRequest http://raw.github.com/krlmlr/r-appveyor/master/scripts/appveyor-tool.ps1 -OutFile "..\appveyor-tool.ps1"
-        Import-Module '..\appveyor-tool.ps1'
+    $ErrorActionPreference = "Stop"
+    Invoke-WebRequest http://raw.github.com/krlmlr/r-appveyor/master/scripts/appveyor-tool.ps1 -OutFile "..\appveyor-tool.ps1"
+    Import-Module '..\appveyor-tool.ps1'
 
 install:
   ps: Bootstrap
@@ -20,6 +20,7 @@ environment:
   USE_RTOOLS: true
   WARNINGS_ARE_ERRORS: 1
   matrix:
+    - TEST_DIR: paws.common
     - TEST_DIR: make.paws
 
 before_build:

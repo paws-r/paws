@@ -2,12 +2,14 @@ language: r
 
 cache: packages
 
-before_install:
-  - cd make.paws
+install:
+  - R -e "devtools::install_deps('paws.common', dep = T)"
+  - R -e "devtools::install_deps('make.paws', dep = T)"
+  - R -e "devtools::install('paws.common')"
 
-r_github_packages:
-  - r-lib/covr
+script:
+  - R CMD build paws.common && R CMD check paws.common*.tar.gz
+  - R CMD build make.paws && R CMD check make.paws*.tar.gz
 
 after_success:
-  - tar -C .. -xf $PKG_TARBALL
-  - Rscript -e 'covr::codecov()'
+  - Rscript script/codecov.R paws.common make.paws
