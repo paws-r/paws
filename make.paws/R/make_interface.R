@@ -8,7 +8,7 @@ make_interface <- function(name, shape_name, api) {
   interface_template <- function(...) {
     args <- c(as.list(environment()), list(...))
     shape <- .SHAPE
-    return(paws.common::populate(args, shape))
+    return(populate(args, shape))
   }
   shape <- make_shape(list(shape = shape_name), api)
   params <- c("..." = bquote())
@@ -23,7 +23,8 @@ make_interface <- function(name, shape_name, api) {
 
 # Avoid R check notes.
 utils::globalVariables(c(
-  ".SHAPE"
+  ".SHAPE",
+  "populate"
 ))
 
 make_empty_interface <- function(name) {
@@ -52,6 +53,10 @@ make_interfaces <- function(api) {
     output <- make_interface(output_name, output_shape, api)
     interfaces <- c(interfaces, output)
   }
+  interfaces <- add_roxygen_directive(
+    interfaces,
+    "@importFrom paws.common populate"
+  )
   return(interfaces)
 }
 

@@ -3,7 +3,7 @@ NULL
 
 # A template for R functions calling AWS API operations
 operation_template <- function() {
-  op <- paws.common::new_operation(
+  op <- new_operation(
     name = .OPERATION_NAME,
     http_method = .HTTP_METHOD,
     http_path = .HTTP_PATH,
@@ -12,8 +12,8 @@ operation_template <- function() {
   input <- .OPERATION_INPUT
   output <- .OPERATION_OUTPUT
   svc <- service()
-  request <- paws.common::new_request(svc, op, input, output)
-  response <- paws.common::send_request(request)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
   return(response)
 }
 
@@ -24,7 +24,10 @@ utils::globalVariables(c(
   ".HTTP_PATH",
   ".OPERATION_INPUT",
   ".OPERATION_OUTPUT",
-  "service"
+  "new_operation",
+  "service",
+  "new_request",
+  "send_request"
 ))
 
 # Make a function for a given API operation.
@@ -76,6 +79,10 @@ make_operations <- function(api) {
     operation <- make_operation(op, api)
     operations <- c(operations, operation)
   }
+  operations <- add_roxygen_directive(
+    operations,
+    "@importFrom paws.common new_operation new_request send_request"
+  )
   return(operations)
 }
 
