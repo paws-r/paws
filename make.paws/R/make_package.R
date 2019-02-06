@@ -40,6 +40,7 @@ write_description <- function(api, path, version) {
     Description = make_description(api),
     Depends = "R (>= 3.5.1)",
     Imports = make_imports(),
+    Remotes = "paws-r/paws/paws.common",
     License = "Apache License (>= 2.0)",
     Encoding = "UTF-8",
     LazyData = "true",
