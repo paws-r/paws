@@ -1,4 +1,5 @@
 #' @importFrom paws.common new_handlers new_service
+NULL
 
 METADATA <- list(
   service_name = ".SERVICE_NAME",
