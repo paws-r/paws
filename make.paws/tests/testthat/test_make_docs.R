@@ -206,9 +206,10 @@ test_that("make_doc_usage", {
     )
   )
 
-  actual <- make_doc_usage(operation, api)
+  actual <- make_doc_accepted_params(operation, api)
   expected <- paste(
-    "#' @usage",
+    "#' @section Accepted Parameters:",
+    "#' ```",
     "#' operation(",
     "#'   Foo = \"string\",",
     "#'   Bar = list(",
@@ -218,6 +219,7 @@ test_that("make_doc_usage", {
     "#'     Quuz = \"a\"|\"b\"|\"c\"",
     "#'   )",
     "#' )",
+    "#' ```",
     sep = "\n"
   )
   expect_equal(actual, expected)

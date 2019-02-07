@@ -2,7 +2,7 @@
 make_docs <- function(operation, api) {
   title <- make_doc_title(operation)
   description <- make_doc_desc(operation)
-  usage <- make_doc_usage(operation, api)
+  accepted_params <- make_doc_accepted_params(operation, api)
   params <- make_doc_params(operation, api)
   return <- make_doc_return(operation)
   examples <- make_doc_examples(operation)
@@ -10,7 +10,7 @@ make_docs <- function(operation, api) {
   docs <- glue::glue_collapse(
     c(title,
       description,
-      usage,
+      accepted_params,
       params,
       # return,
       examples,
@@ -63,8 +63,9 @@ make_doc_params <- function(operation, api) {
   return(as.character(params))
 }
 
-# Return a string showing the operation's usage, including all parameters.
-make_doc_usage <- function(operation, api) {
+# Return a string showing the operation's accepted parameters,
+# including all parameters.
+make_doc_accepted_params <- function(operation, api) {
   op_name <- get_operation_name(operation)
   shape_name <- operation$input$shape
   if (!is.null(shape_name)) {
@@ -74,8 +75,10 @@ make_doc_usage <- function(operation, api) {
     args <- mask(args, masks)
     call <- gsub("^list", op_name, list_to_string(args, quote = FALSE))
     call <- unmask(clean_example(call), masks)
-    usage <- comment(paste(c("@usage", call), collapse = "\n"), "#'")
-    return(usage)
+    call <- paste("```", call, "```", sep = "\n")
+    accepted_params <- comment(paste(c("@section Accepted Parameters:", call),
+                                     collapse = "\n"), "#'")
+    return(accepted_params)
   }
   return("")
 }
