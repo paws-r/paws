@@ -106,6 +106,7 @@ make_doc_example <- function(example, op_name) {
   args <- make_doc_example_args(example$input)
   call <- glue::glue("{op_name}({args})")
   call <- clean_example(call)
+  call <- paste0("\\donttest{", call, "}")
   desc <- comment(break_lines(example$description))
   result <- paste(desc, call, sep = "\n")
   return(result)

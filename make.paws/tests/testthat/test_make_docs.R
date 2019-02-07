@@ -281,12 +281,12 @@ test_that("make_doc_examples", {
   expected <- paste(
     "#' @examples",
     "#' # Description",
-    "#' operation(",
+    "#' \\donttest{operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
     "#'   )",
-    "#' )",
+    "#' )}",
     sep = "\n"
   )
   expect_equal(actual, expected)
@@ -313,15 +313,15 @@ test_that("make_doc_examples", {
   expected <- paste(
     "#' @examples",
     "#' # Description1",
-    "#' operation()",
+    "#' \\donttest{operation()}",
     "#' ",
     "#' # Description2",
-    "#' operation(",
+    "#' \\donttest{operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
     "#'   )",
-    "#' )",
+    "#' )}",
     sep = "\n"
   )
   expect_equal(actual, expected)
@@ -344,12 +344,12 @@ test_that("make_doc_examples", {
   expected <- paste(
     "#' @examples",
     "#' # Description, with a comma",
-    "#' operation(",
+    "#' \\donttest{operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
     "#'   )",
-    "#' )",
+    "#' )}",
     sep = "\n"
   )
   expect_equal(actual, expected)
@@ -372,12 +372,12 @@ test_that("make_doc_examples", {
   expected <- paste(
     "#' @examples",
     "#' # Description, with a comma",
-    "#' operation(",
+    "#' \\donttest{operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = \"a,b,c\"",
     "#'   )",
-    "#' )",
+    "#' )}",
     sep = "\n"
   )
   expect_equal(actual, expected)
