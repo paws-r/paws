@@ -1,4 +1,6 @@
 #' @include make_function.R
+#' @importFrom paws.common is_empty tag_add
+NULL
 
 # Returns a function which translates an R object into a given API input/output
 # shape.
@@ -22,7 +24,8 @@ make_interface <- function(name, shape_name, api) {
 
 # Avoid R check notes.
 utils::globalVariables(c(
-  ".SHAPE"
+  ".SHAPE",
+  "populate"
 ))
 
 make_empty_interface <- function(name) {
@@ -51,6 +54,10 @@ make_interfaces <- function(api) {
     output <- make_interface(output_name, output_shape, api)
     interfaces <- c(interfaces, output)
   }
+  interfaces <- add_roxygen_directive(
+    interfaces,
+    "@importFrom paws.common populate"
+  )
   return(interfaces)
 }
 

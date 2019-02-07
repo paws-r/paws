@@ -3,3 +3,8 @@
 export(make_package)
 export(make_package_list)
 export(run_tests)
+importFrom(paws.common,is_empty)
+importFrom(paws.common,tag_add)
+importFrom(paws.common,tag_get)
+importFrom(paws.common,tag_has)
+importFrom(paws.common,type)

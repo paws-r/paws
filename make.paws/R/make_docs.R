@@ -1,3 +1,6 @@
+#' @importFrom paws.common tag_get tag_has type
+NULL
+
 # Make an operation's Roxygen documentation.
 make_docs <- function(operation, api) {
   title <- make_doc_title(operation)
