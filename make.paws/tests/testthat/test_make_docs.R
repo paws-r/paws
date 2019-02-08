@@ -124,6 +124,10 @@ test_that("make_doc_title", {
   operation <- list(documentation = "<body><p>Foo. Bar.</p></body>")
   expected <- "#' Foo"
   expect_equal(make_doc_title(operation), expected)
+
+  operation <- list(documentation = "<body><p>Foo <a href='baz'>bar</a>.</p></body>")
+  expected <- "#' Foo bar"
+  expect_equal(make_doc_title(operation), expected)
 })
 
 test_that("make_doc_desc", {
