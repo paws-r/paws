@@ -263,6 +263,13 @@ test_that("make_doc_params", {
 })
 
 test_that("make_doc_examples", {
+
+  operation <- list(
+    name = "Operation"
+  )
+  actual <- make_doc_examples(operation)
+  expect_null(actual)
+
   operation <- list(
     name = "Operation",
     examples = list(

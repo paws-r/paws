@@ -38,8 +38,9 @@ write_description <- function(api, path, version) {
     Version = version,
     `Authors@R` = make_authors(),
     Description = make_description(api),
-    Depends = "R (>= 3.5.1)",
+    Depends = "R (>= 3.4.0)",
     Imports = make_imports(),
+    Suggests = "testthat",
     Remotes = "paws-r/paws/paws.common",
     License = "Apache License (>= 2.0)",
     Encoding = "UTF-8",
@@ -185,11 +186,6 @@ use_apl2_license <- function(path) {
   description$set("License" = "Apache License (>= 2.0)")
   description$normalize
   description$write()
-
-  package <- methods::getPackageName()
-  template <- system_file("templates/license-apache-2.0.md", package = package)
-  to <- file.path(path, "LICENSE.md")
-  file.copy(template, to)
 }
 
 # Make a title for the generated package.

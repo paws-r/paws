@@ -116,6 +116,7 @@ make_doc_example <- function(example, op_name) {
 make_doc_examples <- function(operation) {
   func <- get_operation_name(operation)
   examples <- lapply(operation$examples, make_doc_example, op_name = func)
+  if (length(examples) == 0) return(NULL)
   result <- paste(examples, collapse = "\n\n")
   result <- paste(c("@examples", result), collapse = "\n")
   result <- comment(result, "#'")
