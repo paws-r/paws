@@ -27,6 +27,7 @@ make_docs <- function(operation, api) {
 make_doc_title <- function(operation) {
   docs <- html_to_text(operation$documentation)
   title <- first_sentence(docs)
+  title <- mask(title, c("[" = "&#91;", "]" = "&#93;"))
   title <- glue::glue("#' {title}")
   return(as.character(title))
 }
