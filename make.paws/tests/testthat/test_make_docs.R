@@ -128,6 +128,10 @@ test_that("make_doc_title", {
   operation <- list(documentation = "<body><p>Foo <a href='baz'>bar</a>.</p></body>")
   expected <- "#' Foo bar"
   expect_equal(make_doc_title(operation), expected)
+
+  operation <- list(documentation = "<body><p>[In brackets] Outside brackets.</p></body>")
+  expected <- "#' &#91;In brackets&#93; Outside brackets"
+  expect_equal(make_doc_title(operation), expected)
 })
 
 test_that("make_doc_desc", {
