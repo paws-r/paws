@@ -25,8 +25,9 @@ make_docs <- function(operation, api) {
 
 # Make the documentation title.
 make_doc_title <- function(operation) {
-  docs <- convert(operation$documentation, wrap = FALSE)
+  docs <- html_to_text(operation$documentation)
   title <- first_sentence(docs)
+  title <- mask(title, c("[" = "&#91;", "]" = "&#93;"))
   title <- glue::glue("#' {title}")
   return(as.character(title))
 }
@@ -116,6 +117,7 @@ make_doc_example <- function(example, op_name) {
 make_doc_examples <- function(operation) {
   func <- get_operation_name(operation)
   examples <- lapply(operation$examples, make_doc_example, op_name = func)
+  if (length(examples) == 0) return(NULL)
   result <- paste(examples, collapse = "\n\n")
   result <- paste(c("@examples", result), collapse = "\n")
   result <- comment(result, "#'")
@@ -366,6 +368,17 @@ html_to_markdown <- function(html, wrap = TRUE) {
   markdown <- readLines(temp_out)
   result <- postprocess(markdown)
   result
+}
+
+html_to_text <- function(html) {
+  temp_in <- tempfile()
+  write_utf8(html, temp_in)
+  temp_out <- tempfile()
+  rmarkdown::pandoc_convert(temp_in, output = temp_out,
+                            from = "html", to = "plain",
+                            options = "--wrap=none")
+  result <- readLines(temp_out)
+  return(result)
 }
 
 # Convert documentation to Markdown.
