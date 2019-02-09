@@ -4,9 +4,7 @@
 \alias{get_celebrity_info}
 \title{Gets the name and additional information about a celebrity based on his or her Amazon Rekognition ID}
 \usage{
-get_celebrity_info(
-  Id = "string"
-)
+get_celebrity_info(Id)
 }
 \arguments{
 \item{Id}{[required] The ID for the celebrity. You get the celebrity ID from a call to the operation, which recognizes celebrities in an image.}
@@ -19,6 +17,10 @@ For more information, see Recognizing Celebrities in an Image in the Amazon Reko
 
 This operation requires permissions to perform the \code{rekognition:GetCelebrityInfo} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_celebrity_info(
+  Id = "string"
+)
 }
+}
+

@@ -4,7 +4,41 @@
 \alias{put_object_acl}
 \title{uses the acl subresource to set the access control list (ACL) permissions for an object that already exists in a bucket}
 \usage{
-put_object_acl(
+put_object_acl(ACL = NULL, AccessControlPolicy = NULL, Bucket,
+  ContentMD5 = NULL, GrantFullControl = NULL, GrantRead = NULL,
+  GrantReadACP = NULL, GrantWrite = NULL, GrantWriteACP = NULL, Key,
+  RequestPayer = NULL, VersionId = NULL)
+}
+\arguments{
+\item{ACL}{The canned ACL to apply to the object.}
+
+\item{AccessControlPolicy}{}
+
+\item{Bucket}{[required]}
+
+\item{ContentMD5}{}
+
+\item{GrantFullControl}{Allows grantee the read, write, read ACP, and write ACP permissions on the bucket.}
+
+\item{GrantRead}{Allows grantee to list the objects in the bucket.}
+
+\item{GrantReadACP}{Allows grantee to read the bucket ACL.}
+
+\item{GrantWrite}{Allows grantee to create, overwrite, and delete any object in the bucket.}
+
+\item{GrantWriteACP}{Allows grantee to write the ACL for the applicable bucket.}
+
+\item{Key}{[required]}
+
+\item{RequestPayer}{}
+
+\item{VersionId}{VersionId used to reference a specific version of the object.}
+}
+\description{
+uses the acl subresource to set the access control list (ACL) permissions for an object that already exists in a bucket
+}
+\section{Accepted Parameters}{
+\preformatted{put_object_acl(
   ACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"aws-exec-read"|"bucket-owner-read"|"bucket-owner-full-control",
   AccessControlPolicy = list(
     Grants = list(
@@ -36,39 +70,13 @@ put_object_acl(
   VersionId = "string"
 )
 }
-\arguments{
-\item{ACL}{The canned ACL to apply to the object.}
-
-\item{AccessControlPolicy}{}
-
-\item{Bucket}{[required]}
-
-\item{ContentMD5}{}
-
-\item{GrantFullControl}{Allows grantee the read, write, read ACP, and write ACP permissions on the bucket.}
-
-\item{GrantRead}{Allows grantee to list the objects in the bucket.}
-
-\item{GrantReadACP}{Allows grantee to read the bucket ACL.}
-
-\item{GrantWrite}{Allows grantee to create, overwrite, and delete any object in the bucket.}
-
-\item{GrantWriteACP}{Allows grantee to write the ACL for the applicable bucket.}
-
-\item{Key}{[required]}
-
-\item{RequestPayer}{}
-
-\item{VersionId}{VersionId used to reference a specific version of the object.}
 }
-\description{
-uses the acl subresource to set the access control list (ACL) permissions for an object that already exists in a bucket
-}
+
 \examples{
 # The following example adds grants to an object ACL. The first permission
 # grants user1 and user2 FULL_CONTROL and the AllUsers group READ
 # permission.
-put_object_acl(
+\donttest{put_object_acl(
   AccessControlPolicy = structure(
     list(),
     .Names = character(
@@ -79,6 +87,6 @@ put_object_acl(
   GrantFullControl = "emailaddress=user1@example.com,emailaddress=user2@example.com",
   GrantRead = "uri=http://acs.amazonaws.com/groups/global/AllUsers",
   Key = "HappyFace.jpg"
-)
+)}
 
 }

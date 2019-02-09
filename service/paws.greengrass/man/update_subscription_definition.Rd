@@ -4,10 +4,7 @@
 \alias{update_subscription_definition}
 \title{Updates a subscription definition}
 \usage{
-update_subscription_definition(
-  Name = "string",
-  SubscriptionDefinitionId = "string"
-)
+update_subscription_definition(Name = NULL, SubscriptionDefinitionId)
 }
 \arguments{
 \item{Name}{The name of the definition.}
@@ -17,6 +14,11 @@ update_subscription_definition(
 \description{
 Updates a subscription definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_subscription_definition(
+  Name = "string",
+  SubscriptionDefinitionId = "string"
+)
 }
+}
+

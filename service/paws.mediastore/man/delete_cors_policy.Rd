@@ -4,9 +4,7 @@
 \alias{delete_cors_policy}
 \title{Deletes the cross-origin resource sharing (CORS) configuration information that is set for the container}
 \usage{
-delete_cors_policy(
-  ContainerName = "string"
-)
+delete_cors_policy(ContainerName)
 }
 \arguments{
 \item{ContainerName}{[required] The name of the container to remove the policy from.}
@@ -17,6 +15,10 @@ Deletes the cross-origin resource sharing (CORS) configuration information that 
 \details{
 To use this operation, you must have permission to perform the \code{MediaStore:DeleteCorsPolicy} action. The container owner has this permission by default and can grant this permission to others.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_cors_policy(
+  ContainerName = "string"
+)
 }
+}
+

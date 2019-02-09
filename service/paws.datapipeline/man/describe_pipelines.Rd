@@ -4,11 +4,7 @@
 \alias{describe_pipelines}
 \title{Retrieves metadata about one or more pipelines}
 \usage{
-describe_pipelines(
-  pipelineIds = list(
-    "string"
-  )
-)
+describe_pipelines(pipelineIds)
 }
 \arguments{
 \item{pipelineIds}{[required] The IDs of the pipelines to describe. You can pass as many as 25 identifiers in a single call. To obtain pipeline IDs, call ListPipelines.}
@@ -19,6 +15,12 @@ Retrieves metadata about one or more pipelines. The information retrieved includ
 \details{
 To retrieve the full pipeline definition instead of metadata about the pipeline, call GetPipelineDefinition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_pipelines(
+  pipelineIds = list(
+    "string"
+  )
+)
 }
+}
+

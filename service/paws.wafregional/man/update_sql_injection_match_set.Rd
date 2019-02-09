@@ -4,22 +4,8 @@
 \alias{update_sql_injection_match_set}
 \title{Inserts or deletes SqlInjectionMatchTuple objects (filters) in a SqlInjectionMatchSet}
 \usage{
-update_sql_injection_match_set(
-  SqlInjectionMatchSetId = "string",
-  ChangeToken = "string",
-  Updates = list(
-    list(
-      Action = "INSERT"|"DELETE",
-      SqlInjectionMatchTuple = list(
-        FieldToMatch = list(
-          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-          Data = "string"
-        ),
-        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
-      )
-    )
-  )
-)
+update_sql_injection_match_set(SqlInjectionMatchSetId, ChangeToken,
+  Updates)
 }
 \arguments{
 \item{SqlInjectionMatchSetId}{[required] The \code{SqlInjectionMatchSetId} of the \code{SqlInjectionMatchSet} that you want to update. \code{SqlInjectionMatchSetId} is returned by CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets.}
@@ -45,7 +31,7 @@ Inserts or deletes SqlInjectionMatchTuple objects (filters) in a SqlInjectionMat
 
 You can only specify a single type of TextTransformation.
 
-You use \code{SqlInjectionMatchSet} objects to specify which CloudFront requests that you want to allow, block, or count. For example, if you're receiving requests that contain snippets of SQL code in the query string and you want to block the requests, you can create a \code{SqlInjectionMatchSet} with the applicable settings, and then configure AWS WAF to block the requests.
+You use \code{SqlInjectionMatchSet} objects to specify which CloudFront requests you want to allow, block, or count. For example, if you're receiving requests that contain snippets of SQL code in the query string and you want to block the requests, you can create a \code{SqlInjectionMatchSet} with the applicable settings, and then configure AWS WAF to block the requests.
 
 To create and configure a \code{SqlInjectionMatchSet}, perform the following steps:
 \enumerate{
@@ -56,11 +42,31 @@ To create and configure a \code{SqlInjectionMatchSet}, perform the following ste
 
 For more information about how to use the AWS WAF API to allow or block HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{update_sql_injection_match_set(
+  SqlInjectionMatchSetId = "string",
+  ChangeToken = "string",
+  Updates = list(
+    list(
+      Action = "INSERT"|"DELETE",
+      SqlInjectionMatchTuple = list(
+        FieldToMatch = list(
+          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+          Data = "string"
+        ),
+        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+      )
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following example deletes a SqlInjectionMatchTuple object (filters)
 # in a SQL injection match set with the ID
 # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-update_sql_injection_match_set(
+\donttest{update_sql_injection_match_set(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   SqlInjectionMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
   Updates = list(
@@ -74,6 +80,6 @@ update_sql_injection_match_set(
       )
     )
   )
-)
+)}
 
 }

@@ -4,23 +4,9 @@
 \alias{describe_instance_status}
 \title{Describes the status of one or more instances}
 \usage{
-describe_instance_status(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  InstanceIds = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE,
-  IncludeAllInstances = TRUE|FALSE
-)
+describe_instance_status(Filters = NULL, InstanceIds = NULL,
+  MaxResults = NULL, NextToken = NULL, DryRun = NULL,
+  IncludeAllInstances = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -65,12 +51,33 @@ Instance status includes the following components:
 \item \strong{Instance state} - You can manage your instances from the moment you launch them through their termination. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html}{Instance Lifecycle} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{describe_instance_status(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  InstanceIds = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string",
+  DryRun = TRUE|FALSE,
+  IncludeAllInstances = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example describes the current status of the specified instance.
-describe_instance_status(
+\donttest{describe_instance_status(
   InstanceIds = list(
     "i-1234567890abcdef0"
   )
-)
+)}
 
 }

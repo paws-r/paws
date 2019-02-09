@@ -4,11 +4,8 @@
 \alias{create_egress_only_internet_gateway}
 \title{[IPv6 only] Creates an egress-only internet gateway for your VPC}
 \usage{
-create_egress_only_internet_gateway(
-  ClientToken = "string",
-  DryRun = TRUE|FALSE,
-  VpcId = "string"
-)
+create_egress_only_internet_gateway(ClientToken = NULL, DryRun = NULL,
+  VpcId)
 }
 \arguments{
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
@@ -20,6 +17,12 @@ create_egress_only_internet_gateway(
 \description{
 [IPv6 only] Creates an egress-only internet gateway for your VPC. An egress-only internet gateway is used to enable outbound communication over IPv6 from instances in your VPC to the internet, and prevents hosts outside of your VPC from initiating an IPv6 connection with your instance.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_egress_only_internet_gateway(
+  ClientToken = "string",
+  DryRun = TRUE|FALSE,
+  VpcId = "string"
+)
 }
+}
+

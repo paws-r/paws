@@ -4,12 +4,8 @@
 \alias{put_bucket_policy}
 \title{Replaces a policy on a bucket}
 \usage{
-put_bucket_policy(
-  Bucket = "string",
-  ContentMD5 = "string",
-  ConfirmRemoveSelfBucketAccess = TRUE|FALSE,
-  Policy = "string"
-)
+put_bucket_policy(Bucket, ContentMD5 = NULL,
+  ConfirmRemoveSelfBucketAccess = NULL, Policy)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -23,11 +19,21 @@ put_bucket_policy(
 \description{
 Replaces a policy on a bucket. If the bucket already has a policy, the one in this request completely replaces it.
 }
+\section{Accepted Parameters}{
+\preformatted{put_bucket_policy(
+  Bucket = "string",
+  ContentMD5 = "string",
+  ConfirmRemoveSelfBucketAccess = TRUE|FALSE,
+  Policy = "string"
+)
+}
+}
+
 \examples{
 # The following example sets a permission policy on a bucket.
-put_bucket_policy(
+\donttest{put_bucket_policy(
   Bucket = "examplebucket",
   Policy = "{\\"Version\\": \\"2012-10-17\\", \\"Statement\\": [{ \\"Sid\\": \\"id-1\\",\\"Effect\\": \\"Allow\\",\\"Principal\\": {\\"AWS\\": \\"arn:aws:iam::123456789012:root\\"}, \\"Action\\": [ \\"s3:PutObject\\",\\"s3:PutObjectAcl\\"], \\"Resource\\": [\\"arn:aws:s3:::acl3/*\\" ] } ]}"
-)
+)}
 
 }

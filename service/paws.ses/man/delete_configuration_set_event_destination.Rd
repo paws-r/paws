@@ -4,10 +4,8 @@
 \alias{delete_configuration_set_event_destination}
 \title{Deletes a configuration set event destination}
 \usage{
-delete_configuration_set_event_destination(
-  ConfigurationSetName = "string",
-  EventDestinationName = "string"
-)
+delete_configuration_set_event_destination(ConfigurationSetName,
+  EventDestinationName)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set from which to delete the event destination.}
@@ -20,6 +18,11 @@ Deletes a configuration set event destination. Configuration set event destinati
 \details{
 You can execute this operation no more than once per second.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_configuration_set_event_destination(
+  ConfigurationSetName = "string",
+  EventDestinationName = "string"
+)
 }
+}
+

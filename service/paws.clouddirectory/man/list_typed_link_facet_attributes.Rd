@@ -4,12 +4,8 @@
 \alias{list_typed_link_facet_attributes}
 \title{Returns a paginated list of all attribute definitions for a particular TypedLinkFacet}
 \usage{
-list_typed_link_facet_attributes(
-  SchemaArn = "string",
-  Name = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_typed_link_facet_attributes(SchemaArn, Name, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.}
@@ -23,6 +19,13 @@ list_typed_link_facet_attributes(
 \description{
 Returns a paginated list of all attribute definitions for a particular TypedLinkFacet. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_typed_link_facet_attributes(
+  SchemaArn = "string",
+  Name = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

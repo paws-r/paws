@@ -4,32 +4,26 @@
 \alias{create_thing_type}
 \title{Creates a new thing type}
 \usage{
-create_thing_type(
+create_thing_type(thingTypeName, thingTypeProperties = NULL)
+}
+\arguments{
+\item{thingTypeName}{[required] The name of the thing type.}
+
+\item{thingTypeProperties}{The ThingTypeProperties for the thing type to create. It contains information about the new thing type including a description, and a list of searchable thing attribute names.}
+}
+\description{
+Creates a new thing type.
+}
+\section{Accepted Parameters}{
+\preformatted{create_thing_type(
   thingTypeName = "string",
   thingTypeProperties = list(
     thingTypeDescription = "string",
     searchableAttributes = list(
       "string"
     )
-  ),
-  tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
   )
 )
 }
-\arguments{
-\item{thingTypeName}{[required] The name of the thing type.}
-
-\item{thingTypeProperties}{The ThingTypeProperties for the thing type to create. It contains information about the new thing type including a description, and a list of searchable thing attribute names.}
-
-\item{tags}{Metadata which can be used to manage the thing type.}
 }
-\description{
-Creates a new thing type.
-}
-\examples{
 
-}

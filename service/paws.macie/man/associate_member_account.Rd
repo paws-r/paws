@@ -4,9 +4,7 @@
 \alias{associate_member_account}
 \title{Associates a specified AWS account with Amazon Macie as a member account}
 \usage{
-associate_member_account(
-  memberAccountId = "string"
-)
+associate_member_account(memberAccountId)
 }
 \arguments{
 \item{memberAccountId}{[required] The ID of the AWS account that you want to associate with Amazon Macie as a member account.}
@@ -14,6 +12,10 @@ associate_member_account(
 \description{
 Associates a specified AWS account with Amazon Macie as a member account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_member_account(
+  memberAccountId = "string"
+)
 }
+}
+

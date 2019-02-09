@@ -4,25 +4,9 @@
 \alias{send_raw_email}
 \title{Composes an email message and immediately queues it for sending}
 \usage{
-send_raw_email(
-  Source = "string",
-  Destinations = list(
-    "string"
-  ),
-  RawMessage = list(
-    Data = raw
-  ),
-  FromArn = "string",
-  SourceArn = "string",
-  ReturnPathArn = "string",
-  Tags = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  ConfigurationSetName = "string"
-)
+send_raw_email(Source = NULL, Destinations = NULL, RawMessage,
+  FromArn = NULL, SourceArn = NULL, ReturnPathArn = NULL,
+  Tags = NULL, ConfigurationSetName = NULL)
 }
 \arguments{
 \item{Source}{The identity's email address. If you do not provide a value for this parameter, you must specify a "From" address in the raw text of the message. (You can also specify both.)
@@ -103,9 +87,32 @@ For most common sending authorization scenarios, we recommend that you specify t
 \item For every message that you send, the total number of recipients (including each recipient in the To:, CC: and BCC: fields) is counted against the maximum number of emails you can send in a 24-hour period (your \emph{sending quota}). For more information about sending quotas in Amazon SES, see \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html}{Managing Your Amazon SES Sending Limits} in the \emph{Amazon SES Developer Guide.}
 }
 }
+\section{Accepted Parameters}{
+\preformatted{send_raw_email(
+  Source = "string",
+  Destinations = list(
+    "string"
+  ),
+  RawMessage = list(
+    Data = raw
+  ),
+  FromArn = "string",
+  SourceArn = "string",
+  ReturnPathArn = "string",
+  Tags = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  ConfigurationSetName = "string"
+)
+}
+}
+
 \examples{
 # The following example sends an email with an attachment:
-send_raw_email(
+\donttest{send_raw_email(
   Destinations = list(),
   FromArn = "",
   RawMessage = list(
@@ -114,6 +121,6 @@ send_raw_email(
   ReturnPathArn = "",
   Source = "",
   SourceArn = ""
-)
+)}
 
 }

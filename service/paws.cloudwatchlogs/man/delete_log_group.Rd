@@ -4,9 +4,7 @@
 \alias{delete_log_group}
 \title{Deletes the specified log group and permanently deletes all the archived log events associated with the log group}
 \usage{
-delete_log_group(
-  logGroupName = "string"
-)
+delete_log_group(logGroupName)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -14,6 +12,10 @@ delete_log_group(
 \description{
 Deletes the specified log group and permanently deletes all the archived log events associated with the log group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_log_group(
+  logGroupName = "string"
+)
 }
+}
+

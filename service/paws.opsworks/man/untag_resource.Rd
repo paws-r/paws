@@ -4,12 +4,7 @@
 \alias{untag_resource}
 \title{Removes tags from a specified stack or layer}
 \usage{
-untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
 \item{ResourceArn}{[required] The stack or layer's Amazon Resource Number (ARN).}
@@ -19,6 +14,13 @@ untag_resource(
 \description{
 Removes tags from a specified stack or layer.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{untag_resource(
+  ResourceArn = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
+}
+

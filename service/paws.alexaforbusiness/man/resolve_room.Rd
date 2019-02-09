@@ -4,10 +4,7 @@
 \alias{resolve_room}
 \title{Determines the details for the room from which a skill request was invoked}
 \usage{
-resolve_room(
-  UserId = "string",
-  SkillId = "string"
-)
+resolve_room(UserId, SkillId)
 }
 \arguments{
 \item{UserId}{[required] The ARN of the user. Required.}
@@ -17,6 +14,11 @@ resolve_room(
 \description{
 Determines the details for the room from which a skill request was invoked. This operation is used by skill developers.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{resolve_room(
+  UserId = "string",
+  SkillId = "string"
+)
 }
+}
+

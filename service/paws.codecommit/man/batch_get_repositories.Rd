@@ -4,11 +4,7 @@
 \alias{batch_get_repositories}
 \title{Returns information about one or more repositories}
 \usage{
-batch_get_repositories(
-  repositoryNames = list(
-    "string"
-  )
-)
+batch_get_repositories(repositoryNames)
 }
 \arguments{
 \item{repositoryNames}{[required] The names of the repositories to get information about.}
@@ -19,6 +15,12 @@ Returns information about one or more repositories.
 \details{
 The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_get_repositories(
+  repositoryNames = list(
+    "string"
+  )
+)
 }
+}
+

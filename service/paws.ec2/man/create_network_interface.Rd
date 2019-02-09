@@ -4,28 +4,10 @@
 \alias{create_network_interface}
 \title{Creates a network interface in the specified subnet}
 \usage{
-create_network_interface(
-  Description = "string",
-  DryRun = TRUE|FALSE,
-  Groups = list(
-    "string"
-  ),
-  Ipv6AddressCount = 123,
-  Ipv6Addresses = list(
-    list(
-      Ipv6Address = "string"
-    )
-  ),
-  PrivateIpAddress = "string",
-  PrivateIpAddresses = list(
-    list(
-      Primary = TRUE|FALSE,
-      PrivateIpAddress = "string"
-    )
-  ),
-  SecondaryPrivateIpAddressCount = 123,
-  SubnetId = "string"
-)
+create_network_interface(Description = NULL, DryRun = NULL,
+  Groups = NULL, Ipv6AddressCount = NULL, Ipv6Addresses = NULL,
+  PrivateIpAddress = NULL, PrivateIpAddresses = NULL,
+  SecondaryPrivateIpAddressCount = NULL, SubnetId)
 }
 \arguments{
 \item{Description}{A description for the network interface.}
@@ -54,15 +36,41 @@ Creates a network interface in the specified subnet.
 \details{
 For more information about network interfaces, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html}{Elastic Network Interfaces} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_network_interface(
+  Description = "string",
+  DryRun = TRUE|FALSE,
+  Groups = list(
+    "string"
+  ),
+  Ipv6AddressCount = 123,
+  Ipv6Addresses = list(
+    list(
+      Ipv6Address = "string"
+    )
+  ),
+  PrivateIpAddress = "string",
+  PrivateIpAddresses = list(
+    list(
+      Primary = TRUE|FALSE,
+      PrivateIpAddress = "string"
+    )
+  ),
+  SecondaryPrivateIpAddressCount = 123,
+  SubnetId = "string"
+)
+}
+}
+
 \examples{
 # This example creates a network interface for the specified subnet.
-create_network_interface(
+\donttest{create_network_interface(
   Description = "my network interface",
   Groups = list(
     "sg-903004f8"
   ),
   PrivateIpAddress = "10.0.2.17",
   SubnetId = "subnet-9d4a7b6c"
-)
+)}
 
 }

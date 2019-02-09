@@ -4,9 +4,7 @@
 \alias{stop_transform_job}
 \title{Stops a transform job}
 \usage{
-stop_transform_job(
-  TransformJobName = "string"
-)
+stop_transform_job(TransformJobName)
 }
 \arguments{
 \item{TransformJobName}{[required] The name of the transform job to stop.}
@@ -17,6 +15,10 @@ Stops a transform job.
 \details{
 When Amazon SageMaker receives a \code{StopTransformJob} request, the status of the job changes to \code{Stopping}. After Amazon SageMaker stops the job, the status is set to \code{Stopped}. When you stop a transform job before it is completed, Amazon SageMaker doesn't store the job's output in Amazon S3.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_transform_job(
+  TransformJobName = "string"
+)
 }
+}
+

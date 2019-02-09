@@ -4,13 +4,8 @@
 \alias{describe_subnet_groups}
 \title{Returns a list of subnet group descriptions}
 \usage{
-describe_subnet_groups(
-  SubnetGroupNames = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_subnet_groups(SubnetGroupNames = NULL, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{SubnetGroupNames}{The name of the subnet group.}
@@ -24,6 +19,14 @@ The value for \code{MaxResults} must be between 20 and 100.}
 \description{
 Returns a list of subnet group descriptions. If a subnet group name is specified, the list will contain only the description of that group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_subnet_groups(
+  SubnetGroupNames = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

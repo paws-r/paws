@@ -4,10 +4,7 @@
 \alias{create_progress_update_stream}
 \title{Creates a progress update stream which is an AWS resource used for access control as well as a namespace for migration task names that is implicitly linked to your AWS account}
 \usage{
-create_progress_update_stream(
-  ProgressUpdateStreamName = "string",
-  DryRun = TRUE|FALSE
-)
+create_progress_update_stream(ProgressUpdateStreamName, DryRun = NULL)
 }
 \arguments{
 \item{ProgressUpdateStreamName}{[required] The name of the ProgressUpdateStream.}
@@ -17,6 +14,11 @@ create_progress_update_stream(
 \description{
 Creates a progress update stream which is an AWS resource used for access control as well as a namespace for migration task names that is implicitly linked to your AWS account. It must uniquely identify the migration tool as it is used for all updates made by the tool; however, it does not need to be unique for each AWS account because it is scoped to the AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_progress_update_stream(
+  ProgressUpdateStreamName = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

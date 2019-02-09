@@ -4,7 +4,18 @@
 \alias{list_tags_for_resource}
 \title{Lists all tags on an Amazon Neptune resource}
 \usage{
-list_tags_for_resource(
+list_tags_for_resource(ResourceName, Filters = NULL)
+}
+\arguments{
+\item{ResourceName}{[required] The Amazon Neptune resource with tags to be listed. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see \href{http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing}{Constructing an Amazon Resource Name (ARN)}.}
+
+\item{Filters}{This parameter is not currently supported.}
+}
+\description{
+Lists all tags on an Amazon Neptune resource.
+}
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_resource(
   ResourceName = "string",
   Filters = list(
     list(
@@ -16,14 +27,5 @@ list_tags_for_resource(
   )
 )
 }
-\arguments{
-\item{ResourceName}{[required] The Amazon Neptune resource with tags to be listed. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see \href{http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing}{Constructing an Amazon Resource Name (ARN)}.}
+}
 
-\item{Filters}{This parameter is not currently supported.}
-}
-\description{
-Lists all tags on an Amazon Neptune resource.
-}
-\examples{
-
-}

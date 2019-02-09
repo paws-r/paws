@@ -4,9 +4,7 @@
 \alias{delete_cache_subnet_group}
 \title{Deletes a cache subnet group}
 \usage{
-delete_cache_subnet_group(
-  CacheSubnetGroupName = "string"
-)
+delete_cache_subnet_group(CacheSubnetGroupName)
 }
 \arguments{
 \item{CacheSubnetGroupName}{[required] The name of the cache subnet group to delete.
@@ -19,6 +17,10 @@ Deletes a cache subnet group.
 \details{
 You cannot delete a cache subnet group if it is associated with any clusters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_cache_subnet_group(
+  CacheSubnetGroupName = "string"
+)
 }
+}
+

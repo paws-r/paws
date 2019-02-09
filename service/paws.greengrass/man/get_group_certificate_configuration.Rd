@@ -4,16 +4,18 @@
 \alias{get_group_certificate_configuration}
 \title{Retrieves the current configuration for the CA used by the group}
 \usage{
-get_group_certificate_configuration(
-  GroupId = "string"
-)
+get_group_certificate_configuration(GroupId)
 }
 \arguments{
-\item{GroupId}{[required] The ID of the Greengrass group.}
+\item{GroupId}{[required] The ID of the AWS Greengrass group.}
 }
 \description{
 Retrieves the current configuration for the CA used by the group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_group_certificate_configuration(
+  GroupId = "string"
+)
 }
+}
+

@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.appsync_operations.R
 \name{create_type}
 \alias{create_type}
-\title{Creates a \code{Type} object}
+\title{Creates a Type object}
 \usage{
-create_type(
-  apiId = "string",
-  definition = "string",
-  format = "SDL"|"JSON"
-)
+create_type(apiId, definition, format)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
@@ -22,6 +18,12 @@ For more information, see the \href{http://graphql.org/learn/schema/}{GraphQL SD
 \description{
 Creates a \code{Type} object.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_type(
+  apiId = "string",
+  definition = "string",
+  format = "SDL"|"JSON"
+)
 }
+}
+

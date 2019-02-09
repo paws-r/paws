@@ -4,11 +4,7 @@
 \alias{reset_instance_attribute}
 \title{Resets an attribute of an instance to its default value}
 \usage{
-reset_instance_attribute(
-  Attribute = "instanceType"|"kernel"|"ramdisk"|"userData"|"disableApiTermination"|"instanceInitiatedShutdownBehavior"|"rootDeviceName"|"blockDeviceMapping"|"productCodes"|"sourceDestCheck"|"groupSet"|"ebsOptimized"|"sriovNetSupport"|"enaSupport",
-  DryRun = TRUE|FALSE,
-  InstanceId = "string"
-)
+reset_instance_attribute(Attribute, DryRun = NULL, InstanceId)
 }
 \arguments{
 \item{Attribute}{[required] The attribute to reset.
@@ -25,12 +21,21 @@ Resets an attribute of an instance to its default value. To reset the \code{kern
 \details{
 The \code{sourceDestCheck} attribute controls whether source/destination checking is enabled. The default value is \code{true}, which means checking is enabled. This value must be \code{false} for a NAT instance to perform NAT. For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html}{NAT Instances} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{reset_instance_attribute(
+  Attribute = "instanceType"|"kernel"|"ramdisk"|"userData"|"disableApiTermination"|"instanceInitiatedShutdownBehavior"|"rootDeviceName"|"blockDeviceMapping"|"productCodes"|"sourceDestCheck"|"groupSet"|"ebsOptimized"|"sriovNetSupport"|"enaSupport",
+  DryRun = TRUE|FALSE,
+  InstanceId = "string"
+)
+}
+}
+
 \examples{
 # This example resets the sourceDestCheck attribute for the specified
 # instance.
-reset_instance_attribute(
+\donttest{reset_instance_attribute(
   Attribute = "sourceDestCheck",
   InstanceId = "i-1234567890abcdef0"
-)
+)}
 
 }

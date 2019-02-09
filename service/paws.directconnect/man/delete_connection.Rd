@@ -4,9 +4,7 @@
 \alias{delete_connection}
 \title{Deletes the specified connection}
 \usage{
-delete_connection(
-  connectionId = "string"
-)
+delete_connection(connectionId)
 }
 \arguments{
 \item{connectionId}{[required] The ID of the connection.}
@@ -17,6 +15,10 @@ Deletes the specified connection.
 \details{
 Deleting a connection only stops the AWS Direct Connect port hour and data transfer charges. If you are partnering with any third parties to connect with the AWS Direct Connect location, you must cancel your service with them separately.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_connection(
+  connectionId = "string"
+)
 }
+}
+

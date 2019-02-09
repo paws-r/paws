@@ -4,7 +4,20 @@
 \alias{update_object_attributes}
 \title{Updates a given object's attributes}
 \usage{
-update_object_attributes(
+update_object_attributes(DirectoryArn, ObjectReference, AttributeUpdates)
+}
+\arguments{
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.}
+
+\item{ObjectReference}{[required] The reference that identifies the object.}
+
+\item{AttributeUpdates}{[required] The attributes update structure.}
+}
+\description{
+Updates a given object's attributes.
+}
+\section{Accepted Parameters}{
+\preformatted{update_object_attributes(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"
@@ -30,16 +43,5 @@ update_object_attributes(
   )
 )
 }
-\arguments{
-\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.}
-
-\item{ObjectReference}{[required] The reference that identifies the object.}
-
-\item{AttributeUpdates}{[required] The attributes update structure.}
 }
-\description{
-Updates a given object's attributes.
-}
-\examples{
 
-}

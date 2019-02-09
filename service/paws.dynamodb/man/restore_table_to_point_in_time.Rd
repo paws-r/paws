@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.dynamodb_operations.R
 \name{restore_table_to_point_in_time}
 \alias{restore_table_to_point_in_time}
-\title{Restores the specified table to the specified point in time within \code{EarliestRestorableDateTime} and \code{LatestRestorableDateTime}}
+\title{Restores the specified table to the specified point in time within EarliestRestorableDateTime and LatestRestorableDateTime}
 \usage{
-restore_table_to_point_in_time(
-  SourceTableName = "string",
-  TargetTableName = "string",
-  UseLatestRestorableTime = TRUE|FALSE,
-  RestoreDateTime = as.POSIXct("2015-01-01")
-)
+restore_table_to_point_in_time(SourceTableName, TargetTableName,
+  UseLatestRestorableTime = NULL, RestoreDateTime = NULL)
 }
 \arguments{
 \item{SourceTableName}{[required] Name of the source table that is being restored.}
@@ -47,6 +43,13 @@ You must manually set up the following on the restored table:
 \item Point in time recovery settings
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{restore_table_to_point_in_time(
+  SourceTableName = "string",
+  TargetTableName = "string",
+  UseLatestRestorableTime = TRUE|FALSE,
+  RestoreDateTime = as.POSIXct("2015-01-01")
+)
 }
+}
+

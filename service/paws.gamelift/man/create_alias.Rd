@@ -4,15 +4,7 @@
 \alias{create_alias}
 \title{Creates an alias for a fleet}
 \usage{
-create_alias(
-  Name = "string",
-  Description = "string",
-  RoutingStrategy = list(
-    Type = "SIMPLE"|"TERMINAL",
-    FleetId = "string",
-    Message = "string"
-  )
-)
+create_alias(Name, Description = NULL, RoutingStrategy)
 }
 \arguments{
 \item{Name}{[required] Descriptive label that is associated with an alias. Alias names do not need to be unique.}
@@ -39,6 +31,16 @@ Alias-related operations include:
 \item ResolveAlias
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_alias(
+  Name = "string",
+  Description = "string",
+  RoutingStrategy = list(
+    Type = "SIMPLE"|"TERMINAL",
+    FleetId = "string",
+    Message = "string"
+  )
+)
 }
+}
+

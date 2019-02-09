@@ -4,12 +4,8 @@
 \alias{register_certificate}
 \title{Registers a device certificate with AWS IoT}
 \usage{
-register_certificate(
-  certificatePem = "string",
-  caCertificatePem = "string",
-  setAsActive = TRUE|FALSE,
-  status = "ACTIVE"|"INACTIVE"|"REVOKED"|"PENDING_TRANSFER"|"REGISTER_INACTIVE"|"PENDING_ACTIVATION"
-)
+register_certificate(certificatePem, caCertificatePem = NULL,
+  setAsActive = NULL, status = NULL)
 }
 \arguments{
 \item{certificatePem}{[required] The certificate data, in PEM format.}
@@ -23,6 +19,13 @@ register_certificate(
 \description{
 Registers a device certificate with AWS IoT. If you have more than one CA certificate that has the same subject field, you must specify the CA certificate that was used to sign the device certificate being registered.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{register_certificate(
+  certificatePem = "string",
+  caCertificatePem = "string",
+  setAsActive = TRUE|FALSE,
+  status = "ACTIVE"|"INACTIVE"|"REVOKED"|"PENDING_TRANSFER"|"REGISTER_INACTIVE"|"PENDING_ACTIVATION"
+)
 }
+}
+

@@ -4,13 +4,7 @@
 \alias{create_log_group}
 \title{Creates a log group with the specified name}
 \usage{
-create_log_group(
-  logGroupName = "string",
-  kmsKeyId = "string",
-  tags = list(
-    "string"
-  )
-)
+create_log_group(logGroupName, kmsKeyId = NULL, tags = NULL)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -36,6 +30,14 @@ If you associate a AWS Key Management Service (AWS KMS) customer master key (CMK
 
 If you attempt to associate a CMK with the log group but the CMK does not exist or the CMK is disabled, you will receive an \code{InvalidParameterException} error.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_log_group(
+  logGroupName = "string",
+  kmsKeyId = "string",
+  tags = list(
+    "string"
+  )
+)
 }
+}
+

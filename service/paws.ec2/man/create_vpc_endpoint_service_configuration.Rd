@@ -4,14 +4,9 @@
 \alias{create_vpc_endpoint_service_configuration}
 \title{Creates a VPC endpoint service configuration to which service consumers (AWS accounts, IAM users, and IAM roles) can connect}
 \usage{
-create_vpc_endpoint_service_configuration(
-  DryRun = TRUE|FALSE,
-  AcceptanceRequired = TRUE|FALSE,
-  NetworkLoadBalancerArns = list(
-    "string"
-  ),
-  ClientToken = "string"
-)
+create_vpc_endpoint_service_configuration(DryRun = NULL,
+  AcceptanceRequired = NULL, NetworkLoadBalancerArns,
+  ClientToken = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -28,6 +23,15 @@ Creates a VPC endpoint service configuration to which service consumers (AWS acc
 \details{
 To create an endpoint service configuration, you must first create a Network Load Balancer for your service. For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/endpoint-service.html}{VPC Endpoint Services} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_vpc_endpoint_service_configuration(
+  DryRun = TRUE|FALSE,
+  AcceptanceRequired = TRUE|FALSE,
+  NetworkLoadBalancerArns = list(
+    "string"
+  ),
+  ClientToken = "string"
+)
 }
+}
+

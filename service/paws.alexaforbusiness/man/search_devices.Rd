@@ -4,7 +4,23 @@
 \alias{search_devices}
 \title{Searches devices and lists the ones that meet a set of filter criteria}
 \usage{
-search_devices(
+search_devices(NextToken = NULL, MaxResults = NULL, Filters = NULL,
+  SortCriteria = NULL)
+}
+\arguments{
+\item{NextToken}{An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by \code{MaxResults}.}
+
+\item{MaxResults}{The maximum number of results to include in the response. If more results exist than the specified \code{MaxResults} value, a token is included in the response so that the remaining results can be retrieved.}
+
+\item{Filters}{The filters to use to list a specified set of devices. Supported filter keys are DeviceName, DeviceStatus, DeviceStatusDetailCode, RoomName, DeviceType, DeviceSerialNumber, UnassociatedOnly, and ConnectionStatus (ONLINE and OFFLINE).}
+
+\item{SortCriteria}{The sort order to use in listing the specified set of devices. Supported sort keys are DeviceName, DeviceStatus, RoomName, DeviceType, DeviceSerialNumber, and ConnectionStatus.}
+}
+\description{
+Searches devices and lists the ones that meet a set of filter criteria.
+}
+\section{Accepted Parameters}{
+\preformatted{search_devices(
   NextToken = "string",
   MaxResults = 123,
   Filters = list(
@@ -23,18 +39,5 @@ search_devices(
   )
 )
 }
-\arguments{
-\item{NextToken}{An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by \code{MaxResults}.}
-
-\item{MaxResults}{The maximum number of results to include in the response. If more results exist than the specified \code{MaxResults} value, a token is included in the response so that the remaining results can be retrieved.}
-
-\item{Filters}{The filters to use to list a specified set of devices. Supported filter keys are DeviceName, DeviceStatus, DeviceStatusDetailCode, RoomName, DeviceType, DeviceSerialNumber, UnassociatedOnly, and ConnectionStatus (ONLINE and OFFLINE).}
-
-\item{SortCriteria}{The sort order to use in listing the specified set of devices. Supported sort keys are DeviceName, DeviceStatus, RoomName, DeviceType, DeviceSerialNumber, and ConnectionStatus.}
 }
-\description{
-Searches devices and lists the ones that meet a set of filter criteria.
-}
-\examples{
 
-}

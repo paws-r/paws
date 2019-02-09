@@ -4,15 +4,7 @@
 \alias{modify_cache_parameter_group}
 \title{Modifies the parameters of a cache parameter group}
 \usage{
-modify_cache_parameter_group(
-  CacheParameterGroupName = "string",
-  ParameterNameValues = list(
-    list(
-      ParameterName = "string",
-      ParameterValue = "string"
-    )
-  )
-)
+modify_cache_parameter_group(CacheParameterGroupName, ParameterNameValues)
 }
 \arguments{
 \item{CacheParameterGroupName}{[required] The name of the cache parameter group to modify.}
@@ -22,6 +14,16 @@ modify_cache_parameter_group(
 \description{
 Modifies the parameters of a cache parameter group. You can modify up to 20 parameters in a single request by submitting a list parameter name and value pairs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_cache_parameter_group(
+  CacheParameterGroupName = "string",
+  ParameterNameValues = list(
+    list(
+      ParameterName = "string",
+      ParameterValue = "string"
+    )
+  )
+)
 }
+}
+

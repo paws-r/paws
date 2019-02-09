@@ -4,10 +4,7 @@
 \alias{delete_user}
 \title{Deletes a user from the user pool}
 \usage{
-delete_user(
-  UserName = "string",
-  AuthenticationType = "API"|"SAML"|"USERPOOL"
-)
+delete_user(UserName, AuthenticationType)
 }
 \arguments{
 \item{UserName}{[required] The email address of the user.}
@@ -17,6 +14,11 @@ delete_user(
 \description{
 Deletes a user from the user pool.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_user(
+  UserName = "string",
+  AuthenticationType = "API"|"SAML"|"USERPOOL"
+)
 }
+}
+

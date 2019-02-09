@@ -4,14 +4,8 @@
 \alias{assign_private_ip_addresses}
 \title{Assigns one or more secondary private IP addresses to the specified network interface}
 \usage{
-assign_private_ip_addresses(
-  AllowReassignment = TRUE|FALSE,
-  NetworkInterfaceId = "string",
-  PrivateIpAddresses = list(
-    "string"
-  ),
-  SecondaryPrivateIpAddressCount = 123
-)
+assign_private_ip_addresses(AllowReassignment = NULL, NetworkInterfaceId,
+  PrivateIpAddresses = NULL, SecondaryPrivateIpAddressCount = NULL)
 }
 \arguments{
 \item{AllowReassignment}{Indicates whether to allow an IP address that is already assigned to another network interface or instance to be reassigned to the specified network interface.}
@@ -34,23 +28,35 @@ When you move a secondary private IP address to another network interface, any E
 
 Remapping an IP address is an asynchronous operation. When you move an IP address from one network interface to another, check \code{network/interfaces/macs/mac/local-ipv4s} in the instance metadata to confirm that the remapping is complete.
 }
+\section{Accepted Parameters}{
+\preformatted{assign_private_ip_addresses(
+  AllowReassignment = TRUE|FALSE,
+  NetworkInterfaceId = "string",
+  PrivateIpAddresses = list(
+    "string"
+  ),
+  SecondaryPrivateIpAddressCount = 123
+)
+}
+}
+
 \examples{
 # This example assigns the specified secondary private IP address to the
 # specified network interface.
-assign_private_ip_addresses(
+\donttest{assign_private_ip_addresses(
   NetworkInterfaceId = "eni-e5aa89a3",
   PrivateIpAddresses = list(
     "10.0.0.82"
   )
-)
+)}
 
 # This example assigns two secondary private IP addresses to the specified
 # network interface. Amazon EC2 automatically assigns these IP addresses
 # from the available IP addresses in the CIDR block range of the subnet
 # the network interface is associated with.
-assign_private_ip_addresses(
+\donttest{assign_private_ip_addresses(
   NetworkInterfaceId = "eni-e5aa89a3",
   SecondaryPrivateIpAddressCount = 2L
-)
+)}
 
 }

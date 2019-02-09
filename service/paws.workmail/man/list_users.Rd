@@ -4,11 +4,7 @@
 \alias{list_users}
 \title{Returns summaries of the organization's users}
 \usage{
-list_users(
-  OrganizationId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_users(OrganizationId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier for the organization under which the users exist.}
@@ -20,6 +16,12 @@ list_users(
 \description{
 Returns summaries of the organization's users.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_users(
+  OrganizationId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

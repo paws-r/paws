@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.ec2_operations.R
 \name{create_default_vpc}
 \alias{create_default_vpc}
-\title{Creates a default VPC with a size \code{/16} IPv4 CIDR block and a default subnet in each Availability Zone}
+\title{Creates a default VPC with a size /16 IPv4 CIDR block and a default subnet in each Availability Zone}
 \usage{
-create_default_vpc(
-  DryRun = TRUE|FALSE
-)
+create_default_vpc(DryRun = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -19,6 +17,10 @@ If you deleted your previous default VPC, you can create a default VPC. You cann
 
 If your account supports EC2-Classic, you cannot use this action to create a default VPC in a Region that supports EC2-Classic. If you want a default VPC in a Region that supports EC2-Classic, see "I really want a default VPC for my existing EC2 account. Is that possible?" in the \href{http://aws.amazon.com/vpc/faqs/#Default_VPCs}{Default VPCs FAQ}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_default_vpc(
+  DryRun = TRUE|FALSE
+)
 }
+}
+

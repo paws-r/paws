@@ -4,7 +4,20 @@
 \alias{update_campaign}
 \title{Use to update a campaign}
 \usage{
-update_campaign(
+update_campaign(ApplicationId, CampaignId, WriteCampaignRequest)
+}
+\arguments{
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+
+\item{CampaignId}{[required] The unique ID of the campaign.}
+
+\item{WriteCampaignRequest}{[required]}
+}
+\description{
+Use to update a campaign.
+}
+\section{Accepted Parameters}{
+\preformatted{update_campaign(
   ApplicationId = "string",
   CampaignId = "string",
   WriteCampaignRequest = list(
@@ -95,32 +108,7 @@ update_campaign(
         ),
         Schedule = list(
           EndTime = "string",
-          EventFilter = list(
-            Dimensions = list(
-              Attributes = list(
-                list(
-                  AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-                  Values = list(
-                    "string"
-                  )
-                )
-              ),
-              EventType = list(
-                DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-                Values = list(
-                  "string"
-                )
-              ),
-              Metrics = list(
-                list(
-                  ComparisonOperator = "string",
-                  Value = 123.0
-                )
-              )
-            ),
-            FilterType = "SYSTEM"|"ENDPOINT"
-          ),
-          Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
+          Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY",
           IsLocalTime = TRUE|FALSE,
           QuietTime = list(
             End = "string",
@@ -234,32 +222,7 @@ update_campaign(
     Name = "string",
     Schedule = list(
       EndTime = "string",
-      EventFilter = list(
-        Dimensions = list(
-          Attributes = list(
-            list(
-              AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-              Values = list(
-                "string"
-              )
-            )
-          ),
-          EventType = list(
-            DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-            Values = list(
-              "string"
-            )
-          ),
-          Metrics = list(
-            list(
-              ComparisonOperator = "string",
-              Value = 123.0
-            )
-          )
-        ),
-        FilterType = "SYSTEM"|"ENDPOINT"
-      ),
-      Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
+      Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY",
       IsLocalTime = TRUE|FALSE,
       QuietTime = list(
         End = "string",
@@ -275,16 +238,5 @@ update_campaign(
   )
 )
 }
-\arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
-
-\item{CampaignId}{[required] The unique ID of the campaign.}
-
-\item{WriteCampaignRequest}{[required]}
 }
-\description{
-Use to update a campaign.
-}
-\examples{
 
-}

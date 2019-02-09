@@ -4,12 +4,7 @@
 \alias{update_certificate_options}
 \title{Updates a certificate}
 \usage{
-update_certificate_options(
-  CertificateArn = "string",
-  Options = list(
-    CertificateTransparencyLoggingPreference = "ENABLED"|"DISABLED"
-  )
-)
+update_certificate_options(CertificateArn, Options)
 }
 \arguments{
 \item{CertificateArn}{[required] ARN of the requested certificate to update. This must be of the form:
@@ -21,6 +16,13 @@ update_certificate_options(
 \description{
 Updates a certificate. Currently, you can use this function to specify whether to opt in to or out of recording your certificate in a certificate transparency log. For more information, see \href{http://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency}{Opting Out of Certificate Transparency Logging}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_certificate_options(
+  CertificateArn = "string",
+  Options = list(
+    CertificateTransparencyLoggingPreference = "ENABLED"|"DISABLED"
+  )
+)
 }
+}
+

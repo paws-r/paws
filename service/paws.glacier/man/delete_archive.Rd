@@ -4,11 +4,7 @@
 \alias{delete_archive}
 \title{This operation deletes an archive from a vault}
 \usage{
-delete_archive(
-  accountId = "string",
-  vaultName = "string",
-  archiveId = "string"
-)
+delete_archive(accountId, vaultName, archiveId)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
@@ -32,12 +28,21 @@ An AWS account has full permission to perform all operations (actions). However,
 
 For conceptual information and underlying REST API, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/deleting-an-archive.html}{Deleting an Archive in Amazon Glacier} and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delete.html}{Delete Archive} in the \emph{Amazon Glacier Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_archive(
+  accountId = "string",
+  vaultName = "string",
+  archiveId = "string"
+)
+}
+}
+
 \examples{
 # The example deletes the archive specified by the archive ID.
-delete_archive(
+\donttest{delete_archive(
   accountId = "-",
   archiveId = "NkbByEejwEggmBz2fTHgJrg0XBoDfjP4q6iu87-TjhqG6eGoOY9Z8i1_AUyUsuhPAdTqLHy8pTl5nfCFJmDl2yEZONi5L26Omw12vcs01MNGntHEQL8MBfGlqrEXAMPLEArchiveId",
   vaultName = "examplevault"
-)
+)}
 
 }

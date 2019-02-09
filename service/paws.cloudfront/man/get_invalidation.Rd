@@ -4,10 +4,7 @@
 \alias{get_invalidation}
 \title{Get the information about an invalidation}
 \usage{
-get_invalidation(
-  DistributionId = "string",
-  Id = "string"
-)
+get_invalidation(DistributionId, Id)
 }
 \arguments{
 \item{DistributionId}{[required] The distribution's ID.}
@@ -17,6 +14,11 @@ get_invalidation(
 \description{
 Get the information about an invalidation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_invalidation(
+  DistributionId = "string",
+  Id = "string"
+)
 }
+}
+

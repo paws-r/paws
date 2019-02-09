@@ -4,9 +4,7 @@
 \alias{get_operation_detail}
 \title{This operation returns the current status of an operation that is not completed}
 \usage{
-get_operation_detail(
-  OperationId = "string"
-)
+get_operation_detail(OperationId)
 }
 \arguments{
 \item{OperationId}{[required] The identifier for the operation for which you want to get the status. Amazon Route 53 returned the identifier in the response to the original request.}
@@ -14,6 +12,10 @@ get_operation_detail(
 \description{
 This operation returns the current status of an operation that is not completed.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_operation_detail(
+  OperationId = "string"
+)
 }
+}
+

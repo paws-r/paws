@@ -2,23 +2,9 @@
 % Please edit documentation in R/paws.wafregional_operations.R
 \name{update_rate_based_rule}
 \alias{update_rate_based_rule}
-\title{Inserts or deletes Predicate objects in a rule and updates the \code{RateLimit} in the rule}
+\title{Inserts or deletes Predicate objects in a rule and updates the RateLimit in the rule}
 \usage{
-update_rate_based_rule(
-  RuleId = "string",
-  ChangeToken = "string",
-  Updates = list(
-    list(
-      Action = "INSERT"|"DELETE",
-      Predicate = list(
-        Negated = TRUE|FALSE,
-        Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
-        DataId = "string"
-      )
-    )
-  ),
-  RateLimit = 123
-)
+update_rate_based_rule(RuleId, ChangeToken, Updates, RateLimit)
 }
 \arguments{
 \item{RuleId}{[required] The \code{RuleId} of the \code{RateBasedRule} that you want to update. \code{RuleId} is returned by \code{CreateRateBasedRule} and by ListRateBasedRules.}
@@ -56,6 +42,22 @@ Further, you specify a \code{RateLimit} of 15,000.
 
 By adding this \code{RateBasedRule} to a \code{WebACL}, you could limit requests to your login page without affecting the rest of your site.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_rate_based_rule(
+  RuleId = "string",
+  ChangeToken = "string",
+  Updates = list(
+    list(
+      Action = "INSERT"|"DELETE",
+      Predicate = list(
+        Negated = TRUE|FALSE,
+        Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
+        DataId = "string"
+      )
+    )
+  ),
+  RateLimit = 123
+)
 }
+}
+

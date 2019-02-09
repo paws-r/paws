@@ -4,7 +4,18 @@
 \alias{put_bucket_notification_configuration}
 \title{Enables notifications of specified events for a bucket}
 \usage{
-put_bucket_notification_configuration(
+put_bucket_notification_configuration(Bucket, NotificationConfiguration)
+}
+\arguments{
+\item{Bucket}{[required]}
+
+\item{NotificationConfiguration}{[required]}
+}
+\description{
+Enables notifications of specified events for a bucket.
+}
+\section{Accepted Parameters}{
+\preformatted{put_bucket_notification_configuration(
   Bucket = "string",
   NotificationConfiguration = list(
     TopicConfigurations = list(
@@ -12,7 +23,7 @@ put_bucket_notification_configuration(
         Id = "string",
         TopicArn = "string",
         Events = list(
-          "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"
+          "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"
         ),
         Filter = list(
           Key = list(
@@ -31,7 +42,7 @@ put_bucket_notification_configuration(
         Id = "string",
         QueueArn = "string",
         Events = list(
-          "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"
+          "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"
         ),
         Filter = list(
           Key = list(
@@ -50,7 +61,7 @@ put_bucket_notification_configuration(
         Id = "string",
         LambdaFunctionArn = "string",
         Events = list(
-          "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"
+          "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"
         ),
         Filter = list(
           Key = list(
@@ -67,18 +78,12 @@ put_bucket_notification_configuration(
   )
 )
 }
-\arguments{
-\item{Bucket}{[required]}
+}
 
-\item{NotificationConfiguration}{[required]}
-}
-\description{
-Enables notifications of specified events for a bucket.
-}
 \examples{
 # The following example sets notification configuration on a bucket to
 # publish the object created events to an SNS topic.
-put_bucket_notification_configuration(
+\donttest{put_bucket_notification_configuration(
   Bucket = "examplebucket",
   NotificationConfiguration = list(
     TopicConfigurations = list(
@@ -90,6 +95,6 @@ put_bucket_notification_configuration(
       )
     )
   )
-)
+)}
 
 }

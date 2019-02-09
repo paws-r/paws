@@ -4,13 +4,8 @@
 \alias{describe_launch_configurations}
 \title{Describes one or more launch configurations}
 \usage{
-describe_launch_configurations(
-  LaunchConfigurationNames = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxRecords = 123
-)
+describe_launch_configurations(LaunchConfigurationNames = NULL,
+  NextToken = NULL, MaxRecords = NULL)
 }
 \arguments{
 \item{LaunchConfigurationNames}{The launch configuration names. If you omit this parameter, all launch configurations are described.}
@@ -22,12 +17,23 @@ describe_launch_configurations(
 \description{
 Describes one or more launch configurations.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_launch_configurations(
+  LaunchConfigurationNames = list(
+    "string"
+  ),
+  NextToken = "string",
+  MaxRecords = 123
+)
+}
+}
+
 \examples{
 # This example describes the specified launch configuration.
-describe_launch_configurations(
+\donttest{describe_launch_configurations(
   LaunchConfigurationNames = list(
     "my-launch-config"
   )
-)
+)}
 
 }

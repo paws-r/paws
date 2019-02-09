@@ -4,11 +4,7 @@
 \alias{list_volumes}
 \title{Lists the iSCSI stored volumes of a gateway}
 \usage{
-list_volumes(
-  GatewayARN = "string",
-  Marker = "string",
-  Limit = 123
-)
+list_volumes(GatewayARN = NULL, Marker = NULL, Limit = NULL)
 }
 \arguments{
 \item{GatewayARN}{}
@@ -23,13 +19,22 @@ Lists the iSCSI stored volumes of a gateway. Results are sorted by volume ARN. T
 \details{
 The operation supports pagination. By default, the operation returns a maximum of up to 100 volumes. You can optionally specify the \code{Limit} field in the body to limit the number of volumes in the response. If the number of volumes returned in the response is truncated, the response includes a Marker field. You can use this Marker value in your subsequent request to retrieve the next set of volumes. This operation is only supported in the cached volume and stored volume gateway types.
 }
+\section{Accepted Parameters}{
+\preformatted{list_volumes(
+  GatewayARN = "string",
+  Marker = "string",
+  Limit = 123
+)
+}
+}
+
 \examples{
 # Lists the iSCSI stored volumes of a gateway. Results are sorted by
 # volume ARN up to a maximum of 100 volumes.
-list_volumes(
+\donttest{list_volumes(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
   Limit = 2L,
   Marker = "1"
-)
+)}
 
 }

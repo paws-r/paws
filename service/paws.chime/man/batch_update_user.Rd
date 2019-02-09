@@ -4,15 +4,7 @@
 \alias{batch_update_user}
 \title{Updates user details within the UpdateUserRequestItem object for up to 20 users for the specified Amazon Chime account}
 \usage{
-batch_update_user(
-  AccountId = "string",
-  UpdateUserRequestItems = list(
-    list(
-      UserId = "string",
-      LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial"
-    )
-  )
-)
+batch_update_user(AccountId, UpdateUserRequestItems)
 }
 \arguments{
 \item{AccountId}{[required] The Amazon Chime account ID.}
@@ -22,6 +14,16 @@ batch_update_user(
 \description{
 Updates user details within the UpdateUserRequestItem object for up to 20 users for the specified Amazon Chime account. Currently, only \code{LicenseType} updates are supported for this action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_update_user(
+  AccountId = "string",
+  UpdateUserRequestItems = list(
+    list(
+      UserId = "string",
+      LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial"
+    )
+  )
+)
 }
+}
+

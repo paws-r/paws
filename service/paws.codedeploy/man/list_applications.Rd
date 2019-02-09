@@ -4,9 +4,7 @@
 \alias{list_applications}
 \title{Lists the applications registered with the applicable IAM user or AWS account}
 \usage{
-list_applications(
-  nextToken = "string"
-)
+list_applications(nextToken = NULL)
 }
 \arguments{
 \item{nextToken}{An identifier returned from the previous list applications call. It can be used to return the next set of applications in the list.}
@@ -14,6 +12,10 @@ list_applications(
 \description{
 Lists the applications registered with the applicable IAM user or AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_applications(
+  nextToken = "string"
+)
 }
+}
+

@@ -4,14 +4,7 @@
 \alias{get_resources}
 \title{Lists information about a collection of Resource resources}
 \usage{
-get_resources(
-  restApiId = "string",
-  position = "string",
-  limit = 123,
-  embed = list(
-    "string"
-  )
-)
+get_resources(restApiId, position = NULL, limit = NULL, embed = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -25,6 +18,15 @@ get_resources(
 \description{
 Lists information about a collection of Resource resources.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_resources(
+  restApiId = "string",
+  position = "string",
+  limit = 123,
+  embed = list(
+    "string"
+  )
+)
 }
+}
+

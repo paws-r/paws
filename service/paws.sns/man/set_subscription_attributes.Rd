@@ -4,29 +4,27 @@
 \alias{set_subscription_attributes}
 \title{Allows a subscription owner to set an attribute of the subscription to a new value}
 \usage{
-set_subscription_attributes(
-  SubscriptionArn = "string",
-  AttributeName = "string",
-  AttributeValue = "string"
-)
+set_subscription_attributes(SubscriptionArn, AttributeName,
+  AttributeValue = NULL)
 }
 \arguments{
 \item{SubscriptionArn}{[required] The ARN of the subscription to modify.}
 
-\item{AttributeName}{[required] A map of attributes with their corresponding values.
+\item{AttributeName}{[required] The name of the attribute you want to set. Only a subset of the subscriptions attributes are mutable.
 
-The following lists the names, descriptions, and values of the special request parameters that the \code{SetTopicAttributes} action uses:
-\itemize{
-\item \code{DeliveryPolicy} -- The policy that defines how Amazon SNS retries failed deliveries to HTTP/S endpoints.
-\item \code{FilterPolicy} -- The simple JSON object that lets your subscriber receive only a subset of messages, rather than receiving every message published to the topic.
-\item \code{RawMessageDelivery} -- When set to \code{true}, enables raw message delivery to Amazon SQS or HTTP/S endpoints. This eliminates the need for the endpoints to process JSON formatting, which is otherwise created for Amazon SNS metadata.
-}}
+Valid values: \code{DeliveryPolicy} | \code{FilterPolicy} | \code{RawMessageDelivery}}
 
 \item{AttributeValue}{The new value for the attribute in JSON format.}
 }
 \description{
 Allows a subscription owner to set an attribute of the subscription to a new value.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_subscription_attributes(
+  SubscriptionArn = "string",
+  AttributeName = "string",
+  AttributeValue = "string"
+)
 }
+}
+

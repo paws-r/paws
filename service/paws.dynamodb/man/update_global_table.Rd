@@ -4,19 +4,7 @@
 \alias{update_global_table}
 \title{Adds or removes replicas in the specified global table}
 \usage{
-update_global_table(
-  GlobalTableName = "string",
-  ReplicaUpdates = list(
-    list(
-      Create = list(
-        RegionName = "string"
-      ),
-      Delete = list(
-        RegionName = "string"
-      )
-    )
-  )
-)
+update_global_table(GlobalTableName, ReplicaUpdates)
 }
 \arguments{
 \item{GlobalTableName}{[required] The global table name.}
@@ -36,6 +24,20 @@ If global secondary indexes are specified, then the following conditions must al
 \item The global secondary indexes must have the same provisioned and maximum write capacity units.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_global_table(
+  GlobalTableName = "string",
+  ReplicaUpdates = list(
+    list(
+      Create = list(
+        RegionName = "string"
+      ),
+      Delete = list(
+        RegionName = "string"
+      )
+    )
+  )
+)
 }
+}
+

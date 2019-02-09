@@ -4,14 +4,8 @@
 \alias{invoke_device_method}
 \title{Given a device ID, issues a request to invoke a named device method (with possible parameters)}
 \usage{
-invoke_device_method(
-  DeviceId = "string",
-  DeviceMethod = list(
-    DeviceType = "string",
-    MethodName = "string"
-  ),
-  DeviceMethodParameters = "string"
-)
+invoke_device_method(DeviceId, DeviceMethod = NULL,
+  DeviceMethodParameters = NULL)
 }
 \arguments{
 \item{DeviceId}{[required] The unique identifier of the device.}
@@ -23,6 +17,15 @@ invoke_device_method(
 \description{
 Given a device ID, issues a request to invoke a named device method (with possible parameters). See the "Example POST" code snippet below.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{invoke_device_method(
+  DeviceId = "string",
+  DeviceMethod = list(
+    DeviceType = "string",
+    MethodName = "string"
+  ),
+  DeviceMethodParameters = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{logout_user}
 \title{Logs out the specified user from all of the devices they are currently logged into}
 \usage{
-logout_user(
-  AccountId = "string",
-  UserId = "string"
-)
+logout_user(AccountId, UserId)
 }
 \arguments{
 \item{AccountId}{[required] The Amazon Chime account ID.}
@@ -17,6 +14,11 @@ logout_user(
 \description{
 Logs out the specified user from all of the devices they are currently logged into.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{logout_user(
+  AccountId = "string",
+  UserId = "string"
+)
 }
+}
+

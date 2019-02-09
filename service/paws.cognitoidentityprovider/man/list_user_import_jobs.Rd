@@ -4,11 +4,7 @@
 \alias{list_user_import_jobs}
 \title{Lists the user import jobs}
 \usage{
-list_user_import_jobs(
-  UserPoolId = "string",
-  MaxResults = 123,
-  PaginationToken = "string"
-)
+list_user_import_jobs(UserPoolId, MaxResults, PaginationToken = NULL)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool that the users are being imported into.}
@@ -20,6 +16,12 @@ list_user_import_jobs(
 \description{
 Lists the user import jobs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_user_import_jobs(
+  UserPoolId = "string",
+  MaxResults = 123,
+  PaginationToken = "string"
+)
 }
+}
+

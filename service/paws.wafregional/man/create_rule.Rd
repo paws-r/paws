@@ -2,23 +2,19 @@
 % Please edit documentation in R/paws.wafregional_operations.R
 \name{create_rule}
 \alias{create_rule}
-\title{Creates a \code{Rule}, which contains the \code{IPSet} objects, \code{ByteMatchSet} objects, and other predicates that identify the requests that you want to block}
+\title{Creates a Rule, which contains the IPSet objects, ByteMatchSet objects, and other predicates that identify the requests that you want to block}
 \usage{
-create_rule(
-  Name = "string",
-  MetricName = "string",
-  ChangeToken = "string"
-)
+create_rule(Name, MetricName, ChangeToken)
 }
 \arguments{
 \item{Name}{[required] A friendly name or description of the Rule. You can't change the name of a \code{Rule} after you create it.}
 
-\item{MetricName}{[required] A friendly name or description for the metrics for this \code{Rule}. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain white space. You can't change the name of the metric after you create the \code{Rule}.}
+\item{MetricName}{[required] A friendly name or description for the metrics for this \code{Rule}. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the \code{Rule}.}
 
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
-Creates a \code{Rule}, which contains the \code{IPSet} objects, \code{ByteMatchSet} objects, and other predicates that identify the requests that you want to block. If you add more than one predicate to a \code{Rule}, a request must match all of the specifications to be allowed or blocked. For example, suppose that you add the following to a \code{Rule}:
+Creates a \code{Rule}, which contains the \code{IPSet} objects, \code{ByteMatchSet} objects, and other predicates that identify the requests that you want to block. If you add more than one predicate to a \code{Rule}, a request must match all of the specifications to be allowed or blocked. For example, suppose you add the following to a \code{Rule}:
 }
 \details{
 \itemize{
@@ -40,12 +36,21 @@ To create and configure a \code{Rule}, perform the following steps:
 
 For more information about how to use the AWS WAF API to allow or block HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_rule(
+  Name = "string",
+  MetricName = "string",
+  ChangeToken = "string"
+)
+}
+}
+
 \examples{
 # The following example creates a rule named WAFByteHeaderRule.
-create_rule(
+\donttest{create_rule(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   MetricName = "WAFByteHeaderRule",
   Name = "WAFByteHeaderRule"
-)
+)}
 
 }

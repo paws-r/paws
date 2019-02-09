@@ -4,11 +4,7 @@
 \alias{get_console_screenshot}
 \title{Retrieve a JPG-format screenshot of a running instance to help with troubleshooting}
 \usage{
-get_console_screenshot(
-  DryRun = TRUE|FALSE,
-  InstanceId = "string",
-  WakeUp = TRUE|FALSE
-)
+get_console_screenshot(DryRun = NULL, InstanceId, WakeUp = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -23,6 +19,12 @@ Retrieve a JPG-format screenshot of a running instance to help with troubleshoot
 \details{
 The returned content is Base64-encoded.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_console_screenshot(
+  DryRun = TRUE|FALSE,
+  InstanceId = "string",
+  WakeUp = TRUE|FALSE
+)
 }
+}
+

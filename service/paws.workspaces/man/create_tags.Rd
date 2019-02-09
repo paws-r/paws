@@ -4,7 +4,18 @@
 \alias{create_tags}
 \title{Creates the specified tags for the specified WorkSpace}
 \usage{
-create_tags(
+create_tags(ResourceId, Tags)
+}
+\arguments{
+\item{ResourceId}{[required] The ID of the WorkSpace. To find this ID, use DescribeWorkspaces.}
+
+\item{Tags}{[required] The tags. Each WorkSpace can have a maximum of 50 tags.}
+}
+\description{
+Creates the specified tags for the specified WorkSpace.
+}
+\section{Accepted Parameters}{
+\preformatted{create_tags(
   ResourceId = "string",
   Tags = list(
     list(
@@ -14,14 +25,5 @@ create_tags(
   )
 )
 }
-\arguments{
-\item{ResourceId}{[required] The identifier of the WorkSpace. To find this ID, use DescribeWorkspaces.}
+}
 
-\item{Tags}{[required] The tags. Each WorkSpace can have a maximum of 50 tags.}
-}
-\description{
-Creates the specified tags for the specified WorkSpace.
-}
-\examples{
-
-}

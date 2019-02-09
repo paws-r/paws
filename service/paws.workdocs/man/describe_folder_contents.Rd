@@ -4,16 +4,9 @@
 \alias{describe_folder_contents}
 \title{Describes the contents of the specified folder, including its documents and subfolders}
 \usage{
-describe_folder_contents(
-  AuthenticationToken = "string",
-  FolderId = "string",
-  Sort = "DATE"|"NAME",
-  Order = "ASCENDING"|"DESCENDING",
-  Limit = 123,
-  Marker = "string",
-  Type = "ALL"|"DOCUMENT"|"FOLDER",
-  Include = "string"
-)
+describe_folder_contents(AuthenticationToken = NULL, FolderId,
+  Sort = NULL, Order = NULL, Limit = NULL, Marker = NULL,
+  Type = NULL, Include = NULL)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
@@ -38,6 +31,17 @@ Describes the contents of the specified folder, including its documents and subf
 \details{
 By default, Amazon WorkDocs returns the first 100 active document and folder metadata items. If there are more results, the response includes a marker that you can use to request the next set of results. You can also request initialized documents.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_folder_contents(
+  AuthenticationToken = "string",
+  FolderId = "string",
+  Sort = "DATE"|"NAME",
+  Order = "ASCENDING"|"DESCENDING",
+  Limit = 123,
+  Marker = "string",
+  Type = "ALL"|"DOCUMENT"|"FOLDER",
+  Include = "string"
+)
 }
+}
+

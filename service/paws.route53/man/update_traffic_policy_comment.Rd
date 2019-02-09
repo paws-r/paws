@@ -4,11 +4,7 @@
 \alias{update_traffic_policy_comment}
 \title{Updates the comment for a specified traffic policy version}
 \usage{
-update_traffic_policy_comment(
-  Id = "string",
-  Version = 123,
-  Comment = "string"
-)
+update_traffic_policy_comment(Id, Version, Comment)
 }
 \arguments{
 \item{Id}{[required] The value of \code{Id} for the traffic policy that you want to update the comment for.}
@@ -20,6 +16,12 @@ update_traffic_policy_comment(
 \description{
 Updates the comment for a specified traffic policy version.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_traffic_policy_comment(
+  Id = "string",
+  Version = 123,
+  Comment = "string"
+)
 }
+}
+

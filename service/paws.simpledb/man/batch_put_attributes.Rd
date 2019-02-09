@@ -2,23 +2,9 @@
 % Please edit documentation in R/paws.simpledb_operations.R
 \name{batch_put_attributes}
 \alias{batch_put_attributes}
-\title{The \code{BatchPutAttributes} operation creates or replaces attributes within one or more items}
+\title{The BatchPutAttributes operation creates or replaces attributes within one or more items}
 \usage{
-batch_put_attributes(
-  DomainName = "string",
-  Items = list(
-    list(
-      Name = "string",
-      Attributes = list(
-        list(
-          Name = "string",
-          Value = "string",
-          Replace = TRUE|FALSE
-        )
-      )
-    )
-  )
-)
+batch_put_attributes(DomainName, Items)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain in which the attributes are being stored.}
@@ -50,6 +36,22 @@ The following limitations are enforced for this operation:
 \item 25 item limit per \code{BatchPutAttributes} operation
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_put_attributes(
+  DomainName = "string",
+  Items = list(
+    list(
+      Name = "string",
+      Attributes = list(
+        list(
+          Name = "string",
+          Value = "string",
+          Replace = TRUE|FALSE
+        )
+      )
+    )
+  )
+)
 }
+}
+

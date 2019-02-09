@@ -4,14 +4,8 @@
 \alias{list_activity_types}
 \title{Returns information about all activities registered in the specified domain that match the specified name and registration status}
 \usage{
-list_activity_types(
-  domain = "string",
-  name = "string",
-  registrationStatus = "REGISTERED"|"DEPRECATED",
-  nextPageToken = "string",
-  maximumPageSize = 123,
-  reverseOrder = TRUE|FALSE
-)
+list_activity_types(domain, name = NULL, registrationStatus,
+  nextPageToken = NULL, maximumPageSize = NULL, reverseOrder = NULL)
 }
 \arguments{
 \item{domain}{[required] The name of the domain in which the activity types have been registered.}
@@ -45,6 +39,15 @@ You can use IAM policies to control this action's access to Amazon SWF resources
 
 If the caller doesn't have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's \code{cause} parameter is set to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see \href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows} in the \emph{Amazon SWF Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_activity_types(
+  domain = "string",
+  name = "string",
+  registrationStatus = "REGISTERED"|"DEPRECATED",
+  nextPageToken = "string",
+  maximumPageSize = 123,
+  reverseOrder = TRUE|FALSE
+)
 }
+}
+

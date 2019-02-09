@@ -4,43 +4,11 @@
 \alias{create_environment}
 \title{Launches an environment for the specified application using the specified configuration}
 \usage{
-create_environment(
-  ApplicationName = "string",
-  EnvironmentName = "string",
-  GroupName = "string",
-  Description = "string",
-  CNAMEPrefix = "string",
-  Tier = list(
-    Name = "string",
-    Type = "string",
-    Version = "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  VersionLabel = "string",
-  TemplateName = "string",
-  SolutionStackName = "string",
-  PlatformArn = "string",
-  OptionSettings = list(
-    list(
-      ResourceName = "string",
-      Namespace = "string",
-      OptionName = "string",
-      Value = "string"
-    )
-  ),
-  OptionsToRemove = list(
-    list(
-      ResourceName = "string",
-      Namespace = "string",
-      OptionName = "string"
-    )
-  )
-)
+create_environment(ApplicationName, EnvironmentName = NULL,
+  GroupName = NULL, Description = NULL, CNAMEPrefix = NULL,
+  Tier = NULL, Tags = NULL, VersionLabel = NULL,
+  TemplateName = NULL, SolutionStackName = NULL, PlatformArn = NULL,
+  OptionSettings = NULL, OptionsToRemove = NULL)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application that contains the version to be deployed.
@@ -84,15 +52,56 @@ For a list of current solution stacks, see \href{http://docs.aws.amazon.com/elas
 \description{
 Launches an environment for the specified application using the specified configuration.
 }
+\section{Accepted Parameters}{
+\preformatted{create_environment(
+  ApplicationName = "string",
+  EnvironmentName = "string",
+  GroupName = "string",
+  Description = "string",
+  CNAMEPrefix = "string",
+  Tier = list(
+    Name = "string",
+    Type = "string",
+    Version = "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  VersionLabel = "string",
+  TemplateName = "string",
+  SolutionStackName = "string",
+  PlatformArn = "string",
+  OptionSettings = list(
+    list(
+      ResourceName = "string",
+      Namespace = "string",
+      OptionName = "string",
+      Value = "string"
+    )
+  ),
+  OptionsToRemove = list(
+    list(
+      ResourceName = "string",
+      Namespace = "string",
+      OptionName = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following operation creates a new environment for version v1 of a
 # java application named my-app:
-create_environment(
+\donttest{create_environment(
   ApplicationName = "my-app",
   CNAMEPrefix = "my-app",
   EnvironmentName = "my-env",
   SolutionStackName = "64bit Amazon Linux 2015.03 v2.0.0 running Tomcat 8 Java 8",
   VersionLabel = "v1"
-)
+)}
 
 }

@@ -4,11 +4,7 @@
 \alias{list_builds}
 \title{Retrieves build records for all builds associated with the AWS account in use}
 \usage{
-list_builds(
-  Status = "INITIALIZED"|"READY"|"FAILED",
-  Limit = 123,
-  NextToken = "string"
-)
+list_builds(Status = NULL, Limit = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Status}{Build status to filter results by. To retrieve all builds, leave this parameter empty.
@@ -39,6 +35,12 @@ Build-related operations include:
 \item DeleteBuild
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_builds(
+  Status = "INITIALIZED"|"READY"|"FAILED",
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

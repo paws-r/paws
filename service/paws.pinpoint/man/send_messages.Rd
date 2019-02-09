@@ -4,13 +4,24 @@
 \alias{send_messages}
 \title{Used to send a direct message}
 \usage{
-send_messages(
+send_messages(ApplicationId, MessageRequest)
+}
+\arguments{
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+
+\item{MessageRequest}{[required]}
+}
+\description{
+Used to send a direct message.
+}
+\section{Accepted Parameters}{
+\preformatted{send_messages(
   ApplicationId = "string",
   MessageRequest = list(
     Addresses = list(
       list(
         BodyOverride = "string",
-        ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
+        ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"EMAIL"|"BAIDU"|"CUSTOM",
         Context = list(
           "string"
         ),
@@ -136,36 +147,6 @@ send_messages(
         Title = "string",
         Url = "string"
       ),
-      EmailMessage = list(
-        Body = "string",
-        FeedbackForwardingAddress = "string",
-        FromAddress = "string",
-        RawEmail = list(
-          Data = raw
-        ),
-        ReplyToAddresses = list(
-          "string"
-        ),
-        SimpleEmail = list(
-          HtmlPart = list(
-            Charset = "string",
-            Data = "string"
-          ),
-          Subject = list(
-            Charset = "string",
-            Data = "string"
-          ),
-          TextPart = list(
-            Charset = "string",
-            Data = "string"
-          )
-        ),
-        Substitutions = list(
-          list(
-            "string"
-          )
-        )
-      ),
       GCMMessage = list(
         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
         Body = "string",
@@ -202,31 +183,11 @@ send_messages(
             "string"
           )
         )
-      ),
-      VoiceMessage = list(
-        Body = "string",
-        LanguageCode = "string",
-        OriginationNumber = "string",
-        Substitutions = list(
-          list(
-            "string"
-          )
-        ),
-        VoiceId = "string"
       )
     ),
     TraceId = "string"
   )
 )
 }
-\arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+}
 
-\item{MessageRequest}{[required]}
-}
-\description{
-Used to send a direct message.
-}
-\examples{
-
-}

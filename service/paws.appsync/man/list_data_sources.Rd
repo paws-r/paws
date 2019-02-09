@@ -4,11 +4,7 @@
 \alias{list_data_sources}
 \title{Lists the data sources for a given API}
 \usage{
-list_data_sources(
-  apiId = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+list_data_sources(apiId, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
@@ -20,6 +16,12 @@ list_data_sources(
 \description{
 Lists the data sources for a given API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_data_sources(
+  apiId = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

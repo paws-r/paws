@@ -4,9 +4,7 @@
 \alias{list_subscriptions}
 \title{Returns a list of the requester's subscriptions}
 \usage{
-list_subscriptions(
-  NextToken = "string"
-)
+list_subscriptions(NextToken = NULL)
 }
 \arguments{
 \item{NextToken}{Token returned by the previous \code{ListSubscriptions} request.}
@@ -17,6 +15,10 @@ Returns a list of the requester's subscriptions. Each call returns a limited lis
 \details{
 This action is throttled at 30 transactions per second (TPS).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_subscriptions(
+  NextToken = "string"
+)
 }
+}
+

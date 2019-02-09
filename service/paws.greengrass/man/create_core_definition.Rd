@@ -4,7 +4,21 @@
 \alias{create_core_definition}
 \title{Creates a core definition}
 \usage{
-create_core_definition(
+create_core_definition(AmznClientToken = NULL, InitialVersion = NULL,
+  Name = NULL)
+}
+\arguments{
+\item{AmznClientToken}{A client token used to correlate requests and responses.}
+
+\item{InitialVersion}{Information about the initial version of the core definition.}
+
+\item{Name}{The name of the core definition.}
+}
+\description{
+Creates a core definition. You may provide the initial version of the core definition now or use ''CreateCoreDefinitionVersion'' at a later time. AWS Greengrass groups must each contain exactly one AWS Greengrass core.
+}
+\section{Accepted Parameters}{
+\preformatted{create_core_definition(
   AmznClientToken = "string",
   InitialVersion = list(
     Cores = list(
@@ -19,16 +33,5 @@ create_core_definition(
   Name = "string"
 )
 }
-\arguments{
-\item{AmznClientToken}{A client token used to correlate requests and responses.}
-
-\item{InitialVersion}{Information about the initial version of the core definition.}
-
-\item{Name}{The name of the core definition.}
 }
-\description{
-Creates a core definition. You may provide the initial version of the core definition now or use ''CreateCoreDefinitionVersion'' at a later time. Greengrass groups must each contain exactly one Greengrass core.
-}
-\examples{
 
-}

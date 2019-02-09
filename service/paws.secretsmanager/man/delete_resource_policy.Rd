@@ -4,9 +4,7 @@
 \alias{delete_resource_policy}
 \title{Deletes the resource-based permission policy that's attached to the secret}
 \usage{
-delete_resource_policy(
-  SecretId = "string"
-)
+delete_resource_policy(SecretId)
 }
 \arguments{
 \item{SecretId}{[required] Specifies the secret that you want to delete the attached resource-based policy for. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
@@ -31,11 +29,18 @@ To run this command, you must have the following permissions:
 \item To list all of the currently available secrets, use ListSecrets.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{delete_resource_policy(
+  SecretId = "string"
+)
+}
+}
+
 \examples{
 # The following example shows how to delete the resource-based policy that
 # is attached to a secret.
-delete_resource_policy(
+\donttest{delete_resource_policy(
   SecretId = "MyTestDatabaseSecret"
-)
+)}
 
 }

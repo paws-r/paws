@@ -4,9 +4,7 @@
 \alias{get_app}
 \title{Returns information about an app}
 \usage{
-get_app(
-  ApplicationId = "string"
-)
+get_app(ApplicationId)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -14,6 +12,10 @@ get_app(
 \description{
 Returns information about an app.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_app(
+  ApplicationId = "string"
+)
 }
+}
+

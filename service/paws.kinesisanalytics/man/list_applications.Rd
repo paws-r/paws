@@ -4,10 +4,7 @@
 \alias{list_applications}
 \title{Returns a list of Amazon Kinesis Analytics applications in your account}
 \usage{
-list_applications(
-  Limit = 123,
-  ExclusiveStartApplicationName = "string"
-)
+list_applications(Limit = NULL, ExclusiveStartApplicationName = NULL)
 }
 \arguments{
 \item{Limit}{Maximum number of applications to list.}
@@ -22,6 +19,11 @@ If you want detailed information about a specific application, use DescribeAppli
 
 This operation requires permissions to perform the \code{kinesisanalytics:ListApplications} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_applications(
+  Limit = 123,
+  ExclusiveStartApplicationName = "string"
+)
 }
+}
+

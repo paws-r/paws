@@ -4,11 +4,8 @@
 \alias{disassociate_address}
 \title{Disassociates an Elastic IP address from the instance or network interface it's associated with}
 \usage{
-disassociate_address(
-  AssociationId = "string",
-  PublicIp = "string",
-  DryRun = TRUE|FALSE
-)
+disassociate_address(AssociationId = NULL, PublicIp = NULL,
+  DryRun = NULL)
 }
 \arguments{
 \item{AssociationId}{[EC2-VPC] The association ID. Required for EC2-VPC.}
@@ -25,17 +22,26 @@ An Elastic IP address is for use in either the EC2-Classic platform or in a VPC.
 
 This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error.
 }
+\section{Accepted Parameters}{
+\preformatted{disassociate_address(
+  AssociationId = "string",
+  PublicIp = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example disassociates an Elastic IP address from an instance in a
 # VPC.
-disassociate_address(
+\donttest{disassociate_address(
   AssociationId = "eipassoc-2bebb745"
-)
+)}
 
 # This example disassociates an Elastic IP address from an instance in
 # EC2-Classic.
-disassociate_address(
+\donttest{disassociate_address(
   PublicIp = "198.51.100.0"
-)
+)}
 
 }

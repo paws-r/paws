@@ -4,10 +4,7 @@
 \alias{activate_user}
 \title{Activates the specified user}
 \usage{
-activate_user(
-  UserId = "string",
-  AuthenticationToken = "string"
-)
+activate_user(UserId, AuthenticationToken = NULL)
 }
 \arguments{
 \item{UserId}{[required] The ID of the user.}
@@ -17,6 +14,11 @@ activate_user(
 \description{
 Activates the specified user. Only active users can access Amazon WorkDocs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{activate_user(
+  UserId = "string",
+  AuthenticationToken = "string"
+)
 }
+}
+

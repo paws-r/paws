@@ -4,10 +4,7 @@
 \alias{list_organizations}
 \title{Returns summaries of the customer's non-deleted organizations}
 \usage{
-list_organizations(
-  NextToken = "string",
-  MaxResults = 123
-)
+list_organizations(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{The token to use to retrieve the next page of results. The first call does not contain any tokens.}
@@ -17,6 +14,11 @@ list_organizations(
 \description{
 Returns summaries of the customer's non-deleted organizations.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_organizations(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

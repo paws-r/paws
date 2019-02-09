@@ -4,10 +4,7 @@
 \alias{delete_notification_subscription}
 \title{Deletes the specified subscription from the specified organization}
 \usage{
-delete_notification_subscription(
-  SubscriptionId = "string",
-  OrganizationId = "string"
-)
+delete_notification_subscription(SubscriptionId, OrganizationId)
 }
 \arguments{
 \item{SubscriptionId}{[required] The ID of the subscription.}
@@ -17,6 +14,11 @@ delete_notification_subscription(
 \description{
 Deletes the specified subscription from the specified organization.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_notification_subscription(
+  SubscriptionId = "string",
+  OrganizationId = "string"
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{create_player_session}
 \title{Adds a player to a game session and creates a player session record}
 \usage{
-create_player_session(
-  GameSessionId = "string",
-  PlayerId = "string",
-  PlayerData = "string"
-)
+create_player_session(GameSessionId, PlayerId, PlayerData = NULL)
 }
 \arguments{
 \item{GameSessionId}{[required] Unique identifier for the game session to add a player to.}
@@ -36,6 +32,12 @@ Player-session-related operations include:
 \item StopGameSessionPlacement
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_player_session(
+  GameSessionId = "string",
+  PlayerId = "string",
+  PlayerData = "string"
+)
 }
+}
+

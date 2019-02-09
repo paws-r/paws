@@ -2,13 +2,10 @@
 % Please edit documentation in R/paws.athena_operations.R
 \name{get_query_results}
 \alias{get_query_results}
-\title{Returns the results of a single query execution specified by \code{QueryExecutionId}}
+\title{Returns the results of a single query execution specified by QueryExecutionId}
 \usage{
-get_query_results(
-  QueryExecutionId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+get_query_results(QueryExecutionId, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{QueryExecutionId}{[required] The unique ID of the query execution.}
@@ -20,6 +17,12 @@ get_query_results(
 \description{
 Returns the results of a single query execution specified by \code{QueryExecutionId}. This request does not execute the query but returns results. Use StartQueryExecution to run a query.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_query_results(
+  QueryExecutionId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

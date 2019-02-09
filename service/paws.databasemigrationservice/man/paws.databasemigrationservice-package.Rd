@@ -6,14 +6,14 @@
 \alias{paws.databasemigrationservice-package}
 \title{paws.databasemigrationservice: AWS Database Migration Service}
 \description{
-AWS Database Migration Service (AWS DMS) can migrate your
-data to and from the most widely used commercial and open-source
-databases such as Oracle, PostgreSQL, Microsoft SQL Server, Amazon
-Redshift, MariaDB, Amazon Aurora, MySQL, and SAP Adaptive Server
-Enterprise (ASE). The service supports homogeneous migrations such as
-Oracle to Oracle, as well as heterogeneous migrations between
-different database platforms, such as Oracle to MySQL or SQL Server to
-PostgreSQL.
+AWS Database Migration Service (AWS DMS) can
+    migrate your data to and from the most widely used commercial and
+    open-source databases such as Oracle, PostgreSQL, Microsoft SQL
+    Server, Amazon Redshift, MariaDB, Amazon Aurora, MySQL, and SAP
+    Adaptive Server Enterprise (ASE). The service supports homogeneous
+    migrations such as Oracle to Oracle, as well as heterogeneous
+    migrations between different database platforms, such as Oracle to
+    MySQL or SQL Server to PostgreSQL.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

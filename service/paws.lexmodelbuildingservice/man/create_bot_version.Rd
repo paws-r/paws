@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.lexmodelbuildingservice_operations.R
 \name{create_bot_version}
 \alias{create_bot_version}
-\title{Creates a new version of the bot based on the \code{$LATEST} version}
+\title{Creates a new version of the bot based on the $LATEST version}
 \usage{
-create_bot_version(
-  name = "string",
-  checksum = "string"
-)
+create_bot_version(name, checksum = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the bot that you want to create a new version of. The name is case sensitive.}
@@ -24,6 +21,11 @@ When you create the first version of a bot, Amazon Lex sets the version to 1. Su
 
 This operation requires permission for the \code{lex:CreateBotVersion} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_bot_version(
+  name = "string",
+  checksum = "string"
+)
 }
+}
+

@@ -6,15 +6,16 @@
 \alias{paws.configservice-package}
 \title{paws.configservice: AWS Config}
 \description{
-AWS Config provides a way to keep track of the configurations
-of all the AWS resources associated with your AWS account. You can use
-AWS Config to get the current and historical configurations of each
-AWS resource and also to get information about the relationship
-between the resources. An AWS resource can be an Amazon Compute Cloud
-(Amazon EC2) instance, an Elastic Block Store (EBS) volume, an elastic
-network Interface (ENI), or a security group. For a complete list of
-resources currently supported by AWS Config, see [Supported AWS
-Resources](http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources).
+AWS Config provides a way to keep track of the
+    configurations of all the AWS resources associated with your AWS
+    account. You can use AWS Config to get the current and historical
+    configurations of each AWS resource and also to get information about
+    the relationship between the resources. An AWS resource can be an
+    Amazon Compute Cloud (Amazon EC2) instance, an Elastic Block Store
+    (EBS) volume, an elastic network Interface (ENI), or a security group.
+    For a complete list of resources currently supported by AWS Config,
+    see [Supported AWS
+    Resources](http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources).
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

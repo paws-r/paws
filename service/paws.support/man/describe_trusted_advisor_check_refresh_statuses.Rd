@@ -4,11 +4,7 @@
 \alias{describe_trusted_advisor_check_refresh_statuses}
 \title{Returns the refresh status of the Trusted Advisor checks that have the specified check IDs}
 \usage{
-describe_trusted_advisor_check_refresh_statuses(
-  checkIds = list(
-    "string"
-  )
-)
+describe_trusted_advisor_check_refresh_statuses(checkIds)
 }
 \arguments{
 \item{checkIds}{[required] The IDs of the Trusted Advisor checks to get the status of. \strong{Note:} Specifying the check ID of a check that is automatically refreshed causes an \code{InvalidParameterValue} error.}
@@ -19,6 +15,12 @@ Returns the refresh status of the Trusted Advisor checks that have the specified
 \details{
 Some checks are refreshed automatically, and their refresh statuses cannot be retrieved by using this operation. Use of the \code{DescribeTrustedAdvisorCheckRefreshStatuses} operation for these checks causes an \code{InvalidParameterValue} error.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_trusted_advisor_check_refresh_statuses(
+  checkIds = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{list_offering_promotions}
 \title{Returns a list of offering promotions}
 \usage{
-list_offering_promotions(
-  nextToken = "string"
-)
+list_offering_promotions(nextToken = NULL)
 }
 \arguments{
 \item{nextToken}{An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.}
@@ -14,6 +12,10 @@ list_offering_promotions(
 \description{
 Returns a list of offering promotions. Each offering promotion record contains the ID and description of the promotion. The API returns a \code{NotEligible} error if the caller is not permitted to invoke the operation. Contact \href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefarm-support@amazon.com} if you believe that you should be able to invoke this operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_offering_promotions(
+  nextToken = "string"
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{get_object_tagging}
 \title{Returns the tag-set of an object}
 \usage{
-get_object_tagging(
-  Bucket = "string",
-  Key = "string",
-  VersionId = "string"
-)
+get_object_tagging(Bucket, Key, VersionId = NULL)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -20,19 +16,28 @@ get_object_tagging(
 \description{
 Returns the tag-set of an object.
 }
+\section{Accepted Parameters}{
+\preformatted{get_object_tagging(
+  Bucket = "string",
+  Key = "string",
+  VersionId = "string"
+)
+}
+}
+
 \examples{
+# The following example retrieves tag set of an object.
+\donttest{get_object_tagging(
+  Bucket = "examplebucket",
+  Key = "HappyFace.jpg"
+)}
+
 # The following example retrieves tag set of an object. The request
 # specifies object version.
-get_object_tagging(
+\donttest{get_object_tagging(
   Bucket = "examplebucket",
   Key = "exampleobject",
   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
-)
-
-# The following example retrieves tag set of an object.
-get_object_tagging(
-  Bucket = "examplebucket",
-  Key = "HappyFace.jpg"
-)
+)}
 
 }

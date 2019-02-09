@@ -4,10 +4,7 @@
 \alias{create_directory}
 \title{Creates a Directory by copying the published schema into the directory}
 \usage{
-create_directory(
-  Name = "string",
-  SchemaArn = "string"
-)
+create_directory(Name, SchemaArn)
 }
 \arguments{
 \item{Name}{[required] The name of the Directory. Should be unique per account, per region.}
@@ -20,6 +17,11 @@ Creates a Directory by copying the published schema into the directory. A direct
 \details{
 You can also quickly create a directory using a managed schema, called the \code{QuickStartSchema}. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_managed.html}{Managed Schema} in the \emph{Amazon Cloud Directory Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_directory(
+  Name = "string",
+  SchemaArn = "string"
+)
 }
+}
+

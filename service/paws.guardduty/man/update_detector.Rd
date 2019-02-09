@@ -4,11 +4,8 @@
 \alias{update_detector}
 \title{Updates an Amazon GuardDuty detector specified by the detectorId}
 \usage{
-update_detector(
-  DetectorId = "string",
-  Enable = TRUE|FALSE,
-  FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS"
-)
+update_detector(DetectorId, Enable = NULL,
+  FindingPublishingFrequency = NULL)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector that you want to update.}
@@ -20,6 +17,12 @@ update_detector(
 \description{
 Updates an Amazon GuardDuty detector specified by the detectorId.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_detector(
+  DetectorId = "string",
+  Enable = TRUE|FALSE,
+  FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS"
+)
 }
+}
+

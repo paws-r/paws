@@ -4,16 +4,7 @@
 \alias{add_permission}
 \title{Adds a statement to a topic's access control policy, granting access for the specified AWS accounts to the specified actions}
 \usage{
-add_permission(
-  TopicArn = "string",
-  Label = "string",
-  AWSAccountId = list(
-    "string"
-  ),
-  ActionName = list(
-    "string"
-  )
-)
+add_permission(TopicArn, Label, AWSAccountId, ActionName)
 }
 \arguments{
 \item{TopicArn}{[required] The ARN of the topic whose access control policy you wish to modify.}
@@ -29,6 +20,17 @@ Valid values: any Amazon SNS action name.}
 \description{
 Adds a statement to a topic's access control policy, granting access for the specified AWS accounts to the specified actions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_permission(
+  TopicArn = "string",
+  Label = "string",
+  AWSAccountId = list(
+    "string"
+  ),
+  ActionName = list(
+    "string"
+  )
+)
 }
+}
+

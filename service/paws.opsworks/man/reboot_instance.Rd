@@ -4,9 +4,7 @@
 \alias{reboot_instance}
 \title{Reboots a specified instance}
 \usage{
-reboot_instance(
-  InstanceId = "string"
-)
+reboot_instance(InstanceId)
 }
 \arguments{
 \item{InstanceId}{[required] The instance ID.}
@@ -17,6 +15,10 @@ Reboots a specified instance. For more information, see \href{http://docs.aws.am
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reboot_instance(
+  InstanceId = "string"
+)
 }
+}
+

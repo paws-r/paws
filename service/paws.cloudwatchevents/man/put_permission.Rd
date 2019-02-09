@@ -2,18 +2,9 @@
 % Please edit documentation in R/paws.cloudwatchevents_operations.R
 \name{put_permission}
 \alias{put_permission}
-\title{Running \code{PutPermission} permits the specified AWS account or AWS organization to put events to your account's default \emph{event bus}}
+\title{Running PutPermission permits the specified AWS account or AWS organization to put events to your account's default \emph{event bus}}
 \usage{
-put_permission(
-  Action = "string",
-  Principal = "string",
-  StatementId = "string",
-  Condition = list(
-    Type = "string",
-    Key = "string",
-    Value = "string"
-  )
-)
+put_permission(Action, Principal, StatementId, Condition = NULL)
 }
 \arguments{
 \item{Action}{[required] The action that you are enabling the other account to perform. Currently, this must be \code{events:PutEvents}.}
@@ -38,10 +29,19 @@ For another account to send events to your account, that external account must h
 
 To enable multiple AWS accounts to put events to your default event bus, run \code{PutPermission} once for each of these accounts. Or, if all the accounts are members of the same AWS organization, you can run \code{PutPermission} once specifying \code{Principal} as "*" and specifying the AWS organization ID in \code{Condition}, to grant permissions to all accounts in that organization.
 
-If you grant permissions using an organization, then accounts in that organization must specify a \code{RoleArn} with proper permissions when they use \code{PutTarget} to add your account's event bus as a target. For more information, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html}{Sending and Receiving Events Between AWS Accounts} in the \emph{Amazon CloudWatch Events User Guide}.
-
 The permission policy on the default event bus cannot exceed 10 KB in size.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_permission(
+  Action = "string",
+  Principal = "string",
+  StatementId = "string",
+  Condition = list(
+    Type = "string",
+    Key = "string",
+    Value = "string"
+  )
+)
 }
+}
+

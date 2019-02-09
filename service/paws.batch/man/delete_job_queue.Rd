@@ -4,9 +4,7 @@
 \alias{delete_job_queue}
 \title{Deletes the specified job queue}
 \usage{
-delete_job_queue(
-  jobQueue = "string"
-)
+delete_job_queue(jobQueue)
 }
 \arguments{
 \item{jobQueue}{[required] The short name or full Amazon Resource Name (ARN) of the queue to delete.}
@@ -17,10 +15,17 @@ Deletes the specified job queue. You must first disable submissions for a queue 
 \details{
 It is not necessary to disassociate compute environments from a queue before submitting a \code{DeleteJobQueue} request.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_job_queue(
+  jobQueue = "string"
+)
+}
+}
+
 \examples{
 # This example deletes the GPGPU job queue.
-delete_job_queue(
+\donttest{delete_job_queue(
   jobQueue = "GPGPU"
-)
+)}
 
 }

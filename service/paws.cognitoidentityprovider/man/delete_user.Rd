@@ -4,9 +4,7 @@
 \alias{delete_user}
 \title{Allows a user to delete himself or herself}
 \usage{
-delete_user(
-  AccessToken = "string"
-)
+delete_user(AccessToken)
 }
 \arguments{
 \item{AccessToken}{[required] The access token from a request to delete a user.}
@@ -14,6 +12,10 @@ delete_user(
 \description{
 Allows a user to delete himself or herself.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_user(
+  AccessToken = "string"
+)
 }
+}
+

@@ -4,13 +4,7 @@
 \alias{update_group_query}
 \title{Updates the resource query of a group}
 \usage{
-update_group_query(
-  GroupName = "string",
-  ResourceQuery = list(
-    Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
-    Query = "string"
-  )
-)
+update_group_query(GroupName, ResourceQuery)
 }
 \arguments{
 \item{GroupName}{[required] The name of the resource group for which you want to edit the query.}
@@ -20,6 +14,14 @@ update_group_query(
 \description{
 Updates the resource query of a group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_group_query(
+  GroupName = "string",
+  ResourceQuery = list(
+    Type = "TAG_FILTERS_1_0",
+    Query = "string"
+  )
+)
 }
+}
+

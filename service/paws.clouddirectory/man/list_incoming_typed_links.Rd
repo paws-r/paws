@@ -4,7 +4,30 @@
 \alias{list_incoming_typed_links}
 \title{Returns a paginated list of all the incoming TypedLinkSpecifier information for an object}
 \usage{
-list_incoming_typed_links(
+list_incoming_typed_links(DirectoryArn, ObjectReference,
+  FilterAttributeRanges = NULL, FilterTypedLink = NULL,
+  NextToken = NULL, MaxResults = NULL, ConsistencyLevel = NULL)
+}
+\arguments{
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory where you want to list the typed links.}
+
+\item{ObjectReference}{[required] Reference that identifies the object whose attributes will be listed.}
+
+\item{FilterAttributeRanges}{Provides range filters for multiple attributes. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range.}
+
+\item{FilterTypedLink}{Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls.}
+
+\item{NextToken}{The pagination token.}
+
+\item{MaxResults}{The maximum number of results to retrieve.}
+
+\item{ConsistencyLevel}{The consistency level to execute the request at.}
+}
+\description{
+Returns a paginated list of all the incoming TypedLinkSpecifier information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
+}
+\section{Accepted Parameters}{
+\preformatted{list_incoming_typed_links(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"
@@ -41,24 +64,5 @@ list_incoming_typed_links(
   ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
 )
 }
-\arguments{
-\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory where you want to list the typed links.}
-
-\item{ObjectReference}{[required] Reference that identifies the object whose attributes will be listed.}
-
-\item{FilterAttributeRanges}{Provides range filters for multiple attributes. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range.}
-
-\item{FilterTypedLink}{Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls.}
-
-\item{NextToken}{The pagination token.}
-
-\item{MaxResults}{The maximum number of results to retrieve.}
-
-\item{ConsistencyLevel}{The consistency level to execute the request at.}
 }
-\description{
-Returns a paginated list of all the incoming TypedLinkSpecifier information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
-}
-\examples{
 
-}

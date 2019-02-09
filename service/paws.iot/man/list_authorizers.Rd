@@ -4,12 +4,8 @@
 \alias{list_authorizers}
 \title{Lists the authorizers registered in your account}
 \usage{
-list_authorizers(
-  pageSize = 123,
-  marker = "string",
-  ascendingOrder = TRUE|FALSE,
-  status = "ACTIVE"|"INACTIVE"
-)
+list_authorizers(pageSize = NULL, marker = NULL,
+  ascendingOrder = NULL, status = NULL)
 }
 \arguments{
 \item{pageSize}{The maximum number of results to return at one time.}
@@ -23,6 +19,13 @@ list_authorizers(
 \description{
 Lists the authorizers registered in your account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_authorizers(
+  pageSize = 123,
+  marker = "string",
+  ascendingOrder = TRUE|FALSE,
+  status = "ACTIVE"|"INACTIVE"
+)
 }
+}
+

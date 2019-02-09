@@ -4,10 +4,8 @@
 \alias{list_cloud_front_origin_access_identities}
 \title{Lists origin access identities}
 \usage{
-list_cloud_front_origin_access_identities(
-  Marker = "string",
-  MaxItems = "string"
-)
+list_cloud_front_origin_access_identities(Marker = NULL,
+  MaxItems = NULL)
 }
 \arguments{
 \item{Marker}{Use this when paginating results to indicate where to begin in your list of origin access identities. The results include identities in the list that occur after the marker. To get the next page of results, set the \code{Marker} to the value of the \code{NextMarker} from the current page's response (which is also the ID of the last identity on that page).}
@@ -17,6 +15,11 @@ list_cloud_front_origin_access_identities(
 \description{
 Lists origin access identities.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_cloud_front_origin_access_identities(
+  Marker = "string",
+  MaxItems = "string"
+)
 }
+}
+

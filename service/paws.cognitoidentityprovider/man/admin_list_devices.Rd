@@ -4,12 +4,8 @@
 \alias{admin_list_devices}
 \title{Lists devices, as an administrator}
 \usage{
-admin_list_devices(
-  UserPoolId = "string",
-  Username = "string",
-  Limit = 123,
-  PaginationToken = "string"
-)
+admin_list_devices(UserPoolId, Username, Limit = NULL,
+  PaginationToken = NULL)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
@@ -26,6 +22,13 @@ Lists devices, as an administrator.
 \details{
 Requires developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{admin_list_devices(
+  UserPoolId = "string",
+  Username = "string",
+  Limit = 123,
+  PaginationToken = "string"
+)
 }
+}
+

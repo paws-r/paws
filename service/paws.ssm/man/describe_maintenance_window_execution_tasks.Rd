@@ -4,19 +4,8 @@
 \alias{describe_maintenance_window_execution_tasks}
 \title{For a given Maintenance Window execution, lists the tasks that were executed}
 \usage{
-describe_maintenance_window_execution_tasks(
-  WindowExecutionId = "string",
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_maintenance_window_execution_tasks(WindowExecutionId,
+  Filters = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{WindowExecutionId}{[required] The ID of the Maintenance Window execution whose task executions should be retrieved.}
@@ -30,6 +19,20 @@ describe_maintenance_window_execution_tasks(
 \description{
 For a given Maintenance Window execution, lists the tasks that were executed.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_maintenance_window_execution_tasks(
+  WindowExecutionId = "string",
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

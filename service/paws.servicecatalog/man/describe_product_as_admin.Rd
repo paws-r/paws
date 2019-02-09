@@ -4,10 +4,7 @@
 \alias{describe_product_as_admin}
 \title{Gets information about the specified product}
 \usage{
-describe_product_as_admin(
-  AcceptLanguage = "string",
-  Id = "string"
-)
+describe_product_as_admin(AcceptLanguage = NULL, Id)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -22,6 +19,11 @@ describe_product_as_admin(
 \description{
 Gets information about the specified product. This operation is run with administrator access.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_product_as_admin(
+  AcceptLanguage = "string",
+  Id = "string"
+)
 }
+}
+

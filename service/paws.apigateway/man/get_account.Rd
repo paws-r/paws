@@ -9,6 +9,8 @@ get_account()
 \description{
 Gets information about the current Account resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_account()
 }
+}
+

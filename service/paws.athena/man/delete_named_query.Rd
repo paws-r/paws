@@ -4,9 +4,7 @@
 \alias{delete_named_query}
 \title{Deletes a named query}
 \usage{
-delete_named_query(
-  NamedQueryId = "string"
-)
+delete_named_query(NamedQueryId)
 }
 \arguments{
 \item{NamedQueryId}{[required] The unique ID of the query to delete.}
@@ -17,6 +15,10 @@ Deletes a named query.
 \details{
 For code samples using the AWS SDK for Java, see \href{http://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples} in the \emph{Amazon Athena User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_named_query(
+  NamedQueryId = "string"
+)
 }
+}
+

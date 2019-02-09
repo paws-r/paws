@@ -4,7 +4,67 @@
 \alias{create_layer}
 \title{Creates a layer}
 \usage{
-create_layer(
+create_layer(StackId, Type, Name, Shortname, Attributes = NULL,
+  CloudWatchLogsConfiguration = NULL, CustomInstanceProfileArn = NULL,
+  CustomJson = NULL, CustomSecurityGroupIds = NULL, Packages = NULL,
+  VolumeConfigurations = NULL, EnableAutoHealing = NULL,
+  AutoAssignElasticIps = NULL, AutoAssignPublicIps = NULL,
+  CustomRecipes = NULL, InstallUpdatesOnBoot = NULL,
+  UseEbsOptimizedInstances = NULL, LifecycleEventConfiguration = NULL)
+}
+\arguments{
+\item{StackId}{[required] The layer stack ID.}
+
+\item{Type}{[required] The layer type. A stack cannot have more than one built-in layer of the same type. It can have any number of custom layers. Built-in layers are not available in Chef 12 stacks.}
+
+\item{Name}{[required] The layer name, which is used by the console.}
+
+\item{Shortname}{[required] For custom layers only, use this parameter to specify the layer's short name, which is used internally by AWS OpsWorks Stacks and by Chef recipes. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters, which are limited to the alphanumeric characters, '-', '\_', and '.'.
+
+The built-in layers' short names are defined by AWS OpsWorks Stacks. For more information, see the \href{http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html}{Layer Reference}.}
+
+\item{Attributes}{One or more user-defined key-value pairs to be added to the stack attributes.
+
+To create a cluster layer, set the \code{EcsClusterArn} attribute to the cluster's ARN.}
+
+\item{CloudWatchLogsConfiguration}{Specifies CloudWatch Logs configuration options for the layer. For more information, see CloudWatchLogsLogStream.}
+
+\item{CustomInstanceProfileArn}{The ARN of an IAM profile to be used for the layer's EC2 instances. For more information about IAM ARNs, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
+
+\item{CustomJson}{A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html}{Using Custom JSON}. This feature is supported as of version 1.7.42 of the AWS CLI.}
+
+\item{CustomSecurityGroupIds}{An array containing the layer custom security group IDs.}
+
+\item{Packages}{An array of \code{Package} objects that describes the layer packages.}
+
+\item{VolumeConfigurations}{A \code{VolumeConfigurations} object that describes the layer's Amazon EBS volumes.}
+
+\item{EnableAutoHealing}{Whether to disable auto healing for the layer.}
+
+\item{AutoAssignElasticIps}{Whether to automatically assign an \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP address} to the layer's instances. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html}{How to Edit a Layer}.}
+
+\item{AutoAssignPublicIps}{For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html}{How to Edit a Layer}.}
+
+\item{CustomRecipes}{A \code{LayerCustomRecipes} object that specifies the layer custom recipes.}
+
+\item{InstallUpdatesOnBoot}{Whether to install operating system and package updates when the instance boots. The default value is \code{true}. To control when updates are installed, set this value to \code{false}. You must then update your instances manually by using CreateDeployment to run the \code{update_dependencies} stack command or by manually running \code{yum} (Amazon Linux) or \code{apt-get} (Ubuntu) on the instances.
+
+To ensure that your instances have the latest security updates, we strongly recommend using the default value of \code{true}.}
+
+\item{UseEbsOptimizedInstances}{Whether to use Amazon EBS-optimized instances.}
+
+\item{LifecycleEventConfiguration}{A \code{LifeCycleEventConfiguration} object that you can use to configure the Shutdown event to specify an execution timeout and enable or disable Elastic Load Balancer connection draining.}
+}
+\description{
+Creates a layer. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html}{How to Create a Layer}.
+}
+\details{
+You should use \strong{CreateLayer} for noncustom layer types such as PHP App Server only if the stack does not have an existing layer of that type. A stack can have at most one instance of each noncustom layer; if you attempt to create a second instance, \strong{CreateLayer} fails. A stack can have an arbitrary number of custom layers, so you can call \strong{CreateLayer} as many times as you like for that layer type.
+
+\strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+}
+\section{Accepted Parameters}{
+\preformatted{create_layer(
   StackId = "string",
   Type = "aws-flow-ruby"|"ecs-cluster"|"java-app"|"lb"|"web"|"php-app"|"rails-app"|"nodejs-app"|"memcached"|"db-master"|"monitoring-master"|"custom",
   Name = "string",
@@ -79,57 +139,5 @@ create_layer(
   )
 )
 }
-\arguments{
-\item{StackId}{[required] The layer stack ID.}
-
-\item{Type}{[required] The layer type. A stack cannot have more than one built-in layer of the same type. It can have any number of custom layers. Built-in layers are not available in Chef 12 stacks.}
-
-\item{Name}{[required] The layer name, which is used by the console.}
-
-\item{Shortname}{[required] For custom layers only, use this parameter to specify the layer's short name, which is used internally by AWS OpsWorks Stacks and by Chef recipes. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters, which are limited to the alphanumeric characters, '-', '\_', and '.'.
-
-The built-in layers' short names are defined by AWS OpsWorks Stacks. For more information, see the \href{http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html}{Layer Reference}.}
-
-\item{Attributes}{One or more user-defined key-value pairs to be added to the stack attributes.
-
-To create a cluster layer, set the \code{EcsClusterArn} attribute to the cluster's ARN.}
-
-\item{CloudWatchLogsConfiguration}{Specifies CloudWatch Logs configuration options for the layer. For more information, see CloudWatchLogsLogStream.}
-
-\item{CustomInstanceProfileArn}{The ARN of an IAM profile to be used for the layer's EC2 instances. For more information about IAM ARNs, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
-
-\item{CustomJson}{A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html}{Using Custom JSON}. This feature is supported as of version 1.7.42 of the AWS CLI.}
-
-\item{CustomSecurityGroupIds}{An array containing the layer custom security group IDs.}
-
-\item{Packages}{An array of \code{Package} objects that describes the layer packages.}
-
-\item{VolumeConfigurations}{A \code{VolumeConfigurations} object that describes the layer's Amazon EBS volumes.}
-
-\item{EnableAutoHealing}{Whether to disable auto healing for the layer.}
-
-\item{AutoAssignElasticIps}{Whether to automatically assign an \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP address} to the layer's instances. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html}{How to Edit a Layer}.}
-
-\item{AutoAssignPublicIps}{For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html}{How to Edit a Layer}.}
-
-\item{CustomRecipes}{A \code{LayerCustomRecipes} object that specifies the layer custom recipes.}
-
-\item{InstallUpdatesOnBoot}{Whether to install operating system and package updates when the instance boots. The default value is \code{true}. To control when updates are installed, set this value to \code{false}. You must then update your instances manually by using CreateDeployment to run the \code{update_dependencies} stack command or by manually running \code{yum} (Amazon Linux) or \code{apt-get} (Ubuntu) on the instances.
-
-To ensure that your instances have the latest security updates, we strongly recommend using the default value of \code{true}.}
-
-\item{UseEbsOptimizedInstances}{Whether to use Amazon EBS-optimized instances.}
-
-\item{LifecycleEventConfiguration}{A \code{LifeCycleEventConfiguration} object that you can use to configure the Shutdown event to specify an execution timeout and enable or disable Elastic Load Balancer connection draining.}
 }
-\description{
-Creates a layer. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html}{How to Create a Layer}.
-}
-\details{
-You should use \strong{CreateLayer} for noncustom layer types such as PHP App Server only if the stack does not have an existing layer of that type. A stack can have at most one instance of each noncustom layer; if you attempt to create a second instance, \strong{CreateLayer} fails. A stack can have an arbitrary number of custom layers, so you can call \strong{CreateLayer} as many times as you like for that layer type.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
-}
-\examples{
-
-}

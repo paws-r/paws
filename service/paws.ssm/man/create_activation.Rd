@@ -4,13 +4,8 @@
 \alias{create_activation}
 \title{Registers your on-premises server or virtual machine with Amazon EC2 so that you can manage these resources using Run Command}
 \usage{
-create_activation(
-  Description = "string",
-  DefaultInstanceName = "string",
-  IamRole = "string",
-  RegistrationLimit = 123,
-  ExpirationDate = as.POSIXct("2015-01-01")
-)
+create_activation(Description = NULL, DefaultInstanceName = NULL,
+  IamRole, RegistrationLimit = NULL, ExpirationDate = NULL)
 }
 \arguments{
 \item{Description}{A user-defined description of the resource that you want to register with Amazon EC2.
@@ -30,6 +25,14 @@ Do not enter personally identifiable information in this field.}
 \description{
 Registers your on-premises server or virtual machine with Amazon EC2 so that you can manage these resources using Run Command. An on-premises server or virtual machine that has been registered with EC2 is called a managed instance. For more information about activations, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html}{Setting Up Systems Manager in Hybrid Environments}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_activation(
+  Description = "string",
+  DefaultInstanceName = "string",
+  IamRole = "string",
+  RegistrationLimit = 123,
+  ExpirationDate = as.POSIXct("2015-01-01")
+)
 }
+}
+

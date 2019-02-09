@@ -2,104 +2,15 @@
 % Please edit documentation in R/paws.dynamodb_operations.R
 \name{scan}
 \alias{scan}
-\title{The \code{Scan} operation returns one or more items and item attributes by accessing every item in a table or a secondary index}
+\title{The Scan operation returns one or more items and item attributes by accessing every item in a table or a secondary index}
 \usage{
-scan(
-  TableName = "string",
-  IndexName = "string",
-  AttributesToGet = list(
-    "string"
-  ),
-  Limit = 123,
-  Select = "ALL_ATTRIBUTES"|"ALL_PROJECTED_ATTRIBUTES"|"SPECIFIC_ATTRIBUTES"|"COUNT",
-  ScanFilter = list(
-    list(
-      AttributeValueList = list(
-        list(
-          S = "string",
-          N = "string",
-          B = raw,
-          SS = list(
-            "string"
-          ),
-          NS = list(
-            "string"
-          ),
-          BS = list(
-            raw
-          ),
-          M = list(
-            list()
-          ),
-          L = list(
-            list()
-          ),
-          NULL = TRUE|FALSE,
-          BOOL = TRUE|FALSE
-        )
-      ),
-      ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH"
-    )
-  ),
-  ConditionalOperator = "AND"|"OR",
-  ExclusiveStartKey = list(
-    list(
-      S = "string",
-      N = "string",
-      B = raw,
-      SS = list(
-        "string"
-      ),
-      NS = list(
-        "string"
-      ),
-      BS = list(
-        raw
-      ),
-      M = list(
-        list()
-      ),
-      L = list(
-        list()
-      ),
-      NULL = TRUE|FALSE,
-      BOOL = TRUE|FALSE
-    )
-  ),
-  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
-  TotalSegments = 123,
-  Segment = 123,
-  ProjectionExpression = "string",
-  FilterExpression = "string",
-  ExpressionAttributeNames = list(
-    "string"
-  ),
-  ExpressionAttributeValues = list(
-    list(
-      S = "string",
-      N = "string",
-      B = raw,
-      SS = list(
-        "string"
-      ),
-      NS = list(
-        "string"
-      ),
-      BS = list(
-        raw
-      ),
-      M = list(
-        list()
-      ),
-      L = list(
-        list()
-      ),
-      NULL = TRUE|FALSE,
-      BOOL = TRUE|FALSE
-    )
-  ),
-  ConsistentRead = TRUE|FALSE
-)
+scan(TableName, IndexName = NULL, AttributesToGet = NULL,
+  Limit = NULL, Select = NULL, ScanFilter = NULL,
+  ConditionalOperator = NULL, ExclusiveStartKey = NULL,
+  ReturnConsumedCapacity = NULL, TotalSegments = NULL,
+  Segment = NULL, ProjectionExpression = NULL,
+  FilterExpression = NULL, ExpressionAttributeNames = NULL,
+  ExpressionAttributeValues = NULL, ConsistentRead = NULL)
 }
 \arguments{
 \item{TableName}{[required] The name of the table containing the requested items; or, if you provide \code{IndexName}, the name of the table to which that index belongs.}
@@ -230,11 +141,111 @@ A single \code{Scan} operation will read up to the maximum number of items set (
 
 \code{Scan} uses eventually consistent reads when accessing the data in a table; therefore, the result set might not include the changes to data in the table immediately before the operation began. If you need a consistent copy of the data, as of the time that the \code{Scan} begins, you can set the \code{ConsistentRead} parameter to \code{true}.
 }
+\section{Accepted Parameters}{
+\preformatted{scan(
+  TableName = "string",
+  IndexName = "string",
+  AttributesToGet = list(
+    "string"
+  ),
+  Limit = 123,
+  Select = "ALL_ATTRIBUTES"|"ALL_PROJECTED_ATTRIBUTES"|"SPECIFIC_ATTRIBUTES"|"COUNT",
+  ScanFilter = list(
+    list(
+      AttributeValueList = list(
+        list(
+          S = "string",
+          N = "string",
+          B = raw,
+          SS = list(
+            "string"
+          ),
+          NS = list(
+            "string"
+          ),
+          BS = list(
+            raw
+          ),
+          M = list(
+            list()
+          ),
+          L = list(
+            list()
+          ),
+          NULL = TRUE|FALSE,
+          BOOL = TRUE|FALSE
+        )
+      ),
+      ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH"
+    )
+  ),
+  ConditionalOperator = "AND"|"OR",
+  ExclusiveStartKey = list(
+    list(
+      S = "string",
+      N = "string",
+      B = raw,
+      SS = list(
+        "string"
+      ),
+      NS = list(
+        "string"
+      ),
+      BS = list(
+        raw
+      ),
+      M = list(
+        list()
+      ),
+      L = list(
+        list()
+      ),
+      NULL = TRUE|FALSE,
+      BOOL = TRUE|FALSE
+    )
+  ),
+  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
+  TotalSegments = 123,
+  Segment = 123,
+  ProjectionExpression = "string",
+  FilterExpression = "string",
+  ExpressionAttributeNames = list(
+    "string"
+  ),
+  ExpressionAttributeValues = list(
+    list(
+      S = "string",
+      N = "string",
+      B = raw,
+      SS = list(
+        "string"
+      ),
+      NS = list(
+        "string"
+      ),
+      BS = list(
+        raw
+      ),
+      M = list(
+        list()
+      ),
+      L = list(
+        list()
+      ),
+      NULL = TRUE|FALSE,
+      BOOL = TRUE|FALSE
+    )
+  ),
+  ConsistentRead = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example scans the entire Music table, and then narrows the results
 # to songs by the artist "No One You Know". For each item, only the album
 # title and song title are returned.
-scan(
+\donttest{scan(
   ExpressionAttributeNames = list(
     AT = "AlbumTitle",
     ST = "SongTitle"
@@ -247,6 +258,6 @@ scan(
   FilterExpression = "Artist = :a",
   ProjectionExpression = "#ST, #AT",
   TableName = "Music"
-)
+)}
 
 }

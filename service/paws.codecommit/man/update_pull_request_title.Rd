@@ -4,10 +4,7 @@
 \alias{update_pull_request_title}
 \title{Replaces the title of a pull request}
 \usage{
-update_pull_request_title(
-  pullRequestId = "string",
-  title = "string"
-)
+update_pull_request_title(pullRequestId, title)
 }
 \arguments{
 \item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use ListPullRequests.}
@@ -17,6 +14,11 @@ update_pull_request_title(
 \description{
 Replaces the title of a pull request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_pull_request_title(
+  pullRequestId = "string",
+  title = "string"
+)
 }
+}
+

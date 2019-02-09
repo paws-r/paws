@@ -4,20 +4,10 @@
 \alias{put_scaling_policy}
 \title{Creates or updates a scaling policy for a fleet}
 \usage{
-put_scaling_policy(
-  Name = "string",
-  FleetId = "string",
-  ScalingAdjustment = 123,
-  ScalingAdjustmentType = "ChangeInCapacity"|"ExactCapacity"|"PercentChangeInCapacity",
-  Threshold = 123.0,
-  ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
-  EvaluationPeriods = 123,
-  MetricName = "ActivatingGameSessions"|"ActiveGameSessions"|"ActiveInstances"|"AvailableGameSessions"|"AvailablePlayerSessions"|"CurrentPlayerSessions"|"IdleInstances"|"PercentAvailableGameSessions"|"PercentIdleInstances"|"QueueDepth"|"WaitTime",
-  PolicyType = "RuleBased"|"TargetBased",
-  TargetConfiguration = list(
-    TargetValue = 123.0
-  )
-)
+put_scaling_policy(Name, FleetId, ScalingAdjustment = NULL,
+  ScalingAdjustmentType = NULL, Threshold = NULL,
+  ComparisonOperator = NULL, EvaluationPeriods = NULL, MetricName,
+  PolicyType = NULL, TargetConfiguration = NULL)
 }
 \arguments{
 \item{Name}{[required] Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A fleet can have only one scaling policy with the same name.}
@@ -106,6 +96,21 @@ Operations related to fleet capacity scaling include:
 \item StopFleetActions
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_scaling_policy(
+  Name = "string",
+  FleetId = "string",
+  ScalingAdjustment = 123,
+  ScalingAdjustmentType = "ChangeInCapacity"|"ExactCapacity"|"PercentChangeInCapacity",
+  Threshold = 123.0,
+  ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
+  EvaluationPeriods = 123,
+  MetricName = "ActivatingGameSessions"|"ActiveGameSessions"|"ActiveInstances"|"AvailableGameSessions"|"AvailablePlayerSessions"|"CurrentPlayerSessions"|"IdleInstances"|"PercentAvailableGameSessions"|"PercentIdleInstances"|"QueueDepth"|"WaitTime",
+  PolicyType = "RuleBased"|"TargetBased",
+  TargetConfiguration = list(
+    TargetValue = 123.0
+  )
+)
 }
+}
+

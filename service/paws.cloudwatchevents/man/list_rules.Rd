@@ -4,11 +4,7 @@
 \alias{list_rules}
 \title{Lists your Amazon CloudWatch Events rules}
 \usage{
-list_rules(
-  NamePrefix = "string",
-  NextToken = "string",
-  Limit = 123
-)
+list_rules(NamePrefix = NULL, NextToken = NULL, Limit = NULL)
 }
 \arguments{
 \item{NamePrefix}{The prefix matching the rule name.}
@@ -23,6 +19,12 @@ Lists your Amazon CloudWatch Events rules. You can either list all the rules or 
 \details{
 ListRules does not list the targets of a rule. To see the targets associated with a rule, use ListTargetsByRule.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_rules(
+  NamePrefix = "string",
+  NextToken = "string",
+  Limit = 123
+)
 }
+}
+

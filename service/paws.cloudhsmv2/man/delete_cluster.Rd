@@ -4,9 +4,7 @@
 \alias{delete_cluster}
 \title{Deletes the specified AWS CloudHSM cluster}
 \usage{
-delete_cluster(
-  ClusterId = "string"
-)
+delete_cluster(ClusterId)
 }
 \arguments{
 \item{ClusterId}{[required] The identifier (ID) of the cluster that you are deleting. To find the cluster ID, use DescribeClusters.}
@@ -14,6 +12,10 @@ delete_cluster(
 \description{
 Deletes the specified AWS CloudHSM cluster. Before you can delete a cluster, you must delete all HSMs in the cluster. To see if the cluster contains any HSMs, use DescribeClusters. To delete an HSM, use DeleteHsm.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_cluster(
+  ClusterId = "string"
+)
 }
+}
+

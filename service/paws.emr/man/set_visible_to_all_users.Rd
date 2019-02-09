@@ -4,12 +4,7 @@
 \alias{set_visible_to_all_users}
 \title{Sets whether all AWS Identity and Access Management (IAM) users under your account can access the specified clusters (job flows)}
 \usage{
-set_visible_to_all_users(
-  JobFlowIds = list(
-    "string"
-  ),
-  VisibleToAllUsers = TRUE|FALSE
-)
+set_visible_to_all_users(JobFlowIds, VisibleToAllUsers)
 }
 \arguments{
 \item{JobFlowIds}{[required] Identifiers of the job flows to receive the new visibility setting.}
@@ -19,6 +14,13 @@ set_visible_to_all_users(
 \description{
 Sets whether all AWS Identity and Access Management (IAM) users under your account can access the specified clusters (job flows). This action works on running clusters. You can also set the visibility of a cluster when you launch it using the \code{VisibleToAllUsers} parameter of RunJobFlow. The SetVisibleToAllUsers action can be called only by an IAM user who created the cluster or the AWS account that owns the cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_visible_to_all_users(
+  JobFlowIds = list(
+    "string"
+  ),
+  VisibleToAllUsers = TRUE|FALSE
+)
 }
+}
+

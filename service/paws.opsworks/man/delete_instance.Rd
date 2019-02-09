@@ -4,11 +4,8 @@
 \alias{delete_instance}
 \title{Deletes a specified instance, which terminates the associated Amazon EC2 instance}
 \usage{
-delete_instance(
-  InstanceId = "string",
-  DeleteElasticIp = TRUE|FALSE,
-  DeleteVolumes = TRUE|FALSE
-)
+delete_instance(InstanceId, DeleteElasticIp = NULL,
+  DeleteVolumes = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The instance ID.}
@@ -25,6 +22,12 @@ For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userg
 
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_instance(
+  InstanceId = "string",
+  DeleteElasticIp = TRUE|FALSE,
+  DeleteVolumes = TRUE|FALSE
+)
 }
+}
+

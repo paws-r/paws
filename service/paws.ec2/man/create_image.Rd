@@ -4,29 +4,8 @@
 \alias{create_image}
 \title{Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped}
 \usage{
-create_image(
-  BlockDeviceMappings = list(
-    list(
-      DeviceName = "string",
-      VirtualName = "string",
-      Ebs = list(
-        DeleteOnTermination = TRUE|FALSE,
-        Iops = 123,
-        SnapshotId = "string",
-        VolumeSize = 123,
-        VolumeType = "standard"|"io1"|"gp2"|"sc1"|"st1",
-        Encrypted = TRUE|FALSE,
-        KmsKeyId = "string"
-      ),
-      NoDevice = "string"
-    )
-  ),
-  Description = "string",
-  DryRun = TRUE|FALSE,
-  InstanceId = "string",
-  Name = "string",
-  NoReboot = TRUE|FALSE
-)
+create_image(BlockDeviceMappings = NULL, Description = NULL,
+  DryRun = NULL, InstanceId, Name, NoReboot = NULL)
 }
 \arguments{
 \item{BlockDeviceMappings}{Information about one or more block device mappings. This parameter cannot be used to modify the encryption status of existing volumes or snapshots. To create an AMI with encrypted snapshots, use the CopyImage action.}
@@ -51,11 +30,38 @@ If you customized your instance with instance store volumes or EBS volumes in ad
 
 For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html}{Creating Amazon EBS-Backed Linux AMIs} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_image(
+  BlockDeviceMappings = list(
+    list(
+      DeviceName = "string",
+      VirtualName = "string",
+      Ebs = list(
+        DeleteOnTermination = TRUE|FALSE,
+        Iops = 123,
+        SnapshotId = "string",
+        VolumeSize = 123,
+        VolumeType = "standard"|"io1"|"gp2"|"sc1"|"st1",
+        Encrypted = TRUE|FALSE,
+        KmsKeyId = "string"
+      ),
+      NoDevice = "string"
+    )
+  ),
+  Description = "string",
+  DryRun = TRUE|FALSE,
+  InstanceId = "string",
+  Name = "string",
+  NoReboot = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example creates an AMI from the specified instance and adds an EBS
 # volume with the device name /dev/sdh and an instance store volume with
 # the device name /dev/sdc.
-create_image(
+\donttest{create_image(
   BlockDeviceMappings = list(
     list(
       DeviceName = "/dev/sdh",
@@ -72,6 +78,6 @@ create_image(
   InstanceId = "i-1234567890abcdef0",
   Name = "My server",
   NoReboot = TRUE
-)
+)}
 
 }

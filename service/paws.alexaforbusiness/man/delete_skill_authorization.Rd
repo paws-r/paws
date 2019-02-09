@@ -4,10 +4,7 @@
 \alias{delete_skill_authorization}
 \title{Unlinks a third-party account from a skill}
 \usage{
-delete_skill_authorization(
-  SkillId = "string",
-  RoomArn = "string"
-)
+delete_skill_authorization(SkillId, RoomArn = NULL)
 }
 \arguments{
 \item{SkillId}{[required] The unique identifier of a skill.}
@@ -17,6 +14,11 @@ delete_skill_authorization(
 \description{
 Unlinks a third-party account from a skill.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_skill_authorization(
+  SkillId = "string",
+  RoomArn = "string"
+)
 }
+}
+

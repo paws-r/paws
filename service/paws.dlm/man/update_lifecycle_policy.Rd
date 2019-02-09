@@ -4,7 +4,27 @@
 \alias{update_lifecycle_policy}
 \title{Updates the specified lifecycle policy}
 \usage{
-update_lifecycle_policy(
+update_lifecycle_policy(PolicyId, ExecutionRoleArn = NULL,
+  State = NULL, Description = NULL, PolicyDetails = NULL)
+}
+\arguments{
+\item{PolicyId}{[required] The identifier of the lifecycle policy.}
+
+\item{ExecutionRoleArn}{The Amazon Resource Name (ARN) of the IAM role used to run the operations specified by the lifecycle policy.}
+
+\item{State}{The desired activation state of the lifecycle policy after creation.}
+
+\item{Description}{A description of the lifecycle policy.}
+
+\item{PolicyDetails}{The configuration of the lifecycle policy.
+
+Target tags cannot be re-used across policies.}
+}
+\description{
+Updates the specified lifecycle policy.
+}
+\section{Accepted Parameters}{
+\preformatted{update_lifecycle_policy(
   PolicyId = "string",
   ExecutionRoleArn = "string",
   State = "ENABLED"|"DISABLED",
@@ -22,7 +42,6 @@ update_lifecycle_policy(
     Schedules = list(
       list(
         Name = "string",
-        CopyTags = TRUE|FALSE,
         TagsToAdd = list(
           list(
             Key = "string",
@@ -44,22 +63,5 @@ update_lifecycle_policy(
   )
 )
 }
-\arguments{
-\item{PolicyId}{[required] The identifier of the lifecycle policy.}
-
-\item{ExecutionRoleArn}{The Amazon Resource Name (ARN) of the IAM role used to run the operations specified by the lifecycle policy.}
-
-\item{State}{The desired activation state of the lifecycle policy after creation.}
-
-\item{Description}{A description of the lifecycle policy.}
-
-\item{PolicyDetails}{The configuration of the lifecycle policy.
-
-Target tags cannot be re-used across policies.}
 }
-\description{
-Updates the specified lifecycle policy.
-}
-\examples{
 
-}

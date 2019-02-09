@@ -4,13 +4,10 @@
 \alias{get_function}
 \title{Returns the configuration information of the Lambda function and a presigned URL link to the}
 \usage{
-get_function(
-  FunctionName = "string",
-  Qualifier = "string"
-)
+get_function(FunctionName, Qualifier = NULL)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function.
+\item{FunctionName}{[required] The name of the lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -31,11 +28,19 @@ Use the \code{Qualifier} parameter to retrieve a published version of the functi
 
 This operation requires permission for the \code{lambda:GetFunction} action.
 }
+\section{Accepted Parameters}{
+\preformatted{get_function(
+  FunctionName = "string",
+  Qualifier = "string"
+)
+}
+}
+
 \examples{
 # This operation retrieves a Lambda function's event source mapping
-get_function(
+\donttest{get_function(
   FunctionName = "myFunction",
   Qualifier = "1"
-)
+)}
 
 }

@@ -4,9 +4,7 @@
 \alias{get_saml_provider}
 \title{Returns the SAML provider metadocument that was uploaded when the IAM SAML provider resource object was created or updated}
 \usage{
-get_saml_provider(
-  SAMLProviderArn = "string"
-)
+get_saml_provider(SAMLProviderArn)
 }
 \arguments{
 \item{SAMLProviderArn}{[required] The Amazon Resource Name (ARN) of the SAML provider resource object in IAM to get information about.
@@ -19,6 +17,10 @@ Returns the SAML provider metadocument that was uploaded when the IAM SAML provi
 \details{
 This operation requires \href{http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_saml_provider(
+  SAMLProviderArn = "string"
+)
 }
+}
+

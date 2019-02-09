@@ -4,11 +4,7 @@
 \alias{describe_tags}
 \title{Describes the tags associated with the specified AWS Direct Connect resources}
 \usage{
-describe_tags(
-  resourceArns = list(
-    "string"
-  )
-)
+describe_tags(resourceArns)
 }
 \arguments{
 \item{resourceArns}{[required] The Amazon Resource Names (ARNs) of the resources.}
@@ -16,6 +12,12 @@ describe_tags(
 \description{
 Describes the tags associated with the specified AWS Direct Connect resources.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_tags(
+  resourceArns = list(
+    "string"
+  )
+)
 }
+}
+

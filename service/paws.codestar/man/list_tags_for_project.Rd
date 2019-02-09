@@ -4,11 +4,7 @@
 \alias{list_tags_for_project}
 \title{Gets the tags for a project}
 \usage{
-list_tags_for_project(
-  id = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+list_tags_for_project(id, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{id}{[required] The ID of the project to get tags for.}
@@ -20,6 +16,12 @@ list_tags_for_project(
 \description{
 Gets the tags for a project.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_project(
+  id = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

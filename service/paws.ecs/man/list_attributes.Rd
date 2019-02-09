@@ -4,14 +4,8 @@
 \alias{list_attributes}
 \title{Lists the attributes for Amazon ECS resources within a specified target type and cluster}
 \usage{
-list_attributes(
-  cluster = "string",
-  targetType = "container-instance",
-  attributeName = "string",
-  attributeValue = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+list_attributes(cluster = NULL, targetType, attributeName = NULL,
+  attributeValue = NULL, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster to list attributes. If you do not specify a cluster, the default cluster is assumed.}
@@ -31,6 +25,15 @@ This token should be treated as an opaque identifier that is only used to retrie
 \description{
 Lists the attributes for Amazon ECS resources within a specified target type and cluster. When you specify a target type and cluster, \code{ListAttributes} returns a list of attribute objects, one for each attribute on each resource. You can filter the list of results to a single attribute name to only return results that have that name. You can also filter the results by attribute name and value, for example, to see which container instances in a cluster are running a Linux AMI (\code{ecs.os-type=linux}).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_attributes(
+  cluster = "string",
+  targetType = "container-instance",
+  attributeName = "string",
+  attributeValue = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

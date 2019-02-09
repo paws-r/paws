@@ -4,13 +4,8 @@
 \alias{put_record}
 \title{Writes a single data record into an Amazon Kinesis data stream}
 \usage{
-put_record(
-  StreamName = "string",
-  Data = raw,
-  PartitionKey = "string",
-  ExplicitHashKey = "string",
-  SequenceNumberForOrdering = "string"
-)
+put_record(StreamName, Data, PartitionKey, ExplicitHashKey = NULL,
+  SequenceNumberForOrdering = NULL)
 }
 \arguments{
 \item{StreamName}{[required] The name of the stream to put the data record into.}
@@ -43,6 +38,14 @@ If a \code{PutRecord} request cannot be processed because of insufficient provis
 
 By default, data records are accessible for 24 hours from the time that they are added to a stream. You can use IncreaseStreamRetentionPeriod or DecreaseStreamRetentionPeriod to modify this retention period.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_record(
+  StreamName = "string",
+  Data = raw,
+  PartitionKey = "string",
+  ExplicitHashKey = "string",
+  SequenceNumberForOrdering = "string"
+)
 }
+}
+

@@ -4,18 +4,8 @@
 \alias{create_pull_request}
 \title{Creates a pull request in the specified repository}
 \usage{
-create_pull_request(
-  title = "string",
-  description = "string",
-  targets = list(
-    list(
-      repositoryName = "string",
-      sourceReference = "string",
-      destinationReference = "string"
-    )
-  ),
-  clientRequestToken = "string"
-)
+create_pull_request(title, description = NULL, targets,
+  clientRequestToken = NULL)
 }
 \arguments{
 \item{title}{[required] The title of the pull request. This title will be used to identify the pull request to other users in the repository.}
@@ -31,6 +21,19 @@ The AWS SDKs prepopulate client request tokens. If using an AWS SDK, you do not 
 \description{
 Creates a pull request in the specified repository.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_pull_request(
+  title = "string",
+  description = "string",
+  targets = list(
+    list(
+      repositoryName = "string",
+      sourceReference = "string",
+      destinationReference = "string"
+    )
+  ),
+  clientRequestToken = "string"
+)
 }
+}
+

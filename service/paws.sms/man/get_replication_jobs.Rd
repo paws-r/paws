@@ -2,24 +2,27 @@
 % Please edit documentation in R/paws.sms_operations.R
 \name{get_replication_jobs}
 \alias{get_replication_jobs}
-\title{Describes the specified replication job or all of your replication jobs}
+\title{The GetReplicationJobs API will return all of your ReplicationJobs and their details}
 \usage{
-get_replication_jobs(
+get_replication_jobs(replicationJobId = NULL, nextToken = NULL,
+  maxResults = NULL)
+}
+\arguments{
+\item{replicationJobId}{}
+
+\item{nextToken}{}
+
+\item{maxResults}{}
+}
+\description{
+The GetReplicationJobs API will return all of your ReplicationJobs and their details. This API returns a paginated list, that may be consecutively called with nextToken to retrieve all ReplicationJobs.
+}
+\section{Accepted Parameters}{
+\preformatted{get_replication_jobs(
   replicationJobId = "string",
   nextToken = "string",
   maxResults = 123
 )
 }
-\arguments{
-\item{replicationJobId}{The identifier of the replication job.}
-
-\item{nextToken}{The token for the next set of results.}
-
-\item{maxResults}{The maximum number of results to return in a single call. The default value is 50. To retrieve the remaining results, make another call with the returned \code{NextToken} value.}
 }
-\description{
-Describes the specified replication job or all of your replication jobs.
-}
-\examples{
 
-}

@@ -4,15 +4,7 @@
 \alias{create_members}
 \title{Creates member accounts of the current AWS account by specifying a list of AWS account IDs}
 \usage{
-create_members(
-  AccountDetails = list(
-    list(
-      AccountId = "string",
-      Email = "string"
-    )
-  ),
-  DetectorId = "string"
-)
+create_members(AccountDetails, DetectorId)
 }
 \arguments{
 \item{AccountDetails}{[required] A list of account ID and email address pairs of the accounts that you want to associate with the master GuardDuty account.}
@@ -22,6 +14,16 @@ create_members(
 \description{
 Creates member accounts of the current AWS account by specifying a list of AWS account IDs. The current AWS account can then invite these members to manage GuardDuty in their accounts.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_members(
+  AccountDetails = list(
+    list(
+      AccountId = "string",
+      Email = "string"
+    )
+  ),
+  DetectorId = "string"
+)
 }
+}
+

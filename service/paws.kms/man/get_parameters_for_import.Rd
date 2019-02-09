@@ -4,11 +4,7 @@
 \alias{get_parameters_for_import}
 \title{Returns the items you need in order to import key material into AWS KMS from your existing key management infrastructure}
 \usage{
-get_parameters_for_import(
-  KeyId = "string",
-  WrappingAlgorithm = "RSAES_PKCS1_V1_5"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256",
-  WrappingKeySpec = "RSA_2048"
-)
+get_parameters_for_import(KeyId, WrappingAlgorithm, WrappingKeySpec)
 }
 \arguments{
 \item{KeyId}{[required] The identifier of the CMK into which you will import key material. The CMK's \code{Origin} must be \code{EXTERNAL}.
@@ -23,7 +19,7 @@ For example:
 
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 
-\item{WrappingAlgorithm}{[required] The algorithm you will use to encrypt the key material before importing it with ImportKeyMaterial. For more information, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html}{Encrypt the Key Material} in the \emph{AWS Key Management Service Developer Guide}.}
+\item{WrappingAlgorithm}{[required] The algorithm you use to encrypt the key material before importing it with ImportKeyMaterial. For more information, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html}{Encrypt the Key Material} in the \emph{AWS Key Management Service Developer Guide}.}
 
 \item{WrappingKeySpec}{[required] The type of wrapping key (public key) to return in the response. Only 2048-bit RSA public keys are supported.}
 }
@@ -37,13 +33,22 @@ This operation returns a public key and an import token. Use the public key to e
 
 The result of this operation varies with the key state of the CMK. For details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key} in the \emph{AWS Key Management Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{get_parameters_for_import(
+  KeyId = "string",
+  WrappingAlgorithm = "RSAES_PKCS1_V1_5"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256",
+  WrappingKeySpec = "RSA_2048"
+)
+}
+}
+
 \examples{
 # The following example retrieves the public key and import token for the
 # specified CMK.
-get_parameters_for_import(
+\donttest{get_parameters_for_import(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
   WrappingAlgorithm = "RSAES_OAEP_SHA_1",
   WrappingKeySpec = "RSA_2048"
-)
+)}
 
 }

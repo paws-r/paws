@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.connect_operations.R
 \name{stop_contact}
 \alias{stop_contact}
-\title{Ends the contact initiated by the \code{StartOutboundVoiceContact} operation}
+\title{Ends the contact initiated by the StartOutboundVoiceContact operation}
 \usage{
-stop_contact(
-  ContactId = "string",
-  InstanceId = "string"
-)
+stop_contact(ContactId, InstanceId)
 }
 \arguments{
 \item{ContactId}{[required] The unique identifier of the contact to end.}
@@ -20,6 +17,11 @@ Ends the contact initiated by the \code{StartOutboundVoiceContact} operation.
 \details{
 If you are using an IAM account, it must have permission to the \code{connect:StopContact} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_contact(
+  ContactId = "string",
+  InstanceId = "string"
+)
 }
+}
+

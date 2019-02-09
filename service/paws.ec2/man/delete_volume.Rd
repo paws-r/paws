@@ -4,10 +4,7 @@
 \alias{delete_volume}
 \title{Deletes the specified EBS volume}
 \usage{
-delete_volume(
-  VolumeId = "string",
-  DryRun = TRUE|FALSE
-)
+delete_volume(VolumeId, DryRun = NULL)
 }
 \arguments{
 \item{VolumeId}{[required] The ID of the volume.}
@@ -22,12 +19,20 @@ The volume can remain in the \code{deleting} state for several minutes.
 
 For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html}{Deleting an Amazon EBS Volume} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_volume(
+  VolumeId = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example deletes an available volume with the volume ID of
 # ``vol-049df61146c4d7901``. If the command succeeds, no output is
 # returned.
-delete_volume(
+\donttest{delete_volume(
   VolumeId = "vol-049df61146c4d7901"
-)
+)}
 
 }

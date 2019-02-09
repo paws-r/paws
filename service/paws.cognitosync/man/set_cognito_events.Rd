@@ -4,12 +4,7 @@
 \alias{set_cognito_events}
 \title{Sets the AWS Lambda function for a given event type for an identity pool}
 \usage{
-set_cognito_events(
-  IdentityPoolId = "string",
-  Events = list(
-    "string"
-  )
-)
+set_cognito_events(IdentityPoolId, Events)
 }
 \arguments{
 \item{IdentityPoolId}{[required] The Cognito Identity Pool to use when configuring Cognito Events}
@@ -22,6 +17,13 @@ Sets the AWS Lambda function for a given event type for an identity pool. This r
 \details{
 This API can only be called with developer credentials. You cannot call this API with the temporary user credentials provided by Cognito Identity.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_cognito_events(
+  IdentityPoolId = "string",
+  Events = list(
+    "string"
+  )
+)
 }
+}
+

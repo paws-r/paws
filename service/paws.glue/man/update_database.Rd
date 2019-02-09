@@ -4,7 +4,20 @@
 \alias{update_database}
 \title{Updates an existing database definition in a Data Catalog}
 \usage{
-update_database(
+update_database(CatalogId = NULL, Name, DatabaseInput)
+}
+\arguments{
+\item{CatalogId}{The ID of the Data Catalog in which the metadata database resides. If none is supplied, the AWS account ID is used by default.}
+
+\item{Name}{[required] The name of the database to update in the catalog. For Hive compatibility, this is folded to lowercase.}
+
+\item{DatabaseInput}{[required] A \code{DatabaseInput} object specifying the new definition of the metadata database in the catalog.}
+}
+\description{
+Updates an existing database definition in a Data Catalog.
+}
+\section{Accepted Parameters}{
+\preformatted{update_database(
   CatalogId = "string",
   Name = "string",
   DatabaseInput = list(
@@ -17,16 +30,5 @@ update_database(
   )
 )
 }
-\arguments{
-\item{CatalogId}{The ID of the Data Catalog in which the metadata database resides. If none is supplied, the AWS account ID is used by default.}
-
-\item{Name}{[required] The name of the database to update in the catalog. For Hive compatibility, this is folded to lowercase.}
-
-\item{DatabaseInput}{[required] A \code{DatabaseInput} object specifying the new definition of the metadata database in the catalog.}
 }
-\description{
-Updates an existing database definition in a Data Catalog.
-}
-\examples{
 
-}

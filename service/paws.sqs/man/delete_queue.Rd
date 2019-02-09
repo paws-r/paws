@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.sqs_operations.R
 \name{delete_queue}
 \alias{delete_queue}
-\title{Deletes the queue specified by the \code{QueueUrl}, regardless of the queue's contents}
+\title{Deletes the queue specified by the QueueUrl, regardless of the queue's contents}
 \usage{
-delete_queue(
-  QueueUrl = "string"
-)
+delete_queue(QueueUrl)
 }
 \arguments{
 \item{QueueUrl}{[required] The URL of the Amazon SQS queue to delete.
@@ -25,6 +23,10 @@ When you delete a queue, you must wait at least 60 seconds before creating a que
 
 Cross-account permissions don't apply to this action. For more information, see see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name} in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_queue(
+  QueueUrl = "string"
+)
 }
+}
+

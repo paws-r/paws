@@ -4,11 +4,7 @@
 \alias{update_user_hierarchy}
 \title{Assigns the specified hierarchy group to the user}
 \usage{
-update_user_hierarchy(
-  HierarchyGroupId = "string",
-  UserId = "string",
-  InstanceId = "string"
-)
+update_user_hierarchy(HierarchyGroupId = NULL, UserId, InstanceId)
 }
 \arguments{
 \item{HierarchyGroupId}{The identifier for the hierarchy group to assign to the user.}
@@ -20,6 +16,12 @@ update_user_hierarchy(
 \description{
 Assigns the specified hierarchy group to the user.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_user_hierarchy(
+  HierarchyGroupId = "string",
+  UserId = "string",
+  InstanceId = "string"
+)
 }
+}
+

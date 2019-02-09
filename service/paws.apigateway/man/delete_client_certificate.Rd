@@ -4,9 +4,7 @@
 \alias{delete_client_certificate}
 \title{Deletes the ClientCertificate resource}
 \usage{
-delete_client_certificate(
-  clientCertificateId = "string"
-)
+delete_client_certificate(clientCertificateId)
 }
 \arguments{
 \item{clientCertificateId}{[required] [Required] The identifier of the ClientCertificate resource to be deleted.}
@@ -14,6 +12,10 @@ delete_client_certificate(
 \description{
 Deletes the ClientCertificate resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_client_certificate(
+  clientCertificateId = "string"
+)
 }
+}
+

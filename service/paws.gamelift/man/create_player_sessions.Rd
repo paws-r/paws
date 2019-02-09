@@ -4,15 +4,7 @@
 \alias{create_player_sessions}
 \title{Adds a group of players to a game session}
 \usage{
-create_player_sessions(
-  GameSessionId = "string",
-  PlayerIds = list(
-    "string"
-  ),
-  PlayerDataMap = list(
-    "string"
-  )
-)
+create_player_sessions(GameSessionId, PlayerIds, PlayerDataMap = NULL)
 }
 \arguments{
 \item{GameSessionId}{[required] Unique identifier for the game session to add players to.}
@@ -40,6 +32,16 @@ Player-session-related operations include:
 \item StopGameSessionPlacement
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_player_sessions(
+  GameSessionId = "string",
+  PlayerIds = list(
+    "string"
+  ),
+  PlayerDataMap = list(
+    "string"
+  )
+)
 }
+}
+

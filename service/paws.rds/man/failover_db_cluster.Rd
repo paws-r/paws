@@ -4,13 +4,11 @@
 \alias{failover_db_cluster}
 \title{Forces a failover for a DB cluster}
 \usage{
-failover_db_cluster(
-  DBClusterIdentifier = "string",
-  TargetDBInstanceIdentifier = "string"
-)
+failover_db_cluster(DBClusterIdentifier = NULL,
+  TargetDBInstanceIdentifier = NULL)
 }
 \arguments{
-\item{DBClusterIdentifier}{[required] A DB cluster identifier to force a failover for. This parameter is not case-sensitive.
+\item{DBClusterIdentifier}{A DB cluster identifier to force a failover for. This parameter is not case-sensitive.
 
 Constraints:
 \itemize{
@@ -31,6 +29,11 @@ Amazon Aurora will automatically fail over to an Aurora Replica, if one exists, 
 
 For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?} in the \emph{Amazon Aurora User Guide.}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{failover_db_cluster(
+  DBClusterIdentifier = "string",
+  TargetDBInstanceIdentifier = "string"
+)
 }
+}
+

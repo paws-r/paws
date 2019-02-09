@@ -4,12 +4,8 @@
 \alias{get_builtin_intents}
 \title{Gets a list of built-in intents that meet the specified criteria}
 \usage{
-get_builtin_intents(
-  locale = "en-US"|"en-GB"|"de-DE",
-  signatureContains = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+get_builtin_intents(locale = NULL, signatureContains = NULL,
+  nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{locale}{A list of locales that the intent supports.}
@@ -26,6 +22,13 @@ Gets a list of built-in intents that meet the specified criteria.
 \details{
 This operation requires permission for the \code{lex:GetBuiltinIntents} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_builtin_intents(
+  locale = "en-US"|"en-GB"|"de-DE",
+  signatureContains = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

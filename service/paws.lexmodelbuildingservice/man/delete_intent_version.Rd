@@ -4,10 +4,7 @@
 \alias{delete_intent_version}
 \title{Deletes a specific version of an intent}
 \usage{
-delete_intent_version(
-  name = "string",
-  version = "string"
-)
+delete_intent_version(name, version)
 }
 \arguments{
 \item{name}{[required] The name of the intent.}
@@ -20,6 +17,11 @@ Deletes a specific version of an intent. To delete all versions of a intent, use
 \details{
 This operation requires permissions for the \code{lex:DeleteIntentVersion} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_intent_version(
+  name = "string",
+  version = "string"
+)
 }
+}
+

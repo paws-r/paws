@@ -4,16 +4,9 @@
 \alias{copy_snapshot}
 \title{Copies a point-in-time snapshot of an EBS volume and stores it in Amazon S3}
 \usage{
-copy_snapshot(
-  Description = "string",
-  DestinationRegion = "string",
-  Encrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  PresignedUrl = "string",
-  SourceRegion = "string",
-  SourceSnapshotId = "string",
-  DryRun = TRUE|FALSE
-)
+copy_snapshot(Description = NULL, DestinationRegion = NULL,
+  Encrypted = NULL, KmsKeyId = NULL, PresignedUrl = NULL,
+  SourceRegion, SourceSnapshotId, DryRun = NULL)
 }
 \arguments{
 \item{Description}{A description for the EBS snapshot.}
@@ -58,16 +51,30 @@ Snapshots created by copying another snapshot have an arbitrary volume ID that s
 
 For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html}{Copying an Amazon EBS Snapshot} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{copy_snapshot(
+  Description = "string",
+  DestinationRegion = "string",
+  Encrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  PresignedUrl = "string",
+  SourceRegion = "string",
+  SourceSnapshotId = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example copies a snapshot with the snapshot ID of
 # ``snap-066877671789bd71b`` from the ``us-west-2`` region to the
 # ``us-east-1`` region and adds a short description to identify the
 # snapshot.
-copy_snapshot(
+\donttest{copy_snapshot(
   Description = "This is my copied snapshot.",
   DestinationRegion = "us-east-1",
   SourceRegion = "us-west-2",
   SourceSnapshotId = "snap-066877671789bd71b"
-)
+)}
 
 }

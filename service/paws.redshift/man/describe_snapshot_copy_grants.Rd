@@ -4,17 +4,9 @@
 \alias{describe_snapshot_copy_grants}
 \title{Returns a list of snapshot copy grants owned by the AWS account in the destination region}
 \usage{
-describe_snapshot_copy_grants(
-  SnapshotCopyGrantName = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  TagKeys = list(
-    "string"
-  ),
-  TagValues = list(
-    "string"
-  )
-)
+describe_snapshot_copy_grants(SnapshotCopyGrantName = NULL,
+  MaxRecords = NULL, Marker = NULL, TagKeys = NULL,
+  TagValues = NULL)
 }
 \arguments{
 \item{SnapshotCopyGrantName}{The name of the snapshot copy grant.}
@@ -39,6 +31,18 @@ Returns a list of snapshot copy grants owned by the AWS account in the destinati
 \details{
 For more information about managing snapshot copy grants, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html}{Amazon Redshift Database Encryption} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_snapshot_copy_grants(
+  SnapshotCopyGrantName = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  TagKeys = list(
+    "string"
+  ),
+  TagValues = list(
+    "string"
+  )
+)
 }
+}
+

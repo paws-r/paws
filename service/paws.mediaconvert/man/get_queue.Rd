@@ -4,9 +4,7 @@
 \alias{get_queue}
 \title{Retrieve the JSON for a specific queue}
 \usage{
-get_queue(
-  Name = "string"
-)
+get_queue(Name)
 }
 \arguments{
 \item{Name}{[required] The name of the queue that you want information about.}
@@ -14,6 +12,10 @@ get_queue(
 \description{
 Retrieve the JSON for a specific queue.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_queue(
+  Name = "string"
+)
 }
+}
+

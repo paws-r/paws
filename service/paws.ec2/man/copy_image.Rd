@@ -4,16 +4,8 @@
 \alias{copy_image}
 \title{Initiates the copy of an AMI from the specified source region to the current region}
 \usage{
-copy_image(
-  ClientToken = "string",
-  Description = "string",
-  Encrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  Name = "string",
-  SourceImageId = "string",
-  SourceRegion = "string",
-  DryRun = TRUE|FALSE
-)
+copy_image(ClientToken = NULL, Description = NULL, Encrypted = NULL,
+  KmsKeyId = NULL, Name, SourceImageId, SourceRegion, DryRun = NULL)
 }
 \arguments{
 \item{ClientToken}{Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
@@ -52,14 +44,28 @@ Copies of encrypted backing snapshots for the AMI are encrypted. Copies of unenc
 
 For more information about the prerequisites and limits when copying an AMI, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html}{Copying an AMI} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{copy_image(
+  ClientToken = "string",
+  Description = "string",
+  Encrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  Name = "string",
+  SourceImageId = "string",
+  SourceRegion = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example copies the specified AMI from the us-east-1 region to the
 # current region.
-copy_image(
+\donttest{copy_image(
   Description = "",
   Name = "My server",
   SourceImageId = "ami-5731123e",
   SourceRegion = "us-east-1"
-)
+)}
 
 }

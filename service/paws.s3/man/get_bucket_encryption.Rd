@@ -4,9 +4,7 @@
 \alias{get_bucket_encryption}
 \title{Returns the server-side encryption configuration of a bucket}
 \usage{
-get_bucket_encryption(
-  Bucket = "string"
-)
+get_bucket_encryption(Bucket)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket from which the server-side encryption configuration is retrieved.}
@@ -14,6 +12,10 @@ get_bucket_encryption(
 \description{
 Returns the server-side encryption configuration of a bucket.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_bucket_encryption(
+  Bucket = "string"
+)
 }
+}
+

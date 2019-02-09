@@ -4,10 +4,7 @@
 \alias{get_bucket_metrics_configuration}
 \title{Gets a metrics configuration (specified by the metrics configuration ID) from the bucket}
 \usage{
-get_bucket_metrics_configuration(
-  Bucket = "string",
-  Id = "string"
-)
+get_bucket_metrics_configuration(Bucket, Id)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket containing the metrics configuration to retrieve.}
@@ -17,6 +14,11 @@ get_bucket_metrics_configuration(
 \description{
 Gets a metrics configuration (specified by the metrics configuration ID) from the bucket.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_bucket_metrics_configuration(
+  Bucket = "string",
+  Id = "string"
+)
 }
+}
+

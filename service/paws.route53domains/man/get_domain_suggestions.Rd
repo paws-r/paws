@@ -4,11 +4,7 @@
 \alias{get_domain_suggestions}
 \title{The GetDomainSuggestions operation returns a list of suggested domain names given a string, which can either be a domain name or simply a word or phrase (without spaces)}
 \usage{
-get_domain_suggestions(
-  DomainName = "string",
-  SuggestionCount = 123,
-  OnlyAvailable = TRUE|FALSE
-)
+get_domain_suggestions(DomainName, SuggestionCount, OnlyAvailable)
 }
 \arguments{
 \item{DomainName}{[required] A domain name that you want to use as the basis for a list of possible domain names. The domain name must contain a top-level domain (TLD), such as .com, that Amazon Route 53 supports. For a list of TLDs, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53} in the \emph{Amazon Route 53 Developer Guide}.}
@@ -20,6 +16,12 @@ get_domain_suggestions(
 \description{
 The GetDomainSuggestions operation returns a list of suggested domain names given a string, which can either be a domain name or simply a word or phrase (without spaces).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_domain_suggestions(
+  DomainName = "string",
+  SuggestionCount = 123,
+  OnlyAvailable = TRUE|FALSE
+)
 }
+}
+

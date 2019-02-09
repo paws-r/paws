@@ -4,32 +4,9 @@
 \alias{admin_initiate_auth}
 \title{Initiates the authentication flow, as an administrator}
 \usage{
-admin_initiate_auth(
-  UserPoolId = "string",
-  ClientId = "string",
-  AuthFlow = "USER_SRP_AUTH"|"REFRESH_TOKEN_AUTH"|"REFRESH_TOKEN"|"CUSTOM_AUTH"|"ADMIN_NO_SRP_AUTH"|"USER_PASSWORD_AUTH",
-  AuthParameters = list(
-    "string"
-  ),
-  ClientMetadata = list(
-    "string"
-  ),
-  AnalyticsMetadata = list(
-    AnalyticsEndpointId = "string"
-  ),
-  ContextData = list(
-    IpAddress = "string",
-    ServerName = "string",
-    ServerPath = "string",
-    HttpHeaders = list(
-      list(
-        headerName = "string",
-        headerValue = "string"
-      )
-    ),
-    EncodedData = "string"
-  )
-)
+admin_initiate_auth(UserPoolId, ClientId, AuthFlow,
+  AuthParameters = NULL, ClientMetadata = NULL,
+  AnalyticsMetadata = NULL, ContextData = NULL)
 }
 \arguments{
 \item{UserPoolId}{[required] The ID of the Amazon Cognito user pool.}
@@ -72,6 +49,33 @@ Initiates the authentication flow, as an administrator.
 \details{
 Requires developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{admin_initiate_auth(
+  UserPoolId = "string",
+  ClientId = "string",
+  AuthFlow = "USER_SRP_AUTH"|"REFRESH_TOKEN_AUTH"|"REFRESH_TOKEN"|"CUSTOM_AUTH"|"ADMIN_NO_SRP_AUTH"|"USER_PASSWORD_AUTH",
+  AuthParameters = list(
+    "string"
+  ),
+  ClientMetadata = list(
+    "string"
+  ),
+  AnalyticsMetadata = list(
+    AnalyticsEndpointId = "string"
+  ),
+  ContextData = list(
+    IpAddress = "string",
+    ServerName = "string",
+    ServerPath = "string",
+    HttpHeaders = list(
+      list(
+        headerName = "string",
+        headerValue = "string"
+      )
+    ),
+    EncodedData = "string"
+  )
+)
 }
+}
+

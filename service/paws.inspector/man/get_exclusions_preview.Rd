@@ -4,13 +4,8 @@
 \alias{get_exclusions_preview}
 \title{Retrieves the exclusions preview (a list of ExclusionPreview objects) specified by the preview token}
 \usage{
-get_exclusions_preview(
-  assessmentTemplateArn = "string",
-  previewToken = "string",
-  nextToken = "string",
-  maxResults = 123,
-  locale = "EN_US"
-)
+get_exclusions_preview(assessmentTemplateArn, previewToken,
+  nextToken = NULL, maxResults = NULL, locale = NULL)
 }
 \arguments{
 \item{assessmentTemplateArn}{[required] The ARN that specifies the assessment template for which the exclusions preview was requested.}
@@ -26,6 +21,14 @@ get_exclusions_preview(
 \description{
 Retrieves the exclusions preview (a list of ExclusionPreview objects) specified by the preview token. You can obtain the preview token by running the CreateExclusionsPreview API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_exclusions_preview(
+  assessmentTemplateArn = "string",
+  previewToken = "string",
+  nextToken = "string",
+  maxResults = 123,
+  locale = "EN_US"
+)
 }
+}
+

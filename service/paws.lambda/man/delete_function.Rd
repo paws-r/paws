@@ -4,13 +4,10 @@
 \alias{delete_function}
 \title{Deletes a Lambda function}
 \usage{
-delete_function(
-  FunctionName = "string",
-  Qualifier = "string"
-)
+delete_function(FunctionName, Qualifier = NULL)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function.
+\item{FunctionName}{[required] The name of the lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -29,11 +26,19 @@ Deletes a Lambda function. To delete a specific function version, use the \code{
 \details{
 This operation requires permission for the \code{lambda:DeleteFunction} action.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_function(
+  FunctionName = "string",
+  Qualifier = "string"
+)
+}
+}
+
 \examples{
 # This operation deletes a Lambda function
-delete_function(
+\donttest{delete_function(
   FunctionName = "myFunction",
   Qualifier = "1"
-)
+)}
 
 }

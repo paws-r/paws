@@ -4,11 +4,7 @@
 \alias{delete_applications}
 \title{Deletes a list of applications and their associations with configuration items}
 \usage{
-delete_applications(
-  configurationIds = list(
-    "string"
-  )
-)
+delete_applications(configurationIds)
 }
 \arguments{
 \item{configurationIds}{[required] Configuration ID of an application to be deleted.}
@@ -16,6 +12,12 @@ delete_applications(
 \description{
 Deletes a list of applications and their associations with configuration items.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_applications(
+  configurationIds = list(
+    "string"
+  )
+)
 }
+}
+

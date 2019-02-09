@@ -4,9 +4,7 @@
 \alias{list_tags_for_resource}
 \title{Lists all cost allocation tags currently on the named resource}
 \usage{
-list_tags_for_resource(
-  ResourceName = "string"
-)
+list_tags_for_resource(ResourceName)
 }
 \arguments{
 \item{ResourceName}{[required] The Amazon Resource Name (ARN) of the resource for which you want the list of tags, for example \code{arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster} or \code{arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot}.
@@ -21,6 +19,10 @@ If the cluster is not in the \emph{available} state, \code{ListTagsForResource} 
 
 You can have a maximum of 50 cost allocation tags on an ElastiCache resource. For more information, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html}{Monitoring Costs with Tags}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_resource(
+  ResourceName = "string"
+)
 }
+}
+

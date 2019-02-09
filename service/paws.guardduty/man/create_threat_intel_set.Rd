@@ -4,14 +4,8 @@
 \alias{create_threat_intel_set}
 \title{Create a new ThreatIntelSet}
 \usage{
-create_threat_intel_set(
-  Activate = TRUE|FALSE,
-  ClientToken = "string",
-  DetectorId = "string",
-  Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
-  Location = "string",
-  Name = "string"
-)
+create_threat_intel_set(Activate, ClientToken = NULL, DetectorId, Format,
+  Location, Name)
 }
 \arguments{
 \item{Activate}{[required] A boolean value that indicates whether GuardDuty is to start using the uploaded ThreatIntelSet.}
@@ -29,6 +23,15 @@ create_threat_intel_set(
 \description{
 Create a new ThreatIntelSet. ThreatIntelSets consist of known malicious IP addresses. GuardDuty generates findings based on ThreatIntelSets.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_threat_intel_set(
+  Activate = TRUE|FALSE,
+  ClientToken = "string",
+  DetectorId = "string",
+  Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
+  Location = "string",
+  Name = "string"
+)
 }
+}
+

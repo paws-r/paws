@@ -4,14 +4,8 @@
 \alias{copy_fpga_image}
 \title{Copies the specified Amazon FPGA Image (AFI) to the current region}
 \usage{
-copy_fpga_image(
-  DryRun = TRUE|FALSE,
-  SourceFpgaImageId = "string",
-  Description = "string",
-  Name = "string",
-  SourceRegion = "string",
-  ClientToken = "string"
-)
+copy_fpga_image(DryRun = NULL, SourceFpgaImageId, Description = NULL,
+  Name = NULL, SourceRegion, ClientToken = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -29,6 +23,15 @@ copy_fpga_image(
 \description{
 Copies the specified Amazon FPGA Image (AFI) to the current region.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{copy_fpga_image(
+  DryRun = TRUE|FALSE,
+  SourceFpgaImageId = "string",
+  Description = "string",
+  Name = "string",
+  SourceRegion = "string",
+  ClientToken = "string"
+)
 }
+}
+

@@ -4,12 +4,8 @@
 \alias{update_fleet_capacity}
 \title{Updates capacity settings for a fleet}
 \usage{
-update_fleet_capacity(
-  FleetId = "string",
-  DesiredInstances = 123,
-  MinSize = 123,
-  MaxSize = 123
-)
+update_fleet_capacity(FleetId, DesiredInstances = NULL, MinSize = NULL,
+  MaxSize = NULL)
 }
 \arguments{
 \item{FleetId}{[required] Unique identifier for a fleet to update capacity for.}
@@ -51,6 +47,13 @@ Fleet-related operations include:
 \item StopFleetActions
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_fleet_capacity(
+  FleetId = "string",
+  DesiredInstances = 123,
+  MinSize = 123,
+  MaxSize = 123
+)
 }
+}
+

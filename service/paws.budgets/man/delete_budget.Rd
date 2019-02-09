@@ -4,10 +4,7 @@
 \alias{delete_budget}
 \title{Deletes a budget}
 \usage{
-delete_budget(
-  AccountId = "string",
-  BudgetName = "string"
-)
+delete_budget(AccountId, BudgetName)
 }
 \arguments{
 \item{AccountId}{[required] The \code{accountId} that is associated with the budget that you want to delete.}
@@ -18,8 +15,13 @@ delete_budget(
 Deletes a budget. You can delete your budget at any time.
 }
 \details{
-Deleting a budget also deletes the notifications and subscribers that are associated with that budget.
+\strong{Deleting a budget also deletes the notifications and subscribers associated with that budget.}
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{delete_budget(
+  AccountId = "string",
+  BudgetName = "string"
+)
+}
+}
 
-}

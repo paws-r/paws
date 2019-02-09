@@ -4,11 +4,7 @@
 \alias{list_filters}
 \title{Returns a paginated list of the current filters}
 \usage{
-list_filters(
-  DetectorId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_filters(DetectorId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service where you want to list filters.}
@@ -20,6 +16,12 @@ list_filters(
 \description{
 Returns a paginated list of the current filters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_filters(
+  DetectorId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

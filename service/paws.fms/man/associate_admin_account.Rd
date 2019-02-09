@@ -4,9 +4,7 @@
 \alias{associate_admin_account}
 \title{Sets the AWS Firewall Manager administrator account}
 \usage{
-associate_admin_account(
-  AdminAccount = "string"
-)
+associate_admin_account(AdminAccount)
 }
 \arguments{
 \item{AdminAccount}{[required] The AWS account ID to associate with AWS Firewall Manager as the AWS Firewall Manager administrator account. This can be an AWS Organizations master account or a member account. For more information about AWS Organizations and master accounts, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html}{Managing the AWS Accounts in Your Organization}.}
@@ -17,6 +15,10 @@ Sets the AWS Firewall Manager administrator account. AWS Firewall Manager must b
 \details{
 The account that you associate with AWS Firewall Manager is called the AWS Firewall Manager administrator account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_admin_account(
+  AdminAccount = "string"
+)
 }
+}
+

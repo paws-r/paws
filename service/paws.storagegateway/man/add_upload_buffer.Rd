@@ -4,12 +4,7 @@
 \alias{add_upload_buffer}
 \title{Configures one or more gateway local disks as upload buffer for a specified gateway}
 \usage{
-add_upload_buffer(
-  GatewayARN = "string",
-  DiskIds = list(
-    "string"
-  )
-)
+add_upload_buffer(GatewayARN, DiskIds)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -22,15 +17,25 @@ Configures one or more gateway local disks as upload buffer for a specified gate
 \details{
 In the request, you specify the gateway Amazon Resource Name (ARN) to which you want to add upload buffer, and one or more disk IDs that you want to configure as upload buffer.
 }
+\section{Accepted Parameters}{
+\preformatted{add_upload_buffer(
+  GatewayARN = "string",
+  DiskIds = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # Configures one or more gateway local disks as upload buffer for a
 # specified gateway.
-add_upload_buffer(
+\donttest{add_upload_buffer(
   DiskIds = list(
     "pci-0000:03:00.0-scsi-0:0:0:0",
     "pci-0000:03:00.0-scsi-0:0:1:0"
   ),
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
+)}
 
 }

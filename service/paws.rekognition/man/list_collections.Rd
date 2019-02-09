@@ -4,10 +4,7 @@
 \alias{list_collections}
 \title{Returns list of collection IDs in your account}
 \usage{
-list_collections(
-  NextToken = "string",
-  MaxResults = 123
-)
+list_collections(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{Pagination token from the previous response.}
@@ -22,8 +19,16 @@ For an example, see Listing Collections in the Amazon Rekognition Developer Guid
 
 This operation requires permissions to perform the \code{rekognition:ListCollections} action.
 }
+\section{Accepted Parameters}{
+\preformatted{list_collections(
+  NextToken = "string",
+  MaxResults = 123
+)
+}
+}
+
 \examples{
 # This operation returns a list of Rekognition collections.
-list_collections()
+\donttest{list_collections()}
 
 }

@@ -4,11 +4,7 @@
 \alias{list_tags_for_resource}
 \title{Lists all tags on a directory}
 \usage{
-list_tags_for_resource(
-  ResourceId = "string",
-  NextToken = "string",
-  Limit = 123
-)
+list_tags_for_resource(ResourceId, NextToken = NULL, Limit = NULL)
 }
 \arguments{
 \item{ResourceId}{[required] Identifier (ID) of the directory for which you want to retrieve tags.}
@@ -20,6 +16,12 @@ list_tags_for_resource(
 \description{
 Lists all tags on a directory.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_resource(
+  ResourceId = "string",
+  NextToken = "string",
+  Limit = 123
+)
 }
+}
+

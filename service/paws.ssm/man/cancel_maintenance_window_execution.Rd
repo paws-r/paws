@@ -4,9 +4,7 @@
 \alias{cancel_maintenance_window_execution}
 \title{Stops a Maintenance Window execution that is already in progress and cancels any tasks in the window that have not already starting running}
 \usage{
-cancel_maintenance_window_execution(
-  WindowExecutionId = "string"
-)
+cancel_maintenance_window_execution(WindowExecutionId)
 }
 \arguments{
 \item{WindowExecutionId}{[required] The ID of the Maintenance Window execution to stop.}
@@ -14,6 +12,10 @@ cancel_maintenance_window_execution(
 \description{
 Stops a Maintenance Window execution that is already in progress and cancels any tasks in the window that have not already starting running. (Tasks already in progress will continue to completion.)
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{cancel_maintenance_window_execution(
+  WindowExecutionId = "string"
+)
 }
+}
+

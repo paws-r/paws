@@ -4,7 +4,18 @@
 \alias{update_usage_plan}
 \title{Updates a usage plan of a given plan Id}
 \usage{
-update_usage_plan(
+update_usage_plan(usagePlanId, patchOperations = NULL)
+}
+\arguments{
+\item{usagePlanId}{[required] [Required] The Id of the to-be-updated usage plan.}
+
+\item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
+}
+\description{
+Updates a usage plan of a given plan Id.
+}
+\section{Accepted Parameters}{
+\preformatted{update_usage_plan(
   usagePlanId = "string",
   patchOperations = list(
     list(
@@ -16,14 +27,5 @@ update_usage_plan(
   )
 )
 }
-\arguments{
-\item{usagePlanId}{[required] [Required] The Id of the to-be-updated usage plan.}
+}
 
-\item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
-}
-\description{
-Updates a usage plan of a given plan Id.
-}
-\examples{
-
-}

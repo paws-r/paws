@@ -4,10 +4,7 @@
 \alias{stop_stack_set_operation}
 \title{Stops an in-progress operation on a stack set and its associated stack instances}
 \usage{
-stop_stack_set_operation(
-  StackSetName = "string",
-  OperationId = "string"
-)
+stop_stack_set_operation(StackSetName, OperationId)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to stop the operation for.}
@@ -17,6 +14,11 @@ stop_stack_set_operation(
 \description{
 Stops an in-progress operation on a stack set and its associated stack instances.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_stack_set_operation(
+  StackSetName = "string",
+  OperationId = "string"
+)
 }
+}
+

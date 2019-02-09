@@ -4,11 +4,7 @@
 \alias{delete_table}
 \title{Removes a table definition from the Data Catalog}
 \usage{
-delete_table(
-  CatalogId = "string",
-  DatabaseName = "string",
-  Name = "string"
-)
+delete_table(CatalogId = NULL, DatabaseName, Name)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the table resides. If none is supplied, the AWS account ID is used by default.}
@@ -25,6 +21,12 @@ After completing this operation, you will no longer have access to the table ver
 
 To ensure immediate deletion of all related resources, before calling \code{DeleteTable}, use \code{DeleteTableVersion} or \code{BatchDeleteTableVersion}, and \code{DeletePartition} or \code{BatchDeletePartition}, to delete any resources that belong to the table.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_table(
+  CatalogId = "string",
+  DatabaseName = "string",
+  Name = "string"
+)
 }
+}
+

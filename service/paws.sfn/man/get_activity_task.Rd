@@ -4,10 +4,7 @@
 \alias{get_activity_task}
 \title{Used by workers to retrieve a task (with the specified activity ARN) which has been scheduled for execution by a running state machine}
 \usage{
-get_activity_task(
-  activityArn = "string",
-  workerName = "string"
-)
+get_activity_task(activityArn, workerName = NULL)
 }
 \arguments{
 \item{activityArn}{[required] The Amazon Resource Name (ARN) of the activity to retrieve tasks from (assigned when you create the task using CreateActivity.)}
@@ -19,9 +16,12 @@ Used by workers to retrieve a task (with the specified activity ARN) which has b
 }
 \details{
 Workers should set their client side socket timeout to at least 65 seconds (5 seconds higher than the maximum time the service may hold the poll request).
-
-Polling with \code{GetActivityTask} can cause latency in some implementations. See \href{http://docs.aws.amazon.com/step-functions/latest/dg/bp-activity-pollers.html}{Avoid Latency When Polling for Activity Tasks} in the Step Functions Developer Guide.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_activity_task(
+  activityArn = "string",
+  workerName = "string"
+)
 }
+}
+

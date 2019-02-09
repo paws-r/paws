@@ -4,9 +4,7 @@
 \alias{reboot_broker}
 \title{Reboots a broker}
 \usage{
-reboot_broker(
-  BrokerId = "string"
-)
+reboot_broker(BrokerId)
 }
 \arguments{
 \item{BrokerId}{[required] The unique ID that Amazon MQ generates for the broker.}
@@ -14,6 +12,10 @@ reboot_broker(
 \description{
 Reboots a broker. Note: This API is asynchronous.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reboot_broker(
+  BrokerId = "string"
+)
 }
+}
+

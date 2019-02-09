@@ -4,15 +4,7 @@
 \alias{create_tags}
 \title{Adds one or more tags to a specified resource}
 \usage{
-create_tags(
-  ResourceName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_tags(ResourceName, Tags)
 }
 \arguments{
 \item{ResourceName}{[required] The Amazon Resource Name (ARN) to which you want to add the tag or tags. For example, \code{arn:aws:redshift:us-east-1:123456789:cluster:t1}.}
@@ -27,6 +19,16 @@ A resource can have up to 50 tags. If you try to create more than 50 tags for a 
 
 If you specify a key that already exists for the resource, the value for that key will be updated with the new value.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_tags(
+  ResourceName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

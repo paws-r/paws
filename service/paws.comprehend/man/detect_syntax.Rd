@@ -4,10 +4,7 @@
 \alias{detect_syntax}
 \title{Inspects text for syntax and the part of speech of words in the document}
 \usage{
-detect_syntax(
-  Text = "string",
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
-)
+detect_syntax(Text, LanguageCode)
 }
 \arguments{
 \item{Text}{[required] A UTF-8 string. Each string must contain fewer that 5,000 bytes of UTF encoded characters.}
@@ -17,6 +14,11 @@ detect_syntax(
 \description{
 Inspects text for syntax and the part of speech of words in the document. For more information, how-syntax.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{detect_syntax(
+  Text = "string",
+  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+)
 }
+}
+

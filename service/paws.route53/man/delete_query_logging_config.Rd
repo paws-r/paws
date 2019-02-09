@@ -4,9 +4,7 @@
 \alias{delete_query_logging_config}
 \title{Deletes a configuration for DNS query logging}
 \usage{
-delete_query_logging_config(
-  Id = "string"
-)
+delete_query_logging_config(Id)
 }
 \arguments{
 \item{Id}{[required] The ID of the configuration that you want to delete.}
@@ -17,6 +15,10 @@ Deletes a configuration for DNS query logging. If you delete a configuration, Am
 \details{
 For more information about DNS query logs, see CreateQueryLoggingConfig.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_query_logging_config(
+  Id = "string"
+)
 }
+}
+

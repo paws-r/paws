@@ -9,6 +9,8 @@ list_open_id_connect_providers()
 \description{
 Lists information about the IAM OpenID Connect (OIDC) provider resource objects defined in the AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_open_id_connect_providers()
 }
+}
+

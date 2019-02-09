@@ -4,14 +4,7 @@
 \alias{update_image_permissions}
 \title{Adds or updates permissions for the specified private image}
 \usage{
-update_image_permissions(
-  Name = "string",
-  SharedAccountId = "string",
-  ImagePermissions = list(
-    allowFleet = TRUE|FALSE,
-    allowImageBuilder = TRUE|FALSE
-  )
-)
+update_image_permissions(Name, SharedAccountId, ImagePermissions)
 }
 \arguments{
 \item{Name}{[required] The name of the private image.}
@@ -23,6 +16,15 @@ update_image_permissions(
 \description{
 Adds or updates permissions for the specified private image.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_image_permissions(
+  Name = "string",
+  SharedAccountId = "string",
+  ImagePermissions = list(
+    allowFleet = TRUE|FALSE,
+    allowImageBuilder = TRUE|FALSE
+  )
+)
 }
+}
+

@@ -4,21 +4,12 @@
 \alias{modify_replication_instance}
 \title{Modifies the replication instance to apply new settings}
 \usage{
-modify_replication_instance(
-  ReplicationInstanceArn = "string",
-  AllocatedStorage = 123,
-  ApplyImmediately = TRUE|FALSE,
-  ReplicationInstanceClass = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  PreferredMaintenanceWindow = "string",
-  MultiAZ = TRUE|FALSE,
-  EngineVersion = "string",
-  AllowMajorVersionUpgrade = TRUE|FALSE,
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  ReplicationInstanceIdentifier = "string"
-)
+modify_replication_instance(ReplicationInstanceArn,
+  AllocatedStorage = NULL, ApplyImmediately = NULL,
+  ReplicationInstanceClass = NULL, VpcSecurityGroupIds = NULL,
+  PreferredMaintenanceWindow = NULL, MultiAZ = NULL,
+  EngineVersion = NULL, AllowMajorVersionUpgrade = NULL,
+  AutoMinorVersionUpgrade = NULL, ReplicationInstanceIdentifier = NULL)
 }
 \arguments{
 \item{ReplicationInstanceArn}{[required] The Amazon Resource Name (ARN) of the replication instance.}
@@ -61,11 +52,30 @@ Modifies the replication instance to apply new settings. You can change one or m
 \details{
 Some settings are applied during the maintenance window.
 }
+\section{Accepted Parameters}{
+\preformatted{modify_replication_instance(
+  ReplicationInstanceArn = "string",
+  AllocatedStorage = 123,
+  ApplyImmediately = TRUE|FALSE,
+  ReplicationInstanceClass = "string",
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  PreferredMaintenanceWindow = "string",
+  MultiAZ = TRUE|FALSE,
+  EngineVersion = "string",
+  AllowMajorVersionUpgrade = TRUE|FALSE,
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  ReplicationInstanceIdentifier = "string"
+)
+}
+}
+
 \examples{
 # Modifies the replication instance to apply new settings. You can change
 # one or more parameters by specifying these parameters and the new values
 # in the request. Some settings are applied during the maintenance window.
-modify_replication_instance(
+\donttest{modify_replication_instance(
   AllocatedStorage = 123L,
   AllowMajorVersionUpgrade = TRUE,
   ApplyImmediately = TRUE,
@@ -77,6 +87,6 @@ modify_replication_instance(
   ReplicationInstanceClass = "dms.t2.micro",
   ReplicationInstanceIdentifier = "test-rep-1",
   VpcSecurityGroupIds = list()
-)
+)}
 
 }

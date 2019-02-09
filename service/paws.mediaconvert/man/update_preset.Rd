@@ -4,7 +4,23 @@
 \alias{update_preset}
 \title{Modify one of your existing presets}
 \usage{
-update_preset(
+update_preset(Category = NULL, Description = NULL, Name,
+  Settings = NULL)
+}
+\arguments{
+\item{Category}{The new category for the preset, if you are changing it.}
+
+\item{Description}{The new description for the preset, if you are changing it.}
+
+\item{Name}{[required] The name of the preset you are modifying.}
+
+\item{Settings}{}
+}
+\description{
+Modify one of your existing presets.
+}
+\section{Accepted Parameters}{
+\preformatted{update_preset(
   Category = "string",
   Description = "string",
   Name = "string",
@@ -126,7 +142,7 @@ update_preset(
             XPosition = 123,
             YPosition = 123
           ),
-          DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+          DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"SCC"|"SRT"|"TELETEXT"|"TTML"|"WEBVTT",
           DvbSubDestinationSettings = list(
             Alignment = "CENTERED"|"LEFT",
             BackgroundColor = "NONE"|"BLACK"|"WHITE",
@@ -481,18 +497,5 @@ update_preset(
   )
 )
 }
-\arguments{
-\item{Category}{The new category for the preset, if you are changing it.}
-
-\item{Description}{The new description for the preset, if you are changing it.}
-
-\item{Name}{[required] The name of the preset you are modifying.}
-
-\item{Settings}{}
 }
-\description{
-Modify one of your existing presets.
-}
-\examples{
 
-}

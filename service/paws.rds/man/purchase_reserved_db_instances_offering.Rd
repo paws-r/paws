@@ -4,17 +4,8 @@
 \alias{purchase_reserved_db_instances_offering}
 \title{Purchases a reserved DB instance offering}
 \usage{
-purchase_reserved_db_instances_offering(
-  ReservedDBInstancesOfferingId = "string",
-  ReservedDBInstanceId = "string",
-  DBInstanceCount = 123,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+purchase_reserved_db_instances_offering(ReservedDBInstancesOfferingId,
+  ReservedDBInstanceId = NULL, DBInstanceCount = NULL, Tags = NULL)
 }
 \arguments{
 \item{ReservedDBInstancesOfferingId}{[required] The ID of the Reserved DB instance offering to purchase.
@@ -34,6 +25,18 @@ Default: \code{1}}
 \description{
 Purchases a reserved DB instance offering.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{purchase_reserved_db_instances_offering(
+  ReservedDBInstancesOfferingId = "string",
+  ReservedDBInstanceId = "string",
+  DBInstanceCount = 123,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

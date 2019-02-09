@@ -2,15 +2,10 @@
 % Please edit documentation in R/paws.applicationdiscoveryservice_operations.R
 \name{describe_export_configurations}
 \alias{describe_export_configurations}
-\title{\code{DescribeExportConfigurations} is deprecated}
+\title{DescribeExportConfigurations is deprecated}
 \usage{
-describe_export_configurations(
-  exportIds = list(
-    "string"
-  ),
-  maxResults = 123,
-  nextToken = "string"
-)
+describe_export_configurations(exportIds = NULL, maxResults = NULL,
+  nextToken = NULL)
 }
 \arguments{
 \item{exportIds}{A list of continuous export ids to search for.}
@@ -23,8 +18,16 @@ describe_export_configurations(
 \code{DescribeExportConfigurations} is deprecated.
 }
 \details{
-Use instead \href{http://docs.aws.amazon.com/application-discovery/latest/APIReference/API_DescribeExportTasks.html}{DescribeExportTasks}.
+Use instead \href{http://docs.aws.amazon.com/application-discovery/latest/APIReference/API_DescribeExportTasks.html}{DescribeExportTasks} .
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{describe_export_configurations(
+  exportIds = list(
+    "string"
+  ),
+  maxResults = 123,
+  nextToken = "string"
+)
+}
+}
 
-}

@@ -4,13 +4,7 @@
 \alias{update_vocabulary}
 \title{Updates an existing vocabulary with new values}
 \usage{
-update_vocabulary(
-  VocabularyName = "string",
-  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT",
-  Phrases = list(
-    "string"
-  )
-)
+update_vocabulary(VocabularyName, LanguageCode, Phrases)
 }
 \arguments{
 \item{VocabularyName}{[required] The name of the vocabulary to update. The name is case-sensitive.}
@@ -20,8 +14,16 @@ update_vocabulary(
 \item{Phrases}{[required] An array of strings containing the vocabulary entries.}
 }
 \description{
-Updates an existing vocabulary with new values. The \code{UpdateVocabulary} operation overwrites all of the existing information with the values that you provide in the request.
+Updates an existing vocabulary with new values. The \code{UpdateVocabulary} operation overwrites all of the existing information with the values that you provide in the request. Note that vocabularies for en-AU, en-UK, and fr-CA languages that are in preview are not available. In the console, the vocabulary section will be greyed-out and SDK will return error message.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{update_vocabulary(
+  VocabularyName = "string",
+  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-UK",
+  Phrases = list(
+    "string"
+  )
+)
+}
+}
 
-}

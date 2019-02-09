@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.snowball_operations.R
 \name{list_cluster_jobs}
 \alias{list_cluster_jobs}
-\title{Returns an array of \code{JobListEntry} objects of the specified length}
+\title{Returns an array of JobListEntry objects of the specified length}
 \usage{
-list_cluster_jobs(
-  ClusterId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_cluster_jobs(ClusterId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ClusterId}{[required] The 39-character ID for the cluster that you want to list, for example \code{CID123e4567-e89b-12d3-a456-426655440000}.}
@@ -20,12 +16,21 @@ list_cluster_jobs(
 \description{
 Returns an array of \code{JobListEntry} objects of the specified length. Each \code{JobListEntry} object is for a job in the specified cluster and contains a job's state, a job's ID, and other information.
 }
+\section{Accepted Parameters}{
+\preformatted{list_cluster_jobs(
+  ClusterId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
+}
+}
+
 \examples{
 # Returns an array of JobListEntry objects of the specified length. Each
 # JobListEntry object is for a job in the specified cluster and contains a
 # job's state, a job's ID, and other information.
-list_cluster_jobs(
+\donttest{list_cluster_jobs(
   ClusterId = "CID123e4567-e89b-12d3-a456-426655440000"
-)
+)}
 
 }

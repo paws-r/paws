@@ -4,16 +4,15 @@
 \name{paws.servicediscovery-package}
 \alias{paws.servicediscovery}
 \alias{paws.servicediscovery-package}
-\title{paws.servicediscovery: AWS Cloud Map}
+\title{paws.servicediscovery: Amazon Route 53 Auto Naming}
 \description{
-AWS Cloud Map lets you configure public DNS, private DNS, or
-HTTP namespaces that your microservice applications run in. When an
-instance of the service becomes available, you can call the AWS Cloud
-Map API to register the instance with AWS Cloud Map. For public or
-private DNS namespaces, AWS Cloud Map automatically creates DNS
-records and an optional health check. Clients that submit public or
-private DNS queries, or HTTP requests, for the service receive an
-answer that contains up to eight healthy records.
+Amazon Route 53 auto naming lets you configure
+    public or private namespaces that your microservice applications run
+    in. When instances of the service become available, you can call the
+    auto naming API to register the instance, and Route 53 automatically
+    creates up to five DNS records and an optional health check. Clients
+    that submit DNS queries for the service receive an answer that
+    contains up to eight healthy records.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

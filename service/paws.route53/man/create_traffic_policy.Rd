@@ -4,11 +4,7 @@
 \alias{create_traffic_policy}
 \title{Creates a traffic policy, which you use to create multiple DNS resource record sets for one domain name (such as example}
 \usage{
-create_traffic_policy(
-  Name = "string",
-  Document = "string",
-  Comment = "string"
-)
+create_traffic_policy(Name, Document, Comment = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the traffic policy.}
@@ -20,6 +16,12 @@ create_traffic_policy(
 \description{
 Creates a traffic policy, which you use to create multiple DNS resource record sets for one domain name (such as example.com) or one subdomain name (such as www.example.com).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_traffic_policy(
+  Name = "string",
+  Document = "string",
+  Comment = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{get_bucket_acl}
 \title{Gets the access control policy for the bucket}
 \usage{
-get_bucket_acl(
-  Bucket = "string"
-)
+get_bucket_acl(Bucket)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -14,6 +12,10 @@ get_bucket_acl(
 \description{
 Gets the access control policy for the bucket.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_bucket_acl(
+  Bucket = "string"
+)
 }
+}
+

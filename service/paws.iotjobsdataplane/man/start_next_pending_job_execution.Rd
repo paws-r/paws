@@ -2,15 +2,10 @@
 % Please edit documentation in R/paws.iotjobsdataplane_operations.R
 \name{start_next_pending_job_execution}
 \alias{start_next_pending_job_execution}
-\title{Gets and starts the next pending (status IN\_PROGRESS or QUEUED) job execution for a thing}
+\title{Gets and starts the next pending (status IN_PROGRESS or QUEUED) job execution for a thing}
 \usage{
-start_next_pending_job_execution(
-  thingName = "string",
-  statusDetails = list(
-    "string"
-  ),
-  stepTimeoutInMinutes = 123
-)
+start_next_pending_job_execution(thingName, statusDetails = NULL,
+  stepTimeoutInMinutes = NULL)
 }
 \arguments{
 \item{thingName}{[required] The name of the thing associated with the device.}
@@ -22,6 +17,14 @@ start_next_pending_job_execution(
 \description{
 Gets and starts the next pending (status IN\_PROGRESS or QUEUED) job execution for a thing.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_next_pending_job_execution(
+  thingName = "string",
+  statusDetails = list(
+    "string"
+  ),
+  stepTimeoutInMinutes = 123
+)
 }
+}
+

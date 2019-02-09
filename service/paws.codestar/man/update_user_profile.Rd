@@ -4,12 +4,8 @@
 \alias{update_user_profile}
 \title{Updates a user's profile in AWS CodeStar}
 \usage{
-update_user_profile(
-  userArn = "string",
-  displayName = "string",
-  emailAddress = "string",
-  sshPublicKey = "string"
-)
+update_user_profile(userArn, displayName = NULL, emailAddress = NULL,
+  sshPublicKey = NULL)
 }
 \arguments{
 \item{userArn}{[required] The name that will be displayed as the friendly name for the user in AWS CodeStar.}
@@ -23,6 +19,13 @@ update_user_profile(
 \description{
 Updates a user's profile in AWS CodeStar. The user profile is not project-specific. Information in the user profile is displayed wherever the user's information appears to other users in AWS CodeStar.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_user_profile(
+  userArn = "string",
+  displayName = "string",
+  emailAddress = "string",
+  sshPublicKey = "string"
+)
 }
+}
+

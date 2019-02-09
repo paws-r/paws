@@ -4,17 +4,10 @@
 \alias{get_document}
 \title{Gets the contents of the specified Systems Manager document}
 \usage{
-get_document(
-  Name = "string",
-  VersionName = "string",
-  DocumentVersion = "string",
-  DocumentFormat = "YAML"|"JSON"
-)
+get_document(Name, DocumentVersion = NULL, DocumentFormat = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the Systems Manager document.}
-
-\item{VersionName}{An optional field specifying the version of the artifact associated with the document. For example, "Release 12, Update 6". This value is unique across all versions of a document, and cannot be changed.}
 
 \item{DocumentVersion}{The document version for which you want information.}
 
@@ -23,6 +16,12 @@ get_document(
 \description{
 Gets the contents of the specified Systems Manager document.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_document(
+  Name = "string",
+  DocumentVersion = "string",
+  DocumentFormat = "YAML"|"JSON"
+)
 }
+}
+

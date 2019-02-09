@@ -4,7 +4,35 @@
 \alias{modify_snapshot_attribute}
 \title{Adds or removes permission settings for the specified snapshot}
 \usage{
-modify_snapshot_attribute(
+modify_snapshot_attribute(Attribute = NULL,
+  CreateVolumePermission = NULL, GroupNames = NULL,
+  OperationType = NULL, SnapshotId, UserIds = NULL, DryRun = NULL)
+}
+\arguments{
+\item{Attribute}{The snapshot attribute to modify. Only volume creation permissions can be modified.}
+
+\item{CreateVolumePermission}{A JSON representation of the snapshot attribute modification.}
+
+\item{GroupNames}{The group to modify for the snapshot.}
+
+\item{OperationType}{The type of operation to perform to the attribute.}
+
+\item{SnapshotId}{[required] The ID of the snapshot.}
+
+\item{UserIds}{The account ID to modify for the snapshot.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+}
+\description{
+Adds or removes permission settings for the specified snapshot. You may add or remove specified AWS account IDs from a snapshot's list of create volume permissions, but you cannot do both in a single API call. If you need to both add and remove account IDs for a snapshot, you must use multiple API calls.
+}
+\details{
+Encrypted snapshots and snapshots with AWS Marketplace product codes cannot be made public. Snapshots encrypted with your default CMK cannot be shared with other accounts.
+
+For more information about modifying snapshot permissions, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html}{Sharing Snapshots} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+}
+\section{Accepted Parameters}{
+\preformatted{modify_snapshot_attribute(
   Attribute = "productCodes"|"createVolumePermission",
   CreateVolumePermission = list(
     Add = list(
@@ -31,50 +59,29 @@ modify_snapshot_attribute(
   DryRun = TRUE|FALSE
 )
 }
-\arguments{
-\item{Attribute}{The snapshot attribute to modify. Only volume creation permissions can be modified.}
-
-\item{CreateVolumePermission}{A JSON representation of the snapshot attribute modification.}
-
-\item{GroupNames}{The group to modify for the snapshot.}
-
-\item{OperationType}{The type of operation to perform to the attribute.}
-
-\item{SnapshotId}{[required] The ID of the snapshot.}
-
-\item{UserIds}{The account ID to modify for the snapshot.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\description{
-Adds or removes permission settings for the specified snapshot. You may add or remove specified AWS account IDs from a snapshot's list of create volume permissions, but you cannot do both in a single API call. If you need to both add and remove account IDs for a snapshot, you must use multiple API calls.
-}
-\details{
-Encrypted snapshots and snapshots with AWS Marketplace product codes cannot be made public. Snapshots encrypted with your default CMK cannot be shared with other accounts.
 
-For more information about modifying snapshot permissions, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html}{Sharing Snapshots} in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
 \examples{
 # This example modifies snapshot ``snap-1234567890abcdef0`` to remove the
 # create volume permission for a user with the account ID
 # ``123456789012``. If the command succeeds, no output is returned.
-modify_snapshot_attribute(
+\donttest{modify_snapshot_attribute(
   Attribute = "createVolumePermission",
   OperationType = "remove",
   SnapshotId = "snap-1234567890abcdef0",
   UserIds = list(
     "123456789012"
   )
-)
+)}
 
 # This example makes the snapshot ``snap-1234567890abcdef0`` public.
-modify_snapshot_attribute(
+\donttest{modify_snapshot_attribute(
   Attribute = "createVolumePermission",
   GroupNames = list(
     "all"
   ),
   OperationType = "add",
   SnapshotId = "snap-1234567890abcdef0"
-)
+)}
 
 }

@@ -4,10 +4,7 @@
 \alias{get_authorizer}
 \title{Describe an existing Authorizer resource}
 \usage{
-get_authorizer(
-  restApiId = "string",
-  authorizerId = "string"
-)
+get_authorizer(restApiId, authorizerId)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -22,6 +19,11 @@ Describe an existing Authorizer resource.
 \href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizer.html}{AWS CLI}
 :::
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_authorizer(
+  restApiId = "string",
+  authorizerId = "string"
+)
 }
+}
+

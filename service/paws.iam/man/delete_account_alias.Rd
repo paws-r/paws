@@ -4,23 +4,28 @@
 \alias{delete_account_alias}
 \title{Deletes the specified AWS account alias}
 \usage{
-delete_account_alias(
-  AccountAlias = "string"
-)
+delete_account_alias(AccountAlias)
 }
 \arguments{
 \item{AccountAlias}{[required] The name of the account alias to delete.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash, nor can you have two dashes in a row.}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash, nor can you have two dashes in a row.}
 }
 \description{
 Deletes the specified AWS account alias. For information about using an AWS account alias, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/AccountAlias.html}{Using an Alias for Your AWS Account ID} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_account_alias(
+  AccountAlias = "string"
+)
+}
+}
+
 \examples{
 # The following command removes the alias mycompany from the current AWS
 # account:
-delete_account_alias(
+\donttest{delete_account_alias(
   AccountAlias = "mycompany"
-)
+)}
 
 }

@@ -4,17 +4,8 @@
 \alias{list_metrics}
 \title{List the specified metrics}
 \usage{
-list_metrics(
-  Namespace = "string",
-  MetricName = "string",
-  Dimensions = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  NextToken = "string"
-)
+list_metrics(Namespace = NULL, MetricName = NULL, Dimensions = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{Namespace}{The namespace to filter against.}
@@ -33,6 +24,18 @@ Up to 500 results are returned for any one call. To retrieve additional results,
 
 After you create a metric, allow up to fifteen minutes before the metric appears. Statistics about the metric, however, are available sooner using GetMetricData or GetMetricStatistics.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_metrics(
+  Namespace = "string",
+  MetricName = "string",
+  Dimensions = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
 }
+}
+

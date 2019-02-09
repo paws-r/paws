@@ -4,13 +4,10 @@
 \alias{get_function_configuration}
 \title{Returns the configuration information of the Lambda function}
 \usage{
-get_function_configuration(
-  FunctionName = "string",
-  Qualifier = "string"
-)
+get_function_configuration(FunctionName, Qualifier = NULL)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function.
+\item{FunctionName}{[required] The name of the lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -31,11 +28,19 @@ If you are using the versioning feature, you can retrieve this information for a
 
 This operation requires permission for the \code{lambda:GetFunctionConfiguration} operation.
 }
+\section{Accepted Parameters}{
+\preformatted{get_function_configuration(
+  FunctionName = "string",
+  Qualifier = "string"
+)
+}
+}
+
 \examples{
 # This operation retrieves a Lambda function's event source mapping
-get_function_configuration(
+\donttest{get_function_configuration(
   FunctionName = "myFunction",
   Qualifier = "1"
-)
+)}
 
 }

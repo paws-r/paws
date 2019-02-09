@@ -4,10 +4,7 @@
 \alias{list_action_types}
 \title{Gets a summary of all AWS CodePipeline action types associated with your account}
 \usage{
-list_action_types(
-  actionOwnerFilter = "AWS"|"ThirdParty"|"Custom",
-  nextToken = "string"
-)
+list_action_types(actionOwnerFilter = NULL, nextToken = NULL)
 }
 \arguments{
 \item{actionOwnerFilter}{Filters the list of action types to those created by a specified entity.}
@@ -17,6 +14,11 @@ list_action_types(
 \description{
 Gets a summary of all AWS CodePipeline action types associated with your account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_action_types(
+  actionOwnerFilter = "AWS"|"ThirdParty"|"Custom",
+  nextToken = "string"
+)
 }
+}
+

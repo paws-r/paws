@@ -4,7 +4,25 @@
 \alias{create_queue}
 \title{Create a new transcoding queue}
 \usage{
-create_queue(
+create_queue(Description = NULL, Name, PricingPlan = NULL,
+  ReservationPlanSettings = NULL, Tags = NULL)
+}
+\arguments{
+\item{Description}{Optional. A description of the queue that you are creating.}
+
+\item{Name}{[required] The name of the queue that you are creating.}
+
+\item{PricingPlan}{Optional; default is on-demand. Specifies whether the pricing plan for the queue is on-demand or reserved. The pricing plan for the queue determines whether you pay on-demand or reserved pricing for the transcoding jobs you run through the queue. For reserved queue pricing, you must set up a contract. You can create a reserved queue contract through the AWS Elemental MediaConvert console.}
+
+\item{ReservationPlanSettings}{Details about the pricing plan for your reserved queue. Required for reserved queues and not applicable to on-demand queues.}
+
+\item{Tags}{The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.}
+}
+\description{
+Create a new transcoding queue. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+}
+\section{Accepted Parameters}{
+\preformatted{create_queue(
   Description = "string",
   Name = "string",
   PricingPlan = "ON_DEMAND"|"RESERVED",
@@ -18,20 +36,5 @@ create_queue(
   )
 )
 }
-\arguments{
-\item{Description}{Optional. A description of the queue that you are creating.}
-
-\item{Name}{[required] The name of the queue that you are creating.}
-
-\item{PricingPlan}{Specifies whether the pricing plan for the queue is on-demand or reserved. For on-demand, you pay per minute, billed in increments of .01 minute. For reserved, you pay for the transcoding capacity of the entire queue, regardless of how much or how little you use it. Reserved pricing requires a 12-month commitment. When you use the API to create a queue, the default is on-demand.}
-
-\item{ReservationPlanSettings}{Details about the pricing plan for your reserved queue. Required for reserved queues and not applicable to on-demand queues.}
-
-\item{Tags}{The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.}
 }
-\description{
-Create a new transcoding queue. For information about queues, see Working With Queues in the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html
-}
-\examples{
 
-}

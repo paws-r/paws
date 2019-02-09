@@ -4,17 +4,8 @@
 \alias{describe_images}
 \title{Retrieves a list that describes one or more specified images, if the image names or image ARNs are provided}
 \usage{
-describe_images(
-  Names = list(
-    "string"
-  ),
-  Arns = list(
-    "string"
-  ),
-  Type = "PUBLIC"|"PRIVATE"|"SHARED",
-  NextToken = "string",
-  MaxResults = 123
-)
+describe_images(Names = NULL, Arns = NULL, Type = NULL,
+  NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{Names}{The names of the public or private images to describe.}
@@ -30,6 +21,18 @@ describe_images(
 \description{
 Retrieves a list that describes one or more specified images, if the image names or image ARNs are provided. Otherwise, all images in the account are described.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_images(
+  Names = list(
+    "string"
+  ),
+  Arns = list(
+    "string"
+  ),
+  Type = "PUBLIC"|"PRIVATE"|"SHARED",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

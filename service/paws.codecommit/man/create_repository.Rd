@@ -4,10 +4,7 @@
 \alias{create_repository}
 \title{Creates a new, empty repository}
 \usage{
-create_repository(
-  repositoryName = "string",
-  repositoryDescription = "string"
-)
+create_repository(repositoryName, repositoryDescription = NULL)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the new repository to be created.
@@ -21,6 +18,11 @@ The description field for a repository accepts all HTML characters and all valid
 \description{
 Creates a new, empty repository.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_repository(
+  repositoryName = "string",
+  repositoryDescription = "string"
+)
 }
+}
+

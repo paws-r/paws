@@ -4,12 +4,7 @@
 \alias{cancel_spot_instance_requests}
 \title{Cancels one or more Spot Instance requests}
 \usage{
-cancel_spot_instance_requests(
-  DryRun = TRUE|FALSE,
-  SpotInstanceRequestIds = list(
-    "string"
-  )
-)
+cancel_spot_instance_requests(DryRun = NULL, SpotInstanceRequestIds)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -22,12 +17,22 @@ Cancels one or more Spot Instance requests.
 \details{
 Canceling a Spot Instance request does not terminate running Spot Instances associated with the request.
 }
+\section{Accepted Parameters}{
+\preformatted{cancel_spot_instance_requests(
+  DryRun = TRUE|FALSE,
+  SpotInstanceRequestIds = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example cancels a Spot Instance request.
-cancel_spot_instance_requests(
+\donttest{cancel_spot_instance_requests(
   SpotInstanceRequestIds = list(
     "sir-08b93456"
   )
-)
+)}
 
 }

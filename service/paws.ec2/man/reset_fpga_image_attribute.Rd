@@ -4,11 +4,8 @@
 \alias{reset_fpga_image_attribute}
 \title{Resets the specified attribute of the specified Amazon FPGA Image (AFI) to its default value}
 \usage{
-reset_fpga_image_attribute(
-  DryRun = TRUE|FALSE,
-  FpgaImageId = "string",
-  Attribute = "loadPermission"
-)
+reset_fpga_image_attribute(DryRun = NULL, FpgaImageId,
+  Attribute = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -20,6 +17,12 @@ reset_fpga_image_attribute(
 \description{
 Resets the specified attribute of the specified Amazon FPGA Image (AFI) to its default value. You can only reset the load permission attribute.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reset_fpga_image_attribute(
+  DryRun = TRUE|FALSE,
+  FpgaImageId = "string",
+  Attribute = "loadPermission"
+)
 }
+}
+

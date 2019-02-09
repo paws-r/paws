@@ -2,13 +2,10 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{list_qualification_requests}
 \alias{list_qualification_requests}
-\title{The \code{ListQualificationRequests} operation retrieves requests for Qualifications of a particular Qualification type}
+\title{The ListQualificationRequests operation retrieves requests for Qualifications of a particular Qualification type}
 \usage{
-list_qualification_requests(
-  QualificationTypeId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_qualification_requests(QualificationTypeId = NULL,
+  NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{QualificationTypeId}{The ID of the QualificationType.}
@@ -20,6 +17,12 @@ list_qualification_requests(
 \description{
 The \code{ListQualificationRequests} operation retrieves requests for Qualifications of a particular Qualification type. The owner of the Qualification type calls this operation to poll for pending requests, and accepts them using the AcceptQualification operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_qualification_requests(
+  QualificationTypeId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

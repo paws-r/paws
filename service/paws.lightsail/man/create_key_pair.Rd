@@ -4,29 +4,18 @@
 \alias{create_key_pair}
 \title{Creates an SSH key pair}
 \usage{
-create_key_pair(
-  keyPairName = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+create_key_pair(keyPairName)
 }
 \arguments{
 \item{keyPairName}{[required] The name for your new key pair.}
-
-\item{tags}{The tag keys and optional values to add to the resource during create.
-
-To tag a resource after it has been created, see the \code{tag resource} operation.}
 }
 \description{
 Creates an SSH key pair.
 }
-\details{
-The \code{create key pair} operation supports tag-based access control via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\section{Accepted Parameters}{
+\preformatted{create_key_pair(
+  keyPairName = "string"
+)
 }
-\examples{
+}
 
-}

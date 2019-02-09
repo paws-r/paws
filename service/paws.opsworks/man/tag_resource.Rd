@@ -4,12 +4,7 @@
 \alias{tag_resource}
 \title{Apply cost-allocation tags to a specified stack or layer in AWS OpsWorks Stacks}
 \usage{
-tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    "string"
-  )
-)
+tag_resource(ResourceArn, Tags)
 }
 \arguments{
 \item{ResourceArn}{[required] The stack or layer's Amazon Resource Number (ARN).}
@@ -26,6 +21,13 @@ tag_resource(
 \description{
 Apply cost-allocation tags to a specified stack or layer in AWS OpsWorks Stacks. For more information about how tagging works, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/tagging.html}{Tags} in the AWS OpsWorks User Guide.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag_resource(
+  ResourceArn = "string",
+  Tags = list(
+    "string"
+  )
+)
 }
+}
+

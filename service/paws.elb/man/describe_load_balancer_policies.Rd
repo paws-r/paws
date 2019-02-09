@@ -4,12 +4,8 @@
 \alias{describe_load_balancer_policies}
 \title{Describes the specified policies}
 \usage{
-describe_load_balancer_policies(
-  LoadBalancerName = "string",
-  PolicyNames = list(
-    "string"
-  )
-)
+describe_load_balancer_policies(LoadBalancerName = NULL,
+  PolicyNames = NULL)
 }
 \arguments{
 \item{LoadBalancerName}{The name of the load balancer.}
@@ -22,14 +18,24 @@ Describes the specified policies.
 \details{
 If you specify a load balancer name, the action returns the descriptions of all policies created for the load balancer. If you specify a policy name associated with your load balancer, the action returns the description of that policy. If you don't specify a load balancer name, the action returns descriptions of the specified sample policies, or descriptions of all sample policies. The names of the sample policies have the \code{ELBSample-} prefix.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_load_balancer_policies(
+  LoadBalancerName = "string",
+  PolicyNames = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example describes the specified policy associated with the
 # specified load balancer.
-describe_load_balancer_policies(
+\donttest{describe_load_balancer_policies(
   LoadBalancerName = "my-load-balancer",
   PolicyNames = list(
     "my-authentication-policy"
   )
-)
+)}
 
 }

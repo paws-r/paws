@@ -4,23 +4,10 @@
 \alias{describe_db_cluster_snapshots}
 \title{Returns information about DB cluster snapshots}
 \usage{
-describe_db_cluster_snapshots(
-  DBClusterIdentifier = "string",
-  DBClusterSnapshotIdentifier = "string",
-  SnapshotType = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string",
-  IncludeShared = TRUE|FALSE,
-  IncludePublic = TRUE|FALSE
-)
+describe_db_cluster_snapshots(DBClusterIdentifier = NULL,
+  DBClusterSnapshotIdentifier = NULL, SnapshotType = NULL,
+  Filters = NULL, MaxRecords = NULL, Marker = NULL,
+  IncludeShared = NULL, IncludePublic = NULL)
 }
 \arguments{
 \item{DBClusterIdentifier}{The ID of the DB cluster to retrieve the list of DB cluster snapshots for. This parameter can't be used in conjunction with the \code{DBClusterSnapshotIdentifier} parameter. This parameter is not case-sensitive.
@@ -74,6 +61,24 @@ Returns information about DB cluster snapshots. This API action supports paginat
 \details{
 For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?} in the \emph{Amazon Aurora User Guide.}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_db_cluster_snapshots(
+  DBClusterIdentifier = "string",
+  DBClusterSnapshotIdentifier = "string",
+  SnapshotType = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string",
+  IncludeShared = TRUE|FALSE,
+  IncludePublic = TRUE|FALSE
+)
 }
+}
+

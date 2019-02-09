@@ -4,12 +4,7 @@
 \alias{create_customer_gateway}
 \title{Provides information to AWS about your VPN customer gateway device}
 \usage{
-create_customer_gateway(
-  BgpAsn = 123,
-  PublicIp = "string",
-  Type = "ipsec.1",
-  DryRun = TRUE|FALSE
-)
+create_customer_gateway(BgpAsn, PublicIp, Type, DryRun = NULL)
 }
 \arguments{
 \item{BgpAsn}{[required] For devices that support BGP, the customer gateway's BGP ASN.
@@ -34,13 +29,23 @@ For more information about VPN customer gateways, see \href{http://docs.aws.amaz
 
 You cannot create more than one customer gateway with the same VPN type, IP address, and BGP ASN parameter values. If you run an identical request more than one time, the first request creates the customer gateway, and subsequent requests return information about the existing customer gateway. The subsequent requests do not create new customer gateway resources.
 }
+\section{Accepted Parameters}{
+\preformatted{create_customer_gateway(
+  BgpAsn = 123,
+  PublicIp = "string",
+  Type = "ipsec.1",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example creates a customer gateway with the specified IP address
 # for its outside interface.
-create_customer_gateway(
+\donttest{create_customer_gateway(
   BgpAsn = 65534L,
   PublicIp = "12.1.2.3",
   Type = "ipsec.1"
-)
+)}
 
 }

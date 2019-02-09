@@ -4,10 +4,7 @@
 \alias{list_clusters}
 \title{Returns a list of existing clusters}
 \usage{
-list_clusters(
-  nextToken = "string",
-  maxResults = 123
-)
+list_clusters(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated \code{ListClusters} request where \code{maxResults} was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the \code{nextToken} value.
@@ -19,9 +16,17 @@ This token should be treated as an opaque identifier that is only used to retrie
 \description{
 Returns a list of existing clusters.
 }
+\section{Accepted Parameters}{
+\preformatted{list_clusters(
+  nextToken = "string",
+  maxResults = 123
+)
+}
+}
+
 \examples{
 # This example lists all of your available clusters in your default
 # region.
-list_clusters()
+\donttest{list_clusters()}
 
 }

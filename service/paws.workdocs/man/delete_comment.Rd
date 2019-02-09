@@ -4,12 +4,8 @@
 \alias{delete_comment}
 \title{Deletes the specified comment from the document version}
 \usage{
-delete_comment(
-  AuthenticationToken = "string",
-  DocumentId = "string",
-  VersionId = "string",
-  CommentId = "string"
-)
+delete_comment(AuthenticationToken = NULL, DocumentId, VersionId,
+  CommentId)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
@@ -23,6 +19,13 @@ delete_comment(
 \description{
 Deletes the specified comment from the document version.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_comment(
+  AuthenticationToken = "string",
+  DocumentId = "string",
+  VersionId = "string",
+  CommentId = "string"
+)
 }
+}
+

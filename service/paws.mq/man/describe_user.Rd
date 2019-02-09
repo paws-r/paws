@@ -4,10 +4,7 @@
 \alias{describe_user}
 \title{Returns information about an ActiveMQ user}
 \usage{
-describe_user(
-  BrokerId = "string",
-  Username = "string"
-)
+describe_user(BrokerId, Username)
 }
 \arguments{
 \item{BrokerId}{[required] The unique ID that Amazon MQ generates for the broker.}
@@ -17,6 +14,11 @@ describe_user(
 \description{
 Returns information about an ActiveMQ user.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_user(
+  BrokerId = "string",
+  Username = "string"
+)
 }
+}
+

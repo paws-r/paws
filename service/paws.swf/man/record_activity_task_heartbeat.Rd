@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.swf_operations.R
 \name{record_activity_task_heartbeat}
 \alias{record_activity_task_heartbeat}
-\title{Used by activity workers to report to the service that the ActivityTask represented by the specified \code{taskToken} is still making progress}
+\title{Used by activity workers to report to the service that the ActivityTask represented by the specified taskToken is still making progress}
 \usage{
-record_activity_task_heartbeat(
-  taskToken = "string",
-  details = "string"
-)
+record_activity_task_heartbeat(taskToken, details = NULL)
 }
 \arguments{
 \item{taskToken}{[required] The \code{taskToken} of the ActivityTask.
@@ -41,6 +38,11 @@ You can use IAM policies to control this action's access to Amazon SWF resources
 
 If the caller doesn't have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's \code{cause} parameter is set to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see \href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows} in the \emph{Amazon SWF Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{record_activity_task_heartbeat(
+  taskToken = "string",
+  details = "string"
+)
 }
+}
+

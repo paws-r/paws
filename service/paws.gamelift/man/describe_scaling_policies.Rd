@@ -4,12 +4,8 @@
 \alias{describe_scaling_policies}
 \title{Retrieves all scaling policies applied to a fleet}
 \usage{
-describe_scaling_policies(
-  FleetId = "string",
-  StatusFilter = "ACTIVE"|"UPDATE_REQUESTED"|"UPDATING"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"ERROR",
-  Limit = 123,
-  NextToken = "string"
-)
+describe_scaling_policies(FleetId, StatusFilter = NULL, Limit = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{FleetId}{[required] Unique identifier for a fleet to retrieve scaling policies for.}
@@ -51,6 +47,13 @@ Operations related to fleet capacity scaling include:
 \item StopFleetActions
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_scaling_policies(
+  FleetId = "string",
+  StatusFilter = "ACTIVE"|"UPDATE_REQUESTED"|"UPDATING"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"ERROR",
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

@@ -4,12 +4,8 @@
 \alias{list_mailbox_permissions}
 \title{Lists the mailbox permissions associated with a mailbox}
 \usage{
-list_mailbox_permissions(
-  OrganizationId = "string",
-  EntityId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_mailbox_permissions(OrganizationId, EntityId, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier of the organization under which the entity (user or group) exists.}
@@ -23,6 +19,13 @@ list_mailbox_permissions(
 \description{
 Lists the mailbox permissions associated with a mailbox.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_mailbox_permissions(
+  OrganizationId = "string",
+  EntityId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

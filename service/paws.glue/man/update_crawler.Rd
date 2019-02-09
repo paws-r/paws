@@ -4,7 +4,39 @@
 \alias{update_crawler}
 \title{Updates a crawler}
 \usage{
-update_crawler(
+update_crawler(Name, Role = NULL, DatabaseName = NULL,
+  Description = NULL, Targets = NULL, Schedule = NULL,
+  Classifiers = NULL, TablePrefix = NULL, SchemaChangePolicy = NULL,
+  Configuration = NULL, CrawlerSecurityConfiguration = NULL)
+}
+\arguments{
+\item{Name}{[required] Name of the new crawler.}
+
+\item{Role}{The IAM role (or ARN of an IAM role) used by the new crawler to access customer resources.}
+
+\item{DatabaseName}{The AWS Glue database where results are stored, such as: \code{arn:aws:daylight:us-east-1::database/sometable/*}.}
+
+\item{Description}{A description of the new crawler.}
+
+\item{Targets}{A list of targets to crawl.}
+
+\item{Schedule}{A \code{cron} expression used to specify the schedule (see \href{http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html}{Time-Based Schedules for Jobs and Crawlers}. For example, to run something every day at 12:15 UTC, you would specify: \code{cron(15 12 * * ? *)}.}
+
+\item{Classifiers}{A list of custom classifiers that the user has registered. By default, all built-in classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification.}
+
+\item{TablePrefix}{The table prefix used for catalog tables that are created.}
+
+\item{SchemaChangePolicy}{Policy for the crawler's update and deletion behavior.}
+
+\item{Configuration}{Crawler configuration information. This versioned JSON string allows users to specify aspects of a crawler's behavior. For more information, see \href{http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html}{Configuring a Crawler}.}
+
+\item{CrawlerSecurityConfiguration}{The name of the SecurityConfiguration structure to be used by this Crawler.}
+}
+\description{
+Updates a crawler. If a crawler is running, you must stop it using \code{StopCrawler} before updating it.
+}
+\section{Accepted Parameters}{
+\preformatted{update_crawler(
   Name = "string",
   Role = "string",
   DatabaseName = "string",
@@ -46,32 +78,5 @@ update_crawler(
   CrawlerSecurityConfiguration = "string"
 )
 }
-\arguments{
-\item{Name}{[required] Name of the new crawler.}
-
-\item{Role}{The IAM role (or ARN of an IAM role) used by the new crawler to access customer resources.}
-
-\item{DatabaseName}{The AWS Glue database where results are stored, such as: \code{arn:aws:daylight:us-east-1::database/sometable/*}.}
-
-\item{Description}{A description of the new crawler.}
-
-\item{Targets}{A list of targets to crawl.}
-
-\item{Schedule}{A \code{cron} expression used to specify the schedule (see \href{http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html}{Time-Based Schedules for Jobs and Crawlers}. For example, to run something every day at 12:15 UTC, you would specify: \code{cron(15 12 * * ? *)}.}
-
-\item{Classifiers}{A list of custom classifiers that the user has registered. By default, all built-in classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification.}
-
-\item{TablePrefix}{The table prefix used for catalog tables that are created.}
-
-\item{SchemaChangePolicy}{Policy for the crawler's update and deletion behavior.}
-
-\item{Configuration}{Crawler configuration information. This versioned JSON string allows users to specify aspects of a crawler's behavior. For more information, see \href{http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html}{Configuring a Crawler}.}
-
-\item{CrawlerSecurityConfiguration}{The name of the SecurityConfiguration structure to be used by this Crawler.}
 }
-\description{
-Updates a crawler. If a crawler is running, you must stop it using \code{StopCrawler} before updating it.
-}
-\examples{
 
-}

@@ -4,12 +4,7 @@
 \alias{get_open_id_token}
 \title{Gets an OpenID token, using a known Cognito ID}
 \usage{
-get_open_id_token(
-  IdentityId = "string",
-  Logins = list(
-    "string"
-  )
-)
+get_open_id_token(IdentityId, Logins = NULL)
 }
 \arguments{
 \item{IdentityId}{[required] A unique identifier in the format REGION:GUID.}
@@ -24,6 +19,13 @@ The OpenId token is valid for 15 minutes.
 
 This is a public API. You do not need any credentials to call this API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_open_id_token(
+  IdentityId = "string",
+  Logins = list(
+    "string"
+  )
+)
 }
+}
+

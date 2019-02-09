@@ -4,9 +4,7 @@
 \alias{describe_build}
 \title{Retrieves properties for a build}
 \usage{
-describe_build(
-  BuildId = "string"
-)
+describe_build(BuildId)
 }
 \arguments{
 \item{BuildId}{[required] Unique identifier for a build to retrieve properties for.}
@@ -24,6 +22,10 @@ Build-related operations include:
 \item DeleteBuild
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_build(
+  BuildId = "string"
+)
 }
+}
+

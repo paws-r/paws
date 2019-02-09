@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.cloudhsm_operations.R
 \name{create_luna_client}
 \alias{create_luna_client}
-\title{This is documentation for \strong{AWS CloudHSM Classic}}
+\title{This is documentation for AWS CLOUDHSM CLASSIC}
 \usage{
-create_luna_client(
-  Label = "string",
-  Certificate = "string"
-)
+create_luna_client(Label = NULL, Certificate)
 }
 \arguments{
 \item{Label}{The label for the client.}
@@ -22,6 +19,11 @@ This is documentation for \strong{AWS CloudHSM Classic}. For more information, s
 
 Creates an HSM client.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_luna_client(
+  Label = "string",
+  Certificate = "string"
+)
 }
+}
+

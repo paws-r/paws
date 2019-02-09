@@ -4,11 +4,8 @@
 \alias{list_association_versions}
 \title{Retrieves all versions of an association for a specific association ID}
 \usage{
-list_association_versions(
-  AssociationId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_association_versions(AssociationId, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{AssociationId}{[required] The association ID for which you want to view all versions.}
@@ -20,6 +17,12 @@ list_association_versions(
 \description{
 Retrieves all versions of an association for a specific association ID.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_association_versions(
+  AssociationId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

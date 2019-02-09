@@ -4,9 +4,7 @@
 \alias{delete_imported_key_material}
 \title{Deletes key material that you previously imported}
 \usage{
-delete_imported_key_material(
-  KeyId = "string"
-)
+delete_imported_key_material(KeyId)
 }
 \arguments{
 \item{KeyId}{[required] The identifier of the CMK whose key material to delete. The CMK's \code{Origin} must be \code{EXTERNAL}.
@@ -31,11 +29,18 @@ After you delete key material, you can use ImportKeyMaterial to reimport the sam
 
 The result of this operation varies with the key state of the CMK. For details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key} in the \emph{AWS Key Management Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_imported_key_material(
+  KeyId = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes the imported key material from the
 # specified customer master key (CMK).
-delete_imported_key_material(
+\donttest{delete_imported_key_material(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
+)}
 
 }

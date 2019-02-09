@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{get_data_source}
 \alias{get_data_source}
-\title{Returns a \code{DataSource} that includes metadata and data file information, as well as the current status of the \code{DataSource}}
+\title{Returns a DataSource that includes metadata and data file information, as well as the current status of the DataSource}
 \usage{
-get_data_source(
-  DataSourceId = "string",
-  Verbose = TRUE|FALSE
-)
+get_data_source(DataSourceId, Verbose = NULL)
 }
 \arguments{
 \item{DataSourceId}{[required] The ID assigned to the \code{DataSource} at creation.}
@@ -24,6 +21,11 @@ Returns a \code{DataSource} that includes metadata and data file information, as
 \details{
 \code{GetDataSource} provides results in normal or verbose format. The verbose format adds the schema description and the list of files pointed to by the DataSource to the normal format.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_data_source(
+  DataSourceId = "string",
+  Verbose = TRUE|FALSE
+)
 }
+}
+

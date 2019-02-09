@@ -4,16 +4,8 @@
 \alias{update_alias}
 \title{Updates properties for an alias}
 \usage{
-update_alias(
-  AliasId = "string",
-  Name = "string",
-  Description = "string",
-  RoutingStrategy = list(
-    Type = "SIMPLE"|"TERMINAL",
-    FleetId = "string",
-    Message = "string"
-  )
-)
+update_alias(AliasId, Name = NULL, Description = NULL,
+  RoutingStrategy = NULL)
 }
 \arguments{
 \item{AliasId}{[required] Unique identifier for a fleet alias. Specify the alias you want to update.}
@@ -38,6 +30,17 @@ Alias-related operations include:
 \item ResolveAlias
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_alias(
+  AliasId = "string",
+  Name = "string",
+  Description = "string",
+  RoutingStrategy = list(
+    Type = "SIMPLE"|"TERMINAL",
+    FleetId = "string",
+    Message = "string"
+  )
+)
 }
+}
+

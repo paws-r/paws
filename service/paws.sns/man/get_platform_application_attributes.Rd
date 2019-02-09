@@ -4,9 +4,7 @@
 \alias{get_platform_application_attributes}
 \title{Retrieves the attributes of the platform application object for the supported push notification services, such as APNS and GCM}
 \usage{
-get_platform_application_attributes(
-  PlatformApplicationArn = "string"
-)
+get_platform_application_attributes(PlatformApplicationArn)
 }
 \arguments{
 \item{PlatformApplicationArn}{[required] PlatformApplicationArn for GetPlatformApplicationAttributesInput.}
@@ -14,6 +12,10 @@ get_platform_application_attributes(
 \description{
 Retrieves the attributes of the platform application object for the supported push notification services, such as APNS and GCM. For more information, see \href{http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_platform_application_attributes(
+  PlatformApplicationArn = "string"
+)
 }
+}
+

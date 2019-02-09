@@ -4,18 +4,9 @@
 \alias{get_partitions}
 \title{Retrieves information about the partitions in a table}
 \usage{
-get_partitions(
-  CatalogId = "string",
-  DatabaseName = "string",
-  TableName = "string",
-  Expression = "string",
-  NextToken = "string",
-  Segment = list(
-    SegmentNumber = 123,
-    TotalSegments = 123
-  ),
-  MaxResults = 123
-)
+get_partitions(CatalogId = NULL, DatabaseName, TableName,
+  Expression = NULL, NextToken = NULL, Segment = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the partitions in question reside. If none is supplied, the AWS account ID is used by default.}
@@ -94,6 +85,19 @@ The following list shows the valid operators on each type. When you define a cra
 \description{
 Retrieves information about the partitions in a table.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_partitions(
+  CatalogId = "string",
+  DatabaseName = "string",
+  TableName = "string",
+  Expression = "string",
+  NextToken = "string",
+  Segment = list(
+    SegmentNumber = 123,
+    TotalSegments = 123
+  ),
+  MaxResults = 123
+)
 }
+}
+

@@ -4,7 +4,103 @@
 \alias{put_intent}
 \title{Creates an intent or replaces an existing intent}
 \usage{
-put_intent(
+put_intent(name, description = NULL, slots = NULL,
+  sampleUtterances = NULL, confirmationPrompt = NULL,
+  rejectionStatement = NULL, followUpPrompt = NULL,
+  conclusionStatement = NULL, dialogCodeHook = NULL,
+  fulfillmentActivity = NULL, parentIntentSignature = NULL,
+  checksum = NULL, createVersion = NULL)
+}
+\arguments{
+\item{name}{[required] The name of the intent. The name is \emph{not} case sensitive.
+
+The name can't match a built-in intent name, or a built-in intent name with "AMAZON." removed. For example, because there is a built-in intent called \code{AMAZON.HelpIntent}, you can't create a custom intent called \code{HelpIntent}.
+
+For a list of built-in intents, see \href{https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents}{Standard Built-in Intents} in the \emph{Alexa Skills Kit}.}
+
+\item{description}{A description of the intent.}
+
+\item{slots}{An array of intent slots. At runtime, Amazon Lex elicits required slot values from the user using prompts defined in the slots. For more information, see how-it-works.}
+
+\item{sampleUtterances}{An array of utterances (strings) that a user might say to signal the intent. For example, "I want {PizzaSize} pizza", "Order {Quantity} {PizzaSize} pizzas".
+
+In each utterance, a slot name is enclosed in curly braces.}
+
+\item{confirmationPrompt}{Prompts the user to confirm the intent. This question should have a yes or no answer.
+
+Amazon Lex uses this prompt to ensure that the user acknowledges that the intent is ready for fulfillment. For example, with the \code{OrderPizza} intent, you might want to confirm that the order is correct before placing it. For other intents, such as intents that simply respond to user questions, you might not need to ask the user for confirmation before providing the information.
+
+You you must provide both the \code{rejectionStatement} and the \code{confirmationPrompt}, or neither.}
+
+\item{rejectionStatement}{When the user answers "no" to the question defined in \code{confirmationPrompt}, Amazon Lex responds with this statement to acknowledge that the intent was canceled.
+
+You must provide both the \code{rejectionStatement} and the \code{confirmationPrompt}, or neither.}
+
+\item{followUpPrompt}{Amazon Lex uses this prompt to solicit additional activity after fulfilling an intent. For example, after the \code{OrderPizza} intent is fulfilled, you might prompt the user to order a drink.
+
+The action that Amazon Lex takes depends on the user's response, as follows:
+\itemize{
+\item If the user says "Yes" it responds with the clarification prompt that is configured for the bot.
+\item if the user says "Yes" and continues with an utterance that triggers an intent it starts a conversation for the intent.
+\item If the user says "No" it responds with the rejection statement configured for the the follow-up prompt.
+\item If it doesn't recognize the utterance it repeats the follow-up prompt again.
+}
+
+The \code{followUpPrompt} field and the \code{conclusionStatement} field are mutually exclusive. You can specify only one.}
+
+\item{conclusionStatement}{The statement that you want Amazon Lex to convey to the user after the intent is successfully fulfilled by the Lambda function.
+
+This element is relevant only if you provide a Lambda function in the \code{fulfillmentActivity}. If you return the intent to the client application, you can't specify this element.
+
+The \code{followUpPrompt} and \code{conclusionStatement} are mutually exclusive. You can specify only one.}
+
+\item{dialogCodeHook}{Specifies a Lambda function to invoke for each user input. You can invoke this Lambda function to personalize user interaction.
+
+For example, suppose your bot determines that the user is John. Your Lambda function might retrieve John's information from a backend database and prepopulate some of the values. For example, if you find that John is gluten intolerant, you might set the corresponding intent slot, \code{GlutenIntolerant}, to true. You might find John's phone number and set the corresponding session attribute.}
+
+\item{fulfillmentActivity}{Required. Describes how the intent is fulfilled. For example, after a user provides all of the information for a pizza order, \code{fulfillmentActivity} defines how the bot places an order with a local pizza store.
+
+You might configure Amazon Lex to return all of the intent information to the client application, or direct it to invoke a Lambda function that can process the intent (for example, place an order with a pizzeria).}
+
+\item{parentIntentSignature}{A unique identifier for the built-in intent to base this intent on. To find the signature for an intent, see \href{https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents}{Standard Built-in Intents} in the \emph{Alexa Skills Kit}.}
+
+\item{checksum}{Identifies a specific revision of the \code{$LATEST} version.
+
+When you create a new intent, leave the \code{checksum} field blank. If you specify a checksum you get a \code{BadRequestException} exception.
+
+When you want to update a intent, set the \code{checksum} field to the checksum of the most recent revision of the \code{$LATEST} version. If you don't specify the \code{ checksum} field, or if the checksum does not match the \code{$LATEST} version, you get a \code{PreconditionFailedException} exception.}
+
+\item{createVersion}{}
+}
+\description{
+Creates an intent or replaces an existing intent.
+}
+\details{
+To define the interaction between the user and your bot, you use one or more intents. For a pizza ordering bot, for example, you would create an \code{OrderPizza} intent.
+
+To create an intent or replace an existing intent, you must provide the following:
+\itemize{
+\item Intent name. For example, \code{OrderPizza}.
+\item Sample utterances. For example, "Can I order a pizza, please." and "I want to order a pizza."
+\item Information to be gathered. You specify slot types for the information that your bot will request from the user. You can specify standard slot types, such as a date or a time, or custom slot types such as the size and crust of a pizza.
+\item How the intent will be fulfilled. You can provide a Lambda function or configure the intent to return the intent information to the client application. If you use a Lambda function, when all of the intent information is available, Amazon Lex invokes your Lambda function. If you configure your intent to return the intent information to the client application.
+}
+
+You can specify other optional information in the request, such as:
+\itemize{
+\item A confirmation prompt to ask the user to confirm an intent. For example, "Shall I order your pizza?"
+\item A conclusion statement to send to the user after the intent has been fulfilled. For example, "I placed your pizza order."
+\item A follow-up prompt that asks the user for additional activity. For example, asking "Do you want to order a drink with your pizza?"
+}
+
+If you specify an existing intent name to update the intent, Amazon Lex replaces the values in the \code{$LATEST} version of the intent with the values in the request. Amazon Lex removes fields that you don't provide in the request. If you don't specify the required fields, Amazon Lex throws an exception. When you update the \code{$LATEST} version of an intent, the \code{status} field of any bot that uses the \code{$LATEST} version of the intent is set to \code{NOT_BUILT}.
+
+For more information, see how-it-works.
+
+This operation requires permissions for the \code{lex:PutIntent} action.
+}
+\section{Accepted Parameters}{
+\preformatted{put_intent(
   name = "string",
   description = "string",
   slots = list(
@@ -105,97 +201,11 @@ put_intent(
   createVersion = TRUE|FALSE
 )
 }
-\arguments{
-\item{name}{[required] The name of the intent. The name is \emph{not} case sensitive.
-
-The name can't match a built-in intent name, or a built-in intent name with "AMAZON." removed. For example, because there is a built-in intent called \code{AMAZON.HelpIntent}, you can't create a custom intent called \code{HelpIntent}.
-
-For a list of built-in intents, see \href{https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents}{Standard Built-in Intents} in the \emph{Alexa Skills Kit}.}
-
-\item{description}{A description of the intent.}
-
-\item{slots}{An array of intent slots. At runtime, Amazon Lex elicits required slot values from the user using prompts defined in the slots. For more information, see how-it-works.}
-
-\item{sampleUtterances}{An array of utterances (strings) that a user might say to signal the intent. For example, "I want {PizzaSize} pizza", "Order {Quantity} {PizzaSize} pizzas".
-
-In each utterance, a slot name is enclosed in curly braces.}
-
-\item{confirmationPrompt}{Prompts the user to confirm the intent. This question should have a yes or no answer.
-
-Amazon Lex uses this prompt to ensure that the user acknowledges that the intent is ready for fulfillment. For example, with the \code{OrderPizza} intent, you might want to confirm that the order is correct before placing it. For other intents, such as intents that simply respond to user questions, you might not need to ask the user for confirmation before providing the information.
-
-You you must provide both the \code{rejectionStatement} and the \code{confirmationPrompt}, or neither.}
-
-\item{rejectionStatement}{When the user answers "no" to the question defined in \code{confirmationPrompt}, Amazon Lex responds with this statement to acknowledge that the intent was canceled.
-
-You must provide both the \code{rejectionStatement} and the \code{confirmationPrompt}, or neither.}
-
-\item{followUpPrompt}{Amazon Lex uses this prompt to solicit additional activity after fulfilling an intent. For example, after the \code{OrderPizza} intent is fulfilled, you might prompt the user to order a drink.
-
-The action that Amazon Lex takes depends on the user's response, as follows:
-\itemize{
-\item If the user says "Yes" it responds with the clarification prompt that is configured for the bot.
-\item if the user says "Yes" and continues with an utterance that triggers an intent it starts a conversation for the intent.
-\item If the user says "No" it responds with the rejection statement configured for the the follow-up prompt.
-\item If it doesn't recognize the utterance it repeats the follow-up prompt again.
 }
 
-The \code{followUpPrompt} field and the \code{conclusionStatement} field are mutually exclusive. You can specify only one.}
-
-\item{conclusionStatement}{The statement that you want Amazon Lex to convey to the user after the intent is successfully fulfilled by the Lambda function.
-
-This element is relevant only if you provide a Lambda function in the \code{fulfillmentActivity}. If you return the intent to the client application, you can't specify this element.
-
-The \code{followUpPrompt} and \code{conclusionStatement} are mutually exclusive. You can specify only one.}
-
-\item{dialogCodeHook}{Specifies a Lambda function to invoke for each user input. You can invoke this Lambda function to personalize user interaction.
-
-For example, suppose your bot determines that the user is John. Your Lambda function might retrieve John's information from a backend database and prepopulate some of the values. For example, if you find that John is gluten intolerant, you might set the corresponding intent slot, \code{GlutenIntolerant}, to true. You might find John's phone number and set the corresponding session attribute.}
-
-\item{fulfillmentActivity}{Required. Describes how the intent is fulfilled. For example, after a user provides all of the information for a pizza order, \code{fulfillmentActivity} defines how the bot places an order with a local pizza store.
-
-You might configure Amazon Lex to return all of the intent information to the client application, or direct it to invoke a Lambda function that can process the intent (for example, place an order with a pizzeria).}
-
-\item{parentIntentSignature}{A unique identifier for the built-in intent to base this intent on. To find the signature for an intent, see \href{https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents}{Standard Built-in Intents} in the \emph{Alexa Skills Kit}.}
-
-\item{checksum}{Identifies a specific revision of the \code{$LATEST} version.
-
-When you create a new intent, leave the \code{checksum} field blank. If you specify a checksum you get a \code{BadRequestException} exception.
-
-When you want to update a intent, set the \code{checksum} field to the checksum of the most recent revision of the \code{$LATEST} version. If you don't specify the \code{ checksum} field, or if the checksum does not match the \code{$LATEST} version, you get a \code{PreconditionFailedException} exception.}
-
-\item{createVersion}{}
-}
-\description{
-Creates an intent or replaces an existing intent.
-}
-\details{
-To define the interaction between the user and your bot, you use one or more intents. For a pizza ordering bot, for example, you would create an \code{OrderPizza} intent.
-
-To create an intent or replace an existing intent, you must provide the following:
-\itemize{
-\item Intent name. For example, \code{OrderPizza}.
-\item Sample utterances. For example, "Can I order a pizza, please." and "I want to order a pizza."
-\item Information to be gathered. You specify slot types for the information that your bot will request from the user. You can specify standard slot types, such as a date or a time, or custom slot types such as the size and crust of a pizza.
-\item How the intent will be fulfilled. You can provide a Lambda function or configure the intent to return the intent information to the client application. If you use a Lambda function, when all of the intent information is available, Amazon Lex invokes your Lambda function. If you configure your intent to return the intent information to the client application.
-}
-
-You can specify other optional information in the request, such as:
-\itemize{
-\item A confirmation prompt to ask the user to confirm an intent. For example, "Shall I order your pizza?"
-\item A conclusion statement to send to the user after the intent has been fulfilled. For example, "I placed your pizza order."
-\item A follow-up prompt that asks the user for additional activity. For example, asking "Do you want to order a drink with your pizza?"
-}
-
-If you specify an existing intent name to update the intent, Amazon Lex replaces the values in the \code{$LATEST} version of the intent with the values in the request. Amazon Lex removes fields that you don't provide in the request. If you don't specify the required fields, Amazon Lex throws an exception. When you update the \code{$LATEST} version of an intent, the \code{status} field of any bot that uses the \code{$LATEST} version of the intent is set to \code{NOT_BUILT}.
-
-For more information, see how-it-works.
-
-This operation requires permissions for the \code{lex:PutIntent} action.
-}
 \examples{
 # This example shows how to create an intent for ordering pizzas.
-put_intent(
+\donttest{put_intent(
   name = "DocOrderPizza",
   conclusionStatement = list(
     messages = list(
@@ -323,6 +333,6 @@ put_intent(
       )
     )
   )
-)
+)}
 
 }

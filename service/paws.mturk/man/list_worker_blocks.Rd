@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{list_worker_blocks}
 \alias{list_worker_blocks}
-\title{The \code{ListWorkersBlocks} operation retrieves a list of Workers who are blocked from working on your HITs}
+\title{The ListWorkersBlocks operation retrieves a list of Workers who are blocked from working on your HITs}
 \usage{
-list_worker_blocks(
-  NextToken = "string",
-  MaxResults = 123
-)
+list_worker_blocks(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{Pagination token}
@@ -17,6 +14,11 @@ list_worker_blocks(
 \description{
 The \code{ListWorkersBlocks} operation retrieves a list of Workers who are blocked from working on your HITs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_worker_blocks(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

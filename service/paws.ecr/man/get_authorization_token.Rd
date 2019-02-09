@@ -4,11 +4,7 @@
 \alias{get_authorization_token}
 \title{Retrieves a token that is valid for a specified registry for 12 hours}
 \usage{
-get_authorization_token(
-  registryIds = list(
-    "string"
-  )
-)
+get_authorization_token(registryIds = NULL)
 }
 \arguments{
 \item{registryIds}{A list of AWS account IDs that are associated with the registries for which to get authorization tokens. If you do not specify a registry, the default registry is assumed.}
@@ -19,8 +15,17 @@ Retrieves a token that is valid for a specified registry for 12 hours. This comm
 \details{
 The \code{authorizationToken} returned for each registry specified is a base64 encoded string that can be decoded and used in a \code{docker login} command to authenticate to a registry. The AWS CLI offers an \code{aws ecr get-login} command that simplifies the login process.
 }
+\section{Accepted Parameters}{
+\preformatted{get_authorization_token(
+  registryIds = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example gets an authorization token for your default registry.
-get_authorization_token()
+\donttest{get_authorization_token()}
 
 }

@@ -4,19 +4,18 @@
 \alias{start_pipeline_execution}
 \title{Starts the specified pipeline}
 \usage{
-start_pipeline_execution(
-  name = "string",
-  clientRequestToken = "string"
-)
+start_pipeline_execution(name)
 }
 \arguments{
 \item{name}{[required] The name of the pipeline to start.}
-
-\item{clientRequestToken}{The system-generated unique ID used to identify a unique execution request.}
 }
 \description{
 Starts the specified pipeline. Specifically, it begins processing the latest commit to the source location specified as part of the pipeline.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_pipeline_execution(
+  name = "string"
+)
 }
+}
+

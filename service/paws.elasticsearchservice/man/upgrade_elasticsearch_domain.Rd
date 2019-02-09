@@ -4,11 +4,8 @@
 \alias{upgrade_elasticsearch_domain}
 \title{Allows you to either upgrade your domain or perform an Upgrade eligibility check to a compatible Elasticsearch version}
 \usage{
-upgrade_elasticsearch_domain(
-  DomainName = "string",
-  TargetVersion = "string",
-  PerformCheckOnly = TRUE|FALSE
-)
+upgrade_elasticsearch_domain(DomainName, TargetVersion,
+  PerformCheckOnly = NULL)
 }
 \arguments{
 \item{DomainName}{[required]}
@@ -20,6 +17,12 @@ upgrade_elasticsearch_domain(
 \description{
 Allows you to either upgrade your domain or perform an Upgrade eligibility check to a compatible Elasticsearch version.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{upgrade_elasticsearch_domain(
+  DomainName = "string",
+  TargetVersion = "string",
+  PerformCheckOnly = TRUE|FALSE
+)
 }
+}
+

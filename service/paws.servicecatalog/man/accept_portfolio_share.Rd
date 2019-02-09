@@ -4,11 +4,8 @@
 \alias{accept_portfolio_share}
 \title{Accepts an offer to share the specified portfolio}
 \usage{
-accept_portfolio_share(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  PortfolioShareType = "IMPORTED"|"AWS_SERVICECATALOG"|"AWS_ORGANIZATIONS"
-)
+accept_portfolio_share(AcceptLanguage = NULL, PortfolioId,
+  PortfolioShareType = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -32,6 +29,12 @@ For example, \code{aws servicecatalog accept-portfolio-share --portfolio-id "por
 \description{
 Accepts an offer to share the specified portfolio.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{accept_portfolio_share(
+  AcceptLanguage = "string",
+  PortfolioId = "string",
+  PortfolioShareType = "IMPORTED"|"AWS_SERVICECATALOG"|"AWS_ORGANIZATIONS"
+)
 }
+}
+

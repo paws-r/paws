@@ -4,29 +4,11 @@
 \alias{describe_cluster_snapshots}
 \title{Returns one or more snapshot objects, which contain metadata about your cluster snapshots}
 \usage{
-describe_cluster_snapshots(
-  ClusterIdentifier = "string",
-  SnapshotIdentifier = "string",
-  SnapshotType = "string",
-  StartTime = as.POSIXct("2015-01-01"),
-  EndTime = as.POSIXct("2015-01-01"),
-  MaxRecords = 123,
-  Marker = "string",
-  OwnerAccount = "string",
-  TagKeys = list(
-    "string"
-  ),
-  TagValues = list(
-    "string"
-  ),
-  ClusterExists = TRUE|FALSE,
-  SortingEntities = list(
-    list(
-      Attribute = "SOURCE_TYPE"|"TOTAL_SIZE"|"CREATE_TIME",
-      SortOrder = "ASC"|"DESC"
-    )
-  )
-)
+describe_cluster_snapshots(ClusterIdentifier = NULL,
+  SnapshotIdentifier = NULL, SnapshotType = NULL, StartTime = NULL,
+  EndTime = NULL, MaxRecords = NULL, Marker = NULL,
+  OwnerAccount = NULL, TagKeys = NULL, TagValues = NULL,
+  ClusterExists = NULL)
 }
 \arguments{
 \item{ClusterIdentifier}{The identifier of the cluster for which information about snapshots is requested.}
@@ -59,15 +41,7 @@ Constraints: minimum 20, maximum 100.}
 
 \item{TagValues}{A tag value or values for which you want to return all matching cluster snapshots that are associated with the specified tag value or values. For example, suppose that you have snapshots that are tagged with values called \code{admin} and \code{test}. If you specify both of these tag values in the request, Amazon Redshift returns a response with the snapshots that have either or both of these tag values associated with them.}
 
-\item{ClusterExists}{A value that indicates whether to return snapshots only for an existing cluster. Table-level restore can be performed only using a snapshot of an existing cluster, that is, a cluster that has not been deleted.
-\itemize{
-\item If \code{ClusterExists} is set to \code{true}, \code{ClusterIdentifier} is required.
-\item If \code{ClusterExists} is set to \code{false} and \code{ClusterIdentifier} is not specified, all snapshots associated with deleted clusters (orphaned snapshots) are returned.
-\item If \code{ClusterExists} is set to \code{false} and \code{ClusterIdentifier} is specified for a deleted cluster, snapshots associated with that cluster are returned.
-\item If \code{ClusterExists} is set to \code{false} and \code{ClusterIdentifier} is specified for an existing cluster, no snapshots are returned.
-}}
-
-\item{SortingEntities}{}
+\item{ClusterExists}{A value that indicates whether to return snapshots only for an existing cluster. Table-level restore can be performed only using a snapshot of an existing cluster, that is, a cluster that has not been deleted. If \code{ClusterExists} is set to \code{true}, \code{ClusterIdentifier} is required.}
 }
 \description{
 Returns one or more snapshot objects, which contain metadata about your cluster snapshots. By default, this operation returns information about all snapshots of all clusters that are owned by you AWS customer account. No information is returned for snapshots owned by inactive AWS customer accounts.
@@ -77,6 +51,24 @@ If you specify both tag keys and tag values in the same request, Amazon Redshift
 
 If both tag keys and values are omitted from the request, snapshots are returned regardless of whether they have tag keys or values associated with them.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_cluster_snapshots(
+  ClusterIdentifier = "string",
+  SnapshotIdentifier = "string",
+  SnapshotType = "string",
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  MaxRecords = 123,
+  Marker = "string",
+  OwnerAccount = "string",
+  TagKeys = list(
+    "string"
+  ),
+  TagValues = list(
+    "string"
+  ),
+  ClusterExists = TRUE|FALSE
+)
 }
+}
+

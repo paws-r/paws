@@ -4,13 +4,7 @@
 \alias{list_parts}
 \title{This operation lists the parts of an archive that have been uploaded in a specific multipart upload}
 \usage{
-list_parts(
-  accountId = "string",
-  vaultName = "string",
-  uploadId = "string",
-  marker = "string",
-  limit = "string"
-)
+list_parts(accountId, vaultName, uploadId, marker = NULL, limit = NULL)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
@@ -33,12 +27,23 @@ An AWS account has full permission to perform all operations (actions). However,
 
 For conceptual information and the underlying REST API, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html}{Working with Archives in Amazon Glacier} and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-list-parts.html}{List Parts} in the \emph{Amazon Glacier Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{list_parts(
+  accountId = "string",
+  vaultName = "string",
+  uploadId = "string",
+  marker = "string",
+  limit = "string"
+)
+}
+}
+
 \examples{
 # The example lists all the parts of a multipart upload.
-list_parts(
+\donttest{list_parts(
   accountId = "-",
   uploadId = "OW2fM5iVylEpFEMM9_HpKowRapC3vn5sSL39_396UW9zLFUWVrnRHaPjUJddQ5OxSHVXjYtrN47NBZ-khxOjyEXAMPLE",
   vaultName = "examplevault"
-)
+)}
 
 }

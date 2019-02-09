@@ -4,13 +4,8 @@
 \alias{modify_cache_subnet_group}
 \title{Modifies an existing cache subnet group}
 \usage{
-modify_cache_subnet_group(
-  CacheSubnetGroupName = "string",
-  CacheSubnetGroupDescription = "string",
-  SubnetIds = list(
-    "string"
-  )
-)
+modify_cache_subnet_group(CacheSubnetGroupName,
+  CacheSubnetGroupDescription = NULL, SubnetIds = NULL)
 }
 \arguments{
 \item{CacheSubnetGroupName}{[required] The name for the cache subnet group. This value is stored as a lowercase string.
@@ -26,6 +21,14 @@ Example: \code{mysubnetgroup}}
 \description{
 Modifies an existing cache subnet group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_cache_subnet_group(
+  CacheSubnetGroupName = "string",
+  CacheSubnetGroupDescription = "string",
+  SubnetIds = list(
+    "string"
+  )
+)
 }
+}
+

@@ -2,14 +2,9 @@
 % Please edit documentation in R/paws.appsync_operations.R
 \name{update_type}
 \alias{update_type}
-\title{Updates a \code{Type} object}
+\title{Updates a Type object}
 \usage{
-update_type(
-  apiId = "string",
-  typeName = "string",
-  definition = "string",
-  format = "SDL"|"JSON"
-)
+update_type(apiId, typeName, definition = NULL, format)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
@@ -23,6 +18,13 @@ update_type(
 \description{
 Updates a \code{Type} object.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_type(
+  apiId = "string",
+  typeName = "string",
+  definition = "string",
+  format = "SDL"|"JSON"
+)
 }
+}
+

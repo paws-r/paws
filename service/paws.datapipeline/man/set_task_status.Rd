@@ -2,15 +2,10 @@
 % Please edit documentation in R/paws.datapipeline_operations.R
 \name{set_task_status}
 \alias{set_task_status}
-\title{Task runners call \code{SetTaskStatus} to notify AWS Data Pipeline that a task is completed and provide information about the final status}
+\title{Task runners call SetTaskStatus to notify AWS Data Pipeline that a task is completed and provide information about the final status}
 \usage{
-set_task_status(
-  taskId = "string",
-  taskStatus = "FINISHED"|"FAILED"|"FALSE",
-  errorId = "string",
-  errorMessage = "string",
-  errorStackTrace = "string"
-)
+set_task_status(taskId, taskStatus, errorId = NULL,
+  errorMessage = NULL, errorStackTrace = NULL)
 }
 \arguments{
 \item{taskId}{[required] The ID of the task assigned to the task runner. This value is provided in the response for PollForTask.}
@@ -26,6 +21,14 @@ set_task_status(
 \description{
 Task runners call \code{SetTaskStatus} to notify AWS Data Pipeline that a task is completed and provide information about the final status. A task runner makes this call regardless of whether the task was sucessful. A task runner does not need to call \code{SetTaskStatus} for tasks that are canceled by the web service during a call to ReportTaskProgress.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_task_status(
+  taskId = "string",
+  taskStatus = "FINISHED"|"FAILED"|"FALSE",
+  errorId = "string",
+  errorMessage = "string",
+  errorStackTrace = "string"
+)
 }
+}
+

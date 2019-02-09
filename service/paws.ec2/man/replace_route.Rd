@@ -4,19 +4,11 @@
 \alias{replace_route}
 \title{Replaces an existing route within a route table in a VPC}
 \usage{
-replace_route(
-  DestinationCidrBlock = "string",
-  DestinationIpv6CidrBlock = "string",
-  DryRun = TRUE|FALSE,
-  EgressOnlyInternetGatewayId = "string",
-  GatewayId = "string",
-  InstanceId = "string",
-  NatGatewayId = "string",
-  TransitGatewayId = "string",
-  NetworkInterfaceId = "string",
-  RouteTableId = "string",
-  VpcPeeringConnectionId = "string"
-)
+replace_route(DestinationCidrBlock = NULL,
+  DestinationIpv6CidrBlock = NULL, DryRun = NULL,
+  EgressOnlyInternetGatewayId = NULL, GatewayId = NULL,
+  InstanceId = NULL, NatGatewayId = NULL, NetworkInterfaceId = NULL,
+  RouteTableId, VpcPeeringConnectionId = NULL)
 }
 \arguments{
 \item{DestinationCidrBlock}{The IPv4 CIDR address block used for the destination match. The value that you provide must match the CIDR of an existing route in the table.}
@@ -33,8 +25,6 @@ replace_route(
 
 \item{NatGatewayId}{[IPv4 traffic only] The ID of a NAT gateway.}
 
-\item{TransitGatewayId}{The ID of a transit gateway.}
-
 \item{NetworkInterfaceId}{The ID of a network interface.}
 
 \item{RouteTableId}{[required] The ID of the route table.}
@@ -47,14 +37,30 @@ Replaces an existing route within a route table in a VPC. You must provide only 
 \details{
 For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{replace_route(
+  DestinationCidrBlock = "string",
+  DestinationIpv6CidrBlock = "string",
+  DryRun = TRUE|FALSE,
+  EgressOnlyInternetGatewayId = "string",
+  GatewayId = "string",
+  InstanceId = "string",
+  NatGatewayId = "string",
+  NetworkInterfaceId = "string",
+  RouteTableId = "string",
+  VpcPeeringConnectionId = "string"
+)
+}
+}
+
 \examples{
 # This example replaces the specified route in the specified table table.
 # The new route matches the specified CIDR and sends the traffic to the
 # specified virtual private gateway.
-replace_route(
+\donttest{replace_route(
   DestinationCidrBlock = "10.0.0.0/16",
   GatewayId = "vgw-9a4cacf3",
   RouteTableId = "rtb-22574640"
-)
+)}
 
 }

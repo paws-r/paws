@@ -4,10 +4,7 @@
 \alias{list_datastores}
 \title{Retrieves a list of data stores}
 \usage{
-list_datastores(
-  nextToken = "string",
-  maxResults = 123
-)
+list_datastores(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{nextToken}{The token for the next set of results.}
@@ -19,6 +16,11 @@ The default value is 100.}
 \description{
 Retrieves a list of data stores.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_datastores(
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

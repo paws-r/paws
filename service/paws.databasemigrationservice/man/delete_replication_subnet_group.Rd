@@ -4,9 +4,7 @@
 \alias{delete_replication_subnet_group}
 \title{Deletes a subnet group}
 \usage{
-delete_replication_subnet_group(
-  ReplicationSubnetGroupIdentifier = "string"
-)
+delete_replication_subnet_group(ReplicationSubnetGroupIdentifier)
 }
 \arguments{
 \item{ReplicationSubnetGroupIdentifier}{[required] The subnet group name of the replication instance.}
@@ -14,10 +12,17 @@ delete_replication_subnet_group(
 \description{
 Deletes a subnet group.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_replication_subnet_group(
+  ReplicationSubnetGroupIdentifier = "string"
+)
+}
+}
+
 \examples{
 # Deletes a replication subnet group.
-delete_replication_subnet_group(
+\donttest{delete_replication_subnet_group(
   ReplicationSubnetGroupIdentifier = "us-west-2ab-vpc-215ds366"
-)
+)}
 
 }

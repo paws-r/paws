@@ -4,12 +4,7 @@
 \alias{suspend_processes}
 \title{Suspends the specified automatic scaling processes, or all processes, for the specified Auto Scaling group}
 \usage{
-suspend_processes(
-  AutoScalingGroupName = "string",
-  ScalingProcesses = list(
-    "string"
-  )
-)
+suspend_processes(AutoScalingGroupName, ScalingProcesses = NULL)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -30,20 +25,30 @@ suspend_processes(
 Suspends the specified automatic scaling processes, or all processes, for the specified Auto Scaling group.
 }
 \details{
-If you suspend either the \code{Launch} or \code{Terminate} process types, it can prevent other process types from functioning properly.
+Note that if you suspend either the \code{Launch} or \code{Terminate} process types, it can prevent other process types from functioning properly.
 
 To resume processes that have been suspended, use ResumeProcesses.
 
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html}{Suspending and Resuming Scaling Processes} in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{suspend_processes(
+  AutoScalingGroupName = "string",
+  ScalingProcesses = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example suspends the specified scaling process for the specified
 # Auto Scaling group.
-suspend_processes(
+\donttest{suspend_processes(
   AutoScalingGroupName = "my-auto-scaling-group",
   ScalingProcesses = list(
     "AlarmNotification"
   )
-)
+)}
 
 }

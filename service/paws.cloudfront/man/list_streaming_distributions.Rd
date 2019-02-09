@@ -4,10 +4,7 @@
 \alias{list_streaming_distributions}
 \title{List streaming distributions}
 \usage{
-list_streaming_distributions(
-  Marker = "string",
-  MaxItems = "string"
-)
+list_streaming_distributions(Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{Marker}{The value that you provided for the \code{Marker} request parameter.}
@@ -17,6 +14,11 @@ list_streaming_distributions(
 \description{
 List streaming distributions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_streaming_distributions(
+  Marker = "string",
+  MaxItems = "string"
+)
 }
+}
+

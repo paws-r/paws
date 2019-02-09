@@ -6,9 +6,9 @@
 \alias{paws.xray-package}
 \title{paws.xray: AWS X-Ray}
 \description{
-AWS X-Ray provides APIs for managing debug traces and
-retrieving service maps and other data created by processing those
-traces.
+AWS X-Ray provides APIs for managing debug traces
+    and retrieving service maps and other data created by processing those
+    traces.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

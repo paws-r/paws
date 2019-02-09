@@ -4,20 +4,8 @@
 \alias{describe_instance_patch_states_for_patch_group}
 \title{Retrieves the high-level patch state for the instances in the specified patch group}
 \usage{
-describe_instance_patch_states_for_patch_group(
-  PatchGroup = "string",
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      Type = "Equal"|"NotEqual"|"LessThan"|"GreaterThan"
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
+describe_instance_patch_states_for_patch_group(PatchGroup,
+  Filters = NULL, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{PatchGroup}{[required] The name of the patch group for which the patch state information should be retrieved.}
@@ -37,6 +25,21 @@ Type (string "Equal", "NotEqual", "LessThan", "GreaterThan")}
 \description{
 Retrieves the high-level patch state for the instances in the specified patch group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_instance_patch_states_for_patch_group(
+  PatchGroup = "string",
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      ),
+      Type = "Equal"|"NotEqual"|"LessThan"|"GreaterThan"
+    )
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

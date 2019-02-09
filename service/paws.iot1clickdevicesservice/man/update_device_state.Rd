@@ -4,10 +4,7 @@
 \alias{update_device_state}
 \title{Using a Boolean value (true or false), this operation enables or disables the device given a device ID}
 \usage{
-update_device_state(
-  DeviceId = "string",
-  Enabled = TRUE|FALSE
-)
+update_device_state(DeviceId, Enabled = NULL)
 }
 \arguments{
 \item{DeviceId}{[required] The unique identifier of the device.}
@@ -17,6 +14,11 @@ update_device_state(
 \description{
 Using a Boolean value (true or false), this operation enables or disables the device given a device ID.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_device_state(
+  DeviceId = "string",
+  Enabled = TRUE|FALSE
+)
 }
+}
+

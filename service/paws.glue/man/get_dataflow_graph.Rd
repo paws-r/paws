@@ -4,9 +4,7 @@
 \alias{get_dataflow_graph}
 \title{Transforms a Python script into a directed acyclic graph (DAG)}
 \usage{
-get_dataflow_graph(
-  PythonScript = "string"
-)
+get_dataflow_graph(PythonScript = NULL)
 }
 \arguments{
 \item{PythonScript}{The Python script to transform.}
@@ -14,6 +12,10 @@ get_dataflow_graph(
 \description{
 Transforms a Python script into a directed acyclic graph (DAG).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_dataflow_graph(
+  PythonScript = "string"
+)
 }
+}
+

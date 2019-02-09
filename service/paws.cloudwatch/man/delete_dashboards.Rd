@@ -4,11 +4,7 @@
 \alias{delete_dashboards}
 \title{Deletes all dashboards that you specify}
 \usage{
-delete_dashboards(
-  DashboardNames = list(
-    "string"
-  )
-)
+delete_dashboards(DashboardNames)
 }
 \arguments{
 \item{DashboardNames}{[required] The dashboards to be deleted. This parameter is required.}
@@ -16,6 +12,12 @@ delete_dashboards(
 \description{
 Deletes all dashboards that you specify. You may specify up to 100 dashboards to delete. If there is an error during this call, no dashboards are deleted.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_dashboards(
+  DashboardNames = list(
+    "string"
+  )
+)
 }
+}
+

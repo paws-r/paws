@@ -4,9 +4,7 @@
 \alias{delete_run}
 \title{Deletes the run, given the run ARN}
 \usage{
-delete_run(
-  arn = "string"
-)
+delete_run(arn)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) for the run you wish to delete.}
@@ -17,10 +15,17 @@ Deletes the run, given the run ARN.
 \details{
 \strong{Note} Deleting this resource does not stop an in-progress run.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_run(
+  arn = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes a specific test run.
-delete_run(
+\donttest{delete_run(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456"
-)
+)}
 
 }

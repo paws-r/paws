@@ -4,10 +4,7 @@
 \alias{list_skills_store_categories}
 \title{Lists all categories in the Alexa skill store}
 \usage{
-list_skills_store_categories(
-  NextToken = "string",
-  MaxResults = 123
-)
+list_skills_store_categories(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{The tokens used for pagination.}
@@ -17,6 +14,11 @@ list_skills_store_categories(
 \description{
 Lists all categories in the Alexa skill store.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_skills_store_categories(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

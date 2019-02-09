@@ -4,11 +4,7 @@
 \alias{list_policies}
 \title{Lists your policies}
 \usage{
-list_policies(
-  marker = "string",
-  pageSize = 123,
-  ascendingOrder = TRUE|FALSE
-)
+list_policies(marker = NULL, pageSize = NULL, ascendingOrder = NULL)
 }
 \arguments{
 \item{marker}{The marker for the next set of results.}
@@ -20,6 +16,12 @@ list_policies(
 \description{
 Lists your policies.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_policies(
+  marker = "string",
+  pageSize = 123,
+  ascendingOrder = TRUE|FALSE
+)
 }
+}
+

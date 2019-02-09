@@ -4,32 +4,10 @@
 \alias{simulate_custom_policy}
 \title{Simulate how a set of IAM policies and optionally a resource-based policy works with a list of API operations and AWS resources to determine the policies' effective permissions}
 \usage{
-simulate_custom_policy(
-  PolicyInputList = list(
-    "string"
-  ),
-  ActionNames = list(
-    "string"
-  ),
-  ResourceArns = list(
-    "string"
-  ),
-  ResourcePolicy = "string",
-  ResourceOwner = "string",
-  CallerArn = "string",
-  ContextEntries = list(
-    list(
-      ContextKeyName = "string",
-      ContextKeyValues = list(
-        "string"
-      ),
-      ContextKeyType = "string"|"stringList"|"numeric"|"numericList"|"boolean"|"booleanList"|"ip"|"ipList"|"binary"|"binaryList"|"date"|"dateList"
-    )
-  ),
-  ResourceHandlingOption = "string",
-  MaxItems = 123,
-  Marker = "string"
-)
+simulate_custom_policy(PolicyInputList, ActionNames, ResourceArns = NULL,
+  ResourcePolicy = NULL, ResourceOwner = NULL, CallerArn = NULL,
+  ContextEntries = NULL, ResourceHandlingOption = NULL,
+  MaxItems = NULL, Marker = NULL)
 }
 \arguments{
 \item{PolicyInputList}{[required] A list of policy documents to include in the simulation. Each document is specified as a string containing the complete, valid JSON text of an IAM policy. Do not include any resource-based policies in this parameter. Any resource-based policy must be submitted with the \code{ResourcePolicy} parameter. The policies cannot be "scope-down" policies, such as you could include in a call to \href{http://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html}{GetFederationToken} or one of the \href{http://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html}{AssumeRole} API operations. In other words, do not use policies designed to restrict what a user can do while using the temporary credentials.
@@ -43,7 +21,7 @@ The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate this 
 
 \item{ActionNames}{[required] A list of names of API operations to evaluate in the simulation. Each operation is evaluated against each resource. Each operation must include the service identifier, such as \code{iam:CreateUser}.}
 
-\item{ResourceArns}{A list of ARNs of AWS resources to include in the simulation. If this parameter is not provided, then the value defaults to \code{*} (all resources). Each API in the \code{ActionNames} parameter is evaluated for each resource in this list. The simulation determines the access result (allowed or denied) of each combination and reports it in the response.
+\item{ResourceArns}{A list of ARNs of AWS resources to include in the simulation. If this parameter is not provided then the value defaults to \code{*} (all resources). Each API in the \code{ActionNames} parameter is evaluated for each resource in this list. The simulation determines the access result (allowed or denied) of each combination and reports it in the response.
 
 The simulation does not automatically retrieve policies for the specified resources. If you want to include a resource policy in the simulation, then you must include the policy as a string in the \code{ResourcePolicy} parameter.
 
@@ -94,9 +72,9 @@ instance, image, security-group, network-interface, volume
 instance, image, security-group, network-interface, subnet, volume
 }}
 
-\item{MaxItems}{Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the \code{IsTruncated} response element is \code{true}.
+\item{MaxItems}{(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the \code{IsTruncated} response element is \code{true}.
 
-If you do not include this parameter, the number of items defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the \code{IsTruncated} response element returns \code{true}, and \code{Marker} contains a value to include in the subsequent call that tells the service where to continue from.}
+If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the \code{IsTruncated} response element returns \code{true} and \code{Marker} contains a value to include in the subsequent call that tells the service where to continue from.}
 
 \item{Marker}{Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the \code{Marker} element in the response that you received to indicate where the next call should start.}
 }
@@ -112,6 +90,33 @@ Context keys are variables maintained by AWS and its services that provide detai
 
 If the output is long, you can use \code{MaxItems} and \code{Marker} parameters to paginate the results.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{simulate_custom_policy(
+  PolicyInputList = list(
+    "string"
+  ),
+  ActionNames = list(
+    "string"
+  ),
+  ResourceArns = list(
+    "string"
+  ),
+  ResourcePolicy = "string",
+  ResourceOwner = "string",
+  CallerArn = "string",
+  ContextEntries = list(
+    list(
+      ContextKeyName = "string",
+      ContextKeyValues = list(
+        "string"
+      ),
+      ContextKeyType = "string"|"stringList"|"numeric"|"numericList"|"boolean"|"booleanList"|"ip"|"ipList"|"binary"|"binaryList"|"date"|"dateList"
+    )
+  ),
+  ResourceHandlingOption = "string",
+  MaxItems = 123,
+  Marker = "string"
+)
 }
+}
+

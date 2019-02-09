@@ -4,7 +4,30 @@
 \alias{create_job}
 \title{Create a new transcoding job}
 \usage{
-create_job(
+create_job(BillingTagsSource = NULL, ClientRequestToken = NULL,
+  JobTemplate = NULL, Queue = NULL, Role, Settings,
+  UserMetadata = NULL)
+}
+\arguments{
+\item{BillingTagsSource}{}
+
+\item{ClientRequestToken}{Idempotency token for CreateJob operation.}
+
+\item{JobTemplate}{When you create a job, you can either specify a job template or specify the transcoding settings individually}
+
+\item{Queue}{Optional. When you create a job, you can specify a queue to send it to. If you don't specify, the job will go to the default queue. For more about queues, see the User Guide topic at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html.}
+
+\item{Role}{[required] Required. The IAM role you use for creating this job. For details about permissions, see the User Guide topic at the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html.}
+
+\item{Settings}{[required]}
+
+\item{UserMetadata}{User-defined metadata that you want to associate with an MediaConvert job. You specify metadata in key/value pairs.}
+}
+\description{
+Create a new transcoding job. For information about jobs and job settings, see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+}
+\section{Accepted Parameters}{
+\preformatted{create_job(
   BillingTagsSource = "QUEUE"|"PRESET"|"JOB_TEMPLATE",
   ClientRequestToken = "string",
   JobTemplate = "string",
@@ -75,7 +98,7 @@ create_job(
                 SourceFile = "string",
                 TimeDelta = 123
               ),
-              SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCTE20"|"SCC"|"TTML"|"STL"|"SRT"|"SMI"|"TELETEXT"|"NULL_SOURCE",
+              SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCC"|"TTML"|"STL"|"SRT"|"TELETEXT"|"NULL_SOURCE",
               TeletextSourceSettings = list(
                 PageNumber = "string"
               )
@@ -83,33 +106,10 @@ create_job(
           )
         ),
         DeblockFilter = "ENABLED"|"DISABLED",
-        DecryptionSettings = list(
-          DecryptionMode = "AES_CTR"|"AES_CBC"|"AES_GCM",
-          EncryptedDecryptionKey = "string",
-          InitializationVector = "string",
-          KmsKeyRegion = "string"
-        ),
         DenoiseFilter = "ENABLED"|"DISABLED",
         FileInput = "string",
         FilterEnable = "AUTO"|"DISABLE"|"FORCE",
         FilterStrength = 123,
-        ImageInserter = list(
-          InsertableImages = list(
-            list(
-              Duration = 123,
-              FadeIn = 123,
-              FadeOut = 123,
-              Height = 123,
-              ImageInserterInput = "string",
-              ImageX = 123,
-              ImageY = 123,
-              Layer = 123,
-              Opacity = 123,
-              StartTime = "string",
-              Width = 123
-            )
-          )
-        ),
         InputClippings = list(
           list(
             EndTimecode = "string",
@@ -140,20 +140,6 @@ create_job(
           ProgramNumber = 123
         )
       )
-    ),
-    MotionImageInserter = list(
-      Framerate = list(
-        FramerateDenominator = 123,
-        FramerateNumerator = 123
-      ),
-      Input = "string",
-      InsertionMode = "MOV"|"PNG",
-      Offset = list(
-        ImageX = 123,
-        ImageY = 123
-      ),
-      Playback = "ONCE"|"REPEAT",
-      StartTime = "string"
     ),
     NielsenConfiguration = list(
       BreakoutCode = 123,
@@ -197,7 +183,6 @@ create_job(
             Destination = "string",
             Encryption = list(
               SpekeKeyProvider = list(
-                CertificateArn = "string",
                 ResourceId = "string",
                 SystemIds = list(
                   "string"
@@ -238,7 +223,6 @@ create_job(
               EncryptionMethod = "AES128"|"SAMPLE_AES",
               InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
               SpekeKeyProvider = list(
-                CertificateArn = "string",
                 ResourceId = "string",
                 SystemIds = list(
                   "string"
@@ -273,7 +257,6 @@ create_job(
             Destination = "string",
             Encryption = list(
               SpekeKeyProvider = list(
-                CertificateArn = "string",
                 ResourceId = "string",
                 SystemIds = list(
                   "string"
@@ -406,7 +389,7 @@ create_job(
                     XPosition = 123,
                     YPosition = 123
                   ),
-                  DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+                  DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"SCC"|"SRT"|"TELETEXT"|"TTML"|"WEBVTT",
                   DvbSubDestinationSettings = list(
                     Alignment = "CENTERED"|"LEFT",
                     BackgroundColor = "NONE"|"BLACK"|"WHITE",
@@ -794,24 +777,5 @@ create_job(
   )
 )
 }
-\arguments{
-\item{BillingTagsSource}{}
-
-\item{ClientRequestToken}{Idempotency token for CreateJob operation.}
-
-\item{JobTemplate}{When you create a job, you can either specify a job template or specify the transcoding settings individually}
-
-\item{Queue}{Optional. When you create a job, you can specify a queue to send it to. If you don't specify, the job will go to the default queue. For more about queues, see the User Guide topic at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html.}
-
-\item{Role}{[required] Required. The IAM role you use for creating this job. For details about permissions, see the User Guide topic at the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html.}
-
-\item{Settings}{[required]}
-
-\item{UserMetadata}{User-defined metadata that you want to associate with an MediaConvert job. You specify metadata in key/value pairs.}
 }
-\description{
-Create a new transcoding job. For information about jobs and job settings, see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
-}
-\examples{
 
-}

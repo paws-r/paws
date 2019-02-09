@@ -4,9 +4,7 @@
 \alias{get_deployment_config}
 \title{Gets information about a deployment configuration}
 \usage{
-get_deployment_config(
-  deploymentConfigName = "string"
-)
+get_deployment_config(deploymentConfigName)
 }
 \arguments{
 \item{deploymentConfigName}{[required] The name of a deployment configuration associated with the applicable IAM user or AWS account.}
@@ -14,6 +12,10 @@ get_deployment_config(
 \description{
 Gets information about a deployment configuration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_deployment_config(
+  deploymentConfigName = "string"
+)
 }
+}
+

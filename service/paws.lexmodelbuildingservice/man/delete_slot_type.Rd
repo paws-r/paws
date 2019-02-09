@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.lexmodelbuildingservice_operations.R
 \name{delete_slot_type}
 \alias{delete_slot_type}
-\title{Deletes all versions of the slot type, including the \code{$LATEST} version}
+\title{Deletes all versions of the slot type, including the $LATEST version}
 \usage{
-delete_slot_type(
-  name = "string"
-)
+delete_slot_type(name)
 }
 \arguments{
 \item{name}{[required] The name of the slot type. The name is case sensitive.}
@@ -21,6 +19,10 @@ If you get the \code{ResourceInUseException} exception, the exception provides a
 
 This operation requires permission for the \code{lex:DeleteSlotType} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_slot_type(
+  name = "string"
+)
 }
+}
+

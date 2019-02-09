@@ -4,7 +4,23 @@
 \alias{list_documents}
 \title{Describes one or more of your Systems Manager documents}
 \usage{
-list_documents(
+list_documents(DocumentFilterList = NULL, Filters = NULL,
+  MaxResults = NULL, NextToken = NULL)
+}
+\arguments{
+\item{DocumentFilterList}{One or more filters. Use a filter to return a more specific list of results.}
+
+\item{Filters}{One or more filters. Use a filter to return a more specific list of results.}
+
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
+
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
+}
+\description{
+Describes one or more of your Systems Manager documents.
+}
+\section{Accepted Parameters}{
+\preformatted{list_documents(
   DocumentFilterList = list(
     list(
       key = "Name"|"Owner"|"PlatformTypes"|"DocumentType",
@@ -23,18 +39,5 @@ list_documents(
   NextToken = "string"
 )
 }
-\arguments{
-\item{DocumentFilterList}{One or more filters. Use a filter to return a more specific list of results.}
-
-\item{Filters}{One or more filters. Use a filter to return a more specific list of results.}
-
-\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
-
-\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
-\description{
-Describes one or more of your Systems Manager documents.
-}
-\examples{
 
-}

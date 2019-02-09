@@ -4,18 +4,8 @@
 \alias{update_thing}
 \title{Updates the data for a thing}
 \usage{
-update_thing(
-  thingName = "string",
-  thingTypeName = "string",
-  attributePayload = list(
-    attributes = list(
-      "string"
-    ),
-    merge = TRUE|FALSE
-  ),
-  expectedVersion = 123,
-  removeThingType = TRUE|FALSE
-)
+update_thing(thingName, thingTypeName = NULL, attributePayload = NULL,
+  expectedVersion = NULL, removeThingType = NULL)
 }
 \arguments{
 \item{thingName}{[required] The name of the thing to update.}
@@ -35,6 +25,19 @@ This data is used to add new attributes or update existing attributes.}
 \description{
 Updates the data for a thing.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_thing(
+  thingName = "string",
+  thingTypeName = "string",
+  attributePayload = list(
+    attributes = list(
+      "string"
+    ),
+    merge = TRUE|FALSE
+  ),
+  expectedVersion = 123,
+  removeThingType = TRUE|FALSE
+)
 }
+}
+

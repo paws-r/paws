@@ -4,9 +4,7 @@
 \alias{reject_skill}
 \title{Disassociates a skill from the organization under a user's AWS account}
 \usage{
-reject_skill(
-  SkillId = "string"
-)
+reject_skill(SkillId)
 }
 \arguments{
 \item{SkillId}{[required] The unique identifier of the skill.}
@@ -14,6 +12,10 @@ reject_skill(
 \description{
 Disassociates a skill from the organization under a user's AWS account. If the skill is a private skill, it moves to an AcceptStatus of PENDING. Any private or public skill that is rejected can be added later by calling the ApproveSkill API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reject_skill(
+  SkillId = "string"
+)
 }
+}
+

@@ -4,13 +4,9 @@
 \alias{list_resource_record_sets}
 \title{Lists the resource record sets in a specified hosted zone}
 \usage{
-list_resource_record_sets(
-  HostedZoneId = "string",
-  StartRecordName = "string",
-  StartRecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
-  StartRecordIdentifier = "string",
-  MaxItems = "string"
-)
+list_resource_record_sets(HostedZoneId, StartRecordName = NULL,
+  StartRecordType = NULL, StartRecordIdentifier = NULL,
+  MaxItems = NULL)
 }
 \arguments{
 \item{HostedZoneId}{[required] The ID of the hosted zone that contains the resource record sets that you want to list.}
@@ -41,6 +37,59 @@ Constraint: Specifying \code{type} without specifying \code{name} returns an \co
 \description{
 Lists the resource record sets in a specified hosted zone.
 }
-\examples{
+\details{
+\code{ListResourceRecordSets} returns up to 100 resource record sets at a time in ASCII order, beginning at a position specified by the \code{name} and \code{type} elements.
 
+\strong{Sort order}
+
+\code{ListResourceRecordSets} sorts results first by DNS name with the labels reversed, for example:
+
+\code{com.example.www.}
+
+Note the trailing dot, which can change the sort order when the record name contains characters that appear before \code{.} (decimal 46) in the ASCII table. These characters include the following: \code{! \" # $ \\\% & \' ( ) * + , -}
+
+When multiple records have the same DNS name, \code{ListResourceRecordSets} sorts results by the record type.
+
+\strong{Specifying where to start listing records}
+
+You can use the name and type elements to specify the resource record set that the list begins with:
+
+If you do not specify Name or Type
+
+:   The results begin with the first resource record set that the hosted zone contains.
+
+If you specify Name but not Type
+
+:   The results begin with the first resource record set in the list whose name is greater than or equal to \code{Name}.
+
+If you specify Type but not Name
+
+:   Amazon Route 53 returns the \code{InvalidInput} error.
+
+If you specify both Name and Type
+
+:   The results begin with the first resource record set in the list whose name is greater than or equal to \code{Name}, and whose type is greater than or equal to \code{Type}.
+
+\strong{Resource record sets that are PENDING}
+
+This action returns the most current version of the records. This includes records that are \code{PENDING}, and that are not yet available on all Route 53 DNS servers.
+
+\strong{Changing resource record sets}
+
+To ensure that you get an accurate listing of the resource record sets for a hosted zone at a point in time, do not submit a \code{ChangeResourceRecordSets} request while you're paging through the results of a \code{ListResourceRecordSets} request. If you do, some pages may display results without the latest changes while other pages display results with the latest changes.
+
+\strong{Displaying the next page of results}
+
+If a \code{ListResourceRecordSets} command returns more than one page of results, the value of \code{IsTruncated} is \code{true}. To display the next page of results, get the values of \code{NextRecordName}, \code{NextRecordType}, and \code{NextRecordIdentifier} (if any) from the response. Then submit another \code{ListResourceRecordSets} request, and specify those values for \code{StartRecordName}, \code{StartRecordType}, and \code{StartRecordIdentifier}.
 }
+\section{Accepted Parameters}{
+\preformatted{list_resource_record_sets(
+  HostedZoneId = "string",
+  StartRecordName = "string",
+  StartRecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
+  StartRecordIdentifier = "string",
+  MaxItems = "string"
+)
+}
+}
+

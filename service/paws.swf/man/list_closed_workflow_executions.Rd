@@ -4,33 +4,10 @@
 \alias{list_closed_workflow_executions}
 \title{Returns a list of closed workflow executions in the specified domain that meet the filtering criteria}
 \usage{
-list_closed_workflow_executions(
-  domain = "string",
-  startTimeFilter = list(
-    oldestDate = as.POSIXct("2015-01-01"),
-    latestDate = as.POSIXct("2015-01-01")
-  ),
-  closeTimeFilter = list(
-    oldestDate = as.POSIXct("2015-01-01"),
-    latestDate = as.POSIXct("2015-01-01")
-  ),
-  executionFilter = list(
-    workflowId = "string"
-  ),
-  closeStatusFilter = list(
-    status = "COMPLETED"|"FAILED"|"CANCELED"|"TERMINATED"|"CONTINUED_AS_NEW"|"TIMED_OUT"
-  ),
-  typeFilter = list(
-    name = "string",
-    version = "string"
-  ),
-  tagFilter = list(
-    tag = "string"
-  ),
-  nextPageToken = "string",
-  maximumPageSize = 123,
-  reverseOrder = TRUE|FALSE
-)
+list_closed_workflow_executions(domain, startTimeFilter = NULL,
+  closeTimeFilter = NULL, executionFilter = NULL,
+  closeStatusFilter = NULL, typeFilter = NULL, tagFilter = NULL,
+  nextPageToken = NULL, maximumPageSize = NULL, reverseOrder = NULL)
 }
 \arguments{
 \item{domain}{[required] The name of the domain that contains the workflow executions to list.}
@@ -89,6 +66,34 @@ You can use IAM policies to control this action's access to Amazon SWF resources
 
 If the caller doesn't have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's \code{cause} parameter is set to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see \href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows} in the \emph{Amazon SWF Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_closed_workflow_executions(
+  domain = "string",
+  startTimeFilter = list(
+    oldestDate = as.POSIXct("2015-01-01"),
+    latestDate = as.POSIXct("2015-01-01")
+  ),
+  closeTimeFilter = list(
+    oldestDate = as.POSIXct("2015-01-01"),
+    latestDate = as.POSIXct("2015-01-01")
+  ),
+  executionFilter = list(
+    workflowId = "string"
+  ),
+  closeStatusFilter = list(
+    status = "COMPLETED"|"FAILED"|"CANCELED"|"TERMINATED"|"CONTINUED_AS_NEW"|"TIMED_OUT"
+  ),
+  typeFilter = list(
+    name = "string",
+    version = "string"
+  ),
+  tagFilter = list(
+    tag = "string"
+  ),
+  nextPageToken = "string",
+  maximumPageSize = 123,
+  reverseOrder = TRUE|FALSE
+)
 }
+}
+

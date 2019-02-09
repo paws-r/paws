@@ -4,10 +4,7 @@
 \alias{list_security_profiles}
 \title{Lists the Device Defender security profiles you have created}
 \usage{
-list_security_profiles(
-  nextToken = "string",
-  maxResults = 123
-)
+list_security_profiles(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{nextToken}{The token for the next set of results.}
@@ -17,6 +14,11 @@ list_security_profiles(
 \description{
 Lists the Device Defender security profiles you have created. You can use filters to list only those security profiles associated with a thing group or only those associated with your account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_security_profiles(
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

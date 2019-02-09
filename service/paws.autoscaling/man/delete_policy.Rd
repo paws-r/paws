@@ -4,10 +4,7 @@
 \alias{delete_policy}
 \title{Deletes the specified Auto Scaling policy}
 \usage{
-delete_policy(
-  AutoScalingGroupName = "string",
-  PolicyName = "string"
-)
+delete_policy(AutoScalingGroupName = NULL, PolicyName)
 }
 \arguments{
 \item{AutoScalingGroupName}{The name of the Auto Scaling group.}
@@ -20,11 +17,19 @@ Deletes the specified Auto Scaling policy.
 \details{
 Deleting a policy deletes the underlying alarm action, but does not delete the alarm, even if it no longer has an associated action.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_policy(
+  AutoScalingGroupName = "string",
+  PolicyName = "string"
+)
+}
+}
+
 \examples{
 # This example deletes the specified Auto Scaling policy.
-delete_policy(
+\donttest{delete_policy(
   AutoScalingGroupName = "my-auto-scaling-group",
   PolicyName = "ScaleIn"
-)
+)}
 
 }

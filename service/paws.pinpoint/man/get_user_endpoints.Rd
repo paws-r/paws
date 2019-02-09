@@ -4,10 +4,7 @@
 \alias{get_user_endpoints}
 \title{Returns information about the endpoints that are associated with a User ID}
 \usage{
-get_user_endpoints(
-  ApplicationId = "string",
-  UserId = "string"
-)
+get_user_endpoints(ApplicationId, UserId)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -17,6 +14,11 @@ get_user_endpoints(
 \description{
 Returns information about the endpoints that are associated with a User ID.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_user_endpoints(
+  ApplicationId = "string",
+  UserId = "string"
+)
 }
+}
+

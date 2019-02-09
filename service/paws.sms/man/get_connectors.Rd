@@ -2,21 +2,23 @@
 % Please edit documentation in R/paws.sms_operations.R
 \name{get_connectors}
 \alias{get_connectors}
-\title{Describes the connectors registered with the AWS SMS}
+\title{The GetConnectors API returns a list of connectors that are registered with the Server Migration Service}
 \usage{
-get_connectors(
+get_connectors(nextToken = NULL, maxResults = NULL)
+}
+\arguments{
+\item{nextToken}{}
+
+\item{maxResults}{}
+}
+\description{
+The GetConnectors API returns a list of connectors that are registered with the Server Migration Service.
+}
+\section{Accepted Parameters}{
+\preformatted{get_connectors(
   nextToken = "string",
   maxResults = 123
 )
 }
-\arguments{
-\item{nextToken}{The token for the next set of results.}
+}
 
-\item{maxResults}{The maximum number of results to return in a single call. The default value is 50. To retrieve the remaining results, make another call with the returned \code{NextToken} value.}
-}
-\description{
-Describes the connectors registered with the AWS SMS.
-}
-\examples{
-
-}

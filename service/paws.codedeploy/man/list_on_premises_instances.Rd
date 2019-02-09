@@ -4,17 +4,8 @@
 \alias{list_on_premises_instances}
 \title{Gets a list of names for one or more on-premises instances}
 \usage{
-list_on_premises_instances(
-  registrationStatus = "Registered"|"Deregistered",
-  tagFilters = list(
-    list(
-      Key = "string",
-      Value = "string",
-      Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-    )
-  ),
-  nextToken = "string"
-)
+list_on_premises_instances(registrationStatus = NULL,
+  tagFilters = NULL, nextToken = NULL)
 }
 \arguments{
 \item{registrationStatus}{The registration status of the on-premises instances:
@@ -33,6 +24,18 @@ Gets a list of names for one or more on-premises instances.
 \details{
 Unless otherwise specified, both registered and deregistered on-premises instance names will be listed. To list only registered or deregistered on-premises instance names, use the registration status parameter.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_on_premises_instances(
+  registrationStatus = "Registered"|"Deregistered",
+  tagFilters = list(
+    list(
+      Key = "string",
+      Value = "string",
+      Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
+    )
+  ),
+  nextToken = "string"
+)
 }
+}
+

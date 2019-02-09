@@ -4,14 +4,7 @@
 \alias{get_sdk}
 \title{Generates a client SDK for a RestApi and Stage}
 \usage{
-get_sdk(
-  restApiId = "string",
-  stageName = "string",
-  sdkType = "string",
-  parameters = list(
-    "string"
-  )
-)
+get_sdk(restApiId, stageName, sdkType, parameters = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -25,6 +18,15 @@ get_sdk(
 \description{
 Generates a client SDK for a RestApi and Stage.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_sdk(
+  restApiId = "string",
+  stageName = "string",
+  sdkType = "string",
+  parameters = list(
+    "string"
+  )
+)
 }
+}
+

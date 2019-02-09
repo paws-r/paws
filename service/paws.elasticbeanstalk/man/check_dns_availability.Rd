@@ -4,9 +4,7 @@
 \alias{check_dns_availability}
 \title{Checks if the specified CNAME is available}
 \usage{
-check_dns_availability(
-  CNAMEPrefix = "string"
-)
+check_dns_availability(CNAMEPrefix)
 }
 \arguments{
 \item{CNAMEPrefix}{[required] The prefix used when this CNAME is reserved.}
@@ -14,11 +12,18 @@ check_dns_availability(
 \description{
 Checks if the specified CNAME is available.
 }
+\section{Accepted Parameters}{
+\preformatted{check_dns_availability(
+  CNAMEPrefix = "string"
+)
+}
+}
+
 \examples{
 # The following operation checks the availability of the subdomain
 # my-cname:
-check_dns_availability(
+\donttest{check_dns_availability(
   CNAMEPrefix = "my-cname"
-)
+)}
 
 }

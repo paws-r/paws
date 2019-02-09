@@ -4,18 +4,7 @@
 \alias{create_device_pool}
 \title{Creates a device pool}
 \usage{
-create_device_pool(
-  projectArn = "string",
-  name = "string",
-  description = "string",
-  rules = list(
-    list(
-      attribute = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE",
-      operator = "EQUALS"|"LESS_THAN"|"GREATER_THAN"|"IN"|"NOT_IN"|"CONTAINS",
-      value = "string"
-    )
-  )
-)
+create_device_pool(projectArn, name, description = NULL, rules)
 }
 \arguments{
 \item{projectArn}{[required] The ARN of the project for the device pool.}
@@ -29,14 +18,30 @@ create_device_pool(
 \description{
 Creates a device pool.
 }
+\section{Accepted Parameters}{
+\preformatted{create_device_pool(
+  projectArn = "string",
+  name = "string",
+  description = "string",
+  rules = list(
+    list(
+      attribute = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE",
+      operator = "EQUALS"|"LESS_THAN"|"GREATER_THAN"|"IN"|"NOT_IN"|"CONTAINS",
+      value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following example creates a new device pool named MyDevicePool
 # inside an existing project.
-create_device_pool(
+\donttest{create_device_pool(
   name = "MyDevicePool",
   description = "My Android devices",
   projectArn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
   rules = list()
-)
+)}
 
 }

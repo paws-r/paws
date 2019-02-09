@@ -4,19 +4,9 @@
 \alias{list_command_invocations}
 \title{An invocation is copy of a command sent to a specific instance}
 \usage{
-list_command_invocations(
-  CommandId = "string",
-  InstanceId = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  Filters = list(
-    list(
-      key = "InvokedAfter"|"InvokedBefore"|"Status"|"ExecutionStage"|"DocumentName",
-      value = "string"
-    )
-  ),
-  Details = TRUE|FALSE
-)
+list_command_invocations(CommandId = NULL, InstanceId = NULL,
+  MaxResults = NULL, NextToken = NULL, Filters = NULL,
+  Details = NULL)
 }
 \arguments{
 \item{CommandId}{(Optional) The invocations for a specific command ID.}
@@ -34,6 +24,20 @@ list_command_invocations(
 \description{
 An invocation is copy of a command sent to a specific instance. A command can apply to one or more instances. A command invocation applies to one instance. For example, if a user executes SendCommand against three instances, then a command invocation is created for each requested instance ID. ListCommandInvocations provide status about command execution.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_command_invocations(
+  CommandId = "string",
+  InstanceId = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  Filters = list(
+    list(
+      key = "InvokedAfter"|"InvokedBefore"|"Status"|"ExecutionStage"|"DocumentName",
+      value = "string"
+    )
+  ),
+  Details = TRUE|FALSE
+)
 }
+}
+

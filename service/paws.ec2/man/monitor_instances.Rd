@@ -4,12 +4,7 @@
 \alias{monitor_instances}
 \title{Enables detailed monitoring for a running instance}
 \usage{
-monitor_instances(
-  InstanceIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+monitor_instances(InstanceIds, DryRun = NULL)
 }
 \arguments{
 \item{InstanceIds}{[required] One or more instance IDs.}
@@ -22,6 +17,13 @@ Enables detailed monitoring for a running instance. Otherwise, basic monitoring 
 \details{
 To disable detailed monitoring, see .
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{monitor_instances(
+  InstanceIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
+}
+

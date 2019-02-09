@@ -4,9 +4,7 @@
 \alias{get_health_check_last_failure_reason}
 \title{Gets the reason that a specified health check failed most recently}
 \usage{
-get_health_check_last_failure_reason(
-  HealthCheckId = "string"
-)
+get_health_check_last_failure_reason(HealthCheckId)
 }
 \arguments{
 \item{HealthCheckId}{[required] The ID for the health check for which you want the last failure reason. When you created the health check, \code{CreateHealthCheck} returned the ID in the response, in the \code{HealthCheckId} element.
@@ -16,6 +14,10 @@ If you want to get the last failure reason for a calculated health check, you mu
 \description{
 Gets the reason that a specified health check failed most recently.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_health_check_last_failure_reason(
+  HealthCheckId = "string"
+)
 }
+}
+

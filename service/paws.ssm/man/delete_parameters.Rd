@@ -4,11 +4,7 @@
 \alias{delete_parameters}
 \title{Delete a list of parameters}
 \usage{
-delete_parameters(
-  Names = list(
-    "string"
-  )
-)
+delete_parameters(Names)
 }
 \arguments{
 \item{Names}{[required] The names of the parameters to delete.}
@@ -16,6 +12,12 @@ delete_parameters(
 \description{
 Delete a list of parameters. This API is used to delete parameters by using the Amazon EC2 console.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_parameters(
+  Names = list(
+    "string"
+  )
+)
 }
+}
+

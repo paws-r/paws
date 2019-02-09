@@ -4,7 +4,62 @@
 \alias{update_layer}
 \title{Updates a specified layer}
 \usage{
-update_layer(
+update_layer(LayerId, Name = NULL, Shortname = NULL,
+  Attributes = NULL, CloudWatchLogsConfiguration = NULL,
+  CustomInstanceProfileArn = NULL, CustomJson = NULL,
+  CustomSecurityGroupIds = NULL, Packages = NULL,
+  VolumeConfigurations = NULL, EnableAutoHealing = NULL,
+  AutoAssignElasticIps = NULL, AutoAssignPublicIps = NULL,
+  CustomRecipes = NULL, InstallUpdatesOnBoot = NULL,
+  UseEbsOptimizedInstances = NULL, LifecycleEventConfiguration = NULL)
+}
+\arguments{
+\item{LayerId}{[required] The layer ID.}
+
+\item{Name}{The layer name, which is used by the console.}
+
+\item{Shortname}{For custom layers only, use this parameter to specify the layer's short name, which is used internally by AWS OpsWorks Stacks and by Chef. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters and must be in the following format: /\A[a-z0-9\-\\_\.]+\Z/.
+
+The built-in layers' short names are defined by AWS OpsWorks Stacks. For more information, see the \href{http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html}{Layer Reference}}
+
+\item{Attributes}{One or more user-defined key/value pairs to be added to the stack attributes.}
+
+\item{CloudWatchLogsConfiguration}{Specifies CloudWatch Logs configuration options for the layer. For more information, see CloudWatchLogsLogStream.}
+
+\item{CustomInstanceProfileArn}{The ARN of an IAM profile to be used for all of the layer's EC2 instances. For more information about IAM ARNs, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
+
+\item{CustomJson}{A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html}{Using Custom JSON}.}
+
+\item{CustomSecurityGroupIds}{An array containing the layer's custom security group IDs.}
+
+\item{Packages}{An array of \code{Package} objects that describe the layer's packages.}
+
+\item{VolumeConfigurations}{A \code{VolumeConfigurations} object that describes the layer's Amazon EBS volumes.}
+
+\item{EnableAutoHealing}{Whether to disable auto healing for the layer.}
+
+\item{AutoAssignElasticIps}{Whether to automatically assign an \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP address} to the layer's instances. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html}{How to Edit a Layer}.}
+
+\item{AutoAssignPublicIps}{For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html}{How to Edit a Layer}.}
+
+\item{CustomRecipes}{A \code{LayerCustomRecipes} object that specifies the layer's custom recipes.}
+
+\item{InstallUpdatesOnBoot}{Whether to install operating system and package updates when the instance boots. The default value is \code{true}. To control when updates are installed, set this value to \code{false}. You must then update your instances manually by using CreateDeployment to run the \code{update_dependencies} stack command or manually running \code{yum} (Amazon Linux) or \code{apt-get} (Ubuntu) on the instances.
+
+We strongly recommend using the default value of \code{true}, to ensure that your instances have the latest security updates.}
+
+\item{UseEbsOptimizedInstances}{Whether to use Amazon EBS-optimized instances.}
+
+\item{LifecycleEventConfiguration}{}
+}
+\description{
+Updates a specified layer.
+}
+\details{
+\strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+}
+\section{Accepted Parameters}{
+\preformatted{update_layer(
   LayerId = "string",
   Name = "string",
   Shortname = "string",
@@ -78,51 +133,5 @@ update_layer(
   )
 )
 }
-\arguments{
-\item{LayerId}{[required] The layer ID.}
-
-\item{Name}{The layer name, which is used by the console.}
-
-\item{Shortname}{For custom layers only, use this parameter to specify the layer's short name, which is used internally by AWS OpsWorks Stacks and by Chef. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters and must be in the following format: /\A[a-z0-9\-\\_\.]+\Z/.
-
-The built-in layers' short names are defined by AWS OpsWorks Stacks. For more information, see the \href{http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html}{Layer Reference}}
-
-\item{Attributes}{One or more user-defined key/value pairs to be added to the stack attributes.}
-
-\item{CloudWatchLogsConfiguration}{Specifies CloudWatch Logs configuration options for the layer. For more information, see CloudWatchLogsLogStream.}
-
-\item{CustomInstanceProfileArn}{The ARN of an IAM profile to be used for all of the layer's EC2 instances. For more information about IAM ARNs, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
-
-\item{CustomJson}{A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html}{Using Custom JSON}.}
-
-\item{CustomSecurityGroupIds}{An array containing the layer's custom security group IDs.}
-
-\item{Packages}{An array of \code{Package} objects that describe the layer's packages.}
-
-\item{VolumeConfigurations}{A \code{VolumeConfigurations} object that describes the layer's Amazon EBS volumes.}
-
-\item{EnableAutoHealing}{Whether to disable auto healing for the layer.}
-
-\item{AutoAssignElasticIps}{Whether to automatically assign an \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP address} to the layer's instances. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html}{How to Edit a Layer}.}
-
-\item{AutoAssignPublicIps}{For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html}{How to Edit a Layer}.}
-
-\item{CustomRecipes}{A \code{LayerCustomRecipes} object that specifies the layer's custom recipes.}
-
-\item{InstallUpdatesOnBoot}{Whether to install operating system and package updates when the instance boots. The default value is \code{true}. To control when updates are installed, set this value to \code{false}. You must then update your instances manually by using CreateDeployment to run the \code{update_dependencies} stack command or manually running \code{yum} (Amazon Linux) or \code{apt-get} (Ubuntu) on the instances.
-
-We strongly recommend using the default value of \code{true}, to ensure that your instances have the latest security updates.}
-
-\item{UseEbsOptimizedInstances}{Whether to use Amazon EBS-optimized instances.}
-
-\item{LifecycleEventConfiguration}{}
 }
-\description{
-Updates a specified layer.
-}
-\details{
-\strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
-}
-\examples{
 
-}

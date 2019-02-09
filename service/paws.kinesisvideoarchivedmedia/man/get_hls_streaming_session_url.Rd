@@ -4,21 +4,10 @@
 \alias{get_hls_streaming_session_url}
 \title{Retrieves an HTTP Live Streaming (HLS) URL for the stream}
 \usage{
-get_hls_streaming_session_url(
-  StreamName = "string",
-  StreamARN = "string",
-  PlaybackMode = "LIVE"|"ON_DEMAND",
-  HLSFragmentSelector = list(
-    FragmentSelectorType = "PRODUCER_TIMESTAMP"|"SERVER_TIMESTAMP",
-    TimestampRange = list(
-      StartTimestamp = as.POSIXct("2015-01-01"),
-      EndTimestamp = as.POSIXct("2015-01-01")
-    )
-  ),
-  DiscontinuityMode = "ALWAYS"|"NEVER",
-  Expires = 123,
-  MaxMediaPlaylistFragmentResults = 123
-)
+get_hls_streaming_session_url(StreamName = NULL, StreamARN = NULL,
+  PlaybackMode = NULL, HLSFragmentSelector = NULL,
+  DiscontinuityMode = NULL, Expires = NULL,
+  MaxMediaPlaylistFragmentResults = NULL)
 }
 \arguments{
 \item{StreamName}{The name of the stream for which to retrieve the HLS master playlist URL.
@@ -120,6 +109,22 @@ You can monitor the amount of data that the media player consumes by monitoring 
 
 For more information about HLS, see \href{https://developer.apple.com/streaming/}{HTTP Live Streaming} on the \href{https://developer.apple.com}{Apple Developer site}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_hls_streaming_session_url(
+  StreamName = "string",
+  StreamARN = "string",
+  PlaybackMode = "LIVE"|"ON_DEMAND",
+  HLSFragmentSelector = list(
+    FragmentSelectorType = "PRODUCER_TIMESTAMP"|"SERVER_TIMESTAMP",
+    TimestampRange = list(
+      StartTimestamp = as.POSIXct("2015-01-01"),
+      EndTimestamp = as.POSIXct("2015-01-01")
+    )
+  ),
+  DiscontinuityMode = "ALWAYS"|"NEVER",
+  Expires = 123,
+  MaxMediaPlaylistFragmentResults = 123
+)
 }
+}
+

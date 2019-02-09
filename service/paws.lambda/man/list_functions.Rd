@@ -4,12 +4,8 @@
 \alias{list_functions}
 \title{Returns a list of your Lambda functions}
 \usage{
-list_functions(
-  MasterRegion = "string",
-  FunctionVersion = "ALL",
-  Marker = "string",
-  MaxItems = 123
-)
+list_functions(MasterRegion = NULL, FunctionVersion = NULL,
+  Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{MasterRegion}{Specify a region (e.g. \code{us-east-2}) to only list functions that were created in that region, or \code{ALL} to include functions replicated from any region. If specified, you also must specify the \code{FunctionVersion}.}
@@ -28,11 +24,21 @@ This operation requires permission for the \code{lambda:ListFunctions} action.
 
 If you are using the versioning feature, you can list all of your functions or only \code{$LATEST} versions. For information about the versioning feature, see \href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{AWS Lambda Function Versioning and Aliases}.
 }
+\section{Accepted Parameters}{
+\preformatted{list_functions(
+  MasterRegion = "string",
+  FunctionVersion = "ALL",
+  Marker = "string",
+  MaxItems = 123
+)
+}
+}
+
 \examples{
 # This operation retrieves a Lambda functions
-list_functions(
+\donttest{list_functions(
   Marker = "",
   MaxItems = 123L
-)
+)}
 
 }

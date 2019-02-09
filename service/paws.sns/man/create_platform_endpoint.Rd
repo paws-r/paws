@@ -4,14 +4,8 @@
 \alias{create_platform_endpoint}
 \title{Creates an endpoint for a device and mobile app on one of the supported push notification services, such as GCM and APNS}
 \usage{
-create_platform_endpoint(
-  PlatformApplicationArn = "string",
-  Token = "string",
-  CustomUserData = "string",
-  Attributes = list(
-    "string"
-  )
-)
+create_platform_endpoint(PlatformApplicationArn, Token,
+  CustomUserData = NULL, Attributes = NULL)
 }
 \arguments{
 \item{PlatformApplicationArn}{[required] PlatformApplicationArn returned from CreatePlatformApplication is used to create a an endpoint.}
@@ -28,6 +22,15 @@ Creates an endpoint for a device and mobile app on one of the supported push not
 \details{
 When using \code{CreatePlatformEndpoint} with Baidu, two attributes must be provided: ChannelId and UserId. The token field must also contain the ChannelId. For more information, see \href{http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePushBaiduEndpoint.html}{Creating an Amazon SNS Endpoint for Baidu}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_platform_endpoint(
+  PlatformApplicationArn = "string",
+  Token = "string",
+  CustomUserData = "string",
+  Attributes = list(
+    "string"
+  )
+)
 }
+}
+

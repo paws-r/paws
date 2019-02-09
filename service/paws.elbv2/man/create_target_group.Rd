@@ -4,47 +4,32 @@
 \alias{create_target_group}
 \title{Creates a target group}
 \usage{
-create_target_group(
-  Name = "string",
-  Protocol = "HTTP"|"HTTPS"|"TCP",
-  Port = 123,
-  VpcId = "string",
-  HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP",
-  HealthCheckPort = "string",
-  HealthCheckEnabled = TRUE|FALSE,
-  HealthCheckPath = "string",
-  HealthCheckIntervalSeconds = 123,
-  HealthCheckTimeoutSeconds = 123,
-  HealthyThresholdCount = 123,
-  UnhealthyThresholdCount = 123,
-  Matcher = list(
-    HttpCode = "string"
-  ),
-  TargetType = "instance"|"ip"|"lambda"
-)
+create_target_group(Name, Protocol, Port, VpcId,
+  HealthCheckProtocol = NULL, HealthCheckPort = NULL,
+  HealthCheckPath = NULL, HealthCheckIntervalSeconds = NULL,
+  HealthCheckTimeoutSeconds = NULL, HealthyThresholdCount = NULL,
+  UnhealthyThresholdCount = NULL, Matcher = NULL, TargetType = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the target group.
 
 This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.}
 
-\item{Protocol}{The protocol to use for routing traffic to the targets. For Application Load Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported protocol is TCP. If the target is a Lambda function, this parameter does not apply.}
+\item{Protocol}{[required] The protocol to use for routing traffic to the targets. For Application Load Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported protocol is TCP.}
 
-\item{Port}{The port on which the targets receive traffic. This port is used unless you specify a port override when registering the target. If the target is a Lambda function, this parameter does not apply.}
+\item{Port}{[required] The port on which the targets receive traffic. This port is used unless you specify a port override when registering the target.}
 
-\item{VpcId}{The identifier of the virtual private cloud (VPC). If the target is a Lambda function, this parameter does not apply.}
+\item{VpcId}{[required] The identifier of the virtual private cloud (VPC).}
 
 \item{HealthCheckProtocol}{The protocol the load balancer uses when performing health checks on targets. The TCP protocol is supported only if the protocol of the target group is TCP. For Application Load Balancers, the default is HTTP. For Network Load Balancers, the default is TCP.}
 
 \item{HealthCheckPort}{The port the load balancer uses when performing health checks on targets. The default is \code{traffic-port}, which is the port on which each target receives traffic from the load balancer.}
 
-\item{HealthCheckEnabled}{Indicates whether health checks are enabled. If the target type is \code{instance} or \code{ip}, the default is \code{true}. If the target type is \code{lambda}, the default is \code{false}.}
-
 \item{HealthCheckPath}{[HTTP/HTTPS health checks] The ping path that is the destination on the targets for health checks. The default is /.}
 
-\item{HealthCheckIntervalSeconds}{The approximate amount of time, in seconds, between health checks of an individual target. For Application Load Balancers, the range is 5--300 seconds. For Network Load Balancers, the supported values are 10 or 30 seconds. If the target type is \code{instance} or \code{ip}, the default is 30 seconds. If the target type is \code{lambda}, the default is 35 seconds.}
+\item{HealthCheckIntervalSeconds}{The approximate amount of time, in seconds, between health checks of an individual target. For Application Load Balancers, the range is 5--300 seconds. For Network Load Balancers, the supported values are 10 or 30 seconds. The default is 30 seconds.}
 
-\item{HealthCheckTimeoutSeconds}{The amount of time, in seconds, during which no response from a target means a failed health check. For Application Load Balancers, the range is 2--120 seconds and the default is 5 seconds if the target type is \code{instance} or \code{ip} and 30 seconds if the target type is \code{lambda}. For Network Load Balancers, this is 10 seconds for TCP and HTTPS health checks and 6 seconds for HTTP health checks.}
+\item{HealthCheckTimeoutSeconds}{The amount of time, in seconds, during which no response from a target means a failed health check. For Application Load Balancers, the range is 2--60 seconds and the default is 5 seconds. For Network Load Balancers, this is 10 seconds for TCP and HTTPS health checks and 6 seconds for HTTP health checks.}
 
 \item{HealthyThresholdCount}{The number of consecutive health checks successes required before considering an unhealthy target healthy. For Application Load Balancers, the default is 5. For Network Load Balancers, the default is 3.}
 
@@ -52,12 +37,9 @@ This name must be unique per region per account, can have a maximum of 32 charac
 
 \item{Matcher}{[HTTP/HTTPS health checks] The HTTP codes to use when checking for a successful response from a target.}
 
-\item{TargetType}{The type of target that you must specify when registering targets with this target group. You can't specify targets for a target group using more than one target type.
-\itemize{
-\item \code{instance} - Targets are specified by instance ID. This is the default value.
-\item \code{ip} - Targets are specified by IP address. You can specify IP addresses from the subnets of the virtual private cloud (VPC) for the target group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can't specify publicly routable IP addresses.
-\item \code{lambda} - The target groups contains a single Lambda function.
-}}
+\item{TargetType}{The type of target that you must specify when registering targets with this target group. The possible values are \code{instance} (targets are specified by instance ID) or \code{ip} (targets are specified by IP address). The default is \code{instance}. You can't specify targets for a target group using both instance IDs and IP addresses.
+
+If the target type is \code{ip}, specify IP addresses from the subnets of the virtual private cloud (VPC) for the target group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can't specify publicly routable IP addresses.}
 }
 \description{
 Creates a target group.
@@ -73,15 +55,36 @@ This operation is idempotent, which means that it completes at most one time. If
 
 For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html}{Target Groups for Your Application Load Balancers} in the \emph{Application Load Balancers Guide} or \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html}{Target Groups for Your Network Load Balancers} in the \emph{Network Load Balancers Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_target_group(
+  Name = "string",
+  Protocol = "HTTP"|"HTTPS"|"TCP",
+  Port = 123,
+  VpcId = "string",
+  HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP",
+  HealthCheckPort = "string",
+  HealthCheckPath = "string",
+  HealthCheckIntervalSeconds = 123,
+  HealthCheckTimeoutSeconds = 123,
+  HealthyThresholdCount = 123,
+  UnhealthyThresholdCount = 123,
+  Matcher = list(
+    HttpCode = "string"
+  ),
+  TargetType = "instance"|"ip"
+)
+}
+}
+
 \examples{
 # This example creates a target group that you can use to route traffic to
 # targets using HTTP on port 80. This target group uses the default health
 # check configuration.
-create_target_group(
+\donttest{create_target_group(
   Name = "my-targets",
   Port = 80L,
   Protocol = "HTTP",
   VpcId = "vpc-3ac0fb5f"
-)
+)}
 
 }

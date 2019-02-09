@@ -4,13 +4,8 @@
 \alias{list_pull_requests}
 \title{Returns a list of pull requests for a specified repository}
 \usage{
-list_pull_requests(
-  repositoryName = "string",
-  authorArn = "string",
-  pullRequestStatus = "OPEN"|"CLOSED",
-  nextToken = "string",
-  maxResults = 123
-)
+list_pull_requests(repositoryName, authorArn = NULL,
+  pullRequestStatus = NULL, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository for which you want to list pull requests.}
@@ -26,6 +21,14 @@ list_pull_requests(
 \description{
 Returns a list of pull requests for a specified repository. The return list can be refined by pull request status or pull request author ARN.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_pull_requests(
+  repositoryName = "string",
+  authorArn = "string",
+  pullRequestStatus = "OPEN"|"CLOSED",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

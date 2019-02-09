@@ -4,10 +4,7 @@
 \alias{put_encryption_config}
 \title{Updates the encryption configuration for X-Ray data}
 \usage{
-put_encryption_config(
-  KeyId = "string",
-  Type = "NONE"|"KMS"
-)
+put_encryption_config(KeyId = NULL, Type)
 }
 \arguments{
 \item{KeyId}{An AWS KMS customer master key (CMK) in one of the following formats:
@@ -24,6 +21,11 @@ Omit this key if you set \code{Type} to \code{NONE}.}
 \description{
 Updates the encryption configuration for X-Ray data.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_encryption_config(
+  KeyId = "string",
+  Type = "NONE"|"KMS"
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{get_intent_versions}
 \title{Gets information about all of the versions of an intent}
 \usage{
-get_intent_versions(
-  name = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+get_intent_versions(name, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the intent for which versions should be returned.}
@@ -27,6 +23,12 @@ The \code{GetIntentVersions} operation always returns at least one version, the 
 
 This operation requires permissions for the \code{lex:GetIntentVersions} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_intent_versions(
+  name = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

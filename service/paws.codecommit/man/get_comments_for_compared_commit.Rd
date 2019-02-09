@@ -4,13 +4,8 @@
 \alias{get_comments_for_compared_commit}
 \title{Returns information about comments made on the comparison between two commits}
 \usage{
-get_comments_for_compared_commit(
-  repositoryName = "string",
-  beforeCommitId = "string",
-  afterCommitId = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+get_comments_for_compared_commit(repositoryName, beforeCommitId = NULL,
+  afterCommitId, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository where you want to compare commits.}
@@ -26,6 +21,14 @@ get_comments_for_compared_commit(
 \description{
 Returns information about comments made on the comparison between two commits.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_comments_for_compared_commit(
+  repositoryName = "string",
+  beforeCommitId = "string",
+  afterCommitId = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

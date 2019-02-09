@@ -4,13 +4,8 @@
 \alias{describe_raid_arrays}
 \title{Describe an instance's RAID arrays}
 \usage{
-describe_raid_arrays(
-  InstanceId = "string",
-  StackId = "string",
-  RaidArrayIds = list(
-    "string"
-  )
-)
+describe_raid_arrays(InstanceId = NULL, StackId = NULL,
+  RaidArrayIds = NULL)
 }
 \arguments{
 \item{InstanceId}{The instance ID. If you use this parameter, \code{DescribeRaidArrays} returns descriptions of the RAID arrays associated with the specified instance.}
@@ -27,6 +22,14 @@ This call accepts only one resource-identifying parameter.
 
 \strong{Required Permissions}: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_raid_arrays(
+  InstanceId = "string",
+  StackId = "string",
+  RaidArrayIds = list(
+    "string"
+  )
+)
 }
+}
+

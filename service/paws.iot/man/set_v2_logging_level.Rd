@@ -4,13 +4,7 @@
 \alias{set_v2_logging_level}
 \title{Sets the logging level}
 \usage{
-set_v2_logging_level(
-  logTarget = list(
-    targetType = "DEFAULT"|"THING_GROUP",
-    targetName = "string"
-  ),
-  logLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED"
-)
+set_v2_logging_level(logTarget, logLevel)
 }
 \arguments{
 \item{logTarget}{[required] The log target.}
@@ -20,6 +14,14 @@ set_v2_logging_level(
 \description{
 Sets the logging level.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_v2_logging_level(
+  logTarget = list(
+    targetType = "DEFAULT"|"THING_GROUP",
+    targetName = "string"
+  ),
+  logLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED"
+)
 }
+}
+

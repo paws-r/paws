@@ -4,10 +4,7 @@
 \alias{delete_field_level_encryption_config}
 \title{Remove a field-level encryption configuration}
 \usage{
-delete_field_level_encryption_config(
-  Id = "string",
-  IfMatch = "string"
-)
+delete_field_level_encryption_config(Id, IfMatch = NULL)
 }
 \arguments{
 \item{Id}{[required] The ID of the configuration you want to delete from CloudFront.}
@@ -17,6 +14,11 @@ delete_field_level_encryption_config(
 \description{
 Remove a field-level encryption configuration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_field_level_encryption_config(
+  Id = "string",
+  IfMatch = "string"
+)
 }
+}
+

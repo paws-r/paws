@@ -4,12 +4,7 @@
 \alias{batch_stop_job_run}
 \title{Stops one or more job runs for a specified job definition}
 \usage{
-batch_stop_job_run(
-  JobName = "string",
-  JobRunIds = list(
-    "string"
-  )
-)
+batch_stop_job_run(JobName, JobRunIds)
 }
 \arguments{
 \item{JobName}{[required] The name of the job definition for which to stop job runs.}
@@ -19,6 +14,13 @@ batch_stop_job_run(
 \description{
 Stops one or more job runs for a specified job definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_stop_job_run(
+  JobName = "string",
+  JobRunIds = list(
+    "string"
+  )
+)
 }
+}
+

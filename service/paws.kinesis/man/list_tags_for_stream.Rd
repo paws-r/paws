@@ -4,11 +4,8 @@
 \alias{list_tags_for_stream}
 \title{Lists the tags for the specified Kinesis data stream}
 \usage{
-list_tags_for_stream(
-  StreamName = "string",
-  ExclusiveStartTagKey = "string",
-  Limit = 123
-)
+list_tags_for_stream(StreamName, ExclusiveStartTagKey = NULL,
+  Limit = NULL)
 }
 \arguments{
 \item{StreamName}{[required] The name of the stream.}
@@ -20,6 +17,12 @@ list_tags_for_stream(
 \description{
 Lists the tags for the specified Kinesis data stream. This operation has a limit of five transactions per second per account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_stream(
+  StreamName = "string",
+  ExclusiveStartTagKey = "string",
+  Limit = 123
+)
 }
+}
+

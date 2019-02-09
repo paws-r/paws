@@ -4,12 +4,7 @@
 \alias{register_device}
 \title{Registers a device to receive push sync notifications}
 \usage{
-register_device(
-  IdentityPoolId = "string",
-  IdentityId = "string",
-  Platform = "APNS"|"APNS_SANDBOX"|"GCM"|"ADM",
-  Token = "string"
-)
+register_device(IdentityPoolId, IdentityId, Platform, Token)
 }
 \arguments{
 \item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. Here, the ID of the pool that the identity belongs to.}
@@ -26,6 +21,13 @@ Registers a device to receive push sync notifications.
 \details{
 This API can only be called with temporary credentials provided by Cognito Identity. You cannot call this API with developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{register_device(
+  IdentityPoolId = "string",
+  IdentityId = "string",
+  Platform = "APNS"|"APNS_SANDBOX"|"GCM"|"ADM",
+  Token = "string"
+)
 }
+}
+

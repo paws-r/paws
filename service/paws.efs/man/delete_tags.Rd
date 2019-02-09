@@ -4,12 +4,7 @@
 \alias{delete_tags}
 \title{Deletes the specified tags from a file system}
 \usage{
-delete_tags(
-  FileSystemId = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+delete_tags(FileSystemId, TagKeys)
 }
 \arguments{
 \item{FileSystemId}{[required] ID of the file system whose tags you want to delete (String).}
@@ -22,13 +17,23 @@ Deletes the specified tags from a file system. If the \code{DeleteTags} request 
 \details{
 This operation requires permissions for the \code{elasticfilesystem:DeleteTags} action.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_tags(
+  FileSystemId = "string",
+  TagKeys = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This operation deletes tags for an EFS file system.
-delete_tags(
+\donttest{delete_tags(
   FileSystemId = "fs-01234567",
   TagKeys = list(
     "Name"
   )
-)
+)}
 
 }

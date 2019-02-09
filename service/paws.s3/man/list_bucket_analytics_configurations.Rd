@@ -4,10 +4,7 @@
 \alias{list_bucket_analytics_configurations}
 \title{Lists the analytics configurations for the bucket}
 \usage{
-list_bucket_analytics_configurations(
-  Bucket = "string",
-  ContinuationToken = "string"
-)
+list_bucket_analytics_configurations(Bucket, ContinuationToken = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket from which analytics configurations are retrieved.}
@@ -17,6 +14,11 @@ list_bucket_analytics_configurations(
 \description{
 Lists the analytics configurations for the bucket.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_bucket_analytics_configurations(
+  Bucket = "string",
+  ContinuationToken = "string"
+)
 }
+}
+

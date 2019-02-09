@@ -4,13 +4,7 @@
 \alias{describe_workflow_type}
 \title{Returns information about the specified \emph{workflow type}}
 \usage{
-describe_workflow_type(
-  domain = "string",
-  workflowType = list(
-    name = "string",
-    version = "string"
-  )
-)
+describe_workflow_type(domain, workflowType)
 }
 \arguments{
 \item{domain}{[required] The name of the domain in which this workflow type is registered.}
@@ -34,6 +28,14 @@ You can use IAM policies to control this action's access to Amazon SWF resources
 
 If the caller doesn't have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's \code{cause} parameter is set to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see \href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows} in the \emph{Amazon SWF Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_workflow_type(
+  domain = "string",
+  workflowType = list(
+    name = "string",
+    version = "string"
+  )
+)
 }
+}
+

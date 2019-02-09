@@ -4,12 +4,8 @@
 \alias{list_policies_for_target}
 \title{Lists the policies that are directly attached to the specified target root, organizational unit (OU), or account}
 \usage{
-list_policies_for_target(
-  TargetId = "string",
-  Filter = "SERVICE_CONTROL_POLICY",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_policies_for_target(TargetId, Filter, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{TargetId}{[required] The unique identifier (ID) of the root, organizational unit, or account whose policies you want to list.
@@ -35,15 +31,25 @@ Always check the \code{NextToken} response parameter for a \code{null} value whe
 
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{list_policies_for_target(
+  TargetId = "string",
+  Filter = "SERVICE_CONTROL_POLICY",
+  NextToken = "string",
+  MaxResults = 123
+)
+}
+}
+
 \examples{
 # The following example shows how to get a list of all service control
 # policies (SCPs) of the type specified by the Filter parameter, that are
 # directly attached to an account. The returned list does not include
 # policies that apply to the account because of inheritance from its
 # location in an OU hierarchy:/n/n
-list_policies_for_target(
+\donttest{list_policies_for_target(
   Filter = "SERVICE_CONTROL_POLICY",
   TargetId = "444444444444"
-)
+)}
 
 }

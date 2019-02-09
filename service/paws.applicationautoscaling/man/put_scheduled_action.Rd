@@ -4,19 +4,9 @@
 \alias{put_scheduled_action}
 \title{Creates or updates a scheduled action for an Application Auto Scaling scalable target}
 \usage{
-put_scheduled_action(
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
-  Schedule = "string",
-  ScheduledActionName = "string",
-  ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property",
-  StartTime = as.POSIXct("2015-01-01"),
-  EndTime = as.POSIXct("2015-01-01"),
-  ScalableTargetAction = list(
-    MinCapacity = 123,
-    MaxCapacity = 123
-  )
-)
+put_scheduled_action(ServiceNamespace, Schedule = NULL,
+  ScheduledActionName, ResourceId, ScalableDimension = NULL,
+  StartTime = NULL, EndTime = NULL, ScalableTargetAction = NULL)
 }
 \arguments{
 \item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource or \code{custom-resource} for a resource provided by your own application or service. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces} in the \emph{Amazon Web Services General Reference}.}
@@ -80,6 +70,20 @@ To update an action, specify its name and the parameters that you want to change
 
 You can view the scheduled actions using DescribeScheduledActions. If you are no longer using a scheduled action, you can delete it using DeleteScheduledAction.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_scheduled_action(
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
+  Schedule = "string",
+  ScheduledActionName = "string",
+  ResourceId = "string",
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property",
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  ScalableTargetAction = list(
+    MinCapacity = 123,
+    MaxCapacity = 123
+  )
+)
 }
+}
+

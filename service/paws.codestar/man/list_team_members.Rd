@@ -4,11 +4,7 @@
 \alias{list_team_members}
 \title{Lists all team members associated with a project}
 \usage{
-list_team_members(
-  projectId = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+list_team_members(projectId, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{projectId}{[required] The ID of the project for which you want to list team members.}
@@ -20,6 +16,12 @@ list_team_members(
 \description{
 Lists all team members associated with a project.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_team_members(
+  projectId = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

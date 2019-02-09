@@ -4,41 +4,15 @@
 \alias{update_stack}
 \title{Updates a specified stack}
 \usage{
-update_stack(
-  StackId = "string",
-  Name = "string",
-  Attributes = list(
-    "string"
-  ),
-  ServiceRoleArn = "string",
-  DefaultInstanceProfileArn = "string",
-  DefaultOs = "string",
-  HostnameTheme = "string",
-  DefaultAvailabilityZone = "string",
-  DefaultSubnetId = "string",
-  CustomJson = "string",
-  ConfigurationManager = list(
-    Name = "string",
-    Version = "string"
-  ),
-  ChefConfiguration = list(
-    ManageBerkshelf = TRUE|FALSE,
-    BerkshelfVersion = "string"
-  ),
-  UseCustomCookbooks = TRUE|FALSE,
-  CustomCookbooksSource = list(
-    Type = "git"|"svn"|"archive"|"s3",
-    Url = "string",
-    Username = "string",
-    Password = "string",
-    SshKey = "string",
-    Revision = "string"
-  ),
-  DefaultSshKeyName = "string",
-  DefaultRootDeviceType = "ebs"|"instance-store",
-  UseOpsworksSecurityGroups = TRUE|FALSE,
-  AgentVersion = "string"
-)
+update_stack(StackId, Name = NULL, Attributes = NULL,
+  ServiceRoleArn = NULL, DefaultInstanceProfileArn = NULL,
+  DefaultOs = NULL, HostnameTheme = NULL,
+  DefaultAvailabilityZone = NULL, DefaultSubnetId = NULL,
+  CustomJson = NULL, ConfigurationManager = NULL,
+  ChefConfiguration = NULL, UseCustomCookbooks = NULL,
+  CustomCookbooksSource = NULL, DefaultSshKeyName = NULL,
+  DefaultRootDeviceType = NULL, UseOpsworksSecurityGroups = NULL,
+  AgentVersion = NULL)
 }
 \arguments{
 \item{StackId}{[required] The stack ID.}
@@ -128,6 +102,42 @@ Updates a specified stack.
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_stack(
+  StackId = "string",
+  Name = "string",
+  Attributes = list(
+    "string"
+  ),
+  ServiceRoleArn = "string",
+  DefaultInstanceProfileArn = "string",
+  DefaultOs = "string",
+  HostnameTheme = "string",
+  DefaultAvailabilityZone = "string",
+  DefaultSubnetId = "string",
+  CustomJson = "string",
+  ConfigurationManager = list(
+    Name = "string",
+    Version = "string"
+  ),
+  ChefConfiguration = list(
+    ManageBerkshelf = TRUE|FALSE,
+    BerkshelfVersion = "string"
+  ),
+  UseCustomCookbooks = TRUE|FALSE,
+  CustomCookbooksSource = list(
+    Type = "git"|"svn"|"archive"|"s3",
+    Url = "string",
+    Username = "string",
+    Password = "string",
+    SshKey = "string",
+    Revision = "string"
+  ),
+  DefaultSshKeyName = "string",
+  DefaultRootDeviceType = "ebs"|"instance-store",
+  UseOpsworksSecurityGroups = TRUE|FALSE,
+  AgentVersion = "string"
+)
 }
+}
+

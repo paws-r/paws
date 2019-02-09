@@ -4,7 +4,52 @@
 \alias{create_project}
 \title{Creates a build project}
 \usage{
-create_project(
+create_project(name, description = NULL, source,
+  secondarySources = NULL, artifacts, secondaryArtifacts = NULL,
+  cache = NULL, environment, serviceRole, timeoutInMinutes = NULL,
+  encryptionKey = NULL, tags = NULL, vpcConfig = NULL,
+  badgeEnabled = NULL, logsConfig = NULL)
+}
+\arguments{
+\item{name}{[required] The name of the build project.}
+
+\item{description}{A description that makes the build project easy to identify.}
+
+\item{source}{[required] Information about the build input source code for the build project.}
+
+\item{secondarySources}{An array of \code{ProjectSource} objects.}
+
+\item{artifacts}{[required] Information about the build output artifacts for the build project.}
+
+\item{secondaryArtifacts}{An array of \code{ProjectArtifacts} objects.}
+
+\item{cache}{Stores recently used information so that it can be quickly accessed at a later time.}
+
+\item{environment}{[required] Information about the build environment for the build project.}
+
+\item{serviceRole}{[required] The ARN of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.}
+
+\item{timeoutInMinutes}{How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait until timing out any build that has not been marked as completed. The default is 60 minutes.}
+
+\item{encryptionKey}{The AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build output artifacts.
+
+You can specify either the CMK's Amazon Resource Name (ARN) or, if available, the CMK's alias (using the format \code{alias/alias-name alias-name }).}
+
+\item{tags}{A set of tags for this build project.
+
+These tags are available for use by AWS services that support AWS CodeBuild build project tags.}
+
+\item{vpcConfig}{VpcConfig enables AWS CodeBuild to access resources in an Amazon VPC.}
+
+\item{badgeEnabled}{Set this to true to generate a publicly-accessible URL for your project's build badge.}
+
+\item{logsConfig}{Information about logs for the build project. Logs can be Amazon CloudWatch Logs, uploaded to a specified S3 bucket, or both.}
+}
+\description{
+Creates a build project.
+}
+\section{Accepted Parameters}{
+\preformatted{create_project(
   name = "string",
   description = "string",
   source = list(
@@ -79,7 +124,6 @@ create_project(
   ),
   serviceRole = "string",
   timeoutInMinutes = 123,
-  queuedTimeoutInMinutes = 123,
   encryptionKey = "string",
   tags = list(
     list(
@@ -110,46 +154,5 @@ create_project(
   )
 )
 }
-\arguments{
-\item{name}{[required] The name of the build project.}
-
-\item{description}{A description that makes the build project easy to identify.}
-
-\item{source}{[required] Information about the build input source code for the build project.}
-
-\item{secondarySources}{An array of \code{ProjectSource} objects.}
-
-\item{artifacts}{[required] Information about the build output artifacts for the build project.}
-
-\item{secondaryArtifacts}{An array of \code{ProjectArtifacts} objects.}
-
-\item{cache}{Stores recently used information so that it can be quickly accessed at a later time.}
-
-\item{environment}{[required] Information about the build environment for the build project.}
-
-\item{serviceRole}{[required] The ARN of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.}
-
-\item{timeoutInMinutes}{How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait before it times out any build that has not been marked as completed. The default is 60 minutes.}
-
-\item{queuedTimeoutInMinutes}{The number of minutes a build is allowed to be queued before it times out.}
-
-\item{encryptionKey}{The AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build output artifacts.
-
-You can specify either the Amazon Resource Name (ARN) of the CMK or, if available, the CMK's alias (using the format \code{alias/alias-name alias-name }).}
-
-\item{tags}{A set of tags for this build project.
-
-These tags are available for use by AWS services that support AWS CodeBuild build project tags.}
-
-\item{vpcConfig}{VpcConfig enables AWS CodeBuild to access resources in an Amazon VPC.}
-
-\item{badgeEnabled}{Set this to true to generate a publicly accessible URL for your project's build badge.}
-
-\item{logsConfig}{Information about logs for the build project. These can be logs in Amazon CloudWatch Logs, logs uploaded to a specified S3 bucket, or both.}
 }
-\description{
-Creates a build project.
-}
-\examples{
 
-}

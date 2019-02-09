@@ -4,10 +4,7 @@
 \alias{delete_vpn_connection}
 \title{Deletes the specified VPN connection}
 \usage{
-delete_vpn_connection(
-  VpnConnectionId = "string",
-  DryRun = TRUE|FALSE
-)
+delete_vpn_connection(VpnConnectionId, DryRun = NULL)
 }
 \arguments{
 \item{VpnConnectionId}{[required] The ID of the VPN connection.}
@@ -20,6 +17,11 @@ Deletes the specified VPN connection.
 \details{
 If you're deleting the VPC and its associated components, we recommend that you detach the virtual private gateway from the VPC and delete the VPC before deleting the VPN connection. If you believe that the tunnel credentials for your VPN connection have been compromised, you can delete the VPN connection and create a new one that has new keys, without needing to delete the VPC or virtual private gateway. If you create a new VPN connection, you must reconfigure the customer gateway using the new configuration information returned with the new VPN connection ID.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_vpn_connection(
+  VpnConnectionId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

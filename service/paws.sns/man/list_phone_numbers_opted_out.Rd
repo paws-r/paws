@@ -4,9 +4,7 @@
 \alias{list_phone_numbers_opted_out}
 \title{Returns a list of phone numbers that are opted out, meaning you cannot send SMS messages to them}
 \usage{
-list_phone_numbers_opted_out(
-  nextToken = "string"
-)
+list_phone_numbers_opted_out(nextToken = NULL)
 }
 \arguments{
 \item{nextToken}{A \code{NextToken} string is used when you call the \code{ListPhoneNumbersOptedOut} action to retrieve additional records that are available after the first page of results.}
@@ -17,6 +15,10 @@ Returns a list of phone numbers that are opted out, meaning you cannot send SMS 
 \details{
 The results for \code{ListPhoneNumbersOptedOut} are paginated, and each page returns up to 100 phone numbers. If additional phone numbers are available after the first page of results, then a \code{NextToken} string will be returned. To receive the next page, you call \code{ListPhoneNumbersOptedOut} again using the \code{NextToken} string received from the previous call. When there are no more records to return, \code{NextToken} will be null.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_phone_numbers_opted_out(
+  nextToken = "string"
+)
 }
+}
+

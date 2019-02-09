@@ -4,10 +4,7 @@
 \alias{update_group}
 \title{Updates an existing group with a new or changed description}
 \usage{
-update_group(
-  GroupName = "string",
-  Description = "string"
-)
+update_group(GroupName, Description = NULL)
 }
 \arguments{
 \item{GroupName}{[required] The name of the resource group for which you want to update its description.}
@@ -17,6 +14,11 @@ update_group(
 \description{
 Updates an existing group with a new or changed description. You cannot update the name of a resource group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_group(
+  GroupName = "string",
+  Description = "string"
+)
 }
+}
+

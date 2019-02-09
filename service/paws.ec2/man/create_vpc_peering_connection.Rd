@@ -4,13 +4,8 @@
 \alias{create_vpc_peering_connection}
 \title{Requests a VPC peering connection between two VPCs: a requester VPC that you own and an accepter VPC with which to create the connection}
 \usage{
-create_vpc_peering_connection(
-  DryRun = TRUE|FALSE,
-  PeerOwnerId = "string",
-  PeerVpcId = "string",
-  VpcId = "string",
-  PeerRegion = "string"
-)
+create_vpc_peering_connection(DryRun = NULL, PeerOwnerId = NULL,
+  PeerVpcId = NULL, VpcId = NULL, PeerRegion = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -37,6 +32,14 @@ The owner of the accepter VPC must accept the peering request to activate the pe
 
 If you create a VPC peering connection request between VPCs with overlapping CIDR blocks, the VPC peering connection has a status of \code{failed}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_vpc_peering_connection(
+  DryRun = TRUE|FALSE,
+  PeerOwnerId = "string",
+  PeerVpcId = "string",
+  VpcId = "string",
+  PeerRegion = "string"
+)
 }
+}
+

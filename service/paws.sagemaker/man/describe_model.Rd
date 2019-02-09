@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.sagemaker_operations.R
 \name{describe_model}
 \alias{describe_model}
-\title{Describes a model that you created using the \code{CreateModel} API}
+\title{Describes a model that you created using the CreateModel API}
 \usage{
-describe_model(
-  ModelName = "string"
-)
+describe_model(ModelName)
 }
 \arguments{
 \item{ModelName}{[required] The name of the model.}
@@ -14,6 +12,10 @@ describe_model(
 \description{
 Describes a model that you created using the \code{CreateModel} API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_model(
+  ModelName = "string"
+)
 }
+}
+

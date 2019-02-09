@@ -4,11 +4,8 @@
 \alias{purchase_reserved_cache_nodes_offering}
 \title{Allows you to purchase a reserved cache node offering}
 \usage{
-purchase_reserved_cache_nodes_offering(
-  ReservedCacheNodesOfferingId = "string",
-  ReservedCacheNodeId = "string",
-  CacheNodeCount = 123
-)
+purchase_reserved_cache_nodes_offering(ReservedCacheNodesOfferingId,
+  ReservedCacheNodeId = NULL, CacheNodeCount = NULL)
 }
 \arguments{
 \item{ReservedCacheNodesOfferingId}{[required] The ID of the reserved cache node offering to purchase.
@@ -28,6 +25,12 @@ Default: \code{1}}
 \description{
 Allows you to purchase a reserved cache node offering.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{purchase_reserved_cache_nodes_offering(
+  ReservedCacheNodesOfferingId = "string",
+  ReservedCacheNodeId = "string",
+  CacheNodeCount = 123
+)
 }
+}
+

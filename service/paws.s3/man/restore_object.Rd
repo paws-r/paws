@@ -4,7 +4,25 @@
 \alias{restore_object}
 \title{Restores an archived copy of an object back into Amazon S3}
 \usage{
-restore_object(
+restore_object(Bucket, Key, VersionId = NULL, RestoreRequest = NULL,
+  RequestPayer = NULL)
+}
+\arguments{
+\item{Bucket}{[required]}
+
+\item{Key}{[required]}
+
+\item{VersionId}{}
+
+\item{RestoreRequest}{}
+
+\item{RequestPayer}{}
+}
+\description{
+Restores an archived copy of an object back into Amazon S3
+}
+\section{Accepted Parameters}{
+\preformatted{restore_object(
   Bucket = "string",
   Key = "string",
   VersionId = "string",
@@ -84,31 +102,19 @@ restore_object(
             Value = "string"
           )
         ),
-        StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"
+        StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"
       )
     )
   ),
   RequestPayer = "requester"
 )
 }
-\arguments{
-\item{Bucket}{[required]}
-
-\item{Key}{[required]}
-
-\item{VersionId}{}
-
-\item{RestoreRequest}{}
-
-\item{RequestPayer}{}
 }
-\description{
-Restores an archived copy of an object back into Amazon S3
-}
+
 \examples{
 # The following example restores for one day an archived copy of an object
 # back into Amazon S3 bucket.
-restore_object(
+\donttest{restore_object(
   Bucket = "examplebucket",
   Key = "archivedobjectkey",
   RestoreRequest = list(
@@ -117,6 +123,6 @@ restore_object(
       Tier = "Expedited"
     )
   )
-)
+)}
 
 }

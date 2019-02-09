@@ -2,28 +2,13 @@
 % Please edit documentation in R/paws.swf_operations.R
 \name{start_workflow_execution}
 \alias{start_workflow_execution}
-\title{Starts an execution of the workflow type in the specified domain using the provided \code{workflowId} and input data}
+\title{Starts an execution of the workflow type in the specified domain using the provided workflowId and input data}
 \usage{
-start_workflow_execution(
-  domain = "string",
-  workflowId = "string",
-  workflowType = list(
-    name = "string",
-    version = "string"
-  ),
-  taskList = list(
-    name = "string"
-  ),
-  taskPriority = "string",
-  input = "string",
-  executionStartToCloseTimeout = "string",
-  tagList = list(
-    "string"
-  ),
-  taskStartToCloseTimeout = "string",
-  childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
-  lambdaRole = "string"
-)
+start_workflow_execution(domain, workflowId, workflowType,
+  taskList = NULL, taskPriority = NULL, input = NULL,
+  executionStartToCloseTimeout = NULL, tagList = NULL,
+  taskStartToCloseTimeout = NULL, childPolicy = NULL,
+  lambdaRole = NULL)
 }
 \arguments{
 \item{domain}{[required] The name of the domain in which the workflow execution is created.}
@@ -100,6 +85,27 @@ You can use IAM policies to control this action's access to Amazon SWF resources
 
 If the caller doesn't have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's \code{cause} parameter is set to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see \href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows} in the \emph{Amazon SWF Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_workflow_execution(
+  domain = "string",
+  workflowId = "string",
+  workflowType = list(
+    name = "string",
+    version = "string"
+  ),
+  taskList = list(
+    name = "string"
+  ),
+  taskPriority = "string",
+  input = "string",
+  executionStartToCloseTimeout = "string",
+  tagList = list(
+    "string"
+  ),
+  taskStartToCloseTimeout = "string",
+  childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
+  lambdaRole = "string"
+)
 }
+}
+

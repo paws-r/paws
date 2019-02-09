@@ -4,44 +4,7 @@
 \alias{change_resource_record_sets}
 \title{Creates, changes, or deletes a resource record set, which contains authoritative DNS information for a specified domain name or subdomain name}
 \usage{
-change_resource_record_sets(
-  HostedZoneId = "string",
-  ChangeBatch = list(
-    Comment = "string",
-    Changes = list(
-      list(
-        Action = "CREATE"|"DELETE"|"UPSERT",
-        ResourceRecordSet = list(
-          Name = "string",
-          Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
-          SetIdentifier = "string",
-          Weight = 123,
-          Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-north-1"|"cn-northwest-1"|"ap-south-1",
-          GeoLocation = list(
-            ContinentCode = "string",
-            CountryCode = "string",
-            SubdivisionCode = "string"
-          ),
-          Failover = "PRIMARY"|"SECONDARY",
-          MultiValueAnswer = TRUE|FALSE,
-          TTL = 123,
-          ResourceRecords = list(
-            list(
-              Value = "string"
-            )
-          ),
-          AliasTarget = list(
-            HostedZoneId = "string",
-            DNSName = "string",
-            EvaluateTargetHealth = TRUE|FALSE
-          ),
-          HealthCheckId = "string",
-          TrafficPolicyInstanceId = "string"
-        )
-      )
-    )
-  )
-)
+change_resource_record_sets(HostedZoneId, ChangeBatch)
 }
 \arguments{
 \item{HostedZoneId}{[required] The ID of the hosted zone that contains the resource record sets that you want to change.}
@@ -89,10 +52,52 @@ When you submit a \code{ChangeResourceRecordSets} request, Route 53 propagates y
 
 For information about the limits on a \code{ChangeResourceRecordSets} request, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html}{Limits} in the \emph{Amazon Route 53 Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{change_resource_record_sets(
+  HostedZoneId = "string",
+  ChangeBatch = list(
+    Comment = "string",
+    Changes = list(
+      list(
+        Action = "CREATE"|"DELETE"|"UPSERT",
+        ResourceRecordSet = list(
+          Name = "string",
+          Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
+          SetIdentifier = "string",
+          Weight = 123,
+          Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"sa-east-1"|"cn-north-1"|"cn-northwest-1"|"ap-south-1",
+          GeoLocation = list(
+            ContinentCode = "string",
+            CountryCode = "string",
+            SubdivisionCode = "string"
+          ),
+          Failover = "PRIMARY"|"SECONDARY",
+          MultiValueAnswer = TRUE|FALSE,
+          TTL = 123,
+          ResourceRecords = list(
+            list(
+              Value = "string"
+            )
+          ),
+          AliasTarget = list(
+            HostedZoneId = "string",
+            DNSName = "string",
+            EvaluateTargetHealth = TRUE|FALSE
+          ),
+          HealthCheckId = "string",
+          TrafficPolicyInstanceId = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following example creates a resource record set that routes Internet
 # traffic to a resource with an IP address of 192.0.2.44.
-change_resource_record_sets(
+\donttest{change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -112,12 +117,12 @@ change_resource_record_sets(
     Comment = "Web server for example.com"
   ),
   HostedZoneId = "Z3M3LMPEXAMPLE"
-)
+)}
 
 # The following example creates two weighted resource record sets. The
 # resource with a Weight of 100 will get 1/3rd of traffic (100/100+200),
 # and the other resource will get the rest of the traffic for example.com.
-change_resource_record_sets(
+\donttest{change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -156,11 +161,11 @@ change_resource_record_sets(
     Comment = "Web servers for example.com"
   ),
   HostedZoneId = "Z3M3LMPEXAMPLE"
-)
+)}
 
 # The following example creates an alias resource record set that routes
 # traffic to a CloudFront distribution.
-change_resource_record_sets(
+\donttest{change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -179,13 +184,13 @@ change_resource_record_sets(
     Comment = "CloudFront distribution for example.com"
   ),
   HostedZoneId = "Z3M3LMPEXAMPLE"
-)
+)}
 
 # The following example creates two weighted alias resource record sets
 # that route traffic to ELB load balancers. The resource with a Weight of
 # 100 will get 1/3rd of traffic (100/100+200), and the other resource will
 # get the rest of the traffic for example.com.
-change_resource_record_sets(
+\donttest{change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -220,13 +225,13 @@ change_resource_record_sets(
     Comment = "ELB load balancers for example.com"
   ),
   HostedZoneId = "Z3M3LMPEXAMPLE"
-)
+)}
 
 # The following example creates two latency resource record sets that
 # route traffic to EC2 instances. Traffic for example.com is routed either
 # to the Ohio region or the Oregon region, depending on the latency
 # between the user and those regions.
-change_resource_record_sets(
+\donttest{change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -265,13 +270,13 @@ change_resource_record_sets(
     Comment = "EC2 instances for example.com"
   ),
   HostedZoneId = "Z3M3LMPEXAMPLE"
-)
+)}
 
 # The following example creates two latency alias resource record sets
 # that route traffic for example.com to ELB load balancers. Requests are
 # routed either to the Ohio region or the Oregon region, depending on the
 # latency between the user and those regions.
-change_resource_record_sets(
+\donttest{change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -306,14 +311,14 @@ change_resource_record_sets(
     Comment = "ELB load balancers for example.com"
   ),
   HostedZoneId = "Z3M3LMPEXAMPLE"
-)
+)}
 
 # The following example creates primary and secondary failover resource
 # record sets that route traffic to EC2 instances. Traffic is generally
 # routed to the primary resource, in the Ohio region. If that resource is
 # unavailable, traffic is routed to the secondary resource, in the Oregon
 # region.
-change_resource_record_sets(
+\donttest{change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -352,14 +357,14 @@ change_resource_record_sets(
     Comment = "Failover configuration for example.com"
   ),
   HostedZoneId = "Z3M3LMPEXAMPLE"
-)
+)}
 
 # The following example creates primary and secondary failover alias
 # resource record sets that route traffic to ELB load balancers. Traffic
 # is generally routed to the primary resource, in the Ohio region. If that
 # resource is unavailable, traffic is routed to the secondary resource, in
 # the Oregon region.
-change_resource_record_sets(
+\donttest{change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -394,14 +399,14 @@ change_resource_record_sets(
     Comment = "Failover alias configuration for example.com"
   ),
   HostedZoneId = "Z3M3LMPEXAMPLE"
-)
+)}
 
 # The following example creates four geolocation resource record sets that
 # use IPv4 addresses to route traffic to resources such as web servers
 # running on EC2 instances. Traffic is routed to one of four IP addresses,
 # for North America (NA), for South America (SA), for Europe (EU), and for
 # all other locations (*).
-change_resource_record_sets(
+\donttest{change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -476,13 +481,13 @@ change_resource_record_sets(
     Comment = "Geolocation configuration for example.com"
   ),
   HostedZoneId = "Z3M3LMPEXAMPLE"
-)
+)}
 
 # The following example creates four geolocation alias resource record
 # sets that route traffic to ELB load balancers. Traffic is routed to one
 # of four IP addresses, for North America (NA), for South America (SA),
 # for Europe (EU), and for all other locations (*).
-change_resource_record_sets(
+\donttest{change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -553,6 +558,6 @@ change_resource_record_sets(
     Comment = "Geolocation alias configuration for example.com"
   ),
   HostedZoneId = "Z3M3LMPEXAMPLE"
-)
+)}
 
 }

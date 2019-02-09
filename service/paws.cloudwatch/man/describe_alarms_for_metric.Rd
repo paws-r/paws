@@ -4,20 +4,9 @@
 \alias{describe_alarms_for_metric}
 \title{Retrieves the alarms for the specified metric}
 \usage{
-describe_alarms_for_metric(
-  MetricName = "string",
-  Namespace = "string",
-  Statistic = "SampleCount"|"Average"|"Sum"|"Minimum"|"Maximum",
-  ExtendedStatistic = "string",
-  Dimensions = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  Period = 123,
-  Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
-)
+describe_alarms_for_metric(MetricName, Namespace, Statistic = NULL,
+  ExtendedStatistic = NULL, Dimensions = NULL, Period = NULL,
+  Unit = NULL)
 }
 \arguments{
 \item{MetricName}{[required] The name of the metric.}
@@ -37,6 +26,21 @@ describe_alarms_for_metric(
 \description{
 Retrieves the alarms for the specified metric. To filter the results, specify a statistic, period, or unit.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_alarms_for_metric(
+  MetricName = "string",
+  Namespace = "string",
+  Statistic = "SampleCount"|"Average"|"Sum"|"Minimum"|"Maximum",
+  ExtendedStatistic = "string",
+  Dimensions = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  Period = 123,
+  Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
+)
 }
+}
+

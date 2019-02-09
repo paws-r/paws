@@ -4,12 +4,7 @@
 \alias{batch_delete_scheduled_action}
 \title{Deletes one or more scheduled actions for the specified Auto Scaling group}
 \usage{
-batch_delete_scheduled_action(
-  AutoScalingGroupName = "string",
-  ScheduledActionNames = list(
-    "string"
-  )
-)
+batch_delete_scheduled_action(AutoScalingGroupName, ScheduledActionNames)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -19,6 +14,13 @@ batch_delete_scheduled_action(
 \description{
 Deletes one or more scheduled actions for the specified Auto Scaling group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_delete_scheduled_action(
+  AutoScalingGroupName = "string",
+  ScheduledActionNames = list(
+    "string"
+  )
+)
 }
+}
+

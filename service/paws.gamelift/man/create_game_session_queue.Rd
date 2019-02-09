@@ -4,21 +4,8 @@
 \alias{create_game_session_queue}
 \title{Establishes a new queue for processing requests to place new game sessions}
 \usage{
-create_game_session_queue(
-  Name = "string",
-  TimeoutInSeconds = 123,
-  PlayerLatencyPolicies = list(
-    list(
-      MaximumIndividualPlayerLatencyMilliseconds = 123,
-      PolicyDurationSeconds = 123
-    )
-  ),
-  Destinations = list(
-    list(
-      DestinationArn = "string"
-    )
-  )
-)
+create_game_session_queue(Name, TimeoutInSeconds = NULL,
+  PlayerLatencyPolicies = NULL, Destinations = NULL)
 }
 \arguments{
 \item{Name}{[required] Descriptive label that is associated with game session queue. Queue names must be unique within each region.}
@@ -47,6 +34,22 @@ Queue-related operations include:
 \item DeleteGameSessionQueue
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_game_session_queue(
+  Name = "string",
+  TimeoutInSeconds = 123,
+  PlayerLatencyPolicies = list(
+    list(
+      MaximumIndividualPlayerLatencyMilliseconds = 123,
+      PolicyDurationSeconds = 123
+    )
+  ),
+  Destinations = list(
+    list(
+      DestinationArn = "string"
+    )
+  )
+)
 }
+}
+

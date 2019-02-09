@@ -4,26 +4,10 @@
 \alias{update_nfs_file_share}
 \title{Updates a Network File System (NFS) file share}
 \usage{
-update_nfs_file_share(
-  FileShareARN = "string",
-  KMSEncrypted = TRUE|FALSE,
-  KMSKey = "string",
-  NFSFileShareDefaults = list(
-    FileMode = "string",
-    DirectoryMode = "string",
-    GroupId = 123,
-    OwnerId = 123
-  ),
-  DefaultStorageClass = "string",
-  ObjectACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"|"aws-exec-read",
-  ClientList = list(
-    "string"
-  ),
-  Squash = "string",
-  ReadOnly = TRUE|FALSE,
-  GuessMIMETypeEnabled = TRUE|FALSE,
-  RequesterPays = TRUE|FALSE
-)
+update_nfs_file_share(FileShareARN, KMSEncrypted = NULL, KMSKey = NULL,
+  NFSFileShareDefaults = NULL, DefaultStorageClass = NULL,
+  ObjectACL = NULL, ClientList = NULL, Squash = NULL,
+  ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL)
 }
 \arguments{
 \item{FileShareARN}{[required] The Amazon Resource Name (ARN) of the file share to be updated.}
@@ -70,6 +54,27 @@ Updates the following file share setting:
 
 To leave a file share field unchanged, set the corresponding input field to null. This operation is only supported in file gateways.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_nfs_file_share(
+  FileShareARN = "string",
+  KMSEncrypted = TRUE|FALSE,
+  KMSKey = "string",
+  NFSFileShareDefaults = list(
+    FileMode = "string",
+    DirectoryMode = "string",
+    GroupId = 123,
+    OwnerId = 123
+  ),
+  DefaultStorageClass = "string",
+  ObjectACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"|"aws-exec-read",
+  ClientList = list(
+    "string"
+  ),
+  Squash = "string",
+  ReadOnly = TRUE|FALSE,
+  GuessMIMETypeEnabled = TRUE|FALSE,
+  RequesterPays = TRUE|FALSE
+)
 }
+}
+

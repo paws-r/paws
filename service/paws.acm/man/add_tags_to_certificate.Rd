@@ -4,15 +4,7 @@
 \alias{add_tags_to_certificate}
 \title{Adds one or more tags to an ACM certificate}
 \usage{
-add_tags_to_certificate(
-  CertificateArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+add_tags_to_certificate(CertificateArn, Tags)
 }
 \arguments{
 \item{CertificateArn}{[required] String that contains the ARN of the ACM certificate to which the tag is to be applied. This must be of the form:
@@ -31,6 +23,16 @@ You can apply a tag to just one certificate if you want to identify a specific c
 
 To remove one or more tags, use the RemoveTagsFromCertificate action. To view all of the tags that have been applied to the certificate, use the ListTagsForCertificate action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_tags_to_certificate(
+  CertificateArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

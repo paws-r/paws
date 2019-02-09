@@ -4,15 +4,8 @@
 \alias{update_user}
 \title{Updates the information for an ActiveMQ user}
 \usage{
-update_user(
-  BrokerId = "string",
-  ConsoleAccess = TRUE|FALSE,
-  Groups = list(
-    "string"
-  ),
-  Password = "string",
-  Username = "string"
-)
+update_user(BrokerId, ConsoleAccess = NULL, Groups = NULL,
+  Password = NULL, Username)
 }
 \arguments{
 \item{BrokerId}{[required] The unique ID that Amazon MQ generates for the broker.}
@@ -28,6 +21,16 @@ update_user(
 \description{
 Updates the information for an ActiveMQ user.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_user(
+  BrokerId = "string",
+  ConsoleAccess = TRUE|FALSE,
+  Groups = list(
+    "string"
+  ),
+  Password = "string",
+  Username = "string"
+)
 }
+}
+

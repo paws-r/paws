@@ -6,8 +6,8 @@
 \alias{paws.guardduty-package}
 \title{paws.guardduty: Amazon GuardDuty}
 \description{
-Assess, monitor, manage, and remediate security issues across
-your AWS infrastructure, applications, and data.
+Assess, monitor, manage, and remediate security
+    issues across your AWS infrastructure, applications, and data.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

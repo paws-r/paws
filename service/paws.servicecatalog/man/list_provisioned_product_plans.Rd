@@ -4,16 +4,9 @@
 \alias{list_provisioned_product_plans}
 \title{Lists the plans for the specified provisioned product or all plans to which the user has access}
 \usage{
-list_provisioned_product_plans(
-  AcceptLanguage = "string",
-  ProvisionProductId = "string",
-  PageSize = 123,
-  PageToken = "string",
-  AccessLevelFilter = list(
-    Key = "Account"|"Role"|"User",
-    Value = "string"
-  )
-)
+list_provisioned_product_plans(AcceptLanguage = NULL,
+  ProvisionProductId = NULL, PageSize = NULL, PageToken = NULL,
+  AccessLevelFilter = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -34,6 +27,17 @@ list_provisioned_product_plans(
 \description{
 Lists the plans for the specified provisioned product or all plans to which the user has access.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_provisioned_product_plans(
+  AcceptLanguage = "string",
+  ProvisionProductId = "string",
+  PageSize = 123,
+  PageToken = "string",
+  AccessLevelFilter = list(
+    Key = "Account"|"Role"|"User",
+    Value = "string"
+  )
+)
 }
+}
+

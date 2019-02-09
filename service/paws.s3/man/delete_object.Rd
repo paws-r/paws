@@ -4,14 +4,8 @@
 \alias{delete_object}
 \title{Removes the null version (if there is one) of an object and inserts a delete marker, which becomes the latest version of the object}
 \usage{
-delete_object(
-  Bucket = "string",
-  Key = "string",
-  MFA = "string",
-  VersionId = "string",
-  RequestPayer = "requester",
-  BypassGovernanceRetention = TRUE|FALSE
-)
+delete_object(Bucket, Key, MFA = NULL, VersionId = NULL,
+  RequestPayer = NULL)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -23,23 +17,32 @@ delete_object(
 \item{VersionId}{VersionId used to reference a specific version of the object.}
 
 \item{RequestPayer}{}
-
-\item{BypassGovernanceRetention}{Indicates whether S3 Object Lock should bypass Governance-mode restrictions to process this operation.}
 }
 \description{
 Removes the null version (if there is one) of an object and inserts a delete marker, which becomes the latest version of the object. If there isn't a null version, Amazon S3 does not remove any objects.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_object(
+  Bucket = "string",
+  Key = "string",
+  MFA = "string",
+  VersionId = "string",
+  RequestPayer = "requester"
+)
+}
+}
+
 \examples{
 # The following example deletes an object from an S3 bucket.
-delete_object(
+\donttest{delete_object(
   Bucket = "examplebucket",
   Key = "objectkey.jpg"
-)
+)}
 
 # The following example deletes an object from a non-versioned bucket.
-delete_object(
+\donttest{delete_object(
   Bucket = "ExampleBucket",
   Key = "HappyFace.jpg"
-)
+)}
 
 }

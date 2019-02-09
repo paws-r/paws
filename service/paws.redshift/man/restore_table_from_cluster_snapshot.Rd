@@ -4,16 +4,9 @@
 \alias{restore_table_from_cluster_snapshot}
 \title{Creates a new table from a table in an Amazon Redshift cluster snapshot}
 \usage{
-restore_table_from_cluster_snapshot(
-  ClusterIdentifier = "string",
-  SnapshotIdentifier = "string",
-  SourceDatabaseName = "string",
-  SourceSchemaName = "string",
-  SourceTableName = "string",
-  TargetDatabaseName = "string",
-  TargetSchemaName = "string",
-  NewTableName = "string"
-)
+restore_table_from_cluster_snapshot(ClusterIdentifier, SnapshotIdentifier,
+  SourceDatabaseName, SourceSchemaName = NULL, SourceTableName,
+  TargetDatabaseName = NULL, TargetSchemaName = NULL, NewTableName)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The identifier of the Amazon Redshift cluster to restore the table to.}
@@ -38,6 +31,17 @@ Creates a new table from a table in an Amazon Redshift cluster snapshot. You mus
 \details{
 You cannot use \code{RestoreTableFromClusterSnapshot} to restore a table with the same name as an existing table in an Amazon Redshift cluster. That is, you cannot overwrite an existing table in a cluster with a restored table. If you want to replace your original table with a new, restored table, then rename or drop your original table before you call \code{RestoreTableFromClusterSnapshot}. When you have renamed your original table, then you can pass the original name of the table as the \code{NewTableName} parameter value in the call to \code{RestoreTableFromClusterSnapshot}. This way, you can replace the original table with the table created from the snapshot.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{restore_table_from_cluster_snapshot(
+  ClusterIdentifier = "string",
+  SnapshotIdentifier = "string",
+  SourceDatabaseName = "string",
+  SourceSchemaName = "string",
+  SourceTableName = "string",
+  TargetDatabaseName = "string",
+  TargetSchemaName = "string",
+  NewTableName = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{get_game_session_log_url}
 \title{Retrieves the location of stored game session logs for a specified game session}
 \usage{
-get_game_session_log_url(
-  GameSessionId = "string"
-)
+get_game_session_log_url(GameSessionId)
 }
 \arguments{
 \item{GameSessionId}{[required] Unique identifier for the game session to get logs for.}
@@ -31,6 +29,10 @@ Game-session-related operations include:
 \item StopGameSessionPlacement
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_game_session_log_url(
+  GameSessionId = "string"
+)
 }
+}
+

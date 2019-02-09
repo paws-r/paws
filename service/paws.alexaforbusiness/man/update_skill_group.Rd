@@ -4,11 +4,8 @@
 \alias{update_skill_group}
 \title{Updates skill group details by skill group ARN}
 \usage{
-update_skill_group(
-  SkillGroupArn = "string",
-  SkillGroupName = "string",
-  Description = "string"
-)
+update_skill_group(SkillGroupArn = NULL, SkillGroupName = NULL,
+  Description = NULL)
 }
 \arguments{
 \item{SkillGroupArn}{The ARN of the skill group to update.}
@@ -20,6 +17,12 @@ update_skill_group(
 \description{
 Updates skill group details by skill group ARN.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_skill_group(
+  SkillGroupArn = "string",
+  SkillGroupName = "string",
+  Description = "string"
+)
 }
+}
+

@@ -11,6 +11,6 @@ Describes the scaling process types for use with ResumeProcesses and SuspendProc
 }
 \examples{
 # This example describes the Auto Scaling process types.
-describe_scaling_process_types()
+\donttest{describe_scaling_process_types()}
 
 }

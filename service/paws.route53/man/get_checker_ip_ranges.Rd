@@ -2,13 +2,15 @@
 % Please edit documentation in R/paws.route53_operations.R
 \name{get_checker_ip_ranges}
 \alias{get_checker_ip_ranges}
-\title{\code{GetCheckerIpRanges} still works, but we recommend that you download ip-ranges}
+\title{GetCheckerIpRanges still works, but we recommend that you download ip-ranges}
 \usage{
 get_checker_ip_ranges()
 }
 \description{
 \code{GetCheckerIpRanges} still works, but we recommend that you download ip-ranges.json, which includes IP address ranges for all AWS services. For more information, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/route-53-ip-addresses.html}{IP Address Ranges of Amazon Route 53 Servers} in the \emph{Amazon Route 53 Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_checker_ip_ranges()
 }
+}
+

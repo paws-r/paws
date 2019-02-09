@@ -7,7 +7,7 @@
 \title{paws.polly: Amazon Polly}
 \description{
 Amazon Polly is a web service that makes it easy to
-synthesize speech from text.
+    synthesize speech from text.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

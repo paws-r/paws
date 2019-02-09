@@ -4,11 +4,7 @@
 \alias{delete_custom_action_type}
 \title{Marks a custom action as deleted}
 \usage{
-delete_custom_action_type(
-  category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-  provider = "string",
-  version = "string"
-)
+delete_custom_action_type(category, provider, version)
 }
 \arguments{
 \item{category}{[required] The category of the custom action that you want to delete, such as source or deploy.}
@@ -23,6 +19,12 @@ Marks a custom action as deleted. PollForJobs for the custom action will fail af
 \details{
 To re-create a custom action after it has been deleted you must use a string in the version field that has never been used before. This string can be an incremented version number, for example. To restore a deleted custom action, use a JSON file that is identical to the deleted action, including the original string in the version field.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_custom_action_type(
+  category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+  provider = "string",
+  version = "string"
+)
 }
+}
+

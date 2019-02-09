@@ -4,15 +4,7 @@
 \alias{send_automation_signal}
 \title{Sends a signal to an Automation execution to change the current behavior or status of the execution}
 \usage{
-send_automation_signal(
-  AutomationExecutionId = "string",
-  SignalType = "Approve"|"Reject"|"StartStep"|"StopStep"|"Resume",
-  Payload = list(
-    list(
-      "string"
-    )
-  )
-)
+send_automation_signal(AutomationExecutionId, SignalType, Payload = NULL)
 }
 \arguments{
 \item{AutomationExecutionId}{[required] The unique identifier for an existing Automation execution that you want to send the signal to.}
@@ -24,6 +16,16 @@ send_automation_signal(
 \description{
 Sends a signal to an Automation execution to change the current behavior or status of the execution.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{send_automation_signal(
+  AutomationExecutionId = "string",
+  SignalType = "Approve"|"Reject"|"StartStep"|"StopStep"|"Resume",
+  Payload = list(
+    list(
+      "string"
+    )
+  )
+)
 }
+}
+

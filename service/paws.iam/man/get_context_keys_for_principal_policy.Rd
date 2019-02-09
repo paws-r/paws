@@ -4,12 +4,8 @@
 \alias{get_context_keys_for_principal_policy}
 \title{Gets a list of all of the context keys referenced in all the IAM policies that are attached to the specified IAM entity}
 \usage{
-get_context_keys_for_principal_policy(
-  PolicySourceArn = "string",
-  PolicyInputList = list(
-    "string"
-  )
-)
+get_context_keys_for_principal_policy(PolicySourceArn,
+  PolicyInputList = NULL)
 }
 \arguments{
 \item{PolicySourceArn}{[required] The ARN of a user, group, or role whose policies contain the context keys that you want listed. If you specify a user, the list includes context keys that are found in all policies that are attached to the user. The list also includes all groups that the user is a member of. If you pick a group or a role, then it includes only those context keys that are found in policies attached to that entity. Note that all parameters are shown in unencoded form here for clarity, but must be URL encoded to be included as a part of a real HTML request.
@@ -35,6 +31,13 @@ You can optionally include a list of one or more additional policies, specified 
 
 Context keys are variables maintained by AWS and its services that provide details about the context of an API query request. Context keys can be evaluated by testing against a value in an IAM policy. Use GetContextKeysForPrincipalPolicy to understand what key names and values you must supply when you call SimulatePrincipalPolicy.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_context_keys_for_principal_policy(
+  PolicySourceArn = "string",
+  PolicyInputList = list(
+    "string"
+  )
+)
 }
+}
+

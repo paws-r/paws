@@ -4,17 +4,7 @@
 \alias{create_pipeline}
 \title{Creates a new, empty pipeline}
 \usage{
-create_pipeline(
-  name = "string",
-  uniqueId = "string",
-  description = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+create_pipeline(name, uniqueId, description = NULL, tags = NULL)
 }
 \arguments{
 \item{name}{[required] The name for the pipeline. You can use the same name for multiple pipelines associated with your AWS account, because AWS Data Pipeline assigns each pipeline a unique pipeline identifier.}
@@ -28,6 +18,18 @@ create_pipeline(
 \description{
 Creates a new, empty pipeline. Use PutPipelineDefinition to populate the pipeline.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_pipeline(
+  name = "string",
+  uniqueId = "string",
+  description = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
+}
+

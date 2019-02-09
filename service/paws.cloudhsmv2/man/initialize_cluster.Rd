@@ -4,11 +4,7 @@
 \alias{initialize_cluster}
 \title{Claims an AWS CloudHSM cluster by submitting the cluster certificate issued by your issuing certificate authority (CA) and the CA's root certificate}
 \usage{
-initialize_cluster(
-  ClusterId = "string",
-  SignedCert = "string",
-  TrustAnchor = "string"
-)
+initialize_cluster(ClusterId, SignedCert, TrustAnchor)
 }
 \arguments{
 \item{ClusterId}{[required] The identifier (ID) of the cluster that you are claiming. To find the cluster ID, use DescribeClusters.}
@@ -20,6 +16,12 @@ initialize_cluster(
 \description{
 Claims an AWS CloudHSM cluster by submitting the cluster certificate issued by your issuing certificate authority (CA) and the CA's root certificate. Before you can claim a cluster, you must sign the cluster's certificate signing request (CSR) with your issuing CA. To get the cluster's CSR, use DescribeClusters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{initialize_cluster(
+  ClusterId = "string",
+  SignedCert = "string",
+  TrustAnchor = "string"
+)
 }
+}
+

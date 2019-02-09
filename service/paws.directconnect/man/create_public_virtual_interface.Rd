@@ -4,7 +4,21 @@
 \alias{create_public_virtual_interface}
 \title{Creates a public virtual interface}
 \usage{
-create_public_virtual_interface(
+create_public_virtual_interface(connectionId, newPublicVirtualInterface)
+}
+\arguments{
+\item{connectionId}{[required] The ID of the connection.}
+
+\item{newPublicVirtualInterface}{[required] Information about the public virtual interface.}
+}
+\description{
+Creates a public virtual interface. A virtual interface is the VLAN that transports AWS Direct Connect traffic. A public virtual interface supports sending traffic to public services of AWS such as Amazon S3.
+}
+\details{
+When creating an IPv6 public virtual interface (\code{addressFamily} is \code{ipv6}), leave the \code{customer} and \code{amazon} address fields blank to use auto-assigned IPv6 space. Custom IPv6 addresses are not supported.
+}
+\section{Accepted Parameters}{
+\preformatted{create_public_virtual_interface(
   connectionId = "string",
   newPublicVirtualInterface = list(
     virtualInterfaceName = "string",
@@ -22,17 +36,5 @@ create_public_virtual_interface(
   )
 )
 }
-\arguments{
-\item{connectionId}{[required] The ID of the connection.}
+}
 
-\item{newPublicVirtualInterface}{[required] Information about the public virtual interface.}
-}
-\description{
-Creates a public virtual interface. A virtual interface is the VLAN that transports AWS Direct Connect traffic. A public virtual interface supports sending traffic to public services of AWS such as Amazon S3.
-}
-\details{
-When creating an IPv6 public virtual interface (\code{addressFamily} is \code{ipv6}), leave the \code{customer} and \code{amazon} address fields blank to use auto-assigned IPv6 space. Custom IPv6 addresses are not supported.
-}
-\examples{
-
-}

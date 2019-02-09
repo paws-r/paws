@@ -4,9 +4,7 @@
 \alias{delete_input}
 \title{Deletes the input end point}
 \usage{
-delete_input(
-  InputId = "string"
-)
+delete_input(InputId)
 }
 \arguments{
 \item{InputId}{[required] Unique ID of the input}
@@ -14,6 +12,10 @@ delete_input(
 \description{
 Deletes the input end point
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_input(
+  InputId = "string"
+)
 }
+}
+

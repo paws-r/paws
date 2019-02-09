@@ -6,11 +6,11 @@
 \alias{paws.cognitoidentity-package}
 \title{paws.cognitoidentity: Amazon Cognito Identity}
 \description{
-Amazon Cognito is a web service that delivers scoped
-temporary credentials to mobile devices and other untrusted
-environments. Amazon Cognito uniquely identifies a device and supplies
-the user with a consistent identity over the lifetime of an
-application.
+Amazon Cognito is a web service that delivers
+    scoped temporary credentials to mobile devices and other untrusted
+    environments. Amazon Cognito uniquely identifies a device and supplies
+    the user with a consistent identity over the lifetime of an
+    application.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

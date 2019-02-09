@@ -4,9 +4,7 @@
 \alias{delete_parameter}
 \title{Delete a parameter from the system}
 \usage{
-delete_parameter(
-  Name = "string"
-)
+delete_parameter(Name)
 }
 \arguments{
 \item{Name}{[required] The name of the parameter to delete.}
@@ -14,6 +12,10 @@ delete_parameter(
 \description{
 Delete a parameter from the system.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_parameter(
+  Name = "string"
+)
 }
+}
+

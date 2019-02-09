@@ -4,10 +4,7 @@
 \alias{delete_user}
 \title{Deletes a user from Amazon WorkMail and all subsequent systems}
 \usage{
-delete_user(
-  OrganizationId = "string",
-  UserId = "string"
-)
+delete_user(OrganizationId, UserId)
 }
 \arguments{
 \item{OrganizationId}{[required] The organization that contains the user.}
@@ -17,6 +14,11 @@ delete_user(
 \description{
 Deletes a user from Amazon WorkMail and all subsequent systems. The action can't be undone. The mailbox is kept as-is for a minimum of 30 days, without any means to restore it.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_user(
+  OrganizationId = "string",
+  UserId = "string"
+)
 }
+}
+

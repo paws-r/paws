@@ -4,10 +4,7 @@
 \alias{list_domains}
 \title{This operation returns all the domain names registered with Amazon Route 53 for the current AWS account}
 \usage{
-list_domains(
-  Marker = "string",
-  MaxItems = 123
-)
+list_domains(Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{Marker}{For an initial request for a list of domains, omit this element. If the number of domains that are associated with the current AWS account is greater than the value that you specified for \code{MaxItems}, you can use \code{Marker} to return additional domains. Get the value of \code{NextPageMarker} from the previous response, and submit another request that includes the value of \code{NextPageMarker} in the \code{Marker} element.
@@ -21,6 +18,11 @@ Default: 20}
 \description{
 This operation returns all the domain names registered with Amazon Route 53 for the current AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_domains(
+  Marker = "string",
+  MaxItems = 123
+)
 }
+}
+

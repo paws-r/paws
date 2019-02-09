@@ -4,28 +4,10 @@
 \alias{create_image_builder}
 \title{Creates an image builder}
 \usage{
-create_image_builder(
-  Name = "string",
-  ImageName = "string",
-  ImageArn = "string",
-  InstanceType = "string",
-  Description = "string",
-  DisplayName = "string",
-  VpcConfig = list(
-    SubnetIds = list(
-      "string"
-    ),
-    SecurityGroupIds = list(
-      "string"
-    )
-  ),
-  EnableDefaultInternetAccess = TRUE|FALSE,
-  DomainJoinInfo = list(
-    DirectoryName = "string",
-    OrganizationalUnitDistinguishedName = "string"
-  ),
-  AppstreamAgentVersion = "string"
-)
+create_image_builder(Name, ImageName = NULL, ImageArn = NULL,
+  InstanceType, Description = NULL, DisplayName = NULL,
+  VpcConfig = NULL, EnableDefaultInternetAccess = NULL,
+  DomainJoinInfo = NULL, AppstreamAgentVersion = NULL)
 }
 \arguments{
 \item{Name}{[required] A unique name for the image builder.}
@@ -54,6 +36,29 @@ Creates an image builder. An image builder is a virtual machine that is used to 
 \details{
 The initial state of the builder is \code{PENDING}. When it is ready, the state is \code{RUNNING}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_image_builder(
+  Name = "string",
+  ImageName = "string",
+  ImageArn = "string",
+  InstanceType = "string",
+  Description = "string",
+  DisplayName = "string",
+  VpcConfig = list(
+    SubnetIds = list(
+      "string"
+    ),
+    SecurityGroupIds = list(
+      "string"
+    )
+  ),
+  EnableDefaultInternetAccess = TRUE|FALSE,
+  DomainJoinInfo = list(
+    DirectoryName = "string",
+    OrganizationalUnitDistinguishedName = "string"
+  ),
+  AppstreamAgentVersion = "string"
+)
 }
+}
+

@@ -4,16 +4,8 @@
 \alias{purchase_scheduled_instances}
 \title{Purchases one or more Scheduled Instances with the specified schedule}
 \usage{
-purchase_scheduled_instances(
-  ClientToken = "string",
-  DryRun = TRUE|FALSE,
-  PurchaseRequests = list(
-    list(
-      InstanceCount = 123,
-      PurchaseToken = "string"
-    )
-  )
-)
+purchase_scheduled_instances(ClientToken = NULL, DryRun = NULL,
+  PurchaseRequests)
 }
 \arguments{
 \item{ClientToken}{Unique, case-sensitive identifier that ensures the idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
@@ -30,15 +22,29 @@ Scheduled Instances enable you to purchase Amazon EC2 compute capacity by the ho
 
 After you purchase a Scheduled Instance, you can't cancel, modify, or resell your purchase.
 }
+\section{Accepted Parameters}{
+\preformatted{purchase_scheduled_instances(
+  ClientToken = "string",
+  DryRun = TRUE|FALSE,
+  PurchaseRequests = list(
+    list(
+      InstanceCount = 123,
+      PurchaseToken = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # This example purchases a Scheduled Instance.
-purchase_scheduled_instances(
+\donttest{purchase_scheduled_instances(
   PurchaseRequests = list(
     list(
       InstanceCount = 1L,
       PurchaseToken = "eyJ2IjoiMSIsInMiOjEsImMiOi..."
     )
   )
-)
+)}
 
 }

@@ -2,13 +2,10 @@
 % Please edit documentation in R/paws.route53_operations.R
 \name{list_vpc_association_authorizations}
 \alias{list_vpc_association_authorizations}
-\title{Gets a list of the VPCs that were created by other accounts and that can be associated with a specified hosted zone because you've submitted one or more \code{CreateVPCAssociationAuthorization} requests}
+\title{Gets a list of the VPCs that were created by other accounts and that can be associated with a specified hosted zone because you've submitted one or more CreateVPCAssociationAuthorization requests}
 \usage{
-list_vpc_association_authorizations(
-  HostedZoneId = "string",
-  NextToken = "string",
-  MaxResults = "string"
-)
+list_vpc_association_authorizations(HostedZoneId, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{HostedZoneId}{[required] The ID of the hosted zone for which you want a list of VPCs that can be associated with the hosted zone.}
@@ -23,6 +20,12 @@ Gets a list of the VPCs that were created by other accounts and that can be asso
 \details{
 The response includes a \code{VPCs} element with a \code{VPC} child element for each VPC that can be associated with the hosted zone.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_vpc_association_authorizations(
+  HostedZoneId = "string",
+  NextToken = "string",
+  MaxResults = "string"
+)
 }
+}
+

@@ -9,6 +9,8 @@ get_registration_code()
 \description{
 Gets a registration code used to register a CA certificate with AWS IoT.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_registration_code()
 }
+}
+

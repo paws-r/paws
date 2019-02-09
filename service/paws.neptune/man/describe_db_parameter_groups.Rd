@@ -2,21 +2,10 @@
 % Please edit documentation in R/paws.neptune_operations.R
 \name{describe_db_parameter_groups}
 \alias{describe_db_parameter_groups}
-\title{Returns a list of \code{DBParameterGroup} descriptions}
+\title{Returns a list of DBParameterGroup descriptions}
 \usage{
-describe_db_parameter_groups(
-  DBParameterGroupName = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_db_parameter_groups(DBParameterGroupName = NULL,
+  Filters = NULL, MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{DBParameterGroupName}{The name of a specific DB parameter group to return details for.
@@ -39,6 +28,20 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Returns a list of \code{DBParameterGroup} descriptions. If a \code{DBParameterGroupName} is specified, the list will contain only the description of the specified DB parameter group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_db_parameter_groups(
+  DBParameterGroupName = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

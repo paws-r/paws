@@ -4,14 +4,7 @@
 \alias{attach_classic_link_vpc}
 \title{Links an EC2-Classic instance to a ClassicLink-enabled VPC through one or more of the VPC's security groups}
 \usage{
-attach_classic_link_vpc(
-  DryRun = TRUE|FALSE,
-  Groups = list(
-    "string"
-  ),
-  InstanceId = "string",
-  VpcId = "string"
-)
+attach_classic_link_vpc(DryRun = NULL, Groups, InstanceId, VpcId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -30,6 +23,15 @@ After you've linked an instance, you cannot change the VPC security groups that 
 
 Linking your instance to a VPC is sometimes referred to as \emph{attaching} your instance.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{attach_classic_link_vpc(
+  DryRun = TRUE|FALSE,
+  Groups = list(
+    "string"
+  ),
+  InstanceId = "string",
+  VpcId = "string"
+)
 }
+}
+

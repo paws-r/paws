@@ -4,11 +4,7 @@
 \alias{get_user_defined_function}
 \title{Retrieves a specified function definition from the Data Catalog}
 \usage{
-get_user_defined_function(
-  CatalogId = "string",
-  DatabaseName = "string",
-  FunctionName = "string"
-)
+get_user_defined_function(CatalogId = NULL, DatabaseName, FunctionName)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the function to be retrieved is located. If none is supplied, the AWS account ID is used by default.}
@@ -20,6 +16,12 @@ get_user_defined_function(
 \description{
 Retrieves a specified function definition from the Data Catalog.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_user_defined_function(
+  CatalogId = "string",
+  DatabaseName = "string",
+  FunctionName = "string"
+)
 }
+}
+

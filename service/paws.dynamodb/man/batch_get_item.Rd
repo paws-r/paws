@@ -2,49 +2,9 @@
 % Please edit documentation in R/paws.dynamodb_operations.R
 \name{batch_get_item}
 \alias{batch_get_item}
-\title{The \code{BatchGetItem} operation returns the attributes of one or more items from one or more tables}
+\title{The BatchGetItem operation returns the attributes of one or more items from one or more tables}
 \usage{
-batch_get_item(
-  RequestItems = list(
-    list(
-      Keys = list(
-        list(
-          list(
-            S = "string",
-            N = "string",
-            B = raw,
-            SS = list(
-              "string"
-            ),
-            NS = list(
-              "string"
-            ),
-            BS = list(
-              raw
-            ),
-            M = list(
-              list()
-            ),
-            L = list(
-              list()
-            ),
-            NULL = TRUE|FALSE,
-            BOOL = TRUE|FALSE
-          )
-        )
-      ),
-      AttributesToGet = list(
-        "string"
-      ),
-      ConsistentRead = TRUE|FALSE,
-      ProjectionExpression = "string",
-      ExpressionAttributeNames = list(
-        "string"
-      )
-    )
-  ),
-  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE"
-)
+batch_get_item(RequestItems, ReturnConsumedCapacity = NULL)
 }
 \arguments{
 \item{RequestItems}{[required] A map of one or more table names and, for each table, a map that describes one or more items to retrieve from that table. Each table name can be used only once per \code{BatchGetItem} request.
@@ -112,10 +72,55 @@ When designing your application, keep in mind that DynamoDB does not return item
 
 If a requested item does not exist, it is not returned in the result. Requests for nonexistent items consume the minimum read capacity units according to the type of read. For more information, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations}{Capacity Units Calculations} in the \emph{Amazon DynamoDB Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{batch_get_item(
+  RequestItems = list(
+    list(
+      Keys = list(
+        list(
+          list(
+            S = "string",
+            N = "string",
+            B = raw,
+            SS = list(
+              "string"
+            ),
+            NS = list(
+              "string"
+            ),
+            BS = list(
+              raw
+            ),
+            M = list(
+              list()
+            ),
+            L = list(
+              list()
+            ),
+            NULL = TRUE|FALSE,
+            BOOL = TRUE|FALSE
+          )
+        )
+      ),
+      AttributesToGet = list(
+        "string"
+      ),
+      ConsistentRead = TRUE|FALSE,
+      ProjectionExpression = "string",
+      ExpressionAttributeNames = list(
+        "string"
+      )
+    )
+  ),
+  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE"
+)
+}
+}
+
 \examples{
 # This example reads multiple items from the Music table using a batch of
 # three GetItem requests.  Only the AlbumTitle attribute is returned.
-batch_get_item(
+\donttest{batch_get_item(
   RequestItems = list(
     Music = list(
       Keys = list(
@@ -147,6 +152,6 @@ batch_get_item(
       ProjectionExpression = "AlbumTitle"
     )
   )
-)
+)}
 
 }

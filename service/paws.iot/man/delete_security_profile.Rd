@@ -4,10 +4,7 @@
 \alias{delete_security_profile}
 \title{Deletes a Device Defender security profile}
 \usage{
-delete_security_profile(
-  securityProfileName = "string",
-  expectedVersion = 123
-)
+delete_security_profile(securityProfileName, expectedVersion = NULL)
 }
 \arguments{
 \item{securityProfileName}{[required] The name of the security profile to be deleted.}
@@ -17,6 +14,11 @@ delete_security_profile(
 \description{
 Deletes a Device Defender security profile.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_security_profile(
+  securityProfileName = "string",
+  expectedVersion = 123
+)
 }
+}
+

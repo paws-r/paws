@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{publish_version}
 \alias{publish_version}
-\title{Publishes a version of your function from the current snapshot of \$LATEST}
+\title{Publishes a version of your function from the current snapshot of $LATEST}
 \usage{
-publish_version(
-  FunctionName = "string",
-  CodeSha256 = "string",
-  Description = "string",
-  RevisionId = "string"
-)
+publish_version(FunctionName, CodeSha256 = NULL, Description = NULL,
+  RevisionId = NULL)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the lambda function.
@@ -32,12 +28,22 @@ The length constraint applies only to the full ARN. If you specify only the func
 \description{
 Publishes a version of your function from the current snapshot of \$LATEST. That is, AWS Lambda takes a snapshot of the function code and configuration information from \$LATEST and publishes a new version. The code and configuration cannot be modified after publication. For information about the versioning feature, see \href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{AWS Lambda Function Versioning and Aliases}.
 }
+\section{Accepted Parameters}{
+\preformatted{publish_version(
+  FunctionName = "string",
+  CodeSha256 = "string",
+  Description = "string",
+  RevisionId = "string"
+)
+}
+}
+
 \examples{
 # This operation publishes a version of a Lambda function
-publish_version(
+\donttest{publish_version(
   CodeSha256 = "",
   Description = "",
   FunctionName = "myFunction"
-)
+)}
 
 }

@@ -4,30 +4,10 @@
 \alias{create_stage}
 \title{Creates a new Stage resource that references a pre-existing Deployment for the API}
 \usage{
-create_stage(
-  restApiId = "string",
-  stageName = "string",
-  deploymentId = "string",
-  description = "string",
-  cacheClusterEnabled = TRUE|FALSE,
-  cacheClusterSize = "0.5"|"1.6"|"6.1"|"13.5"|"28.4"|"58.2"|"118"|"237",
-  variables = list(
-    "string"
-  ),
-  documentationVersion = "string",
-  canarySettings = list(
-    percentTraffic = 123.0,
-    deploymentId = "string",
-    stageVariableOverrides = list(
-      "string"
-    ),
-    useStageCache = TRUE|FALSE
-  ),
-  tracingEnabled = TRUE|FALSE,
-  tags = list(
-    "string"
-  )
-)
+create_stage(restApiId, stageName, deploymentId, description = NULL,
+  cacheClusterEnabled = NULL, cacheClusterSize = NULL,
+  variables = NULL, documentationVersion = NULL,
+  canarySettings = NULL, tracingEnabled = NULL, tags = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -55,6 +35,31 @@ create_stage(
 \description{
 Creates a new Stage resource that references a pre-existing Deployment for the API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_stage(
+  restApiId = "string",
+  stageName = "string",
+  deploymentId = "string",
+  description = "string",
+  cacheClusterEnabled = TRUE|FALSE,
+  cacheClusterSize = "0.5"|"1.6"|"6.1"|"13.5"|"28.4"|"58.2"|"118"|"237",
+  variables = list(
+    "string"
+  ),
+  documentationVersion = "string",
+  canarySettings = list(
+    percentTraffic = 123.0,
+    deploymentId = "string",
+    stageVariableOverrides = list(
+      "string"
+    ),
+    useStageCache = TRUE|FALSE
+  ),
+  tracingEnabled = TRUE|FALSE,
+  tags = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,22 +4,8 @@
 \alias{describe_classic_link_instances}
 \title{Describes one or more of your linked EC2-Classic instances}
 \usage{
-describe_classic_link_instances(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  InstanceIds = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_classic_link_instances(Filters = NULL, DryRun = NULL,
+  InstanceIds = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -46,6 +32,23 @@ Constraint: If the value is greater than 1000, we return only 1000 items.}
 \description{
 Describes one or more of your linked EC2-Classic instances. This request only returns information about EC2-Classic instances linked to a VPC through ClassicLink. You cannot use this request to return information about other instances.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_classic_link_instances(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE,
+  InstanceIds = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

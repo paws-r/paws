@@ -4,10 +4,7 @@
 \alias{get_password_data}
 \title{Retrieves the encrypted administrator password for a running Windows instance}
 \usage{
-get_password_data(
-  InstanceId = "string",
-  DryRun = TRUE|FALSE
-)
+get_password_data(InstanceId, DryRun = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The ID of the Windows instance.}
@@ -26,6 +23,11 @@ The password is encrypted using the key pair that you specified when you launche
 
 When you launch an instance, password generation and encryption may take a few minutes. If you try to retrieve the password before it's available, the output returns an empty string. We recommend that you wait up to 15 minutes after launching an instance before trying to retrieve the generated password.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_password_data(
+  InstanceId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

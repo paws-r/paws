@@ -4,26 +4,22 @@
 \alias{list_projects}
 \title{Gets a list of build project names, with each build project name representing a single build project}
 \usage{
-list_projects(
-  sortBy = "NAME"|"CREATED_TIME"|"LAST_MODIFIED_TIME",
-  sortOrder = "ASCENDING"|"DESCENDING",
-  nextToken = "string"
-)
+list_projects(sortBy = NULL, sortOrder = NULL, nextToken = NULL)
 }
 \arguments{
 \item{sortBy}{The criterion to be used to list build project names. Valid values include:
 \itemize{
-\item \code{CREATED_TIME}: List based on when each build project was created.
-\item \code{LAST_MODIFIED_TIME}: List based on when information about each build project was last changed.
-\item \code{NAME}: List based on each build project's name.
+\item \code{CREATED_TIME}: List the build project names based on when each build project was created.
+\item \code{LAST_MODIFIED_TIME}: List the build project names based on when information about each build project was last changed.
+\item \code{NAME}: List the build project names based on each build project's name.
 }
 
 Use \code{sortOrder} to specify in what order to list the build project names based on the preceding criteria.}
 
 \item{sortOrder}{The order in which to list build projects. Valid values include:
 \itemize{
-\item \code{ASCENDING}: List in ascending order.
-\item \code{DESCENDING}: List in descending order.
+\item \code{ASCENDING}: List the build project names in ascending order.
+\item \code{DESCENDING}: List the build project names in descending order.
 }
 
 Use \code{sortBy} to specify the criterion to be used to list build project names.}
@@ -33,6 +29,12 @@ Use \code{sortBy} to specify the criterion to be used to list build project name
 \description{
 Gets a list of build project names, with each build project name representing a single build project.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_projects(
+  sortBy = "NAME"|"CREATED_TIME"|"LAST_MODIFIED_TIME",
+  sortOrder = "ASCENDING"|"DESCENDING",
+  nextToken = "string"
+)
 }
+}
+

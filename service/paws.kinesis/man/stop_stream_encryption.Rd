@@ -4,11 +4,7 @@
 \alias{stop_stream_encryption}
 \title{Disables server-side encryption for a specified stream}
 \usage{
-stop_stream_encryption(
-  StreamName = "string",
-  EncryptionType = "NONE"|"KMS",
-  KeyId = "string"
-)
+stop_stream_encryption(StreamName, EncryptionType, KeyId)
 }
 \arguments{
 \item{StreamName}{[required] The name of the stream on which to stop encrypting records.}
@@ -34,6 +30,12 @@ API Limits: You can successfully disable server-side encryption 25 times in a ro
 
 Note: It can take up to 5 seconds after the stream is in an \code{ACTIVE} status before all records written to the stream are no longer subject to encryption. After you disabled encryption, you can verify that encryption is not applied by inspecting the API response from \code{PutRecord} or \code{PutRecords}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_stream_encryption(
+  StreamName = "string",
+  EncryptionType = "NONE"|"KMS",
+  KeyId = "string"
+)
 }
+}
+

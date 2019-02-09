@@ -4,15 +4,7 @@
 \alias{modify_load_balancer_attributes}
 \title{Modifies the specified attributes of the specified Application Load Balancer or Network Load Balancer}
 \usage{
-modify_load_balancer_attributes(
-  LoadBalancerArn = "string",
-  Attributes = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+modify_load_balancer_attributes(LoadBalancerArn, Attributes)
 }
 \arguments{
 \item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
@@ -25,10 +17,23 @@ Modifies the specified attributes of the specified Application Load Balancer or 
 \details{
 If any of the specified attributes can't be modified as requested, the call fails. Any existing attributes that you do not modify retain their current values.
 }
+\section{Accepted Parameters}{
+\preformatted{modify_load_balancer_attributes(
+  LoadBalancerArn = "string",
+  Attributes = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # This example enables deletion protection for the specified load
 # balancer.
-modify_load_balancer_attributes(
+\donttest{modify_load_balancer_attributes(
   Attributes = list(
     list(
       Key = "deletion_protection.enabled",
@@ -36,11 +41,11 @@ modify_load_balancer_attributes(
     )
   ),
   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188"
-)
+)}
 
 # This example changes the idle timeout value for the specified load
 # balancer.
-modify_load_balancer_attributes(
+\donttest{modify_load_balancer_attributes(
   Attributes = list(
     list(
       Key = "idle_timeout.timeout_seconds",
@@ -48,13 +53,13 @@ modify_load_balancer_attributes(
     )
   ),
   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188"
-)
+)}
 
 # This example enables access logs for the specified load balancer. Note
 # that the S3 bucket must exist in the same region as the load balancer
 # and must have a policy attached that grants access to the Elastic Load
 # Balancing service.
-modify_load_balancer_attributes(
+\donttest{modify_load_balancer_attributes(
   Attributes = list(
     list(
       Key = "access_logs.s3.enabled",
@@ -70,6 +75,6 @@ modify_load_balancer_attributes(
     )
   ),
   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188"
-)
+)}
 
 }

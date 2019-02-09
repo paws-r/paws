@@ -4,9 +4,7 @@
 \alias{delete_git_hub_account_token}
 \title{Deletes a GitHub account connection}
 \usage{
-delete_git_hub_account_token(
-  tokenName = "string"
-)
+delete_git_hub_account_token(tokenName = NULL)
 }
 \arguments{
 \item{tokenName}{The name of the GitHub account connection to delete.}
@@ -14,6 +12,10 @@ delete_git_hub_account_token(
 \description{
 Deletes a GitHub account connection.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_git_hub_account_token(
+  tokenName = "string"
+)
 }
+}
+

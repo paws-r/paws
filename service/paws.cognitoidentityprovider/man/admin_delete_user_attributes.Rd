@@ -4,13 +4,7 @@
 \alias{admin_delete_user_attributes}
 \title{Deletes the user attributes in a user pool as an administrator}
 \usage{
-admin_delete_user_attributes(
-  UserPoolId = "string",
-  Username = "string",
-  UserAttributeNames = list(
-    "string"
-  )
-)
+admin_delete_user_attributes(UserPoolId, Username, UserAttributeNames)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool where you want to delete user attributes.}
@@ -27,6 +21,14 @@ Deletes the user attributes in a user pool as an administrator. Works on any use
 \details{
 Requires developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{admin_delete_user_attributes(
+  UserPoolId = "string",
+  Username = "string",
+  UserAttributeNames = list(
+    "string"
+  )
+)
 }
+}
+

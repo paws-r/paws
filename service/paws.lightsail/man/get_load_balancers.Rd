@@ -4,9 +4,7 @@
 \alias{get_load_balancers}
 \title{Returns information about all load balancers in an account}
 \usage{
-get_load_balancers(
-  pageToken = "string"
-)
+get_load_balancers(pageToken = NULL)
 }
 \arguments{
 \item{pageToken}{A token used for paginating the results from your GetLoadBalancers request.}
@@ -17,6 +15,10 @@ Returns information about all load balancers in an account.
 \details{
 If you are describing a long list of load balancers, you can paginate the output to make the list more manageable. You can use the pageToken and nextPageToken values to retrieve the next items in the list.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_load_balancers(
+  pageToken = "string"
+)
 }
+}
+

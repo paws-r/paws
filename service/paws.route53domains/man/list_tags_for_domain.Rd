@@ -4,9 +4,7 @@
 \alias{list_tags_for_domain}
 \title{This operation returns all of the tags that are associated with the specified domain}
 \usage{
-list_tags_for_domain(
-  DomainName = "string"
-)
+list_tags_for_domain(DomainName)
 }
 \arguments{
 \item{DomainName}{[required] The domain for which you want to get a list of tags.}
@@ -17,6 +15,10 @@ This operation returns all of the tags that are associated with the specified do
 \details{
 All tag operations are eventually consistent; subsequent operations might not immediately represent all issued operations.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_domain(
+  DomainName = "string"
+)
 }
+}
+

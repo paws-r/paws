@@ -4,11 +4,7 @@
 \alias{renew_domain}
 \title{This operation renews a domain for the specified number of years}
 \usage{
-renew_domain(
-  DomainName = "string",
-  DurationInYears = 123,
-  CurrentExpiryYear = 123
-)
+renew_domain(DomainName, DurationInYears = NULL, CurrentExpiryYear)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to renew.}
@@ -25,6 +21,12 @@ This operation renews a domain for the specified number of years. The cost of re
 \details{
 We recommend that you renew your domain several weeks before the expiration date. Some TLD registries delete domains before the expiration date if you haven't renewed far enough in advance. For more information about renewing domain registration, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-renew.html}{Renewing Registration for a Domain} in the Amazon Route 53 Developer Guide.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{renew_domain(
+  DomainName = "string",
+  DurationInYears = 123,
+  CurrentExpiryYear = 123
+)
 }
+}
+

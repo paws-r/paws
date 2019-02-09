@@ -4,11 +4,7 @@
 \alias{list_network_profiles}
 \title{Returns the list of available network profiles}
 \usage{
-list_network_profiles(
-  arn = "string",
-  type = "CURATED"|"PRIVATE",
-  nextToken = "string"
-)
+list_network_profiles(arn, type = NULL, nextToken = NULL)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of the project for which you want to list network profiles.}
@@ -20,6 +16,12 @@ list_network_profiles(
 \description{
 Returns the list of available network profiles.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_network_profiles(
+  arn = "string",
+  type = "CURATED"|"PRIVATE",
+  nextToken = "string"
+)
 }
+}
+

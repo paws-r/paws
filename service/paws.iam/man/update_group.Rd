@@ -4,24 +4,20 @@
 \alias{update_group}
 \title{Updates the name and/or the path of the specified IAM group}
 \usage{
-update_group(
-  GroupName = "string",
-  NewPath = "string",
-  NewGroupName = "string"
-)
+update_group(GroupName, NewPath = NULL, NewGroupName = NULL)
 }
 \arguments{
 \item{GroupName}{[required] Name of the IAM group to update. If you're changing the name of the group, this is the original name.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{NewPath}{New path for the IAM group. Only include this if changing the group's path.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.}
 
 \item{NewGroupName}{New name for the IAM group. Only include this if changing the group's name.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Updates the name and/or the path of the specified IAM group.
@@ -31,11 +27,20 @@ You should understand the implications of changing a group's path or name. For m
 
 The person making the request (the principal), must have permission to change the role group with the old name and the new name. For example, to change the group named \code{Managers} to \code{MGRs}, the principal must have a policy that allows them to update both groups. If the principal has permission to update the \code{Managers} group, but not the \code{MGRs} group, then the update fails. For more information about permissions, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html}{Access Management}.
 }
+\section{Accepted Parameters}{
+\preformatted{update_group(
+  GroupName = "string",
+  NewPath = "string",
+  NewGroupName = "string"
+)
+}
+}
+
 \examples{
 # The following command changes the name of the IAM group Test to Test-1.
-update_group(
+\donttest{update_group(
   GroupName = "Test",
   NewGroupName = "Test-1"
-)
+)}
 
 }

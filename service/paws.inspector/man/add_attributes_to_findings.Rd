@@ -4,7 +4,18 @@
 \alias{add_attributes_to_findings}
 \title{Assigns attributes (key and value pairs) to the findings that are specified by the ARNs of the findings}
 \usage{
-add_attributes_to_findings(
+add_attributes_to_findings(findingArns, attributes)
+}
+\arguments{
+\item{findingArns}{[required] The ARNs that specify the findings that you want to assign attributes to.}
+
+\item{attributes}{[required] The array of attributes that you want to assign to specified findings.}
+}
+\description{
+Assigns attributes (key and value pairs) to the findings that are specified by the ARNs of the findings.
+}
+\section{Accepted Parameters}{
+\preformatted{add_attributes_to_findings(
   findingArns = list(
     "string"
   ),
@@ -16,18 +27,12 @@ add_attributes_to_findings(
   )
 )
 }
-\arguments{
-\item{findingArns}{[required] The ARNs that specify the findings that you want to assign attributes to.}
+}
 
-\item{attributes}{[required] The array of attributes that you want to assign to specified findings.}
-}
-\description{
-Assigns attributes (key and value pairs) to the findings that are specified by the ARNs of the findings.
-}
 \examples{
 # Assigns attributes (key and value pairs) to the findings that are
 # specified by the ARNs of the findings.
-add_attributes_to_findings(
+\donttest{add_attributes_to_findings(
   attributes = list(
     list(
       key = "Example",
@@ -37,6 +42,6 @@ add_attributes_to_findings(
   findingArns = list(
     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-8l1VIE0D/run/0-Z02cjjug/finding/0-T8yM9mEU"
   )
-)
+)}
 
 }

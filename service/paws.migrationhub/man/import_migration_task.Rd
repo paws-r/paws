@@ -4,11 +4,8 @@
 \alias{import_migration_task}
 \title{Registers a new migration task which represents a server, database, etc}
 \usage{
-import_migration_task(
-  ProgressUpdateStream = "string",
-  MigrationTaskName = "string",
-  DryRun = TRUE|FALSE
-)
+import_migration_task(ProgressUpdateStream, MigrationTaskName,
+  DryRun = NULL)
 }
 \arguments{
 \item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
@@ -23,6 +20,12 @@ Registers a new migration task which represents a server, database, etc., being 
 \details{
 This API is a prerequisite to calling the \code{NotifyMigrationTaskState} API as the migration tool must first register the migration task with Migration Hub.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{import_migration_task(
+  ProgressUpdateStream = "string",
+  MigrationTaskName = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

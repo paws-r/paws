@@ -4,19 +4,10 @@
 \alias{upload_part}
 \title{Uploads a part in a multipart upload}
 \usage{
-upload_part(
-  Body = raw,
-  Bucket = "string",
-  ContentLength = 123,
-  ContentMD5 = "string",
-  Key = "string",
-  PartNumber = 123,
-  UploadId = "string",
-  SSECustomerAlgorithm = "string",
-  SSECustomerKey = raw,
-  SSECustomerKeyMD5 = "string",
-  RequestPayer = "requester"
-)
+upload_part(Body = NULL, Bucket, ContentLength = NULL,
+  ContentMD5 = NULL, Key, PartNumber, UploadId,
+  SSECustomerAlgorithm = NULL, SSECustomerKey = NULL,
+  SSECustomerKeyMD5 = NULL, RequestPayer = NULL)
 }
 \arguments{
 \item{Body}{Object data.}
@@ -35,7 +26,7 @@ upload_part(
 
 \item{SSECustomerAlgorithm}{Specifies the algorithm to use to when encrypting the object (e.g., AES256).}
 
-\item{SSECustomerKey}{Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm header. This must be the same encryption key specified in the initiate multipart upload request.}
+\item{SSECustomerKey}{Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header. This must be the same encryption key specified in the initiate multipart upload request.}
 
 \item{SSECustomerKeyMD5}{Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.}
 
@@ -47,16 +38,33 @@ Uploads a part in a multipart upload.
 \details{
 \strong{Note:} After you initiate multipart upload and upload one or more parts, you must either complete or abort multipart upload in order to stop getting charged for storage of the uploaded parts. Only after you either complete or abort multipart upload, Amazon S3 frees up the parts storage and stops charging you for the parts storage.
 }
+\section{Accepted Parameters}{
+\preformatted{upload_part(
+  Body = raw,
+  Bucket = "string",
+  ContentLength = 123,
+  ContentMD5 = "string",
+  Key = "string",
+  PartNumber = 123,
+  UploadId = "string",
+  SSECustomerAlgorithm = "string",
+  SSECustomerKey = raw,
+  SSECustomerKeyMD5 = "string",
+  RequestPayer = "requester"
+)
+}
+}
+
 \examples{
 # The following example uploads part 1 of a multipart upload. The example
 # specifies a file name for the part data. The Upload ID is same that is
 # returned by the initiate multipart upload.
-upload_part(
+\donttest{upload_part(
   Body = "fileToUpload",
   Bucket = "examplebucket",
   Key = "examplelargeobject",
   PartNumber = "1",
   UploadId = "xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP3WA60CEg--"
-)
+)}
 
 }

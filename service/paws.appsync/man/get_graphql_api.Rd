@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.appsync_operations.R
 \name{get_graphql_api}
 \alias{get_graphql_api}
-\title{Retrieves a \code{GraphqlApi} object}
+\title{Retrieves a GraphqlApi object}
 \usage{
-get_graphql_api(
-  apiId = "string"
-)
+get_graphql_api(apiId)
 }
 \arguments{
 \item{apiId}{[required] The API ID for the GraphQL API.}
@@ -14,6 +12,10 @@ get_graphql_api(
 \description{
 Retrieves a \code{GraphqlApi} object.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_graphql_api(
+  apiId = "string"
+)
 }
+}
+

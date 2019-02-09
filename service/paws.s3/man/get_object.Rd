@@ -4,27 +4,14 @@
 \alias{get_object}
 \title{Retrieves objects from Amazon S3}
 \usage{
-get_object(
-  Bucket = "string",
-  IfMatch = "string",
-  IfModifiedSince = as.POSIXct("2015-01-01"),
-  IfNoneMatch = "string",
-  IfUnmodifiedSince = as.POSIXct("2015-01-01"),
-  Key = "string",
-  Range = "string",
-  ResponseCacheControl = "string",
-  ResponseContentDisposition = "string",
-  ResponseContentEncoding = "string",
-  ResponseContentLanguage = "string",
-  ResponseContentType = "string",
-  ResponseExpires = as.POSIXct("2015-01-01"),
-  VersionId = "string",
-  SSECustomerAlgorithm = "string",
-  SSECustomerKey = raw,
-  SSECustomerKeyMD5 = "string",
-  RequestPayer = "requester",
-  PartNumber = 123
-)
+get_object(Bucket, IfMatch = NULL, IfModifiedSince = NULL,
+  IfNoneMatch = NULL, IfUnmodifiedSince = NULL, Key, Range = NULL,
+  ResponseCacheControl = NULL, ResponseContentDisposition = NULL,
+  ResponseContentEncoding = NULL, ResponseContentLanguage = NULL,
+  ResponseContentType = NULL, ResponseExpires = NULL,
+  VersionId = NULL, SSECustomerAlgorithm = NULL,
+  SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL,
+  RequestPayer = NULL, PartNumber = NULL)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -57,7 +44,7 @@ get_object(
 
 \item{SSECustomerAlgorithm}{Specifies the algorithm to use to when encrypting the object (e.g., AES256).}
 
-\item{SSECustomerKey}{Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm header.}
+\item{SSECustomerKey}{Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header.}
 
 \item{SSECustomerKeyMD5}{Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.}
 
@@ -68,19 +55,44 @@ get_object(
 \description{
 Retrieves objects from Amazon S3.
 }
+\section{Accepted Parameters}{
+\preformatted{get_object(
+  Bucket = "string",
+  IfMatch = "string",
+  IfModifiedSince = as.POSIXct("2015-01-01"),
+  IfNoneMatch = "string",
+  IfUnmodifiedSince = as.POSIXct("2015-01-01"),
+  Key = "string",
+  Range = "string",
+  ResponseCacheControl = "string",
+  ResponseContentDisposition = "string",
+  ResponseContentEncoding = "string",
+  ResponseContentLanguage = "string",
+  ResponseContentType = "string",
+  ResponseExpires = as.POSIXct("2015-01-01"),
+  VersionId = "string",
+  SSECustomerAlgorithm = "string",
+  SSECustomerKey = raw,
+  SSECustomerKeyMD5 = "string",
+  RequestPayer = "requester",
+  PartNumber = 123
+)
+}
+}
+
 \examples{
 # The following example retrieves an object for an S3 bucket.
-get_object(
+\donttest{get_object(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
-)
+)}
 
 # The following example retrieves an object for an S3 bucket. The request
 # specifies the range header to retrieve a specific byte range.
-get_object(
+\donttest{get_object(
   Bucket = "examplebucket",
   Key = "SampleFile.txt",
   Range = "bytes=0-9"
-)
+)}
 
 }

@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.sns_operations.R
 \name{confirm_subscription}
 \alias{confirm_subscription}
-\title{Verifies an endpoint owner's intent to receive messages by validating the token sent to the endpoint by an earlier \code{Subscribe} action}
+\title{Verifies an endpoint owner's intent to receive messages by validating the token sent to the endpoint by an earlier Subscribe action}
 \usage{
-confirm_subscription(
-  TopicArn = "string",
-  Token = "string",
-  AuthenticateOnUnsubscribe = "string"
-)
+confirm_subscription(TopicArn, Token, AuthenticateOnUnsubscribe = NULL)
 }
 \arguments{
 \item{TopicArn}{[required] The ARN of the topic for which you wish to confirm a subscription.}
@@ -20,6 +16,12 @@ confirm_subscription(
 \description{
 Verifies an endpoint owner's intent to receive messages by validating the token sent to the endpoint by an earlier \code{Subscribe} action. If the token is valid, the action creates a new subscription and returns its Amazon Resource Name (ARN). This call requires an AWS signature only when the \code{AuthenticateOnUnsubscribe} flag is set to "true".
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{confirm_subscription(
+  TopicArn = "string",
+  Token = "string",
+  AuthenticateOnUnsubscribe = "string"
+)
 }
+}
+

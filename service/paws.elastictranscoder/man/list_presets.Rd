@@ -4,10 +4,7 @@
 \alias{list_presets}
 \title{The ListPresets operation gets a list of the default presets included with Elastic Transcoder and the presets that you've added in an AWS region}
 \usage{
-list_presets(
-  Ascending = "string",
-  PageToken = "string"
-)
+list_presets(Ascending = NULL, PageToken = NULL)
 }
 \arguments{
 \item{Ascending}{To list presets in chronological order by the date and time that they were created, enter \code{true}. To list presets in reverse chronological order, enter \code{false}.}
@@ -17,6 +14,11 @@ list_presets(
 \description{
 The ListPresets operation gets a list of the default presets included with Elastic Transcoder and the presets that you've added in an AWS region.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_presets(
+  Ascending = "string",
+  PageToken = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{list_branches}
 \title{Gets information about one or more branches in a repository}
 \usage{
-list_branches(
-  repositoryName = "string",
-  nextToken = "string"
-)
+list_branches(repositoryName, nextToken = NULL)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository that contains the branches.}
@@ -17,6 +14,11 @@ list_branches(
 \description{
 Gets information about one or more branches in a repository.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_branches(
+  repositoryName = "string",
+  nextToken = "string"
+)
 }
+}
+

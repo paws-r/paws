@@ -4,36 +4,10 @@
 \alias{create_association}
 \title{Associates the specified Systems Manager document with the specified instances or targets}
 \usage{
-create_association(
-  Name = "string",
-  DocumentVersion = "string",
-  InstanceId = "string",
-  Parameters = list(
-    list(
-      "string"
-    )
-  ),
-  Targets = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  ScheduleExpression = "string",
-  OutputLocation = list(
-    S3Location = list(
-      OutputS3Region = "string",
-      OutputS3BucketName = "string",
-      OutputS3KeyPrefix = "string"
-    )
-  ),
-  AssociationName = "string",
-  MaxErrors = "string",
-  MaxConcurrency = "string",
-  ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED"
-)
+create_association(Name, DocumentVersion = NULL, InstanceId = NULL,
+  Parameters = NULL, Targets = NULL, ScheduleExpression = NULL,
+  OutputLocation = NULL, AssociationName = NULL, MaxErrors = NULL,
+  MaxConcurrency = NULL, ComplianceSeverity = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the Systems Manager document.}
@@ -68,8 +42,39 @@ Associates the specified Systems Manager document with the specified instances o
 \details{
 When you associate a document with one or more instances using instance IDs or tags, SSM Agent running on the instance processes the document and configures the instance as specified.
 
-If you associate a document with an instance that already has an associated document, the system returns the AssociationAlreadyExists exception.
+If you associate a document with an instance that already has an associated document, the system throws the AssociationAlreadyExists exception.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{create_association(
+  Name = "string",
+  DocumentVersion = "string",
+  InstanceId = "string",
+  Parameters = list(
+    list(
+      "string"
+    )
+  ),
+  Targets = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  ScheduleExpression = "string",
+  OutputLocation = list(
+    S3Location = list(
+      OutputS3Region = "string",
+      OutputS3BucketName = "string",
+      OutputS3KeyPrefix = "string"
+    )
+  ),
+  AssociationName = "string",
+  MaxErrors = "string",
+  MaxConcurrency = "string",
+  ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED"
+)
+}
+}
 
-}

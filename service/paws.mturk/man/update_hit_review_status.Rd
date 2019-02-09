@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{update_hit_review_status}
 \alias{update_hit_review_status}
-\title{The \code{UpdateHITReviewStatus} operation updates the status of a HIT}
+\title{The UpdateHITReviewStatus operation updates the status of a HIT}
 \usage{
-update_hit_review_status(
-  HITId = "string",
-  Revert = TRUE|FALSE
-)
+update_hit_review_status(HITId, Revert = NULL)
 }
 \arguments{
 \item{HITId}{[required] The ID of the HIT to update.}
@@ -21,6 +18,11 @@ update_hit_review_status(
 \description{
 The \code{UpdateHITReviewStatus} operation updates the status of a HIT. If the status is Reviewable, this operation can update the status to Reviewing, or it can revert a Reviewing HIT back to the Reviewable status.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_hit_review_status(
+  HITId = "string",
+  Revert = TRUE|FALSE
+)
 }
+}
+

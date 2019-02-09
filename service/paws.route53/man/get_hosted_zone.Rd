@@ -4,9 +4,7 @@
 \alias{get_hosted_zone}
 \title{Gets information about a specified hosted zone including the four name servers assigned to the hosted zone}
 \usage{
-get_hosted_zone(
-  Id = "string"
-)
+get_hosted_zone(Id)
 }
 \arguments{
 \item{Id}{[required] The ID of the hosted zone that you want to get information about.}
@@ -14,11 +12,18 @@ get_hosted_zone(
 \description{
 Gets information about a specified hosted zone including the four name servers assigned to the hosted zone.
 }
+\section{Accepted Parameters}{
+\preformatted{get_hosted_zone(
+  Id = "string"
+)
+}
+}
+
 \examples{
 # The following example gets information about the Z3M3LMPEXAMPLE hosted
 # zone.
-get_hosted_zone(
+\donttest{get_hosted_zone(
   Id = "Z3M3LMPEXAMPLE"
-)
+)}
 
 }

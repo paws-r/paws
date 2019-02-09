@@ -4,11 +4,8 @@
 \alias{list_signing_profiles}
 \title{Lists all available signing profiles in your AWS account}
 \usage{
-list_signing_profiles(
-  includeCanceled = TRUE|FALSE,
-  maxResults = 123,
-  nextToken = "string"
-)
+list_signing_profiles(includeCanceled = NULL, maxResults = NULL,
+  nextToken = NULL)
 }
 \arguments{
 \item{includeCanceled}{Designates whether to include profiles with the status of \code{CANCELED}.}
@@ -20,6 +17,12 @@ list_signing_profiles(
 \description{
 Lists all available signing profiles in your AWS account. Returns only profiles with an \code{ACTIVE} status unless the \code{includeCanceled} request field is set to \code{true}. If additional jobs remain to be listed, AWS Signer returns a \code{nextToken} value. Use this value in subsequent calls to \code{ListSigningJobs} to fetch the remaining values. You can continue calling \code{ListSigningJobs} with your \code{maxResults} parameter and with new values that AWS Signer returns in the \code{nextToken} parameter until all of your signing jobs have been returned.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_signing_profiles(
+  includeCanceled = TRUE|FALSE,
+  maxResults = 123,
+  nextToken = "string"
+)
 }
+}
+

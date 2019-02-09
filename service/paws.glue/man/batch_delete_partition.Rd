@@ -4,18 +4,8 @@
 \alias{batch_delete_partition}
 \title{Deletes one or more partitions in a batch operation}
 \usage{
-batch_delete_partition(
-  CatalogId = "string",
-  DatabaseName = "string",
-  TableName = "string",
-  PartitionsToDelete = list(
-    list(
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
+batch_delete_partition(CatalogId = NULL, DatabaseName, TableName,
+  PartitionsToDelete)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the partition to be deleted resides. If none is supplied, the AWS account ID is used by default.}
@@ -29,6 +19,19 @@ batch_delete_partition(
 \description{
 Deletes one or more partitions in a batch operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_delete_partition(
+  CatalogId = "string",
+  DatabaseName = "string",
+  TableName = "string",
+  PartitionsToDelete = list(
+    list(
+      Values = list(
+        "string"
+      )
+    )
+  )
+)
 }
+}
+

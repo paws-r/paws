@@ -4,12 +4,7 @@
 \alias{delete_hsm}
 \title{Deletes the specified HSM}
 \usage{
-delete_hsm(
-  ClusterId = "string",
-  HsmId = "string",
-  EniId = "string",
-  EniIp = "string"
-)
+delete_hsm(ClusterId, HsmId = NULL, EniId = NULL, EniIp = NULL)
 }
 \arguments{
 \item{ClusterId}{[required] The identifier (ID) of the cluster that contains the HSM that you are deleting.}
@@ -23,6 +18,13 @@ delete_hsm(
 \description{
 Deletes the specified HSM. To specify an HSM, you can use its identifier (ID), the IP address of the HSM's elastic network interface (ENI), or the ID of the HSM's ENI. You need to specify only one of these values. To find these values, use DescribeClusters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_hsm(
+  ClusterId = "string",
+  HsmId = "string",
+  EniId = "string",
+  EniIp = "string"
+)
 }
+}
+

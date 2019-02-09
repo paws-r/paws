@@ -9,6 +9,8 @@ delete_notification_channel()
 \description{
 Deletes an AWS Firewall Manager association with the IAM role and the Amazon Simple Notification Service (SNS) topic that is used to record AWS Firewall Manager SNS logs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_notification_channel()
 }
+}
+

@@ -4,7 +4,18 @@
 \alias{add_instance_groups}
 \title{Adds one or more instance groups to a running cluster}
 \usage{
-add_instance_groups(
+add_instance_groups(InstanceGroups, JobFlowId)
+}
+\arguments{
+\item{InstanceGroups}{[required] Instance groups to add.}
+
+\item{JobFlowId}{[required] Job flow in which to add the instance groups.}
+}
+\description{
+Adds one or more instance groups to a running cluster.
+}
+\section{Accepted Parameters}{
+\preformatted{add_instance_groups(
   InstanceGroups = list(
     list(
       Name = "string",
@@ -78,14 +89,5 @@ add_instance_groups(
   JobFlowId = "string"
 )
 }
-\arguments{
-\item{InstanceGroups}{[required] Instance groups to add.}
+}
 
-\item{JobFlowId}{[required] Job flow in which to add the instance groups.}
-}
-\description{
-Adds one or more instance groups to a running cluster.
-}
-\examples{
-
-}

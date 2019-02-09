@@ -4,20 +4,8 @@
 \alias{create_assessment_template}
 \title{Creates an assessment template for the assessment target that is specified by the ARN of the assessment target}
 \usage{
-create_assessment_template(
-  assessmentTargetArn = "string",
-  assessmentTemplateName = "string",
-  durationInSeconds = 123,
-  rulesPackageArns = list(
-    "string"
-  ),
-  userAttributesForFindings = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+create_assessment_template(assessmentTargetArn, assessmentTemplateName,
+  durationInSeconds, rulesPackageArns, userAttributesForFindings = NULL)
 }
 \arguments{
 \item{assessmentTargetArn}{[required] The ARN that specifies the assessment target for which you want to create the assessment template.}
@@ -33,10 +21,28 @@ create_assessment_template(
 \description{
 Creates an assessment template for the assessment target that is specified by the ARN of the assessment target. If the \href{https://docs.aws.amazon.com/inspector/latest/userguide/inspector_slr.html}{service-linked role} isn't already registered, this action also creates and registers a service-linked role to grant Amazon Inspector access to AWS Services needed to perform security assessments.
 }
+\section{Accepted Parameters}{
+\preformatted{create_assessment_template(
+  assessmentTargetArn = "string",
+  assessmentTemplateName = "string",
+  durationInSeconds = 123,
+  rulesPackageArns = list(
+    "string"
+  ),
+  userAttributesForFindings = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # Creates an assessment template for the assessment target that is
 # specified by the ARN of the assessment target.
-create_assessment_template(
+\donttest{create_assessment_template(
   assessmentTargetArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX",
   assessmentTemplateName = "ExampleAssessmentTemplate",
   durationInSeconds = 180L,
@@ -49,6 +55,6 @@ create_assessment_template(
       value = "example"
     )
   )
-)
+)}
 
 }

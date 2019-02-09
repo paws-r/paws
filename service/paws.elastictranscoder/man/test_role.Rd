@@ -4,14 +4,7 @@
 \alias{test_role}
 \title{The TestRole operation tests the IAM role used to create the pipeline}
 \usage{
-test_role(
-  Role = "string",
-  InputBucket = "string",
-  OutputBucket = "string",
-  Topics = list(
-    "string"
-  )
-)
+test_role(Role, InputBucket, OutputBucket, Topics)
 }
 \arguments{
 \item{Role}{[required] The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to test.}
@@ -28,6 +21,15 @@ The TestRole operation tests the IAM role used to create the pipeline.
 \details{
 The \code{TestRole} action lets you determine whether the IAM role you are using has sufficient permissions to let Elastic Transcoder perform tasks associated with the transcoding process. The action attempts to assume the specified IAM role, checks read access to the input and output buckets, and tries to send a test notification to Amazon SNS topics that you specify.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{test_role(
+  Role = "string",
+  InputBucket = "string",
+  OutputBucket = "string",
+  Topics = list(
+    "string"
+  )
+)
 }
+}
+

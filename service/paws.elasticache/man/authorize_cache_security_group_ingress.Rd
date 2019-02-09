@@ -4,11 +4,8 @@
 \alias{authorize_cache_security_group_ingress}
 \title{Allows network ingress to a cache security group}
 \usage{
-authorize_cache_security_group_ingress(
-  CacheSecurityGroupName = "string",
-  EC2SecurityGroupName = "string",
-  EC2SecurityGroupOwnerId = "string"
-)
+authorize_cache_security_group_ingress(CacheSecurityGroupName,
+  EC2SecurityGroupName, EC2SecurityGroupOwnerId)
 }
 \arguments{
 \item{CacheSecurityGroupName}{[required] The cache security group that allows network ingress.}
@@ -23,6 +20,12 @@ Allows network ingress to a cache security group. Applications using ElastiCache
 \details{
 You cannot authorize ingress from an Amazon EC2 security group in one region to an ElastiCache cluster in another region.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{authorize_cache_security_group_ingress(
+  CacheSecurityGroupName = "string",
+  EC2SecurityGroupName = "string",
+  EC2SecurityGroupOwnerId = "string"
+)
 }
+}
+

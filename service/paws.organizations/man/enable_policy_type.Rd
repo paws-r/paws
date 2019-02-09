@@ -4,10 +4,7 @@
 \alias{enable_policy_type}
 \title{Enables a policy type in a root}
 \usage{
-enable_policy_type(
-  RootId = "string",
-  PolicyType = "SERVICE_CONTROL_POLICY"
-)
+enable_policy_type(RootId, PolicyType)
 }
 \arguments{
 \item{RootId}{[required] The unique identifier (ID) of the root in which you want to enable a policy type. You can get the ID from the ListRoots operation.
@@ -26,13 +23,21 @@ You can enable a policy type in a root only if that policy type is available in 
 
 To view the status of policy type in a root, use ListRoots.
 }
+\section{Accepted Parameters}{
+\preformatted{enable_policy_type(
+  RootId = "string",
+  PolicyType = "SERVICE_CONTROL_POLICY"
+)
+}
+}
+
 \examples{
 # The following example shows how to enable the service control policy
 # (SCP) policy type in a root. The output shows a root object with a
 # PolicyTypes response element showing that SCPs are now enabled:/n/n
-enable_policy_type(
+\donttest{enable_policy_type(
   PolicyType = "SERVICE_CONTROL_POLICY",
   RootId = "r-examplerootid111"
-)
+)}
 
 }

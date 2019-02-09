@@ -4,11 +4,7 @@
 \alias{delete_dataset}
 \title{Deletes the specific dataset}
 \usage{
-delete_dataset(
-  IdentityPoolId = "string",
-  IdentityId = "string",
-  DatasetName = "string"
-)
+delete_dataset(IdentityPoolId, IdentityId, DatasetName)
 }
 \arguments{
 \item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
@@ -23,6 +19,12 @@ Deletes the specific dataset. The dataset will be deleted permanently, and the a
 \details{
 This API can be called with temporary user credentials provided by Cognito Identity or with developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_dataset(
+  IdentityPoolId = "string",
+  IdentityId = "string",
+  DatasetName = "string"
+)
 }
+}
+

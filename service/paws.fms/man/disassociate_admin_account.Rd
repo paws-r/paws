@@ -9,6 +9,8 @@ disassociate_admin_account()
 \description{
 Disassociates the account that has been set as the AWS Firewall Manager administrator account. You will need to submit an \code{AssociateAdminAccount} request to set a new account as the AWS Firewall administrator.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_admin_account()
 }
+}
+

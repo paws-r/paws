@@ -9,6 +9,8 @@ describe_account_audit_configuration()
 \description{
 Gets information about the Device Defender audit settings for this account. Settings include how audit notifications are sent and which audit checks are enabled or disabled.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_account_audit_configuration()
 }
+}
+

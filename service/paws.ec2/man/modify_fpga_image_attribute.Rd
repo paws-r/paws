@@ -4,7 +4,37 @@
 \alias{modify_fpga_image_attribute}
 \title{Modifies the specified attribute of the specified Amazon FPGA Image (AFI)}
 \usage{
-modify_fpga_image_attribute(
+modify_fpga_image_attribute(DryRun = NULL, FpgaImageId,
+  Attribute = NULL, OperationType = NULL, UserIds = NULL,
+  UserGroups = NULL, ProductCodes = NULL, LoadPermission = NULL,
+  Description = NULL, Name = NULL)
+}
+\arguments{
+\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{FpgaImageId}{[required] The ID of the AFI.}
+
+\item{Attribute}{The name of the attribute.}
+
+\item{OperationType}{The operation type.}
+
+\item{UserIds}{One or more AWS account IDs. This parameter is valid only when modifying the \code{loadPermission} attribute.}
+
+\item{UserGroups}{One or more user groups. This parameter is valid only when modifying the \code{loadPermission} attribute.}
+
+\item{ProductCodes}{One or more product codes. After you add a product code to an AFI, it can't be removed. This parameter is valid only when modifying the \code{productCodes} attribute.}
+
+\item{LoadPermission}{The load permission for the AFI.}
+
+\item{Description}{A description for the AFI.}
+
+\item{Name}{A name for the AFI.}
+}
+\description{
+Modifies the specified attribute of the specified Amazon FPGA Image (AFI).
+}
+\section{Accepted Parameters}{
+\preformatted{modify_fpga_image_attribute(
   DryRun = TRUE|FALSE,
   FpgaImageId = "string",
   Attribute = "description"|"name"|"loadPermission"|"productCodes",
@@ -36,30 +66,5 @@ modify_fpga_image_attribute(
   Name = "string"
 )
 }
-\arguments{
-\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{FpgaImageId}{[required] The ID of the AFI.}
-
-\item{Attribute}{The name of the attribute.}
-
-\item{OperationType}{The operation type.}
-
-\item{UserIds}{One or more AWS account IDs. This parameter is valid only when modifying the \code{loadPermission} attribute.}
-
-\item{UserGroups}{One or more user groups. This parameter is valid only when modifying the \code{loadPermission} attribute.}
-
-\item{ProductCodes}{One or more product codes. After you add a product code to an AFI, it can't be removed. This parameter is valid only when modifying the \code{productCodes} attribute.}
-
-\item{LoadPermission}{The load permission for the AFI.}
-
-\item{Description}{A description for the AFI.}
-
-\item{Name}{A name for the AFI.}
 }
-\description{
-Modifies the specified attribute of the specified Amazon FPGA Image (AFI).
-}
-\examples{
 
-}

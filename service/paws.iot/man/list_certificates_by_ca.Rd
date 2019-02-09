@@ -4,12 +4,8 @@
 \alias{list_certificates_by_ca}
 \title{List the device certificates signed by the specified CA certificate}
 \usage{
-list_certificates_by_ca(
-  caCertificateId = "string",
-  pageSize = 123,
-  marker = "string",
-  ascendingOrder = TRUE|FALSE
-)
+list_certificates_by_ca(caCertificateId, pageSize = NULL,
+  marker = NULL, ascendingOrder = NULL)
 }
 \arguments{
 \item{caCertificateId}{[required] The ID of the CA certificate. This operation will list all registered device certificate that were signed by this CA certificate.}
@@ -23,6 +19,13 @@ list_certificates_by_ca(
 \description{
 List the device certificates signed by the specified CA certificate.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_certificates_by_ca(
+  caCertificateId = "string",
+  pageSize = 123,
+  marker = "string",
+  ascendingOrder = TRUE|FALSE
+)
 }
+}
+

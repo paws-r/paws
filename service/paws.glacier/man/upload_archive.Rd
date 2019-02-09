@@ -4,13 +4,8 @@
 \alias{upload_archive}
 \title{This operation adds an archive to a vault}
 \usage{
-upload_archive(
-  vaultName = "string",
-  accountId = "string",
-  archiveDescription = "string",
-  checksum = "string",
-  body = raw
-)
+upload_archive(vaultName, accountId, archiveDescription = NULL,
+  checksum = NULL, body = NULL)
 }
 \arguments{
 \item{vaultName}{[required] The name of the vault.}
@@ -39,14 +34,25 @@ An AWS account has full permission to perform all operations (actions). However,
 
 For conceptual information and underlying REST API, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-an-archive.html}{Uploading an Archive in Amazon Glacier} and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-post.html}{Upload Archive} in the \emph{Amazon Glacier Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{upload_archive(
+  vaultName = "string",
+  accountId = "string",
+  archiveDescription = "string",
+  checksum = "string",
+  body = raw
+)
+}
+}
+
 \examples{
 # The example adds an archive to a vault.
-upload_archive(
+\donttest{upload_archive(
   accountId = "-",
   archiveDescription = "",
   body = "example-data-to-upload",
   checksum = "",
   vaultName = "my-vault"
-)
+)}
 
 }

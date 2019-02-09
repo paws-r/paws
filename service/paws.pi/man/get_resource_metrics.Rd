@@ -4,30 +4,9 @@
 \alias{get_resource_metrics}
 \title{Retrieve Performance Insights metrics for a set of data sources, over a time period}
 \usage{
-get_resource_metrics(
-  ServiceType = "RDS",
-  Identifier = "string",
-  MetricQueries = list(
-    list(
-      Metric = "string",
-      GroupBy = list(
-        Group = "string",
-        Dimensions = list(
-          "string"
-        ),
-        Limit = 123
-      ),
-      Filter = list(
-        "string"
-      )
-    )
-  ),
-  StartTime = as.POSIXct("2015-01-01"),
-  EndTime = as.POSIXct("2015-01-01"),
-  PeriodInSeconds = 123,
-  MaxResults = 123,
-  NextToken = "string"
-)
+get_resource_metrics(ServiceType, Identifier, MetricQueries, StartTime,
+  EndTime, PeriodInSeconds = NULL, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{ServiceType}{[required] The AWS service for which Performance Insights will return metrics. The only valid value for \emph{ServiceType} is: \code{RDS}}
@@ -64,6 +43,31 @@ If you don't specify \code{PeriodInSeconds}, then Performance Insights will choo
 \description{
 Retrieve Performance Insights metrics for a set of data sources, over a time period. You can provide specific dimension groups and dimensions, and provide aggregation and filtering criteria for each group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_resource_metrics(
+  ServiceType = "RDS",
+  Identifier = "string",
+  MetricQueries = list(
+    list(
+      Metric = "string",
+      GroupBy = list(
+        Group = "string",
+        Dimensions = list(
+          "string"
+        ),
+        Limit = 123
+      ),
+      Filter = list(
+        "string"
+      )
+    )
+  ),
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  PeriodInSeconds = 123,
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

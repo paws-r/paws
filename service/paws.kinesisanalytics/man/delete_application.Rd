@@ -4,10 +4,7 @@
 \alias{delete_application}
 \title{Deletes the specified application}
 \usage{
-delete_application(
-  ApplicationName = "string",
-  CreateTimestamp = as.POSIXct("2015-01-01")
-)
+delete_application(ApplicationName, CreateTimestamp)
 }
 \arguments{
 \item{ApplicationName}{[required] Name of the Amazon Kinesis Analytics application to delete.}
@@ -20,6 +17,11 @@ Deletes the specified application. Amazon Kinesis Analytics halts application ex
 \details{
 This operation requires permissions to perform the \code{kinesisanalytics:DeleteApplication} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_application(
+  ApplicationName = "string",
+  CreateTimestamp = as.POSIXct("2015-01-01")
+)
 }
+}
+

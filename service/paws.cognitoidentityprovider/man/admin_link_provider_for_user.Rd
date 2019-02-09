@@ -2,21 +2,9 @@
 % Please edit documentation in R/paws.cognitoidentityprovider_operations.R
 \name{admin_link_provider_for_user}
 \alias{admin_link_provider_for_user}
-\title{Links an existing user account in a user pool (\code{DestinationUser}) to an identity from an external identity provider (\code{SourceUser}) based on a specified attribute name and value from the external identity provider}
+\title{Links an existing user account in a user pool (DestinationUser) to an identity from an external identity provider (SourceUser) based on a specified attribute name and value from the external identity provider}
 \usage{
-admin_link_provider_for_user(
-  UserPoolId = "string",
-  DestinationUser = list(
-    ProviderName = "string",
-    ProviderAttributeName = "string",
-    ProviderAttributeValue = "string"
-  ),
-  SourceUser = list(
-    ProviderName = "string",
-    ProviderAttributeName = "string",
-    ProviderAttributeValue = "string"
-  )
-)
+admin_link_provider_for_user(UserPoolId, DestinationUser, SourceUser)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
@@ -47,6 +35,20 @@ See also .
 
 This action is enabled only for admin access and requires developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{admin_link_provider_for_user(
+  UserPoolId = "string",
+  DestinationUser = list(
+    ProviderName = "string",
+    ProviderAttributeName = "string",
+    ProviderAttributeValue = "string"
+  ),
+  SourceUser = list(
+    ProviderName = "string",
+    ProviderAttributeName = "string",
+    ProviderAttributeValue = "string"
+  )
+)
 }
+}
+

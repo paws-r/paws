@@ -4,15 +4,7 @@
 \alias{start_maintenance}
 \title{Manually starts server maintenance}
 \usage{
-start_maintenance(
-  ServerName = "string",
-  EngineAttributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  )
-)
+start_maintenance(ServerName, EngineAttributes = NULL)
 }
 \arguments{
 \item{ServerName}{[required] The name of the server on which to run maintenance.}
@@ -25,6 +17,16 @@ Manually starts server maintenance. This command can be useful if an earlier mai
 \details{
 Maintenance can only be started on servers in \code{HEALTHY} and \code{UNHEALTHY} states. Otherwise, an \code{InvalidStateException} is thrown. A \code{ResourceNotFoundException} is thrown when the server does not exist. A \code{ValidationException} is raised when parameters of the request are not valid.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_maintenance(
+  ServerName = "string",
+  EngineAttributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

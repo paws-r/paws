@@ -4,10 +4,7 @@
 \alias{set_local_console_password}
 \title{Sets the password for your VM local console}
 \usage{
-set_local_console_password(
-  GatewayARN = "string",
-  LocalConsolePassword = "string"
-)
+set_local_console_password(GatewayARN, LocalConsolePassword)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -17,11 +14,19 @@ set_local_console_password(
 \description{
 Sets the password for your VM local console. When you log in to the local console for the first time, you log in to the VM with the default credentials. We recommend that you set a new password. You don't need to know the default password to set a new password.
 }
+\section{Accepted Parameters}{
+\preformatted{set_local_console_password(
+  GatewayARN = "string",
+  LocalConsolePassword = "string"
+)
+}
+}
+
 \examples{
 # Sets the password for your VM local console.
-set_local_console_password(
+\donttest{set_local_console_password(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
   LocalConsolePassword = "PassWordMustBeAtLeast6Chars."
-)
+)}
 
 }

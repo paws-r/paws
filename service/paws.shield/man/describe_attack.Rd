@@ -4,9 +4,7 @@
 \alias{describe_attack}
 \title{Describes the details of a DDoS attack}
 \usage{
-describe_attack(
-  AttackId = "string"
-)
+describe_attack(AttackId)
 }
 \arguments{
 \item{AttackId}{[required] The unique identifier (ID) for the attack that to be described.}
@@ -14,6 +12,10 @@ describe_attack(
 \description{
 Describes the details of a DDoS attack.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_attack(
+  AttackId = "string"
+)
 }
+}
+

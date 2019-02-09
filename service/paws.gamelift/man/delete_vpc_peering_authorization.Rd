@@ -4,10 +4,7 @@
 \alias{delete_vpc_peering_authorization}
 \title{Cancels a pending VPC peering authorization for the specified VPC}
 \usage{
-delete_vpc_peering_authorization(
-  GameLiftAwsAccountId = "string",
-  PeerVpcId = "string"
-)
+delete_vpc_peering_authorization(GameLiftAwsAccountId, PeerVpcId)
 }
 \arguments{
 \item{GameLiftAwsAccountId}{[required] Unique identifier for the AWS account that you use to manage your Amazon GameLift fleet. You can find your Account ID in the AWS Management Console under account settings.}
@@ -28,6 +25,11 @@ VPC peering connection operations include:
 \item DeleteVpcPeeringConnection
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_vpc_peering_authorization(
+  GameLiftAwsAccountId = "string",
+  PeerVpcId = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{deactivate_pipeline}
 \title{Deactivates the specified running pipeline}
 \usage{
-deactivate_pipeline(
-  pipelineId = "string",
-  cancelActive = TRUE|FALSE
-)
+deactivate_pipeline(pipelineId, cancelActive = NULL)
 }
 \arguments{
 \item{pipelineId}{[required] The ID of the pipeline.}
@@ -20,6 +17,11 @@ Deactivates the specified running pipeline. The pipeline is set to the \code{DEA
 \details{
 To resume a deactivated pipeline, use ActivatePipeline. By default, the pipeline resumes from the last completed execution. Optionally, you can specify the date and time to resume the pipeline.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{deactivate_pipeline(
+  pipelineId = "string",
+  cancelActive = TRUE|FALSE
+)
 }
+}
+

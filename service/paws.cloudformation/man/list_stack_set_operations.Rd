@@ -4,11 +4,8 @@
 \alias{list_stack_set_operations}
 \title{Returns summary information about operations performed on a stack set}
 \usage{
-list_stack_set_operations(
-  StackSetName = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_stack_set_operations(StackSetName, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to get operation summaries for.}
@@ -20,6 +17,12 @@ list_stack_set_operations(
 \description{
 Returns summary information about operations performed on a stack set.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_stack_set_operations(
+  StackSetName = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

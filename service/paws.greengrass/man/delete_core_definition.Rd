@@ -4,9 +4,7 @@
 \alias{delete_core_definition}
 \title{Deletes a core definition}
 \usage{
-delete_core_definition(
-  CoreDefinitionId = "string"
-)
+delete_core_definition(CoreDefinitionId)
 }
 \arguments{
 \item{CoreDefinitionId}{[required] The ID of the core definition.}
@@ -14,6 +12,10 @@ delete_core_definition(
 \description{
 Deletes a core definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_core_definition(
+  CoreDefinitionId = "string"
+)
 }
+}
+

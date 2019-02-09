@@ -4,11 +4,7 @@
 \alias{change_password}
 \title{Changes the password for a specified user in a user pool}
 \usage{
-change_password(
-  PreviousPassword = "string",
-  ProposedPassword = "string",
-  AccessToken = "string"
-)
+change_password(PreviousPassword, ProposedPassword, AccessToken)
 }
 \arguments{
 \item{PreviousPassword}{[required] The old password.}
@@ -20,6 +16,12 @@ change_password(
 \description{
 Changes the password for a specified user in a user pool.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{change_password(
+  PreviousPassword = "string",
+  ProposedPassword = "string",
+  AccessToken = "string"
+)
 }
+}
+

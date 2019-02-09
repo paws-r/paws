@@ -4,19 +4,9 @@
 \alias{describe_cases}
 \title{Returns a list of cases that you specify by passing one or more case IDs}
 \usage{
-describe_cases(
-  caseIdList = list(
-    "string"
-  ),
-  displayId = "string",
-  afterTime = "string",
-  beforeTime = "string",
-  includeResolvedCases = TRUE|FALSE,
-  nextToken = "string",
-  maxResults = 123,
-  language = "string",
-  includeCommunications = TRUE|FALSE
-)
+describe_cases(caseIdList = NULL, displayId = NULL, afterTime = NULL,
+  beforeTime = NULL, includeResolvedCases = NULL, nextToken = NULL,
+  maxResults = NULL, language = NULL, includeCommunications = NULL)
 }
 \arguments{
 \item{caseIdList}{A list of ID numbers of the support cases you want returned. The maximum number of cases is 100.}
@@ -49,6 +39,20 @@ The response returns the following in JSON format:
 \item One or more \code{nextToken} values, which specify where to paginate the returned records represented by the \code{CaseDetails} objects.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_cases(
+  caseIdList = list(
+    "string"
+  ),
+  displayId = "string",
+  afterTime = "string",
+  beforeTime = "string",
+  includeResolvedCases = TRUE|FALSE,
+  nextToken = "string",
+  maxResults = 123,
+  language = "string",
+  includeCommunications = TRUE|FALSE
+)
 }
+}
+

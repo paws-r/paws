@@ -4,25 +4,9 @@
 \alias{create_deployment_config}
 \title{Creates a deployment configuration}
 \usage{
-create_deployment_config(
-  deploymentConfigName = "string",
-  minimumHealthyHosts = list(
-    value = 123,
-    type = "HOST_COUNT"|"FLEET_PERCENT"
-  ),
-  trafficRoutingConfig = list(
-    type = "TimeBasedCanary"|"TimeBasedLinear"|"AllAtOnce",
-    timeBasedCanary = list(
-      canaryPercentage = 123,
-      canaryInterval = 123
-    ),
-    timeBasedLinear = list(
-      linearPercentage = 123,
-      linearInterval = 123
-    )
-  ),
-  computePlatform = "Server"|"Lambda"|"ECS"
-)
+create_deployment_config(deploymentConfigName,
+  minimumHealthyHosts = NULL, trafficRoutingConfig = NULL,
+  computePlatform = NULL)
 }
 \arguments{
 \item{deploymentConfigName}{[required] The name of the deployment configuration to create.}
@@ -46,6 +30,26 @@ For example, to set a minimum of 95% healthy instance, specify a type of FLEET\_
 \description{
 Creates a deployment configuration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_deployment_config(
+  deploymentConfigName = "string",
+  minimumHealthyHosts = list(
+    value = 123,
+    type = "HOST_COUNT"|"FLEET_PERCENT"
+  ),
+  trafficRoutingConfig = list(
+    type = "TimeBasedCanary"|"TimeBasedLinear"|"AllAtOnce",
+    timeBasedCanary = list(
+      canaryPercentage = 123,
+      canaryInterval = 123
+    ),
+    timeBasedLinear = list(
+      linearPercentage = 123,
+      linearInterval = 123
+    )
+  ),
+  computePlatform = "Server"|"Lambda"
+)
 }
+}
+

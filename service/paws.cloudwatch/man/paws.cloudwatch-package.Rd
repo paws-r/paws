@@ -6,10 +6,10 @@
 \alias{paws.cloudwatch-package}
 \title{paws.cloudwatch: Amazon CloudWatch}
 \description{
-Amazon CloudWatch monitors your Amazon Web Services (AWS)
-resources and the applications you run on AWS in real time. You can
-use CloudWatch to collect and track metrics, which are the variables
-you want to measure for your resources and applications.
+Amazon CloudWatch monitors your Amazon Web Services
+    (AWS) resources and the applications you run on AWS in real time. You
+    can use CloudWatch to collect and track metrics, which are the
+    variables you want to measure for your resources and applications.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

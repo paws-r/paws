@@ -4,7 +4,18 @@
 \alias{update_trigger}
 \title{Updates a trigger definition}
 \usage{
-update_trigger(
+update_trigger(Name, TriggerUpdate)
+}
+\arguments{
+\item{Name}{[required] The name of the trigger to update.}
+
+\item{TriggerUpdate}{[required] The new values with which to update the trigger.}
+}
+\description{
+Updates a trigger definition.
+}
+\section{Accepted Parameters}{
+\preformatted{update_trigger(
   Name = "string",
   TriggerUpdate = list(
     Name = "string",
@@ -36,14 +47,5 @@ update_trigger(
   )
 )
 }
-\arguments{
-\item{Name}{[required] The name of the trigger to update.}
+}
 
-\item{TriggerUpdate}{[required] The new values with which to update the trigger.}
-}
-\description{
-Updates a trigger definition.
-}
-\examples{
-
-}

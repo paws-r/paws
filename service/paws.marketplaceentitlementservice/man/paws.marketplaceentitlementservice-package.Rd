@@ -6,8 +6,8 @@
 \alias{paws.marketplaceentitlementservice-package}
 \title{paws.marketplaceentitlementservice: AWS Marketplace Entitlement Service}
 \description{
-This reference provides descriptions of the AWS Marketplace
-Entitlement Service API.
+This reference provides descriptions of the AWS
+    Marketplace Entitlement Service API.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

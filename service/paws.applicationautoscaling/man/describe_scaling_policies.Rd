@@ -4,16 +4,9 @@
 \alias{describe_scaling_policies}
 \title{Describes the scaling policies for the specified service namespace}
 \usage{
-describe_scaling_policies(
-  PolicyNames = list(
-    "string"
-  ),
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
-  ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property",
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_scaling_policies(PolicyNames = NULL, ServiceNamespace,
+  ResourceId = NULL, ScalableDimension = NULL, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{PolicyNames}{The names of the scaling policies to describe.}
@@ -62,11 +55,25 @@ You can filter the results using the \code{ResourceId}, \code{ScalableDimension}
 
 To create a scaling policy or update an existing one, see PutScalingPolicy. If you are no longer using a scaling policy, you can delete it using DeleteScalingPolicy.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_scaling_policies(
+  PolicyNames = list(
+    "string"
+  ),
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
+  ResourceId = "string",
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property",
+  MaxResults = 123,
+  NextToken = "string"
+)
+}
+}
+
 \examples{
 # This example describes the scaling policies for the ecs service
 # namespace.
-describe_scaling_policies(
+\donttest{describe_scaling_policies(
   ServiceNamespace = "ecs"
-)
+)}
 
 }

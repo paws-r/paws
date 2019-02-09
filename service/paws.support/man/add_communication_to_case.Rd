@@ -4,14 +4,8 @@
 \alias{add_communication_to_case}
 \title{Adds additional customer communication to an AWS Support case}
 \usage{
-add_communication_to_case(
-  caseId = "string",
-  communicationBody = "string",
-  ccEmailAddresses = list(
-    "string"
-  ),
-  attachmentSetId = "string"
-)
+add_communication_to_case(caseId = NULL, communicationBody,
+  ccEmailAddresses = NULL, attachmentSetId = NULL)
 }
 \arguments{
 \item{caseId}{The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
@@ -30,6 +24,15 @@ The response indicates the success or failure of the request.
 
 This operation implements a subset of the features of the AWS Support Center.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_communication_to_case(
+  caseId = "string",
+  communicationBody = "string",
+  ccEmailAddresses = list(
+    "string"
+  ),
+  attachmentSetId = "string"
+)
 }
+}
+

@@ -4,7 +4,21 @@
 \alias{list_compliance_summaries}
 \title{Returns a summary count of compliant and non-compliant resources for a compliance type}
 \usage{
-list_compliance_summaries(
+list_compliance_summaries(Filters = NULL, NextToken = NULL,
+  MaxResults = NULL)
+}
+\arguments{
+\item{Filters}{One or more compliance or inventory filters. Use a filter to return a more specific list of results.}
+
+\item{NextToken}{A token to start the list. Use this token to get the next set of results.}
+
+\item{MaxResults}{The maximum number of items to return for this call. Currently, you can specify null or 50. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
+}
+\description{
+Returns a summary count of compliant and non-compliant resources for a compliance type. For example, this call can return State Manager associations, patches, or custom compliance types according to the filter criteria that you specify.
+}
+\section{Accepted Parameters}{
+\preformatted{list_compliance_summaries(
   Filters = list(
     list(
       Key = "string",
@@ -18,16 +32,5 @@ list_compliance_summaries(
   MaxResults = 123
 )
 }
-\arguments{
-\item{Filters}{One or more compliance or inventory filters. Use a filter to return a more specific list of results.}
-
-\item{NextToken}{A token to start the list. Use this token to get the next set of results.}
-
-\item{MaxResults}{The maximum number of items to return for this call. Currently, you can specify null or 50. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 }
-\description{
-Returns a summary count of compliant and non-compliant resources for a compliance type. For example, this call can return State Manager associations, patches, or custom compliance types according to the filter criteria that you specify.
-}
-\examples{
 
-}

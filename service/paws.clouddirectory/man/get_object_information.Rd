@@ -4,13 +4,8 @@
 \alias{get_object_information}
 \title{Retrieves metadata about an object}
 \usage{
-get_object_information(
-  DirectoryArn = "string",
-  ObjectReference = list(
-    Selector = "string"
-  ),
-  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
-)
+get_object_information(DirectoryArn, ObjectReference,
+  ConsistencyLevel = NULL)
 }
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory being retrieved.}
@@ -22,6 +17,14 @@ get_object_information(
 \description{
 Retrieves metadata about an object.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_object_information(
+  DirectoryArn = "string",
+  ObjectReference = list(
+    Selector = "string"
+  ),
+  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
+)
 }
+}
+

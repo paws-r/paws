@@ -4,14 +4,7 @@
 \alias{disassociate_vpc_from_hosted_zone}
 \title{Disassociates a VPC from a Amazon Route 53 private hosted zone}
 \usage{
-disassociate_vpc_from_hosted_zone(
-  HostedZoneId = "string",
-  VPC = list(
-    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
-    VPCId = "string"
-  ),
-  Comment = "string"
-)
+disassociate_vpc_from_hosted_zone(HostedZoneId, VPC, Comment = NULL)
 }
 \arguments{
 \item{HostedZoneId}{[required] The ID of the private hosted zone that you want to disassociate a VPC from.}
@@ -30,6 +23,15 @@ Disassociates a VPC from a Amazon Route 53 private hosted zone. Note the followi
 \item You can submit a \code{DisassociateVPCFromHostedZone} request using either the account that created the hosted zone or the account that created the VPC.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_vpc_from_hosted_zone(
+  HostedZoneId = "string",
+  VPC = list(
+    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"sa-east-1"|"ca-central-1"|"cn-north-1",
+    VPCId = "string"
+  ),
+  Comment = "string"
+)
 }
+}
+

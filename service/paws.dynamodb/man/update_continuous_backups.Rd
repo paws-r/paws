@@ -2,14 +2,9 @@
 % Please edit documentation in R/paws.dynamodb_operations.R
 \name{update_continuous_backups}
 \alias{update_continuous_backups}
-\title{\code{UpdateContinuousBackups} enables or disables point in time recovery for the specified table}
+\title{UpdateContinuousBackups enables or disables point in time recovery for the specified table}
 \usage{
-update_continuous_backups(
-  TableName = "string",
-  PointInTimeRecoverySpecification = list(
-    PointInTimeRecoveryEnabled = TRUE|FALSE
-  )
-)
+update_continuous_backups(TableName, PointInTimeRecoverySpecification)
 }
 \arguments{
 \item{TableName}{[required] The name of the table.}
@@ -24,6 +19,13 @@ Once continuous backups and point in time recovery are enabled, you can restore 
 
 \code{LatestRestorableDateTime} is typically 5 minutes before the current time. You can restore your table to any point in time during the last 35 days..
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_continuous_backups(
+  TableName = "string",
+  PointInTimeRecoverySpecification = list(
+    PointInTimeRecoveryEnabled = TRUE|FALSE
+  )
+)
 }
+}
+

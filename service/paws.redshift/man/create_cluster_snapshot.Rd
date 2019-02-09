@@ -4,17 +4,8 @@
 \alias{create_cluster_snapshot}
 \title{Creates a manual snapshot of the specified cluster}
 \usage{
-create_cluster_snapshot(
-  SnapshotIdentifier = "string",
-  ClusterIdentifier = "string",
-  ManualSnapshotRetentionPeriod = 123,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_cluster_snapshot(SnapshotIdentifier, ClusterIdentifier,
+  Tags = NULL)
 }
 \arguments{
 \item{SnapshotIdentifier}{[required] A unique identifier for the snapshot that you are requesting. This identifier must be unique for all snapshots within the AWS account.
@@ -31,12 +22,6 @@ Example: \code{my-snapshot-id}}
 
 \item{ClusterIdentifier}{[required] The cluster identifier for which you want a snapshot.}
 
-\item{ManualSnapshotRetentionPeriod}{The number of days that a manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely.
-
-The value must be either -1 or an integer between 1 and 3,653.
-
-The default value is -1.}
-
 \item{Tags}{A list of tag instances.}
 }
 \description{
@@ -45,6 +30,17 @@ Creates a manual snapshot of the specified cluster. The cluster must be in the \
 \details{
 For more information about working with snapshots, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html}{Amazon Redshift Snapshots} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_cluster_snapshot(
+  SnapshotIdentifier = "string",
+  ClusterIdentifier = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

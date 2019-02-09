@@ -4,14 +4,7 @@
 \alias{search_resources}
 \title{Returns a list of AWS resource identifiers that matches a specified query}
 \usage{
-search_resources(
-  ResourceQuery = list(
-    Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
-    Query = "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+search_resources(ResourceQuery, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ResourceQuery}{[required] The search query, using the same formats that are supported for resource group definition.}
@@ -23,6 +16,15 @@ search_resources(
 \description{
 Returns a list of AWS resource identifiers that matches a specified query. The query uses the same format as a resource query in a CreateGroup or UpdateGroupQuery operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{search_resources(
+  ResourceQuery = list(
+    Type = "TAG_FILTERS_1_0",
+    Query = "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

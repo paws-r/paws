@@ -4,11 +4,8 @@
 \alias{list_configuration_revisions}
 \title{Returns a list of all revisions for the specified configuration}
 \usage{
-list_configuration_revisions(
-  ConfigurationId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_configuration_revisions(ConfigurationId, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{ConfigurationId}{[required] The unique ID that Amazon MQ generates for the configuration.}
@@ -20,6 +17,12 @@ list_configuration_revisions(
 \description{
 Returns a list of all revisions for the specified configuration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_configuration_revisions(
+  ConfigurationId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

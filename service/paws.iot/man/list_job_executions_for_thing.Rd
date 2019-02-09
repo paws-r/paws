@@ -4,12 +4,8 @@
 \alias{list_job_executions_for_thing}
 \title{Lists the job executions for the specified thing}
 \usage{
-list_job_executions_for_thing(
-  thingName = "string",
-  status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
-  maxResults = 123,
-  nextToken = "string"
-)
+list_job_executions_for_thing(thingName, status = NULL,
+  maxResults = NULL, nextToken = NULL)
 }
 \arguments{
 \item{thingName}{[required] The thing name.}
@@ -23,6 +19,13 @@ list_job_executions_for_thing(
 \description{
 Lists the job executions for the specified thing.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_job_executions_for_thing(
+  thingName = "string",
+  status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
+  maxResults = 123,
+  nextToken = "string"
+)
 }
+}
+

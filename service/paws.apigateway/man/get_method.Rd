@@ -4,11 +4,7 @@
 \alias{get_method}
 \title{Describe an existing Method resource}
 \usage{
-get_method(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string"
-)
+get_method(restApiId, resourceId, httpMethod)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -20,6 +16,12 @@ get_method(
 \description{
 Describe an existing Method resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_method(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string"
+)
 }
+}
+

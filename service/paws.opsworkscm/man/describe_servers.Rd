@@ -4,11 +4,8 @@
 \alias{describe_servers}
 \title{Lists all configuration management servers that are identified with your account}
 \usage{
-describe_servers(
-  ServerName = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+describe_servers(ServerName = NULL, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{ServerName}{Describes the server with the specified ServerName.}
@@ -25,6 +22,12 @@ This operation is synchronous.
 
 A \code{ResourceNotFoundException} is thrown when the server does not exist. A \code{ValidationException} is raised when parameters of the request are not valid.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_servers(
+  ServerName = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

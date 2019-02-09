@@ -8,14 +8,6 @@ test_that("list_bulk_deployments", {
     expect_error(list_bulk_deployments(MaxResults = 20), NA)
 })
 
-test_that("list_connector_definitions", {
-    expect_error(list_connector_definitions(), NA)
-})
-
-test_that("list_connector_definitions", {
-    expect_error(list_connector_definitions(MaxResults = 20), NA)
-})
-
 test_that("list_core_definitions", {
     expect_error(list_core_definitions(), NA)
 })

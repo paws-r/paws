@@ -4,9 +4,7 @@
 \alias{delete_instance_snapshot}
 \title{Deletes a specific snapshot of a virtual private server (or \emph{instance})}
 \usage{
-delete_instance_snapshot(
-  instanceSnapshotName = "string"
-)
+delete_instance_snapshot(instanceSnapshotName)
 }
 \arguments{
 \item{instanceSnapshotName}{[required] The name of the snapshot to delete.}
@@ -14,9 +12,10 @@ delete_instance_snapshot(
 \description{
 Deletes a specific snapshot of a virtual private server (or \emph{instance}).
 }
-\details{
-The \code{delete instance snapshot} operation supports tag-based access control via resource tags applied to the resource identified by instanceSnapshotName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\section{Accepted Parameters}{
+\preformatted{delete_instance_snapshot(
+  instanceSnapshotName = "string"
+)
 }
-\examples{
+}
 
-}

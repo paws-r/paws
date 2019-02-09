@@ -4,12 +4,8 @@
 \alias{describe_instances}
 \title{Retrieves information about a fleet's instances, including instance IDs}
 \usage{
-describe_instances(
-  FleetId = "string",
-  InstanceId = "string",
-  Limit = 123,
-  NextToken = "string"
-)
+describe_instances(FleetId, InstanceId = NULL, Limit = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{FleetId}{[required] Unique identifier for a fleet to retrieve instance information for.}
@@ -26,6 +22,13 @@ Retrieves information about a fleet's instances, including instance IDs. Use thi
 \details{
 To get a specific instance, specify fleet ID and instance ID. To get all instances in a fleet, specify a fleet ID only. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, an Instance object is returned for each result.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_instances(
+  FleetId = "string",
+  InstanceId = "string",
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

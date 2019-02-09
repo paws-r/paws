@@ -4,21 +4,13 @@
 \alias{create_subnet}
 \title{Creates a subnet in an existing VPC}
 \usage{
-create_subnet(
-  AvailabilityZone = "string",
-  AvailabilityZoneId = "string",
-  CidrBlock = "string",
-  Ipv6CidrBlock = "string",
-  VpcId = "string",
-  DryRun = TRUE|FALSE
-)
+create_subnet(AvailabilityZone = NULL, CidrBlock, Ipv6CidrBlock = NULL,
+  VpcId, DryRun = NULL)
 }
 \arguments{
 \item{AvailabilityZone}{The Availability Zone for the subnet.
 
 Default: AWS selects one for you. If you create more than one subnet in your VPC, we may not necessarily select a different zone for each subnet.}
-
-\item{AvailabilityZoneId}{The AZ ID of the subnet.}
 
 \item{CidrBlock}{[required] The IPv4 network range for the subnet, in CIDR notation. For example, \code{10.0.0.0/24}.}
 
@@ -44,13 +36,24 @@ If you launch an instance in a VPC using an Amazon EBS-backed AMI, the IP addres
 
 For more information about subnets, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html}{Your VPC and Subnets} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_subnet(
+  AvailabilityZone = "string",
+  CidrBlock = "string",
+  Ipv6CidrBlock = "string",
+  VpcId = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example creates a subnet in the specified VPC with the specified
 # CIDR block. We recommend that you let us select an Availability Zone for
 # you.
-create_subnet(
+\donttest{create_subnet(
   CidrBlock = "10.0.1.0/24",
   VpcId = "vpc-a01106c2"
-)
+)}
 
 }

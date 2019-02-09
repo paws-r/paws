@@ -4,10 +4,7 @@
 \alias{get_instance_access}
 \title{Requests remote access to a fleet instance}
 \usage{
-get_instance_access(
-  FleetId = "string",
-  InstanceId = "string"
-)
+get_instance_access(FleetId, InstanceId)
 }
 \arguments{
 \item{FleetId}{[required] Unique identifier for a fleet that contains the instance you want access to. The fleet can be in any of the following statuses: \code{ACTIVATING}, \code{ACTIVE}, or \code{ERROR}. Fleets with an \code{ERROR} status may be accessible for a short time before they are deleted.}
@@ -22,6 +19,11 @@ Access requires credentials that match the operating system of the instance. For
 
 To request access to a specific instance, specify the IDs of the instance and the fleet it belongs to. If successful, an InstanceAccess object is returned containing the instance's IP address and a set of credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_instance_access(
+  FleetId = "string",
+  InstanceId = "string"
+)
 }
+}
+

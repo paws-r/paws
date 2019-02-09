@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.secretsmanager_operations.R
 \name{restore_secret}
 \alias{restore_secret}
-\title{Cancels the scheduled deletion of a secret by removing the \code{DeletedDate} time stamp}
+\title{Cancels the scheduled deletion of a secret by removing the DeletedDate time stamp}
 \usage{
-restore_secret(
-  SecretId = "string"
-)
+restore_secret(SecretId)
 }
 \arguments{
 \item{SecretId}{[required] Specifies the secret that you want to restore from a previously scheduled deletion. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
@@ -29,11 +27,18 @@ To run this command, you must have the following permissions:
 \item To delete a secret, use DeleteSecret.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{restore_secret(
+  SecretId = "string"
+)
+}
+}
+
 \examples{
 # The following example shows how to restore a secret that you previously
 # scheduled for deletion.
-restore_secret(
+\donttest{restore_secret(
   SecretId = "MyTestDatabaseSecret"
-)
+)}
 
 }

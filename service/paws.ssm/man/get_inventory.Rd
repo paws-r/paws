@@ -4,7 +4,25 @@
 \alias{get_inventory}
 \title{Query inventory information}
 \usage{
-get_inventory(
+get_inventory(Filters = NULL, Aggregators = NULL,
+  ResultAttributes = NULL, NextToken = NULL, MaxResults = NULL)
+}
+\arguments{
+\item{Filters}{One or more filters. Use a filter to return a more specific list of results.}
+
+\item{Aggregators}{Returns counts of inventory types based on one or more expressions. For example, if you aggregate by using an expression that uses the \code{AWS:InstanceInformation.PlatformType} type, you can see a count of how many Windows and Linux instances exist in your inventoried fleet.}
+
+\item{ResultAttributes}{The list of inventory item types to return.}
+
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
+
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
+}
+\description{
+Query inventory information.
+}
+\section{Accepted Parameters}{
+\preformatted{get_inventory(
   Filters = list(
     list(
       Key = "string",
@@ -43,20 +61,5 @@ get_inventory(
   MaxResults = 123
 )
 }
-\arguments{
-\item{Filters}{One or more filters. Use a filter to return a more specific list of results.}
-
-\item{Aggregators}{Returns counts of inventory types based on one or more expressions. For example, if you aggregate by using an expression that uses the \code{AWS:InstanceInformation.PlatformType} type, you can see a count of how many Windows and Linux instances exist in your inventoried fleet.}
-
-\item{ResultAttributes}{The list of inventory item types to return.}
-
-\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
-
-\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 }
-\description{
-Query inventory information.
-}
-\examples{
 
-}

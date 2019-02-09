@@ -4,15 +4,12 @@
 \alias{create_service_specific_credential}
 \title{Generates a set of credentials consisting of a user name and password that can be used to access the service specified in the request}
 \usage{
-create_service_specific_credential(
-  UserName = "string",
-  ServiceName = "string"
-)
+create_service_specific_credential(UserName, ServiceName)
 }
 \arguments{
 \item{UserName}{[required] The name of the IAM user that is to be associated with the credentials. The new service-specific credentials have the same permissions as the associated user except that they can be used only to access the specified service.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{ServiceName}{[required] The name of the AWS service that is to be associated with the credentials. The service you specify here is the only service that can be accessed using these credentials.}
 }
@@ -28,6 +25,11 @@ You can reset the password to a new service-generated value by calling ResetServ
 
 For more information about service-specific credentials, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_ssh-keys.html}{Using IAM with AWS CodeCommit: Git Credentials, SSH Keys, and AWS Access Keys} in the \emph{IAM User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_service_specific_credential(
+  UserName = "string",
+  ServiceName = "string"
+)
 }
+}
+

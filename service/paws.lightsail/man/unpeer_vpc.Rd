@@ -9,6 +9,8 @@ unpeer_vpc()
 \description{
 Attempts to unpeer the Lightsail VPC from the user's default VPC.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{unpeer_vpc()
 }
+}
+

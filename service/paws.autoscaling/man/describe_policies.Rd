@@ -4,7 +4,25 @@
 \alias{describe_policies}
 \title{Describes the policies for the specified Auto Scaling group}
 \usage{
-describe_policies(
+describe_policies(AutoScalingGroupName = NULL, PolicyNames = NULL,
+  PolicyTypes = NULL, NextToken = NULL, MaxRecords = NULL)
+}
+\arguments{
+\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
+
+\item{PolicyNames}{The names of one or more policies. If you omit this parameter, all policies are described. If an group name is provided, the results are limited to that group. This list is limited to 50 items. If you specify an unknown policy name, it is ignored with no error.}
+
+\item{PolicyTypes}{One or more policy types. Valid values are \code{SimpleScaling} and \code{StepScaling}.}
+
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
+
+\item{MaxRecords}{The maximum number of items to be returned with each call. The default value is 50 and the maximum value is 100.}
+}
+\description{
+Describes the policies for the specified Auto Scaling group.
+}
+\section{Accepted Parameters}{
+\preformatted{describe_policies(
   AutoScalingGroupName = "string",
   PolicyNames = list(
     "string"
@@ -16,25 +34,13 @@ describe_policies(
   MaxRecords = 123
 )
 }
-\arguments{
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
-
-\item{PolicyNames}{The names of one or more policies. If you omit this parameter, all policies are described. If a group name is provided, the results are limited to that group. This list is limited to 50 items. If you specify an unknown policy name, it is ignored with no error.}
-
-\item{PolicyTypes}{One or more policy types. Valid values are \code{SimpleScaling} and \code{StepScaling}.}
-
-\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
-
-\item{MaxRecords}{The maximum number of items to be returned with each call. The default value is 50 and the maximum value is 100.}
 }
-\description{
-Describes the policies for the specified Auto Scaling group.
-}
+
 \examples{
 # This example describes the policies for the specified Auto Scaling
 # group.
-describe_policies(
+\donttest{describe_policies(
   AutoScalingGroupName = "my-auto-scaling-group"
-)
+)}
 
 }

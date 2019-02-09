@@ -4,7 +4,36 @@
 \alias{create_channel}
 \title{Creates a new channel}
 \usage{
-create_channel(
+create_channel(Destinations = NULL, EncoderSettings = NULL,
+  InputAttachments = NULL, InputSpecification = NULL,
+  LogLevel = NULL, Name = NULL, RequestId = NULL, Reserved = NULL,
+  RoleArn = NULL)
+}
+\arguments{
+\item{Destinations}{}
+
+\item{EncoderSettings}{}
+
+\item{InputAttachments}{List of input attachments for channel.}
+
+\item{InputSpecification}{Specification of input for this channel (max. bitrate, resolution, codec, etc.)}
+
+\item{LogLevel}{The log level to write to CloudWatch Logs.}
+
+\item{Name}{Name of channel.}
+
+\item{RequestId}{Unique request ID to be specified. This is needed to prevent retries from
+creating multiple resources.}
+
+\item{Reserved}{Deprecated field that's only usable by whitelisted customers.}
+
+\item{RoleArn}{An optional Amazon Resource Name (ARN) of the role to assume when running the Channel.}
+}
+\description{
+Creates a new channel
+}
+\section{Accepted Parameters}{
+\preformatted{create_channel(
   Destinations = list(
     list(
       Id = "string",
@@ -309,7 +338,6 @@ create_channel(
             OutputSelection = "MANIFESTS_AND_SEGMENTS"|"SEGMENTS_ONLY",
             ProgramDateTime = "EXCLUDE"|"INCLUDE",
             ProgramDateTimePeriod = 123,
-            RedundantManifest = "DISABLED"|"ENABLED",
             SegmentLength = 123,
             SegmentationMode = "USE_INPUT_SEGMENTATION"|"USE_SEGMENT_DURATION",
             SegmentsPerSubdirectory = 123,
@@ -347,7 +375,6 @@ create_channel(
             CacheFullBehavior = "DISCONNECT_IMMEDIATELY"|"WAIT_FOR_SERVER",
             CacheLength = 123,
             CaptionData = "ALL"|"FIELD1_608"|"FIELD1_AND_FIELD2_608",
-            InputLossAction = "EMIT_OUTPUT"|"PAUSE_OUTPUT",
             RestartDelay = 123
           ),
           UdpGroupSettings = list(
@@ -597,7 +624,6 @@ create_channel(
             Slices = 123,
             Softness = 123,
             SpatialAq = "DISABLED"|"ENABLED",
-            SubgopLength = "DYNAMIC"|"FIXED",
             Syntax = "DEFAULT"|"RP2027",
             TemporalAq = "DISABLED"|"ENABLED",
             TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI"
@@ -614,7 +640,6 @@ create_channel(
   ),
   InputAttachments = list(
     list(
-      InputAttachmentName = "string",
       InputId = "string",
       InputSettings = list(
         AudioSelectors = list(
@@ -700,29 +725,5 @@ create_channel(
   RoleArn = "string"
 )
 }
-\arguments{
-\item{Destinations}{}
-
-\item{EncoderSettings}{}
-
-\item{InputAttachments}{List of input attachments for channel.}
-
-\item{InputSpecification}{Specification of input for this channel (max. bitrate, resolution, codec, etc.)}
-
-\item{LogLevel}{The log level to write to CloudWatch Logs.}
-
-\item{Name}{Name of channel.}
-
-\item{RequestId}{Unique request ID to be specified. This is needed to prevent retries from
-creating multiple resources.}
-
-\item{Reserved}{Deprecated field that's only usable by whitelisted customers.}
-
-\item{RoleArn}{An optional Amazon Resource Name (ARN) of the role to assume when running the Channel.}
 }
-\description{
-Creates a new channel
-}
-\examples{
 
-}

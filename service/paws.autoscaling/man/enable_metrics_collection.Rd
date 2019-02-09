@@ -4,13 +4,8 @@
 \alias{enable_metrics_collection}
 \title{Enables group metrics for the specified Auto Scaling group}
 \usage{
-enable_metrics_collection(
-  AutoScalingGroupName = "string",
-  Metrics = list(
-    "string"
-  ),
-  Granularity = "string"
-)
+enable_metrics_collection(AutoScalingGroupName, Metrics = NULL,
+  Granularity)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -32,12 +27,23 @@ enable_metrics_collection(
 \description{
 Enables group metrics for the specified Auto Scaling group. For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-monitoring.html}{Monitoring Your Auto Scaling Groups and Instances} in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{enable_metrics_collection(
+  AutoScalingGroupName = "string",
+  Metrics = list(
+    "string"
+  ),
+  Granularity = "string"
+)
+}
+}
+
 \examples{
 # This example enables data collection for the specified Auto Scaling
 # group.
-enable_metrics_collection(
+\donttest{enable_metrics_collection(
   AutoScalingGroupName = "my-auto-scaling-group",
   Granularity = "1Minute"
-)
+)}
 
 }

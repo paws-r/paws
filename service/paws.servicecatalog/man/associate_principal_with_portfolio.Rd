@@ -4,12 +4,8 @@
 \alias{associate_principal_with_portfolio}
 \title{Associates the specified principal ARN with the specified portfolio}
 \usage{
-associate_principal_with_portfolio(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  PrincipalARN = "string",
-  PrincipalType = "IAM"
-)
+associate_principal_with_portfolio(AcceptLanguage = NULL, PortfolioId,
+  PrincipalARN, PrincipalType)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -28,6 +24,13 @@ associate_principal_with_portfolio(
 \description{
 Associates the specified principal ARN with the specified portfolio.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_principal_with_portfolio(
+  AcceptLanguage = "string",
+  PortfolioId = "string",
+  PrincipalARN = "string",
+  PrincipalType = "IAM"
+)
 }
+}
+

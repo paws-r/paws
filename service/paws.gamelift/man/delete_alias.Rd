@@ -4,9 +4,7 @@
 \alias{delete_alias}
 \title{Deletes an alias}
 \usage{
-delete_alias(
-  AliasId = "string"
-)
+delete_alias(AliasId)
 }
 \arguments{
 \item{AliasId}{[required] Unique identifier for a fleet alias. Specify the alias you want to delete.}
@@ -25,6 +23,10 @@ Alias-related operations include:
 \item ResolveAlias
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_alias(
+  AliasId = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{delete_deployment_group}
 \title{Deletes a deployment group}
 \usage{
-delete_deployment_group(
-  applicationName = "string",
-  deploymentGroupName = "string"
-)
+delete_deployment_group(applicationName, deploymentGroupName)
 }
 \arguments{
 \item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
@@ -17,6 +14,11 @@ delete_deployment_group(
 \description{
 Deletes a deployment group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_deployment_group(
+  applicationName = "string",
+  deploymentGroupName = "string"
+)
 }
+}
+

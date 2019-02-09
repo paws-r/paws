@@ -4,23 +4,10 @@
 \alias{create_rest_api}
 \title{Creates a new RestApi resource}
 \usage{
-create_rest_api(
-  name = "string",
-  description = "string",
-  version = "string",
-  cloneFrom = "string",
-  binaryMediaTypes = list(
-    "string"
-  ),
-  minimumCompressionSize = 123,
-  apiKeySource = "HEADER"|"AUTHORIZER",
-  endpointConfiguration = list(
-    types = list(
-      "REGIONAL"|"EDGE"|"PRIVATE"
-    )
-  ),
-  policy = "string"
-)
+create_rest_api(name, description = NULL, version = NULL,
+  cloneFrom = NULL, binaryMediaTypes = NULL,
+  minimumCompressionSize = NULL, apiKeySource = NULL,
+  endpointConfiguration = NULL, policy = NULL)
 }
 \arguments{
 \item{name}{[required] [Required] The name of the RestApi.}
@@ -48,6 +35,24 @@ create_rest_api(
 \description{
 Creates a new RestApi resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_rest_api(
+  name = "string",
+  description = "string",
+  version = "string",
+  cloneFrom = "string",
+  binaryMediaTypes = list(
+    "string"
+  ),
+  minimumCompressionSize = 123,
+  apiKeySource = "HEADER"|"AUTHORIZER",
+  endpointConfiguration = list(
+    types = list(
+      "REGIONAL"|"EDGE"|"PRIVATE"
+    )
+  ),
+  policy = "string"
+)
 }
+}
+

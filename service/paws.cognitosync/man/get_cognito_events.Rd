@@ -4,9 +4,7 @@
 \alias{get_cognito_events}
 \title{Gets the events and the corresponding Lambda functions associated with an identity pool}
 \usage{
-get_cognito_events(
-  IdentityPoolId = "string"
-)
+get_cognito_events(IdentityPoolId)
 }
 \arguments{
 \item{IdentityPoolId}{[required] The Cognito Identity Pool ID for the request}
@@ -17,6 +15,10 @@ Gets the events and the corresponding Lambda functions associated with an identi
 \details{
 This API can only be called with developer credentials. You cannot call this API with the temporary user credentials provided by Cognito Identity.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_cognito_events(
+  IdentityPoolId = "string"
+)
 }
+}
+

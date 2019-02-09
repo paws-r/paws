@@ -4,34 +4,13 @@
 \alias{update_health_check}
 \title{Updates an existing health check}
 \usage{
-update_health_check(
-  HealthCheckId = "string",
-  HealthCheckVersion = 123,
-  IPAddress = "string",
-  Port = 123,
-  ResourcePath = "string",
-  FullyQualifiedDomainName = "string",
-  SearchString = "string",
-  FailureThreshold = 123,
-  Inverted = TRUE|FALSE,
-  Disabled = TRUE|FALSE,
-  HealthThreshold = 123,
-  ChildHealthChecks = list(
-    "string"
-  ),
-  EnableSNI = TRUE|FALSE,
-  Regions = list(
-    "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
-  ),
-  AlarmIdentifier = list(
-    Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1",
-    Name = "string"
-  ),
-  InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus",
-  ResetElements = list(
-    "FullyQualifiedDomainName"|"Regions"|"ResourcePath"|"ChildHealthChecks"
-  )
-)
+update_health_check(HealthCheckId, HealthCheckVersion = NULL,
+  IPAddress = NULL, Port = NULL, ResourcePath = NULL,
+  FullyQualifiedDomainName = NULL, SearchString = NULL,
+  FailureThreshold = NULL, Inverted = NULL, Disabled = NULL,
+  HealthThreshold = NULL, ChildHealthChecks = NULL, EnableSNI = NULL,
+  Regions = NULL, AlarmIdentifier = NULL,
+  InsufficientDataHealthStatus = NULL, ResetElements = NULL)
 }
 \arguments{
 \item{HealthCheckId}{[required] The ID for the health check for which you want detailed information. When you created the health check, \code{CreateHealthCheck} returned the ID in the response, in the \code{HealthCheckId} element.}
@@ -164,6 +143,35 @@ Updates an existing health check. Note that some values can't be updated.
 \details{
 For more information about updating health checks, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html}{Creating, Updating, and Deleting Health Checks} in the \emph{Amazon Route 53 Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_health_check(
+  HealthCheckId = "string",
+  HealthCheckVersion = 123,
+  IPAddress = "string",
+  Port = 123,
+  ResourcePath = "string",
+  FullyQualifiedDomainName = "string",
+  SearchString = "string",
+  FailureThreshold = 123,
+  Inverted = TRUE|FALSE,
+  Disabled = TRUE|FALSE,
+  HealthThreshold = 123,
+  ChildHealthChecks = list(
+    "string"
+  ),
+  EnableSNI = TRUE|FALSE,
+  Regions = list(
+    "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
+  ),
+  AlarmIdentifier = list(
+    Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"sa-east-1",
+    Name = "string"
+  ),
+  InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus",
+  ResetElements = list(
+    "FullyQualifiedDomainName"|"Regions"|"ResourcePath"|"ChildHealthChecks"
+  )
+)
 }
+}
+

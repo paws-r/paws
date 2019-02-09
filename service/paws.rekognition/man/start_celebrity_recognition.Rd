@@ -4,21 +4,8 @@
 \alias{start_celebrity_recognition}
 \title{Starts asynchronous recognition of celebrities in a stored video}
 \usage{
-start_celebrity_recognition(
-  Video = list(
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  ClientRequestToken = "string",
-  NotificationChannel = list(
-    SNSTopicArn = "string",
-    RoleArn = "string"
-  ),
-  JobTag = "string"
-)
+start_celebrity_recognition(Video, ClientRequestToken = NULL,
+  NotificationChannel = NULL, JobTag = NULL)
 }
 \arguments{
 \item{Video}{[required] The video in which you want to recognize celebrities. The video must be stored in an Amazon S3 bucket.}
@@ -37,6 +24,22 @@ Amazon Rekognition Video can detect celebrities in a video must be stored in an 
 
 For more information, see Recognizing Celebrities in the Amazon Rekognition Developer Guide.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_celebrity_recognition(
+  Video = list(
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  ClientRequestToken = "string",
+  NotificationChannel = list(
+    SNSTopicArn = "string",
+    RoleArn = "string"
+  ),
+  JobTag = "string"
+)
 }
+}
+

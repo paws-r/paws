@@ -4,14 +4,8 @@
 \alias{put_subscription_filter}
 \title{Creates or updates a subscription filter and associates it with the specified log group}
 \usage{
-put_subscription_filter(
-  logGroupName = "string",
-  filterName = "string",
-  filterPattern = "string",
-  destinationArn = "string",
-  roleArn = "string",
-  distribution = "Random"|"ByLogStream"
-)
+put_subscription_filter(logGroupName, filterName, filterPattern,
+  destinationArn, roleArn = NULL, distribution = NULL)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -45,6 +39,15 @@ Creates or updates a subscription filter and associates it with the specified lo
 
 There can only be one subscription filter associated with a log group. If you are updating an existing filter, you must specify the correct name in \code{filterName}. Otherwise, the call fails because you cannot associate a second filter with a log group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_subscription_filter(
+  logGroupName = "string",
+  filterName = "string",
+  filterPattern = "string",
+  destinationArn = "string",
+  roleArn = "string",
+  distribution = "Random"|"ByLogStream"
+)
 }
+}
+

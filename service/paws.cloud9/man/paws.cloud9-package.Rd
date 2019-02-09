@@ -6,8 +6,9 @@
 \alias{paws.cloud9-package}
 \title{paws.cloud9: AWS Cloud9}
 \description{
-AWS Cloud9 is a collection of tools that you can use to code,
-build, run, test, debug, and release software in the cloud.
+AWS Cloud9 is a collection of tools that you can
+    use to code, build, run, test, debug, and release software in the
+    cloud.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

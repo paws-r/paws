@@ -4,9 +4,7 @@
 \alias{delete_dev_endpoint}
 \title{Deletes a specified DevEndpoint}
 \usage{
-delete_dev_endpoint(
-  EndpointName = "string"
-)
+delete_dev_endpoint(EndpointName)
 }
 \arguments{
 \item{EndpointName}{[required] The name of the DevEndpoint.}
@@ -14,6 +12,10 @@ delete_dev_endpoint(
 \description{
 Deletes a specified DevEndpoint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_dev_endpoint(
+  EndpointName = "string"
+)
 }
+}
+

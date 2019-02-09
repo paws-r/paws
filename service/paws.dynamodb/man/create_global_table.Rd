@@ -4,14 +4,7 @@
 \alias{create_global_table}
 \title{Creates a global table from an existing table}
 \usage{
-create_global_table(
-  GlobalTableName = "string",
-  ReplicationGroup = list(
-    list(
-      RegionName = "string"
-    )
-  )
-)
+create_global_table(GlobalTableName, ReplicationGroup)
 }
 \arguments{
 \item{GlobalTableName}{[required] The global table name.}
@@ -40,6 +33,15 @@ Write capacity settings should be set consistently across your replica tables an
 
 If you prefer to manage write capacity settings manually, you should provision equal replicated write capacity units to your replica tables. You should also provision equal replicated write capacity units to matching secondary indexes across your global table.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_global_table(
+  GlobalTableName = "string",
+  ReplicationGroup = list(
+    list(
+      RegionName = "string"
+    )
+  )
+)
 }
+}
+

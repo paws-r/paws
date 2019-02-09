@@ -4,9 +4,7 @@
 \alias{get_job_document}
 \title{Gets a job document}
 \usage{
-get_job_document(
-  jobId = "string"
-)
+get_job_document(jobId)
 }
 \arguments{
 \item{jobId}{[required] The unique identifier you assigned to this job when it was created.}
@@ -14,6 +12,10 @@ get_job_document(
 \description{
 Gets a job document.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_job_document(
+  jobId = "string"
+)
 }
+}
+

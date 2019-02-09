@@ -2,15 +2,9 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{notify_workers}
 \alias{notify_workers}
-\title{The \code{NotifyWorkers} operation sends an email to one or more Workers that you specify with the Worker ID}
+\title{The NotifyWorkers operation sends an email to one or more Workers that you specify with the Worker ID}
 \usage{
-notify_workers(
-  Subject = "string",
-  MessageText = "string",
-  WorkerIds = list(
-    "string"
-  )
-)
+notify_workers(Subject, MessageText, WorkerIds)
 }
 \arguments{
 \item{Subject}{[required] The subject line of the email message to send. Can include up to 200 characters.}
@@ -22,6 +16,14 @@ notify_workers(
 \description{
 The \code{NotifyWorkers} operation sends an email to one or more Workers that you specify with the Worker ID. You can specify up to 100 Worker IDs to send the same message with a single call to the NotifyWorkers operation. The NotifyWorkers operation will send a notification email to a Worker only if you have previously approved or rejected work from the Worker.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{notify_workers(
+  Subject = "string",
+  MessageText = "string",
+  WorkerIds = list(
+    "string"
+  )
+)
 }
+}
+

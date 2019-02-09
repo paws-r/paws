@@ -4,10 +4,7 @@
 \alias{get_compliance_detail}
 \title{Returns detailed compliance information about the specified member account}
 \usage{
-get_compliance_detail(
-  PolicyId = "string",
-  MemberAccount = "string"
-)
+get_compliance_detail(PolicyId, MemberAccount)
 }
 \arguments{
 \item{PolicyId}{[required] The ID of the policy that you want to get the details for. \code{PolicyId} is returned by \code{PutPolicy} and by \code{ListPolicies}.}
@@ -17,6 +14,11 @@ get_compliance_detail(
 \description{
 Returns detailed compliance information about the specified member account. Details include resources that are in and out of compliance with the specified policy. Resources are considered non-compliant if the specified policy has not been applied to them.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_compliance_detail(
+  PolicyId = "string",
+  MemberAccount = "string"
+)
 }
+}
+

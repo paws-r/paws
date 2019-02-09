@@ -4,7 +4,43 @@
 \alias{create_elasticsearch_domain}
 \title{Creates a new Elasticsearch domain}
 \usage{
-create_elasticsearch_domain(
+create_elasticsearch_domain(DomainName, ElasticsearchVersion = NULL,
+  ElasticsearchClusterConfig = NULL, EBSOptions = NULL,
+  AccessPolicies = NULL, SnapshotOptions = NULL, VPCOptions = NULL,
+  CognitoOptions = NULL, EncryptionAtRestOptions = NULL,
+  NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL,
+  LogPublishingOptions = NULL)
+}
+\arguments{
+\item{DomainName}{[required] The name of the Elasticsearch domain that you are creating. Domain names are unique across the domains owned by an account within an AWS region. Domain names must start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).}
+
+\item{ElasticsearchVersion}{String of format X.Y to specify version for the Elasticsearch domain eg. "1.5" or "2.3". For more information, see \href{http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains}{Creating Elasticsearch Domains} in the \emph{Amazon Elasticsearch Service Developer Guide}.}
+
+\item{ElasticsearchClusterConfig}{Configuration options for an Elasticsearch domain. Specifies the instance type and number of instances in the domain cluster.}
+
+\item{EBSOptions}{Options to enable, disable and specify the type and size of EBS storage volumes.}
+
+\item{AccessPolicies}{IAM access policy as a JSON-formatted string.}
+
+\item{SnapshotOptions}{Option to set time, in UTC format, of the daily automated snapshot. Default value is 0 hours.}
+
+\item{VPCOptions}{Options to specify the subnets and security groups for VPC endpoint. For more information, see \href{http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc}{Creating a VPC} in \emph{VPC Endpoints for Amazon Elasticsearch Service Domains}}
+
+\item{CognitoOptions}{Options to specify the Cognito user and identity pools for Kibana authentication. For more information, see \href{http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html}{Amazon Cognito Authentication for Kibana}.}
+
+\item{EncryptionAtRestOptions}{Specifies the Encryption At Rest Options.}
+
+\item{NodeToNodeEncryptionOptions}{Specifies the NodeToNodeEncryptionOptions.}
+
+\item{AdvancedOptions}{Option to allow references to indices in an HTTP request body. Must be \code{false} when configuring access to individual sub-resources. By default, the value is \code{true}. See \href{http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options}{Configuration Advanced Options} for more information.}
+
+\item{LogPublishingOptions}{Map of \code{LogType} and \code{LogPublishingOption}, each containing options to publish a given type of Elasticsearch log.}
+}
+\description{
+Creates a new Elasticsearch domain. For more information, see \href{http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains}{Creating Elasticsearch Domains} in the \emph{Amazon Elasticsearch Service Developer Guide}.
+}
+\section{Accepted Parameters}{
+\preformatted{create_elasticsearch_domain(
   DomainName = "string",
   ElasticsearchVersion = "string",
   ElasticsearchClusterConfig = list(
@@ -57,34 +93,5 @@ create_elasticsearch_domain(
   )
 )
 }
-\arguments{
-\item{DomainName}{[required] The name of the Elasticsearch domain that you are creating. Domain names are unique across the domains owned by an account within an AWS region. Domain names must start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).}
-
-\item{ElasticsearchVersion}{String of format X.Y to specify version for the Elasticsearch domain eg. "1.5" or "2.3". For more information, see \href{http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains}{Creating Elasticsearch Domains} in the \emph{Amazon Elasticsearch Service Developer Guide}.}
-
-\item{ElasticsearchClusterConfig}{Configuration options for an Elasticsearch domain. Specifies the instance type and number of instances in the domain cluster.}
-
-\item{EBSOptions}{Options to enable, disable and specify the type and size of EBS storage volumes.}
-
-\item{AccessPolicies}{IAM access policy as a JSON-formatted string.}
-
-\item{SnapshotOptions}{Option to set time, in UTC format, of the daily automated snapshot. Default value is 0 hours.}
-
-\item{VPCOptions}{Options to specify the subnets and security groups for VPC endpoint. For more information, see \href{http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc}{Creating a VPC} in \emph{VPC Endpoints for Amazon Elasticsearch Service Domains}}
-
-\item{CognitoOptions}{Options to specify the Cognito user and identity pools for Kibana authentication. For more information, see \href{http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html}{Amazon Cognito Authentication for Kibana}.}
-
-\item{EncryptionAtRestOptions}{Specifies the Encryption At Rest Options.}
-
-\item{NodeToNodeEncryptionOptions}{Specifies the NodeToNodeEncryptionOptions.}
-
-\item{AdvancedOptions}{Option to allow references to indices in an HTTP request body. Must be \code{false} when configuring access to individual sub-resources. By default, the value is \code{true}. See \href{http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options}{Configuration Advanced Options} for more information.}
-
-\item{LogPublishingOptions}{Map of \code{LogType} and \code{LogPublishingOption}, each containing options to publish a given type of Elasticsearch log.}
 }
-\description{
-Creates a new Elasticsearch domain. For more information, see \href{http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains}{Creating Elasticsearch Domains} in the \emph{Amazon Elasticsearch Service Developer Guide}.
-}
-\examples{
 
-}

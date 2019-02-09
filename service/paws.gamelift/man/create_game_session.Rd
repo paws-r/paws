@@ -4,22 +4,10 @@
 \alias{create_game_session}
 \title{Creates a multiplayer game session for players}
 \usage{
-create_game_session(
-  FleetId = "string",
-  AliasId = "string",
-  MaximumPlayerSessionCount = 123,
-  Name = "string",
-  GameProperties = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  CreatorId = "string",
-  GameSessionId = "string",
-  IdempotencyToken = "string",
-  GameSessionData = "string"
-)
+create_game_session(FleetId = NULL, AliasId = NULL,
+  MaximumPlayerSessionCount, Name = NULL, GameProperties = NULL,
+  CreatorId = NULL, GameSessionId = NULL, IdempotencyToken = NULL,
+  GameSessionData = NULL)
 }
 \arguments{
 \item{FleetId}{Unique identifier for a fleet to create a game session in. Each request must reference either a fleet ID or alias ID, but not both.}
@@ -70,6 +58,23 @@ Game-session-related operations include:
 \item StopGameSessionPlacement
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_game_session(
+  FleetId = "string",
+  AliasId = "string",
+  MaximumPlayerSessionCount = 123,
+  Name = "string",
+  GameProperties = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  CreatorId = "string",
+  GameSessionId = "string",
+  IdempotencyToken = "string",
+  GameSessionData = "string"
+)
 }
+}
+

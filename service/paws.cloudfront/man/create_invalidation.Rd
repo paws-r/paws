@@ -4,7 +4,18 @@
 \alias{create_invalidation}
 \title{Create a new invalidation}
 \usage{
-create_invalidation(
+create_invalidation(DistributionId, InvalidationBatch)
+}
+\arguments{
+\item{DistributionId}{[required] The distribution's id.}
+
+\item{InvalidationBatch}{[required] The batch information for the invalidation.}
+}
+\description{
+Create a new invalidation.
+}
+\section{Accepted Parameters}{
+\preformatted{create_invalidation(
   DistributionId = "string",
   InvalidationBatch = list(
     Paths = list(
@@ -17,14 +28,5 @@ create_invalidation(
   )
 )
 }
-\arguments{
-\item{DistributionId}{[required] The distribution's id.}
+}
 
-\item{InvalidationBatch}{[required] The batch information for the invalidation.}
-}
-\description{
-Create a new invalidation.
-}
-\examples{
-
-}

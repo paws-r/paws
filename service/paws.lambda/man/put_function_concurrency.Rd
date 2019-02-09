@@ -4,13 +4,10 @@
 \alias{put_function_concurrency}
 \title{Sets a limit on the number of concurrent executions available to this function}
 \usage{
-put_function_concurrency(
-  FunctionName = "string",
-  ReservedConcurrentExecutions = 123
-)
+put_function_concurrency(FunctionName, ReservedConcurrentExecutions)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function.
+\item{FunctionName}{[required] The name of the lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -26,6 +23,11 @@ The length constraint applies only to the full ARN. If you specify only the func
 \description{
 Sets a limit on the number of concurrent executions available to this function. It is a subset of your account's total concurrent execution limit per region. Note that Lambda automatically reserves a buffer of 100 concurrent executions for functions without any reserved concurrency limit. This means if your account limit is 1000, you have a total of 900 available to allocate to individual functions. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html}{Managing Concurrency}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_function_concurrency(
+  FunctionName = "string",
+  ReservedConcurrentExecutions = 123
+)
 }
+}
+

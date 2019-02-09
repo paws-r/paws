@@ -4,9 +4,7 @@
 \alias{check_if_phone_number_is_opted_out}
 \title{Accepts a phone number and indicates whether the phone holder has opted out of receiving SMS messages from your account}
 \usage{
-check_if_phone_number_is_opted_out(
-  phoneNumber = "string"
-)
+check_if_phone_number_is_opted_out(phoneNumber)
 }
 \arguments{
 \item{phoneNumber}{[required] The phone number for which you want to check the opt out status.}
@@ -17,6 +15,10 @@ Accepts a phone number and indicates whether the phone holder has opted out of r
 \details{
 To resume sending messages, you can opt in the number by using the \code{OptInPhoneNumber} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{check_if_phone_number_is_opted_out(
+  phoneNumber = "string"
+)
 }
+}
+

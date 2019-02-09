@@ -4,19 +4,8 @@
 \alias{describe_maintenance_window_targets}
 \title{Lists the targets registered with the Maintenance Window}
 \usage{
-describe_maintenance_window_targets(
-  WindowId = "string",
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_maintenance_window_targets(WindowId, Filters = NULL,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{WindowId}{[required] The ID of the Maintenance Window whose targets should be retrieved.}
@@ -30,6 +19,20 @@ describe_maintenance_window_targets(
 \description{
 Lists the targets registered with the Maintenance Window.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_maintenance_window_targets(
+  WindowId = "string",
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

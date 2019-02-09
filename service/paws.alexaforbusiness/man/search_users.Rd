@@ -4,7 +4,23 @@
 \alias{search_users}
 \title{Searches users and lists the ones that meet a set of filter and sort criteria}
 \usage{
-search_users(
+search_users(NextToken = NULL, MaxResults = NULL, Filters = NULL,
+  SortCriteria = NULL)
+}
+\arguments{
+\item{NextToken}{An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by \code{MaxResults}. Required.}
+
+\item{MaxResults}{The maximum number of results to include in the response. If more results exist than the specified \code{MaxResults} value, a token is included in the response so that the remaining results can be retrieved. Required.}
+
+\item{Filters}{The filters to use for listing a specific set of users. Required. Supported filter keys are UserId, FirstName, LastName, Email, and EnrollmentStatus.}
+
+\item{SortCriteria}{The sort order to use in listing the filtered set of users. Required. Supported sort keys are UserId, FirstName, LastName, Email, and EnrollmentStatus.}
+}
+\description{
+Searches users and lists the ones that meet a set of filter and sort criteria.
+}
+\section{Accepted Parameters}{
+\preformatted{search_users(
   NextToken = "string",
   MaxResults = 123,
   Filters = list(
@@ -23,18 +39,5 @@ search_users(
   )
 )
 }
-\arguments{
-\item{NextToken}{An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by \code{MaxResults}. Required.}
-
-\item{MaxResults}{The maximum number of results to include in the response. If more results exist than the specified \code{MaxResults} value, a token is included in the response so that the remaining results can be retrieved. Required.}
-
-\item{Filters}{The filters to use for listing a specific set of users. Required. Supported filter keys are UserId, FirstName, LastName, Email, and EnrollmentStatus.}
-
-\item{SortCriteria}{The sort order to use in listing the filtered set of users. Required. Supported sort keys are UserId, FirstName, LastName, Email, and EnrollmentStatus.}
 }
-\description{
-Searches users and lists the ones that meet a set of filter and sort criteria.
-}
-\examples{
 
-}

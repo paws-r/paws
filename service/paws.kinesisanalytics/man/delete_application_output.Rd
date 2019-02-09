@@ -4,11 +4,8 @@
 \alias{delete_application_output}
 \title{Deletes output destination configuration from your application configuration}
 \usage{
-delete_application_output(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  OutputId = "string"
-)
+delete_application_output(ApplicationName, CurrentApplicationVersionId,
+  OutputId)
 }
 \arguments{
 \item{ApplicationName}{[required] Amazon Kinesis Analytics application name.}
@@ -23,6 +20,12 @@ Deletes output destination configuration from your application configuration. Am
 \details{
 This operation requires permissions to perform the \code{kinesisanalytics:DeleteApplicationOutput} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_application_output(
+  ApplicationName = "string",
+  CurrentApplicationVersionId = 123,
+  OutputId = "string"
+)
 }
+}
+

@@ -4,7 +4,25 @@
 \alias{put_signing_profile}
 \title{Creates a signing profile}
 \usage{
-put_signing_profile(
+put_signing_profile(profileName, signingMaterial, platformId,
+  overrides = NULL, signingParameters = NULL)
+}
+\arguments{
+\item{profileName}{[required] The name of the signing profile to be created.}
+
+\item{signingMaterial}{[required] The AWS Certificate Manager certificate that will be used to sign code with the new signing profile.}
+
+\item{platformId}{[required] The ID of the signing profile to be created.}
+
+\item{overrides}{A subfield of \code{platform}. This specifies any different configuration options that you want to apply to the chosen platform (such as a different \code{hash-algorithm} or \code{signing-algorithm}).}
+
+\item{signingParameters}{Map of key-value pairs for signing. These can include any information that you want to use during signing.}
+}
+\description{
+Creates a signing profile. A signing profile is an AWS Signer template that can be used to carry out a pre-defined signing job. For more information, see \url{http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html}
+}
+\section{Accepted Parameters}{
+\preformatted{put_signing_profile(
   profileName = "string",
   signingMaterial = list(
     certificateArn = "string"
@@ -21,20 +39,5 @@ put_signing_profile(
   )
 )
 }
-\arguments{
-\item{profileName}{[required] The name of the signing profile to be created.}
-
-\item{signingMaterial}{[required] The AWS Certificate Manager certificate that will be used to sign code with the new signing profile.}
-
-\item{platformId}{[required] The ID of the signing profile to be created.}
-
-\item{overrides}{A subfield of \code{platform}. This specifies any different configuration options that you want to apply to the chosen platform (such as a different \code{hash-algorithm} or \code{signing-algorithm}).}
-
-\item{signingParameters}{Map of key-value pairs for signing. These can include any information that you want to use during signing.}
 }
-\description{
-Creates a signing profile. A signing profile is an AWS Signer template that can be used to carry out a pre-defined signing job. For more information, see \url{http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html}
-}
-\examples{
 
-}

@@ -4,10 +4,7 @@
 \alias{delete_alias}
 \title{Deletes the specified Lambda function alias}
 \usage{
-delete_alias(
-  FunctionName = "string",
-  Name = "string"
-)
+delete_alias(FunctionName, Name)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the lambda function.
@@ -29,11 +26,19 @@ Deletes the specified Lambda function alias. For more information, see \href{htt
 \details{
 This requires permission for the lambda:DeleteAlias action.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_alias(
+  FunctionName = "string",
+  Name = "string"
+)
+}
+}
+
 \examples{
 # This operation deletes a Lambda function alias
-delete_alias(
+\donttest{delete_alias(
   FunctionName = "myFunction",
   Name = "alias"
-)
+)}
 
 }

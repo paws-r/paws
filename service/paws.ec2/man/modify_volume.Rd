@@ -4,13 +4,8 @@
 \alias{modify_volume}
 \title{You can modify several parameters of an existing EBS volume, including volume size, volume type, and IOPS capacity}
 \usage{
-modify_volume(
-  DryRun = TRUE|FALSE,
-  VolumeId = "string",
-  Size = 123,
-  VolumeType = "standard"|"io1"|"gp2"|"sc1"|"st1",
-  Iops = 123
-)
+modify_volume(DryRun = NULL, VolumeId, Size = NULL,
+  VolumeType = NULL, Iops = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -43,6 +38,14 @@ With previous-generation instance types, resizing an EBS volume may require deta
 
 If you reach the maximum volume modification rate per volume limit, you will need to wait at least six hours before applying further modifications to the affected EBS volume.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_volume(
+  DryRun = TRUE|FALSE,
+  VolumeId = "string",
+  Size = 123,
+  VolumeType = "standard"|"io1"|"gp2"|"sc1"|"st1",
+  Iops = 123
+)
 }
+}
+

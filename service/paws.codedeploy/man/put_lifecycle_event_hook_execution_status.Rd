@@ -4,14 +4,11 @@
 \alias{put_lifecycle_event_hook_execution_status}
 \title{Sets the result of a Lambda validation function}
 \usage{
-put_lifecycle_event_hook_execution_status(
-  deploymentId = "string",
-  lifecycleEventHookExecutionId = "string",
-  status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"
-)
+put_lifecycle_event_hook_execution_status(deploymentId = NULL,
+  lifecycleEventHookExecutionId = NULL, status = NULL)
 }
 \arguments{
-\item{deploymentId}{The unique ID of a deployment. Pass this ID to a Lambda function that validates a deployment lifecycle event.}
+\item{deploymentId}{The ID of the deployment. Pass this ID to a Lambda function that validates a deployment lifecycle event.}
 
 \item{lifecycleEventHookExecutionId}{The execution ID of a deployment's lifecycle hook. A deployment lifecycle hook is specified in the \code{hooks} section of the AppSpec file.}
 
@@ -20,6 +17,12 @@ put_lifecycle_event_hook_execution_status(
 \description{
 Sets the result of a Lambda validation function. The function validates one or both lifecycle events (\code{BeforeAllowTraffic} and \code{AfterAllowTraffic}) and returns \code{Succeeded} or \code{Failed}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_lifecycle_event_hook_execution_status(
+  deploymentId = "string",
+  lifecycleEventHookExecutionId = "string",
+  status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"
+)
 }
+}
+

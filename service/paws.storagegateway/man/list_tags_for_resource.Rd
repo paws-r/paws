@@ -4,11 +4,7 @@
 \alias{list_tags_for_resource}
 \title{Lists the tags that have been added to the specified resource}
 \usage{
-list_tags_for_resource(
-  ResourceARN = "string",
-  Marker = "string",
-  Limit = 123
-)
+list_tags_for_resource(ResourceARN, Marker = NULL, Limit = NULL)
 }
 \arguments{
 \item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the resource for which you want to list tags.}
@@ -20,12 +16,21 @@ list_tags_for_resource(
 \description{
 Lists the tags that have been added to the specified resource. This operation is only supported in the cached volume, stored volume and tape gateway type.
 }
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_resource(
+  ResourceARN = "string",
+  Marker = "string",
+  Limit = 123
+)
+}
+}
+
 \examples{
 # Lists the tags that have been added to the specified resource.
-list_tags_for_resource(
+\donttest{list_tags_for_resource(
   Limit = 1L,
   Marker = "1",
   ResourceARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B"
-)
+)}
 
 }

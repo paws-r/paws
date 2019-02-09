@@ -2,5 +2,10 @@
 
 export(batch_meter_usage)
 export(meter_usage)
-export(register_usage)
 export(resolve_customer)
+importFrom(paws.common,new_handlers)
+importFrom(paws.common,new_operation)
+importFrom(paws.common,new_request)
+importFrom(paws.common,new_service)
+importFrom(paws.common,populate)
+importFrom(paws.common,send_request)

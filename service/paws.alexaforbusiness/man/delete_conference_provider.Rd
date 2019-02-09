@@ -4,9 +4,7 @@
 \alias{delete_conference_provider}
 \title{Deletes a conference provider}
 \usage{
-delete_conference_provider(
-  ConferenceProviderArn = "string"
-)
+delete_conference_provider(ConferenceProviderArn)
 }
 \arguments{
 \item{ConferenceProviderArn}{[required] The ARN of the conference provider.}
@@ -14,6 +12,10 @@ delete_conference_provider(
 \description{
 Deletes a conference provider.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_conference_provider(
+  ConferenceProviderArn = "string"
+)
 }
+}
+

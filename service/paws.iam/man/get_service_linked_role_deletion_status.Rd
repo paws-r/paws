@@ -4,9 +4,7 @@
 \alias{get_service_linked_role_deletion_status}
 \title{Retrieves the status of your service-linked role deletion}
 \usage{
-get_service_linked_role_deletion_status(
-  DeletionTaskId = "string"
-)
+get_service_linked_role_deletion_status(DeletionTaskId)
 }
 \arguments{
 \item{DeletionTaskId}{[required] The deletion task identifier. This identifier is returned by the DeleteServiceLinkedRole operation in the format \code{task/aws-service-role/<service-principal-name>/<role-name>/<task-uuid>}.}
@@ -14,6 +12,10 @@ get_service_linked_role_deletion_status(
 \description{
 Retrieves the status of your service-linked role deletion. After you use the DeleteServiceLinkedRole API operation to submit a service-linked role for deletion, you can use the \code{DeletionTaskId} parameter in \code{GetServiceLinkedRoleDeletionStatus} to check the status of the deletion. If the deletion fails, this operation returns the reason that it failed, if that information is returned by the service.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_service_linked_role_deletion_status(
+  DeletionTaskId = "string"
+)
 }
+}
+

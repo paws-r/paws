@@ -4,9 +4,7 @@
 \alias{delete_adm_channel}
 \title{Delete an ADM channel}
 \usage{
-delete_adm_channel(
-  ApplicationId = "string"
-)
+delete_adm_channel(ApplicationId)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -14,6 +12,10 @@ delete_adm_channel(
 \description{
 Delete an ADM channel.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_adm_channel(
+  ApplicationId = "string"
+)
 }
+}
+

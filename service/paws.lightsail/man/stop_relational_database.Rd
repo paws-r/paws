@@ -4,10 +4,8 @@
 \alias{stop_relational_database}
 \title{Stops a specific database that is currently running in Amazon Lightsail}
 \usage{
-stop_relational_database(
-  relationalDatabaseName = "string",
-  relationalDatabaseSnapshotName = "string"
-)
+stop_relational_database(relationalDatabaseName,
+  relationalDatabaseSnapshotName = NULL)
 }
 \arguments{
 \item{relationalDatabaseName}{[required] The name of your database to stop.}
@@ -17,9 +15,11 @@ stop_relational_database(
 \description{
 Stops a specific database that is currently running in Amazon Lightsail.
 }
-\details{
-The \code{stop relational database} operation supports tag-based access control via resource tags applied to the resource identified by relationalDatabaseName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\section{Accepted Parameters}{
+\preformatted{stop_relational_database(
+  relationalDatabaseName = "string",
+  relationalDatabaseSnapshotName = "string"
+)
 }
-\examples{
+}
 
-}

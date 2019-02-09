@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.fms_operations.R
 \name{list_compliance_status}
 \alias{list_compliance_status}
-\title{Returns an array of \code{PolicyComplianceStatus} objects in the response}
+\title{Returns an array of PolicyComplianceStatus objects in the response}
 \usage{
-list_compliance_status(
-  PolicyId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_compliance_status(PolicyId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{PolicyId}{[required] The ID of the AWS Firewall Manager policy that you want the details for.}
@@ -20,6 +16,12 @@ list_compliance_status(
 \description{
 Returns an array of \code{PolicyComplianceStatus} objects in the response. Use \code{PolicyComplianceStatus} to get a summary of which member accounts are protected by the specified policy.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_compliance_status(
+  PolicyId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

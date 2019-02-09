@@ -4,10 +4,7 @@
 \alias{delete_subscription_filter}
 \title{Deletes the specified subscription filter}
 \usage{
-delete_subscription_filter(
-  logGroupName = "string",
-  filterName = "string"
-)
+delete_subscription_filter(logGroupName, filterName)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -17,6 +14,11 @@ delete_subscription_filter(
 \description{
 Deletes the specified subscription filter.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_subscription_filter(
+  logGroupName = "string",
+  filterName = "string"
+)
 }
+}
+

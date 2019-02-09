@@ -4,11 +4,8 @@
 \alias{create_cache_parameter_group}
 \title{Creates a new Amazon ElastiCache cache parameter group}
 \usage{
-create_cache_parameter_group(
-  CacheParameterGroupName = "string",
-  CacheParameterGroupFamily = "string",
-  Description = "string"
-)
+create_cache_parameter_group(CacheParameterGroupName,
+  CacheParameterGroupFamily, Description)
 }
 \arguments{
 \item{CacheParameterGroupName}{[required] A user-specified name for the cache parameter group.}
@@ -29,6 +26,12 @@ A newly created CacheParameterGroup is an exact duplicate of the default paramet
 \item \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.html}{Parameters and Parameter Groups} in the ElastiCache User Guide.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_cache_parameter_group(
+  CacheParameterGroupName = "string",
+  CacheParameterGroupFamily = "string",
+  Description = "string"
+)
 }
+}
+

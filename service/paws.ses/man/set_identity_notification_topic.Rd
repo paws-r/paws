@@ -4,11 +4,8 @@
 \alias{set_identity_notification_topic}
 \title{Sets an Amazon Simple Notification Service (Amazon SNS) topic to use when delivering notifications}
 \usage{
-set_identity_notification_topic(
-  Identity = "string",
-  NotificationType = "Bounce"|"Complaint"|"Delivery",
-  SnsTopic = "string"
-)
+set_identity_notification_topic(Identity, NotificationType,
+  SnsTopic = NULL)
 }
 \arguments{
 \item{Identity}{[required] The identity (email address or domain) that you want to set the Amazon SNS topic for.
@@ -29,14 +26,23 @@ You can execute this operation no more than once per second.
 
 For more information about feedback notification, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html}{Amazon SES Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{set_identity_notification_topic(
+  Identity = "string",
+  NotificationType = "Bounce"|"Complaint"|"Delivery",
+  SnsTopic = "string"
+)
+}
+}
+
 \examples{
 # The following example sets the Amazon SNS topic to which Amazon SES will
 # publish bounce, complaint, and/or delivery notifications for emails sent
 # with the specified identity as the Source:
-set_identity_notification_topic(
+\donttest{set_identity_notification_topic(
   Identity = "user@example.com",
   NotificationType = "Bounce",
   SnsTopic = "arn:aws:sns:us-west-2:111122223333:MyTopic"
-)
+)}
 
 }

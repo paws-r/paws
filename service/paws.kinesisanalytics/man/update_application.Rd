@@ -4,7 +4,26 @@
 \alias{update_application}
 \title{Updates an existing Amazon Kinesis Analytics application}
 \usage{
-update_application(
+update_application(ApplicationName, CurrentApplicationVersionId,
+  ApplicationUpdate)
+}
+\arguments{
+\item{ApplicationName}{[required] Name of the Amazon Kinesis Analytics application to update.}
+
+\item{CurrentApplicationVersionId}{[required] The current application version ID. You can use the DescribeApplication operation to get this value.}
+
+\item{ApplicationUpdate}{[required] Describes application updates.}
+}
+\description{
+Updates an existing Amazon Kinesis Analytics application. Using this API, you can update application code, input configuration, and output configuration.
+}
+\details{
+Note that Amazon Kinesis Analytics updates the \code{CurrentApplicationVersionId} each time you update your application.
+
+This operation requires permission for the \code{kinesisanalytics:UpdateApplication} action.
+}
+\section{Accepted Parameters}{
+\preformatted{update_application(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   ApplicationUpdate = list(
@@ -118,21 +137,5 @@ update_application(
   )
 )
 }
-\arguments{
-\item{ApplicationName}{[required] Name of the Amazon Kinesis Analytics application to update.}
-
-\item{CurrentApplicationVersionId}{[required] The current application version ID. You can use the DescribeApplication operation to get this value.}
-
-\item{ApplicationUpdate}{[required] Describes application updates.}
 }
-\description{
-Updates an existing Amazon Kinesis Analytics application. Using this API, you can update application code, input configuration, and output configuration.
-}
-\details{
-Note that Amazon Kinesis Analytics updates the \code{CurrentApplicationVersionId} each time you update your application.
 
-This operation requires permission for the \code{kinesisanalytics:UpdateApplication} action.
-}
-\examples{
-
-}

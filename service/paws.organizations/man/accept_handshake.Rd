@@ -4,9 +4,7 @@
 \alias{accept_handshake}
 \title{Sends a response to the originator of a handshake agreeing to the action proposed by the handshake request}
 \usage{
-accept_handshake(
-  HandshakeId = "string"
-)
+accept_handshake(HandshakeId)
 }
 \arguments{
 \item{HandshakeId}{[required] The unique identifier (ID) of the handshake that you want to accept.
@@ -31,13 +29,20 @@ For more information about invitations, see \href{http://docs.aws.amazon.com/org
 
 After you accept a handshake, it continues to appear in the results of relevant APIs for only 30 days. After that it is deleted.
 }
+\section{Accepted Parameters}{
+\preformatted{accept_handshake(
+  HandshakeId = "string"
+)
+}
+}
+
 \examples{
 # Bill is the owner of an organization, and he invites Juan's account
 # (222222222222) to join his organization. The following example shows
 # Juan's account accepting the handshake and thus agreeing to the
 # invitation.
-accept_handshake(
+\donttest{accept_handshake(
   HandshakeId = "h-examplehandshakeid111"
-)
+)}
 
 }

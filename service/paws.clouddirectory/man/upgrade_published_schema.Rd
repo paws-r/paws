@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.clouddirectory_operations.R
 \name{upgrade_published_schema}
 \alias{upgrade_published_schema}
-\title{Upgrades a published schema under a new minor version revision using the current contents of \code{DevelopmentSchemaArn}}
+\title{Upgrades a published schema under a new minor version revision using the current contents of DevelopmentSchemaArn}
 \usage{
-upgrade_published_schema(
-  DevelopmentSchemaArn = "string",
-  PublishedSchemaArn = "string",
-  MinorVersion = "string",
-  DryRun = TRUE|FALSE
-)
+upgrade_published_schema(DevelopmentSchemaArn, PublishedSchemaArn,
+  MinorVersion, DryRun = NULL)
 }
 \arguments{
 \item{DevelopmentSchemaArn}{[required] The ARN of the development schema with the changes used for the upgrade.}
@@ -23,6 +19,13 @@ upgrade_published_schema(
 \description{
 Upgrades a published schema under a new minor version revision using the current contents of \code{DevelopmentSchemaArn}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{upgrade_published_schema(
+  DevelopmentSchemaArn = "string",
+  PublishedSchemaArn = "string",
+  MinorVersion = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

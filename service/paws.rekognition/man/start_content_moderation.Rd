@@ -4,22 +4,9 @@
 \alias{start_content_moderation}
 \title{Starts asynchronous detection of explicit or suggestive adult content in a stored video}
 \usage{
-start_content_moderation(
-  Video = list(
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  MinConfidence = 123.0,
-  ClientRequestToken = "string",
-  NotificationChannel = list(
-    SNSTopicArn = "string",
-    RoleArn = "string"
-  ),
-  JobTag = "string"
-)
+start_content_moderation(Video, MinConfidence = NULL,
+  ClientRequestToken = NULL, NotificationChannel = NULL,
+  JobTag = NULL)
 }
 \arguments{
 \item{Video}{[required] The video in which you want to moderate content. The video must be stored in an Amazon S3 bucket.}
@@ -42,6 +29,23 @@ To get the results of the content moderation analysis, first check that the stat
 
 For more information, see Detecting Unsafe Content in the Amazon Rekognition Developer Guide.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_content_moderation(
+  Video = list(
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  MinConfidence = 123.0,
+  ClientRequestToken = "string",
+  NotificationChannel = list(
+    SNSTopicArn = "string",
+    RoleArn = "string"
+  ),
+  JobTag = "string"
+)
 }
+}
+

@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.sagemaker_operations.R
 \name{update_endpoint}
 \alias{update_endpoint}
-\title{Deploys the new \code{EndpointConfig} specified in the request, switches to using newly created endpoint, and then deletes resources provisioned for the endpoint using the previous \code{EndpointConfig} (there is no availability loss)}
+\title{Deploys the new EndpointConfig specified in the request, switches to using newly created endpoint, and then deletes resources provisioned for the endpoint using the previous EndpointConfig (there is no availability loss)}
 \usage{
-update_endpoint(
-  EndpointName = "string",
-  EndpointConfigName = "string"
-)
+update_endpoint(EndpointName, EndpointConfigName)
 }
 \arguments{
 \item{EndpointName}{[required] The name of the endpoint whose configuration you want to update.}
@@ -22,6 +19,11 @@ When Amazon SageMaker receives the request, it sets the endpoint status to \code
 
 You cannot update an endpoint with the current \code{EndpointConfig}. To update an endpoint, you must create a new \code{EndpointConfig}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_endpoint(
+  EndpointName = "string",
+  EndpointConfigName = "string"
+)
 }
+}
+

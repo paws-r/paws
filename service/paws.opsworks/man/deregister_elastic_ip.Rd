@@ -4,9 +4,7 @@
 \alias{deregister_elastic_ip}
 \title{Deregisters a specified Elastic IP address}
 \usage{
-deregister_elastic_ip(
-  ElasticIp = "string"
-)
+deregister_elastic_ip(ElasticIp)
 }
 \arguments{
 \item{ElasticIp}{[required] The Elastic IP address.}
@@ -17,6 +15,10 @@ Deregisters a specified Elastic IP address. The address can then be registered b
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{deregister_elastic_ip(
+  ElasticIp = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{get_usage_plan_key}
 \title{Gets a usage plan key of a given key identifier}
 \usage{
-get_usage_plan_key(
-  usagePlanId = "string",
-  keyId = "string"
-)
+get_usage_plan_key(usagePlanId, keyId)
 }
 \arguments{
 \item{usagePlanId}{[required] [Required] The Id of the UsagePlan resource representing the usage plan containing the to-be-retrieved UsagePlanKey resource representing a plan customer.}
@@ -17,6 +14,11 @@ get_usage_plan_key(
 \description{
 Gets a usage plan key of a given key identifier.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_usage_plan_key(
+  usagePlanId = "string",
+  keyId = "string"
+)
 }
+}
+

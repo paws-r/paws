@@ -4,7 +4,20 @@
 \alias{create_budget}
 \title{Creates a budget and, if included, notifications and subscribers}
 \usage{
-create_budget(
+create_budget(AccountId, Budget, NotificationsWithSubscribers = NULL)
+}
+\arguments{
+\item{AccountId}{[required] The \code{accountId} that is associated with the budget.}
+
+\item{Budget}{[required] The budget object that you want to create.}
+
+\item{NotificationsWithSubscribers}{A notification that you want to associate with a budget. A budget can have up to five notifications, and each notification can have one SNS subscriber and up to ten email subscribers. If you include notifications and subscribers in your \code{CreateBudget} call, AWS creates the notifications and subscribers for you.}
+}
+\description{
+Creates a budget and, if included, notifications and subscribers.
+}
+\section{Accepted Parameters}{
+\preformatted{create_budget(
   AccountId = "string",
   Budget = list(
     BudgetName = "string",
@@ -45,8 +58,7 @@ create_budget(
         Unit = "string"
       )
     ),
-    BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE",
-    LastUpdatedTime = as.POSIXct("2015-01-01")
+    BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"
   ),
   NotificationsWithSubscribers = list(
     list(
@@ -54,8 +66,7 @@ create_budget(
         NotificationType = "ACTUAL"|"FORECASTED",
         ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
         Threshold = 123.0,
-        ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-        NotificationState = "OK"|"ALARM"
+        ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
       ),
       Subscribers = list(
         list(
@@ -67,16 +78,5 @@ create_budget(
   )
 )
 }
-\arguments{
-\item{AccountId}{[required] The \code{accountId} that is associated with the budget.}
-
-\item{Budget}{[required] The budget object that you want to create.}
-
-\item{NotificationsWithSubscribers}{A notification that you want to associate with a budget. A budget can have up to five notifications, and each notification can have one SNS subscriber and up to 10 email subscribers. If you include notifications and subscribers in your \code{CreateBudget} call, AWS creates the notifications and subscribers for you.}
 }
-\description{
-Creates a budget and, if included, notifications and subscribers.
-}
-\examples{
 
-}

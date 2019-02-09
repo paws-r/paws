@@ -4,25 +4,10 @@
 \alias{describe_reserved_db_instances}
 \title{Returns information about reserved DB instances for this account, or about a specified reserved DB instance}
 \usage{
-describe_reserved_db_instances(
-  ReservedDBInstanceId = "string",
-  ReservedDBInstancesOfferingId = "string",
-  DBInstanceClass = "string",
-  Duration = "string",
-  ProductDescription = "string",
-  OfferingType = "string",
-  MultiAZ = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_reserved_db_instances(ReservedDBInstanceId = NULL,
+  ReservedDBInstancesOfferingId = NULL, DBInstanceClass = NULL,
+  Duration = NULL, ProductDescription = NULL, OfferingType = NULL,
+  MultiAZ = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{ReservedDBInstanceId}{The reserved DB instance identifier filter value. Specify this parameter to show only the reservation that matches the specified reservation ID.}
@@ -56,6 +41,26 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Returns information about reserved DB instances for this account, or about a specified reserved DB instance.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_reserved_db_instances(
+  ReservedDBInstanceId = "string",
+  ReservedDBInstancesOfferingId = "string",
+  DBInstanceClass = "string",
+  Duration = "string",
+  ProductDescription = "string",
+  OfferingType = "string",
+  MultiAZ = TRUE|FALSE,
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

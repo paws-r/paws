@@ -4,14 +4,8 @@
 \alias{describe_instances_health}
 \title{Retrieves detailed information about the health of instances in your AWS Elastic Beanstalk}
 \usage{
-describe_instances_health(
-  EnvironmentName = "string",
-  EnvironmentId = "string",
-  AttributeNames = list(
-    "HealthStatus"|"Color"|"Causes"|"ApplicationMetrics"|"RefreshedAt"|"LaunchedAt"|"System"|"Deployment"|"AvailabilityZone"|"InstanceType"|"All"
-  ),
-  NextToken = "string"
-)
+describe_instances_health(EnvironmentName = NULL, EnvironmentId = NULL,
+  AttributeNames = NULL, NextToken = NULL)
 }
 \arguments{
 \item{EnvironmentName}{Specify the AWS Elastic Beanstalk environment by name.}
@@ -25,14 +19,26 @@ describe_instances_health(
 \description{
 Retrieves detailed information about the health of instances in your AWS Elastic Beanstalk. This operation requires \href{http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html}{enhanced health reporting}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_instances_health(
+  EnvironmentName = "string",
+  EnvironmentId = "string",
+  AttributeNames = list(
+    "HealthStatus"|"Color"|"Causes"|"ApplicationMetrics"|"RefreshedAt"|"LaunchedAt"|"System"|"Deployment"|"AvailabilityZone"|"InstanceType"|"All"
+  ),
+  NextToken = "string"
+)
+}
+}
+
 \examples{
 # The following operation retrieves health information for instances in an
 # environment named my-env:
-describe_instances_health(
+\donttest{describe_instances_health(
   AttributeNames = list(
     "All"
   ),
   EnvironmentName = "my-env"
-)
+)}
 
 }

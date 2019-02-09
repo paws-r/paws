@@ -4,9 +4,7 @@
 \alias{delete_image_builder}
 \title{Deletes the specified image builder and releases the capacity}
 \usage{
-delete_image_builder(
-  Name = "string"
-)
+delete_image_builder(Name)
 }
 \arguments{
 \item{Name}{[required] The name of the image builder.}
@@ -14,6 +12,10 @@ delete_image_builder(
 \description{
 Deletes the specified image builder and releases the capacity.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_image_builder(
+  Name = "string"
+)
 }
+}
+

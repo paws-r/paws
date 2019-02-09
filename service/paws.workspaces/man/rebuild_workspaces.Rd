@@ -4,13 +4,7 @@
 \alias{rebuild_workspaces}
 \title{Rebuilds the specified WorkSpace}
 \usage{
-rebuild_workspaces(
-  RebuildWorkspaceRequests = list(
-    list(
-      WorkspaceId = "string"
-    )
-  )
-)
+rebuild_workspaces(RebuildWorkspaceRequests)
 }
 \arguments{
 \item{RebuildWorkspaceRequests}{[required] The WorkSpace to rebuild. You can specify a single WorkSpace.}
@@ -25,6 +19,14 @@ Rebuilding a WorkSpace is a potentially destructive action that can result in th
 
 This operation is asynchronous and returns before the WorkSpaces have been completely rebuilt.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{rebuild_workspaces(
+  RebuildWorkspaceRequests = list(
+    list(
+      WorkspaceId = "string"
+    )
+  )
+)
 }
+}
+

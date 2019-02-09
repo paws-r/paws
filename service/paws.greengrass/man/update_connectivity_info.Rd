@@ -4,7 +4,18 @@
 \alias{update_connectivity_info}
 \title{Updates the connectivity information for the core}
 \usage{
-update_connectivity_info(
+update_connectivity_info(ConnectivityInfo = NULL, ThingName)
+}
+\arguments{
+\item{ConnectivityInfo}{A list of connectivity info.}
+
+\item{ThingName}{[required] The thing name.}
+}
+\description{
+Updates the connectivity information for the core. Any devices that belong to the group which has this core will receive this information in order to find the location of the core and connect to it.
+}
+\section{Accepted Parameters}{
+\preformatted{update_connectivity_info(
   ConnectivityInfo = list(
     list(
       HostAddress = "string",
@@ -16,14 +27,5 @@ update_connectivity_info(
   ThingName = "string"
 )
 }
-\arguments{
-\item{ConnectivityInfo}{A list of connectivity info.}
+}
 
-\item{ThingName}{[required] The thing name.}
-}
-\description{
-Updates the connectivity information for the core. Any devices that belong to the group which has this core will receive this information in order to find the location of the core and connect to it.
-}
-\examples{
-
-}

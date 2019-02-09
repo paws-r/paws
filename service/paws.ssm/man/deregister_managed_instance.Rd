@@ -4,9 +4,7 @@
 \alias{deregister_managed_instance}
 \title{Removes the server or virtual machine from the list of registered servers}
 \usage{
-deregister_managed_instance(
-  InstanceId = "string"
-)
+deregister_managed_instance(InstanceId)
 }
 \arguments{
 \item{InstanceId}{[required] The ID assigned to the managed instance when you registered it using the activation process.}
@@ -14,6 +12,10 @@ deregister_managed_instance(
 \description{
 Removes the server or virtual machine from the list of registered servers. You can reregister the instance again at any time. If you don't plan to use Run Command on the server, we suggest uninstalling SSM Agent first.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{deregister_managed_instance(
+  InstanceId = "string"
+)
 }
+}
+

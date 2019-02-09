@@ -4,10 +4,7 @@
 \alias{update_project}
 \title{Update an existing project}
 \usage{
-update_project(
-  contents = raw,
-  projectId = "string"
-)
+update_project(contents = NULL, projectId)
 }
 \arguments{
 \item{contents}{ZIP or YAML file which contains project configuration to be updated. This should be the contents of the file downloaded from the URL provided in an export project operation.}
@@ -17,6 +14,11 @@ update_project(
 \description{
 Update an existing project.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_project(
+  contents = raw,
+  projectId = "string"
+)
 }
+}
+

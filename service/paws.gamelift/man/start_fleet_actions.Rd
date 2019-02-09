@@ -4,12 +4,7 @@
 \alias{start_fleet_actions}
 \title{Resumes activity on a fleet that was suspended with StopFleetActions}
 \usage{
-start_fleet_actions(
-  FleetId = "string",
-  Actions = list(
-    "AUTO_SCALING"
-  )
-)
+start_fleet_actions(FleetId, Actions)
 }
 \arguments{
 \item{FleetId}{[required] Unique identifier for a fleet}
@@ -36,6 +31,13 @@ Operations related to fleet capacity scaling include:
 \item StopFleetActions
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_fleet_actions(
+  FleetId = "string",
+  Actions = list(
+    "AUTO_SCALING"
+  )
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{disassociate_drt_log_bucket}
 \title{Removes the DDoS Response team's (DRT) access to the specified Amazon S3 bucket containing your flow logs}
 \usage{
-disassociate_drt_log_bucket(
-  LogBucket = "string"
-)
+disassociate_drt_log_bucket(LogBucket)
 }
 \arguments{
 \item{LogBucket}{[required] The Amazon S3 bucket that contains your flow logs.}
@@ -17,6 +15,10 @@ Removes the DDoS Response team's (DRT) access to the specified Amazon S3 bucket 
 \details{
 To make a \code{DisassociateDRTLogBucket} request, you must be subscribed to the \href{https://aws.amazon.com/premiumsupport/business-support/}{Business Support plan} or the \href{https://aws.amazon.com/premiumsupport/enterprise-support/}{Enterprise Support plan}. However, if you are not subscribed to one of these support plans, but had been previously and had granted the DRT access to your account, you can submit a \code{DisassociateDRTLogBucket} request to remove this access.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_drt_log_bucket(
+  LogBucket = "string"
+)
 }
+}
+

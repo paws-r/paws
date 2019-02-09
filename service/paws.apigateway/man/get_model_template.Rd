@@ -4,10 +4,7 @@
 \alias{get_model_template}
 \title{Generates a sample mapping template that can be used to transform a payload into the structure of a model}
 \usage{
-get_model_template(
-  restApiId = "string",
-  modelName = "string"
-)
+get_model_template(restApiId, modelName)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -17,6 +14,11 @@ get_model_template(
 \description{
 Generates a sample mapping template that can be used to transform a payload into the structure of a model.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_model_template(
+  restApiId = "string",
+  modelName = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{describe_risk_configuration}
 \title{Describes the risk configuration}
 \usage{
-describe_risk_configuration(
-  UserPoolId = "string",
-  ClientId = "string"
-)
+describe_risk_configuration(UserPoolId, ClientId = NULL)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
@@ -17,6 +14,11 @@ describe_risk_configuration(
 \description{
 Describes the risk configuration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_risk_configuration(
+  UserPoolId = "string",
+  ClientId = "string"
+)
 }
+}
+

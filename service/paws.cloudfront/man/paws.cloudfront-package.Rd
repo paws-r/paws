@@ -6,10 +6,10 @@
 \alias{paws.cloudfront-package}
 \title{paws.cloudfront: Amazon CloudFront}
 \description{
-This is the *Amazon CloudFront API Reference*. This guide is
-for developers who need detailed information about CloudFront API
-actions, data types, and errors. For detailed information about
-CloudFront features, see the *Amazon CloudFront Developer Guide*.
+This is the *Amazon CloudFront API Reference*. This
+    guide is for developers who need detailed information about CloudFront
+    API actions, data types, and errors. For detailed information about
+    CloudFront features, see the *Amazon CloudFront Developer Guide*.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

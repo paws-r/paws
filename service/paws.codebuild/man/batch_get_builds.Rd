@@ -4,11 +4,7 @@
 \alias{batch_get_builds}
 \title{Gets information about builds}
 \usage{
-batch_get_builds(
-  ids = list(
-    "string"
-  )
-)
+batch_get_builds(ids)
 }
 \arguments{
 \item{ids}{[required] The IDs of the builds.}
@@ -16,14 +12,23 @@ batch_get_builds(
 \description{
 Gets information about builds.
 }
+\section{Accepted Parameters}{
+\preformatted{batch_get_builds(
+  ids = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example gets information about builds with the specified
 # build IDs.
-batch_get_builds(
+\donttest{batch_get_builds(
   ids = list(
     "codebuild-demo-project:9b0ac37f-d19e-4254-9079-f47e9a389eEX",
     "codebuild-demo-project:b79a46f7-1473-4636-a23f-da9c45c208EX"
   )
-)
+)}
 
 }

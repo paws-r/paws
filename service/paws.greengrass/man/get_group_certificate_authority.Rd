@@ -4,19 +4,21 @@
 \alias{get_group_certificate_authority}
 \title{Retreives the CA associated with a group}
 \usage{
-get_group_certificate_authority(
-  CertificateAuthorityId = "string",
-  GroupId = "string"
-)
+get_group_certificate_authority(CertificateAuthorityId, GroupId)
 }
 \arguments{
 \item{CertificateAuthorityId}{[required] The ID of the certificate authority.}
 
-\item{GroupId}{[required] The ID of the Greengrass group.}
+\item{GroupId}{[required] The ID of the AWS Greengrass group.}
 }
 \description{
 Retreives the CA associated with a group. Returns the public key of the CA.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_group_certificate_authority(
+  CertificateAuthorityId = "string",
+  GroupId = "string"
+)
 }
+}
+

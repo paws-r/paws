@@ -4,10 +4,8 @@
 \alias{get_resource_definition_version}
 \title{Retrieves information about a resource definition version, including which resources are included in the version}
 \usage{
-get_resource_definition_version(
-  ResourceDefinitionId = "string",
-  ResourceDefinitionVersionId = "string"
-)
+get_resource_definition_version(ResourceDefinitionId,
+  ResourceDefinitionVersionId)
 }
 \arguments{
 \item{ResourceDefinitionId}{[required] The ID of the resource definition.}
@@ -17,6 +15,11 @@ get_resource_definition_version(
 \description{
 Retrieves information about a resource definition version, including which resources are included in the version.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_resource_definition_version(
+  ResourceDefinitionId = "string",
+  ResourceDefinitionVersionId = "string"
+)
 }
+}
+

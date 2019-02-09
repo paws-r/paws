@@ -4,20 +4,16 @@
 \alias{get_ssh_public_key}
 \title{Retrieves the specified SSH public key, including metadata about the key}
 \usage{
-get_ssh_public_key(
-  UserName = "string",
-  SSHPublicKeyId = "string",
-  Encoding = "SSH"|"PEM"
-)
+get_ssh_public_key(UserName, SSHPublicKeyId, Encoding)
 }
 \arguments{
 \item{UserName}{[required] The name of the IAM user associated with the SSH public key.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{SSHPublicKeyId}{[required] The unique identifier for the SSH public key.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
 
 \item{Encoding}{[required] Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use \code{SSH}. To retrieve the public key in PEM format, use \code{PEM}.}
 }
@@ -27,6 +23,12 @@ Retrieves the specified SSH public key, including metadata about the key.
 \details{
 The SSH public key retrieved by this operation is used only for authenticating the associated IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see \href{http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html}{Set up AWS CodeCommit for SSH Connections} in the \emph{AWS CodeCommit User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_ssh_public_key(
+  UserName = "string",
+  SSHPublicKeyId = "string",
+  Encoding = "SSH"|"PEM"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{describe_resource_server}
 \title{Describes a resource server}
 \usage{
-describe_resource_server(
-  UserPoolId = "string",
-  Identifier = "string"
-)
+describe_resource_server(UserPoolId, Identifier)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool that hosts the resource server.}
@@ -17,6 +14,11 @@ describe_resource_server(
 \description{
 Describes a resource server.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_resource_server(
+  UserPoolId = "string",
+  Identifier = "string"
+)
 }
+}
+

@@ -4,26 +4,9 @@
 \alias{get_metric_statistics}
 \title{Gets statistics for the specified metric}
 \usage{
-get_metric_statistics(
-  Namespace = "string",
-  MetricName = "string",
-  Dimensions = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  StartTime = as.POSIXct("2015-01-01"),
-  EndTime = as.POSIXct("2015-01-01"),
-  Period = 123,
-  Statistics = list(
-    "SampleCount"|"Average"|"Sum"|"Minimum"|"Maximum"
-  ),
-  ExtendedStatistics = list(
-    "string"
-  ),
-  Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
-)
+get_metric_statistics(Namespace, MetricName, Dimensions = NULL,
+  StartTime, EndTime, Period, Statistics = NULL,
+  ExtendedStatistics = NULL, Unit = NULL)
 }
 \arguments{
 \item{Namespace}{[required] The namespace of the metric, with or without spaces.}
@@ -94,6 +77,27 @@ CloudWatch started retaining 5-minute and 1-hour metric data as of July 9, 2016.
 
 For information about metrics and dimensions supported by AWS services, see the \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CW_Support_For_AWS.html}{Amazon CloudWatch Metrics and Dimensions Reference} in the \emph{Amazon CloudWatch User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_metric_statistics(
+  Namespace = "string",
+  MetricName = "string",
+  Dimensions = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  Period = 123,
+  Statistics = list(
+    "SampleCount"|"Average"|"Sum"|"Minimum"|"Maximum"
+  ),
+  ExtendedStatistics = list(
+    "string"
+  ),
+  Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
+)
 }
+}
+

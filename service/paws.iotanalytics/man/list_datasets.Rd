@@ -4,10 +4,7 @@
 \alias{list_datasets}
 \title{Retrieves information about data sets}
 \usage{
-list_datasets(
-  nextToken = "string",
-  maxResults = 123
-)
+list_datasets(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{nextToken}{The token for the next set of results.}
@@ -19,6 +16,11 @@ The default value is 100.}
 \description{
 Retrieves information about data sets.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_datasets(
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

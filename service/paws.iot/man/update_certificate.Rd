@@ -4,10 +4,7 @@
 \alias{update_certificate}
 \title{Updates the status of the specified certificate}
 \usage{
-update_certificate(
-  certificateId = "string",
-  newStatus = "ACTIVE"|"INACTIVE"|"REVOKED"|"PENDING_TRANSFER"|"REGISTER_INACTIVE"|"PENDING_ACTIVATION"
-)
+update_certificate(certificateId, newStatus)
 }
 \arguments{
 \item{certificateId}{[required] The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)}
@@ -26,6 +23,11 @@ Moving a certificate from the ACTIVE state (including REVOKED) will not disconne
 
 The ACTIVE state is required to authenticate devices connecting to AWS IoT using a certificate.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_certificate(
+  certificateId = "string",
+  newStatus = "ACTIVE"|"INACTIVE"|"REVOKED"|"PENDING_TRANSFER"|"REGISTER_INACTIVE"|"PENDING_ACTIVATION"
+)
 }
+}
+

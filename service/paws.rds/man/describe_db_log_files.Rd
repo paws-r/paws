@@ -4,22 +4,9 @@
 \alias{describe_db_log_files}
 \title{Returns a list of DB log files for the DB instance}
 \usage{
-describe_db_log_files(
-  DBInstanceIdentifier = "string",
-  FilenameContains = "string",
-  FileLastWritten = 123,
-  FileSize = 123,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_db_log_files(DBInstanceIdentifier, FilenameContains = NULL,
+  FileLastWritten = NULL, FileSize = NULL, Filters = NULL,
+  MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The customer-assigned name of the DB instance that contains the log files you want to list.
@@ -44,6 +31,23 @@ Constraints:
 \description{
 Returns a list of DB log files for the DB instance.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_db_log_files(
+  DBInstanceIdentifier = "string",
+  FilenameContains = "string",
+  FileLastWritten = 123,
+  FileSize = 123,
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

@@ -4,7 +4,21 @@
 \alias{list_platform_versions}
 \title{Lists the available platforms}
 \usage{
-list_platform_versions(
+list_platform_versions(Filters = NULL, MaxRecords = NULL,
+  NextToken = NULL)
+}
+\arguments{
+\item{Filters}{List only the platforms where the platform member value relates to one of the supplied values.}
+
+\item{MaxRecords}{The maximum number of platform values returned in one call.}
+
+\item{NextToken}{The starting index into the remaining list of platforms. Use the \code{NextToken} value from a previous \code{ListPlatformVersion} call.}
+}
+\description{
+Lists the available platforms.
+}
+\section{Accepted Parameters}{
+\preformatted{list_platform_versions(
   Filters = list(
     list(
       Type = "string",
@@ -18,16 +32,5 @@ list_platform_versions(
   NextToken = "string"
 )
 }
-\arguments{
-\item{Filters}{List only the platforms where the platform member value relates to one of the supplied values.}
-
-\item{MaxRecords}{The maximum number of platform values returned in one call.}
-
-\item{NextToken}{The starting index into the remaining list of platforms. Use the \code{NextToken} value from a previous \code{ListPlatformVersion} call.}
 }
-\description{
-Lists the available platforms.
-}
-\examples{
 
-}

@@ -4,17 +4,9 @@
 \alias{list_objects_v2}
 \title{Returns some or all (up to 1000) of the objects in a bucket}
 \usage{
-list_objects_v2(
-  Bucket = "string",
-  Delimiter = "string",
-  EncodingType = "url",
-  MaxKeys = 123,
-  Prefix = "string",
-  ContinuationToken = "string",
-  FetchOwner = TRUE|FALSE,
-  StartAfter = "string",
-  RequestPayer = "requester"
-)
+list_objects_v2(Bucket, Delimiter = NULL, EncodingType = NULL,
+  MaxKeys = NULL, Prefix = NULL, ContinuationToken = NULL,
+  FetchOwner = NULL, StartAfter = NULL, RequestPayer = NULL)
 }
 \arguments{
 \item{Bucket}{[required] Name of the bucket to list.}
@@ -38,12 +30,27 @@ list_objects_v2(
 \description{
 Returns some or all (up to 1000) of the objects in a bucket. You can use the request parameters as selection criteria to return a subset of the objects in a bucket. Note: ListObjectsV2 is the revised List Objects API and we recommend you use this revised API for new application development.
 }
+\section{Accepted Parameters}{
+\preformatted{list_objects_v2(
+  Bucket = "string",
+  Delimiter = "string",
+  EncodingType = "url",
+  MaxKeys = 123,
+  Prefix = "string",
+  ContinuationToken = "string",
+  FetchOwner = TRUE|FALSE,
+  StartAfter = "string",
+  RequestPayer = "requester"
+)
+}
+}
+
 \examples{
 # The following example retrieves object list. The request specifies max
 # keys to limit response to include only 2 object keys. 
-list_objects_v2(
+\donttest{list_objects_v2(
   Bucket = "examplebucket",
   MaxKeys = "2"
-)
+)}
 
 }

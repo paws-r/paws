@@ -4,9 +4,7 @@
 \alias{head_bucket}
 \title{This operation is useful to determine if a bucket exists and you have permission to access it}
 \usage{
-head_bucket(
-  Bucket = "string"
-)
+head_bucket(Bucket)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -14,10 +12,17 @@ head_bucket(
 \description{
 This operation is useful to determine if a bucket exists and you have permission to access it.
 }
+\section{Accepted Parameters}{
+\preformatted{head_bucket(
+  Bucket = "string"
+)
+}
+}
+
 \examples{
 # This operation checks to see if a bucket exists.
-head_bucket(
+\donttest{head_bucket(
   Bucket = "acl1"
-)
+)}
 
 }

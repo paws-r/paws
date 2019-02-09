@@ -4,10 +4,7 @@
 \alias{register_elastic_ip}
 \title{Registers an Elastic IP address with a specified stack}
 \usage{
-register_elastic_ip(
-  ElasticIp = "string",
-  StackId = "string"
-)
+register_elastic_ip(ElasticIp, StackId)
 }
 \arguments{
 \item{ElasticIp}{[required] The Elastic IP address.}
@@ -20,6 +17,11 @@ Registers an Elastic IP address with a specified stack. An address can be regist
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{register_elastic_ip(
+  ElasticIp = "string",
+  StackId = "string"
+)
 }
+}
+

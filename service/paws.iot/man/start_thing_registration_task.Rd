@@ -4,12 +4,8 @@
 \alias{start_thing_registration_task}
 \title{Creates a bulk thing provisioning task}
 \usage{
-start_thing_registration_task(
-  templateBody = "string",
-  inputFileBucket = "string",
-  inputFileKey = "string",
-  roleArn = "string"
-)
+start_thing_registration_task(templateBody, inputFileBucket, inputFileKey,
+  roleArn)
 }
 \arguments{
 \item{templateBody}{[required] The provisioning template.}
@@ -23,6 +19,13 @@ start_thing_registration_task(
 \description{
 Creates a bulk thing provisioning task.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_thing_registration_task(
+  templateBody = "string",
+  inputFileBucket = "string",
+  inputFileKey = "string",
+  roleArn = "string"
+)
 }
+}
+

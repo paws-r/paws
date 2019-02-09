@@ -4,11 +4,7 @@
 \alias{admin_get_device}
 \title{Gets the device, as an administrator}
 \usage{
-admin_get_device(
-  DeviceKey = "string",
-  UserPoolId = "string",
-  Username = "string"
-)
+admin_get_device(DeviceKey, UserPoolId, Username)
 }
 \arguments{
 \item{DeviceKey}{[required] The device key.}
@@ -23,6 +19,12 @@ Gets the device, as an administrator.
 \details{
 Requires developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{admin_get_device(
+  DeviceKey = "string",
+  UserPoolId = "string",
+  Username = "string"
+)
 }
+}
+

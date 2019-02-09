@@ -4,22 +4,8 @@
 \alias{describe_vpc_endpoint_services}
 \title{Describes available services to which you can create a VPC endpoint}
 \usage{
-describe_vpc_endpoint_services(
-  DryRun = TRUE|FALSE,
-  ServiceNames = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_vpc_endpoint_services(DryRun = NULL, ServiceNames = NULL,
+  Filters = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -40,6 +26,23 @@ Constraint: If the value is greater than 1000, we return only 1000 items.}
 \description{
 Describes available services to which you can create a VPC endpoint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_vpc_endpoint_services(
+  DryRun = TRUE|FALSE,
+  ServiceNames = list(
+    "string"
+  ),
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

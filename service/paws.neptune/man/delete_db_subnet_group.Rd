@@ -4,9 +4,7 @@
 \alias{delete_db_subnet_group}
 \title{Deletes a DB subnet group}
 \usage{
-delete_db_subnet_group(
-  DBSubnetGroupName = "string"
-)
+delete_db_subnet_group(DBSubnetGroupName)
 }
 \arguments{
 \item{DBSubnetGroupName}{[required] The name of the database subnet group to delete.
@@ -25,6 +23,10 @@ Deletes a DB subnet group.
 \details{
 The specified database subnet group must not be associated with any DB instances.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_db_subnet_group(
+  DBSubnetGroupName = "string"
+)
 }
+}
+

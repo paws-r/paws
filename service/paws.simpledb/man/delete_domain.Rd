@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.simpledb_operations.R
 \name{delete_domain}
 \alias{delete_domain}
-\title{The \code{DeleteDomain} operation deletes a domain}
+\title{The DeleteDomain operation deletes a domain}
 \usage{
-delete_domain(
-  DomainName = "string"
-)
+delete_domain(DomainName)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain to delete.}
@@ -17,6 +15,10 @@ The \code{DeleteDomain} operation deletes a domain. Any items (and their attribu
 \details{
 Running \code{DeleteDomain} on a domain that does not exist or running the function multiple times using the same domain name will not result in an error response.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_domain(
+  DomainName = "string"
+)
 }
+}
+

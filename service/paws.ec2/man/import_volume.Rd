@@ -4,19 +4,8 @@
 \alias{import_volume}
 \title{Creates an import volume task using metadata from the specified disk image}
 \usage{
-import_volume(
-  AvailabilityZone = "string",
-  Description = "string",
-  DryRun = TRUE|FALSE,
-  Image = list(
-    Bytes = 123,
-    Format = "VMDK"|"RAW"|"VHD",
-    ImportManifestUrl = "string"
-  ),
-  Volume = list(
-    Size = 123
-  )
-)
+import_volume(AvailabilityZone, Description = NULL, DryRun = NULL,
+  Image, Volume)
 }
 \arguments{
 \item{AvailabilityZone}{[required] The Availability Zone for the resulting EBS volume.}
@@ -35,6 +24,20 @@ Creates an import volume task using metadata from the specified disk image.For m
 \details{
 For information about the import manifest referenced by this API action, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html}{VM Import Manifest}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{import_volume(
+  AvailabilityZone = "string",
+  Description = "string",
+  DryRun = TRUE|FALSE,
+  Image = list(
+    Bytes = 123,
+    Format = "VMDK"|"RAW"|"VHD",
+    ImportManifestUrl = "string"
+  ),
+  Volume = list(
+    Size = 123
+  )
+)
 }
+}
+

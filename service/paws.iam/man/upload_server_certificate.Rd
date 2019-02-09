@@ -4,24 +4,19 @@
 \alias{upload_server_certificate}
 \title{Uploads a server certificate entity for the AWS account}
 \usage{
-upload_server_certificate(
-  Path = "string",
-  ServerCertificateName = "string",
-  CertificateBody = "string",
-  PrivateKey = "string",
-  CertificateChain = "string"
-)
+upload_server_certificate(Path = NULL, ServerCertificateName,
+  CertificateBody, PrivateKey, CertificateChain = NULL)
 }
 \arguments{
 \item{Path}{The path for the server certificate. For more information about paths, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers} in the \emph{IAM User Guide}.
 
-This parameter is optional. If it is not included, it defaults to a slash (/). This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+This parameter is optional. If it is not included, it defaults to a slash (/). This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 
 If you are uploading a server certificate specifically for use with Amazon CloudFront distributions, you must specify a path using the \code{path} parameter. The path must begin with \code{/cloudfront} and must include a trailing slash (for example, \code{/cloudfront/test/}).}
 
 \item{ServerCertificateName}{[required] The name for the server certificate. Do not include the path in this value. The name of the certificate cannot contain any spaces.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{CertificateBody}{[required] The contents of the public key certificate in PEM-encoded format.
 
@@ -54,7 +49,7 @@ The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate this 
 Uploads a server certificate entity for the AWS account. The server certificate entity includes a public key certificate, a private key, and an optional certificate chain, which should all be PEM-encoded.
 }
 \details{
-We recommend that you use \href{http://docs.aws.amazon.com/certificate-manager/}{AWS Certificate Manager} to provision, manage, and deploy your server certificates. With ACM you can request a certificate, deploy it to AWS resources, and let ACM handle certificate renewals for you. Certificates provided by ACM are free. For more information about using ACM, see the \href{http://docs.aws.amazon.com/acm/latest/userguide/}{AWS Certificate Manager User Guide}.
+We recommend that you use \href{https://aws.amazon.com/certificate-manager/}{AWS Certificate Manager} to provision, manage, and deploy your server certificates. With ACM you can request a certificate, deploy it to AWS resources, and let ACM handle certificate renewals for you. Certificates provided by ACM are free. For more information about using ACM, see the \href{http://docs.aws.amazon.com/acm/latest/userguide/}{AWS Certificate Manager User Guide}.
 
 For more information about working with server certificates, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html}{Working with Server Certificates} in the \emph{IAM User Guide}. This topic includes a list of AWS services that can use the server certificates that you manage with IAM.
 
@@ -62,14 +57,25 @@ For information about the number of server certificates you can upload, see \hre
 
 Because the body of the public key certificate, private key, and the certificate chain can be large, you should use POST rather than GET when calling \code{UploadServerCertificate}. For information about setting up signatures and authorization through the API, go to \href{http://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html}{Signing AWS API Requests} in the \emph{AWS General Reference}. For general information about using the Query API with IAM, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html}{Calling the API by Making HTTP Query Requests} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{upload_server_certificate(
+  Path = "string",
+  ServerCertificateName = "string",
+  CertificateBody = "string",
+  PrivateKey = "string",
+  CertificateChain = "string"
+)
+}
+}
+
 \examples{
 # The following upload-server-certificate command uploads a server
 # certificate to your AWS account:
-upload_server_certificate(
+\donttest{upload_server_certificate(
   CertificateBody = "-----BEGIN CERTIFICATE-----<a very long certificate text string>-----END CERTIFICATE-----",
   Path = "/company/servercerts/",
   PrivateKey = "-----BEGIN DSA PRIVATE KEY-----<a very long private key string>-----END DSA PRIVATE KEY-----",
   ServerCertificateName = "ProdServerCert"
-)
+)}
 
 }

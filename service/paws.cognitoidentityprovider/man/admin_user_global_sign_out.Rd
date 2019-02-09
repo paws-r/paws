@@ -4,10 +4,7 @@
 \alias{admin_user_global_sign_out}
 \title{Signs out users from all devices, as an administrator}
 \usage{
-admin_user_global_sign_out(
-  UserPoolId = "string",
-  Username = "string"
-)
+admin_user_global_sign_out(UserPoolId, Username)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
@@ -20,6 +17,11 @@ Signs out users from all devices, as an administrator.
 \details{
 Requires developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{admin_user_global_sign_out(
+  UserPoolId = "string",
+  Username = "string"
+)
 }
+}
+

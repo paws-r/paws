@@ -4,12 +4,8 @@
 \alias{list_stream_consumers}
 \title{Lists the consumers registered to receive data from a stream using enhanced fan-out, and provides information about each consumer}
 \usage{
-list_stream_consumers(
-  StreamARN = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  StreamCreationTimestamp = as.POSIXct("2015-01-01")
-)
+list_stream_consumers(StreamARN, NextToken = NULL, MaxResults = NULL,
+  StreamCreationTimestamp = NULL)
 }
 \arguments{
 \item{StreamARN}{[required] The ARN of the Kinesis data stream for which you want to list the registered consumers. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
@@ -34,6 +30,13 @@ Lists the consumers registered to receive data from a stream using enhanced fan-
 \details{
 This operation has a limit of 10 transactions per second per account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_stream_consumers(
+  StreamARN = "string",
+  NextToken = "string",
+  MaxResults = 123,
+  StreamCreationTimestamp = as.POSIXct("2015-01-01")
+)
 }
+}
+

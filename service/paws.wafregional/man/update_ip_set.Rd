@@ -2,21 +2,9 @@
 % Please edit documentation in R/paws.wafregional_operations.R
 \name{update_ip_set}
 \alias{update_ip_set}
-\title{Inserts or deletes IPSetDescriptor objects in an \code{IPSet}}
+\title{Inserts or deletes IPSetDescriptor objects in an IPSet}
 \usage{
-update_ip_set(
-  IPSetId = "string",
-  ChangeToken = "string",
-  Updates = list(
-    list(
-      Action = "INSERT"|"DELETE",
-      IPSetDescriptor = list(
-        Type = "IPV4"|"IPV6",
-        Value = "string"
-      )
-    )
-  )
-)
+update_ip_set(IPSetId, ChangeToken, Updates)
 }
 \arguments{
 \item{IPSetId}{[required] The \code{IPSetId} of the IPSet that you want to update. \code{IPSetId} is returned by CreateIPSet and by ListIPSets.}
@@ -66,10 +54,27 @@ You can insert a maximum of 1000 addresses in a single request.
 
 For more information about how to use the AWS WAF API to allow or block HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{update_ip_set(
+  IPSetId = "string",
+  ChangeToken = "string",
+  Updates = list(
+    list(
+      Action = "INSERT"|"DELETE",
+      IPSetDescriptor = list(
+        Type = "IPV4"|"IPV6",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following example deletes an IPSetDescriptor object in an IP match
 # set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-update_ip_set(
+\donttest{update_ip_set(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   IPSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
   Updates = list(
@@ -81,6 +86,6 @@ update_ip_set(
       )
     )
   )
-)
+)}
 
 }

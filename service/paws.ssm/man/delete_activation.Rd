@@ -4,9 +4,7 @@
 \alias{delete_activation}
 \title{Deletes an activation}
 \usage{
-delete_activation(
-  ActivationId = "string"
-)
+delete_activation(ActivationId)
 }
 \arguments{
 \item{ActivationId}{[required] The ID of the activation that you want to delete.}
@@ -14,6 +12,10 @@ delete_activation(
 \description{
 Deletes an activation. You are not required to delete an activation. If you delete an activation, you can no longer use it to register additional managed instances. Deleting an activation does not de-register managed instances. You must manually de-register managed instances.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_activation(
+  ActivationId = "string"
+)
 }
+}
+

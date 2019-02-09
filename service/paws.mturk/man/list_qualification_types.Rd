@@ -2,15 +2,10 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{list_qualification_types}
 \alias{list_qualification_types}
-\title{The \code{ListQualificationTypes} operation returns a list of Qualification types, filtered by an optional search term}
+\title{The ListQualificationTypes operation returns a list of Qualification types, filtered by an optional search term}
 \usage{
-list_qualification_types(
-  Query = "string",
-  MustBeRequestable = TRUE|FALSE,
-  MustBeOwnedByCaller = TRUE|FALSE,
-  NextToken = "string",
-  MaxResults = 123
-)
+list_qualification_types(Query = NULL, MustBeRequestable,
+  MustBeOwnedByCaller = NULL, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{Query}{A text query against all of the searchable attributes of Qualification types.}
@@ -26,6 +21,14 @@ list_qualification_types(
 \description{
 The \code{ListQualificationTypes} operation returns a list of Qualification types, filtered by an optional search term.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_qualification_types(
+  Query = "string",
+  MustBeRequestable = TRUE|FALSE,
+  MustBeOwnedByCaller = TRUE|FALSE,
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

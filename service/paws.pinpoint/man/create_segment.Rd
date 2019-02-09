@@ -4,7 +4,18 @@
 \alias{create_segment}
 \title{Used to create or update a segment}
 \usage{
-create_segment(
+create_segment(ApplicationId, WriteSegmentRequest)
+}
+\arguments{
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+
+\item{WriteSegmentRequest}{[required]}
+}
+\description{
+Used to create or update a segment.
+}
+\section{Accepted Parameters}{
+\preformatted{create_segment(
   ApplicationId = "string",
   WriteSegmentRequest = list(
     Dimensions = list(
@@ -194,14 +205,5 @@ create_segment(
   )
 )
 }
-\arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+}
 
-\item{WriteSegmentRequest}{[required]}
-}
-\description{
-Used to create or update a segment.
-}
-\examples{
-
-}

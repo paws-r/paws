@@ -4,9 +4,7 @@
 \alias{get_bucket_website}
 \title{Returns the website configuration for a bucket}
 \usage{
-get_bucket_website(
-  Bucket = "string"
-)
+get_bucket_website(Bucket)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -14,10 +12,17 @@ get_bucket_website(
 \description{
 Returns the website configuration for a bucket.
 }
+\section{Accepted Parameters}{
+\preformatted{get_bucket_website(
+  Bucket = "string"
+)
+}
+}
+
 \examples{
 # The following example retrieves website configuration of a bucket.
-get_bucket_website(
+\donttest{get_bucket_website(
   Bucket = "examplebucket"
-)
+)}
 
 }

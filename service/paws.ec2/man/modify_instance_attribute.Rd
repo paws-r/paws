@@ -4,56 +4,12 @@
 \alias{modify_instance_attribute}
 \title{Modifies the specified attribute of the specified instance}
 \usage{
-modify_instance_attribute(
-  SourceDestCheck = list(
-    Value = TRUE|FALSE
-  ),
-  Attribute = "instanceType"|"kernel"|"ramdisk"|"userData"|"disableApiTermination"|"instanceInitiatedShutdownBehavior"|"rootDeviceName"|"blockDeviceMapping"|"productCodes"|"sourceDestCheck"|"groupSet"|"ebsOptimized"|"sriovNetSupport"|"enaSupport",
-  BlockDeviceMappings = list(
-    list(
-      DeviceName = "string",
-      Ebs = list(
-        DeleteOnTermination = TRUE|FALSE,
-        VolumeId = "string"
-      ),
-      NoDevice = "string",
-      VirtualName = "string"
-    )
-  ),
-  DisableApiTermination = list(
-    Value = TRUE|FALSE
-  ),
-  DryRun = TRUE|FALSE,
-  EbsOptimized = list(
-    Value = TRUE|FALSE
-  ),
-  EnaSupport = list(
-    Value = TRUE|FALSE
-  ),
-  Groups = list(
-    "string"
-  ),
-  InstanceId = "string",
-  InstanceInitiatedShutdownBehavior = list(
-    Value = "string"
-  ),
-  InstanceType = list(
-    Value = "string"
-  ),
-  Kernel = list(
-    Value = "string"
-  ),
-  Ramdisk = list(
-    Value = "string"
-  ),
-  SriovNetSupport = list(
-    Value = "string"
-  ),
-  UserData = list(
-    Value = raw
-  ),
-  Value = "string"
-)
+modify_instance_attribute(SourceDestCheck = NULL, Attribute = NULL,
+  BlockDeviceMappings = NULL, DisableApiTermination = NULL,
+  DryRun = NULL, EbsOptimized = NULL, EnaSupport = NULL,
+  Groups = NULL, InstanceId, InstanceInitiatedShutdownBehavior = NULL,
+  InstanceType = NULL, Kernel = NULL, Ramdisk = NULL,
+  SriovNetSupport = NULL, UserData = NULL, Value = NULL)
 }
 \arguments{
 \item{SourceDestCheck}{Specifies whether source/destination checking is enabled. A value of \code{true} means that checking is enabled, and \code{false} means that checking is disabled. This value must be \code{false} for a NAT instance to perform NAT.}
@@ -104,23 +60,77 @@ Modifies the specified attribute of the specified instance. You can specify only
 
 To modify some attributes, the instance must be stopped. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingAttributesWhileInstanceStopped.html}{Modifying Attributes of a Stopped Instance} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{modify_instance_attribute(
+  SourceDestCheck = list(
+    Value = TRUE|FALSE
+  ),
+  Attribute = "instanceType"|"kernel"|"ramdisk"|"userData"|"disableApiTermination"|"instanceInitiatedShutdownBehavior"|"rootDeviceName"|"blockDeviceMapping"|"productCodes"|"sourceDestCheck"|"groupSet"|"ebsOptimized"|"sriovNetSupport"|"enaSupport",
+  BlockDeviceMappings = list(
+    list(
+      DeviceName = "string",
+      Ebs = list(
+        DeleteOnTermination = TRUE|FALSE,
+        VolumeId = "string"
+      ),
+      NoDevice = "string",
+      VirtualName = "string"
+    )
+  ),
+  DisableApiTermination = list(
+    Value = TRUE|FALSE
+  ),
+  DryRun = TRUE|FALSE,
+  EbsOptimized = list(
+    Value = TRUE|FALSE
+  ),
+  EnaSupport = list(
+    Value = TRUE|FALSE
+  ),
+  Groups = list(
+    "string"
+  ),
+  InstanceId = "string",
+  InstanceInitiatedShutdownBehavior = list(
+    Value = "string"
+  ),
+  InstanceType = list(
+    Value = "string"
+  ),
+  Kernel = list(
+    Value = "string"
+  ),
+  Ramdisk = list(
+    Value = "string"
+  ),
+  SriovNetSupport = list(
+    Value = "string"
+  ),
+  UserData = list(
+    Value = raw
+  ),
+  Value = "string"
+)
+}
+}
+
 \examples{
 # This example modifies the instance type of the specified stopped
 # instance.
-modify_instance_attribute(
+\donttest{modify_instance_attribute(
   InstanceId = "i-1234567890abcdef0",
   InstanceType = list(
     Value = "m5.large"
   )
-)
+)}
 
 # This example enables enhanced networking for the specified stopped
 # instance.
-modify_instance_attribute(
+\donttest{modify_instance_attribute(
   EnaSupport = list(
     Value = TRUE
   ),
   InstanceId = "i-1234567890abcdef0"
-)
+)}
 
 }

@@ -4,7 +4,29 @@
 \alias{modify_load_balancer_attributes}
 \title{Modifies the attributes of the specified load balancer}
 \usage{
-modify_load_balancer_attributes(
+modify_load_balancer_attributes(LoadBalancerName, LoadBalancerAttributes)
+}
+\arguments{
+\item{LoadBalancerName}{[required] The name of the load balancer.}
+
+\item{LoadBalancerAttributes}{[required] The attributes for the load balancer.}
+}
+\description{
+Modifies the attributes of the specified load balancer.
+}
+\details{
+You can modify the load balancer attributes, such as \code{AccessLogs}, \code{ConnectionDraining}, and \code{CrossZoneLoadBalancing} by either enabling or disabling them. Or, you can modify the load balancer attribute \code{ConnectionSettings} by specifying an idle connection timeout value for your load balancer.
+
+For more information, see the following in the \emph{Classic Load Balancers Guide}:
+\itemize{
+\item \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html}{Cross-Zone Load Balancing}
+\item \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-conn-drain.html}{Connection Draining}
+\item \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/access-log-collection.html}{Access Logs}
+\item \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-idle-timeout.html}{Idle Connection Timeout}
+}
+}
+\section{Accepted Parameters}{
+\preformatted{modify_load_balancer_attributes(
   LoadBalancerName = "string",
   LoadBalancerAttributes = list(
     CrossZoneLoadBalancing = list(
@@ -32,40 +54,23 @@ modify_load_balancer_attributes(
   )
 )
 }
-\arguments{
-\item{LoadBalancerName}{[required] The name of the load balancer.}
+}
 
-\item{LoadBalancerAttributes}{[required] The attributes for the load balancer.}
-}
-\description{
-Modifies the attributes of the specified load balancer.
-}
-\details{
-You can modify the load balancer attributes, such as \code{AccessLogs}, \code{ConnectionDraining}, and \code{CrossZoneLoadBalancing} by either enabling or disabling them. Or, you can modify the load balancer attribute \code{ConnectionSettings} by specifying an idle connection timeout value for your load balancer.
-
-For more information, see the following in the \emph{Classic Load Balancers Guide}:
-\itemize{
-\item \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html}{Cross-Zone Load Balancing}
-\item \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-conn-drain.html}{Connection Draining}
-\item \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/access-log-collection.html}{Access Logs}
-\item \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-idle-timeout.html}{Idle Connection Timeout}
-}
-}
 \examples{
 # This example enables cross-zone load balancing for the specified load
 # balancer.
-modify_load_balancer_attributes(
+\donttest{modify_load_balancer_attributes(
   LoadBalancerAttributes = list(
     CrossZoneLoadBalancing = list(
       Enabled = TRUE
     )
   ),
   LoadBalancerName = "my-load-balancer"
-)
+)}
 
 # This example enables connection draining for the specified load
 # balancer.
-modify_load_balancer_attributes(
+\donttest{modify_load_balancer_attributes(
   LoadBalancerAttributes = list(
     ConnectionDraining = list(
       Enabled = TRUE,
@@ -73,6 +78,6 @@ modify_load_balancer_attributes(
     )
   ),
   LoadBalancerName = "my-load-balancer"
-)
+)}
 
 }

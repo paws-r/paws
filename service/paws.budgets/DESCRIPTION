@@ -1,6 +1,6 @@
 Package: paws.budgets
 Title: AWS Budgets
-Version: 0.0.2
+Version: 0.0.3
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
@@ -12,58 +12,27 @@ Authors@R:
              email = "adam.banker39@gmail.com"),
       person(given = "Amazon.com, Inc.",
              role = "cph"))
-Description: The AWS Budgets API enables you to use AWS Budgets to plan
-    your service usage, service costs, and instance reservations. The API
-    reference provides descriptions, syntax, and usage examples for each
-    of the actions and data types for AWS Budgets.
+Description: Budgets enable you to plan your service usage,
+    service costs, and your RI utilization.  You can also track how close
+    your plan is to your budgeted amount or to the free tier limits.
+    Budgets provide you with a quick way to see your usage-to-date and
+    current estimated charges from AWS and to see how much your predicted
+    usage accrues in charges by the end of the month.  Budgets also
+    compare current estimates and charges to the amount that you indicated
+    you want to use or spend and lets you see how much of your budget has
+    been used.  AWS updates your budget status several times a day.
+    Budgets track your unblended costs, subscriptions, and refunds.
 License: Apache License (>= 2.0)
 Depends: 
-    R (>= 3.5.1)
+    R (>= 3.4.0)
 Imports: 
-    base64enc,
-    digest,
-    httr,
-    ini,
-    jsonlite,
-    xml2
+    paws.common
+Suggests: 
+    testthat
+Remotes: 
+    paws-r/paws/paws.common
 Encoding: UTF-8
 LazyData: true
-Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 6.0.1
-Collate: 
-    'struct.R'
-    'handlers.R'
-    'url.R'
-    'net.R'
-    'credential_providers.R'
-    'credentials.R'
-    'client.R'
-    'config.R'
-    'convert.R'
-    'dateutil.R'
-    'error.R'
-    'handlers_core.R'
-    'handlers_ec2query.R'
-    'handlers_jsonrpc.R'
-    'handlers_query.R'
-    'handlers_rest.R'
-    'handlers_restjson.R'
-    'handlers_restxml.R'
-    'idempotency.R'
-    'jsonutil.R'
-    'paws.budgets_interfaces.R'
-    'paws.budgets_operations.R'
-    'paws.budgets_package.R'
-    'signer_v4.R'
-    'paws.budgets_service.R'
-    'populate.R'
-    'populateutil.R'
-    'tags.R'
-    'queryutil.R'
-    'request.R'
-    'signer_s3.R'
-    'signer_s3v4.R'
-    'signer_v2.R'
-    'time.R'
-    'util.R'
-    'xmlutil.R'
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1

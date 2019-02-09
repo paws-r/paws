@@ -4,9 +4,7 @@
 \alias{describe_global_table_settings}
 \title{Describes region specific settings for a global table}
 \usage{
-describe_global_table_settings(
-  GlobalTableName = "string"
-)
+describe_global_table_settings(GlobalTableName)
 }
 \arguments{
 \item{GlobalTableName}{[required] The name of the global table to describe.}
@@ -14,6 +12,10 @@ describe_global_table_settings(
 \description{
 Describes region specific settings for a global table.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_global_table_settings(
+  GlobalTableName = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{list_channels}
 \title{Produces list of channels that have been created}
 \usage{
-list_channels(
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_channels(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{}
@@ -17,6 +14,11 @@ list_channels(
 \description{
 Produces list of channels that have been created
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_channels(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

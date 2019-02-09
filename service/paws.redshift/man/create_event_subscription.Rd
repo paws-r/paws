@@ -4,25 +4,9 @@
 \alias{create_event_subscription}
 \title{Creates an Amazon Redshift event notification subscription}
 \usage{
-create_event_subscription(
-  SubscriptionName = "string",
-  SnsTopicArn = "string",
-  SourceType = "string",
-  SourceIds = list(
-    "string"
-  ),
-  EventCategories = list(
-    "string"
-  ),
-  Severity = "string",
-  Enabled = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_event_subscription(SubscriptionName, SnsTopicArn,
+  SourceType = NULL, SourceIds = NULL, EventCategories = NULL,
+  Severity = NULL, Enabled = NULL, Tags = NULL)
 }
 \arguments{
 \item{SubscriptionName}{[required] The name of the event subscription to be created.
@@ -49,13 +33,13 @@ Example: my-snapshot-20131010}
 
 \item{EventCategories}{Specifies the Amazon Redshift event categories to be published by the event notification subscription.
 
-Values: configuration, management, monitoring, security}
+Values: Configuration, Management, Monitoring, Security}
 
 \item{Severity}{Specifies the Amazon Redshift event severity to be published by the event notification subscription.
 
 Values: ERROR, INFO}
 
-\item{Enabled}{A boolean value; set to \code{true} to activate the subscription, and set to \code{false} to create the subscription but not activate it.}
+\item{Enabled}{A Boolean value; set to \code{true} to activate the subscription, set to \code{false} to create the subscription but not active it.}
 
 \item{Tags}{A list of tag instances.}
 }
@@ -67,6 +51,26 @@ You can specify the source type, and lists of Amazon Redshift source IDs, event 
 
 If you specify both the source type and source IDs, such as source type = cluster and source identifier = my-cluster-1, notifications will be sent for all the cluster events for my-cluster-1. If you specify a source type but do not specify a source identifier, you will receive notice of the events for the objects of that type in your AWS account. If you do not specify either the SourceType nor the SourceIdentifier, you will be notified of events generated from all Amazon Redshift sources belonging to your AWS account. You must specify a source type if you specify a source ID.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_event_subscription(
+  SubscriptionName = "string",
+  SnsTopicArn = "string",
+  SourceType = "string",
+  SourceIds = list(
+    "string"
+  ),
+  EventCategories = list(
+    "string"
+  ),
+  Severity = "string",
+  Enabled = TRUE|FALSE,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

@@ -4,27 +4,12 @@
 \alias{restore_db_cluster_to_point_in_time}
 \title{Restores a DB cluster to an arbitrary point in time}
 \usage{
-restore_db_cluster_to_point_in_time(
-  DBClusterIdentifier = "string",
-  RestoreType = "string",
-  SourceDBClusterIdentifier = "string",
-  RestoreToTime = as.POSIXct("2015-01-01"),
-  UseLatestRestorableTime = TRUE|FALSE,
-  Port = 123,
-  DBSubnetGroupName = "string",
-  OptionGroupName = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  KmsKeyId = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE
-)
+restore_db_cluster_to_point_in_time(DBClusterIdentifier,
+  RestoreType = NULL, SourceDBClusterIdentifier, RestoreToTime = NULL,
+  UseLatestRestorableTime = NULL, Port = NULL,
+  DBSubnetGroupName = NULL, OptionGroupName = NULL,
+  VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL,
+  EnableIAMDatabaseAuthentication = NULL)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The name of the new DB cluster to be created.
@@ -115,6 +100,28 @@ Restores a DB cluster to an arbitrary point in time. Users can restore to any po
 \details{
 This action only restores the DB cluster, not the DB instances for that DB cluster. You must invoke the CreateDBInstance action to create DB instances for the restored DB cluster, specifying the identifier of the restored DB cluster in \code{DBClusterIdentifier}. You can create DB instances only after the \code{RestoreDBClusterToPointInTime} action has completed and the DB cluster is available.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{restore_db_cluster_to_point_in_time(
+  DBClusterIdentifier = "string",
+  RestoreType = "string",
+  SourceDBClusterIdentifier = "string",
+  RestoreToTime = as.POSIXct("2015-01-01"),
+  UseLatestRestorableTime = TRUE|FALSE,
+  Port = 123,
+  DBSubnetGroupName = "string",
+  OptionGroupName = "string",
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  KmsKeyId = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE
+)
 }
+}
+

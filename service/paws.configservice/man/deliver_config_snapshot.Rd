@@ -4,9 +4,7 @@
 \alias{deliver_config_snapshot}
 \title{Schedules delivery of a configuration snapshot to the Amazon S3 bucket in the specified delivery channel}
 \usage{
-deliver_config_snapshot(
-  deliveryChannelName = "string"
-)
+deliver_config_snapshot(deliveryChannelName)
 }
 \arguments{
 \item{deliveryChannelName}{[required] The name of the delivery channel through which the snapshot is delivered.}
@@ -21,6 +19,10 @@ Schedules delivery of a configuration snapshot to the Amazon S3 bucket in the sp
 \item Notification of delivery failure, if the delivery failed.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{deliver_config_snapshot(
+  deliveryChannelName = "string"
+)
 }
+}
+

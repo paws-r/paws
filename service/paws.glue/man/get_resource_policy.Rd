@@ -9,6 +9,8 @@ get_resource_policy()
 \description{
 Retrieves a specified resource policy.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_resource_policy()
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{list_logger_definition_versions}
 \title{Lists the versions of a logger definition}
 \usage{
-list_logger_definition_versions(
-  LoggerDefinitionId = "string",
-  MaxResults = "string",
-  NextToken = "string"
-)
+list_logger_definition_versions(LoggerDefinitionId, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{LoggerDefinitionId}{[required] The ID of the logger definition.}
@@ -20,6 +17,12 @@ list_logger_definition_versions(
 \description{
 Lists the versions of a logger definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_logger_definition_versions(
+  LoggerDefinitionId = "string",
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

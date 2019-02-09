@@ -4,11 +4,7 @@
 \alias{update_address_book}
 \title{Updates address book details by the address book ARN}
 \usage{
-update_address_book(
-  AddressBookArn = "string",
-  Name = "string",
-  Description = "string"
-)
+update_address_book(AddressBookArn, Name = NULL, Description = NULL)
 }
 \arguments{
 \item{AddressBookArn}{[required] The ARN of the room to update.}
@@ -20,6 +16,12 @@ update_address_book(
 \description{
 Updates address book details by the address book ARN.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_address_book(
+  AddressBookArn = "string",
+  Name = "string",
+  Description = "string"
+)
 }
+}
+

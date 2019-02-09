@@ -4,14 +4,8 @@
 \alias{describe_trusts}
 \title{Obtains information about the trust relationships for this account}
 \usage{
-describe_trusts(
-  DirectoryId = "string",
-  TrustIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  Limit = 123
-)
+describe_trusts(DirectoryId = NULL, TrustIds = NULL,
+  NextToken = NULL, Limit = NULL)
 }
 \arguments{
 \item{DirectoryId}{The Directory ID of the AWS directory that is a part of the requested trust relationship.}
@@ -30,6 +24,15 @@ Obtains information about the trust relationships for this account.
 \details{
 If no input parameters are provided, such as DirectoryId or TrustIds, this request describes all the trust relationships belonging to the account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_trusts(
+  DirectoryId = "string",
+  TrustIds = list(
+    "string"
+  ),
+  NextToken = "string",
+  Limit = 123
+)
 }
+}
+

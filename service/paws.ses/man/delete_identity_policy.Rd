@@ -4,10 +4,7 @@
 \alias{delete_identity_policy}
 \title{Deletes the specified sending authorization policy for the given identity (an email address or a domain)}
 \usage{
-delete_identity_policy(
-  Identity = "string",
-  PolicyName = "string"
-)
+delete_identity_policy(Identity, PolicyName)
 }
 \arguments{
 \item{Identity}{[required] The identity that is associated with the policy that you want to delete. You can specify the identity by using its name or by using its Amazon Resource Name (ARN). Examples: \code{user@example.com}, \code{example.com}, \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}.
@@ -26,12 +23,20 @@ Sending authorization is a feature that enables an identity owner to authorize o
 
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_identity_policy(
+  Identity = "string",
+  PolicyName = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes a sending authorization policy for an
 # identity:
-delete_identity_policy(
+\donttest{delete_identity_policy(
   Identity = "user@example.com",
   PolicyName = "MyPolicy"
-)
+)}
 
 }

@@ -4,9 +4,7 @@
 \alias{disassociate_kms_key}
 \title{Disassociates the associated AWS Key Management Service (AWS KMS) customer master key (CMK) from the specified log group}
 \usage{
-disassociate_kms_key(
-  logGroupName = "string"
-)
+disassociate_kms_key(logGroupName)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -19,6 +17,10 @@ After the AWS KMS CMK is disassociated from the log group, AWS CloudWatch Logs s
 
 Note that it can take up to 5 minutes for this operation to take effect.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_kms_key(
+  logGroupName = "string"
+)
 }
+}
+

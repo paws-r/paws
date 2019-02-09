@@ -9,6 +9,8 @@ describe_logging_options()
 \description{
 Retrieves the current settings of the AWS IoT Analytics logging options.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_logging_options()
 }
+}
+

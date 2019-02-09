@@ -4,11 +4,8 @@
 \alias{delete_launch_template}
 \title{Deletes a launch template}
 \usage{
-delete_launch_template(
-  DryRun = TRUE|FALSE,
-  LaunchTemplateId = "string",
-  LaunchTemplateName = "string"
-)
+delete_launch_template(DryRun = NULL, LaunchTemplateId = NULL,
+  LaunchTemplateName = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -20,10 +17,19 @@ delete_launch_template(
 \description{
 Deletes a launch template. Deleting a launch template deletes all of its versions.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_launch_template(
+  DryRun = TRUE|FALSE,
+  LaunchTemplateId = "string",
+  LaunchTemplateName = "string"
+)
+}
+}
+
 \examples{
 # This example deletes the specified launch template.
-delete_launch_template(
+\donttest{delete_launch_template(
   LaunchTemplateId = "lt-0abcd290751193123"
-)
+)}
 
 }

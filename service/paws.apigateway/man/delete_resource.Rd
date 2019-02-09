@@ -4,10 +4,7 @@
 \alias{delete_resource}
 \title{Deletes a Resource resource}
 \usage{
-delete_resource(
-  restApiId = "string",
-  resourceId = "string"
-)
+delete_resource(restApiId, resourceId)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -17,6 +14,11 @@ delete_resource(
 \description{
 Deletes a Resource resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_resource(
+  restApiId = "string",
+  resourceId = "string"
+)
 }
+}
+

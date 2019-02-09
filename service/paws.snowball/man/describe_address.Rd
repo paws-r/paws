@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.snowball_operations.R
 \name{describe_address}
 \alias{describe_address}
-\title{Takes an \code{AddressId} and returns specific details about that address in the form of an \code{Address} object}
+\title{Takes an AddressId and returns specific details about that address in the form of an Address object}
 \usage{
-describe_address(
-  AddressId = "string"
-)
+describe_address(AddressId)
 }
 \arguments{
 \item{AddressId}{[required] The automatically generated ID for a specific address.}
@@ -14,10 +12,17 @@ describe_address(
 \description{
 Takes an \code{AddressId} and returns specific details about that address in the form of an \code{Address} object.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_address(
+  AddressId = "string"
+)
+}
+}
+
 \examples{
 # This operation describes an address for a job.
-describe_address(
+\donttest{describe_address(
   AddressId = "ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b"
-)
+)}
 
 }

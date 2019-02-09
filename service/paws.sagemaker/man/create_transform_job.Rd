@@ -4,44 +4,10 @@
 \alias{create_transform_job}
 \title{Starts a transform job}
 \usage{
-create_transform_job(
-  TransformJobName = "string",
-  ModelName = "string",
-  MaxConcurrentTransforms = 123,
-  MaxPayloadInMB = 123,
-  BatchStrategy = "MultiRecord"|"SingleRecord",
-  Environment = list(
-    "string"
-  ),
-  TransformInput = list(
-    DataSource = list(
-      S3DataSource = list(
-        S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
-        S3Uri = "string"
-      )
-    ),
-    ContentType = "string",
-    CompressionType = "None"|"Gzip",
-    SplitType = "None"|"Line"|"RecordIO"|"TFRecord"
-  ),
-  TransformOutput = list(
-    S3OutputPath = "string",
-    Accept = "string",
-    AssembleWith = "None"|"Line",
-    KmsKeyId = "string"
-  ),
-  TransformResources = list(
-    InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge",
-    InstanceCount = 123,
-    VolumeKmsKeyId = "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_transform_job(TransformJobName, ModelName,
+  MaxConcurrentTransforms = NULL, MaxPayloadInMB = NULL,
+  BatchStrategy = NULL, Environment = NULL, TransformInput,
+  TransformOutput, TransformResources, Tags = NULL)
 }
 \arguments{
 \item{TransformJobName}{[required] The name of the transform job. The name must be unique within an AWS Region in an AWS account.}
@@ -50,9 +16,7 @@ create_transform_job(
 
 \item{MaxConcurrentTransforms}{The maximum number of parallel requests that can be sent to each instance in a transform job. This is good for algorithms that implement multiple workers on larger instances . The default value is \code{1}. To allow Amazon SageMaker to determine the appropriate number for \code{MaxConcurrentTransforms}, set the value to \code{0}.}
 
-\item{MaxPayloadInMB}{The maximum payload size allowed, in MB. A payload is the data portion of a record (without metadata). The value in \code{MaxPayloadInMB} must be greater or equal to the size of a single record. You can approximate the size of a record by dividing the size of your dataset by the number of records. Then multiply this value by the number of records you want in a mini-batch. We recommend to enter a slightly larger value than this to ensure the records fit within the maximum payload size. The default value is \code{6} MB.
-
-For cases where the payload might be arbitrarily large and is transmitted using HTTP chunked encoding, set the value to \code{0}. This feature only works in supported algorithms. Currently, Amazon SageMaker built-in algorithms do not support this feature.}
+\item{MaxPayloadInMB}{The maximum payload size allowed, in MB. A payload is the data portion of a record (without metadata). The value in \code{MaxPayloadInMB} must be greater or equal to the size of a single record. You can approximate the size of a record by dividing the size of your dataset by the number of records. Then multiply this value by the number of records you want in a mini-batch. It is recommended to enter a value slightly larger than this to ensure the records fit within the maximum payload size. The default value is \code{6} MB. For an unlimited payload size, set the value to \code{0}.}
 
 \item{BatchStrategy}{Determines the number of records included in a single mini-batch. \code{SingleRecord} means only one record is used per mini-batch. \code{MultiRecord} means a mini-batch is set to contain as many records that can fit within the \code{MaxPayloadInMB} limit.
 
@@ -85,6 +49,45 @@ In the request body, you provide the following:
 
 For more information about how batch transformation works Amazon SageMaker, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html}{How It Works}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_transform_job(
+  TransformJobName = "string",
+  ModelName = "string",
+  MaxConcurrentTransforms = 123,
+  MaxPayloadInMB = 123,
+  BatchStrategy = "MultiRecord"|"SingleRecord",
+  Environment = list(
+    "string"
+  ),
+  TransformInput = list(
+    DataSource = list(
+      S3DataSource = list(
+        S3DataType = "ManifestFile"|"S3Prefix",
+        S3Uri = "string"
+      )
+    ),
+    ContentType = "string",
+    CompressionType = "None"|"Gzip",
+    SplitType = "None"|"Line"|"RecordIO"
+  ),
+  TransformOutput = list(
+    S3OutputPath = "string",
+    Accept = "string",
+    AssembleWith = "None"|"Line",
+    KmsKeyId = "string"
+  ),
+  TransformResources = list(
+    InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge",
+    InstanceCount = 123,
+    VolumeKmsKeyId = "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{purchase_reserved_node_offering}
 \title{Allows you to purchase reserved nodes}
 \usage{
-purchase_reserved_node_offering(
-  ReservedNodeOfferingId = "string",
-  NodeCount = 123
-)
+purchase_reserved_node_offering(ReservedNodeOfferingId, NodeCount = NULL)
 }
 \arguments{
 \item{ReservedNodeOfferingId}{[required] The unique identifier of the reserved node offering you want to purchase.}
@@ -22,6 +19,11 @@ Allows you to purchase reserved nodes. Amazon Redshift offers a predefined set o
 \details{
 For more information about reserved node offerings, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html}{Purchasing Reserved Nodes} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{purchase_reserved_node_offering(
+  ReservedNodeOfferingId = "string",
+  NodeCount = 123
+)
 }
+}
+

@@ -4,12 +4,8 @@
 \alias{list_elasticsearch_instance_types}
 \title{List all Elasticsearch instance types that are supported for given ElasticsearchVersion}
 \usage{
-list_elasticsearch_instance_types(
-  ElasticsearchVersion = "string",
-  DomainName = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_elasticsearch_instance_types(ElasticsearchVersion,
+  DomainName = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ElasticsearchVersion}{[required] Version of Elasticsearch for which list of supported elasticsearch instance types are needed.}
@@ -23,6 +19,13 @@ list_elasticsearch_instance_types(
 \description{
 List all Elasticsearch instance types that are supported for given ElasticsearchVersion
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_elasticsearch_instance_types(
+  ElasticsearchVersion = "string",
+  DomainName = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

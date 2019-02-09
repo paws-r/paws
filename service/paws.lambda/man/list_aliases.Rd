@@ -4,12 +4,8 @@
 \alias{list_aliases}
 \title{Returns list of aliases created for a Lambda function}
 \usage{
-list_aliases(
-  FunctionName = "string",
-  FunctionVersion = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_aliases(FunctionName, FunctionVersion = NULL, Marker = NULL,
+  MaxItems = NULL)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the lambda function.
@@ -35,13 +31,23 @@ Returns list of aliases created for a Lambda function. For each alias, the respo
 \details{
 This requires permission for the lambda:ListAliases action.
 }
+\section{Accepted Parameters}{
+\preformatted{list_aliases(
+  FunctionName = "string",
+  FunctionVersion = "string",
+  Marker = "string",
+  MaxItems = 123
+)
+}
+}
+
 \examples{
 # This operation retrieves a Lambda function's aliases
-list_aliases(
+\donttest{list_aliases(
   FunctionName = "myFunction",
   FunctionVersion = "1",
   Marker = "",
   MaxItems = 123L
-)
+)}
 
 }

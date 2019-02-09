@@ -4,13 +4,7 @@
 \alias{update_time_to_live}
 \title{The UpdateTimeToLive method will enable or disable TTL for the specified table}
 \usage{
-update_time_to_live(
-  TableName = "string",
-  TimeToLiveSpecification = list(
-    Enabled = TRUE|FALSE,
-    AttributeName = "string"
-  )
-)
+update_time_to_live(TableName, TimeToLiveSpecification)
 }
 \arguments{
 \item{TableName}{[required] The name of the table to be configured.}
@@ -33,6 +27,14 @@ As items are deleted, they are removed from any Local Secondary Index and Global
 
 For more information, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html}{Time To Live} in the Amazon DynamoDB Developer Guide.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_time_to_live(
+  TableName = "string",
+  TimeToLiveSpecification = list(
+    Enabled = TRUE|FALSE,
+    AttributeName = "string"
+  )
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{delete_traffic_policy_instance}
 \title{Deletes a traffic policy instance and all of the resource record sets that Amazon Route 53 created when you created the instance}
 \usage{
-delete_traffic_policy_instance(
-  Id = "string"
-)
+delete_traffic_policy_instance(Id)
 }
 \arguments{
 \item{Id}{[required] The ID of the traffic policy instance that you want to delete.
@@ -19,6 +17,10 @@ Deletes a traffic policy instance and all of the resource record sets that Amazo
 \details{
 In the Route 53 console, traffic policy instances are known as policy records.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_traffic_policy_instance(
+  Id = "string"
+)
 }
+}
+

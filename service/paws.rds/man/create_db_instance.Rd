@@ -4,69 +4,27 @@
 \alias{create_db_instance}
 \title{Creates a new DB instance}
 \usage{
-create_db_instance(
-  DBName = "string",
-  DBInstanceIdentifier = "string",
-  AllocatedStorage = 123,
-  DBInstanceClass = "string",
-  Engine = "string",
-  MasterUsername = "string",
-  MasterUserPassword = "string",
-  DBSecurityGroups = list(
-    "string"
-  ),
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  AvailabilityZone = "string",
-  DBSubnetGroupName = "string",
-  PreferredMaintenanceWindow = "string",
-  DBParameterGroupName = "string",
-  BackupRetentionPeriod = 123,
-  PreferredBackupWindow = "string",
-  Port = 123,
-  MultiAZ = TRUE|FALSE,
-  EngineVersion = "string",
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  LicenseModel = "string",
-  Iops = 123,
-  OptionGroupName = "string",
-  CharacterSetName = "string",
-  PubliclyAccessible = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  DBClusterIdentifier = "string",
-  StorageType = "string",
-  TdeCredentialArn = "string",
-  TdeCredentialPassword = "string",
-  StorageEncrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  Domain = "string",
-  CopyTagsToSnapshot = TRUE|FALSE,
-  MonitoringInterval = 123,
-  MonitoringRoleArn = "string",
-  DomainIAMRoleName = "string",
-  PromotionTier = 123,
-  Timezone = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  EnablePerformanceInsights = TRUE|FALSE,
-  PerformanceInsightsKMSKeyId = "string",
-  PerformanceInsightsRetentionPeriod = 123,
-  EnableCloudwatchLogsExports = list(
-    "string"
-  ),
-  ProcessorFeatures = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  DeletionProtection = TRUE|FALSE
-)
+create_db_instance(DBName = NULL, DBInstanceIdentifier,
+  AllocatedStorage = NULL, DBInstanceClass, Engine,
+  MasterUsername = NULL, MasterUserPassword = NULL,
+  DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL,
+  AvailabilityZone = NULL, DBSubnetGroupName = NULL,
+  PreferredMaintenanceWindow = NULL, DBParameterGroupName = NULL,
+  BackupRetentionPeriod = NULL, PreferredBackupWindow = NULL,
+  Port = NULL, MultiAZ = NULL, EngineVersion = NULL,
+  AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, Iops = NULL,
+  OptionGroupName = NULL, CharacterSetName = NULL,
+  PubliclyAccessible = NULL, Tags = NULL, DBClusterIdentifier = NULL,
+  StorageType = NULL, TdeCredentialArn = NULL,
+  TdeCredentialPassword = NULL, StorageEncrypted = NULL,
+  KmsKeyId = NULL, Domain = NULL, CopyTagsToSnapshot = NULL,
+  MonitoringInterval = NULL, MonitoringRoleArn = NULL,
+  DomainIAMRoleName = NULL, PromotionTier = NULL, Timezone = NULL,
+  EnableIAMDatabaseAuthentication = NULL,
+  EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL,
+  PerformanceInsightsRetentionPeriod = NULL,
+  EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL,
+  DeletionProtection = NULL)
 }
 \arguments{
 \item{DBName}{The meaning of this parameter differs according to the database engine you use.
@@ -179,8 +137,8 @@ Constraints to the amount of storage for each storage type are the following:
 
 Constraints to the amount of storage for each storage type are the following:
 \itemize{
-\item General Purpose (SSD) storage (gp2): Must be an integer from 20 to 32768.
-\item Provisioned IOPS storage (io1): Must be an integer from 100 to 32768.
+\item General Purpose (SSD) storage (gp2): Must be an integer from 20 to 16384.
+\item Provisioned IOPS storage (io1): Must be an integer from 100 to 16384.
 \item Magnetic storage (standard): Must be an integer from 10 to 3072.
 }
 
@@ -314,7 +272,7 @@ Constraints: Must contain from 8 to 128 characters.}
 
 Default: The default DB security group for the database engine.}
 
-\item{VpcSecurityGroupIds}{A list of Amazon EC2 VPC security groups to associate with this DB instance.
+\item{VpcSecurityGroupIds}{A list of EC2 VPC security groups to associate with this DB instance.
 
 \strong{Amazon Aurora}
 
@@ -429,7 +387,7 @@ Valid Values: \code{1150-65535}
 
 Type: Integer}
 
-\item{MultiAZ}{A value that specifies whether the DB instance is a Multi-AZ deployment. You can't set the AvailabilityZone parameter if the MultiAZ parameter is set to true.}
+\item{MultiAZ}{Specifies if the DB instance is a Multi-AZ deployment. You can't set the AvailabilityZone parameter if the MultiAZ parameter is set to true.}
 
 \item{EngineVersion}{The version number of the database engine to use.
 
@@ -594,6 +552,70 @@ For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/User
 \description{
 Creates a new DB instance.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_db_instance(
+  DBName = "string",
+  DBInstanceIdentifier = "string",
+  AllocatedStorage = 123,
+  DBInstanceClass = "string",
+  Engine = "string",
+  MasterUsername = "string",
+  MasterUserPassword = "string",
+  DBSecurityGroups = list(
+    "string"
+  ),
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  AvailabilityZone = "string",
+  DBSubnetGroupName = "string",
+  PreferredMaintenanceWindow = "string",
+  DBParameterGroupName = "string",
+  BackupRetentionPeriod = 123,
+  PreferredBackupWindow = "string",
+  Port = 123,
+  MultiAZ = TRUE|FALSE,
+  EngineVersion = "string",
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  LicenseModel = "string",
+  Iops = 123,
+  OptionGroupName = "string",
+  CharacterSetName = "string",
+  PubliclyAccessible = TRUE|FALSE,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  DBClusterIdentifier = "string",
+  StorageType = "string",
+  TdeCredentialArn = "string",
+  TdeCredentialPassword = "string",
+  StorageEncrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  Domain = "string",
+  CopyTagsToSnapshot = TRUE|FALSE,
+  MonitoringInterval = 123,
+  MonitoringRoleArn = "string",
+  DomainIAMRoleName = "string",
+  PromotionTier = 123,
+  Timezone = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  EnablePerformanceInsights = TRUE|FALSE,
+  PerformanceInsightsKMSKeyId = "string",
+  PerformanceInsightsRetentionPeriod = 123,
+  EnableCloudwatchLogsExports = list(
+    "string"
+  ),
+  ProcessorFeatures = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  DeletionProtection = TRUE|FALSE
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{get_policy}
 \title{Returns the resource policy associated with the specified Lambda function}
 \usage{
-get_policy(
-  FunctionName = "string",
-  Qualifier = "string"
-)
+get_policy(FunctionName, Qualifier = NULL)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the lambda function.
@@ -29,11 +26,19 @@ Returns the resource policy associated with the specified Lambda function.
 \details{
 This action requires permission for the \code{lambda:GetPolicy action.}
 }
+\section{Accepted Parameters}{
+\preformatted{get_policy(
+  FunctionName = "string",
+  Qualifier = "string"
+)
+}
+}
+
 \examples{
 # This operation retrieves a Lambda function policy
-get_policy(
+\donttest{get_policy(
   FunctionName = "myFunction",
   Qualifier = "1"
-)
+)}
 
 }

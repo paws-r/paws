@@ -2,47 +2,11 @@
 % Please edit documentation in R/paws.elastictranscoder_operations.R
 \name{update_pipeline}
 \alias{update_pipeline}
-\title{Use the \code{UpdatePipeline} operation to update settings for a pipeline}
+\title{Use the UpdatePipeline operation to update settings for a pipeline}
 \usage{
-update_pipeline(
-  Id = "string",
-  Name = "string",
-  InputBucket = "string",
-  Role = "string",
-  AwsKmsKeyArn = "string",
-  Notifications = list(
-    Progressing = "string",
-    Completed = "string",
-    Warning = "string",
-    Error = "string"
-  ),
-  ContentConfig = list(
-    Bucket = "string",
-    StorageClass = "string",
-    Permissions = list(
-      list(
-        GranteeType = "string",
-        Grantee = "string",
-        Access = list(
-          "string"
-        )
-      )
-    )
-  ),
-  ThumbnailConfig = list(
-    Bucket = "string",
-    StorageClass = "string",
-    Permissions = list(
-      list(
-        GranteeType = "string",
-        Grantee = "string",
-        Access = list(
-          "string"
-        )
-      )
-    )
-  )
-)
+update_pipeline(Id, Name = NULL, InputBucket = NULL, Role = NULL,
+  AwsKmsKeyArn = NULL, Notifications = NULL, ContentConfig = NULL,
+  ThumbnailConfig = NULL)
 }
 \arguments{
 \item{Id}{[required] The ID of the pipeline that you want to update.}
@@ -129,6 +93,46 @@ Use the \code{UpdatePipeline} operation to update settings for a pipeline.
 \details{
 When you change pipeline settings, your changes take effect immediately. Jobs that you have already submitted and that Elastic Transcoder has not started to process are affected in addition to jobs that you submit after you change settings.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_pipeline(
+  Id = "string",
+  Name = "string",
+  InputBucket = "string",
+  Role = "string",
+  AwsKmsKeyArn = "string",
+  Notifications = list(
+    Progressing = "string",
+    Completed = "string",
+    Warning = "string",
+    Error = "string"
+  ),
+  ContentConfig = list(
+    Bucket = "string",
+    StorageClass = "string",
+    Permissions = list(
+      list(
+        GranteeType = "string",
+        Grantee = "string",
+        Access = list(
+          "string"
+        )
+      )
+    )
+  ),
+  ThumbnailConfig = list(
+    Bucket = "string",
+    StorageClass = "string",
+    Permissions = list(
+      list(
+        GranteeType = "string",
+        Grantee = "string",
+        Access = list(
+          "string"
+        )
+      )
+    )
+  )
+)
 }
+}
+

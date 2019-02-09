@@ -4,35 +4,7 @@
 \alias{create_health_check}
 \title{Creates a new health check}
 \usage{
-create_health_check(
-  CallerReference = "string",
-  HealthCheckConfig = list(
-    IPAddress = "string",
-    Port = 123,
-    Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC",
-    ResourcePath = "string",
-    FullyQualifiedDomainName = "string",
-    SearchString = "string",
-    RequestInterval = 123,
-    FailureThreshold = 123,
-    MeasureLatency = TRUE|FALSE,
-    Inverted = TRUE|FALSE,
-    Disabled = TRUE|FALSE,
-    HealthThreshold = 123,
-    ChildHealthChecks = list(
-      "string"
-    ),
-    EnableSNI = TRUE|FALSE,
-    Regions = list(
-      "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
-    ),
-    AlarmIdentifier = list(
-      Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1",
-      Name = "string"
-    ),
-    InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"
-  )
-)
+create_health_check(CallerReference, HealthCheckConfig)
 }
 \arguments{
 \item{CallerReference}{[required] A unique string that identifies the request and that allows you to retry a failed \code{CreateHealthCheck} request without the risk of creating two identical health checks:
@@ -64,6 +36,36 @@ You can associate health checks with failover resource record sets in a private 
 \item You can create a CloudWatch metric, associate an alarm with the metric, and then create a health check that is based on the state of the alarm. For example, you might create a CloudWatch metric that checks the status of the Amazon EC2 \code{StatusCheckFailed} metric, add an alarm to the metric, and then create a health check that is based on the state of the alarm. For information about creating CloudWatch metrics and alarms by using the CloudWatch console, see the \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/WhatIsCloudWatch.html}{Amazon CloudWatch User Guide}.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_health_check(
+  CallerReference = "string",
+  HealthCheckConfig = list(
+    IPAddress = "string",
+    Port = 123,
+    Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC",
+    ResourcePath = "string",
+    FullyQualifiedDomainName = "string",
+    SearchString = "string",
+    RequestInterval = 123,
+    FailureThreshold = 123,
+    MeasureLatency = TRUE|FALSE,
+    Inverted = TRUE|FALSE,
+    Disabled = TRUE|FALSE,
+    HealthThreshold = 123,
+    ChildHealthChecks = list(
+      "string"
+    ),
+    EnableSNI = TRUE|FALSE,
+    Regions = list(
+      "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
+    ),
+    AlarmIdentifier = list(
+      Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"sa-east-1",
+      Name = "string"
+    ),
+    InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"
+  )
+)
 }
+}
+

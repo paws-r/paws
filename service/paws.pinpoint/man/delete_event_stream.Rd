@@ -4,9 +4,7 @@
 \alias{delete_event_stream}
 \title{Deletes the event stream for an app}
 \usage{
-delete_event_stream(
-  ApplicationId = "string"
-)
+delete_event_stream(ApplicationId)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -14,6 +12,10 @@ delete_event_stream(
 \description{
 Deletes the event stream for an app.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_event_stream(
+  ApplicationId = "string"
+)
 }
+}
+

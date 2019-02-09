@@ -4,13 +4,8 @@
 \alias{create_contact}
 \title{Creates a contact with the specified details}
 \usage{
-create_contact(
-  DisplayName = "string",
-  FirstName = "string",
-  LastName = "string",
-  PhoneNumber = "string",
-  ClientRequestToken = "string"
-)
+create_contact(DisplayName = NULL, FirstName, LastName = NULL,
+  PhoneNumber, ClientRequestToken = NULL)
 }
 \arguments{
 \item{DisplayName}{The name of the contact to display on the console.}
@@ -19,13 +14,21 @@ create_contact(
 
 \item{LastName}{The last name of the contact that is used to call the contact on the device.}
 
-\item{PhoneNumber}{The phone number of the contact in E.164 format.}
+\item{PhoneNumber}{[required] The phone number of the contact in E.164 format.}
 
 \item{ClientRequestToken}{A unique, user-specified identifier for this request that ensures idempotency.}
 }
 \description{
 Creates a contact with the specified details.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_contact(
+  DisplayName = "string",
+  FirstName = "string",
+  LastName = "string",
+  PhoneNumber = "string",
+  ClientRequestToken = "string"
+)
 }
+}
+

@@ -4,14 +4,9 @@
 \alias{create_custom_verification_email_template}
 \title{Creates a new custom verification email template}
 \usage{
-create_custom_verification_email_template(
-  TemplateName = "string",
-  FromEmailAddress = "string",
-  TemplateSubject = "string",
-  TemplateContent = "string",
-  SuccessRedirectionURL = "string",
-  FailureRedirectionURL = "string"
-)
+create_custom_verification_email_template(TemplateName, FromEmailAddress,
+  TemplateSubject, TemplateContent, SuccessRedirectionURL,
+  FailureRedirectionURL)
 }
 \arguments{
 \item{TemplateName}{[required] The name of the custom verification email template.}
@@ -34,6 +29,15 @@ For more information about custom verification email templates, see \href{http:/
 
 You can execute this operation no more than once per second.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_custom_verification_email_template(
+  TemplateName = "string",
+  FromEmailAddress = "string",
+  TemplateSubject = "string",
+  TemplateContent = "string",
+  SuccessRedirectionURL = "string",
+  FailureRedirectionURL = "string"
+)
 }
+}
+

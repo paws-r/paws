@@ -4,22 +4,13 @@
 \alias{generate_data_key}
 \title{Returns a data encryption key that you can use in your application to encrypt data locally}
 \usage{
-generate_data_key(
-  KeyId = "string",
-  EncryptionContext = list(
-    "string"
-  ),
-  NumberOfBytes = 123,
-  KeySpec = "AES_256"|"AES_128",
-  GrantTokens = list(
-    "string"
-  )
-)
+generate_data_key(KeyId, EncryptionContext = NULL,
+  NumberOfBytes = NULL, KeySpec = NULL, GrantTokens = NULL)
 }
 \arguments{
 \item{KeyId}{[required] The identifier of the CMK under which to generate and encrypt the data encryption key.
 
-To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with "alias/". To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
+To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
 
 For example:
 \itemize{
@@ -70,14 +61,29 @@ If you use the optional \code{EncryptionContext} field, you must store at least 
 
 The result of this operation varies with the key state of the CMK. For details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key} in the \emph{AWS Key Management Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{generate_data_key(
+  KeyId = "string",
+  EncryptionContext = list(
+    "string"
+  ),
+  NumberOfBytes = 123,
+  KeySpec = "AES_256"|"AES_128",
+  GrantTokens = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example generates a 256-bit symmetric data encryption key
 # (data key) in two formats. One is the unencrypted (plainext) data key,
 # and the other is the data key encrypted with the specified customer
 # master key (CMK).
-generate_data_key(
+\donttest{generate_data_key(
   KeyId = "alias/ExampleAlias",
   KeySpec = "AES_256"
-)
+)}
 
 }

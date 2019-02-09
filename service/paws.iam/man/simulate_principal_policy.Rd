@@ -4,33 +4,10 @@
 \alias{simulate_principal_policy}
 \title{Simulate how a set of IAM policies attached to an IAM entity works with a list of API operations and AWS resources to determine the policies' effective permissions}
 \usage{
-simulate_principal_policy(
-  PolicySourceArn = "string",
-  PolicyInputList = list(
-    "string"
-  ),
-  ActionNames = list(
-    "string"
-  ),
-  ResourceArns = list(
-    "string"
-  ),
-  ResourcePolicy = "string",
-  ResourceOwner = "string",
-  CallerArn = "string",
-  ContextEntries = list(
-    list(
-      ContextKeyName = "string",
-      ContextKeyValues = list(
-        "string"
-      ),
-      ContextKeyType = "string"|"stringList"|"numeric"|"numericList"|"boolean"|"booleanList"|"ip"|"ipList"|"binary"|"binaryList"|"date"|"dateList"
-    )
-  ),
-  ResourceHandlingOption = "string",
-  MaxItems = 123,
-  Marker = "string"
-)
+simulate_principal_policy(PolicySourceArn, PolicyInputList = NULL,
+  ActionNames, ResourceArns = NULL, ResourcePolicy = NULL,
+  ResourceOwner = NULL, CallerArn = NULL, ContextEntries = NULL,
+  ResourceHandlingOption = NULL, MaxItems = NULL, Marker = NULL)
 }
 \arguments{
 \item{PolicySourceArn}{[required] The Amazon Resource Name (ARN) of a user, group, or role whose policies you want to include in the simulation. If you specify a user, group, or role, the simulation includes all policies that are associated with that entity. If you specify a user, the simulation also includes all policies that are attached to any groups the user belongs to.
@@ -77,31 +54,31 @@ For more information about ARNs, see \href{http://docs.aws.amazon.com/general/la
 
 \item{ResourceHandlingOption}{Specifies the type of simulation to run. Different API operations that support resource-based policies require different combinations of resources. By specifying the type of simulation to run, you enable the policy simulator to enforce the presence of the required resources to ensure reliable simulation results. If your simulation does not match one of the following scenarios, then you can omit this parameter. The following list shows each of the supported scenario values and the resources that you must define to run the simulation.
 
-Each of the EC2 scenarios requires that you specify instance, image, and security group resources. If your scenario includes an EBS volume, then you must specify that volume as a resource. If the EC2 scenario includes VPC, then you must supply the network interface resource. If it includes an IP subnet, then you must specify the subnet resource. For more information on the EC2 scenario options, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html}{Supported Platforms} in the \emph{Amazon EC2 User Guide}.
+Each of the EC2 scenarios requires that you specify instance, image, and security-group resources. If your scenario includes an EBS volume, then you must specify that volume as a resource. If the EC2 scenario includes VPC, then you must supply the network-interface resource. If it includes an IP subnet, then you must specify the subnet resource. For more information on the EC2 scenario options, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html}{Supported Platforms} in the \emph{Amazon EC2 User Guide}.
 \itemize{
 \item \strong{EC2-Classic-InstanceStore}
 
-instance, image, security group
+instance, image, security-group
 \item \strong{EC2-Classic-EBS}
 
-instance, image, security group, volume
+instance, image, security-group, volume
 \item \strong{EC2-VPC-InstanceStore}
 
-instance, image, security group, network interface
+instance, image, security-group, network-interface
 \item \strong{EC2-VPC-InstanceStore-Subnet}
 
-instance, image, security group, network interface, subnet
+instance, image, security-group, network-interface, subnet
 \item \strong{EC2-VPC-EBS}
 
-instance, image, security group, network interface, volume
+instance, image, security-group, network-interface, volume
 \item \strong{EC2-VPC-EBS-Subnet}
 
-instance, image, security group, network interface, subnet, volume
+instance, image, security-group, network-interface, subnet, volume
 }}
 
-\item{MaxItems}{Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the \code{IsTruncated} response element is \code{true}.
+\item{MaxItems}{(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the \code{IsTruncated} response element is \code{true}.
 
-If you do not include this parameter, the number of items defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the \code{IsTruncated} response element returns \code{true}, and \code{Marker} contains a value to include in the subsequent call that tells the service where to continue from.}
+If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the \code{IsTruncated} response element returns \code{true} and \code{Marker} contains a value to include in the subsequent call that tells the service where to continue from.}
 
 \item{Marker}{Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the \code{Marker} element in the response that you received to indicate where the next call should start.}
 }
@@ -121,6 +98,34 @@ Context keys are variables maintained by AWS and its services that provide detai
 
 If the output is long, you can use the \code{MaxItems} and \code{Marker} parameters to paginate the results.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{simulate_principal_policy(
+  PolicySourceArn = "string",
+  PolicyInputList = list(
+    "string"
+  ),
+  ActionNames = list(
+    "string"
+  ),
+  ResourceArns = list(
+    "string"
+  ),
+  ResourcePolicy = "string",
+  ResourceOwner = "string",
+  CallerArn = "string",
+  ContextEntries = list(
+    list(
+      ContextKeyName = "string",
+      ContextKeyValues = list(
+        "string"
+      ),
+      ContextKeyType = "string"|"stringList"|"numeric"|"numericList"|"boolean"|"booleanList"|"ip"|"ipList"|"binary"|"binaryList"|"date"|"dateList"
+    )
+  ),
+  ResourceHandlingOption = "string",
+  MaxItems = 123,
+  Marker = "string"
+)
 }
+}
+

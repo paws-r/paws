@@ -4,10 +4,7 @@
 \alias{delete_database}
 \title{Removes a specified Database from a Data Catalog}
 \usage{
-delete_database(
-  CatalogId = "string",
-  Name = "string"
-)
+delete_database(CatalogId = NULL, Name)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which the database resides. If none is supplied, the AWS account ID is used by default.}
@@ -22,6 +19,11 @@ After completing this operation, you will no longer have access to the tables (a
 
 To ensure immediate deletion of all related resources, before calling \code{DeleteDatabase}, use \code{DeleteTableVersion} or \code{BatchDeleteTableVersion}, \code{DeletePartition} or \code{BatchDeletePartition}, \code{DeleteUserDefinedFunction}, and \code{DeleteTable} or \code{BatchDeleteTable}, to delete any resources that belong to the database.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_database(
+  CatalogId = "string",
+  Name = "string"
+)
 }
+}
+

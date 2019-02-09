@@ -9,6 +9,8 @@ describe_default_authorizer()
 \description{
 Describes the default authorizer.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_default_authorizer()
 }
+}
+

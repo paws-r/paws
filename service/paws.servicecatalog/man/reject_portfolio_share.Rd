@@ -4,11 +4,8 @@
 \alias{reject_portfolio_share}
 \title{Rejects an offer to share the specified portfolio}
 \usage{
-reject_portfolio_share(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  PortfolioShareType = "IMPORTED"|"AWS_SERVICECATALOG"|"AWS_ORGANIZATIONS"
-)
+reject_portfolio_share(AcceptLanguage = NULL, PortfolioId,
+  PortfolioShareType = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -32,6 +29,12 @@ For example, \code{aws servicecatalog reject-portfolio-share --portfolio-id "por
 \description{
 Rejects an offer to share the specified portfolio.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reject_portfolio_share(
+  AcceptLanguage = "string",
+  PortfolioId = "string",
+  PortfolioShareType = "IMPORTED"|"AWS_SERVICECATALOG"|"AWS_ORGANIZATIONS"
+)
 }
+}
+

@@ -4,7 +4,18 @@
 \alias{update_application_settings}
 \title{Used to update the settings for an app}
 \usage{
-update_application_settings(
+update_application_settings(ApplicationId, WriteApplicationSettingsRequest)
+}
+\arguments{
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+
+\item{WriteApplicationSettingsRequest}{[required]}
+}
+\description{
+Used to update the settings for an app.
+}
+\section{Accepted Parameters}{
+\preformatted{update_application_settings(
   ApplicationId = "string",
   WriteApplicationSettingsRequest = list(
     CampaignHook = list(
@@ -26,14 +37,5 @@ update_application_settings(
   )
 )
 }
-\arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+}
 
-\item{WriteApplicationSettingsRequest}{[required]}
-}
-\description{
-Used to update the settings for an app.
-}
-\examples{
-
-}

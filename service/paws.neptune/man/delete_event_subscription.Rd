@@ -4,9 +4,7 @@
 \alias{delete_event_subscription}
 \title{Deletes an event notification subscription}
 \usage{
-delete_event_subscription(
-  SubscriptionName = "string"
-)
+delete_event_subscription(SubscriptionName)
 }
 \arguments{
 \item{SubscriptionName}{[required] The name of the event notification subscription you want to delete.}
@@ -14,6 +12,10 @@ delete_event_subscription(
 \description{
 Deletes an event notification subscription.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_event_subscription(
+  SubscriptionName = "string"
+)
 }
+}
+

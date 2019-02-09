@@ -4,14 +4,8 @@
 \alias{get_usage}
 \title{Gets the usage data of a usage plan in a specified time interval}
 \usage{
-get_usage(
-  usagePlanId = "string",
-  keyId = "string",
-  startDate = "string",
-  endDate = "string",
-  position = "string",
-  limit = 123
-)
+get_usage(usagePlanId, keyId = NULL, startDate, endDate,
+  position = NULL, limit = NULL)
 }
 \arguments{
 \item{usagePlanId}{[required] [Required] The Id of the usage plan associated with the usage data.}
@@ -29,6 +23,15 @@ get_usage(
 \description{
 Gets the usage data of a usage plan in a specified time interval.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_usage(
+  usagePlanId = "string",
+  keyId = "string",
+  startDate = "string",
+  endDate = "string",
+  position = "string",
+  limit = 123
+)
 }
+}
+

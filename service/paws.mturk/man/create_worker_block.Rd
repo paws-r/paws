@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{create_worker_block}
 \alias{create_worker_block}
-\title{The \code{CreateWorkerBlock} operation allows you to prevent a Worker from working on your HITs}
+\title{The CreateWorkerBlock operation allows you to prevent a Worker from working on your HITs}
 \usage{
-create_worker_block(
-  WorkerId = "string",
-  Reason = "string"
-)
+create_worker_block(WorkerId, Reason)
 }
 \arguments{
 \item{WorkerId}{[required] The ID of the Worker to block.}
@@ -17,6 +14,11 @@ create_worker_block(
 \description{
 The \code{CreateWorkerBlock} operation allows you to prevent a Worker from working on your HITs. For example, you can block a Worker who is producing poor quality work. You can block up to 100,000 Workers.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_worker_block(
+  WorkerId = "string",
+  Reason = "string"
+)
 }
+}
+

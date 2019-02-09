@@ -4,15 +4,9 @@
 \alias{describe_events}
 \title{Returns events related to clusters, security groups, snapshots, and parameter groups for the past 14 days}
 \usage{
-describe_events(
-  SourceIdentifier = "string",
-  SourceType = "cluster"|"cluster-parameter-group"|"cluster-security-group"|"cluster-snapshot",
-  StartTime = as.POSIXct("2015-01-01"),
-  EndTime = as.POSIXct("2015-01-01"),
-  Duration = 123,
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_events(SourceIdentifier = NULL, SourceType = NULL,
+  StartTime = NULL, EndTime = NULL, Duration = NULL,
+  MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{SourceIdentifier}{The identifier of the event source for which events will be returned. If this parameter is not specified, then all sources are included in the response.
@@ -62,6 +56,16 @@ Constraints: minimum 20, maximum 100.}
 \description{
 Returns events related to clusters, security groups, snapshots, and parameter groups for the past 14 days. Events specific to a particular cluster, security group, snapshot or parameter group can be obtained by providing the name as a parameter. By default, the past hour of events are returned.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_events(
+  SourceIdentifier = "string",
+  SourceType = "cluster"|"cluster-parameter-group"|"cluster-security-group"|"cluster-snapshot",
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  Duration = 123,
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

@@ -4,7 +4,20 @@
 \alias{update_model}
 \title{Changes information about a model}
 \usage{
-update_model(
+update_model(restApiId, modelName, patchOperations = NULL)
+}
+\arguments{
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+
+\item{modelName}{[required] [Required] The name of the model to update.}
+
+\item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
+}
+\description{
+Changes information about a model.
+}
+\section{Accepted Parameters}{
+\preformatted{update_model(
   restApiId = "string",
   modelName = "string",
   patchOperations = list(
@@ -17,16 +30,5 @@ update_model(
   )
 )
 }
-\arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
-
-\item{modelName}{[required] [Required] The name of the model to update.}
-
-\item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
 }
-\description{
-Changes information about a model.
-}
-\examples{
 
-}

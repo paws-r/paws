@@ -4,10 +4,7 @@
 \alias{get_alias}
 \title{Returns the specified alias information such as the alias ARN, description, and function version it is pointing to}
 \usage{
-get_alias(
-  FunctionName = "string",
-  Name = "string"
-)
+get_alias(FunctionName, Name)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the lambda function.
@@ -29,11 +26,19 @@ Returns the specified alias information such as the alias ARN, description, and 
 \details{
 This requires permission for the \code{lambda:GetAlias} action.
 }
+\section{Accepted Parameters}{
+\preformatted{get_alias(
+  FunctionName = "string",
+  Name = "string"
+)
+}
+}
+
 \examples{
 # This operation retrieves a Lambda function alias
-get_alias(
+\donttest{get_alias(
   FunctionName = "myFunction",
   Name = "myFunctionAlias"
-)
+)}
 
 }

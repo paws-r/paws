@@ -4,10 +4,7 @@
 \alias{stop_instance}
 \title{Stops a specific Amazon Lightsail instance that is currently running}
 \usage{
-stop_instance(
-  instanceName = "string",
-  force = TRUE|FALSE
-)
+stop_instance(instanceName, force = NULL)
 }
 \arguments{
 \item{instanceName}{[required] The name of the instance (a virtual private server) to stop.}
@@ -19,9 +16,11 @@ Only use the \code{force} parameter if your instance is stuck in the \code{stopp
 \description{
 Stops a specific Amazon Lightsail instance that is currently running.
 }
-\details{
-The \code{stop instance} operation supports tag-based access control via resource tags applied to the resource identified by instanceName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\section{Accepted Parameters}{
+\preformatted{stop_instance(
+  instanceName = "string",
+  force = TRUE|FALSE
+)
 }
-\examples{
+}
 
-}

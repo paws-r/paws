@@ -4,11 +4,8 @@
 \alias{list_device_definition_versions}
 \title{Lists the versions of a device definition}
 \usage{
-list_device_definition_versions(
-  DeviceDefinitionId = "string",
-  MaxResults = "string",
-  NextToken = "string"
-)
+list_device_definition_versions(DeviceDefinitionId, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{DeviceDefinitionId}{[required] The ID of the device definition.}
@@ -20,6 +17,12 @@ list_device_definition_versions(
 \description{
 Lists the versions of a device definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_device_definition_versions(
+  DeviceDefinitionId = "string",
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

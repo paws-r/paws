@@ -4,9 +4,7 @@
 \alias{delete_health_check}
 \title{Deletes a health check}
 \usage{
-delete_health_check(
-  HealthCheckId = "string"
-)
+delete_health_check(HealthCheckId)
 }
 \arguments{
 \item{HealthCheckId}{[required] The ID of the health check that you want to delete.}
@@ -17,6 +15,10 @@ Deletes a health check.
 \details{
 Amazon Route 53 does not prevent you from deleting a health check even if the health check is associated with one or more resource record sets. If you delete a health check and you don't update the associated resource record sets, the future status of the health check can't be predicted and may change. This will affect the routing of DNS queries for your DNS failover configuration. For more information, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html#health-checks-deleting.html}{Replacing and Deleting Health Checks} in the \emph{Amazon Route 53 Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_health_check(
+  HealthCheckId = "string"
+)
 }
+}
+

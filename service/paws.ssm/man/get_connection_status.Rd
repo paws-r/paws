@@ -4,9 +4,7 @@
 \alias{get_connection_status}
 \title{Retrieves the Session Manager connection status for an instance to determine whether it is connected and ready to receive Session Manager connections}
 \usage{
-get_connection_status(
-  Target = "string"
-)
+get_connection_status(Target)
 }
 \arguments{
 \item{Target}{[required] The ID of the instance.}
@@ -14,6 +12,10 @@ get_connection_status(
 \description{
 Retrieves the Session Manager connection status for an instance to determine whether it is connected and ready to receive Session Manager connections.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_connection_status(
+  Target = "string"
+)
 }
+}
+

@@ -4,7 +4,18 @@
 \alias{modify_instance_groups}
 \title{ModifyInstanceGroups modifies the number of nodes and configuration settings of an instance group}
 \usage{
-modify_instance_groups(
+modify_instance_groups(ClusterId = NULL, InstanceGroups = NULL)
+}
+\arguments{
+\item{ClusterId}{The ID of the cluster to which the instance group belongs.}
+
+\item{InstanceGroups}{Instance groups to change.}
+}
+\description{
+ModifyInstanceGroups modifies the number of nodes and configuration settings of an instance group. The input parameters include the new target instance count for the group and the instance group ID. The call will either succeed or fail atomically.
+}
+\section{Accepted Parameters}{
+\preformatted{modify_instance_groups(
   ClusterId = "string",
   InstanceGroups = list(
     list(
@@ -29,14 +40,5 @@ modify_instance_groups(
   )
 )
 }
-\arguments{
-\item{ClusterId}{The ID of the cluster to which the instance group belongs.}
+}
 
-\item{InstanceGroups}{Instance groups to change.}
-}
-\description{
-ModifyInstanceGroups modifies the number of nodes and configuration settings of an instance group. The input parameters include the new target instance count for the group and the instance group ID. The call will either succeed or fail atomically.
-}
-\examples{
-
-}

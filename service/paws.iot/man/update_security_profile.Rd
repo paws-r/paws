@@ -4,7 +4,26 @@
 \alias{update_security_profile}
 \title{Updates a Device Defender security profile}
 \usage{
-update_security_profile(
+update_security_profile(securityProfileName,
+  securityProfileDescription = NULL, behaviors = NULL,
+  alertTargets = NULL, expectedVersion = NULL)
+}
+\arguments{
+\item{securityProfileName}{[required] The name of the security profile you want to update.}
+
+\item{securityProfileDescription}{A description of the security profile.}
+
+\item{behaviors}{Specifies the behaviors that, when violated by a device (thing), cause an alert.}
+
+\item{alertTargets}{Where the alerts are sent. (Alerts are always sent to the console.)}
+
+\item{expectedVersion}{The expected version of the security profile. A new version is generated whenever the security profile is updated. If you specify a value that is different than the actual version, a \code{VersionConflictException} is thrown.}
+}
+\description{
+Updates a Device Defender security profile.
+}
+\section{Accepted Parameters}{
+\preformatted{update_security_profile(
   securityProfileName = "string",
   securityProfileDescription = "string",
   behaviors = list(
@@ -35,20 +54,5 @@ update_security_profile(
   expectedVersion = 123
 )
 }
-\arguments{
-\item{securityProfileName}{[required] The name of the security profile you want to update.}
-
-\item{securityProfileDescription}{A description of the security profile.}
-
-\item{behaviors}{Specifies the behaviors that, when violated by a device (thing), cause an alert.}
-
-\item{alertTargets}{Where the alerts are sent. (Alerts are always sent to the console.)}
-
-\item{expectedVersion}{The expected version of the security profile. A new version is generated whenever the security profile is updated. If you specify a value that is different than the actual version, a \code{VersionConflictException} is thrown.}
 }
-\description{
-Updates a Device Defender security profile.
-}
-\examples{
 
-}

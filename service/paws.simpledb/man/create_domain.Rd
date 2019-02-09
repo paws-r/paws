@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.simpledb_operations.R
 \name{create_domain}
 \alias{create_domain}
-\title{The \code{CreateDomain} operation creates a new domain}
+\title{The CreateDomain operation creates a new domain}
 \usage{
-create_domain(
-  DomainName = "string"
-)
+create_domain(DomainName)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain to create. The name can range between 3 and 255 characters and can contain the following characters: a-z, A-Z, 0-9, '_', '-', and '.'.}
@@ -21,6 +19,10 @@ The client can create up to 100 domains per account.
 
 If the client requires additional domains, go to \url{http://aws.amazon.com/contact-us/simpledb-limit-request/}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_domain(
+  DomainName = "string"
+)
 }
+}
+

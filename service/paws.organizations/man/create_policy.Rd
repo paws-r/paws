@@ -4,12 +4,7 @@
 \alias{create_policy}
 \title{Creates a policy of a specified type that you can attach to a root, an organizational unit (OU), or an individual AWS account}
 \usage{
-create_policy(
-  Content = "string",
-  Description = "string",
-  Name = "string",
-  Type = "SERVICE_CONTROL_POLICY"
-)
+create_policy(Content, Description, Name, Type)
 }
 \arguments{
 \item{Content}{[required] The policy content to add to the new policy. For example, if you create a \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html}{service control policy} (SCP), this string must be JSON text that specifies the permissions that admins in attached accounts can delegate to their users, groups, and roles. For more information about the SCP syntax, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html}{Service Control Policy Syntax} in the \emph{AWS Organizations User Guide}.}
@@ -32,6 +27,16 @@ For more information about policies and their use, see \href{http://docs.aws.ama
 
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{create_policy(
+  Content = "string",
+  Description = "string",
+  Name = "string",
+  Type = "SERVICE_CONTROL_POLICY"
+)
+}
+}
+
 \examples{
 # The following example shows how to create a service control policy (SCP)
 # that is named AllowAllS3Actions. The JSON string in the content
@@ -41,11 +46,11 @@ This operation can be called only from the organization's master account.
 # is surrounded by double quotes:
 # 
 # 
-create_policy(
+\donttest{create_policy(
   Content = "{\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\",\\\\\\"Statement\\\\\\":{\\\\\\"Effect\\\\\\":\\\\\\"Allow\\\\\\",\\\\\\"Action\\\\\\":\\\\\\"s3:*\\\\\\"}}",
   Description = "Enables admins of attached accounts to delegate all S3 permissions",
   Name = "AllowAllS3Actions",
   Type = "SERVICE_CONTROL_POLICY"
-)
+)}
 
 }

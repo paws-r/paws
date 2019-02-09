@@ -4,15 +4,7 @@
 \alias{set_tags_for_resource}
 \title{Sets tags (key and value pairs) to the assessment template that is specified by the ARN of the assessment template}
 \usage{
-set_tags_for_resource(
-  resourceArn = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+set_tags_for_resource(resourceArn, tags = NULL)
 }
 \arguments{
 \item{resourceArn}{[required] The ARN of the assessment template that you want to set tags to.}
@@ -22,10 +14,23 @@ set_tags_for_resource(
 \description{
 Sets tags (key and value pairs) to the assessment template that is specified by the ARN of the assessment template.
 }
+\section{Accepted Parameters}{
+\preformatted{set_tags_for_resource(
+  resourceArn = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # Sets tags (key and value pairs) to the assessment template that is
 # specified by the ARN of the assessment template.
-set_tags_for_resource(
+\donttest{set_tags_for_resource(
   resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-7sbz2Kz0",
   tags = list(
     list(
@@ -33,6 +38,6 @@ set_tags_for_resource(
       value = "example"
     )
   )
-)
+)}
 
 }

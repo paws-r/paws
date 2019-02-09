@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.cognitoidentity_operations.R
 \name{merge_developer_identities}
 \alias{merge_developer_identities}
-\title{Merges two users having different \code{IdentityId}s, existing in the same identity pool, and identified by the same developer provider}
+\title{Merges two users having different IdentityIds, existing in the same identity pool, and identified by the same developer provider}
 \usage{
-merge_developer_identities(
-  SourceUserIdentifier = "string",
-  DestinationUserIdentifier = "string",
-  DeveloperProviderName = "string",
-  IdentityPoolId = "string"
-)
+merge_developer_identities(SourceUserIdentifier, DestinationUserIdentifier,
+  DeveloperProviderName, IdentityPoolId)
 }
 \arguments{
 \item{SourceUserIdentifier}{[required] User identifier for the source user. The value should be a \code{DeveloperUserIdentifier}.}
@@ -26,6 +22,13 @@ Merges two users having different \code{IdentityId}s, existing in the same ident
 \details{
 You must use AWS Developer credentials to call this API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{merge_developer_identities(
+  SourceUserIdentifier = "string",
+  DestinationUserIdentifier = "string",
+  DeveloperProviderName = "string",
+  IdentityPoolId = "string"
+)
 }
+}
+

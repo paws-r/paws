@@ -4,9 +4,7 @@
 \alias{get_dashboard}
 \title{Displays the details of the dashboard that you specify}
 \usage{
-get_dashboard(
-  DashboardName = "string"
-)
+get_dashboard(DashboardName)
 }
 \arguments{
 \item{DashboardName}{[required] The name of the dashboard to be described.}
@@ -17,6 +15,10 @@ Displays the details of the dashboard that you specify.
 \details{
 To copy an existing dashboard, use \code{GetDashboard}, and then use the data returned within \code{DashboardBody} as the template for the new dashboard when you call \code{PutDashboard} to create the copy.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_dashboard(
+  DashboardName = "string"
+)
 }
+}
+

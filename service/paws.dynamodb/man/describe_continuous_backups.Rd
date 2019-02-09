@@ -4,9 +4,7 @@
 \alias{describe_continuous_backups}
 \title{Checks the status of continuous backups and point in time recovery on the specified table}
 \usage{
-describe_continuous_backups(
-  TableName = "string"
-)
+describe_continuous_backups(TableName)
 }
 \arguments{
 \item{TableName}{[required] Name of the table for which the customer wants to check the continuous backups and point in time recovery settings.}
@@ -21,6 +19,10 @@ Once continuous backups and point in time recovery are enabled, you can restore 
 
 You can call \code{DescribeContinuousBackups} at a maximum rate of 10 times per second.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_continuous_backups(
+  TableName = "string"
+)
 }
+}
+

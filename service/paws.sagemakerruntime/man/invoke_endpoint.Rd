@@ -4,13 +4,8 @@
 \alias{invoke_endpoint}
 \title{After you deploy a model into production using Amazon SageMaker hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint}
 \usage{
-invoke_endpoint(
-  EndpointName = "string",
-  Body = raw,
-  ContentType = "string",
-  Accept = "string",
-  CustomAttributes = "string"
-)
+invoke_endpoint(EndpointName, Body, ContentType = NULL, Accept = NULL,
+  CustomAttributes = NULL)
 }
 \arguments{
 \item{EndpointName}{[required] The name of the endpoint that you specified when you created the endpoint using the \href{http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html}{CreateEndpoint} API.}
@@ -37,6 +32,14 @@ Cals to \code{InvokeEndpoint} are authenticated by using AWS Signature Version 4
 
 Endpoints are scoped to an individual account, and are not public. The URL does not contain the account ID, but Amazon SageMaker determines the account ID from the authentication token that is supplied by the caller.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{invoke_endpoint(
+  EndpointName = "string",
+  Body = raw,
+  ContentType = "string",
+  Accept = "string",
+  CustomAttributes = "string"
+)
 }
+}
+

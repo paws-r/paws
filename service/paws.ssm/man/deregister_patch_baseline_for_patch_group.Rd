@@ -4,10 +4,7 @@
 \alias{deregister_patch_baseline_for_patch_group}
 \title{Removes a patch group from a patch baseline}
 \usage{
-deregister_patch_baseline_for_patch_group(
-  BaselineId = "string",
-  PatchGroup = "string"
-)
+deregister_patch_baseline_for_patch_group(BaselineId, PatchGroup)
 }
 \arguments{
 \item{BaselineId}{[required] The ID of the patch baseline to deregister the patch group from.}
@@ -17,6 +14,11 @@ deregister_patch_baseline_for_patch_group(
 \description{
 Removes a patch group from a patch baseline.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{deregister_patch_baseline_for_patch_group(
+  BaselineId = "string",
+  PatchGroup = "string"
+)
 }
+}
+

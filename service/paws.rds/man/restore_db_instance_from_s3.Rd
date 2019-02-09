@@ -4,67 +4,25 @@
 \alias{restore_db_instance_from_s3}
 \title{Amazon Relational Database Service (Amazon RDS) supports importing MySQL databases by using backup files}
 \usage{
-restore_db_instance_from_s3(
-  DBName = "string",
-  DBInstanceIdentifier = "string",
-  AllocatedStorage = 123,
-  DBInstanceClass = "string",
-  Engine = "string",
-  MasterUsername = "string",
-  MasterUserPassword = "string",
-  DBSecurityGroups = list(
-    "string"
-  ),
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  AvailabilityZone = "string",
-  DBSubnetGroupName = "string",
-  PreferredMaintenanceWindow = "string",
-  DBParameterGroupName = "string",
-  BackupRetentionPeriod = 123,
-  PreferredBackupWindow = "string",
-  Port = 123,
-  MultiAZ = TRUE|FALSE,
-  EngineVersion = "string",
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  LicenseModel = "string",
-  Iops = 123,
-  OptionGroupName = "string",
-  PubliclyAccessible = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  StorageType = "string",
-  StorageEncrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  CopyTagsToSnapshot = TRUE|FALSE,
-  MonitoringInterval = 123,
-  MonitoringRoleArn = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  SourceEngine = "string",
-  SourceEngineVersion = "string",
-  S3BucketName = "string",
-  S3Prefix = "string",
-  S3IngestionRoleArn = "string",
-  EnablePerformanceInsights = TRUE|FALSE,
-  PerformanceInsightsKMSKeyId = "string",
-  PerformanceInsightsRetentionPeriod = 123,
-  EnableCloudwatchLogsExports = list(
-    "string"
-  ),
-  ProcessorFeatures = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  UseDefaultProcessorFeatures = TRUE|FALSE,
-  DeletionProtection = TRUE|FALSE
-)
+restore_db_instance_from_s3(DBName = NULL, DBInstanceIdentifier,
+  AllocatedStorage = NULL, DBInstanceClass, Engine,
+  MasterUsername = NULL, MasterUserPassword = NULL,
+  DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL,
+  AvailabilityZone = NULL, DBSubnetGroupName = NULL,
+  PreferredMaintenanceWindow = NULL, DBParameterGroupName = NULL,
+  BackupRetentionPeriod = NULL, PreferredBackupWindow = NULL,
+  Port = NULL, MultiAZ = NULL, EngineVersion = NULL,
+  AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, Iops = NULL,
+  OptionGroupName = NULL, PubliclyAccessible = NULL, Tags = NULL,
+  StorageType = NULL, StorageEncrypted = NULL, KmsKeyId = NULL,
+  CopyTagsToSnapshot = NULL, MonitoringInterval = NULL,
+  MonitoringRoleArn = NULL, EnableIAMDatabaseAuthentication = NULL,
+  SourceEngine, SourceEngineVersion, S3BucketName, S3Prefix = NULL,
+  S3IngestionRoleArn, EnablePerformanceInsights = NULL,
+  PerformanceInsightsKMSKeyId = NULL,
+  PerformanceInsightsRetentionPeriod = NULL,
+  EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL,
+  UseDefaultProcessorFeatures = NULL, DeletionProtection = NULL)
 }
 \arguments{
 \item{DBName}{The name of the database to create when the DB instance is created. Follow the naming rules specified in CreateDBInstance.}
@@ -241,6 +199,68 @@ For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/User
 \description{
 Amazon Relational Database Service (Amazon RDS) supports importing MySQL databases by using backup files. You can create a backup of your on-premises database, store it on Amazon Simple Storage Service (Amazon S3), and then restore the backup file onto a new Amazon RDS DB instance running MySQL. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html}{Importing Data into an Amazon RDS MySQL DB Instance} in the \emph{Amazon RDS User Guide.}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{restore_db_instance_from_s3(
+  DBName = "string",
+  DBInstanceIdentifier = "string",
+  AllocatedStorage = 123,
+  DBInstanceClass = "string",
+  Engine = "string",
+  MasterUsername = "string",
+  MasterUserPassword = "string",
+  DBSecurityGroups = list(
+    "string"
+  ),
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  AvailabilityZone = "string",
+  DBSubnetGroupName = "string",
+  PreferredMaintenanceWindow = "string",
+  DBParameterGroupName = "string",
+  BackupRetentionPeriod = 123,
+  PreferredBackupWindow = "string",
+  Port = 123,
+  MultiAZ = TRUE|FALSE,
+  EngineVersion = "string",
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  LicenseModel = "string",
+  Iops = 123,
+  OptionGroupName = "string",
+  PubliclyAccessible = TRUE|FALSE,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  StorageType = "string",
+  StorageEncrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  CopyTagsToSnapshot = TRUE|FALSE,
+  MonitoringInterval = 123,
+  MonitoringRoleArn = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  SourceEngine = "string",
+  SourceEngineVersion = "string",
+  S3BucketName = "string",
+  S3Prefix = "string",
+  S3IngestionRoleArn = "string",
+  EnablePerformanceInsights = TRUE|FALSE,
+  PerformanceInsightsKMSKeyId = "string",
+  PerformanceInsightsRetentionPeriod = 123,
+  EnableCloudwatchLogsExports = list(
+    "string"
+  ),
+  ProcessorFeatures = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  UseDefaultProcessorFeatures = TRUE|FALSE,
+  DeletionProtection = TRUE|FALSE
+)
 }
+}
+

@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.wafregional_operations.R
 \name{create_rule_group}
 \alias{create_rule_group}
-\title{Creates a \code{RuleGroup}}
+\title{Creates a RuleGroup}
 \usage{
-create_rule_group(
-  Name = "string",
-  MetricName = "string",
-  ChangeToken = "string"
-)
+create_rule_group(Name, MetricName, ChangeToken)
 }
 \arguments{
 \item{Name}{[required] A friendly name or description of the RuleGroup. You can't change \code{Name} after you create a \code{RuleGroup}.}
@@ -30,6 +26,12 @@ Rule groups are subject to the following limits:
 
 For more information about how to use the AWS WAF API to allow or block HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_rule_group(
+  Name = "string",
+  MetricName = "string",
+  ChangeToken = "string"
+)
 }
+}
+

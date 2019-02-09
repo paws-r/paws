@@ -4,7 +4,21 @@
 \alias{create_user_defined_function}
 \title{Creates a new function definition in the Data Catalog}
 \usage{
-create_user_defined_function(
+create_user_defined_function(CatalogId = NULL, DatabaseName,
+  FunctionInput)
+}
+\arguments{
+\item{CatalogId}{The ID of the Data Catalog in which to create the function. If none is supplied, the AWS account ID is used by default.}
+
+\item{DatabaseName}{[required] The name of the catalog database in which to create the function.}
+
+\item{FunctionInput}{[required] A \code{FunctionInput} object that defines the function to create in the Data Catalog.}
+}
+\description{
+Creates a new function definition in the Data Catalog.
+}
+\section{Accepted Parameters}{
+\preformatted{create_user_defined_function(
   CatalogId = "string",
   DatabaseName = "string",
   FunctionInput = list(
@@ -21,16 +35,5 @@ create_user_defined_function(
   )
 )
 }
-\arguments{
-\item{CatalogId}{The ID of the Data Catalog in which to create the function. If none is supplied, the AWS account ID is used by default.}
-
-\item{DatabaseName}{[required] The name of the catalog database in which to create the function.}
-
-\item{FunctionInput}{[required] A \code{FunctionInput} object that defines the function to create in the Data Catalog.}
 }
-\description{
-Creates a new function definition in the Data Catalog.
-}
-\examples{
 
-}

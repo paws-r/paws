@@ -4,12 +4,7 @@
 \alias{list_types}
 \title{Lists the types for a given API}
 \usage{
-list_types(
-  apiId = "string",
-  format = "SDL"|"JSON",
-  nextToken = "string",
-  maxResults = 123
-)
+list_types(apiId, format, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
@@ -23,6 +18,13 @@ list_types(
 \description{
 Lists the types for a given API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_types(
+  apiId = "string",
+  format = "SDL"|"JSON",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

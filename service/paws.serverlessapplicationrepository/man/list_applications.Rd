@@ -5,10 +5,7 @@
 \alias{list_applications}
 \title{Lists applications owned by the requester}
 \usage{
-list_applications(
-  MaxItems = 123,
-  NextToken = "string"
-)
+list_applications(MaxItems = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxItems}{The total number of items to return.}
@@ -18,6 +15,11 @@ list_applications(
 \description{
 Lists applications owned by the requester.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_applications(
+  MaxItems = 123,
+  NextToken = "string"
+)
 }
+}
+

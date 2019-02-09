@@ -4,7 +4,64 @@
 \alias{transfer_domain}
 \title{This operation transfers a domain from another registrar to Amazon Route 53}
 \usage{
-transfer_domain(
+transfer_domain(DomainName, IdnLangCode = NULL, DurationInYears,
+  Nameservers = NULL, AuthCode = NULL, AutoRenew = NULL,
+  AdminContact, RegistrantContact, TechContact,
+  PrivacyProtectAdminContact = NULL,
+  PrivacyProtectRegistrantContact = NULL,
+  PrivacyProtectTechContact = NULL)
+}
+\arguments{
+\item{DomainName}{[required] The name of the domain that you want to transfer to Amazon Route 53.
+
+Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.}
+
+\item{IdnLangCode}{Reserved for future use.}
+
+\item{DurationInYears}{[required] The number of years that you want to register the domain for. Domains are registered for a minimum of one year. The maximum period depends on the top-level domain.
+
+Default: 1}
+
+\item{Nameservers}{Contains details for the host and glue IP addresses.}
+
+\item{AuthCode}{The authorization code for the domain. You get this value from the current registrar.}
+
+\item{AutoRenew}{Indicates whether the domain will be automatically renewed (true) or not (false). Autorenewal only takes effect after the account is charged.
+
+Default: true}
+
+\item{AdminContact}{[required] Provides detailed contact information.}
+
+\item{RegistrantContact}{[required] Provides detailed contact information.}
+
+\item{TechContact}{[required] Provides detailed contact information.}
+
+\item{PrivacyProtectAdminContact}{Whether you want to conceal contact information from WHOIS queries. If you specify \code{true}, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify \code{false}, WHOIS queries return the information that you entered for the admin contact.
+
+Default: \code{true}}
+
+\item{PrivacyProtectRegistrantContact}{Whether you want to conceal contact information from WHOIS queries. If you specify \code{true}, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify \code{false}, WHOIS queries return the information that you entered for the registrant contact (domain owner).
+
+Default: \code{true}}
+
+\item{PrivacyProtectTechContact}{Whether you want to conceal contact information from WHOIS queries. If you specify \code{true}, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify \code{false}, WHOIS queries return the information that you entered for the technical contact.
+
+Default: \code{true}}
+}
+\description{
+This operation transfers a domain from another registrar to Amazon Route 53. When the transfer is complete, the domain is registered either with Amazon Registrar (for .com, .net, and .org domains) or with our registrar associate, Gandi (for all other TLDs).
+}
+\details{
+For transfer requirements, a detailed procedure, and information about viewing the status of a domain transfer, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-to-route-53.html}{Transferring Registration for a Domain to Amazon Route 53} in the \emph{Amazon Route 53 Developer Guide}.
+
+If the registrar for your domain is also the DNS service provider for the domain, we highly recommend that you consider transferring your DNS service to Amazon Route 53 or to another DNS service provider before you transfer your registration. Some registrars provide free DNS service when you purchase a domain registration. When you transfer the registration, the previous registrar will not renew your domain registration and could end your DNS service at any time.
+
+If the registrar for your domain is also the DNS service provider for the domain and you don't transfer DNS service to another provider, your website, email, and the web applications associated with the domain might become unavailable.
+
+If the transfer is successful, this method returns an operation ID that you can use to track the progress and completion of the action. If the transfer doesn't complete successfully, the domain registrant will be notified by email.
+}
+\section{Accepted Parameters}{
+\preformatted{transfer_domain(
   DomainName = "string",
   IdnLangCode = "string",
   DurationInYears = 123,
@@ -86,55 +143,5 @@ transfer_domain(
   PrivacyProtectTechContact = TRUE|FALSE
 )
 }
-\arguments{
-\item{DomainName}{[required] The name of the domain that you want to transfer to Amazon Route 53.
-
-Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.}
-
-\item{IdnLangCode}{Reserved for future use.}
-
-\item{DurationInYears}{[required] The number of years that you want to register the domain for. Domains are registered for a minimum of one year. The maximum period depends on the top-level domain.
-
-Default: 1}
-
-\item{Nameservers}{Contains details for the host and glue IP addresses.}
-
-\item{AuthCode}{The authorization code for the domain. You get this value from the current registrar.}
-
-\item{AutoRenew}{Indicates whether the domain will be automatically renewed (true) or not (false). Autorenewal only takes effect after the account is charged.
-
-Default: true}
-
-\item{AdminContact}{[required] Provides detailed contact information.}
-
-\item{RegistrantContact}{[required] Provides detailed contact information.}
-
-\item{TechContact}{[required] Provides detailed contact information.}
-
-\item{PrivacyProtectAdminContact}{Whether you want to conceal contact information from WHOIS queries. If you specify \code{true}, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify \code{false}, WHOIS queries return the information that you entered for the admin contact.
-
-Default: \code{true}}
-
-\item{PrivacyProtectRegistrantContact}{Whether you want to conceal contact information from WHOIS queries. If you specify \code{true}, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify \code{false}, WHOIS queries return the information that you entered for the registrant contact (domain owner).
-
-Default: \code{true}}
-
-\item{PrivacyProtectTechContact}{Whether you want to conceal contact information from WHOIS queries. If you specify \code{true}, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify \code{false}, WHOIS queries return the information that you entered for the technical contact.
-
-Default: \code{true}}
 }
-\description{
-This operation transfers a domain from another registrar to Amazon Route 53. When the transfer is complete, the domain is registered either with Amazon Registrar (for .com, .net, and .org domains) or with our registrar associate, Gandi (for all other TLDs).
-}
-\details{
-For transfer requirements, a detailed procedure, and information about viewing the status of a domain transfer, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-to-route-53.html}{Transferring Registration for a Domain to Amazon Route 53} in the \emph{Amazon Route 53 Developer Guide}.
 
-If the registrar for your domain is also the DNS service provider for the domain, we highly recommend that you consider transferring your DNS service to Amazon Route 53 or to another DNS service provider before you transfer your registration. Some registrars provide free DNS service when you purchase a domain registration. When you transfer the registration, the previous registrar will not renew your domain registration and could end your DNS service at any time.
-
-If the registrar for your domain is also the DNS service provider for the domain and you don't transfer DNS service to another provider, your website, email, and the web applications associated with the domain might become unavailable.
-
-If the transfer is successful, this method returns an operation ID that you can use to track the progress and completion of the action. If the transfer doesn't complete successfully, the domain registrant will be notified by email.
-}
-\examples{
-
-}

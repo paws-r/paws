@@ -4,10 +4,7 @@
 \alias{deregister_from_work_mail}
 \title{Mark a user, group, or resource as no longer used in Amazon WorkMail}
 \usage{
-deregister_from_work_mail(
-  OrganizationId = "string",
-  EntityId = "string"
-)
+deregister_from_work_mail(OrganizationId, EntityId)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier for the organization under which the Amazon WorkMail entity exists.}
@@ -17,6 +14,11 @@ deregister_from_work_mail(
 \description{
 Mark a user, group, or resource as no longer used in Amazon WorkMail. This action disassociates the mailbox and schedules it for clean-up. Amazon WorkMail keeps mailboxes for 30 days before they are permanently removed. The functionality in the console is \emph{Disable}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{deregister_from_work_mail(
+  OrganizationId = "string",
+  EntityId = "string"
+)
 }
+}
+

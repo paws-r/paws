@@ -4,10 +4,7 @@
 \alias{associate_skill_group_with_room}
 \title{Associates a skill group with a given room}
 \usage{
-associate_skill_group_with_room(
-  SkillGroupArn = "string",
-  RoomArn = "string"
-)
+associate_skill_group_with_room(SkillGroupArn = NULL, RoomArn = NULL)
 }
 \arguments{
 \item{SkillGroupArn}{The ARN of the skill group to associate with a room. Required.}
@@ -17,6 +14,11 @@ associate_skill_group_with_room(
 \description{
 Associates a skill group with a given room. This enables all skills in the associated skill group on all devices in the room.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_skill_group_with_room(
+  SkillGroupArn = "string",
+  RoomArn = "string"
+)
 }
+}
+

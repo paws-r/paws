@@ -4,11 +4,8 @@
 \alias{list_targets_for_security_profile}
 \title{Lists the targets (thing groups) associated with a given Device Defender security profile}
 \usage{
-list_targets_for_security_profile(
-  securityProfileName = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+list_targets_for_security_profile(securityProfileName, nextToken = NULL,
+  maxResults = NULL)
 }
 \arguments{
 \item{securityProfileName}{[required] The security profile.}
@@ -20,6 +17,12 @@ list_targets_for_security_profile(
 \description{
 Lists the targets (thing groups) associated with a given Device Defender security profile.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_targets_for_security_profile(
+  securityProfileName = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

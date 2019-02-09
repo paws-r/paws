@@ -4,12 +4,8 @@
 \alias{disable_availability_zones_for_load_balancer}
 \title{Removes the specified Availability Zones from the set of Availability Zones for the specified load balancer in EC2-Classic or a default VPC}
 \usage{
-disable_availability_zones_for_load_balancer(
-  LoadBalancerName = "string",
-  AvailabilityZones = list(
-    "string"
-  )
-)
+disable_availability_zones_for_load_balancer(LoadBalancerName,
+  AvailabilityZones)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
@@ -26,14 +22,24 @@ There must be at least one Availability Zone registered with a load balancer at 
 
 For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html}{Add or Remove Availability Zones} in the \emph{Classic Load Balancers Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{disable_availability_zones_for_load_balancer(
+  LoadBalancerName = "string",
+  AvailabilityZones = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example removes the specified Availability Zone from the set of
 # Availability Zones for the specified load balancer.
-disable_availability_zones_for_load_balancer(
+\donttest{disable_availability_zones_for_load_balancer(
   AvailabilityZones = list(
     "us-west-2a"
   ),
   LoadBalancerName = "my-load-balancer"
-)
+)}
 
 }

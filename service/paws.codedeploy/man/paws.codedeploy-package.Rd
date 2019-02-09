@@ -6,9 +6,10 @@
 \alias{paws.codedeploy-package}
 \title{paws.codedeploy: AWS CodeDeploy}
 \description{
-AWS CodeDeploy is a deployment service that automates
-application deployments to Amazon EC2 instances, on-premises instances
-running in your own facility, or serverless AWS Lambda functions.
+AWS CodeDeploy is a deployment service that
+    automates application deployments to Amazon EC2 instances, on-premises
+    instances running in your own facility, or serverless AWS Lambda
+    functions.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

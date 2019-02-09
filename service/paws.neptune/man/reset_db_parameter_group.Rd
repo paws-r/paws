@@ -4,24 +4,8 @@
 \alias{reset_db_parameter_group}
 \title{Modifies the parameters of a DB parameter group to the engine/system default value}
 \usage{
-reset_db_parameter_group(
-  DBParameterGroupName = "string",
-  ResetAllParameters = TRUE|FALSE,
-  Parameters = list(
-    list(
-      ParameterName = "string",
-      ParameterValue = "string",
-      Description = "string",
-      Source = "string",
-      ApplyType = "string",
-      DataType = "string",
-      AllowedValues = "string",
-      IsModifiable = TRUE|FALSE,
-      MinimumEngineVersion = "string",
-      ApplyMethod = "immediate"|"pending-reboot"
-    )
-  )
-)
+reset_db_parameter_group(DBParameterGroupName, ResetAllParameters = NULL,
+  Parameters = NULL)
 }
 \arguments{
 \item{DBParameterGroupName}{[required] The name of the DB parameter group.
@@ -42,6 +26,25 @@ Valid Values (for Apply method): \code{pending-reboot}}
 \description{
 Modifies the parameters of a DB parameter group to the engine/system default value. To reset specific parameters, provide a list of the following: \code{ParameterName} and \code{ApplyMethod}. To reset the entire DB parameter group, specify the \code{DBParameterGroup} name and \code{ResetAllParameters} parameters. When resetting the entire group, dynamic parameters are updated immediately and static parameters are set to \code{pending-reboot} to take effect on the next DB instance restart or \code{RebootDBInstance} request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reset_db_parameter_group(
+  DBParameterGroupName = "string",
+  ResetAllParameters = TRUE|FALSE,
+  Parameters = list(
+    list(
+      ParameterName = "string",
+      ParameterValue = "string",
+      Description = "string",
+      Source = "string",
+      ApplyType = "string",
+      DataType = "string",
+      AllowedValues = "string",
+      IsModifiable = TRUE|FALSE,
+      MinimumEngineVersion = "string",
+      ApplyMethod = "immediate"|"pending-reboot"
+    )
+  )
+)
 }
+}
+

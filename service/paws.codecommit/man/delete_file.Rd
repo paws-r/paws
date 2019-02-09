@@ -4,16 +4,9 @@
 \alias{delete_file}
 \title{Deletes a specified file from a specified branch}
 \usage{
-delete_file(
-  repositoryName = "string",
-  branchName = "string",
-  filePath = "string",
-  parentCommitId = "string",
-  keepEmptyFolders = TRUE|FALSE,
-  commitMessage = "string",
-  name = "string",
-  email = "string"
-)
+delete_file(repositoryName, branchName, filePath, parentCommitId,
+  keepEmptyFolders = NULL, commitMessage = NULL, name = NULL,
+  email = NULL)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository that contains the file to delete.}
@@ -35,6 +28,17 @@ delete_file(
 \description{
 Deletes a specified file from a specified branch. A commit is created on the branch that contains the revision. The file will still exist in the commits prior to the commit that contains the deletion.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_file(
+  repositoryName = "string",
+  branchName = "string",
+  filePath = "string",
+  parentCommitId = "string",
+  keepEmptyFolders = TRUE|FALSE,
+  commitMessage = "string",
+  name = "string",
+  email = "string"
+)
 }
+}
+

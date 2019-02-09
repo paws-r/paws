@@ -4,9 +4,7 @@
 \alias{delete_domain}
 \title{Permanently deletes a search domain and all of its data}
 \usage{
-delete_domain(
-  DomainName = "string"
-)
+delete_domain(DomainName)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain you want to permanently delete.}
@@ -14,6 +12,10 @@ delete_domain(
 \description{
 Permanently deletes a search domain and all of its data. Once a domain has been deleted, it cannot be recovered. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/deleting-domains.html}{Deleting a Search Domain} in the \emph{Amazon CloudSearch Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_domain(
+  DomainName = "string"
+)
 }
+}
+

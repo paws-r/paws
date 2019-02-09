@@ -4,9 +4,7 @@
 \alias{delete_apns_sandbox_channel}
 \title{Delete an APNS sandbox channel}
 \usage{
-delete_apns_sandbox_channel(
-  ApplicationId = "string"
-)
+delete_apns_sandbox_channel(ApplicationId)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -14,6 +12,10 @@ delete_apns_sandbox_channel(
 \description{
 Delete an APNS sandbox channel.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_apns_sandbox_channel(
+  ApplicationId = "string"
+)
 }
+}
+

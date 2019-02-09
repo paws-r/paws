@@ -4,10 +4,7 @@
 \alias{update_elastic_ip}
 \title{Updates a registered Elastic IP address's name}
 \usage{
-update_elastic_ip(
-  ElasticIp = "string",
-  Name = "string"
-)
+update_elastic_ip(ElasticIp, Name = NULL)
 }
 \arguments{
 \item{ElasticIp}{[required] The IP address for which you want to update the name.}
@@ -20,6 +17,11 @@ Updates a registered Elastic IP address's name. For more information, see \href{
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_elastic_ip(
+  ElasticIp = "string",
+  Name = "string"
+)
 }
+}
+

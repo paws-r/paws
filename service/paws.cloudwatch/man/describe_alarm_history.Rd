@@ -4,14 +4,9 @@
 \alias{describe_alarm_history}
 \title{Retrieves the history for the specified alarm}
 \usage{
-describe_alarm_history(
-  AlarmName = "string",
-  HistoryItemType = "ConfigurationUpdate"|"StateUpdate"|"Action",
-  StartDate = as.POSIXct("2015-01-01"),
-  EndDate = as.POSIXct("2015-01-01"),
-  MaxRecords = 123,
-  NextToken = "string"
-)
+describe_alarm_history(AlarmName = NULL, HistoryItemType = NULL,
+  StartDate = NULL, EndDate = NULL, MaxRecords = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{AlarmName}{The name of the alarm.}
@@ -32,6 +27,15 @@ Retrieves the history for the specified alarm. You can filter the results by dat
 \details{
 CloudWatch retains the history of an alarm even if you delete the alarm.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_alarm_history(
+  AlarmName = "string",
+  HistoryItemType = "ConfigurationUpdate"|"StateUpdate"|"Action",
+  StartDate = as.POSIXct("2015-01-01"),
+  EndDate = as.POSIXct("2015-01-01"),
+  MaxRecords = 123,
+  NextToken = "string"
+)
 }
+}
+

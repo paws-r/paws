@@ -4,16 +4,7 @@
 \alias{disassociate_node}
 \title{Disassociates a node from an AWS OpsWorks CM server, and removes the node from the server's managed nodes}
 \usage{
-disassociate_node(
-  ServerName = "string",
-  NodeName = "string",
-  EngineAttributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  )
-)
+disassociate_node(ServerName, NodeName, EngineAttributes = NULL)
 }
 \arguments{
 \item{ServerName}{[required] The name of the server from which to disassociate the node.}
@@ -33,6 +24,17 @@ Disassociates a node from an AWS OpsWorks CM server, and removes the node from t
 \details{
 A node can can only be disassociated from a server that is in a \code{HEALTHY} state. Otherwise, an \code{InvalidStateException} is thrown. A \code{ResourceNotFoundException} is thrown when the server does not exist. A \code{ValidationException} is raised when parameters of the request are not valid.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_node(
+  ServerName = "string",
+  NodeName = "string",
+  EngineAttributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

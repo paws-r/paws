@@ -6,12 +6,12 @@
 \alias{paws.fms-package}
 \title{paws.fms: Firewall Management Service}
 \description{
-This is the *AWS Firewall Manager API Reference*. This guide
-is for developers who need detailed information about the AWS Firewall
-Manager API actions, data types, and errors. For detailed information
-about AWS Firewall Manager features, see the [AWS Firewall Manager
-Developer
-Guide](http://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html).
+This is the *AWS Firewall Manager API Reference*.
+    This guide is for developers who need detailed information about the
+    AWS Firewall Manager API actions, data types, and errors. For detailed
+    information about AWS Firewall Manager features, see the [AWS Firewall
+    Manager Developer
+    Guide](http://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html).
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

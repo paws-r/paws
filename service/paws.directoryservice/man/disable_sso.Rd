@@ -4,11 +4,7 @@
 \alias{disable_sso}
 \title{Disables single-sign on for a directory}
 \usage{
-disable_sso(
-  DirectoryId = "string",
-  UserName = "string",
-  Password = "string"
-)
+disable_sso(DirectoryId, UserName = NULL, Password = NULL)
 }
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory for which to disable single-sign on.}
@@ -22,6 +18,12 @@ If the AD Connector service account does not have privileges to remove a service
 \description{
 Disables single-sign on for a directory.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disable_sso(
+  DirectoryId = "string",
+  UserName = "string",
+  Password = "string"
+)
 }
+}
+

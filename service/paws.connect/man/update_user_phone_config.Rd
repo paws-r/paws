@@ -2,18 +2,9 @@
 % Please edit documentation in R/paws.connect_operations.R
 \name{update_user_phone_config}
 \alias{update_user_phone_config}
-\title{Updates the phone configuration settings in the \code{UserPhoneConfig} object for the specified user}
+\title{Updates the phone configuration settings in the UserPhoneConfig object for the specified user}
 \usage{
-update_user_phone_config(
-  PhoneConfig = list(
-    PhoneType = "SOFT_PHONE"|"DESK_PHONE",
-    AutoAccept = TRUE|FALSE,
-    AfterContactWorkTimeLimit = 123,
-    DeskPhoneNumber = "string"
-  ),
-  UserId = "string",
-  InstanceId = "string"
-)
+update_user_phone_config(PhoneConfig, UserId, InstanceId)
 }
 \arguments{
 \item{PhoneConfig}{[required] A \code{UserPhoneConfig} object that contains settings for \code{AfterContactWorkTimeLimit}, \code{AutoAccept}, \code{DeskPhoneNumber}, and \code{PhoneType} to assign to the user.}
@@ -25,6 +16,17 @@ update_user_phone_config(
 \description{
 Updates the phone configuration settings in the \code{UserPhoneConfig} object for the specified user.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_user_phone_config(
+  PhoneConfig = list(
+    PhoneType = "SOFT_PHONE"|"DESK_PHONE",
+    AutoAccept = TRUE|FALSE,
+    AfterContactWorkTimeLimit = 123,
+    DeskPhoneNumber = "string"
+  ),
+  UserId = "string",
+  InstanceId = "string"
+)
 }
+}
+

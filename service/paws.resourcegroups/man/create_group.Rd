@@ -4,17 +4,7 @@
 \alias{create_group}
 \title{Creates a group with a specified name, description, and resource query}
 \usage{
-create_group(
-  Name = "string",
-  Description = "string",
-  ResourceQuery = list(
-    Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
-    Query = "string"
-  ),
-  Tags = list(
-    "string"
-  )
-)
+create_group(Name, Description = NULL, ResourceQuery, Tags = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the group, which is the identifier of the group in other operations. A resource group name cannot be updated after it is created. A resource group name can have a maximum of 128 characters, including letters, numbers, hyphens, dots, and underscores. The name cannot start with \code{AWS} or \code{aws}; these are reserved. A resource group name must be unique within your account.}
@@ -28,6 +18,18 @@ create_group(
 \description{
 Creates a group with a specified name, description, and resource query.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_group(
+  Name = "string",
+  Description = "string",
+  ResourceQuery = list(
+    Type = "TAG_FILTERS_1_0",
+    Query = "string"
+  ),
+  Tags = list(
+    "string"
+  )
+)
 }
+}
+

@@ -9,6 +9,8 @@ get_aws_organizations_access_status()
 \description{
 Get the Access Status for AWS Organization portfolio share feature. This API can only be called by the master account in the organization.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_aws_organizations_access_status()
 }
+}
+

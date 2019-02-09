@@ -6,8 +6,8 @@
 \alias{paws.mobileanalytics-package}
 \title{paws.mobileanalytics: Amazon Mobile Analytics}
 \description{
-Amazon Mobile Analytics is a service for collecting,
-visualizing, and understanding app usage data at scale.
+Amazon Mobile Analytics is a service for
+    collecting, visualizing, and understanding app usage data at scale.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

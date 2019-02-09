@@ -4,18 +4,8 @@
 \alias{update_certificate_authority}
 \title{Updates the status or configuration of a private certificate authority (CA)}
 \usage{
-update_certificate_authority(
-  CertificateAuthorityArn = "string",
-  RevocationConfiguration = list(
-    CrlConfiguration = list(
-      Enabled = TRUE|FALSE,
-      ExpirationInDays = 123,
-      CustomCname = "string",
-      S3BucketName = "string"
-    )
-  ),
-  Status = "CREATING"|"PENDING_CERTIFICATE"|"ACTIVE"|"DELETED"|"DISABLED"|"EXPIRED"|"FAILED"
-)
+update_certificate_authority(CertificateAuthorityArn,
+  RevocationConfiguration = NULL, Status = NULL)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] Amazon Resource Name (ARN) of the private CA that issued the certificate to be revoked. This must be of the form:
@@ -29,6 +19,19 @@ update_certificate_authority(
 \description{
 Updates the status or configuration of a private certificate authority (CA). Your private CA must be in the \code{ACTIVE} or \code{DISABLED} state before you can update it. You can disable a private CA that is in the \code{ACTIVE} state or make a CA that is in the \code{DISABLED} state active again.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_certificate_authority(
+  CertificateAuthorityArn = "string",
+  RevocationConfiguration = list(
+    CrlConfiguration = list(
+      Enabled = TRUE|FALSE,
+      ExpirationInDays = 123,
+      CustomCname = "string",
+      S3BucketName = "string"
+    )
+  ),
+  Status = "CREATING"|"PENDING_CERTIFICATE"|"ACTIVE"|"DELETED"|"DISABLED"|"EXPIRED"|"FAILED"
+)
 }
+}
+

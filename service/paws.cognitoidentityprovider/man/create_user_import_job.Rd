@@ -4,11 +4,7 @@
 \alias{create_user_import_job}
 \title{Creates the user import job}
 \usage{
-create_user_import_job(
-  JobName = "string",
-  UserPoolId = "string",
-  CloudWatchLogsRoleArn = "string"
-)
+create_user_import_job(JobName, UserPoolId, CloudWatchLogsRoleArn)
 }
 \arguments{
 \item{JobName}{[required] The job name for the user import job.}
@@ -20,6 +16,12 @@ create_user_import_job(
 \description{
 Creates the user import job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_user_import_job(
+  JobName = "string",
+  UserPoolId = "string",
+  CloudWatchLogsRoleArn = "string"
+)
 }
+}
+

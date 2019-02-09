@@ -4,16 +4,8 @@
 \alias{issue_certificate}
 \title{Uses your private certificate authority (CA) to issue a client certificate}
 \usage{
-issue_certificate(
-  CertificateAuthorityArn = "string",
-  Csr = raw,
-  SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA",
-  Validity = list(
-    Value = 123,
-    Type = "END_DATE"|"ABSOLUTE"|"DAYS"|"MONTHS"|"YEARS"
-  ),
-  IdempotencyToken = "string"
-)
+issue_certificate(CertificateAuthorityArn, Csr, SigningAlgorithm, Validity,
+  IdempotencyToken = NULL)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called CreateCertificateAuthority. This must be of the form:
@@ -40,6 +32,17 @@ Uses your private certificate authority (CA) to issue a client certificate. This
 \details{
 You cannot use the ACM \strong{ListCertificateAuthorities} operation to retrieve the ARNs of the certificates that you issue by using ACM PCA.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{issue_certificate(
+  CertificateAuthorityArn = "string",
+  Csr = raw,
+  SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA",
+  Validity = list(
+    Value = 123,
+    Type = "END_DATE"|"ABSOLUTE"|"DAYS"|"MONTHS"|"YEARS"
+  ),
+  IdempotencyToken = "string"
+)
 }
+}
+

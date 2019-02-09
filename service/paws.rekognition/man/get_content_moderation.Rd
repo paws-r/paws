@@ -4,12 +4,8 @@
 \alias{get_content_moderation}
 \title{Gets the content moderation analysis results for a Amazon Rekognition Video analysis started by}
 \usage{
-get_content_moderation(
-  JobId = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  SortBy = "NAME"|"TIMESTAMP"
-)
+get_content_moderation(JobId, MaxResults = NULL, NextToken = NULL,
+  SortBy = NULL)
 }
 \arguments{
 \item{JobId}{[required] The identifier for the content moderation job. Use \code{JobId} to identify the job in a subsequent call to \code{GetContentModeration}.}
@@ -36,6 +32,13 @@ Since video analysis can return a large number of results, use the \code{MaxResu
 
 For more information, see Detecting Unsafe Content in the Amazon Rekognition Developer Guide.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_content_moderation(
+  JobId = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  SortBy = "NAME"|"TIMESTAMP"
+)
 }
+}
+

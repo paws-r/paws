@@ -4,9 +4,7 @@
 \alias{delete_replication_instance}
 \title{Deletes the specified replication instance}
 \usage{
-delete_replication_instance(
-  ReplicationInstanceArn = "string"
-)
+delete_replication_instance(ReplicationInstanceArn)
 }
 \arguments{
 \item{ReplicationInstanceArn}{[required] The Amazon Resource Name (ARN) of the replication instance to be deleted.}
@@ -17,14 +15,21 @@ Deletes the specified replication instance.
 \details{
 You must delete any migration tasks that are associated with the replication instance before you can delete it.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_replication_instance(
+  ReplicationInstanceArn = "string"
+)
+}
+}
+
 \examples{
 # Deletes the specified replication instance. You must delete any
 # migration tasks that are associated with the replication instance before
 # you can delete it.
 # 
 # 
-delete_replication_instance(
+\donttest{delete_replication_instance(
   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ"
-)
+)}
 
 }

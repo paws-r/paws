@@ -4,12 +4,7 @@
 \alias{get_host_reservation_purchase_preview}
 \title{Preview a reservation purchase with configurations that match those of your Dedicated Host}
 \usage{
-get_host_reservation_purchase_preview(
-  HostIdSet = list(
-    "string"
-  ),
-  OfferingId = "string"
-)
+get_host_reservation_purchase_preview(HostIdSet, OfferingId)
 }
 \arguments{
 \item{HostIdSet}{[required] The IDs of the Dedicated Hosts with which the reservation is associated.}
@@ -22,6 +17,13 @@ Preview a reservation purchase with configurations that match those of your Dedi
 \details{
 This is a preview of the PurchaseHostReservation action and does not result in the offering being purchased.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_host_reservation_purchase_preview(
+  HostIdSet = list(
+    "string"
+  ),
+  OfferingId = "string"
+)
 }
+}
+

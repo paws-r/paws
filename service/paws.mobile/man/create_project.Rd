@@ -4,12 +4,8 @@
 \alias{create_project}
 \title{Creates an AWS Mobile Hub project}
 \usage{
-create_project(
-  name = "string",
-  region = "string",
-  contents = raw,
-  snapshotId = "string"
-)
+create_project(name = NULL, region = NULL, contents = NULL,
+  snapshotId = NULL)
 }
 \arguments{
 \item{name}{Name of the project.}
@@ -23,6 +19,13 @@ create_project(
 \description{
 Creates an AWS Mobile Hub project.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_project(
+  name = "string",
+  region = "string",
+  contents = raw,
+  snapshotId = "string"
+)
 }
+}
+

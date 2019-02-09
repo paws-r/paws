@@ -4,12 +4,7 @@
 \alias{subscribe_to_dataset}
 \title{Subscribes to receive notifications when a dataset is modified by another device}
 \usage{
-subscribe_to_dataset(
-  IdentityPoolId = "string",
-  IdentityId = "string",
-  DatasetName = "string",
-  DeviceId = "string"
-)
+subscribe_to_dataset(IdentityPoolId, IdentityId, DatasetName, DeviceId)
 }
 \arguments{
 \item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. The ID of the pool to which the identity belongs.}
@@ -26,6 +21,13 @@ Subscribes to receive notifications when a dataset is modified by another device
 \details{
 This API can only be called with temporary credentials provided by Cognito Identity. You cannot call this API with developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{subscribe_to_dataset(
+  IdentityPoolId = "string",
+  IdentityId = "string",
+  DatasetName = "string",
+  DeviceId = "string"
+)
 }
+}
+

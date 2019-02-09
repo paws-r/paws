@@ -2,13 +2,10 @@
 % Please edit documentation in R/paws.clouddirectory_operations.R
 \name{list_typed_link_facet_names}
 \alias{list_typed_link_facet_names}
-\title{Returns a paginated list of \code{TypedLink} facet names for a particular schema}
+\title{Returns a paginated list of TypedLink facet names for a particular schema}
 \usage{
-list_typed_link_facet_names(
-  SchemaArn = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_typed_link_facet_names(SchemaArn, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.}
@@ -20,6 +17,12 @@ list_typed_link_facet_names(
 \description{
 Returns a paginated list of \code{TypedLink} facet names for a particular schema. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_typed_link_facet_names(
+  SchemaArn = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

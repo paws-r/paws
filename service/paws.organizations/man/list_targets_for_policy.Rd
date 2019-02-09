@@ -4,11 +4,7 @@
 \alias{list_targets_for_policy}
 \title{Lists all the roots, organizaitonal units (OUs), and accounts to which the specified policy is attached}
 \usage{
-list_targets_for_policy(
-  PolicyId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_targets_for_policy(PolicyId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{PolicyId}{[required] The unique identifier (ID) of the policy for which you want to know its attachments.
@@ -27,11 +23,20 @@ Always check the \code{NextToken} response parameter for a \code{null} value whe
 
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{list_targets_for_policy(
+  PolicyId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
+}
+}
+
 \examples{
 # The following example shows how to get the list of roots, OUs, and
 # accounts to which the specified policy is attached:/n/n
-list_targets_for_policy(
+\donttest{list_targets_for_policy(
   PolicyId = "p-FullAWSAccess"
-)
+)}
 
 }

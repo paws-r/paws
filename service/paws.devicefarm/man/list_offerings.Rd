@@ -4,9 +4,7 @@
 \alias{list_offerings}
 \title{Returns a list of products or offerings that the user can manage through the API}
 \usage{
-list_offerings(
-  nextToken = "string"
-)
+list_offerings(nextToken = NULL)
 }
 \arguments{
 \item{nextToken}{An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.}
@@ -14,11 +12,18 @@ list_offerings(
 \description{
 Returns a list of products or offerings that the user can manage through the API. Each offering record indicates the recurring price per unit and the frequency for that offering. The API returns a \code{NotEligible} error if the user is not permitted to invoke the operation. Please contact \href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefarm-support@amazon.com} if you believe that you should be able to invoke this operation.
 }
+\section{Accepted Parameters}{
+\preformatted{list_offerings(
+  nextToken = "string"
+)
+}
+}
+
 \examples{
 # The following example returns information about available device
 # offerings.
-list_offerings(
+\donttest{list_offerings(
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
-)
+)}
 
 }

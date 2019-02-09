@@ -4,7 +4,25 @@
 \alias{update_broker}
 \title{Adds a pending configuration change to a broker}
 \usage{
-update_broker(
+update_broker(AutoMinorVersionUpgrade = NULL, BrokerId,
+  Configuration = NULL, EngineVersion = NULL, Logs = NULL)
+}
+\arguments{
+\item{AutoMinorVersionUpgrade}{Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.}
+
+\item{BrokerId}{[required] The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.}
+
+\item{Configuration}{A list of information about the configuration.}
+
+\item{EngineVersion}{The version of the broker engine. Note: Currently, Amazon MQ supports only 5.15.6 and 5.15.0.}
+
+\item{Logs}{Enables Amazon CloudWatch logging for brokers.}
+}
+\description{
+Adds a pending configuration change to a broker.
+}
+\section{Accepted Parameters}{
+\preformatted{update_broker(
   AutoMinorVersionUpgrade = TRUE|FALSE,
   BrokerId = "string",
   Configuration = list(
@@ -18,20 +36,5 @@ update_broker(
   )
 )
 }
-\arguments{
-\item{AutoMinorVersionUpgrade}{Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.}
-
-\item{BrokerId}{[required] The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.}
-
-\item{Configuration}{A list of information about the configuration.}
-
-\item{EngineVersion}{The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html}
-
-\item{Logs}{Enables Amazon CloudWatch logging for brokers.}
 }
-\description{
-Adds a pending configuration change to a broker.
-}
-\examples{
 
-}

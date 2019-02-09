@@ -4,7 +4,21 @@
 \alias{update_field_level_encryption_config}
 \title{Update a field-level encryption configuration}
 \usage{
-update_field_level_encryption_config(
+update_field_level_encryption_config(FieldLevelEncryptionConfig, Id,
+  IfMatch = NULL)
+}
+\arguments{
+\item{FieldLevelEncryptionConfig}{[required] Request to update a field-level encryption configuration.}
+
+\item{Id}{[required] The ID of the configuration you want to update.}
+
+\item{IfMatch}{The value of the \code{ETag} header that you received when retrieving the configuration identity to update. For example: \code{E2QWRUHAPOMQZL}.}
+}
+\description{
+Update a field-level encryption configuration.
+}
+\section{Accepted Parameters}{
+\preformatted{update_field_level_encryption_config(
   FieldLevelEncryptionConfig = list(
     CallerReference = "string",
     Comment = "string",
@@ -38,16 +52,5 @@ update_field_level_encryption_config(
   IfMatch = "string"
 )
 }
-\arguments{
-\item{FieldLevelEncryptionConfig}{[required] Request to update a field-level encryption configuration.}
-
-\item{Id}{[required] The ID of the configuration you want to update.}
-
-\item{IfMatch}{The value of the \code{ETag} header that you received when retrieving the configuration identity to update. For example: \code{E2QWRUHAPOMQZL}.}
 }
-\description{
-Update a field-level encryption configuration.
-}
-\examples{
 
-}

@@ -4,11 +4,7 @@
 \alias{create_vpc_peering_connection}
 \title{Establishes a VPC peering connection between a virtual private cloud (VPC) in an AWS account with the VPC for your Amazon GameLift fleet}
 \usage{
-create_vpc_peering_connection(
-  FleetId = "string",
-  PeerVpcAwsAccountId = "string",
-  PeerVpcId = "string"
-)
+create_vpc_peering_connection(FleetId, PeerVpcAwsAccountId, PeerVpcId)
 }
 \arguments{
 \item{FleetId}{[required] Unique identifier for a fleet. This tells Amazon GameLift which GameLift VPC to peer with.}
@@ -35,6 +31,12 @@ VPC peering connection operations include:
 \item DeleteVpcPeeringConnection
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_vpc_peering_connection(
+  FleetId = "string",
+  PeerVpcAwsAccountId = "string",
+  PeerVpcId = "string"
+)
 }
+}
+

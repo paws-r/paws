@@ -4,13 +4,8 @@
 \alias{list_things}
 \title{Lists your things}
 \usage{
-list_things(
-  nextToken = "string",
-  maxResults = 123,
-  attributeName = "string",
-  attributeValue = "string",
-  thingTypeName = "string"
-)
+list_things(nextToken = NULL, maxResults = NULL,
+  attributeName = NULL, attributeValue = NULL, thingTypeName = NULL)
 }
 \arguments{
 \item{nextToken}{The token to retrieve the next set of results.}
@@ -26,6 +21,14 @@ list_things(
 \description{
 Lists your things. Use the \strong{attributeName} and \strong{attributeValue} parameters to filter your things. For example, calling \code{ListThings} with attributeName=Color and attributeValue=Red retrieves all things in the registry that contain an attribute \strong{Color} with the value \strong{Red}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_things(
+  nextToken = "string",
+  maxResults = 123,
+  attributeName = "string",
+  attributeValue = "string",
+  thingTypeName = "string"
+)
 }
+}
+

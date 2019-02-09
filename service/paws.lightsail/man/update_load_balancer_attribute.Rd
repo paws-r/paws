@@ -4,11 +4,8 @@
 \alias{update_load_balancer_attribute}
 \title{Updates the specified attribute for a load balancer}
 \usage{
-update_load_balancer_attribute(
-  loadBalancerName = "string",
-  attributeName = "HealthCheckPath"|"SessionStickinessEnabled"|"SessionStickiness_LB_CookieDurationSeconds",
-  attributeValue = "string"
-)
+update_load_balancer_attribute(loadBalancerName, attributeName,
+  attributeValue)
 }
 \arguments{
 \item{loadBalancerName}{[required] The name of the load balancer that you want to modify (e.g., \code{my-load-balancer}.}
@@ -20,9 +17,12 @@ update_load_balancer_attribute(
 \description{
 Updates the specified attribute for a load balancer. You can only update one attribute at a time.
 }
-\details{
-The \code{update load balancer attribute} operation supports tag-based access control via resource tags applied to the resource identified by loadBalancerName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\section{Accepted Parameters}{
+\preformatted{update_load_balancer_attribute(
+  loadBalancerName = "string",
+  attributeName = "HealthCheckPath"|"SessionStickinessEnabled"|"SessionStickiness_LB_CookieDurationSeconds",
+  attributeValue = "string"
+)
 }
-\examples{
+}
 
-}

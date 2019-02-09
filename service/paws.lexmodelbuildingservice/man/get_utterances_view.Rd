@@ -2,15 +2,9 @@
 % Please edit documentation in R/paws.lexmodelbuildingservice_operations.R
 \name{get_utterances_view}
 \alias{get_utterances_view}
-\title{Use the \code{GetUtterancesView} operation to get information about the utterances that your users have made to your bot}
+\title{Use the GetUtterancesView operation to get information about the utterances that your users have made to your bot}
 \usage{
-get_utterances_view(
-  botName = "string",
-  botVersions = list(
-    "string"
-  ),
-  statusType = "Detected"|"Missed"
-)
+get_utterances_view(botName, botVersions, statusType)
 }
 \arguments{
 \item{botName}{[required] The name of the bot for which utterance information should be returned.}
@@ -31,6 +25,14 @@ Utterance statistics are generated once a day. Data is available for the last 15
 
 This operation requires permissions for the \code{lex:GetUtterancesView} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_utterances_view(
+  botName = "string",
+  botVersions = list(
+    "string"
+  ),
+  statusType = "Detected"|"Missed"
+)
 }
+}
+

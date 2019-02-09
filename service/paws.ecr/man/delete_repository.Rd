@@ -4,11 +4,7 @@
 \alias{delete_repository}
 \title{Deletes an existing image repository}
 \usage{
-delete_repository(
-  registryId = "string",
-  repositoryName = "string",
-  force = TRUE|FALSE
-)
+delete_repository(registryId = NULL, repositoryName, force = NULL)
 }
 \arguments{
 \item{registryId}{The AWS account ID associated with the registry that contains the repository to delete. If you do not specify a registry, the default registry is assumed.}
@@ -20,13 +16,22 @@ delete_repository(
 \description{
 Deletes an existing image repository. If a repository contains images, you must use the \code{force} option to delete it.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_repository(
+  registryId = "string",
+  repositoryName = "string",
+  force = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example force deletes a repository named ubuntu in the default
 # registry for an account. The force parameter is required if the
 # repository contains images.
-delete_repository(
+\donttest{delete_repository(
   force = TRUE,
   repositoryName = "ubuntu"
-)
+)}
 
 }

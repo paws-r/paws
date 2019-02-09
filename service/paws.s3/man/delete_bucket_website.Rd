@@ -4,9 +4,7 @@
 \alias{delete_bucket_website}
 \title{This operation removes the website configuration from the bucket}
 \usage{
-delete_bucket_website(
-  Bucket = "string"
-)
+delete_bucket_website(Bucket)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -14,10 +12,17 @@ delete_bucket_website(
 \description{
 This operation removes the website configuration from the bucket.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_bucket_website(
+  Bucket = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes bucket website configuration.
-delete_bucket_website(
+\donttest{delete_bucket_website(
   Bucket = "examplebucket"
-)
+)}
 
 }

@@ -4,14 +4,8 @@
 \alias{list_clusters}
 \title{Provides the status of all clusters visible to this AWS account}
 \usage{
-list_clusters(
-  CreatedAfter = as.POSIXct("2015-01-01"),
-  CreatedBefore = as.POSIXct("2015-01-01"),
-  ClusterStates = list(
-    "STARTING"|"BOOTSTRAPPING"|"RUNNING"|"WAITING"|"TERMINATING"|"TERMINATED"|"TERMINATED_WITH_ERRORS"
-  ),
-  Marker = "string"
-)
+list_clusters(CreatedAfter = NULL, CreatedBefore = NULL,
+  ClusterStates = NULL, Marker = NULL)
 }
 \arguments{
 \item{CreatedAfter}{The creation date and time beginning value filter for listing clusters.}
@@ -25,6 +19,15 @@ list_clusters(
 \description{
 Provides the status of all clusters visible to this AWS account. Allows you to filter the list of clusters based on certain criteria; for example, filtering by cluster creation date and time or by status. This call returns a maximum of 50 clusters per call, but returns a marker to track the paging of the cluster list across multiple ListClusters calls.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_clusters(
+  CreatedAfter = as.POSIXct("2015-01-01"),
+  CreatedBefore = as.POSIXct("2015-01-01"),
+  ClusterStates = list(
+    "STARTING"|"BOOTSTRAPPING"|"RUNNING"|"WAITING"|"TERMINATING"|"TERMINATED"|"TERMINATED_WITH_ERRORS"
+  ),
+  Marker = "string"
+)
 }
+}
+

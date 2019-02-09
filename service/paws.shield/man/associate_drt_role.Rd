@@ -4,9 +4,7 @@
 \alias{associate_drt_role}
 \title{Authorizes the DDoS Response team (DRT), using the specified role, to access your AWS account to assist with DDoS attack mitigation during potential attacks}
 \usage{
-associate_drt_role(
-  RoleArn = "string"
-)
+associate_drt_role(RoleArn)
 }
 \arguments{
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of the role the DRT will use to access your AWS account.
@@ -27,6 +25,10 @@ You must have the \code{iam:PassRole} permission to make an \code{AssociateDRTRo
 
 To use the services of the DRT and make an \code{AssociateDRTRole} request, you must be subscribed to the \href{https://aws.amazon.com/premiumsupport/business-support/}{Business Support plan} or the \href{https://aws.amazon.com/premiumsupport/enterprise-support/}{Enterprise Support plan}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_drt_role(
+  RoleArn = "string"
+)
 }
+}
+

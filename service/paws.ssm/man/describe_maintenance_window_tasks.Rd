@@ -4,19 +4,8 @@
 \alias{describe_maintenance_window_tasks}
 \title{Lists the tasks in a Maintenance Window}
 \usage{
-describe_maintenance_window_tasks(
-  WindowId = "string",
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_maintenance_window_tasks(WindowId, Filters = NULL,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{WindowId}{[required] The ID of the Maintenance Window whose tasks should be retrieved.}
@@ -30,6 +19,20 @@ describe_maintenance_window_tasks(
 \description{
 Lists the tasks in a Maintenance Window.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_maintenance_window_tasks(
+  WindowId = "string",
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

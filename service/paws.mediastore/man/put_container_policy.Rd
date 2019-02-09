@@ -4,10 +4,7 @@
 \alias{put_container_policy}
 \title{Creates an access policy for the specified container to restrict the users and clients that can access it}
 \usage{
-put_container_policy(
-  ContainerName = "string",
-  Policy = "string"
-)
+put_container_policy(ContainerName, Policy)
 }
 \arguments{
 \item{ContainerName}{[required] The name of the container.}
@@ -24,6 +21,11 @@ Creates an access policy for the specified container to restrict the users and c
 \details{
 For this release of the REST API, you can create only one policy for a container. If you enter \code{PutContainerPolicy} twice, the second command modifies the existing policy.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_container_policy(
+  ContainerName = "string",
+  Policy = "string"
+)
 }
+}
+

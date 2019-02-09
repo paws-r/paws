@@ -4,10 +4,7 @@
 \alias{create_organizational_unit}
 \title{Creates an organizational unit (OU) within a root or parent OU}
 \usage{
-create_organizational_unit(
-  ParentId = "string",
-  Name = "string"
-)
+create_organizational_unit(ParentId, Name)
 }
 \arguments{
 \item{ParentId}{[required] The unique identifier (ID) of the parent root or OU in which you want to create the new OU.
@@ -28,14 +25,22 @@ For more information about OUs, see \href{http://docs.aws.amazon.com/organizatio
 
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{create_organizational_unit(
+  ParentId = "string",
+  Name = "string"
+)
+}
+}
+
 \examples{
 # The following example shows how to create an OU that is named
 # AccountingOU. The new OU is directly under the root.:
 # 
 # 
-create_organizational_unit(
+\donttest{create_organizational_unit(
   Name = "AccountingOU",
   ParentId = "r-examplerootid111"
-)
+)}
 
 }

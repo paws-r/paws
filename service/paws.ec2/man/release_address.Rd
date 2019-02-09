@@ -4,11 +4,7 @@
 \alias{release_address}
 \title{Releases the specified Elastic IP address}
 \usage{
-release_address(
-  AllocationId = "string",
-  PublicIp = "string",
-  DryRun = TRUE|FALSE
-)
+release_address(AllocationId = NULL, PublicIp = NULL, DryRun = NULL)
 }
 \arguments{
 \item{AllocationId}{[EC2-VPC] The allocation ID. Required for EC2-VPC.}
@@ -29,17 +25,26 @@ After releasing an Elastic IP address, it is released to the IP address pool. Be
 
 [EC2-VPC] After you release an Elastic IP address for use in a VPC, you might be able to recover it. For more information, see AllocateAddress.
 }
+\section{Accepted Parameters}{
+\preformatted{release_address(
+  AllocationId = "string",
+  PublicIp = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example releases an Elastic IP address for use with instances in a
 # VPC.
-release_address(
+\donttest{release_address(
   AllocationId = "eipalloc-64d5890a"
-)
+)}
 
 # This example releases an Elastic IP address for use with instances in
 # EC2-Classic.
-release_address(
+\donttest{release_address(
   PublicIp = "198.51.100.0"
-)
+)}
 
 }

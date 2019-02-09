@@ -4,9 +4,7 @@
 \alias{delete_replication_task}
 \title{Deletes the specified replication task}
 \usage{
-delete_replication_task(
-  ReplicationTaskArn = "string"
-)
+delete_replication_task(ReplicationTaskArn)
 }
 \arguments{
 \item{ReplicationTaskArn}{[required] The Amazon Resource Name (ARN) of the replication task to be deleted.}
@@ -14,10 +12,17 @@ delete_replication_task(
 \description{
 Deletes the specified replication task.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_replication_task(
+  ReplicationTaskArn = "string"
+)
+}
+}
+
 \examples{
 # Deletes the specified replication task.
-delete_replication_task(
+\donttest{delete_replication_task(
   ReplicationTaskArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ"
-)
+)}
 
 }

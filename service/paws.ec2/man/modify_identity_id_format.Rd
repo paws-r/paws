@@ -4,11 +4,7 @@
 \alias{modify_identity_id_format}
 \title{Modifies the ID format of a resource for a specified IAM user, IAM role, or the root user for an account; or all IAM users, IAM roles, and the root user for an account}
 \usage{
-modify_identity_id_format(
-  PrincipalArn = "string",
-  Resource = "string",
-  UseLongIds = TRUE|FALSE
-)
+modify_identity_id_format(PrincipalArn, Resource, UseLongIds)
 }
 \arguments{
 \item{PrincipalArn}{[required] The ARN of the principal, which can be an IAM user, IAM role, or the root user. Specify \code{all} to modify the ID format for all IAM users, IAM roles, and the root user of the account.}
@@ -31,6 +27,12 @@ This setting applies to the principal specified in the request; it does not appl
 
 Resources created with longer IDs are visible to all IAM roles and users, regardless of these settings and provided that they have permission to use the relevant \code{Describe} command for the resource type.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_identity_id_format(
+  PrincipalArn = "string",
+  Resource = "string",
+  UseLongIds = TRUE|FALSE
+)
 }
+}
+

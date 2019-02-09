@@ -4,74 +4,10 @@
 \alias{create_training_job}
 \title{Starts a model training job}
 \usage{
-create_training_job(
-  TrainingJobName = "string",
-  HyperParameters = list(
-    "string"
-  ),
-  AlgorithmSpecification = list(
-    TrainingImage = "string",
-    AlgorithmName = "string",
-    TrainingInputMode = "Pipe"|"File",
-    MetricDefinitions = list(
-      list(
-        Name = "string",
-        Regex = "string"
-      )
-    )
-  ),
-  RoleArn = "string",
-  InputDataConfig = list(
-    list(
-      ChannelName = "string",
-      DataSource = list(
-        S3DataSource = list(
-          S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
-          S3Uri = "string",
-          S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
-          AttributeNames = list(
-            "string"
-          )
-        )
-      ),
-      ContentType = "string",
-      CompressionType = "None"|"Gzip",
-      RecordWrapperType = "None"|"RecordIO",
-      InputMode = "Pipe"|"File",
-      ShuffleConfig = list(
-        Seed = 123
-      )
-    )
-  ),
-  OutputDataConfig = list(
-    KmsKeyId = "string",
-    S3OutputPath = "string"
-  ),
-  ResourceConfig = list(
-    InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge",
-    InstanceCount = 123,
-    VolumeSizeInGB = 123,
-    VolumeKmsKeyId = "string"
-  ),
-  VpcConfig = list(
-    SecurityGroupIds = list(
-      "string"
-    ),
-    Subnets = list(
-      "string"
-    )
-  ),
-  StoppingCondition = list(
-    MaxRuntimeInSeconds = 123
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  EnableNetworkIsolation = TRUE|FALSE
-)
+create_training_job(TrainingJobName, HyperParameters = NULL,
+  AlgorithmSpecification, RoleArn, InputDataConfig = NULL,
+  OutputDataConfig, ResourceConfig, VpcConfig = NULL, StoppingCondition,
+  Tags = NULL)
 }
 \arguments{
 \item{TrainingJobName}{[required] The name of the training job. The name must be unique within an AWS Region in an AWS account.}
@@ -107,10 +43,6 @@ ML storage volumes store model artifacts and incremental states. Training algori
 When Amazon SageMaker terminates a job because the stopping condition has been met, training algorithms provided by Amazon SageMaker save the intermediate results of the job. This intermediate data is a valid model artifact. You can use it to create a model using the \code{CreateModel} API.}
 
 \item{Tags}{An array of key-value pairs. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags} in the \emph{AWS Billing and Cost Management User Guide}.}
-
-\item{EnableNetworkIsolation}{Isolates the training container. No inbound or outbound network calls can be made, except for calls between peers within a training cluster for distributed training. If network isolation is used for training jobs that are configured to use a VPC, Amazon SageMaker downloads and uploads customer data and model artifacts through the specifed VPC, but the training container does not have network access.
-
-The Semantic Segmentation built-in algorithm does not support network isolation.}
 }
 \description{
 Starts a model training job. After training completes, Amazon SageMaker saves the resulting model artifacts to an Amazon S3 location that you specify.
@@ -131,6 +63,61 @@ In the request body, you provide the following:
 
 For more information about Amazon SageMaker, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html}{How It Works}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_training_job(
+  TrainingJobName = "string",
+  HyperParameters = list(
+    "string"
+  ),
+  AlgorithmSpecification = list(
+    TrainingImage = "string",
+    TrainingInputMode = "Pipe"|"File"
+  ),
+  RoleArn = "string",
+  InputDataConfig = list(
+    list(
+      ChannelName = "string",
+      DataSource = list(
+        S3DataSource = list(
+          S3DataType = "ManifestFile"|"S3Prefix",
+          S3Uri = "string",
+          S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key"
+        )
+      ),
+      ContentType = "string",
+      CompressionType = "None"|"Gzip",
+      RecordWrapperType = "None"|"RecordIO",
+      InputMode = "Pipe"|"File"
+    )
+  ),
+  OutputDataConfig = list(
+    KmsKeyId = "string",
+    S3OutputPath = "string"
+  ),
+  ResourceConfig = list(
+    InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge",
+    InstanceCount = 123,
+    VolumeSizeInGB = 123,
+    VolumeKmsKeyId = "string"
+  ),
+  VpcConfig = list(
+    SecurityGroupIds = list(
+      "string"
+    ),
+    Subnets = list(
+      "string"
+    )
+  ),
+  StoppingCondition = list(
+    MaxRuntimeInSeconds = 123
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

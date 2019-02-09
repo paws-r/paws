@@ -4,9 +4,7 @@
 \alias{delete_project}
 \title{Deletes a project}
 \usage{
-delete_project(
-  projectName = "string"
-)
+delete_project(projectName)
 }
 \arguments{
 \item{projectName}{[required] The name of the empty project to delete.}
@@ -17,6 +15,10 @@ Deletes a project. To delete a project, it must not have any placements associat
 \details{
 When you delete a project, all associated data becomes irretrievable.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_project(
+  projectName = "string"
+)
 }
+}
+

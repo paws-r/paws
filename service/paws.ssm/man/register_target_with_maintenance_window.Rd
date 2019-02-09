@@ -4,22 +4,9 @@
 \alias{register_target_with_maintenance_window}
 \title{Registers a target with a Maintenance Window}
 \usage{
-register_target_with_maintenance_window(
-  WindowId = "string",
-  ResourceType = "INSTANCE",
-  Targets = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  OwnerInformation = "string",
-  Name = "string",
-  Description = "string",
-  ClientToken = "string"
-)
+register_target_with_maintenance_window(WindowId, ResourceType, Targets,
+  OwnerInformation = NULL, Name = NULL, Description = NULL,
+  ClientToken = NULL)
 }
 \arguments{
 \item{WindowId}{[required] The ID of the Maintenance Window the target should be registered with.}
@@ -49,6 +36,23 @@ Specify tags using either of the following formats:
 \description{
 Registers a target with a Maintenance Window.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{register_target_with_maintenance_window(
+  WindowId = "string",
+  ResourceType = "INSTANCE",
+  Targets = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  OwnerInformation = "string",
+  Name = "string",
+  Description = "string",
+  ClientToken = "string"
+)
 }
+}
+

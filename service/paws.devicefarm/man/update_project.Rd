@@ -4,11 +4,7 @@
 \alias{update_project}
 \title{Modifies the specified project name, given the project ARN and a new name}
 \usage{
-update_project(
-  arn = "string",
-  name = "string",
-  defaultJobTimeoutMinutes = 123
-)
+update_project(arn, name = NULL, defaultJobTimeoutMinutes = NULL)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of the project whose name you wish to update.}
@@ -20,11 +16,20 @@ update_project(
 \description{
 Modifies the specified project name, given the project ARN and a new name.
 }
+\section{Accepted Parameters}{
+\preformatted{update_project(
+  arn = "string",
+  name = "string",
+  defaultJobTimeoutMinutes = 123
+)
+}
+}
+
 \examples{
 # The following example updates the specified project with a new name.
-update_project(
+\donttest{update_project(
   name = "NewName",
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:8f75187d-101e-4625-accc-12345EXAMPLE"
-)
+)}
 
 }

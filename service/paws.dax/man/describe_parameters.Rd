@@ -4,12 +4,8 @@
 \alias{describe_parameters}
 \title{Returns the detailed parameter list for a particular parameter group}
 \usage{
-describe_parameters(
-  ParameterGroupName = "string",
-  Source = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_parameters(ParameterGroupName, Source = NULL,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ParameterGroupName}{[required] The name of the parameter group.}
@@ -25,6 +21,13 @@ The value for \code{MaxResults} must be between 20 and 100.}
 \description{
 Returns the detailed parameter list for a particular parameter group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_parameters(
+  ParameterGroupName = "string",
+  Source = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

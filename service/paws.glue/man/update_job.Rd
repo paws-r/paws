@@ -4,7 +4,18 @@
 \alias{update_job}
 \title{Updates an existing job definition}
 \usage{
-update_job(
+update_job(JobName, JobUpdate)
+}
+\arguments{
+\item{JobName}{[required] Name of the job definition to update.}
+
+\item{JobUpdate}{[required] Specifies the values with which to update the job definition.}
+}
+\description{
+Updates an existing job definition.
+}
+\section{Accepted Parameters}{
+\preformatted{update_job(
   JobName = "string",
   JobUpdate = list(
     Description = "string",
@@ -35,14 +46,5 @@ update_job(
   )
 )
 }
-\arguments{
-\item{JobName}{[required] Name of the job definition to update.}
+}
 
-\item{JobUpdate}{[required] Specifies the values with which to update the job definition.}
-}
-\description{
-Updates an existing job definition.
-}
-\examples{
-
-}

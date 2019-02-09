@@ -4,10 +4,7 @@
 \alias{get_object}
 \title{Downloads the object at the specified path}
 \usage{
-get_object(
-  Path = "string",
-  Range = "string"
-)
+get_object(Path, Range = NULL)
 }
 \arguments{
 \item{Path}{[required] The path (including the file name) where the object is stored in the container. Format: <folder name>/<folder name>/<file name>
@@ -29,6 +26,11 @@ The file name is the name that is assigned to the file that you upload. The file
 \description{
 Downloads the object at the specified path.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_object(
+  Path = "string",
+  Range = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{delete_bucket_lifecycle}
 \title{Deletes the lifecycle configuration from the bucket}
 \usage{
-delete_bucket_lifecycle(
-  Bucket = "string"
-)
+delete_bucket_lifecycle(Bucket)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -14,10 +12,17 @@ delete_bucket_lifecycle(
 \description{
 Deletes the lifecycle configuration from the bucket.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_bucket_lifecycle(
+  Bucket = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes lifecycle configuration on a bucket.
-delete_bucket_lifecycle(
+\donttest{delete_bucket_lifecycle(
   Bucket = "examplebucket"
-)
+)}
 
 }

@@ -4,11 +4,8 @@
 \alias{describe_instance_associations_status}
 \title{The status of the associations for the instance(s)}
 \usage{
-describe_instance_associations_status(
-  InstanceId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_instance_associations_status(InstanceId, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The instance IDs for which you want association status information.}
@@ -20,6 +17,12 @@ describe_instance_associations_status(
 \description{
 The status of the associations for the instance(s).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_instance_associations_status(
+  InstanceId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

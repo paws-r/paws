@@ -4,13 +4,8 @@
 \alias{get_credentials_for_identity}
 \title{Returns credentials for the provided identity ID}
 \usage{
-get_credentials_for_identity(
-  IdentityId = "string",
-  Logins = list(
-    "string"
-  ),
-  CustomRoleArn = "string"
-)
+get_credentials_for_identity(IdentityId, Logins = NULL,
+  CustomRoleArn = NULL)
 }
 \arguments{
 \item{IdentityId}{[required] A unique identifier in the format REGION:GUID.}
@@ -25,6 +20,14 @@ Returns credentials for the provided identity ID. Any provided logins will be va
 \details{
 This is a public API. You do not need any credentials to call this API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_credentials_for_identity(
+  IdentityId = "string",
+  Logins = list(
+    "string"
+  ),
+  CustomRoleArn = "string"
+)
 }
+}
+

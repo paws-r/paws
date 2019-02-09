@@ -4,15 +4,9 @@
 \alias{create_export_task}
 \title{Creates an export task, which allows you to efficiently export data from a log group to an Amazon S3 bucket}
 \usage{
-create_export_task(
-  taskName = "string",
-  logGroupName = "string",
-  logStreamNamePrefix = "string",
-  from = 123,
-  to = 123,
-  destination = "string",
-  destinationPrefix = "string"
-)
+create_export_task(taskName = NULL, logGroupName,
+  logStreamNamePrefix = NULL, from, to, destination,
+  destinationPrefix = NULL)
 }
 \arguments{
 \item{taskName}{The name of the export task.}
@@ -21,9 +15,9 @@ create_export_task(
 
 \item{logStreamNamePrefix}{Export only log streams that match the provided prefix. If you don't specify a value, no prefix filter is applied.}
 
-\item{from}{[required] The start time of the range for the request, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp earlier than this time are not exported.}
+\item{from}{[required] The start time of the range for the request, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp earlier than this time are not exported.}
 
-\item{to}{[required] The end time of the range for the request, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not exported.}
+\item{to}{[required] The end time of the range for the request, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp later than this time are not exported.}
 
 \item{destination}{[required] The name of S3 bucket for the exported log data. The bucket must be in the same AWS region.}
 
@@ -37,6 +31,16 @@ This is an asynchronous call. If all the required information is provided, this 
 
 You can export logs from multiple log groups or multiple time ranges to the same S3 bucket. To separate out log data for each export task, you can specify a prefix to be used as the Amazon S3 key prefix for all exported objects.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_export_task(
+  taskName = "string",
+  logGroupName = "string",
+  logStreamNamePrefix = "string",
+  from = 123,
+  to = 123,
+  destination = "string",
+  destinationPrefix = "string"
+)
 }
+}
+

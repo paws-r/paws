@@ -4,9 +4,7 @@
 \alias{delete_interconnect}
 \title{Deletes the specified interconnect}
 \usage{
-delete_interconnect(
-  interconnectId = "string"
-)
+delete_interconnect(interconnectId)
 }
 \arguments{
 \item{interconnectId}{[required] The ID of the interconnect.}
@@ -17,6 +15,10 @@ Deletes the specified interconnect.
 \details{
 Intended for use by AWS Direct Connect partners only.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_interconnect(
+  interconnectId = "string"
+)
 }
+}
+

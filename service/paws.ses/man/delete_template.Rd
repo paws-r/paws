@@ -4,9 +4,7 @@
 \alias{delete_template}
 \title{Deletes an email template}
 \usage{
-delete_template(
-  TemplateName = "string"
-)
+delete_template(TemplateName)
 }
 \arguments{
 \item{TemplateName}{[required] The name of the template to be deleted.}
@@ -17,6 +15,10 @@ Deletes an email template.
 \details{
 You can execute this operation no more than once per second.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_template(
+  TemplateName = "string"
+)
 }
+}
+

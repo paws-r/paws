@@ -4,7 +4,21 @@
 \alias{put_bucket_encryption}
 \title{Creates a new server-side encryption configuration (or replaces an existing one, if present)}
 \usage{
-put_bucket_encryption(
+put_bucket_encryption(Bucket, ContentMD5 = NULL,
+  ServerSideEncryptionConfiguration)
+}
+\arguments{
+\item{Bucket}{[required] The name of the bucket for which the server-side encryption configuration is set.}
+
+\item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the server-side encryption configuration.}
+
+\item{ServerSideEncryptionConfiguration}{[required]}
+}
+\description{
+Creates a new server-side encryption configuration (or replaces an existing one, if present).
+}
+\section{Accepted Parameters}{
+\preformatted{put_bucket_encryption(
   Bucket = "string",
   ContentMD5 = "string",
   ServerSideEncryptionConfiguration = list(
@@ -19,16 +33,5 @@ put_bucket_encryption(
   )
 )
 }
-\arguments{
-\item{Bucket}{[required] The name of the bucket for which the server-side encryption configuration is set.}
-
-\item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the server-side encryption configuration.}
-
-\item{ServerSideEncryptionConfiguration}{[required]}
 }
-\description{
-Creates a new server-side encryption configuration (or replaces an existing one, if present).
-}
-\examples{
 
-}

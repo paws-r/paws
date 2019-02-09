@@ -4,9 +4,7 @@
 \alias{delete_skill_group}
 \title{Deletes a skill group by skill group ARN}
 \usage{
-delete_skill_group(
-  SkillGroupArn = "string"
-)
+delete_skill_group(SkillGroupArn = NULL)
 }
 \arguments{
 \item{SkillGroupArn}{The ARN of the skill group to delete. Required.}
@@ -14,6 +12,10 @@ delete_skill_group(
 \description{
 Deletes a skill group by skill group ARN.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_skill_group(
+  SkillGroupArn = "string"
+)
 }
+}
+

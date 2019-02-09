@@ -4,14 +4,8 @@
 \alias{describe_scaling_activities}
 \title{Describes one or more scaling activities for the specified Auto Scaling group}
 \usage{
-describe_scaling_activities(
-  ActivityIds = list(
-    "string"
-  ),
-  AutoScalingGroupName = "string",
-  MaxRecords = 123,
-  NextToken = "string"
-)
+describe_scaling_activities(ActivityIds = NULL,
+  AutoScalingGroupName = NULL, MaxRecords = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ActivityIds}{The activity IDs of the desired scaling activities. You can specify up to 50 IDs. If you omit this parameter, all activities for the past six weeks are described. If unknown activities are requested, they are ignored with no error. If you specify an Auto Scaling group, the results are limited to that group.}
@@ -25,11 +19,23 @@ describe_scaling_activities(
 \description{
 Describes one or more scaling activities for the specified Auto Scaling group.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_scaling_activities(
+  ActivityIds = list(
+    "string"
+  ),
+  AutoScalingGroupName = "string",
+  MaxRecords = 123,
+  NextToken = "string"
+)
+}
+}
+
 \examples{
 # This example describes the scaling activities for the specified Auto
 # Scaling group.
-describe_scaling_activities(
+\donttest{describe_scaling_activities(
   AutoScalingGroupName = "my-auto-scaling-group"
-)
+)}
 
 }

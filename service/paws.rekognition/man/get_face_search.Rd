@@ -4,12 +4,8 @@
 \alias{get_face_search}
 \title{Gets the face search results for Amazon Rekognition Video face search started by}
 \usage{
-get_face_search(
-  JobId = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  SortBy = "INDEX"|"TIMESTAMP"
-)
+get_face_search(JobId, MaxResults = NULL, NextToken = NULL,
+  SortBy = NULL)
 }
 \arguments{
 \item{JobId}{[required] The job identifer for the search request. You get the job identifier from an initial call to \code{StartFaceSearch}.}
@@ -34,6 +30,13 @@ The search results are retured in an array, \code{Persons}, of objects. Each\cod
 
 By default, the \code{Persons} array is sorted by the time, in milliseconds from the start of the video, persons are matched. You can also sort by persons by specifying \code{INDEX} for the \code{SORTBY} input parameter.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_face_search(
+  JobId = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  SortBy = "INDEX"|"TIMESTAMP"
+)
 }
+}
+

@@ -4,13 +4,8 @@
 \alias{get_inventory_schema}
 \title{Return a list of inventory type names for the account, or return a list of attribute names for a specific Inventory item type}
 \usage{
-get_inventory_schema(
-  TypeName = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  Aggregator = TRUE|FALSE,
-  SubType = TRUE|FALSE
-)
+get_inventory_schema(TypeName = NULL, NextToken = NULL,
+  MaxResults = NULL, Aggregator = NULL, SubType = NULL)
 }
 \arguments{
 \item{TypeName}{The type of inventory item to return.}
@@ -26,6 +21,14 @@ get_inventory_schema(
 \description{
 Return a list of inventory type names for the account, or return a list of attribute names for a specific Inventory item type.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_inventory_schema(
+  TypeName = "string",
+  NextToken = "string",
+  MaxResults = 123,
+  Aggregator = TRUE|FALSE,
+  SubType = TRUE|FALSE
+)
 }
+}
+

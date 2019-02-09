@@ -4,14 +4,7 @@
 \alias{register_instances_with_load_balancer}
 \title{Adds the specified instances to the specified load balancer}
 \usage{
-register_instances_with_load_balancer(
-  LoadBalancerName = "string",
-  Instances = list(
-    list(
-      InstanceId = "string"
-    )
-  )
-)
+register_instances_with_load_balancer(LoadBalancerName, Instances)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
@@ -32,16 +25,28 @@ To deregister instances from a load balancer, use DeregisterInstancesFromLoadBal
 
 For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html}{Register or De-Register EC2 Instances} in the \emph{Classic Load Balancers Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{register_instances_with_load_balancer(
+  LoadBalancerName = "string",
+  Instances = list(
+    list(
+      InstanceId = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # This example registers the specified instance with the specified load
 # balancer.
-register_instances_with_load_balancer(
+\donttest{register_instances_with_load_balancer(
   Instances = list(
     list(
       InstanceId = "i-d6f6fae3"
     )
   ),
   LoadBalancerName = "my-load-balancer"
-)
+)}
 
 }

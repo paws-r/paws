@@ -4,19 +4,10 @@
 \alias{create_flow_logs}
 \title{Creates one or more flow logs to capture information about IP traffic for a specific network interface, subnet, or VPC}
 \usage{
-create_flow_logs(
-  DryRun = TRUE|FALSE,
-  ClientToken = "string",
-  DeliverLogsPermissionArn = "string",
-  LogGroupName = "string",
-  ResourceIds = list(
-    "string"
-  ),
-  ResourceType = "VPC"|"Subnet"|"NetworkInterface",
-  TrafficType = "ACCEPT"|"REJECT"|"ALL",
-  LogDestinationType = "cloud-watch-logs"|"s3",
-  LogDestination = "string"
-)
+create_flow_logs(DryRun = NULL, ClientToken = NULL,
+  DeliverLogsPermissionArn = NULL, LogGroupName = NULL, ResourceIds,
+  ResourceType, TrafficType, LogDestinationType = NULL,
+  LogDestination = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -55,6 +46,20 @@ When publishing to CloudWatch Logs, flow log records are published to a log grou
 
 For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html}{VPC Flow Logs} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_flow_logs(
+  DryRun = TRUE|FALSE,
+  ClientToken = "string",
+  DeliverLogsPermissionArn = "string",
+  LogGroupName = "string",
+  ResourceIds = list(
+    "string"
+  ),
+  ResourceType = "VPC"|"Subnet"|"NetworkInterface",
+  TrafficType = "ACCEPT"|"REJECT"|"ALL",
+  LogDestinationType = "cloud-watch-logs"|"s3",
+  LogDestination = "string"
+)
 }
+}
+

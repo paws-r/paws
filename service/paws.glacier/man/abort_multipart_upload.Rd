@@ -4,11 +4,7 @@
 \alias{abort_multipart_upload}
 \title{This operation aborts a multipart upload identified by the upload ID}
 \usage{
-abort_multipart_upload(
-  accountId = "string",
-  vaultName = "string",
-  uploadId = "string"
-)
+abort_multipart_upload(accountId, vaultName, uploadId)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
@@ -29,13 +25,22 @@ An AWS account has full permission to perform all operations (actions). However,
 
 For conceptual information and underlying REST API, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html}{Working with Archives in Amazon Glacier} and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-abort-upload.html}{Abort Multipart Upload} in the \emph{Amazon Glacier Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{abort_multipart_upload(
+  accountId = "string",
+  vaultName = "string",
+  uploadId = "string"
+)
+}
+}
+
 \examples{
 # The example deletes an in-progress multipart upload to a vault named
 # my-vault:
-abort_multipart_upload(
+\donttest{abort_multipart_upload(
   accountId = "-",
   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV6NtcV5zpsJ",
   vaultName = "my-vault"
-)
+)}
 
 }

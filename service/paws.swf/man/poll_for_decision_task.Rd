@@ -2,18 +2,10 @@
 % Please edit documentation in R/paws.swf_operations.R
 \name{poll_for_decision_task}
 \alias{poll_for_decision_task}
-\title{Used by deciders to get a DecisionTask from the specified decision \code{taskList}}
+\title{Used by deciders to get a DecisionTask from the specified decision taskList}
 \usage{
-poll_for_decision_task(
-  domain = "string",
-  taskList = list(
-    name = "string"
-  ),
-  identity = "string",
-  nextPageToken = "string",
-  maximumPageSize = 123,
-  reverseOrder = TRUE|FALSE
-)
+poll_for_decision_task(domain, taskList, identity = NULL,
+  nextPageToken = NULL, maximumPageSize = NULL, reverseOrder = NULL)
 }
 \arguments{
 \item{domain}{[required] The name of the domain containing the task lists to poll.}
@@ -57,6 +49,17 @@ You can use IAM policies to control this action's access to Amazon SWF resources
 
 If the caller doesn't have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's \code{cause} parameter is set to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see \href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows} in the \emph{Amazon SWF Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{poll_for_decision_task(
+  domain = "string",
+  taskList = list(
+    name = "string"
+  ),
+  identity = "string",
+  nextPageToken = "string",
+  maximumPageSize = 123,
+  reverseOrder = TRUE|FALSE
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{revoke_grant}
 \title{Revokes the specified grant for the specified customer master key (CMK)}
 \usage{
-revoke_grant(
-  KeyId = "string",
-  GrantId = "string"
-)
+revoke_grant(KeyId, GrantId)
 }
 \arguments{
 \item{KeyId}{[required] A unique identifier for the customer master key associated with the grant.
@@ -30,11 +27,19 @@ Revokes the specified grant for the specified customer master key (CMK). You can
 \details{
 To perform this operation on a CMK in a different AWS account, specify the key ARN in the value of the \code{KeyId} parameter.
 }
+\section{Accepted Parameters}{
+\preformatted{revoke_grant(
+  KeyId = "string",
+  GrantId = "string"
+)
+}
+}
+
 \examples{
 # The following example revokes a grant.
-revoke_grant(
+\donttest{revoke_grant(
   GrantId = "0c237476b39f8bc44e45212e08498fbe3151305030726c0590dd8d3e9f3d6a60",
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
+)}
 
 }

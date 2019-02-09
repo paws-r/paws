@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.glacier_operations.R
 \name{get_vault_lock}
 \alias{get_vault_lock}
-\title{This operation retrieves the following attributes from the \code{lock-policy} subresource set on the specified vault:}
+\title{This operation retrieves the following attributes from the lock-policy subresource set on the specified vault:}
 \usage{
-get_vault_lock(
-  accountId = "string",
-  vaultName = "string"
-)
+get_vault_lock(accountId, vaultName)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
@@ -29,12 +26,20 @@ A vault lock is put into the \code{InProgress} state by calling InitiateVaultLoc
 
 If there is no vault lock policy set on the vault, the operation returns a \code{404 Not found} error. For more information about vault lock policies, \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock-policy.html}{Amazon Glacier Access Control with Vault Lock Policies}.
 }
+\section{Accepted Parameters}{
+\preformatted{get_vault_lock(
+  accountId = "string",
+  vaultName = "string"
+)
+}
+}
+
 \examples{
 # The example retrieves the attributes from the lock-policy subresource
 # set on the vault named examplevault.
-get_vault_lock(
+\donttest{get_vault_lock(
   accountId = "-",
   vaultName = "examplevault"
-)
+)}
 
 }

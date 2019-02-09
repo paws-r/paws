@@ -4,9 +4,7 @@
 \alias{describe_project}
 \title{Describes a project and its resources}
 \usage{
-describe_project(
-  id = "string"
-)
+describe_project(id)
 }
 \arguments{
 \item{id}{[required] The ID of the project.}
@@ -14,6 +12,10 @@ describe_project(
 \description{
 Describes a project and its resources.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_project(
+  id = "string"
+)
 }
+}
+

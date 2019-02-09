@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.gamelift_operations.R
 \name{stop_game_session_placement}
 \alias{stop_game_session_placement}
-\title{Cancels a game session placement that is in \code{PENDING} status}
+\title{Cancels a game session placement that is in PENDING status}
 \usage{
-stop_game_session_placement(
-  PlacementId = "string"
-)
+stop_game_session_placement(PlacementId)
 }
 \arguments{
 \item{PlacementId}{[required] Unique identifier for a game session placement to cancel.}
@@ -29,6 +27,10 @@ Game-session-related operations include:
 \item StopGameSessionPlacement
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_game_session_placement(
+  PlacementId = "string"
+)
 }
+}
+

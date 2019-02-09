@@ -4,20 +4,9 @@
 \alias{describe_configuration_options}
 \title{Describes the configuration options that are used in a particular configuration template or environment, or that a specified solution stack defines}
 \usage{
-describe_configuration_options(
-  ApplicationName = "string",
-  TemplateName = "string",
-  EnvironmentName = "string",
-  SolutionStackName = "string",
-  PlatformArn = "string",
-  Options = list(
-    list(
-      ResourceName = "string",
-      Namespace = "string",
-      OptionName = "string"
-    )
-  )
-)
+describe_configuration_options(ApplicationName = NULL,
+  TemplateName = NULL, EnvironmentName = NULL,
+  SolutionStackName = NULL, PlatformArn = NULL, Options = NULL)
 }
 \arguments{
 \item{ApplicationName}{The name of the application associated with the configuration template or environment. Only needed if you want to describe the configuration options associated with either the configuration template or environment.}
@@ -35,12 +24,30 @@ describe_configuration_options(
 \description{
 Describes the configuration options that are used in a particular configuration template or environment, or that a specified solution stack defines. The description includes the values the options, their default values, and an indication of the required action on a running environment if an option value is changed.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_configuration_options(
+  ApplicationName = "string",
+  TemplateName = "string",
+  EnvironmentName = "string",
+  SolutionStackName = "string",
+  PlatformArn = "string",
+  Options = list(
+    list(
+      ResourceName = "string",
+      Namespace = "string",
+      OptionName = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following operation retrieves descriptions of all available
 # configuration options for an environment named my-env:
-describe_configuration_options(
+\donttest{describe_configuration_options(
   ApplicationName = "my-app",
   EnvironmentName = "my-env"
-)
+)}
 
 }

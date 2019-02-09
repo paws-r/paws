@@ -4,20 +4,7 @@
 \alias{describe_vpcs}
 \title{Describes one or more of your VPCs}
 \usage{
-describe_vpcs(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  VpcIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+describe_vpcs(Filters = NULL, VpcIds = NULL, DryRun = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -31,7 +18,6 @@ describe_vpcs(
 \item \code{ipv6-cidr-block-association.association-id} - The association ID for an IPv6 CIDR block associated with the VPC.
 \item \code{ipv6-cidr-block-association.state} - The state of an IPv6 CIDR block associated with the VPC.
 \item \code{isDefault} - Indicates whether the VPC is the default VPC.
-\item \code{owner-id} - The ID of the AWS account that owns the VPC.
 \item \code{state} - The state of the VPC (\code{pending} | \code{available}).
 \item \code{tag}:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
@@ -47,12 +33,30 @@ Default: Describes all your VPCs.}
 \description{
 Describes one or more of your VPCs.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_vpcs(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  VpcIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example describes the specified VPC.
-describe_vpcs(
+\donttest{describe_vpcs(
   VpcIds = list(
     "vpc-a01106c2"
   )
-)
+)}
 
 }

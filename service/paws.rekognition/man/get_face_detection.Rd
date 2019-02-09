@@ -4,11 +4,7 @@
 \alias{get_face_detection}
 \title{Gets face detection results for a Amazon Rekognition Video analysis started by}
 \usage{
-get_face_detection(
-  JobId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+get_face_detection(JobId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{JobId}{[required] Unique identifier for the face detection job. The \code{JobId} is returned from \code{StartFaceDetection}.}
@@ -27,6 +23,12 @@ Face detection with Amazon Rekognition Video is an asynchronous operation. You s
 
 Use MaxResults parameter to limit the number of labels returned. If there are more results than specified in \code{MaxResults}, the value of \code{NextToken} in the operation response contains a pagination token for getting the next set of results. To get the next page of results, call \code{GetFaceDetection} and populate the \code{NextToken} request parameter with the token value returned from the previous call to \code{GetFaceDetection}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_face_detection(
+  JobId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

@@ -4,19 +4,14 @@
 \alias{describe_key}
 \title{Provides detailed information about the specified customer master key (CMK)}
 \usage{
-describe_key(
-  KeyId = "string",
-  GrantTokens = list(
-    "string"
-  )
-)
+describe_key(KeyId, GrantTokens = NULL)
 }
 \arguments{
 \item{KeyId}{[required] Describes the specified customer master key (CMK).
 
 If you specify a predefined AWS alias (an AWS alias with no key ID), KMS associates the alias with an \href{http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys}{AWS managed CMK} and returns its \code{KeyId} and \code{Arn} in the response.
 
-To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with "alias/". To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
+To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
 
 For example:
 \itemize{
@@ -36,15 +31,25 @@ For more information, see \href{http://docs.aws.amazon.com/kms/latest/developerg
 Provides detailed information about the specified customer master key (CMK).
 }
 \details{
-If you use \code{DescribeKey} on a predefined AWS alias, that is, an AWS alias with no key ID, AWS KMS associates the alias with an \href{http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys}{AWS managed CMK} and returns its \code{KeyId} and \code{Arn} in the response.
+You can use \code{DescribeKey} on a predefined AWS alias, that is, an AWS alias with no key ID. When you do, AWS KMS associates the alias with an \href{http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys}{AWS managed CMK} and returns its \code{KeyId} and \code{Arn} in the response.
 
 To perform this operation on a CMK in a different AWS account, specify the key ARN or alias ARN in the value of the KeyId parameter.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_key(
+  KeyId = "string",
+  GrantTokens = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example returns information (metadata) about the specified
 # CMK.
-describe_key(
+\donttest{describe_key(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
+)}
 
 }

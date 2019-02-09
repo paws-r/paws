@@ -4,10 +4,7 @@
 \alias{associate_software_token}
 \title{Returns a unique generated shared secret key code for the user account}
 \usage{
-associate_software_token(
-  AccessToken = "string",
-  Session = "string"
-)
+associate_software_token(AccessToken = NULL, Session = NULL)
 }
 \arguments{
 \item{AccessToken}{The access token.}
@@ -17,6 +14,11 @@ associate_software_token(
 \description{
 Returns a unique generated shared secret key code for the user account. The request takes an access token or a session string, but not both.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_software_token(
+  AccessToken = "string",
+  Session = "string"
+)
 }
+}
+

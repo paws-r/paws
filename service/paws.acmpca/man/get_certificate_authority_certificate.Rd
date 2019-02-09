@@ -4,9 +4,7 @@
 \alias{get_certificate_authority_certificate}
 \title{Retrieves the certificate and certificate chain for your private certificate authority (CA)}
 \usage{
-get_certificate_authority_certificate(
-  CertificateAuthorityArn = "string"
-)
+get_certificate_authority_certificate(CertificateAuthorityArn)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) of your private CA. This is of the form:
@@ -16,6 +14,10 @@ get_certificate_authority_certificate(
 \description{
 Retrieves the certificate and certificate chain for your private certificate authority (CA). Both the certificate and the chain are base64 PEM-encoded. The chain does not include the CA certificate. Each certificate in the chain signs the one before it.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_certificate_authority_certificate(
+  CertificateAuthorityArn = "string"
+)
 }
+}
+

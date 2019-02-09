@@ -4,11 +4,8 @@
 \alias{list_streams}
 \title{Returns an array of stream ARNs associated with the current account and endpoint}
 \usage{
-list_streams(
-  TableName = "string",
-  Limit = 123,
-  ExclusiveStartStreamArn = "string"
-)
+list_streams(TableName = NULL, Limit = NULL,
+  ExclusiveStartStreamArn = NULL)
 }
 \arguments{
 \item{TableName}{If this parameter is provided, then only the streams associated with this table name are returned.}
@@ -23,8 +20,17 @@ Returns an array of stream ARNs associated with the current account and endpoint
 \details{
 You can call \code{ListStreams} at a maximum rate of 5 times per second.
 }
+\section{Accepted Parameters}{
+\preformatted{list_streams(
+  TableName = "string",
+  Limit = 123,
+  ExclusiveStartStreamArn = "string"
+)
+}
+}
+
 \examples{
 # The following example lists all of the stream ARNs.
-list_streams()
+\donttest{list_streams()}
 
 }

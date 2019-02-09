@@ -4,9 +4,7 @@
 \alias{get_upload}
 \title{Gets information about an upload}
 \usage{
-get_upload(
-  arn = "string"
-)
+get_upload(arn)
 }
 \arguments{
 \item{arn}{[required] The upload's ARN.}
@@ -14,10 +12,17 @@ get_upload(
 \description{
 Gets information about an upload.
 }
+\section{Accepted Parameters}{
+\preformatted{get_upload(
+  arn = "string"
+)
+}
+}
+
 \examples{
 # The following example gets information about a specific upload.
-get_upload(
+\donttest{get_upload(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:upload:EXAMPLE-GUID-123-456"
-)
+)}
 
 }

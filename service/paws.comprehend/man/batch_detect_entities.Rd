@@ -4,12 +4,7 @@
 \alias{batch_detect_entities}
 \title{Inspects the text of a batch of documents for named entities and returns information about them}
 \usage{
-batch_detect_entities(
-  TextList = list(
-    "string"
-  ),
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
-)
+batch_detect_entities(TextList, LanguageCode)
 }
 \arguments{
 \item{TextList}{[required] A list containing the text of the input documents. The list can contain a maximum of 25 documents. Each document must contain fewer than 5,000 bytes of UTF-8 encoded characters.}
@@ -19,6 +14,13 @@ batch_detect_entities(
 \description{
 Inspects the text of a batch of documents for named entities and returns information about them. For more information about named entities, see how-entities
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_detect_entities(
+  TextList = list(
+    "string"
+  ),
+  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+)
 }
+}
+

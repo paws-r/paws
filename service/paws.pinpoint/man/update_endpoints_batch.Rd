@@ -4,7 +4,18 @@
 \alias{update_endpoints_batch}
 \title{Use to update a batch of endpoints}
 \usage{
-update_endpoints_batch(
+update_endpoints_batch(ApplicationId, EndpointBatchRequest)
+}
+\arguments{
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+
+\item{EndpointBatchRequest}{[required]}
+}
+\description{
+Use to update a batch of endpoints.
+}
+\section{Accepted Parameters}{
+\preformatted{update_endpoints_batch(
   ApplicationId = "string",
   EndpointBatchRequest = list(
     Item = list(
@@ -15,7 +26,7 @@ update_endpoints_batch(
             "string"
           )
         ),
-        ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
+        ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"EMAIL"|"BAIDU"|"CUSTOM",
         Demographic = list(
           AppVersion = "string",
           Locale = "string",
@@ -55,14 +66,5 @@ update_endpoints_batch(
   )
 )
 }
-\arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+}
 
-\item{EndpointBatchRequest}{[required]}
-}
-\description{
-Use to update a batch of endpoints.
-}
-\examples{
-
-}

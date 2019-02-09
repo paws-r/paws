@@ -4,11 +4,8 @@
 \alias{create_detector}
 \title{Creates a single Amazon GuardDuty detector}
 \usage{
-create_detector(
-  ClientToken = "string",
-  Enable = TRUE|FALSE,
-  FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS"
-)
+create_detector(ClientToken = NULL, Enable,
+  FindingPublishingFrequency = NULL)
 }
 \arguments{
 \item{ClientToken}{The idempotency token for the create request.}
@@ -20,6 +17,12 @@ create_detector(
 \description{
 Creates a single Amazon GuardDuty detector. A detector is an object that represents the GuardDuty service. A detector must be created in order for GuardDuty to become operational.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_detector(
+  ClientToken = "string",
+  Enable = TRUE|FALSE,
+  FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS"
+)
 }
+}
+

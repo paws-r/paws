@@ -4,12 +4,8 @@
 \alias{get_celebrity_recognition}
 \title{Gets the celebrity recognition results for a Amazon Rekognition Video analysis started by}
 \usage{
-get_celebrity_recognition(
-  JobId = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  SortBy = "ID"|"TIMESTAMP"
-)
+get_celebrity_recognition(JobId, MaxResults = NULL, NextToken = NULL,
+  SortBy = NULL)
 }
 \arguments{
 \item{JobId}{[required] Job identifier for the required celebrity recognition analysis. You can get the job identifer from a call to \code{StartCelebrityRecognition}.}
@@ -40,6 +36,13 @@ No information is returned for faces not recognized as celebrities.
 
 Use MaxResults parameter to limit the number of labels returned. If there are more results than specified in \code{MaxResults}, the value of \code{NextToken} in the operation response contains a pagination token for getting the next set of results. To get the next page of results, call \code{GetCelebrityDetection} and populate the \code{NextToken} request parameter with the token value returned from the previous call to \code{GetCelebrityRecognition}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_celebrity_recognition(
+  JobId = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  SortBy = "ID"|"TIMESTAMP"
+)
 }
+}
+

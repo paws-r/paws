@@ -4,26 +4,10 @@
 \alias{update_product}
 \title{Updates the specified product}
 \usage{
-update_product(
-  AcceptLanguage = "string",
-  Id = "string",
-  Name = "string",
-  Owner = "string",
-  Description = "string",
-  Distributor = "string",
-  SupportDescription = "string",
-  SupportEmail = "string",
-  SupportUrl = "string",
-  AddTags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  RemoveTags = list(
-    "string"
-  )
-)
+update_product(AcceptLanguage = NULL, Id, Name = NULL, Owner = NULL,
+  Description = NULL, Distributor = NULL, SupportDescription = NULL,
+  SupportEmail = NULL, SupportUrl = NULL, AddTags = NULL,
+  RemoveTags = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -56,6 +40,27 @@ update_product(
 \description{
 Updates the specified product.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_product(
+  AcceptLanguage = "string",
+  Id = "string",
+  Name = "string",
+  Owner = "string",
+  Description = "string",
+  Distributor = "string",
+  SupportDescription = "string",
+  SupportEmail = "string",
+  SupportUrl = "string",
+  AddTags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  RemoveTags = list(
+    "string"
+  )
+)
 }
+}
+

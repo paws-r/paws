@@ -4,13 +4,8 @@
 \alias{get_shard_iterator}
 \title{Gets an Amazon Kinesis shard iterator}
 \usage{
-get_shard_iterator(
-  StreamName = "string",
-  ShardId = "string",
-  ShardIteratorType = "AT_SEQUENCE_NUMBER"|"AFTER_SEQUENCE_NUMBER"|"TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
-  StartingSequenceNumber = "string",
-  Timestamp = as.POSIXct("2015-01-01")
-)
+get_shard_iterator(StreamName, ShardId, ShardIteratorType,
+  StartingSequenceNumber = NULL, Timestamp = NULL)
 }
 \arguments{
 \item{StreamName}{[required] The name of the Amazon Kinesis data stream.}
@@ -48,6 +43,14 @@ If the shard is closed, GetShardIterator returns a valid iterator for the last s
 
 GetShardIterator has a limit of five transactions per second per account per open shard.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_shard_iterator(
+  StreamName = "string",
+  ShardId = "string",
+  ShardIteratorType = "AT_SEQUENCE_NUMBER"|"AFTER_SEQUENCE_NUMBER"|"TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
+  StartingSequenceNumber = "string",
+  Timestamp = as.POSIXct("2015-01-01")
+)
 }
+}
+

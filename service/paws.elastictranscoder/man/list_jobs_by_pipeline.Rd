@@ -4,11 +4,7 @@
 \alias{list_jobs_by_pipeline}
 \title{The ListJobsByPipeline operation gets a list of the jobs currently in a pipeline}
 \usage{
-list_jobs_by_pipeline(
-  PipelineId = "string",
-  Ascending = "string",
-  PageToken = "string"
-)
+list_jobs_by_pipeline(PipelineId, Ascending = NULL, PageToken = NULL)
 }
 \arguments{
 \item{PipelineId}{[required] The ID of the pipeline for which you want to get job information.}
@@ -23,6 +19,12 @@ The ListJobsByPipeline operation gets a list of the jobs currently in a pipeline
 \details{
 Elastic Transcoder returns all of the jobs currently in the specified pipeline. The response body contains one element for each job that satisfies the search criteria.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_jobs_by_pipeline(
+  PipelineId = "string",
+  Ascending = "string",
+  PageToken = "string"
+)
 }
+}
+

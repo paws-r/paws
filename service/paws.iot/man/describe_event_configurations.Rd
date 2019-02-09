@@ -9,6 +9,8 @@ describe_event_configurations()
 \description{
 Describes event configurations.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_event_configurations()
 }
+}
+

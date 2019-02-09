@@ -4,10 +4,7 @@
 \alias{update_pull_request_description}
 \title{Replaces the contents of the description of a pull request}
 \usage{
-update_pull_request_description(
-  pullRequestId = "string",
-  description = "string"
-)
+update_pull_request_description(pullRequestId, description)
 }
 \arguments{
 \item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use ListPullRequests.}
@@ -17,6 +14,11 @@ update_pull_request_description(
 \description{
 Replaces the contents of the description of a pull request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_pull_request_description(
+  pullRequestId = "string",
+  description = "string"
+)
 }
+}
+

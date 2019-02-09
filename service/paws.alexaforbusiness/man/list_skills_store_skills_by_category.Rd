@@ -4,11 +4,8 @@
 \alias{list_skills_store_skills_by_category}
 \title{Lists all skills in the Alexa skill store by category}
 \usage{
-list_skills_store_skills_by_category(
-  CategoryId = 123,
-  NextToken = "string",
-  MaxResults = 123
-)
+list_skills_store_skills_by_category(CategoryId, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{CategoryId}{[required] The category ID for which the skills are being retrieved from the skill store.}
@@ -20,6 +17,12 @@ list_skills_store_skills_by_category(
 \description{
 Lists all skills in the Alexa skill store by category.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_skills_store_skills_by_category(
+  CategoryId = 123,
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

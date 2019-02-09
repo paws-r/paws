@@ -4,20 +4,8 @@
 \alias{describe_vpc_peering_connections}
 \title{Describes one or more of your VPC peering connections}
 \usage{
-describe_vpc_peering_connections(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  VpcPeeringConnectionIds = list(
-    "string"
-  )
-)
+describe_vpc_peering_connections(Filters = NULL, DryRun = NULL,
+  VpcPeeringConnectionIds = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -45,6 +33,21 @@ Default: Describes all your VPC peering connections.}
 \description{
 Describes one or more of your VPC peering connections.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_vpc_peering_connections(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE,
+  VpcPeeringConnectionIds = list(
+    "string"
+  )
+)
 }
+}
+

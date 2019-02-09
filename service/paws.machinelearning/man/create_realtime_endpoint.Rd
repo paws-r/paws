@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{create_realtime_endpoint}
 \alias{create_realtime_endpoint}
-\title{Creates a real-time endpoint for the \code{MLModel}}
+\title{Creates a real-time endpoint for the MLModel}
 \usage{
-create_realtime_endpoint(
-  MLModelId = "string"
-)
+create_realtime_endpoint(MLModelId)
 }
 \arguments{
 \item{MLModelId}{[required] The ID assigned to the \code{MLModel} during creation.}
@@ -14,6 +12,10 @@ create_realtime_endpoint(
 \description{
 Creates a real-time endpoint for the \code{MLModel}. The endpoint contains the URI of the \code{MLModel}; that is, the location to send real-time prediction requests for the specified \code{MLModel}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_realtime_endpoint(
+  MLModelId = "string"
+)
 }
+}
+

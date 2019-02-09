@@ -4,7 +4,21 @@
 \alias{create_device_definition}
 \title{Creates a device definition}
 \usage{
-create_device_definition(
+create_device_definition(AmznClientToken = NULL, InitialVersion = NULL,
+  Name = NULL)
+}
+\arguments{
+\item{AmznClientToken}{A client token used to correlate requests and responses.}
+
+\item{InitialVersion}{Information about the initial version of the device definition.}
+
+\item{Name}{The name of the device definition.}
+}
+\description{
+Creates a device definition. You may provide the initial version of the device definition now or use ''CreateDeviceDefinitionVersion'' at a later time.
+}
+\section{Accepted Parameters}{
+\preformatted{create_device_definition(
   AmznClientToken = "string",
   InitialVersion = list(
     Devices = list(
@@ -19,16 +33,5 @@ create_device_definition(
   Name = "string"
 )
 }
-\arguments{
-\item{AmznClientToken}{A client token used to correlate requests and responses.}
-
-\item{InitialVersion}{Information about the initial version of the device definition.}
-
-\item{Name}{The name of the device definition.}
 }
-\description{
-Creates a device definition. You may provide the initial version of the device definition now or use ''CreateDeviceDefinitionVersion'' at a later time.
-}
-\examples{
 
-}

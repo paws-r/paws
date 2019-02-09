@@ -4,14 +4,8 @@
 \alias{describe_sessions}
 \title{Retrieves a list that describes the streaming sessions for a specified stack and fleet}
 \usage{
-describe_sessions(
-  StackName = "string",
-  FleetName = "string",
-  UserId = "string",
-  NextToken = "string",
-  Limit = 123,
-  AuthenticationType = "API"|"SAML"|"USERPOOL"
-)
+describe_sessions(StackName, FleetName, UserId = NULL,
+  NextToken = NULL, Limit = NULL, AuthenticationType = NULL)
 }
 \arguments{
 \item{StackName}{[required] The name of the stack. This value is case-sensitive.}
@@ -29,6 +23,15 @@ describe_sessions(
 \description{
 Retrieves a list that describes the streaming sessions for a specified stack and fleet. If a user ID is provided for the stack and fleet, only streaming sessions for that user are described. If an authentication type is not provided, the default is to authenticate users using a streaming URL.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_sessions(
+  StackName = "string",
+  FleetName = "string",
+  UserId = "string",
+  NextToken = "string",
+  Limit = 123,
+  AuthenticationType = "API"|"SAML"|"USERPOOL"
+)
 }
+}
+

@@ -4,13 +4,8 @@
 \alias{describe_configuration_aggregators}
 \title{Returns the details of one or more configuration aggregators}
 \usage{
-describe_configuration_aggregators(
-  ConfigurationAggregatorNames = list(
-    "string"
-  ),
-  NextToken = "string",
-  Limit = 123
-)
+describe_configuration_aggregators(ConfigurationAggregatorNames = NULL,
+  NextToken = NULL, Limit = NULL)
 }
 \arguments{
 \item{ConfigurationAggregatorNames}{The name of the configuration aggregators.}
@@ -22,6 +17,14 @@ describe_configuration_aggregators(
 \description{
 Returns the details of one or more configuration aggregators. If the configuration aggregator is not specified, this action returns the details for all the configuration aggregators associated with the account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_configuration_aggregators(
+  ConfigurationAggregatorNames = list(
+    "string"
+  ),
+  NextToken = "string",
+  Limit = 123
+)
 }
+}
+

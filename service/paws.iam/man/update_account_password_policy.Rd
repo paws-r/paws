@@ -4,17 +4,11 @@
 \alias{update_account_password_policy}
 \title{Updates the password policy settings for the AWS account}
 \usage{
-update_account_password_policy(
-  MinimumPasswordLength = 123,
-  RequireSymbols = TRUE|FALSE,
-  RequireNumbers = TRUE|FALSE,
-  RequireUppercaseCharacters = TRUE|FALSE,
-  RequireLowercaseCharacters = TRUE|FALSE,
-  AllowUsersToChangePassword = TRUE|FALSE,
-  MaxPasswordAge = 123,
-  PasswordReusePrevention = 123,
-  HardExpiry = TRUE|FALSE
-)
+update_account_password_policy(MinimumPasswordLength = NULL,
+  RequireSymbols = NULL, RequireNumbers = NULL,
+  RequireUppercaseCharacters = NULL, RequireLowercaseCharacters = NULL,
+  AllowUsersToChangePassword = NULL, MaxPasswordAge = NULL,
+  PasswordReusePrevention = NULL, HardExpiry = NULL)
 }
 \arguments{
 \item{MinimumPasswordLength}{The minimum number of characters allowed in an IAM user password.
@@ -65,13 +59,28 @@ Updates the password policy settings for the AWS account.
 
 For more information about using a password policy, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingPasswordPolicies.html}{Managing an IAM Password Policy} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{update_account_password_policy(
+  MinimumPasswordLength = 123,
+  RequireSymbols = TRUE|FALSE,
+  RequireNumbers = TRUE|FALSE,
+  RequireUppercaseCharacters = TRUE|FALSE,
+  RequireLowercaseCharacters = TRUE|FALSE,
+  AllowUsersToChangePassword = TRUE|FALSE,
+  MaxPasswordAge = 123,
+  PasswordReusePrevention = 123,
+  HardExpiry = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # The following command sets the password policy to require a minimum
 # length of eight characters and to require one or more numbers in the
 # password:
-update_account_password_policy(
+\donttest{update_account_password_policy(
   MinimumPasswordLength = 8L,
   RequireNumbers = TRUE
-)
+)}
 
 }

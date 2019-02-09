@@ -2,14 +2,9 @@
 % Please edit documentation in R/paws.comprehend_operations.R
 \name{batch_detect_sentiment}
 \alias{batch_detect_sentiment}
-\title{Inspects a batch of documents and returns an inference of the prevailing sentiment, \code{POSITIVE}, \code{NEUTRAL}, \code{MIXED}, or \code{NEGATIVE}, in each one}
+\title{Inspects a batch of documents and returns an inference of the prevailing sentiment, POSITIVE, NEUTRAL, MIXED, or NEGATIVE, in each one}
 \usage{
-batch_detect_sentiment(
-  TextList = list(
-    "string"
-  ),
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
-)
+batch_detect_sentiment(TextList, LanguageCode)
 }
 \arguments{
 \item{TextList}{[required] A list containing the text of the input documents. The list can contain a maximum of 25 documents. Each document must contain fewer that 5,000 bytes of UTF-8 encoded characters.}
@@ -19,6 +14,13 @@ batch_detect_sentiment(
 \description{
 Inspects a batch of documents and returns an inference of the prevailing sentiment, \code{POSITIVE}, \code{NEUTRAL}, \code{MIXED}, or \code{NEGATIVE}, in each one.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_detect_sentiment(
+  TextList = list(
+    "string"
+  ),
+  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+)
 }
+}
+

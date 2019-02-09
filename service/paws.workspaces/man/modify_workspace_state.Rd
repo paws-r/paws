@@ -4,13 +4,10 @@
 \alias{modify_workspace_state}
 \title{Sets the state of the specified WorkSpace}
 \usage{
-modify_workspace_state(
-  WorkspaceId = "string",
-  WorkspaceState = "AVAILABLE"|"ADMIN_MAINTENANCE"
-)
+modify_workspace_state(WorkspaceId, WorkspaceState)
 }
 \arguments{
-\item{WorkspaceId}{[required] The identifier of the WorkSpace.}
+\item{WorkspaceId}{[required] The ID of the WorkSpace.}
 
 \item{WorkspaceState}{[required] The WorkSpace state.}
 }
@@ -20,6 +17,11 @@ Sets the state of the specified WorkSpace.
 \details{
 To maintain a WorkSpace without being interrupted, set the WorkSpace state to \code{ADMIN_MAINTENANCE}. WorkSpaces in this state do not respond to requests to reboot, stop, start, or rebuild. An AutoStop WorkSpace in this state is not stopped. Users can log into a WorkSpace in the \code{ADMIN_MAINTENANCE} state.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_workspace_state(
+  WorkspaceId = "string",
+  WorkspaceState = "AVAILABLE"|"ADMIN_MAINTENANCE"
+)
 }
+}
+

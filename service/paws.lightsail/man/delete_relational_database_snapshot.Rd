@@ -4,9 +4,7 @@
 \alias{delete_relational_database_snapshot}
 \title{Deletes a database snapshot in Amazon Lightsail}
 \usage{
-delete_relational_database_snapshot(
-  relationalDatabaseSnapshotName = "string"
-)
+delete_relational_database_snapshot(relationalDatabaseSnapshotName)
 }
 \arguments{
 \item{relationalDatabaseSnapshotName}{[required] The name of the database snapshot that you are deleting.}
@@ -14,9 +12,10 @@ delete_relational_database_snapshot(
 \description{
 Deletes a database snapshot in Amazon Lightsail.
 }
-\details{
-The \code{delete relational database snapshot} operation supports tag-based access control via resource tags applied to the resource identified by relationalDatabaseName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\section{Accepted Parameters}{
+\preformatted{delete_relational_database_snapshot(
+  relationalDatabaseSnapshotName = "string"
+)
 }
-\examples{
+}
 
-}

@@ -4,15 +4,8 @@
 \alias{update_scheduled_audit}
 \title{Updates a scheduled audit, including what checks are performed and how often the audit takes place}
 \usage{
-update_scheduled_audit(
-  frequency = "DAILY"|"WEEKLY"|"BIWEEKLY"|"MONTHLY",
-  dayOfMonth = "string",
-  dayOfWeek = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT",
-  targetCheckNames = list(
-    "string"
-  ),
-  scheduledAuditName = "string"
-)
+update_scheduled_audit(frequency = NULL, dayOfMonth = NULL,
+  dayOfWeek = NULL, targetCheckNames = NULL, scheduledAuditName)
 }
 \arguments{
 \item{frequency}{How often the scheduled audit takes place. Can be one of "DAILY", "WEEKLY", "BIWEEKLY" or "MONTHLY". The actual start time of each audit is determined by the system.}
@@ -28,6 +21,16 @@ update_scheduled_audit(
 \description{
 Updates a scheduled audit, including what checks are performed and how often the audit takes place.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_scheduled_audit(
+  frequency = "DAILY"|"WEEKLY"|"BIWEEKLY"|"MONTHLY",
+  dayOfMonth = "string",
+  dayOfWeek = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT",
+  targetCheckNames = list(
+    "string"
+  ),
+  scheduledAuditName = "string"
+)
 }
+}
+

@@ -4,12 +4,8 @@
 \alias{set_ui_customization}
 \title{Sets the UI customization information for a user pool's built-in app UI}
 \usage{
-set_ui_customization(
-  UserPoolId = "string",
-  ClientId = "string",
-  CSS = "string",
-  ImageFile = raw
-)
+set_ui_customization(UserPoolId, ClientId = NULL, CSS = NULL,
+  ImageFile = NULL)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
@@ -28,6 +24,13 @@ You can specify app UI customization settings for a single client (with a specif
 
 To use this API, your user pool must have a domain associated with it. Otherwise, there is no place to host the app's pages, and the service will throw an error.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_ui_customization(
+  UserPoolId = "string",
+  ClientId = "string",
+  CSS = "string",
+  ImageFile = raw
+)
 }
+}
+

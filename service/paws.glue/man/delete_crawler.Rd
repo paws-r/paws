@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.glue_operations.R
 \name{delete_crawler}
 \alias{delete_crawler}
-\title{Removes a specified crawler from the Data Catalog, unless the crawler state is \code{RUNNING}}
+\title{Removes a specified crawler from the Data Catalog, unless the crawler state is RUNNING}
 \usage{
-delete_crawler(
-  Name = "string"
-)
+delete_crawler(Name)
 }
 \arguments{
 \item{Name}{[required] Name of the crawler to remove.}
@@ -14,6 +12,10 @@ delete_crawler(
 \description{
 Removes a specified crawler from the Data Catalog, unless the crawler state is \code{RUNNING}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_crawler(
+  Name = "string"
+)
 }
+}
+

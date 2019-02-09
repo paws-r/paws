@@ -4,23 +4,8 @@
 \alias{update_records}
 \title{Posts updates to records and adds and deletes records for a dataset and user}
 \usage{
-update_records(
-  IdentityPoolId = "string",
-  IdentityId = "string",
-  DatasetName = "string",
-  DeviceId = "string",
-  RecordPatches = list(
-    list(
-      Op = "replace"|"remove",
-      Key = "string",
-      Value = "string",
-      SyncCount = 123,
-      DeviceLastModifiedDate = as.POSIXct("2015-01-01")
-    )
-  ),
-  SyncSessionToken = "string",
-  ClientContext = "string"
-)
+update_records(IdentityPoolId, IdentityId, DatasetName, DeviceId = NULL,
+  RecordPatches = NULL, SyncSessionToken, ClientContext = NULL)
 }
 \arguments{
 \item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
@@ -47,6 +32,24 @@ For example, if the sync count on the server is 5 for a key called highScore and
 
 This API can be called with temporary user credentials provided by Cognito Identity or with developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_records(
+  IdentityPoolId = "string",
+  IdentityId = "string",
+  DatasetName = "string",
+  DeviceId = "string",
+  RecordPatches = list(
+    list(
+      Op = "replace"|"remove",
+      Key = "string",
+      Value = "string",
+      SyncCount = 123,
+      DeviceLastModifiedDate = as.POSIXct("2015-01-01")
+    )
+  ),
+  SyncSessionToken = "string",
+  ClientContext = "string"
+)
 }
+}
+

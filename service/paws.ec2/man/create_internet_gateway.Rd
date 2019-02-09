@@ -4,9 +4,7 @@
 \alias{create_internet_gateway}
 \title{Creates an internet gateway for use with a VPC}
 \usage{
-create_internet_gateway(
-  DryRun = TRUE|FALSE
-)
+create_internet_gateway(DryRun = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -17,8 +15,15 @@ Creates an internet gateway for use with a VPC. After creating the internet gate
 \details{
 For more information about your VPC and internet gateway, see the \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/}{Amazon Virtual Private Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_internet_gateway(
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example creates an Internet gateway.
-create_internet_gateway()
+\donttest{create_internet_gateway()}
 
 }

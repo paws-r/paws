@@ -4,13 +4,7 @@
 \alias{put_skill_authorization}
 \title{Links a user's account to a third-party skill provider}
 \usage{
-put_skill_authorization(
-  AuthorizationResult = list(
-    "string"
-  ),
-  SkillId = "string",
-  RoomArn = "string"
-)
+put_skill_authorization(AuthorizationResult, SkillId, RoomArn = NULL)
 }
 \arguments{
 \item{AuthorizationResult}{[required] The authorization result specific to OAUTH code grant output. "Code" must be populated in the AuthorizationResult map to establish the authorization.}
@@ -22,6 +16,14 @@ put_skill_authorization(
 \description{
 Links a user's account to a third-party skill provider. If this API operation is called by an assumed IAM role, the skill being linked must be a private skill. Also, the skill must be owned by the AWS account that assumed the IAM role.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_skill_authorization(
+  AuthorizationResult = list(
+    "string"
+  ),
+  SkillId = "string",
+  RoomArn = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{describe_receipt_rule}
 \title{Returns the details of the specified receipt rule}
 \usage{
-describe_receipt_rule(
-  RuleSetName = "string",
-  RuleName = "string"
-)
+describe_receipt_rule(RuleSetName, RuleName)
 }
 \arguments{
 \item{RuleSetName}{[required] The name of the receipt rule set that the receipt rule belongs to.}
@@ -22,11 +19,19 @@ For information about setting up receipt rules, see the \href{http://docs.aws.am
 
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_receipt_rule(
+  RuleSetName = "string",
+  RuleName = "string"
+)
+}
+}
+
 \examples{
 # The following example returns the details of a receipt rule:
-describe_receipt_rule(
+\donttest{describe_receipt_rule(
   RuleName = "MyRule",
   RuleSetName = "MyRuleSet"
-)
+)}
 
 }

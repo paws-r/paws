@@ -4,11 +4,7 @@
 \alias{describe_fpga_image_attribute}
 \title{Describes the specified attribute of the specified Amazon FPGA Image (AFI)}
 \usage{
-describe_fpga_image_attribute(
-  DryRun = TRUE|FALSE,
-  FpgaImageId = "string",
-  Attribute = "description"|"name"|"loadPermission"|"productCodes"
-)
+describe_fpga_image_attribute(DryRun = NULL, FpgaImageId, Attribute)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -20,6 +16,12 @@ describe_fpga_image_attribute(
 \description{
 Describes the specified attribute of the specified Amazon FPGA Image (AFI).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_fpga_image_attribute(
+  DryRun = TRUE|FALSE,
+  FpgaImageId = "string",
+  Attribute = "description"|"name"|"loadPermission"|"productCodes"
+)
 }
+}
+

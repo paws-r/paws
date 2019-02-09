@@ -4,10 +4,7 @@
 \alias{update_resource_definition}
 \title{Updates a resource definition}
 \usage{
-update_resource_definition(
-  Name = "string",
-  ResourceDefinitionId = "string"
-)
+update_resource_definition(Name = NULL, ResourceDefinitionId)
 }
 \arguments{
 \item{Name}{The name of the definition.}
@@ -17,6 +14,11 @@ update_resource_definition(
 \description{
 Updates a resource definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_resource_definition(
+  Name = "string",
+  ResourceDefinitionId = "string"
+)
 }
+}
+

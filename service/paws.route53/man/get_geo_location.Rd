@@ -4,11 +4,8 @@
 \alias{get_geo_location}
 \title{Gets information about whether a specified geographic location is supported for Amazon Route 53 geolocation resource record sets}
 \usage{
-get_geo_location(
-  ContinentCode = "string",
-  CountryCode = "string",
-  SubdivisionCode = "string"
-)
+get_geo_location(ContinentCode = NULL, CountryCode = NULL,
+  SubdivisionCode = NULL)
 }
 \arguments{
 \item{ContinentCode}{Amazon Route 53 supports the following continent codes:
@@ -42,6 +39,12 @@ Use the following syntax to determine whether a subdivision of a country is supp
 
 \code{GET /2013-04-01/geolocation?countrycode=two-character country code&subdivisioncode=subdivision code two-character country code&subdivisioncode=subdivision code }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_geo_location(
+  ContinentCode = "string",
+  CountryCode = "string",
+  SubdivisionCode = "string"
+)
 }
+}
+

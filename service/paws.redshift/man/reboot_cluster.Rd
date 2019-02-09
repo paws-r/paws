@@ -4,9 +4,7 @@
 \alias{reboot_cluster}
 \title{Reboots a cluster}
 \usage{
-reboot_cluster(
-  ClusterIdentifier = "string"
-)
+reboot_cluster(ClusterIdentifier)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The cluster identifier.}
@@ -14,6 +12,10 @@ reboot_cluster(
 \description{
 Reboots a cluster. This action is taken as soon as possible. It results in a momentary outage to the cluster, during which the cluster status is set to \code{rebooting}. A cluster event is created when the reboot is completed. Any pending cluster modifications (see ModifyCluster) are applied at this reboot. For more information about managing clusters, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reboot_cluster(
+  ClusterIdentifier = "string"
+)
 }
+}
+

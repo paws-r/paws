@@ -4,14 +4,7 @@
 \alias{deregister_instances_from_load_balancer}
 \title{Deregisters the specified instances from the specified load balancer}
 \usage{
-deregister_instances_from_load_balancer(
-  LoadBalancerName = "string",
-  Instances = list(
-    list(
-      InstanceId = "string"
-    )
-  )
-)
+deregister_instances_from_load_balancer(LoadBalancerName, Instances)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
@@ -26,16 +19,28 @@ You can use DescribeLoadBalancers to verify that the instance is deregistered fr
 
 For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html}{Register or De-Register EC2 Instances} in the \emph{Classic Load Balancers Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{deregister_instances_from_load_balancer(
+  LoadBalancerName = "string",
+  Instances = list(
+    list(
+      InstanceId = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # This example deregisters the specified instance from the specified load
 # balancer.
-deregister_instances_from_load_balancer(
+\donttest{deregister_instances_from_load_balancer(
   Instances = list(
     list(
       InstanceId = "i-d6f6fae3"
     )
   ),
   LoadBalancerName = "my-load-balancer"
-)
+)}
 
 }

@@ -4,11 +4,7 @@
 \alias{describe_tags}
 \title{Describes the tags associated with the specified load balancers}
 \usage{
-describe_tags(
-  LoadBalancerNames = list(
-    "string"
-  )
-)
+describe_tags(LoadBalancerNames)
 }
 \arguments{
 \item{LoadBalancerNames}{[required] The names of the load balancers.}
@@ -16,12 +12,21 @@ describe_tags(
 \description{
 Describes the tags associated with the specified load balancers.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_tags(
+  LoadBalancerNames = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example describes the tags for the specified load balancer.
-describe_tags(
+\donttest{describe_tags(
   LoadBalancerNames = list(
     "my-load-balancer"
   )
-)
+)}
 
 }

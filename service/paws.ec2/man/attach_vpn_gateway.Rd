@@ -4,11 +4,7 @@
 \alias{attach_vpn_gateway}
 \title{Attaches a virtual private gateway to a VPC}
 \usage{
-attach_vpn_gateway(
-  VpcId = "string",
-  VpnGatewayId = "string",
-  DryRun = TRUE|FALSE
-)
+attach_vpn_gateway(VpcId, VpnGatewayId, DryRun = NULL)
 }
 \arguments{
 \item{VpcId}{[required] The ID of the VPC.}
@@ -23,6 +19,12 @@ Attaches a virtual private gateway to a VPC. You can attach one virtual private 
 \details{
 For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html}{AWS Managed VPN Connections} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{attach_vpn_gateway(
+  VpcId = "string",
+  VpnGatewayId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

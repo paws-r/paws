@@ -4,12 +4,7 @@
 \alias{reorder_receipt_rule_set}
 \title{Reorders the receipt rules within a receipt rule set}
 \usage{
-reorder_receipt_rule_set(
-  RuleSetName = "string",
-  RuleNames = list(
-    "string"
-  )
-)
+reorder_receipt_rule_set(RuleSetName, RuleNames)
 }
 \arguments{
 \item{RuleSetName}{[required] The name of the receipt rule set to reorder.}
@@ -26,15 +21,25 @@ For information about managing receipt rule sets, see the \href{http://docs.aws.
 
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{reorder_receipt_rule_set(
+  RuleSetName = "string",
+  RuleNames = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example reorders the receipt rules within a receipt rule
 # set:
-reorder_receipt_rule_set(
+\donttest{reorder_receipt_rule_set(
   RuleNames = list(
     "MyRule",
     "MyOtherRule"
   ),
   RuleSetName = "MyRuleSet"
-)
+)}
 
 }

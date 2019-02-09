@@ -4,14 +4,7 @@
 \alias{remove_tags}
 \title{Removes the specified tags from the specified Elastic Load Balancing resource}
 \usage{
-remove_tags(
-  ResourceArns = list(
-    "string"
-  ),
-  TagKeys = list(
-    "string"
-  )
-)
+remove_tags(ResourceArns, TagKeys)
 }
 \arguments{
 \item{ResourceArns}{[required] The Amazon Resource Name (ARN) of the resource.}
@@ -24,10 +17,22 @@ Removes the specified tags from the specified Elastic Load Balancing resource.
 \details{
 To list the current tags for your resources, use DescribeTags.
 }
+\section{Accepted Parameters}{
+\preformatted{remove_tags(
+  ResourceArns = list(
+    "string"
+  ),
+  TagKeys = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example removes the specified tags from the specified load
 # balancer.
-remove_tags(
+\donttest{remove_tags(
   ResourceArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188"
   ),
@@ -35,6 +40,6 @@ remove_tags(
     "project",
     "department"
   )
-)
+)}
 
 }

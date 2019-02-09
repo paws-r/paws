@@ -4,17 +4,13 @@
 \alias{create_policy}
 \title{Creates a new managed policy for your AWS account}
 \usage{
-create_policy(
-  PolicyName = "string",
-  Path = "string",
-  PolicyDocument = "string",
-  Description = "string"
-)
+create_policy(PolicyName, Path = NULL, PolicyDocument,
+  Description = NULL)
 }
 \arguments{
 \item{PolicyName}{[required] The friendly name of the policy.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{Path}{The path for the policy.
 
@@ -22,7 +18,7 @@ For more information about paths, see \href{http://docs.aws.amazon.com/IAM/lates
 
 This parameter is optional. If it is not included, it defaults to a slash (/).
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.}
 
 \item{PolicyDocument}{[required] The JSON policy document that you want to use as the content for the new policy.
 
@@ -47,6 +43,13 @@ This operation creates a policy version with a version identifier of \code{v1} a
 
 For more information about managed policies in general, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies} in the \emph{IAM User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_policy(
+  PolicyName = "string",
+  Path = "string",
+  PolicyDocument = "string",
+  Description = "string"
+)
 }
+}
+

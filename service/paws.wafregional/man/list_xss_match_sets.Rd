@@ -4,10 +4,7 @@
 \alias{list_xss_match_sets}
 \title{Returns an array of XssMatchSet objects}
 \usage{
-list_xss_match_sets(
-  NextMarker = "string",
-  Limit = 123
-)
+list_xss_match_sets(NextMarker = NULL, Limit = NULL)
 }
 \arguments{
 \item{NextMarker}{If you specify a value for \code{Limit} and you have more XssMatchSet objects than the value of \code{Limit}, AWS WAF returns a \code{NextMarker} value in the response that allows you to list another group of \code{XssMatchSets}. For the second and subsequent \code{ListXssMatchSets} requests, specify the value of \code{NextMarker} from the previous response to get information about another batch of \code{XssMatchSets}.}
@@ -17,10 +14,18 @@ list_xss_match_sets(
 \description{
 Returns an array of XssMatchSet objects.
 }
+\section{Accepted Parameters}{
+\preformatted{list_xss_match_sets(
+  NextMarker = "string",
+  Limit = 123
+)
+}
+}
+
 \examples{
 # The following example returns an array of up to 100 XSS match sets.
-list_xss_match_sets(
+\donttest{list_xss_match_sets(
   Limit = 100L
-)
+)}
 
 }

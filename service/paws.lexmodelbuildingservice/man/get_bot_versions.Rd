@@ -4,11 +4,7 @@
 \alias{get_bot_versions}
 \title{Gets information about all of the versions of a bot}
 \usage{
-get_bot_versions(
-  name = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+get_bot_versions(name, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the bot for which versions should be returned.}
@@ -27,6 +23,12 @@ The \code{GetBotVersions} operation always returns at least one version, the \co
 
 This operation requires permissions for the \code{lex:GetBotVersions} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_bot_versions(
+  name = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

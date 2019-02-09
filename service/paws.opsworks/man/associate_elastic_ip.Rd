@@ -4,10 +4,7 @@
 \alias{associate_elastic_ip}
 \title{Associates one of the stack's registered Elastic IP addresses with a specified instance}
 \usage{
-associate_elastic_ip(
-  ElasticIp = "string",
-  InstanceId = "string"
-)
+associate_elastic_ip(ElasticIp, InstanceId = NULL)
 }
 \arguments{
 \item{ElasticIp}{[required] The Elastic IP address.}
@@ -20,6 +17,11 @@ Associates one of the stack's registered Elastic IP addresses with a specified i
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_elastic_ip(
+  ElasticIp = "string",
+  InstanceId = "string"
+)
 }
+}
+

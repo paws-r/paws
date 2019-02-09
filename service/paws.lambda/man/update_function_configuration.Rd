@@ -4,42 +4,14 @@
 \alias{update_function_configuration}
 \title{Updates the configuration parameters for the specified Lambda function by using the values provided in the request}
 \usage{
-update_function_configuration(
-  FunctionName = "string",
-  Role = "string",
-  Handler = "string",
-  Description = "string",
-  Timeout = 123,
-  MemorySize = 123,
-  VpcConfig = list(
-    SubnetIds = list(
-      "string"
-    ),
-    SecurityGroupIds = list(
-      "string"
-    )
-  ),
-  Environment = list(
-    Variables = list(
-      "string"
-    )
-  ),
-  Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
-  DeadLetterConfig = list(
-    TargetArn = "string"
-  ),
-  KMSKeyArn = "string",
-  TracingConfig = list(
-    Mode = "Active"|"PassThrough"
-  ),
-  RevisionId = "string",
-  Layers = list(
-    "string"
-  )
-)
+update_function_configuration(FunctionName, Role = NULL,
+  Handler = NULL, Description = NULL, Timeout = NULL,
+  MemorySize = NULL, VpcConfig = NULL, Environment = NULL,
+  Runtime = NULL, DeadLetterConfig = NULL, KMSKeyArn = NULL,
+  TracingConfig = NULL, RevisionId = NULL)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function.
+\item{FunctionName}{[required] The name of the lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -73,8 +45,6 @@ The length constraint applies only to the full ARN. If you specify only the func
 \item{TracingConfig}{Set \code{Mode} to \code{Active} to sample and trace a subset of incoming requests with AWS X-Ray.}
 
 \item{RevisionId}{An optional value you can use to ensure you are updating the latest update of the function version or alias. If the \code{RevisionID} you pass doesn't match the latest \code{RevisionId} of the function or alias, it will fail with an error message, advising you to retrieve the latest function version or alias \code{RevisionID} using either GetFunction or GetAlias.}
-
-\item{Layers}{A list of \href{http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{function layers} to add to the function's execution environment.}
 }
 \description{
 Updates the configuration parameters for the specified Lambda function by using the values provided in the request. You provide only the parameters you want to change. This operation must only be used on an existing Lambda function and cannot be used to update the function's code.
@@ -84,9 +54,43 @@ If you are using the versioning feature, note this API will always update the \$
 
 This operation requires permission for the \code{lambda:UpdateFunctionConfiguration} action.
 }
+\section{Accepted Parameters}{
+\preformatted{update_function_configuration(
+  FunctionName = "string",
+  Role = "string",
+  Handler = "string",
+  Description = "string",
+  Timeout = 123,
+  MemorySize = 123,
+  VpcConfig = list(
+    SubnetIds = list(
+      "string"
+    ),
+    SecurityGroupIds = list(
+      "string"
+    )
+  ),
+  Environment = list(
+    Variables = list(
+      "string"
+    )
+  ),
+  Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"java8"|"python2.7"|"python3.6"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x",
+  DeadLetterConfig = list(
+    TargetArn = "string"
+  ),
+  KMSKeyArn = "string",
+  TracingConfig = list(
+    Mode = "Active"|"PassThrough"
+  ),
+  RevisionId = "string"
+)
+}
+}
+
 \examples{
 # This operation updates a Lambda function's configuration
-update_function_configuration(
+\donttest{update_function_configuration(
   Description = "",
   FunctionName = "myFunction",
   Handler = "index.handler",
@@ -100,6 +104,6 @@ update_function_configuration(
       0
     )
   )
-)
+)}
 
 }

@@ -4,9 +4,7 @@
 \alias{get_disk_snapshots}
 \title{Returns information about all block storage disk snapshots in your AWS account and region}
 \usage{
-get_disk_snapshots(
-  pageToken = "string"
-)
+get_disk_snapshots(pageToken = NULL)
 }
 \arguments{
 \item{pageToken}{A token used for advancing to the next page of results from your GetDiskSnapshots request.}
@@ -17,6 +15,10 @@ Returns information about all block storage disk snapshots in your AWS account a
 \details{
 If you are describing a long list of disk snapshots, you can paginate the output to make the list more manageable. You can use the pageToken and nextPageToken values to retrieve the next items in the list.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_disk_snapshots(
+  pageToken = "string"
+)
 }
+}
+

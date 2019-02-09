@@ -4,9 +4,7 @@
 \alias{deregister_on_premises_instance}
 \title{Deregisters an on-premises instance}
 \usage{
-deregister_on_premises_instance(
-  instanceName = "string"
-)
+deregister_on_premises_instance(instanceName)
 }
 \arguments{
 \item{instanceName}{[required] The name of the on-premises instance to deregister.}
@@ -14,6 +12,10 @@ deregister_on_premises_instance(
 \description{
 Deregisters an on-premises instance.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{deregister_on_premises_instance(
+  instanceName = "string"
+)
 }
+}
+

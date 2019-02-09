@@ -4,10 +4,7 @@
 \alias{get_user_attribute_verification_code}
 \title{Gets the user attribute verification code for the specified attribute name}
 \usage{
-get_user_attribute_verification_code(
-  AccessToken = "string",
-  AttributeName = "string"
-)
+get_user_attribute_verification_code(AccessToken, AttributeName)
 }
 \arguments{
 \item{AccessToken}{[required] The access token returned by the server response to get the user attribute verification code.}
@@ -17,6 +14,11 @@ get_user_attribute_verification_code(
 \description{
 Gets the user attribute verification code for the specified attribute name.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_user_attribute_verification_code(
+  AccessToken = "string",
+  AttributeName = "string"
+)
 }
+}
+

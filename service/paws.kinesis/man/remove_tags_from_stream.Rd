@@ -4,12 +4,7 @@
 \alias{remove_tags_from_stream}
 \title{Removes tags from the specified Kinesis data stream}
 \usage{
-remove_tags_from_stream(
-  StreamName = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+remove_tags_from_stream(StreamName, TagKeys)
 }
 \arguments{
 \item{StreamName}{[required] The name of the stream.}
@@ -24,6 +19,13 @@ If you specify a tag that does not exist, it is ignored.
 
 RemoveTagsFromStream has a limit of five transactions per second per account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_tags_from_stream(
+  StreamName = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
+}
+

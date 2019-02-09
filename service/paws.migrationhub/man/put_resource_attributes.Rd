@@ -4,17 +4,8 @@
 \alias{put_resource_attributes}
 \title{Provides identifying details of the resource being migrated so that it can be associated in the Application Discovery Service (ADS)'s repository}
 \usage{
-put_resource_attributes(
-  ProgressUpdateStream = "string",
-  MigrationTaskName = "string",
-  ResourceAttributeList = list(
-    list(
-      Type = "IPV4_ADDRESS"|"IPV6_ADDRESS"|"MAC_ADDRESS"|"FQDN"|"VM_MANAGER_ID"|"VM_MANAGED_OBJECT_REFERENCE"|"VM_NAME"|"VM_PATH"|"BIOS_ID"|"MOTHERBOARD_SERIAL_NUMBER",
-      Value = "string"
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
+put_resource_attributes(ProgressUpdateStream, MigrationTaskName,
+  ResourceAttributeList, DryRun = NULL)
 }
 \arguments{
 \item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
@@ -42,6 +33,18 @@ Provides identifying details of the resource being migrated so that it can be as
 
 Because this is an asynchronous call, it will always return 200, whether an association occurs or not. To confirm if an association was found based on the provided details, call \code{ListDiscoveredResources}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_resource_attributes(
+  ProgressUpdateStream = "string",
+  MigrationTaskName = "string",
+  ResourceAttributeList = list(
+    list(
+      Type = "IPV4_ADDRESS"|"IPV6_ADDRESS"|"MAC_ADDRESS"|"FQDN"|"VM_MANAGER_ID"|"VM_MANAGED_OBJECT_REFERENCE"|"VM_NAME"|"VM_PATH"|"BIOS_ID"|"MOTHERBOARD_SERIAL_NUMBER",
+      Value = "string"
+    )
+  ),
+  DryRun = TRUE|FALSE
+)
 }
+}
+

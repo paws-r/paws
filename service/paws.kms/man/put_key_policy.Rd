@@ -4,12 +4,8 @@
 \alias{put_key_policy}
 \title{Attaches a key policy to the specified customer master key (CMK)}
 \usage{
-put_key_policy(
-  KeyId = "string",
-  PolicyName = "string",
-  Policy = "string",
-  BypassPolicyLockoutSafetyCheck = TRUE|FALSE
-)
+put_key_policy(KeyId, PolicyName, Policy,
+  BypassPolicyLockoutSafetyCheck = NULL)
 }
 \arguments{
 \item{KeyId}{[required] A unique identifier for the customer master key (CMK).
@@ -31,7 +27,7 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 The key policy must meet the following criteria:
 \itemize{
 \item If you don't set \code{BypassPolicyLockoutSafetyCheck} to true, the key policy must allow the principal that is making the \code{PutKeyPolicy} request to make a subsequent \code{PutKeyPolicy} request on the CMK. This reduces the risk that the CMK becomes unmanageable. For more information, refer to the scenario in the \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam}{Default Key Policy} section of the \emph{AWS Key Management Service Developer Guide}.
-\item Each statement in the key policy must contain one or more principals. The principals in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before including the new principal in a key policy because the new principal might not be immediately visible to AWS KMS. For more information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible} in the \emph{AWS Identity and Access Management User Guide}.
+\item Each statement in the key policy must contain one or more principals. The principals in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before including the new principal in a key policy. The reason for this is that the new principal might not be immediately visible to AWS KMS. For more information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible} in the \emph{AWS Identity and Access Management User Guide}.
 }
 
 The key policy size limit is 32 kilobytes (32768 bytes).}
@@ -52,12 +48,22 @@ Attaches a key policy to the specified customer master key (CMK). You cannot per
 \details{
 For more information about key policies, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html}{Key Policies} in the \emph{AWS Key Management Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{put_key_policy(
+  KeyId = "string",
+  PolicyName = "string",
+  Policy = "string",
+  BypassPolicyLockoutSafetyCheck = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # The following example attaches a key policy to the specified CMK.
-put_key_policy(
+\donttest{put_key_policy(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
   Policy = "{\\n    \\"Version\\": \\"2012-10-17\\",\\n    \\"Id\\": \\"custom-policy-2016-12-07\\",\\n    \\"Statement\\": [\\n        {\\n            \\"Sid\\": \\"Enable IAM User Permissions\\",\\n            \\"Effect\\": \\"Allow\\",\\n            \\"Principal\\": {\\n                \\"AWS\\": \\"arn:aws:iam::111122223333:root\\"\\n            },\\n            \\"Action\\": \\"kms:*\\",\\n            \\"Resource\\": \\"*\\"\\n        },\\n        {\\n            \\"Sid\\": \\"Allow access for Key Administrators\\",\\n            \\"Effect\\": \\"Allow\\",\\n            \\"Principal\\": {\\n                \\"AWS\\": [\\n                    \\"arn:aws:iam::111122223333:user/ExampleAdminUser\\",\\n                    \\"arn:aws:iam::111122223333:role/ExampleAdminRole\\"\\n                ]\\n            },\\n            \\"Action\\": [\\n                \\"kms:Create*\\",\\n                \\"kms:Describe*\\",\\n                \\"kms:Enable*\\",\\n                \\"kms:List*\\",\\n                \\"kms:Put*\\",\\n                \\"kms:Update*\\",\\n                \\"kms:Revoke*\\",\\n                \\"kms:Disable*\\",\\n                \\"kms:Get*\\",\\n                \\"kms:Delete*\\",\\n                \\"kms:ScheduleKeyDeletion\\",\\n                \\"kms:CancelKeyDeletion\\"\\n            ],\\n            \\"Resource\\": \\"*\\"\\n        },\\n        {\\n            \\"Sid\\": \\"Allow use of the key\\",\\n            \\"Effect\\": \\"Allow\\",\\n            \\"Principal\\": {\\n                \\"AWS\\": \\"arn:aws:iam::111122223333:role/ExamplePowerUserRole\\"\\n            },\\n            \\"Action\\": [\\n                \\"kms:Encrypt\\",\\n                \\"kms:Decrypt\\",\\n                \\"kms:ReEncrypt*\\",\\n                \\"kms:GenerateDataKey*\\",\\n                \\"kms:DescribeKey\\"\\n            ],\\n            \\"Resource\\": \\"*\\"\\n        },\\n        {\\n            \\"Sid\\": \\"Allow attachment of persistent resources\\",\\n            \\"Effect\\": \\"Allow\\",\\n            \\"Principal\\": {\\n                \\"AWS\\": \\"arn:aws:iam::111122223333:role/ExamplePowerUserRole\\"\\n            },\\n            \\"Action\\": [\\n                \\"kms:CreateGrant\\",\\n                \\"kms:ListGrants\\",\\n                \\"kms:RevokeGrant\\"\\n            ],\\n            \\"Resource\\": \\"*\\",\\n            \\"Condition\\": {\\n                \\"Bool\\": {\\n                    \\"kms:GrantIsForAWSResource\\": \\"true\\"\\n                }\\n            }\\n        }\\n    ]\\n}\\n",
   PolicyName = "default"
-)
+)}
 
 }

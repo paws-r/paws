@@ -4,7 +4,26 @@
 \alias{create_configuration_set_event_destination}
 \title{Creates a configuration set event destination}
 \usage{
-create_configuration_set_event_destination(
+create_configuration_set_event_destination(ConfigurationSetName,
+  EventDestination)
+}
+\arguments{
+\item{ConfigurationSetName}{[required] The name of the configuration set that the event destination should be associated with.}
+
+\item{EventDestination}{[required] An object that describes the AWS service that email sending event information will be published to.}
+}
+\description{
+Creates a configuration set event destination.
+}
+\details{
+When you create or update an event destination, you must provide one, and only one, destination. The destination can be CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS).
+
+An event destination is the AWS service to which Amazon SES publishes the email sending events associated with a configuration set. For information about using configuration sets, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Amazon SES Developer Guide}.
+
+You can execute this operation no more than once per second.
+}
+\section{Accepted Parameters}{
+\preformatted{create_configuration_set_event_destination(
   ConfigurationSetName = "string",
   EventDestination = list(
     Name = "string",
@@ -31,21 +50,5 @@ create_configuration_set_event_destination(
   )
 )
 }
-\arguments{
-\item{ConfigurationSetName}{[required] The name of the configuration set that the event destination should be associated with.}
-
-\item{EventDestination}{[required] An object that describes the AWS service that email sending event information will be published to.}
 }
-\description{
-Creates a configuration set event destination.
-}
-\details{
-When you create or update an event destination, you must provide one, and only one, destination. The destination can be CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS).
 
-An event destination is the AWS service to which Amazon SES publishes the email sending events associated with a configuration set. For information about using configuration sets, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
-}
-\examples{
-
-}

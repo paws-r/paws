@@ -4,9 +4,7 @@
 \alias{get_lifecycle_policy}
 \title{Gets detailed information about the specified lifecycle policy}
 \usage{
-get_lifecycle_policy(
-  PolicyId = "string"
-)
+get_lifecycle_policy(PolicyId)
 }
 \arguments{
 \item{PolicyId}{[required] The identifier of the lifecycle policy.}
@@ -14,6 +12,10 @@ get_lifecycle_policy(
 \description{
 Gets detailed information about the specified lifecycle policy.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_lifecycle_policy(
+  PolicyId = "string"
+)
 }
+}
+

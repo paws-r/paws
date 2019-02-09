@@ -4,7 +4,16 @@
 \alias{create_pipeline}
 \title{Creates a pipeline}
 \usage{
-create_pipeline(
+create_pipeline(pipeline)
+}
+\arguments{
+\item{pipeline}{[required] Represents the structure of actions and stages to be performed in the pipeline.}
+}
+\description{
+Creates a pipeline.
+}
+\section{Accepted Parameters}{
+\preformatted{create_pipeline(
   pipeline = list(
     name = "string",
     roleArn = "string",
@@ -14,16 +23,6 @@ create_pipeline(
       encryptionKey = list(
         id = "string",
         type = "KMS"
-      )
-    ),
-    artifactStores = list(
-      list(
-        type = "S3",
-        location = "string",
-        encryptionKey = list(
-          id = "string",
-          type = "KMS"
-        )
       )
     ),
     stages = list(
@@ -58,8 +57,7 @@ create_pipeline(
                 name = "string"
               )
             ),
-            roleArn = "string",
-            region = "string"
+            roleArn = "string"
           )
         )
       )
@@ -68,12 +66,5 @@ create_pipeline(
   )
 )
 }
-\arguments{
-\item{pipeline}{[required] Represents the structure of actions and stages to be performed in the pipeline.}
 }
-\description{
-Creates a pipeline.
-}
-\examples{
 
-}

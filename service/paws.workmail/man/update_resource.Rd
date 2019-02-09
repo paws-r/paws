@@ -4,16 +4,8 @@
 \alias{update_resource}
 \title{Updates data for the resource}
 \usage{
-update_resource(
-  OrganizationId = "string",
-  ResourceId = "string",
-  Name = "string",
-  BookingOptions = list(
-    AutoAcceptRequests = TRUE|FALSE,
-    AutoDeclineRecurringRequests = TRUE|FALSE,
-    AutoDeclineConflictingRequests = TRUE|FALSE
-  )
-)
+update_resource(OrganizationId, ResourceId, Name = NULL,
+  BookingOptions = NULL)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier associated with the organization for which the resource is updated.}
@@ -27,6 +19,17 @@ update_resource(
 \description{
 Updates data for the resource. It must be preceded by a describe call in order to have the latest information. The dataset in the request should be the one expected when performing another describe call.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_resource(
+  OrganizationId = "string",
+  ResourceId = "string",
+  Name = "string",
+  BookingOptions = list(
+    AutoAcceptRequests = TRUE|FALSE,
+    AutoDeclineRecurringRequests = TRUE|FALSE,
+    AutoDeclineConflictingRequests = TRUE|FALSE
+  )
+)
 }
+}
+

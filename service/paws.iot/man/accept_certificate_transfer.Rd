@@ -4,10 +4,7 @@
 \alias{accept_certificate_transfer}
 \title{Accepts a pending certificate transfer}
 \usage{
-accept_certificate_transfer(
-  certificateId = "string",
-  setAsActive = TRUE|FALSE
-)
+accept_certificate_transfer(certificateId, setAsActive = NULL)
 }
 \arguments{
 \item{certificateId}{[required] The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)}
@@ -20,6 +17,11 @@ Accepts a pending certificate transfer. The default state of the certificate is 
 \details{
 To check for pending certificate transfers, call ListCertificates to enumerate your certificates.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{accept_certificate_transfer(
+  certificateId = "string",
+  setAsActive = TRUE|FALSE
+)
 }
+}
+

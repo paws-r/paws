@@ -4,11 +4,8 @@
 \alias{delete_application_cloud_watch_logging_option}
 \title{Deletes a CloudWatch log stream from an application}
 \usage{
-delete_application_cloud_watch_logging_option(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  CloudWatchLoggingOptionId = "string"
-)
+delete_application_cloud_watch_logging_option(ApplicationName,
+  CurrentApplicationVersionId, CloudWatchLoggingOptionId)
 }
 \arguments{
 \item{ApplicationName}{[required] The Kinesis Analytics application name.}
@@ -20,6 +17,12 @@ delete_application_cloud_watch_logging_option(
 \description{
 Deletes a CloudWatch log stream from an application. For more information about using CloudWatch log streams with Amazon Kinesis Analytics applications, see \href{http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html}{Working with Amazon CloudWatch Logs}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_application_cloud_watch_logging_option(
+  ApplicationName = "string",
+  CurrentApplicationVersionId = 123,
+  CloudWatchLoggingOptionId = "string"
+)
 }
+}
+

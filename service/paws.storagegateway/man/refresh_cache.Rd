@@ -4,13 +4,7 @@
 \alias{refresh_cache}
 \title{Refreshes the cache for the specified file share}
 \usage{
-refresh_cache(
-  FileShareARN = "string",
-  FolderList = list(
-    "string"
-  ),
-  Recursive = TRUE|FALSE
-)
+refresh_cache(FileShareARN, FolderList = NULL, Recursive = NULL)
 }
 \arguments{
 \item{FileShareARN}{[required]}
@@ -22,6 +16,14 @@ refresh_cache(
 \description{
 Refreshes the cache for the specified file share. This operation finds objects in the Amazon S3 bucket that were added, removed or replaced since the gateway last listed the bucket's contents and cached the results. This operation is only supported in the file gateway type. You can subscribe to be notified through an Amazon CloudWatch event when your RefreshCache operation completes. For more information, see \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-notification}{Getting Notified About File Operations}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{refresh_cache(
+  FileShareARN = "string",
+  FolderList = list(
+    "string"
+  ),
+  Recursive = TRUE|FALSE
+)
 }
+}
+

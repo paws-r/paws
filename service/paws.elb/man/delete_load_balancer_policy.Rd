@@ -4,10 +4,7 @@
 \alias{delete_load_balancer_policy}
 \title{Deletes the specified policy from the specified load balancer}
 \usage{
-delete_load_balancer_policy(
-  LoadBalancerName = "string",
-  PolicyName = "string"
-)
+delete_load_balancer_policy(LoadBalancerName, PolicyName)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
@@ -17,12 +14,20 @@ delete_load_balancer_policy(
 \description{
 Deletes the specified policy from the specified load balancer. This policy must not be enabled for any listeners.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_load_balancer_policy(
+  LoadBalancerName = "string",
+  PolicyName = "string"
+)
+}
+}
+
 \examples{
 # This example deletes the specified policy from the specified load
 # balancer. The policy must not be enabled on any listener.
-delete_load_balancer_policy(
+\donttest{delete_load_balancer_policy(
   LoadBalancerName = "my-load-balancer",
   PolicyName = "my-duration-cookie-policy"
-)
+)}
 
 }

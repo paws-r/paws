@@ -4,15 +4,8 @@
 \alias{get_export}
 \title{Exports a deployed version of a RestApi in a specified format}
 \usage{
-get_export(
-  restApiId = "string",
-  stageName = "string",
-  exportType = "string",
-  parameters = list(
-    "string"
-  ),
-  accepts = "string"
-)
+get_export(restApiId, stageName, exportType, parameters = NULL,
+  accepts = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -28,6 +21,16 @@ get_export(
 \description{
 Exports a deployed version of a RestApi in a specified format.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_export(
+  restApiId = "string",
+  stageName = "string",
+  exportType = "string",
+  parameters = list(
+    "string"
+  ),
+  accepts = "string"
+)
 }
+}
+

@@ -4,7 +4,27 @@
 \alias{create_job_template}
 \title{Create a new job template}
 \usage{
-create_job_template(
+create_job_template(Category = NULL, Description = NULL, Name,
+  Queue = NULL, Settings, Tags = NULL)
+}
+\arguments{
+\item{Category}{Optional. A category for the job template you are creating}
+
+\item{Description}{Optional. A description of the job template you are creating.}
+
+\item{Name}{[required] The name of the job template you are creating.}
+
+\item{Queue}{Optional. The queue that jobs created from this template are assigned to. If you don't specify this, jobs will go to the default queue.}
+
+\item{Settings}{[required]}
+
+\item{Tags}{The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.}
+}
+\description{
+Create a new job template. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+}
+\section{Accepted Parameters}{
+\preformatted{create_job_template(
   Category = "string",
   Description = "string",
   Name = "string",
@@ -74,7 +94,7 @@ create_job_template(
                 SourceFile = "string",
                 TimeDelta = 123
               ),
-              SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCTE20"|"SCC"|"TTML"|"STL"|"SRT"|"SMI"|"TELETEXT"|"NULL_SOURCE",
+              SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCC"|"TTML"|"STL"|"SRT"|"TELETEXT"|"NULL_SOURCE",
               TeletextSourceSettings = list(
                 PageNumber = "string"
               )
@@ -85,23 +105,6 @@ create_job_template(
         DenoiseFilter = "ENABLED"|"DISABLED",
         FilterEnable = "AUTO"|"DISABLE"|"FORCE",
         FilterStrength = 123,
-        ImageInserter = list(
-          InsertableImages = list(
-            list(
-              Duration = 123,
-              FadeIn = 123,
-              FadeOut = 123,
-              Height = 123,
-              ImageInserterInput = "string",
-              ImageX = 123,
-              ImageY = 123,
-              Layer = 123,
-              Opacity = 123,
-              StartTime = "string",
-              Width = 123
-            )
-          )
-        ),
         InputClippings = list(
           list(
             EndTimecode = "string",
@@ -132,20 +135,6 @@ create_job_template(
           ProgramNumber = 123
         )
       )
-    ),
-    MotionImageInserter = list(
-      Framerate = list(
-        FramerateDenominator = 123,
-        FramerateNumerator = 123
-      ),
-      Input = "string",
-      InsertionMode = "MOV"|"PNG",
-      Offset = list(
-        ImageX = 123,
-        ImageY = 123
-      ),
-      Playback = "ONCE"|"REPEAT",
-      StartTime = "string"
     ),
     NielsenConfiguration = list(
       BreakoutCode = 123,
@@ -189,7 +178,6 @@ create_job_template(
             Destination = "string",
             Encryption = list(
               SpekeKeyProvider = list(
-                CertificateArn = "string",
                 ResourceId = "string",
                 SystemIds = list(
                   "string"
@@ -230,7 +218,6 @@ create_job_template(
               EncryptionMethod = "AES128"|"SAMPLE_AES",
               InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
               SpekeKeyProvider = list(
-                CertificateArn = "string",
                 ResourceId = "string",
                 SystemIds = list(
                   "string"
@@ -265,7 +252,6 @@ create_job_template(
             Destination = "string",
             Encryption = list(
               SpekeKeyProvider = list(
-                CertificateArn = "string",
                 ResourceId = "string",
                 SystemIds = list(
                   "string"
@@ -398,7 +384,7 @@ create_job_template(
                     XPosition = 123,
                     YPosition = 123
                   ),
-                  DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+                  DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"SCC"|"SRT"|"TELETEXT"|"TTML"|"WEBVTT",
                   DvbSubDestinationSettings = list(
                     Alignment = "CENTERED"|"LEFT",
                     BackgroundColor = "NONE"|"BLACK"|"WHITE",
@@ -786,22 +772,5 @@ create_job_template(
   )
 )
 }
-\arguments{
-\item{Category}{Optional. A category for the job template you are creating}
-
-\item{Description}{Optional. A description of the job template you are creating.}
-
-\item{Name}{[required] The name of the job template you are creating.}
-
-\item{Queue}{Optional. The queue that jobs created from this template are assigned to. If you don't specify this, jobs will go to the default queue.}
-
-\item{Settings}{[required]}
-
-\item{Tags}{The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.}
 }
-\description{
-Create a new job template. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
-}
-\examples{
 
-}

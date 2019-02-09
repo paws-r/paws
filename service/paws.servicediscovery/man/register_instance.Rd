@@ -2,26 +2,20 @@
 % Please edit documentation in R/paws.servicediscovery_operations.R
 \name{register_instance}
 \alias{register_instance}
-\title{Creates or updates one or more records and, optionally, creates a health check based on the settings in a specified service}
+\title{Creates or updates one or more records and optionally a health check based on the settings in a specified service}
 \usage{
-register_instance(
-  ServiceId = "string",
-  InstanceId = "string",
-  CreatorRequestId = "string",
-  Attributes = list(
-    "string"
-  )
-)
+register_instance(ServiceId, InstanceId, CreatorRequestId = NULL,
+  Attributes)
 }
 \arguments{
-\item{ServiceId}{[required] The ID of the service that you want to use for settings for the instance.}
+\item{ServiceId}{[required] The ID of the service that you want to use for settings for the records and health check that Route 53 will create.}
 
 \item{InstanceId}{[required] An identifier that you want to associate with the instance. Note the following:
 \itemize{
 \item If the service that is specified by \code{ServiceId} includes settings for an SRV record, the value of \code{InstanceId} is automatically included as part of the value for the SRV record. For more information, see DnsRecord\$Type.
 \item You can use this value to update an existing instance.
 \item To register a new instance, you must specify a value that is unique among instances that you register by using the same service.
-\item If you specify an existing \code{InstanceId} and \code{ServiceId}, AWS Cloud Map updates the existing DNS records, if any. If there's also an existing health check, AWS Cloud Map deletes the old health check and creates a new one.
+\item If you specify an existing \code{InstanceId} and \code{ServiceId}, Route 53 updates the existing records. If there's also an existing health check, Route 53 deletes the old health check and creates a new one.
 
 The health check isn't deleted immediately, so it will still appear for a while if you submit a \code{ListHealthChecks} request, for example.
 }}
@@ -38,20 +32,16 @@ Supported attribute keys include the following:
 
 \strong{AWS\_ALIAS\_DNS\_NAME}
 
-If you want AWS Cloud Map to create an Amazon Route 53 alias record that routes traffic to an Elastic Load Balancing load balancer, specify the DNS name that is associated with the load balancer. For information about how to get the DNS name, see "DNSName" in the topic \href{http://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html}{AliasTarget} in the \emph{Route 53 API Reference}.
+If you want Route 53 to create an alias record that routes traffic to an Elastic Load Balancing load balancer, specify the DNS name that is associated with the load balancer. For information about how to get the DNS name, see "DNSName" in the topic \href{http://docs.aws.amazon.com/http:/docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html}{AliasTarget}.
 
 Note the following:
 \itemize{
 \item The configuration for the service that is specified by \code{ServiceId} must include settings for an A record, an AAAA record, or both.
 \item In the service that is specified by \code{ServiceId}, the value of \code{RoutingPolicy} must be \code{WEIGHTED}.
-\item If the service that is specified by \code{ServiceId} includes \code{HealthCheckConfig} settings, AWS Cloud Map will create the Route 53 health check, but it won't associate the health check with the alias record.
+\item If the service that is specified by \code{ServiceId} includes \code{HealthCheckConfig} settings, Route 53 will create the health check, but it won't associate the health check with the alias record.
 \item Auto naming currently doesn't support creating alias records that route traffic to AWS resources other than ELB load balancers.
 \item If you specify a value for \code{AWS_ALIAS_DNS_NAME}, don't specify values for any of the \code{AWS_INSTANCE} attributes.
 }
-
-\strong{AWS\_INIT\_HEALTH\_STATUS}
-
-If the service configuration includes \code{HealthCheckCustomConfig}, you can optionally use \code{AWS_INIT_HEALTH_STATUS} to specify the initial status of the custom health check, \code{HEALTHY} or \code{UNHEALTHY}. If you don't specify a value for \code{AWS_INIT_HEALTH_STATUS}, the initial status is \code{HEALTHY}.
 
 \strong{AWS\_INSTANCE\_CNAME}
 
@@ -77,35 +67,40 @@ If the service includes an SRV record, the value that you want Route 53 to retur
 
 If the service includes \code{HealthCheckConfig}, the port on the endpoint that you want Route 53 to send requests to.
 
-This value is required if you specified settings for an SRV record when you created the service.
-
-\strong{Custom attributes}
-
-You can add up to 30 custom attributes. For each key-value pair, the maximum length of the attribute name is 255 characters, and the maximum length of the attribute value is 1,024 characters.}
+This value is required if you specified settings for an SRV record when you created the service.}
 }
 \description{
-Creates or updates one or more records and, optionally, creates a health check based on the settings in a specified service. When you submit a \code{RegisterInstance} request, the following occurs:
+Creates or updates one or more records and optionally a health check based on the settings in a specified service. When you submit a \code{RegisterInstance} request, Amazon Route 53 does the following:
 }
 \details{
 \itemize{
-\item For each DNS record that you define in the service that is specified by \code{ServiceId}, a record is created or updated in the hosted zone that is associated with the corresponding namespace.
-\item If the service includes \code{HealthCheckConfig}, a health check is created based on the settings in the health check configuration.
-\item The health check, if any, is associated with each of the new or updated records.
+\item For each DNS record that you define in the service specified by \code{ServiceId}, creates or updates a record in the hosted zone that is associated with the corresponding namespace
+\item If the service includes \code{HealthCheckConfig}, creates or updates a health check based on the settings in the health check configuration
+\item Associates the health check, if any, with each of the records
 }
 
 One \code{RegisterInstance} request must complete before you can submit another request and specify the same service ID and instance ID.
 
 For more information, see CreateService.
 
-When AWS Cloud Map receives a DNS query for the specified DNS name, it returns the applicable value:
+When Route 53 receives a DNS query for the specified DNS name, it returns the applicable value:
 \itemize{
 \item \strong{If the health check is healthy}: returns all the records
 \item \strong{If the health check is unhealthy}: returns the applicable value for the last healthy instance
 \item \strong{If you didn't specify a health check configuration}: returns all the records
 }
 
-For the current limit on the number of instances that you can register using the same namespace and using the same service, see \href{http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map Limits} in the \emph{AWS Cloud Map Developer Guide}.
+For the current limit on the number of instances that you can register using the same namespace and using the same service, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming}{Limits on Auto Naming} in the \emph{Route 53 Developer Guide}.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{register_instance(
+  ServiceId = "string",
+  InstanceId = "string",
+  CreatorRequestId = "string",
+  Attributes = list(
+    "string"
+  )
+)
+}
+}
 
-}

@@ -4,9 +4,7 @@
 \alias{delete_target_group}
 \title{Deletes the specified target group}
 \usage{
-delete_target_group(
-  TargetGroupArn = "string"
-)
+delete_target_group(TargetGroupArn)
 }
 \arguments{
 \item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
@@ -17,10 +15,17 @@ Deletes the specified target group.
 \details{
 You can delete a target group if it is not referenced by any actions. Deleting a target group also deletes any associated health checks.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_target_group(
+  TargetGroupArn = "string"
+)
+}
+}
+
 \examples{
 # This example deletes the specified target group.
-delete_target_group(
+\donttest{delete_target_group(
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067"
-)
+)}
 
 }

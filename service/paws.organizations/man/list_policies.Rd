@@ -4,11 +4,7 @@
 \alias{list_policies}
 \title{Retrieves the list of all policies in an organization of a specified type}
 \usage{
-list_policies(
-  Filter = "SERVICE_CONTROL_POLICY",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_policies(Filter, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{Filter}{[required] Specifies the type of policy that you want to include in the response.}
@@ -25,11 +21,20 @@ Always check the \code{NextToken} response parameter for a \code{null} value whe
 
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{list_policies(
+  Filter = "SERVICE_CONTROL_POLICY",
+  NextToken = "string",
+  MaxResults = 123
+)
+}
+}
+
 \examples{
 # The following example shows how to get a list of service control
 # policies (SCPs):/n/n
-list_policies(
+\donttest{list_policies(
   Filter = "SERVICE_CONTROL_POLICY"
-)
+)}
 
 }

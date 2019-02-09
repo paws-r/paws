@@ -4,10 +4,7 @@
 \alias{get_slot_type}
 \title{Returns information about a specific version of a slot type}
 \usage{
-get_slot_type(
-  name = "string",
-  version = "string"
-)
+get_slot_type(name, version)
 }
 \arguments{
 \item{name}{[required] The name of the slot type. The name is case sensitive.}
@@ -20,11 +17,19 @@ Returns information about a specific version of a slot type. In addition to spec
 \details{
 This operation requires permissions for the \code{lex:GetSlotType} action.
 }
+\section{Accepted Parameters}{
+\preformatted{get_slot_type(
+  name = "string",
+  version = "string"
+)
+}
+}
+
 \examples{
 # This example shows how to get information about a slot type.
-get_slot_type(
+\donttest{get_slot_type(
   version = "$LATEST",
   name = "DocPizzaCrustType"
-)
+)}
 
 }

@@ -4,9 +4,7 @@
 \alias{refresh_trusted_advisor_check}
 \title{Requests a refresh of the Trusted Advisor check that has the specified check ID}
 \usage{
-refresh_trusted_advisor_check(
-  checkId = "string"
-)
+refresh_trusted_advisor_check(checkId)
 }
 \arguments{
 \item{checkId}{[required] The unique identifier for the Trusted Advisor check to refresh. \strong{Note:} Specifying the check ID of a check that is automatically refreshed causes an \code{InvalidParameterValue} error.}
@@ -24,6 +22,10 @@ The response contains a TrustedAdvisorCheckRefreshStatus object, which contains 
 \item \strong{checkId.} The unique identifier for the check.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{refresh_trusted_advisor_check(
+  checkId = "string"
+)
 }
+}
+

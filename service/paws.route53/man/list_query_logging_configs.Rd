@@ -4,11 +4,8 @@
 \alias{list_query_logging_configs}
 \title{Lists the configurations for DNS query logging that are associated with the current AWS account or the configuration that is associated with a specified hosted zone}
 \usage{
-list_query_logging_configs(
-  HostedZoneId = "string",
-  NextToken = "string",
-  MaxResults = "string"
-)
+list_query_logging_configs(HostedZoneId = NULL, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{HostedZoneId}{(Optional) If you want to list the query logging configuration that is associated with a hosted zone, specify the ID in \code{HostedZoneId}.
@@ -31,6 +28,12 @@ Lists the configurations for DNS query logging that are associated with the curr
 \details{
 For more information about DNS query logs, see CreateQueryLoggingConfig. Additional information, including the format of DNS query logs, appears in \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html}{Logging DNS Queries} in the \emph{Amazon Route 53 Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_query_logging_configs(
+  HostedZoneId = "string",
+  NextToken = "string",
+  MaxResults = "string"
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{describe_replication_groups}
 \title{Returns information about a particular replication group}
 \usage{
-describe_replication_groups(
-  ReplicationGroupId = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_replication_groups(ReplicationGroupId = NULL,
+  MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{ReplicationGroupId}{The identifier for the replication group to be described. This parameter is not case sensitive.
@@ -29,6 +26,12 @@ Returns information about a particular replication group. If no identifier is sp
 \details{
 This operation is valid for Redis only.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_replication_groups(
+  ReplicationGroupId = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

@@ -4,22 +4,29 @@
 \alias{delete_bucket_replication}
 \title{Deletes the replication configuration from the bucket}
 \usage{
-delete_bucket_replication(
+delete_bucket_replication(Bucket)
+}
+\arguments{
+\item{Bucket}{[required] Deletes the replication subresource associated with the specified bucket.
+
+There is usually some time lag before replication configuration deletion is fully propagated to all the Amazon S3 systems.
+
+For more information, see \href{%20https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html}{Cross-Region Replication (CRR)} in the Amazon S3 Developer Guide.}
+}
+\description{
+Deletes the replication configuration from the bucket.
+}
+\section{Accepted Parameters}{
+\preformatted{delete_bucket_replication(
   Bucket = "string"
 )
 }
-\arguments{
-\item{Bucket}{[required] The bucket name.
+}
 
-It can take a while to propagate the deletion of a replication configuration to all Amazon S3 systems.}
-}
-\description{
-Deletes the replication configuration from the bucket. For information about replication configuration, see \href{\%20https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html}{Cross-Region Replication (CRR)} in the \emph{Amazon S3 Developer Guide}.
-}
 \examples{
 # The following example deletes replication configuration set on bucket.
-delete_bucket_replication(
+\donttest{delete_bucket_replication(
   Bucket = "example"
-)
+)}
 
 }

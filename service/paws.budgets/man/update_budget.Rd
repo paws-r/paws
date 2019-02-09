@@ -4,7 +4,18 @@
 \alias{update_budget}
 \title{Updates a budget}
 \usage{
-update_budget(
+update_budget(AccountId, NewBudget)
+}
+\arguments{
+\item{AccountId}{[required] The \code{accountId} that is associated with the budget that you want to update.}
+
+\item{NewBudget}{[required] The budget that you want to update your budget to.}
+}
+\description{
+Updates a budget. You can change every part of a budget except for the \code{budgetName} and the \code{calculatedSpend}. When a budget is modified, the \code{calculatedSpend} drops to zero until AWS has new usage data to use for forecasting.
+}
+\section{Accepted Parameters}{
+\preformatted{update_budget(
   AccountId = "string",
   NewBudget = list(
     BudgetName = "string",
@@ -45,19 +56,9 @@ update_budget(
         Unit = "string"
       )
     ),
-    BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE",
-    LastUpdatedTime = as.POSIXct("2015-01-01")
+    BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"
   )
 )
 }
-\arguments{
-\item{AccountId}{[required] The \code{accountId} that is associated with the budget that you want to update.}
+}
 
-\item{NewBudget}{[required] The budget that you want to update your budget to.}
-}
-\description{
-Updates a budget. You can change every part of a budget except for the \code{budgetName} and the \code{calculatedSpend}. When you modify a budget, the \code{calculatedSpend} drops to zero until AWS has new usage data to use for forecasting.
-}
-\examples{
-
-}

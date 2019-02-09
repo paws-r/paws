@@ -4,13 +4,8 @@
 \alias{describe_deployments}
 \title{Requests a description of a specified set of deployments}
 \usage{
-describe_deployments(
-  StackId = "string",
-  AppId = "string",
-  DeploymentIds = list(
-    "string"
-  )
-)
+describe_deployments(StackId = NULL, AppId = NULL,
+  DeploymentIds = NULL)
 }
 \arguments{
 \item{StackId}{The stack ID. If you include this parameter, the command returns a description of the commands associated with the specified stack.}
@@ -27,6 +22,14 @@ This call accepts only one resource-identifying parameter.
 
 \strong{Required Permissions}: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_deployments(
+  StackId = "string",
+  AppId = "string",
+  DeploymentIds = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{update_shard_count}
 \title{Updates the shard count of the specified stream to the specified number of shards}
 \usage{
-update_shard_count(
-  StreamName = "string",
-  TargetShardCount = 123,
-  ScalingType = "UNIFORM_SCALING"
-)
+update_shard_count(StreamName, TargetShardCount, ScalingType)
 }
 \arguments{
 \item{StreamName}{[required] The name of the stream.}
@@ -37,6 +33,12 @@ This operation has the following default limits. By default, you cannot do the f
 
 For the default limits for an AWS account, see \href{http://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html}{Streams Limits} in the \emph{Amazon Kinesis Data Streams Developer Guide}. To request an increase in the call rate limit, the shard limit for this API, or your overall shard limit, use the \href{https://console.aws.amazon.com/support/v1#/case/create?issueType=service-limit-increase&limitType=service-code-kinesis}{limits form}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_shard_count(
+  StreamName = "string",
+  TargetShardCount = 123,
+  ScalingType = "UNIFORM_SCALING"
+)
 }
+}
+

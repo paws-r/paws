@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.iam_operations.R
 \name{delete_service_linked_role}
 \alias{delete_service_linked_role}
-\title{Submits a service-linked role deletion request and returns a \code{DeletionTaskId}, which you can use to check the status of the deletion}
+\title{Submits a service-linked role deletion request and returns a DeletionTaskId, which you can use to check the status of the deletion}
 \usage{
-delete_service_linked_role(
-  RoleName = "string"
-)
+delete_service_linked_role(RoleName)
 }
 \arguments{
 \item{RoleName}{[required] The name of the service-linked role to be deleted.}
@@ -19,6 +17,10 @@ If you submit a deletion request for a service-linked role whose linked service 
 
 For more information about service-linked roles, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role}{Roles Terms and Concepts: AWS Service-Linked Role} in the \emph{IAM User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_service_linked_role(
+  RoleName = "string"
+)
 }
+}
+

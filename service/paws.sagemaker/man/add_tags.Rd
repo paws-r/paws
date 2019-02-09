@@ -4,15 +4,7 @@
 \alias{add_tags}
 \title{Adds or overwrites one or more tags for the specified Amazon SageMaker resource}
 \usage{
-add_tags(
-  ResourceArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+add_tags(ResourceArn, Tags)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource that you want to tag.}
@@ -27,6 +19,16 @@ Each tag consists of a key and an optional value. Tag keys must be unique per re
 
 Tags that you add to a hyperparameter tuning job by calling this API are also added to any training jobs that the hyperparameter tuning job launches after you call this API, but not to training jobs that the hyperparameter tuning job launched before you called this API. To make sure that the tags associated with a hyperparameter tuning job are also added to all training jobs that the hyperparameter tuning job launches, add the tags when you first create the tuning job by specifying them in the \code{Tags} parameter of CreateHyperParameterTuningJob
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_tags(
+  ResourceArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

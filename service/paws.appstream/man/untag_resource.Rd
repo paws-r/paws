@@ -4,12 +4,7 @@
 \alias{untag_resource}
 \title{Disassociates one or more specified tags from the specified AppStream 2}
 \usage{
-untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
@@ -24,6 +19,13 @@ To list the current tags for your resources, use ListTagsForResource.
 
 For more information about tags, see \href{http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources} in the \emph{Amazon AppStream 2.0 Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{untag_resource(
+  ResourceArn = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
+}
+

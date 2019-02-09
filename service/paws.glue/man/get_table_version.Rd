@@ -4,12 +4,8 @@
 \alias{get_table_version}
 \title{Retrieves a specified version of a table}
 \usage{
-get_table_version(
-  CatalogId = "string",
-  DatabaseName = "string",
-  TableName = "string",
-  VersionId = "string"
-)
+get_table_version(CatalogId = NULL, DatabaseName, TableName,
+  VersionId = NULL)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.}
@@ -23,6 +19,13 @@ get_table_version(
 \description{
 Retrieves a specified version of a table.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_table_version(
+  CatalogId = "string",
+  DatabaseName = "string",
+  TableName = "string",
+  VersionId = "string"
+)
 }
+}
+

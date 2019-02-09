@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.snowball_operations.R
 \name{get_job_unlock_code}
 \alias{get_job_unlock_code}
-\title{Returns the \code{UnlockCode} code value for the specified job}
+\title{Returns the UnlockCode code value for the specified job}
 \usage{
-get_job_unlock_code(
-  JobId = "string"
-)
+get_job_unlock_code(JobId)
 }
 \arguments{
 \item{JobId}{[required] The ID for the job that you want to get the \code{UnlockCode} value for, for example \code{JID123e4567-e89b-12d3-a456-426655440000}.}
@@ -19,6 +17,13 @@ The \code{UnlockCode} value is a 29-character code with 25 alphanumeric characte
 
 As a best practice, we recommend that you don't save a copy of the \code{UnlockCode} in the same location as the manifest file for that job. Saving these separately helps prevent unauthorized parties from gaining access to the Snowball associated with that job.
 }
+\section{Accepted Parameters}{
+\preformatted{get_job_unlock_code(
+  JobId = "string"
+)
+}
+}
+
 \examples{
 # Returns the UnlockCode code value for the specified job. A particular
 # UnlockCode value can be accessed for up to 90 days after the associated
@@ -34,8 +39,8 @@ As a best practice, we recommend that you don't save a copy of the \code{UnlockC
 # of the UnlockCode in the same location as the manifest file for that
 # job. Saving these separately helps prevent unauthorized parties from
 # gaining access to the Snowball associated with that job.
-get_job_unlock_code(
+\donttest{get_job_unlock_code(
   JobId = "JID123e4567-e89b-12d3-a456-426655440000"
-)
+)}
 
 }

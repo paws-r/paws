@@ -4,9 +4,7 @@
 \alias{delete_db_cluster_parameter_group}
 \title{Deletes a specified DB cluster parameter group}
 \usage{
-delete_db_cluster_parameter_group(
-  DBClusterParameterGroupName = "string"
-)
+delete_db_cluster_parameter_group(DBClusterParameterGroupName)
 }
 \arguments{
 \item{DBClusterParameterGroupName}{[required] The name of the DB cluster parameter group.
@@ -21,6 +19,10 @@ Constraints:
 \description{
 Deletes a specified DB cluster parameter group. The DB cluster parameter group to be deleted can't be associated with any DB clusters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_db_cluster_parameter_group(
+  DBClusterParameterGroupName = "string"
+)
 }
+}
+

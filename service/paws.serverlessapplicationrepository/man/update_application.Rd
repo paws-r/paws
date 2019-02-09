@@ -5,17 +5,9 @@
 \alias{update_application}
 \title{Updates the specified application}
 \usage{
-update_application(
-  ApplicationId = "string",
-  Author = "string",
-  Description = "string",
-  HomePageUrl = "string",
-  Labels = list(
-    "string"
-  ),
-  ReadmeBody = "string",
-  ReadmeUrl = "string"
-)
+update_application(ApplicationId, Author = NULL, Description = NULL,
+  HomePageUrl = NULL, Labels = NULL, ReadmeBody = NULL,
+  ReadmeUrl = NULL)
 }
 \arguments{
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
@@ -49,6 +41,18 @@ Maximum size 5 MB}
 \description{
 Updates the specified application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_application(
+  ApplicationId = "string",
+  Author = "string",
+  Description = "string",
+  HomePageUrl = "string",
+  Labels = list(
+    "string"
+  ),
+  ReadmeBody = "string",
+  ReadmeUrl = "string"
+)
 }
+}
+

@@ -2,9 +2,27 @@
 % Please edit documentation in R/paws.appsync_operations.R
 \name{create_graphql_api}
 \alias{create_graphql_api}
-\title{Creates a \code{GraphqlApi} object}
+\title{Creates a GraphqlApi object}
 \usage{
-create_graphql_api(
+create_graphql_api(name, logConfig = NULL, authenticationType,
+  userPoolConfig = NULL, openIDConnectConfig = NULL)
+}
+\arguments{
+\item{name}{[required] A user-supplied name for the \code{GraphqlApi}.}
+
+\item{logConfig}{The Amazon CloudWatch logs configuration.}
+
+\item{authenticationType}{[required] The authentication type: API key, IAM, or Amazon Cognito User Pools.}
+
+\item{userPoolConfig}{The Amazon Cognito User Pool configuration.}
+
+\item{openIDConnectConfig}{The Open Id Connect configuration configuration.}
+}
+\description{
+Creates a \code{GraphqlApi} object.
+}
+\section{Accepted Parameters}{
+\preformatted{create_graphql_api(
   name = "string",
   logConfig = list(
     fieldLogLevel = "NONE"|"ERROR"|"ALL",
@@ -25,20 +43,5 @@ create_graphql_api(
   )
 )
 }
-\arguments{
-\item{name}{[required] A user-supplied name for the \code{GraphqlApi}.}
-
-\item{logConfig}{The Amazon CloudWatch Logs configuration.}
-
-\item{authenticationType}{[required] The authentication type: API key, AWS IAM, or Amazon Cognito user pools.}
-
-\item{userPoolConfig}{The Amazon Cognito user pool configuration.}
-
-\item{openIDConnectConfig}{The OpenID Connect configuration.}
 }
-\description{
-Creates a \code{GraphqlApi} object.
-}
-\examples{
 
-}

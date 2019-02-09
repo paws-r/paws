@@ -4,13 +4,8 @@
 \alias{describe_config_rule_evaluation_status}
 \title{Returns status information for each of your AWS managed Config rules}
 \usage{
-describe_config_rule_evaluation_status(
-  ConfigRuleNames = list(
-    "string"
-  ),
-  NextToken = "string",
-  Limit = 123
-)
+describe_config_rule_evaluation_status(ConfigRuleNames = NULL,
+  NextToken = NULL, Limit = NULL)
 }
 \arguments{
 \item{ConfigRuleNames}{The name of the AWS managed Config rules for which you want status information. If you do not specify any names, AWS Config returns status information for all AWS managed Config rules that you use.}
@@ -26,6 +21,14 @@ For information about requesting a rule limit increase, see \href{http://docs.aw
 \description{
 Returns status information for each of your AWS managed Config rules. The status includes information such as the last time AWS Config invoked the rule, the last time AWS Config failed to invoke the rule, and the related error for the last failure.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_config_rule_evaluation_status(
+  ConfigRuleNames = list(
+    "string"
+  ),
+  NextToken = "string",
+  Limit = 123
+)
 }
+}
+

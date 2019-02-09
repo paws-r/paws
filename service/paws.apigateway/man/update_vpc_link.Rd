@@ -4,7 +4,18 @@
 \alias{update_vpc_link}
 \title{Updates an existing VpcLink of a specified identifier}
 \usage{
-update_vpc_link(
+update_vpc_link(vpcLinkId, patchOperations = NULL)
+}
+\arguments{
+\item{vpcLinkId}{[required] [Required] The identifier of the VpcLink. It is used in an Integration to reference this VpcLink.}
+
+\item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
+}
+\description{
+Updates an existing VpcLink of a specified identifier.
+}
+\section{Accepted Parameters}{
+\preformatted{update_vpc_link(
   vpcLinkId = "string",
   patchOperations = list(
     list(
@@ -16,14 +27,5 @@ update_vpc_link(
   )
 )
 }
-\arguments{
-\item{vpcLinkId}{[required] [Required] The identifier of the VpcLink. It is used in an Integration to reference this VpcLink.}
+}
 
-\item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
-}
-\description{
-Updates an existing VpcLink of a specified identifier.
-}
-\examples{
-
-}

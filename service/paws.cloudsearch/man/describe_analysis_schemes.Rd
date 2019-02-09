@@ -4,13 +4,8 @@
 \alias{describe_analysis_schemes}
 \title{Gets the analysis schemes configured for a domain}
 \usage{
-describe_analysis_schemes(
-  DomainName = "string",
-  AnalysisSchemeNames = list(
-    "string"
-  ),
-  Deployed = TRUE|FALSE
-)
+describe_analysis_schemes(DomainName, AnalysisSchemeNames = NULL,
+  Deployed = NULL)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain you want to describe.}
@@ -22,6 +17,14 @@ describe_analysis_schemes(
 \description{
 Gets the analysis schemes configured for a domain. An analysis scheme defines language-specific text processing options for a \code{text} field. Can be limited to specific analysis schemes by name. By default, shows all analysis schemes and includes any pending changes to the configuration. Set the \code{Deployed} option to \code{true} to show the active configuration and exclude pending changes. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html}{Configuring Analysis Schemes} in the \emph{Amazon CloudSearch Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_analysis_schemes(
+  DomainName = "string",
+  AnalysisSchemeNames = list(
+    "string"
+  ),
+  Deployed = TRUE|FALSE
+)
 }
+}
+

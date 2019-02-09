@@ -4,9 +4,7 @@
 \alias{delete_alias}
 \title{Deletes the specified alias}
 \usage{
-delete_alias(
-  AliasName = "string"
-)
+delete_alias(AliasName)
 }
 \arguments{
 \item{AliasName}{[required] The alias to be deleted. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/aws" are reserved.}
@@ -19,10 +17,17 @@ Because an alias is not a property of a CMK, you can delete and change the alias
 
 Each CMK can have multiple aliases. To change the alias of a CMK, use DeleteAlias to delete the current alias and CreateAlias to create a new alias. To associate an existing alias with a different customer master key (CMK), call UpdateAlias.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_alias(
+  AliasName = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes the specified alias.
-delete_alias(
+\donttest{delete_alias(
   AliasName = "alias/ExampleAlias"
-)
+)}
 
 }

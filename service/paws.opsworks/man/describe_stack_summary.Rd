@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.opsworks_operations.R
 \name{describe_stack_summary}
 \alias{describe_stack_summary}
-\title{Describes the number of layers and apps in a specified stack, and the number of instances in each state, such as \code{running_setup} or \code{online}}
+\title{Describes the number of layers and apps in a specified stack, and the number of instances in each state, such as running_setup or online}
 \usage{
-describe_stack_summary(
-  StackId = "string"
-)
+describe_stack_summary(StackId)
 }
 \arguments{
 \item{StackId}{[required] The stack ID.}
@@ -17,6 +15,10 @@ Describes the number of layers and apps in a specified stack, and the number of 
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_stack_summary(
+  StackId = "string"
+)
 }
+}
+

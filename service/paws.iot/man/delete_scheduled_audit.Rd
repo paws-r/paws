@@ -4,9 +4,7 @@
 \alias{delete_scheduled_audit}
 \title{Deletes a scheduled audit}
 \usage{
-delete_scheduled_audit(
-  scheduledAuditName = "string"
-)
+delete_scheduled_audit(scheduledAuditName)
 }
 \arguments{
 \item{scheduledAuditName}{[required] The name of the scheduled audit you want to delete.}
@@ -14,6 +12,10 @@ delete_scheduled_audit(
 \description{
 Deletes a scheduled audit.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_scheduled_audit(
+  scheduledAuditName = "string"
+)
 }
+}
+

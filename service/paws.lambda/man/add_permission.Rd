@@ -4,20 +4,12 @@
 \alias{add_permission}
 \title{Adds a permission to the resource policy associated with the specified AWS Lambda function}
 \usage{
-add_permission(
-  FunctionName = "string",
-  StatementId = "string",
-  Action = "string",
-  Principal = "string",
-  SourceArn = "string",
-  SourceAccount = "string",
-  EventSourceToken = "string",
-  Qualifier = "string",
-  RevisionId = "string"
-)
+add_permission(FunctionName, StatementId, Action, Principal,
+  SourceArn = NULL, SourceAccount = NULL, EventSourceToken = NULL,
+  Qualifier = NULL, RevisionId = NULL)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function.
+\item{FunctionName}{[required] The name of the lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -54,16 +46,31 @@ Permissions apply to the Amazon Resource Name (ARN) used to invoke the function,
 
 This operation requires permission for the \code{lambda:AddPermission} action.
 }
+\section{Accepted Parameters}{
+\preformatted{add_permission(
+  FunctionName = "string",
+  StatementId = "string",
+  Action = "string",
+  Principal = "string",
+  SourceArn = "string",
+  SourceAccount = "string",
+  EventSourceToken = "string",
+  Qualifier = "string",
+  RevisionId = "string"
+)
+}
+}
+
 \examples{
 # This example adds a permission for an S3 bucket to invoke a Lambda
 # function.
-add_permission(
+\donttest{add_permission(
   Action = "lambda:InvokeFunction",
   FunctionName = "MyFunction",
   Principal = "s3.amazonaws.com",
   SourceAccount = "123456789012",
   SourceArn = "arn:aws:s3:::examplebucket/*",
   StatementId = "ID-1"
-)
+)}
 
 }

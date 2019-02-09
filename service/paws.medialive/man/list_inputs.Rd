@@ -4,10 +4,7 @@
 \alias{list_inputs}
 \title{Produces list of inputs that have been created}
 \usage{
-list_inputs(
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_inputs(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{}
@@ -17,6 +14,11 @@ list_inputs(
 \description{
 Produces list of inputs that have been created
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_inputs(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

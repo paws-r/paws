@@ -4,9 +4,7 @@
 \alias{unsubscribe}
 \title{Deletes a subscription}
 \usage{
-unsubscribe(
-  SubscriptionArn = "string"
-)
+unsubscribe(SubscriptionArn)
 }
 \arguments{
 \item{SubscriptionArn}{[required] The ARN of the subscription to be deleted.}
@@ -17,6 +15,10 @@ Deletes a subscription. If the subscription requires authentication for deletion
 \details{
 This action is throttled at 100 transactions per second (TPS).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{unsubscribe(
+  SubscriptionArn = "string"
+)
 }
+}
+

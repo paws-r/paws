@@ -4,21 +4,8 @@
 \alias{create_index}
 \title{Creates an index object}
 \usage{
-create_index(
-  DirectoryArn = "string",
-  OrderedIndexedAttributeList = list(
-    list(
-      SchemaArn = "string",
-      FacetName = "string",
-      Name = "string"
-    )
-  ),
-  IsUnique = TRUE|FALSE,
-  ParentReference = list(
-    Selector = "string"
-  ),
-  LinkName = "string"
-)
+create_index(DirectoryArn, OrderedIndexedAttributeList, IsUnique,
+  ParentReference = NULL, LinkName = NULL)
 }
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory where the index should be created.}
@@ -34,6 +21,22 @@ create_index(
 \description{
 Creates an index object. See \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.html}{Indexing and search} for more information.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_index(
+  DirectoryArn = "string",
+  OrderedIndexedAttributeList = list(
+    list(
+      SchemaArn = "string",
+      FacetName = "string",
+      Name = "string"
+    )
+  ),
+  IsUnique = TRUE|FALSE,
+  ParentReference = list(
+    Selector = "string"
+  ),
+  LinkName = "string"
+)
 }
+}
+

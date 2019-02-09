@@ -4,10 +4,8 @@
 \alias{create_direct_connect_gateway}
 \title{Creates a Direct Connect gateway, which is an intermediate object that enables you to connect a set of virtual interfaces and virtual private gateways}
 \usage{
-create_direct_connect_gateway(
-  directConnectGatewayName = "string",
-  amazonSideAsn = 123
-)
+create_direct_connect_gateway(directConnectGatewayName,
+  amazonSideAsn = NULL)
 }
 \arguments{
 \item{directConnectGatewayName}{[required] The name of the Direct Connect gateway.}
@@ -17,6 +15,11 @@ create_direct_connect_gateway(
 \description{
 Creates a Direct Connect gateway, which is an intermediate object that enables you to connect a set of virtual interfaces and virtual private gateways. A Direct Connect gateway is global and visible in any AWS Region after it is created. The virtual interfaces and virtual private gateways that are connected through a Direct Connect gateway can be in different AWS Regions. This enables you to connect to a VPC in any Region, regardless of the Region in which the virtual interfaces are located, and pass traffic between them.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_direct_connect_gateway(
+  directConnectGatewayName = "string",
+  amazonSideAsn = 123
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{list_hosted_zones}
 \title{Retrieves a list of the public and private hosted zones that are associated with the current AWS account}
 \usage{
-list_hosted_zones(
-  Marker = "string",
-  MaxItems = "string",
-  DelegationSetId = "string"
-)
+list_hosted_zones(Marker = NULL, MaxItems = NULL,
+  DelegationSetId = NULL)
 }
 \arguments{
 \item{Marker}{If the value of \code{IsTruncated} in the previous response was \code{true}, you have more hosted zones. To get more hosted zones, submit another \code{ListHostedZones} request.
@@ -27,6 +24,12 @@ Retrieves a list of the public and private hosted zones that are associated with
 \details{
 Amazon Route 53 returns a maximum of 100 items in each response. If you have a lot of hosted zones, you can use the \code{maxitems} parameter to list them in groups of up to 100.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_hosted_zones(
+  Marker = "string",
+  MaxItems = "string",
+  DelegationSetId = "string"
+)
 }
+}
+

@@ -4,26 +4,7 @@
 \alias{create_stream_processor}
 \title{Creates an Amazon Rekognition stream processor that you can use to detect and recognize faces in a streaming video}
 \usage{
-create_stream_processor(
-  Input = list(
-    KinesisVideoStream = list(
-      Arn = "string"
-    )
-  ),
-  Output = list(
-    KinesisDataStream = list(
-      Arn = "string"
-    )
-  ),
-  Name = "string",
-  Settings = list(
-    FaceSearch = list(
-      CollectionId = "string",
-      FaceMatchThreshold = 123.0
-    )
-  ),
-  RoleArn = "string"
-)
+create_stream_processor(Input, Output, Name, Settings, RoleArn)
 }
 \arguments{
 \item{Input}{[required] Kinesis video stream stream that provides the source streaming video. If you are using the AWS CLI, the parameter name is \code{StreamProcessorInput}.}
@@ -46,6 +27,27 @@ You provide as input a Kinesis video stream (\code{Input}) and a Kinesis data st
 
 After you have finished analyzing a streaming video, use to stop processing. You can delete the stream processor by calling .
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_stream_processor(
+  Input = list(
+    KinesisVideoStream = list(
+      Arn = "string"
+    )
+  ),
+  Output = list(
+    KinesisDataStream = list(
+      Arn = "string"
+    )
+  ),
+  Name = "string",
+  Settings = list(
+    FaceSearch = list(
+      CollectionId = "string",
+      FaceMatchThreshold = 123.0
+    )
+  ),
+  RoleArn = "string"
+)
 }
+}
+

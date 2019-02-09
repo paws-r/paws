@@ -4,11 +4,8 @@
 \alias{create_address_book}
 \title{Creates an address book with the specified details}
 \usage{
-create_address_book(
-  Name = "string",
-  Description = "string",
-  ClientRequestToken = "string"
-)
+create_address_book(Name, Description = NULL,
+  ClientRequestToken = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the address book.}
@@ -20,6 +17,12 @@ create_address_book(
 \description{
 Creates an address book with the specified details.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_address_book(
+  Name = "string",
+  Description = "string",
+  ClientRequestToken = "string"
+)
 }
+}
+

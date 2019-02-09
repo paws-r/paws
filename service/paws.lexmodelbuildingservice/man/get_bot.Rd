@@ -4,10 +4,7 @@
 \alias{get_bot}
 \title{Returns metadata information for a specific bot}
 \usage{
-get_bot(
-  name = "string",
-  versionOrAlias = "string"
-)
+get_bot(name, versionOrAlias)
 }
 \arguments{
 \item{name}{[required] The name of the bot. The name is case sensitive.}
@@ -20,11 +17,19 @@ Returns metadata information for a specific bot. You must provide the bot name a
 \details{
 This operation requires permissions for the \code{lex:GetBot} action.
 }
+\section{Accepted Parameters}{
+\preformatted{get_bot(
+  name = "string",
+  versionOrAlias = "string"
+)
+}
+}
+
 \examples{
 # This example shows how to get configuration information for a bot.
-get_bot(
+\donttest{get_bot(
   name = "DocOrderPizza",
   versionOrAlias = "$LATEST"
-)
+)}
 
 }

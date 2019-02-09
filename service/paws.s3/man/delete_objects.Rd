@@ -4,7 +4,22 @@
 \alias{delete_objects}
 \title{This operation enables you to delete multiple objects from a bucket using a single HTTP request}
 \usage{
-delete_objects(
+delete_objects(Bucket, Delete, MFA = NULL, RequestPayer = NULL)
+}
+\arguments{
+\item{Bucket}{[required]}
+
+\item{Delete}{[required]}
+
+\item{MFA}{The concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device.}
+
+\item{RequestPayer}{}
+}
+\description{
+This operation enables you to delete multiple objects from a bucket using a single HTTP request. You may specify up to 1000 keys.
+}
+\section{Accepted Parameters}{
+\preformatted{delete_objects(
   Bucket = "string",
   Delete = list(
     Objects = list(
@@ -16,48 +31,16 @@ delete_objects(
     Quiet = TRUE|FALSE
   ),
   MFA = "string",
-  RequestPayer = "requester",
-  BypassGovernanceRetention = TRUE|FALSE
+  RequestPayer = "requester"
 )
 }
-\arguments{
-\item{Bucket}{[required]}
-
-\item{Delete}{[required]}
-
-\item{MFA}{The concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device.}
-
-\item{RequestPayer}{}
-
-\item{BypassGovernanceRetention}{Specifies whether you want to delete this object even if it has a Governance-type Object Lock in place. You must have sufficient permissions to perform this operation.}
 }
-\description{
-This operation enables you to delete multiple objects from a bucket using a single HTTP request. You may specify up to 1000 keys.
-}
+
 \examples{
-# The following example deletes objects from a bucket. The bucket is
-# versioned, and the request does not specify the object version to
-# delete. In this case, all versions remain in the bucket and S3 adds a
-# delete marker.
-delete_objects(
-  Bucket = "examplebucket",
-  Delete = list(
-    Objects = list(
-      list(
-        Key = "objectkey1"
-      ),
-      list(
-        Key = "objectkey2"
-      )
-    ),
-    Quiet = FALSE
-  )
-)
-
 # The following example deletes objects from a bucket. The request
 # specifies object versions. S3 deletes specific object versions and
 # returns the key and versions of deleted objects in the response.
-delete_objects(
+\donttest{delete_objects(
   Bucket = "examplebucket",
   Delete = list(
     Objects = list(
@@ -72,6 +55,25 @@ delete_objects(
     ),
     Quiet = FALSE
   )
-)
+)}
+
+# The following example deletes objects from a bucket. The bucket is
+# versioned, and the request does not specify the object version to
+# delete. In this case, all versions remain in the bucket and S3 adds a
+# delete marker.
+\donttest{delete_objects(
+  Bucket = "examplebucket",
+  Delete = list(
+    Objects = list(
+      list(
+        Key = "objectkey1"
+      ),
+      list(
+        Key = "objectkey2"
+      )
+    ),
+    Quiet = FALSE
+  )
+)}
 
 }

@@ -4,12 +4,8 @@
 \alias{list_datasets}
 \title{Lists datasets for an identity}
 \usage{
-list_datasets(
-  IdentityPoolId = "string",
-  IdentityId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_datasets(IdentityPoolId, IdentityId, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
@@ -26,6 +22,13 @@ Lists datasets for an identity. With Amazon Cognito Sync, each identity has acce
 \details{
 ListDatasets can be called with temporary user credentials provided by Cognito Identity or with developer credentials. You should use the Cognito Identity credentials to make this API call.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_datasets(
+  IdentityPoolId = "string",
+  IdentityId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

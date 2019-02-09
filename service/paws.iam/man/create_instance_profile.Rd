@@ -4,21 +4,18 @@
 \alias{create_instance_profile}
 \title{Creates a new instance profile}
 \usage{
-create_instance_profile(
-  InstanceProfileName = "string",
-  Path = "string"
-)
+create_instance_profile(InstanceProfileName, Path = NULL)
 }
 \arguments{
 \item{InstanceProfileName}{[required] The name of the instance profile to create.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{Path}{The path to the instance profile. For more information about paths, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers} in the \emph{IAM User Guide}.
 
 This parameter is optional. If it is not included, it defaults to a slash (/).
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.}
 }
 \description{
 Creates a new instance profile. For information about instance profiles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}.
@@ -26,12 +23,20 @@ Creates a new instance profile. For information about instance profiles, go to \
 \details{
 For information about the number of instance profiles you can create, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_instance_profile(
+  InstanceProfileName = "string",
+  Path = "string"
+)
+}
+}
+
 \examples{
 # The following command creates an instance profile named Webserver that
 # is ready to have a role attached and then be associated with an EC2
 # instance.
-create_instance_profile(
+\donttest{create_instance_profile(
   InstanceProfileName = "Webserver"
-)
+)}
 
 }

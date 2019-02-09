@@ -4,9 +4,7 @@
 \alias{delete_stream}
 \title{Deletes a stream}
 \usage{
-delete_stream(
-  streamId = "string"
-)
+delete_stream(streamId)
 }
 \arguments{
 \item{streamId}{[required] The stream ID.}
@@ -14,6 +12,10 @@ delete_stream(
 \description{
 Deletes a stream.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_stream(
+  streamId = "string"
+)
 }
+}
+

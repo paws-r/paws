@@ -4,10 +4,7 @@
 \alias{delete_folder}
 \title{Permanently deletes the specified folder and its contents}
 \usage{
-delete_folder(
-  AuthenticationToken = "string",
-  FolderId = "string"
-)
+delete_folder(AuthenticationToken = NULL, FolderId)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
@@ -17,6 +14,11 @@ delete_folder(
 \description{
 Permanently deletes the specified folder and its contents.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_folder(
+  AuthenticationToken = "string",
+  FolderId = "string"
+)
 }
+}
+

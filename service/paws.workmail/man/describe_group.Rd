@@ -4,10 +4,7 @@
 \alias{describe_group}
 \title{Returns the data available for the group}
 \usage{
-describe_group(
-  OrganizationId = "string",
-  GroupId = "string"
-)
+describe_group(OrganizationId, GroupId)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier for the organization under which the group exists.}
@@ -17,6 +14,11 @@ describe_group(
 \description{
 Returns the data available for the group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_group(
+  OrganizationId = "string",
+  GroupId = "string"
+)
 }
+}
+

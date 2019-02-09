@@ -4,10 +4,7 @@
 \alias{delete_field_level_encryption_profile}
 \title{Remove a field-level encryption profile}
 \usage{
-delete_field_level_encryption_profile(
-  Id = "string",
-  IfMatch = "string"
-)
+delete_field_level_encryption_profile(Id, IfMatch = NULL)
 }
 \arguments{
 \item{Id}{[required] Request the ID of the profile you want to delete from CloudFront.}
@@ -17,6 +14,11 @@ delete_field_level_encryption_profile(
 \description{
 Remove a field-level encryption profile.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_field_level_encryption_profile(
+  Id = "string",
+  IfMatch = "string"
+)
 }
+}
+

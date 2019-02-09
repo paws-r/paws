@@ -4,50 +4,20 @@
 \alias{create_db_instance_read_replica}
 \title{Creates a new DB instance that acts as a Read Replica for an existing source DB instance}
 \usage{
-create_db_instance_read_replica(
-  DBInstanceIdentifier = "string",
-  SourceDBInstanceIdentifier = "string",
-  DBInstanceClass = "string",
-  AvailabilityZone = "string",
-  Port = 123,
-  MultiAZ = TRUE|FALSE,
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  Iops = 123,
-  OptionGroupName = "string",
-  PubliclyAccessible = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  DBSubnetGroupName = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  StorageType = "string",
-  CopyTagsToSnapshot = TRUE|FALSE,
-  MonitoringInterval = 123,
-  MonitoringRoleArn = "string",
-  KmsKeyId = "string",
-  PreSignedUrl = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  EnablePerformanceInsights = TRUE|FALSE,
-  PerformanceInsightsKMSKeyId = "string",
-  PerformanceInsightsRetentionPeriod = 123,
-  EnableCloudwatchLogsExports = list(
-    "string"
-  ),
-  ProcessorFeatures = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  UseDefaultProcessorFeatures = TRUE|FALSE,
-  DeletionProtection = TRUE|FALSE,
-  SourceRegion = "string"
-)
+create_db_instance_read_replica(DBInstanceIdentifier,
+  SourceDBInstanceIdentifier, DBInstanceClass = NULL,
+  AvailabilityZone = NULL, Port = NULL, MultiAZ = NULL,
+  AutoMinorVersionUpgrade = NULL, Iops = NULL,
+  OptionGroupName = NULL, PubliclyAccessible = NULL, Tags = NULL,
+  DBSubnetGroupName = NULL, StorageType = NULL,
+  CopyTagsToSnapshot = NULL, MonitoringInterval = NULL,
+  MonitoringRoleArn = NULL, KmsKeyId = NULL, PreSignedUrl = NULL,
+  EnableIAMDatabaseAuthentication = NULL,
+  EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL,
+  PerformanceInsightsRetentionPeriod = NULL,
+  EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL,
+  UseDefaultProcessorFeatures = NULL, DeletionProtection = NULL,
+  SourceRegion = NULL)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The DB instance identifier of the Read Replica. This identifier is the unique key that identifies a DB instance. This parameter is stored as a lowercase string.}
@@ -57,7 +27,7 @@ create_db_instance_read_replica(
 Constraints:
 \itemize{
 \item Must be the identifier of an existing MySQL, MariaDB, or PostgreSQL DB instance.
-\item Can specify a DB instance that is a MySQL Read Replica only if the source is running MySQL 5.6 or later.
+\item Can specify a DB instance that is a MySQL Read Replica only if the source is running MySQL 5.6.
 \item Can specify a DB instance that is a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5 or later (9.4.7 and higher for cross-region replication).
 \item The specified DB instance must have automatic backups enabled, its backup retention period must be greater than 0.
 \item If the source DB instance is in the same AWS Region as the Read Replica, specify a valid DB instance identifier.
@@ -112,10 +82,6 @@ Constraints:
 
 Example: \code{mySubnetgroup}}
 
-\item{VpcSecurityGroupIds}{A list of EC2 VPC security groups to associate with the Read Replica.
-
-Default: The default EC2 VPC security group for the DB subnet group's VPC.}
-
 \item{StorageType}{Specifies the storage type to be associated with the Read Replica.
 
 Valid values: \code{standard | gp2 | io1}
@@ -138,11 +104,11 @@ If \code{MonitoringInterval} is set to a value other than 0, then you must suppl
 
 \item{KmsKeyId}{The AWS KMS key ID for an encrypted Read Replica. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
 
+If you specify this parameter when you create a Read Replica from an unencrypted DB instance, the Read Replica is encrypted.
+
 If you create an encrypted Read Replica in the same AWS Region as the source DB instance, then you do not have to specify a value for this parameter. The Read Replica is encrypted with the same KMS key as the source DB instance.
 
-If you create an encrypted Read Replica in a different AWS Region, then you must specify a KMS key for the destination AWS Region. KMS encryption keys are specific to the AWS Region that they are created in, and you can't use encryption keys from one AWS Region in another AWS Region.
-
-You can't create an encrypted Read Replica from an unencrypted DB instance.}
+If you create an encrypted Read Replica in a different AWS Region, then you must specify a KMS key for the destination AWS Region. KMS encryption keys are specific to the AWS Region that they are created in, and you can't use encryption keys from one AWS Region in another AWS Region.}
 
 \item{PreSignedUrl}{The URL that contains a Signature Version 4 signed request for the \code{CreateDBInstanceReadReplica} API action in the source AWS Region that contains the source DB instance.
 
@@ -167,7 +133,7 @@ You can enable IAM database authentication for the following database engines
 \itemize{
 \item For MySQL 5.6, minor version 5.6.34 or higher
 \item For MySQL 5.7, minor version 5.7.16 or higher
-\item Aurora MySQL 5.6 or higher
+\item Aurora 5.6 or higher.
 }
 
 Default: \code{false}}
@@ -200,6 +166,48 @@ All Read Replica DB instances are created with backups disabled. All other DB in
 
 Your source DB instance must have backup retention enabled.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_db_instance_read_replica(
+  DBInstanceIdentifier = "string",
+  SourceDBInstanceIdentifier = "string",
+  DBInstanceClass = "string",
+  AvailabilityZone = "string",
+  Port = 123,
+  MultiAZ = TRUE|FALSE,
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  Iops = 123,
+  OptionGroupName = "string",
+  PubliclyAccessible = TRUE|FALSE,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  DBSubnetGroupName = "string",
+  StorageType = "string",
+  CopyTagsToSnapshot = TRUE|FALSE,
+  MonitoringInterval = 123,
+  MonitoringRoleArn = "string",
+  KmsKeyId = "string",
+  PreSignedUrl = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  EnablePerformanceInsights = TRUE|FALSE,
+  PerformanceInsightsKMSKeyId = "string",
+  PerformanceInsightsRetentionPeriod = 123,
+  EnableCloudwatchLogsExports = list(
+    "string"
+  ),
+  ProcessorFeatures = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  UseDefaultProcessorFeatures = TRUE|FALSE,
+  DeletionProtection = TRUE|FALSE,
+  SourceRegion = "string"
+)
 }
+}
+

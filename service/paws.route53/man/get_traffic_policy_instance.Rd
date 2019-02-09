@@ -4,9 +4,7 @@
 \alias{get_traffic_policy_instance}
 \title{Gets information about a specified traffic policy instance}
 \usage{
-get_traffic_policy_instance(
-  Id = "string"
-)
+get_traffic_policy_instance(Id)
 }
 \arguments{
 \item{Id}{[required] The ID of the traffic policy instance that you want to get information about.}
@@ -19,6 +17,10 @@ After you submit a \code{CreateTrafficPolicyInstance} or an \code{UpdateTrafficP
 
 In the Route 53 console, traffic policy instances are known as policy records.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_traffic_policy_instance(
+  Id = "string"
+)
 }
+}
+

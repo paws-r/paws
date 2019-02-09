@@ -4,10 +4,7 @@
 \alias{list_detectors}
 \title{Lists detectorIds of all the existing Amazon GuardDuty detector resources}
 \usage{
-list_detectors(
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_detectors(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{You can use this parameter to indicate the maximum number of detectors that you want in the response.}
@@ -17,6 +14,11 @@ list_detectors(
 \description{
 Lists detectorIds of all the existing Amazon GuardDuty detector resources.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_detectors(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

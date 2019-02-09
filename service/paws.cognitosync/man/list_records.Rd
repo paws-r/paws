@@ -4,15 +4,9 @@
 \alias{list_records}
 \title{Gets paginated records, optionally changed after a particular sync count for a dataset and identity}
 \usage{
-list_records(
-  IdentityPoolId = "string",
-  IdentityId = "string",
-  DatasetName = "string",
-  LastSyncCount = 123,
-  NextToken = "string",
-  MaxResults = 123,
-  SyncSessionToken = "string"
-)
+list_records(IdentityPoolId, IdentityId, DatasetName,
+  LastSyncCount = NULL, NextToken = NULL, MaxResults = NULL,
+  SyncSessionToken = NULL)
 }
 \arguments{
 \item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
@@ -35,6 +29,16 @@ Gets paginated records, optionally changed after a particular sync count for a d
 \details{
 ListRecords can be called with temporary user credentials provided by Cognito Identity or with developer credentials. You should use Cognito Identity credentials to make this API call.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_records(
+  IdentityPoolId = "string",
+  IdentityId = "string",
+  DatasetName = "string",
+  LastSyncCount = 123,
+  NextToken = "string",
+  MaxResults = 123,
+  SyncSessionToken = "string"
+)
 }
+}
+

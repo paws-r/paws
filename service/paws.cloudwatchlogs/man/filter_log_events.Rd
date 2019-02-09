@@ -4,34 +4,25 @@
 \alias{filter_log_events}
 \title{Lists log events from the specified log group}
 \usage{
-filter_log_events(
-  logGroupName = "string",
-  logStreamNames = list(
-    "string"
-  ),
-  logStreamNamePrefix = "string",
-  startTime = 123,
-  endTime = 123,
-  filterPattern = "string",
-  nextToken = "string",
-  limit = 123,
-  interleaved = TRUE|FALSE
-)
+filter_log_events(logGroupName, logStreamNames = NULL,
+  logStreamNamePrefix = NULL, startTime = NULL, endTime = NULL,
+  filterPattern = NULL, nextToken = NULL, limit = NULL,
+  interleaved = NULL)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group to search.}
 
 \item{logStreamNames}{Filters the results to only logs from the log streams in this list.
 
-If you specify a value for both \code{logStreamNamePrefix} and \code{logStreamNames}, the action returns an \code{InvalidParameterException} error.}
+If you specify a value for both \code{logStreamNamePrefix} and \code{logStreamNames}, but the value for \code{logStreamNamePrefix} does not match any log stream names specified in \code{logStreamNames}, the action returns an \code{InvalidParameterException} error.}
 
 \item{logStreamNamePrefix}{Filters the results to include only events from log streams that have names starting with this prefix.
 
 If you specify a value for both \code{logStreamNamePrefix} and \code{logStreamNames}, but the value for \code{logStreamNamePrefix} does not match any log stream names specified in \code{logStreamNames}, the action returns an \code{InvalidParameterException} error.}
 
-\item{startTime}{The start of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp before this time are not returned.}
+\item{startTime}{The start of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp before this time are not returned.}
 
-\item{endTime}{The end of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not returned.}
+\item{endTime}{The end of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp later than this time are not returned.}
 
 \item{filterPattern}{The filter pattern to use. For more information, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html}{Filter and Pattern Syntax}.
 
@@ -49,6 +40,20 @@ Lists log events from the specified log group. You can list all the log events o
 \details{
 By default, this operation returns as many log events as can fit in 1 MB (up to 10,000 log events), or all the events found within the time range that you specify. If the results include a token, then there are more log events available, and you can get additional results by specifying the token in a subsequent call.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{filter_log_events(
+  logGroupName = "string",
+  logStreamNames = list(
+    "string"
+  ),
+  logStreamNamePrefix = "string",
+  startTime = 123,
+  endTime = 123,
+  filterPattern = "string",
+  nextToken = "string",
+  limit = 123,
+  interleaved = TRUE|FALSE
+)
 }
+}
+

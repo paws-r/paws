@@ -4,22 +4,8 @@
 \alias{describe_volumes}
 \title{Describes the specified EBS volumes}
 \usage{
-describe_volumes(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  VolumeIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE,
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_volumes(Filters = NULL, VolumeIds = NULL, DryRun = NULL,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -57,14 +43,34 @@ If you are describing a long list of volumes, you can paginate the output to mak
 
 For more information about EBS volumes, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html}{Amazon EBS Volumes} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_volumes(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  VolumeIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE,
+  MaxResults = 123,
+  NextToken = "string"
+)
+}
+}
+
 \examples{
 # This example describes all of your volumes in the default region.
-describe_volumes()
+\donttest{describe_volumes()}
 
 # This example describes all volumes that are both attached to the
 # instance with the ID i-1234567890abcdef0 and set to delete when the
 # instance terminates.
-describe_volumes(
+\donttest{describe_volumes(
   Filters = list(
     list(
       Name = "attachment.instance-id",
@@ -79,6 +85,6 @@ describe_volumes(
       )
     )
   )
-)
+)}
 
 }

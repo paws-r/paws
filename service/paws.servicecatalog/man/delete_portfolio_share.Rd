@@ -4,15 +4,8 @@
 \alias{delete_portfolio_share}
 \title{Stops sharing the specified portfolio with the specified account or organization node}
 \usage{
-delete_portfolio_share(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  AccountId = "string",
-  OrganizationNode = list(
-    Type = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
-    Value = "string"
-  )
-)
+delete_portfolio_share(AcceptLanguage = NULL, PortfolioId,
+  AccountId = NULL, OrganizationNode = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -31,6 +24,16 @@ delete_portfolio_share(
 \description{
 Stops sharing the specified portfolio with the specified account or organization node. Shares to an organization node can only be deleted by the master account of an Organization.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_portfolio_share(
+  AcceptLanguage = "string",
+  PortfolioId = "string",
+  AccountId = "string",
+  OrganizationNode = list(
+    Type = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
+    Value = "string"
+  )
+)
 }
+}
+

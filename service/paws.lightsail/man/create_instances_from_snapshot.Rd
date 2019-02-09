@@ -4,30 +4,9 @@
 \alias{create_instances_from_snapshot}
 \title{Uses a specific snapshot as a blueprint for creating one or more new instances that are based on that identical configuration}
 \usage{
-create_instances_from_snapshot(
-  instanceNames = list(
-    "string"
-  ),
-  attachedDiskMapping = list(
-    list(
-      list(
-        originalDiskPath = "string",
-        newDiskName = "string"
-      )
-    )
-  ),
-  availabilityZone = "string",
-  instanceSnapshotName = "string",
-  bundleId = "string",
-  userData = "string",
-  keyPairName = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+create_instances_from_snapshot(instanceNames, attachedDiskMapping = NULL,
+  availabilityZone, instanceSnapshotName, bundleId, userData = NULL,
+  keyPairName = NULL)
 }
 \arguments{
 \item{instanceNames}{[required] The names for your new instances.}
@@ -45,17 +24,29 @@ create_instances_from_snapshot(
 Depending on the machine image you choose, the command to get software on your instance varies. Amazon Linux and CentOS use \code{yum}, Debian and Ubuntu use \code{apt-get}, and FreeBSD uses \code{pkg}. For a complete list, see the \href{https://lightsail.aws.amazon.com/ls/docs/getting-started/article/compare-options-choose-lightsail-instance-image}{Dev Guide}.}
 
 \item{keyPairName}{The name for your key pair.}
-
-\item{tags}{The tag keys and optional values to add to the resource during create.
-
-To tag a resource after it has been created, see the \code{tag resource} operation.}
 }
 \description{
 Uses a specific snapshot as a blueprint for creating one or more new instances that are based on that identical configuration.
 }
-\details{
-The \code{create instances from snapshot} operation supports tag-based access control via request tags and resource tags applied to the resource identified by instanceSnapshotName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\section{Accepted Parameters}{
+\preformatted{create_instances_from_snapshot(
+  instanceNames = list(
+    "string"
+  ),
+  attachedDiskMapping = list(
+    list(
+      list(
+        originalDiskPath = "string",
+        newDiskName = "string"
+      )
+    )
+  ),
+  availabilityZone = "string",
+  instanceSnapshotName = "string",
+  bundleId = "string",
+  userData = "string",
+  keyPairName = "string"
+)
 }
-\examples{
+}
 
-}

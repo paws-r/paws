@@ -4,11 +4,8 @@
 \alias{get_download_url_for_layer}
 \title{Retrieves the pre-signed Amazon S3 download URL corresponding to an image layer}
 \usage{
-get_download_url_for_layer(
-  registryId = "string",
-  repositoryName = "string",
-  layerDigest = "string"
-)
+get_download_url_for_layer(registryId = NULL, repositoryName,
+  layerDigest)
 }
 \arguments{
 \item{registryId}{The AWS account ID associated with the registry that contains the image layer to download. If you do not specify a registry, the default registry is assumed.}
@@ -23,6 +20,12 @@ Retrieves the pre-signed Amazon S3 download URL corresponding to an image layer.
 \details{
 This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers for pulling and pushing images. In most cases, you should use the \code{docker} CLI to pull, tag, and push images.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_download_url_for_layer(
+  registryId = "string",
+  repositoryName = "string",
+  layerDigest = "string"
+)
 }
+}
+

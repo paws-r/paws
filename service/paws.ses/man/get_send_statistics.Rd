@@ -14,6 +14,6 @@ You can execute this operation no more than once per second.
 }
 \examples{
 # The following example returns Amazon SES sending statistics:
-get_send_statistics()
+\donttest{get_send_statistics()}
 
 }

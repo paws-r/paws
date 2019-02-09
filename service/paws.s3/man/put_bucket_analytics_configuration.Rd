@@ -4,7 +4,20 @@
 \alias{put_bucket_analytics_configuration}
 \title{Sets an analytics configuration for the bucket (specified by the analytics configuration ID)}
 \usage{
-put_bucket_analytics_configuration(
+put_bucket_analytics_configuration(Bucket, Id, AnalyticsConfiguration)
+}
+\arguments{
+\item{Bucket}{[required] The name of the bucket to which an analytics configuration is stored.}
+
+\item{Id}{[required] The identifier used to represent an analytics configuration.}
+
+\item{AnalyticsConfiguration}{[required] The configuration and any analyses for the analytics filter.}
+}
+\description{
+Sets an analytics configuration for the bucket (specified by the analytics configuration ID).
+}
+\section{Accepted Parameters}{
+\preformatted{put_bucket_analytics_configuration(
   Bucket = "string",
   Id = "string",
   AnalyticsConfiguration = list(
@@ -41,16 +54,5 @@ put_bucket_analytics_configuration(
   )
 )
 }
-\arguments{
-\item{Bucket}{[required] The name of the bucket to which an analytics configuration is stored.}
-
-\item{Id}{[required] The identifier used to represent an analytics configuration.}
-
-\item{AnalyticsConfiguration}{[required] The configuration and any analyses for the analytics filter.}
 }
-\description{
-Sets an analytics configuration for the bucket (specified by the analytics configuration ID).
-}
-\examples{
 
-}

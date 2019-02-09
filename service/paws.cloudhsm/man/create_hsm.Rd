@@ -2,18 +2,11 @@
 % Please edit documentation in R/paws.cloudhsm_operations.R
 \name{create_hsm}
 \alias{create_hsm}
-\title{This is documentation for \strong{AWS CloudHSM Classic}}
+\title{This is documentation for AWS CLOUDHSM CLASSIC}
 \usage{
-create_hsm(
-  SubnetId = "string",
-  SshKey = "string",
-  EniIp = "string",
-  IamRoleArn = "string",
-  ExternalId = "string",
-  SubscriptionType = "PRODUCTION",
-  ClientToken = "string",
-  SyslogIp = "string"
-)
+create_hsm(SubnetId, SshKey, EniIp = NULL, IamRoleArn,
+  ExternalId = NULL, SubscriptionType, ClientToken = NULL,
+  SyslogIp = NULL)
 }
 \arguments{
 \item{SubnetId}{[required] The identifier of the subnet in your VPC in which to place the HSM.}
@@ -46,6 +39,17 @@ There is an upfront fee charged for each HSM instance that you create with the \
 
 It can take up to 20 minutes to create and provision an HSM. You can monitor the status of the HSM with the DescribeHsm operation. The HSM is ready to be initialized when the status changes to \code{RUNNING}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_hsm(
+  SubnetId = "string",
+  SshKey = "string",
+  EniIp = "string",
+  IamRoleArn = "string",
+  ExternalId = "string",
+  SubscriptionType = "PRODUCTION",
+  ClientToken = "string",
+  SyslogIp = "string"
+)
 }
+}
+

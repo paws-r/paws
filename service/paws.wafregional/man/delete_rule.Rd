@@ -4,10 +4,7 @@
 \alias{delete_rule}
 \title{Permanently deletes a Rule}
 \usage{
-delete_rule(
-  RuleId = "string",
-  ChangeToken = "string"
-)
+delete_rule(RuleId, ChangeToken)
 }
 \arguments{
 \item{RuleId}{[required] The \code{RuleId} of the Rule that you want to delete. \code{RuleId} is returned by CreateRule and by ListRules.}
@@ -27,11 +24,19 @@ To permanently delete a \code{Rule} from AWS WAF, perform the following steps:
 \item Submit a \code{DeleteRule} request.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{delete_rule(
+  RuleId = "string",
+  ChangeToken = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes a rule with the ID WAFRule-1-Example.
-delete_rule(
+\donttest{delete_rule(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   RuleId = "WAFRule-1-Example"
-)
+)}
 
 }

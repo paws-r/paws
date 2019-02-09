@@ -4,17 +4,8 @@
 \alias{get_load_balancer_metric_data}
 \title{Returns information about health metrics for your Lightsail load balancer}
 \usage{
-get_load_balancer_metric_data(
-  loadBalancerName = "string",
-  metricName = "ClientTLSNegotiationErrorCount"|"HealthyHostCount"|"UnhealthyHostCount"|"HTTPCode_LB_4XX_Count"|"HTTPCode_LB_5XX_Count"|"HTTPCode_Instance_2XX_Count"|"HTTPCode_Instance_3XX_Count"|"HTTPCode_Instance_4XX_Count"|"HTTPCode_Instance_5XX_Count"|"InstanceResponseTime"|"RejectedConnectionCount"|"RequestCount",
-  period = 123,
-  startTime = as.POSIXct("2015-01-01"),
-  endTime = as.POSIXct("2015-01-01"),
-  unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
-  statistics = list(
-    "Minimum"|"Maximum"|"Sum"|"Average"|"SampleCount"
-  )
-)
+get_load_balancer_metric_data(loadBalancerName, metricName, period,
+  startTime, endTime, unit, statistics)
 }
 \arguments{
 \item{loadBalancerName}{[required] The name of the load balancer.}
@@ -79,6 +70,18 @@ get_load_balancer_metric_data(
 \description{
 Returns information about health metrics for your Lightsail load balancer.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_load_balancer_metric_data(
+  loadBalancerName = "string",
+  metricName = "ClientTLSNegotiationErrorCount"|"HealthyHostCount"|"UnhealthyHostCount"|"HTTPCode_LB_4XX_Count"|"HTTPCode_LB_5XX_Count"|"HTTPCode_Instance_2XX_Count"|"HTTPCode_Instance_3XX_Count"|"HTTPCode_Instance_4XX_Count"|"HTTPCode_Instance_5XX_Count"|"InstanceResponseTime"|"RejectedConnectionCount"|"RequestCount",
+  period = 123,
+  startTime = as.POSIXct("2015-01-01"),
+  endTime = as.POSIXct("2015-01-01"),
+  unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
+  statistics = list(
+    "Minimum"|"Maximum"|"Sum"|"Average"|"SampleCount"
+  )
+)
 }
+}
+

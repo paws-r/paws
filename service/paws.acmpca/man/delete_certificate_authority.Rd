@@ -4,10 +4,8 @@
 \alias{delete_certificate_authority}
 \title{Deletes a private certificate authority (CA)}
 \usage{
-delete_certificate_authority(
-  CertificateAuthorityArn = "string",
-  PermanentDeletionTimeInDays = 123
-)
+delete_certificate_authority(CertificateAuthorityArn,
+  PermanentDeletionTimeInDays = NULL)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called CreateCertificateAuthority. This must have the following form:
@@ -24,6 +22,11 @@ Additionally, you can delete a CA if you are waiting for it to be created (the \
 
 If the CA is in one of the aforementioned states and you call DeleteCertificateAuthority, the CA's status changes to \code{DELETED}. However, the CA won't be permentantly deleted until the restoration period has passed. By default, if you do not set the \code{PermanentDeletionTimeInDays} parameter, the CA remains restorable for 30 days. You can set the parameter from 7 to 30 days. The DescribeCertificateAuthority operation returns the time remaining in the restoration window of a Private CA in the \code{DELETED} state. To restore an eligable CA, call the RestoreCertificateAuthority operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_certificate_authority(
+  CertificateAuthorityArn = "string",
+  PermanentDeletionTimeInDays = 123
+)
 }
+}
+

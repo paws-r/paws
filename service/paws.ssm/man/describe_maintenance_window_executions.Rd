@@ -4,19 +4,8 @@
 \alias{describe_maintenance_window_executions}
 \title{Lists the executions of a Maintenance Window}
 \usage{
-describe_maintenance_window_executions(
-  WindowId = "string",
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_maintenance_window_executions(WindowId, Filters = NULL,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{WindowId}{[required] The ID of the Maintenance Window whose executions should be retrieved.}
@@ -36,6 +25,20 @@ The supported Keys are ExecutedBefore and ExecutedAfter with the value being a d
 \description{
 Lists the executions of a Maintenance Window. This includes information about when the Maintenance Window was scheduled to be active, and information about tasks registered and run with the Maintenance Window.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_maintenance_window_executions(
+  WindowId = "string",
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

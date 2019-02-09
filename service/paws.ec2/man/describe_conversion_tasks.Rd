@@ -4,12 +4,7 @@
 \alias{describe_conversion_tasks}
 \title{Describes one or more of your conversion tasks}
 \usage{
-describe_conversion_tasks(
-  ConversionTaskIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+describe_conversion_tasks(ConversionTaskIds = NULL, DryRun = NULL)
 }
 \arguments{
 \item{ConversionTaskIds}{One or more conversion task IDs.}
@@ -22,6 +17,13 @@ Describes one or more of your conversion tasks. For more information, see the \h
 \details{
 For information about the import manifest referenced by this API action, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html}{VM Import Manifest}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_conversion_tasks(
+  ConversionTaskIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
+}
+

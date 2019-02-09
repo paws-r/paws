@@ -4,18 +4,9 @@
 \alias{register_instance}
 \title{Registers instances that were created outside of AWS OpsWorks Stacks with a specified stack}
 \usage{
-register_instance(
-  StackId = "string",
-  Hostname = "string",
-  PublicIp = "string",
-  PrivateIp = "string",
-  RsaPublicKey = "string",
-  RsaPublicKeyFingerprint = "string",
-  InstanceIdentity = list(
-    Document = "string",
-    Signature = "string"
-  )
-)
+register_instance(StackId, Hostname = NULL, PublicIp = NULL,
+  PrivateIp = NULL, RsaPublicKey = NULL,
+  RsaPublicKeyFingerprint = NULL, InstanceIdentity = NULL)
 }
 \arguments{
 \item{StackId}{[required] The ID of the stack that the instance is to be registered with.}
@@ -42,6 +33,19 @@ Registered instances have the same requirements as instances that are created by
 
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{register_instance(
+  StackId = "string",
+  Hostname = "string",
+  PublicIp = "string",
+  PrivateIp = "string",
+  RsaPublicKey = "string",
+  RsaPublicKeyFingerprint = "string",
+  InstanceIdentity = list(
+    Document = "string",
+    Signature = "string"
+  )
+)
 }
+}
+

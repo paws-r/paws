@@ -4,33 +4,11 @@
 \alias{create_fleet}
 \title{Creates a fleet}
 \usage{
-create_fleet(
-  Name = "string",
-  ImageName = "string",
-  ImageArn = "string",
-  InstanceType = "string",
-  FleetType = "ALWAYS_ON"|"ON_DEMAND",
-  ComputeCapacity = list(
-    DesiredInstances = 123
-  ),
-  VpcConfig = list(
-    SubnetIds = list(
-      "string"
-    ),
-    SecurityGroupIds = list(
-      "string"
-    )
-  ),
-  MaxUserDurationInSeconds = 123,
-  DisconnectTimeoutInSeconds = 123,
-  Description = "string",
-  DisplayName = "string",
-  EnableDefaultInternetAccess = TRUE|FALSE,
-  DomainJoinInfo = list(
-    DirectoryName = "string",
-    OrganizationalUnitDistinguishedName = "string"
-  )
-)
+create_fleet(Name, ImageName = NULL, ImageArn = NULL, InstanceType,
+  FleetType = NULL, ComputeCapacity, VpcConfig = NULL,
+  MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL,
+  Description = NULL, DisplayName = NULL,
+  EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL)
 }
 \arguments{
 \item{Name}{[required] A unique name for the fleet.}
@@ -92,6 +70,34 @@ ON\_DEMAND
 \description{
 Creates a fleet. A fleet consists of streaming instances that run a specified image.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_fleet(
+  Name = "string",
+  ImageName = "string",
+  ImageArn = "string",
+  InstanceType = "string",
+  FleetType = "ALWAYS_ON"|"ON_DEMAND",
+  ComputeCapacity = list(
+    DesiredInstances = 123
+  ),
+  VpcConfig = list(
+    SubnetIds = list(
+      "string"
+    ),
+    SecurityGroupIds = list(
+      "string"
+    )
+  ),
+  MaxUserDurationInSeconds = 123,
+  DisconnectTimeoutInSeconds = 123,
+  Description = "string",
+  DisplayName = "string",
+  EnableDefaultInternetAccess = TRUE|FALSE,
+  DomainJoinInfo = list(
+    DirectoryName = "string",
+    OrganizationalUnitDistinguishedName = "string"
+  )
+)
 }
+}
+

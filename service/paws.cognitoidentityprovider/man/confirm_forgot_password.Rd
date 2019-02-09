@@ -4,19 +4,9 @@
 \alias{confirm_forgot_password}
 \title{Allows a user to enter a confirmation code to reset a forgotten password}
 \usage{
-confirm_forgot_password(
-  ClientId = "string",
-  SecretHash = "string",
-  Username = "string",
-  ConfirmationCode = "string",
-  Password = "string",
-  AnalyticsMetadata = list(
-    AnalyticsEndpointId = "string"
-  ),
-  UserContextData = list(
-    EncodedData = "string"
-  )
-)
+confirm_forgot_password(ClientId, SecretHash = NULL, Username,
+  ConfirmationCode, Password, AnalyticsMetadata = NULL,
+  UserContextData = NULL)
 }
 \arguments{
 \item{ClientId}{[required] The app client ID of the app associated with the user pool.}
@@ -36,6 +26,20 @@ confirm_forgot_password(
 \description{
 Allows a user to enter a confirmation code to reset a forgotten password.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{confirm_forgot_password(
+  ClientId = "string",
+  SecretHash = "string",
+  Username = "string",
+  ConfirmationCode = "string",
+  Password = "string",
+  AnalyticsMetadata = list(
+    AnalyticsEndpointId = "string"
+  ),
+  UserContextData = list(
+    EncodedData = "string"
+  )
+)
 }
+}
+

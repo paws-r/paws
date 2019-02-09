@@ -4,19 +4,26 @@
 \alias{batch_update_schedule}
 \title{Update a channel schedule}
 \usage{
-batch_update_schedule(
+batch_update_schedule(ChannelId, Creates = NULL, Deletes = NULL)
+}
+\arguments{
+\item{ChannelId}{[required] Id of the channel whose schedule is being updated.}
+
+\item{Creates}{Schedule actions to create in the schedule.}
+
+\item{Deletes}{Schedule actions to delete from the schedule.}
+}
+\description{
+Update a channel schedule
+}
+\section{Accepted Parameters}{
+\preformatted{batch_update_schedule(
   ChannelId = "string",
   Creates = list(
     ScheduleActions = list(
       list(
         ActionName = "string",
         ScheduleActionSettings = list(
-          HlsTimedMetadataSettings = list(
-            Id3 = "string"
-          ),
-          InputSwitchSettings = list(
-            InputAttachmentNameReference = "string"
-          ),
           Scte35ReturnToNetworkSettings = list(
             SpliceEventId = 123
           ),
@@ -74,10 +81,6 @@ batch_update_schedule(
         ScheduleActionStartSettings = list(
           FixedModeScheduleActionStartSettings = list(
             Time = "string"
-          ),
-          FollowModeScheduleActionStartSettings = list(
-            FollowPoint = "END"|"START",
-            ReferenceActionName = "string"
           )
         )
       )
@@ -90,16 +93,5 @@ batch_update_schedule(
   )
 )
 }
-\arguments{
-\item{ChannelId}{[required] Id of the channel whose schedule is being updated.}
-
-\item{Creates}{Schedule actions to create in the schedule.}
-
-\item{Deletes}{Schedule actions to delete from the schedule.}
 }
-\description{
-Update a channel schedule
-}
-\examples{
 
-}

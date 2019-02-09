@@ -2,18 +2,10 @@
 % Please edit documentation in R/paws.codedeploy_operations.R
 \name{list_deployment_instances}
 \alias{list_deployment_instances}
-\title{The newer BatchGetDeploymentTargets should be used instead because it works with all compute types}
+\title{Lists the instance for a deployment associated with the applicable IAM user or AWS account}
 \usage{
-list_deployment_instances(
-  deploymentId = "string",
-  nextToken = "string",
-  instanceStatusFilter = list(
-    "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"|"Ready"
-  ),
-  instanceTypeFilter = list(
-    "Blue"|"Green"
-  )
-)
+list_deployment_instances(deploymentId, nextToken = NULL,
+  instanceStatusFilter = NULL, instanceTypeFilter = NULL)
 }
 \arguments{
 \item{deploymentId}{[required] The unique ID of a deployment.}
@@ -33,11 +25,19 @@ list_deployment_instances(
 \item{instanceTypeFilter}{The set of instances in a blue/green deployment, either those in the original environment ("BLUE") or those in the replacement environment ("GREEN"), for which you want to view instance information.}
 }
 \description{
-The newer BatchGetDeploymentTargets should be used instead because it works with all compute types. \code{ListDeploymentInstances} throws an exception if it is used with a compute platform other than EC2/On-premises or AWS Lambda.
-}
-\details{
 Lists the instance for a deployment associated with the applicable IAM user or AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_deployment_instances(
+  deploymentId = "string",
+  nextToken = "string",
+  instanceStatusFilter = list(
+    "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"|"Ready"
+  ),
+  instanceTypeFilter = list(
+    "Blue"|"Green"
+  )
+)
 }
+}
+

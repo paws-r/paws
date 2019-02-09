@@ -4,7 +4,21 @@
 \alias{describe_patch_groups}
 \title{Lists all patch groups that have been registered with patch baselines}
 \usage{
-describe_patch_groups(
+describe_patch_groups(MaxResults = NULL, Filters = NULL,
+  NextToken = NULL)
+}
+\arguments{
+\item{MaxResults}{The maximum number of patch groups to return (per page).}
+
+\item{Filters}{One or more filters. Use a filter to return a more specific list of results.}
+
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
+}
+\description{
+Lists all patch groups that have been registered with patch baselines.
+}
+\section{Accepted Parameters}{
+\preformatted{describe_patch_groups(
   MaxResults = 123,
   Filters = list(
     list(
@@ -17,16 +31,5 @@ describe_patch_groups(
   NextToken = "string"
 )
 }
-\arguments{
-\item{MaxResults}{The maximum number of patch groups to return (per page).}
-
-\item{Filters}{One or more filters. Use a filter to return a more specific list of results.}
-
-\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
-\description{
-Lists all patch groups that have been registered with patch baselines.
-}
-\examples{
 
-}

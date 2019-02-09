@@ -4,19 +4,9 @@
 \alias{start_job_run}
 \title{Starts a job run using a job definition}
 \usage{
-start_job_run(
-  JobName = "string",
-  JobRunId = "string",
-  Arguments = list(
-    "string"
-  ),
-  AllocatedCapacity = 123,
-  Timeout = 123,
-  NotificationProperty = list(
-    NotifyDelayAfter = 123
-  ),
-  SecurityConfiguration = "string"
-)
+start_job_run(JobName, JobRunId = NULL, Arguments = NULL,
+  AllocatedCapacity = NULL, Timeout = NULL,
+  NotificationProperty = NULL, SecurityConfiguration = NULL)
 }
 \arguments{
 \item{JobName}{[required] The name of the job definition to use.}
@@ -42,6 +32,20 @@ For information about the key-value pairs that AWS Glue consumes to set up your 
 \description{
 Starts a job run using a job definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_job_run(
+  JobName = "string",
+  JobRunId = "string",
+  Arguments = list(
+    "string"
+  ),
+  AllocatedCapacity = 123,
+  Timeout = 123,
+  NotificationProperty = list(
+    NotifyDelayAfter = 123
+  ),
+  SecurityConfiguration = "string"
+)
 }
+}
+

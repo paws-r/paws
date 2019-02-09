@@ -4,19 +4,18 @@
 \alias{continue_deployment}
 \title{For a blue/green deployment, starts the process of rerouting traffic from instances in the original environment to instances in the replacement environment without waiting for a specified wait time to elapse}
 \usage{
-continue_deployment(
-  deploymentId = "string",
-  deploymentWaitType = "READY_WAIT"|"TERMINATION_WAIT"
-)
+continue_deployment(deploymentId = NULL)
 }
 \arguments{
-\item{deploymentId}{The unique ID of a blue/green deployment for which you want to start rerouting traffic to the replacement environment.}
-
-\item{deploymentWaitType}{The status of the deployment's waiting period. READY\_WAIT indicates the deployment is ready to start shifting traffic. TERMINATION\_WAIT indicates the traffic is shifted, but the original target is not terminated.}
+\item{deploymentId}{The deployment ID of the blue/green deployment for which you want to start rerouting traffic to the replacement environment.}
 }
 \description{
 For a blue/green deployment, starts the process of rerouting traffic from instances in the original environment to instances in the replacement environment without waiting for a specified wait time to elapse. (Traffic rerouting, which is achieved by registering instances in the replacement environment with the load balancer, can start as soon as all instances have a status of Ready.)
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{continue_deployment(
+  deploymentId = "string"
+)
 }
+}
+

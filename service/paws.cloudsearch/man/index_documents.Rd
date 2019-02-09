@@ -4,9 +4,7 @@
 \alias{index_documents}
 \title{Tells the search domain to start indexing its documents using the latest indexing options}
 \usage{
-index_documents(
-  DomainName = "string"
-)
+index_documents(DomainName)
 }
 \arguments{
 \item{DomainName}{[required]}
@@ -14,6 +12,10 @@ index_documents(
 \description{
 Tells the search domain to start indexing its documents using the latest indexing options. This operation must be invoked to activate options whose OptionStatus is \code{RequiresIndexDocuments}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{index_documents(
+  DomainName = "string"
+)
 }
+}
+

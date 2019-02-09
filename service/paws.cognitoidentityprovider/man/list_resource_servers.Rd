@@ -4,11 +4,7 @@
 \alias{list_resource_servers}
 \title{Lists the resource servers for a user pool}
 \usage{
-list_resource_servers(
-  UserPoolId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_resource_servers(UserPoolId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
@@ -20,6 +16,12 @@ list_resource_servers(
 \description{
 Lists the resource servers for a user pool.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_resource_servers(
+  UserPoolId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

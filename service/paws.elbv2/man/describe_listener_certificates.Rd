@@ -4,11 +4,8 @@
 \alias{describe_listener_certificates}
 \title{Describes the certificates for the specified secure listener}
 \usage{
-describe_listener_certificates(
-  ListenerArn = "string",
-  Marker = "string",
-  PageSize = 123
-)
+describe_listener_certificates(ListenerArn, Marker = NULL,
+  PageSize = NULL)
 }
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Names (ARN) of the listener.}
@@ -20,6 +17,12 @@ describe_listener_certificates(
 \description{
 Describes the certificates for the specified secure listener.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_listener_certificates(
+  ListenerArn = "string",
+  Marker = "string",
+  PageSize = 123
+)
 }
+}
+

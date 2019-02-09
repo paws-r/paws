@@ -4,13 +4,8 @@
 \alias{get_bot_channel_associations}
 \title{Returns a list of all of the channels associated with the specified bot}
 \usage{
-get_bot_channel_associations(
-  botName = "string",
-  botAlias = "string",
-  nextToken = "string",
-  maxResults = 123,
-  nameContains = "string"
-)
+get_bot_channel_associations(botName, botAlias, nextToken = NULL,
+  maxResults = NULL, nameContains = NULL)
 }
 \arguments{
 \item{botName}{[required] The name of the Amazon Lex bot in the association.}
@@ -29,6 +24,14 @@ Returns a list of all of the channels associated with the specified bot.
 \details{
 The \code{GetBotChannelAssociations} operation requires permissions for the \code{lex:GetBotChannelAssociations} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_bot_channel_associations(
+  botName = "string",
+  botAlias = "string",
+  nextToken = "string",
+  maxResults = 123,
+  nameContains = "string"
+)
 }
+}
+

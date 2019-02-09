@@ -4,13 +4,7 @@
 \alias{label_parameter_version}
 \title{A parameter label is a user-defined alias to help you manage different versions of a parameter}
 \usage{
-label_parameter_version(
-  Name = "string",
-  ParameterVersion = 123,
-  Labels = list(
-    "string"
-  )
-)
+label_parameter_version(Name, ParameterVersion = NULL, Labels)
 }
 \arguments{
 \item{Name}{[required] The parameter name on which you want to attach one or more labels.}
@@ -35,6 +29,14 @@ Parameter labels have the following requirements and restrictions.
 \item Labels can't begin with a number, "aws," or "ssm" (not case sensitive). If a label fails to meet these requirements, then the label is not associated with a parameter and the system displays it in the list of InvalidLabels.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{label_parameter_version(
+  Name = "string",
+  ParameterVersion = 123,
+  Labels = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{get_patch_baseline}
 \title{Retrieves information about a patch baseline}
 \usage{
-get_patch_baseline(
-  BaselineId = "string"
-)
+get_patch_baseline(BaselineId)
 }
 \arguments{
 \item{BaselineId}{[required] The ID of the patch baseline to retrieve.}
@@ -14,6 +12,10 @@ get_patch_baseline(
 \description{
 Retrieves information about a patch baseline.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_patch_baseline(
+  BaselineId = "string"
+)
 }
+}
+

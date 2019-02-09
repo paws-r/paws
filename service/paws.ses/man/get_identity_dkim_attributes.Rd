@@ -4,11 +4,7 @@
 \alias{get_identity_dkim_attributes}
 \title{Returns the current status of Easy DKIM signing for an entity}
 \usage{
-get_identity_dkim_attributes(
-  Identities = list(
-    "string"
-  )
-)
+get_identity_dkim_attributes(Identities)
 }
 \arguments{
 \item{Identities}{[required] A list of one or more verified identities - email addresses, domains, or both.}
@@ -28,14 +24,23 @@ This operation is throttled at one request per second and can only get DKIM attr
 
 For more information about creating DNS records using DKIM tokens, go to the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html}{Amazon SES Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{get_identity_dkim_attributes(
+  Identities = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example retrieves the Amazon SES Easy DKIM attributes for
 # a list of identities:
-get_identity_dkim_attributes(
+\donttest{get_identity_dkim_attributes(
   Identities = list(
     "example.com",
     "user@example.com"
   )
-)
+)}
 
 }

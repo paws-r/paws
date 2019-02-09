@@ -4,9 +4,7 @@
 \alias{describe_application}
 \title{Returns information about a specific Amazon Kinesis Analytics application}
 \usage{
-describe_application(
-  ApplicationName = "string"
-)
+describe_application(ApplicationName)
 }
 \arguments{
 \item{ApplicationName}{[required] Name of the application.}
@@ -19,6 +17,10 @@ If you want to retrieve a list of all applications in your account, use the List
 
 This operation requires permissions to perform the \code{kinesisanalytics:DescribeApplication} action. You can use \code{DescribeApplication} to get the current application versionId, which you need to call other operations such as \code{Update}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_application(
+  ApplicationName = "string"
+)
 }
+}
+

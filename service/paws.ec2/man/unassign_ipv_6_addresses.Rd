@@ -4,12 +4,7 @@
 \alias{unassign_ipv_6_addresses}
 \title{Unassigns one or more IPv6 addresses from a network interface}
 \usage{
-unassign_ipv_6_addresses(
-  Ipv6Addresses = list(
-    "string"
-  ),
-  NetworkInterfaceId = "string"
-)
+unassign_ipv_6_addresses(Ipv6Addresses, NetworkInterfaceId)
 }
 \arguments{
 \item{Ipv6Addresses}{[required] The IPv6 addresses to unassign from the network interface.}
@@ -19,6 +14,13 @@ unassign_ipv_6_addresses(
 \description{
 Unassigns one or more IPv6 addresses from a network interface.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{unassign_ipv_6_addresses(
+  Ipv6Addresses = list(
+    "string"
+  ),
+  NetworkInterfaceId = "string"
+)
 }
+}
+

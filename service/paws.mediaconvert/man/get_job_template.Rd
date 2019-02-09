@@ -4,9 +4,7 @@
 \alias{get_job_template}
 \title{Retrieve the JSON for a specific job template}
 \usage{
-get_job_template(
-  Name = "string"
-)
+get_job_template(Name)
 }
 \arguments{
 \item{Name}{[required] The name of the job template.}
@@ -14,6 +12,10 @@ get_job_template(
 \description{
 Retrieve the JSON for a specific job template.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_job_template(
+  Name = "string"
+)
 }
+}
+

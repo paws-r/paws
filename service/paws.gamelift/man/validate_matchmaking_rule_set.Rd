@@ -4,9 +4,7 @@
 \alias{validate_matchmaking_rule_set}
 \title{Validates the syntax of a matchmaking rule or rule set}
 \usage{
-validate_matchmaking_rule_set(
-  RuleSetBody = "string"
-)
+validate_matchmaking_rule_set(RuleSetBody)
 }
 \arguments{
 \item{RuleSetBody}{[required] Collection of matchmaking rules to validate, formatted as a JSON string.}
@@ -26,6 +24,10 @@ Operations related to match configurations and rule sets include:
 \item ValidateMatchmakingRuleSet
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{validate_matchmaking_rule_set(
+  RuleSetBody = "string"
+)
 }
+}
+

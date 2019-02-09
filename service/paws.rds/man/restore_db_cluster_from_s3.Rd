@@ -4,47 +4,19 @@
 \alias{restore_db_cluster_from_s3}
 \title{Creates an Amazon Aurora DB cluster from data stored in an Amazon S3 bucket}
 \usage{
-restore_db_cluster_from_s3(
-  AvailabilityZones = list(
-    "string"
-  ),
-  BackupRetentionPeriod = 123,
-  CharacterSetName = "string",
-  DatabaseName = "string",
-  DBClusterIdentifier = "string",
-  DBClusterParameterGroupName = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  DBSubnetGroupName = "string",
-  Engine = "string",
-  EngineVersion = "string",
-  Port = 123,
-  MasterUsername = "string",
-  MasterUserPassword = "string",
-  OptionGroupName = "string",
-  PreferredBackupWindow = "string",
-  PreferredMaintenanceWindow = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  StorageEncrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  SourceEngine = "string",
-  SourceEngineVersion = "string",
-  S3BucketName = "string",
-  S3Prefix = "string",
-  S3IngestionRoleArn = "string",
-  BacktrackWindow = 123,
-  EnableCloudwatchLogsExports = list(
-    "string"
-  ),
-  DeletionProtection = TRUE|FALSE
-)
+restore_db_cluster_from_s3(AvailabilityZones = NULL,
+  BackupRetentionPeriod = NULL, CharacterSetName = NULL,
+  DatabaseName = NULL, DBClusterIdentifier,
+  DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL,
+  DBSubnetGroupName = NULL, Engine, EngineVersion = NULL,
+  Port = NULL, MasterUsername, MasterUserPassword,
+  OptionGroupName = NULL, PreferredBackupWindow = NULL,
+  PreferredMaintenanceWindow = NULL, Tags = NULL,
+  StorageEncrypted = NULL, KmsKeyId = NULL,
+  EnableIAMDatabaseAuthentication = NULL, SourceEngine,
+  SourceEngineVersion, S3BucketName, S3Prefix = NULL, S3IngestionRoleArn,
+  BacktrackWindow = NULL, EnableCloudwatchLogsExports = NULL,
+  DeletionProtection = NULL)
 }
 \arguments{
 \item{AvailabilityZones}{A list of EC2 Availability Zones that instances in the restored DB cluster can be created in.}
@@ -191,6 +163,48 @@ Constraints:
 \description{
 Creates an Amazon Aurora DB cluster from data stored in an Amazon S3 bucket. Amazon RDS must be authorized to access the Amazon S3 bucket and the data must be created using the Percona XtraBackup utility as described in \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Migrating.html}{Migrating Data to an Amazon Aurora MySQL DB Cluster} in the \emph{Amazon Aurora User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{restore_db_cluster_from_s3(
+  AvailabilityZones = list(
+    "string"
+  ),
+  BackupRetentionPeriod = 123,
+  CharacterSetName = "string",
+  DatabaseName = "string",
+  DBClusterIdentifier = "string",
+  DBClusterParameterGroupName = "string",
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  DBSubnetGroupName = "string",
+  Engine = "string",
+  EngineVersion = "string",
+  Port = 123,
+  MasterUsername = "string",
+  MasterUserPassword = "string",
+  OptionGroupName = "string",
+  PreferredBackupWindow = "string",
+  PreferredMaintenanceWindow = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  StorageEncrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  SourceEngine = "string",
+  SourceEngineVersion = "string",
+  S3BucketName = "string",
+  S3Prefix = "string",
+  S3IngestionRoleArn = "string",
+  BacktrackWindow = 123,
+  EnableCloudwatchLogsExports = list(
+    "string"
+  ),
+  DeletionProtection = TRUE|FALSE
+)
 }
+}
+

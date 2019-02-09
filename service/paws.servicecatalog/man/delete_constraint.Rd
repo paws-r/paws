@@ -4,10 +4,7 @@
 \alias{delete_constraint}
 \title{Deletes the specified constraint}
 \usage{
-delete_constraint(
-  AcceptLanguage = "string",
-  Id = "string"
-)
+delete_constraint(AcceptLanguage = NULL, Id)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -22,6 +19,11 @@ delete_constraint(
 \description{
 Deletes the specified constraint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_constraint(
+  AcceptLanguage = "string",
+  Id = "string"
+)
 }
+}
+

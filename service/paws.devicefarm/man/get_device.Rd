@@ -4,9 +4,7 @@
 \alias{get_device}
 \title{Gets information about a unique device type}
 \usage{
-get_device(
-  arn = "string"
-)
+get_device(arn)
 }
 \arguments{
 \item{arn}{[required] The device type's ARN.}
@@ -14,10 +12,17 @@ get_device(
 \description{
 Gets information about a unique device type.
 }
+\section{Accepted Parameters}{
+\preformatted{get_device(
+  arn = "string"
+)
+}
+}
+
 \examples{
 # The following example returns information about a specific device.
-get_device(
+\donttest{get_device(
   arn = "arn:aws:devicefarm:us-west-2::device:123EXAMPLE"
-)
+)}
 
 }

@@ -4,9 +4,7 @@
 \alias{describe_hosted_connections}
 \title{Lists the hosted connections that have been provisioned on the specified interconnect or link aggregation group (LAG)}
 \usage{
-describe_hosted_connections(
-  connectionId = "string"
-)
+describe_hosted_connections(connectionId)
 }
 \arguments{
 \item{connectionId}{[required] The ID of the interconnect or LAG.}
@@ -17,6 +15,10 @@ Lists the hosted connections that have been provisioned on the specified interco
 \details{
 Intended for use by AWS Direct Connect partners only.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_hosted_connections(
+  connectionId = "string"
+)
 }
+}
+

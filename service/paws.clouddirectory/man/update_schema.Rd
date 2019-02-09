@@ -4,10 +4,7 @@
 \alias{update_schema}
 \title{Updates the schema name with a new name}
 \usage{
-update_schema(
-  SchemaArn = "string",
-  Name = "string"
-)
+update_schema(SchemaArn, Name)
 }
 \arguments{
 \item{SchemaArn}{[required] The Amazon Resource Name (ARN) of the development schema. For more information, see arns.}
@@ -17,6 +14,11 @@ update_schema(
 \description{
 Updates the schema name with a new name. Only development schema names can be updated.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_schema(
+  SchemaArn = "string",
+  Name = "string"
+)
 }
+}
+

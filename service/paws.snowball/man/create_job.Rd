@@ -4,52 +4,11 @@
 \alias{create_job}
 \title{Creates a job to import or export data between Amazon S3 and your on-premises data center}
 \usage{
-create_job(
-  JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
-  Resources = list(
-    S3Resources = list(
-      list(
-        BucketArn = "string",
-        KeyRange = list(
-          BeginMarker = "string",
-          EndMarker = "string"
-        )
-      )
-    ),
-    LambdaResources = list(
-      list(
-        LambdaArn = "string",
-        EventTriggers = list(
-          list(
-            EventResourceARN = "string"
-          )
-        )
-      )
-    ),
-    Ec2AmiResources = list(
-      list(
-        AmiId = "string",
-        SnowballAmiId = "string"
-      )
-    )
-  ),
-  Description = "string",
-  AddressId = "string",
-  KmsKeyARN = "string",
-  RoleARN = "string",
-  SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"NoPreference",
-  ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
-  Notification = list(
-    SnsTopicARN = "string",
-    JobStatesToNotify = list(
-      "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending"
-    ),
-    NotifyAll = TRUE|FALSE
-  ),
-  ClusterId = "string",
-  SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG",
-  ForwardingAddressId = "string"
-)
+create_job(JobType = NULL, Resources = NULL, Description = NULL,
+  AddressId = NULL, KmsKeyARN = NULL, RoleARN = NULL,
+  SnowballCapacityPreference = NULL, ShippingOption = NULL,
+  Notification = NULL, ClusterId = NULL, SnowballType = NULL,
+  ForwardingAddressId = NULL)
 }
 \arguments{
 \item{JobType}{Defines the type of job that you're creating.}
@@ -82,13 +41,63 @@ With \code{EXPORT} jobs, you specify the bucket or buckets that your transferred
 
 \item{ClusterId}{The ID of a cluster. If you're creating a job for a node in a cluster, you need to provide only this \code{clusterId} value. The other job attributes are inherited from the cluster.}
 
-\item{SnowballType}{The type of AWS Snowball device to use for this job. The only supported device types for cluster jobs are \code{EDGE}, \code{EDGE_C}, and \code{EDGE_CG}.}
+\item{SnowballType}{The type of AWS Snowball device to use for this job. Currently, the only supported device type for cluster jobs is \code{EDGE}.}
 
 \item{ForwardingAddressId}{The forwarding address ID for a job. This field is not supported in most regions.}
 }
 \description{
 Creates a job to import or export data between Amazon S3 and your on-premises data center. Your AWS account must have the right trust policies and permissions in place to create a job for Snowball. If you're creating a job for a node in a cluster, you only need to provide the \code{clusterId} value; the other job attributes are inherited from the cluster.
 }
+\section{Accepted Parameters}{
+\preformatted{create_job(
+  JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
+  Resources = list(
+    S3Resources = list(
+      list(
+        BucketArn = "string",
+        KeyRange = list(
+          BeginMarker = "string",
+          EndMarker = "string"
+        )
+      )
+    ),
+    LambdaResources = list(
+      list(
+        LambdaArn = "string",
+        EventTriggers = list(
+          list(
+            EventResourceARN = "string"
+          )
+        )
+      )
+    ),
+    Ec2AmiResources = list(
+      list(
+        AmiId = "string",
+        SnowballAmiId = "string"
+      )
+    )
+  ),
+  Description = "string",
+  AddressId = "string",
+  KmsKeyARN = "string",
+  RoleARN = "string",
+  SnowballCapacityPreference = "T50"|"T80"|"T100"|"NoPreference",
+  ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
+  Notification = list(
+    SnsTopicARN = "string",
+    JobStatesToNotify = list(
+      "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending"
+    ),
+    NotifyAll = TRUE|FALSE
+  ),
+  ClusterId = "string",
+  SnowballType = "STANDARD"|"EDGE",
+  ForwardingAddressId = "string"
+)
+}
+}
+
 \examples{
 # Creates a job to import or export data between Amazon S3 and your
 # on-premises data center. Your AWS account must have the right trust
@@ -96,7 +105,7 @@ Creates a job to import or export data between Amazon S3 and your on-premises da
 # you're creating a job for a node in a cluster, you only need to provide
 # the clusterId value; the other job attributes are inherited from the
 # cluster.
-create_job(
+\donttest{create_job(
   AddressId = "ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b",
   Description = "My Job",
   JobType = "IMPORT",
@@ -122,6 +131,6 @@ create_job(
   ShippingOption = "SECOND_DAY",
   SnowballCapacityPreference = "T80",
   SnowballType = "STANDARD"
-)
+)}
 
 }

@@ -4,12 +4,7 @@
 \alias{detach_instances_from_load_balancer}
 \title{Detaches the specified instances from a Lightsail load balancer}
 \usage{
-detach_instances_from_load_balancer(
-  loadBalancerName = "string",
-  instanceNames = list(
-    "string"
-  )
-)
+detach_instances_from_load_balancer(loadBalancerName, instanceNames)
 }
 \arguments{
 \item{loadBalancerName}{[required] The name of the Lightsail load balancer.}
@@ -21,9 +16,14 @@ Detaches the specified instances from a Lightsail load balancer.
 }
 \details{
 This operation waits until the instances are no longer needed before they are detached from the load balancer.
-
-The \code{detach instances from load balancer} operation supports tag-based access control via resource tags applied to the resource identified by loadBalancerName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{detach_instances_from_load_balancer(
+  loadBalancerName = "string",
+  instanceNames = list(
+    "string"
+  )
+)
 }
+}
+

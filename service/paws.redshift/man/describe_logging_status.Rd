@@ -4,9 +4,7 @@
 \alias{describe_logging_status}
 \title{Describes whether information, such as queries and connection attempts, is being logged for the specified Amazon Redshift cluster}
 \usage{
-describe_logging_status(
-  ClusterIdentifier = "string"
-)
+describe_logging_status(ClusterIdentifier)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The identifier of the cluster from which to get the logging status.
@@ -16,6 +14,10 @@ Example: \code{examplecluster}}
 \description{
 Describes whether information, such as queries and connection attempts, is being logged for the specified Amazon Redshift cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_logging_status(
+  ClusterIdentifier = "string"
+)
 }
+}
+

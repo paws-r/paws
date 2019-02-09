@@ -4,9 +4,7 @@
 \alias{cancel_certificate_transfer}
 \title{Cancels a pending transfer for the specified certificate}
 \usage{
-cancel_certificate_transfer(
-  certificateId = "string"
-)
+cancel_certificate_transfer(certificateId)
 }
 \arguments{
 \item{certificateId}{[required] The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)}
@@ -19,6 +17,10 @@ Cancels a pending transfer for the specified certificate.
 
 After a certificate transfer is cancelled, the status of the certificate changes from PENDING\_TRANSFER to INACTIVE.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{cancel_certificate_transfer(
+  certificateId = "string"
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{delete_secret}
 \title{Deletes an entire secret and all of its versions}
 \usage{
-delete_secret(
-  SecretId = "string",
-  RecoveryWindowInDays = 123,
-  ForceDeleteWithoutRecovery = TRUE|FALSE
-)
+delete_secret(SecretId, RecoveryWindowInDays = NULL,
+  ForceDeleteWithoutRecovery = NULL)
 }
 \arguments{
 \item{SecretId}{[required] Specifies the secret that you want to delete. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
@@ -50,14 +47,23 @@ To run this command, you must have the following permissions:
 \item To cancel deletion of a version of a secret before the recovery window has expired, use RestoreSecret.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{delete_secret(
+  SecretId = "string",
+  RecoveryWindowInDays = 123,
+  ForceDeleteWithoutRecovery = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # The following example shows how to delete a secret. The secret stays in
 # your account in a deprecated and inaccessible state until the recovery
 # window ends. After the date and time in the DeletionDate response field
 # has passed, you can no longer recover this secret with restore-secret.
-delete_secret(
+\donttest{delete_secret(
   RecoveryWindowInDays = 7L,
   SecretId = "MyTestDatabaseSecret1"
-)
+)}
 
 }

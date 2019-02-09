@@ -4,12 +4,8 @@
 \alias{delete_route}
 \title{Deletes the specified route from the specified route table}
 \usage{
-delete_route(
-  DestinationCidrBlock = "string",
-  DestinationIpv6CidrBlock = "string",
-  DryRun = TRUE|FALSE,
-  RouteTableId = "string"
-)
+delete_route(DestinationCidrBlock = NULL,
+  DestinationIpv6CidrBlock = NULL, DryRun = NULL, RouteTableId)
 }
 \arguments{
 \item{DestinationCidrBlock}{The IPv4 CIDR range for the route. The value you specify must match the CIDR for the route exactly.}
@@ -23,11 +19,21 @@ delete_route(
 \description{
 Deletes the specified route from the specified route table.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_route(
+  DestinationCidrBlock = "string",
+  DestinationIpv6CidrBlock = "string",
+  DryRun = TRUE|FALSE,
+  RouteTableId = "string"
+)
+}
+}
+
 \examples{
 # This example deletes the specified route from the specified route table.
-delete_route(
+\donttest{delete_route(
   DestinationCidrBlock = "0.0.0.0/0",
   RouteTableId = "rtb-22574640"
-)
+)}
 
 }

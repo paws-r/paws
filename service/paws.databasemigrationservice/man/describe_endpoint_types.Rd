@@ -4,18 +4,8 @@
 \alias{describe_endpoint_types}
 \title{Returns information about the type of endpoints available}
 \usage{
-describe_endpoint_types(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_endpoint_types(Filters = NULL, MaxRecords = NULL,
+  Marker = NULL)
 }
 \arguments{
 \item{Filters}{Filters applied to the describe action.
@@ -33,9 +23,25 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Returns information about the type of endpoints available.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_endpoint_types(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
+}
+}
+
 \examples{
 # Returns information about the type of endpoints available.
-describe_endpoint_types(
+\donttest{describe_endpoint_types(
   Filters = list(
     list(
       Name = "string",
@@ -47,6 +53,6 @@ describe_endpoint_types(
   ),
   Marker = "",
   MaxRecords = 123L
-)
+)}
 
 }

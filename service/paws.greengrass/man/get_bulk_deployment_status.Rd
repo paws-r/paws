@@ -4,9 +4,7 @@
 \alias{get_bulk_deployment_status}
 \title{Returns the status of a bulk deployment}
 \usage{
-get_bulk_deployment_status(
-  BulkDeploymentId = "string"
-)
+get_bulk_deployment_status(BulkDeploymentId)
 }
 \arguments{
 \item{BulkDeploymentId}{[required] The ID of the bulk deployment.}
@@ -14,6 +12,10 @@ get_bulk_deployment_status(
 \description{
 Returns the status of a bulk deployment.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_bulk_deployment_status(
+  BulkDeploymentId = "string"
+)
 }
+}
+

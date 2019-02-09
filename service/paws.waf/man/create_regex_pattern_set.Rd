@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.waf_operations.R
 \name{create_regex_pattern_set}
 \alias{create_regex_pattern_set}
-\title{Creates a \code{RegexPatternSet}}
+\title{Creates a RegexPatternSet}
 \usage{
-create_regex_pattern_set(
-  Name = "string",
-  ChangeToken = "string"
-)
+create_regex_pattern_set(Name, ChangeToken)
 }
 \arguments{
 \item{Name}{[required] A friendly name or description of the RegexPatternSet. You can't change \code{Name} after you create a \code{RegexPatternSet}.}
@@ -28,6 +25,11 @@ To create and configure a \code{RegexPatternSet}, perform the following steps:
 
 For more information about how to use the AWS WAF API to allow or block HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_regex_pattern_set(
+  Name = "string",
+  ChangeToken = "string"
+)
 }
+}
+

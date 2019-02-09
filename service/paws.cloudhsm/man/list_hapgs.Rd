@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.cloudhsm_operations.R
 \name{list_hapgs}
 \alias{list_hapgs}
-\title{This is documentation for \strong{AWS CloudHSM Classic}}
+\title{This is documentation for AWS CLOUDHSM CLASSIC}
 \usage{
-list_hapgs(
-  NextToken = "string"
-)
+list_hapgs(NextToken = NULL)
 }
 \arguments{
 \item{NextToken}{The \code{NextToken} value from a previous call to \code{ListHapgs}. Pass null if this is the first call.}
@@ -21,6 +19,10 @@ Lists the high-availability partition groups for the account.
 
 This operation supports pagination with the use of the \code{NextToken} member. If more results are available, the \code{NextToken} member of the response contains a token that you pass in the next call to \code{ListHapgs} to retrieve the next set of items.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_hapgs(
+  NextToken = "string"
+)
 }
+}
+

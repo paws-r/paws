@@ -4,19 +4,7 @@
 \alias{update_method}
 \title{Updates an existing Method resource}
 \usage{
-update_method(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string",
-  patchOperations = list(
-    list(
-      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-      path = "string",
-      value = "string",
-      from = "string"
-    )
-  )
-)
+update_method(restApiId, resourceId, httpMethod, patchOperations = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -30,6 +18,20 @@ update_method(
 \description{
 Updates an existing Method resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_method(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string",
+  patchOperations = list(
+    list(
+      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
+      path = "string",
+      value = "string",
+      from = "string"
+    )
+  )
+)
 }
+}
+

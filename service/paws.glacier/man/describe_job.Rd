@@ -4,11 +4,7 @@
 \alias{describe_job}
 \title{This operation returns information about a job you previously initiated, including the job initiation date, the user who initiated the job, the job status code/message and the Amazon SNS topic to notify after Amazon Glacier completes the job}
 \usage{
-describe_job(
-  accountId = "string",
-  vaultName = "string",
-  jobId = "string"
-)
+describe_job(accountId, vaultName, jobId)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
@@ -29,13 +25,22 @@ An AWS account has full permission to perform all operations (actions). However,
 
 For more information about using this operation, see the documentation for the underlying REST API \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-describe-job-get.html}{Describe Job} in the \emph{Amazon Glacier Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_job(
+  accountId = "string",
+  vaultName = "string",
+  jobId = "string"
+)
+}
+}
+
 \examples{
 # The example returns information about the previously initiated job
 # specified by the job ID.
-describe_job(
+\donttest{describe_job(
   accountId = "-",
   jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW4_XqlNHS61dsO4Cn",
   vaultName = "my-vault"
-)
+)}
 
 }

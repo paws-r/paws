@@ -4,15 +4,8 @@
 \alias{list_users}
 \title{Lists the users in the Amazon Cognito user pool}
 \usage{
-list_users(
-  UserPoolId = "string",
-  AttributesToGet = list(
-    "string"
-  ),
-  Limit = 123,
-  PaginationToken = "string",
-  Filter = "string"
-)
+list_users(UserPoolId, AttributesToGet = NULL, Limit = NULL,
+  PaginationToken = NULL, Filter = NULL)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool on which the search should be performed.}
@@ -53,6 +46,16 @@ For more information, see \href{http://docs.aws.amazon.com/cognito/latest/develo
 \description{
 Lists the users in the Amazon Cognito user pool.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_users(
+  UserPoolId = "string",
+  AttributesToGet = list(
+    "string"
+  ),
+  Limit = 123,
+  PaginationToken = "string",
+  Filter = "string"
+)
 }
+}
+

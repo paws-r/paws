@@ -4,11 +4,8 @@
 \alias{list_streams}
 \title{Lists all of the streams in your AWS account}
 \usage{
-list_streams(
-  maxResults = 123,
-  nextToken = "string",
-  ascendingOrder = TRUE|FALSE
-)
+list_streams(maxResults = NULL, nextToken = NULL,
+  ascendingOrder = NULL)
 }
 \arguments{
 \item{maxResults}{The maximum number of results to return at a time.}
@@ -20,6 +17,12 @@ list_streams(
 \description{
 Lists all of the streams in your AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_streams(
+  maxResults = 123,
+  nextToken = "string",
+  ascendingOrder = TRUE|FALSE
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{list_health_checks}
 \title{Retrieve a list of the health checks that are associated with the current AWS account}
 \usage{
-list_health_checks(
-  Marker = "string",
-  MaxItems = "string"
-)
+list_health_checks(Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{Marker}{If the value of \code{IsTruncated} in the previous response was \code{true}, you have more health checks. To get another group, submit another \code{ListHealthChecks} request.
@@ -21,6 +18,11 @@ If the value of \code{IsTruncated} in the previous response was \code{false}, th
 \description{
 Retrieve a list of the health checks that are associated with the current AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_health_checks(
+  Marker = "string",
+  MaxItems = "string"
+)
 }
+}
+

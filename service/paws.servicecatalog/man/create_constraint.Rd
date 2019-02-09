@@ -4,15 +4,8 @@
 \alias{create_constraint}
 \title{Creates a constraint}
 \usage{
-create_constraint(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  ProductId = "string",
-  Parameters = "string",
-  Type = "string",
-  Description = "string",
-  IdempotencyToken = "string"
-)
+create_constraint(AcceptLanguage = NULL, PortfolioId, ProductId,
+  Parameters, Type, Description = NULL, IdempotencyToken)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -30,27 +23,12 @@ create_constraint(
 
 LAUNCH
 
-:   Specify the \code{RoleArn} property as follows:\preformatted{`{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}`
-
-You cannot have both a `LAUNCH` and a `STACKSET` constraint.
-
-You also cannot have more than one `LAUNCH` constraint on a product and portfolio.
+:   Specify the \code{RoleArn} property as follows:\preformatted{\\\"RoleArn\\\" : \\\"arn:aws:iam::123456789012:role/LaunchRole\\\"
 }
 
 NOTIFICATION
 
-:   Specify the \code{NotificationArns} property as follows:\preformatted{`{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}`
-}
-
-STACKSET
-
-:   Specify the \code{Parameters} property as follows:\preformatted{`{"Version": "String", "Properties": {"AccountList": [ "String" ], "RegionList": [ "String" ], "AdminRole": "String", "ExecutionRole": "String"}}`
-
-You cannot have both a `LAUNCH` and a `STACKSET` constraint.
-
-You also cannot have more than one `STACKSET` constraint on a product and portfolio.
-
-Products with a `STACKSET` constraint will launch an AWS CloudFormation stack set.
+:   Specify the \code{NotificationArns} property as follows:\preformatted{\\\"NotificationArns\\\" : &#91;\\\"arn:aws:sns:us-east-1:123456789012:Topic\\\"&#93;
 }
 
 TEMPLATE
@@ -61,7 +39,6 @@ TEMPLATE
 \itemize{
 \item \code{LAUNCH}
 \item \code{NOTIFICATION}
-\item \code{STACKSET}
 \item \code{TEMPLATE}
 }}
 
@@ -72,6 +49,16 @@ TEMPLATE
 \description{
 Creates a constraint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_constraint(
+  AcceptLanguage = "string",
+  PortfolioId = "string",
+  ProductId = "string",
+  Parameters = "string",
+  Type = "string",
+  Description = "string",
+  IdempotencyToken = "string"
+)
 }
+}
+

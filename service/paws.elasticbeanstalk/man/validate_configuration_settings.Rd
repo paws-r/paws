@@ -4,19 +4,8 @@
 \alias{validate_configuration_settings}
 \title{Takes a set of configuration settings and either a configuration template or environment, and determines whether those values are valid}
 \usage{
-validate_configuration_settings(
-  ApplicationName = "string",
-  TemplateName = "string",
-  EnvironmentName = "string",
-  OptionSettings = list(
-    list(
-      ResourceName = "string",
-      Namespace = "string",
-      OptionName = "string",
-      Value = "string"
-    )
-  )
-)
+validate_configuration_settings(ApplicationName, TemplateName = NULL,
+  EnvironmentName = NULL, OptionSettings)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application that the configuration template or environment belongs to.}
@@ -37,10 +26,27 @@ Takes a set of configuration settings and either a configuration template or env
 \details{
 This action returns a list of messages indicating any errors or warnings associated with the selection of option values.
 }
+\section{Accepted Parameters}{
+\preformatted{validate_configuration_settings(
+  ApplicationName = "string",
+  TemplateName = "string",
+  EnvironmentName = "string",
+  OptionSettings = list(
+    list(
+      ResourceName = "string",
+      Namespace = "string",
+      OptionName = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following operation validates a CloudWatch custom metrics config
 # document:
-validate_configuration_settings(
+\donttest{validate_configuration_settings(
   ApplicationName = "my-app",
   EnvironmentName = "my-env",
   OptionSettings = list(
@@ -50,6 +56,6 @@ validate_configuration_settings(
       Value = "{\\"CloudWatchMetrics\\": {\\"Environment\\": {\\"ApplicationLatencyP99.9\\": null,\\"InstancesSevere\\": 60,\\"ApplicationLatencyP90\\": 60,\\"ApplicationLatencyP99\\": null,\\"ApplicationLatencyP95\\": 60,\\"InstancesUnknown\\": 60,\\"ApplicationLatencyP85\\": 60,\\"InstancesInfo\\": null,\\"ApplicationRequests2xx\\": null,\\"InstancesDegraded\\": null,\\"InstancesWarning\\": 60,\\"ApplicationLatencyP50\\": 60,\\"ApplicationRequestsTotal\\": null,\\"InstancesNoData\\": null,\\"InstancesPending\\": 60,\\"ApplicationLatencyP10\\": null,\\"ApplicationRequests5xx\\": null,\\"ApplicationLatencyP75\\": null,\\"InstancesOk\\": 60,\\"ApplicationRequests3xx\\": null,\\"ApplicationRequests4xx\\": null},\\"Instance\\": {\\"ApplicationLatencyP99.9\\": null,\\"ApplicationLatencyP90\\": 60,\\"ApplicationLatencyP99\\": null,\\"ApplicationLatencyP95\\": null,\\"ApplicationLatencyP85\\": null,\\"CPUUser\\": 60,\\"ApplicationRequests2xx\\": null,\\"CPUIdle\\": null,\\"ApplicationLatencyP50\\": null,\\"ApplicationRequestsTotal\\": 60,\\"RootFilesystemUtil\\": null,\\"LoadAverage1min\\": null,\\"CPUIrq\\": null,\\"CPUNice\\": 60,\\"CPUIowait\\": 60,\\"ApplicationLatencyP10\\": null,\\"LoadAverage5min\\": null,\\"ApplicationRequests5xx\\": null,\\"ApplicationLatencyP75\\": 60,\\"CPUSystem\\": 60,\\"ApplicationRequests3xx\\": 60,\\"ApplicationRequests4xx\\": null,\\"InstanceHealth\\": null,\\"CPUSoftirq\\": 60}},\\"Version\\": 1}"
     )
   )
-)
+)}
 
 }

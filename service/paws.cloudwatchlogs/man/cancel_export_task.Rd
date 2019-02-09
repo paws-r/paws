@@ -4,9 +4,7 @@
 \alias{cancel_export_task}
 \title{Cancels the specified export task}
 \usage{
-cancel_export_task(
-  taskId = "string"
-)
+cancel_export_task(taskId)
 }
 \arguments{
 \item{taskId}{[required] The ID of the export task.}
@@ -17,6 +15,10 @@ Cancels the specified export task.
 \details{
 The task must be in the \code{PENDING} or \code{RUNNING} state.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{cancel_export_task(
+  taskId = "string"
+)
 }
+}
+

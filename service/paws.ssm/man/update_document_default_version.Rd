@@ -4,10 +4,7 @@
 \alias{update_document_default_version}
 \title{Set the default version of a document}
 \usage{
-update_document_default_version(
-  Name = "string",
-  DocumentVersion = "string"
-)
+update_document_default_version(Name, DocumentVersion)
 }
 \arguments{
 \item{Name}{[required] The name of a custom document that you want to set as the default version.}
@@ -17,6 +14,11 @@ update_document_default_version(
 \description{
 Set the default version of a document.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_document_default_version(
+  Name = "string",
+  DocumentVersion = "string"
+)
 }
+}
+

@@ -4,13 +4,9 @@
 \alias{modify_launch_template}
 \title{Modifies a launch template}
 \usage{
-modify_launch_template(
-  DryRun = TRUE|FALSE,
-  ClientToken = "string",
-  LaunchTemplateId = "string",
-  LaunchTemplateName = "string",
-  DefaultVersion = "string"
-)
+modify_launch_template(DryRun = NULL, ClientToken = NULL,
+  LaunchTemplateId = NULL, LaunchTemplateName = NULL,
+  DefaultVersion = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -26,12 +22,23 @@ modify_launch_template(
 \description{
 Modifies a launch template. You can specify which version of the launch template to set as the default version. When launching an instance, the default version applies when a launch template version is not specified.
 }
+\section{Accepted Parameters}{
+\preformatted{modify_launch_template(
+  DryRun = TRUE|FALSE,
+  ClientToken = "string",
+  LaunchTemplateId = "string",
+  LaunchTemplateName = "string",
+  DefaultVersion = "string"
+)
+}
+}
+
 \examples{
 # This example specifies version 2 as the default version of the specified
 # launch template.
-modify_launch_template(
+\donttest{modify_launch_template(
   DefaultVersion = "2",
   LaunchTemplateId = "lt-0abcd290751193123"
-)
+)}
 
 }

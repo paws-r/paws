@@ -2,16 +2,15 @@
 % Please edit documentation in R/paws.sms_operations.R
 \name{import_server_catalog}
 \alias{import_server_catalog}
-\title{Gathers a complete list of on-premises servers}
+\title{The ImportServerCatalog API is used to gather the complete list of on-premises servers on your premises}
 \usage{
 import_server_catalog()
 }
 \description{
-Gathers a complete list of on-premises servers. Connectors must be installed and monitoring all servers that you want to import.
+The ImportServerCatalog API is used to gather the complete list of on-premises servers on your premises. This API call requires connectors to be installed and monitoring all servers you would like imported. This API call returns immediately, but may take some time to retrieve all of the servers.
 }
-\details{
-This call returns immediately, but might take additional time to retrieve all the servers.
+\section{Accepted Parameters}{
+\preformatted{import_server_catalog()
 }
-\examples{
+}
 
-}

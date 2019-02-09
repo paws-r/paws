@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.servicediscovery_operations.R
 \name{get_operation}
 \alias{get_operation}
-\title{Gets information about any operation that returns an operation ID in the response, such as a \code{CreateService} request}
+\title{Gets information about any operation that returns an operation ID in the response, such as a CreateService request}
 \usage{
-get_operation(
-  OperationId = "string"
-)
+get_operation(OperationId)
 }
 \arguments{
 \item{OperationId}{[required] The ID of the operation that you want to get more information about.}
@@ -17,6 +15,10 @@ Gets information about any operation that returns an operation ID in the respons
 \details{
 To get a list of operations that match specified criteria, see ListOperations.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_operation(
+  OperationId = "string"
+)
 }
+}
+

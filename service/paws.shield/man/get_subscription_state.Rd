@@ -2,13 +2,15 @@
 % Please edit documentation in R/paws.shield_operations.R
 \name{get_subscription_state}
 \alias{get_subscription_state}
-\title{Returns the \code{SubscriptionState}, either \code{Active} or \code{Inactive}}
+\title{Returns the SubscriptionState, either Active or Inactive}
 \usage{
 get_subscription_state()
 }
 \description{
 Returns the \code{SubscriptionState}, either \code{Active} or \code{Inactive}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_subscription_state()
 }
+}
+

@@ -4,14 +4,8 @@
 \alias{list_violation_events}
 \title{Lists the Device Defender security profile violations discovered during the given time period}
 \usage{
-list_violation_events(
-  startTime = as.POSIXct("2015-01-01"),
-  endTime = as.POSIXct("2015-01-01"),
-  thingName = "string",
-  securityProfileName = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+list_violation_events(startTime, endTime, thingName = NULL,
+  securityProfileName = NULL, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{startTime}{[required] The start time for the alerts to be listed.}
@@ -29,6 +23,15 @@ list_violation_events(
 \description{
 Lists the Device Defender security profile violations discovered during the given time period. You can use filters to limit the results to those alerts issued for a particular security profile, behavior or thing (device).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_violation_events(
+  startTime = as.POSIXct("2015-01-01"),
+  endTime = as.POSIXct("2015-01-01"),
+  thingName = "string",
+  securityProfileName = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

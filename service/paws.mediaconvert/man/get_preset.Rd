@@ -4,9 +4,7 @@
 \alias{get_preset}
 \title{Retrieve the JSON for a specific preset}
 \usage{
-get_preset(
-  Name = "string"
-)
+get_preset(Name)
 }
 \arguments{
 \item{Name}{[required] The name of the preset.}
@@ -14,6 +12,10 @@ get_preset(
 \description{
 Retrieve the JSON for a specific preset.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_preset(
+  Name = "string"
+)
 }
+}
+

@@ -4,18 +4,8 @@
 \alias{list_commands}
 \title{Lists the commands requested by users of the AWS account}
 \usage{
-list_commands(
-  CommandId = "string",
-  InstanceId = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  Filters = list(
-    list(
-      key = "InvokedAfter"|"InvokedBefore"|"Status"|"ExecutionStage"|"DocumentName",
-      value = "string"
-    )
-  )
-)
+list_commands(CommandId = NULL, InstanceId = NULL, MaxResults = NULL,
+  NextToken = NULL, Filters = NULL)
 }
 \arguments{
 \item{CommandId}{(Optional) If provided, lists only the specified command.}
@@ -31,6 +21,19 @@ list_commands(
 \description{
 Lists the commands requested by users of the AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_commands(
+  CommandId = "string",
+  InstanceId = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  Filters = list(
+    list(
+      key = "InvokedAfter"|"InvokedBefore"|"Status"|"ExecutionStage"|"DocumentName",
+      value = "string"
+    )
+  )
+)
 }
+}
+

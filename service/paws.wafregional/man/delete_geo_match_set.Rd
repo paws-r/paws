@@ -4,10 +4,7 @@
 \alias{delete_geo_match_set}
 \title{Permanently deletes a GeoMatchSet}
 \usage{
-delete_geo_match_set(
-  GeoMatchSetId = "string",
-  ChangeToken = "string"
-)
+delete_geo_match_set(GeoMatchSetId, ChangeToken)
 }
 \arguments{
 \item{GeoMatchSetId}{[required] The \code{GeoMatchSetID} of the GeoMatchSet that you want to delete. \code{GeoMatchSetId} is returned by CreateGeoMatchSet and by ListGeoMatchSets.}
@@ -27,6 +24,11 @@ To permanently delete a \code{GeoMatchSet} from AWS WAF, perform the following s
 \item Submit a \code{DeleteGeoMatchSet} request.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_geo_match_set(
+  GeoMatchSetId = "string",
+  ChangeToken = "string"
+)
 }
+}
+

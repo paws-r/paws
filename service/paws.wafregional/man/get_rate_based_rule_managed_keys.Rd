@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.wafregional_operations.R
 \name{get_rate_based_rule_managed_keys}
 \alias{get_rate_based_rule_managed_keys}
-\title{Returns an array of IP addresses currently being blocked by the RateBasedRule that is specified by the \code{RuleId}}
+\title{Returns an array of IP addresses currently being blocked by the RateBasedRule that is specified by the RuleId}
 \usage{
-get_rate_based_rule_managed_keys(
-  RuleId = "string",
-  NextMarker = "string"
-)
+get_rate_based_rule_managed_keys(RuleId, NextMarker = NULL)
 }
 \arguments{
 \item{RuleId}{[required] The \code{RuleId} of the RateBasedRule for which you want to get a list of \code{ManagedKeys}. \code{RuleId} is returned by CreateRateBasedRule and by ListRateBasedRules.}
@@ -17,6 +14,11 @@ get_rate_based_rule_managed_keys(
 \description{
 Returns an array of IP addresses currently being blocked by the RateBasedRule that is specified by the \code{RuleId}. The maximum number of managed keys that will be blocked is 10,000. If more than 10,000 addresses exceed the rate limit, the 10,000 addresses with the highest rates will be blocked.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_rate_based_rule_managed_keys(
+  RuleId = "string",
+  NextMarker = "string"
+)
 }
+}
+

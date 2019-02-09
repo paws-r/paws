@@ -4,9 +4,7 @@
 \alias{get_sms_channel}
 \title{Get an SMS channel}
 \usage{
-get_sms_channel(
-  ApplicationId = "string"
-)
+get_sms_channel(ApplicationId)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -14,6 +12,10 @@ get_sms_channel(
 \description{
 Get an SMS channel.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_sms_channel(
+  ApplicationId = "string"
+)
 }
+}
+

@@ -4,37 +4,11 @@
 \alias{update_association}
 \title{Updates an association}
 \usage{
-update_association(
-  AssociationId = "string",
-  Parameters = list(
-    list(
-      "string"
-    )
-  ),
-  DocumentVersion = "string",
-  ScheduleExpression = "string",
-  OutputLocation = list(
-    S3Location = list(
-      OutputS3Region = "string",
-      OutputS3BucketName = "string",
-      OutputS3KeyPrefix = "string"
-    )
-  ),
-  Name = "string",
-  Targets = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  AssociationName = "string",
-  AssociationVersion = "string",
-  MaxErrors = "string",
-  MaxConcurrency = "string",
-  ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED"
-)
+update_association(AssociationId, Parameters = NULL,
+  DocumentVersion = NULL, ScheduleExpression = NULL,
+  OutputLocation = NULL, Name = NULL, Targets = NULL,
+  AssociationName = NULL, AssociationVersion = NULL,
+  MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL)
 }
 \arguments{
 \item{AssociationId}{[required] The ID of the association you want to update.}
@@ -68,6 +42,38 @@ If a new instance starts and attempts to execute an association while Systems Ma
 \description{
 Updates an association. You can update the association name and version, the document version, schedule, parameters, and Amazon S3 output.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_association(
+  AssociationId = "string",
+  Parameters = list(
+    list(
+      "string"
+    )
+  ),
+  DocumentVersion = "string",
+  ScheduleExpression = "string",
+  OutputLocation = list(
+    S3Location = list(
+      OutputS3Region = "string",
+      OutputS3BucketName = "string",
+      OutputS3KeyPrefix = "string"
+    )
+  ),
+  Name = "string",
+  Targets = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  AssociationName = "string",
+  AssociationVersion = "string",
+  MaxErrors = "string",
+  MaxConcurrency = "string",
+  ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED"
+)
 }
+}
+

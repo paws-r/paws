@@ -4,9 +4,7 @@
 \alias{stop_entities_detection_job}
 \title{Stops an entities detection job in progress}
 \usage{
-stop_entities_detection_job(
-  JobId = "string"
-)
+stop_entities_detection_job(JobId)
 }
 \arguments{
 \item{JobId}{[required] The identifier of the entities detection job to stop.}
@@ -21,6 +19,10 @@ If the job is in the \code{COMPLETED} or \code{FAILED} state when you call the \
 
 When a job is stopped, any documents already processed are written to the output location.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_entities_detection_job(
+  JobId = "string"
+)
 }
+}
+

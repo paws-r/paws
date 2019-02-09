@@ -4,9 +4,7 @@
 \alias{describe_vpc_peering_connections}
 \title{Retrieves information on VPC peering connections}
 \usage{
-describe_vpc_peering_connections(
-  FleetId = "string"
-)
+describe_vpc_peering_connections(FleetId = NULL)
 }
 \arguments{
 \item{FleetId}{Unique identifier for a fleet.}
@@ -27,6 +25,10 @@ VPC peering connection operations include:
 \item DeleteVpcPeeringConnection
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_vpc_peering_connections(
+  FleetId = "string"
+)
 }
+}
+

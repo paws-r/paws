@@ -4,14 +4,8 @@
 \alias{upload_layer_part}
 \title{Uploads an image layer part to Amazon ECR}
 \usage{
-upload_layer_part(
-  registryId = "string",
-  repositoryName = "string",
-  uploadId = "string",
-  partFirstByte = 123,
-  partLastByte = 123,
-  layerPartBlob = raw
-)
+upload_layer_part(registryId = NULL, repositoryName, uploadId,
+  partFirstByte, partLastByte, layerPartBlob)
 }
 \arguments{
 \item{registryId}{The AWS account ID associated with the registry to which you are uploading layer parts. If you do not specify a registry, the default registry is assumed.}
@@ -32,6 +26,15 @@ Uploads an image layer part to Amazon ECR.
 \details{
 This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers for pulling and pushing images. In most cases, you should use the \code{docker} CLI to pull, tag, and push images.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{upload_layer_part(
+  registryId = "string",
+  repositoryName = "string",
+  uploadId = "string",
+  partFirstByte = 123,
+  partLastByte = 123,
+  layerPartBlob = raw
+)
 }
+}
+

@@ -4,12 +4,8 @@
 \alias{describe_spot_fleet_instances}
 \title{Describes the running instances for the specified Spot Fleet}
 \usage{
-describe_spot_fleet_instances(
-  DryRun = TRUE|FALSE,
-  MaxResults = 123,
-  NextToken = "string",
-  SpotFleetRequestId = "string"
-)
+describe_spot_fleet_instances(DryRun = NULL, MaxResults = NULL,
+  NextToken = NULL, SpotFleetRequestId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -23,11 +19,21 @@ describe_spot_fleet_instances(
 \description{
 Describes the running instances for the specified Spot Fleet.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_spot_fleet_instances(
+  DryRun = TRUE|FALSE,
+  MaxResults = 123,
+  NextToken = "string",
+  SpotFleetRequestId = "string"
+)
+}
+}
+
 \examples{
 # This example lists the Spot Instances associated with the specified Spot
 # fleet.
-describe_spot_fleet_instances(
+\donttest{describe_spot_fleet_instances(
   SpotFleetRequestId = "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
-)
+)}
 
 }

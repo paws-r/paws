@@ -4,13 +4,7 @@
 \alias{create_platform_application}
 \title{Creates a platform application object for one of the supported push notification services, such as APNS and GCM, to which devices and mobile apps may register}
 \usage{
-create_platform_application(
-  Name = "string",
-  Platform = "string",
-  Attributes = list(
-    "string"
-  )
-)
+create_platform_application(Name, Platform, Attributes)
 }
 \arguments{
 \item{Name}{[required] Application names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, hyphens, and periods, and must be between 1 and 256 characters long.}
@@ -25,6 +19,14 @@ Creates a platform application object for one of the supported push notification
 \details{
 For APNS/APNS\_SANDBOX, PlatformCredential is "private key". For GCM, PlatformCredential is "API key". For ADM, PlatformCredential is "client secret". For WNS, PlatformCredential is "secret key". For MPNS, PlatformCredential is "private key". For Baidu, PlatformCredential is "secret key". The PlatformApplicationArn that is returned when using \code{CreatePlatformApplication} is then used as an attribute for the \code{CreatePlatformEndpoint} action. For more information, see \href{http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}. For more information about obtaining the PlatformPrincipal and PlatformCredential for each of the supported push notification services, see \href{http://docs.aws.amazon.com/sns/latest/dg/mobile-push-apns.html}{Getting Started with Apple Push Notification Service}, \href{http://docs.aws.amazon.com/sns/latest/dg/mobile-push-adm.html}{Getting Started with Amazon Device Messaging}, \href{http://docs.aws.amazon.com/sns/latest/dg/mobile-push-baidu.html}{Getting Started with Baidu Cloud Push}, \href{http://docs.aws.amazon.com/sns/latest/dg/mobile-push-gcm.html}{Getting Started with Google Cloud Messaging for Android}, \href{http://docs.aws.amazon.com/sns/latest/dg/mobile-push-mpns.html}{Getting Started with MPNS}, or \href{http://docs.aws.amazon.com/sns/latest/dg/mobile-push-wns.html}{Getting Started with WNS}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_platform_application(
+  Name = "string",
+  Platform = "string",
+  Attributes = list(
+    "string"
+  )
+)
 }
+}
+

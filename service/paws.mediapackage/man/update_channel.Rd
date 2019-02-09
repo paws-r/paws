@@ -4,10 +4,7 @@
 \alias{update_channel}
 \title{Updates an existing Channel}
 \usage{
-update_channel(
-  Description = "string",
-  Id = "string"
-)
+update_channel(Description = NULL, Id)
 }
 \arguments{
 \item{Description}{A short text description of the Channel.}
@@ -17,6 +14,11 @@ update_channel(
 \description{
 Updates an existing Channel.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_channel(
+  Description = "string",
+  Id = "string"
+)
 }
+}
+

@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.wafregional_operations.R
 \name{get_size_constraint_set}
 \alias{get_size_constraint_set}
-\title{Returns the SizeConstraintSet specified by \code{SizeConstraintSetId}}
+\title{Returns the SizeConstraintSet specified by SizeConstraintSetId}
 \usage{
-get_size_constraint_set(
-  SizeConstraintSetId = "string"
-)
+get_size_constraint_set(SizeConstraintSetId)
 }
 \arguments{
 \item{SizeConstraintSetId}{[required] The \code{SizeConstraintSetId} of the SizeConstraintSet that you want to get. \code{SizeConstraintSetId} is returned by CreateSizeConstraintSet and by ListSizeConstraintSets.}
@@ -14,11 +12,18 @@ get_size_constraint_set(
 \description{
 Returns the SizeConstraintSet specified by \code{SizeConstraintSetId}.
 }
+\section{Accepted Parameters}{
+\preformatted{get_size_constraint_set(
+  SizeConstraintSetId = "string"
+)
+}
+}
+
 \examples{
 # The following example returns the details of a size constraint match set
 # with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-get_size_constraint_set(
+\donttest{get_size_constraint_set(
   SizeConstraintSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-)
+)}
 
 }

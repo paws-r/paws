@@ -4,13 +4,8 @@
 \alias{create_traffic_policy_instance}
 \title{Creates resource record sets in a specified hosted zone based on the settings in a specified traffic policy version}
 \usage{
-create_traffic_policy_instance(
-  HostedZoneId = "string",
-  Name = "string",
-  TTL = 123,
-  TrafficPolicyId = "string",
-  TrafficPolicyVersion = 123
-)
+create_traffic_policy_instance(HostedZoneId, Name, TTL, TrafficPolicyId,
+  TrafficPolicyVersion)
 }
 \arguments{
 \item{HostedZoneId}{[required] The ID of the hosted zone that you want Amazon Route 53 to create resource record sets in by using the configuration in a traffic policy.}
@@ -26,6 +21,14 @@ create_traffic_policy_instance(
 \description{
 Creates resource record sets in a specified hosted zone based on the settings in a specified traffic policy version. In addition, \code{CreateTrafficPolicyInstance} associates the resource record sets with a specified domain name (such as example.com) or subdomain name (such as www.example.com). Amazon Route 53 responds to DNS queries for the domain or subdomain name by using the resource record sets that \code{CreateTrafficPolicyInstance} created.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_traffic_policy_instance(
+  HostedZoneId = "string",
+  Name = "string",
+  TTL = 123,
+  TrafficPolicyId = "string",
+  TrafficPolicyVersion = 123
+)
 }
+}
+

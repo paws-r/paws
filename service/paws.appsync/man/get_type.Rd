@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.appsync_operations.R
 \name{get_type}
 \alias{get_type}
-\title{Retrieves a \code{Type} object}
+\title{Retrieves a Type object}
 \usage{
-get_type(
-  apiId = "string",
-  typeName = "string",
-  format = "SDL"|"JSON"
-)
+get_type(apiId, typeName, format)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
@@ -20,6 +16,12 @@ get_type(
 \description{
 Retrieves a \code{Type} object.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_type(
+  apiId = "string",
+  typeName = "string",
+  format = "SDL"|"JSON"
+)
 }
+}
+

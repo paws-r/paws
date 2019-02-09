@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.wafregional_operations.R
 \name{get_xss_match_set}
 \alias{get_xss_match_set}
-\title{Returns the XssMatchSet that is specified by \code{XssMatchSetId}}
+\title{Returns the XssMatchSet that is specified by XssMatchSetId}
 \usage{
-get_xss_match_set(
-  XssMatchSetId = "string"
-)
+get_xss_match_set(XssMatchSetId)
 }
 \arguments{
 \item{XssMatchSetId}{[required] The \code{XssMatchSetId} of the XssMatchSet that you want to get. \code{XssMatchSetId} is returned by CreateXssMatchSet and by ListXssMatchSets.}
@@ -14,11 +12,18 @@ get_xss_match_set(
 \description{
 Returns the XssMatchSet that is specified by \code{XssMatchSetId}.
 }
+\section{Accepted Parameters}{
+\preformatted{get_xss_match_set(
+  XssMatchSetId = "string"
+)
+}
+}
+
 \examples{
 # The following example returns the details of an XSS match set with the
 # ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-get_xss_match_set(
+\donttest{get_xss_match_set(
   XssMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-)
+)}
 
 }

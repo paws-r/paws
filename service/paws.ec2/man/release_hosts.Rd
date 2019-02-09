@@ -4,11 +4,7 @@
 \alias{release_hosts}
 \title{When you no longer want to use an On-Demand Dedicated Host it can be released}
 \usage{
-release_hosts(
-  HostIds = list(
-    "string"
-  )
-)
+release_hosts(HostIds)
 }
 \arguments{
 \item{HostIds}{[required] The IDs of the Dedicated Hosts to release.}
@@ -21,6 +17,12 @@ When Dedicated Hosts are released, it may take some time for them to stop counti
 
 Released hosts still appear in a DescribeHosts response.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{release_hosts(
+  HostIds = list(
+    "string"
+  )
+)
 }
+}
+

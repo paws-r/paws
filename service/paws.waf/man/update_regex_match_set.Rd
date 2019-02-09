@@ -4,23 +4,7 @@
 \alias{update_regex_match_set}
 \title{Inserts or deletes RegexMatchTuple objects (filters) in a RegexMatchSet}
 \usage{
-update_regex_match_set(
-  RegexMatchSetId = "string",
-  Updates = list(
-    list(
-      Action = "INSERT"|"DELETE",
-      RegexMatchTuple = list(
-        FieldToMatch = list(
-          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-          Data = "string"
-        ),
-        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
-        RegexPatternSetId = "string"
-      )
-    )
-  ),
-  ChangeToken = "string"
-)
+update_regex_match_set(RegexMatchSetId, Updates, ChangeToken)
 }
 \arguments{
 \item{RegexMatchSetId}{[required] The \code{RegexMatchSetId} of the RegexMatchSet that you want to update. \code{RegexMatchSetId} is returned by CreateRegexMatchSet and by ListRegexMatchSets.}
@@ -51,6 +35,24 @@ To create and configure a \code{RegexMatchSet}, perform the following steps:
 
 For more information about how to use the AWS WAF API to allow or block HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_regex_match_set(
+  RegexMatchSetId = "string",
+  Updates = list(
+    list(
+      Action = "INSERT"|"DELETE",
+      RegexMatchTuple = list(
+        FieldToMatch = list(
+          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+          Data = "string"
+        ),
+        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
+        RegexPatternSetId = "string"
+      )
+    )
+  ),
+  ChangeToken = "string"
+)
 }
+}
+

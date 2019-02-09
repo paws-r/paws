@@ -4,17 +4,14 @@
 \alias{upload_ssh_public_key}
 \title{Uploads an SSH public key and associates it with the specified IAM user}
 \usage{
-upload_ssh_public_key(
-  UserName = "string",
-  SSHPublicKeyBody = "string"
-)
+upload_ssh_public_key(UserName, SSHPublicKeyBody)
 }
 \arguments{
 \item{UserName}{[required] The name of the IAM user to associate the SSH public key with.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
-\item{SSHPublicKeyBody}{[required] The SSH public key. The public key must be encoded in ssh-rsa format or PEM format. The minimum bit-length of the public key is 2048 bits. For example, you can generate a 2048-bit key, and the resulting PEM file is 1679 bytes long.
+\item{SSHPublicKeyBody}{[required] The SSH public key. The public key must be encoded in ssh-rsa format or PEM format. The miminum bit-length of the public key is 2048 bits. For example, you can generate a 2048-bit key, and the resulting PEM file is 1679 bytes long.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate this parameter is a string of characters consisting of the following:
 \itemize{
@@ -29,6 +26,11 @@ Uploads an SSH public key and associates it with the specified IAM user.
 \details{
 The SSH public key uploaded by this operation can be used only for authenticating the associated IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see \href{http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html}{Set up AWS CodeCommit for SSH Connections} in the \emph{AWS CodeCommit User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{upload_ssh_public_key(
+  UserName = "string",
+  SSHPublicKeyBody = "string"
+)
 }
+}
+

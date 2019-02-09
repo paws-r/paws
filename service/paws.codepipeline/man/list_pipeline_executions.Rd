@@ -4,11 +4,8 @@
 \alias{list_pipeline_executions}
 \title{Gets a summary of the most recent executions for a pipeline}
 \usage{
-list_pipeline_executions(
-  pipelineName = "string",
-  maxResults = 123,
-  nextToken = "string"
-)
+list_pipeline_executions(pipelineName, maxResults = NULL,
+  nextToken = NULL)
 }
 \arguments{
 \item{pipelineName}{[required] The name of the pipeline for which you want to get execution summary information.}
@@ -20,6 +17,12 @@ list_pipeline_executions(
 \description{
 Gets a summary of the most recent executions for a pipeline.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_pipeline_executions(
+  pipelineName = "string",
+  maxResults = 123,
+  nextToken = "string"
+)
 }
+}
+

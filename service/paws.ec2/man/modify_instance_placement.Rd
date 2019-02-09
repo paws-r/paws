@@ -4,19 +4,13 @@
 \alias{modify_instance_placement}
 \title{Modifies the placement attributes for a specified instance}
 \usage{
-modify_instance_placement(
-  Affinity = "default"|"host",
-  GroupName = "string",
-  HostId = "string",
-  InstanceId = "string",
-  Tenancy = "dedicated"|"host",
-  PartitionNumber = 123
-)
+modify_instance_placement(Affinity = NULL, GroupName = NULL,
+  HostId = NULL, InstanceId, Tenancy = NULL)
 }
 \arguments{
 \item{Affinity}{The affinity setting for the instance.}
 
-\item{GroupName}{The name of the placement group in which to place the instance. For spread placement groups, the instance must have a tenancy of \code{default}. For cluster and partition placement groups, the instance must have a tenancy of \code{default} or \code{dedicated}.
+\item{GroupName}{The name of the placement group in which to place the instance. For spread placement groups, the instance must have a tenancy of \code{default}. For cluster placement groups, the instance must have a tenancy of \code{default} or \code{dedicated}.
 
 To remove an instance from a placement group, specify an empty string ("").}
 
@@ -25,8 +19,6 @@ To remove an instance from a placement group, specify an empty string ("").}
 \item{InstanceId}{[required] The ID of the instance that you are modifying.}
 
 \item{Tenancy}{The tenancy for the instance.}
-
-\item{PartitionNumber}{Reserved for future use.}
 }
 \description{
 Modifies the placement attributes for a specified instance. You can do the following:
@@ -41,8 +33,16 @@ Modifies the placement attributes for a specified instance. You can do the follo
 
 At least one attribute for affinity, host ID, tenancy, or placement group name must be specified in the request. Affinity and tenancy can be modified in the same request.
 
-To modify the host ID, tenancy, placement group, or partition for an instance, the instance must be in the \code{stopped} state.
+To modify the host ID, tenancy, or placement group for an instance, the instance must be in the \code{stopped} state.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{modify_instance_placement(
+  Affinity = "default"|"host",
+  GroupName = "string",
+  HostId = "string",
+  InstanceId = "string",
+  Tenancy = "dedicated"|"host"
+)
+}
+}
 
-}

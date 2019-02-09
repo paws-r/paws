@@ -4,18 +4,10 @@
 \alias{list_endpoints}
 \title{Lists endpoints}
 \usage{
-list_endpoints(
-  SortBy = "Name"|"CreationTime"|"Status",
-  SortOrder = "Ascending"|"Descending",
-  NextToken = "string",
-  MaxResults = 123,
-  NameContains = "string",
-  CreationTimeBefore = as.POSIXct("2015-01-01"),
-  CreationTimeAfter = as.POSIXct("2015-01-01"),
-  LastModifiedTimeBefore = as.POSIXct("2015-01-01"),
-  LastModifiedTimeAfter = as.POSIXct("2015-01-01"),
-  StatusEquals = "OutOfService"|"Creating"|"Updating"|"SystemUpdating"|"RollingBack"|"InService"|"Deleting"|"Failed"
-)
+list_endpoints(SortBy = NULL, SortOrder = NULL, NextToken = NULL,
+  MaxResults = NULL, NameContains = NULL, CreationTimeBefore = NULL,
+  CreationTimeAfter = NULL, LastModifiedTimeBefore = NULL,
+  LastModifiedTimeAfter = NULL, StatusEquals = NULL)
 }
 \arguments{
 \item{SortBy}{Sorts the list of results. The default is \code{CreationTime}.}
@@ -41,6 +33,19 @@ list_endpoints(
 \description{
 Lists endpoints.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_endpoints(
+  SortBy = "Name"|"CreationTime"|"Status",
+  SortOrder = "Ascending"|"Descending",
+  NextToken = "string",
+  MaxResults = 123,
+  NameContains = "string",
+  CreationTimeBefore = as.POSIXct("2015-01-01"),
+  CreationTimeAfter = as.POSIXct("2015-01-01"),
+  LastModifiedTimeBefore = as.POSIXct("2015-01-01"),
+  LastModifiedTimeAfter = as.POSIXct("2015-01-01"),
+  StatusEquals = "OutOfService"|"Creating"|"Updating"|"SystemUpdating"|"RollingBack"|"InService"|"Deleting"|"Failed"
+)
 }
+}
+

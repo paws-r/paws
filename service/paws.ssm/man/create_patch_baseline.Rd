@@ -4,7 +4,54 @@
 \alias{create_patch_baseline}
 \title{Creates a patch baseline}
 \usage{
-create_patch_baseline(
+create_patch_baseline(OperatingSystem = NULL, Name,
+  GlobalFilters = NULL, ApprovalRules = NULL, ApprovedPatches = NULL,
+  ApprovedPatchesComplianceLevel = NULL,
+  ApprovedPatchesEnableNonSecurity = NULL, RejectedPatches = NULL,
+  RejectedPatchesAction = NULL, Description = NULL, Sources = NULL,
+  ClientToken = NULL)
+}
+\arguments{
+\item{OperatingSystem}{Defines the operating system the patch baseline applies to. The Default value is WINDOWS.}
+
+\item{Name}{[required] The name of the patch baseline.}
+
+\item{GlobalFilters}{A set of global filters used to exclude patches from the baseline.}
+
+\item{ApprovalRules}{A set of rules used to include patches in the baseline.}
+
+\item{ApprovedPatches}{A list of explicitly approved patches for the baseline.
+
+For information about accepted formats for lists of approved patches and rejected patches, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{Package Name Formats for Approved and Rejected Patch Lists} in the \emph{AWS Systems Manager User Guide}.}
+
+\item{ApprovedPatchesComplianceLevel}{Defines the compliance level for approved patches. This means that if an approved patch is reported as missing, this is the severity of the compliance violation. The default value is UNSPECIFIED.}
+
+\item{ApprovedPatchesEnableNonSecurity}{Indicates whether the list of approved patches includes non-security updates that should be applied to the instances. The default value is 'false'. Applies to Linux instances only.}
+
+\item{RejectedPatches}{A list of explicitly rejected patches for the baseline.
+
+For information about accepted formats for lists of approved patches and rejected patches, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{Package Name Formats for Approved and Rejected Patch Lists} in the \emph{AWS Systems Manager User Guide}.}
+
+\item{RejectedPatchesAction}{The action for Patch Manager to take on patches included in the RejectedPackages list.
+\itemize{
+\item \strong{ALLOW\_AS\_DEPENDENCY}: A package in the Rejected patches list is installed only if it is a dependency of another package. It is considered compliant with the patch baseline, and its status is reported as \emph{InstalledOther}. This is the default action if no option is specified.
+\item \strong{BLOCK}: Packages in the RejectedPatches list, and packages that include them as dependencies, are not installed under any circumstances. If a package was installed before it was added to the Rejected patches list, it is considered non-compliant with the patch baseline, and its status is reported as \emph{InstalledRejected}.
+}}
+
+\item{Description}{A description of the patch baseline.}
+
+\item{Sources}{Information about the patches to use to update the instances, including target operating systems and source repositories. Applies to Linux instances only.}
+
+\item{ClientToken}{User-provided idempotency token.}
+}
+\description{
+Creates a patch baseline.
+}
+\details{
+For information about valid key and value pairs in \code{PatchFilters} for each supported operating system type, see \href{http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html}{PatchFilter}.
+}
+\section{Accepted Parameters}{
+\preformatted{create_patch_baseline(
   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS",
   Name = "string",
   GlobalFilters = list(
@@ -58,45 +105,5 @@ create_patch_baseline(
   ClientToken = "string"
 )
 }
-\arguments{
-\item{OperatingSystem}{Defines the operating system the patch baseline applies to. The Default value is WINDOWS.}
-
-\item{Name}{[required] The name of the patch baseline.}
-
-\item{GlobalFilters}{A set of global filters used to exclude patches from the baseline.}
-
-\item{ApprovalRules}{A set of rules used to include patches in the baseline.}
-
-\item{ApprovedPatches}{A list of explicitly approved patches for the baseline.
-
-For information about accepted formats for lists of approved patches and rejected patches, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{Package Name Formats for Approved and Rejected Patch Lists} in the \emph{AWS Systems Manager User Guide}.}
-
-\item{ApprovedPatchesComplianceLevel}{Defines the compliance level for approved patches. This means that if an approved patch is reported as missing, this is the severity of the compliance violation. The default value is UNSPECIFIED.}
-
-\item{ApprovedPatchesEnableNonSecurity}{Indicates whether the list of approved patches includes non-security updates that should be applied to the instances. The default value is 'false'. Applies to Linux instances only.}
-
-\item{RejectedPatches}{A list of explicitly rejected patches for the baseline.
-
-For information about accepted formats for lists of approved patches and rejected patches, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{Package Name Formats for Approved and Rejected Patch Lists} in the \emph{AWS Systems Manager User Guide}.}
-
-\item{RejectedPatchesAction}{The action for Patch Manager to take on patches included in the RejectedPackages list.
-\itemize{
-\item \strong{ALLOW\_AS\_DEPENDENCY}: A package in the Rejected patches list is installed only if it is a dependency of another package. It is considered compliant with the patch baseline, and its status is reported as \emph{InstalledOther}. This is the default action if no option is specified.
-\item \strong{BLOCK}: Packages in the RejectedPatches list, and packages that include them as dependencies, are not installed under any circumstances. If a package was installed before it was added to the Rejected patches list, it is considered non-compliant with the patch baseline, and its status is reported as \emph{InstalledRejected}.
-}}
-
-\item{Description}{A description of the patch baseline.}
-
-\item{Sources}{Information about the patches to use to update the instances, including target operating systems and source repositories. Applies to Linux instances only.}
-
-\item{ClientToken}{User-provided idempotency token.}
 }
-\description{
-Creates a patch baseline.
-}
-\details{
-For information about valid key and value pairs in \code{PatchFilters} for each supported operating system type, see \href{http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html}{PatchFilter}.
-}
-\examples{
 
-}

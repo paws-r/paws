@@ -4,9 +4,7 @@
 \alias{get_project}
 \title{Gets information about a project}
 \usage{
-get_project(
-  arn = "string"
-)
+get_project(arn)
 }
 \arguments{
 \item{arn}{[required] The project's ARN.}
@@ -14,10 +12,17 @@ get_project(
 \description{
 Gets information about a project.
 }
+\section{Accepted Parameters}{
+\preformatted{get_project(
+  arn = "string"
+)
+}
+}
+
 \examples{
 # The following example gets information about a specific project.
-get_project(
+\donttest{get_project(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:5e01a8c7-c861-4c0a-b1d5-12345EXAMPLE"
-)
+)}
 
 }

@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.comprehend_operations.R
 \name{detect_sentiment}
 \alias{detect_sentiment}
-\title{Inspects text and returns an inference of the prevailing sentiment (\code{POSITIVE}, \code{NEUTRAL}, \code{MIXED}, or \code{NEGATIVE})}
+\title{Inspects text and returns an inference of the prevailing sentiment (POSITIVE, NEUTRAL, MIXED, or NEGATIVE)}
 \usage{
-detect_sentiment(
-  Text = "string",
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
-)
+detect_sentiment(Text, LanguageCode)
 }
 \arguments{
 \item{Text}{[required] A UTF-8 text string. Each string must contain fewer that 5,000 bytes of UTF-8 encoded characters.}
@@ -17,6 +14,11 @@ detect_sentiment(
 \description{
 Inspects text and returns an inference of the prevailing sentiment (\code{POSITIVE}, \code{NEUTRAL}, \code{MIXED}, or \code{NEGATIVE}).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{detect_sentiment(
+  Text = "string",
+  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+)
 }
+}
+

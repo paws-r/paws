@@ -4,10 +4,7 @@
 \alias{deprecate_thing_type}
 \title{Deprecates a thing type}
 \usage{
-deprecate_thing_type(
-  thingTypeName = "string",
-  undoDeprecate = TRUE|FALSE
-)
+deprecate_thing_type(thingTypeName, undoDeprecate = NULL)
 }
 \arguments{
 \item{thingTypeName}{[required] The name of the thing type to deprecate.}
@@ -17,6 +14,11 @@ deprecate_thing_type(
 \description{
 Deprecates a thing type. You can not associate new things with deprecated thing type.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{deprecate_thing_type(
+  thingTypeName = "string",
+  undoDeprecate = TRUE|FALSE
+)
 }
+}
+

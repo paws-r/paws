@@ -2,21 +2,14 @@
 % Please edit documentation in R/paws.wafregional_operations.R
 \name{create_web_acl}
 \alias{create_web_acl}
-\title{Creates a \code{WebACL}, which contains the \code{Rules} that identify the CloudFront web requests that you want to allow, block, or count}
+\title{Creates a WebACL, which contains the Rules that identify the CloudFront web requests that you want to allow, block, or count}
 \usage{
-create_web_acl(
-  Name = "string",
-  MetricName = "string",
-  DefaultAction = list(
-    Type = "BLOCK"|"ALLOW"|"COUNT"
-  ),
-  ChangeToken = "string"
-)
+create_web_acl(Name, MetricName, DefaultAction, ChangeToken)
 }
 \arguments{
 \item{Name}{[required] A friendly name or description of the WebACL. You can't change \code{Name} after you create the \code{WebACL}.}
 
-\item{MetricName}{[required] A friendly name or description for the metrics for this \code{WebACL}. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain white space. You can't change \code{MetricName} after you create the \code{WebACL}.}
+\item{MetricName}{[required] A friendly name or description for the metrics for this \code{WebACL}. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change \code{MetricName} after you create the \code{WebACL}.}
 
 \item{DefaultAction}{[required] The action that you want AWS WAF to take when a request doesn't match the criteria specified in any of the \code{Rule} objects that are associated with the \code{WebACL}.}
 
@@ -40,15 +33,27 @@ To create and configure a \code{WebACL}, perform the following steps:
 
 For more information about how to use the AWS WAF API, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_web_acl(
+  Name = "string",
+  MetricName = "string",
+  DefaultAction = list(
+    Type = "BLOCK"|"ALLOW"|"COUNT"
+  ),
+  ChangeToken = "string"
+)
+}
+}
+
 \examples{
 # The following example creates a web ACL named CreateExample.
-create_web_acl(
+\donttest{create_web_acl(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   DefaultAction = list(
     Type = "ALLOW"
   ),
   MetricName = "CreateExample",
   Name = "CreateExample"
-)
+)}
 
 }

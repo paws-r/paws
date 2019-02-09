@@ -4,13 +4,8 @@
 \alias{set_load_balancer_policies_of_listener}
 \title{Replaces the current set of policies for the specified load balancer port with the specified set of policies}
 \usage{
-set_load_balancer_policies_of_listener(
-  LoadBalancerName = "string",
-  LoadBalancerPort = 123,
-  PolicyNames = list(
-    "string"
-  )
-)
+set_load_balancer_policies_of_listener(LoadBalancerName, LoadBalancerPort,
+  PolicyNames)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
@@ -27,15 +22,26 @@ To enable back-end server authentication, use SetLoadBalancerPoliciesForBackendS
 
 For more information about setting policies, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/ssl-config-update.html}{Update the SSL Negotiation Configuration}, \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration}{Duration-Based Session Stickiness}, and \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application}{Application-Controlled Session Stickiness} in the \emph{Classic Load Balancers Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{set_load_balancer_policies_of_listener(
+  LoadBalancerName = "string",
+  LoadBalancerPort = 123,
+  PolicyNames = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example replaces the policies that are currently associated with
 # the specified listener.
-set_load_balancer_policies_of_listener(
+\donttest{set_load_balancer_policies_of_listener(
   LoadBalancerName = "my-load-balancer",
   LoadBalancerPort = 80L,
   PolicyNames = list(
     "my-SSLNegotiation-policy"
   )
-)
+)}
 
 }

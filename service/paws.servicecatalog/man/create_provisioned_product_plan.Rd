@@ -4,32 +4,10 @@
 \alias{create_provisioned_product_plan}
 \title{Creates a plan}
 \usage{
-create_provisioned_product_plan(
-  AcceptLanguage = "string",
-  PlanName = "string",
-  PlanType = "CLOUDFORMATION",
-  NotificationArns = list(
-    "string"
-  ),
-  PathId = "string",
-  ProductId = "string",
-  ProvisionedProductName = "string",
-  ProvisioningArtifactId = "string",
-  ProvisioningParameters = list(
-    list(
-      Key = "string",
-      Value = "string",
-      UsePreviousValue = TRUE|FALSE
-    )
-  ),
-  IdempotencyToken = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_provisioned_product_plan(AcceptLanguage = NULL, PlanName,
+  PlanType, NotificationArns = NULL, PathId = NULL, ProductId,
+  ProvisionedProductName, ProvisioningArtifactId,
+  ProvisioningParameters = NULL, IdempotencyToken, Tags = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -67,6 +45,33 @@ You can create one plan per provisioned product. To create a plan for an existin
 
 To view the resource changes in the change set, use DescribeProvisionedProductPlan. To create or modify the provisioned product, use ExecuteProvisionedProductPlan.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_provisioned_product_plan(
+  AcceptLanguage = "string",
+  PlanName = "string",
+  PlanType = "CLOUDFORMATION",
+  NotificationArns = list(
+    "string"
+  ),
+  PathId = "string",
+  ProductId = "string",
+  ProvisionedProductName = "string",
+  ProvisioningArtifactId = "string",
+  ProvisioningParameters = list(
+    list(
+      Key = "string",
+      Value = "string",
+      UsePreviousValue = TRUE|FALSE
+    )
+  ),
+  IdempotencyToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{list_distributions_by_web_acl_id}
 \title{List the distributions that are associated with a specified AWS WAF web ACL}
 \usage{
-list_distributions_by_web_acl_id(
-  Marker = "string",
-  MaxItems = "string",
-  WebACLId = "string"
-)
+list_distributions_by_web_acl_id(Marker = NULL, MaxItems = NULL,
+  WebACLId)
 }
 \arguments{
 \item{Marker}{Use \code{Marker} and \code{MaxItems} to control pagination of results. If you have more than \code{MaxItems} distributions that satisfy the request, the response includes a \code{NextMarker} element. To get the next page of results, submit another request. For the value of \code{Marker}, specify the value of \code{NextMarker} from the last response. (For the first request, omit \code{Marker}.)}
@@ -20,6 +17,12 @@ list_distributions_by_web_acl_id(
 \description{
 List the distributions that are associated with a specified AWS WAF web ACL.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_distributions_by_web_acl_id(
+  Marker = "string",
+  MaxItems = "string",
+  WebACLId = "string"
+)
 }
+}
+

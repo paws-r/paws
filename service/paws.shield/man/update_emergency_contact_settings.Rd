@@ -4,13 +4,7 @@
 \alias{update_emergency_contact_settings}
 \title{Updates the details of the list of email addresses that the DRT can use to contact you during a suspected attack}
 \usage{
-update_emergency_contact_settings(
-  EmergencyContactList = list(
-    list(
-      EmailAddress = "string"
-    )
-  )
-)
+update_emergency_contact_settings(EmergencyContactList = NULL)
 }
 \arguments{
 \item{EmergencyContactList}{A list of email addresses that the DRT can use to contact you during a suspected attack.}
@@ -18,6 +12,14 @@ update_emergency_contact_settings(
 \description{
 Updates the details of the list of email addresses that the DRT can use to contact you during a suspected attack.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_emergency_contact_settings(
+  EmergencyContactList = list(
+    list(
+      EmailAddress = "string"
+    )
+  )
+)
 }
+}
+

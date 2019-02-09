@@ -4,50 +4,18 @@
 \alias{restore_db_instance_from_db_snapshot}
 \title{Creates a new DB instance from a DB snapshot}
 \usage{
-restore_db_instance_from_db_snapshot(
-  DBInstanceIdentifier = "string",
-  DBSnapshotIdentifier = "string",
-  DBInstanceClass = "string",
-  Port = 123,
-  AvailabilityZone = "string",
-  DBSubnetGroupName = "string",
-  MultiAZ = TRUE|FALSE,
-  PubliclyAccessible = TRUE|FALSE,
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  LicenseModel = "string",
-  DBName = "string",
-  Engine = "string",
-  Iops = 123,
-  OptionGroupName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  StorageType = "string",
-  TdeCredentialArn = "string",
-  TdeCredentialPassword = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  Domain = "string",
-  CopyTagsToSnapshot = TRUE|FALSE,
-  DomainIAMRoleName = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  EnableCloudwatchLogsExports = list(
-    "string"
-  ),
-  ProcessorFeatures = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  UseDefaultProcessorFeatures = TRUE|FALSE,
-  DBParameterGroupName = "string",
-  DeletionProtection = TRUE|FALSE
-)
+restore_db_instance_from_db_snapshot(DBInstanceIdentifier,
+  DBSnapshotIdentifier, DBInstanceClass = NULL, Port = NULL,
+  AvailabilityZone = NULL, DBSubnetGroupName = NULL, MultiAZ = NULL,
+  PubliclyAccessible = NULL, AutoMinorVersionUpgrade = NULL,
+  LicenseModel = NULL, DBName = NULL, Engine = NULL, Iops = NULL,
+  OptionGroupName = NULL, Tags = NULL, StorageType = NULL,
+  TdeCredentialArn = NULL, TdeCredentialPassword = NULL,
+  Domain = NULL, CopyTagsToSnapshot = NULL, DomainIAMRoleName = NULL,
+  EnableIAMDatabaseAuthentication = NULL,
+  EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL,
+  UseDefaultProcessorFeatures = NULL, DBParameterGroupName = NULL,
+  DeletionProtection = NULL)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] Name of the DB instance to create from the DB snapshot. This parameter isn't case-sensitive.
@@ -156,10 +124,6 @@ Default: \code{io1} if the \code{Iops} parameter is specified, otherwise \code{s
 
 \item{TdeCredentialPassword}{The password for the given ARN from the key store in order to access the device.}
 
-\item{VpcSecurityGroupIds}{A list of EC2 VPC security groups to associate with this DB instance.
-
-Default: The default EC2 VPC security group for the DB subnet group's VPC.}
-
 \item{Domain}{Specify the Active Directory Domain to restore the instance in.}
 
 \item{CopyTagsToSnapshot}{True to copy all tags from the restored DB instance to snapshots of the DB instance, and otherwise false. The default is false.}
@@ -204,6 +168,48 @@ If you are restoring from a shared manual DB snapshot, the \code{DBSnapshotIdent
 
 This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For Aurora, use RestoreDBClusterFromSnapshot.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{restore_db_instance_from_db_snapshot(
+  DBInstanceIdentifier = "string",
+  DBSnapshotIdentifier = "string",
+  DBInstanceClass = "string",
+  Port = 123,
+  AvailabilityZone = "string",
+  DBSubnetGroupName = "string",
+  MultiAZ = TRUE|FALSE,
+  PubliclyAccessible = TRUE|FALSE,
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  LicenseModel = "string",
+  DBName = "string",
+  Engine = "string",
+  Iops = 123,
+  OptionGroupName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  StorageType = "string",
+  TdeCredentialArn = "string",
+  TdeCredentialPassword = "string",
+  Domain = "string",
+  CopyTagsToSnapshot = TRUE|FALSE,
+  DomainIAMRoleName = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  EnableCloudwatchLogsExports = list(
+    "string"
+  ),
+  ProcessorFeatures = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  UseDefaultProcessorFeatures = TRUE|FALSE,
+  DBParameterGroupName = "string",
+  DeletionProtection = TRUE|FALSE
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{get_assessment_report}
 \title{Produces an assessment report that includes detailed and comprehensive results of a specified assessment run}
 \usage{
-get_assessment_report(
-  assessmentRunArn = "string",
-  reportFileFormat = "HTML"|"PDF",
-  reportType = "FINDING"|"FULL"
-)
+get_assessment_report(assessmentRunArn, reportFileFormat, reportType)
 }
 \arguments{
 \item{assessmentRunArn}{[required] The ARN that specifies the assessment run for which you want to generate a report.}
@@ -20,6 +16,12 @@ get_assessment_report(
 \description{
 Produces an assessment report that includes detailed and comprehensive results of a specified assessment run.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_assessment_report(
+  assessmentRunArn = "string",
+  reportFileFormat = "HTML"|"PDF",
+  reportType = "FINDING"|"FULL"
+)
 }
+}
+

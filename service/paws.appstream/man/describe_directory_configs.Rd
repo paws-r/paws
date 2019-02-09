@@ -4,13 +4,8 @@
 \alias{describe_directory_configs}
 \title{Retrieves a list that describes one or more specified Directory Config objects for AppStream 2}
 \usage{
-describe_directory_configs(
-  DirectoryNames = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_directory_configs(DirectoryNames = NULL, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{DirectoryNames}{The directory names.}
@@ -25,6 +20,14 @@ Retrieves a list that describes one or more specified Directory Config objects f
 \details{
 Although the response syntax in this topic includes the account password, this password is not returned in the actual response.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_directory_configs(
+  DirectoryNames = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

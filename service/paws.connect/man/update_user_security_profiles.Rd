@@ -4,13 +4,7 @@
 \alias{update_user_security_profiles}
 \title{Updates the security profiles assigned to the user}
 \usage{
-update_user_security_profiles(
-  SecurityProfileIds = list(
-    "string"
-  ),
-  UserId = "string",
-  InstanceId = "string"
-)
+update_user_security_profiles(SecurityProfileIds, UserId, InstanceId)
 }
 \arguments{
 \item{SecurityProfileIds}{[required] The identifiers for the security profiles to assign to the user.}
@@ -22,6 +16,14 @@ update_user_security_profiles(
 \description{
 Updates the security profiles assigned to the user.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_user_security_profiles(
+  SecurityProfileIds = list(
+    "string"
+  ),
+  UserId = "string",
+  InstanceId = "string"
+)
 }
+}
+

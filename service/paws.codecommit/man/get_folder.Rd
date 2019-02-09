@@ -4,11 +4,7 @@
 \alias{get_folder}
 \title{Returns the contents of a specified folder in a repository}
 \usage{
-get_folder(
-  repositoryName = "string",
-  commitSpecifier = "string",
-  folderPath = "string"
-)
+get_folder(repositoryName, commitSpecifier = NULL, folderPath)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository.}
@@ -20,6 +16,12 @@ get_folder(
 \description{
 Returns the contents of a specified folder in a repository.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_folder(
+  repositoryName = "string",
+  commitSpecifier = "string",
+  folderPath = "string"
+)
 }
+}
+

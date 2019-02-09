@@ -4,10 +4,7 @@
 \alias{delete_environment_configuration}
 \title{Deletes the draft configuration associated with the running environment}
 \usage{
-delete_environment_configuration(
-  ApplicationName = "string",
-  EnvironmentName = "string"
-)
+delete_environment_configuration(ApplicationName, EnvironmentName)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application the environment is associated with.}
@@ -20,12 +17,20 @@ Deletes the draft configuration associated with the running environment.
 \details{
 Updating a running environment with any configuration changes creates a draft configuration set. You can get the draft configuration using DescribeConfigurationSettings while the update is in progress or if the update fails. The \code{DeploymentStatus} for the draft configuration indicates whether the deployment is in process or has failed. The draft configuration remains in existence until it is deleted with this action.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_environment_configuration(
+  ApplicationName = "string",
+  EnvironmentName = "string"
+)
+}
+}
+
 \examples{
 # The following operation deletes a draft configuration for an environment
 # named my-env:
-delete_environment_configuration(
+\donttest{delete_environment_configuration(
   ApplicationName = "my-app",
   EnvironmentName = "my-env"
-)
+)}
 
 }

@@ -4,19 +4,8 @@
 \alias{create_db_subnet_group}
 \title{Creates a new DB subnet group}
 \usage{
-create_db_subnet_group(
-  DBSubnetGroupName = "string",
-  DBSubnetGroupDescription = "string",
-  SubnetIds = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_db_subnet_group(DBSubnetGroupName, DBSubnetGroupDescription,
+  SubnetIds, Tags = NULL)
 }
 \arguments{
 \item{DBSubnetGroupName}{[required] The name for the DB subnet group. This value is stored as a lowercase string.
@@ -34,6 +23,20 @@ Example: \code{mySubnetgroup}}
 \description{
 Creates a new DB subnet group. DB subnet groups must contain at least one subnet in at least two AZs in the AWS Region.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_db_subnet_group(
+  DBSubnetGroupName = "string",
+  DBSubnetGroupDescription = "string",
+  SubnetIds = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{get_hosted_zone_limit}
 \title{Gets the specified limit for a specified hosted zone, for example, the maximum number of records that you can create in the hosted zone}
 \usage{
-get_hosted_zone_limit(
-  Type = "MAX_RRSETS_BY_ZONE"|"MAX_VPCS_ASSOCIATED_BY_ZONE",
-  HostedZoneId = "string"
-)
+get_hosted_zone_limit(Type, HostedZoneId)
 }
 \arguments{
 \item{Type}{[required] The limit that you want to get. Valid values include the following:
@@ -24,6 +21,11 @@ Gets the specified limit for a specified hosted zone, for example, the maximum n
 \details{
 For the default limit, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html}{Limits} in the \emph{Amazon Route 53 Developer Guide}. To request a higher limit, \href{https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53}{open a case}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_hosted_zone_limit(
+  Type = "MAX_RRSETS_BY_ZONE"|"MAX_VPCS_ASSOCIATED_BY_ZONE",
+  HostedZoneId = "string"
+)
 }
+}
+

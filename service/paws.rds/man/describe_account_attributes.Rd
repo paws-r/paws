@@ -12,6 +12,8 @@ Lists all of the attributes for a customer account. The attributes include Amazo
 \details{
 This command doesn't take any parameters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_account_attributes()
 }
+}
+

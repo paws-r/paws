@@ -4,11 +4,7 @@
 \alias{list_invalidations}
 \title{Lists invalidation batches}
 \usage{
-list_invalidations(
-  DistributionId = "string",
-  Marker = "string",
-  MaxItems = "string"
-)
+list_invalidations(DistributionId, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{DistributionId}{[required] The distribution's ID.}
@@ -20,6 +16,12 @@ list_invalidations(
 \description{
 Lists invalidation batches.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_invalidations(
+  DistributionId = "string",
+  Marker = "string",
+  MaxItems = "string"
+)
 }
+}
+

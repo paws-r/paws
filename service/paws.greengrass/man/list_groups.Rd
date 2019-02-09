@@ -4,10 +4,7 @@
 \alias{list_groups}
 \title{Retrieves a list of groups}
 \usage{
-list_groups(
-  MaxResults = "string",
-  NextToken = "string"
-)
+list_groups(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of results to be returned per request.}
@@ -17,6 +14,11 @@ list_groups(
 \description{
 Retrieves a list of groups.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_groups(
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

@@ -4,13 +4,7 @@
 \alias{associate_targets_with_job}
 \title{Associates a group with a continuous job}
 \usage{
-associate_targets_with_job(
-  targets = list(
-    "string"
-  ),
-  jobId = "string",
-  comment = "string"
-)
+associate_targets_with_job(targets, jobId, comment = NULL)
 }
 \arguments{
 \item{targets}{[required] A list of thing group ARNs that define the targets of the job.}
@@ -29,6 +23,14 @@ Associates a group with a continuous job. The following criteria must be met:
 \item The total number of targets associated with a job must not exceed 100.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_targets_with_job(
+  targets = list(
+    "string"
+  ),
+  jobId = "string",
+  comment = "string"
+)
 }
+}
+

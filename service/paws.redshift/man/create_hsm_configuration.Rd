@@ -4,20 +4,9 @@
 \alias{create_hsm_configuration}
 \title{Creates an HSM configuration that contains the information required by an Amazon Redshift cluster to store and use database encryption keys in a Hardware Security Module (HSM)}
 \usage{
-create_hsm_configuration(
-  HsmConfigurationIdentifier = "string",
-  Description = "string",
-  HsmIpAddress = "string",
-  HsmPartitionName = "string",
-  HsmPartitionPassword = "string",
-  HsmServerPublicCertificate = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_hsm_configuration(HsmConfigurationIdentifier, Description,
+  HsmIpAddress, HsmPartitionName, HsmPartitionPassword,
+  HsmServerPublicCertificate, Tags = NULL)
 }
 \arguments{
 \item{HsmConfigurationIdentifier}{[required] The identifier to be assigned to the new Amazon Redshift HSM configuration.}
@@ -40,6 +29,21 @@ Creates an HSM configuration that contains the information required by an Amazon
 \details{
 In addition to creating an HSM configuration, you must also create an HSM client certificate. For more information, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-HSM.html}{Hardware Security Modules} in the Amazon Redshift Cluster Management Guide.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_hsm_configuration(
+  HsmConfigurationIdentifier = "string",
+  Description = "string",
+  HsmIpAddress = "string",
+  HsmPartitionName = "string",
+  HsmPartitionPassword = "string",
+  HsmServerPublicCertificate = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

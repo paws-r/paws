@@ -4,10 +4,7 @@
 \alias{get_repository_policy}
 \title{Retrieves the repository policy for a specified repository}
 \usage{
-get_repository_policy(
-  registryId = "string",
-  repositoryName = "string"
-)
+get_repository_policy(registryId = NULL, repositoryName)
 }
 \arguments{
 \item{registryId}{The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.}
@@ -17,11 +14,19 @@ get_repository_policy(
 \description{
 Retrieves the repository policy for a specified repository.
 }
+\section{Accepted Parameters}{
+\preformatted{get_repository_policy(
+  registryId = "string",
+  repositoryName = "string"
+)
+}
+}
+
 \examples{
 # This example obtains the repository policy for the repository named
 # ubuntu.
-get_repository_policy(
+\donttest{get_repository_policy(
   repositoryName = "ubuntu"
-)
+)}
 
 }

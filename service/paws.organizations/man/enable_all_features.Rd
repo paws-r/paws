@@ -20,6 +20,11 @@ After you enable all features in your organization, the master account in the or
 
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{enable_all_features()
+}
+}
+
 \examples{
 # This example shows the administrator asking all the invited accounts in
 # the organization to approve enabling all features in the organization.
@@ -29,6 +34,6 @@ This operation can be called only from the organization's master account.
 # accept the handshake, the organization administrator can finalize the
 # change to enable all features, and those with appropriate permissions
 # can create policies and apply them to roots, OUs, and accounts:/n/n
-enable_all_features()
+\donttest{enable_all_features()}
 
 }

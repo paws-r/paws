@@ -4,12 +4,7 @@
 \alias{disassociate_members}
 \title{Disassociates GuardDuty member accounts (to the current GuardDuty master account) specified by the account IDs}
 \usage{
-disassociate_members(
-  AccountIds = list(
-    "string"
-  ),
-  DetectorId = "string"
-)
+disassociate_members(AccountIds, DetectorId)
 }
 \arguments{
 \item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts that you want to disassociate from master.}
@@ -19,6 +14,13 @@ disassociate_members(
 \description{
 Disassociates GuardDuty member accounts (to the current GuardDuty master account) specified by the account IDs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_members(
+  AccountIds = list(
+    "string"
+  ),
+  DetectorId = "string"
+)
 }
+}
+

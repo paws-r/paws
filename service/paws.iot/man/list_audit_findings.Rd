@@ -4,25 +4,9 @@
 \alias{list_audit_findings}
 \title{Lists the findings (results) of a Device Defender audit or of the audits performed during a specified time period}
 \usage{
-list_audit_findings(
-  taskId = "string",
-  checkName = "string",
-  resourceIdentifier = list(
-    deviceCertificateId = "string",
-    caCertificateId = "string",
-    cognitoIdentityPoolId = "string",
-    clientId = "string",
-    policyVersionIdentifier = list(
-      policyName = "string",
-      policyVersionId = "string"
-    ),
-    account = "string"
-  ),
-  maxResults = 123,
-  nextToken = "string",
-  startTime = as.POSIXct("2015-01-01"),
-  endTime = as.POSIXct("2015-01-01")
-)
+list_audit_findings(taskId = NULL, checkName = NULL,
+  resourceIdentifier = NULL, maxResults = NULL, nextToken = NULL,
+  startTime = NULL, endTime = NULL)
 }
 \arguments{
 \item{taskId}{A filter to limit results to the audit with the specified ID. You must specify either the taskId or the startTime and endTime, but not both.}
@@ -42,6 +26,26 @@ list_audit_findings(
 \description{
 Lists the findings (results) of a Device Defender audit or of the audits performed during a specified time period. (Findings are retained for 180 days.)
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_audit_findings(
+  taskId = "string",
+  checkName = "string",
+  resourceIdentifier = list(
+    deviceCertificateId = "string",
+    caCertificateId = "string",
+    cognitoIdentityPoolId = "string",
+    clientId = "string",
+    policyVersionIdentifier = list(
+      policyName = "string",
+      policyVersionId = "string"
+    ),
+    account = "string"
+  ),
+  maxResults = 123,
+  nextToken = "string",
+  startTime = as.POSIXct("2015-01-01"),
+  endTime = as.POSIXct("2015-01-01")
+)
 }
+}
+

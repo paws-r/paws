@@ -4,10 +4,7 @@
 \alias{list_reusable_delegation_sets}
 \title{Retrieves a list of the reusable delegation sets that are associated with the current AWS account}
 \usage{
-list_reusable_delegation_sets(
-  Marker = "string",
-  MaxItems = "string"
-)
+list_reusable_delegation_sets(Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{Marker}{If the value of \code{IsTruncated} in the previous response was \code{true}, you have more reusable delegation sets. To get another group, submit another \code{ListReusableDelegationSets} request.
@@ -21,6 +18,11 @@ If the value of \code{IsTruncated} in the previous response was \code{false}, th
 \description{
 Retrieves a list of the reusable delegation sets that are associated with the current AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_reusable_delegation_sets(
+  Marker = "string",
+  MaxItems = "string"
+)
 }
+}
+

@@ -4,7 +4,32 @@
 \alias{run_scheduled_instances}
 \title{Launches the specified Scheduled Instances}
 \usage{
-run_scheduled_instances(
+run_scheduled_instances(ClientToken = NULL, DryRun = NULL,
+  InstanceCount = NULL, LaunchSpecification, ScheduledInstanceId)
+}
+\arguments{
+\item{ClientToken}{Unique, case-sensitive identifier that ensures the idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{InstanceCount}{The number of instances.
+
+Default: 1}
+
+\item{LaunchSpecification}{[required] The launch specification. You must match the instance type, Availability Zone, network, and platform of the schedule that you purchased.}
+
+\item{ScheduledInstanceId}{[required] The Scheduled Instance ID.}
+}
+\description{
+Launches the specified Scheduled Instances.
+}
+\details{
+Before you can launch a Scheduled Instance, you must purchase it and obtain an identifier using PurchaseScheduledInstances.
+
+You must launch a Scheduled Instance during its scheduled time period. You can't stop or reboot a Scheduled Instance, but you can terminate it as needed. If you terminate a Scheduled Instance before the current scheduled time period ends, you can launch it again after a few minutes. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-scheduled-instances.html}{Scheduled Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+}
+\section{Accepted Parameters}{
+\preformatted{run_scheduled_instances(
   ClientToken = "string",
   DryRun = TRUE|FALSE,
   InstanceCount = 123,
@@ -77,30 +102,11 @@ run_scheduled_instances(
   ScheduledInstanceId = "string"
 )
 }
-\arguments{
-\item{ClientToken}{Unique, case-sensitive identifier that ensures the idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{InstanceCount}{The number of instances.
-
-Default: 1}
-
-\item{LaunchSpecification}{[required] The launch specification. You must match the instance type, Availability Zone, network, and platform of the schedule that you purchased.}
-
-\item{ScheduledInstanceId}{[required] The Scheduled Instance ID.}
 }
-\description{
-Launches the specified Scheduled Instances.
-}
-\details{
-Before you can launch a Scheduled Instance, you must purchase it and obtain an identifier using PurchaseScheduledInstances.
 
-You must launch a Scheduled Instance during its scheduled time period. You can't stop or reboot a Scheduled Instance, but you can terminate it as needed. If you terminate a Scheduled Instance before the current scheduled time period ends, you can launch it again after a few minutes. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-scheduled-instances.html}{Scheduled Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
 \examples{
 # This example launches the specified Scheduled Instance in a VPC.
-run_scheduled_instances(
+\donttest{run_scheduled_instances(
   InstanceCount = 1L,
   LaunchSpecification = list(
     IamInstanceProfile = list(
@@ -121,10 +127,10 @@ run_scheduled_instances(
     )
   ),
   ScheduledInstanceId = "sci-1234-1234-1234-1234-123456789012"
-)
+)}
 
 # This example launches the specified Scheduled Instance in EC2-Classic.
-run_scheduled_instances(
+\donttest{run_scheduled_instances(
   InstanceCount = 1L,
   LaunchSpecification = list(
     IamInstanceProfile = list(
@@ -141,6 +147,6 @@ run_scheduled_instances(
     )
   ),
   ScheduledInstanceId = "sci-1234-1234-1234-1234-123456789012"
-)
+)}
 
 }

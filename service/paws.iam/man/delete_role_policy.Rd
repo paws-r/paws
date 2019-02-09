@@ -4,19 +4,16 @@
 \alias{delete_role_policy}
 \title{Deletes the specified inline policy that is embedded in the specified IAM role}
 \usage{
-delete_role_policy(
-  RoleName = "string",
-  PolicyName = "string"
-)
+delete_role_policy(RoleName, PolicyName)
 }
 \arguments{
 \item{RoleName}{[required] The name (friendly name, not ARN) identifying the role that the policy is embedded in.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{PolicyName}{[required] The name of the inline policy to delete from the specified IAM role.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Deletes the specified inline policy that is embedded in the specified IAM role.
@@ -24,12 +21,20 @@ Deletes the specified inline policy that is embedded in the specified IAM role.
 \details{
 A role can also have managed policies attached to it. To detach a managed policy from a role, use DetachRolePolicy. For more information about policies, refer to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_role_policy(
+  RoleName = "string",
+  PolicyName = "string"
+)
+}
+}
+
 \examples{
 # The following command removes the policy named ExamplePolicy from the
 # role named Test-Role.
-delete_role_policy(
+\donttest{delete_role_policy(
   PolicyName = "ExamplePolicy",
   RoleName = "Test-Role"
-)
+)}
 
 }

@@ -1,6 +1,6 @@
 Package: paws.xray
 Title: AWS X-Ray
-Version: 0.0.2
+Version: 0.0.3
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
@@ -12,57 +12,20 @@ Authors@R:
              email = "adam.banker39@gmail.com"),
       person(given = "Amazon.com, Inc.",
              role = "cph"))
-Description: AWS X-Ray provides APIs for managing debug traces and
-    retrieving service maps and other data created by processing those
+Description: AWS X-Ray provides APIs for managing debug traces
+    and retrieving service maps and other data created by processing those
     traces.
 License: Apache License (>= 2.0)
 Depends: 
-    R (>= 3.5.1)
+    R (>= 3.4.0)
 Imports: 
-    base64enc,
-    digest,
-    httr,
-    ini,
-    jsonlite,
-    xml2
+    paws.common
+Suggests: 
+    testthat
+Remotes: 
+    paws-r/paws/paws.common
 Encoding: UTF-8
 LazyData: true
-Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 6.0.1
-Collate: 
-    'struct.R'
-    'handlers.R'
-    'url.R'
-    'net.R'
-    'credential_providers.R'
-    'credentials.R'
-    'client.R'
-    'config.R'
-    'convert.R'
-    'dateutil.R'
-    'error.R'
-    'handlers_core.R'
-    'handlers_ec2query.R'
-    'handlers_jsonrpc.R'
-    'handlers_query.R'
-    'handlers_rest.R'
-    'handlers_restjson.R'
-    'handlers_restxml.R'
-    'idempotency.R'
-    'jsonutil.R'
-    'paws.xray_interfaces.R'
-    'paws.xray_operations.R'
-    'paws.xray_package.R'
-    'signer_v4.R'
-    'paws.xray_service.R'
-    'populate.R'
-    'populateutil.R'
-    'tags.R'
-    'queryutil.R'
-    'request.R'
-    'signer_s3.R'
-    'signer_s3v4.R'
-    'signer_v2.R'
-    'time.R'
-    'util.R'
-    'xmlutil.R'
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1

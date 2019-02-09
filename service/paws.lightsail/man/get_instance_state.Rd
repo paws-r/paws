@@ -4,9 +4,7 @@
 \alias{get_instance_state}
 \title{Returns the state of a specific instance}
 \usage{
-get_instance_state(
-  instanceName = "string"
-)
+get_instance_state(instanceName)
 }
 \arguments{
 \item{instanceName}{[required] The name of the instance to get state information about.}
@@ -14,6 +12,10 @@ get_instance_state(
 \description{
 Returns the state of a specific instance. Works on one instance at a time.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_instance_state(
+  instanceName = "string"
+)
 }
+}
+

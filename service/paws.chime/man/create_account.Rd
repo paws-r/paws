@@ -4,9 +4,7 @@
 \alias{create_account}
 \title{Creates an Amazon Chime account under the administrator's AWS account}
 \usage{
-create_account(
-  Name = "string"
-)
+create_account(Name)
 }
 \arguments{
 \item{Name}{[required] The name of the Amazon Chime account.}
@@ -14,6 +12,10 @@ create_account(
 \description{
 Creates an Amazon Chime account under the administrator's AWS account. Only \code{Team} account types are currently supported for this action. For more information about different account types, see \href{http://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html}{Managing Your Amazon Chime Accounts} in the \emph{Amazon Chime Administration Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_account(
+  Name = "string"
+)
 }
+}
+

@@ -4,34 +4,13 @@
 \alias{create_server}
 \title{Creates and immedately starts a new server}
 \usage{
-create_server(
-  AssociatePublicIpAddress = TRUE|FALSE,
-  DisableAutomatedBackup = TRUE|FALSE,
-  Engine = "string",
-  EngineModel = "string",
-  EngineVersion = "string",
-  EngineAttributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  BackupRetentionCount = 123,
-  ServerName = "string",
-  InstanceProfileArn = "string",
-  InstanceType = "string",
-  KeyPair = "string",
-  PreferredMaintenanceWindow = "string",
-  PreferredBackupWindow = "string",
-  SecurityGroupIds = list(
-    "string"
-  ),
-  ServiceRoleArn = "string",
-  SubnetIds = list(
-    "string"
-  ),
-  BackupId = "string"
-)
+create_server(AssociatePublicIpAddress = NULL,
+  DisableAutomatedBackup = NULL, Engine = NULL, EngineModel = NULL,
+  EngineVersion = NULL, EngineAttributes = NULL,
+  BackupRetentionCount = NULL, ServerName, InstanceProfileArn,
+  InstanceType, KeyPair = NULL, PreferredMaintenanceWindow = NULL,
+  PreferredBackupWindow = NULL, SecurityGroupIds = NULL,
+  ServiceRoleArn, SubnetIds = NULL, BackupId = NULL)
 }
 \arguments{
 \item{AssociatePublicIpAddress}{Associate a public IP address with a server that you are launching. Valid values are \code{true} or \code{false}. The default value is \code{true}.}
@@ -115,6 +94,35 @@ If you do not specify a security group by adding the \code{SecurityGroupIds} par
 
 By default, your server is accessible from any IP address. We recommend that you update your security group rules to allow access from known IP addresses and address ranges only. To edit security group rules, open Security Groups in the navigation pane of the EC2 management console.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_server(
+  AssociatePublicIpAddress = TRUE|FALSE,
+  DisableAutomatedBackup = TRUE|FALSE,
+  Engine = "string",
+  EngineModel = "string",
+  EngineVersion = "string",
+  EngineAttributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  BackupRetentionCount = 123,
+  ServerName = "string",
+  InstanceProfileArn = "string",
+  InstanceType = "string",
+  KeyPair = "string",
+  PreferredMaintenanceWindow = "string",
+  PreferredBackupWindow = "string",
+  SecurityGroupIds = list(
+    "string"
+  ),
+  ServiceRoleArn = "string",
+  SubnetIds = list(
+    "string"
+  ),
+  BackupId = "string"
+)
 }
+}
+

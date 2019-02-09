@@ -4,10 +4,7 @@
 \alias{update_application}
 \title{Changes the name of an application}
 \usage{
-update_application(
-  applicationName = "string",
-  newApplicationName = "string"
-)
+update_application(applicationName = NULL, newApplicationName = NULL)
 }
 \arguments{
 \item{applicationName}{The current name of the application you want to change.}
@@ -17,6 +14,11 @@ update_application(
 \description{
 Changes the name of an application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_application(
+  applicationName = "string",
+  newApplicationName = "string"
+)
 }
+}
+

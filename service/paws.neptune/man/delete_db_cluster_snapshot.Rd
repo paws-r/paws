@@ -4,9 +4,7 @@
 \alias{delete_db_cluster_snapshot}
 \title{Deletes a DB cluster snapshot}
 \usage{
-delete_db_cluster_snapshot(
-  DBClusterSnapshotIdentifier = "string"
-)
+delete_db_cluster_snapshot(DBClusterSnapshotIdentifier)
 }
 \arguments{
 \item{DBClusterSnapshotIdentifier}{[required] The identifier of the DB cluster snapshot to delete.
@@ -19,6 +17,10 @@ Deletes a DB cluster snapshot. If the snapshot is being copied, the copy operati
 \details{
 The DB cluster snapshot must be in the \code{available} state to be deleted.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_db_cluster_snapshot(
+  DBClusterSnapshotIdentifier = "string"
+)
 }
+}
+

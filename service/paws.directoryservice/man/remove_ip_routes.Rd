@@ -4,12 +4,7 @@
 \alias{remove_ip_routes}
 \title{Removes IP address blocks from a directory}
 \usage{
-remove_ip_routes(
-  DirectoryId = "string",
-  CidrIps = list(
-    "string"
-  )
-)
+remove_ip_routes(DirectoryId, CidrIps)
 }
 \arguments{
 \item{DirectoryId}{[required] Identifier (ID) of the directory from which you want to remove the IP addresses.}
@@ -19,6 +14,13 @@ remove_ip_routes(
 \description{
 Removes IP address blocks from a directory.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_ip_routes(
+  DirectoryId = "string",
+  CidrIps = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{delete_build}
 \title{Deletes a build}
 \usage{
-delete_build(
-  BuildId = "string"
-)
+delete_build(BuildId)
 }
 \arguments{
 \item{BuildId}{[required] Unique identifier for a build to delete.}
@@ -26,6 +24,10 @@ Build-related operations include:
 \item DeleteBuild
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_build(
+  BuildId = "string"
+)
 }
+}
+

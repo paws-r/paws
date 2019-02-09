@@ -9,6 +9,8 @@ get_traffic_policy_instance_count()
 \description{
 Gets the number of traffic policy instances that are associated with the current AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_traffic_policy_instance_count()
 }
+}
+

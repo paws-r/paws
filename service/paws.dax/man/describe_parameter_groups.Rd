@@ -4,13 +4,8 @@
 \alias{describe_parameter_groups}
 \title{Returns a list of parameter group descriptions}
 \usage{
-describe_parameter_groups(
-  ParameterGroupNames = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_parameter_groups(ParameterGroupNames = NULL,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ParameterGroupNames}{The names of the parameter groups.}
@@ -24,6 +19,14 @@ The value for \code{MaxResults} must be between 20 and 100.}
 \description{
 Returns a list of parameter group descriptions. If a parameter group name is specified, the list will contain only the descriptions for that group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_parameter_groups(
+  ParameterGroupNames = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

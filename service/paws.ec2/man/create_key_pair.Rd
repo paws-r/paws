@@ -4,10 +4,7 @@
 \alias{create_key_pair}
 \title{Creates a 2048-bit RSA key pair with the specified name}
 \usage{
-create_key_pair(
-  KeyName = "string",
-  DryRun = TRUE|FALSE
-)
+create_key_pair(KeyName, DryRun = NULL)
 }
 \arguments{
 \item{KeyName}{[required] A unique name for the key pair.
@@ -26,10 +23,18 @@ The key pair returned to you is available only in the region in which you create
 
 For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html}{Key Pairs} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_key_pair(
+  KeyName = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example creates a key pair named my-key-pair.
-create_key_pair(
+\donttest{create_key_pair(
   KeyName = "my-key-pair"
-)
+)}
 
 }

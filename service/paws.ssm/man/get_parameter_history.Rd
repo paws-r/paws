@@ -4,12 +4,8 @@
 \alias{get_parameter_history}
 \title{Query a list of all parameters used by the AWS account}
 \usage{
-get_parameter_history(
-  Name = "string",
-  WithDecryption = TRUE|FALSE,
-  MaxResults = 123,
-  NextToken = "string"
-)
+get_parameter_history(Name, WithDecryption = NULL, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of a parameter you want to query.}
@@ -23,6 +19,13 @@ get_parameter_history(
 \description{
 Query a list of all parameters used by the AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_parameter_history(
+  Name = "string",
+  WithDecryption = TRUE|FALSE,
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

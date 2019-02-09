@@ -2,17 +2,10 @@
 % Please edit documentation in R/paws.clouddirectory_operations.R
 \name{list_policy_attachments}
 \alias{list_policy_attachments}
-\title{Returns all of the \code{ObjectIdentifiers} to which a given policy is attached}
+\title{Returns all of the ObjectIdentifiers to which a given policy is attached}
 \usage{
-list_policy_attachments(
-  DirectoryArn = "string",
-  PolicyReference = list(
-    Selector = "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123,
-  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
-)
+list_policy_attachments(DirectoryArn, PolicyReference, NextToken = NULL,
+  MaxResults = NULL, ConsistencyLevel = NULL)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where objects reside. For more information, see arns.}
@@ -28,6 +21,16 @@ list_policy_attachments(
 \description{
 Returns all of the \code{ObjectIdentifiers} to which a given policy is attached.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_policy_attachments(
+  DirectoryArn = "string",
+  PolicyReference = list(
+    Selector = "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123,
+  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
+)
 }
+}
+

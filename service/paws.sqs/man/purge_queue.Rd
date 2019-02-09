@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.sqs_operations.R
 \name{purge_queue}
 \alias{purge_queue}
-\title{Deletes the messages in a queue specified by the \code{QueueURL} parameter}
+\title{Deletes the messages in a queue specified by the QueueURL parameter}
 \usage{
-purge_queue(
-  QueueUrl = "string"
-)
+purge_queue(QueueUrl)
 }
 \arguments{
 \item{QueueUrl}{[required] The URL of the queue from which the \code{PurgeQueue} action deletes messages.
@@ -25,6 +23,10 @@ Messages sent to the queue \emph{before} you call \code{PurgeQueue} might be rec
 
 Messages sent to the queue \emph{after} you call \code{PurgeQueue} might be deleted while the queue is being purged.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{purge_queue(
+  QueueUrl = "string"
+)
 }
+}
+

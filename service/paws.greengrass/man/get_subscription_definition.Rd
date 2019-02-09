@@ -4,9 +4,7 @@
 \alias{get_subscription_definition}
 \title{Retrieves information about a subscription definition}
 \usage{
-get_subscription_definition(
-  SubscriptionDefinitionId = "string"
-)
+get_subscription_definition(SubscriptionDefinitionId)
 }
 \arguments{
 \item{SubscriptionDefinitionId}{[required] The ID of the subscription definition.}
@@ -14,6 +12,10 @@ get_subscription_definition(
 \description{
 Retrieves information about a subscription definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_subscription_definition(
+  SubscriptionDefinitionId = "string"
+)
 }
+}
+

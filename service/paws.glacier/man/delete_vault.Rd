@@ -4,10 +4,7 @@
 \alias{delete_vault}
 \title{This operation deletes a vault}
 \usage{
-delete_vault(
-  accountId = "string",
-  vaultName = "string"
-)
+delete_vault(accountId, vaultName)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
@@ -24,11 +21,19 @@ An AWS account has full permission to perform all operations (actions). However,
 
 For conceptual information and underlying REST API, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/deleting-vaults.html}{Deleting a Vault in Amazon Glacier} and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-delete.html}{Delete Vault} in the \emph{Amazon Glacier Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_vault(
+  accountId = "string",
+  vaultName = "string"
+)
+}
+}
+
 \examples{
 # The example deletes a vault named my-vault:
-delete_vault(
+\donttest{delete_vault(
   accountId = "-",
   vaultName = "my-vault"
-)
+)}
 
 }

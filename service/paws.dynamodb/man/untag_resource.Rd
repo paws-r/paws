@@ -4,12 +4,7 @@
 \alias{untag_resource}
 \title{Removes the association of tags from an Amazon DynamoDB resource}
 \usage{
-untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon DyanamoDB resource the tags will be removed from. This value is an Amazon Resource Name (ARN).}
@@ -22,6 +17,13 @@ Removes the association of tags from an Amazon DynamoDB resource. You can call U
 \details{
 For an overview on tagging DynamoDB resources, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html}{Tagging for DynamoDB} in the \emph{Amazon DynamoDB Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{untag_resource(
+  ResourceArn = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
+}
+

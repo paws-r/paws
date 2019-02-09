@@ -4,9 +4,7 @@
 \alias{get_cors_policy}
 \title{Returns the cross-origin resource sharing (CORS) configuration information that is set for the container}
 \usage{
-get_cors_policy(
-  ContainerName = "string"
-)
+get_cors_policy(ContainerName)
 }
 \arguments{
 \item{ContainerName}{[required] The name of the container that the policy is assigned to.}
@@ -17,6 +15,10 @@ Returns the cross-origin resource sharing (CORS) configuration information that 
 \details{
 To use this operation, you must have permission to perform the \code{MediaStore:GetCorsPolicy} action. By default, the container owner has this permission and can grant it to others.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_cors_policy(
+  ContainerName = "string"
+)
 }
+}
+

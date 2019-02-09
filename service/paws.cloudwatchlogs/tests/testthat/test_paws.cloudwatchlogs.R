@@ -16,10 +16,6 @@ test_that("describe_metric_filters", {
     expect_error(describe_metric_filters(), NA)
 })
 
-test_that("describe_queries", {
-    expect_error(describe_queries(), NA)
-})
-
 test_that("describe_resource_policies", {
     expect_error(describe_resource_policies(), NA)
 })

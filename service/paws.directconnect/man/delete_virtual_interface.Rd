@@ -4,9 +4,7 @@
 \alias{delete_virtual_interface}
 \title{Deletes a virtual interface}
 \usage{
-delete_virtual_interface(
-  virtualInterfaceId = "string"
-)
+delete_virtual_interface(virtualInterfaceId)
 }
 \arguments{
 \item{virtualInterfaceId}{[required] The ID of the virtual interface.}
@@ -14,6 +12,10 @@ delete_virtual_interface(
 \description{
 Deletes a virtual interface.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_virtual_interface(
+  virtualInterfaceId = "string"
+)
 }
+}
+

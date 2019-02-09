@@ -2,53 +2,36 @@
 % Please edit documentation in R/paws.sms_operations.R
 \name{create_replication_job}
 \alias{create_replication_job}
-\title{Creates a replication job}
+\title{The CreateReplicationJob API is used to create a ReplicationJob to replicate a server on AWS}
 \usage{
-create_replication_job(
+create_replication_job(serverId, seedReplicationTime, frequency,
+  licenseType = NULL, roleName = NULL, description = NULL)
+}
+\arguments{
+\item{serverId}{[required]}
+
+\item{seedReplicationTime}{[required]}
+
+\item{frequency}{[required]}
+
+\item{licenseType}{}
+
+\item{roleName}{}
+
+\item{description}{}
+}
+\description{
+The CreateReplicationJob API is used to create a ReplicationJob to replicate a server on AWS. Call this API to first create a ReplicationJob, which will then schedule periodic ReplicationRuns to replicate your server to AWS. Each ReplicationRun will result in the creation of an AWS AMI.
+}
+\section{Accepted Parameters}{
+\preformatted{create_replication_job(
   serverId = "string",
   seedReplicationTime = as.POSIXct("2015-01-01"),
   frequency = 123,
-  runOnce = TRUE|FALSE,
   licenseType = "AWS"|"BYOL",
   roleName = "string",
-  description = "string",
-  numberOfRecentAmisToKeep = 123,
-  encrypted = TRUE|FALSE,
-  kmsKeyId = "string"
+  description = "string"
 )
 }
-\arguments{
-\item{serverId}{[required] The identifier of the server.}
-
-\item{seedReplicationTime}{[required] The seed replication time.}
-
-\item{frequency}{The time between consecutive replication runs, in hours.}
-
-\item{runOnce}{}
-
-\item{licenseType}{The license type to be used for the AMI created by a successful replication run.}
-
-\item{roleName}{The name of the IAM role to be used by the AWS SMS.}
-
-\item{description}{The description of the replication job.}
-
-\item{numberOfRecentAmisToKeep}{The maximum number of SMS-created AMIs to retain. The oldest will be deleted once the maximum number is reached and a new AMI is created.}
-
-\item{encrypted}{When \emph{true}, the replication job produces encrypted AMIs. See also \code{KmsKeyId} below.}
-
-\item{kmsKeyId}{KMS key ID for replication jobs that produce encrypted AMIs. Can be any of the following:
-\itemize{
-\item KMS key ID
-\item KMS key alias
-\item ARN referring to KMS key ID
-\item ARN referring to KMS key alias
 }
 
-If encrypted is \emph{true} but a KMS key id is not specified, the customer's default KMS key for EBS is used.}
-}
-\description{
-Creates a replication job. The replication job schedules periodic replication runs to replicate your server to AWS. Each replication run creates an Amazon Machine Image (AMI).
-}
-\examples{
-
-}

@@ -4,11 +4,7 @@
 \alias{describe_time_based_auto_scaling}
 \title{Describes time-based auto scaling configurations for specified instances}
 \usage{
-describe_time_based_auto_scaling(
-  InstanceIds = list(
-    "string"
-  )
-)
+describe_time_based_auto_scaling(InstanceIds)
 }
 \arguments{
 \item{InstanceIds}{[required] An array of instance IDs.}
@@ -21,6 +17,12 @@ You must specify at least one of the parameters.
 
 \strong{Required Permissions}: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_time_based_auto_scaling(
+  InstanceIds = list(
+    "string"
+  )
+)
 }
+}
+

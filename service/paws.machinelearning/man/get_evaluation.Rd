@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{get_evaluation}
 \alias{get_evaluation}
-\title{Returns an \code{Evaluation} that includes metadata as well as the current status of the \code{Evaluation}}
+\title{Returns an Evaluation that includes metadata as well as the current status of the Evaluation}
 \usage{
-get_evaluation(
-  EvaluationId = "string"
-)
+get_evaluation(EvaluationId)
 }
 \arguments{
 \item{EvaluationId}{[required] The ID of the \code{Evaluation} to retrieve. The evaluation of each \code{MLModel} is recorded and cataloged. The ID provides the means to access the information.}
@@ -14,6 +12,10 @@ get_evaluation(
 \description{
 Returns an \code{Evaluation} that includes metadata as well as the current status of the \code{Evaluation}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_evaluation(
+  EvaluationId = "string"
+)
 }
+}
+

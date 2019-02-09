@@ -4,11 +4,8 @@
 \alias{authorize_snapshot_access}
 \title{Authorizes the specified AWS customer account to restore the specified snapshot}
 \usage{
-authorize_snapshot_access(
-  SnapshotIdentifier = "string",
-  SnapshotClusterIdentifier = "string",
-  AccountWithRestoreAccess = "string"
-)
+authorize_snapshot_access(SnapshotIdentifier,
+  SnapshotClusterIdentifier = NULL, AccountWithRestoreAccess)
 }
 \arguments{
 \item{SnapshotIdentifier}{[required] The identifier of the snapshot the account is authorized to restore.}
@@ -25,6 +22,12 @@ Authorizes the specified AWS customer account to restore the specified snapshot.
 \details{
 For more information about working with snapshots, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html}{Amazon Redshift Snapshots} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{authorize_snapshot_access(
+  SnapshotIdentifier = "string",
+  SnapshotClusterIdentifier = "string",
+  AccountWithRestoreAccess = "string"
+)
 }
+}
+

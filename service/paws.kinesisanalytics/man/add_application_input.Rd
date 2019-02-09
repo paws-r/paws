@@ -4,7 +4,27 @@
 \alias{add_application_input}
 \title{Adds a streaming source to your Amazon Kinesis application}
 \usage{
-add_application_input(
+add_application_input(ApplicationName, CurrentApplicationVersionId, Input)
+}
+\arguments{
+\item{ApplicationName}{[required] Name of your existing Amazon Kinesis Analytics application to which you want to add the streaming source.}
+
+\item{CurrentApplicationVersionId}{[required] Current version of your Amazon Kinesis Analytics application. You can use the DescribeApplication operation to find the current application version.}
+
+\item{Input}{[required] The Input to add.}
+}
+\description{
+Adds a streaming source to your Amazon Kinesis application. For conceptual information, see \href{http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html}{Configuring Application Input}.
+}
+\details{
+You can add a streaming source either when you create an application or you can use this operation to add a streaming source after you create an application. For more information, see CreateApplication.
+
+Any configuration update, including adding a streaming source using this operation, results in a new version of the application. You can use the DescribeApplication operation to find the current application version.
+
+This operation requires permissions to perform the \code{kinesisanalytics:AddApplicationInput} action.
+}
+\section{Accepted Parameters}{
+\preformatted{add_application_input(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   Input = list(
@@ -51,23 +71,5 @@ add_application_input(
   )
 )
 }
-\arguments{
-\item{ApplicationName}{[required] Name of your existing Amazon Kinesis Analytics application to which you want to add the streaming source.}
-
-\item{CurrentApplicationVersionId}{[required] Current version of your Amazon Kinesis Analytics application. You can use the DescribeApplication operation to find the current application version.}
-
-\item{Input}{[required] The Input to add.}
 }
-\description{
-Adds a streaming source to your Amazon Kinesis application. For conceptual information, see \href{http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html}{Configuring Application Input}.
-}
-\details{
-You can add a streaming source either when you create an application or you can use this operation to add a streaming source after you create an application. For more information, see CreateApplication.
 
-Any configuration update, including adding a streaming source using this operation, results in a new version of the application. You can use the DescribeApplication operation to find the current application version.
-
-This operation requires permissions to perform the \code{kinesisanalytics:AddApplicationInput} action.
-}
-\examples{
-
-}

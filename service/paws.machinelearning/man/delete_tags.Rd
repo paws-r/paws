@@ -4,13 +4,7 @@
 \alias{delete_tags}
 \title{Deletes the specified tags associated with an ML object}
 \usage{
-delete_tags(
-  TagKeys = list(
-    "string"
-  ),
-  ResourceId = "string",
-  ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
-)
+delete_tags(TagKeys, ResourceId, ResourceType)
 }
 \arguments{
 \item{TagKeys}{[required] One or more tags to delete.}
@@ -25,6 +19,14 @@ Deletes the specified tags associated with an ML object. After this operation is
 \details{
 If you specify a tag that doesn't exist, Amazon ML ignores it.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_tags(
+  TagKeys = list(
+    "string"
+  ),
+  ResourceId = "string",
+  ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
+)
 }
+}
+

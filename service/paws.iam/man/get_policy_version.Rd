@@ -4,10 +4,7 @@
 \alias{get_policy_version}
 \title{Retrieves information about the specified version of the specified managed policy, including the policy document}
 \usage{
-get_policy_version(
-  PolicyArn = "string",
-  VersionId = "string"
-)
+get_policy_version(PolicyArn, VersionId)
 }
 \arguments{
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the managed policy that you want information about.
@@ -16,7 +13,7 @@ For more information about ARNs, see \href{http://docs.aws.amazon.com/general/la
 
 \item{VersionId}{[required] Identifies the policy version to retrieve.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a period '.' and a string of letters and digits.}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a period '.' and a string of letters and digits.}
 }
 \description{
 Retrieves information about the specified version of the specified managed policy, including the policy document.
@@ -32,6 +29,11 @@ For more information about the types of policies, see \href{http://docs.aws.amaz
 
 For more information about managed policy versions, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies} in the \emph{IAM User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_policy_version(
+  PolicyArn = "string",
+  VersionId = "string"
+)
 }
+}
+

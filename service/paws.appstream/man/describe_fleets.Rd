@@ -4,12 +4,7 @@
 \alias{describe_fleets}
 \title{Retrieves a list that describes one or more specified fleets, if the fleet names are provided}
 \usage{
-describe_fleets(
-  Names = list(
-    "string"
-  ),
-  NextToken = "string"
-)
+describe_fleets(Names = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Names}{The names of the fleets to describe.}
@@ -19,6 +14,13 @@ describe_fleets(
 \description{
 Retrieves a list that describes one or more specified fleets, if the fleet names are provided. Otherwise, all fleets in the account are described.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_fleets(
+  Names = list(
+    "string"
+  ),
+  NextToken = "string"
+)
 }
+}
+

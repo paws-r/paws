@@ -4,10 +4,7 @@
 \alias{create_snapshot}
 \title{Initiates a snapshot of a volume}
 \usage{
-create_snapshot(
-  VolumeARN = "string",
-  SnapshotDescription = "string"
-)
+create_snapshot(VolumeARN, SnapshotDescription)
 }
 \arguments{
 \item{VolumeARN}{[required] The Amazon Resource Name (ARN) of the volume. Use the ListVolumes operation to return a list of gateway volumes.}
@@ -26,11 +23,19 @@ To list or delete a snapshot, you must use the Amazon EC2 API. For more informat
 
 Volume and snapshot IDs are changing to a longer length ID format. For more information, see the important note on the \href{http://docs.aws.amazon.com/storagegateway/latest/APIReference/Welcome.html}{Welcome} page.
 }
+\section{Accepted Parameters}{
+\preformatted{create_snapshot(
+  VolumeARN = "string",
+  SnapshotDescription = "string"
+)
+}
+}
+
 \examples{
 # Initiates an ad-hoc snapshot of a gateway volume.
-create_snapshot(
+\donttest{create_snapshot(
   SnapshotDescription = "My root volume snapshot as of 10/03/2017",
   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB"
-)
+)}
 
 }

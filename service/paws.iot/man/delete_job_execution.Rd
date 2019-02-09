@@ -4,12 +4,7 @@
 \alias{delete_job_execution}
 \title{Deletes a job execution}
 \usage{
-delete_job_execution(
-  jobId = "string",
-  thingName = "string",
-  executionNumber = 123,
-  force = TRUE|FALSE
-)
+delete_job_execution(jobId, thingName, executionNumber, force = NULL)
 }
 \arguments{
 \item{jobId}{[required] The ID of the job whose execution on a particular device will be deleted.}
@@ -27,6 +22,13 @@ Deleting a job execution which is "IN\_PROGRESS", will cause the device to be un
 \description{
 Deletes a job execution.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_job_execution(
+  jobId = "string",
+  thingName = "string",
+  executionNumber = 123,
+  force = TRUE|FALSE
+)
 }
+}
+

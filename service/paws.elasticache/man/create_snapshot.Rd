@@ -4,11 +4,8 @@
 \alias{create_snapshot}
 \title{Creates a copy of an entire cluster or replication group at a specific moment in time}
 \usage{
-create_snapshot(
-  ReplicationGroupId = "string",
-  CacheClusterId = "string",
-  SnapshotName = "string"
-)
+create_snapshot(ReplicationGroupId = NULL, CacheClusterId = NULL,
+  SnapshotName)
 }
 \arguments{
 \item{ReplicationGroupId}{The identifier of an existing replication group. The snapshot is created from this replication group.}
@@ -23,6 +20,12 @@ Creates a copy of an entire cluster or replication group at a specific moment in
 \details{
 This operation is valid for Redis only.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_snapshot(
+  ReplicationGroupId = "string",
+  CacheClusterId = "string",
+  SnapshotName = "string"
+)
 }
+}
+

@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.sqs_operations.R
 \name{list_dead_letter_source_queues}
 \alias{list_dead_letter_source_queues}
-\title{Returns a list of your queues that have the \code{RedrivePolicy} queue attribute configured with a dead-letter queue}
+\title{Returns a list of your queues that have the RedrivePolicy queue attribute configured with a dead-letter queue}
 \usage{
-list_dead_letter_source_queues(
-  QueueUrl = "string"
-)
+list_dead_letter_source_queues(QueueUrl)
 }
 \arguments{
 \item{QueueUrl}{[required] The URL of a dead-letter queue.
@@ -19,6 +17,10 @@ Returns a list of your queues that have the \code{RedrivePolicy} queue attribute
 \details{
 For more information about using dead-letter queues, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html}{Using Amazon SQS Dead-Letter Queues} in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_dead_letter_source_queues(
+  QueueUrl = "string"
+)
 }
+}
+

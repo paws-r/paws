@@ -4,9 +4,7 @@
 \alias{delete_identity_pool}
 \title{Deletes a user pool}
 \usage{
-delete_identity_pool(
-  IdentityPoolId = "string"
-)
+delete_identity_pool(IdentityPoolId)
 }
 \arguments{
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
@@ -17,6 +15,10 @@ Deletes a user pool. Once a pool is deleted, users will not be able to authentic
 \details{
 You must use AWS Developer credentials to call this API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_identity_pool(
+  IdentityPoolId = "string"
+)
 }
+}
+

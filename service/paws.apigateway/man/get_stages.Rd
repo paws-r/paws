@@ -4,10 +4,7 @@
 \alias{get_stages}
 \title{Gets information about one or more Stage resources}
 \usage{
-get_stages(
-  restApiId = "string",
-  deploymentId = "string"
-)
+get_stages(restApiId, deploymentId = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -17,6 +14,11 @@ get_stages(
 \description{
 Gets information about one or more Stage resources.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_stages(
+  restApiId = "string",
+  deploymentId = "string"
+)
 }
+}
+

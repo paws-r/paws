@@ -4,16 +4,9 @@
 \alias{create_vpc_endpoint_connection_notification}
 \title{Creates a connection notification for a specified VPC endpoint or VPC endpoint service}
 \usage{
-create_vpc_endpoint_connection_notification(
-  DryRun = TRUE|FALSE,
-  ServiceId = "string",
-  VpcEndpointId = "string",
-  ConnectionNotificationArn = "string",
-  ConnectionEvents = list(
-    "string"
-  ),
-  ClientToken = "string"
-)
+create_vpc_endpoint_connection_notification(DryRun = NULL,
+  ServiceId = NULL, VpcEndpointId = NULL, ConnectionNotificationArn,
+  ConnectionEvents, ClientToken = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -34,6 +27,17 @@ Creates a connection notification for a specified VPC endpoint or VPC endpoint s
 \details{
 You can create a connection notification for interface endpoints only.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_vpc_endpoint_connection_notification(
+  DryRun = TRUE|FALSE,
+  ServiceId = "string",
+  VpcEndpointId = "string",
+  ConnectionNotificationArn = "string",
+  ConnectionEvents = list(
+    "string"
+  ),
+  ClientToken = "string"
+)
 }
+}
+

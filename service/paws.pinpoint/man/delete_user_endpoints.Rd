@@ -4,10 +4,7 @@
 \alias{delete_user_endpoints}
 \title{Deletes endpoints that are associated with a User ID}
 \usage{
-delete_user_endpoints(
-  ApplicationId = "string",
-  UserId = "string"
-)
+delete_user_endpoints(ApplicationId, UserId)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -17,6 +14,11 @@ delete_user_endpoints(
 \description{
 Deletes endpoints that are associated with a User ID.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_user_endpoints(
+  ApplicationId = "string",
+  UserId = "string"
+)
 }
+}
+

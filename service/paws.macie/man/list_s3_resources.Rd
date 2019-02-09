@@ -4,11 +4,8 @@
 \alias{list_s3_resources}
 \title{Lists all the S3 resources associated with Amazon Macie}
 \usage{
-list_s3_resources(
-  memberAccountId = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+list_s3_resources(memberAccountId = NULL, nextToken = NULL,
+  maxResults = NULL)
 }
 \arguments{
 \item{memberAccountId}{The Amazon Macie member account ID whose associated S3 resources you want to list.}
@@ -20,6 +17,12 @@ list_s3_resources(
 \description{
 Lists all the S3 resources associated with Amazon Macie. If memberAccountId isn't specified, the action lists the S3 resources associated with Amazon Macie for the current master account. If memberAccountId is specified, the action lists the S3 resources associated with Amazon Macie for the specified member account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_s3_resources(
+  memberAccountId = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

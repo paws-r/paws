@@ -4,11 +4,8 @@
 \alias{list_smart_home_appliances}
 \title{Lists all of the smart home appliances associated with a room}
 \usage{
-list_smart_home_appliances(
-  RoomArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_smart_home_appliances(RoomArn, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{RoomArn}{[required] The room that the appliances are associated with.}
@@ -20,6 +17,12 @@ list_smart_home_appliances(
 \description{
 Lists all of the smart home appliances associated with a room.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_smart_home_appliances(
+  RoomArn = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

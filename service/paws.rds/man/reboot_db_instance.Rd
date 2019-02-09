@@ -4,10 +4,7 @@
 \alias{reboot_db_instance}
 \title{You might need to reboot your DB instance, usually for maintenance reasons}
 \usage{
-reboot_db_instance(
-  DBInstanceIdentifier = "string",
-  ForceFailover = TRUE|FALSE
-)
+reboot_db_instance(DBInstanceIdentifier, ForceFailover = NULL)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The DB instance identifier. This parameter is stored as a lowercase string.
@@ -29,6 +26,11 @@ Rebooting a DB instance restarts the database engine service. Rebooting a DB ins
 
 For more information about rebooting, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_RebootInstance.html}{Rebooting a DB Instance} in the \emph{Amazon RDS User Guide.}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reboot_db_instance(
+  DBInstanceIdentifier = "string",
+  ForceFailover = TRUE|FALSE
+)
 }
+}
+

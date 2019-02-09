@@ -4,10 +4,7 @@
 \alias{stop_db_instance}
 \title{Stops an Amazon RDS DB instance}
 \usage{
-stop_db_instance(
-  DBInstanceIdentifier = "string",
-  DBSnapshotIdentifier = "string"
-)
+stop_db_instance(DBInstanceIdentifier, DBSnapshotIdentifier = NULL)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The user-supplied instance identifier.}
@@ -22,6 +19,11 @@ For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/User
 
 This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For Aurora clusters, use StopDBCluster instead.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_db_instance(
+  DBInstanceIdentifier = "string",
+  DBSnapshotIdentifier = "string"
+)
 }
+}
+

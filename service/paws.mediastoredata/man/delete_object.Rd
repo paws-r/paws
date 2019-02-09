@@ -4,9 +4,7 @@
 \alias{delete_object}
 \title{Deletes an object at the specified path}
 \usage{
-delete_object(
-  Path = "string"
-)
+delete_object(Path)
 }
 \arguments{
 \item{Path}{[required] The path (including the file name) where the object is stored in the container. Format: <folder name>/<folder name>/<file name>}
@@ -14,6 +12,10 @@ delete_object(
 \description{
 Deletes an object at the specified path.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_object(
+  Path = "string"
+)
 }
+}
+

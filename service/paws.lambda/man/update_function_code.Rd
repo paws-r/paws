@@ -4,19 +4,12 @@
 \alias{update_function_code}
 \title{Updates the code for the specified Lambda function}
 \usage{
-update_function_code(
-  FunctionName = "string",
-  ZipFile = raw,
-  S3Bucket = "string",
-  S3Key = "string",
-  S3ObjectVersion = "string",
-  Publish = TRUE|FALSE,
-  DryRun = TRUE|FALSE,
-  RevisionId = "string"
-)
+update_function_code(FunctionName, ZipFile = NULL, S3Bucket = NULL,
+  S3Key = NULL, S3ObjectVersion = NULL, Publish = NULL,
+  DryRun = NULL, RevisionId = NULL)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function.
+\item{FunctionName}{[required] The name of the lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -49,15 +42,29 @@ If you are using the versioning feature, note this API will always update the \$
 
 This operation requires permission for the \code{lambda:UpdateFunctionCode} action.
 }
+\section{Accepted Parameters}{
+\preformatted{update_function_code(
+  FunctionName = "string",
+  ZipFile = raw,
+  S3Bucket = "string",
+  S3Key = "string",
+  S3ObjectVersion = "string",
+  Publish = TRUE|FALSE,
+  DryRun = TRUE|FALSE,
+  RevisionId = "string"
+)
+}
+}
+
 \examples{
 # This operation updates a Lambda function's code
-update_function_code(
+\donttest{update_function_code(
   FunctionName = "myFunction",
   Publish = TRUE,
   S3Bucket = "myBucket",
   S3Key = "myKey",
   S3ObjectVersion = "1",
   ZipFile = "fileb://file-path/file.zip"
-)
+)}
 
 }

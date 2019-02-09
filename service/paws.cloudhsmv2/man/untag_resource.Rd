@@ -4,12 +4,7 @@
 \alias{untag_resource}
 \title{Removes the specified tag or tags from the specified AWS CloudHSM cluster}
 \usage{
-untag_resource(
-  ResourceId = "string",
-  TagKeyList = list(
-    "string"
-  )
-)
+untag_resource(ResourceId, TagKeyList)
 }
 \arguments{
 \item{ResourceId}{[required] The cluster identifier (ID) for the cluster whose tags you are removing. To find the cluster ID, use DescribeClusters.}
@@ -19,6 +14,13 @@ untag_resource(
 \description{
 Removes the specified tag or tags from the specified AWS CloudHSM cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{untag_resource(
+  ResourceId = "string",
+  TagKeyList = list(
+    "string"
+  )
+)
 }
+}
+

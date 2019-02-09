@@ -4,21 +4,10 @@
 \alias{describe_tags}
 \title{Describes the specified tags}
 \usage{
-describe_tags(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string",
-  MaxRecords = 123
-)
+describe_tags(Filters = NULL, NextToken = NULL, MaxRecords = NULL)
 }
 \arguments{
-\item{Filters}{One or more filters to scope the tags to return. The maximum number of filters per filter type (for example, \code{auto-scaling-group}) is 1000.}
+\item{Filters}{A filter used to scope the tags to return.}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
@@ -32,9 +21,25 @@ You can use filters to limit the results. For example, you can query for the tag
 
 You can also specify multiple filters. The result includes information for a particular tag only if it matches all the filters. If there's no match, no special message is returned.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_tags(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string",
+  MaxRecords = 123
+)
+}
+}
+
 \examples{
 # This example describes the tags for the specified Auto Scaling group.
-describe_tags(
+\donttest{describe_tags(
   Filters = list(
     list(
       Name = "auto-scaling-group",
@@ -43,6 +48,6 @@ describe_tags(
       )
     )
   )
-)
+)}
 
 }

@@ -4,12 +4,7 @@
 \alias{unsubscribe_from_dataset}
 \title{Unsubscribes from receiving notifications when a dataset is modified by another device}
 \usage{
-unsubscribe_from_dataset(
-  IdentityPoolId = "string",
-  IdentityId = "string",
-  DatasetName = "string",
-  DeviceId = "string"
-)
+unsubscribe_from_dataset(IdentityPoolId, IdentityId, DatasetName, DeviceId)
 }
 \arguments{
 \item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. The ID of the pool to which this identity belongs.}
@@ -26,6 +21,13 @@ Unsubscribes from receiving notifications when a dataset is modified by another 
 \details{
 This API can only be called with temporary credentials provided by Cognito Identity. You cannot call this API with developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{unsubscribe_from_dataset(
+  IdentityPoolId = "string",
+  IdentityId = "string",
+  DatasetName = "string",
+  DeviceId = "string"
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{list_log_subscriptions}
 \title{Lists the active log subscriptions for the AWS account}
 \usage{
-list_log_subscriptions(
-  DirectoryId = "string",
-  NextToken = "string",
-  Limit = 123
-)
+list_log_subscriptions(DirectoryId = NULL, NextToken = NULL,
+  Limit = NULL)
 }
 \arguments{
 \item{DirectoryId}{If a \emph{DirectoryID} is provided, lists only the log subscription associated with that directory. If no \emph{DirectoryId} is provided, lists all log subscriptions associated with your AWS account. If there are no log subscriptions for the AWS account or the directory, an empty list will be returned.}
@@ -20,6 +17,12 @@ list_log_subscriptions(
 \description{
 Lists the active log subscriptions for the AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_log_subscriptions(
+  DirectoryId = "string",
+  NextToken = "string",
+  Limit = 123
+)
 }
+}
+

@@ -2,13 +2,40 @@
 % Please edit documentation in R/paws.appsync_operations.R
 \name{create_data_source}
 \alias{create_data_source}
-\title{Creates a \code{DataSource} object}
+\title{Creates a DataSource object}
 \usage{
-create_data_source(
+create_data_source(apiId, name, description = NULL, type,
+  serviceRoleArn = NULL, dynamodbConfig = NULL, lambdaConfig = NULL,
+  elasticsearchConfig = NULL, httpConfig = NULL)
+}
+\arguments{
+\item{apiId}{[required] The API ID for the GraphQL API for the \code{DataSource}.}
+
+\item{name}{[required] A user-supplied name for the \code{DataSource}.}
+
+\item{description}{A description of the \code{DataSource}.}
+
+\item{type}{[required] The type of the \code{DataSource}.}
+
+\item{serviceRoleArn}{The IAM service role ARN for the data source. The system assumes this role when accessing the data source.}
+
+\item{dynamodbConfig}{DynamoDB settings.}
+
+\item{lambdaConfig}{AWS Lambda settings.}
+
+\item{elasticsearchConfig}{Amazon Elasticsearch settings.}
+
+\item{httpConfig}{Http endpoint settings.}
+}
+\description{
+Creates a \code{DataSource} object.
+}
+\section{Accepted Parameters}{
+\preformatted{create_data_source(
   apiId = "string",
   name = "string",
   description = "string",
-  type = "AWS_LAMBDA"|"AMAZON_DYNAMODB"|"AMAZON_ELASTICSEARCH"|"NONE"|"HTTP"|"RELATIONAL_DATABASE",
+  type = "AWS_LAMBDA"|"AMAZON_DYNAMODB"|"AMAZON_ELASTICSEARCH"|"NONE"|"HTTP",
   serviceRoleArn = "string",
   dynamodbConfig = list(
     tableName = "string",
@@ -23,51 +50,9 @@ create_data_source(
     awsRegion = "string"
   ),
   httpConfig = list(
-    endpoint = "string",
-    authorizationConfig = list(
-      authorizationType = "AWS_IAM",
-      awsIamConfig = list(
-        signingRegion = "string",
-        signingServiceName = "string"
-      )
-    )
-  ),
-  relationalDatabaseConfig = list(
-    relationalDatabaseSourceType = "RDS_HTTP_ENDPOINT",
-    rdsHttpEndpointConfig = list(
-      awsRegion = "string",
-      dbClusterIdentifier = "string",
-      databaseName = "string",
-      schema = "string",
-      awsSecretStoreArn = "string"
-    )
+    endpoint = "string"
   )
 )
 }
-\arguments{
-\item{apiId}{[required] The API ID for the GraphQL API for the \code{DataSource}.}
-
-\item{name}{[required] A user-supplied name for the \code{DataSource}.}
-
-\item{description}{A description of the \code{DataSource}.}
-
-\item{type}{[required] The type of the \code{DataSource}.}
-
-\item{serviceRoleArn}{The AWS IAM service role ARN for the data source. The system assumes this role when accessing the data source.}
-
-\item{dynamodbConfig}{Amazon DynamoDB settings.}
-
-\item{lambdaConfig}{AWS Lambda settings.}
-
-\item{elasticsearchConfig}{Amazon Elasticsearch Service settings.}
-
-\item{httpConfig}{HTTP endpoint settings.}
-
-\item{relationalDatabaseConfig}{Relational database settings.}
 }
-\description{
-Creates a \code{DataSource} object.
-}
-\examples{
 
-}

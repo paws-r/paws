@@ -4,19 +4,8 @@
 \alias{create_cluster_subnet_group}
 \title{Creates a new Amazon Redshift subnet group}
 \usage{
-create_cluster_subnet_group(
-  ClusterSubnetGroupName = "string",
-  Description = "string",
-  SubnetIds = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_cluster_subnet_group(ClusterSubnetGroupName, Description, SubnetIds,
+  Tags = NULL)
 }
 \arguments{
 \item{ClusterSubnetGroupName}{[required] The name for the subnet group. Amazon Redshift stores the value as a lowercase string.
@@ -42,6 +31,20 @@ Creates a new Amazon Redshift subnet group. You must provide a list of one or mo
 \details{
 For information about subnet groups, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-cluster-subnet-groups.html}{Amazon Redshift Cluster Subnet Groups} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_cluster_subnet_group(
+  ClusterSubnetGroupName = "string",
+  Description = "string",
+  SubnetIds = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

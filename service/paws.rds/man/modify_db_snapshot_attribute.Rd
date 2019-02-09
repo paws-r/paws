@@ -4,16 +4,8 @@
 \alias{modify_db_snapshot_attribute}
 \title{Adds an attribute and values to, or removes an attribute and values from, a manual DB snapshot}
 \usage{
-modify_db_snapshot_attribute(
-  DBSnapshotIdentifier = "string",
-  AttributeName = "string",
-  ValuesToAdd = list(
-    "string"
-  ),
-  ValuesToRemove = list(
-    "string"
-  )
-)
+modify_db_snapshot_attribute(DBSnapshotIdentifier, AttributeName,
+  ValuesToAdd = NULL, ValuesToRemove = NULL)
 }
 \arguments{
 \item{DBSnapshotIdentifier}{[required] The identifier for the DB snapshot to modify the attributes for.}
@@ -38,6 +30,17 @@ To share a manual DB snapshot with other AWS accounts, specify \code{restore} as
 
 To view which AWS accounts have access to copy or restore a manual DB snapshot, or whether a manual DB snapshot public or private, use the DescribeDBSnapshotAttributes API action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_db_snapshot_attribute(
+  DBSnapshotIdentifier = "string",
+  AttributeName = "string",
+  ValuesToAdd = list(
+    "string"
+  ),
+  ValuesToRemove = list(
+    "string"
+  )
+)
 }
+}
+

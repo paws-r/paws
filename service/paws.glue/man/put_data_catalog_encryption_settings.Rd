@@ -4,19 +4,8 @@
 \alias{put_data_catalog_encryption_settings}
 \title{Sets the security configuration for a specified catalog}
 \usage{
-put_data_catalog_encryption_settings(
-  CatalogId = "string",
-  DataCatalogEncryptionSettings = list(
-    EncryptionAtRest = list(
-      CatalogEncryptionMode = "DISABLED"|"SSE-KMS",
-      SseAwsKmsKeyId = "string"
-    ),
-    ConnectionPasswordEncryption = list(
-      ReturnConnectionPasswordEncrypted = TRUE|FALSE,
-      AwsKmsKeyId = "string"
-    )
-  )
-)
+put_data_catalog_encryption_settings(CatalogId = NULL,
+  DataCatalogEncryptionSettings)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog for which to set the security configuration. If none is supplied, the AWS account ID is used by default.}
@@ -26,6 +15,16 @@ put_data_catalog_encryption_settings(
 \description{
 Sets the security configuration for a specified catalog. Once the configuration has been set, the specified encryption is applied to every catalog write thereafter.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_data_catalog_encryption_settings(
+  CatalogId = "string",
+  DataCatalogEncryptionSettings = list(
+    EncryptionAtRest = list(
+      CatalogEncryptionMode = "DISABLED"|"SSE-KMS",
+      SseAwsKmsKeyId = "string"
+    )
+  )
+)
 }
+}
+

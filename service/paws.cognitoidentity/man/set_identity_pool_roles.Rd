@@ -4,7 +4,25 @@
 \alias{set_identity_pool_roles}
 \title{Sets the roles for an identity pool}
 \usage{
-set_identity_pool_roles(
+set_identity_pool_roles(IdentityPoolId, Roles, RoleMappings = NULL)
+}
+\arguments{
+\item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
+
+\item{Roles}{[required] The map of roles associated with this pool. For a given role, the key will be either "authenticated" or "unauthenticated" and the value will be the Role ARN.}
+
+\item{RoleMappings}{How users for a specific identity provider are to mapped to roles. This is a string to RoleMapping object map. The string identifies the identity provider, for example, "graph.facebook.com" or "cognito-idp-east-1.amazonaws.com/us-east-1\_abcdefghi:app\_client\_id".
+
+Up to 25 rules can be specified per identity provider.}
+}
+\description{
+Sets the roles for an identity pool. These roles are used when making calls to GetCredentialsForIdentity action.
+}
+\details{
+You must use AWS Developer credentials to call this API.
+}
+\section{Accepted Parameters}{
+\preformatted{set_identity_pool_roles(
   IdentityPoolId = "string",
   Roles = list(
     "string"
@@ -27,21 +45,5 @@ set_identity_pool_roles(
   )
 )
 }
-\arguments{
-\item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
-
-\item{Roles}{[required] The map of roles associated with this pool. For a given role, the key will be either "authenticated" or "unauthenticated" and the value will be the Role ARN.}
-
-\item{RoleMappings}{How users for a specific identity provider are to mapped to roles. This is a string to RoleMapping object map. The string identifies the identity provider, for example, "graph.facebook.com" or "cognito-idp-east-1.amazonaws.com/us-east-1\_abcdefghi:app\_client\_id".
-
-Up to 25 rules can be specified per identity provider.}
 }
-\description{
-Sets the roles for an identity pool. These roles are used when making calls to GetCredentialsForIdentity action.
-}
-\details{
-You must use AWS Developer credentials to call this API.
-}
-\examples{
 
-}

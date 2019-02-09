@@ -4,20 +4,11 @@
 \alias{register_activity_type}
 \title{Registers a new \emph{activity type} along with its configuration settings in the specified domain}
 \usage{
-register_activity_type(
-  domain = "string",
-  name = "string",
-  version = "string",
-  description = "string",
-  defaultTaskStartToCloseTimeout = "string",
-  defaultTaskHeartbeatTimeout = "string",
-  defaultTaskList = list(
-    name = "string"
-  ),
-  defaultTaskPriority = "string",
-  defaultTaskScheduleToStartTimeout = "string",
-  defaultTaskScheduleToCloseTimeout = "string"
-)
+register_activity_type(domain, name, version, description = NULL,
+  defaultTaskStartToCloseTimeout = NULL,
+  defaultTaskHeartbeatTimeout = NULL, defaultTaskList = NULL,
+  defaultTaskPriority = NULL, defaultTaskScheduleToStartTimeout = NULL,
+  defaultTaskScheduleToCloseTimeout = NULL)
 }
 \arguments{
 \item{domain}{[required] The name of the domain in which this activity is to be registered.}
@@ -76,6 +67,21 @@ You can use IAM policies to control this action's access to Amazon SWF resources
 
 If the caller doesn't have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's \code{cause} parameter is set to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see \href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows} in the \emph{Amazon SWF Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{register_activity_type(
+  domain = "string",
+  name = "string",
+  version = "string",
+  description = "string",
+  defaultTaskStartToCloseTimeout = "string",
+  defaultTaskHeartbeatTimeout = "string",
+  defaultTaskList = list(
+    name = "string"
+  ),
+  defaultTaskPriority = "string",
+  defaultTaskScheduleToStartTimeout = "string",
+  defaultTaskScheduleToCloseTimeout = "string"
+)
 }
+}
+

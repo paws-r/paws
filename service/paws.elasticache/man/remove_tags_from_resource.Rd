@@ -2,14 +2,9 @@
 % Please edit documentation in R/paws.elasticache_operations.R
 \name{remove_tags_from_resource}
 \alias{remove_tags_from_resource}
-\title{Removes the tags identified by the \code{TagKeys} list from the named resource}
+\title{Removes the tags identified by the TagKeys list from the named resource}
 \usage{
-remove_tags_from_resource(
-  ResourceName = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+remove_tags_from_resource(ResourceName, TagKeys)
 }
 \arguments{
 \item{ResourceName}{[required] The Amazon Resource Name (ARN) of the resource from which you want the tags removed, for example \code{arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster} or \code{arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot}.
@@ -21,6 +16,13 @@ For more information about ARNs, see \href{http://docs.aws.amazon.com/general/la
 \description{
 Removes the tags identified by the \code{TagKeys} list from the named resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_tags_from_resource(
+  ResourceName = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
+}
+

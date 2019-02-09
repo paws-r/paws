@@ -4,13 +4,7 @@
 \alias{create_conditional_forwarder}
 \title{Creates a conditional forwarder associated with your AWS directory}
 \usage{
-create_conditional_forwarder(
-  DirectoryId = "string",
-  RemoteDomainName = "string",
-  DnsIpAddrs = list(
-    "string"
-  )
-)
+create_conditional_forwarder(DirectoryId, RemoteDomainName, DnsIpAddrs)
 }
 \arguments{
 \item{DirectoryId}{[required] The directory ID of the AWS directory for which you are creating the conditional forwarder.}
@@ -22,6 +16,14 @@ create_conditional_forwarder(
 \description{
 Creates a conditional forwarder associated with your AWS directory. Conditional forwarders are required in order to set up a trust relationship with another domain. The conditional forwarder points to the trusted domain.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_conditional_forwarder(
+  DirectoryId = "string",
+  RemoteDomainName = "string",
+  DnsIpAddrs = list(
+    "string"
+  )
+)
 }
+}
+

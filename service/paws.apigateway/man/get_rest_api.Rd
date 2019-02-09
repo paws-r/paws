@@ -4,9 +4,7 @@
 \alias{get_rest_api}
 \title{Lists the RestApi resource in the collection}
 \usage{
-get_rest_api(
-  restApiId = "string"
-)
+get_rest_api(restApiId)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -14,6 +12,10 @@ get_rest_api(
 \description{
 Lists the RestApi resource in the collection.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_rest_api(
+  restApiId = "string"
+)
 }
+}
+

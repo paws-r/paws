@@ -4,9 +4,7 @@
 \alias{start_instance}
 \title{Starts a specific Amazon Lightsail instance from a stopped state}
 \usage{
-start_instance(
-  instanceName = "string"
-)
+start_instance(instanceName)
 }
 \arguments{
 \item{instanceName}{[required] The name of the instance (a virtual private server) to start.}
@@ -14,9 +12,10 @@ start_instance(
 \description{
 Starts a specific Amazon Lightsail instance from a stopped state. To restart an instance, use the reboot instance operation.
 }
-\details{
-The \code{start instance} operation supports tag-based access control via resource tags applied to the resource identified by instanceName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\section{Accepted Parameters}{
+\preformatted{start_instance(
+  instanceName = "string"
+)
 }
-\examples{
+}
 
-}

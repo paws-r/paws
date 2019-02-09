@@ -6,13 +6,13 @@
 \alias{paws.swf-package}
 \title{paws.swf: Amazon Simple Workflow Service}
 \description{
-The Amazon Simple Workflow Service (Amazon SWF) makes it easy
-to build applications that use Amazon\'s cloud to coordinate work
-across distributed components. In Amazon SWF, a *task* represents a
-logical unit of work that is performed by a component of your
-workflow. Coordinating tasks in a workflow involves managing intertask
-dependencies, scheduling, and concurrency in accordance with the
-logical flow of the application.
+The Amazon Simple Workflow Service (Amazon SWF)
+    makes it easy to build applications that use Amazon\'s cloud to
+    coordinate work across distributed components. In Amazon SWF, a *task*
+    represents a logical unit of work that is performed by a component of
+    your workflow. Coordinating tasks in a workflow involves managing
+    intertask dependencies, scheduling, and concurrency in accordance with
+    the logical flow of the application.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

@@ -4,7 +4,20 @@
 \alias{put_bucket_website}
 \title{Set the website configuration for a bucket}
 \usage{
-put_bucket_website(
+put_bucket_website(Bucket, ContentMD5 = NULL, WebsiteConfiguration)
+}
+\arguments{
+\item{Bucket}{[required]}
+
+\item{ContentMD5}{}
+
+\item{WebsiteConfiguration}{[required]}
+}
+\description{
+Set the website configuration for a bucket.
+}
+\section{Accepted Parameters}{
+\preformatted{put_bucket_website(
   Bucket = "string",
   ContentMD5 = "string",
   WebsiteConfiguration = list(
@@ -36,19 +49,11 @@ put_bucket_website(
   )
 )
 }
-\arguments{
-\item{Bucket}{[required]}
-
-\item{ContentMD5}{}
-
-\item{WebsiteConfiguration}{[required]}
 }
-\description{
-Set the website configuration for a bucket.
-}
+
 \examples{
 # The following example adds website configuration to a bucket.
-put_bucket_website(
+\donttest{put_bucket_website(
   Bucket = "examplebucket",
   ContentMD5 = "",
   WebsiteConfiguration = list(
@@ -59,6 +64,6 @@ put_bucket_website(
       Suffix = "index.html"
     )
   )
-)
+)}
 
 }

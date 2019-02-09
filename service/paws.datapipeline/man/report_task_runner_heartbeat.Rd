@@ -2,13 +2,10 @@
 % Please edit documentation in R/paws.datapipeline_operations.R
 \name{report_task_runner_heartbeat}
 \alias{report_task_runner_heartbeat}
-\title{Task runners call \code{ReportTaskRunnerHeartbeat} every 15 minutes to indicate that they are operational}
+\title{Task runners call ReportTaskRunnerHeartbeat every 15 minutes to indicate that they are operational}
 \usage{
-report_task_runner_heartbeat(
-  taskrunnerId = "string",
-  workerGroup = "string",
-  hostname = "string"
-)
+report_task_runner_heartbeat(taskrunnerId, workerGroup = NULL,
+  hostname = NULL)
 }
 \arguments{
 \item{taskrunnerId}{[required] The ID of the task runner. This value should be unique across your AWS account. In the case of AWS Data Pipeline Task Runner launched on a resource managed by AWS Data Pipeline, the web service provides a unique identifier when it launches the application. If you have written a custom task runner, you should assign a unique identifier for the task runner.}
@@ -20,6 +17,12 @@ report_task_runner_heartbeat(
 \description{
 Task runners call \code{ReportTaskRunnerHeartbeat} every 15 minutes to indicate that they are operational. If the AWS Data Pipeline Task Runner is launched on a resource managed by AWS Data Pipeline, the web service can use this call to detect when the task runner application has failed and restart a new instance.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{report_task_runner_heartbeat(
+  taskrunnerId = "string",
+  workerGroup = "string",
+  hostname = "string"
+)
 }
+}
+

@@ -4,7 +4,18 @@
 \alias{update_api_key}
 \title{Changes information about an ApiKey resource}
 \usage{
-update_api_key(
+update_api_key(apiKey, patchOperations = NULL)
+}
+\arguments{
+\item{apiKey}{[required] [Required] The identifier of the ApiKey resource to be updated.}
+
+\item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
+}
+\description{
+Changes information about an ApiKey resource.
+}
+\section{Accepted Parameters}{
+\preformatted{update_api_key(
   apiKey = "string",
   patchOperations = list(
     list(
@@ -16,14 +27,5 @@ update_api_key(
   )
 )
 }
-\arguments{
-\item{apiKey}{[required] [Required] The identifier of the ApiKey resource to be updated.}
+}
 
-\item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
-}
-\description{
-Changes information about an ApiKey resource.
-}
-\examples{
-
-}

@@ -4,14 +4,8 @@
 \alias{describe_rules}
 \title{Describes the specified rules or the rules for the specified listener}
 \usage{
-describe_rules(
-  ListenerArn = "string",
-  RuleArns = list(
-    "string"
-  ),
-  Marker = "string",
-  PageSize = 123
-)
+describe_rules(ListenerArn = NULL, RuleArns = NULL, Marker = NULL,
+  PageSize = NULL)
 }
 \arguments{
 \item{ListenerArn}{The Amazon Resource Name (ARN) of the listener.}
@@ -25,12 +19,24 @@ describe_rules(
 \description{
 Describes the specified rules or the rules for the specified listener. You must specify either a listener or one or more rules.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_rules(
+  ListenerArn = "string",
+  RuleArns = list(
+    "string"
+  ),
+  Marker = "string",
+  PageSize = 123
+)
+}
+}
+
 \examples{
 # This example describes the specified rule.
-describe_rules(
+\donttest{describe_rules(
   RuleArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2/9683b2d02a6cabee"
   )
-)
+)}
 
 }

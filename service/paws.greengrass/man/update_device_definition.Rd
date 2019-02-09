@@ -4,10 +4,7 @@
 \alias{update_device_definition}
 \title{Updates a device definition}
 \usage{
-update_device_definition(
-  DeviceDefinitionId = "string",
-  Name = "string"
-)
+update_device_definition(DeviceDefinitionId, Name = NULL)
 }
 \arguments{
 \item{DeviceDefinitionId}{[required] The ID of the device definition.}
@@ -17,6 +14,11 @@ update_device_definition(
 \description{
 Updates a device definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_device_definition(
+  DeviceDefinitionId = "string",
+  Name = "string"
+)
 }
+}
+

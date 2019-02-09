@@ -4,10 +4,7 @@
 \alias{list_tags_of_resource}
 \title{List all tags on an Amazon DynamoDB resource}
 \usage{
-list_tags_of_resource(
-  ResourceArn = "string",
-  NextToken = "string"
-)
+list_tags_of_resource(ResourceArn, NextToken = NULL)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon DynamoDB resource with tags to be listed. This value is an Amazon Resource Name (ARN).}
@@ -20,6 +17,11 @@ List all tags on an Amazon DynamoDB resource. You can call ListTagsOfResource up
 \details{
 For an overview on tagging DynamoDB resources, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html}{Tagging for DynamoDB} in the \emph{Amazon DynamoDB Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_of_resource(
+  ResourceArn = "string",
+  NextToken = "string"
+)
 }
+}
+

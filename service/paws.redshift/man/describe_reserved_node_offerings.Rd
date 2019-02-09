@@ -4,11 +4,8 @@
 \alias{describe_reserved_node_offerings}
 \title{Returns a list of the available reserved node offerings by Amazon Redshift with their descriptions including the node type, the fixed and recurring costs of reserving the node and duration the node will be reserved for you}
 \usage{
-describe_reserved_node_offerings(
-  ReservedNodeOfferingId = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_reserved_node_offerings(ReservedNodeOfferingId = NULL,
+  MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{ReservedNodeOfferingId}{The unique identifier for the offering.}
@@ -27,6 +24,12 @@ Returns a list of the available reserved node offerings by Amazon Redshift with 
 \details{
 For more information about reserved node offerings, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html}{Purchasing Reserved Nodes} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_reserved_node_offerings(
+  ReservedNodeOfferingId = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

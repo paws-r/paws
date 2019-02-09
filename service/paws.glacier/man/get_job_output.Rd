@@ -4,12 +4,7 @@
 \alias{get_job_output}
 \title{This operation downloads the output of the job you initiated using InitiateJob}
 \usage{
-get_job_output(
-  accountId = "string",
-  vaultName = "string",
-  jobId = "string",
-  range = "string"
-)
+get_job_output(accountId, vaultName, jobId, range = NULL)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
@@ -46,14 +41,24 @@ An AWS account has full permission to perform all operations (actions). However,
 
 For conceptual information and the underlying REST API, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html}{Downloading a Vault Inventory}, \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/downloading-an-archive.html}{Downloading an Archive}, and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-job-output-get.html}{Get Job Output}
 }
+\section{Accepted Parameters}{
+\preformatted{get_job_output(
+  accountId = "string",
+  vaultName = "string",
+  jobId = "string",
+  range = "string"
+)
+}
+}
+
 \examples{
 # The example downloads the output of a previously initiated inventory
 # retrieval job that is identified by the job ID.
-get_job_output(
+\donttest{get_job_output(
   accountId = "-",
   jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW4_XqlNHS61dsO4CnMW",
   range = "",
   vaultName = "my-vaul"
-)
+)}
 
 }

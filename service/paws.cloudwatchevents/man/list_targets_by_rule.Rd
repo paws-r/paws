@@ -4,11 +4,7 @@
 \alias{list_targets_by_rule}
 \title{Lists the targets assigned to the specified rule}
 \usage{
-list_targets_by_rule(
-  Rule = "string",
-  NextToken = "string",
-  Limit = 123
-)
+list_targets_by_rule(Rule, NextToken = NULL, Limit = NULL)
 }
 \arguments{
 \item{Rule}{[required] The name of the rule.}
@@ -20,6 +16,12 @@ list_targets_by_rule(
 \description{
 Lists the targets assigned to the specified rule.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_targets_by_rule(
+  Rule = "string",
+  NextToken = "string",
+  Limit = 123
+)
 }
+}
+

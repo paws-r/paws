@@ -4,17 +4,9 @@
 \alias{describe_hsm_configurations}
 \title{Returns information about the specified Amazon Redshift HSM configuration}
 \usage{
-describe_hsm_configurations(
-  HsmConfigurationIdentifier = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  TagKeys = list(
-    "string"
-  ),
-  TagValues = list(
-    "string"
-  )
-)
+describe_hsm_configurations(HsmConfigurationIdentifier = NULL,
+  MaxRecords = NULL, Marker = NULL, TagKeys = NULL,
+  TagValues = NULL)
 }
 \arguments{
 \item{HsmConfigurationIdentifier}{The identifier of a specific Amazon Redshift HSM configuration to be described. If no identifier is specified, information is returned for all HSM configurations owned by your AWS customer account.}
@@ -39,6 +31,18 @@ If you specify both tag keys and tag values in the same request, Amazon Redshift
 
 If both tag keys and values are omitted from the request, HSM connections are returned regardless of whether they have tag keys or values associated with them.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_hsm_configurations(
+  HsmConfigurationIdentifier = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  TagKeys = list(
+    "string"
+  ),
+  TagValues = list(
+    "string"
+  )
+)
 }
+}
+

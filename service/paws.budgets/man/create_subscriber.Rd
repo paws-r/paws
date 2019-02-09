@@ -4,24 +4,10 @@
 \alias{create_subscriber}
 \title{Creates a subscriber}
 \usage{
-create_subscriber(
-  AccountId = "string",
-  BudgetName = "string",
-  Notification = list(
-    NotificationType = "ACTUAL"|"FORECASTED",
-    ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
-    Threshold = 123.0,
-    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-    NotificationState = "OK"|"ALARM"
-  ),
-  Subscriber = list(
-    SubscriptionType = "SNS"|"EMAIL",
-    Address = "string"
-  )
-)
+create_subscriber(AccountId, BudgetName, Notification, Subscriber)
 }
 \arguments{
-\item{AccountId}{[required] The \code{accountId} that is associated with the budget that you want to create a subscriber for.}
+\item{AccountId}{[required] The \code{accountId} associated with the budget that you want to create a subscriber for.}
 
 \item{BudgetName}{[required] The name of the budget that you want to subscribe to. Budget names must be unique within an account.}
 
@@ -32,6 +18,21 @@ create_subscriber(
 \description{
 Creates a subscriber. You must create the associated budget and notification before you create the subscriber.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_subscriber(
+  AccountId = "string",
+  BudgetName = "string",
+  Notification = list(
+    NotificationType = "ACTUAL"|"FORECASTED",
+    ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
+    Threshold = 123.0,
+    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+  ),
+  Subscriber = list(
+    SubscriptionType = "SNS"|"EMAIL",
+    Address = "string"
+  )
+)
 }
+}
+

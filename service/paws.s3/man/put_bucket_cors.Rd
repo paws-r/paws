@@ -2,9 +2,22 @@
 % Please edit documentation in R/paws.s3_operations.R
 \name{put_bucket_cors}
 \alias{put_bucket_cors}
-\title{Sets the CORS configuration for a bucket}
+\title{Sets the cors configuration for a bucket}
 \usage{
-put_bucket_cors(
+put_bucket_cors(Bucket, CORSConfiguration, ContentMD5 = NULL)
+}
+\arguments{
+\item{Bucket}{[required]}
+
+\item{CORSConfiguration}{[required]}
+
+\item{ContentMD5}{}
+}
+\description{
+Sets the cors configuration for a bucket.
+}
+\section{Accepted Parameters}{
+\preformatted{put_bucket_cors(
   Bucket = "string",
   CORSConfiguration = list(
     CORSRules = list(
@@ -28,20 +41,12 @@ put_bucket_cors(
   ContentMD5 = "string"
 )
 }
-\arguments{
-\item{Bucket}{[required]}
-
-\item{CORSConfiguration}{[required]}
-
-\item{ContentMD5}{}
 }
-\description{
-Sets the CORS configuration for a bucket.
-}
+
 \examples{
 # The following example enables PUT, POST, and DELETE requests from
 # www.example.com, and enables GET requests from any domain.
-put_bucket_cors(
+\donttest{put_bucket_cors(
   Bucket = "",
   CORSConfiguration = list(
     CORSRules = list(
@@ -77,6 +82,6 @@ put_bucket_cors(
     )
   ),
   ContentMD5 = ""
-)
+)}
 
 }

@@ -4,16 +4,8 @@
 \alias{modify_document_permission}
 \title{Shares a Systems Manager document publicly or privately}
 \usage{
-modify_document_permission(
-  Name = "string",
-  PermissionType = "Share",
-  AccountIdsToAdd = list(
-    "string"
-  ),
-  AccountIdsToRemove = list(
-    "string"
-  )
-)
+modify_document_permission(Name, PermissionType, AccountIdsToAdd = NULL,
+  AccountIdsToRemove = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the document that you want to share.}
@@ -27,6 +19,17 @@ modify_document_permission(
 \description{
 Shares a Systems Manager document publicly or privately. If you share a document privately, you must specify the AWS user account IDs for those people who can use the document. If you share a document publicly, you must specify \emph{All} as the account ID.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_document_permission(
+  Name = "string",
+  PermissionType = "Share",
+  AccountIdsToAdd = list(
+    "string"
+  ),
+  AccountIdsToRemove = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{put_lexicon}
 \title{Stores a pronunciation lexicon in an AWS Region}
 \usage{
-put_lexicon(
-  Name = "string",
-  Content = "string"
-)
+put_lexicon(Name, Content)
 }
 \arguments{
 \item{Name}{[required] Name of the lexicon. The name must follow the regular express format [0-9A-Za-z]{1,20}. That is, the name is a case-sensitive alphanumeric string up to 20 characters long.}
@@ -20,11 +17,19 @@ Stores a pronunciation lexicon in an AWS Region. If a lexicon with the same name
 \details{
 For more information, see \href{http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html}{Managing Lexicons}.
 }
+\section{Accepted Parameters}{
+\preformatted{put_lexicon(
+  Name = "string",
+  Content = "string"
+)
+}
+}
+
 \examples{
 # Stores a pronunciation lexicon in an AWS Region.
-put_lexicon(
+\donttest{put_lexicon(
   Content = "file://example.pls",
   Name = "W3C"
-)
+)}
 
 }

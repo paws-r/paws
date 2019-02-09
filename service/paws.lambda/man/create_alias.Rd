@@ -4,17 +4,8 @@
 \alias{create_alias}
 \title{Creates an alias that points to the specified Lambda function version}
 \usage{
-create_alias(
-  FunctionName = "string",
-  Name = "string",
-  FunctionVersion = "string",
-  Description = "string",
-  RoutingConfig = list(
-    AdditionalVersionWeights = list(
-      123.0
-    )
-  )
-)
+create_alias(FunctionName, Name, FunctionVersion, Description = NULL,
+  RoutingConfig = NULL)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the lambda function.
@@ -42,6 +33,18 @@ Creates an alias that points to the specified Lambda function version. For more 
 \details{
 Alias names are unique for a given function. This requires permission for the lambda:CreateAlias action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_alias(
+  FunctionName = "string",
+  Name = "string",
+  FunctionVersion = "string",
+  Description = "string",
+  RoutingConfig = list(
+    AdditionalVersionWeights = list(
+      123.0
+    )
+  )
+)
 }
+}
+

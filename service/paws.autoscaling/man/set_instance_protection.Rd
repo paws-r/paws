@@ -4,13 +4,8 @@
 \alias{set_instance_protection}
 \title{Updates the instance protection settings of the specified instances}
 \usage{
-set_instance_protection(
-  InstanceIds = list(
-    "string"
-  ),
-  AutoScalingGroupName = "string",
-  ProtectedFromScaleIn = TRUE|FALSE
-)
+set_instance_protection(InstanceIds, AutoScalingGroupName,
+  ProtectedFromScaleIn)
 }
 \arguments{
 \item{InstanceIds}{[required] One or more instance IDs.}
@@ -25,23 +20,34 @@ Updates the instance protection settings of the specified instances.
 \details{
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#instance-protection}{Instance Protection} in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{set_instance_protection(
+  InstanceIds = list(
+    "string"
+  ),
+  AutoScalingGroupName = "string",
+  ProtectedFromScaleIn = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example enables instance protection for the specified instance.
-set_instance_protection(
+\donttest{set_instance_protection(
   AutoScalingGroupName = "my-auto-scaling-group",
   InstanceIds = list(
     "i-93633f9b"
   ),
   ProtectedFromScaleIn = TRUE
-)
+)}
 
 # This example disables instance protection for the specified instance.
-set_instance_protection(
+\donttest{set_instance_protection(
   AutoScalingGroupName = "my-auto-scaling-group",
   InstanceIds = list(
     "i-93633f9b"
   ),
   ProtectedFromScaleIn = FALSE
-)
+)}
 
 }

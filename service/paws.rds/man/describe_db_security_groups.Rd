@@ -2,21 +2,10 @@
 % Please edit documentation in R/paws.rds_operations.R
 \name{describe_db_security_groups}
 \alias{describe_db_security_groups}
-\title{Returns a list of \code{DBSecurityGroup} descriptions}
+\title{Returns a list of DBSecurityGroup descriptions}
 \usage{
-describe_db_security_groups(
-  DBSecurityGroupName = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_db_security_groups(DBSecurityGroupName = NULL, Filters = NULL,
+  MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{DBSecurityGroupName}{The name of the DB security group to return details for.}
@@ -34,6 +23,20 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Returns a list of \code{DBSecurityGroup} descriptions. If a \code{DBSecurityGroupName} is specified, the list will contain only the descriptions of the specified DB security group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_db_security_groups(
+  DBSecurityGroupName = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

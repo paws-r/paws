@@ -4,19 +4,10 @@
 \alias{receive_message}
 \title{Retrieves one or more messages (up to 10), from the specified queue}
 \usage{
-receive_message(
-  QueueUrl = "string",
-  AttributeNames = list(
-    "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"
-  ),
-  MessageAttributeNames = list(
-    "string"
-  ),
-  MaxNumberOfMessages = 123,
-  VisibilityTimeout = 123,
-  WaitTimeSeconds = 123,
-  ReceiveRequestAttemptId = "string"
-)
+receive_message(QueueUrl, AttributeNames = NULL,
+  MessageAttributeNames = NULL, MaxNumberOfMessages = NULL,
+  VisibilityTimeout = NULL, WaitTimeSeconds = NULL,
+  ReceiveRequestAttemptId = NULL)
 }
 \arguments{
 \item{QueueUrl}{[required] The URL of the Amazon SQS queue from which messages are received.
@@ -73,13 +64,9 @@ To mitigate this effect, ensure that your application observes a safe threshold 
 \item If a caller of \code{ReceiveMessage} can't track the \code{ReceiveRequestAttemptId}, no retries work until the original visibility timeout expires. As a result, delays might occur but the messages in the queue remain in a strict order.
 }
 
-The length of \code{ReceiveRequestAttemptId} is 128 characters. \code{ReceiveRequestAttemptId} can contain alphanumeric characters (\code{a-z}, \code{A-Z}, \code{0-9}) and punctuation (\code{!\"#$%&\'()*+,-./:;<=>?@[&#93;^_`{|}~}).
+The length of \code{ReceiveRequestAttemptId} is 128 characters. \code{ReceiveRequestAttemptId} can contain alphanumeric characters (\code{a-z}, \code{A-Z}, \code{0-9}) and punctuation (\code{!\"#$\%&\'()*+,-./:;<=>?@[&#93;^_`{|}~}).
 
-For best practices of using \code{ReceiveRequestAttemptId}, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-receiverequestattemptid-request-parameter.html}{Using the ReceiveRequestAttemptId Request Parameter} in the \emph{Amazon Simple Queue Service Developer Guide}.
-
-[]^_`{|}~ ``).
-
-For best practices of using \code{ReceiveRequestAttemptId}, see [Using the ReceiveRequestAttemptId Request Parameter]: R:]%5E_%60%7B%7C%7D~%20%60%60).%0A%0AFor%20best%20practices%20of%20using%20%60ReceiveRequestAttemptId%60,%20see%20[Using%20the%20ReceiveRequestAttemptId%20Request%20Parameter}
+For best practices of using \code{ReceiveRequestAttemptId}, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-receiverequestattemptid-request-parameter.html}{Using the ReceiveRequestAttemptId Request Parameter} in the \emph{Amazon Simple Queue Service Developer Guide}.}
 }
 \description{
 Retrieves one or more messages (up to 10), from the specified queue. Using the \code{WaitTimeSeconds} parameter enables long-poll support. For more information, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-long-polling.html}{Amazon SQS Long Polling} in the \emph{Amazon Simple Queue Service Developer Guide}.
@@ -105,6 +92,20 @@ A message that isn't deleted or a message whose visibility isn't extended before
 
 In the future, new attributes might be added. If you write code that calls this action, we recommend that you structure your code so that it can handle new attributes gracefully.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{receive_message(
+  QueueUrl = "string",
+  AttributeNames = list(
+    "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"
+  ),
+  MessageAttributeNames = list(
+    "string"
+  ),
+  MaxNumberOfMessages = 123,
+  VisibilityTimeout = 123,
+  WaitTimeSeconds = 123,
+  ReceiveRequestAttemptId = "string"
+)
 }
+}
+

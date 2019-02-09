@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.cloudwatch_operations.R
 \name{get_metric_widget_image}
 \alias{get_metric_widget_image}
-\title{You can use the \code{GetMetricWidgetImage} API to retrieve a snapshot graph of one or more Amazon CloudWatch metrics as a bitmap image}
+\title{You can use the GetMetricWidgetImage API to retrieve a snapshot graph of one or more Amazon CloudWatch metrics as a bitmap image}
 \usage{
-get_metric_widget_image(
-  MetricWidget = "string",
-  OutputFormat = "string"
-)
+get_metric_widget_image(MetricWidget, OutputFormat = NULL)
 }
 \arguments{
 \item{MetricWidget}{[required] A JSON string that defines the bitmap graph to be retrieved. The string includes the metrics to include in the graph, statistics, annotations, title, axis limits, and so on. You can include only one \code{MetricWidget} parameter in each \code{GetMetricWidgetImage} call.
@@ -54,6 +51,11 @@ There is a limit of 20 transactions per second for this API. Each \code{GetMetri
 \item Up to 100 KB uncompressed payload.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_metric_widget_image(
+  MetricWidget = "string",
+  OutputFormat = "string"
+)
 }
+}
+

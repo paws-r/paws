@@ -4,20 +4,9 @@
 \alias{synthesize_speech}
 \title{Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes}
 \usage{
-synthesize_speech(
-  LexiconNames = list(
-    "string"
-  ),
-  OutputFormat = "json"|"mp3"|"ogg_vorbis"|"pcm",
-  SampleRate = "string",
-  SpeechMarkTypes = list(
-    "sentence"|"ssml"|"viseme"|"word"
-  ),
-  Text = "string",
-  TextType = "ssml"|"text",
-  VoiceId = "Geraint"|"Gwyneth"|"Mads"|"Naja"|"Hans"|"Marlene"|"Nicole"|"Russell"|"Amy"|"Brian"|"Emma"|"Raveena"|"Ivy"|"Joanna"|"Joey"|"Justin"|"Kendra"|"Kimberly"|"Matthew"|"Salli"|"Conchita"|"Enrique"|"Miguel"|"Penelope"|"Chantal"|"Celine"|"Lea"|"Mathieu"|"Dora"|"Karl"|"Carla"|"Giorgio"|"Mizuki"|"Liv"|"Lotte"|"Ruben"|"Ewa"|"Jacek"|"Jan"|"Maja"|"Ricardo"|"Vitoria"|"Cristiano"|"Ines"|"Carmen"|"Maxim"|"Tatyana"|"Astrid"|"Filiz"|"Vicki"|"Takumi"|"Seoyeon"|"Aditi"|"Zhiyu"|"Bianca"|"Lucia"|"Mia",
-  LanguageCode = "cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"
-)
+synthesize_speech(LexiconNames = NULL, OutputFormat, SampleRate = NULL,
+  SpeechMarkTypes = NULL, Text, TextType = NULL, VoiceId,
+  LanguageCode = NULL)
 }
 \arguments{
 \item{LexiconNames}{List of one or more pronunciation lexicon names you want the service to apply during synthesis. Lexicons are applied only if the language of the lexicon is the same as the language of the voice. For information about storing lexicons, see \href{http://docs.aws.amazon.com/polly/latest/dg/API_PutLexicon.html}{PutLexicon}.}
@@ -47,9 +36,27 @@ If a bilingual voice is used and no language code is specified, Amazon Polly wil
 \description{
 Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes. SSML input must be valid, well-formed SSML. Some alphabets might not be available with all the voices (for example, Cyrillic might not be read at all by English voices) unless phoneme mapping is used. For more information, see \href{http://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html}{How it Works}.
 }
+\section{Accepted Parameters}{
+\preformatted{synthesize_speech(
+  LexiconNames = list(
+    "string"
+  ),
+  OutputFormat = "json"|"mp3"|"ogg_vorbis"|"pcm",
+  SampleRate = "string",
+  SpeechMarkTypes = list(
+    "sentence"|"ssml"|"viseme"|"word"
+  ),
+  Text = "string",
+  TextType = "ssml"|"text",
+  VoiceId = "Geraint"|"Gwyneth"|"Mads"|"Naja"|"Hans"|"Marlene"|"Nicole"|"Russell"|"Amy"|"Brian"|"Emma"|"Raveena"|"Ivy"|"Joanna"|"Joey"|"Justin"|"Kendra"|"Kimberly"|"Matthew"|"Salli"|"Conchita"|"Enrique"|"Miguel"|"Penelope"|"Chantal"|"Celine"|"Lea"|"Mathieu"|"Dora"|"Karl"|"Carla"|"Giorgio"|"Mizuki"|"Liv"|"Lotte"|"Ruben"|"Ewa"|"Jacek"|"Jan"|"Maja"|"Ricardo"|"Vitoria"|"Cristiano"|"Ines"|"Carmen"|"Maxim"|"Tatyana"|"Astrid"|"Filiz"|"Vicki"|"Takumi"|"Seoyeon"|"Aditi"|"Zhiyu",
+  LanguageCode = "cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"
+)
+}
+}
+
 \examples{
 # Synthesizes plain text or SSML into a file of human-like speech.
-synthesize_speech(
+\donttest{synthesize_speech(
   LexiconNames = list(
     "example"
   ),
@@ -58,6 +65,6 @@ synthesize_speech(
   Text = "All Gaul is divided into three parts",
   TextType = "text",
   VoiceId = "Joanna"
-)
+)}
 
 }

@@ -4,12 +4,8 @@
 \alias{list_identities}
 \title{Lists the identities in a pool}
 \usage{
-list_identities(
-  IdentityPoolId = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  HideDisabled = TRUE|FALSE
-)
+list_identities(IdentityPoolId, MaxResults, NextToken = NULL,
+  HideDisabled = NULL)
 }
 \arguments{
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
@@ -26,6 +22,13 @@ Lists the identities in a pool.
 \details{
 You must use AWS Developer credentials to call this API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_identities(
+  IdentityPoolId = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  HideDisabled = TRUE|FALSE
+)
 }
+}
+

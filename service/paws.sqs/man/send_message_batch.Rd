@@ -4,31 +4,7 @@
 \alias{send_message_batch}
 \title{Delivers up to ten messages to the specified queue}
 \usage{
-send_message_batch(
-  QueueUrl = "string",
-  Entries = list(
-    list(
-      Id = "string",
-      MessageBody = "string",
-      DelaySeconds = 123,
-      MessageAttributes = list(
-        list(
-          StringValue = "string",
-          BinaryValue = raw,
-          StringListValues = list(
-            "string"
-          ),
-          BinaryListValues = list(
-            raw
-          ),
-          DataType = "string"
-        )
-      ),
-      MessageDeduplicationId = "string",
-      MessageGroupId = "string"
-    )
-  )
-)
+send_message_batch(QueueUrl, Entries)
 }
 \arguments{
 \item{QueueUrl}{[required] The URL of the Amazon SQS queue to which batched messages are sent.
@@ -59,6 +35,32 @@ Some actions take lists of parameters. These lists are specified using the \code
 
 \code{&Attribute.2=second}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{send_message_batch(
+  QueueUrl = "string",
+  Entries = list(
+    list(
+      Id = "string",
+      MessageBody = "string",
+      DelaySeconds = 123,
+      MessageAttributes = list(
+        list(
+          StringValue = "string",
+          BinaryValue = raw,
+          StringListValues = list(
+            "string"
+          ),
+          BinaryListValues = list(
+            raw
+          ),
+          DataType = "string"
+        )
+      ),
+      MessageDeduplicationId = "string",
+      MessageGroupId = "string"
+    )
+  )
+)
 }
+}
+

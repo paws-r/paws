@@ -4,11 +4,7 @@
 \alias{list_grants}
 \title{Gets a list of all grants for the specified customer master key (CMK)}
 \usage{
-list_grants(
-  Limit = 123,
-  Marker = "string",
-  KeyId = "string"
-)
+list_grants(Limit = NULL, Marker = NULL, KeyId)
 }
 \arguments{
 \item{Limit}{Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.
@@ -35,10 +31,19 @@ Gets a list of all grants for the specified customer master key (CMK).
 \details{
 To perform this operation on a CMK in a different AWS account, specify the key ARN in the value of the \code{KeyId} parameter.
 }
+\section{Accepted Parameters}{
+\preformatted{list_grants(
+  Limit = 123,
+  Marker = "string",
+  KeyId = "string"
+)
+}
+}
+
 \examples{
 # The following example lists grants for the specified CMK.
-list_grants(
+\donttest{list_grants(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
+)}
 
 }

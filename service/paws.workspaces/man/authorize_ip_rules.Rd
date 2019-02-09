@@ -4,18 +4,10 @@
 \alias{authorize_ip_rules}
 \title{Adds one or more rules to the specified IP access control group}
 \usage{
-authorize_ip_rules(
-  GroupId = "string",
-  UserRules = list(
-    list(
-      ipRule = "string",
-      ruleDesc = "string"
-    )
-  )
-)
+authorize_ip_rules(GroupId, UserRules)
 }
 \arguments{
-\item{GroupId}{[required] The identifier of the group.}
+\item{GroupId}{[required] The ID of the group.}
 
 \item{UserRules}{[required] The rules to add to the group.}
 }
@@ -25,6 +17,16 @@ Adds one or more rules to the specified IP access control group.
 \details{
 This action gives users permission to access their WorkSpaces from the CIDR address ranges specified in the rules.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{authorize_ip_rules(
+  GroupId = "string",
+  UserRules = list(
+    list(
+      ipRule = "string",
+      ruleDesc = "string"
+    )
+  )
+)
 }
+}
+

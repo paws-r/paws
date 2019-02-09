@@ -6,8 +6,8 @@
 \alias{paws.resourcegroupstaggingapi-package}
 \title{paws.resourcegroupstaggingapi: AWS Resource Groups Tagging API}
 \description{
-This guide describes the API operations for the resource
-groups tagging.
+This guide describes the API operations for the
+    resource groups tagging.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

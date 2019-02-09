@@ -2,19 +2,11 @@
 % Please edit documentation in R/paws.connect_operations.R
 \name{start_outbound_voice_contact}
 \alias{start_outbound_voice_contact}
-\title{The \code{StartOutboundVoiceContact} operation initiates a contact flow to place an outbound call to a customer}
+\title{The StartOutboundVoiceContact operation initiates a contact flow to place an outbound call to a customer}
 \usage{
-start_outbound_voice_contact(
-  DestinationPhoneNumber = "string",
-  ContactFlowId = "string",
-  InstanceId = "string",
-  ClientToken = "string",
-  SourcePhoneNumber = "string",
-  QueueId = "string",
-  Attributes = list(
-    "string"
-  )
-)
+start_outbound_voice_contact(DestinationPhoneNumber, ContactFlowId,
+  InstanceId, ClientToken = NULL, SourcePhoneNumber = NULL,
+  QueueId = NULL, Attributes = NULL)
 }
 \arguments{
 \item{DestinationPhoneNumber}{[required] The phone number of the customer in E.164 format.}
@@ -35,7 +27,7 @@ To find the \code{QueueId}, open the queue you want to use in the Amazon Connect
 
 \item{Attributes}{Specify a custom key-value pair using an attribute map. The attributes are standard Amazon Connect attributes, and can be accessed in contact flows just like any other contact attributes.
 
-There can be up to 32,768 UTF-8 bytes across all key-value pairs per contact. Attribute keys can include only alphanumeric, dash, and underscore characters.
+There can be up to 32,768 UTF-8 bytes across all key-value pairs. Attribute keys can include only alphanumeric, dash, and underscore characters.
 
 For example, if you want play a greeting when the customer answers the call, you can pass the customer name in attributes similar to the following:}
 }
@@ -44,9 +36,19 @@ The \code{StartOutboundVoiceContact} operation initiates a contact flow to place
 }
 \details{
 If you are using an IAM account, it must have permission to the \code{connect:StartOutboundVoiceContact} action.
-
-There is a 60 second dialing timeout for this operation. If the call is not connected after 60 seconds, the call fails.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_outbound_voice_contact(
+  DestinationPhoneNumber = "string",
+  ContactFlowId = "string",
+  InstanceId = "string",
+  ClientToken = "string",
+  SourcePhoneNumber = "string",
+  QueueId = "string",
+  Attributes = list(
+    "string"
+  )
+)
 }
+}
+

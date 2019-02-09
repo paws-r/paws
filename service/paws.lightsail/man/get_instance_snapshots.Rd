@@ -4,9 +4,7 @@
 \alias{get_instance_snapshots}
 \title{Returns all instance snapshots for the user's account}
 \usage{
-get_instance_snapshots(
-  pageToken = "string"
-)
+get_instance_snapshots(pageToken = NULL)
 }
 \arguments{
 \item{pageToken}{A token used for advancing to the next page of results from your get instance snapshots request.}
@@ -14,6 +12,10 @@ get_instance_snapshots(
 \description{
 Returns all instance snapshots for the user's account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_instance_snapshots(
+  pageToken = "string"
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{get_upgrade_history}
 \title{Retrieves the complete history of the last 10 upgrades that were performed on the domain}
 \usage{
-get_upgrade_history(
-  DomainName = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+get_upgrade_history(DomainName, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{DomainName}{[required]}
@@ -20,6 +16,12 @@ get_upgrade_history(
 \description{
 Retrieves the complete history of the last 10 upgrades that were performed on the domain.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_upgrade_history(
+  DomainName = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

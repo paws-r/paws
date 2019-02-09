@@ -4,13 +4,8 @@
 \alias{associate_team_member}
 \title{Adds an IAM user to the team for an AWS CodeStar project}
 \usage{
-associate_team_member(
-  projectId = "string",
-  clientRequestToken = "string",
-  userArn = "string",
-  projectRole = "string",
-  remoteAccessAllowed = TRUE|FALSE
-)
+associate_team_member(projectId, clientRequestToken = NULL, userArn,
+  projectRole, remoteAccessAllowed = NULL)
 }
 \arguments{
 \item{projectId}{[required] The ID of the project to which you will add the IAM user.}
@@ -26,6 +21,14 @@ associate_team_member(
 \description{
 Adds an IAM user to the team for an AWS CodeStar project.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_team_member(
+  projectId = "string",
+  clientRequestToken = "string",
+  userArn = "string",
+  projectRole = "string",
+  remoteAccessAllowed = TRUE|FALSE
+)
 }
+}
+

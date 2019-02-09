@@ -4,10 +4,7 @@
 \alias{delete_vpc}
 \title{Deletes the specified VPC}
 \usage{
-delete_vpc(
-  VpcId = "string",
-  DryRun = TRUE|FALSE
-)
+delete_vpc(VpcId, DryRun = NULL)
 }
 \arguments{
 \item{VpcId}{[required] The ID of the VPC.}
@@ -17,10 +14,18 @@ delete_vpc(
 \description{
 Deletes the specified VPC. You must detach or delete all gateways and resources that are associated with the VPC before you can delete it. For example, you must terminate all instances running in the VPC, delete all security groups associated with the VPC (except the default one), delete all route tables associated with the VPC (except the default one), and so on.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_vpc(
+  VpcId = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example deletes the specified VPC.
-delete_vpc(
+\donttest{delete_vpc(
   VpcId = "vpc-a01106c2"
-)
+)}
 
 }

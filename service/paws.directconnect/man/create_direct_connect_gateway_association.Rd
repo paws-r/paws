@@ -4,10 +4,8 @@
 \alias{create_direct_connect_gateway_association}
 \title{Creates an association between a Direct Connect gateway and a virtual private gateway}
 \usage{
-create_direct_connect_gateway_association(
-  directConnectGatewayId = "string",
-  virtualGatewayId = "string"
-)
+create_direct_connect_gateway_association(directConnectGatewayId,
+  virtualGatewayId)
 }
 \arguments{
 \item{directConnectGatewayId}{[required] The ID of the Direct Connect gateway.}
@@ -17,6 +15,11 @@ create_direct_connect_gateway_association(
 \description{
 Creates an association between a Direct Connect gateway and a virtual private gateway. The virtual private gateway must be attached to a VPC and must not be associated with another Direct Connect gateway.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_direct_connect_gateway_association(
+  directConnectGatewayId = "string",
+  virtualGatewayId = "string"
+)
 }
+}
+

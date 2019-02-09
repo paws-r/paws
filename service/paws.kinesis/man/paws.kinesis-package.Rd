@@ -6,8 +6,9 @@
 \alias{paws.kinesis-package}
 \title{paws.kinesis: Amazon Kinesis}
 \description{
-Amazon Kinesis Data Streams is a managed service that scales
-elastically for real-time processing of streaming big data.
+Amazon Kinesis Data Streams is a managed service
+    that scales elastically for real-time processing of streaming big
+    data.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

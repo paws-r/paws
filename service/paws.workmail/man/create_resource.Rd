@@ -4,11 +4,7 @@
 \alias{create_resource}
 \title{Creates a new Amazon WorkMail resource}
 \usage{
-create_resource(
-  OrganizationId = "string",
-  Name = "string",
-  Type = "ROOM"|"EQUIPMENT"
-)
+create_resource(OrganizationId, Name, Type)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier associated with the organization for which the resource is created.}
@@ -20,6 +16,12 @@ create_resource(
 \description{
 Creates a new Amazon WorkMail resource. The available types are equipment and room.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_resource(
+  OrganizationId = "string",
+  Name = "string",
+  Type = "ROOM"|"EQUIPMENT"
+)
 }
+}
+

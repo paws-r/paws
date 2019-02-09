@@ -4,10 +4,7 @@
 \alias{install_to_remote_access_session}
 \title{Installs an application to the device in a remote access session}
 \usage{
-install_to_remote_access_session(
-  remoteAccessSessionArn = "string",
-  appArn = "string"
-)
+install_to_remote_access_session(remoteAccessSessionArn, appArn)
 }
 \arguments{
 \item{remoteAccessSessionArn}{[required] The Amazon Resource Name (ARN) of the remote access session about which you are requesting information.}
@@ -17,12 +14,20 @@ install_to_remote_access_session(
 \description{
 Installs an application to the device in a remote access session. For Android applications, the file must be in .apk format. For iOS applications, the file must be in .ipa format.
 }
+\section{Accepted Parameters}{
+\preformatted{install_to_remote_access_session(
+  remoteAccessSessionArn = "string",
+  appArn = "string"
+)
+}
+}
+
 \examples{
 # The following example installs a specific app to a device in a specific
 # remote access session.
-install_to_remote_access_session(
+\donttest{install_to_remote_access_session(
   appArn = "arn:aws:devicefarm:us-west-2:123456789101:app:EXAMPLE-GUID-123-456",
   remoteAccessSessionArn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456"
-)
+)}
 
 }

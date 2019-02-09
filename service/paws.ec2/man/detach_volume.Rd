@@ -4,13 +4,8 @@
 \alias{detach_volume}
 \title{Detaches an EBS volume from an instance}
 \usage{
-detach_volume(
-  Device = "string",
-  Force = TRUE|FALSE,
-  InstanceId = "string",
-  VolumeId = "string",
-  DryRun = TRUE|FALSE
-)
+detach_volume(Device = NULL, Force = NULL, InstanceId = NULL,
+  VolumeId, DryRun = NULL)
 }
 \arguments{
 \item{Device}{The device name.}
@@ -31,11 +26,22 @@ When a volume with an AWS Marketplace product code is detached from an instance,
 
 For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html}{Detaching an Amazon EBS Volume} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{detach_volume(
+  Device = "string",
+  Force = TRUE|FALSE,
+  InstanceId = "string",
+  VolumeId = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example detaches the volume (``vol-049df61146c4d7901``) from the
 # instance it is attached to.
-detach_volume(
+\donttest{detach_volume(
   VolumeId = "vol-1234567890abcdef0"
-)
+)}
 
 }

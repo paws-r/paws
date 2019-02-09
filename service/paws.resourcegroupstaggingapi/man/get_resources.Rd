@@ -4,22 +4,9 @@
 \alias{get_resources}
 \title{Returns all the tagged resources that are associated with the specified tags (keys and values) located in the specified region for the AWS account}
 \usage{
-get_resources(
-  PaginationToken = "string",
-  TagFilters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  ResourcesPerPage = 123,
-  TagsPerPage = 123,
-  ResourceTypeFilters = list(
-    "string"
-  )
-)
+get_resources(PaginationToken = NULL, TagFilters = NULL,
+  ResourcesPerPage = NULL, TagsPerPage = NULL,
+  ResourceTypeFilters = NULL)
 }
 \arguments{
 \item{PaginationToken}{A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a \code{PaginationToken}, use that string for this value to request an additional page of data.}
@@ -50,6 +37,23 @@ The string for each service name and resource type is the same as that embedded 
 \description{
 Returns all the tagged resources that are associated with the specified tags (keys and values) located in the specified region for the AWS account. The tags and the resource types that you specify in the request are known as \emph{filters}. The response includes all tags that are associated with the requested resources. If no filter is provided, this action returns a paginated resource list with the associated tags.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_resources(
+  PaginationToken = "string",
+  TagFilters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  ResourcesPerPage = 123,
+  TagsPerPage = 123,
+  ResourceTypeFilters = list(
+    "string"
+  )
+)
 }
+}
+

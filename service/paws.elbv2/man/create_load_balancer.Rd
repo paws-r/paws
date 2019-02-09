@@ -4,30 +4,9 @@
 \alias{create_load_balancer}
 \title{Creates an Application Load Balancer or a Network Load Balancer}
 \usage{
-create_load_balancer(
-  Name = "string",
-  Subnets = list(
-    "string"
-  ),
-  SubnetMappings = list(
-    list(
-      SubnetId = "string",
-      AllocationId = "string"
-    )
-  ),
-  SecurityGroups = list(
-    "string"
-  ),
-  Scheme = "internet-facing"|"internal",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  Type = "application"|"network",
-  IpAddressType = "ipv4"|"dualstack"
-)
+create_load_balancer(Name, Subnets = NULL, SubnetMappings = NULL,
+  SecurityGroups = NULL, Scheme = NULL, Tags = NULL, Type = NULL,
+  IpAddressType = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the load balancer.
@@ -74,20 +53,48 @@ This operation is idempotent, which means that it completes at most one time. If
 
 For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html}{Application Load Balancers} in the \emph{Application Load Balancers Guide} and \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html}{Network Load Balancers} in the \emph{Network Load Balancers Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_load_balancer(
+  Name = "string",
+  Subnets = list(
+    "string"
+  ),
+  SubnetMappings = list(
+    list(
+      SubnetId = "string",
+      AllocationId = "string"
+    )
+  ),
+  SecurityGroups = list(
+    "string"
+  ),
+  Scheme = "internet-facing"|"internal",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  Type = "application"|"network",
+  IpAddressType = "ipv4"|"dualstack"
+)
+}
+}
+
 \examples{
 # This example creates an Internet-facing load balancer and enables the
 # Availability Zones for the specified subnets.
-create_load_balancer(
+\donttest{create_load_balancer(
   Name = "my-load-balancer",
   Subnets = list(
     "subnet-b7d581c0",
     "subnet-8360a9e7"
   )
-)
+)}
 
 # This example creates an internal load balancer and enables the
 # Availability Zones for the specified subnets.
-create_load_balancer(
+\donttest{create_load_balancer(
   Name = "my-internal-load-balancer",
   Scheme = "internal",
   SecurityGroups = list(),
@@ -95,6 +102,6 @@ create_load_balancer(
     "subnet-b7d581c0",
     "subnet-8360a9e7"
   )
-)
+)}
 
 }

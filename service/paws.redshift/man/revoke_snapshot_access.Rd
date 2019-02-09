@@ -4,11 +4,8 @@
 \alias{revoke_snapshot_access}
 \title{Removes the ability of the specified AWS customer account to restore the specified snapshot}
 \usage{
-revoke_snapshot_access(
-  SnapshotIdentifier = "string",
-  SnapshotClusterIdentifier = "string",
-  AccountWithRestoreAccess = "string"
-)
+revoke_snapshot_access(SnapshotIdentifier,
+  SnapshotClusterIdentifier = NULL, AccountWithRestoreAccess)
 }
 \arguments{
 \item{SnapshotIdentifier}{[required] The identifier of the snapshot that the account can no longer access.}
@@ -23,6 +20,12 @@ Removes the ability of the specified AWS customer account to restore the specifi
 \details{
 For more information about working with snapshots, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html}{Amazon Redshift Snapshots} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{revoke_snapshot_access(
+  SnapshotIdentifier = "string",
+  SnapshotClusterIdentifier = "string",
+  AccountWithRestoreAccess = "string"
+)
 }
+}
+

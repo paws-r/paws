@@ -4,18 +4,8 @@
 \alias{create_reserved_instances_listing}
 \title{Creates a listing for Amazon EC2 Standard Reserved Instances to be sold in the Reserved Instance Marketplace}
 \usage{
-create_reserved_instances_listing(
-  ClientToken = "string",
-  InstanceCount = 123,
-  PriceSchedules = list(
-    list(
-      CurrencyCode = "USD",
-      Price = 123.0,
-      Term = 123
-    )
-  ),
-  ReservedInstancesId = "string"
-)
+create_reserved_instances_listing(ClientToken, InstanceCount,
+  PriceSchedules, ReservedInstancesId)
 }
 \arguments{
 \item{ClientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of your listings. This helps avoid duplicate listings. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
@@ -38,6 +28,19 @@ To sell your Standard Reserved Instances, you must first register as a seller in
 
 For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_reserved_instances_listing(
+  ClientToken = "string",
+  InstanceCount = 123,
+  PriceSchedules = list(
+    list(
+      CurrencyCode = "USD",
+      Price = 123.0,
+      Term = 123
+    )
+  ),
+  ReservedInstancesId = "string"
+)
 }
+}
+

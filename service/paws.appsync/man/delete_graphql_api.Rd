@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.appsync_operations.R
 \name{delete_graphql_api}
 \alias{delete_graphql_api}
-\title{Deletes a \code{GraphqlApi} object}
+\title{Deletes a GraphqlApi object}
 \usage{
-delete_graphql_api(
-  apiId = "string"
-)
+delete_graphql_api(apiId)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
@@ -14,6 +12,10 @@ delete_graphql_api(
 \description{
 Deletes a \code{GraphqlApi} object.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_graphql_api(
+  apiId = "string"
+)
 }
+}
+

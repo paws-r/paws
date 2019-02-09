@@ -4,12 +4,8 @@
 \alias{delete_inventory}
 \title{Delete a custom inventory type, or the data associated with a custom Inventory type}
 \usage{
-delete_inventory(
-  TypeName = "string",
-  SchemaDeleteOption = "DisableSchema"|"DeleteSchema",
-  DryRun = TRUE|FALSE,
-  ClientToken = "string"
-)
+delete_inventory(TypeName, SchemaDeleteOption = NULL, DryRun = NULL,
+  ClientToken = NULL)
 }
 \arguments{
 \item{TypeName}{[required] The name of the custom inventory type for which you want to delete either all previously collected data, or the inventory type itself.}
@@ -27,6 +23,13 @@ DeleteSchema: This option deletes the specified custom type from the Inventory s
 \description{
 Delete a custom inventory type, or the data associated with a custom Inventory type. Deleting a custom inventory type is also referred to as deleting a custom inventory schema.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_inventory(
+  TypeName = "string",
+  SchemaDeleteOption = "DisableSchema"|"DeleteSchema",
+  DryRun = TRUE|FALSE,
+  ClientToken = "string"
+)
 }
+}
+

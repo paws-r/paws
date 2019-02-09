@@ -4,10 +4,7 @@
 \alias{attach_security_profile}
 \title{Associates a Device Defender security profile with a thing group or with this account}
 \usage{
-attach_security_profile(
-  securityProfileName = "string",
-  securityProfileTargetArn = "string"
-)
+attach_security_profile(securityProfileName, securityProfileTargetArn)
 }
 \arguments{
 \item{securityProfileName}{[required] The security profile that is attached.}
@@ -17,6 +14,11 @@ attach_security_profile(
 \description{
 Associates a Device Defender security profile with a thing group or with this account. Each thing group or account can have up to five security profiles associated with it.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{attach_security_profile(
+  securityProfileName = "string",
+  securityProfileTargetArn = "string"
+)
 }
+}
+

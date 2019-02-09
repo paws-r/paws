@@ -4,10 +4,7 @@
 \alias{list_identity_pools}
 \title{Lists all of the Cognito identity pools registered for your account}
 \usage{
-list_identity_pools(
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_identity_pools(MaxResults, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{[required] The maximum number of identities to return.}
@@ -20,6 +17,11 @@ Lists all of the Cognito identity pools registered for your account.
 \details{
 You must use AWS Developer credentials to call this API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_identity_pools(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

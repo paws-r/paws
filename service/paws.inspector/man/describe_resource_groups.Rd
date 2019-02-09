@@ -4,11 +4,7 @@
 \alias{describe_resource_groups}
 \title{Describes the resource groups that are specified by the ARNs of the resource groups}
 \usage{
-describe_resource_groups(
-  resourceGroupArns = list(
-    "string"
-  )
-)
+describe_resource_groups(resourceGroupArns)
 }
 \arguments{
 \item{resourceGroupArns}{[required] The ARN that specifies the resource group that you want to describe.}
@@ -16,13 +12,22 @@ describe_resource_groups(
 \description{
 Describes the resource groups that are specified by the ARNs of the resource groups.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_resource_groups(
+  resourceGroupArns = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # Describes the resource groups that are specified by the ARNs of the
 # resource groups.
-describe_resource_groups(
+\donttest{describe_resource_groups(
   resourceGroupArns = list(
     "arn:aws:inspector:us-west-2:123456789012:resourcegroup/0-PyGXopAI"
   )
-)
+)}
 
 }

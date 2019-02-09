@@ -4,11 +4,8 @@
 \alias{list_global_tables}
 \title{Lists all global tables that have a replica in the specified region}
 \usage{
-list_global_tables(
-  ExclusiveStartGlobalTableName = "string",
-  Limit = 123,
-  RegionName = "string"
-)
+list_global_tables(ExclusiveStartGlobalTableName = NULL, Limit = NULL,
+  RegionName = NULL)
 }
 \arguments{
 \item{ExclusiveStartGlobalTableName}{The first global table name that this operation will evaluate.}
@@ -20,6 +17,12 @@ list_global_tables(
 \description{
 Lists all global tables that have a replica in the specified region.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_global_tables(
+  ExclusiveStartGlobalTableName = "string",
+  Limit = 123,
+  RegionName = "string"
+)
 }
+}
+

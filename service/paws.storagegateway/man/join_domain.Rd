@@ -4,12 +4,7 @@
 \alias{join_domain}
 \title{Adds a file gateway to an Active Directory domain}
 \usage{
-join_domain(
-  GatewayARN = "string",
-  DomainName = "string",
-  UserName = "string",
-  Password = "string"
-)
+join_domain(GatewayARN, DomainName, UserName, Password)
 }
 \arguments{
 \item{GatewayARN}{[required] The unique Amazon Resource Name (ARN) of the file gateway you want to add to the Active Directory domain.}
@@ -23,6 +18,13 @@ join_domain(
 \description{
 Adds a file gateway to an Active Directory domain. This operation is only supported for file gateways that support the SMB file protocol.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{join_domain(
+  GatewayARN = "string",
+  DomainName = "string",
+  UserName = "string",
+  Password = "string"
+)
 }
+}
+

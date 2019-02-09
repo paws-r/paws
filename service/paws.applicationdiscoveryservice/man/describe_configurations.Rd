@@ -4,11 +4,7 @@
 \alias{describe_configurations}
 \title{Retrieves attributes for a list of configuration item IDs}
 \usage{
-describe_configurations(
-  configurationIds = list(
-    "string"
-  )
-)
+describe_configurations(configurationIds)
 }
 \arguments{
 \item{configurationIds}{[required] One or more configuration IDs.}
@@ -29,6 +25,12 @@ Output fields are specific to the asset type specified. For example, the output 
 
 For a complete list of outputs for each asset type, see \href{http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#DescribeConfigurations}{Using the DescribeConfigurations Action}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_configurations(
+  configurationIds = list(
+    "string"
+  )
+)
 }
+}
+

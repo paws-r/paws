@@ -4,10 +4,7 @@
 \alias{describe_constraint}
 \title{Gets information about the specified constraint}
 \usage{
-describe_constraint(
-  AcceptLanguage = "string",
-  Id = "string"
-)
+describe_constraint(AcceptLanguage = NULL, Id)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -22,6 +19,11 @@ describe_constraint(
 \description{
 Gets information about the specified constraint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_constraint(
+  AcceptLanguage = "string",
+  Id = "string"
+)
 }
+}
+

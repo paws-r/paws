@@ -4,19 +4,8 @@
 \alias{report_instance_status}
 \title{Submits feedback about the status of an instance}
 \usage{
-report_instance_status(
-  Description = "string",
-  DryRun = TRUE|FALSE,
-  EndTime = as.POSIXct("2015-01-01"),
-  Instances = list(
-    "string"
-  ),
-  ReasonCodes = list(
-    "instance-stuck-in-state"|"unresponsive"|"not-accepting-credentials"|"password-not-available"|"performance-network"|"performance-instance-store"|"performance-ebs-volume"|"performance-other"|"other"
-  ),
-  StartTime = as.POSIXct("2015-01-01"),
-  Status = "ok"|"impaired"
-)
+report_instance_status(Description = NULL, DryRun = NULL,
+  EndTime = NULL, Instances, ReasonCodes, StartTime = NULL, Status)
 }
 \arguments{
 \item{Description}{Descriptive text about the health state of your instance.}
@@ -50,6 +39,20 @@ Submits feedback about the status of an instance. The instance must be in the \c
 \details{
 Use of this action does not change the value returned by DescribeInstanceStatus.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{report_instance_status(
+  Description = "string",
+  DryRun = TRUE|FALSE,
+  EndTime = as.POSIXct("2015-01-01"),
+  Instances = list(
+    "string"
+  ),
+  ReasonCodes = list(
+    "instance-stuck-in-state"|"unresponsive"|"not-accepting-credentials"|"password-not-available"|"performance-network"|"performance-instance-store"|"performance-ebs-volume"|"performance-other"|"other"
+  ),
+  StartTime = as.POSIXct("2015-01-01"),
+  Status = "ok"|"impaired"
+)
 }
+}
+

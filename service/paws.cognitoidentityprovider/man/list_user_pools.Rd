@@ -4,10 +4,7 @@
 \alias{list_user_pools}
 \title{Lists the user pools associated with an AWS account}
 \usage{
-list_user_pools(
-  NextToken = "string",
-  MaxResults = 123
-)
+list_user_pools(NextToken = NULL, MaxResults)
 }
 \arguments{
 \item{NextToken}{An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.}
@@ -17,6 +14,11 @@ list_user_pools(
 \description{
 Lists the user pools associated with an AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_user_pools(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

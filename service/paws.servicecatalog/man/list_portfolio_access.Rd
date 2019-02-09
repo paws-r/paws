@@ -4,10 +4,7 @@
 \alias{list_portfolio_access}
 \title{Lists the account IDs that have access to the specified portfolio}
 \usage{
-list_portfolio_access(
-  AcceptLanguage = "string",
-  PortfolioId = "string"
-)
+list_portfolio_access(AcceptLanguage = NULL, PortfolioId)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -22,6 +19,11 @@ list_portfolio_access(
 \description{
 Lists the account IDs that have access to the specified portfolio.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_portfolio_access(
+  AcceptLanguage = "string",
+  PortfolioId = "string"
+)
 }
+}
+

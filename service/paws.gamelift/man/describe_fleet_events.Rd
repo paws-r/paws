@@ -4,13 +4,8 @@
 \alias{describe_fleet_events}
 \title{Retrieves entries from the specified fleet's event log}
 \usage{
-describe_fleet_events(
-  FleetId = "string",
-  StartTime = as.POSIXct("2015-01-01"),
-  EndTime = as.POSIXct("2015-01-01"),
-  Limit = 123,
-  NextToken = "string"
-)
+describe_fleet_events(FleetId, StartTime = NULL, EndTime = NULL,
+  Limit = NULL, NextToken = NULL)
 }
 \arguments{
 \item{FleetId}{[required] Unique identifier for a fleet to get event logs for.}
@@ -50,6 +45,14 @@ Fleet-related operations include:
 \item StopFleetActions
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_fleet_events(
+  FleetId = "string",
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

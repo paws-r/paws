@@ -4,7 +4,16 @@
 \alias{validate_security_profile_behaviors}
 \title{Validates a Device Defender security profile behaviors specification}
 \usage{
-validate_security_profile_behaviors(
+validate_security_profile_behaviors(behaviors)
+}
+\arguments{
+\item{behaviors}{[required] Specifies the behaviors that, when violated by a device (thing), cause an alert.}
+}
+\description{
+Validates a Device Defender security profile behaviors specification.
+}
+\section{Accepted Parameters}{
+\preformatted{validate_security_profile_behaviors(
   behaviors = list(
     list(
       name = "string",
@@ -26,12 +35,5 @@ validate_security_profile_behaviors(
   )
 )
 }
-\arguments{
-\item{behaviors}{[required] Specifies the behaviors that, when violated by a device (thing), cause an alert.}
 }
-\description{
-Validates a Device Defender security profile behaviors specification.
-}
-\examples{
 
-}

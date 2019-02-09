@@ -4,7 +4,25 @@
 \alias{list_compliance_items}
 \title{For a specified resource ID, this API action returns a list of compliance statuses for different resource types}
 \usage{
-list_compliance_items(
+list_compliance_items(Filters = NULL, ResourceIds = NULL,
+  ResourceTypes = NULL, NextToken = NULL, MaxResults = NULL)
+}
+\arguments{
+\item{Filters}{One or more compliance filters. Use a filter to return a more specific list of results.}
+
+\item{ResourceIds}{The ID for the resources from which to get compliance information. Currently, you can only specify one resource ID.}
+
+\item{ResourceTypes}{The type of resource from which to get compliance information. Currently, the only supported resource type is \code{ManagedInstance}.}
+
+\item{NextToken}{A token to start the list. Use this token to get the next set of results.}
+
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
+}
+\description{
+For a specified resource ID, this API action returns a list of compliance statuses for different resource types. Currently, you can only specify one resource ID per call. List results depend on the criteria specified in the filter.
+}
+\section{Accepted Parameters}{
+\preformatted{list_compliance_items(
   Filters = list(
     list(
       Key = "string",
@@ -24,20 +42,5 @@ list_compliance_items(
   MaxResults = 123
 )
 }
-\arguments{
-\item{Filters}{One or more compliance filters. Use a filter to return a more specific list of results.}
-
-\item{ResourceIds}{The ID for the resources from which to get compliance information. Currently, you can only specify one resource ID.}
-
-\item{ResourceTypes}{The type of resource from which to get compliance information. Currently, the only supported resource type is \code{ManagedInstance}.}
-
-\item{NextToken}{A token to start the list. Use this token to get the next set of results.}
-
-\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 }
-\description{
-For a specified resource ID, this API action returns a list of compliance statuses for different resource types. Currently, you can only specify one resource ID per call. List results depend on the criteria specified in the filter.
-}
-\examples{
 
-}

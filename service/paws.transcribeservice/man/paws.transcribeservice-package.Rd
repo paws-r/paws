@@ -6,7 +6,8 @@
 \alias{paws.transcribeservice-package}
 \title{paws.transcribeservice: Amazon Transcribe Service}
 \description{
-Operations and objects for transcribing speech to text.
+Operations and objects for transcribing speech to
+    text.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

@@ -4,10 +4,7 @@
 \alias{register_ecs_cluster}
 \title{Registers a specified Amazon ECS cluster with a stack}
 \usage{
-register_ecs_cluster(
-  EcsClusterArn = "string",
-  StackId = "string"
-)
+register_ecs_cluster(EcsClusterArn, StackId)
 }
 \arguments{
 \item{EcsClusterArn}{[required] The cluster's ARN.}
@@ -20,6 +17,11 @@ Registers a specified Amazon ECS cluster with a stack. You can register only one
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{register_ecs_cluster(
+  EcsClusterArn = "string",
+  StackId = "string"
+)
 }
+}
+

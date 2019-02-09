@@ -4,10 +4,7 @@
 \alias{deregister_task_from_maintenance_window}
 \title{Removes a task from a Maintenance Window}
 \usage{
-deregister_task_from_maintenance_window(
-  WindowId = "string",
-  WindowTaskId = "string"
-)
+deregister_task_from_maintenance_window(WindowId, WindowTaskId)
 }
 \arguments{
 \item{WindowId}{[required] The ID of the Maintenance Window the task should be removed from.}
@@ -17,6 +14,11 @@ deregister_task_from_maintenance_window(
 \description{
 Removes a task from a Maintenance Window.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{deregister_task_from_maintenance_window(
+  WindowId = "string",
+  WindowTaskId = "string"
+)
 }
+}
+

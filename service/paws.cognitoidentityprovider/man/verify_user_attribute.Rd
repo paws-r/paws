@@ -4,11 +4,7 @@
 \alias{verify_user_attribute}
 \title{Verifies the specified user attributes in the user pool}
 \usage{
-verify_user_attribute(
-  AccessToken = "string",
-  AttributeName = "string",
-  Code = "string"
-)
+verify_user_attribute(AccessToken, AttributeName, Code)
 }
 \arguments{
 \item{AccessToken}{[required] Represents the access token of the request to verify user attributes.}
@@ -20,6 +16,12 @@ verify_user_attribute(
 \description{
 Verifies the specified user attributes in the user pool.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{verify_user_attribute(
+  AccessToken = "string",
+  AttributeName = "string",
+  Code = "string"
+)
 }
+}
+

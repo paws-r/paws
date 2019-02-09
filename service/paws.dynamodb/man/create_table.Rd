@@ -2,75 +2,12 @@
 % Please edit documentation in R/paws.dynamodb_operations.R
 \name{create_table}
 \alias{create_table}
-\title{The \code{CreateTable} operation adds a new table to your account}
+\title{The CreateTable operation adds a new table to your account}
 \usage{
-create_table(
-  AttributeDefinitions = list(
-    list(
-      AttributeName = "string",
-      AttributeType = "S"|"N"|"B"
-    )
-  ),
-  TableName = "string",
-  KeySchema = list(
-    list(
-      AttributeName = "string",
-      KeyType = "HASH"|"RANGE"
-    )
-  ),
-  LocalSecondaryIndexes = list(
-    list(
-      IndexName = "string",
-      KeySchema = list(
-        list(
-          AttributeName = "string",
-          KeyType = "HASH"|"RANGE"
-        )
-      ),
-      Projection = list(
-        ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-        NonKeyAttributes = list(
-          "string"
-        )
-      )
-    )
-  ),
-  GlobalSecondaryIndexes = list(
-    list(
-      IndexName = "string",
-      KeySchema = list(
-        list(
-          AttributeName = "string",
-          KeyType = "HASH"|"RANGE"
-        )
-      ),
-      Projection = list(
-        ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-        NonKeyAttributes = list(
-          "string"
-        )
-      ),
-      ProvisionedThroughput = list(
-        ReadCapacityUnits = 123,
-        WriteCapacityUnits = 123
-      )
-    )
-  ),
-  BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
-  ProvisionedThroughput = list(
-    ReadCapacityUnits = 123,
-    WriteCapacityUnits = 123
-  ),
-  StreamSpecification = list(
-    StreamEnabled = TRUE|FALSE,
-    StreamViewType = "NEW_IMAGE"|"OLD_IMAGE"|"NEW_AND_OLD_IMAGES"|"KEYS_ONLY"
-  ),
-  SSESpecification = list(
-    Enabled = TRUE|FALSE,
-    SSEType = "AES256"|"KMS",
-    KMSMasterKeyId = "string"
-  )
-)
+create_table(AttributeDefinitions, TableName, KeySchema,
+  LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL,
+  ProvisionedThroughput, StreamSpecification = NULL,
+  SSESpecification = NULL)
 }
 \arguments{
 \item{AttributeDefinitions}{[required] An array of attributes that describe the key schema for the table and indexes.}
@@ -134,15 +71,7 @@ Each local secondary index in the array includes the following:
 \item \code{ProvisionedThroughput} - The provisioned throughput settings for the global secondary index, consisting of read and write capacity units.
 }}
 
-\item{BillingMode}{Controls how you are charged for read and write throughput and how you manage capacity. This setting can be changed later.
-\itemize{
-\item \code{PROVISIONED} - Sets the billing mode to \code{PROVISIONED}. We recommend using \code{PROVISIONED} for predictable workloads.
-\item \code{PAY_PER_REQUEST} - Sets the billing mode to \code{PAY_PER_REQUEST}. We recommend using \code{PAY_PER_REQUEST} for unpredictable workloads.
-}}
-
-\item{ProvisionedThroughput}{Represents the provisioned throughput settings for a specified table or index. The settings can be modified using the \code{UpdateTable} operation.
-
-If you set BillingMode as \code{PROVISIONED}, you must specify this property. If you set BillingMode as \code{PAY_PER_REQUEST}, you cannot specify this property.
+\item{ProvisionedThroughput}{[required] Represents the provisioned throughput settings for a specified table or index. The settings can be modified using the \code{UpdateTable} operation.
 
 For current minimum and maximum provisioned throughput values, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html}{Limits} in the \emph{Amazon DynamoDB Developer Guide}.}
 
@@ -170,9 +99,79 @@ You can optionally define secondary indexes on the new table, as part of the \co
 
 You can use the \code{DescribeTable} action to check the table status.
 }
+\section{Accepted Parameters}{
+\preformatted{create_table(
+  AttributeDefinitions = list(
+    list(
+      AttributeName = "string",
+      AttributeType = "S"|"N"|"B"
+    )
+  ),
+  TableName = "string",
+  KeySchema = list(
+    list(
+      AttributeName = "string",
+      KeyType = "HASH"|"RANGE"
+    )
+  ),
+  LocalSecondaryIndexes = list(
+    list(
+      IndexName = "string",
+      KeySchema = list(
+        list(
+          AttributeName = "string",
+          KeyType = "HASH"|"RANGE"
+        )
+      ),
+      Projection = list(
+        ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
+        NonKeyAttributes = list(
+          "string"
+        )
+      )
+    )
+  ),
+  GlobalSecondaryIndexes = list(
+    list(
+      IndexName = "string",
+      KeySchema = list(
+        list(
+          AttributeName = "string",
+          KeyType = "HASH"|"RANGE"
+        )
+      ),
+      Projection = list(
+        ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
+        NonKeyAttributes = list(
+          "string"
+        )
+      ),
+      ProvisionedThroughput = list(
+        ReadCapacityUnits = 123,
+        WriteCapacityUnits = 123
+      )
+    )
+  ),
+  ProvisionedThroughput = list(
+    ReadCapacityUnits = 123,
+    WriteCapacityUnits = 123
+  ),
+  StreamSpecification = list(
+    StreamEnabled = TRUE|FALSE,
+    StreamViewType = "NEW_IMAGE"|"OLD_IMAGE"|"NEW_AND_OLD_IMAGES"|"KEYS_ONLY"
+  ),
+  SSESpecification = list(
+    Enabled = TRUE|FALSE,
+    SSEType = "AES256"|"KMS",
+    KMSMasterKeyId = "string"
+  )
+)
+}
+}
+
 \examples{
 # This example creates a table named Music.
-create_table(
+\donttest{create_table(
   AttributeDefinitions = list(
     list(
       AttributeName = "Artist",
@@ -198,6 +197,6 @@ create_table(
     WriteCapacityUnits = 5L
   ),
   TableName = "Music"
-)
+)}
 
 }

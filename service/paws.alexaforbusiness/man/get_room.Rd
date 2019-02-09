@@ -4,9 +4,7 @@
 \alias{get_room}
 \title{Gets room details by room ARN}
 \usage{
-get_room(
-  RoomArn = "string"
-)
+get_room(RoomArn = NULL)
 }
 \arguments{
 \item{RoomArn}{The ARN of the room for which to request details. Required.}
@@ -14,6 +12,10 @@ get_room(
 \description{
 Gets room details by room ARN.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_room(
+  RoomArn = "string"
+)
 }
+}
+

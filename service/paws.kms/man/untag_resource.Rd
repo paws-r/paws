@@ -4,12 +4,7 @@
 \alias{untag_resource}
 \title{Removes the specified tags from the specified customer master key (CMK)}
 \usage{
-untag_resource(
-  KeyId = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+untag_resource(KeyId, TagKeys)
 }
 \arguments{
 \item{KeyId}{[required] A unique identifier for the CMK from which you are removing tags.
@@ -34,14 +29,24 @@ To remove a tag, specify the tag key. To change the tag value of an existing tag
 
 The result of this operation varies with the key state of the CMK. For details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key} in the \emph{AWS Key Management Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{untag_resource(
+  KeyId = "string",
+  TagKeys = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example removes tags from a CMK.
-untag_resource(
+\donttest{untag_resource(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
   TagKeys = list(
     "Purpose",
     "CostCenter"
   )
-)
+)}
 
 }

@@ -4,13 +4,8 @@
 \alias{allocate_connection_on_interconnect}
 \title{Deprecated}
 \usage{
-allocate_connection_on_interconnect(
-  bandwidth = "string",
-  connectionName = "string",
-  ownerAccount = "string",
-  interconnectId = "string",
-  vlan = 123
-)
+allocate_connection_on_interconnect(bandwidth, connectionName,
+  ownerAccount, interconnectId, vlan)
 }
 \arguments{
 \item{bandwidth}{[required] The bandwidth of the connection, in Mbps. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, and 500Mbps.}
@@ -33,6 +28,14 @@ Allocates a VLAN number and a specified amount of bandwidth for use by a hosted 
 
 Intended for use by AWS Direct Connect partners only.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{allocate_connection_on_interconnect(
+  bandwidth = "string",
+  connectionName = "string",
+  ownerAccount = "string",
+  interconnectId = "string",
+  vlan = 123
+)
 }
+}
+

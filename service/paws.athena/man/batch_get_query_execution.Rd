@@ -4,11 +4,7 @@
 \alias{batch_get_query_execution}
 \title{Returns the details of a single query execution or a list of up to 50 query executions, which you provide as an array of query execution ID strings}
 \usage{
-batch_get_query_execution(
-  QueryExecutionIds = list(
-    "string"
-  )
-)
+batch_get_query_execution(QueryExecutionIds)
 }
 \arguments{
 \item{QueryExecutionIds}{[required] An array of query execution IDs.}
@@ -16,6 +12,12 @@ batch_get_query_execution(
 \description{
 Returns the details of a single query execution or a list of up to 50 query executions, which you provide as an array of query execution ID strings. To get a list of query execution IDs, use ListQueryExecutions. Query executions are different from named (saved) queries. Use BatchGetNamedQuery to get details about named queries.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_get_query_execution(
+  QueryExecutionIds = list(
+    "string"
+  )
+)
 }
+}
+

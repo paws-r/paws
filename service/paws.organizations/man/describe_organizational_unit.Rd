@@ -4,9 +4,7 @@
 \alias{describe_organizational_unit}
 \title{Retrieves information about an organizational unit (OU)}
 \usage{
-describe_organizational_unit(
-  OrganizationalUnitId = "string"
-)
+describe_organizational_unit(OrganizationalUnitId)
 }
 \arguments{
 \item{OrganizationalUnitId}{[required] The unique identifier (ID) of the organizational unit that you want details about. You can get the ID from the ListOrganizationalUnitsForParent operation.
@@ -19,10 +17,17 @@ Retrieves information about an organizational unit (OU).
 \details{
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_organizational_unit(
+  OrganizationalUnitId = "string"
+)
+}
+}
+
 \examples{
 # The following example shows how to request details about an OU:/n/n
-describe_organizational_unit(
+\donttest{describe_organizational_unit(
   OrganizationalUnitId = "ou-examplerootid111-exampleouid111"
-)
+)}
 
 }

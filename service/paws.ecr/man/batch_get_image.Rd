@@ -4,19 +4,8 @@
 \alias{batch_get_image}
 \title{Gets detailed information for specified images within a specified repository}
 \usage{
-batch_get_image(
-  registryId = "string",
-  repositoryName = "string",
-  imageIds = list(
-    list(
-      imageDigest = "string",
-      imageTag = "string"
-    )
-  ),
-  acceptedMediaTypes = list(
-    "string"
-  )
-)
+batch_get_image(registryId = NULL, repositoryName, imageIds,
+  acceptedMediaTypes = NULL)
 }
 \arguments{
 \item{registryId}{The AWS account ID associated with the registry that contains the images to describe. If you do not specify a registry, the default registry is assumed.}
@@ -32,16 +21,33 @@ Valid values: \code{application/vnd.docker.distribution.manifest.v1+json} | \cod
 \description{
 Gets detailed information for specified images within a specified repository. Images are specified with either \code{imageTag} or \code{imageDigest}.
 }
+\section{Accepted Parameters}{
+\preformatted{batch_get_image(
+  registryId = "string",
+  repositoryName = "string",
+  imageIds = list(
+    list(
+      imageDigest = "string",
+      imageTag = "string"
+    )
+  ),
+  acceptedMediaTypes = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example obtains information for an image with a specified image
 # digest ID from the repository named ubuntu in the current account.
-batch_get_image(
+\donttest{batch_get_image(
   imageIds = list(
     list(
       imageTag = "precise"
     )
   ),
   repositoryName = "ubuntu"
-)
+)}
 
 }

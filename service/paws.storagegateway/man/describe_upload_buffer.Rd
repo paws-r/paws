@@ -4,9 +4,7 @@
 \alias{describe_upload_buffer}
 \title{Returns information about the upload buffer of a gateway}
 \usage{
-describe_upload_buffer(
-  GatewayARN = "string"
-)
+describe_upload_buffer(GatewayARN)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -17,17 +15,24 @@ Returns information about the upload buffer of a gateway. This operation is supp
 \details{
 The response includes disk IDs that are configured as upload buffer space, and it includes the amount of upload buffer space allocated and used.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_upload_buffer(
+  GatewayARN = "string"
+)
+}
+}
+
 \examples{
 # Returns information about the upload buffer of a gateway including disk
 # IDs and the amount of upload buffer space allocated/used.
-describe_upload_buffer(
+\donttest{describe_upload_buffer(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
+)}
 
 # Returns information about the upload buffer of a gateway including disk
 # IDs and the amount of upload buffer space allocated and used.
-describe_upload_buffer(
+\donttest{describe_upload_buffer(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
+)}
 
 }

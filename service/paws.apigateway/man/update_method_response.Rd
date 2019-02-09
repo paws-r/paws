@@ -4,20 +4,8 @@
 \alias{update_method_response}
 \title{Updates an existing MethodResponse resource}
 \usage{
-update_method_response(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string",
-  statusCode = "string",
-  patchOperations = list(
-    list(
-      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-      path = "string",
-      value = "string",
-      from = "string"
-    )
-  )
-)
+update_method_response(restApiId, resourceId, httpMethod, statusCode,
+  patchOperations = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -33,6 +21,21 @@ update_method_response(
 \description{
 Updates an existing MethodResponse resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_method_response(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string",
+  statusCode = "string",
+  patchOperations = list(
+    list(
+      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
+      path = "string",
+      value = "string",
+      from = "string"
+    )
+  )
+)
 }
+}
+

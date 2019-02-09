@@ -4,10 +4,7 @@
 \alias{clone_receipt_rule_set}
 \title{Creates a receipt rule set by cloning an existing one}
 \usage{
-clone_receipt_rule_set(
-  RuleSetName = "string",
-  OriginalRuleSetName = "string"
-)
+clone_receipt_rule_set(RuleSetName, OriginalRuleSetName)
 }
 \arguments{
 \item{RuleSetName}{[required] The name of the rule set to create. The name must:
@@ -27,12 +24,20 @@ For information about setting up rule sets, see the \href{http://docs.aws.amazon
 
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{clone_receipt_rule_set(
+  RuleSetName = "string",
+  OriginalRuleSetName = "string"
+)
+}
+}
+
 \examples{
 # The following example creates a receipt rule set by cloning an existing
 # one:
-clone_receipt_rule_set(
+\donttest{clone_receipt_rule_set(
   OriginalRuleSetName = "RuleSetToClone",
   RuleSetName = "RuleSetToCreate"
-)
+)}
 
 }

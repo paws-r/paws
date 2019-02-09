@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.glacier_operations.R
 \name{complete_vault_lock}
 \alias{complete_vault_lock}
-\title{This operation completes the vault locking process by transitioning the vault lock from the \code{InProgress} state to the \code{Locked} state, which causes the vault lock policy to become unchangeable}
+\title{This operation completes the vault locking process by transitioning the vault lock from the InProgress state to the Locked state, which causes the vault lock policy to become unchangeable}
 \usage{
-complete_vault_lock(
-  accountId = "string",
-  vaultName = "string",
-  lockId = "string"
-)
+complete_vault_lock(accountId, vaultName, lockId)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.}
@@ -25,13 +21,22 @@ This operation is idempotent. This request is always successful if the vault loc
 
 If an invalid lock ID is passed in the request when the vault lock is in the \code{Locked} state, the operation returns an \code{AccessDeniedException} error. If an invalid lock ID is passed in the request when the vault lock is in the \code{InProgress} state, the operation throws an \code{InvalidParameter} error.
 }
+\section{Accepted Parameters}{
+\preformatted{complete_vault_lock(
+  accountId = "string",
+  vaultName = "string",
+  lockId = "string"
+)
+}
+}
+
 \examples{
 # The example completes the vault locking process by transitioning the
 # vault lock from the InProgress state to the Locked state.
-complete_vault_lock(
+\donttest{complete_vault_lock(
   accountId = "-",
   lockId = "AE863rKkWZU53SLW5be4DUcW",
   vaultName = "example-vault"
-)
+)}
 
 }

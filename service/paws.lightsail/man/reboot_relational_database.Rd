@@ -4,9 +4,7 @@
 \alias{reboot_relational_database}
 \title{Restarts a specific database in Amazon Lightsail}
 \usage{
-reboot_relational_database(
-  relationalDatabaseName = "string"
-)
+reboot_relational_database(relationalDatabaseName)
 }
 \arguments{
 \item{relationalDatabaseName}{[required] The name of your database to reboot.}
@@ -14,9 +12,10 @@ reboot_relational_database(
 \description{
 Restarts a specific database in Amazon Lightsail.
 }
-\details{
-The \code{reboot relational database} operation supports tag-based access control via resource tags applied to the resource identified by relationalDatabaseName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\section{Accepted Parameters}{
+\preformatted{reboot_relational_database(
+  relationalDatabaseName = "string"
+)
 }
-\examples{
+}
 
-}

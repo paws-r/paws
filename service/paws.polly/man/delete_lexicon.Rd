@@ -4,9 +4,7 @@
 \alias{delete_lexicon}
 \title{Deletes the specified pronunciation lexicon stored in an AWS Region}
 \usage{
-delete_lexicon(
-  Name = "string"
-)
+delete_lexicon(Name)
 }
 \arguments{
 \item{Name}{[required] The name of the lexicon to delete. Must be an existing lexicon in the region.}
@@ -17,10 +15,17 @@ Deletes the specified pronunciation lexicon stored in an AWS Region. A lexicon w
 \details{
 For more information, see \href{http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html}{Managing Lexicons}.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_lexicon(
+  Name = "string"
+)
+}
+}
+
 \examples{
 # Deletes a specified pronunciation lexicon stored in an AWS Region.
-delete_lexicon(
+\donttest{delete_lexicon(
   Name = "example"
-)
+)}
 
 }

@@ -4,12 +4,8 @@
 \alias{list_device_events}
 \title{Lists the device event history, including device connection status, for up to 30 days}
 \usage{
-list_device_events(
-  DeviceArn = "string",
-  EventType = "CONNECTION_STATUS"|"DEVICE_STATUS",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_device_events(DeviceArn, EventType = NULL, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{DeviceArn}{[required] The ARN of a device.}
@@ -23,6 +19,13 @@ list_device_events(
 \description{
 Lists the device event history, including device connection status, for up to 30 days.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_device_events(
+  DeviceArn = "string",
+  EventType = "CONNECTION_STATUS"|"DEVICE_STATUS",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

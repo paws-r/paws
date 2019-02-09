@@ -4,9 +4,7 @@
 \alias{get_bulk_publish_details}
 \title{Get the status of the last BulkPublish operation for an identity pool}
 \usage{
-get_bulk_publish_details(
-  IdentityPoolId = "string"
-)
+get_bulk_publish_details(IdentityPoolId)
 }
 \arguments{
 \item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
@@ -17,6 +15,10 @@ Get the status of the last BulkPublish operation for an identity pool.
 \details{
 This API can only be called with developer credentials. You cannot call this API with the temporary user credentials provided by Cognito Identity.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_bulk_publish_details(
+  IdentityPoolId = "string"
+)
 }
+}
+

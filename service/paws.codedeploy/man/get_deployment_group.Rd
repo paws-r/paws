@@ -4,10 +4,7 @@
 \alias{get_deployment_group}
 \title{Gets information about a deployment group}
 \usage{
-get_deployment_group(
-  applicationName = "string",
-  deploymentGroupName = "string"
-)
+get_deployment_group(applicationName, deploymentGroupName)
 }
 \arguments{
 \item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
@@ -17,6 +14,11 @@ get_deployment_group(
 \description{
 Gets information about a deployment group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_deployment_group(
+  applicationName = "string",
+  deploymentGroupName = "string"
+)
 }
+}
+

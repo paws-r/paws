@@ -4,48 +4,10 @@
 \alias{put_scaling_policy}
 \title{Creates or updates a policy for an Application Auto Scaling scalable target}
 \usage{
-put_scaling_policy(
-  PolicyName = "string",
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
-  ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property",
-  PolicyType = "StepScaling"|"TargetTrackingScaling",
-  StepScalingPolicyConfiguration = list(
-    AdjustmentType = "ChangeInCapacity"|"PercentChangeInCapacity"|"ExactCapacity",
-    StepAdjustments = list(
-      list(
-        MetricIntervalLowerBound = 123.0,
-        MetricIntervalUpperBound = 123.0,
-        ScalingAdjustment = 123
-      )
-    ),
-    MinAdjustmentMagnitude = 123,
-    Cooldown = 123,
-    MetricAggregationType = "Average"|"Minimum"|"Maximum"
-  ),
-  TargetTrackingScalingPolicyConfiguration = list(
-    TargetValue = 123.0,
-    PredefinedMetricSpecification = list(
-      PredefinedMetricType = "DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut"|"SageMakerVariantInvocationsPerInstance"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization",
-      ResourceLabel = "string"
-    ),
-    CustomizedMetricSpecification = list(
-      MetricName = "string",
-      Namespace = "string",
-      Dimensions = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
-      Unit = "string"
-    ),
-    ScaleOutCooldown = 123,
-    ScaleInCooldown = 123,
-    DisableScaleIn = TRUE|FALSE
-  )
-)
+put_scaling_policy(PolicyName, ServiceNamespace, ResourceId,
+  ScalableDimension, PolicyType = NULL,
+  StepScalingPolicyConfiguration = NULL,
+  TargetTrackingScalingPolicyConfiguration = NULL)
 }
 \arguments{
 \item{PolicyName}{[required] The name of the scaling policy.}
@@ -102,11 +64,57 @@ To update a policy, specify its policy name and the parameters that you want to 
 
 You can view the scaling policies for a service namespace using DescribeScalingPolicies. If you are no longer using a scaling policy, you can delete it using DeleteScalingPolicy.
 }
+\section{Accepted Parameters}{
+\preformatted{put_scaling_policy(
+  PolicyName = "string",
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
+  ResourceId = "string",
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property",
+  PolicyType = "StepScaling"|"TargetTrackingScaling",
+  StepScalingPolicyConfiguration = list(
+    AdjustmentType = "ChangeInCapacity"|"PercentChangeInCapacity"|"ExactCapacity",
+    StepAdjustments = list(
+      list(
+        MetricIntervalLowerBound = 123.0,
+        MetricIntervalUpperBound = 123.0,
+        ScalingAdjustment = 123
+      )
+    ),
+    MinAdjustmentMagnitude = 123,
+    Cooldown = 123,
+    MetricAggregationType = "Average"|"Minimum"|"Maximum"
+  ),
+  TargetTrackingScalingPolicyConfiguration = list(
+    TargetValue = 123.0,
+    PredefinedMetricSpecification = list(
+      PredefinedMetricType = "DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut"|"SageMakerVariantInvocationsPerInstance"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization",
+      ResourceLabel = "string"
+    ),
+    CustomizedMetricSpecification = list(
+      MetricName = "string",
+      Namespace = "string",
+      Dimensions = list(
+        list(
+          Name = "string",
+          Value = "string"
+        )
+      ),
+      Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
+      Unit = "string"
+    ),
+    ScaleOutCooldown = 123,
+    ScaleInCooldown = 123,
+    DisableScaleIn = TRUE|FALSE
+  )
+)
+}
+}
+
 \examples{
 # This example applies a scaling policy to an Amazon ECS service called
 # web-app in the default cluster. The policy increases the desired count
 # of the service by 200\%, with a cool down period of 60 seconds.
-put_scaling_policy(
+\donttest{put_scaling_policy(
   PolicyName = "web-app-cpu-gt-75",
   PolicyType = "StepScaling",
   ResourceId = "service/default/web-app",
@@ -122,13 +130,13 @@ put_scaling_policy(
       )
     )
   )
-)
+)}
 
 # This example applies a scaling policy to an Amazon EC2 Spot fleet. The
 # policy increases the target capacity of the spot fleet by 200\%, with a
 # cool down period of 180 seconds.",
 #    
-put_scaling_policy(
+\donttest{put_scaling_policy(
   PolicyName = "fleet-cpu-gt-75",
   PolicyType = "StepScaling",
   ResourceId = "spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3",
@@ -144,6 +152,6 @@ put_scaling_policy(
       )
     )
   )
-)
+)}
 
 }

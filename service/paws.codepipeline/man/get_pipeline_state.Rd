@@ -4,9 +4,7 @@
 \alias{get_pipeline_state}
 \title{Returns information about the state of a pipeline, including the stages and actions}
 \usage{
-get_pipeline_state(
-  name = "string"
-)
+get_pipeline_state(name)
 }
 \arguments{
 \item{name}{[required] The name of the pipeline about which you want to get information.}
@@ -14,6 +12,10 @@ get_pipeline_state(
 \description{
 Returns information about the state of a pipeline, including the stages and actions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_pipeline_state(
+  name = "string"
+)
 }
+}
+

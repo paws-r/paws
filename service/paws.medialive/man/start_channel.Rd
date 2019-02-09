@@ -4,9 +4,7 @@
 \alias{start_channel}
 \title{Starts an existing channel}
 \usage{
-start_channel(
-  ChannelId = "string"
-)
+start_channel(ChannelId)
 }
 \arguments{
 \item{ChannelId}{[required] A request to start a channel}
@@ -14,6 +12,10 @@ start_channel(
 \description{
 Starts an existing channel
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_channel(
+  ChannelId = "string"
+)
 }
+}
+

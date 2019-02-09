@@ -4,14 +4,7 @@
 \alias{admin_disable_provider_for_user}
 \title{Disables the user from signing in with the specified external (SAML or social) identity provider}
 \usage{
-admin_disable_provider_for_user(
-  UserPoolId = "string",
-  User = list(
-    ProviderName = "string",
-    ProviderAttributeName = "string",
-    ProviderAttributeValue = "string"
-  )
-)
+admin_disable_provider_for_user(UserPoolId, User)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
@@ -32,6 +25,15 @@ The \code{ProviderAttributeName} must always be \code{Cognito_Subject} for socia
 
 For de-linking a SAML identity, there are two scenarios. If the linked identity has not yet been used to sign-in, the \code{ProviderAttributeName} and \code{ProviderAttributeValue} must be the same values that were used for the \code{SourceUser} when the identities were originally linked in the call. (If the linking was done with \code{ProviderAttributeName} set to \code{Cognito_Subject}, the same applies here). However, if the user has already signed in, the \code{ProviderAttributeName} must be \code{Cognito_Subject} and \code{ProviderAttributeValue} must be the subject of the SAML assertion.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{admin_disable_provider_for_user(
+  UserPoolId = "string",
+  User = list(
+    ProviderName = "string",
+    ProviderAttributeName = "string",
+    ProviderAttributeValue = "string"
+  )
+)
 }
+}
+

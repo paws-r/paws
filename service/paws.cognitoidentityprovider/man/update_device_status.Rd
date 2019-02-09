@@ -4,11 +4,8 @@
 \alias{update_device_status}
 \title{Updates the device status}
 \usage{
-update_device_status(
-  AccessToken = "string",
-  DeviceKey = "string",
-  DeviceRememberedStatus = "remembered"|"not_remembered"
-)
+update_device_status(AccessToken, DeviceKey,
+  DeviceRememberedStatus = NULL)
 }
 \arguments{
 \item{AccessToken}{[required] The access token.}
@@ -20,6 +17,12 @@ update_device_status(
 \description{
 Updates the device status.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_device_status(
+  AccessToken = "string",
+  DeviceKey = "string",
+  DeviceRememberedStatus = "remembered"|"not_remembered"
+)
 }
+}
+

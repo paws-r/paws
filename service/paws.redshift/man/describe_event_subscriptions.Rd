@@ -4,17 +4,9 @@
 \alias{describe_event_subscriptions}
 \title{Lists descriptions of all the Amazon Redshift event notification subscriptions for a customer account}
 \usage{
-describe_event_subscriptions(
-  SubscriptionName = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  TagKeys = list(
-    "string"
-  ),
-  TagValues = list(
-    "string"
-  )
-)
+describe_event_subscriptions(SubscriptionName = NULL,
+  MaxRecords = NULL, Marker = NULL, TagKeys = NULL,
+  TagValues = NULL)
 }
 \arguments{
 \item{SubscriptionName}{The name of the Amazon Redshift event notification subscription to be described.}
@@ -39,6 +31,18 @@ If you specify both tag keys and tag values in the same request, Amazon Redshift
 
 If both tag keys and values are omitted from the request, subscriptions are returned regardless of whether they have tag keys or values associated with them.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_event_subscriptions(
+  SubscriptionName = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  TagKeys = list(
+    "string"
+  ),
+  TagValues = list(
+    "string"
+  )
+)
 }
+}
+

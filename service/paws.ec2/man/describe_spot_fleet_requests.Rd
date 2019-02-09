@@ -4,14 +4,8 @@
 \alias{describe_spot_fleet_requests}
 \title{Describes your Spot Fleet requests}
 \usage{
-describe_spot_fleet_requests(
-  DryRun = TRUE|FALSE,
-  MaxResults = 123,
-  NextToken = "string",
-  SpotFleetRequestIds = list(
-    "string"
-  )
-)
+describe_spot_fleet_requests(DryRun = NULL, MaxResults = NULL,
+  NextToken = NULL, SpotFleetRequestIds = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -28,12 +22,24 @@ Describes your Spot Fleet requests.
 \details{
 Spot Fleet requests are deleted 48 hours after they are canceled and their instances are terminated.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_spot_fleet_requests(
+  DryRun = TRUE|FALSE,
+  MaxResults = 123,
+  NextToken = "string",
+  SpotFleetRequestIds = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example describes the specified Spot fleet request.
-describe_spot_fleet_requests(
+\donttest{describe_spot_fleet_requests(
   SpotFleetRequestIds = list(
     "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
   )
-)
+)}
 
 }

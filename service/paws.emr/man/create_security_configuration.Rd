@@ -4,10 +4,7 @@
 \alias{create_security_configuration}
 \title{Creates a security configuration, which is stored in the service and can be specified when a cluster is created}
 \usage{
-create_security_configuration(
-  Name = "string",
-  SecurityConfiguration = "string"
-)
+create_security_configuration(Name, SecurityConfiguration)
 }
 \arguments{
 \item{Name}{[required] The name of the security configuration.}
@@ -17,6 +14,11 @@ create_security_configuration(
 \description{
 Creates a security configuration, which is stored in the service and can be specified when a cluster is created.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_security_configuration(
+  Name = "string",
+  SecurityConfiguration = "string"
+)
 }
+}
+

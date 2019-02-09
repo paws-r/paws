@@ -4,19 +4,18 @@
 \alias{list_resources_for_web_acl}
 \title{Returns an array of resources associated with the specified web ACL}
 \usage{
-list_resources_for_web_acl(
-  WebACLId = "string",
-  ResourceType = "APPLICATION_LOAD_BALANCER"|"API_GATEWAY"
-)
+list_resources_for_web_acl(WebACLId)
 }
 \arguments{
 \item{WebACLId}{[required] The unique identifier (ID) of the web ACL for which to list the associated resources.}
-
-\item{ResourceType}{The type of resource to list, either an application load balancer or Amazon API Gateway.}
 }
 \description{
 Returns an array of resources associated with the specified web ACL.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_resources_for_web_acl(
+  WebACLId = "string"
+)
 }
+}
+

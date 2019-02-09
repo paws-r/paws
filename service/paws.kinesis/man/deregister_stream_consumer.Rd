@@ -4,11 +4,8 @@
 \alias{deregister_stream_consumer}
 \title{To deregister a consumer, provide its ARN}
 \usage{
-deregister_stream_consumer(
-  StreamARN = "string",
-  ConsumerName = "string",
-  ConsumerARN = "string"
-)
+deregister_stream_consumer(StreamARN = NULL, ConsumerName = NULL,
+  ConsumerARN = NULL)
 }
 \arguments{
 \item{StreamARN}{The ARN of the Kinesis data stream that the consumer is registered with. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
@@ -23,6 +20,12 @@ To deregister a consumer, provide its ARN. Alternatively, you can provide the AR
 \details{
 This operation has a limit of five transactions per second per account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{deregister_stream_consumer(
+  StreamARN = "string",
+  ConsumerName = "string",
+  ConsumerARN = "string"
+)
 }
+}
+

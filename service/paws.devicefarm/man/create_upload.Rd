@@ -4,12 +4,7 @@
 \alias{create_upload}
 \title{Uploads an app or test scripts}
 \usage{
-create_upload(
-  projectArn = "string",
-  name = "string",
-  type = "ANDROID_APP"|"IOS_APP"|"WEB_APP"|"EXTERNAL_DATA"|"APPIUM_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_PYTHON_TEST_PACKAGE"|"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_WEB_PYTHON_TEST_PACKAGE"|"CALABASH_TEST_PACKAGE"|"INSTRUMENTATION_TEST_PACKAGE"|"UIAUTOMATION_TEST_PACKAGE"|"UIAUTOMATOR_TEST_PACKAGE"|"XCTEST_TEST_PACKAGE"|"XCTEST_UI_TEST_PACKAGE"|"APPIUM_JAVA_JUNIT_TEST_SPEC"|"APPIUM_JAVA_TESTNG_TEST_SPEC"|"APPIUM_PYTHON_TEST_SPEC"|"APPIUM_WEB_JAVA_JUNIT_TEST_SPEC"|"APPIUM_WEB_JAVA_TESTNG_TEST_SPEC"|"APPIUM_WEB_PYTHON_TEST_SPEC"|"INSTRUMENTATION_TEST_SPEC"|"XCTEST_UI_TEST_SPEC",
-  contentType = "string"
-)
+create_upload(projectArn, name, type, contentType = NULL)
 }
 \arguments{
 \item{projectArn}{[required] The ARN of the project for the upload.}
@@ -36,14 +31,6 @@ Must be one of the following values:
 \item UIAUTOMATOR\_TEST\_PACKAGE: A uiautomator test package upload.
 \item XCTEST\_TEST\_PACKAGE: An XCode test package upload.
 \item XCTEST\_UI\_TEST\_PACKAGE: An XCode UI test package upload.
-\item APPIUM\_JAVA\_JUNIT\_TEST\_SPEC: An Appium Java JUnit test spec upload.
-\item APPIUM\_JAVA\_TESTNG\_TEST\_SPEC: An Appium Java TestNG test spec upload.
-\item APPIUM\_PYTHON\_TEST\_SPEC: An Appium Python test spec upload.
-\item APPIUM\_WEB\_JAVA\_JUNIT\_TEST\_SPEC: An Appium Java JUnit test spec upload.
-\item APPIUM\_WEB\_JAVA\_TESTNG\_TEST\_SPEC: An Appium Java TestNG test spec upload.
-\item APPIUM\_WEB\_PYTHON\_TEST\_SPEC: An Appium Python test spec upload.
-\item INSTRUMENTATION\_TEST\_SPEC: An instrumentation test spec upload.
-\item XCTEST\_UI\_TEST\_SPEC: An XCode UI test spec upload.
 }
 
 \strong{Note} If you call \code{CreateUpload} with \code{WEB_APP} specified, AWS Device Farm throws an \code{ArgumentException} error.}
@@ -53,13 +40,23 @@ Must be one of the following values:
 \description{
 Uploads an app or test scripts.
 }
+\section{Accepted Parameters}{
+\preformatted{create_upload(
+  projectArn = "string",
+  name = "string",
+  type = "ANDROID_APP"|"IOS_APP"|"WEB_APP"|"EXTERNAL_DATA"|"APPIUM_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_PYTHON_TEST_PACKAGE"|"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_WEB_PYTHON_TEST_PACKAGE"|"CALABASH_TEST_PACKAGE"|"INSTRUMENTATION_TEST_PACKAGE"|"UIAUTOMATION_TEST_PACKAGE"|"UIAUTOMATOR_TEST_PACKAGE"|"XCTEST_TEST_PACKAGE"|"XCTEST_UI_TEST_PACKAGE"|"APPIUM_JAVA_JUNIT_TEST_SPEC"|"APPIUM_JAVA_TESTNG_TEST_SPEC"|"APPIUM_PYTHON_TEST_SPEC"|"APPIUM_WEB_JAVA_JUNIT_TEST_SPEC"|"APPIUM_WEB_JAVA_TESTNG_TEST_SPEC"|"APPIUM_WEB_PYTHON_TEST_SPEC"|"INSTRUMENTATION_TEST_SPEC"|"XCTEST_UI_TEST_SPEC",
+  contentType = "string"
+)
+}
+}
+
 \examples{
 # The following example creates a new Appium Python test package upload
 # inside an existing project.
-create_upload(
+\donttest{create_upload(
   name = "MyAppiumPythonUpload",
   type = "APPIUM_PYTHON_TEST_PACKAGE",
   projectArn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
-)
+)}
 
 }

@@ -4,11 +4,7 @@
 \alias{get_data_endpoint}
 \title{Gets an endpoint for a specified stream for either reading or writing}
 \usage{
-get_data_endpoint(
-  StreamName = "string",
-  StreamARN = "string",
-  APIName = "PUT_MEDIA"|"GET_MEDIA"|"LIST_FRAGMENTS"|"GET_MEDIA_FOR_FRAGMENT_LIST"|"GET_HLS_STREAMING_SESSION_URL"
-)
+get_data_endpoint(StreamName = NULL, StreamARN = NULL, APIName)
 }
 \arguments{
 \item{StreamName}{The name of the stream that you want to get the endpoint for. You must specify either this parameter or a \code{StreamARN} in the request.}
@@ -25,6 +21,12 @@ The returned endpoint does not have the API name appended. The client needs to a
 
 In the request, specify the stream either by \code{StreamName} or \code{StreamARN}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_data_endpoint(
+  StreamName = "string",
+  StreamARN = "string",
+  APIName = "PUT_MEDIA"|"GET_MEDIA"|"LIST_FRAGMENTS"|"GET_MEDIA_FOR_FRAGMENT_LIST"|"GET_HLS_STREAMING_SESSION_URL"
+)
 }
+}
+

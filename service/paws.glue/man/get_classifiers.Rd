@@ -4,10 +4,7 @@
 \alias{get_classifiers}
 \title{Lists all classifier objects in the Data Catalog}
 \usage{
-get_classifiers(
-  MaxResults = 123,
-  NextToken = "string"
-)
+get_classifiers(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{Size of the list to return (optional).}
@@ -17,6 +14,11 @@ get_classifiers(
 \description{
 Lists all classifier objects in the Data Catalog.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_classifiers(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

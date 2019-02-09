@@ -4,9 +4,7 @@
 \alias{get_conference_provider}
 \title{Gets details about a specific conference provider}
 \usage{
-get_conference_provider(
-  ConferenceProviderArn = "string"
-)
+get_conference_provider(ConferenceProviderArn)
 }
 \arguments{
 \item{ConferenceProviderArn}{[required] The ARN of the newly created conference provider.}
@@ -14,6 +12,10 @@ get_conference_provider(
 \description{
 Gets details about a specific conference provider.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_conference_provider(
+  ConferenceProviderArn = "string"
+)
 }
+}
+

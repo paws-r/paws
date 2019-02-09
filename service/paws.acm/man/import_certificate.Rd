@@ -4,12 +4,8 @@
 \alias{import_certificate}
 \title{Imports a certificate into AWS Certificate Manager (ACM) to use with services that are integrated with ACM}
 \usage{
-import_certificate(
-  CertificateArn = "string",
-  Certificate = raw,
-  PrivateKey = raw,
-  CertificateChain = raw
-)
+import_certificate(CertificateArn = NULL, Certificate, PrivateKey,
+  CertificateChain = NULL)
 }
 \arguments{
 \item{CertificateArn}{The \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)} of an imported certificate to replace. To import a new certificate, omit this field.}
@@ -43,6 +39,13 @@ Note the following guidelines when importing third party certificates:
 
 This operation returns the \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)} of the imported certificate.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{import_certificate(
+  CertificateArn = "string",
+  Certificate = raw,
+  PrivateKey = raw,
+  CertificateChain = raw
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{get_database}
 \title{Retrieves the definition of a specified database}
 \usage{
-get_database(
-  CatalogId = "string",
-  Name = "string"
-)
+get_database(CatalogId = NULL, Name)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which the database resides. If none is supplied, the AWS account ID is used by default.}
@@ -17,6 +14,11 @@ get_database(
 \description{
 Retrieves the definition of a specified database.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_database(
+  CatalogId = "string",
+  Name = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{get_custom_verification_email_template}
 \title{Returns the custom email verification template for the template name you specify}
 \usage{
-get_custom_verification_email_template(
-  TemplateName = "string"
-)
+get_custom_verification_email_template(TemplateName)
 }
 \arguments{
 \item{TemplateName}{[required] The name of the custom verification email template that you want to retrieve.}
@@ -19,6 +17,10 @@ For more information about custom verification email templates, see \href{http:/
 
 You can execute this operation no more than once per second.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_custom_verification_email_template(
+  TemplateName = "string"
+)
 }
+}
+

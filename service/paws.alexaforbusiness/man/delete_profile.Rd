@@ -4,9 +4,7 @@
 \alias{delete_profile}
 \title{Deletes a room profile by the profile ARN}
 \usage{
-delete_profile(
-  ProfileArn = "string"
-)
+delete_profile(ProfileArn = NULL)
 }
 \arguments{
 \item{ProfileArn}{The ARN of the room profile to delete. Required.}
@@ -14,6 +12,10 @@ delete_profile(
 \description{
 Deletes a room profile by the profile ARN.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_profile(
+  ProfileArn = "string"
+)
 }
+}
+

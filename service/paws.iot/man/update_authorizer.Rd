@@ -4,15 +4,8 @@
 \alias{update_authorizer}
 \title{Updates an authorizer}
 \usage{
-update_authorizer(
-  authorizerName = "string",
-  authorizerFunctionArn = "string",
-  tokenKeyName = "string",
-  tokenSigningPublicKeys = list(
-    "string"
-  ),
-  status = "ACTIVE"|"INACTIVE"
-)
+update_authorizer(authorizerName, authorizerFunctionArn = NULL,
+  tokenKeyName = NULL, tokenSigningPublicKeys = NULL, status = NULL)
 }
 \arguments{
 \item{authorizerName}{[required] The authorizer name.}
@@ -28,6 +21,16 @@ update_authorizer(
 \description{
 Updates an authorizer.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_authorizer(
+  authorizerName = "string",
+  authorizerFunctionArn = "string",
+  tokenKeyName = "string",
+  tokenSigningPublicKeys = list(
+    "string"
+  ),
+  status = "ACTIVE"|"INACTIVE"
+)
 }
+}
+

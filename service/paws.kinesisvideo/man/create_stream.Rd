@@ -4,13 +4,8 @@
 \alias{create_stream}
 \title{Creates a new Kinesis video stream}
 \usage{
-create_stream(
-  DeviceName = "string",
-  StreamName = "string",
-  MediaType = "string",
-  KmsKeyId = "string",
-  DataRetentionInHours = 123
-)
+create_stream(DeviceName = NULL, StreamName, MediaType = NULL,
+  KmsKeyId = NULL, DataRetentionInHours = NULL)
 }
 \arguments{
 \item{DeviceName}{The name of the device that is writing to the stream.
@@ -51,6 +46,14 @@ For information about how the service works, see \href{http://docs.aws.amazon.co
 
 You must have permissions for the \code{KinesisVideo:CreateStream} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_stream(
+  DeviceName = "string",
+  StreamName = "string",
+  MediaType = "string",
+  KmsKeyId = "string",
+  DataRetentionInHours = 123
+)
 }
+}
+

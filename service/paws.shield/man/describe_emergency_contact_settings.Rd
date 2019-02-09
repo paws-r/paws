@@ -9,6 +9,8 @@ describe_emergency_contact_settings()
 \description{
 Lists the email addresses that the DRT can use to contact you during a suspected attack.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_emergency_contact_settings()
 }
+}
+

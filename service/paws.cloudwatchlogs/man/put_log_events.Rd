@@ -4,17 +4,8 @@
 \alias{put_log_events}
 \title{Uploads a batch of log events to the specified log stream}
 \usage{
-put_log_events(
-  logGroupName = "string",
-  logStreamName = "string",
-  logEvents = list(
-    list(
-      timestamp = 123,
-      message = "string"
-    )
-  ),
-  sequenceToken = "string"
-)
+put_log_events(logGroupName, logStreamName, logEvents,
+  sequenceToken = NULL)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -36,13 +27,25 @@ The batch of events must satisfy the following constraints:
 \item The maximum batch size is 1,048,576 bytes, and this size is calculated as the sum of all event messages in UTF-8, plus 26 bytes for each log event.
 \item None of the log events in the batch can be more than 2 hours in the future.
 \item None of the log events in the batch can be older than 14 days or the retention period of the log group.
-\item The log events in the batch must be in chronological ordered by their timestamp. The timestamp is the time the event occurred, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. (In AWS Tools for PowerShell and the AWS SDK for .NET, the timestamp is specified in .NET format: yyyy-mm-ddThh:mm:ss. For example, 2017-09-15T13:45:30.)
+\item The log events in the batch must be in chronological ordered by their time stamp. The time stamp is the time the event occurred, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. (In AWS Tools for PowerShell and the AWS SDK for .NET, the timestamp is specified in .NET format: yyyy-mm-ddThh:mm:ss. For example, 2017-09-15T13:45:30.)
 \item The maximum number of log events in a batch is 10,000.
 \item A batch of log events in a single request cannot span more than 24 hours. Otherwise, the operation fails.
 }
 
 If a call to PutLogEvents returns "UnrecognizedClientException" the most likely cause is an invalid AWS access key ID or secret key.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_log_events(
+  logGroupName = "string",
+  logStreamName = "string",
+  logEvents = list(
+    list(
+      timestamp = 123,
+      message = "string"
+    )
+  ),
+  sequenceToken = "string"
+)
 }
+}
+

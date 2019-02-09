@@ -4,11 +4,8 @@
 \alias{describe_stream_consumer}
 \title{To get the description of a registered consumer, provide the ARN of the consumer}
 \usage{
-describe_stream_consumer(
-  StreamARN = "string",
-  ConsumerName = "string",
-  ConsumerARN = "string"
-)
+describe_stream_consumer(StreamARN = NULL, ConsumerName = NULL,
+  ConsumerARN = NULL)
 }
 \arguments{
 \item{StreamARN}{The ARN of the Kinesis data stream that the consumer is registered with. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
@@ -23,6 +20,12 @@ To get the description of a registered consumer, provide the ARN of the consumer
 \details{
 This operation has a limit of 20 transactions per second per account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_stream_consumer(
+  StreamARN = "string",
+  ConsumerName = "string",
+  ConsumerARN = "string"
+)
 }
+}
+

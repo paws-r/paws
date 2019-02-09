@@ -4,21 +4,23 @@
 \alias{associate_ip_groups}
 \title{Associates the specified IP access control group with the specified directory}
 \usage{
-associate_ip_groups(
+associate_ip_groups(DirectoryId, GroupIds)
+}
+\arguments{
+\item{DirectoryId}{[required] The ID of the directory.}
+
+\item{GroupIds}{[required] The IDs of one or more IP access control groups.}
+}
+\description{
+Associates the specified IP access control group with the specified directory.
+}
+\section{Accepted Parameters}{
+\preformatted{associate_ip_groups(
   DirectoryId = "string",
   GroupIds = list(
     "string"
   )
 )
 }
-\arguments{
-\item{DirectoryId}{[required] The identifier of the directory.}
+}
 
-\item{GroupIds}{[required] The identifiers of one or more IP access control groups.}
-}
-\description{
-Associates the specified IP access control group with the specified directory.
-}
-\examples{
-
-}

@@ -4,21 +4,8 @@
 \alias{start_person_tracking}
 \title{Starts the asynchronous tracking of a person's path in a stored video}
 \usage{
-start_person_tracking(
-  Video = list(
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  ClientRequestToken = "string",
-  NotificationChannel = list(
-    SNSTopicArn = "string",
-    RoleArn = "string"
-  ),
-  JobTag = "string"
-)
+start_person_tracking(Video, ClientRequestToken = NULL,
+  NotificationChannel = NULL, JobTag = NULL)
 }
 \arguments{
 \item{Video}{[required] The video in which you want to detect people. The video must be stored in an Amazon S3 bucket.}
@@ -37,6 +24,22 @@ Amazon Rekognition Video can track the path of people in a video stored in an Am
 
 To get the results of the person detection operation, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call and pass the job identifier (\code{JobId}) from the initial call to \code{StartPersonTracking}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_person_tracking(
+  Video = list(
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  ClientRequestToken = "string",
+  NotificationChannel = list(
+    SNSTopicArn = "string",
+    RoleArn = "string"
+  ),
+  JobTag = "string"
+)
 }
+}
+

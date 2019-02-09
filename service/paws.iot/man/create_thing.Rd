@@ -4,17 +4,7 @@
 \alias{create_thing}
 \title{Creates a thing record in the registry}
 \usage{
-create_thing(
-  thingName = "string",
-  thingTypeName = "string",
-  attributePayload = list(
-    attributes = list(
-      "string"
-    ),
-    merge = TRUE|FALSE
-  ),
-  billingGroupName = "string"
-)
+create_thing(thingName, thingTypeName = NULL, attributePayload = NULL)
 }
 \arguments{
 \item{thingName}{[required] The name of the thing to create.}
@@ -24,8 +14,6 @@ create_thing(
 \item{attributePayload}{The attribute payload, which consists of up to three name/value pairs in a JSON document. For example:
 
 \code{{\"attributes\":{\"string1\":\"string2\"}}}}
-
-\item{billingGroupName}{The name of the billing group the thing will be added to.}
 }
 \description{
 Creates a thing record in the registry.
@@ -33,6 +21,17 @@ Creates a thing record in the registry.
 \details{
 This is a control plane operation. See \href{http://docs.aws.amazon.com/iot/latest/developerguide/authorization.html}{Authorization} for information about authorizing control plane actions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_thing(
+  thingName = "string",
+  thingTypeName = "string",
+  attributePayload = list(
+    attributes = list(
+      "string"
+    ),
+    merge = TRUE|FALSE
+  )
+)
 }
+}
+

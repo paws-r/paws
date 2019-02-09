@@ -4,19 +4,7 @@
 \alias{put_evaluations}
 \title{Used by an AWS Lambda function to deliver evaluation results to AWS Config}
 \usage{
-put_evaluations(
-  Evaluations = list(
-    list(
-      ComplianceResourceType = "string",
-      ComplianceResourceId = "string",
-      ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
-      Annotation = "string",
-      OrderingTimestamp = as.POSIXct("2015-01-01")
-    )
-  ),
-  ResultToken = "string",
-  TestMode = TRUE|FALSE
-)
+put_evaluations(Evaluations = NULL, ResultToken, TestMode = NULL)
 }
 \arguments{
 \item{Evaluations}{The assessments that the AWS Lambda function performs. Each evaluation identifies an AWS resource and indicates whether it complies with the AWS Config rule that invokes the AWS Lambda function.}
@@ -30,6 +18,20 @@ When \code{TestMode} is \code{true}, \code{PutEvaluations} doesn't require a val
 \description{
 Used by an AWS Lambda function to deliver evaluation results to AWS Config. This action is required in every AWS Lambda function that is invoked by an AWS Config rule.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_evaluations(
+  Evaluations = list(
+    list(
+      ComplianceResourceType = "string",
+      ComplianceResourceId = "string",
+      ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
+      Annotation = "string",
+      OrderingTimestamp = as.POSIXct("2015-01-01")
+    )
+  ),
+  ResultToken = "string",
+  TestMode = TRUE|FALSE
+)
 }
+}
+

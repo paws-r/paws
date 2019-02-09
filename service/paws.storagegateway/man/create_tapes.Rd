@@ -4,15 +4,8 @@
 \alias{create_tapes}
 \title{Creates one or more virtual tapes}
 \usage{
-create_tapes(
-  GatewayARN = "string",
-  TapeSizeInBytes = 123,
-  ClientToken = "string",
-  NumTapesToCreate = 123,
-  TapeBarcodePrefix = "string",
-  KMSEncrypted = TRUE|FALSE,
-  KMSKey = "string"
-)
+create_tapes(GatewayARN, TapeSizeInBytes, ClientToken, NumTapesToCreate,
+  TapeBarcodePrefix, KMSEncrypted = NULL, KMSKey = NULL)
 }
 \arguments{
 \item{GatewayARN}{[required] The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tapes with. Use the ListGateways operation to return a list of gateways for your account and region.}
@@ -41,14 +34,27 @@ Creates one or more virtual tapes. You write data to the virtual tapes and then 
 \details{
 Cache storage must be allocated to the gateway before you can create virtual tapes. Use the AddCache operation to add cache storage to a gateway.
 }
+\section{Accepted Parameters}{
+\preformatted{create_tapes(
+  GatewayARN = "string",
+  TapeSizeInBytes = 123,
+  ClientToken = "string",
+  NumTapesToCreate = 123,
+  TapeBarcodePrefix = "string",
+  KMSEncrypted = TRUE|FALSE,
+  KMSKey = "string"
+)
+}
+}
+
 \examples{
 # Creates one or more virtual tapes.
-create_tapes(
+\donttest{create_tapes(
   ClientToken = "77777",
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
   NumTapesToCreate = 3L,
   TapeBarcodePrefix = "TEST",
   TapeSizeInBytes = 107374182400
-)
+)}
 
 }

@@ -4,12 +4,8 @@
 \alias{allocate_address}
 \title{Allocates an Elastic IP address to your AWS account}
 \usage{
-allocate_address(
-  Domain = "vpc"|"standard",
-  Address = "string",
-  PublicIpv4Pool = "string",
-  DryRun = TRUE|FALSE
-)
+allocate_address(Domain = NULL, Address = NULL,
+  PublicIpv4Pool = NULL, DryRun = NULL)
 }
 \arguments{
 \item{Domain}{Set to \code{vpc} to allocate the address for use with instances in a VPC.
@@ -34,15 +30,25 @@ An Elastic IP address is for use either in the EC2-Classic platform or in a VPC.
 
 For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{allocate_address(
+  Domain = "vpc"|"standard",
+  Address = "string",
+  PublicIpv4Pool = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example allocates an Elastic IP address to use with an instance in
 # a VPC.
-allocate_address(
+\donttest{allocate_address(
   Domain = "vpc"
-)
+)}
 
 # This example allocates an Elastic IP address to use with an instance in
 # EC2-Classic.
-allocate_address()
+\donttest{allocate_address()}
 
 }

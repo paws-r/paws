@@ -4,10 +4,7 @@
 \alias{update_comment}
 \title{Replaces the contents of a comment}
 \usage{
-update_comment(
-  commentId = "string",
-  content = "string"
-)
+update_comment(commentId, content)
 }
 \arguments{
 \item{commentId}{[required] The system-generated ID of the comment you want to update. To get this ID, use GetCommentsForComparedCommit or GetCommentsForPullRequest.}
@@ -17,6 +14,11 @@ update_comment(
 \description{
 Replaces the contents of a comment.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_comment(
+  commentId = "string",
+  content = "string"
+)
 }
+}
+

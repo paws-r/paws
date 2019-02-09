@@ -4,20 +4,8 @@
 \alias{describe_maintenance_window_execution_task_invocations}
 \title{Retrieves the individual task executions (one per target) for a particular task executed as part of a Maintenance Window execution}
 \usage{
-describe_maintenance_window_execution_task_invocations(
-  WindowExecutionId = "string",
-  TaskId = "string",
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_maintenance_window_execution_task_invocations(WindowExecutionId,
+  TaskId, Filters = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{WindowExecutionId}{[required] The ID of the Maintenance Window execution the task is part of.}
@@ -33,6 +21,21 @@ describe_maintenance_window_execution_task_invocations(
 \description{
 Retrieves the individual task executions (one per target) for a particular task executed as part of a Maintenance Window execution.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_maintenance_window_execution_task_invocations(
+  WindowExecutionId = "string",
+  TaskId = "string",
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

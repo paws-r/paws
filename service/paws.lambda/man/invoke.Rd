@@ -4,17 +4,11 @@
 \alias{invoke}
 \title{Invokes a Lambda function}
 \usage{
-invoke(
-  FunctionName = "string",
-  InvocationType = "Event"|"RequestResponse"|"DryRun",
-  LogType = "None"|"Tail",
-  ClientContext = "string",
-  Payload = raw,
-  Qualifier = "string"
-)
+invoke(FunctionName, InvocationType = NULL, LogType = NULL,
+  ClientContext = NULL, Payload = NULL, Qualifier = NULL)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function.
+\item{FunctionName}{[required] The name of the lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -58,15 +52,27 @@ This operation requires permission for the \code{lambda:InvokeFunction} action.
 
 The \code{TooManyRequestsException} noted below will return the following: \code{ConcurrentInvocationLimitExceeded} will be returned if you have no functions with reserved concurrency and have exceeded your account concurrent limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit. \code{ReservedFunctionConcurrentInvocationLimitExceeded} will be returned when a function with reserved concurrency exceeds its configured concurrency limit.
 }
+\section{Accepted Parameters}{
+\preformatted{invoke(
+  FunctionName = "string",
+  InvocationType = "Event"|"RequestResponse"|"DryRun",
+  LogType = "None"|"Tail",
+  ClientContext = "string",
+  Payload = raw,
+  Qualifier = "string"
+)
+}
+}
+
 \examples{
 # This operation invokes a Lambda function
-invoke(
+\donttest{invoke(
   ClientContext = "MyApp",
   FunctionName = "MyFunction",
   InvocationType = "Event",
   LogType = "Tail",
   Payload = "fileb://file-path/input.json",
   Qualifier = "1"
-)
+)}
 
 }

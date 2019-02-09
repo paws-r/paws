@@ -4,7 +4,32 @@
 \alias{create_stack}
 \title{Creates a stack to start streaming applications to users}
 \usage{
-create_stack(
+create_stack(Name, Description = NULL, DisplayName = NULL,
+  StorageConnectors = NULL, RedirectURL = NULL, FeedbackURL = NULL,
+  UserSettings = NULL, ApplicationSettings = NULL)
+}
+\arguments{
+\item{Name}{[required] The name of the stack.}
+
+\item{Description}{The description for display.}
+
+\item{DisplayName}{The stack name for display.}
+
+\item{StorageConnectors}{The storage connectors to enable.}
+
+\item{RedirectURL}{The URL that users are redirected to after their streaming session ends.}
+
+\item{FeedbackURL}{The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.}
+
+\item{UserSettings}{The actions that are enabled or disabled for users during their streaming sessions. By default, these actions are enabled.}
+
+\item{ApplicationSettings}{The persistent application settings for users of a stack. When these settings are enabled, changes that users make to applications and Windows settings are automatically saved after each session and applied to the next session.}
+}
+\description{
+Creates a stack to start streaming applications to users. A stack consists of an associated fleet, user access policies, and storage configurations.
+}
+\section{Accepted Parameters}{
+\preformatted{create_stack(
   Name = "string",
   Description = "string",
   DisplayName = "string",
@@ -31,26 +56,5 @@ create_stack(
   )
 )
 }
-\arguments{
-\item{Name}{[required] The name of the stack.}
-
-\item{Description}{The description for display.}
-
-\item{DisplayName}{The stack name for display.}
-
-\item{StorageConnectors}{The storage connectors to enable.}
-
-\item{RedirectURL}{The URL that users are redirected to after their streaming session ends.}
-
-\item{FeedbackURL}{The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.}
-
-\item{UserSettings}{The actions that are enabled or disabled for users during their streaming sessions. By default, these actions are enabled.}
-
-\item{ApplicationSettings}{The persistent application settings for users of a stack. When these settings are enabled, changes that users make to applications and Windows settings are automatically saved after each session and applied to the next session.}
 }
-\description{
-Creates a stack to start streaming applications to users. A stack consists of an associated fleet, user access policies, and storage configurations.
-}
-\examples{
 
-}

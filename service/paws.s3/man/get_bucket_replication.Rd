@@ -4,9 +4,7 @@
 \alias{get_bucket_replication}
 \title{Returns the replication configuration of a bucket}
 \usage{
-get_bucket_replication(
-  Bucket = "string"
-)
+get_bucket_replication(Bucket)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -14,13 +12,17 @@ get_bucket_replication(
 \description{
 Returns the replication configuration of a bucket.
 }
-\details{
-It can take a while to propagate the put or delete a replication configuration to all Amazon S3 systems. Therefore, a get request soon after put or delete can return a wrong result.
+\section{Accepted Parameters}{
+\preformatted{get_bucket_replication(
+  Bucket = "string"
+)
 }
+}
+
 \examples{
 # The following example returns replication configuration set on a bucket.
-get_bucket_replication(
+\donttest{get_bucket_replication(
   Bucket = "examplebucket"
-)
+)}
 
 }

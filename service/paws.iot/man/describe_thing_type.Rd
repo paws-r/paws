@@ -4,9 +4,7 @@
 \alias{describe_thing_type}
 \title{Gets information about the specified thing type}
 \usage{
-describe_thing_type(
-  thingTypeName = "string"
-)
+describe_thing_type(thingTypeName)
 }
 \arguments{
 \item{thingTypeName}{[required] The name of the thing type.}
@@ -14,6 +12,10 @@ describe_thing_type(
 \description{
 Gets information about the specified thing type.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_thing_type(
+  thingTypeName = "string"
+)
 }
+}
+

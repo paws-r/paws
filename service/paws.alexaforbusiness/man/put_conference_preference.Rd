@@ -4,11 +4,7 @@
 \alias{put_conference_preference}
 \title{Sets the conference preferences on a specific conference provider at the account level}
 \usage{
-put_conference_preference(
-  ConferencePreference = list(
-    DefaultConferenceProviderArn = "string"
-  )
-)
+put_conference_preference(ConferencePreference)
 }
 \arguments{
 \item{ConferencePreference}{[required] The conference preference of a specific conference provider.}
@@ -16,6 +12,12 @@ put_conference_preference(
 \description{
 Sets the conference preferences on a specific conference provider at the account level.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_conference_preference(
+  ConferencePreference = list(
+    DefaultConferenceProviderArn = "string"
+  )
+)
 }
+}
+

@@ -4,15 +4,7 @@
 \alias{unlink_identity}
 \title{Unlinks a federated identity from an existing account}
 \usage{
-unlink_identity(
-  IdentityId = "string",
-  Logins = list(
-    "string"
-  ),
-  LoginsToRemove = list(
-    "string"
-  )
-)
+unlink_identity(IdentityId, Logins, LoginsToRemove)
 }
 \arguments{
 \item{IdentityId}{[required] A unique identifier in the format REGION:GUID.}
@@ -27,6 +19,16 @@ Unlinks a federated identity from an existing account. Unlinked logins will be c
 \details{
 This is a public API. You do not need any credentials to call this API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{unlink_identity(
+  IdentityId = "string",
+  Logins = list(
+    "string"
+  ),
+  LoginsToRemove = list(
+    "string"
+  )
+)
 }
+}
+

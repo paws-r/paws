@@ -4,14 +4,8 @@
 \alias{list_audit_tasks}
 \title{Lists the Device Defender audits that have been performed during a given time period}
 \usage{
-list_audit_tasks(
-  startTime = as.POSIXct("2015-01-01"),
-  endTime = as.POSIXct("2015-01-01"),
-  taskType = "ON_DEMAND_AUDIT_TASK"|"SCHEDULED_AUDIT_TASK",
-  taskStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED"|"CANCELED",
-  nextToken = "string",
-  maxResults = 123
-)
+list_audit_tasks(startTime, endTime, taskType = NULL,
+  taskStatus = NULL, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{startTime}{[required] The beginning of the time period. Note that audit information is retained for a limited time (180 days). Requesting a start time prior to what is retained results in an "InvalidRequestException".}
@@ -29,6 +23,15 @@ list_audit_tasks(
 \description{
 Lists the Device Defender audits that have been performed during a given time period.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_audit_tasks(
+  startTime = as.POSIXct("2015-01-01"),
+  endTime = as.POSIXct("2015-01-01"),
+  taskType = "ON_DEMAND_AUDIT_TASK"|"SCHEDULED_AUDIT_TASK",
+  taskStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED"|"CANCELED",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

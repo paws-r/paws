@@ -28,10 +28,6 @@ test_that("list_authorizers", {
     expect_error(list_authorizers(), NA)
 })
 
-test_that("list_billing_groups", {
-    expect_error(list_billing_groups(), NA)
-})
-
 test_that("list_ca_certificates", {
     expect_error(list_ca_certificates(), NA)
 })

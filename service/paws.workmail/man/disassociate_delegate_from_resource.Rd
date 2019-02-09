@@ -4,11 +4,7 @@
 \alias{disassociate_delegate_from_resource}
 \title{Removes a member from the resource's set of delegates}
 \usage{
-disassociate_delegate_from_resource(
-  OrganizationId = "string",
-  ResourceId = "string",
-  EntityId = "string"
-)
+disassociate_delegate_from_resource(OrganizationId, ResourceId, EntityId)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier for the organization under which the resource exists.}
@@ -20,6 +16,12 @@ disassociate_delegate_from_resource(
 \description{
 Removes a member from the resource's set of delegates.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_delegate_from_resource(
+  OrganizationId = "string",
+  ResourceId = "string",
+  EntityId = "string"
+)
 }
+}
+

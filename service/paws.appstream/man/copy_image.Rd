@@ -4,12 +4,8 @@
 \alias{copy_image}
 \title{Copies the image within the same region or to a new region within the same AWS account}
 \usage{
-copy_image(
-  SourceImageName = "string",
-  DestinationImageName = "string",
-  DestinationRegion = "string",
-  DestinationImageDescription = "string"
-)
+copy_image(SourceImageName, DestinationImageName, DestinationRegion,
+  DestinationImageDescription = NULL)
 }
 \arguments{
 \item{SourceImageName}{[required] The name of the image to copy.}
@@ -23,6 +19,13 @@ copy_image(
 \description{
 Copies the image within the same region or to a new region within the same AWS account. Note that any tags you added to the image will not be copied.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{copy_image(
+  SourceImageName = "string",
+  DestinationImageName = "string",
+  DestinationRegion = "string",
+  DestinationImageDescription = "string"
+)
 }
+}
+

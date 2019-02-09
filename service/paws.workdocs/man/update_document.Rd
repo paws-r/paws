@@ -4,13 +4,8 @@
 \alias{update_document}
 \title{Updates the specified attributes of a document}
 \usage{
-update_document(
-  AuthenticationToken = "string",
-  DocumentId = "string",
-  Name = "string",
-  ParentFolderId = "string",
-  ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED"
-)
+update_document(AuthenticationToken = NULL, DocumentId, Name = NULL,
+  ParentFolderId = NULL, ResourceState = NULL)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
@@ -26,6 +21,14 @@ update_document(
 \description{
 Updates the specified attributes of a document. The user must have access to both the document and its parent folder, if applicable.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_document(
+  AuthenticationToken = "string",
+  DocumentId = "string",
+  Name = "string",
+  ParentFolderId = "string",
+  ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED"
+)
 }
+}
+

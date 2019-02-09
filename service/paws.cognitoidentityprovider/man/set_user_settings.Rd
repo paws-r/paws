@@ -4,15 +4,7 @@
 \alias{set_user_settings}
 \title{Sets the user settings like multi-factor authentication (MFA)}
 \usage{
-set_user_settings(
-  AccessToken = "string",
-  MFAOptions = list(
-    list(
-      DeliveryMedium = "SMS"|"EMAIL",
-      AttributeName = "string"
-    )
-  )
-)
+set_user_settings(AccessToken, MFAOptions)
 }
 \arguments{
 \item{AccessToken}{[required] The access token for the set user settings request.}
@@ -22,6 +14,16 @@ set_user_settings(
 \description{
 Sets the user settings like multi-factor authentication (MFA). If MFA is to be removed for a particular attribute pass the attribute with code delivery as null. If null list is passed, all MFA options are removed.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_user_settings(
+  AccessToken = "string",
+  MFAOptions = list(
+    list(
+      DeliveryMedium = "SMS"|"EMAIL",
+      AttributeName = "string"
+    )
+  )
+)
 }
+}
+

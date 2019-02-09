@@ -4,9 +4,7 @@
 \alias{reset_job_bookmark}
 \title{Resets a bookmark entry}
 \usage{
-reset_job_bookmark(
-  JobName = "string"
-)
+reset_job_bookmark(JobName)
 }
 \arguments{
 \item{JobName}{[required] The name of the job in question.}
@@ -14,6 +12,10 @@ reset_job_bookmark(
 \description{
 Resets a bookmark entry.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reset_job_bookmark(
+  JobName = "string"
+)
 }
+}
+

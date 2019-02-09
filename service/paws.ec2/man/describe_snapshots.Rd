@@ -4,28 +4,9 @@
 \alias{describe_snapshots}
 \title{Describes one or more of the EBS snapshots available to you}
 \usage{
-describe_snapshots(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  OwnerIds = list(
-    "string"
-  ),
-  RestorableByUserIds = list(
-    "string"
-  ),
-  SnapshotIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+describe_snapshots(Filters = NULL, MaxResults = NULL,
+  NextToken = NULL, OwnerIds = NULL, RestorableByUserIds = NULL,
+  SnapshotIds = NULL, DryRun = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -80,18 +61,44 @@ If you are describing a long list of snapshots, you can paginate the output to m
 
 For more information about EBS snapshots, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html}{Amazon EBS Snapshots} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_snapshots(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string",
+  OwnerIds = list(
+    "string"
+  ),
+  RestorableByUserIds = list(
+    "string"
+  ),
+  SnapshotIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example describes a snapshot with the snapshot ID of
 # ``snap-1234567890abcdef0``.
-describe_snapshots(
+\donttest{describe_snapshots(
   SnapshotIds = list(
     "snap-1234567890abcdef0"
   )
-)
+)}
 
 # This example describes all snapshots owned by the ID 012345678910 that
 # are in the ``pending`` status.
-describe_snapshots(
+\donttest{describe_snapshots(
   Filters = list(
     list(
       Name = "status",
@@ -103,6 +110,6 @@ describe_snapshots(
   OwnerIds = list(
     "012345678910"
   )
-)
+)}
 
 }

@@ -4,10 +4,7 @@
 \alias{update_application}
 \title{Updates the specified application to have the specified properties}
 \usage{
-update_application(
-  ApplicationName = "string",
-  Description = "string"
-)
+update_application(ApplicationName, Description = NULL)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application to update. If no such application is found, \code{UpdateApplication} returns an \code{InvalidParameterValue} error.}
@@ -22,12 +19,20 @@ Updates the specified application to have the specified properties.
 \details{
 If a property (for example, \code{description}) is not provided, the value remains unchanged. To clear these properties, specify an empty string.
 }
+\section{Accepted Parameters}{
+\preformatted{update_application(
+  ApplicationName = "string",
+  Description = "string"
+)
+}
+}
+
 \examples{
 # The following operation updates the description of an application named
 # my-app:
-update_application(
+\donttest{update_application(
   ApplicationName = "my-app",
   Description = "my Elastic Beanstalk application"
-)
+)}
 
 }

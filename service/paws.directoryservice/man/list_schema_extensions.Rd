@@ -4,11 +4,7 @@
 \alias{list_schema_extensions}
 \title{Lists all schema extensions applied to a Microsoft AD Directory}
 \usage{
-list_schema_extensions(
-  DirectoryId = "string",
-  NextToken = "string",
-  Limit = 123
-)
+list_schema_extensions(DirectoryId, NextToken = NULL, Limit = NULL)
 }
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory from which to retrieve the schema extension information.}
@@ -20,6 +16,12 @@ list_schema_extensions(
 \description{
 Lists all schema extensions applied to a Microsoft AD Directory.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_schema_extensions(
+  DirectoryId = "string",
+  NextToken = "string",
+  Limit = 123
+)
 }
+}
+

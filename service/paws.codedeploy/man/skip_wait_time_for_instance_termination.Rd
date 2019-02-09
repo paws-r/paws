@@ -4,16 +4,18 @@
 \alias{skip_wait_time_for_instance_termination}
 \title{In a blue/green deployment, overrides any specified wait time and starts terminating instances immediately after the traffic routing is completed}
 \usage{
-skip_wait_time_for_instance_termination(
-  deploymentId = "string"
-)
+skip_wait_time_for_instance_termination(deploymentId = NULL)
 }
 \arguments{
-\item{deploymentId}{The unique ID of a blue/green deployment for which you want to skip the instance termination wait time.}
+\item{deploymentId}{The ID of the blue/green deployment for which you want to skip the instance termination wait time.}
 }
 \description{
 In a blue/green deployment, overrides any specified wait time and starts terminating instances immediately after the traffic routing is completed.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{skip_wait_time_for_instance_termination(
+  deploymentId = "string"
+)
 }
+}
+

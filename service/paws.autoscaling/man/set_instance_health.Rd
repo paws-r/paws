@@ -4,20 +4,17 @@
 \alias{set_instance_health}
 \title{Sets the health status of the specified instance}
 \usage{
-set_instance_health(
-  InstanceId = "string",
-  HealthStatus = "string",
-  ShouldRespectGracePeriod = TRUE|FALSE
-)
+set_instance_health(InstanceId, HealthStatus,
+  ShouldRespectGracePeriod = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The ID of the instance.}
 
-\item{HealthStatus}{[required] The health status of the instance. Set to \code{Healthy} to have the instance remain in service. Set to \code{Unhealthy} to have the instance be out of service. Amazon EC2 Auto Scaling terminates and replaces the unhealthy instance.}
+\item{HealthStatus}{[required] The health status of the instance. Set to \code{Healthy} if you want the instance to remain in service. Set to \code{Unhealthy} if you want the instance to be out of service. Amazon EC2 Auto Scaling will terminate and replace the unhealthy instance.}
 
-\item{ShouldRespectGracePeriod}{If the Auto Scaling group of the specified instance has a \code{HealthCheckGracePeriod} specified for the group, by default, this call respects the grace period. Set this to \code{False}, to have the call not respect the grace period associated with the group.
+\item{ShouldRespectGracePeriod}{If the Auto Scaling group of the specified instance has a \code{HealthCheckGracePeriod} specified for the group, by default, this call will respect the grace period. Set this to \code{False}, if you do not want the call to respect the grace period associated with the group.
 
-For more information about the health check grace period, see CreateAutoScalingGroup.}
+For more information, see the description of the health check grace period for CreateAutoScalingGroup.}
 }
 \description{
 Sets the health status of the specified instance.
@@ -25,12 +22,21 @@ Sets the health status of the specified instance.
 \details{
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html}{Health Checks} in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{set_instance_health(
+  InstanceId = "string",
+  HealthStatus = "string",
+  ShouldRespectGracePeriod = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example sets the health status of the specified instance to
 # Unhealthy.
-set_instance_health(
+\donttest{set_instance_health(
   HealthStatus = "Unhealthy",
   InstanceId = "i-93633f9b"
-)
+)}
 
 }

@@ -4,15 +4,8 @@
 \alias{confirm_device}
 \title{Confirms tracking of the device}
 \usage{
-confirm_device(
-  AccessToken = "string",
-  DeviceKey = "string",
-  DeviceSecretVerifierConfig = list(
-    PasswordVerifier = "string",
-    Salt = "string"
-  ),
-  DeviceName = "string"
-)
+confirm_device(AccessToken, DeviceKey, DeviceSecretVerifierConfig = NULL,
+  DeviceName = NULL)
 }
 \arguments{
 \item{AccessToken}{[required] The access token.}
@@ -26,6 +19,16 @@ confirm_device(
 \description{
 Confirms tracking of the device. This API call is the call that begins device tracking.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{confirm_device(
+  AccessToken = "string",
+  DeviceKey = "string",
+  DeviceSecretVerifierConfig = list(
+    PasswordVerifier = "string",
+    Salt = "string"
+  ),
+  DeviceName = "string"
+)
 }
+}
+

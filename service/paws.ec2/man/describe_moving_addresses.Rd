@@ -4,22 +4,8 @@
 \alias{describe_moving_addresses}
 \title{Describes your Elastic IP addresses that are being moved to the EC2-VPC platform, or that are being restored to the EC2-Classic platform}
 \usage{
-describe_moving_addresses(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  MaxResults = 123,
-  NextToken = "string",
-  PublicIps = list(
-    "string"
-  )
-)
+describe_moving_addresses(Filters = NULL, DryRun = NULL,
+  MaxResults = NULL, NextToken = NULL, PublicIps = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -40,8 +26,28 @@ Default: If no value is provided, the default is 1000.}
 \description{
 Describes your Elastic IP addresses that are being moved to the EC2-VPC platform, or that are being restored to the EC2-Classic platform. This request does not return information about any other Elastic IP addresses in your account.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_moving_addresses(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE,
+  MaxResults = 123,
+  NextToken = "string",
+  PublicIps = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example describes all of your moving Elastic IP addresses.
-describe_moving_addresses()
+\donttest{describe_moving_addresses()}
 
 }

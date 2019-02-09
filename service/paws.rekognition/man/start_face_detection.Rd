@@ -4,22 +4,8 @@
 \alias{start_face_detection}
 \title{Starts asynchronous detection of faces in a stored video}
 \usage{
-start_face_detection(
-  Video = list(
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  ClientRequestToken = "string",
-  NotificationChannel = list(
-    SNSTopicArn = "string",
-    RoleArn = "string"
-  ),
-  FaceAttributes = "DEFAULT"|"ALL",
-  JobTag = "string"
-)
+start_face_detection(Video, ClientRequestToken = NULL,
+  NotificationChannel = NULL, FaceAttributes = NULL, JobTag = NULL)
 }
 \arguments{
 \item{Video}{[required] The video in which you want to detect faces. The video must be stored in an Amazon S3 bucket.}
@@ -44,6 +30,23 @@ Amazon Rekognition Video can detect faces in a video stored in an Amazon S3 buck
 
 For more information, see Detecting Faces in a Stored Video in the Amazon Rekognition Developer Guide.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_face_detection(
+  Video = list(
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  ClientRequestToken = "string",
+  NotificationChannel = list(
+    SNSTopicArn = "string",
+    RoleArn = "string"
+  ),
+  FaceAttributes = "DEFAULT"|"ALL",
+  JobTag = "string"
+)
 }
+}
+

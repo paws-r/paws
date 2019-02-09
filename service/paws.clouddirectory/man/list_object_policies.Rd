@@ -4,15 +4,8 @@
 \alias{list_object_policies}
 \title{Returns policies attached to an object in pagination fashion}
 \usage{
-list_object_policies(
-  DirectoryArn = "string",
-  ObjectReference = list(
-    Selector = "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123,
-  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
-)
+list_object_policies(DirectoryArn, ObjectReference, NextToken = NULL,
+  MaxResults = NULL, ConsistencyLevel = NULL)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where objects reside. For more information, see arns.}
@@ -28,6 +21,16 @@ list_object_policies(
 \description{
 Returns policies attached to an object in pagination fashion.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_object_policies(
+  DirectoryArn = "string",
+  ObjectReference = list(
+    Selector = "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123,
+  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
+)
 }
+}
+

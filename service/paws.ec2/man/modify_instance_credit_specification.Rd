@@ -4,16 +4,8 @@
 \alias{modify_instance_credit_specification}
 \title{Modifies the credit option for CPU usage on a running or stopped T2 or T3 instance}
 \usage{
-modify_instance_credit_specification(
-  DryRun = TRUE|FALSE,
-  ClientToken = "string",
-  InstanceCreditSpecifications = list(
-    list(
-      InstanceId = "string",
-      CpuCredits = "string"
-    )
-  )
-)
+modify_instance_credit_specification(DryRun = NULL, ClientToken = NULL,
+  InstanceCreditSpecifications)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -28,6 +20,17 @@ Modifies the credit option for CPU usage on a running or stopped T2 or T3 instan
 \details{
 For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html}{Burstable Performance Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_instance_credit_specification(
+  DryRun = TRUE|FALSE,
+  ClientToken = "string",
+  InstanceCreditSpecifications = list(
+    list(
+      InstanceId = "string",
+      CpuCredits = "string"
+    )
+  )
+)
 }
+}
+

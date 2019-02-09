@@ -4,16 +4,7 @@
 \alias{remove_facet_from_object}
 \title{Removes the specified facet from the specified object}
 \usage{
-remove_facet_from_object(
-  DirectoryArn = "string",
-  SchemaFacet = list(
-    SchemaArn = "string",
-    FacetName = "string"
-  ),
-  ObjectReference = list(
-    Selector = "string"
-  )
-)
+remove_facet_from_object(DirectoryArn, SchemaFacet, ObjectReference)
 }
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory in which the object resides.}
@@ -25,6 +16,17 @@ remove_facet_from_object(
 \description{
 Removes the specified facet from the specified object.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_facet_from_object(
+  DirectoryArn = "string",
+  SchemaFacet = list(
+    SchemaArn = "string",
+    FacetName = "string"
+  ),
+  ObjectReference = list(
+    Selector = "string"
+  )
+)
 }
+}
+

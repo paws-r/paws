@@ -6,7 +6,8 @@
 \alias{paws.sagemaker-package}
 \title{paws.sagemaker: Amazon SageMaker Service}
 \description{
-Definition of the public APIs exposed by SageMaker
+Definition of the public APIs exposed by
+    SageMaker
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

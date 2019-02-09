@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.wafregional_operations.R
 \name{get_ip_set}
 \alias{get_ip_set}
-\title{Returns the IPSet that is specified by \code{IPSetId}}
+\title{Returns the IPSet that is specified by IPSetId}
 \usage{
-get_ip_set(
-  IPSetId = "string"
-)
+get_ip_set(IPSetId)
 }
 \arguments{
 \item{IPSetId}{[required] The \code{IPSetId} of the IPSet that you want to get. \code{IPSetId} is returned by CreateIPSet and by ListIPSets.}
@@ -14,11 +12,18 @@ get_ip_set(
 \description{
 Returns the IPSet that is specified by \code{IPSetId}.
 }
+\section{Accepted Parameters}{
+\preformatted{get_ip_set(
+  IPSetId = "string"
+)
+}
+}
+
 \examples{
 # The following example returns the details of an IP match set with the ID
 # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-get_ip_set(
+\donttest{get_ip_set(
   IPSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-)
+)}
 
 }

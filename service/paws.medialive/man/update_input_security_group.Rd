@@ -4,14 +4,7 @@
 \alias{update_input_security_group}
 \title{Update an Input Security Group's Whilelists}
 \usage{
-update_input_security_group(
-  InputSecurityGroupId = "string",
-  WhitelistRules = list(
-    list(
-      Cidr = "string"
-    )
-  )
-)
+update_input_security_group(InputSecurityGroupId, WhitelistRules = NULL)
 }
 \arguments{
 \item{InputSecurityGroupId}{[required] The id of the Input Security Group to update.}
@@ -21,6 +14,15 @@ update_input_security_group(
 \description{
 Update an Input Security Group's Whilelists.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_input_security_group(
+  InputSecurityGroupId = "string",
+  WhitelistRules = list(
+    list(
+      Cidr = "string"
+    )
+  )
+)
 }
+}
+

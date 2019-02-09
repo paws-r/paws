@@ -4,21 +4,17 @@
 \alias{resync_mfa_device}
 \title{Synchronizes the specified MFA device with its IAM resource object on the AWS servers}
 \usage{
-resync_mfa_device(
-  UserName = "string",
-  SerialNumber = "string",
-  AuthenticationCode1 = "string",
-  AuthenticationCode2 = "string"
-)
+resync_mfa_device(UserName, SerialNumber, AuthenticationCode1,
+  AuthenticationCode2)
 }
 \arguments{
 \item{UserName}{[required] The name of the user whose MFA device you want to resynchronize.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{SerialNumber}{[required] Serial number that uniquely identifies the MFA device.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{AuthenticationCode1}{[required] An authentication code emitted by the device.
 
@@ -34,6 +30,13 @@ Synchronizes the specified MFA device with its IAM resource object on the AWS se
 \details{
 For more information about creating and working with virtual MFA devices, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_VirtualMFA.html}{Using a Virtual MFA Device} in the \emph{IAM User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{resync_mfa_device(
+  UserName = "string",
+  SerialNumber = "string",
+  AuthenticationCode1 = "string",
+  AuthenticationCode2 = "string"
+)
 }
+}
+

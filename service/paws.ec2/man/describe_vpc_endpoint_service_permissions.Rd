@@ -4,20 +4,8 @@
 \alias{describe_vpc_endpoint_service_permissions}
 \title{Describes the principals (service consumers) that are permitted to discover your VPC endpoint service}
 \usage{
-describe_vpc_endpoint_service_permissions(
-  DryRun = TRUE|FALSE,
-  ServiceId = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_vpc_endpoint_service_permissions(DryRun = NULL, ServiceId,
+  Filters = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -37,6 +25,21 @@ describe_vpc_endpoint_service_permissions(
 \description{
 Describes the principals (service consumers) that are permitted to discover your VPC endpoint service.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_vpc_endpoint_service_permissions(
+  DryRun = TRUE|FALSE,
+  ServiceId = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

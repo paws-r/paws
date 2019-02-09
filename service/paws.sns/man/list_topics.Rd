@@ -4,9 +4,7 @@
 \alias{list_topics}
 \title{Returns a list of the requester's topics}
 \usage{
-list_topics(
-  NextToken = "string"
-)
+list_topics(NextToken = NULL)
 }
 \arguments{
 \item{NextToken}{Token returned by the previous \code{ListTopics} request.}
@@ -17,6 +15,10 @@ Returns a list of the requester's topics. Each call returns a limited list of to
 \details{
 This action is throttled at 30 transactions per second (TPS).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_topics(
+  NextToken = "string"
+)
 }
+}
+

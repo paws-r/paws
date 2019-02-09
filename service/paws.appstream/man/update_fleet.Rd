@@ -4,36 +4,12 @@
 \alias{update_fleet}
 \title{Updates the specified fleet}
 \usage{
-update_fleet(
-  ImageName = "string",
-  ImageArn = "string",
-  Name = "string",
-  InstanceType = "string",
-  ComputeCapacity = list(
-    DesiredInstances = 123
-  ),
-  VpcConfig = list(
-    SubnetIds = list(
-      "string"
-    ),
-    SecurityGroupIds = list(
-      "string"
-    )
-  ),
-  MaxUserDurationInSeconds = 123,
-  DisconnectTimeoutInSeconds = 123,
-  DeleteVpcConfig = TRUE|FALSE,
-  Description = "string",
-  DisplayName = "string",
-  EnableDefaultInternetAccess = TRUE|FALSE,
-  DomainJoinInfo = list(
-    DirectoryName = "string",
-    OrganizationalUnitDistinguishedName = "string"
-  ),
-  AttributesToDelete = list(
-    "VPC_CONFIGURATION"|"VPC_CONFIGURATION_SECURITY_GROUP_IDS"|"DOMAIN_JOIN_INFO"
-  )
-)
+update_fleet(ImageName = NULL, ImageArn = NULL, Name = NULL,
+  InstanceType = NULL, ComputeCapacity = NULL, VpcConfig = NULL,
+  MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL,
+  DeleteVpcConfig = NULL, Description = NULL, DisplayName = NULL,
+  EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL,
+  AttributesToDelete = NULL)
 }
 \arguments{
 \item{ImageName}{The name of the image used to create the fleet.}
@@ -92,6 +68,37 @@ Updates the specified fleet.
 \details{
 If the fleet is in the \code{STOPPED} state, you can update any attribute except the fleet name. If the fleet is in the \code{RUNNING} state, you can update the \code{DisplayName} and \code{ComputeCapacity} attributes. If the fleet is in the \code{STARTING} or \code{STOPPING} state, you can't update it.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_fleet(
+  ImageName = "string",
+  ImageArn = "string",
+  Name = "string",
+  InstanceType = "string",
+  ComputeCapacity = list(
+    DesiredInstances = 123
+  ),
+  VpcConfig = list(
+    SubnetIds = list(
+      "string"
+    ),
+    SecurityGroupIds = list(
+      "string"
+    )
+  ),
+  MaxUserDurationInSeconds = 123,
+  DisconnectTimeoutInSeconds = 123,
+  DeleteVpcConfig = TRUE|FALSE,
+  Description = "string",
+  DisplayName = "string",
+  EnableDefaultInternetAccess = TRUE|FALSE,
+  DomainJoinInfo = list(
+    DirectoryName = "string",
+    OrganizationalUnitDistinguishedName = "string"
+  ),
+  AttributesToDelete = list(
+    "VPC_CONFIGURATION"|"VPC_CONFIGURATION_SECURITY_GROUP_IDS"|"DOMAIN_JOIN_INFO"
+  )
+)
 }
+}
+

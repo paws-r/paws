@@ -4,25 +4,14 @@
 \alias{upload_part_copy}
 \title{Uploads a part by copying data from an existing object as data source}
 \usage{
-upload_part_copy(
-  Bucket = "string",
-  CopySource = "string",
-  CopySourceIfMatch = "string",
-  CopySourceIfModifiedSince = as.POSIXct("2015-01-01"),
-  CopySourceIfNoneMatch = "string",
-  CopySourceIfUnmodifiedSince = as.POSIXct("2015-01-01"),
-  CopySourceRange = "string",
-  Key = "string",
-  PartNumber = 123,
-  UploadId = "string",
-  SSECustomerAlgorithm = "string",
-  SSECustomerKey = raw,
-  SSECustomerKeyMD5 = "string",
-  CopySourceSSECustomerAlgorithm = "string",
-  CopySourceSSECustomerKey = raw,
-  CopySourceSSECustomerKeyMD5 = "string",
-  RequestPayer = "requester"
-)
+upload_part_copy(Bucket, CopySource, CopySourceIfMatch = NULL,
+  CopySourceIfModifiedSince = NULL, CopySourceIfNoneMatch = NULL,
+  CopySourceIfUnmodifiedSince = NULL, CopySourceRange = NULL, Key,
+  PartNumber, UploadId, SSECustomerAlgorithm = NULL,
+  SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL,
+  CopySourceSSECustomerAlgorithm = NULL,
+  CopySourceSSECustomerKey = NULL, CopySourceSSECustomerKeyMD5 = NULL,
+  RequestPayer = NULL)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -47,7 +36,7 @@ upload_part_copy(
 
 \item{SSECustomerAlgorithm}{Specifies the algorithm to use to when encrypting the object (e.g., AES256).}
 
-\item{SSECustomerKey}{Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm header. This must be the same encryption key specified in the initiate multipart upload request.}
+\item{SSECustomerKey}{Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header. This must be the same encryption key specified in the initiate multipart upload request.}
 
 \item{SSECustomerKeyMD5}{Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.}
 
@@ -62,26 +51,49 @@ upload_part_copy(
 \description{
 Uploads a part by copying data from an existing object as data source.
 }
+\section{Accepted Parameters}{
+\preformatted{upload_part_copy(
+  Bucket = "string",
+  CopySource = "string",
+  CopySourceIfMatch = "string",
+  CopySourceIfModifiedSince = as.POSIXct("2015-01-01"),
+  CopySourceIfNoneMatch = "string",
+  CopySourceIfUnmodifiedSince = as.POSIXct("2015-01-01"),
+  CopySourceRange = "string",
+  Key = "string",
+  PartNumber = 123,
+  UploadId = "string",
+  SSECustomerAlgorithm = "string",
+  SSECustomerKey = raw,
+  SSECustomerKeyMD5 = "string",
+  CopySourceSSECustomerAlgorithm = "string",
+  CopySourceSSECustomerKey = raw,
+  CopySourceSSECustomerKeyMD5 = "string",
+  RequestPayer = "requester"
+)
+}
+}
+
 \examples{
+# The following example uploads a part of a multipart upload by copying
+# data from an existing object as data source.
+\donttest{upload_part_copy(
+  Bucket = "examplebucket",
+  CopySource = "/bucketname/sourceobjectkey",
+  Key = "examplelargeobject",
+  PartNumber = "1",
+  UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3cq3LZSUsfjI4FI7PkP91We7Nrw--"
+)}
+
 # The following example uploads a part of a multipart upload by copying a
 # specified byte range from an existing object as data source.
-upload_part_copy(
+\donttest{upload_part_copy(
   Bucket = "examplebucket",
   CopySource = "/bucketname/sourceobjectkey",
   CopySourceRange = "bytes=1-100000",
   Key = "examplelargeobject",
   PartNumber = "2",
   UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3cq3LZSUsfjI4FI7PkP91We7Nrw--"
-)
-
-# The following example uploads a part of a multipart upload by copying
-# data from an existing object as data source.
-upload_part_copy(
-  Bucket = "examplebucket",
-  CopySource = "/bucketname/sourceobjectkey",
-  Key = "examplelargeobject",
-  PartNumber = "1",
-  UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3cq3LZSUsfjI4FI7PkP91We7Nrw--"
-)
+)}
 
 }

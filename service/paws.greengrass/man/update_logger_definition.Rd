@@ -4,10 +4,7 @@
 \alias{update_logger_definition}
 \title{Updates a logger definition}
 \usage{
-update_logger_definition(
-  LoggerDefinitionId = "string",
-  Name = "string"
-)
+update_logger_definition(LoggerDefinitionId, Name = NULL)
 }
 \arguments{
 \item{LoggerDefinitionId}{[required] The ID of the logger definition.}
@@ -17,6 +14,11 @@ update_logger_definition(
 \description{
 Updates a logger definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_logger_definition(
+  LoggerDefinitionId = "string",
+  Name = "string"
+)
 }
+}
+

@@ -4,13 +4,7 @@
 \alias{update_placement}
 \title{Updates a placement with the given attributes}
 \usage{
-update_placement(
-  placementName = "string",
-  projectName = "string",
-  attributes = list(
-    "string"
-  )
-)
+update_placement(placementName, projectName, attributes = NULL)
 }
 \arguments{
 \item{placementName}{[required] The name of the placement to update.}
@@ -22,6 +16,14 @@ update_placement(
 \description{
 Updates a placement with the given attributes. To clear an attribute, pass an empty value (i.e., "").
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_placement(
+  placementName = "string",
+  projectName = "string",
+  attributes = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{delete_report_definition}
 \title{Delete a specified report definition}
 \usage{
-delete_report_definition(
-  ReportName = "string"
-)
+delete_report_definition(ReportName = NULL)
 }
 \arguments{
 \item{ReportName}{}
@@ -14,6 +12,10 @@ delete_report_definition(
 \description{
 Delete a specified report definition
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_report_definition(
+  ReportName = "string"
+)
 }
+}
+

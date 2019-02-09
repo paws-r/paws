@@ -4,9 +4,7 @@
 \alias{delete_saml_provider}
 \title{Deletes a SAML provider resource in IAM}
 \usage{
-delete_saml_provider(
-  SAMLProviderArn = "string"
-)
+delete_saml_provider(SAMLProviderArn)
 }
 \arguments{
 \item{SAMLProviderArn}{[required] The Amazon Resource Name (ARN) of the SAML provider to delete.}
@@ -19,6 +17,10 @@ Deleting the provider resource from IAM does not update any roles that reference
 
 This operation requires \href{http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_saml_provider(
+  SAMLProviderArn = "string"
+)
 }
+}
+

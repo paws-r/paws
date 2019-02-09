@@ -4,12 +4,7 @@
 \alias{describe_services}
 \title{Returns the current list of AWS services and a list of service categories that applies to each one}
 \usage{
-describe_services(
-  serviceCodeList = list(
-    "string"
-  ),
-  language = "string"
-)
+describe_services(serviceCodeList = NULL, language = NULL)
 }
 \arguments{
 \item{serviceCodeList}{A JSON-formatted list of service codes available for AWS services.}
@@ -22,6 +17,13 @@ Returns the current list of AWS services and a list of service categories that a
 \details{
 The service codes and category codes correspond to the values that are displayed in the \strong{Service} and \strong{Category} drop-down lists on the AWS Support Center \href{https://console.aws.amazon.com/support/home#/case/create}{Create Case} page. The values in those fields, however, do not necessarily match the service codes and categories returned by the \code{DescribeServices} request. Always use the service codes and categories obtained programmatically. This practice ensures that you always have the most recent set of service and category codes.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_services(
+  serviceCodeList = list(
+    "string"
+  ),
+  language = "string"
+)
 }
+}
+

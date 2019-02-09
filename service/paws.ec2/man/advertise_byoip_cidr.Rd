@@ -4,10 +4,7 @@
 \alias{advertise_byoip_cidr}
 \title{Advertises an IPv4 address range that is provisioned for use with your AWS resources through bring your own IP addresses (BYOIP)}
 \usage{
-advertise_byoip_cidr(
-  Cidr = "string",
-  DryRun = TRUE|FALSE
-)
+advertise_byoip_cidr(Cidr, DryRun = NULL)
 }
 \arguments{
 \item{Cidr}{[required] The IPv4 address range, in CIDR notation.}
@@ -26,6 +23,11 @@ It can take a few minutes before traffic to the specified addresses starts routi
 
 To stop advertising the BYOIP CIDR, use WithdrawByoipCidr.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{advertise_byoip_cidr(
+  Cidr = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

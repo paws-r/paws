@@ -9,9 +9,14 @@ get_account_settings()
 \description{
 Returns the number of unmetered iOS and/or unmetered Android devices that have been purchased by the account.
 }
+\section{Accepted Parameters}{
+\preformatted{get_account_settings()
+}
+}
+
 \examples{
 # The following example returns information about your Device Farm account
 # settings.
-get_account_settings()
+\donttest{get_account_settings()}
 
 }

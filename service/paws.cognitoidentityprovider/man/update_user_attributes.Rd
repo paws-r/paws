@@ -4,15 +4,7 @@
 \alias{update_user_attributes}
 \title{Allows a user to update a specific attribute (one at a time)}
 \usage{
-update_user_attributes(
-  UserAttributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  AccessToken = "string"
-)
+update_user_attributes(UserAttributes, AccessToken)
 }
 \arguments{
 \item{UserAttributes}{[required] An array of name-value pairs representing user attributes.
@@ -24,6 +16,16 @@ For custom attributes, you must prepend the \code{custom:} prefix to the attribu
 \description{
 Allows a user to update a specific attribute (one at a time).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_user_attributes(
+  UserAttributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  AccessToken = "string"
+)
 }
+}
+

@@ -4,24 +4,8 @@
 \alias{allocate_hosts}
 \title{Allocates a Dedicated Host to your account}
 \usage{
-allocate_hosts(
-  AutoPlacement = "on"|"off",
-  AvailabilityZone = "string",
-  ClientToken = "string",
-  InstanceType = "string",
-  Quantity = 123,
-  TagSpecifications = list(
-    list(
-      ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
+allocate_hosts(AutoPlacement = NULL, AvailabilityZone,
+  ClientToken = NULL, InstanceType, Quantity, TagSpecifications = NULL)
 }
 \arguments{
 \item{AutoPlacement}{This is enabled by default. This property allows instances to be automatically placed onto available Dedicated Hosts, when you are launching instances without specifying a host ID.
@@ -41,6 +25,25 @@ Default: Enabled}
 \description{
 Allocates a Dedicated Host to your account. At a minimum, specify the instance size type, Availability Zone, and quantity of hosts to allocate.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{allocate_hosts(
+  AutoPlacement = "on"|"off",
+  AvailabilityZone = "string",
+  ClientToken = "string",
+  InstanceType = "string",
+  Quantity = 123,
+  TagSpecifications = list(
+    list(
+      ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"image"|"instance"|"internet-gateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"snapshot"|"spot-instances-request"|"subnet"|"security-group"|"volume"|"vpc"|"vpn-connection"|"vpn-gateway",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{reject_shared_directory}
 \title{Rejects a directory sharing request that was sent from the directory owner account}
 \usage{
-reject_shared_directory(
-  SharedDirectoryId = "string"
-)
+reject_shared_directory(SharedDirectoryId)
 }
 \arguments{
 \item{SharedDirectoryId}{[required] Identifier of the shared directory in the directory consumer account. This identifier is different for each directory owner account.}
@@ -14,6 +12,10 @@ reject_shared_directory(
 \description{
 Rejects a directory sharing request that was sent from the directory owner account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reject_shared_directory(
+  SharedDirectoryId = "string"
+)
 }
+}
+

@@ -4,12 +4,9 @@
 \alias{revoke_cluster_security_group_ingress}
 \title{Revokes an ingress rule in an Amazon Redshift security group for a previously authorized IP range or Amazon EC2 security group}
 \usage{
-revoke_cluster_security_group_ingress(
-  ClusterSecurityGroupName = "string",
-  CIDRIP = "string",
-  EC2SecurityGroupName = "string",
-  EC2SecurityGroupOwnerId = "string"
-)
+revoke_cluster_security_group_ingress(ClusterSecurityGroupName,
+  CIDRIP = NULL, EC2SecurityGroupName = NULL,
+  EC2SecurityGroupOwnerId = NULL)
 }
 \arguments{
 \item{ClusterSecurityGroupName}{[required] The name of the security Group from which to revoke the ingress rule.}
@@ -25,6 +22,13 @@ Example: \code{111122223333}}
 \description{
 Revokes an ingress rule in an Amazon Redshift security group for a previously authorized IP range or Amazon EC2 security group. To add an ingress rule, see AuthorizeClusterSecurityGroupIngress. For information about managing security groups, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html}{Amazon Redshift Cluster Security Groups} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{revoke_cluster_security_group_ingress(
+  ClusterSecurityGroupName = "string",
+  CIDRIP = "string",
+  EC2SecurityGroupName = "string",
+  EC2SecurityGroupOwnerId = "string"
+)
 }
+}
+

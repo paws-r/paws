@@ -4,7 +4,21 @@
 \alias{set_time_based_auto_scaling}
 \title{Specify the time-based auto scaling configuration for a specified instance}
 \usage{
-set_time_based_auto_scaling(
+set_time_based_auto_scaling(InstanceId, AutoScalingSchedule = NULL)
+}
+\arguments{
+\item{InstanceId}{[required] The instance ID.}
+
+\item{AutoScalingSchedule}{An \code{AutoScalingSchedule} with the instance schedule.}
+}
+\description{
+Specify the time-based auto scaling configuration for a specified instance. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html}{Managing Load with Time-based and Load-based Instances}.
+}
+\details{
+\strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+}
+\section{Accepted Parameters}{
+\preformatted{set_time_based_auto_scaling(
   InstanceId = "string",
   AutoScalingSchedule = list(
     Monday = list(
@@ -31,17 +45,5 @@ set_time_based_auto_scaling(
   )
 )
 }
-\arguments{
-\item{InstanceId}{[required] The instance ID.}
+}
 
-\item{AutoScalingSchedule}{An \code{AutoScalingSchedule} with the instance schedule.}
-}
-\description{
-Specify the time-based auto scaling configuration for a specified instance. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html}{Managing Load with Time-based and Load-based Instances}.
-}
-\details{
-\strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
-}
-\examples{
-
-}

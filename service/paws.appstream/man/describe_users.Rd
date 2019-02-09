@@ -4,11 +4,7 @@
 \alias{describe_users}
 \title{Retrieves a list that describes one or more specified users in the user pool, if user names are provided}
 \usage{
-describe_users(
-  AuthenticationType = "API"|"SAML"|"USERPOOL",
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_users(AuthenticationType, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{AuthenticationType}{[required] The authentication type for the users in the user pool to describe. You must specify USERPOOL.}
@@ -20,6 +16,12 @@ describe_users(
 \description{
 Retrieves a list that describes one or more specified users in the user pool, if user names are provided. Otherwise, all users in the user pool are described.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_users(
+  AuthenticationType = "API"|"SAML"|"USERPOOL",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

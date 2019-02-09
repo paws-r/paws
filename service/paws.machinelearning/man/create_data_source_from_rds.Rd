@@ -2,35 +2,10 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{create_data_source_from_rds}
 \alias{create_data_source_from_rds}
-\title{Creates a \code{DataSource} object from an \link{Amazon Relational Database Service}(http://aws}
+\title{Creates a DataSource object from an Amazon Relational Database Service (Amazon RDS)}
 \usage{
-create_data_source_from_rds(
-  DataSourceId = "string",
-  DataSourceName = "string",
-  RDSData = list(
-    DatabaseInformation = list(
-      InstanceIdentifier = "string",
-      DatabaseName = "string"
-    ),
-    SelectSqlQuery = "string",
-    DatabaseCredentials = list(
-      Username = "string",
-      Password = "string"
-    ),
-    S3StagingLocation = "string",
-    DataRearrangement = "string",
-    DataSchema = "string",
-    DataSchemaUri = "string",
-    ResourceRole = "string",
-    ServiceRole = "string",
-    SubnetId = "string",
-    SecurityGroupIds = list(
-      "string"
-    )
-  ),
-  RoleARN = "string",
-  ComputeStatistics = TRUE|FALSE
-)
+create_data_source_from_rds(DataSourceId, DataSourceName = NULL, RDSData,
+  RoleARN, ComputeStatistics = NULL)
 }
 \arguments{
 \item{DataSourceId}{[required] A user-supplied ID that uniquely identifies the \code{DataSource}. Typically, an Amazon Resource Number (ARN) becomes the ID for a \code{DataSource}.}
@@ -71,6 +46,34 @@ Creates a \code{DataSource} object from an \href{http://aws.amazon.com/rds/}{Ama
 
 If Amazon ML cannot accept the input source, it sets the \code{Status} parameter to \code{FAILED} and includes an error message in the \code{Message} attribute of the \code{GetDataSource} operation response.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_data_source_from_rds(
+  DataSourceId = "string",
+  DataSourceName = "string",
+  RDSData = list(
+    DatabaseInformation = list(
+      InstanceIdentifier = "string",
+      DatabaseName = "string"
+    ),
+    SelectSqlQuery = "string",
+    DatabaseCredentials = list(
+      Username = "string",
+      Password = "string"
+    ),
+    S3StagingLocation = "string",
+    DataRearrangement = "string",
+    DataSchema = "string",
+    DataSchemaUri = "string",
+    ResourceRole = "string",
+    ServiceRole = "string",
+    SubnetId = "string",
+    SecurityGroupIds = list(
+      "string"
+    )
+  ),
+  RoleARN = "string",
+  ComputeStatistics = TRUE|FALSE
+)
 }
+}
+

@@ -9,6 +9,8 @@ get_health_check_count()
 \description{
 Retrieves the number of health checks that are associated with the current AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_health_check_count()
 }
+}
+

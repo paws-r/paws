@@ -4,17 +4,8 @@
 \alias{modify_fleet}
 \title{Modifies the specified EC2 Fleet}
 \usage{
-modify_fleet(
-  DryRun = TRUE|FALSE,
-  ExcessCapacityTerminationPolicy = "no-termination"|"termination",
-  FleetId = "string",
-  TargetCapacitySpecification = list(
-    TotalTargetCapacity = 123,
-    OnDemandTargetCapacity = 123,
-    SpotTargetCapacity = 123,
-    DefaultTargetCapacityType = "spot"|"on-demand"
-  )
-)
+modify_fleet(DryRun = NULL, ExcessCapacityTerminationPolicy = NULL,
+  FleetId, TargetCapacitySpecification)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -31,6 +22,18 @@ Modifies the specified EC2 Fleet.
 \details{
 While the EC2 Fleet is being modified, it is in the \code{modifying} state.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_fleet(
+  DryRun = TRUE|FALSE,
+  ExcessCapacityTerminationPolicy = "no-termination"|"termination",
+  FleetId = "string",
+  TargetCapacitySpecification = list(
+    TotalTargetCapacity = 123,
+    OnDemandTargetCapacity = 123,
+    SpotTargetCapacity = 123,
+    DefaultTargetCapacityType = "spot"|"on-demand"
+  )
+)
 }
+}
+

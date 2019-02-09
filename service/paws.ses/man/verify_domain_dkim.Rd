@@ -4,9 +4,7 @@
 \alias{verify_domain_dkim}
 \title{Returns a set of DKIM tokens for a domain}
 \usage{
-verify_domain_dkim(
-  Domain = "string"
-)
+verify_domain_dkim(Domain)
 }
 \arguments{
 \item{Domain}{[required] The name of the domain to be verified for Easy DKIM signing.}
@@ -21,11 +19,18 @@ To enable or disable Easy DKIM signing for a domain, use the \code{SetIdentityDk
 
 For more information about creating DNS records using DKIM tokens, go to the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html}{Amazon SES Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{verify_domain_dkim(
+  Domain = "string"
+)
+}
+}
+
 \examples{
 # The following example generates DKIM tokens for a domain that has been
 # verified with Amazon SES:
-verify_domain_dkim(
+\donttest{verify_domain_dkim(
   Domain = "example.com"
-)
+)}
 
 }

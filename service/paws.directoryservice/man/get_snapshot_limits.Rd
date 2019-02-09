@@ -4,9 +4,7 @@
 \alias{get_snapshot_limits}
 \title{Obtains the manual snapshot limits for a directory}
 \usage{
-get_snapshot_limits(
-  DirectoryId = "string"
-)
+get_snapshot_limits(DirectoryId)
 }
 \arguments{
 \item{DirectoryId}{[required] Contains the identifier of the directory to obtain the limits for.}
@@ -14,6 +12,10 @@ get_snapshot_limits(
 \description{
 Obtains the manual snapshot limits for a directory.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_snapshot_limits(
+  DirectoryId = "string"
+)
 }
+}
+

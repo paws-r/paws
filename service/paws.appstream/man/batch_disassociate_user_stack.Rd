@@ -4,7 +4,16 @@
 \alias{batch_disassociate_user_stack}
 \title{Disassociates the specified users from the specified stacks}
 \usage{
-batch_disassociate_user_stack(
+batch_disassociate_user_stack(UserStackAssociations)
+}
+\arguments{
+\item{UserStackAssociations}{[required] The list of UserStackAssociation objects.}
+}
+\description{
+Disassociates the specified users from the specified stacks.
+}
+\section{Accepted Parameters}{
+\preformatted{batch_disassociate_user_stack(
   UserStackAssociations = list(
     list(
       StackName = "string",
@@ -15,12 +24,5 @@ batch_disassociate_user_stack(
   )
 )
 }
-\arguments{
-\item{UserStackAssociations}{[required] The list of UserStackAssociation objects.}
 }
-\description{
-Disassociates the specified users from the specified stacks.
-}
-\examples{
 
-}

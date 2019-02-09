@@ -4,12 +4,8 @@
 \alias{search_faces}
 \title{For a given input face ID, searches for matching faces in the collection the face belongs to}
 \usage{
-search_faces(
-  CollectionId = "string",
-  FaceId = "string",
-  MaxFaces = 123,
-  FaceMatchThreshold = 123.0
-)
+search_faces(CollectionId, FaceId, MaxFaces = NULL,
+  FaceMatchThreshold = NULL)
 }
 \arguments{
 \item{CollectionId}{[required] ID of the collection the face belongs to.}
@@ -32,14 +28,24 @@ For an example, see Searching for a Face Using Its Face ID in the Amazon Rekogni
 
 This operation requires permissions to perform the \code{rekognition:SearchFaces} action.
 }
+\section{Accepted Parameters}{
+\preformatted{search_faces(
+  CollectionId = "string",
+  FaceId = "string",
+  MaxFaces = 123,
+  FaceMatchThreshold = 123.0
+)
+}
+}
+
 \examples{
 # This operation searches for matching faces in the collection the
 # supplied face belongs to.
-search_faces(
+\donttest{search_faces(
   CollectionId = "myphotos",
   FaceId = "70008e50-75e4-55d0-8e80-363fb73b3a14",
   FaceMatchThreshold = 90L,
   MaxFaces = 10L
-)
+)}
 
 }

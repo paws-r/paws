@@ -2,26 +2,16 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{create_event_source_mapping}
 \alias{create_event_source_mapping}
-\title{Creates a mapping between an event source and an AWS Lambda function}
+\title{Identifies a poll-based event source for a Lambda function}
 \usage{
-create_event_source_mapping(
-  EventSourceArn = "string",
-  FunctionName = "string",
-  Enabled = TRUE|FALSE,
-  BatchSize = 123,
-  StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
-  StartingPositionTimestamp = as.POSIXct("2015-01-01")
-)
+create_event_source_mapping(EventSourceArn, FunctionName, Enabled = NULL,
+  BatchSize = NULL, StartingPosition = NULL,
+  StartingPositionTimestamp = NULL)
 }
 \arguments{
-\item{EventSourceArn}{[required] The Amazon Resource Name (ARN) of the event source.
-\itemize{
-\item \strong{Amazon Kinesis} - The ARN of the data stream or a stream consumer.
-\item \strong{Amazon DynamoDB Streams} - The ARN of the stream.
-\item \strong{Amazon Simple Queue Service} - The ARN of the queue.
-}}
+\item{EventSourceArn}{[required] The Amazon Resource Name (ARN) of the event source.}
 
-\item{FunctionName}{[required] The name of the Lambda function.
+\item{FunctionName}{[required] The name of the lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -31,32 +21,41 @@ create_event_source_mapping(
 \item \strong{Partial ARN} - \code{123456789012:function:MyFunction}.
 }
 
-The length constraint applies only to the full ARN. If you specify only the function name, it's limited to 64 characters in length.}
+The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
-\item{Enabled}{Disables the event source mapping to pause polling and invocation.}
+\item{Enabled}{Set to false to disable the event source upon creation.}
 
-\item{BatchSize}{The maximum number of items to retrieve in a single batch.
-\itemize{
-\item \strong{Amazon Kinesis} - Default 100. Max 10,000.
-\item \strong{Amazon DynamoDB Streams} - Default 100. Max 1,000.
-\item \strong{Amazon Simple Queue Service} - Default 10. Max 10.
-}}
+\item{BatchSize}{The largest number of records that AWS Lambda will retrieve from your event source at the time of invoking your function. Your function receives an event with all the retrieved records. The default for Amazon Kinesis and Amazon DynamoDB is 100 records. Both the default and maximum for Amazon SQS are 10 messages.}
 
-\item{StartingPosition}{The position in a stream from which to start reading. Required for Amazon Kinesis and Amazon DynamoDB Streams sources. \code{AT_TIMESTAMP} is only supported for Amazon Kinesis streams.}
+\item{StartingPosition}{The position in the DynamoDB or Kinesis stream where AWS Lambda should start reading. For more information, see \href{http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType}{GetShardIterator} in the \emph{Amazon Kinesis API Reference Guide} or \href{http://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_streams_GetShardIterator.html}{GetShardIterator} in the \emph{Amazon DynamoDB API Reference Guide}. The \code{AT_TIMESTAMP} value is supported only for \href{http://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html}{Kinesis streams}.}
 
-\item{StartingPositionTimestamp}{With \code{StartingPosition} set to \code{AT_TIMESTAMP}, the Unix time in seconds from which to start reading.}
+\item{StartingPositionTimestamp}{The timestamp of the data record from which to start reading. Used with \href{http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType}{shard iterator type} AT\_TIMESTAMP. If a record with this exact timestamp does not exist, the iterator returned is for the next (later) record. If the timestamp is older than the current trim horizon, the iterator returned is for the oldest untrimmed data record (TRIM\_HORIZON). Valid only for \href{http://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html}{Kinesis streams}.}
 }
 \description{
-Creates a mapping between an event source and an AWS Lambda function. Lambda reads items from the event source and triggers the function.
+Identifies a poll-based event source for a Lambda function. It can be either an Amazon Kinesis or DynamoDB stream. AWS Lambda invokes the specified function when records are posted to the event source.
 }
 \details{
-For details about each event source type, see the following topics.
-\itemize{
-\item \href{http://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html}{Using AWS Lambda with Amazon Kinesis}
-\item \href{http://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html}{Using AWS Lambda with Amazon SQS}
-\item \href{http://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html}{Using AWS Lambda with Amazon DynamoDB}
-}
-}
-\examples{
+This association between a poll-based source and a Lambda function is called the event source mapping.
 
+You provide mapping information (for example, which stream or SQS queue to read from and which Lambda function to invoke) in the request body.
+
+Amazon Kinesis or DynamoDB stream event sources can be associated with multiple AWS Lambda functions and a given Lambda function can be associated with multiple AWS event sources. For Amazon SQS, you can configure multiple queues as event sources for a single Lambda function, but an SQS queue can be mapped only to a single Lambda function.
+
+You can configure an SQS queue in an account separate from your Lambda function's account. Also the queue needs to reside in the same AWS region as your function.
+
+If you are using versioning, you can specify a specific function version or an alias via the function name parameter. For more information about versioning, see \href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{AWS Lambda Function Versioning and Aliases}.
+
+This operation requires permission for the \code{lambda:CreateEventSourceMapping} action.
 }
+\section{Accepted Parameters}{
+\preformatted{create_event_source_mapping(
+  EventSourceArn = "string",
+  FunctionName = "string",
+  Enabled = TRUE|FALSE,
+  BatchSize = 123,
+  StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
+  StartingPositionTimestamp = as.POSIXct("2015-01-01")
+)
+}
+}
+

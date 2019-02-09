@@ -2,15 +2,12 @@
 % Please edit documentation in R/paws.kms_operations.R
 \name{create_alias}
 \alias{create_alias}
-\title{Creates a display name for a customer master key (CMK)}
+\title{Creates a display name for a customer-managed customer master key (CMK)}
 \usage{
-create_alias(
-  AliasName = "string",
-  TargetKeyId = "string"
-)
+create_alias(AliasName, TargetKeyId)
 }
 \arguments{
-\item{AliasName}{[required] String that contains the display name. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/AWS" are reserved.}
+\item{AliasName}{[required] Specifies the alias name. This value must begin with \code{alias/} followed by the alias name, such as \code{alias/ExampleAlias}. The alias name cannot begin with \code{aws/}. The \code{alias/aws/} prefix is reserved for AWS managed CMKs.}
 
 \item{TargetKeyId}{[required] Identifies the CMK for which you are creating the alias. This value cannot be an alias.
 
@@ -25,14 +22,14 @@ For example:
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 }
 \description{
-Creates a display name for a customer master key (CMK). You can use an alias to identify a CMK in selected operations, such as Encrypt and GenerateDataKey.
+Creates a display name for a customer-managed customer master key (CMK). You can use an alias to identify a CMK in selected operations, such as Encrypt and GenerateDataKey.
 }
 \details{
 Each CMK can have multiple aliases, but each alias points to only one CMK. The alias name must be unique in the AWS account and region. To simplify code that runs in multiple regions, use the same alias name, but point it to a different CMK in each region.
 
 Because an alias is not a property of a CMK, you can delete and change the aliases of a CMK without affecting the CMK. Also, aliases do not appear in the response from the DescribeKey operation. To get the aliases of all CMKs, use the ListAliases operation.
 
-An alias must start with the word \code{alias} followed by a forward slash (\code{alias/}). The alias name can contain only alphanumeric characters, forward slashes (/), underscores (\_), and dashes (-). Alias names cannot begin with \code{aws}; that alias name prefix is reserved by Amazon Web Services (AWS).
+The alias name can contain only alphanumeric characters, forward slashes (/), underscores (\_), and dashes (-). Alias names cannot begin with \strong{aws/}. That alias name prefix is reserved for AWS managed CMKs.
 
 The alias and the CMK it is mapped to must be in the same AWS account and the same region. You cannot perform this operation on an alias in a different AWS account.
 
@@ -40,12 +37,20 @@ To map an existing alias to a different CMK, call UpdateAlias.
 
 The result of this operation varies with the key state of the CMK. For details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key} in the \emph{AWS Key Management Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_alias(
+  AliasName = "string",
+  TargetKeyId = "string"
+)
+}
+}
+
 \examples{
 # The following example creates an alias for the specified customer master
 # key (CMK).
-create_alias(
+\donttest{create_alias(
   AliasName = "alias/ExampleAlias",
   TargetKeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
+)}
 
 }

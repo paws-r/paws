@@ -4,13 +4,7 @@
 \alias{get_id}
 \title{Generates (or retrieves) a Cognito ID}
 \usage{
-get_id(
-  AccountId = "string",
-  IdentityPoolId = "string",
-  Logins = list(
-    "string"
-  )
-)
+get_id(AccountId = NULL, IdentityPoolId, Logins = NULL)
 }
 \arguments{
 \item{AccountId}{A standard AWS account ID (9+ digits).}
@@ -33,6 +27,14 @@ Generates (or retrieves) a Cognito ID. Supplying multiple logins will create an 
 \details{
 This is a public API. You do not need any credentials to call this API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_id(
+  AccountId = "string",
+  IdentityPoolId = "string",
+  Logins = list(
+    "string"
+  )
+)
 }
+}
+

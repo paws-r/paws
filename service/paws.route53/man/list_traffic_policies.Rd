@@ -4,10 +4,7 @@
 \alias{list_traffic_policies}
 \title{Gets information about the latest version for every traffic policy that is associated with the current AWS account}
 \usage{
-list_traffic_policies(
-  TrafficPolicyIdMarker = "string",
-  MaxItems = "string"
-)
+list_traffic_policies(TrafficPolicyIdMarker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{TrafficPolicyIdMarker}{(Conditional) For your first request to \code{ListTrafficPolicies}, don't include the \code{TrafficPolicyIdMarker} parameter.
@@ -19,6 +16,11 @@ If you have more traffic policies than the value of \code{MaxItems}, \code{ListT
 \description{
 Gets information about the latest version for every traffic policy that is associated with the current AWS account. Policies are listed in the order that they were created in.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_traffic_policies(
+  TrafficPolicyIdMarker = "string",
+  MaxItems = "string"
+)
 }
+}
+

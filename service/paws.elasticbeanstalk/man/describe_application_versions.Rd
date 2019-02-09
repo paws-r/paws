@@ -4,14 +4,8 @@
 \alias{describe_application_versions}
 \title{Retrieve a list of application versions}
 \usage{
-describe_application_versions(
-  ApplicationName = "string",
-  VersionLabels = list(
-    "string"
-  ),
-  MaxRecords = 123,
-  NextToken = "string"
-)
+describe_application_versions(ApplicationName = NULL,
+  VersionLabels = NULL, MaxRecords = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ApplicationName}{Specify an application name to show only application versions for that application.}
@@ -29,14 +23,26 @@ If no \code{NextToken} is specified, the first page is retrieved.}
 \description{
 Retrieve a list of application versions.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_application_versions(
+  ApplicationName = "string",
+  VersionLabels = list(
+    "string"
+  ),
+  MaxRecords = 123,
+  NextToken = "string"
+)
+}
+}
+
 \examples{
 # The following operation retrieves information about an application
 # version labeled v2:
-describe_application_versions(
+\donttest{describe_application_versions(
   ApplicationName = "my-app",
   VersionLabels = list(
     "v2"
   )
-)
+)}
 
 }

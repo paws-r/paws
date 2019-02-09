@@ -4,18 +4,9 @@
 \alias{list_deployments}
 \title{Lists the deployments in a deployment group for an application registered with the applicable IAM user or AWS account}
 \usage{
-list_deployments(
-  applicationName = "string",
-  deploymentGroupName = "string",
-  includeOnlyStatuses = list(
-    "Created"|"Queued"|"InProgress"|"Succeeded"|"Failed"|"Stopped"|"Ready"
-  ),
-  createTimeRange = list(
-    start = as.POSIXct("2015-01-01"),
-    end = as.POSIXct("2015-01-01")
-  ),
-  nextToken = "string"
-)
+list_deployments(applicationName = NULL, deploymentGroupName = NULL,
+  includeOnlyStatuses = NULL, createTimeRange = NULL,
+  nextToken = NULL)
 }
 \arguments{
 \item{applicationName}{The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
@@ -39,6 +30,19 @@ list_deployments(
 \description{
 Lists the deployments in a deployment group for an application registered with the applicable IAM user or AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_deployments(
+  applicationName = "string",
+  deploymentGroupName = "string",
+  includeOnlyStatuses = list(
+    "Created"|"Queued"|"InProgress"|"Succeeded"|"Failed"|"Stopped"|"Ready"
+  ),
+  createTimeRange = list(
+    start = as.POSIXct("2015-01-01"),
+    end = as.POSIXct("2015-01-01")
+  ),
+  nextToken = "string"
+)
 }
+}
+

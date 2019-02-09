@@ -4,9 +4,7 @@
 \alias{get_relational_database_snapshot}
 \title{Returns information about a specific database snapshot in Amazon Lightsail}
 \usage{
-get_relational_database_snapshot(
-  relationalDatabaseSnapshotName = "string"
-)
+get_relational_database_snapshot(relationalDatabaseSnapshotName)
 }
 \arguments{
 \item{relationalDatabaseSnapshotName}{[required] The name of the database snapshot for which to get information.}
@@ -14,6 +12,10 @@ get_relational_database_snapshot(
 \description{
 Returns information about a specific database snapshot in Amazon Lightsail.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_relational_database_snapshot(
+  relationalDatabaseSnapshotName = "string"
+)
 }
+}
+

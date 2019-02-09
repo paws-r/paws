@@ -4,11 +4,7 @@
 \alias{detach_network_interface}
 \title{Detaches a network interface from an instance}
 \usage{
-detach_network_interface(
-  AttachmentId = "string",
-  DryRun = TRUE|FALSE,
-  Force = TRUE|FALSE
-)
+detach_network_interface(AttachmentId, DryRun = NULL, Force = NULL)
 }
 \arguments{
 \item{AttachmentId}{[required] The ID of the attachment.}
@@ -20,11 +16,20 @@ detach_network_interface(
 \description{
 Detaches a network interface from an instance.
 }
+\section{Accepted Parameters}{
+\preformatted{detach_network_interface(
+  AttachmentId = "string",
+  DryRun = TRUE|FALSE,
+  Force = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example detaches the specified network interface from its attached
 # instance.
-detach_network_interface(
+\donttest{detach_network_interface(
   AttachmentId = "eni-attach-66c4350a"
-)
+)}
 
 }

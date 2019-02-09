@@ -4,10 +4,7 @@
 \alias{get_group}
 \title{Gets a group}
 \usage{
-get_group(
-  GroupName = "string",
-  UserPoolId = "string"
-)
+get_group(GroupName, UserPoolId)
 }
 \arguments{
 \item{GroupName}{[required] The name of the group.}
@@ -20,6 +17,11 @@ Gets a group.
 \details{
 Requires developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_group(
+  GroupName = "string",
+  UserPoolId = "string"
+)
 }
+}
+

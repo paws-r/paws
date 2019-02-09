@@ -4,9 +4,7 @@
 \alias{delete_stack}
 \title{Deletes a specified stack}
 \usage{
-delete_stack(
-  StackId = "string"
-)
+delete_stack(StackId)
 }
 \arguments{
 \item{StackId}{[required] The stack ID.}
@@ -17,6 +15,10 @@ Deletes a specified stack. You must first delete all instances, layers, and apps
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_stack(
+  StackId = "string"
+)
 }
+}
+

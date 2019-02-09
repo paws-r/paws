@@ -6,9 +6,9 @@
 \alias{paws.organizations-package}
 \title{paws.organizations: AWS Organizations}
 \description{
-AWS Organizations is a web service that enables you to
-consolidate your multiple AWS accounts into an *organization* and
-centrally manage your accounts and their resources.
+AWS Organizations is a web service that enables you
+    to consolidate your multiple AWS accounts into an *organization* and
+    centrally manage your accounts and their resources.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.datapipeline_operations.R
 \name{evaluate_expression}
 \alias{evaluate_expression}
-\title{Task runners call \code{EvaluateExpression} to evaluate a string in the context of the specified object}
+\title{Task runners call EvaluateExpression to evaluate a string in the context of the specified object}
 \usage{
-evaluate_expression(
-  pipelineId = "string",
-  objectId = "string",
-  expression = "string"
-)
+evaluate_expression(pipelineId, objectId, expression)
 }
 \arguments{
 \item{pipelineId}{[required] The ID of the pipeline.}
@@ -20,6 +16,12 @@ evaluate_expression(
 \description{
 Task runners call \code{EvaluateExpression} to evaluate a string in the context of the specified object. For example, a task runner can evaluate SQL queries stored in Amazon S3.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{evaluate_expression(
+  pipelineId = "string",
+  objectId = "string",
+  expression = "string"
+)
 }
+}
+

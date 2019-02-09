@@ -4,12 +4,8 @@
 \alias{set_alarm_state}
 \title{Temporarily sets the state of an alarm for testing purposes}
 \usage{
-set_alarm_state(
-  AlarmName = "string",
-  StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA",
-  StateReason = "string",
-  StateReasonData = "string"
-)
+set_alarm_state(AlarmName, StateValue, StateReason,
+  StateReasonData = NULL)
 }
 \arguments{
 \item{AlarmName}{[required] The name for the alarm. This name must be unique within the AWS account. The maximum length is 255 characters.}
@@ -23,6 +19,13 @@ set_alarm_state(
 \description{
 Temporarily sets the state of an alarm for testing purposes. When the updated state differs from the previous value, the action configured for the appropriate state is invoked. For example, if your alarm is configured to send an Amazon SNS message when an alarm is triggered, temporarily changing the alarm state to \code{ALARM} sends an SNS message. The alarm returns to its actual state (often within seconds). Because the alarm state change happens quickly, it is typically only visible in the alarm's \strong{History} tab in the Amazon CloudWatch console or through DescribeAlarmHistory.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_alarm_state(
+  AlarmName = "string",
+  StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA",
+  StateReason = "string",
+  StateReasonData = "string"
+)
 }
+}
+

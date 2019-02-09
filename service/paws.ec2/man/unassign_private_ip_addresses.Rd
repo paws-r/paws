@@ -4,12 +4,7 @@
 \alias{unassign_private_ip_addresses}
 \title{Unassigns one or more secondary private IP addresses from a network interface}
 \usage{
-unassign_private_ip_addresses(
-  NetworkInterfaceId = "string",
-  PrivateIpAddresses = list(
-    "string"
-  )
-)
+unassign_private_ip_addresses(NetworkInterfaceId, PrivateIpAddresses)
 }
 \arguments{
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
@@ -19,14 +14,24 @@ unassign_private_ip_addresses(
 \description{
 Unassigns one or more secondary private IP addresses from a network interface.
 }
+\section{Accepted Parameters}{
+\preformatted{unassign_private_ip_addresses(
+  NetworkInterfaceId = "string",
+  PrivateIpAddresses = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example unassigns the specified private IP address from the
 # specified network interface.
-unassign_private_ip_addresses(
+\donttest{unassign_private_ip_addresses(
   NetworkInterfaceId = "eni-e5aa89a3",
   PrivateIpAddresses = list(
     "10.0.0.82"
   )
-)
+)}
 
 }

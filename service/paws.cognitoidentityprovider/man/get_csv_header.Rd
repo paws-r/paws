@@ -4,9 +4,7 @@
 \alias{get_csv_header}
 \title{Gets the header information for the}
 \usage{
-get_csv_header(
-  UserPoolId = "string"
-)
+get_csv_header(UserPoolId)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool that the users are to be imported into.}
@@ -14,6 +12,10 @@ get_csv_header(
 \description{
 Gets the header information for the .csv file to be used as input for the user import job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_csv_header(
+  UserPoolId = "string"
+)
 }
+}
+

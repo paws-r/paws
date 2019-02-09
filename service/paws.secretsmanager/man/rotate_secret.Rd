@@ -4,14 +4,8 @@
 \alias{rotate_secret}
 \title{Configures and starts the asynchronous process of rotating this secret}
 \usage{
-rotate_secret(
-  SecretId = "string",
-  ClientRequestToken = "string",
-  RotationLambdaARN = "string",
-  RotationRules = list(
-    AutomaticallyAfterDays = 123
-  )
-)
+rotate_secret(SecretId, ClientRequestToken = NULL,
+  RotationLambdaARN = NULL, RotationRules = NULL)
 }
 \arguments{
 \item{SecretId}{[required] Specifies the secret that you want to rotate. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
@@ -62,26 +56,38 @@ To run this command, you must have the following permissions:
 \item To attach staging labels to or remove staging labels from a version of a secret, use UpdateSecretVersionStage.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{rotate_secret(
+  SecretId = "string",
+  ClientRequestToken = "string",
+  RotationLambdaARN = "string",
+  RotationRules = list(
+    AutomaticallyAfterDays = 123
+  )
+)
+}
+}
+
 \examples{
 # The following example configures rotation for a secret by providing the
 # ARN of a Lambda rotation function (which must already exist) and the
 # number of days between rotation. The first rotation happens immediately
 # upon completion of this command. The rotation function runs
 # asynchronously in the background.
-rotate_secret(
+\donttest{rotate_secret(
   RotationLambdaARN = "arn:aws:lambda:us-west-2:123456789012:function:MyTestDatabaseRotationLambda",
   RotationRules = list(
     AutomaticallyAfterDays = 30L
   ),
   SecretId = "MyTestDatabaseSecret"
-)
+)}
 
 # The following example requests an immediate invocation of the secret's
 # Lambda rotation function. It assumes that the specified secret already
 # has rotation configured. The rotation function runs asynchronously in
 # the background.
-rotate_secret(
+\donttest{rotate_secret(
   SecretId = "MyTestDatabaseSecret"
-)
+)}
 
 }

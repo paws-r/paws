@@ -4,10 +4,7 @@
 \alias{list_templates}
 \title{Lists the email templates present in your Amazon SES account in the current AWS Region}
 \usage{
-list_templates(
-  NextToken = "string",
-  MaxItems = 123
-)
+list_templates(NextToken = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{NextToken}{A token returned from a previous call to \code{ListTemplates} to indicate the position in the list of email templates.}
@@ -20,6 +17,11 @@ Lists the email templates present in your Amazon SES account in the current AWS 
 \details{
 You can execute this operation no more than once per second.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_templates(
+  NextToken = "string",
+  MaxItems = 123
+)
 }
+}
+

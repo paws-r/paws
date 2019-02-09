@@ -4,14 +4,9 @@
 \alias{describe_player_sessions}
 \title{Retrieves properties for one or more player sessions}
 \usage{
-describe_player_sessions(
-  GameSessionId = "string",
-  PlayerId = "string",
-  PlayerSessionId = "string",
-  PlayerSessionStatusFilter = "string",
-  Limit = 123,
-  NextToken = "string"
-)
+describe_player_sessions(GameSessionId = NULL, PlayerId = NULL,
+  PlayerSessionId = NULL, PlayerSessionStatusFilter = NULL,
+  Limit = NULL, NextToken = NULL)
 }
 \arguments{
 \item{GameSessionId}{Unique identifier for the game session to retrieve player sessions for.}
@@ -53,6 +48,15 @@ Player-session-related operations include:
 \item StopGameSessionPlacement
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_player_sessions(
+  GameSessionId = "string",
+  PlayerId = "string",
+  PlayerSessionId = "string",
+  PlayerSessionStatusFilter = "string",
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

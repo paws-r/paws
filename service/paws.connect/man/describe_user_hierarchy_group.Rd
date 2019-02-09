@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.connect_operations.R
 \name{describe_user_hierarchy_group}
 \alias{describe_user_hierarchy_group}
-\title{Returns a \code{HierarchyGroup} object that includes information about a hierarchy group in your instance}
+\title{Returns a HierarchyGroup object that includes information about a hierarchy group in your instance}
 \usage{
-describe_user_hierarchy_group(
-  HierarchyGroupId = "string",
-  InstanceId = "string"
-)
+describe_user_hierarchy_group(HierarchyGroupId, InstanceId)
 }
 \arguments{
 \item{HierarchyGroupId}{[required] The identifier for the hierarchy group to return.}
@@ -17,6 +14,11 @@ describe_user_hierarchy_group(
 \description{
 Returns a \code{HierarchyGroup} object that includes information about a hierarchy group in your instance.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_user_hierarchy_group(
+  HierarchyGroupId = "string",
+  InstanceId = "string"
+)
 }
+}
+

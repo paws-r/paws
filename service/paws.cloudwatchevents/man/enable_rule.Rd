@@ -4,9 +4,7 @@
 \alias{enable_rule}
 \title{Enables the specified rule}
 \usage{
-enable_rule(
-  Name = "string"
-)
+enable_rule(Name)
 }
 \arguments{
 \item{Name}{[required] The name of the rule.}
@@ -17,6 +15,10 @@ Enables the specified rule. If the rule does not exist, the operation fails.
 \details{
 When you enable a rule, incoming events might not immediately start matching to a newly enabled rule. Allow a short period of time for changes to take effect.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{enable_rule(
+  Name = "string"
+)
 }
+}
+

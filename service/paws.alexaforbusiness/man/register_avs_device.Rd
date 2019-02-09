@@ -4,13 +4,8 @@
 \alias{register_avs_device}
 \title{Registers an Alexa-enabled device built by an Original Equipment Manufacturer (OEM) using Alexa Voice Service (AVS)}
 \usage{
-register_avs_device(
-  ClientId = "string",
-  UserCode = "string",
-  ProductId = "string",
-  DeviceSerialNumber = "string",
-  AmazonId = "string"
-)
+register_avs_device(ClientId, UserCode, ProductId, DeviceSerialNumber,
+  AmazonId)
 }
 \arguments{
 \item{ClientId}{[required] The client ID of the OEM used for code-based linking authorization on an AVS device.}
@@ -26,6 +21,14 @@ register_avs_device(
 \description{
 Registers an Alexa-enabled device built by an Original Equipment Manufacturer (OEM) using Alexa Voice Service (AVS).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{register_avs_device(
+  ClientId = "string",
+  UserCode = "string",
+  ProductId = "string",
+  DeviceSerialNumber = "string",
+  AmazonId = "string"
+)
 }
+}
+

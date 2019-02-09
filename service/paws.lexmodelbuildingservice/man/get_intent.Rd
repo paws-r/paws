@@ -4,10 +4,7 @@
 \alias{get_intent}
 \title{Returns information about an intent}
 \usage{
-get_intent(
-  name = "string",
-  version = "string"
-)
+get_intent(name, version)
 }
 \arguments{
 \item{name}{[required] The name of the intent. The name is case sensitive.}
@@ -20,11 +17,19 @@ Returns information about an intent. In addition to the intent name, you must sp
 \details{
 This operation requires permissions to perform the \code{lex:GetIntent} action.
 }
+\section{Accepted Parameters}{
+\preformatted{get_intent(
+  name = "string",
+  version = "string"
+)
+}
+}
+
 \examples{
 # This example shows how to get information about an intent.
-get_intent(
+\donttest{get_intent(
   version = "$LATEST",
   name = "DocOrderPizza"
-)
+)}
 
 }

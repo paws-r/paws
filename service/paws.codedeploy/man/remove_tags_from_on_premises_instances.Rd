@@ -4,7 +4,18 @@
 \alias{remove_tags_from_on_premises_instances}
 \title{Removes one or more tags from one or more on-premises instances}
 \usage{
-remove_tags_from_on_premises_instances(
+remove_tags_from_on_premises_instances(tags, instanceNames)
+}
+\arguments{
+\item{tags}{[required] The tag key-value pairs to remove from the on-premises instances.}
+
+\item{instanceNames}{[required] The names of the on-premises instances from which to remove tags.}
+}
+\description{
+Removes one or more tags from one or more on-premises instances.
+}
+\section{Accepted Parameters}{
+\preformatted{remove_tags_from_on_premises_instances(
   tags = list(
     list(
       Key = "string",
@@ -16,14 +27,5 @@ remove_tags_from_on_premises_instances(
   )
 )
 }
-\arguments{
-\item{tags}{[required] The tag key-value pairs to remove from the on-premises instances.}
+}
 
-\item{instanceNames}{[required] The names of the on-premises instances from which to remove tags.}
-}
-\description{
-Removes one or more tags from one or more on-premises instances.
-}
-\examples{
-
-}

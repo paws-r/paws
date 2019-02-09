@@ -4,13 +4,8 @@
 \alias{set_permission}
 \title{Specifies a user's permissions}
 \usage{
-set_permission(
-  StackId = "string",
-  IamUserArn = "string",
-  AllowSsh = TRUE|FALSE,
-  AllowSudo = TRUE|FALSE,
-  Level = "string"
-)
+set_permission(StackId, IamUserArn, AllowSsh = NULL, AllowSudo = NULL,
+  Level = NULL)
 }
 \arguments{
 \item{StackId}{[required] The stack ID.}
@@ -38,6 +33,14 @@ Specifies a user's permissions. For more information, see \href{http://docs.aws.
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_permission(
+  StackId = "string",
+  IamUserArn = "string",
+  AllowSsh = TRUE|FALSE,
+  AllowSudo = TRUE|FALSE,
+  Level = "string"
+)
 }
+}
+

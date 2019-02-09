@@ -4,9 +4,7 @@
 \alias{get_logger_definition}
 \title{Retrieves information about a logger definition}
 \usage{
-get_logger_definition(
-  LoggerDefinitionId = "string"
-)
+get_logger_definition(LoggerDefinitionId)
 }
 \arguments{
 \item{LoggerDefinitionId}{[required] The ID of the logger definition.}
@@ -14,6 +12,10 @@ get_logger_definition(
 \description{
 Retrieves information about a logger definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_logger_definition(
+  LoggerDefinitionId = "string"
+)
 }
+}
+

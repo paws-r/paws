@@ -4,15 +4,8 @@
 \alias{describe_clusters}
 \title{Gets information about AWS CloudHSM clusters}
 \usage{
-describe_clusters(
-  Filters = list(
-    list(
-      "string"
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
+describe_clusters(Filters = NULL, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters to limit the items returned in the response.
@@ -33,6 +26,16 @@ Gets information about AWS CloudHSM clusters.
 \details{
 This is a paginated operation, which means that each response might contain only a subset of all the clusters. When the response contains only a subset of clusters, it includes a \code{NextToken} value. Use this value in a subsequent \code{DescribeClusters} request to get more clusters. When you receive a response with no \code{NextToken} (or an empty or null value), that means there are no more clusters to get.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_clusters(
+  Filters = list(
+    list(
+      "string"
+    )
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

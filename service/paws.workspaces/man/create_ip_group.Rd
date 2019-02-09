@@ -4,16 +4,7 @@
 \alias{create_ip_group}
 \title{Creates an IP access control group}
 \usage{
-create_ip_group(
-  GroupName = "string",
-  GroupDesc = "string",
-  UserRules = list(
-    list(
-      ipRule = "string",
-      ruleDesc = "string"
-    )
-  )
-)
+create_ip_group(GroupName, GroupDesc = NULL, UserRules = NULL)
 }
 \arguments{
 \item{GroupName}{[required] The name of the group.}
@@ -30,6 +21,17 @@ An IP access control group provides you with the ability to control the IP addre
 
 There is a default IP access control group associated with your directory. If you don't associate an IP access control group with your directory, the default group is used. The default group includes a default rule that allows users to access their WorkSpaces from anywhere. You cannot modify the default IP access control group for your directory.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_ip_group(
+  GroupName = "string",
+  GroupDesc = "string",
+  UserRules = list(
+    list(
+      ipRule = "string",
+      ruleDesc = "string"
+    )
+  )
+)
 }
+}
+

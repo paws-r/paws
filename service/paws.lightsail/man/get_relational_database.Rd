@@ -4,9 +4,7 @@
 \alias{get_relational_database}
 \title{Returns information about a specific database in Amazon Lightsail}
 \usage{
-get_relational_database(
-  relationalDatabaseName = "string"
-)
+get_relational_database(relationalDatabaseName)
 }
 \arguments{
 \item{relationalDatabaseName}{[required] The name of the database that you are looking up.}
@@ -14,6 +12,10 @@ get_relational_database(
 \description{
 Returns information about a specific database in Amazon Lightsail.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_relational_database(
+  relationalDatabaseName = "string"
+)
 }
+}
+

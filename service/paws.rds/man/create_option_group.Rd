@@ -4,18 +4,8 @@
 \alias{create_option_group}
 \title{Creates a new option group}
 \usage{
-create_option_group(
-  OptionGroupName = "string",
-  EngineName = "string",
-  MajorEngineVersion = "string",
-  OptionGroupDescription = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_option_group(OptionGroupName, EngineName, MajorEngineVersion,
+  OptionGroupDescription, Tags = NULL)
 }
 \arguments{
 \item{OptionGroupName}{[required] Specifies the name of the option group to be created.
@@ -40,6 +30,19 @@ Example: \code{myoptiongroup}}
 \description{
 Creates a new option group. You can create up to 20 option groups.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_option_group(
+  OptionGroupName = "string",
+  EngineName = "string",
+  MajorEngineVersion = "string",
+  OptionGroupDescription = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

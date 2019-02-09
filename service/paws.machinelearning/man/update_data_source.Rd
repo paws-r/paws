@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{update_data_source}
 \alias{update_data_source}
-\title{Updates the \code{DataSourceName} of a \code{DataSource}}
+\title{Updates the DataSourceName of a DataSource}
 \usage{
-update_data_source(
-  DataSourceId = "string",
-  DataSourceName = "string"
-)
+update_data_source(DataSourceId, DataSourceName)
 }
 \arguments{
 \item{DataSourceId}{[required] The ID assigned to the \code{DataSource} during creation.}
@@ -20,6 +17,11 @@ Updates the \code{DataSourceName} of a \code{DataSource}.
 \details{
 You can use the \code{GetDataSource} operation to view the contents of the updated data element.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_data_source(
+  DataSourceId = "string",
+  DataSourceName = "string"
+)
 }
+}
+

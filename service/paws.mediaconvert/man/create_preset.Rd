@@ -4,7 +4,25 @@
 \alias{create_preset}
 \title{Create a new preset}
 \usage{
-create_preset(
+create_preset(Category = NULL, Description = NULL, Name, Settings,
+  Tags = NULL)
+}
+\arguments{
+\item{Category}{Optional. A category for the preset you are creating.}
+
+\item{Description}{Optional. A description of the preset you are creating.}
+
+\item{Name}{[required] The name of the preset you are creating.}
+
+\item{Settings}{[required]}
+
+\item{Tags}{The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.}
+}
+\description{
+Create a new preset. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+}
+\section{Accepted Parameters}{
+\preformatted{create_preset(
   Category = "string",
   Description = "string",
   Name = "string",
@@ -126,7 +144,7 @@ create_preset(
             XPosition = 123,
             YPosition = 123
           ),
-          DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+          DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"SCC"|"SRT"|"TELETEXT"|"TTML"|"WEBVTT",
           DvbSubDestinationSettings = list(
             Alignment = "CENTERED"|"LEFT",
             BackgroundColor = "NONE"|"BLACK"|"WHITE",
@@ -484,20 +502,5 @@ create_preset(
   )
 )
 }
-\arguments{
-\item{Category}{Optional. A category for the preset you are creating.}
-
-\item{Description}{Optional. A description of the preset you are creating.}
-
-\item{Name}{[required] The name of the preset you are creating.}
-
-\item{Settings}{[required]}
-
-\item{Tags}{The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.}
 }
-\description{
-Create a new preset. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
-}
-\examples{
 
-}

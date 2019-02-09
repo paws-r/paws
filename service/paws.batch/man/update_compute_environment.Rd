@@ -4,16 +4,8 @@
 \alias{update_compute_environment}
 \title{Updates an AWS Batch compute environment}
 \usage{
-update_compute_environment(
-  computeEnvironment = "string",
-  state = "ENABLED"|"DISABLED",
-  computeResources = list(
-    minvCpus = 123,
-    maxvCpus = 123,
-    desiredvCpus = 123
-  ),
-  serviceRole = "string"
-)
+update_compute_environment(computeEnvironment, state = NULL,
+  computeResources = NULL, serviceRole = NULL)
 }
 \arguments{
 \item{computeEnvironment}{[required] The name or full Amazon Resource Name (ARN) of the compute environment to update.}
@@ -31,12 +23,26 @@ Depending on how you created your AWS Batch service role, its ARN may contain th
 \description{
 Updates an AWS Batch compute environment.
 }
+\section{Accepted Parameters}{
+\preformatted{update_compute_environment(
+  computeEnvironment = "string",
+  state = "ENABLED"|"DISABLED",
+  computeResources = list(
+    minvCpus = 123,
+    maxvCpus = 123,
+    desiredvCpus = 123
+  ),
+  serviceRole = "string"
+)
+}
+}
+
 \examples{
 # This example disables the P2OnDemand compute environment so it can be
 # deleted.
-update_compute_environment(
+\donttest{update_compute_environment(
   computeEnvironment = "P2OnDemand",
   state = "DISABLED"
-)
+)}
 
 }

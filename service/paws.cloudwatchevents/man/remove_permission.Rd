@@ -4,9 +4,7 @@
 \alias{remove_permission}
 \title{Revokes the permission of another AWS account to be able to put events to your default event bus}
 \usage{
-remove_permission(
-  StatementId = "string"
-)
+remove_permission(StatementId)
 }
 \arguments{
 \item{StatementId}{[required] The statement ID corresponding to the account that is no longer allowed to put events to the default event bus.}
@@ -14,6 +12,10 @@ remove_permission(
 \description{
 Revokes the permission of another AWS account to be able to put events to your default event bus. Specify the account to revoke by the \code{StatementId} value that you associated with the account when you granted it permission with \code{PutPermission}. You can find the \code{StatementId} by using DescribeEventBus.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_permission(
+  StatementId = "string"
+)
 }
+}
+

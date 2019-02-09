@@ -4,11 +4,8 @@
 \alias{get_effective_policies}
 \title{Gets a list of the policies that have an effect on the authorization behavior of the specified device when it connects to the AWS IoT device gateway}
 \usage{
-get_effective_policies(
-  principal = "string",
-  cognitoIdentityPoolId = "string",
-  thingName = "string"
-)
+get_effective_policies(principal = NULL, cognitoIdentityPoolId = NULL,
+  thingName = NULL)
 }
 \arguments{
 \item{principal}{The principal.}
@@ -20,6 +17,12 @@ get_effective_policies(
 \description{
 Gets a list of the policies that have an effect on the authorization behavior of the specified device when it connects to the AWS IoT device gateway.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_effective_policies(
+  principal = "string",
+  cognitoIdentityPoolId = "string",
+  thingName = "string"
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{stop_data_collection_by_agent_ids}
 \title{Instructs the specified agents or connectors to stop collecting data}
 \usage{
-stop_data_collection_by_agent_ids(
-  agentIds = list(
-    "string"
-  )
-)
+stop_data_collection_by_agent_ids(agentIds)
 }
 \arguments{
 \item{agentIds}{[required] The IDs of the agents or connectors from which to stop collecting data.}
@@ -16,6 +12,12 @@ stop_data_collection_by_agent_ids(
 \description{
 Instructs the specified agents or connectors to stop collecting data.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_data_collection_by_agent_ids(
+  agentIds = list(
+    "string"
+  )
+)
 }
+}
+

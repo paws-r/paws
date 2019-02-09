@@ -4,14 +4,8 @@
 \alias{describe_listeners}
 \title{Describes the specified listeners or the listeners for the specified Application Load Balancer or Network Load Balancer}
 \usage{
-describe_listeners(
-  LoadBalancerArn = "string",
-  ListenerArns = list(
-    "string"
-  ),
-  Marker = "string",
-  PageSize = 123
-)
+describe_listeners(LoadBalancerArn = NULL, ListenerArns = NULL,
+  Marker = NULL, PageSize = NULL)
 }
 \arguments{
 \item{LoadBalancerArn}{The Amazon Resource Name (ARN) of the load balancer.}
@@ -25,12 +19,24 @@ describe_listeners(
 \description{
 Describes the specified listeners or the listeners for the specified Application Load Balancer or Network Load Balancer. You must specify either a load balancer or one or more listeners.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_listeners(
+  LoadBalancerArn = "string",
+  ListenerArns = list(
+    "string"
+  ),
+  Marker = "string",
+  PageSize = 123
+)
+}
+}
+
 \examples{
 # This example describes the specified listener.
-describe_listeners(
+\donttest{describe_listeners(
   ListenerArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2"
   )
-)
+)}
 
 }

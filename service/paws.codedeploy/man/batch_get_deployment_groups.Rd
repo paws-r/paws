@@ -4,12 +4,7 @@
 \alias{batch_get_deployment_groups}
 \title{Gets information about one or more deployment groups}
 \usage{
-batch_get_deployment_groups(
-  applicationName = "string",
-  deploymentGroupNames = list(
-    "string"
-  )
-)
+batch_get_deployment_groups(applicationName, deploymentGroupNames)
 }
 \arguments{
 \item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
@@ -19,6 +14,13 @@ batch_get_deployment_groups(
 \description{
 Gets information about one or more deployment groups.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_get_deployment_groups(
+  applicationName = "string",
+  deploymentGroupNames = list(
+    "string"
+  )
+)
 }
+}
+

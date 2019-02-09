@@ -4,9 +4,7 @@
 \alias{describe_input_security_group}
 \title{Produces a summary of an Input Security Group}
 \usage{
-describe_input_security_group(
-  InputSecurityGroupId = "string"
-)
+describe_input_security_group(InputSecurityGroupId)
 }
 \arguments{
 \item{InputSecurityGroupId}{[required] The id of the Input Security Group to describe}
@@ -14,6 +12,10 @@ describe_input_security_group(
 \description{
 Produces a summary of an Input Security Group
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_input_security_group(
+  InputSecurityGroupId = "string"
+)
 }
+}
+

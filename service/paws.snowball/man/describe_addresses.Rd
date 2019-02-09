@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.snowball_operations.R
 \name{describe_addresses}
 \alias{describe_addresses}
-\title{Returns a specified number of \code{ADDRESS} objects}
+\title{Returns a specified number of ADDRESS objects}
 \usage{
-describe_addresses(
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_addresses(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The number of \code{ADDRESS} objects to return.}
@@ -17,11 +14,19 @@ describe_addresses(
 \description{
 Returns a specified number of \code{ADDRESS} objects. Calling this API in one of the US regions will return addresses from the list of all addresses associated with this account in all US regions.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_addresses(
+  MaxResults = 123,
+  NextToken = "string"
+)
+}
+}
+
 \examples{
 # This operation describes all the addresses that you've created for AWS
 # Snowball. Calling this API in one of the US regions will return
 # addresses from the list of all addresses associated with this account in
 # all US regions.
-describe_addresses()
+\donttest{describe_addresses()}
 
 }

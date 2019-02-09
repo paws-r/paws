@@ -4,13 +4,8 @@
 \alias{update_subnet_group}
 \title{Modifies an existing subnet group}
 \usage{
-update_subnet_group(
-  SubnetGroupName = "string",
-  Description = "string",
-  SubnetIds = list(
-    "string"
-  )
-)
+update_subnet_group(SubnetGroupName, Description = NULL,
+  SubnetIds = NULL)
 }
 \arguments{
 \item{SubnetGroupName}{[required] The name of the subnet group.}
@@ -22,6 +17,14 @@ update_subnet_group(
 \description{
 Modifies an existing subnet group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_subnet_group(
+  SubnetGroupName = "string",
+  Description = "string",
+  SubnetIds = list(
+    "string"
+  )
+)
 }
+}
+

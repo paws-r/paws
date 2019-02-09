@@ -4,14 +4,8 @@
 \alias{describe_principal_id_format}
 \title{Describes the ID format settings for the root user and all IAM roles and IAM users that have explicitly specified a longer ID (17-character ID) preference}
 \usage{
-describe_principal_id_format(
-  DryRun = TRUE|FALSE,
-  Resources = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_principal_id_format(DryRun = NULL, Resources = NULL,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -30,6 +24,15 @@ By default, all IAM roles and IAM users default to the same ID settings as the r
 
 The following resource types support longer IDs: \code{bundle} | \code{conversion-task} | \code{customer-gateway} | \code{dhcp-options} | \code{elastic-ip-allocation} | \code{elastic-ip-association} | \code{export-task} | \code{flow-log} | \code{image} | \code{import-task} | \code{instance} | \code{internet-gateway} | \code{network-acl} | \code{network-acl-association} | \code{network-interface} | \code{network-interface-attachment} | \code{prefix-list} | \code{reservation} | \code{route-table} | \code{route-table-association} | \code{security-group} | \code{snapshot} | \code{subnet} | \code{subnet-cidr-block-association} | \code{volume} | \code{vpc} | \code{vpc-cidr-block-association} | \code{vpc-endpoint} | \code{vpc-peering-connection} | \code{vpn-connection} | \code{vpn-gateway}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_principal_id_format(
+  DryRun = TRUE|FALSE,
+  Resources = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

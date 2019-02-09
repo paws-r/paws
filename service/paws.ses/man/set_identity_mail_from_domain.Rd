@@ -4,11 +4,8 @@
 \alias{set_identity_mail_from_domain}
 \title{Enables or disables the custom MAIL FROM domain setup for a verified identity (an email address or a domain)}
 \usage{
-set_identity_mail_from_domain(
-  Identity = "string",
-  MailFromDomain = "string",
-  BehaviorOnMXFailure = "UseDefaultValue"|"RejectMessage"
-)
+set_identity_mail_from_domain(Identity, MailFromDomain = NULL,
+  BehaviorOnMXFailure = NULL)
 }
 \arguments{
 \item{Identity}{[required] The verified identity for which you want to enable or disable the specified custom MAIL FROM domain.}
@@ -27,13 +24,22 @@ To send emails using the specified MAIL FROM domain, you must add an MX record t
 
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{set_identity_mail_from_domain(
+  Identity = "string",
+  MailFromDomain = "string",
+  BehaviorOnMXFailure = "UseDefaultValue"|"RejectMessage"
+)
+}
+}
+
 \examples{
 # The following example configures Amazon SES to use a custom MAIL FROM
 # domain for an identity:
-set_identity_mail_from_domain(
+\donttest{set_identity_mail_from_domain(
   BehaviorOnMXFailure = "UseDefaultValue",
   Identity = "user@example.com",
   MailFromDomain = "bounces.example.com"
-)
+)}
 
 }

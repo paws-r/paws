@@ -4,9 +4,7 @@
 \alias{get_cloud_front_origin_access_identity_config}
 \title{Get the configuration information about an origin access identity}
 \usage{
-get_cloud_front_origin_access_identity_config(
-  Id = "string"
-)
+get_cloud_front_origin_access_identity_config(Id)
 }
 \arguments{
 \item{Id}{[required] The identity's ID.}
@@ -14,6 +12,10 @@ get_cloud_front_origin_access_identity_config(
 \description{
 Get the configuration information about an origin access identity.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_cloud_front_origin_access_identity_config(
+  Id = "string"
+)
 }
+}
+

@@ -2,15 +2,20 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{get_account_settings}
 \alias{get_account_settings}
-\title{Retrieves details about your account's \link{limits}(http://docs}
+\title{Retrieves details about your account's limits and usage in a region}
 \usage{
 get_account_settings()
 }
 \description{
 Retrieves details about your account's \href{http://docs.aws.amazon.com/lambda/latest/dg/limits.html}{limits} and usage in a region.
 }
+\section{Accepted Parameters}{
+\preformatted{get_account_settings()
+}
+}
+
 \examples{
 # This operation retrieves a Lambda customer's account settings
-get_account_settings()
+\donttest{get_account_settings()}
 
 }

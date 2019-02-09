@@ -4,49 +4,9 @@
 \alias{send_email}
 \title{Composes an email message and immediately queues it for sending}
 \usage{
-send_email(
-  Source = "string",
-  Destination = list(
-    ToAddresses = list(
-      "string"
-    ),
-    CcAddresses = list(
-      "string"
-    ),
-    BccAddresses = list(
-      "string"
-    )
-  ),
-  Message = list(
-    Subject = list(
-      Data = "string",
-      Charset = "string"
-    ),
-    Body = list(
-      Text = list(
-        Data = "string",
-        Charset = "string"
-      ),
-      Html = list(
-        Data = "string",
-        Charset = "string"
-      )
-    )
-  ),
-  ReplyToAddresses = list(
-    "string"
-  ),
-  ReturnPath = "string",
-  SourceArn = "string",
-  ReturnPathArn = "string",
-  Tags = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  ConfigurationSetName = "string"
-)
+send_email(Source, Destination, Message, ReplyToAddresses = NULL,
+  ReturnPath = NULL, SourceArn = NULL, ReturnPathArn = NULL,
+  Tags = NULL, ConfigurationSetName = NULL)
 }
 \arguments{
 \item{Source}{[required] The email address that is sending the email. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. For information about verifying identities, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html}{Amazon SES Developer Guide}.
@@ -93,9 +53,56 @@ Composes an email message and immediately queues it for sending. In order to sen
 
 For every message that you send, the total number of recipients (including each recipient in the To:, CC: and BCC: fields) is counted against the maximum number of emails you can send in a 24-hour period (your \emph{sending quota}). For more information about sending quotas in Amazon SES, see \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html}{Managing Your Amazon SES Sending Limits} in the \emph{Amazon SES Developer Guide.}
 }
+\section{Accepted Parameters}{
+\preformatted{send_email(
+  Source = "string",
+  Destination = list(
+    ToAddresses = list(
+      "string"
+    ),
+    CcAddresses = list(
+      "string"
+    ),
+    BccAddresses = list(
+      "string"
+    )
+  ),
+  Message = list(
+    Subject = list(
+      Data = "string",
+      Charset = "string"
+    ),
+    Body = list(
+      Text = list(
+        Data = "string",
+        Charset = "string"
+      ),
+      Html = list(
+        Data = "string",
+        Charset = "string"
+      )
+    )
+  ),
+  ReplyToAddresses = list(
+    "string"
+  ),
+  ReturnPath = "string",
+  SourceArn = "string",
+  ReturnPathArn = "string",
+  Tags = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  ConfigurationSetName = "string"
+)
+}
+}
+
 \examples{
 # The following example sends a formatted email:
-send_email(
+\donttest{send_email(
   Destination = list(
     BccAddresses = list(),
     CcAddresses = list(
@@ -127,6 +134,6 @@ send_email(
   ReturnPathArn = "",
   Source = "sender@example.com",
   SourceArn = ""
-)
+)}
 
 }

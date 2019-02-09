@@ -4,10 +4,7 @@
 \alias{set_identity_dkim_enabled}
 \title{Enables or disables Easy DKIM signing of email sent from an identity:}
 \usage{
-set_identity_dkim_enabled(
-  Identity = "string",
-  DkimEnabled = TRUE|FALSE
-)
+set_identity_dkim_enabled(Identity, DkimEnabled)
 }
 \arguments{
 \item{Identity}{[required] The identity for which DKIM signing should be enabled or disabled.}
@@ -29,12 +26,20 @@ You can execute this operation no more than once per second.
 
 For more information about Easy DKIM signing, go to the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html}{Amazon SES Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{set_identity_dkim_enabled(
+  Identity = "string",
+  DkimEnabled = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # The following example configures Amazon SES to Easy DKIM-sign the email
 # sent from an identity:
-set_identity_dkim_enabled(
+\donttest{set_identity_dkim_enabled(
   DkimEnabled = TRUE,
   Identity = "user@example.com"
-)
+)}
 
 }

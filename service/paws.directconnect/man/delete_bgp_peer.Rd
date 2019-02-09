@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.directconnect_operations.R
 \name{delete_bgp_peer}
 \alias{delete_bgp_peer}
-\title{Deletes the specified BGP peer on the specified virtual interface with the specified customer address and ASN}
+\title{Deletes the BGP peer on the specified virtual interface with the specified customer address and ASN}
 \usage{
-delete_bgp_peer(
-  virtualInterfaceId = "string",
-  asn = 123,
-  customerAddress = "string",
-  bgpPeerId = "string"
-)
+delete_bgp_peer(virtualInterfaceId = NULL, asn = NULL,
+  customerAddress = NULL)
 }
 \arguments{
 \item{virtualInterfaceId}{The ID of the virtual interface.}
@@ -17,15 +13,19 @@ delete_bgp_peer(
 \item{asn}{The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.}
 
 \item{customerAddress}{The IP address assigned to the customer interface.}
-
-\item{bgpPeerId}{The ID of the BGP peer.}
 }
 \description{
-Deletes the specified BGP peer on the specified virtual interface with the specified customer address and ASN.
+Deletes the BGP peer on the specified virtual interface with the specified customer address and ASN.
 }
 \details{
 You cannot delete the last BGP peer from a virtual interface.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_bgp_peer(
+  virtualInterfaceId = "string",
+  asn = 123,
+  customerAddress = "string"
+)
 }
+}
+

@@ -4,7 +4,21 @@
 \alias{create_resource_definition_version}
 \title{Creates a version of a resource definition that has already been defined}
 \usage{
-create_resource_definition_version(
+create_resource_definition_version(AmznClientToken = NULL,
+  ResourceDefinitionId, Resources = NULL)
+}
+\arguments{
+\item{AmznClientToken}{A client token used to correlate requests and responses.}
+
+\item{ResourceDefinitionId}{[required] The ID of the resource definition.}
+
+\item{Resources}{A list of resources.}
+}
+\description{
+Creates a version of a resource definition that has already been defined.
+}
+\section{Accepted Parameters}{
+\preformatted{create_resource_definition_version(
   AmznClientToken = "string",
   ResourceDefinitionId = "string",
   Resources = list(
@@ -34,28 +48,11 @@ create_resource_definition_version(
         SageMakerMachineLearningModelResourceData = list(
           DestinationPath = "string",
           SageMakerJobArn = "string"
-        ),
-        SecretsManagerSecretResourceData = list(
-          ARN = "string",
-          AdditionalStagingLabelsToDownload = list(
-            "string"
-          )
         )
       )
     )
   )
 )
 }
-\arguments{
-\item{AmznClientToken}{A client token used to correlate requests and responses.}
-
-\item{ResourceDefinitionId}{[required] The ID of the resource definition.}
-
-\item{Resources}{A list of resources.}
 }
-\description{
-Creates a version of a resource definition that has already been defined.
-}
-\examples{
 
-}

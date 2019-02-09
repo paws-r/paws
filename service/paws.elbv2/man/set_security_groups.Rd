@@ -4,12 +4,7 @@
 \alias{set_security_groups}
 \title{Associates the specified security groups with the specified Application Load Balancer}
 \usage{
-set_security_groups(
-  LoadBalancerArn = "string",
-  SecurityGroups = list(
-    "string"
-  )
-)
+set_security_groups(LoadBalancerArn, SecurityGroups)
 }
 \arguments{
 \item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
@@ -22,14 +17,24 @@ Associates the specified security groups with the specified Application Load Bal
 \details{
 You can't specify a security group for a Network Load Balancer.
 }
+\section{Accepted Parameters}{
+\preformatted{set_security_groups(
+  LoadBalancerArn = "string",
+  SecurityGroups = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example associates the specified security group with the specified
 # load balancer.
-set_security_groups(
+\donttest{set_security_groups(
   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188",
   SecurityGroups = list(
     "sg-5943793c"
   )
-)
+)}
 
 }

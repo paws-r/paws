@@ -4,12 +4,8 @@
 \alias{get_template_summary}
 \title{Returns information about a new or existing template}
 \usage{
-get_template_summary(
-  TemplateBody = "string",
-  TemplateURL = "string",
-  StackName = "string",
-  StackSetName = "string"
-)
+get_template_summary(TemplateBody = NULL, TemplateURL = NULL,
+  StackName = NULL, StackSetName = NULL)
 }
 \arguments{
 \item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes. For more information about templates, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy} in the AWS CloudFormation User Guide.
@@ -36,6 +32,13 @@ You can use the \code{GetTemplateSummary} action when you submit a template, or 
 
 For deleted stacks, \code{GetTemplateSummary} returns the template information for up to 90 days after the stack has been deleted. If the template does not exist, a \code{ValidationError} is returned.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_template_summary(
+  TemplateBody = "string",
+  TemplateURL = "string",
+  StackName = "string",
+  StackSetName = "string"
+)
 }
+}
+

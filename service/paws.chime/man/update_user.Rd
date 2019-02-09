@@ -4,11 +4,7 @@
 \alias{update_user}
 \title{Updates user details for a specified user ID}
 \usage{
-update_user(
-  AccountId = "string",
-  UserId = "string",
-  LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial"
-)
+update_user(AccountId, UserId, LicenseType = NULL)
 }
 \arguments{
 \item{AccountId}{[required] The Amazon Chime account ID.}
@@ -20,6 +16,12 @@ update_user(
 \description{
 Updates user details for a specified user ID. Currently, only \code{LicenseType} updates are supported for this action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_user(
+  AccountId = "string",
+  UserId = "string",
+  LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{delete_fpga_image}
 \title{Deletes the specified Amazon FPGA Image (AFI)}
 \usage{
-delete_fpga_image(
-  DryRun = TRUE|FALSE,
-  FpgaImageId = "string"
-)
+delete_fpga_image(DryRun = NULL, FpgaImageId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -17,6 +14,11 @@ delete_fpga_image(
 \description{
 Deletes the specified Amazon FPGA Image (AFI).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_fpga_image(
+  DryRun = TRUE|FALSE,
+  FpgaImageId = "string"
+)
 }
+}
+

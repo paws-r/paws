@@ -7,8 +7,7 @@
 \title{paws.workspaces: Amazon WorkSpaces}
 \description{
 Amazon WorkSpaces enables you to provision virtual,
-cloud-based Microsoft Windows and Amazon Linux desktops for your
-users.
+    cloud-based Microsoft Windows desktops for your users.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

@@ -4,9 +4,7 @@
 \alias{get_job}
 \title{Gets information about a job}
 \usage{
-get_job(
-  arn = "string"
-)
+get_job(arn)
 }
 \arguments{
 \item{arn}{[required] The job's ARN.}
@@ -14,10 +12,17 @@ get_job(
 \description{
 Gets information about a job.
 }
+\section{Accepted Parameters}{
+\preformatted{get_job(
+  arn = "string"
+)
+}
+}
+
 \examples{
 # The following example returns information about a specific job.
-get_job(
+\donttest{get_job(
   arn = "arn:aws:devicefarm:us-west-2::job:123-456-EXAMPLE-GUID"
-)
+)}
 
 }

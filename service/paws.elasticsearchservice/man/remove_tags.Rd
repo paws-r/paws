@@ -4,12 +4,7 @@
 \alias{remove_tags}
 \title{Removes the specified set of tags from the specified Elasticsearch domain}
 \usage{
-remove_tags(
-  ARN = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+remove_tags(ARN, TagKeys)
 }
 \arguments{
 \item{ARN}{[required] Specifies the \code{ARN} for the Elasticsearch domain from which you want to delete the specified tags.}
@@ -19,6 +14,13 @@ remove_tags(
 \description{
 Removes the specified set of tags from the specified Elasticsearch domain.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_tags(
+  ARN = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
+}
+

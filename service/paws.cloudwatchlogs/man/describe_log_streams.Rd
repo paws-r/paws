@@ -4,14 +4,9 @@
 \alias{describe_log_streams}
 \title{Lists the log streams for the specified log group}
 \usage{
-describe_log_streams(
-  logGroupName = "string",
-  logStreamNamePrefix = "string",
-  orderBy = "LogStreamName"|"LastEventTime",
-  descending = TRUE|FALSE,
-  nextToken = "string",
-  limit = 123
-)
+describe_log_streams(logGroupName, logStreamNamePrefix = NULL,
+  orderBy = NULL, descending = NULL, nextToken = NULL,
+  limit = NULL)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -38,6 +33,15 @@ Lists the log streams for the specified log group. You can list all the log stre
 \details{
 This operation has a limit of five transactions per second, after which transactions are throttled.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_log_streams(
+  logGroupName = "string",
+  logStreamNamePrefix = "string",
+  orderBy = "LogStreamName"|"LastEventTime",
+  descending = TRUE|FALSE,
+  nextToken = "string",
+  limit = 123
+)
 }
+}
+

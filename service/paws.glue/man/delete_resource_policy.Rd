@@ -4,9 +4,7 @@
 \alias{delete_resource_policy}
 \title{Deletes a specified policy}
 \usage{
-delete_resource_policy(
-  PolicyHashCondition = "string"
-)
+delete_resource_policy(PolicyHashCondition = NULL)
 }
 \arguments{
 \item{PolicyHashCondition}{The hash value returned when this policy was set.}
@@ -14,6 +12,10 @@ delete_resource_policy(
 \description{
 Deletes a specified policy.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_resource_policy(
+  PolicyHashCondition = "string"
+)
 }
+}
+

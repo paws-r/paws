@@ -4,11 +4,7 @@
 \alias{merge_shards}
 \title{Merges two adjacent shards in a Kinesis data stream and combines them into a single shard to reduce the stream's capacity to ingest and transport data}
 \usage{
-merge_shards(
-  StreamName = "string",
-  ShardToMerge = "string",
-  AdjacentShardToMerge = "string"
-)
+merge_shards(StreamName, ShardToMerge, AdjacentShardToMerge)
 }
 \arguments{
 \item{StreamName}{[required] The name of the stream for the merge.}
@@ -35,6 +31,12 @@ If you try to operate on too many streams in parallel using CreateStream, Delete
 
 \code{MergeShards} has a limit of five transactions per second per account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{merge_shards(
+  StreamName = "string",
+  ShardToMerge = "string",
+  AdjacentShardToMerge = "string"
+)
 }
+}
+

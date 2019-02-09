@@ -4,10 +4,7 @@
 \alias{create_regex_match_set}
 \title{Creates a RegexMatchSet}
 \usage{
-create_regex_match_set(
-  Name = "string",
-  ChangeToken = "string"
-)
+create_regex_match_set(Name, ChangeToken)
 }
 \arguments{
 \item{Name}{[required] A friendly name or description of the RegexMatchSet. You can't change \code{Name} after you create a \code{RegexMatchSet}.}
@@ -28,6 +25,11 @@ To create and configure a \code{RegexMatchSet}, perform the following steps:
 
 For more information about how to use the AWS WAF API to allow or block HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_regex_match_set(
+  Name = "string",
+  ChangeToken = "string"
+)
 }
+}
+

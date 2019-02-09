@@ -4,11 +4,7 @@
 \alias{list_api_keys}
 \title{Lists the API keys for a given API}
 \usage{
-list_api_keys(
-  apiId = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+list_api_keys(apiId, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
@@ -23,6 +19,12 @@ Lists the API keys for a given API.
 \details{
 API keys are deleted automatically sometime after they expire. However, they may still be included in the response until they have actually been deleted. You can safely call \code{DeleteApiKey} to manually delete a key before it's automatically deleted.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_api_keys(
+  apiId = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

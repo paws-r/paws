@@ -4,32 +4,10 @@
 \alias{start_game_session_placement}
 \title{Places a request for a new game session in a queue (see CreateGameSessionQueue)}
 \usage{
-start_game_session_placement(
-  PlacementId = "string",
-  GameSessionQueueName = "string",
-  GameProperties = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  MaximumPlayerSessionCount = 123,
-  GameSessionName = "string",
-  PlayerLatencies = list(
-    list(
-      PlayerId = "string",
-      RegionIdentifier = "string",
-      LatencyInMilliseconds = 123.0
-    )
-  ),
-  DesiredPlayerSessions = list(
-    list(
-      PlayerId = "string",
-      PlayerData = "string"
-    )
-  ),
-  GameSessionData = "string"
-)
+start_game_session_placement(PlacementId, GameSessionQueueName,
+  GameProperties = NULL, MaximumPlayerSessionCount,
+  GameSessionName = NULL, PlayerLatencies = NULL,
+  DesiredPlayerSessions = NULL, GameSessionData = NULL)
 }
 \arguments{
 \item{PlacementId}{[required] Unique identifier to assign to the new game session placement. This value is developer-defined. The value must be unique across all regions and cannot be reused unless you are resubmitting a canceled or timed-out placement request.}
@@ -84,6 +62,33 @@ Game-session-related operations include:
 \item StopGameSessionPlacement
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_game_session_placement(
+  PlacementId = "string",
+  GameSessionQueueName = "string",
+  GameProperties = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  MaximumPlayerSessionCount = 123,
+  GameSessionName = "string",
+  PlayerLatencies = list(
+    list(
+      PlayerId = "string",
+      RegionIdentifier = "string",
+      LatencyInMilliseconds = 123.0
+    )
+  ),
+  DesiredPlayerSessions = list(
+    list(
+      PlayerId = "string",
+      PlayerData = "string"
+    )
+  ),
+  GameSessionData = "string"
+)
 }
+}
+

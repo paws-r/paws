@@ -4,14 +4,8 @@
 \alias{list_jobs}
 \title{Lists jobs}
 \usage{
-list_jobs(
-  status = "IN_PROGRESS"|"CANCELED"|"COMPLETED"|"DELETION_IN_PROGRESS",
-  targetSelection = "CONTINUOUS"|"SNAPSHOT",
-  maxResults = 123,
-  nextToken = "string",
-  thingGroupName = "string",
-  thingGroupId = "string"
-)
+list_jobs(status = NULL, targetSelection = NULL, maxResults = NULL,
+  nextToken = NULL, thingGroupName = NULL, thingGroupId = NULL)
 }
 \arguments{
 \item{status}{An optional filter that lets you search for jobs that have the specified status.}
@@ -29,6 +23,15 @@ list_jobs(
 \description{
 Lists jobs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_jobs(
+  status = "IN_PROGRESS"|"CANCELED"|"COMPLETED"|"DELETION_IN_PROGRESS",
+  targetSelection = "CONTINUOUS"|"SNAPSHOT",
+  maxResults = 123,
+  nextToken = "string",
+  thingGroupName = "string",
+  thingGroupId = "string"
+)
 }
+}
+

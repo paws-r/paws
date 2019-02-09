@@ -4,20 +4,8 @@
 \alias{allocate_private_virtual_interface}
 \title{Provisions a private virtual interface to be owned by the specified AWS account}
 \usage{
-allocate_private_virtual_interface(
-  connectionId = "string",
-  ownerAccount = "string",
-  newPrivateVirtualInterfaceAllocation = list(
-    virtualInterfaceName = "string",
-    vlan = 123,
-    asn = 123,
-    mtu = 123,
-    authKey = "string",
-    amazonAddress = "string",
-    addressFamily = "ipv4"|"ipv6",
-    customerAddress = "string"
-  )
-)
+allocate_private_virtual_interface(connectionId, ownerAccount,
+  newPrivateVirtualInterfaceAllocation)
 }
 \arguments{
 \item{connectionId}{[required] The ID of the connection on which the private virtual interface is provisioned.}
@@ -32,6 +20,21 @@ Provisions a private virtual interface to be owned by the specified AWS account.
 \details{
 Virtual interfaces created using this action must be confirmed by the owner using ConfirmPrivateVirtualInterface. Until then, the virtual interface is in the \code{Confirming} state and is not available to handle traffic.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{allocate_private_virtual_interface(
+  connectionId = "string",
+  ownerAccount = "string",
+  newPrivateVirtualInterfaceAllocation = list(
+    virtualInterfaceName = "string",
+    vlan = 123,
+    asn = 123,
+    mtu = 123,
+    authKey = "string",
+    amazonAddress = "string",
+    addressFamily = "ipv4"|"ipv6",
+    customerAddress = "string"
+  )
+)
 }
+}
+

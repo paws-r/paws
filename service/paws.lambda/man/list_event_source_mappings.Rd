@@ -2,24 +2,15 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{list_event_source_mappings}
 \alias{list_event_source_mappings}
-\title{Lists event source mappings}
+\title{Returns a list of event source mappings you created using the CreateEventSourceMapping (see CreateEventSourceMapping)}
 \usage{
-list_event_source_mappings(
-  EventSourceArn = "string",
-  FunctionName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_event_source_mappings(EventSourceArn = NULL, FunctionName = NULL,
+  Marker = NULL, MaxItems = NULL)
 }
 \arguments{
-\item{EventSourceArn}{The Amazon Resource Name (ARN) of the event source.
-\itemize{
-\item \strong{Amazon Kinesis} - The ARN of the data stream or a stream consumer.
-\item \strong{Amazon DynamoDB Streams} - The ARN of the stream.
-\item \strong{Amazon Simple Queue Service} - The ARN of the queue.
-}}
+\item{EventSourceArn}{The Amazon Resource Name (ARN) of the Amazon Kinesis or DynamoDB stream. (This parameter is optional.)}
 
-\item{FunctionName}{The name of the Lambda function.
+\item{FunctionName}{The name of the lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -29,15 +20,27 @@ list_event_source_mappings(
 \item \strong{Partial ARN} - \code{123456789012:function:MyFunction}.
 }
 
-The length constraint applies only to the full ARN. If you specify only the function name, it's limited to 64 characters in length.}
+The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
-\item{Marker}{A pagination token returned by a previous call.}
+\item{Marker}{Optional string. An opaque pagination token returned from a previous \code{ListEventSourceMappings} operation. If present, specifies to continue the list from where the returning call left off.}
 
-\item{MaxItems}{The maximum number of event source mappings to return.}
+\item{MaxItems}{Optional integer. Specifies the maximum number of event sources to return in response. This value must be greater than 0.}
 }
 \description{
-Lists event source mappings. Specify an \code{EventSourceArn} to only show event source mappings for a single event source.
+Returns a list of event source mappings you created using the \code{CreateEventSourceMapping} (see CreateEventSourceMapping).
 }
-\examples{
+\details{
+For each mapping, the API returns configuration information. You can optionally specify filters to retrieve specific event source mappings.
 
+This operation requires permission for the \code{lambda:ListEventSourceMappings} action.
 }
+\section{Accepted Parameters}{
+\preformatted{list_event_source_mappings(
+  EventSourceArn = "string",
+  FunctionName = "string",
+  Marker = "string",
+  MaxItems = 123
+)
+}
+}
+

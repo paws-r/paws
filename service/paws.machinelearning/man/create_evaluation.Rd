@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{create_evaluation}
 \alias{create_evaluation}
-\title{Creates a new \code{Evaluation} of an \code{MLModel}}
+\title{Creates a new Evaluation of an MLModel}
 \usage{
-create_evaluation(
-  EvaluationId = "string",
-  EvaluationName = "string",
-  MLModelId = "string",
-  EvaluationDataSourceId = "string"
-)
+create_evaluation(EvaluationId, EvaluationName = NULL, MLModelId,
+  EvaluationDataSourceId)
 }
 \arguments{
 \item{EvaluationId}{[required] A user-supplied ID that uniquely identifies the \code{Evaluation}.}
@@ -30,6 +26,13 @@ Creates a new \code{Evaluation} of an \code{MLModel}. An \code{MLModel} is evalu
 
 You can use the \code{GetEvaluation} operation to check progress of the evaluation during the creation operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_evaluation(
+  EvaluationId = "string",
+  EvaluationName = "string",
+  MLModelId = "string",
+  EvaluationDataSourceId = "string"
+)
 }
+}
+

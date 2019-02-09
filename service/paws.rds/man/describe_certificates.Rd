@@ -4,19 +4,8 @@
 \alias{describe_certificates}
 \title{Lists the set of CA certificates provided by Amazon RDS for this AWS account}
 \usage{
-describe_certificates(
-  CertificateIdentifier = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_certificates(CertificateIdentifier = NULL, Filters = NULL,
+  MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{CertificateIdentifier}{The user-supplied certificate identifier. If this parameter is specified, information for only the identified certificate is returned. This parameter isn't case-sensitive.
@@ -39,6 +28,20 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Lists the set of CA certificates provided by Amazon RDS for this AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_certificates(
+  CertificateIdentifier = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

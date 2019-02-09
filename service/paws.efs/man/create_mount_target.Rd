@@ -4,14 +4,8 @@
 \alias{create_mount_target}
 \title{Creates a mount target for a file system}
 \usage{
-create_mount_target(
-  FileSystemId = "string",
-  SubnetId = "string",
-  IpAddress = "string",
-  SecurityGroups = list(
-    "string"
-  )
-)
+create_mount_target(FileSystemId, SubnetId, IpAddress = NULL,
+  SecurityGroups = NULL)
 }
 \arguments{
 \item{FileSystemId}{[required] ID of the file system for which to create the mount target.}
@@ -73,11 +67,23 @@ This operation also requires permissions for the following Amazon EC2 actions:
 \item \code{ec2:CreateNetworkInterface}
 }
 }
+\section{Accepted Parameters}{
+\preformatted{create_mount_target(
+  FileSystemId = "string",
+  SubnetId = "string",
+  IpAddress = "string",
+  SecurityGroups = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This operation creates a new mount target for an EFS file system.
-create_mount_target(
+\donttest{create_mount_target(
   FileSystemId = "fs-01234567",
   SubnetId = "subnet-1234abcd"
-)
+)}
 
 }

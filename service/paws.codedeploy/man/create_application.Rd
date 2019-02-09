@@ -4,10 +4,7 @@
 \alias{create_application}
 \title{Creates an application}
 \usage{
-create_application(
-  applicationName = "string",
-  computePlatform = "Server"|"Lambda"|"ECS"
-)
+create_application(applicationName, computePlatform = NULL)
 }
 \arguments{
 \item{applicationName}{[required] The name of the application. This name must be unique with the applicable IAM user or AWS account.}
@@ -17,6 +14,11 @@ create_application(
 \description{
 Creates an application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_application(
+  applicationName = "string",
+  computePlatform = "Server"|"Lambda"
+)
 }
+}
+

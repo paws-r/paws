@@ -4,12 +4,9 @@
 \alias{list_traffic_policy_instances}
 \title{Gets information about the traffic policy instances that you created by using the current AWS account}
 \usage{
-list_traffic_policy_instances(
-  HostedZoneIdMarker = "string",
-  TrafficPolicyInstanceNameMarker = "string",
-  TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
-  MaxItems = "string"
-)
+list_traffic_policy_instances(HostedZoneIdMarker = NULL,
+  TrafficPolicyInstanceNameMarker = NULL,
+  TrafficPolicyInstanceTypeMarker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{HostedZoneIdMarker}{If the value of \code{IsTruncated} in the previous response was \code{true}, you have more traffic policy instances. To get more traffic policy instances, submit another \code{ListTrafficPolicyInstances} request. For the value of \code{HostedZoneId}, specify the value of \code{HostedZoneIdMarker} from the previous response, which is the hosted zone ID of the first traffic policy instance in the next group of traffic policy instances.
@@ -34,6 +31,13 @@ After you submit an \code{UpdateTrafficPolicyInstance} request, there's a brief 
 
 Route 53 returns a maximum of 100 items in each response. If you have a lot of traffic policy instances, you can use the \code{MaxItems} parameter to list them in groups of up to 100.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_traffic_policy_instances(
+  HostedZoneIdMarker = "string",
+  TrafficPolicyInstanceNameMarker = "string",
+  TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
+  MaxItems = "string"
+)
 }
+}
+

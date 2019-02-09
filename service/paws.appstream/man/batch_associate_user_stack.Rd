@@ -4,7 +4,16 @@
 \alias{batch_associate_user_stack}
 \title{Associates the specified users with the specified stacks}
 \usage{
-batch_associate_user_stack(
+batch_associate_user_stack(UserStackAssociations)
+}
+\arguments{
+\item{UserStackAssociations}{[required] The list of UserStackAssociation objects.}
+}
+\description{
+Associates the specified users with the specified stacks. Users in a user pool cannot be assigned to stacks with fleets that are joined to an Active Directory domain.
+}
+\section{Accepted Parameters}{
+\preformatted{batch_associate_user_stack(
   UserStackAssociations = list(
     list(
       StackName = "string",
@@ -15,12 +24,5 @@ batch_associate_user_stack(
   )
 )
 }
-\arguments{
-\item{UserStackAssociations}{[required] The list of UserStackAssociation objects.}
 }
-\description{
-Associates the specified users with the specified stacks. Users in a user pool cannot be assigned to stacks with fleets that are joined to an Active Directory domain.
-}
-\examples{
 
-}

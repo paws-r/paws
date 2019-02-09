@@ -4,11 +4,8 @@
 \alias{list_ca_certificates}
 \title{Lists the CA certificates registered for your AWS account}
 \usage{
-list_ca_certificates(
-  pageSize = 123,
-  marker = "string",
-  ascendingOrder = TRUE|FALSE
-)
+list_ca_certificates(pageSize = NULL, marker = NULL,
+  ascendingOrder = NULL)
 }
 \arguments{
 \item{pageSize}{The result page size.}
@@ -23,6 +20,12 @@ Lists the CA certificates registered for your AWS account.
 \details{
 The results are paginated with a default page size of 25. You can use the returned marker to retrieve additional results.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_ca_certificates(
+  pageSize = 123,
+  marker = "string",
+  ascendingOrder = TRUE|FALSE
+)
 }
+}
+

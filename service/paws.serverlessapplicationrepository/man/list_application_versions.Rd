@@ -5,11 +5,8 @@
 \alias{list_application_versions}
 \title{Lists versions for the specified application}
 \usage{
-list_application_versions(
-  ApplicationId = "string",
-  MaxItems = 123,
-  NextToken = "string"
-)
+list_application_versions(ApplicationId, MaxItems = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
@@ -21,6 +18,12 @@ list_application_versions(
 \description{
 Lists versions for the specified application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_application_versions(
+  ApplicationId = "string",
+  MaxItems = 123,
+  NextToken = "string"
+)
 }
+}
+

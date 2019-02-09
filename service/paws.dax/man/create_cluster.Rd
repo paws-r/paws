@@ -4,32 +4,11 @@
 \alias{create_cluster}
 \title{Creates a DAX cluster}
 \usage{
-create_cluster(
-  ClusterName = "string",
-  NodeType = "string",
-  Description = "string",
-  ReplicationFactor = 123,
-  AvailabilityZones = list(
-    "string"
-  ),
-  SubnetGroupName = "string",
-  SecurityGroupIds = list(
-    "string"
-  ),
-  PreferredMaintenanceWindow = "string",
-  NotificationTopicArn = "string",
-  IamRoleArn = "string",
-  ParameterGroupName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  SSESpecification = list(
-    Enabled = TRUE|FALSE
-  )
-)
+create_cluster(ClusterName, NodeType, Description = NULL,
+  ReplicationFactor, AvailabilityZones = NULL, SubnetGroupName = NULL,
+  SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL,
+  NotificationTopicArn = NULL, IamRoleArn, ParameterGroupName = NULL,
+  Tags = NULL, SSESpecification = NULL)
 }
 \arguments{
 \item{ClusterName}{[required] The cluster identifier. This parameter is stored as a lowercase string.
@@ -89,6 +68,33 @@ The Amazon SNS topic owner must be same as the DAX cluster owner.}
 \description{
 Creates a DAX cluster. All nodes in the cluster run the same DAX caching software.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_cluster(
+  ClusterName = "string",
+  NodeType = "string",
+  Description = "string",
+  ReplicationFactor = 123,
+  AvailabilityZones = list(
+    "string"
+  ),
+  SubnetGroupName = "string",
+  SecurityGroupIds = list(
+    "string"
+  ),
+  PreferredMaintenanceWindow = "string",
+  NotificationTopicArn = "string",
+  IamRoleArn = "string",
+  ParameterGroupName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  SSESpecification = list(
+    Enabled = TRUE|FALSE
+  )
+)
 }
+}
+

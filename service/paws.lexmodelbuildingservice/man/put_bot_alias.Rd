@@ -4,13 +4,8 @@
 \alias{put_bot_alias}
 \title{Creates an alias for the specified version of the bot or replaces an alias for the specified bot}
 \usage{
-put_bot_alias(
-  name = "string",
-  description = "string",
-  botVersion = "string",
-  botName = "string",
-  checksum = "string"
-)
+put_bot_alias(name, description = NULL, botVersion, botName,
+  checksum = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the alias. The name is \emph{not} case sensitive.}
@@ -33,6 +28,14 @@ Creates an alias for the specified version of the bot or replaces an alias for t
 \details{
 This operation requires permissions for the \code{lex:PutBotAlias} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_bot_alias(
+  name = "string",
+  description = "string",
+  botVersion = "string",
+  botName = "string",
+  checksum = "string"
+)
 }
+}
+

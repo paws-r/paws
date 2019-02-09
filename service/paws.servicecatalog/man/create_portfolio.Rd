@@ -4,19 +4,8 @@
 \alias{create_portfolio}
 \title{Creates a portfolio}
 \usage{
-create_portfolio(
-  AcceptLanguage = "string",
-  DisplayName = "string",
-  Description = "string",
-  ProviderName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  IdempotencyToken = "string"
-)
+create_portfolio(AcceptLanguage = NULL, DisplayName,
+  Description = NULL, ProviderName, Tags = NULL, IdempotencyToken)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -39,6 +28,20 @@ create_portfolio(
 \description{
 Creates a portfolio.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_portfolio(
+  AcceptLanguage = "string",
+  DisplayName = "string",
+  Description = "string",
+  ProviderName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  IdempotencyToken = "string"
+)
 }
+}
+

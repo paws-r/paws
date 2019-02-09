@@ -4,10 +4,7 @@
 \alias{update_termination_protection}
 \title{Updates termination protection for the specified stack}
 \usage{
-update_termination_protection(
-  EnableTerminationProtection = TRUE|FALSE,
-  StackName = "string"
-)
+update_termination_protection(EnableTerminationProtection, StackName)
 }
 \arguments{
 \item{EnableTerminationProtection}{[required] Whether to enable termination protection on the specified stack.}
@@ -15,11 +12,16 @@ update_termination_protection(
 \item{StackName}{[required] The name or unique ID of the stack for which you want to set termination protection.}
 }
 \description{
-Updates termination protection for the specified stack. If a user attempts to delete a stack with termination protection enabled, the operation fails and the stack remains unchanged. For more information, see \href{AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html}{Protecting a Stack From Being Deleted} in the \emph{AWS CloudFormation User Guide}.
+Updates termination protection for the specified stack. If a user attempts to delete a stack with termination protection enabled, the operation fails and the stack remains unchanged. For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html}{Protecting a Stack From Being Deleted} in the \emph{AWS CloudFormation User Guide}.
 }
 \details{
-For \href{AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html}{nested stacks}, termination protection is set on the root stack and cannot be changed directly on the nested stack.
+For \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html}{nested stacks}, termination protection is set on the root stack and cannot be changed directly on the nested stack.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{update_termination_protection(
+  EnableTerminationProtection = TRUE|FALSE,
+  StackName = "string"
+)
+}
+}
 
-}

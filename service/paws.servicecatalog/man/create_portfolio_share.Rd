@@ -4,15 +4,8 @@
 \alias{create_portfolio_share}
 \title{Shares the specified portfolio with the specified account or organization node}
 \usage{
-create_portfolio_share(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  AccountId = "string",
-  OrganizationNode = list(
-    Type = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
-    Value = "string"
-  )
-)
+create_portfolio_share(AcceptLanguage = NULL, PortfolioId,
+  AccountId = NULL, OrganizationNode = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -31,6 +24,16 @@ create_portfolio_share(
 \description{
 Shares the specified portfolio with the specified account or organization node. Shares to an organization node can only be created by the master account of an Organization. AWSOrganizationsAccess must be enabled in order to create a portfolio share to an organization node.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_portfolio_share(
+  AcceptLanguage = "string",
+  PortfolioId = "string",
+  AccountId = "string",
+  OrganizationNode = list(
+    Type = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
+    Value = "string"
+  )
+)
 }
+}
+

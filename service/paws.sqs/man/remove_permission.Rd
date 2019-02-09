@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.sqs_operations.R
 \name{remove_permission}
 \alias{remove_permission}
-\title{Revokes any permissions in the queue policy that matches the specified \code{Label} parameter}
+\title{Revokes any permissions in the queue policy that matches the specified Label parameter}
 \usage{
-remove_permission(
-  QueueUrl = "string",
-  Label = "string"
-)
+remove_permission(QueueUrl, Label)
 }
 \arguments{
 \item{QueueUrl}{[required] The URL of the Amazon SQS queue from which permissions are removed.
@@ -24,6 +21,11 @@ Only the owner of a queue can remove permissions from it.
 
 Cross-account permissions don't apply to this action. For more information, see see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name} in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_permission(
+  QueueUrl = "string",
+  Label = "string"
+)
 }
+}
+

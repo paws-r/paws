@@ -4,11 +4,8 @@
 \alias{execute_change_set}
 \title{Updates a stack using the input information that was provided when the specified change set was created}
 \usage{
-execute_change_set(
-  ChangeSetName = "string",
-  StackName = "string",
-  ClientRequestToken = "string"
-)
+execute_change_set(ChangeSetName, StackName = NULL,
+  ClientRequestToken = NULL)
 }
 \arguments{
 \item{ChangeSetName}{[required] The name or ARN of the change set that you want use to update the specified stack.}
@@ -25,6 +22,12 @@ When you execute a change set, AWS CloudFormation deletes all other change sets 
 
 If a stack policy is associated with the stack, AWS CloudFormation enforces the policy during the update. You can't specify a temporary stack policy that overrides the current policy.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{execute_change_set(
+  ChangeSetName = "string",
+  StackName = "string",
+  ClientRequestToken = "string"
+)
 }
+}
+

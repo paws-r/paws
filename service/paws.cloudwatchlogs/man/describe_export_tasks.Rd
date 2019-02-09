@@ -4,12 +4,8 @@
 \alias{describe_export_tasks}
 \title{Lists the specified export tasks}
 \usage{
-describe_export_tasks(
-  taskId = "string",
-  statusCode = "CANCELLED"|"COMPLETED"|"FAILED"|"PENDING"|"PENDING_CANCEL"|"RUNNING",
-  nextToken = "string",
-  limit = 123
-)
+describe_export_tasks(taskId = NULL, statusCode = NULL,
+  nextToken = NULL, limit = NULL)
 }
 \arguments{
 \item{taskId}{The ID of the export task. Specifying a task ID filters the results to zero or one export tasks.}
@@ -23,6 +19,13 @@ describe_export_tasks(
 \description{
 Lists the specified export tasks. You can list all your export tasks or filter the results based on task ID or task status.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_export_tasks(
+  taskId = "string",
+  statusCode = "CANCELLED"|"COMPLETED"|"FAILED"|"PENDING"|"PENDING_CANCEL"|"RUNNING",
+  nextToken = "string",
+  limit = 123
+)
 }
+}
+

@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.elasticache_operations.R
 \name{test_failover}
 \alias{test_failover}
-\title{Represents the input of a \code{TestFailover} operation which test automatic failover on a specified node group (called shard in the console) in a replication group (called cluster in the console)}
+\title{Represents the input of a TestFailover operation which test automatic failover on a specified node group (called shard in the console) in a replication group (called cluster in the console)}
 \usage{
-test_failover(
-  ReplicationGroupId = "string",
-  NodeGroupId = "string"
-)
+test_failover(ReplicationGroupId, NodeGroupId)
 }
 \arguments{
 \item{ReplicationGroupId}{[required] The name of the replication group (console: cluster) whose automatic failover is being tested by this operation.}
@@ -41,6 +38,11 @@ For more information see:
 
 Also see, \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html#auto-failover-test}{Testing Multi-AZ with Automatic Failover} in the \emph{ElastiCache User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{test_failover(
+  ReplicationGroupId = "string",
+  NodeGroupId = "string"
+)
 }
+}
+

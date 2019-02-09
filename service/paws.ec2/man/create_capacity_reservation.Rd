@@ -4,31 +4,11 @@
 \alias{create_capacity_reservation}
 \title{Creates a new Capacity Reservation with the specified attributes}
 \usage{
-create_capacity_reservation(
-  ClientToken = "string",
-  InstanceType = "string",
-  InstancePlatform = "Linux/UNIX"|"Red Hat Enterprise Linux"|"SUSE Linux"|"Windows"|"Windows with SQL Server"|"Windows with SQL Server Enterprise"|"Windows with SQL Server Standard"|"Windows with SQL Server Web",
-  AvailabilityZone = "string",
-  Tenancy = "default"|"dedicated",
-  InstanceCount = 123,
-  EbsOptimized = TRUE|FALSE,
-  EphemeralStorage = TRUE|FALSE,
-  EndDate = as.POSIXct("2015-01-01"),
-  EndDateType = "unlimited"|"limited",
-  InstanceMatchCriteria = "open"|"targeted",
-  TagSpecifications = list(
-    list(
-      ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
+create_capacity_reservation(ClientToken = NULL, InstanceType,
+  InstancePlatform, AvailabilityZone, Tenancy = NULL, InstanceCount,
+  EbsOptimized = NULL, EphemeralStorage = NULL, EndDate = NULL,
+  EndDateType = NULL, InstanceMatchCriteria = NULL,
+  TagSpecifications = NULL, DryRun = NULL)
 }
 \arguments{
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.
@@ -87,6 +67,32 @@ Your request to create a Capacity Reservation could fail if Amazon EC2 does not 
 
 Your request could also fail if the requested quantity exceeds your On-Demand Instance limit for the selected instance type. If your request fails due to limit constraints, increase your On-Demand Instance limit for the required instance type and try again. For more information about increasing your instance limits, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html}{Amazon EC2 Service Limits} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_capacity_reservation(
+  ClientToken = "string",
+  InstanceType = "string",
+  InstancePlatform = "Linux/UNIX"|"Red Hat Enterprise Linux"|"SUSE Linux"|"Windows"|"Windows with SQL Server"|"Windows with SQL Server Enterprise"|"Windows with SQL Server Standard"|"Windows with SQL Server Web",
+  AvailabilityZone = "string",
+  Tenancy = "default"|"dedicated",
+  InstanceCount = 123,
+  EbsOptimized = TRUE|FALSE,
+  EphemeralStorage = TRUE|FALSE,
+  EndDate = as.POSIXct("2015-01-01"),
+  EndDateType = "unlimited"|"limited",
+  InstanceMatchCriteria = "open"|"targeted",
+  TagSpecifications = list(
+    list(
+      ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"image"|"instance"|"internet-gateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"snapshot"|"spot-instances-request"|"subnet"|"security-group"|"volume"|"vpc"|"vpn-connection"|"vpn-gateway",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE
+)
 }
+}
+

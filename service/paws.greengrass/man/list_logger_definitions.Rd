@@ -4,10 +4,7 @@
 \alias{list_logger_definitions}
 \title{Retrieves a list of logger definitions}
 \usage{
-list_logger_definitions(
-  MaxResults = "string",
-  NextToken = "string"
-)
+list_logger_definitions(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of results to be returned per request.}
@@ -17,6 +14,11 @@ list_logger_definitions(
 \description{
 Retrieves a list of logger definitions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_logger_definitions(
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

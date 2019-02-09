@@ -2,14 +2,9 @@
 % Please edit documentation in R/paws.chime_operations.R
 \name{invite_users}
 \alias{invite_users}
-\title{Sends email invites to as many as 50 users, inviting them to the specified Amazon Chime \code{Team} account}
+\title{Sends email invites to as many as 50 users, inviting them to the specified Amazon Chime Team account}
 \usage{
-invite_users(
-  AccountId = "string",
-  UserEmailList = list(
-    "string"
-  )
-)
+invite_users(AccountId, UserEmailList)
 }
 \arguments{
 \item{AccountId}{[required] The Amazon Chime account ID.}
@@ -19,6 +14,13 @@ invite_users(
 \description{
 Sends email invites to as many as 50 users, inviting them to the specified Amazon Chime \code{Team} account. Only \code{Team} account types are currently supported for this action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{invite_users(
+  AccountId = "string",
+  UserEmailList = list(
+    "string"
+  )
+)
 }
+}
+

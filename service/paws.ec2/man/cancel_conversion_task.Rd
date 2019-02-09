@@ -4,11 +4,8 @@
 \alias{cancel_conversion_task}
 \title{Cancels an active conversion task}
 \usage{
-cancel_conversion_task(
-  ConversionTaskId = "string",
-  DryRun = TRUE|FALSE,
-  ReasonMessage = "string"
-)
+cancel_conversion_task(ConversionTaskId, DryRun = NULL,
+  ReasonMessage = NULL)
 }
 \arguments{
 \item{ConversionTaskId}{[required] The ID of the conversion task.}
@@ -23,6 +20,12 @@ Cancels an active conversion task. The task can be the import of an instance or 
 \details{
 For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ec2-cli-vmimport-export.html}{Importing a Virtual Machine Using the Amazon EC2 CLI}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{cancel_conversion_task(
+  ConversionTaskId = "string",
+  DryRun = TRUE|FALSE,
+  ReasonMessage = "string"
+)
 }
+}
+

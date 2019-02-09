@@ -6,8 +6,8 @@
 \alias{paws.secretsmanager-package}
 \title{paws.secretsmanager: AWS Secrets Manager}
 \description{
-AWS Secrets Manager is a web service that enables you to
-store, manage, and retrieve, secrets.
+AWS Secrets Manager is a web service that enables
+    you to store, manage, and retrieve, secrets.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

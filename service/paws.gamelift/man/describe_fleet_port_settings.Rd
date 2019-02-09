@@ -4,9 +4,7 @@
 \alias{describe_fleet_port_settings}
 \title{Retrieves the inbound connection permissions for a fleet}
 \usage{
-describe_fleet_port_settings(
-  FleetId = "string"
-)
+describe_fleet_port_settings(FleetId)
 }
 \arguments{
 \item{FleetId}{[required] Unique identifier for a fleet to retrieve port settings for.}
@@ -38,6 +36,10 @@ Fleet-related operations include:
 \item StopFleetActions
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_fleet_port_settings(
+  FleetId = "string"
+)
 }
+}
+

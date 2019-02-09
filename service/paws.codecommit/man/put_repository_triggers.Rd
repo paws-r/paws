@@ -4,7 +4,18 @@
 \alias{put_repository_triggers}
 \title{Replaces all triggers for a repository}
 \usage{
-put_repository_triggers(
+put_repository_triggers(repositoryName, triggers)
+}
+\arguments{
+\item{repositoryName}{[required] The name of the repository where you want to create or update the trigger.}
+
+\item{triggers}{[required] The JSON block of configuration information for each trigger.}
+}
+\description{
+Replaces all triggers for a repository. This can be used to create or delete triggers.
+}
+\section{Accepted Parameters}{
+\preformatted{put_repository_triggers(
   repositoryName = "string",
   triggers = list(
     list(
@@ -21,14 +32,5 @@ put_repository_triggers(
   )
 )
 }
-\arguments{
-\item{repositoryName}{[required] The name of the repository where you want to create or update the trigger.}
+}
 
-\item{triggers}{[required] The JSON block of configuration information for each trigger.}
-}
-\description{
-Replaces all triggers for a repository. This can be used to create or delete triggers.
-}
-\examples{
-
-}

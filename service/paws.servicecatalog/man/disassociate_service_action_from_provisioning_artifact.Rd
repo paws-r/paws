@@ -4,12 +4,8 @@
 \alias{disassociate_service_action_from_provisioning_artifact}
 \title{Disassociates the specified self-service action association from the specified provisioning artifact}
 \usage{
-disassociate_service_action_from_provisioning_artifact(
-  ProductId = "string",
-  ProvisioningArtifactId = "string",
-  ServiceActionId = "string",
-  AcceptLanguage = "string"
-)
+disassociate_service_action_from_provisioning_artifact(ProductId,
+  ProvisioningArtifactId, ServiceActionId, AcceptLanguage = NULL)
 }
 \arguments{
 \item{ProductId}{[required] The product identifier. For example, \code{prod-abcdzk7xy33qa}.}
@@ -28,6 +24,13 @@ disassociate_service_action_from_provisioning_artifact(
 \description{
 Disassociates the specified self-service action association from the specified provisioning artifact.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_service_action_from_provisioning_artifact(
+  ProductId = "string",
+  ProvisioningArtifactId = "string",
+  ServiceActionId = "string",
+  AcceptLanguage = "string"
+)
 }
+}
+

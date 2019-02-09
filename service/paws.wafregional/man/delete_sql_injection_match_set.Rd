@@ -4,10 +4,7 @@
 \alias{delete_sql_injection_match_set}
 \title{Permanently deletes a SqlInjectionMatchSet}
 \usage{
-delete_sql_injection_match_set(
-  SqlInjectionMatchSetId = "string",
-  ChangeToken = "string"
-)
+delete_sql_injection_match_set(SqlInjectionMatchSetId, ChangeToken)
 }
 \arguments{
 \item{SqlInjectionMatchSetId}{[required] The \code{SqlInjectionMatchSetId} of the SqlInjectionMatchSet that you want to delete. \code{SqlInjectionMatchSetId} is returned by CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets.}
@@ -27,12 +24,20 @@ To permanently delete a \code{SqlInjectionMatchSet} from AWS WAF, perform the fo
 \item Submit a \code{DeleteSqlInjectionMatchSet} request.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{delete_sql_injection_match_set(
+  SqlInjectionMatchSetId = "string",
+  ChangeToken = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes a SQL injection match set  with the ID
 # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-delete_sql_injection_match_set(
+\donttest{delete_sql_injection_match_set(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   SqlInjectionMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-)
+)}
 
 }

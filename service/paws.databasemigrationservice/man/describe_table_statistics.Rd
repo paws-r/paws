@@ -4,19 +4,8 @@
 \alias{describe_table_statistics}
 \title{Returns table statistics on the database migration task, including table name, rows inserted, rows updated, and rows deleted}
 \usage{
-describe_table_statistics(
-  ReplicationTaskArn = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
+describe_table_statistics(ReplicationTaskArn, MaxRecords = NULL,
+  Marker = NULL, Filters = NULL)
 }
 \arguments{
 \item{ReplicationTaskArn}{[required] The Amazon Resource Name (ARN) of the replication task.}
@@ -41,13 +30,30 @@ Returns table statistics on the database migration task, including table name, r
 \details{
 Note that the "last updated" column the DMS console only indicates the time that AWS DMS last updated the table statistics record for a table. It does not indicate the time of the last update to the table.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_table_statistics(
+  ReplicationTaskArn = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
+
 \examples{
 # Returns table statistics on the database migration task, including table
 # name, rows inserted, rows updated, and rows deleted.
-describe_table_statistics(
+\donttest{describe_table_statistics(
   Marker = "",
   MaxRecords = 123L,
   ReplicationTaskArn = ""
-)
+)}
 
 }

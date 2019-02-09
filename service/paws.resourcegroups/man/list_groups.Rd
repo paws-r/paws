@@ -4,7 +4,23 @@
 \alias{list_groups}
 \title{Returns a list of existing resource groups in your account}
 \usage{
-list_groups(
+list_groups(Filters = NULL, MaxResults = NULL, NextToken = NULL)
+}
+\arguments{
+\item{Filters}{Filters, formatted as GroupFilter objects, that you want to apply to a ListGroups operation.
+\itemize{
+\item \code{group-type} - Filter groups by resource type. Specify up to five group types in the format AWS::ServiceCode::ResourceType. For example, AWS::EC2::Instance, or AWS::S3::Bucket.
+}}
+
+\item{MaxResults}{The maximum number of resource group results that are returned by ListGroups in paginated output. By default, this number is 50.}
+
+\item{NextToken}{The NextToken value that is returned in a paginated \code{ListGroups} request. To get the next page of results, run the call again, add the NextToken parameter, and specify the NextToken value.}
+}
+\description{
+Returns a list of existing resource groups in your account.
+}
+\section{Accepted Parameters}{
+\preformatted{list_groups(
   Filters = list(
     list(
       Name = "resource-type",
@@ -17,19 +33,5 @@ list_groups(
   NextToken = "string"
 )
 }
-\arguments{
-\item{Filters}{Filters, formatted as GroupFilter objects, that you want to apply to a ListGroups operation.
-\itemize{
-\item \code{resource-type} - Filter groups by resource type. Specify up to five resource types in the format AWS::ServiceCode::ResourceType. For example, AWS::EC2::Instance, or AWS::S3::Bucket.
-}}
-
-\item{MaxResults}{The maximum number of resource group results that are returned by ListGroups in paginated output. By default, this number is 50.}
-
-\item{NextToken}{The NextToken value that is returned in a paginated \code{ListGroups} request. To get the next page of results, run the call again, add the NextToken parameter, and specify the NextToken value.}
 }
-\description{
-Returns a list of existing resource groups in your account.
-}
-\examples{
 
-}

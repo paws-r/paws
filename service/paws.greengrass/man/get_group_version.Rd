@@ -4,19 +4,21 @@
 \alias{get_group_version}
 \title{Retrieves information about a group version}
 \usage{
-get_group_version(
-  GroupId = "string",
-  GroupVersionId = "string"
-)
+get_group_version(GroupId, GroupVersionId)
 }
 \arguments{
-\item{GroupId}{[required] The ID of the Greengrass group.}
+\item{GroupId}{[required] The ID of the AWS Greengrass group.}
 
 \item{GroupVersionId}{[required] The ID of the group version.}
 }
 \description{
 Retrieves information about a group version.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_group_version(
+  GroupId = "string",
+  GroupVersionId = "string"
+)
 }
+}
+

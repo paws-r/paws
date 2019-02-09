@@ -4,12 +4,7 @@
 \alias{describe_stacks}
 \title{Retrieves a list that describes one or more specified stacks, if the stack names are provided}
 \usage{
-describe_stacks(
-  Names = list(
-    "string"
-  ),
-  NextToken = "string"
-)
+describe_stacks(Names = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Names}{The names of the stacks to describe.}
@@ -19,6 +14,13 @@ describe_stacks(
 \description{
 Retrieves a list that describes one or more specified stacks, if the stack names are provided. Otherwise, all stacks in the account are described.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_stacks(
+  Names = list(
+    "string"
+  ),
+  NextToken = "string"
+)
 }
+}
+

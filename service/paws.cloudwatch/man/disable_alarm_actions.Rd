@@ -4,11 +4,7 @@
 \alias{disable_alarm_actions}
 \title{Disables the actions for the specified alarms}
 \usage{
-disable_alarm_actions(
-  AlarmNames = list(
-    "string"
-  )
-)
+disable_alarm_actions(AlarmNames)
 }
 \arguments{
 \item{AlarmNames}{[required] The names of the alarms.}
@@ -16,6 +12,12 @@ disable_alarm_actions(
 \description{
 Disables the actions for the specified alarms. When an alarm's actions are disabled, the alarm actions do not execute when the alarm state changes.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disable_alarm_actions(
+  AlarmNames = list(
+    "string"
+  )
+)
 }
+}
+

@@ -9,6 +9,8 @@ describe_drt_access()
 \description{
 Returns the current role and list of Amazon S3 log buckets used by the DDoS Response team (DRT) to access your AWS account while assisting with attack mitigation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_drt_access()
 }
+}
+

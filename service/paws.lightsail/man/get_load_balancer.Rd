@@ -4,9 +4,7 @@
 \alias{get_load_balancer}
 \title{Returns information about the specified Lightsail load balancer}
 \usage{
-get_load_balancer(
-  loadBalancerName = "string"
-)
+get_load_balancer(loadBalancerName)
 }
 \arguments{
 \item{loadBalancerName}{[required] The name of the load balancer.}
@@ -14,6 +12,10 @@ get_load_balancer(
 \description{
 Returns information about the specified Lightsail load balancer.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_load_balancer(
+  loadBalancerName = "string"
+)
 }
+}
+

@@ -4,16 +4,7 @@
 \alias{update_email_channel}
 \title{Update an email channel}
 \usage{
-update_email_channel(
-  ApplicationId = "string",
-  EmailChannelRequest = list(
-    ConfigurationSet = "string",
-    Enabled = TRUE|FALSE,
-    FromAddress = "string",
-    Identity = "string",
-    RoleArn = "string"
-  )
-)
+update_email_channel(ApplicationId, EmailChannelRequest)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -23,6 +14,16 @@ update_email_channel(
 \description{
 Update an email channel.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_email_channel(
+  ApplicationId = "string",
+  EmailChannelRequest = list(
+    Enabled = TRUE|FALSE,
+    FromAddress = "string",
+    Identity = "string",
+    RoleArn = "string"
+  )
+)
 }
+}
+

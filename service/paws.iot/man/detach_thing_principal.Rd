@@ -4,10 +4,7 @@
 \alias{detach_thing_principal}
 \title{Detaches the specified principal from the specified thing}
 \usage{
-detach_thing_principal(
-  thingName = "string",
-  principal = "string"
-)
+detach_thing_principal(thingName, principal)
 }
 \arguments{
 \item{thingName}{[required] The name of the thing.}
@@ -17,9 +14,11 @@ detach_thing_principal(
 \description{
 Detaches the specified principal from the specified thing.
 }
-\details{
-This call is asynchronous. It might take several seconds for the detachment to propagate.
+\section{Accepted Parameters}{
+\preformatted{detach_thing_principal(
+  thingName = "string",
+  principal = "string"
+)
 }
-\examples{
+}
 
-}

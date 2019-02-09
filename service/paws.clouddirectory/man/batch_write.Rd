@@ -4,7 +4,18 @@
 \alias{batch_write}
 \title{Performs all the write operations in a batch}
 \usage{
-batch_write(
+batch_write(DirectoryArn, Operations)
+}
+\arguments{
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory. For more information, see arns.}
+
+\item{Operations}{[required] A list of operations that are part of the batch.}
+}
+\description{
+Performs all the write operations in a batch. Either all the operations succeed or none.
+}
+\section{Accepted Parameters}{
+\preformatted{batch_write(
   DirectoryArn = "string",
   Operations = list(
     list(
@@ -262,14 +273,5 @@ batch_write(
   )
 )
 }
-\arguments{
-\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory. For more information, see arns.}
+}
 
-\item{Operations}{[required] A list of operations that are part of the batch.}
-}
-\description{
-Performs all the write operations in a batch. Either all the operations succeed or none.
-}
-\examples{
-
-}

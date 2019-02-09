@@ -4,12 +4,8 @@
 \alias{get_merge_conflicts}
 \title{Returns information about merge conflicts between the before and after commit IDs for a pull request in a repository}
 \usage{
-get_merge_conflicts(
-  repositoryName = "string",
-  destinationCommitSpecifier = "string",
-  sourceCommitSpecifier = "string",
-  mergeOption = "FAST_FORWARD_MERGE"
-)
+get_merge_conflicts(repositoryName, destinationCommitSpecifier,
+  sourceCommitSpecifier, mergeOption)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository where the pull request was created.}
@@ -23,6 +19,13 @@ get_merge_conflicts(
 \description{
 Returns information about merge conflicts between the before and after commit IDs for a pull request in a repository.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_merge_conflicts(
+  repositoryName = "string",
+  destinationCommitSpecifier = "string",
+  sourceCommitSpecifier = "string",
+  mergeOption = "FAST_FORWARD_MERGE"
+)
 }
+}
+

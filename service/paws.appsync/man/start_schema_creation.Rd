@@ -4,10 +4,7 @@
 \alias{start_schema_creation}
 \title{Adds a new schema to your GraphQL API}
 \usage{
-start_schema_creation(
-  apiId = "string",
-  definition = raw
-)
+start_schema_creation(apiId, definition)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
@@ -20,6 +17,11 @@ Adds a new schema to your GraphQL API.
 \details{
 This operation is asynchronous. Use to determine when it has completed.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_schema_creation(
+  apiId = "string",
+  definition = raw
+)
 }
+}
+

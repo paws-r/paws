@@ -4,10 +4,7 @@
 \alias{register_stream_consumer}
 \title{Registers a consumer with a Kinesis data stream}
 \usage{
-register_stream_consumer(
-  StreamARN = "string",
-  ConsumerName = "string"
-)
+register_stream_consumer(StreamARN, ConsumerName)
 }
 \arguments{
 \item{StreamARN}{[required] The ARN of the Kinesis data stream that you want to register the consumer with. For more info, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
@@ -22,6 +19,11 @@ You can register up to 5 consumers per stream. A given consumer can only be regi
 
 This operation has a limit of five transactions per second per account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{register_stream_consumer(
+  StreamARN = "string",
+  ConsumerName = "string"
+)
 }
+}
+

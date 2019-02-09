@@ -4,21 +4,8 @@
 \alias{update_game_session_queue}
 \title{Updates settings for a game session queue, which determines how new game session requests in the queue are processed}
 \usage{
-update_game_session_queue(
-  Name = "string",
-  TimeoutInSeconds = 123,
-  PlayerLatencyPolicies = list(
-    list(
-      MaximumIndividualPlayerLatencyMilliseconds = 123,
-      PolicyDurationSeconds = 123
-    )
-  ),
-  Destinations = list(
-    list(
-      DestinationArn = "string"
-    )
-  )
-)
+update_game_session_queue(Name, TimeoutInSeconds = NULL,
+  PlayerLatencyPolicies = NULL, Destinations = NULL)
 }
 \arguments{
 \item{Name}{[required] Descriptive label that is associated with game session queue. Queue names must be unique within each region.}
@@ -41,6 +28,22 @@ Queue-related operations include:
 \item DeleteGameSessionQueue
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_game_session_queue(
+  Name = "string",
+  TimeoutInSeconds = 123,
+  PlayerLatencyPolicies = list(
+    list(
+      MaximumIndividualPlayerLatencyMilliseconds = 123,
+      PolicyDurationSeconds = 123
+    )
+  ),
+  Destinations = list(
+    list(
+      DestinationArn = "string"
+    )
+  )
+)
 }
+}
+

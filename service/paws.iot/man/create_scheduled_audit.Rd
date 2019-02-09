@@ -4,15 +4,8 @@
 \alias{create_scheduled_audit}
 \title{Creates a scheduled audit that is run at a specified time interval}
 \usage{
-create_scheduled_audit(
-  frequency = "DAILY"|"WEEKLY"|"BIWEEKLY"|"MONTHLY",
-  dayOfMonth = "string",
-  dayOfWeek = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT",
-  targetCheckNames = list(
-    "string"
-  ),
-  scheduledAuditName = "string"
-)
+create_scheduled_audit(frequency, dayOfMonth = NULL, dayOfWeek = NULL,
+  targetCheckNames, scheduledAuditName)
 }
 \arguments{
 \item{frequency}{[required] How often the scheduled audit takes place. Can be one of "DAILY", "WEEKLY", "BIWEEKLY" or "MONTHLY". The actual start time of each audit is determined by the system.}
@@ -28,6 +21,16 @@ create_scheduled_audit(
 \description{
 Creates a scheduled audit that is run at a specified time interval.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_scheduled_audit(
+  frequency = "DAILY"|"WEEKLY"|"BIWEEKLY"|"MONTHLY",
+  dayOfMonth = "string",
+  dayOfWeek = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT",
+  targetCheckNames = list(
+    "string"
+  ),
+  scheduledAuditName = "string"
+)
 }
+}
+

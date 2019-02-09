@@ -4,11 +4,8 @@
 \alias{get_session_token}
 \title{Returns a set of temporary credentials for an AWS account or IAM user}
 \usage{
-get_session_token(
-  DurationSeconds = 123,
-  SerialNumber = "string",
-  TokenCode = "string"
-)
+get_session_token(DurationSeconds = NULL, SerialNumber = NULL,
+  TokenCode = NULL)
 }
 \arguments{
 \item{DurationSeconds}{The duration, in seconds, that the credentials should remain valid. Acceptable durations for IAM user sessions range from 900 seconds (15 minutes) to 129600 seconds (36 hours), with 43200 seconds (12 hours) as the default. Sessions for AWS account owners are restricted to a maximum of 3600 seconds (one hour). If the duration is longer than one hour, the session for AWS account owners defaults to one hour.}
@@ -39,12 +36,21 @@ The permissions associated with the temporary security credentials returned by \
 
 For more information about using \code{GetSessionToken} to create temporary credentials, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getsessiontoken}{Temporary Credentials for Users in Untrusted Environments} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{get_session_token(
+  DurationSeconds = 123,
+  SerialNumber = "string",
+  TokenCode = "string"
+)
+}
+}
+
 \examples{
 # 
-get_session_token(
+\donttest{get_session_token(
   DurationSeconds = 3600L,
   SerialNumber = "YourMFASerialNumber",
   TokenCode = "123456"
-)
+)}
 
 }

@@ -4,47 +4,13 @@
 \alias{send_command}
 \title{Executes commands on one or more managed instances}
 \usage{
-send_command(
-  InstanceIds = list(
-    "string"
-  ),
-  Targets = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DocumentName = "string",
-  DocumentVersion = "string",
-  DocumentHash = "string",
-  DocumentHashType = "Sha256"|"Sha1",
-  TimeoutSeconds = 123,
-  Comment = "string",
-  Parameters = list(
-    list(
-      "string"
-    )
-  ),
-  OutputS3Region = "string",
-  OutputS3BucketName = "string",
-  OutputS3KeyPrefix = "string",
-  MaxConcurrency = "string",
-  MaxErrors = "string",
-  ServiceRoleArn = "string",
-  NotificationConfig = list(
-    NotificationArn = "string",
-    NotificationEvents = list(
-      "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
-    ),
-    NotificationType = "Command"|"Invocation"
-  ),
-  CloudWatchOutputConfig = list(
-    CloudWatchLogGroupName = "string",
-    CloudWatchOutputEnabled = TRUE|FALSE
-  )
-)
+send_command(InstanceIds = NULL, Targets = NULL, DocumentName,
+  DocumentVersion = NULL, DocumentHash = NULL,
+  DocumentHashType = NULL, TimeoutSeconds = NULL, Comment = NULL,
+  Parameters = NULL, OutputS3Region = NULL,
+  OutputS3BucketName = NULL, OutputS3KeyPrefix = NULL,
+  MaxConcurrency = NULL, MaxErrors = NULL, ServiceRoleArn = NULL,
+  NotificationConfig = NULL, CloudWatchOutputConfig = NULL)
 }
 \arguments{
 \item{InstanceIds}{The instance IDs where the command should execute. You can specify a maximum of 50 IDs. If you prefer not to list individual instance IDs, you can instead send commands to a fleet of instances using the Targets parameter, which accepts EC2 tags. For more information about how to use targets, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Sending Commands to a Fleet} in the \emph{AWS Systems Manager User Guide}.}
@@ -94,6 +60,48 @@ Sha1 hashes have been deprecated.}
 \description{
 Executes commands on one or more managed instances.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{send_command(
+  InstanceIds = list(
+    "string"
+  ),
+  Targets = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DocumentName = "string",
+  DocumentVersion = "string",
+  DocumentHash = "string",
+  DocumentHashType = "Sha256"|"Sha1",
+  TimeoutSeconds = 123,
+  Comment = "string",
+  Parameters = list(
+    list(
+      "string"
+    )
+  ),
+  OutputS3Region = "string",
+  OutputS3BucketName = "string",
+  OutputS3KeyPrefix = "string",
+  MaxConcurrency = "string",
+  MaxErrors = "string",
+  ServiceRoleArn = "string",
+  NotificationConfig = list(
+    NotificationArn = "string",
+    NotificationEvents = list(
+      "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
+    ),
+    NotificationType = "Command"|"Invocation"
+  ),
+  CloudWatchOutputConfig = list(
+    CloudWatchLogGroupName = "string",
+    CloudWatchOutputEnabled = TRUE|FALSE
+  )
+)
 }
+}
+

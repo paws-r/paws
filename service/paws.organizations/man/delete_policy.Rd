@@ -4,9 +4,7 @@
 \alias{delete_policy}
 \title{Deletes the specified policy from your organization}
 \usage{
-delete_policy(
-  PolicyId = "string"
-)
+delete_policy(PolicyId)
 }
 \arguments{
 \item{PolicyId}{[required] The unique identifier (ID) of the policy that you want to delete. You can get the ID from the ListPolicies or ListPoliciesForTarget operations.
@@ -19,14 +17,21 @@ Deletes the specified policy from your organization. Before you perform this ope
 \details{
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_policy(
+  PolicyId = "string"
+)
+}
+}
+
 \examples{
 # The following example shows how to delete a policy from an organization.
 # The example assumes that you previously detached the policy from all
 # entities:
 # 
 # 
-delete_policy(
+\donttest{delete_policy(
   PolicyId = "p-examplepolicyid111"
-)
+)}
 
 }

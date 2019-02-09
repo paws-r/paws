@@ -4,7 +4,23 @@
 \alias{update_table}
 \title{Updates a metadata table in the Data Catalog}
 \usage{
-update_table(
+update_table(CatalogId = NULL, DatabaseName, TableInput,
+  SkipArchive = NULL)
+}
+\arguments{
+\item{CatalogId}{The ID of the Data Catalog where the table resides. If none is supplied, the AWS account ID is used by default.}
+
+\item{DatabaseName}{[required] The name of the catalog database in which the table resides. For Hive compatibility, this name is entirely lowercase.}
+
+\item{TableInput}{[required] An updated \code{TableInput} object to define the metadata table in the catalog.}
+
+\item{SkipArchive}{By default, \code{UpdateTable} always creates an archived version of the table before updating it. If \code{skipArchive} is set to true, however, \code{UpdateTable} does not create the archived version.}
+}
+\description{
+Updates a metadata table in the Data Catalog.
+}
+\section{Accepted Parameters}{
+\preformatted{update_table(
   CatalogId = "string",
   DatabaseName = "string",
   TableInput = list(
@@ -76,18 +92,5 @@ update_table(
   SkipArchive = TRUE|FALSE
 )
 }
-\arguments{
-\item{CatalogId}{The ID of the Data Catalog where the table resides. If none is supplied, the AWS account ID is used by default.}
-
-\item{DatabaseName}{[required] The name of the catalog database in which the table resides. For Hive compatibility, this name is entirely lowercase.}
-
-\item{TableInput}{[required] An updated \code{TableInput} object to define the metadata table in the catalog.}
-
-\item{SkipArchive}{By default, \code{UpdateTable} always creates an archived version of the table before updating it. If \code{skipArchive} is set to true, however, \code{UpdateTable} does not create the archived version.}
 }
-\description{
-Updates a metadata table in the Data Catalog.
-}
-\examples{
 
-}

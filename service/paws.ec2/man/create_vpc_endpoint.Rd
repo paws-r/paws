@@ -4,24 +4,10 @@
 \alias{create_vpc_endpoint}
 \title{Creates a VPC endpoint for a specified service}
 \usage{
-create_vpc_endpoint(
-  DryRun = TRUE|FALSE,
-  VpcEndpointType = "Interface"|"Gateway",
-  VpcId = "string",
-  ServiceName = "string",
-  PolicyDocument = "string",
-  RouteTableIds = list(
-    "string"
-  ),
-  SubnetIds = list(
-    "string"
-  ),
-  SecurityGroupIds = list(
-    "string"
-  ),
-  ClientToken = "string",
-  PrivateDnsEnabled = TRUE|FALSE
-)
+create_vpc_endpoint(DryRun = NULL, VpcEndpointType = NULL, VpcId,
+  ServiceName, PolicyDocument = NULL, RouteTableIds = NULL,
+  SubnetIds = NULL, SecurityGroupIds = NULL, ClientToken = NULL,
+  PrivateDnsEnabled = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -60,6 +46,25 @@ An \code{interface} endpoint is a network interface in your subnet that serves a
 
 Use DescribeVpcEndpointServices to get a list of supported services.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_vpc_endpoint(
+  DryRun = TRUE|FALSE,
+  VpcEndpointType = "Interface"|"Gateway",
+  VpcId = "string",
+  ServiceName = "string",
+  PolicyDocument = "string",
+  RouteTableIds = list(
+    "string"
+  ),
+  SubnetIds = list(
+    "string"
+  ),
+  SecurityGroupIds = list(
+    "string"
+  ),
+  ClientToken = "string",
+  PrivateDnsEnabled = TRUE|FALSE
+)
 }
+}
+

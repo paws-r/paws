@@ -4,19 +4,9 @@
 \alias{post_comment_for_pull_request}
 \title{Posts a comment on a pull request}
 \usage{
-post_comment_for_pull_request(
-  pullRequestId = "string",
-  repositoryName = "string",
-  beforeCommitId = "string",
-  afterCommitId = "string",
-  location = list(
-    filePath = "string",
-    filePosition = 123,
-    relativeFileVersion = "BEFORE"|"AFTER"
-  ),
-  content = "string",
-  clientRequestToken = "string"
-)
+post_comment_for_pull_request(pullRequestId, repositoryName,
+  beforeCommitId, afterCommitId, location = NULL, content,
+  clientRequestToken = NULL)
 }
 \arguments{
 \item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use ListPullRequests.}
@@ -36,6 +26,20 @@ post_comment_for_pull_request(
 \description{
 Posts a comment on a pull request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{post_comment_for_pull_request(
+  pullRequestId = "string",
+  repositoryName = "string",
+  beforeCommitId = "string",
+  afterCommitId = "string",
+  location = list(
+    filePath = "string",
+    filePosition = 123,
+    relativeFileVersion = "BEFORE"|"AFTER"
+  ),
+  content = "string",
+  clientRequestToken = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{describe_policy}
 \title{Retrieves information about a policy}
 \usage{
-describe_policy(
-  PolicyId = "string"
-)
+describe_policy(PolicyId)
 }
 \arguments{
 \item{PolicyId}{[required] The unique identifier (ID) of the policy that you want details about. You can get the ID from the ListPolicies or ListPoliciesForTarget operations.
@@ -19,11 +17,18 @@ Retrieves information about a policy.
 \details{
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_policy(
+  PolicyId = "string"
+)
+}
+}
+
 \examples{
 # The following example shows how to request information about a
 # policy:/n/n
-describe_policy(
+\donttest{describe_policy(
   PolicyId = "p-examplepolicyid111"
-)
+)}
 
 }

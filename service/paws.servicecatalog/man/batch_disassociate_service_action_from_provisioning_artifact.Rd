@@ -4,16 +4,9 @@
 \alias{batch_disassociate_service_action_from_provisioning_artifact}
 \title{Disassociates a batch of self-service actions from the specified provisioning artifact}
 \usage{
-batch_disassociate_service_action_from_provisioning_artifact(
-  ServiceActionAssociations = list(
-    list(
-      ServiceActionId = "string",
-      ProductId = "string",
-      ProvisioningArtifactId = "string"
-    )
-  ),
-  AcceptLanguage = "string"
-)
+
+  batch_disassociate_service_action_from_provisioning_artifact(ServiceActionAssociations,
+  AcceptLanguage = NULL)
 }
 \arguments{
 \item{ServiceActionAssociations}{[required] One or more associations, each consisting of the Action ID, the Product ID, and the Provisioning Artifact ID.}
@@ -28,6 +21,17 @@ batch_disassociate_service_action_from_provisioning_artifact(
 \description{
 Disassociates a batch of self-service actions from the specified provisioning artifact.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_disassociate_service_action_from_provisioning_artifact(
+  ServiceActionAssociations = list(
+    list(
+      ServiceActionId = "string",
+      ProductId = "string",
+      ProvisioningArtifactId = "string"
+    )
+  ),
+  AcceptLanguage = "string"
+)
 }
+}
+

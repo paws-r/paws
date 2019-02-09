@@ -4,14 +4,8 @@
 \alias{create_streaming_url}
 \title{Creates a temporary URL to start an AppStream 2}
 \usage{
-create_streaming_url(
-  StackName = "string",
-  FleetName = "string",
-  UserId = "string",
-  ApplicationId = "string",
-  Validity = 123,
-  SessionContext = "string"
-)
+create_streaming_url(StackName, FleetName, UserId, ApplicationId = NULL,
+  Validity = NULL, SessionContext = NULL)
 }
 \arguments{
 \item{StackName}{[required] The name of the stack.}
@@ -29,6 +23,15 @@ create_streaming_url(
 \description{
 Creates a temporary URL to start an AppStream 2.0 streaming session for the specified user. A streaming URL enables application streaming to be tested without user setup.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_streaming_url(
+  StackName = "string",
+  FleetName = "string",
+  UserId = "string",
+  ApplicationId = "string",
+  Validity = 123,
+  SessionContext = "string"
+)
 }
+}
+

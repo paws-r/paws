@@ -4,64 +4,26 @@
 \alias{modify_db_instance}
 \title{Modifies settings for a DB instance}
 \usage{
-modify_db_instance(
-  DBInstanceIdentifier = "string",
-  AllocatedStorage = 123,
-  DBInstanceClass = "string",
-  DBSubnetGroupName = "string",
-  DBSecurityGroups = list(
-    "string"
-  ),
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  ApplyImmediately = TRUE|FALSE,
-  MasterUserPassword = "string",
-  DBParameterGroupName = "string",
-  BackupRetentionPeriod = 123,
-  PreferredBackupWindow = "string",
-  PreferredMaintenanceWindow = "string",
-  MultiAZ = TRUE|FALSE,
-  EngineVersion = "string",
-  AllowMajorVersionUpgrade = TRUE|FALSE,
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  LicenseModel = "string",
-  Iops = 123,
-  OptionGroupName = "string",
-  NewDBInstanceIdentifier = "string",
-  StorageType = "string",
-  TdeCredentialArn = "string",
-  TdeCredentialPassword = "string",
-  CACertificateIdentifier = "string",
-  Domain = "string",
-  CopyTagsToSnapshot = TRUE|FALSE,
-  MonitoringInterval = 123,
-  DBPortNumber = 123,
-  PubliclyAccessible = TRUE|FALSE,
-  MonitoringRoleArn = "string",
-  DomainIAMRoleName = "string",
-  PromotionTier = 123,
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  EnablePerformanceInsights = TRUE|FALSE,
-  PerformanceInsightsKMSKeyId = "string",
-  PerformanceInsightsRetentionPeriod = 123,
-  CloudwatchLogsExportConfiguration = list(
-    EnableLogTypes = list(
-      "string"
-    ),
-    DisableLogTypes = list(
-      "string"
-    )
-  ),
-  ProcessorFeatures = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  UseDefaultProcessorFeatures = TRUE|FALSE,
-  DeletionProtection = TRUE|FALSE
-)
+modify_db_instance(DBInstanceIdentifier, AllocatedStorage = NULL,
+  DBInstanceClass = NULL, DBSubnetGroupName = NULL,
+  DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL,
+  ApplyImmediately = NULL, MasterUserPassword = NULL,
+  DBParameterGroupName = NULL, BackupRetentionPeriod = NULL,
+  PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL,
+  MultiAZ = NULL, EngineVersion = NULL,
+  AllowMajorVersionUpgrade = NULL, AutoMinorVersionUpgrade = NULL,
+  LicenseModel = NULL, Iops = NULL, OptionGroupName = NULL,
+  NewDBInstanceIdentifier = NULL, StorageType = NULL,
+  TdeCredentialArn = NULL, TdeCredentialPassword = NULL,
+  CACertificateIdentifier = NULL, Domain = NULL,
+  CopyTagsToSnapshot = NULL, MonitoringInterval = NULL,
+  DBPortNumber = NULL, PubliclyAccessible = NULL,
+  MonitoringRoleArn = NULL, DomainIAMRoleName = NULL,
+  PromotionTier = NULL, EnableIAMDatabaseAuthentication = NULL,
+  EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL,
+  PerformanceInsightsRetentionPeriod = NULL,
+  CloudwatchLogsExportConfiguration = NULL, ProcessorFeatures = NULL,
+  UseDefaultProcessorFeatures = NULL, DeletionProtection = NULL)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The DB instance identifier. This value is stored as a lowercase string.
@@ -166,7 +128,7 @@ Default: Uses existing setting
 Constraints:
 \itemize{
 \item Must be a value from 0 to 35
-\item Can be specified for a MySQL Read Replica only if the source is running MySQL 5.6 or later
+\item Can be specified for a MySQL Read Replica only if the source is running MySQL 5.6
 \item Can be specified for a PostgreSQL Read Replica only if the source is running PostgreSQL 9.3.5
 \item Can't be set to 0 if the DB instance is a source to Read Replicas
 }}
@@ -363,6 +325,65 @@ For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/User
 \description{
 Modifies settings for a DB instance. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. To learn what modifications you can make to your DB instance, call DescribeValidDBInstanceModifications before you call ModifyDBInstance.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_db_instance(
+  DBInstanceIdentifier = "string",
+  AllocatedStorage = 123,
+  DBInstanceClass = "string",
+  DBSubnetGroupName = "string",
+  DBSecurityGroups = list(
+    "string"
+  ),
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  ApplyImmediately = TRUE|FALSE,
+  MasterUserPassword = "string",
+  DBParameterGroupName = "string",
+  BackupRetentionPeriod = 123,
+  PreferredBackupWindow = "string",
+  PreferredMaintenanceWindow = "string",
+  MultiAZ = TRUE|FALSE,
+  EngineVersion = "string",
+  AllowMajorVersionUpgrade = TRUE|FALSE,
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  LicenseModel = "string",
+  Iops = 123,
+  OptionGroupName = "string",
+  NewDBInstanceIdentifier = "string",
+  StorageType = "string",
+  TdeCredentialArn = "string",
+  TdeCredentialPassword = "string",
+  CACertificateIdentifier = "string",
+  Domain = "string",
+  CopyTagsToSnapshot = TRUE|FALSE,
+  MonitoringInterval = 123,
+  DBPortNumber = 123,
+  PubliclyAccessible = TRUE|FALSE,
+  MonitoringRoleArn = "string",
+  DomainIAMRoleName = "string",
+  PromotionTier = 123,
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  EnablePerformanceInsights = TRUE|FALSE,
+  PerformanceInsightsKMSKeyId = "string",
+  PerformanceInsightsRetentionPeriod = 123,
+  CloudwatchLogsExportConfiguration = list(
+    EnableLogTypes = list(
+      "string"
+    ),
+    DisableLogTypes = list(
+      "string"
+    )
+  ),
+  ProcessorFeatures = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  UseDefaultProcessorFeatures = TRUE|FALSE,
+  DeletionProtection = TRUE|FALSE
+)
 }
+}
+

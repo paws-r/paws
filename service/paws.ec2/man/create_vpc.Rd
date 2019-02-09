@@ -4,12 +4,8 @@
 \alias{create_vpc}
 \title{Creates a VPC with the specified IPv4 CIDR block}
 \usage{
-create_vpc(
-  CidrBlock = "string",
-  AmazonProvidedIpv6CidrBlock = TRUE|FALSE,
-  DryRun = TRUE|FALSE,
-  InstanceTenancy = "default"|"dedicated"|"host"
-)
+create_vpc(CidrBlock, AmazonProvidedIpv6CidrBlock = NULL,
+  DryRun = NULL, InstanceTenancy = NULL)
 }
 \arguments{
 \item{CidrBlock}{[required] The IPv4 network range for the VPC, in CIDR notation. For example, \code{10.0.0.0/16}.}
@@ -34,10 +30,20 @@ By default, each instance you launch in the VPC has the default DHCP options, wh
 
 You can specify the instance tenancy value for the VPC when you create it. You can't change this value for the VPC after you create it. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html}{Dedicated Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_vpc(
+  CidrBlock = "string",
+  AmazonProvidedIpv6CidrBlock = TRUE|FALSE,
+  DryRun = TRUE|FALSE,
+  InstanceTenancy = "default"|"dedicated"|"host"
+)
+}
+}
+
 \examples{
 # This example creates a VPC with the specified CIDR block.
-create_vpc(
+\donttest{create_vpc(
   CidrBlock = "10.0.0.0/16"
-)
+)}
 
 }

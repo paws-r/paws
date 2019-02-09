@@ -2,22 +2,30 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{delete_event_source_mapping}
 \alias{delete_event_source_mapping}
-\title{Deletes an event source mapping}
+\title{Removes an event source mapping}
 \usage{
-delete_event_source_mapping(
+delete_event_source_mapping(UUID)
+}
+\arguments{
+\item{UUID}{[required] The event source mapping ID.}
+}
+\description{
+Removes an event source mapping. This means AWS Lambda will no longer invoke the function for events in the associated source.
+}
+\details{
+This operation requires permission for the \code{lambda:DeleteEventSourceMapping} action.
+}
+\section{Accepted Parameters}{
+\preformatted{delete_event_source_mapping(
   UUID = "string"
 )
 }
-\arguments{
-\item{UUID}{[required] The identifier of the event source mapping.}
 }
-\description{
-Deletes an event source mapping.
-}
+
 \examples{
 # This operation deletes a Lambda function event source mapping
-delete_event_source_mapping(
+\donttest{delete_event_source_mapping(
   UUID = "12345kxodurf3443"
-)
+)}
 
 }

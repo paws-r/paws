@@ -4,9 +4,7 @@
 \alias{delete_vocabulary}
 \title{Deletes a vocabulary from Amazon Transcribe}
 \usage{
-delete_vocabulary(
-  VocabularyName = "string"
-)
+delete_vocabulary(VocabularyName)
 }
 \arguments{
 \item{VocabularyName}{[required] The name of the vocabulary to delete.}
@@ -14,6 +12,10 @@ delete_vocabulary(
 \description{
 Deletes a vocabulary from Amazon Transcribe.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_vocabulary(
+  VocabularyName = "string"
+)
 }
+}
+

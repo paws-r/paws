@@ -4,10 +4,7 @@
 \alias{list_subscription_definitions}
 \title{Retrieves a list of subscription definitions}
 \usage{
-list_subscription_definitions(
-  MaxResults = "string",
-  NextToken = "string"
-)
+list_subscription_definitions(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of results to be returned per request.}
@@ -17,6 +14,11 @@ list_subscription_definitions(
 \description{
 Retrieves a list of subscription definitions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_subscription_definitions(
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

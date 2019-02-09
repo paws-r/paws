@@ -4,17 +4,8 @@
 \alias{describe_clusters}
 \title{Returns properties of provisioned clusters including general cluster properties, cluster database properties, maintenance and backup properties, and security and access properties}
 \usage{
-describe_clusters(
-  ClusterIdentifier = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  TagKeys = list(
-    "string"
-  ),
-  TagValues = list(
-    "string"
-  )
-)
+describe_clusters(ClusterIdentifier = NULL, MaxRecords = NULL,
+  Marker = NULL, TagKeys = NULL, TagValues = NULL)
 }
 \arguments{
 \item{ClusterIdentifier}{The unique identifier of a cluster whose properties you are requesting. This parameter is case sensitive.
@@ -43,6 +34,18 @@ If you specify both tag keys and tag values in the same request, Amazon Redshift
 
 If both tag keys and values are omitted from the request, clusters are returned regardless of whether they have tag keys or values associated with them.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_clusters(
+  ClusterIdentifier = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  TagKeys = list(
+    "string"
+  ),
+  TagValues = list(
+    "string"
+  )
+)
 }
+}
+

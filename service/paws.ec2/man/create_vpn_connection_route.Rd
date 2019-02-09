@@ -4,10 +4,7 @@
 \alias{create_vpn_connection_route}
 \title{Creates a static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway}
 \usage{
-create_vpn_connection_route(
-  DestinationCidrBlock = "string",
-  VpnConnectionId = "string"
-)
+create_vpn_connection_route(DestinationCidrBlock, VpnConnectionId)
 }
 \arguments{
 \item{DestinationCidrBlock}{[required] The CIDR block associated with the local subnet of the customer network.}
@@ -20,6 +17,11 @@ Creates a static route associated with a VPN connection between an existing virt
 \details{
 For more information about VPN connections, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html}{AWS Managed VPN Connections} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_vpn_connection_route(
+  DestinationCidrBlock = "string",
+  VpnConnectionId = "string"
+)
 }
+}
+

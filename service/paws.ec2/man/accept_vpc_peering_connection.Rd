@@ -4,10 +4,8 @@
 \alias{accept_vpc_peering_connection}
 \title{Accept a VPC peering connection request}
 \usage{
-accept_vpc_peering_connection(
-  DryRun = TRUE|FALSE,
-  VpcPeeringConnectionId = "string"
-)
+accept_vpc_peering_connection(DryRun = NULL,
+  VpcPeeringConnectionId = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -20,6 +18,11 @@ Accept a VPC peering connection request. To accept a request, the VPC peering co
 \details{
 For an inter-region VPC peering connection request, you must accept the VPC peering connection in the region of the accepter VPC.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{accept_vpc_peering_connection(
+  DryRun = TRUE|FALSE,
+  VpcPeeringConnectionId = "string"
+)
 }
+}
+

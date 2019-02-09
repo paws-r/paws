@@ -4,12 +4,7 @@
 \alias{reboot_cache_cluster}
 \title{Reboots some, or all, of the cache nodes within a provisioned cluster}
 \usage{
-reboot_cache_cluster(
-  CacheClusterId = "string",
-  CacheNodeIdsToReboot = list(
-    "string"
-  )
-)
+reboot_cache_cluster(CacheClusterId, CacheNodeIdsToReboot)
 }
 \arguments{
 \item{CacheClusterId}{[required] The cluster identifier. This parameter is stored as a lowercase string.}
@@ -28,6 +23,13 @@ Rebooting a cluster is currently supported on Memcached and Redis (cluster mode 
 
 If you make changes to parameters that require a Redis (cluster mode enabled) cluster reboot for the changes to be applied, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.Rebooting.html}{Rebooting a Cluster} for an alternate process.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reboot_cache_cluster(
+  CacheClusterId = "string",
+  CacheNodeIdsToReboot = list(
+    "string"
+  )
+)
 }
+}
+

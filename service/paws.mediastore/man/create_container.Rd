@@ -4,9 +4,7 @@
 \alias{create_container}
 \title{Creates a storage container to hold objects}
 \usage{
-create_container(
-  ContainerName = "string"
-)
+create_container(ContainerName)
 }
 \arguments{
 \item{ContainerName}{[required] The name for the container. The name must be from 1 to 255 characters. Container names must be unique to your AWS account within a specific region. As an example, you could create a container named \code{movies} in every region, as long as you don't have an existing container with that name.}
@@ -14,6 +12,10 @@ create_container(
 \description{
 Creates a storage container to hold objects. A container is similar to a bucket in the Amazon S3 service.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_container(
+  ContainerName = "string"
+)
 }
+}
+

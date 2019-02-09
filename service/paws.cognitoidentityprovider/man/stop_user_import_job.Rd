@@ -4,10 +4,7 @@
 \alias{stop_user_import_job}
 \title{Stops the user import job}
 \usage{
-stop_user_import_job(
-  UserPoolId = "string",
-  JobId = "string"
-)
+stop_user_import_job(UserPoolId, JobId)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool that the users are being imported into.}
@@ -17,6 +14,11 @@ stop_user_import_job(
 \description{
 Stops the user import job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_user_import_job(
+  UserPoolId = "string",
+  JobId = "string"
+)
 }
+}
+

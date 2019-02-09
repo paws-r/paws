@@ -4,10 +4,7 @@
 \alias{create_vault}
 \title{This operation creates a new vault with the specified name}
 \usage{
-create_vault(
-  accountId = "string",
-  vaultName = "string"
-)
+create_vault(accountId, vaultName)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.}
@@ -30,11 +27,19 @@ An AWS account has full permission to perform all operations (actions). However,
 
 For conceptual information and underlying REST API, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/creating-vaults.html}{Creating a Vault in Amazon Glacier} and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-put.html}{Create Vault} in the \emph{Amazon Glacier Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_vault(
+  accountId = "string",
+  vaultName = "string"
+)
+}
+}
+
 \examples{
 # The following example creates a new vault named my-vault.
-create_vault(
+\donttest{create_vault(
   accountId = "-",
   vaultName = "my-vault"
-)
+)}
 
 }

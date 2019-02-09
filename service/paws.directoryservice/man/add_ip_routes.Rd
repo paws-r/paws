@@ -4,16 +4,8 @@
 \alias{add_ip_routes}
 \title{If the DNS server for your on-premises domain uses a publicly addressable IP address, you must add a CIDR address block to correctly route traffic to and from your Microsoft AD on Amazon Web Services}
 \usage{
-add_ip_routes(
-  DirectoryId = "string",
-  IpRoutes = list(
-    list(
-      CidrIp = "string",
-      Description = "string"
-    )
-  ),
-  UpdateSecurityGroupForDirectoryControllers = TRUE|FALSE
-)
+add_ip_routes(DirectoryId, IpRoutes,
+  UpdateSecurityGroupForDirectoryControllers = NULL)
 }
 \arguments{
 \item{DirectoryId}{[required] Identifier (ID) of the directory to which to add the address block.}
@@ -56,6 +48,17 @@ If the DNS server for your on-premises domain uses a publicly addressable IP add
 \details{
 Before you call \emph{AddIpRoutes}, ensure that all of the required permissions have been explicitly granted through a policy. For details about what permissions are required to run the \emph{AddIpRoutes} operation, see \href{http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_ip_routes(
+  DirectoryId = "string",
+  IpRoutes = list(
+    list(
+      CidrIp = "string",
+      Description = "string"
+    )
+  ),
+  UpdateSecurityGroupForDirectoryControllers = TRUE|FALSE
+)
 }
+}
+

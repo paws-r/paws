@@ -4,9 +4,7 @@
 \alias{delete_backup}
 \title{Deletes an existing backup of a table}
 \usage{
-delete_backup(
-  BackupArn = "string"
-)
+delete_backup(BackupArn)
 }
 \arguments{
 \item{BackupArn}{[required] The ARN associated with the backup.}
@@ -17,6 +15,10 @@ Deletes an existing backup of a table.
 \details{
 You can call \code{DeleteBackup} at a maximum rate of 10 times per second.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_backup(
+  BackupArn = "string"
+)
 }
+}
+

@@ -2,15 +2,9 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{predict}
 \alias{predict}
-\title{Generates a prediction for the observation using the specified \code{ML Model}}
+\title{Generates a prediction for the observation using the specified ML Model}
 \usage{
-predict(
-  MLModelId = "string",
-  Record = list(
-    "string"
-  ),
-  PredictEndpoint = "string"
-)
+predict(MLModelId, Record, PredictEndpoint)
 }
 \arguments{
 \item{MLModelId}{[required] A unique identifier of the \code{MLModel}.}
@@ -27,6 +21,14 @@ Note
 
 Not all response parameters will be populated. Whether a response parameter is populated depends on the type of model requested.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{predict(
+  MLModelId = "string",
+  Record = list(
+    "string"
+  ),
+  PredictEndpoint = "string"
+)
 }
+}
+

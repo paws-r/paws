@@ -4,12 +4,8 @@
 \alias{get_bot_aliases}
 \title{Returns a list of aliases for a specified Amazon Lex bot}
 \usage{
-get_bot_aliases(
-  botName = "string",
-  nextToken = "string",
-  maxResults = 123,
-  nameContains = "string"
-)
+get_bot_aliases(botName, nextToken = NULL, maxResults = NULL,
+  nameContains = NULL)
 }
 \arguments{
 \item{botName}{[required] The name of the bot.}
@@ -26,6 +22,13 @@ Returns a list of aliases for a specified Amazon Lex bot.
 \details{
 This operation requires permissions for the \code{lex:GetBotAliases} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_bot_aliases(
+  botName = "string",
+  nextToken = "string",
+  maxResults = 123,
+  nameContains = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{delete_vpc_peering_connection}
 \title{Removes a VPC peering connection}
 \usage{
-delete_vpc_peering_connection(
-  FleetId = "string",
-  VpcPeeringConnectionId = "string"
-)
+delete_vpc_peering_connection(FleetId, VpcPeeringConnectionId)
 }
 \arguments{
 \item{FleetId}{[required] Unique identifier for a fleet. This value must match the fleet ID referenced in the VPC peering connection record.}
@@ -30,6 +27,11 @@ VPC peering connection operations include:
 \item DeleteVpcPeeringConnection
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_vpc_peering_connection(
+  FleetId = "string",
+  VpcPeeringConnectionId = "string"
+)
 }
+}
+

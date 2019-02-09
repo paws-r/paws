@@ -4,9 +4,7 @@
 \alias{delete_bucket_encryption}
 \title{Deletes the server-side encryption configuration from the bucket}
 \usage{
-delete_bucket_encryption(
-  Bucket = "string"
-)
+delete_bucket_encryption(Bucket)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket containing the server-side encryption configuration to delete.}
@@ -14,6 +12,10 @@ delete_bucket_encryption(
 \description{
 Deletes the server-side encryption configuration from the bucket.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_bucket_encryption(
+  Bucket = "string"
+)
 }
+}
+

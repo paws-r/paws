@@ -4,18 +4,8 @@
 \alias{describe_certificates}
 \title{Provides a description of the certificate}
 \usage{
-describe_certificates(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_certificates(Filters = NULL, MaxRecords = NULL,
+  Marker = NULL)
 }
 \arguments{
 \item{Filters}{Filters applied to the certificate described in the form of key-value pairs.}
@@ -29,9 +19,25 @@ Default: 10}
 \description{
 Provides a description of the certificate.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_certificates(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
+}
+}
+
 \examples{
 # Provides a description of the certificate.
-describe_certificates(
+\donttest{describe_certificates(
   Filters = list(
     list(
       Name = "string",
@@ -43,6 +49,6 @@ describe_certificates(
   ),
   Marker = "",
   MaxRecords = 123L
-)
+)}
 
 }

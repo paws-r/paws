@@ -4,7 +4,20 @@
 \alias{update_segment}
 \title{Used to update a segment}
 \usage{
-update_segment(
+update_segment(ApplicationId, SegmentId, WriteSegmentRequest)
+}
+\arguments{
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+
+\item{SegmentId}{[required] The unique ID of the segment.}
+
+\item{WriteSegmentRequest}{[required]}
+}
+\description{
+Used to update a segment.
+}
+\section{Accepted Parameters}{
+\preformatted{update_segment(
   ApplicationId = "string",
   SegmentId = "string",
   WriteSegmentRequest = list(
@@ -195,16 +208,5 @@ update_segment(
   )
 )
 }
-\arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
-
-\item{SegmentId}{[required] The unique ID of the segment.}
-
-\item{WriteSegmentRequest}{[required]}
 }
-\description{
-Used to update a segment.
-}
-\examples{
 
-}

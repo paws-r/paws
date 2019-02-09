@@ -4,45 +4,9 @@
 \alias{create_pipeline}
 \title{The CreatePipeline operation creates a pipeline with settings that you specify}
 \usage{
-create_pipeline(
-  Name = "string",
-  InputBucket = "string",
-  OutputBucket = "string",
-  Role = "string",
-  AwsKmsKeyArn = "string",
-  Notifications = list(
-    Progressing = "string",
-    Completed = "string",
-    Warning = "string",
-    Error = "string"
-  ),
-  ContentConfig = list(
-    Bucket = "string",
-    StorageClass = "string",
-    Permissions = list(
-      list(
-        GranteeType = "string",
-        Grantee = "string",
-        Access = list(
-          "string"
-        )
-      )
-    )
-  ),
-  ThumbnailConfig = list(
-    Bucket = "string",
-    StorageClass = "string",
-    Permissions = list(
-      list(
-        GranteeType = "string",
-        Grantee = "string",
-        Access = list(
-          "string"
-        )
-      )
-    )
-  )
-)
+create_pipeline(Name, InputBucket, OutputBucket = NULL, Role,
+  AwsKmsKeyArn = NULL, Notifications = NULL, ContentConfig = NULL,
+  ThumbnailConfig = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the pipeline. We recommend that the name be unique within the AWS account, but uniqueness is not enforced.
@@ -138,6 +102,46 @@ A canonical user ID is not the same as an AWS account number.
 \description{
 The CreatePipeline operation creates a pipeline with settings that you specify.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_pipeline(
+  Name = "string",
+  InputBucket = "string",
+  OutputBucket = "string",
+  Role = "string",
+  AwsKmsKeyArn = "string",
+  Notifications = list(
+    Progressing = "string",
+    Completed = "string",
+    Warning = "string",
+    Error = "string"
+  ),
+  ContentConfig = list(
+    Bucket = "string",
+    StorageClass = "string",
+    Permissions = list(
+      list(
+        GranteeType = "string",
+        Grantee = "string",
+        Access = list(
+          "string"
+        )
+      )
+    )
+  ),
+  ThumbnailConfig = list(
+    Bucket = "string",
+    StorageClass = "string",
+    Permissions = list(
+      list(
+        GranteeType = "string",
+        Grantee = "string",
+        Access = list(
+          "string"
+        )
+      )
+    )
+  )
+)
 }
+}
+

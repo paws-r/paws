@@ -4,34 +4,17 @@
 \alias{modify_cluster}
 \title{Modifies the settings for a cluster}
 \usage{
-modify_cluster(
-  ClusterIdentifier = "string",
-  ClusterType = "string",
-  NodeType = "string",
-  NumberOfNodes = 123,
-  ClusterSecurityGroups = list(
-    "string"
-  ),
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  MasterUserPassword = "string",
-  ClusterParameterGroupName = "string",
-  AutomatedSnapshotRetentionPeriod = 123,
-  ManualSnapshotRetentionPeriod = 123,
-  PreferredMaintenanceWindow = "string",
-  ClusterVersion = "string",
-  AllowVersionUpgrade = TRUE|FALSE,
-  HsmClientCertificateIdentifier = "string",
-  HsmConfigurationIdentifier = "string",
-  NewClusterIdentifier = "string",
-  PubliclyAccessible = TRUE|FALSE,
-  ElasticIp = "string",
-  EnhancedVpcRouting = TRUE|FALSE,
-  MaintenanceTrackName = "string",
-  Encrypted = TRUE|FALSE,
-  KmsKeyId = "string"
-)
+modify_cluster(ClusterIdentifier, ClusterType = NULL, NodeType = NULL,
+  NumberOfNodes = NULL, ClusterSecurityGroups = NULL,
+  VpcSecurityGroupIds = NULL, MasterUserPassword = NULL,
+  ClusterParameterGroupName = NULL,
+  AutomatedSnapshotRetentionPeriod = NULL,
+  PreferredMaintenanceWindow = NULL, ClusterVersion = NULL,
+  AllowVersionUpgrade = NULL, HsmClientCertificateIdentifier = NULL,
+  HsmConfigurationIdentifier = NULL, NewClusterIdentifier = NULL,
+  PubliclyAccessible = NULL, ElasticIp = NULL,
+  EnhancedVpcRouting = NULL, MaintenanceTrackName = NULL,
+  Encrypted = NULL, KmsKeyId = NULL)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The unique identifier of the cluster to be modified.
@@ -98,12 +81,6 @@ Default: Uses existing setting.
 
 Constraints: Must be a value from 0 to 35.}
 
-\item{ManualSnapshotRetentionPeriod}{The default for number of days that a newly created manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely. This value doesn't retroactively change the retention periods of existing manual snapshots.
-
-The value must be either -1 or an integer between 1 and 3,653.
-
-The default value is -1.}
-
 \item{PreferredMaintenanceWindow}{The weekly time range (in UTC) during which system maintenance can occur, if necessary. If system maintenance is necessary during the window, it may result in an outage.
 
 This maintenance window change is made immediately. If the new maintenance window indicates the current time, there must be at least 120 minutes between the current time and end of the window in order to ensure that pending changes are applied.
@@ -167,6 +144,34 @@ Modifies the settings for a cluster. For example, you can add another security o
 \details{
 You can also change node type and the number of nodes to scale up or down the cluster. When resizing a cluster, you must specify both the number of nodes and the node type even if one of the parameters does not change.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_cluster(
+  ClusterIdentifier = "string",
+  ClusterType = "string",
+  NodeType = "string",
+  NumberOfNodes = 123,
+  ClusterSecurityGroups = list(
+    "string"
+  ),
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  MasterUserPassword = "string",
+  ClusterParameterGroupName = "string",
+  AutomatedSnapshotRetentionPeriod = 123,
+  PreferredMaintenanceWindow = "string",
+  ClusterVersion = "string",
+  AllowVersionUpgrade = TRUE|FALSE,
+  HsmClientCertificateIdentifier = "string",
+  HsmConfigurationIdentifier = "string",
+  NewClusterIdentifier = "string",
+  PubliclyAccessible = TRUE|FALSE,
+  ElasticIp = "string",
+  EnhancedVpcRouting = TRUE|FALSE,
+  MaintenanceTrackName = "string",
+  Encrypted = TRUE|FALSE,
+  KmsKeyId = "string"
+)
 }
+}
+

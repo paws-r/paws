@@ -4,14 +4,8 @@
 \alias{update_secret}
 \title{Modifies many of the details of the specified secret}
 \usage{
-update_secret(
-  SecretId = "string",
-  ClientRequestToken = "string",
-  Description = "string",
-  KmsKeyId = "string",
-  SecretBinary = raw,
-  SecretString = "string"
-)
+update_secret(SecretId, ClientRequestToken = NULL, Description = NULL,
+  KmsKeyId = NULL, SecretBinary = NULL, SecretString = NULL)
 }
 \arguments{
 \item{SecretId}{[required] Specifies the secret that you want to modify or to which you want to add a new version. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
@@ -86,28 +80,40 @@ To run this command, you must have the following permissions:
 \item To list the versions contained in a secret, use ListSecretVersionIds.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{update_secret(
+  SecretId = "string",
+  ClientRequestToken = "string",
+  Description = "string",
+  KmsKeyId = "string",
+  SecretBinary = raw,
+  SecretString = "string"
+)
+}
+}
+
 \examples{
 # The following example shows how to modify the description of a secret.
-update_secret(
+\donttest{update_secret(
   ClientRequestToken = "EXAMPLE1-90ab-cdef-fedc-ba987EXAMPLE",
   Description = "This is a new description for the secret.",
   SecretId = "MyTestDatabaseSecret"
-)
+)}
 
 # This example shows how to update the KMS customer managed key (CMK) used
 # to encrypt the secret value. The KMS CMK must be in the same region as
 # the secret.
-update_secret(
+\donttest{update_secret(
   KmsKeyId = "arn:aws:kms:us-west-2:123456789012:key/EXAMPLE2-90ab-cdef-fedc-ba987EXAMPLE",
   SecretId = "MyTestDatabaseSecret"
-)
+)}
 
 # The following example shows how to create a new version of the secret by
 # updating the SecretString field. Alternatively, you can use the
 # put-secret-value operation.
-update_secret(
+\donttest{update_secret(
   SecretId = "MyTestDatabaseSecret",
   SecretString = "{JSON STRING WITH CREDENTIALS}"
-)
+)}
 
 }

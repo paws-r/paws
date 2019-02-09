@@ -4,7 +4,21 @@
 \alias{put_bucket_lifecycle}
 \title{Deprecated, see the PutBucketLifecycleConfiguration operation}
 \usage{
-put_bucket_lifecycle(
+put_bucket_lifecycle(Bucket, ContentMD5 = NULL,
+  LifecycleConfiguration = NULL)
+}
+\arguments{
+\item{Bucket}{[required]}
+
+\item{ContentMD5}{}
+
+\item{LifecycleConfiguration}{}
+}
+\description{
+Deprecated, see the PutBucketLifecycleConfiguration operation.
+}
+\section{Accepted Parameters}{
+\preformatted{put_bucket_lifecycle(
   Bucket = "string",
   ContentMD5 = "string",
   LifecycleConfiguration = list(
@@ -21,11 +35,11 @@ put_bucket_lifecycle(
         Transition = list(
           Date = as.POSIXct("2015-01-01"),
           Days = 123,
-          StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"
+          StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"
         ),
         NoncurrentVersionTransition = list(
           NoncurrentDays = 123,
-          StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"
+          StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"
         ),
         NoncurrentVersionExpiration = list(
           NoncurrentDays = 123
@@ -38,16 +52,5 @@ put_bucket_lifecycle(
   )
 )
 }
-\arguments{
-\item{Bucket}{[required]}
-
-\item{ContentMD5}{}
-
-\item{LifecycleConfiguration}{}
 }
-\description{
-Deprecated, see the PutBucketLifecycleConfiguration operation.
-}
-\examples{
 
-}

@@ -2,9 +2,23 @@
 % Please edit documentation in R/paws.glue_operations.R
 \name{update_classifier}
 \alias{update_classifier}
-\title{Modifies an existing classifier (a \code{GrokClassifier}, \code{XMLClassifier}, or \code{JsonClassifier}, depending on which field is present)}
+\title{Modifies an existing classifier (a GrokClassifier, XMLClassifier, or JsonClassifier, depending on which field is present)}
 \usage{
-update_classifier(
+update_classifier(GrokClassifier = NULL, XMLClassifier = NULL,
+  JsonClassifier = NULL)
+}
+\arguments{
+\item{GrokClassifier}{A \code{GrokClassifier} object with updated fields.}
+
+\item{XMLClassifier}{An \code{XMLClassifier} object with updated fields.}
+
+\item{JsonClassifier}{A \code{JsonClassifier} object with updated fields.}
+}
+\description{
+Modifies an existing classifier (a \code{GrokClassifier}, \code{XMLClassifier}, or \code{JsonClassifier}, depending on which field is present).
+}
+\section{Accepted Parameters}{
+\preformatted{update_classifier(
   GrokClassifier = list(
     Name = "string",
     Classification = "string",
@@ -22,16 +36,5 @@ update_classifier(
   )
 )
 }
-\arguments{
-\item{GrokClassifier}{A \code{GrokClassifier} object with updated fields.}
-
-\item{XMLClassifier}{An \code{XMLClassifier} object with updated fields.}
-
-\item{JsonClassifier}{A \code{JsonClassifier} object with updated fields.}
 }
-\description{
-Modifies an existing classifier (a \code{GrokClassifier}, \code{XMLClassifier}, or \code{JsonClassifier}, depending on which field is present).
-}
-\examples{
 
-}

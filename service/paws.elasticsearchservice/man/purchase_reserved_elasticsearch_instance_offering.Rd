@@ -4,11 +4,9 @@
 \alias{purchase_reserved_elasticsearch_instance_offering}
 \title{Allows you to purchase reserved Elasticsearch instances}
 \usage{
-purchase_reserved_elasticsearch_instance_offering(
-  ReservedElasticsearchInstanceOfferingId = "string",
-  ReservationName = "string",
-  InstanceCount = 123
-)
+
+  purchase_reserved_elasticsearch_instance_offering(ReservedElasticsearchInstanceOfferingId,
+  ReservationName, InstanceCount = NULL)
 }
 \arguments{
 \item{ReservedElasticsearchInstanceOfferingId}{[required] The ID of the reserved Elasticsearch instance offering to purchase.}
@@ -20,6 +18,12 @@ purchase_reserved_elasticsearch_instance_offering(
 \description{
 Allows you to purchase reserved Elasticsearch instances.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{purchase_reserved_elasticsearch_instance_offering(
+  ReservedElasticsearchInstanceOfferingId = "string",
+  ReservationName = "string",
+  InstanceCount = 123
+)
 }
+}
+

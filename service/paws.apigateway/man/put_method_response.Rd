@@ -4,18 +4,8 @@
 \alias{put_method_response}
 \title{Adds a MethodResponse to an existing Method resource}
 \usage{
-put_method_response(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string",
-  statusCode = "string",
-  responseParameters = list(
-    TRUE|FALSE
-  ),
-  responseModels = list(
-    "string"
-  )
-)
+put_method_response(restApiId, resourceId, httpMethod, statusCode,
+  responseParameters = NULL, responseModels = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -33,6 +23,19 @@ put_method_response(
 \description{
 Adds a MethodResponse to an existing Method resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_method_response(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string",
+  statusCode = "string",
+  responseParameters = list(
+    TRUE|FALSE
+  ),
+  responseModels = list(
+    "string"
+  )
+)
 }
+}
+

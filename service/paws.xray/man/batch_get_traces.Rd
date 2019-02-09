@@ -4,12 +4,7 @@
 \alias{batch_get_traces}
 \title{Retrieves a list of traces specified by ID}
 \usage{
-batch_get_traces(
-  TraceIds = list(
-    "string"
-  ),
-  NextToken = "string"
-)
+batch_get_traces(TraceIds, NextToken = NULL)
 }
 \arguments{
 \item{TraceIds}{[required] Specify the trace IDs of requests for which to retrieve segments.}
@@ -19,6 +14,13 @@ batch_get_traces(
 \description{
 Retrieves a list of traces specified by ID. Each trace is a collection of segment documents that originates from a single request. Use \code{GetTraceSummaries} to get a list of trace IDs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_get_traces(
+  TraceIds = list(
+    "string"
+  ),
+  NextToken = "string"
+)
 }
+}
+

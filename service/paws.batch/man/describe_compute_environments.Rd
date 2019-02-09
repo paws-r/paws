@@ -4,13 +4,8 @@
 \alias{describe_compute_environments}
 \title{Describes one or more of your compute environments}
 \usage{
-describe_compute_environments(
-  computeEnvironments = list(
-    "string"
-  ),
-  maxResults = 123,
-  nextToken = "string"
-)
+describe_compute_environments(computeEnvironments = NULL,
+  maxResults = NULL, nextToken = NULL)
 }
 \arguments{
 \item{computeEnvironments}{A list of up to 100 compute environment names or full Amazon Resource Name (ARN) entries.}
@@ -27,12 +22,23 @@ Describes one or more of your compute environments.
 \details{
 If you are using an unmanaged compute environment, you can use the \code{DescribeComputeEnvironment} operation to determine the \code{ecsClusterArn} that you should launch your Amazon ECS container instances into.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_compute_environments(
+  computeEnvironments = list(
+    "string"
+  ),
+  maxResults = 123,
+  nextToken = "string"
+)
+}
+}
+
 \examples{
 # This example describes the P2OnDemand compute environment.
-describe_compute_environments(
+\donttest{describe_compute_environments(
   computeEnvironments = list(
     "P2OnDemand"
   )
-)
+)}
 
 }

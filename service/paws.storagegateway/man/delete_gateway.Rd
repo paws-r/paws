@@ -4,9 +4,7 @@
 \alias{delete_gateway}
 \title{Deletes a gateway}
 \usage{
-delete_gateway(
-  GatewayARN = "string"
-)
+delete_gateway(GatewayARN)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -17,13 +15,20 @@ Deletes a gateway. To specify which gateway to delete, use the Amazon Resource N
 \details{
 After you delete a gateway, you cannot reactivate it. Completed snapshots of the gateway volumes are not deleted upon deleting the gateway, however, pending snapshots will not complete. After you delete a gateway, your next step is to remove it from your environment.
 
-You no longer pay software charges after the gateway is deleted; however, your existing Amazon EBS snapshots persist and you will continue to be billed for these snapshots.Â You can choose to remove all remaining Amazon EBS snapshots by canceling your Amazon EC2 subscription.Â  If you prefer not to cancel your Amazon EC2 subscription, you can delete your snapshots using the Amazon EC2 console. For more information, see the \href{http://aws.amazon.com/storagegateway}{AWS Storage Gateway Detail Page}.
+You no longer pay software charges after the gateway is deleted; however, your existing Amazon EBS snapshots persist and you will continue to be billed for these snapshots. You can choose to remove all remaining Amazon EBS snapshots by canceling your Amazon EC2 subscription.  If you prefer not to cancel your Amazon EC2 subscription, you can delete your snapshots using the Amazon EC2 console. For more information, see the \href{http://aws.amazon.com/storagegateway}{AWS Storage Gateway Detail Page}.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_gateway(
+  GatewayARN = "string"
+)
+}
+}
+
 \examples{
 # This operation deletes the gateway, but not the gateway's VM from the
 # host computer.
-delete_gateway(
+\donttest{delete_gateway(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
+)}
 
 }

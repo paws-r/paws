@@ -4,12 +4,8 @@
 \alias{associate_device_with_placement}
 \title{Associates a physical device with a placement}
 \usage{
-associate_device_with_placement(
-  projectName = "string",
-  placementName = "string",
-  deviceId = "string",
-  deviceTemplateName = "string"
-)
+associate_device_with_placement(projectName, placementName, deviceId,
+  deviceTemplateName)
 }
 \arguments{
 \item{projectName}{[required] The name of the project containing the placement in which to associate the device.}
@@ -23,6 +19,13 @@ associate_device_with_placement(
 \description{
 Associates a physical device with a placement.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_device_with_placement(
+  projectName = "string",
+  placementName = "string",
+  deviceId = "string",
+  deviceTemplateName = "string"
+)
 }
+}
+

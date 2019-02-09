@@ -4,9 +4,7 @@
 \alias{delete_user_permissions_boundary}
 \title{Deletes the permissions boundary for the specified IAM user}
 \usage{
-delete_user_permissions_boundary(
-  UserName = "string"
-)
+delete_user_permissions_boundary(UserName)
 }
 \arguments{
 \item{UserName}{[required] The name (friendly name, not ARN) of the IAM user from which you want to remove the permissions boundary.}
@@ -17,6 +15,10 @@ Deletes the permissions boundary for the specified IAM user.
 \details{
 Deleting the permissions boundary for a user might increase its permissions by allowing the user to perform all the actions granted in its permissions policies.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_user_permissions_boundary(
+  UserName = "string"
+)
 }
+}
+

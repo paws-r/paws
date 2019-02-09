@@ -4,11 +4,8 @@
 \alias{describe_configuration_settings}
 \title{Returns a description of the settings for the specified configuration set, that is, either a configuration template or the configuration set associated with a running environment}
 \usage{
-describe_configuration_settings(
-  ApplicationName = "string",
-  TemplateName = "string",
-  EnvironmentName = "string"
-)
+describe_configuration_settings(ApplicationName, TemplateName = NULL,
+  EnvironmentName = NULL)
 }
 \arguments{
 \item{ApplicationName}{[required] The application for the environment or configuration template.}
@@ -32,12 +29,21 @@ Related Topics
 \item DeleteEnvironmentConfiguration
 }
 }
+\section{Accepted Parameters}{
+\preformatted{describe_configuration_settings(
+  ApplicationName = "string",
+  TemplateName = "string",
+  EnvironmentName = "string"
+)
+}
+}
+
 \examples{
 # The following operation retrieves configuration settings for an
 # environment named my-env:
-describe_configuration_settings(
+\donttest{describe_configuration_settings(
   ApplicationName = "my-app",
   EnvironmentName = "my-env"
-)
+)}
 
 }

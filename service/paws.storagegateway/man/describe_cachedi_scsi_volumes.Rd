@@ -4,11 +4,7 @@
 \alias{describe_cachedi_scsi_volumes}
 \title{Returns a description of the gateway volumes specified in the request}
 \usage{
-describe_cachedi_scsi_volumes(
-  VolumeARNs = list(
-    "string"
-  )
-)
+describe_cachedi_scsi_volumes(VolumeARNs)
 }
 \arguments{
 \item{VolumeARNs}{[required]}
@@ -19,13 +15,22 @@ Returns a description of the gateway volumes specified in the request. This oper
 \details{
 The list of gateway volumes in the request must be from one gateway. In the response Amazon Storage Gateway returns volume information sorted by volume Amazon Resource Name (ARN).
 }
+\section{Accepted Parameters}{
+\preformatted{describe_cachedi_scsi_volumes(
+  VolumeARNs = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # Returns a description of the gateway cached iSCSI volumes specified in
 # the request.
-describe_cachedi_scsi_volumes(
+\donttest{describe_cachedi_scsi_volumes(
   VolumeARNs = list(
     "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB"
   )
-)
+)}
 
 }

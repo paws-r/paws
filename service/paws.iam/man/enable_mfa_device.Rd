@@ -4,21 +4,17 @@
 \alias{enable_mfa_device}
 \title{Enables the specified MFA device and associates it with the specified IAM user}
 \usage{
-enable_mfa_device(
-  UserName = "string",
-  SerialNumber = "string",
-  AuthenticationCode1 = "string",
-  AuthenticationCode2 = "string"
-)
+enable_mfa_device(UserName, SerialNumber, AuthenticationCode1,
+  AuthenticationCode2)
 }
 \arguments{
 \item{UserName}{[required] The name of the IAM user for whom you want to enable the MFA device.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{SerialNumber}{[required] The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the device ARN.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@:/-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@:/-}
 
 \item{AuthenticationCode1}{[required] An authentication code emitted by the device.
 
@@ -35,6 +31,13 @@ Submit your request immediately after generating the authentication codes. If yo
 \description{
 Enables the specified MFA device and associates it with the specified IAM user. When enabled, the MFA device is required for every subsequent login by the IAM user associated with the device.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{enable_mfa_device(
+  UserName = "string",
+  SerialNumber = "string",
+  AuthenticationCode1 = "string",
+  AuthenticationCode2 = "string"
+)
 }
+}
+

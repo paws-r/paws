@@ -4,10 +4,7 @@
 \alias{create_matchmaking_rule_set}
 \title{Creates a new rule set for FlexMatch matchmaking}
 \usage{
-create_matchmaking_rule_set(
-  Name = "string",
-  RuleSetBody = "string"
-)
+create_matchmaking_rule_set(Name, RuleSetBody)
 }
 \arguments{
 \item{Name}{[required] Unique identifier for a matchmaking rule set. This name is used to identify the rule set associated with a matchmaking configuration.}
@@ -33,6 +30,11 @@ Operations related to match configurations and rule sets include:
 \item ValidateMatchmakingRuleSet
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_matchmaking_rule_set(
+  Name = "string",
+  RuleSetBody = "string"
+)
 }
+}
+

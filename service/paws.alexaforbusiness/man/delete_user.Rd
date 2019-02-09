@@ -4,10 +4,7 @@
 \alias{delete_user}
 \title{Deletes a specified user by user ARN and enrollment ARN}
 \usage{
-delete_user(
-  UserArn = "string",
-  EnrollmentId = "string"
-)
+delete_user(UserArn = NULL, EnrollmentId)
 }
 \arguments{
 \item{UserArn}{The ARN of the user to delete in the organization. Required.}
@@ -17,6 +14,11 @@ delete_user(
 \description{
 Deletes a specified user by user ARN and enrollment ARN.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_user(
+  UserArn = "string",
+  EnrollmentId = "string"
+)
 }
+}
+

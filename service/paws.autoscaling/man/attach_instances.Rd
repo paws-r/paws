@@ -4,12 +4,7 @@
 \alias{attach_instances}
 \title{Attaches one or more EC2 instances to the specified Auto Scaling group}
 \usage{
-attach_instances(
-  InstanceIds = list(
-    "string"
-  ),
-  AutoScalingGroupName = "string"
-)
+attach_instances(InstanceIds = NULL, AutoScalingGroupName)
 }
 \arguments{
 \item{InstanceIds}{The IDs of the instances. You can specify up to 20 instances.}
@@ -26,14 +21,24 @@ If there is a Classic Load Balancer attached to your Auto Scaling group, the ins
 
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-instance-asg.html}{Attach EC2 Instances to Your Auto Scaling Group} in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{attach_instances(
+  InstanceIds = list(
+    "string"
+  ),
+  AutoScalingGroupName = "string"
+)
+}
+}
+
 \examples{
 # This example attaches the specified instance to the specified Auto
 # Scaling group.
-attach_instances(
+\donttest{attach_instances(
   AutoScalingGroupName = "my-auto-scaling-group",
   InstanceIds = list(
     "i-93633f9b"
   )
-)
+)}
 
 }

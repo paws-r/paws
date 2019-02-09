@@ -4,7 +4,18 @@
 \alias{update_apns_sandbox_channel}
 \title{Update an APNS sandbox channel}
 \usage{
-update_apns_sandbox_channel(
+update_apns_sandbox_channel(APNSSandboxChannelRequest, ApplicationId)
+}
+\arguments{
+\item{APNSSandboxChannelRequest}{[required]}
+
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+}
+\description{
+Update an APNS sandbox channel.
+}
+\section{Accepted Parameters}{
+\preformatted{update_apns_sandbox_channel(
   APNSSandboxChannelRequest = list(
     BundleId = "string",
     Certificate = "string",
@@ -18,14 +29,5 @@ update_apns_sandbox_channel(
   ApplicationId = "string"
 )
 }
-\arguments{
-\item{APNSSandboxChannelRequest}{[required]}
+}
 
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
-}
-\description{
-Update an APNS sandbox channel.
-}
-\examples{
-
-}

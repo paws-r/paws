@@ -4,19 +4,8 @@
 \alias{create_room}
 \title{Creates a room with the specified details}
 \usage{
-create_room(
-  RoomName = "string",
-  Description = "string",
-  ProfileArn = "string",
-  ProviderCalendarId = "string",
-  ClientRequestToken = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_room(RoomName, Description = NULL, ProfileArn = NULL,
+  ProviderCalendarId = NULL, ClientRequestToken = NULL, Tags = NULL)
 }
 \arguments{
 \item{RoomName}{[required] The name for the room.}
@@ -34,6 +23,20 @@ create_room(
 \description{
 Creates a room with the specified details.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_room(
+  RoomName = "string",
+  Description = "string",
+  ProfileArn = "string",
+  ProviderCalendarId = "string",
+  ClientRequestToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

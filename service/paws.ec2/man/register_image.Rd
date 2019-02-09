@@ -4,38 +4,11 @@
 \alias{register_image}
 \title{Registers an AMI}
 \usage{
-register_image(
-  ImageLocation = "string",
-  Architecture = "i386"|"x86_64"|"arm64",
-  BlockDeviceMappings = list(
-    list(
-      DeviceName = "string",
-      VirtualName = "string",
-      Ebs = list(
-        DeleteOnTermination = TRUE|FALSE,
-        Iops = 123,
-        SnapshotId = "string",
-        VolumeSize = 123,
-        VolumeType = "standard"|"io1"|"gp2"|"sc1"|"st1",
-        Encrypted = TRUE|FALSE,
-        KmsKeyId = "string"
-      ),
-      NoDevice = "string"
-    )
-  ),
-  Description = "string",
-  DryRun = TRUE|FALSE,
-  EnaSupport = TRUE|FALSE,
-  KernelId = "string",
-  Name = "string",
-  BillingProducts = list(
-    "string"
-  ),
-  RamdiskId = "string",
-  RootDeviceName = "string",
-  SriovNetSupport = "string",
-  VirtualizationType = "string"
-)
+register_image(ImageLocation = NULL, Architecture = NULL,
+  BlockDeviceMappings = NULL, Description = NULL, DryRun = NULL,
+  EnaSupport = NULL, KernelId = NULL, Name, BillingProducts = NULL,
+  RamdiskId = NULL, RootDeviceName = NULL, SriovNetSupport = NULL,
+  VirtualizationType = NULL)
 }
 \arguments{
 \item{ImageLocation}{The full path to your AMI manifest in Amazon S3 storage.}
@@ -92,6 +65,39 @@ To create an AMI for operating systems that require a billing code, see CreateIm
 
 If needed, you can deregister an AMI at any time. Any modifications you make to an AMI backed by an instance store volume invalidates its registration. If you make changes to an image, deregister the previous image and register the new image.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{register_image(
+  ImageLocation = "string",
+  Architecture = "i386"|"x86_64",
+  BlockDeviceMappings = list(
+    list(
+      DeviceName = "string",
+      VirtualName = "string",
+      Ebs = list(
+        DeleteOnTermination = TRUE|FALSE,
+        Iops = 123,
+        SnapshotId = "string",
+        VolumeSize = 123,
+        VolumeType = "standard"|"io1"|"gp2"|"sc1"|"st1",
+        Encrypted = TRUE|FALSE,
+        KmsKeyId = "string"
+      ),
+      NoDevice = "string"
+    )
+  ),
+  Description = "string",
+  DryRun = TRUE|FALSE,
+  EnaSupport = TRUE|FALSE,
+  KernelId = "string",
+  Name = "string",
+  BillingProducts = list(
+    "string"
+  ),
+  RamdiskId = "string",
+  RootDeviceName = "string",
+  SriovNetSupport = "string",
+  VirtualizationType = "string"
+)
 }
+}
+

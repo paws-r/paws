@@ -2,14 +2,9 @@
 % Please edit documentation in R/paws.chime_operations.R
 \name{batch_unsuspend_user}
 \alias{batch_unsuspend_user}
-\title{Removes the suspension from up to 50 previously suspended users for the specified Amazon Chime \code{EnterpriseLWA} account}
+\title{Removes the suspension from up to 50 previously suspended users for the specified Amazon Chime EnterpriseLWA account}
 \usage{
-batch_unsuspend_user(
-  AccountId = "string",
-  UserIdList = list(
-    "string"
-  )
-)
+batch_unsuspend_user(AccountId, UserIdList)
 }
 \arguments{
 \item{AccountId}{[required] The Amazon Chime account ID.}
@@ -22,6 +17,13 @@ Removes the suspension from up to 50 previously suspended users for the specifie
 \details{
 Previously suspended users who are unsuspended using this action are returned to \code{Registered} status. Users who are not previously suspended are ignored.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_unsuspend_user(
+  AccountId = "string",
+  UserIdList = list(
+    "string"
+  )
+)
 }
+}
+

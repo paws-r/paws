@@ -4,7 +4,35 @@
 \alias{create_job}
 \title{Creates a job}
 \usage{
-create_job(
+create_job(jobId, targets, documentSource = NULL, document = NULL,
+  description = NULL, presignedUrlConfig = NULL,
+  targetSelection = NULL, jobExecutionsRolloutConfig = NULL,
+  timeoutConfig = NULL)
+}
+\arguments{
+\item{jobId}{[required] A job identifier which must be unique for your AWS account. We recommend using a UUID. Alpha-numeric characters, "-" and "\_" are valid for use here.}
+
+\item{targets}{[required] A list of things and thing groups to which the job should be sent.}
+
+\item{documentSource}{An S3 link to the job document.}
+
+\item{document}{The job document.}
+
+\item{description}{A short text description of the job.}
+
+\item{presignedUrlConfig}{Configuration information for pre-signed S3 URLs.}
+
+\item{targetSelection}{Specifies whether the job will continue to run (CONTINUOUS), or will be complete after all those things specified as targets have completed the job (SNAPSHOT). If continuous, the job may also be run on a thing when a change is detected in a target. For example, a job will run on a thing when the thing is added to a target group, even after the job was completed by all things originally in the group.}
+
+\item{jobExecutionsRolloutConfig}{Allows you to create a staged rollout of the job.}
+
+\item{timeoutConfig}{Specifies the amount of time each device has to finish its execution of the job. The timer is started when the job execution status is set to \code{IN_PROGRESS}. If the job execution status is not set to another terminal state before the time expires, it will be automatically set to \code{TIMED_OUT}.}
+}
+\description{
+Creates a job.
+}
+\section{Accepted Parameters}{
+\preformatted{create_job(
   jobId = "string",
   targets = list(
     "string"
@@ -18,61 +46,12 @@ create_job(
   ),
   targetSelection = "CONTINUOUS"|"SNAPSHOT",
   jobExecutionsRolloutConfig = list(
-    maximumPerMinute = 123,
-    exponentialRate = list(
-      baseRatePerMinute = 123,
-      incrementFactor = 123.0,
-      rateIncreaseCriteria = list(
-        numberOfNotifiedThings = 123,
-        numberOfSucceededThings = 123
-      )
-    )
-  ),
-  abortConfig = list(
-    criteriaList = list(
-      list(
-        failureType = "FAILED"|"REJECTED"|"TIMED_OUT"|"ALL",
-        action = "CANCEL",
-        thresholdPercentage = 123.0,
-        minNumberOfExecutedThings = 123
-      )
-    )
+    maximumPerMinute = 123
   ),
   timeoutConfig = list(
     inProgressTimeoutInMinutes = 123
-  ),
-  tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
   )
 )
 }
-\arguments{
-\item{jobId}{[required] A job identifier which must be unique for your AWS account. We recommend using a UUID. Alpha-numeric characters, "-" and "\_" are valid for use here.}
-
-\item{targets}{[required] A list of things and thing groups to which the job should be sent.}
-
-\item{documentSource}{An S3 link to the job document.}
-
-\item{description}{A short text description of the job.}
-
-\item{presignedUrlConfig}{Configuration information for pre-signed S3 URLs.}
-
-\item{targetSelection}{Specifies whether the job will continue to run (CONTINUOUS), or will be complete after all those things specified as targets have completed the job (SNAPSHOT). If continuous, the job may also be run on a thing when a change is detected in a target. For example, a job will run on a thing when the thing is added to a target group, even after the job was completed by all things originally in the group.}
-
-\item{jobExecutionsRolloutConfig}{Allows you to create a staged rollout of the job.}
-
-\item{abortConfig}{Allows you to create criteria to abort a job.}
-
-\item{timeoutConfig}{Specifies the amount of time each device has to finish its execution of the job. The timer is started when the job execution status is set to \code{IN_PROGRESS}. If the job execution status is not set to another terminal state before the time expires, it will be automatically set to \code{TIMED_OUT}.}
-
-\item{tags}{Metadata which can be used to manage the job.}
 }
-\description{
-Creates a job.
-}
-\examples{
 
-}

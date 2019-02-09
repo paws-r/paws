@@ -12,6 +12,6 @@ Deprecated. Use the \code{ListIdentities} operation to list the email addresses 
 \examples{
 # The following example lists all email addresses that have been submitted
 # for verification with Amazon SES:
-list_verified_email_addresses()
+\donttest{list_verified_email_addresses()}
 
 }

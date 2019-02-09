@@ -4,22 +4,8 @@
 \alias{create_snapshot}
 \title{Creates a snapshot of an EBS volume and stores it in Amazon S3}
 \usage{
-create_snapshot(
-  Description = "string",
-  VolumeId = "string",
-  TagSpecifications = list(
-    list(
-      ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
+create_snapshot(Description = NULL, VolumeId, TagSpecifications = NULL,
+  DryRun = NULL)
 }
 \arguments{
 \item{Description}{A description for the snapshot.}
@@ -46,13 +32,33 @@ You can tag your snapshots during creation. For more information, see \href{http
 
 For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html}{Amazon Elastic Block Store} and \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_snapshot(
+  Description = "string",
+  VolumeId = "string",
+  TagSpecifications = list(
+    list(
+      ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"image"|"instance"|"internet-gateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"snapshot"|"spot-instances-request"|"subnet"|"security-group"|"volume"|"vpc"|"vpn-connection"|"vpn-gateway",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example creates a snapshot of the volume with a volume ID of
 # ``vol-1234567890abcdef0`` and a short description to identify the
 # snapshot.
-create_snapshot(
+\donttest{create_snapshot(
   Description = "This is my root volume snapshot.",
   VolumeId = "vol-1234567890abcdef0"
-)
+)}
 
 }

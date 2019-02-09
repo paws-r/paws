@@ -2,16 +2,9 @@
 % Please edit documentation in R/paws.datapipeline_operations.R
 \name{poll_for_task}
 \alias{poll_for_task}
-\title{Task runners call \code{PollForTask} to receive a task to perform from AWS Data Pipeline}
+\title{Task runners call PollForTask to receive a task to perform from AWS Data Pipeline}
 \usage{
-poll_for_task(
-  workerGroup = "string",
-  hostname = "string",
-  instanceIdentity = list(
-    document = "string",
-    signature = "string"
-  )
-)
+poll_for_task(workerGroup, hostname = NULL, instanceIdentity = NULL)
 }
 \arguments{
 \item{workerGroup}{[required] The type of task the task runner is configured to accept and process. The worker group is set as a field on objects in the pipeline when they are created. You can only specify a single value for \code{workerGroup} in the call to \code{PollForTask}. There are no wildcard values permitted in \code{workerGroup}; the string must be an exact, case-sensitive, match.}
@@ -26,6 +19,15 @@ Task runners call \code{PollForTask} to receive a task to perform from AWS Data 
 \details{
 If tasks are ready in the work queue, \code{PollForTask} returns a response immediately. If no tasks are available in the queue, \code{PollForTask} uses long-polling and holds on to a poll connection for up to a 90 seconds, during which time the first newly scheduled task is handed to the task runner. To accomodate this, set the socket timeout in your task runner to 90 seconds. The task runner should not call \code{PollForTask} again on the same \code{workerGroup} until it receives a response, and this can take up to 90 seconds.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{poll_for_task(
+  workerGroup = "string",
+  hostname = "string",
+  instanceIdentity = list(
+    document = "string",
+    signature = "string"
+  )
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{purchase_offering}
 \title{Immediately purchases offerings for an AWS account}
 \usage{
-purchase_offering(
-  offeringId = "string",
-  quantity = 123,
-  offeringPromotionId = "string"
-)
+purchase_offering(offeringId = NULL, quantity = NULL,
+  offeringPromotionId = NULL)
 }
 \arguments{
 \item{offeringId}{The ID of the offering.}
@@ -20,11 +17,20 @@ purchase_offering(
 \description{
 Immediately purchases offerings for an AWS account. Offerings renew with the latest total purchased quantity for an offering, unless the renewal was overridden. The API returns a \code{NotEligible} error if the user is not permitted to invoke the operation. Please contact \href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefarm-support@amazon.com} if you believe that you should be able to invoke this operation.
 }
+\section{Accepted Parameters}{
+\preformatted{purchase_offering(
+  offeringId = "string",
+  quantity = 123,
+  offeringPromotionId = "string"
+)
+}
+}
+
 \examples{
 # The following example purchases a specific device slot offering.
-purchase_offering(
+\donttest{purchase_offering(
   offeringId = "D68B3C05-1BA6-4360-BC69-12345EXAMPLE",
   quantity = 1L
-)
+)}
 
 }

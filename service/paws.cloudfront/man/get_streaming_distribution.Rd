@@ -4,9 +4,7 @@
 \alias{get_streaming_distribution}
 \title{Gets information about a specified RTMP distribution, including the distribution configuration}
 \usage{
-get_streaming_distribution(
-  Id = "string"
-)
+get_streaming_distribution(Id)
 }
 \arguments{
 \item{Id}{[required] The streaming distribution's ID.}
@@ -14,6 +12,10 @@ get_streaming_distribution(
 \description{
 Gets information about a specified RTMP distribution, including the distribution configuration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_streaming_distribution(
+  Id = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{get_playback_configuration}
 \title{Returns the configuration for the specified name}
 \usage{
-get_playback_configuration(
-  Name = "string"
-)
+get_playback_configuration(Name)
 }
 \arguments{
 \item{Name}{[required] The identifier for the configuration.}
@@ -14,6 +12,10 @@ get_playback_configuration(
 \description{
 Returns the configuration for the specified name.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_playback_configuration(
+  Name = "string"
+)
 }
+}
+

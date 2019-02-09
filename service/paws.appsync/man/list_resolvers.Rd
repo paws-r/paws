@@ -4,12 +4,7 @@
 \alias{list_resolvers}
 \title{Lists the resolvers for a given API and type}
 \usage{
-list_resolvers(
-  apiId = "string",
-  typeName = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+list_resolvers(apiId, typeName, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
@@ -23,6 +18,13 @@ list_resolvers(
 \description{
 Lists the resolvers for a given API and type.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_resolvers(
+  apiId = "string",
+  typeName = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

@@ -4,15 +4,7 @@
 \alias{detach_from_index}
 \title{Detaches the specified object from the specified index}
 \usage{
-detach_from_index(
-  DirectoryArn = "string",
-  IndexReference = list(
-    Selector = "string"
-  ),
-  TargetReference = list(
-    Selector = "string"
-  )
-)
+detach_from_index(DirectoryArn, IndexReference, TargetReference)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory the index and object exist in.}
@@ -24,6 +16,16 @@ detach_from_index(
 \description{
 Detaches the specified object from the specified index.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{detach_from_index(
+  DirectoryArn = "string",
+  IndexReference = list(
+    Selector = "string"
+  ),
+  TargetReference = list(
+    Selector = "string"
+  )
+)
 }
+}
+

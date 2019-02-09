@@ -4,10 +4,7 @@
 \alias{delete_resource}
 \title{Deletes the specified resource}
 \usage{
-delete_resource(
-  OrganizationId = "string",
-  ResourceId = "string"
-)
+delete_resource(OrganizationId, ResourceId)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier associated with the organization for which the resource is deleted.}
@@ -17,6 +14,11 @@ delete_resource(
 \description{
 Deletes the specified resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_resource(
+  OrganizationId = "string",
+  ResourceId = "string"
+)
 }
+}
+

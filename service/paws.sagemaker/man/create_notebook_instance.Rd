@@ -4,32 +4,10 @@
 \alias{create_notebook_instance}
 \title{Creates an Amazon SageMaker notebook instance}
 \usage{
-create_notebook_instance(
-  NotebookInstanceName = "string",
-  InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge",
-  SubnetId = "string",
-  SecurityGroupIds = list(
-    "string"
-  ),
-  RoleArn = "string",
-  KmsKeyId = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  LifecycleConfigName = "string",
-  DirectInternetAccess = "Enabled"|"Disabled",
-  VolumeSizeInGB = 123,
-  AcceleratorTypes = list(
-    "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"
-  ),
-  DefaultCodeRepository = "string",
-  AdditionalCodeRepositories = list(
-    "string"
-  )
-)
+create_notebook_instance(NotebookInstanceName, InstanceType,
+  SubnetId = NULL, SecurityGroupIds = NULL, RoleArn, KmsKeyId = NULL,
+  Tags = NULL, LifecycleConfigName = NULL,
+  DirectInternetAccess = NULL, VolumeSizeInGB = NULL)
 }
 \arguments{
 \item{NotebookInstanceName}{[required] The name of the new notebook instance.}
@@ -44,7 +22,7 @@ create_notebook_instance(
 
 To be able to pass this role to Amazon SageMaker, the caller of this API must have the \code{iam:PassRole} permission.}
 
-\item{KmsKeyId}{If you provide a AWS KMS key ID, Amazon SageMaker uses it to encrypt data at rest on the ML storage volume that is attached to your notebook instance. The KMS key you provide must be enabled. For information, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/enabling-keys.html}{Enabling and Disabling Keys} in the \emph{AWS Key Management Service Developer Guide}.}
+\item{KmsKeyId}{If you provide a AWS KMS key ID, Amazon SageMaker uses it to encrypt data at rest on the ML storage volume that is attached to your notebook instance.}
 
 \item{Tags}{A list of tags to associate with the notebook instance. You can add tags later by using the \code{CreateTags} API.}
 
@@ -54,13 +32,7 @@ To be able to pass this role to Amazon SageMaker, the caller of this API must ha
 
 For more information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/appendix-additional-considerations.html#appendix-notebook-and-internet-access}{Notebook Instances Are Internet-Enabled by Default}. You can set the value of this parameter to \code{Disabled} only if you set a value for the \code{SubnetId} parameter.}
 
-\item{VolumeSizeInGB}{The size, in GB, of the ML storage volume to attach to the notebook instance. The default value is 5 GB.}
-
-\item{AcceleratorTypes}{A list of Elastic Inference (EI) instance types to associate with this notebook instance. Currently, only one instance type can be associated with a notebook intance. For more information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/ei.html}{Using Elastic Inference in Amazon SageMaker}.}
-
-\item{DefaultCodeRepository}{A git repository to associate with the notebook instance as its default code repository. This can be either the name of a git repository stored as a resource in your account, or the URL of a git repository in \href{http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{AWS CodeCommit} or in any other git repository. When you open a notebook instance, it opens in the directory that contains this repository. For more information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html}{Associating Git Repositories with Amazon SageMaker Notebook Instances}.}
-
-\item{AdditionalCodeRepositories}{An array of up to 3 git repositories to associate with the notebook instance. These can be either the names of git repositories stored as resources in your account, or the URL of git repositories in \href{http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{AWS CodeCommit} or in any other git repository. These repositories are cloned at the same level as the default repository of your notebook instance. For more information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html}{Associating Git Repositories with Amazon SageMaker Notebook Instances}.}
+\item{VolumeSizeInGB}{The size, in GB, of the ML storage volume to attach to the notebook instance.}
 }
 \description{
 Creates an Amazon SageMaker notebook instance. A notebook instance is a machine learning (ML) compute instance running on a Jupyter notebook.
@@ -83,6 +55,26 @@ After Amazon SageMaker creates the notebook instance, you can connect to the Jup
 
 For more information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html}{How It Works}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_notebook_instance(
+  NotebookInstanceName = "string",
+  InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge",
+  SubnetId = "string",
+  SecurityGroupIds = list(
+    "string"
+  ),
+  RoleArn = "string",
+  KmsKeyId = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  LifecycleConfigName = "string",
+  DirectInternetAccess = "Enabled"|"Disabled",
+  VolumeSizeInGB = 123
+)
 }
+}
+

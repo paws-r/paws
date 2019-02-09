@@ -4,9 +4,7 @@
 \alias{delete_file_system}
 \title{Deletes a file system, permanently severing access to its contents}
 \usage{
-delete_file_system(
-  FileSystemId = "string"
-)
+delete_file_system(FileSystemId)
 }
 \arguments{
 \item{FileSystemId}{[required] ID of the file system you want to delete.}
@@ -21,10 +19,17 @@ The \code{DeleteFileSystem} call returns while the file system state is still \c
 
 This operation requires permissions for the \code{elasticfilesystem:DeleteFileSystem} action.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_file_system(
+  FileSystemId = "string"
+)
+}
+}
+
 \examples{
 # This operation deletes an EFS file system.
-delete_file_system(
+\donttest{delete_file_system(
   FileSystemId = "fs-01234567"
-)
+)}
 
 }

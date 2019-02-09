@@ -4,15 +4,7 @@
 \alias{tag_resource}
 \title{Adds or edits tags for a customer master key (CMK)}
 \usage{
-tag_resource(
-  KeyId = "string",
-  Tags = list(
-    list(
-      TagKey = "string",
-      TagValue = "string"
-    )
-  )
-)
+tag_resource(KeyId, Tags)
 }
 \arguments{
 \item{KeyId}{[required] A unique identifier for the CMK you are tagging.
@@ -41,9 +33,22 @@ For information about the rules that apply to tag keys and tag values, see \href
 
 The result of this operation varies with the key state of the CMK. For details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key} in the \emph{AWS Key Management Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{tag_resource(
+  KeyId = "string",
+  Tags = list(
+    list(
+      TagKey = "string",
+      TagValue = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following example tags a CMK.
-tag_resource(
+\donttest{tag_resource(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
   Tags = list(
     list(
@@ -51,6 +56,6 @@ tag_resource(
       TagValue = "Test"
     )
   )
-)
+)}
 
 }

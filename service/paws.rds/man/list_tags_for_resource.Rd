@@ -4,17 +4,7 @@
 \alias{list_tags_for_resource}
 \title{Lists all tags on an Amazon RDS resource}
 \usage{
-list_tags_for_resource(
-  ResourceName = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
+list_tags_for_resource(ResourceName, Filters = NULL)
 }
 \arguments{
 \item{ResourceName}{[required] The Amazon RDS resource with tags to be listed. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS} in the \emph{Amazon RDS User Guide}.}
@@ -27,6 +17,18 @@ Lists all tags on an Amazon RDS resource.
 \details{
 For an overview on tagging an Amazon RDS resource, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html}{Tagging Amazon RDS Resources} in the \emph{Amazon RDS User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_resource(
+  ResourceName = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  )
+)
 }
+}
+

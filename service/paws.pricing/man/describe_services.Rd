@@ -4,12 +4,8 @@
 \alias{describe_services}
 \title{Returns the metadata for one service or a list of the metadata for all services}
 \usage{
-describe_services(
-  ServiceCode = "string",
-  FormatVersion = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+describe_services(ServiceCode = NULL, FormatVersion = NULL,
+  NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{ServiceCode}{The code for the service whose information you want to retrieve, such as \code{AmazonEC2}. You can use the \code{ServiceCode} to filter the results in a \code{GetProducts} call. To retrieve a list of all services, leave this blank.}
@@ -25,12 +21,22 @@ Valid values are: \code{aws_v1}}
 \description{
 Returns the metadata for one service or a list of the metadata for all services. Use this without a service code to get the service codes for all services. Use it with a service code, such as \code{AmazonEC2}, to get information specific to that service, such as the attribute names available for that service. For example, some of the attribute names available for EC2 are \code{volumeType}, \code{maxIopsVolume}, \code{operation}, \code{locationType}, and \code{instanceCapacity10xlarge}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_services(
+  ServiceCode = "string",
+  FormatVersion = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
+}
+}
+
 \examples{
 #
-describe_services(
+\donttest{describe_services(
   FormatVersion = "aws_v1",
   MaxResults = 1L,
   ServiceCode = "AmazonEC2"
-)
+)}
 
 }

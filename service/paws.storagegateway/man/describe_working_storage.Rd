@@ -4,9 +4,7 @@
 \alias{describe_working_storage}
 \title{Returns information about the working storage of a gateway}
 \usage{
-describe_working_storage(
-  GatewayARN = "string"
-)
+describe_working_storage(GatewayARN)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -19,12 +17,19 @@ Working storage is also referred to as upload buffer. You can also use the Descr
 
 The response includes disk IDs that are configured as working storage, and it includes the amount of working storage allocated and used.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_working_storage(
+  GatewayARN = "string"
+)
+}
+}
+
 \examples{
 # This operation is supported only for the gateway-stored volume
 # architecture. This operation is deprecated in cached-volumes API version
 # (20120630). Use DescribeUploadBuffer instead.
-describe_working_storage(
+\donttest{describe_working_storage(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
+)}
 
 }

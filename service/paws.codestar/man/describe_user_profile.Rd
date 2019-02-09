@@ -4,9 +4,7 @@
 \alias{describe_user_profile}
 \title{Describes a user in AWS CodeStar and the user attributes across all projects}
 \usage{
-describe_user_profile(
-  userArn = "string"
-)
+describe_user_profile(userArn)
 }
 \arguments{
 \item{userArn}{[required] The Amazon Resource Name (ARN) of the user.}
@@ -14,6 +12,10 @@ describe_user_profile(
 \description{
 Describes a user in AWS CodeStar and the user attributes across all projects.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_user_profile(
+  userArn = "string"
+)
 }
+}
+

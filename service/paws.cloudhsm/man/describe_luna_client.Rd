@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.cloudhsm_operations.R
 \name{describe_luna_client}
 \alias{describe_luna_client}
-\title{This is documentation for \strong{AWS CloudHSM Classic}}
+\title{This is documentation for AWS CLOUDHSM CLASSIC}
 \usage{
-describe_luna_client(
-  ClientArn = "string",
-  CertificateFingerprint = "string"
-)
+describe_luna_client(ClientArn = NULL, CertificateFingerprint = NULL)
 }
 \arguments{
 \item{ClientArn}{The ARN of the client.}
@@ -22,6 +19,11 @@ This is documentation for \strong{AWS CloudHSM Classic}. For more information, s
 
 Retrieves information about an HSM client.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_luna_client(
+  ClientArn = "string",
+  CertificateFingerprint = "string"
+)
 }
+}
+

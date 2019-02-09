@@ -4,27 +4,12 @@
 \alias{create_matchmaking_configuration}
 \title{Defines a new matchmaking configuration for use with FlexMatch}
 \usage{
-create_matchmaking_configuration(
-  Name = "string",
-  Description = "string",
-  GameSessionQueueArns = list(
-    "string"
-  ),
-  RequestTimeoutSeconds = 123,
-  AcceptanceTimeoutSeconds = 123,
-  AcceptanceRequired = TRUE|FALSE,
-  RuleSetName = "string",
-  NotificationTarget = "string",
-  AdditionalPlayerCount = 123,
-  CustomEventData = "string",
-  GameProperties = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  GameSessionData = "string"
-)
+create_matchmaking_configuration(Name, Description = NULL,
+  GameSessionQueueArns, RequestTimeoutSeconds,
+  AcceptanceTimeoutSeconds = NULL, AcceptanceRequired, RuleSetName,
+  NotificationTarget = NULL, AdditionalPlayerCount = NULL,
+  CustomEventData = NULL, GameProperties = NULL,
+  GameSessionData = NULL)
 }
 \arguments{
 \item{Name}{[required] Unique identifier for a matchmaking configuration. This name is used to identify the configuration associated with a matchmaking request or ticket.}
@@ -72,6 +57,28 @@ Operations related to match configurations and rule sets include:
 \item ValidateMatchmakingRuleSet
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_matchmaking_configuration(
+  Name = "string",
+  Description = "string",
+  GameSessionQueueArns = list(
+    "string"
+  ),
+  RequestTimeoutSeconds = 123,
+  AcceptanceTimeoutSeconds = 123,
+  AcceptanceRequired = TRUE|FALSE,
+  RuleSetName = "string",
+  NotificationTarget = "string",
+  AdditionalPlayerCount = 123,
+  CustomEventData = "string",
+  GameProperties = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  GameSessionData = "string"
+)
 }
+}
+

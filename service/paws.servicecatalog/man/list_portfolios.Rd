@@ -4,11 +4,8 @@
 \alias{list_portfolios}
 \title{Lists all portfolios in the catalog}
 \usage{
-list_portfolios(
-  AcceptLanguage = "string",
-  PageToken = "string",
-  PageSize = 123
-)
+list_portfolios(AcceptLanguage = NULL, PageToken = NULL,
+  PageSize = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -25,6 +22,12 @@ list_portfolios(
 \description{
 Lists all portfolios in the catalog.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_portfolios(
+  AcceptLanguage = "string",
+  PageToken = "string",
+  PageSize = 123
+)
 }
+}
+

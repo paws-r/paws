@@ -4,10 +4,7 @@
 \alias{describe_product}
 \title{Gets information about the specified product}
 \usage{
-describe_product(
-  AcceptLanguage = "string",
-  Id = "string"
-)
+describe_product(AcceptLanguage = NULL, Id)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -22,6 +19,11 @@ describe_product(
 \description{
 Gets information about the specified product.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_product(
+  AcceptLanguage = "string",
+  Id = "string"
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{update_server_engine_attributes}
 \title{Updates engine-specific attributes on a specified server}
 \usage{
-update_server_engine_attributes(
-  ServerName = "string",
-  AttributeName = "string",
-  AttributeValue = "string"
-)
+update_server_engine_attributes(ServerName, AttributeName,
+  AttributeValue = NULL)
 }
 \arguments{
 \item{ServerName}{[required] The name of the server to update.}
@@ -25,6 +22,12 @@ This operation is asynchronous.
 
 This operation can only be called for servers in \code{HEALTHY} or \code{UNHEALTHY} states. Otherwise, an \code{InvalidStateException} is raised. A \code{ResourceNotFoundException} is thrown when the server does not exist. A \code{ValidationException} is raised when parameters of the request are not valid.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_server_engine_attributes(
+  ServerName = "string",
+  AttributeName = "string",
+  AttributeValue = "string"
+)
 }
+}
+

@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.workdocs_operations.R
 \name{create_notification_subscription}
 \alias{create_notification_subscription}
-\title{Configure Amazon WorkDocs to use Amazon SNS notifications}
+\title{Configure WorkDocs to use Amazon SNS notifications}
 \usage{
-create_notification_subscription(
-  OrganizationId = "string",
-  Endpoint = "string",
-  Protocol = "HTTPS",
-  SubscriptionType = "ALL"
-)
+create_notification_subscription(OrganizationId, Endpoint, Protocol,
+  SubscriptionType)
 }
 \arguments{
 \item{OrganizationId}{[required] The ID of the organization.}
@@ -21,11 +17,18 @@ create_notification_subscription(
 \item{SubscriptionType}{[required] The notification type.}
 }
 \description{
-Configure Amazon WorkDocs to use Amazon SNS notifications. The endpoint receives a confirmation message, and must confirm the subscription.
+Configure WorkDocs to use Amazon SNS notifications.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/workdocs/latest/developerguide/subscribe-notifications.html}{Subscribe to Notifications} in the \emph{Amazon WorkDocs Developer Guide}.
+The endpoint receives a confirmation message, and must confirm the subscription. For more information, see \href{http://docs.aws.amazon.com/sns/latest/dg/SendMessageToHttp.html#SendMessageToHttp.confirm}{Confirm the Subscription} in the \emph{Amazon Simple Notification Service Developer Guide}.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{create_notification_subscription(
+  OrganizationId = "string",
+  Endpoint = "string",
+  Protocol = "HTTPS",
+  SubscriptionType = "ALL"
+)
+}
+}
 
-}

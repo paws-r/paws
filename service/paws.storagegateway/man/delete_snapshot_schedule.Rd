@@ -4,9 +4,7 @@
 \alias{delete_snapshot_schedule}
 \title{Deletes a snapshot of a volume}
 \usage{
-delete_snapshot_schedule(
-  VolumeARN = "string"
-)
+delete_snapshot_schedule(VolumeARN)
 }
 \arguments{
 \item{VolumeARN}{[required]}
@@ -19,10 +17,17 @@ You can take snapshots of your gateway volumes on a scheduled or ad hoc basis. T
 
 To list or delete a snapshot, you must use the Amazon EC2 API. in \emph{Amazon Elastic Compute Cloud API Reference}.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_snapshot_schedule(
+  VolumeARN = "string"
+)
+}
+}
+
 \examples{
 # This action enables you to delete a snapshot schedule for a volume.
-delete_snapshot_schedule(
+\donttest{delete_snapshot_schedule(
   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB"
-)
+)}
 
 }

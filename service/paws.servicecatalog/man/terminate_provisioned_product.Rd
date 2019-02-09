@@ -4,13 +4,9 @@
 \alias{terminate_provisioned_product}
 \title{Terminates the specified provisioned product}
 \usage{
-terminate_provisioned_product(
-  ProvisionedProductName = "string",
-  ProvisionedProductId = "string",
-  TerminateToken = "string",
-  IgnoreErrors = TRUE|FALSE,
-  AcceptLanguage = "string"
-)
+terminate_provisioned_product(ProvisionedProductName = NULL,
+  ProvisionedProductId = NULL, TerminateToken, IgnoreErrors = NULL,
+  AcceptLanguage = NULL)
 }
 \arguments{
 \item{ProvisionedProductName}{The name of the provisioned product. You cannot specify both \code{ProvisionedProductName} and \code{ProvisionedProductId}.}
@@ -36,6 +32,14 @@ This operation does not delete any records associated with the provisioned produ
 
 You can check the status of this request using DescribeRecord.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{terminate_provisioned_product(
+  ProvisionedProductName = "string",
+  ProvisionedProductId = "string",
+  TerminateToken = "string",
+  IgnoreErrors = TRUE|FALSE,
+  AcceptLanguage = "string"
+)
 }
+}
+

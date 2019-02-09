@@ -4,7 +4,21 @@
 \alias{create_association_batch}
 \title{Associates the specified Systems Manager document with the specified instances or targets}
 \usage{
-create_association_batch(
+create_association_batch(Entries)
+}
+\arguments{
+\item{Entries}{[required] One or more associations.}
+}
+\description{
+Associates the specified Systems Manager document with the specified instances or targets.
+}
+\details{
+When you associate a document with one or more instances using instance IDs or tags, SSM Agent running on the instance processes the document and configures the instance as specified.
+
+If you associate a document with an instance that already has an associated document, the system throws the AssociationAlreadyExists exception.
+}
+\section{Accepted Parameters}{
+\preformatted{create_association_batch(
   Entries = list(
     list(
       Name = "string",
@@ -39,17 +53,5 @@ create_association_batch(
   )
 )
 }
-\arguments{
-\item{Entries}{[required] One or more associations.}
 }
-\description{
-Associates the specified Systems Manager document with the specified instances or targets.
-}
-\details{
-When you associate a document with one or more instances using instance IDs or tags, SSM Agent running on the instance processes the document and configures the instance as specified.
 
-If you associate a document with an instance that already has an associated document, the system returns the AssociationAlreadyExists exception.
-}
-\examples{
-
-}

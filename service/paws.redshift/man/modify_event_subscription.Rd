@@ -4,19 +4,9 @@
 \alias{modify_event_subscription}
 \title{Modifies an existing Amazon Redshift event notification subscription}
 \usage{
-modify_event_subscription(
-  SubscriptionName = "string",
-  SnsTopicArn = "string",
-  SourceType = "string",
-  SourceIds = list(
-    "string"
-  ),
-  EventCategories = list(
-    "string"
-  ),
-  Severity = "string",
-  Enabled = TRUE|FALSE
-)
+modify_event_subscription(SubscriptionName, SnsTopicArn = NULL,
+  SourceType = NULL, SourceIds = NULL, EventCategories = NULL,
+  Severity = NULL, Enabled = NULL)
 }
 \arguments{
 \item{SubscriptionName}{[required] The name of the modified Amazon Redshift event notification subscription.}
@@ -35,7 +25,7 @@ Example: my-snapshot-20131010}
 
 \item{EventCategories}{Specifies the Amazon Redshift event categories to be published by the event notification subscription.
 
-Values: configuration, management, monitoring, security}
+Values: Configuration, Management, Monitoring, Security}
 
 \item{Severity}{Specifies the Amazon Redshift event severity to be published by the event notification subscription.
 
@@ -46,6 +36,20 @@ Values: ERROR, INFO}
 \description{
 Modifies an existing Amazon Redshift event notification subscription.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_event_subscription(
+  SubscriptionName = "string",
+  SnsTopicArn = "string",
+  SourceType = "string",
+  SourceIds = list(
+    "string"
+  ),
+  EventCategories = list(
+    "string"
+  ),
+  Severity = "string",
+  Enabled = TRUE|FALSE
+)
 }
+}
+

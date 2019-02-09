@@ -4,14 +4,7 @@
 \alias{update_template}
 \title{Updates an email template}
 \usage{
-update_template(
-  Template = list(
-    TemplateName = "string",
-    SubjectPart = "string",
-    TextPart = "string",
-    HtmlPart = "string"
-  )
-)
+update_template(Template)
 }
 \arguments{
 \item{Template}{[required]}
@@ -22,6 +15,15 @@ Updates an email template. Email templates enable you to send personalized email
 \details{
 You can execute this operation no more than once per second.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_template(
+  Template = list(
+    TemplateName = "string",
+    SubjectPart = "string",
+    TextPart = "string",
+    HtmlPart = "string"
+  )
+)
 }
+}
+

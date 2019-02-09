@@ -4,10 +4,7 @@
 \alias{delete_image_permissions}
 \title{Deletes permissions for the specified private image}
 \usage{
-delete_image_permissions(
-  Name = "string",
-  SharedAccountId = "string"
-)
+delete_image_permissions(Name, SharedAccountId)
 }
 \arguments{
 \item{Name}{[required] The name of the private image.}
@@ -17,6 +14,11 @@ delete_image_permissions(
 \description{
 Deletes permissions for the specified private image. After you delete permissions for an image, AWS accounts to which you previously granted these permissions can no longer use the image.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_image_permissions(
+  Name = "string",
+  SharedAccountId = "string"
+)
 }
+}
+

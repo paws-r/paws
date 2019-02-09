@@ -4,7 +4,16 @@
 \alias{create_sampling_rule}
 \title{Creates a rule to control sampling behavior for instrumented applications}
 \usage{
-create_sampling_rule(
+create_sampling_rule(SamplingRule)
+}
+\arguments{
+\item{SamplingRule}{[required] The rule definition.}
+}
+\description{
+Creates a rule to control sampling behavior for instrumented applications. Services retrieve rules with GetSamplingRules, and evaluate each rule in ascending order of \emph{priority} for each request. If a rule matches, the service records a trace, borrowing it from the reservoir size. After 10 seconds, the service reports back to X-Ray with GetSamplingTargets to get updated versions of each in-use rule. The updated rule contains a trace quota that the service can use instead of borrowing from the reservoir.
+}
+\section{Accepted Parameters}{
+\preformatted{create_sampling_rule(
   SamplingRule = list(
     RuleName = "string",
     RuleARN = "string",
@@ -24,12 +33,5 @@ create_sampling_rule(
   )
 )
 }
-\arguments{
-\item{SamplingRule}{[required] The rule definition.}
 }
-\description{
-Creates a rule to control sampling behavior for instrumented applications. Services retrieve rules with GetSamplingRules, and evaluate each rule in ascending order of \emph{priority} for each request. If a rule matches, the service records a trace, borrowing it from the reservoir size. After 10 seconds, the service reports back to X-Ray with GetSamplingTargets to get updated versions of each in-use rule. The updated rule contains a trace quota that the service can use instead of borrowing from the reservoir.
-}
-\examples{
 
-}

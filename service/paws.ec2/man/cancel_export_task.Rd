@@ -4,9 +4,7 @@
 \alias{cancel_export_task}
 \title{Cancels an active export task}
 \usage{
-cancel_export_task(
-  ExportTaskId = "string"
-)
+cancel_export_task(ExportTaskId)
 }
 \arguments{
 \item{ExportTaskId}{[required] The ID of the export task. This is the ID returned by \code{CreateInstanceExportTask}.}
@@ -14,6 +12,10 @@ cancel_export_task(
 \description{
 Cancels an active export task. The request removes all artifacts of the export, including any partially-created Amazon S3 objects. If the export task is complete or is in the process of transferring the final disk image, the command fails and returns an error.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{cancel_export_task(
+  ExportTaskId = "string"
+)
 }
+}
+

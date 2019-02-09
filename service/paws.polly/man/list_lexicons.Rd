@@ -4,9 +4,7 @@
 \alias{list_lexicons}
 \title{Returns a list of pronunciation lexicons stored in an AWS Region}
 \usage{
-list_lexicons(
-  NextToken = "string"
-)
+list_lexicons(NextToken = NULL)
 }
 \arguments{
 \item{NextToken}{An opaque pagination token returned from previous \code{ListLexicons} operation. If present, indicates where to continue the list of lexicons.}
@@ -14,8 +12,15 @@ list_lexicons(
 \description{
 Returns a list of pronunciation lexicons stored in an AWS Region. For more information, see \href{http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html}{Managing Lexicons}.
 }
+\section{Accepted Parameters}{
+\preformatted{list_lexicons(
+  NextToken = "string"
+)
+}
+}
+
 \examples{
 # Returns a list of pronunciation lexicons stored in an AWS Region.
-list_lexicons()
+\donttest{list_lexicons()}
 
 }

@@ -4,7 +4,21 @@
 \alias{describe_available_patches}
 \title{Lists all patches that could possibly be included in a patch baseline}
 \usage{
-describe_available_patches(
+describe_available_patches(Filters = NULL, MaxResults = NULL,
+  NextToken = NULL)
+}
+\arguments{
+\item{Filters}{Filters used to scope down the returned patches.}
+
+\item{MaxResults}{The maximum number of patches to return (per page).}
+
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
+}
+\description{
+Lists all patches that could possibly be included in a patch baseline.
+}
+\section{Accepted Parameters}{
+\preformatted{describe_available_patches(
   Filters = list(
     list(
       Key = "string",
@@ -17,16 +31,5 @@ describe_available_patches(
   NextToken = "string"
 )
 }
-\arguments{
-\item{Filters}{Filters used to scope down the returned patches.}
-
-\item{MaxResults}{The maximum number of patches to return (per page).}
-
-\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
-\description{
-Lists all patches that could possibly be included in a patch baseline.
-}
-\examples{
 
-}

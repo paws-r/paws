@@ -4,14 +4,11 @@
 \alias{put_lifecycle_policy}
 \title{Creates or updates a lifecycle policy}
 \usage{
-put_lifecycle_policy(
-  registryId = "string",
-  repositoryName = "string",
-  lifecyclePolicyText = "string"
-)
+put_lifecycle_policy(registryId = NULL, repositoryName,
+  lifecyclePolicyText)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry that contains the repository. If you doâ€¨ not specify a registry, the default registry is assumed.}
+\item{registryId}{The AWS account ID associated with the registry that contains the repository. If you do  not specify a registry, the default registry is assumed.}
 
 \item{repositoryName}{[required] The name of the repository to receive the policy.}
 
@@ -20,6 +17,12 @@ put_lifecycle_policy(
 \description{
 Creates or updates a lifecycle policy. For information about lifecycle policy syntax, see \href{http://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html}{Lifecycle Policy Template}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_lifecycle_policy(
+  registryId = "string",
+  repositoryName = "string",
+  lifecyclePolicyText = "string"
+)
 }
+}
+

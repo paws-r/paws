@@ -4,22 +4,8 @@
 \alias{describe_volume_status}
 \title{Describes the status of the specified volumes}
 \usage{
-describe_volume_status(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  VolumeIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+describe_volume_status(Filters = NULL, MaxResults = NULL,
+  NextToken = NULL, VolumeIds = NULL, DryRun = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -62,18 +48,38 @@ The \code{DescribeVolumeStatus} operation provides the following information abo
 
 Volume status is based on the volume status checks, and does not reflect the volume state. Therefore, volume status does not indicate volumes in the \code{error} state (for example, when a volume is incapable of accepting I/O.)
 }
+\section{Accepted Parameters}{
+\preformatted{describe_volume_status(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string",
+  VolumeIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example describes the status for the volume
 # ``vol-1234567890abcdef0``.
-describe_volume_status(
+\donttest{describe_volume_status(
   VolumeIds = list(
     "vol-1234567890abcdef0"
   )
-)
+)}
 
 # This example describes the status for all volumes that are impaired. In
 # this example output, there are no impaired volumes.
-describe_volume_status(
+\donttest{describe_volume_status(
   Filters = list(
     list(
       Name = "volume-status.status",
@@ -82,6 +88,6 @@ describe_volume_status(
       )
     )
   )
-)
+)}
 
 }

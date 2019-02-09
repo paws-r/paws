@@ -4,12 +4,7 @@
 \alias{create_user}
 \title{Creates a user who can be used in Amazon WorkMail by calling the RegisterToWorkMail operation}
 \usage{
-create_user(
-  OrganizationId = "string",
-  Name = "string",
-  DisplayName = "string",
-  Password = "string"
-)
+create_user(OrganizationId, Name, DisplayName, Password)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier of the organization for which the user is created.}
@@ -23,6 +18,13 @@ create_user(
 \description{
 Creates a user who can be used in Amazon WorkMail by calling the RegisterToWorkMail operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_user(
+  OrganizationId = "string",
+  Name = "string",
+  DisplayName = "string",
+  Password = "string"
+)
 }
+}
+

@@ -4,14 +4,10 @@
 \alias{list_deployments}
 \title{Returns a history of deployments for the group}
 \usage{
-list_deployments(
-  GroupId = "string",
-  MaxResults = "string",
-  NextToken = "string"
-)
+list_deployments(GroupId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
-\item{GroupId}{[required] The ID of the Greengrass group.}
+\item{GroupId}{[required] The ID of the AWS Greengrass group.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 
@@ -20,6 +16,12 @@ list_deployments(
 \description{
 Returns a history of deployments for the group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_deployments(
+  GroupId = "string",
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.clouddirectory_operations.R
 \name{upgrade_applied_schema}
 \alias{upgrade_applied_schema}
-\title{Upgrades a single directory in-place using the \code{PublishedSchemaArn} with schema updates found in \code{MinorVersion}}
+\title{Upgrades a single directory in-place using the PublishedSchemaArn with schema updates found in MinorVersion}
 \usage{
-upgrade_applied_schema(
-  PublishedSchemaArn = "string",
-  DirectoryArn = "string",
-  DryRun = TRUE|FALSE
-)
+upgrade_applied_schema(PublishedSchemaArn, DirectoryArn, DryRun = NULL)
 }
 \arguments{
 \item{PublishedSchemaArn}{[required] The revision of the published schema to upgrade the directory to.}
@@ -20,6 +16,12 @@ upgrade_applied_schema(
 \description{
 Upgrades a single directory in-place using the \code{PublishedSchemaArn} with schema updates found in \code{MinorVersion}. Backwards-compatible minor version upgrades are instantaneously available for readers on all objects in the directory. Note: This is a synchronous API call and upgrades only one schema on a given directory per call. To upgrade multiple directories from one schema, you would need to call this API on each directory.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{upgrade_applied_schema(
+  PublishedSchemaArn = "string",
+  DirectoryArn = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

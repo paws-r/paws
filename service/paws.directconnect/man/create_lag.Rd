@@ -4,13 +4,8 @@
 \alias{create_lag}
 \title{Creates a link aggregation group (LAG) with the specified number of bundled physical connections between the customer network and a specific AWS Direct Connect location}
 \usage{
-create_lag(
-  numberOfConnections = 123,
-  location = "string",
-  connectionsBandwidth = "string",
-  lagName = "string",
-  connectionId = "string"
-)
+create_lag(numberOfConnections, location, connectionsBandwidth, lagName,
+  connectionId = NULL)
 }
 \arguments{
 \item{numberOfConnections}{[required] The number of physical connections initially provisioned and bundled by the LAG.}
@@ -35,6 +30,14 @@ You can specify an existing physical connection or interconnect to include in th
 
 If the AWS account used to create a LAG is a registered AWS Direct Connect partner, the LAG is automatically enabled to host sub-connections. For a LAG owned by a partner, any associated virtual interfaces cannot be directly configured.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_lag(
+  numberOfConnections = 123,
+  location = "string",
+  connectionsBandwidth = "string",
+  lagName = "string",
+  connectionId = "string"
+)
 }
+}
+

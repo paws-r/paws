@@ -4,11 +4,7 @@
 \alias{describe_tape_recovery_points}
 \title{Returns a list of virtual tape recovery points that are available for the specified tape gateway}
 \usage{
-describe_tape_recovery_points(
-  GatewayARN = "string",
-  Marker = "string",
-  Limit = 123
-)
+describe_tape_recovery_points(GatewayARN, Marker = NULL, Limit = NULL)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -23,13 +19,22 @@ Returns a list of virtual tape recovery points that are available for the specif
 \details{
 A recovery point is a point-in-time view of a virtual tape at which all the data on the virtual tape is consistent. If your gateway crashes, virtual tapes that have recovery points can be recovered to a new gateway. This operation is only supported in the tape gateway type.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_tape_recovery_points(
+  GatewayARN = "string",
+  Marker = "string",
+  Limit = 123
+)
+}
+}
+
 \examples{
 # Returns a list of virtual tape recovery points that are available for
 # the specified gateway-VTL.
-describe_tape_recovery_points(
+\donttest{describe_tape_recovery_points(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
   Limit = 1L,
   Marker = "1"
-)
+)}
 
 }

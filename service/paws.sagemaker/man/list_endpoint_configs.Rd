@@ -4,15 +4,9 @@
 \alias{list_endpoint_configs}
 \title{Lists endpoint configurations}
 \usage{
-list_endpoint_configs(
-  SortBy = "Name"|"CreationTime",
-  SortOrder = "Ascending"|"Descending",
-  NextToken = "string",
-  MaxResults = 123,
-  NameContains = "string",
-  CreationTimeBefore = as.POSIXct("2015-01-01"),
-  CreationTimeAfter = as.POSIXct("2015-01-01")
-)
+list_endpoint_configs(SortBy = NULL, SortOrder = NULL,
+  NextToken = NULL, MaxResults = NULL, NameContains = NULL,
+  CreationTimeBefore = NULL, CreationTimeAfter = NULL)
 }
 \arguments{
 \item{SortBy}{The field to sort results by. The default is \code{CreationTime}.}
@@ -32,6 +26,16 @@ list_endpoint_configs(
 \description{
 Lists endpoint configurations.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_endpoint_configs(
+  SortBy = "Name"|"CreationTime",
+  SortOrder = "Ascending"|"Descending",
+  NextToken = "string",
+  MaxResults = 123,
+  NameContains = "string",
+  CreationTimeBefore = as.POSIXct("2015-01-01"),
+  CreationTimeAfter = as.POSIXct("2015-01-01")
+)
 }
+}
+

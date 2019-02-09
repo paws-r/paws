@@ -4,9 +4,7 @@
 \alias{delete_device_definition}
 \title{Deletes a device definition}
 \usage{
-delete_device_definition(
-  DeviceDefinitionId = "string"
-)
+delete_device_definition(DeviceDefinitionId)
 }
 \arguments{
 \item{DeviceDefinitionId}{[required] The ID of the device definition.}
@@ -14,6 +12,10 @@ delete_device_definition(
 \description{
 Deletes a device definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_device_definition(
+  DeviceDefinitionId = "string"
+)
 }
+}
+

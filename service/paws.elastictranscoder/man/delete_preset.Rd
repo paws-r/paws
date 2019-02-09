@@ -4,9 +4,7 @@
 \alias{delete_preset}
 \title{The DeletePreset operation removes a preset that you've added in an AWS region}
 \usage{
-delete_preset(
-  Id = "string"
-)
+delete_preset(Id)
 }
 \arguments{
 \item{Id}{[required] The identifier of the preset for which you want to get detailed information.}
@@ -17,6 +15,10 @@ The DeletePreset operation removes a preset that you've added in an AWS region.
 \details{
 You can't delete the default presets that are included with Elastic Transcoder.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_preset(
+  Id = "string"
+)
 }
+}
+

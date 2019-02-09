@@ -4,13 +4,9 @@
 \alias{revoke_db_security_group_ingress}
 \title{Revokes ingress from a DBSecurityGroup for previously authorized IP ranges or EC2 or VPC Security Groups}
 \usage{
-revoke_db_security_group_ingress(
-  DBSecurityGroupName = "string",
-  CIDRIP = "string",
-  EC2SecurityGroupName = "string",
-  EC2SecurityGroupId = "string",
-  EC2SecurityGroupOwnerId = "string"
-)
+revoke_db_security_group_ingress(DBSecurityGroupName, CIDRIP = NULL,
+  EC2SecurityGroupName = NULL, EC2SecurityGroupId = NULL,
+  EC2SecurityGroupOwnerId = NULL)
 }
 \arguments{
 \item{DBSecurityGroupName}{[required] The name of the DB security group to revoke ingress from.}
@@ -26,6 +22,14 @@ revoke_db_security_group_ingress(
 \description{
 Revokes ingress from a DBSecurityGroup for previously authorized IP ranges or EC2 or VPC Security Groups. Required parameters for this API are one of CIDRIP, EC2SecurityGroupId for VPC, or (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or EC2SecurityGroupId).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{revoke_db_security_group_ingress(
+  DBSecurityGroupName = "string",
+  CIDRIP = "string",
+  EC2SecurityGroupName = "string",
+  EC2SecurityGroupId = "string",
+  EC2SecurityGroupOwnerId = "string"
+)
 }
+}
+

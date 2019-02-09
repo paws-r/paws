@@ -4,17 +4,8 @@
 \alias{describe_target_groups}
 \title{Describes the specified target groups or all of your target groups}
 \usage{
-describe_target_groups(
-  LoadBalancerArn = "string",
-  TargetGroupArns = list(
-    "string"
-  ),
-  Names = list(
-    "string"
-  ),
-  Marker = "string",
-  PageSize = 123
-)
+describe_target_groups(LoadBalancerArn = NULL, TargetGroupArns = NULL,
+  Names = NULL, Marker = NULL, PageSize = NULL)
 }
 \arguments{
 \item{LoadBalancerArn}{The Amazon Resource Name (ARN) of the load balancer.}
@@ -33,12 +24,27 @@ Describes the specified target groups or all of your target groups. By default, 
 \details{
 To describe the targets for a target group, use DescribeTargetHealth. To describe the attributes of a target group, use DescribeTargetGroupAttributes.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_target_groups(
+  LoadBalancerArn = "string",
+  TargetGroupArns = list(
+    "string"
+  ),
+  Names = list(
+    "string"
+  ),
+  Marker = "string",
+  PageSize = 123
+)
+}
+}
+
 \examples{
 # This example describes the specified target group.
-describe_target_groups(
+\donttest{describe_target_groups(
   TargetGroupArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067"
   )
-)
+)}
 
 }

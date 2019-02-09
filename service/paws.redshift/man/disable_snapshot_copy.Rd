@@ -4,9 +4,7 @@
 \alias{disable_snapshot_copy}
 \title{Disables the automatic copying of snapshots from one region to another region for a specified cluster}
 \usage{
-disable_snapshot_copy(
-  ClusterIdentifier = "string"
-)
+disable_snapshot_copy(ClusterIdentifier)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The unique identifier of the source cluster that you want to disable copying of snapshots to a destination region.
@@ -19,6 +17,10 @@ Disables the automatic copying of snapshots from one region to another region fo
 \details{
 If your cluster and its snapshots are encrypted using a customer master key (CMK) from AWS KMS, use DeleteSnapshotCopyGrant to delete the grant that grants Amazon Redshift permission to the CMK in the destination region.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disable_snapshot_copy(
+  ClusterIdentifier = "string"
+)
 }
+}
+

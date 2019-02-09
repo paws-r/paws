@@ -4,15 +4,7 @@
 \alias{tag_resource}
 \title{Associate a set of tags with an Amazon DynamoDB resource}
 \usage{
-tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+tag_resource(ResourceArn, Tags)
 }
 \arguments{
 \item{ResourceArn}{[required] Identifies the Amazon DynamoDB resource to which tags should be added. This value is an Amazon Resource Name (ARN).}
@@ -25,6 +17,16 @@ Associate a set of tags with an Amazon DynamoDB resource. You can then activate 
 \details{
 For an overview on tagging DynamoDB resources, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html}{Tagging for DynamoDB} in the \emph{Amazon DynamoDB Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag_resource(
+  ResourceArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

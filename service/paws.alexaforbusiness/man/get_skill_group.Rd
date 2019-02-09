@@ -4,9 +4,7 @@
 \alias{get_skill_group}
 \title{Gets skill group details by skill group ARN}
 \usage{
-get_skill_group(
-  SkillGroupArn = "string"
-)
+get_skill_group(SkillGroupArn = NULL)
 }
 \arguments{
 \item{SkillGroupArn}{The ARN of the skill group for which to get details. Required.}
@@ -14,6 +12,10 @@ get_skill_group(
 \description{
 Gets skill group details by skill group ARN.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_skill_group(
+  SkillGroupArn = "string"
+)
 }
+}
+

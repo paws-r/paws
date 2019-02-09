@@ -4,11 +4,7 @@
 \alias{decline_invitations}
 \title{Declines invitations sent to the current member account by AWS account specified by their account IDs}
 \usage{
-decline_invitations(
-  AccountIds = list(
-    "string"
-  )
-)
+decline_invitations(AccountIds)
 }
 \arguments{
 \item{AccountIds}{[required] A list of account IDs of the AWS accounts that sent invitations to the current member account that you want to decline invitations from.}
@@ -16,6 +12,12 @@ decline_invitations(
 \description{
 Declines invitations sent to the current member account by AWS account specified by their account IDs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{decline_invitations(
+  AccountIds = list(
+    "string"
+  )
+)
 }
+}
+

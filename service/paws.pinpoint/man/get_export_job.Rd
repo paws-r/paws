@@ -4,10 +4,7 @@
 \alias{get_export_job}
 \title{Returns information about an export job}
 \usage{
-get_export_job(
-  ApplicationId = "string",
-  JobId = "string"
-)
+get_export_job(ApplicationId, JobId)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -17,6 +14,11 @@ get_export_job(
 \description{
 Returns information about an export job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_export_job(
+  ApplicationId = "string",
+  JobId = "string"
+)
 }
+}
+

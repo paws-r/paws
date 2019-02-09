@@ -4,12 +4,8 @@
 \alias{get_campaign_activities}
 \title{Returns information about the activity performed by a campaign}
 \usage{
-get_campaign_activities(
-  ApplicationId = "string",
-  CampaignId = "string",
-  PageSize = "string",
-  Token = "string"
-)
+get_campaign_activities(ApplicationId, CampaignId, PageSize = NULL,
+  Token = NULL)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -23,6 +19,13 @@ get_campaign_activities(
 \description{
 Returns information about the activity performed by a campaign.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_campaign_activities(
+  ApplicationId = "string",
+  CampaignId = "string",
+  PageSize = "string",
+  Token = "string"
+)
 }
+}
+

@@ -4,18 +4,8 @@
 \alias{update_device_pool}
 \title{Modifies the name, description, and rules in a device pool given the attributes and the pool ARN}
 \usage{
-update_device_pool(
-  arn = "string",
-  name = "string",
-  description = "string",
-  rules = list(
-    list(
-      attribute = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE",
-      operator = "EQUALS"|"LESS_THAN"|"GREATER_THAN"|"IN"|"NOT_IN"|"CONTAINS",
-      value = "string"
-    )
-  )
-)
+update_device_pool(arn, name = NULL, description = NULL,
+  rules = NULL)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resourc Name (ARN) of the Device Farm device pool you wish to update.}
@@ -29,11 +19,27 @@ update_device_pool(
 \description{
 Modifies the name, description, and rules in a device pool given the attributes and the pool ARN. Rule updates are all-or-nothing, meaning they can only be updated as a whole (or not at all).
 }
+\section{Accepted Parameters}{
+\preformatted{update_device_pool(
+  arn = "string",
+  name = "string",
+  description = "string",
+  rules = list(
+    list(
+      attribute = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE",
+      operator = "EQUALS"|"LESS_THAN"|"GREATER_THAN"|"IN"|"NOT_IN"|"CONTAINS",
+      value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following example updates the specified device pool with a new name
 # and description. It also enables remote access of devices in the device
 # pool.
-update_device_pool(
+\donttest{update_device_pool(
   name = "NewName",
   arn = "arn:aws:devicefarm:us-west-2::devicepool:082d10e5-d7d7-48a5-ba5c-12345EXAMPLE",
   description = "NewDescription",
@@ -44,6 +50,6 @@ update_device_pool(
       operator = "EQUALS"
     )
   )
-)
+)}
 
 }

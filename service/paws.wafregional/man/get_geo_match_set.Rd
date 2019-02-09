@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.wafregional_operations.R
 \name{get_geo_match_set}
 \alias{get_geo_match_set}
-\title{Returns the GeoMatchSet that is specified by \code{GeoMatchSetId}}
+\title{Returns the GeoMatchSet that is specified by GeoMatchSetId}
 \usage{
-get_geo_match_set(
-  GeoMatchSetId = "string"
-)
+get_geo_match_set(GeoMatchSetId)
 }
 \arguments{
 \item{GeoMatchSetId}{[required] The \code{GeoMatchSetId} of the GeoMatchSet that you want to get. \code{GeoMatchSetId} is returned by CreateGeoMatchSet and by ListGeoMatchSets.}
@@ -14,6 +12,10 @@ get_geo_match_set(
 \description{
 Returns the GeoMatchSet that is specified by \code{GeoMatchSetId}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_geo_match_set(
+  GeoMatchSetId = "string"
+)
 }
+}
+

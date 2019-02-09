@@ -4,11 +4,7 @@
 \alias{list_resources}
 \title{Lists resources associated with a project in AWS CodeStar}
 \usage{
-list_resources(
-  projectId = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+list_resources(projectId, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{projectId}{[required] The ID of the project.}
@@ -20,6 +16,12 @@ list_resources(
 \description{
 Lists resources associated with a project in AWS CodeStar.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_resources(
+  projectId = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

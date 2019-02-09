@@ -4,12 +4,7 @@
 \alias{modify_mount_target_security_groups}
 \title{Modifies the set of security groups in effect for a mount target}
 \usage{
-modify_mount_target_security_groups(
-  MountTargetId = "string",
-  SecurityGroups = list(
-    "string"
-  )
-)
+modify_mount_target_security_groups(MountTargetId, SecurityGroups = NULL)
 }
 \arguments{
 \item{MountTargetId}{[required] ID of the mount target whose security groups you want to modify.}
@@ -28,14 +23,24 @@ The operation requires permissions for the following actions:
 \item \code{ec2:ModifyNetworkInterfaceAttribute} action on the mount target's network interface.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{modify_mount_target_security_groups(
+  MountTargetId = "string",
+  SecurityGroups = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This operation modifies the security groups associated with a mount
 # target for a file system.
-modify_mount_target_security_groups(
+\donttest{modify_mount_target_security_groups(
   MountTargetId = "fsmt-12340abc",
   SecurityGroups = list(
     "sg-abcd1234"
   )
-)
+)}
 
 }

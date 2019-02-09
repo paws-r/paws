@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.appsync_operations.R
 \name{get_data_source}
 \alias{get_data_source}
-\title{Retrieves a \code{DataSource} object}
+\title{Retrieves a DataSource object}
 \usage{
-get_data_source(
-  apiId = "string",
-  name = "string"
-)
+get_data_source(apiId, name)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
@@ -17,6 +14,11 @@ get_data_source(
 \description{
 Retrieves a \code{DataSource} object.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_data_source(
+  apiId = "string",
+  name = "string"
+)
 }
+}
+

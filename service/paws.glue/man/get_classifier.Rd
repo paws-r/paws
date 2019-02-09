@@ -4,9 +4,7 @@
 \alias{get_classifier}
 \title{Retrieve a classifier by name}
 \usage{
-get_classifier(
-  Name = "string"
-)
+get_classifier(Name)
 }
 \arguments{
 \item{Name}{[required] Name of the classifier to retrieve.}
@@ -14,6 +12,10 @@ get_classifier(
 \description{
 Retrieve a classifier by name.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_classifier(
+  Name = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{describe_channel}
 \title{Retrieves information about a channel}
 \usage{
-describe_channel(
-  channelName = "string",
-  includeStatistics = TRUE|FALSE
-)
+describe_channel(channelName, includeStatistics = NULL)
 }
 \arguments{
 \item{channelName}{[required] The name of the channel whose information is retrieved.}
@@ -17,6 +14,11 @@ describe_channel(
 \description{
 Retrieves information about a channel.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_channel(
+  channelName = "string",
+  includeStatistics = TRUE|FALSE
+)
 }
+}
+

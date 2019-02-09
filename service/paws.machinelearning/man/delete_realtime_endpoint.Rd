@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{delete_realtime_endpoint}
 \alias{delete_realtime_endpoint}
-\title{Deletes a real time endpoint of an \code{MLModel}}
+\title{Deletes a real time endpoint of an MLModel}
 \usage{
-delete_realtime_endpoint(
-  MLModelId = "string"
-)
+delete_realtime_endpoint(MLModelId)
 }
 \arguments{
 \item{MLModelId}{[required] The ID assigned to the \code{MLModel} during creation.}
@@ -14,6 +12,10 @@ delete_realtime_endpoint(
 \description{
 Deletes a real time endpoint of an \code{MLModel}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_realtime_endpoint(
+  MLModelId = "string"
+)
 }
+}
+

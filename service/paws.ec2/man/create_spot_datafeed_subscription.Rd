@@ -4,11 +4,7 @@
 \alias{create_spot_datafeed_subscription}
 \title{Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs}
 \usage{
-create_spot_datafeed_subscription(
-  Bucket = "string",
-  DryRun = TRUE|FALSE,
-  Prefix = "string"
-)
+create_spot_datafeed_subscription(Bucket, DryRun = NULL, Prefix = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The Amazon S3 bucket in which to store the Spot Instance data feed.}
@@ -20,11 +16,20 @@ create_spot_datafeed_subscription(
 \description{
 Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs. You can create one data feed per AWS account. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html}{Spot Instance Data Feed} in the \emph{Amazon EC2 User Guide for Linux Instances}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_spot_datafeed_subscription(
+  Bucket = "string",
+  DryRun = TRUE|FALSE,
+  Prefix = "string"
+)
+}
+}
+
 \examples{
 # This example creates a Spot Instance data feed for your AWS account.
-create_spot_datafeed_subscription(
+\donttest{create_spot_datafeed_subscription(
   Bucket = "my-s3-bucket",
   Prefix = "spotdata"
-)
+)}
 
 }

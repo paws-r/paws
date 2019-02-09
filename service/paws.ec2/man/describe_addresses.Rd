@@ -4,23 +4,8 @@
 \alias{describe_addresses}
 \title{Describes one or more of your Elastic IP addresses}
 \usage{
-describe_addresses(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  PublicIps = list(
-    "string"
-  ),
-  AllocationIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+describe_addresses(Filters = NULL, PublicIps = NULL,
+  AllocationIds = NULL, DryRun = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters. Filter names and values are case-sensitive.
@@ -53,13 +38,34 @@ Describes one or more of your Elastic IP addresses.
 \details{
 An Elastic IP address is for use in either the EC2-Classic platform or in a VPC. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_addresses(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  PublicIps = list(
+    "string"
+  ),
+  AllocationIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example describes your Elastic IP addresses.
-describe_addresses()
+\donttest{describe_addresses()}
 
 # This example describes your Elastic IP addresses for use with instances
 # in a VPC.
-describe_addresses(
+\donttest{describe_addresses(
   Filters = list(
     list(
       Name = "domain",
@@ -68,11 +74,11 @@ describe_addresses(
       )
     )
   )
-)
+)}
 
 # This example describes your Elastic IP addresses for use with instances
 # in EC2-Classic.
-describe_addresses(
+\donttest{describe_addresses(
   Filters = list(
     list(
       Name = "domain",
@@ -81,6 +87,6 @@ describe_addresses(
       )
     )
   )
-)
+)}
 
 }

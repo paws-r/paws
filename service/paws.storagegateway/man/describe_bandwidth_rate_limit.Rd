@@ -4,9 +4,7 @@
 \alias{describe_bandwidth_rate_limit}
 \title{Returns the bandwidth rate limits of a gateway}
 \usage{
-describe_bandwidth_rate_limit(
-  GatewayARN = "string"
-)
+describe_bandwidth_rate_limit(GatewayARN)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -17,11 +15,18 @@ Returns the bandwidth rate limits of a gateway. By default, these limits are not
 \details{
 This operation only returns a value for a bandwidth rate limit only if the limit is set. If no limits are set for the gateway, then this operation returns only the gateway ARN in the response body. To specify which gateway to describe, use the Amazon Resource Name (ARN) of the gateway in your request.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_bandwidth_rate_limit(
+  GatewayARN = "string"
+)
+}
+}
+
 \examples{
 # Returns a value for a bandwidth rate limit if set. If not set, then only
 # the gateway ARN is returned.
-describe_bandwidth_rate_limit(
+\donttest{describe_bandwidth_rate_limit(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
+)}
 
 }

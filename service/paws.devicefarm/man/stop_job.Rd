@@ -4,9 +4,7 @@
 \alias{stop_job}
 \title{Initiates a stop request for the current job}
 \usage{
-stop_job(
-  arn = "string"
-)
+stop_job(arn)
 }
 \arguments{
 \item{arn}{[required] Represents the Amazon Resource Name (ARN) of the Device Farm job you wish to stop.}
@@ -14,6 +12,10 @@ stop_job(
 \description{
 Initiates a stop request for the current job. AWS Device Farm will immediately stop the job on the device where tests have not started executing, and you will not be billed for this device. On the device where tests have started executing, Setup Suite and Teardown Suite tests will run to completion before stopping execution on the device. You will be billed for Setup, Teardown, and any tests that were in progress or already completed.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_job(
+  arn = "string"
+)
 }
+}
+

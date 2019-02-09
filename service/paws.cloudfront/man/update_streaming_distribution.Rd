@@ -4,7 +4,21 @@
 \alias{update_streaming_distribution}
 \title{Update a streaming distribution}
 \usage{
-update_streaming_distribution(
+update_streaming_distribution(StreamingDistributionConfig, Id,
+  IfMatch = NULL)
+}
+\arguments{
+\item{StreamingDistributionConfig}{[required] The streaming distribution's configuration information.}
+
+\item{Id}{[required] The streaming distribution's id.}
+
+\item{IfMatch}{The value of the \code{ETag} header that you received when retrieving the streaming distribution's configuration. For example: \code{E2QWRUHAPOMQZL}.}
+}
+\description{
+Update a streaming distribution.
+}
+\section{Accepted Parameters}{
+\preformatted{update_streaming_distribution(
   StreamingDistributionConfig = list(
     CallerReference = "string",
     S3Origin = list(
@@ -37,16 +51,5 @@ update_streaming_distribution(
   IfMatch = "string"
 )
 }
-\arguments{
-\item{StreamingDistributionConfig}{[required] The streaming distribution's configuration information.}
-
-\item{Id}{[required] The streaming distribution's id.}
-
-\item{IfMatch}{The value of the \code{ETag} header that you received when retrieving the streaming distribution's configuration. For example: \code{E2QWRUHAPOMQZL}.}
 }
-\description{
-Update a streaming distribution.
-}
-\examples{
 
-}

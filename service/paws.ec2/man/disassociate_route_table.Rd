@@ -4,10 +4,7 @@
 \alias{disassociate_route_table}
 \title{Disassociates a subnet from a route table}
 \usage{
-disassociate_route_table(
-  AssociationId = "string",
-  DryRun = TRUE|FALSE
-)
+disassociate_route_table(AssociationId, DryRun = NULL)
 }
 \arguments{
 \item{AssociationId}{[required] The association ID representing the current association between the route table and subnet.}
@@ -20,11 +17,19 @@ Disassociates a subnet from a route table.
 \details{
 After you perform this action, the subnet no longer uses the routes in the route table. Instead, it uses the routes in the VPC's main route table. For more information about route tables, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{disassociate_route_table(
+  AssociationId = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example disassociates the specified route table from its associated
 # subnet.
-disassociate_route_table(
+\donttest{disassociate_route_table(
   AssociationId = "rtbassoc-781d0d1a"
-)
+)}
 
 }

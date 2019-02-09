@@ -4,20 +4,12 @@
 \alias{remove_listener_certificates}
 \title{Removes the specified certificate from the specified secure listener}
 \usage{
-remove_listener_certificates(
-  ListenerArn = "string",
-  Certificates = list(
-    list(
-      CertificateArn = "string",
-      IsDefault = TRUE|FALSE
-    )
-  )
-)
+remove_listener_certificates(ListenerArn, Certificates)
 }
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
 
-\item{Certificates}{[required] The certificate to remove. You can specify one certificate per call. Set \code{CertificateArn} to the certificate ARN but do not set \code{IsDefault}.}
+\item{Certificates}{[required] The certificate to remove. You can specify one certificate per call.}
 }
 \description{
 Removes the specified certificate from the specified secure listener.
@@ -27,6 +19,16 @@ You can't remove the default certificate for a listener. To replace the default 
 
 To list the certificates for your listener, use DescribeListenerCertificates.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_listener_certificates(
+  ListenerArn = "string",
+  Certificates = list(
+    list(
+      CertificateArn = "string",
+      IsDefault = TRUE|FALSE
+    )
+  )
+)
 }
+}
+

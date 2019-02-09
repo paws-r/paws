@@ -4,10 +4,7 @@
 \alias{cancel_archival}
 \title{Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after the archiving process is initiated}
 \usage{
-cancel_archival(
-  GatewayARN = "string",
-  TapeARN = "string"
-)
+cancel_archival(GatewayARN, TapeARN)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -17,12 +14,20 @@ cancel_archival(
 \description{
 Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after the archiving process is initiated. This operation is only supported in the tape gateway type.
 }
+\section{Accepted Parameters}{
+\preformatted{cancel_archival(
+  GatewayARN = "string",
+  TapeARN = "string"
+)
+}
+}
+
 \examples{
 # Cancels archiving of a virtual tape to the virtual tape shelf (VTS)
 # after the archiving process is initiated.
-cancel_archival(
+\donttest{cancel_archival(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
   TapeARN = "arn:aws:storagegateway:us-east-1:999999999999:tape/AMZN01A2A4"
-)
+)}
 
 }

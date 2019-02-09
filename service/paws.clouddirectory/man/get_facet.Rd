@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.clouddirectory_operations.R
 \name{get_facet}
 \alias{get_facet}
-\title{Gets details of the Facet, such as facet name, attributes, Rules, or \code{ObjectType}}
+\title{Gets details of the Facet, such as facet name, attributes, Rules, or ObjectType}
 \usage{
-get_facet(
-  SchemaArn = "string",
-  Name = "string"
-)
+get_facet(SchemaArn, Name)
 }
 \arguments{
 \item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the Facet. For more information, see arns.}
@@ -17,6 +14,11 @@ get_facet(
 \description{
 Gets details of the Facet, such as facet name, attributes, Rules, or \code{ObjectType}. You can call this on all kinds of schema facets -- published, development, or applied.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_facet(
+  SchemaArn = "string",
+  Name = "string"
+)
 }
+}
+

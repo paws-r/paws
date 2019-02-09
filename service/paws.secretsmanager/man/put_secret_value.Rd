@@ -4,15 +4,8 @@
 \alias{put_secret_value}
 \title{Stores a new encrypted secret value in the specified secret}
 \usage{
-put_secret_value(
-  SecretId = "string",
-  ClientRequestToken = "string",
-  SecretBinary = raw,
-  SecretString = "string",
-  VersionStages = list(
-    "string"
-  )
-)
+put_secret_value(SecretId, ClientRequestToken = NULL,
+  SecretBinary = NULL, SecretString = NULL, VersionStages = NULL)
 }
 \arguments{
 \item{SecretId}{[required] Specifies the secret to which you want to add a new version. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret. The secret must already exist.
@@ -84,13 +77,26 @@ To run this command, you must have the following permissions:
 \item To list the versions attached to a secret, use ListSecretVersionIds.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{put_secret_value(
+  SecretId = "string",
+  ClientRequestToken = "string",
+  SecretBinary = raw,
+  SecretString = "string",
+  VersionStages = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example shows how to create a new version of the secret.
 # Alternatively, you can use the update-secret command.
-put_secret_value(
+\donttest{put_secret_value(
   ClientRequestToken = "EXAMPLE2-90ab-cdef-fedc-ba987EXAMPLE",
   SecretId = "MyTestDatabaseSecret",
   SecretString = "{\\"username\\":\\"david\\",\\"password\\":\\"BnQw!XDWgaEeT9XGTT29\\"}"
-)
+)}
 
 }

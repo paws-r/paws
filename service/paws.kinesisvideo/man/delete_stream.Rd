@@ -4,10 +4,7 @@
 \alias{delete_stream}
 \title{Deletes a Kinesis video stream and the data contained in the stream}
 \usage{
-delete_stream(
-  StreamARN = "string",
-  CurrentVersion = "string"
-)
+delete_stream(StreamARN, CurrentVersion = NULL)
 }
 \arguments{
 \item{StreamARN}{[required] The Amazon Resource Name (ARN) of the stream that you want to delete.}
@@ -28,6 +25,11 @@ To ensure that you have the latest version of the stream before deleting it, you
 
 This operation requires permission for the \code{KinesisVideo:DeleteStream} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_stream(
+  StreamARN = "string",
+  CurrentVersion = "string"
+)
 }
+}
+

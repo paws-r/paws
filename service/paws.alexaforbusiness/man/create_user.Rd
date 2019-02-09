@@ -4,19 +4,8 @@
 \alias{create_user}
 \title{Creates a user}
 \usage{
-create_user(
-  UserId = "string",
-  FirstName = "string",
-  LastName = "string",
-  Email = "string",
-  ClientRequestToken = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_user(UserId, FirstName = NULL, LastName = NULL, Email = NULL,
+  ClientRequestToken = NULL, Tags = NULL)
 }
 \arguments{
 \item{UserId}{[required] The ARN for the user.}
@@ -34,6 +23,20 @@ create_user(
 \description{
 Creates a user.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_user(
+  UserId = "string",
+  FirstName = "string",
+  LastName = "string",
+  Email = "string",
+  ClientRequestToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

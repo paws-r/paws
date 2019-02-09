@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.appsync_operations.R
 \name{delete_type}
 \alias{delete_type}
-\title{Deletes a \code{Type} object}
+\title{Deletes a Type object}
 \usage{
-delete_type(
-  apiId = "string",
-  typeName = "string"
-)
+delete_type(apiId, typeName)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
@@ -17,6 +14,11 @@ delete_type(
 \description{
 Deletes a \code{Type} object.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_type(
+  apiId = "string",
+  typeName = "string"
+)
 }
+}
+

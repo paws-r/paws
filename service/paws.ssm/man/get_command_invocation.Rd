@@ -4,11 +4,7 @@
 \alias{get_command_invocation}
 \title{Returns detailed information about command execution for an invocation or plugin}
 \usage{
-get_command_invocation(
-  CommandId = "string",
-  InstanceId = "string",
-  PluginName = "string"
-)
+get_command_invocation(CommandId, InstanceId, PluginName = NULL)
 }
 \arguments{
 \item{CommandId}{[required] (Required) The parent command ID of the invocation plugin.}
@@ -20,6 +16,12 @@ get_command_invocation(
 \description{
 Returns detailed information about command execution for an invocation or plugin.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_command_invocation(
+  CommandId = "string",
+  InstanceId = "string",
+  PluginName = "string"
+)
 }
+}
+

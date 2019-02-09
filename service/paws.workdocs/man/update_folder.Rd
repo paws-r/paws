@@ -4,13 +4,8 @@
 \alias{update_folder}
 \title{Updates the specified attributes of the specified folder}
 \usage{
-update_folder(
-  AuthenticationToken = "string",
-  FolderId = "string",
-  Name = "string",
-  ParentFolderId = "string",
-  ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED"
-)
+update_folder(AuthenticationToken = NULL, FolderId, Name = NULL,
+  ParentFolderId = NULL, ResourceState = NULL)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
@@ -26,6 +21,14 @@ update_folder(
 \description{
 Updates the specified attributes of the specified folder. The user must have access to both the folder and its parent folder, if applicable.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_folder(
+  AuthenticationToken = "string",
+  FolderId = "string",
+  Name = "string",
+  ParentFolderId = "string",
+  ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED"
+)
 }
+}
+

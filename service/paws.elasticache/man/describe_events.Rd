@@ -4,15 +4,9 @@
 \alias{describe_events}
 \title{Returns events related to clusters, cache security groups, and cache parameter groups}
 \usage{
-describe_events(
-  SourceIdentifier = "string",
-  SourceType = "cache-cluster"|"cache-parameter-group"|"cache-security-group"|"cache-subnet-group"|"replication-group",
-  StartTime = as.POSIXct("2015-01-01"),
-  EndTime = as.POSIXct("2015-01-01"),
-  Duration = 123,
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_events(SourceIdentifier = NULL, SourceType = NULL,
+  StartTime = NULL, EndTime = NULL, Duration = NULL,
+  MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{SourceIdentifier}{The identifier of the event source for which events are returned. If not specified, all sources are included in the response.}
@@ -43,6 +37,16 @@ Returns events related to clusters, cache security groups, and cache parameter g
 \details{
 By default, only the events occurring within the last hour are returned; however, you can retrieve up to 14 days' worth of events if necessary.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_events(
+  SourceIdentifier = "string",
+  SourceType = "cache-cluster"|"cache-parameter-group"|"cache-security-group"|"cache-subnet-group"|"replication-group",
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  Duration = 123,
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

@@ -4,19 +4,9 @@
 \alias{confirm_sign_up}
 \title{Confirms registration of a user and handles the existing alias from a previous user}
 \usage{
-confirm_sign_up(
-  ClientId = "string",
-  SecretHash = "string",
-  Username = "string",
-  ConfirmationCode = "string",
-  ForceAliasCreation = TRUE|FALSE,
-  AnalyticsMetadata = list(
-    AnalyticsEndpointId = "string"
-  ),
-  UserContextData = list(
-    EncodedData = "string"
-  )
-)
+confirm_sign_up(ClientId, SecretHash = NULL, Username, ConfirmationCode,
+  ForceAliasCreation = NULL, AnalyticsMetadata = NULL,
+  UserContextData = NULL)
 }
 \arguments{
 \item{ClientId}{[required] The ID of the app client associated with the user pool.}
@@ -36,6 +26,20 @@ confirm_sign_up(
 \description{
 Confirms registration of a user and handles the existing alias from a previous user.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{confirm_sign_up(
+  ClientId = "string",
+  SecretHash = "string",
+  Username = "string",
+  ConfirmationCode = "string",
+  ForceAliasCreation = TRUE|FALSE,
+  AnalyticsMetadata = list(
+    AnalyticsEndpointId = "string"
+  ),
+  UserContextData = list(
+    EncodedData = "string"
+  )
+)
 }
+}
+

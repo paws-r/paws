@@ -4,9 +4,7 @@
 \alias{delete_usage_plan}
 \title{Deletes a usage plan of a given plan Id}
 \usage{
-delete_usage_plan(
-  usagePlanId = "string"
-)
+delete_usage_plan(usagePlanId)
 }
 \arguments{
 \item{usagePlanId}{[required] [Required] The Id of the to-be-deleted usage plan.}
@@ -14,6 +12,10 @@ delete_usage_plan(
 \description{
 Deletes a usage plan of a given plan Id.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_usage_plan(
+  usagePlanId = "string"
+)
 }
+}
+

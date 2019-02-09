@@ -4,13 +4,7 @@
 \alias{set_status}
 \title{Requests that the status of the specified physical or logical pipeline objects be updated in the specified pipeline}
 \usage{
-set_status(
-  pipelineId = "string",
-  objectIds = list(
-    "string"
-  ),
-  status = "string"
-)
+set_status(pipelineId, objectIds, status)
 }
 \arguments{
 \item{pipelineId}{[required] The ID of the pipeline that contains the objects.}
@@ -22,6 +16,14 @@ set_status(
 \description{
 Requests that the status of the specified physical or logical pipeline objects be updated in the specified pipeline. This update might not occur immediately, but is eventually consistent. The status that can be set depends on the type of object (for example, DataNode or Activity). You cannot perform this operation on \code{FINISHED} pipelines and attempting to do so returns \code{InvalidRequestException}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_status(
+  pipelineId = "string",
+  objectIds = list(
+    "string"
+  ),
+  status = "string"
+)
 }
+}
+

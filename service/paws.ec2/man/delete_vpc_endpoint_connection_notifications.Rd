@@ -4,12 +4,8 @@
 \alias{delete_vpc_endpoint_connection_notifications}
 \title{Deletes one or more VPC endpoint connection notifications}
 \usage{
-delete_vpc_endpoint_connection_notifications(
-  DryRun = TRUE|FALSE,
-  ConnectionNotificationIds = list(
-    "string"
-  )
-)
+delete_vpc_endpoint_connection_notifications(DryRun = NULL,
+  ConnectionNotificationIds)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -19,6 +15,13 @@ delete_vpc_endpoint_connection_notifications(
 \description{
 Deletes one or more VPC endpoint connection notifications.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_vpc_endpoint_connection_notifications(
+  DryRun = TRUE|FALSE,
+  ConnectionNotificationIds = list(
+    "string"
+  )
+)
 }
+}
+

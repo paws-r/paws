@@ -4,7 +4,18 @@
 \alias{modify_workspace_properties}
 \title{Modifies the specified WorkSpace properties}
 \usage{
-modify_workspace_properties(
+modify_workspace_properties(WorkspaceId, WorkspaceProperties)
+}
+\arguments{
+\item{WorkspaceId}{[required] The ID of the WorkSpace.}
+
+\item{WorkspaceProperties}{[required] The properties of the WorkSpace.}
+}
+\description{
+Modifies the specified WorkSpace properties.
+}
+\section{Accepted Parameters}{
+\preformatted{modify_workspace_properties(
   WorkspaceId = "string",
   WorkspaceProperties = list(
     RunningMode = "AUTO_STOP"|"ALWAYS_ON",
@@ -15,14 +26,5 @@ modify_workspace_properties(
   )
 )
 }
-\arguments{
-\item{WorkspaceId}{[required] The identifier of the WorkSpace.}
+}
 
-\item{WorkspaceProperties}{[required] The properties of the WorkSpace.}
-}
-\description{
-Modifies the specified WorkSpace properties.
-}
-\examples{
-
-}

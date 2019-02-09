@@ -4,16 +4,9 @@
 \alias{create_storedi_scsi_volume}
 \title{Creates a volume on a specified gateway}
 \usage{
-create_storedi_scsi_volume(
-  GatewayARN = "string",
-  DiskId = "string",
-  SnapshotId = "string",
-  PreserveExistingData = TRUE|FALSE,
-  TargetName = "string",
-  NetworkInterfaceId = "string",
-  KMSEncrypted = TRUE|FALSE,
-  KMSKey = "string"
-)
+create_storedi_scsi_volume(GatewayARN, DiskId, SnapshotId = NULL,
+  PreserveExistingData, TargetName, NetworkInterfaceId,
+  KMSEncrypted = NULL, KMSKey = NULL)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -44,15 +37,29 @@ The size of the volume to create is inferred from the disk size. You can choose 
 
 In the request you must specify the gateway and the disk information on which you are creating the volume. In response, the gateway creates the volume and returns volume information such as the volume Amazon Resource Name (ARN), its size, and the iSCSI target ARN that initiators can use to connect to the volume target.
 }
+\section{Accepted Parameters}{
+\preformatted{create_storedi_scsi_volume(
+  GatewayARN = "string",
+  DiskId = "string",
+  SnapshotId = "string",
+  PreserveExistingData = TRUE|FALSE,
+  TargetName = "string",
+  NetworkInterfaceId = "string",
+  KMSEncrypted = TRUE|FALSE,
+  KMSKey = "string"
+)
+}
+}
+
 \examples{
 # Creates a stored volume on a specified stored gateway.
-create_storedi_scsi_volume(
+\donttest{create_storedi_scsi_volume(
   DiskId = "pci-0000:03:00.0-scsi-0:0:0:0",
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
   NetworkInterfaceId = "10.1.1.1",
   PreserveExistingData = TRUE,
   SnapshotId = "snap-f47b7b94",
   TargetName = "my-volume"
-)
+)}
 
 }

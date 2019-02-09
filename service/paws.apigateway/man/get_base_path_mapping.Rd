@@ -4,10 +4,7 @@
 \alias{get_base_path_mapping}
 \title{Describe a BasePathMapping resource}
 \usage{
-get_base_path_mapping(
-  domainName = "string",
-  basePath = "string"
-)
+get_base_path_mapping(domainName, basePath)
 }
 \arguments{
 \item{domainName}{[required] [Required] The domain name of the BasePathMapping resource to be described.}
@@ -17,6 +14,11 @@ get_base_path_mapping(
 \description{
 Describe a BasePathMapping resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_base_path_mapping(
+  domainName = "string",
+  basePath = "string"
+)
 }
+}
+

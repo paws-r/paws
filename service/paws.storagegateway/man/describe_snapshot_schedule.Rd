@@ -4,9 +4,7 @@
 \alias{describe_snapshot_schedule}
 \title{Describes the snapshot schedule for the specified gateway volume}
 \usage{
-describe_snapshot_schedule(
-  VolumeARN = "string"
-)
+describe_snapshot_schedule(VolumeARN)
 }
 \arguments{
 \item{VolumeARN}{[required] The Amazon Resource Name (ARN) of the volume. Use the ListVolumes operation to return a list of gateway volumes.}
@@ -14,11 +12,18 @@ describe_snapshot_schedule(
 \description{
 Describes the snapshot schedule for the specified gateway volume. The snapshot schedule information includes intervals at which snapshots are automatically initiated on the volume. This operation is only supported in the cached volume and stored volume types.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_snapshot_schedule(
+  VolumeARN = "string"
+)
+}
+}
+
 \examples{
 # Describes the snapshot schedule for the specified gateway volume
 # including intervals at which snapshots are automatically initiated.
-describe_snapshot_schedule(
+\donttest{describe_snapshot_schedule(
   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB"
-)
+)}
 
 }

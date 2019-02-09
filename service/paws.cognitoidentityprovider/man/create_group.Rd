@@ -4,13 +4,8 @@
 \alias{create_group}
 \title{Creates a new group in the specified user pool}
 \usage{
-create_group(
-  GroupName = "string",
-  UserPoolId = "string",
-  Description = "string",
-  RoleArn = "string",
-  Precedence = 123
-)
+create_group(GroupName, UserPoolId, Description = NULL, RoleArn = NULL,
+  Precedence = NULL)
 }
 \arguments{
 \item{GroupName}{[required] The name of the group. Must be unique.}
@@ -33,6 +28,14 @@ Creates a new group in the specified user pool.
 \details{
 Requires developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_group(
+  GroupName = "string",
+  UserPoolId = "string",
+  Description = "string",
+  RoleArn = "string",
+  Precedence = 123
+)
 }
+}
+

@@ -4,17 +4,8 @@
 \alias{copy_option_group}
 \title{Copies the specified option group}
 \usage{
-copy_option_group(
-  SourceOptionGroupIdentifier = "string",
-  TargetOptionGroupIdentifier = "string",
-  TargetOptionGroupDescription = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+copy_option_group(SourceOptionGroupIdentifier, TargetOptionGroupIdentifier,
+  TargetOptionGroupDescription, Tags = NULL)
 }
 \arguments{
 \item{SourceOptionGroupIdentifier}{[required] The identifier or ARN for the source option group. For information about creating an ARN, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS} in the \emph{Amazon RDS User Guide}.
@@ -45,6 +36,18 @@ Example: \code{my-option-group}}
 \description{
 Copies the specified option group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{copy_option_group(
+  SourceOptionGroupIdentifier = "string",
+  TargetOptionGroupIdentifier = "string",
+  TargetOptionGroupDescription = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

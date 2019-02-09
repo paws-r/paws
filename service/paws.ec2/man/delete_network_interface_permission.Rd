@@ -4,11 +4,8 @@
 \alias{delete_network_interface_permission}
 \title{Deletes a permission for a network interface}
 \usage{
-delete_network_interface_permission(
-  NetworkInterfacePermissionId = "string",
-  Force = TRUE|FALSE,
-  DryRun = TRUE|FALSE
-)
+delete_network_interface_permission(NetworkInterfacePermissionId,
+  Force = NULL, DryRun = NULL)
 }
 \arguments{
 \item{NetworkInterfacePermissionId}{[required] The ID of the network interface permission.}
@@ -20,6 +17,12 @@ delete_network_interface_permission(
 \description{
 Deletes a permission for a network interface. By default, you cannot delete the permission if the account for which you're removing the permission has attached the network interface to an instance. However, you can force delete the permission, regardless of any attachment.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_network_interface_permission(
+  NetworkInterfacePermissionId = "string",
+  Force = TRUE|FALSE,
+  DryRun = TRUE|FALSE
+)
 }
+}
+

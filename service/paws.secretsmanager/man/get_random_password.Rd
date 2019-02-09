@@ -4,16 +4,10 @@
 \alias{get_random_password}
 \title{Generates a random password of the specified complexity}
 \usage{
-get_random_password(
-  PasswordLength = 123,
-  ExcludeCharacters = "string",
-  ExcludeNumbers = TRUE|FALSE,
-  ExcludePunctuation = TRUE|FALSE,
-  ExcludeUppercase = TRUE|FALSE,
-  ExcludeLowercase = TRUE|FALSE,
-  IncludeSpace = TRUE|FALSE,
-  RequireEachIncludedType = TRUE|FALSE
-)
+get_random_password(PasswordLength = NULL, ExcludeCharacters = NULL,
+  ExcludeNumbers = NULL, ExcludePunctuation = NULL,
+  ExcludeUppercase = NULL, ExcludeLowercase = NULL,
+  IncludeSpace = NULL, RequireEachIncludedType = NULL)
 }
 \arguments{
 \item{PasswordLength}{The desired length of the generated password. The default value if you do not include this parameter is 32 characters.}
@@ -26,7 +20,7 @@ get_random_password(
 
 The following are the punctuation characters that \emph{can} be included in the generated password if you don't explicitly exclude them with \code{ExcludeCharacters} or \code{ExcludePunctuation}:
 
-\code{! \" # $ % & \' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~}}
+\code{! \" # $ \% & \' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~}}
 
 \item{ExcludeUppercase}{Specifies that the generated password should not include uppercase letters. The default if you do not include this switch parameter is that uppercase letters can be included.}
 
@@ -47,15 +41,29 @@ To run this command, you must have the following permissions:
 \item secretsmanager:GetRandomPassword
 }
 }
+\section{Accepted Parameters}{
+\preformatted{get_random_password(
+  PasswordLength = 123,
+  ExcludeCharacters = "string",
+  ExcludeNumbers = TRUE|FALSE,
+  ExcludePunctuation = TRUE|FALSE,
+  ExcludeUppercase = TRUE|FALSE,
+  ExcludeLowercase = TRUE|FALSE,
+  IncludeSpace = TRUE|FALSE,
+  RequireEachIncludedType = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # The following example shows how to request a randomly generated
 # password. This example includes the optional flags to require spaces and
 # at least one character of each included type. It specifies a length of
 # 20 characters.
-get_random_password(
+\donttest{get_random_password(
   IncludeSpace = TRUE,
   PasswordLength = 20L,
   RequireEachIncludedType = TRUE
-)
+)}
 
 }

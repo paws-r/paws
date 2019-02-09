@@ -4,16 +4,8 @@
 \alias{export_server_engine_attribute}
 \title{Exports a specified server engine attribute as a base64-encoded string}
 \usage{
-export_server_engine_attribute(
-  ExportAttributeName = "string",
-  ServerName = "string",
-  InputAttributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  )
-)
+export_server_engine_attribute(ExportAttributeName, ServerName,
+  InputAttributes = NULL)
 }
 \arguments{
 \item{ExportAttributeName}{[required] The name of the export attribute. Currently supported export attribute is "Userdata" which exports a userdata script filled out with parameters provided in the \code{InputAttributes} list.}
@@ -30,6 +22,17 @@ This operation is synchronous.
 
 A \code{ValidationException} is raised when parameters of the request are not valid. A \code{ResourceNotFoundException} is thrown when the server does not exist. An \code{InvalidStateException} is thrown when the server is in any of the following states: CREATING, TERMINATED, FAILED or DELETING.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{export_server_engine_attribute(
+  ExportAttributeName = "string",
+  ServerName = "string",
+  InputAttributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

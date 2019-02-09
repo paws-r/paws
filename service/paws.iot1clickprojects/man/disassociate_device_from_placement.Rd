@@ -4,11 +4,8 @@
 \alias{disassociate_device_from_placement}
 \title{Removes a physical device from a placement}
 \usage{
-disassociate_device_from_placement(
-  projectName = "string",
-  placementName = "string",
-  deviceTemplateName = "string"
-)
+disassociate_device_from_placement(projectName, placementName,
+  deviceTemplateName)
 }
 \arguments{
 \item{projectName}{[required] The name of the project that contains the placement.}
@@ -20,6 +17,12 @@ disassociate_device_from_placement(
 \description{
 Removes a physical device from a placement.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_device_from_placement(
+  projectName = "string",
+  placementName = "string",
+  deviceTemplateName = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{delete_cluster}
 \title{Deletes the specified cluster}
 \usage{
-delete_cluster(
-  cluster = "string"
-)
+delete_cluster(cluster)
 }
 \arguments{
 \item{cluster}{[required] The short name or full Amazon Resource Name (ARN) of the cluster to delete.}
@@ -14,10 +12,17 @@ delete_cluster(
 \description{
 Deletes the specified cluster. You must deregister all container instances from this cluster before you may delete it. You can list the container instances in a cluster with ListContainerInstances and deregister them with DeregisterContainerInstance.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_cluster(
+  cluster = "string"
+)
+}
+}
+
 \examples{
 # This example deletes an empty cluster in your default region.
-delete_cluster(
+\donttest{delete_cluster(
   cluster = "my_cluster"
-)
+)}
 
 }

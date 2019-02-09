@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.glue_operations.R
 \name{get_table}
 \alias{get_table}
-\title{Retrieves the \code{Table} definition in a Data Catalog for a specified table}
+\title{Retrieves the Table definition in a Data Catalog for a specified table}
 \usage{
-get_table(
-  CatalogId = "string",
-  DatabaseName = "string",
-  Name = "string"
-)
+get_table(CatalogId = NULL, DatabaseName, Name)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the table resides. If none is supplied, the AWS account ID is used by default.}
@@ -20,6 +16,12 @@ get_table(
 \description{
 Retrieves the \code{Table} definition in a Data Catalog for a specified table.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_table(
+  CatalogId = "string",
+  DatabaseName = "string",
+  Name = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{delete_filter}
 \title{Deletes the filter specified by the filter name}
 \usage{
-delete_filter(
-  DetectorId = "string",
-  FilterName = "string"
-)
+delete_filter(DetectorId, FilterName)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID that specifies the detector where you want to delete a filter.}
@@ -17,6 +14,11 @@ delete_filter(
 \description{
 Deletes the filter specified by the filter name.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_filter(
+  DetectorId = "string",
+  FilterName = "string"
+)
 }
+}
+

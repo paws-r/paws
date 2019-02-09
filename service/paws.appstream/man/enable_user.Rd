@@ -4,10 +4,7 @@
 \alias{enable_user}
 \title{Enables a user in the user pool}
 \usage{
-enable_user(
-  UserName = "string",
-  AuthenticationType = "API"|"SAML"|"USERPOOL"
-)
+enable_user(UserName, AuthenticationType)
 }
 \arguments{
 \item{UserName}{[required] The email address of the user.}
@@ -17,6 +14,11 @@ enable_user(
 \description{
 Enables a user in the user pool. After being enabled, users can sign in to AppStream 2.0 and open applications from the stacks to which they are assigned.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{enable_user(
+  UserName = "string",
+  AuthenticationType = "API"|"SAML"|"USERPOOL"
+)
 }
+}
+

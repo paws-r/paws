@@ -4,9 +4,7 @@
 \alias{get_offering_status}
 \title{Gets the current status and future status of all offerings purchased by an AWS account}
 \usage{
-get_offering_status(
-  nextToken = "string"
-)
+get_offering_status(nextToken = NULL)
 }
 \arguments{
 \item{nextToken}{An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.}
@@ -14,11 +12,18 @@ get_offering_status(
 \description{
 Gets the current status and future status of all offerings purchased by an AWS account. The response indicates how many offerings are currently available and the offerings that will be available in the next period. The API returns a \code{NotEligible} error if the user is not permitted to invoke the operation. Please contact \href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefarm-support@amazon.com} if you believe that you should be able to invoke this operation.
 }
+\section{Accepted Parameters}{
+\preformatted{get_offering_status(
+  nextToken = "string"
+)
+}
+}
+
 \examples{
 # The following example returns information about Device Farm offerings
 # available to your account.
-get_offering_status(
+\donttest{get_offering_status(
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
-)
+)}
 
 }

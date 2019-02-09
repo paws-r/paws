@@ -4,17 +4,8 @@
 \alias{describe_sessions}
 \title{Retrieves a list of all active sessions (both connected and disconnected) or terminated sessions from the past 30 days}
 \usage{
-describe_sessions(
-  State = "Active"|"History",
-  MaxResults = 123,
-  NextToken = "string",
-  Filters = list(
-    list(
-      key = "InvokedAfter"|"InvokedBefore"|"Target"|"Owner"|"Status",
-      value = "string"
-    )
-  )
-)
+describe_sessions(State, MaxResults = NULL, NextToken = NULL,
+  Filters = NULL)
 }
 \arguments{
 \item{State}{[required] The session status to retrieve a list of sessions for. For example, "Active".}
@@ -28,6 +19,18 @@ describe_sessions(
 \description{
 Retrieves a list of all active sessions (both connected and disconnected) or terminated sessions from the past 30 days.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_sessions(
+  State = "Active"|"History",
+  MaxResults = 123,
+  NextToken = "string",
+  Filters = list(
+    list(
+      key = "InvokedAfter"|"InvokedBefore"|"Target"|"Owner"|"Status",
+      value = "string"
+    )
+  )
+)
 }
+}
+

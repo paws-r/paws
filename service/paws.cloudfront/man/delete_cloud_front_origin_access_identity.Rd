@@ -4,10 +4,7 @@
 \alias{delete_cloud_front_origin_access_identity}
 \title{Delete an origin access identity}
 \usage{
-delete_cloud_front_origin_access_identity(
-  Id = "string",
-  IfMatch = "string"
-)
+delete_cloud_front_origin_access_identity(Id, IfMatch = NULL)
 }
 \arguments{
 \item{Id}{[required] The origin access identity's ID.}
@@ -17,6 +14,11 @@ delete_cloud_front_origin_access_identity(
 \description{
 Delete an origin access identity.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_cloud_front_origin_access_identity(
+  Id = "string",
+  IfMatch = "string"
+)
 }
+}
+

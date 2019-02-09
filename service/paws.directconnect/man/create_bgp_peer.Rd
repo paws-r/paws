@@ -4,16 +4,7 @@
 \alias{create_bgp_peer}
 \title{Creates a BGP peer on the specified virtual interface}
 \usage{
-create_bgp_peer(
-  virtualInterfaceId = "string",
-  newBGPPeer = list(
-    asn = 123,
-    authKey = "string",
-    addressFamily = "ipv4"|"ipv6",
-    amazonAddress = "string",
-    customerAddress = "string"
-  )
-)
+create_bgp_peer(virtualInterfaceId = NULL, newBGPPeer = NULL)
 }
 \arguments{
 \item{virtualInterfaceId}{The ID of the virtual interface.}
@@ -24,14 +15,25 @@ create_bgp_peer(
 Creates a BGP peer on the specified virtual interface.
 }
 \details{
-You must create a BGP peer for the corresponding address family (IPv4/IPv6) in order to access AWS resources that also use that address family.
+The BGP peer cannot be in the same address family (IPv4/IPv6) of an existing BGP peer on the virtual interface.
 
-If logical redundancy is not supported by the connection, interconnect, or LAG, the BGP peer cannot be in the same address family as an existing BGP peer on the virtual interface.
+You must create a BGP peer for the corresponding address family in order to access AWS resources that also use that address family.
 
 When creating a IPv6 BGP peer, omit the Amazon address and customer address. IPv6 addresses are automatically assigned from the Amazon pool of IPv6 addresses; you cannot specify custom IPv6 addresses.
 
 For a public virtual interface, the Autonomous System Number (ASN) must be private or already whitelisted for the virtual interface.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_bgp_peer(
+  virtualInterfaceId = "string",
+  newBGPPeer = list(
+    asn = 123,
+    authKey = "string",
+    addressFamily = "ipv4"|"ipv6",
+    amazonAddress = "string",
+    customerAddress = "string"
+  )
+)
 }
+}
+

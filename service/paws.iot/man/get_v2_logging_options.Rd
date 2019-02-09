@@ -9,6 +9,8 @@ get_v2_logging_options()
 \description{
 Gets the fine grained logging options.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_v2_logging_options()
 }
+}
+

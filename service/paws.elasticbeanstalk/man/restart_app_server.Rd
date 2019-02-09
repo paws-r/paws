@@ -4,10 +4,7 @@
 \alias{restart_app_server}
 \title{Causes the environment to restart the application container server running on each Amazon EC2 instance}
 \usage{
-restart_app_server(
-  EnvironmentId = "string",
-  EnvironmentName = "string"
-)
+restart_app_server(EnvironmentId = NULL, EnvironmentName = NULL)
 }
 \arguments{
 \item{EnvironmentId}{The ID of the environment to restart the server for.
@@ -21,11 +18,19 @@ Condition: You must specify either this or an EnvironmentId, or both. If you do 
 \description{
 Causes the environment to restart the application container server running on each Amazon EC2 instance.
 }
+\section{Accepted Parameters}{
+\preformatted{restart_app_server(
+  EnvironmentId = "string",
+  EnvironmentName = "string"
+)
+}
+}
+
 \examples{
 # The following operation restarts application servers on all instances in
 # an environment named my-env:
-restart_app_server(
+\donttest{restart_app_server(
   EnvironmentName = "my-env"
-)
+)}
 
 }

@@ -4,7 +4,23 @@
 \alias{put_telemetry_records}
 \title{Used by the AWS X-Ray daemon to upload telemetry}
 \usage{
-put_telemetry_records(
+put_telemetry_records(TelemetryRecords, EC2InstanceId = NULL,
+  Hostname = NULL, ResourceARN = NULL)
+}
+\arguments{
+\item{TelemetryRecords}{[required]}
+
+\item{EC2InstanceId}{}
+
+\item{Hostname}{}
+
+\item{ResourceARN}{}
+}
+\description{
+Used by the AWS X-Ray daemon to upload telemetry.
+}
+\section{Accepted Parameters}{
+\preformatted{put_telemetry_records(
   TelemetryRecords = list(
     list(
       Timestamp = as.POSIXct("2015-01-01"),
@@ -27,18 +43,5 @@ put_telemetry_records(
   ResourceARN = "string"
 )
 }
-\arguments{
-\item{TelemetryRecords}{[required]}
-
-\item{EC2InstanceId}{}
-
-\item{Hostname}{}
-
-\item{ResourceARN}{}
 }
-\description{
-Used by the AWS X-Ray daemon to upload telemetry.
-}
-\examples{
 
-}

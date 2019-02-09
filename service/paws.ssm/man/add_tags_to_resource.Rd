@@ -4,16 +4,7 @@
 \alias{add_tags_to_resource}
 \title{Adds or overwrites one or more tags for the specified resource}
 \usage{
-add_tags_to_resource(
-  ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline",
-  ResourceId = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+add_tags_to_resource(ResourceType, ResourceId, Tags)
 }
 \arguments{
 \item{ResourceType}{[required] Specifies the type of resource you are tagging.
@@ -48,6 +39,17 @@ We recommend that you devise a set of tag keys that meets your needs for each re
 
 For more information about tags, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Amazon EC2 Resources} in the \emph{Amazon EC2 User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_tags_to_resource(
+  ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline",
+  ResourceId = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

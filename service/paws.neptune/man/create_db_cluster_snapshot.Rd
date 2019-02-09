@@ -4,16 +4,8 @@
 \alias{create_db_cluster_snapshot}
 \title{Creates a snapshot of a DB cluster}
 \usage{
-create_db_cluster_snapshot(
-  DBClusterSnapshotIdentifier = "string",
-  DBClusterIdentifier = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_db_cluster_snapshot(DBClusterSnapshotIdentifier,
+  DBClusterIdentifier, Tags = NULL)
 }
 \arguments{
 \item{DBClusterSnapshotIdentifier}{[required] The identifier of the DB cluster snapshot. This parameter is stored as a lowercase string.
@@ -41,6 +33,17 @@ Example: \code{my-cluster1}}
 \description{
 Creates a snapshot of a DB cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_db_cluster_snapshot(
+  DBClusterSnapshotIdentifier = "string",
+  DBClusterIdentifier = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

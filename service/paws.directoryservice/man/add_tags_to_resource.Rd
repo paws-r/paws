@@ -4,15 +4,7 @@
 \alias{add_tags_to_resource}
 \title{Adds or overwrites one or more tags for the specified directory}
 \usage{
-add_tags_to_resource(
-  ResourceId = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+add_tags_to_resource(ResourceId, Tags)
 }
 \arguments{
 \item{ResourceId}{[required] Identifier (ID) for the directory to which to add the tag.}
@@ -22,6 +14,16 @@ add_tags_to_resource(
 \description{
 Adds or overwrites one or more tags for the specified directory. Each directory can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique to each resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_tags_to_resource(
+  ResourceId = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

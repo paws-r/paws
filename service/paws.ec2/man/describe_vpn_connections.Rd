@@ -4,20 +4,8 @@
 \alias{describe_vpn_connections}
 \title{Describes one or more of your VPN connections}
 \usage{
-describe_vpn_connections(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  VpnConnectionIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+describe_vpn_connections(Filters = NULL, VpnConnectionIds = NULL,
+  DryRun = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -47,6 +35,21 @@ Describes one or more of your VPN connections.
 \details{
 For more information about VPN connections, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html}{AWS Managed VPN Connections} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_vpn_connections(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  VpnConnectionIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
+}
+

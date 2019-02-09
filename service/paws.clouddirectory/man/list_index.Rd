@@ -4,7 +4,27 @@
 \alias{list_index}
 \title{Lists objects attached to the specified index}
 \usage{
-list_index(
+list_index(DirectoryArn, RangesOnIndexedValues = NULL, IndexReference,
+  MaxResults = NULL, NextToken = NULL, ConsistencyLevel = NULL)
+}
+\arguments{
+\item{DirectoryArn}{[required] The ARN of the directory that the index exists in.}
+
+\item{RangesOnIndexedValues}{Specifies the ranges of indexed values that you want to query.}
+
+\item{IndexReference}{[required] The reference to the index to list.}
+
+\item{MaxResults}{The maximum number of objects in a single page to retrieve from the index during a request. For more information, see \href{http://docs.aws.amazon.com/clouddirectory/latest/developerguide/limits.html}{Amazon Cloud Directory Limits}.}
+
+\item{NextToken}{The pagination token.}
+
+\item{ConsistencyLevel}{The consistency level to execute the request at.}
+}
+\description{
+Lists objects attached to the specified index.
+}
+\section{Accepted Parameters}{
+\preformatted{list_index(
   DirectoryArn = "string",
   RangesOnIndexedValues = list(
     list(
@@ -41,22 +61,5 @@ list_index(
   ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
 )
 }
-\arguments{
-\item{DirectoryArn}{[required] The ARN of the directory that the index exists in.}
-
-\item{RangesOnIndexedValues}{Specifies the ranges of indexed values that you want to query.}
-
-\item{IndexReference}{[required] The reference to the index to list.}
-
-\item{MaxResults}{The maximum number of objects in a single page to retrieve from the index during a request. For more information, see \href{http://docs.aws.amazon.com/clouddirectory/latest/developerguide/limits.html}{Amazon Cloud Directory Limits}.}
-
-\item{NextToken}{The pagination token.}
-
-\item{ConsistencyLevel}{The consistency level to execute the request at.}
 }
-\description{
-Lists objects attached to the specified index.
-}
-\examples{
 
-}

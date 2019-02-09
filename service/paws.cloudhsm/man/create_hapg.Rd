@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.cloudhsm_operations.R
 \name{create_hapg}
 \alias{create_hapg}
-\title{This is documentation for \strong{AWS CloudHSM Classic}}
+\title{This is documentation for AWS CLOUDHSM CLASSIC}
 \usage{
-create_hapg(
-  Label = "string"
-)
+create_hapg(Label)
 }
 \arguments{
 \item{Label}{[required] The label of the new high-availability partition group.}
@@ -19,6 +17,10 @@ This is documentation for \strong{AWS CloudHSM Classic}. For more information, s
 
 Creates a high-availability partition group. A high-availability partition group is a group of partitions that spans multiple physical HSMs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_hapg(
+  Label = "string"
+)
 }
+}
+

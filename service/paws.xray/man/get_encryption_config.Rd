@@ -9,6 +9,8 @@ get_encryption_config()
 \description{
 Retrieves the current encryption configuration for X-Ray data.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_encryption_config()
 }
+}
+

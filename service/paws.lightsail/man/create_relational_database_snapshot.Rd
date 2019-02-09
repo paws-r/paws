@@ -4,16 +4,8 @@
 \alias{create_relational_database_snapshot}
 \title{Creates a snapshot of your database in Amazon Lightsail}
 \usage{
-create_relational_database_snapshot(
-  relationalDatabaseName = "string",
-  relationalDatabaseSnapshotName = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+create_relational_database_snapshot(relationalDatabaseName,
+  relationalDatabaseSnapshotName)
 }
 \arguments{
 \item{relationalDatabaseName}{[required] The name of the database on which to base your new snapshot.}
@@ -25,17 +17,15 @@ Constraints:
 \item Must contain from 2 to 255 alphanumeric characters, or hyphens.
 \item The first and last character must be a letter or number.
 }}
-
-\item{tags}{The tag keys and optional values to add to the resource during create.
-
-To tag a resource after it has been created, see the \code{tag resource} operation.}
 }
 \description{
 Creates a snapshot of your database in Amazon Lightsail. You can use snapshots for backups, to make copies of a database, and to save data before deleting a database.
 }
-\details{
-The \code{create relational database snapshot} operation supports tag-based access control via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\section{Accepted Parameters}{
+\preformatted{create_relational_database_snapshot(
+  relationalDatabaseName = "string",
+  relationalDatabaseSnapshotName = "string"
+)
 }
-\examples{
+}
 
-}

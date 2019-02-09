@@ -4,9 +4,7 @@
 \alias{get_resource_policy}
 \title{Retrieves the JSON text of the resource-based policy document that's attached to the specified secret}
 \usage{
-get_resource_policy(
-  SecretId = "string"
-)
+get_resource_policy(SecretId)
 }
 \arguments{
 \item{SecretId}{[required] Specifies the secret that you want to retrieve the attached resource-based policy for. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
@@ -31,11 +29,18 @@ To run this command, you must have the following permissions:
 \item To list all of the currently available secrets, use ListSecrets.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{get_resource_policy(
+  SecretId = "string"
+)
+}
+}
+
 \examples{
 # The following example shows how to retrieve the resource-based policy
 # that is attached to a secret.
-get_resource_policy(
+\donttest{get_resource_policy(
   SecretId = "MyTestDatabaseSecret"
-)
+)}
 
 }

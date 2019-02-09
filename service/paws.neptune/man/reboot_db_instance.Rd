@@ -4,10 +4,7 @@
 \alias{reboot_db_instance}
 \title{You might need to reboot your DB instance, usually for maintenance reasons}
 \usage{
-reboot_db_instance(
-  DBInstanceIdentifier = "string",
-  ForceFailover = TRUE|FALSE
-)
+reboot_db_instance(DBInstanceIdentifier, ForceFailover = NULL)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The DB instance identifier. This parameter is stored as a lowercase string.
@@ -27,6 +24,11 @@ You might need to reboot your DB instance, usually for maintenance reasons. For 
 \details{
 Rebooting a DB instance restarts the database engine service. Rebooting a DB instance results in a momentary outage, during which the DB instance status is set to rebooting.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reboot_db_instance(
+  DBInstanceIdentifier = "string",
+  ForceFailover = TRUE|FALSE
+)
 }
+}
+

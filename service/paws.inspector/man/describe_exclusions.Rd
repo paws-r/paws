@@ -4,12 +4,7 @@
 \alias{describe_exclusions}
 \title{Describes the exclusions that are specified by the exclusions' ARNs}
 \usage{
-describe_exclusions(
-  exclusionArns = list(
-    "string"
-  ),
-  locale = "EN_US"
-)
+describe_exclusions(exclusionArns, locale = NULL)
 }
 \arguments{
 \item{exclusionArns}{[required] The list of ARNs that specify the exclusions that you want to describe.}
@@ -19,6 +14,13 @@ describe_exclusions(
 \description{
 Describes the exclusions that are specified by the exclusions' ARNs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_exclusions(
+  exclusionArns = list(
+    "string"
+  ),
+  locale = "EN_US"
+)
 }
+}
+

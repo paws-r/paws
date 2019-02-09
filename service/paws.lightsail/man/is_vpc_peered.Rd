@@ -9,6 +9,8 @@ is_vpc_peered()
 \description{
 Returns a Boolean value indicating whether your Lightsail VPC is peered.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{is_vpc_peered()
 }
+}
+

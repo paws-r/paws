@@ -4,17 +4,7 @@
 \alias{describe_event_categories}
 \title{Displays a list of categories for all event source types, or, if specified, for a specified source type}
 \usage{
-describe_event_categories(
-  SourceType = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
+describe_event_categories(SourceType = NULL, Filters = NULL)
 }
 \arguments{
 \item{SourceType}{The type of source that is generating the events.
@@ -26,6 +16,18 @@ Valid values: db-instance | db-parameter-group | db-security-group | db-snapshot
 \description{
 Displays a list of categories for all event source types, or, if specified, for a specified source type.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_event_categories(
+  SourceType = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  )
+)
 }
+}
+

@@ -4,12 +4,8 @@
 \alias{delete_scaling_policy}
 \title{Deletes the specified Application Auto Scaling scaling policy}
 \usage{
-delete_scaling_policy(
-  PolicyName = "string",
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
-  ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"
-)
+delete_scaling_policy(PolicyName, ServiceNamespace, ResourceId,
+  ScalableDimension)
 }
 \arguments{
 \item{PolicyName}{[required] The name of the scaling policy.}
@@ -52,14 +48,24 @@ Deleting a policy deletes the underlying alarm action, but does not delete the C
 
 To create a scaling policy or update an existing one, see PutScalingPolicy.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_scaling_policy(
+  PolicyName = "string",
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
+  ResourceId = "string",
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"
+)
+}
+}
+
 \examples{
 # This example deletes a scaling policy for the Amazon ECS service called
 # web-app, which is running in the default cluster.
-delete_scaling_policy(
+\donttest{delete_scaling_policy(
   PolicyName = "web-app-cpu-lt-25",
   ResourceId = "service/default/web-app",
   ScalableDimension = "ecs:service:DesiredCount",
   ServiceNamespace = "ecs"
-)
+)}
 
 }

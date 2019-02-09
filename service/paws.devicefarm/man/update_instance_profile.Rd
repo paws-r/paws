@@ -4,16 +4,9 @@
 \alias{update_instance_profile}
 \title{Updates information about an existing private device instance profile}
 \usage{
-update_instance_profile(
-  arn = "string",
-  name = "string",
-  description = "string",
-  packageCleanup = TRUE|FALSE,
-  excludeAppPackagesFromCleanup = list(
-    "string"
-  ),
-  rebootAfterUse = TRUE|FALSE
-)
+update_instance_profile(arn, name = NULL, description = NULL,
+  packageCleanup = NULL, excludeAppPackagesFromCleanup = NULL,
+  rebootAfterUse = NULL)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of the instance profile.}
@@ -33,6 +26,17 @@ The list of packages is only considered if you set \code{packageCleanup} to \cod
 \description{
 Updates information about an existing private device instance profile.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_instance_profile(
+  arn = "string",
+  name = "string",
+  description = "string",
+  packageCleanup = TRUE|FALSE,
+  excludeAppPackagesFromCleanup = list(
+    "string"
+  ),
+  rebootAfterUse = TRUE|FALSE
+)
 }
+}
+

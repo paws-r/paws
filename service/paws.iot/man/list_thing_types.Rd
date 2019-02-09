@@ -4,11 +4,8 @@
 \alias{list_thing_types}
 \title{Lists the existing thing types}
 \usage{
-list_thing_types(
-  nextToken = "string",
-  maxResults = 123,
-  thingTypeName = "string"
-)
+list_thing_types(nextToken = NULL, maxResults = NULL,
+  thingTypeName = NULL)
 }
 \arguments{
 \item{nextToken}{The token to retrieve the next set of results.}
@@ -20,6 +17,12 @@ list_thing_types(
 \description{
 Lists the existing thing types.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_thing_types(
+  nextToken = "string",
+  maxResults = 123,
+  thingTypeName = "string"
+)
 }
+}
+

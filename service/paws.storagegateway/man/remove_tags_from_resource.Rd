@@ -4,12 +4,7 @@
 \alias{remove_tags_from_resource}
 \title{Removes one or more tags from the specified resource}
 \usage{
-remove_tags_from_resource(
-  ResourceARN = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+remove_tags_from_resource(ResourceARN, TagKeys)
 }
 \arguments{
 \item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the resource you want to remove the tags from.}
@@ -19,15 +14,25 @@ remove_tags_from_resource(
 \description{
 Removes one or more tags from the specified resource. This operation is only supported in the cached volume, stored volume and tape gateway types.
 }
+\section{Accepted Parameters}{
+\preformatted{remove_tags_from_resource(
+  ResourceARN = "string",
+  TagKeys = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # Lists the iSCSI stored volumes of a gateway. Removes one or more tags
 # from the specified resource.
-remove_tags_from_resource(
+\donttest{remove_tags_from_resource(
   ResourceARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B",
   TagKeys = list(
     "Dev Gatgeway Region",
     "East Coast"
   )
-)
+)}
 
 }

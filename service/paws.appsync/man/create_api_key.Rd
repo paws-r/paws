@@ -4,11 +4,7 @@
 \alias{create_api_key}
 \title{Creates a unique key that you can distribute to clients who are executing your API}
 \usage{
-create_api_key(
-  apiId = "string",
-  description = "string",
-  expires = 123
-)
+create_api_key(apiId, description = NULL, expires = NULL)
 }
 \arguments{
 \item{apiId}{[required] The ID for your GraphQL API.}
@@ -20,6 +16,12 @@ create_api_key(
 \description{
 Creates a unique key that you can distribute to clients who are executing your API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_api_key(
+  apiId = "string",
+  description = "string",
+  expires = 123
+)
 }
+}
+

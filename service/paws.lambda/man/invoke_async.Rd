@@ -4,13 +4,10 @@
 \alias{invoke_async}
 \title{For asynchronous function invocation, use Invoke}
 \usage{
-invoke_async(
-  FunctionName = "string",
-  InvokeArgs = raw
-)
+invoke_async(FunctionName, InvokeArgs)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function.
+\item{FunctionName}{[required] The name of the lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -31,11 +28,19 @@ Submits an invocation request to AWS Lambda. Upon receiving the request, Lambda 
 
 This operation requires permission for the \code{lambda:InvokeFunction} action.
 }
+\section{Accepted Parameters}{
+\preformatted{invoke_async(
+  FunctionName = "string",
+  InvokeArgs = raw
+)
+}
+}
+
 \examples{
 # This operation invokes a Lambda function asynchronously
-invoke_async(
+\donttest{invoke_async(
   FunctionName = "myFunction",
   InvokeArgs = "fileb://file-path/input.json"
-)
+)}
 
 }

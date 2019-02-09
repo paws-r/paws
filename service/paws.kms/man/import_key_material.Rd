@@ -4,13 +4,8 @@
 \alias{import_key_material}
 \title{Imports key material into an existing AWS KMS customer master key (CMK) that was created without key material}
 \usage{
-import_key_material(
-  KeyId = "string",
-  ImportToken = raw,
-  EncryptedKeyMaterial = raw,
-  ValidTo = as.POSIXct("2015-01-01"),
-  ExpirationModel = "KEY_MATERIAL_EXPIRES"|"KEY_MATERIAL_DOES_NOT_EXPIRE"
-)
+import_key_material(KeyId, ImportToken, EncryptedKeyMaterial,
+  ValidTo = NULL, ExpirationModel = NULL)
 }
 \arguments{
 \item{KeyId}{[required] The identifier of the CMK to import the key material into. The CMK's \code{Origin} must be \code{EXTERNAL}.
@@ -51,17 +46,28 @@ To create a CMK with no key material, call CreateKey and set the value of its \c
 \item Whether the key material expires and if so, when. If you set an expiration date, you can change it only by reimporting the same key material and specifying a new expiration date. If the key material expires, AWS KMS deletes the key material and the CMK becomes unusable. To use the CMK again, you must reimport the same key material.
 }
 
-When this operation is successful, the key state of the CMK changes from \code{PendingImport} to \code{Enabled}, and you can use the CMK. After you successfully import key material into a CMK, you can reimport the same key material into that CMK, but you cannot import different key material.
+When this operation is successful, the CMK's key state changes from \code{PendingImport} to \code{Enabled}, and you can use the CMK. After you successfully import key material into a CMK, you can reimport the same key material into that CMK, but you cannot import different key material.
 
 The result of this operation varies with the key state of the CMK. For details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key} in the \emph{AWS Key Management Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{import_key_material(
+  KeyId = "string",
+  ImportToken = raw,
+  EncryptedKeyMaterial = raw,
+  ValidTo = as.POSIXct("2015-01-01"),
+  ExpirationModel = "KEY_MATERIAL_EXPIRES"|"KEY_MATERIAL_DOES_NOT_EXPIRE"
+)
+}
+}
+
 \examples{
 # The following example imports key material into the specified CMK.
-import_key_material(
+\donttest{import_key_material(
   EncryptedKeyMaterial = "<binary data>",
   ExpirationModel = "KEY_MATERIAL_DOES_NOT_EXPIRE",
   ImportToken = "<binary data>",
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
+)}
 
 }

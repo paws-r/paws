@@ -4,9 +4,7 @@
 \alias{get_lexicon}
 \title{Returns the content of the specified pronunciation lexicon stored in an AWS Region}
 \usage{
-get_lexicon(
-  Name = "string"
-)
+get_lexicon(Name)
 }
 \arguments{
 \item{Name}{[required] Name of the lexicon.}
@@ -14,11 +12,18 @@ get_lexicon(
 \description{
 Returns the content of the specified pronunciation lexicon stored in an AWS Region. For more information, see \href{http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html}{Managing Lexicons}.
 }
+\section{Accepted Parameters}{
+\preformatted{get_lexicon(
+  Name = "string"
+)
+}
+}
+
 \examples{
 # Returns the content of the specified pronunciation lexicon stored in an
 # AWS Region.
-get_lexicon(
+\donttest{get_lexicon(
   Name = ""
-)
+)}
 
 }

@@ -4,9 +4,7 @@
 \alias{delete_fleet}
 \title{Deletes everything related to a fleet}
 \usage{
-delete_fleet(
-  FleetId = "string"
-)
+delete_fleet(FleetId)
 }
 \arguments{
 \item{FleetId}{[required] Unique identifier for a fleet to be deleted.}
@@ -40,6 +38,10 @@ Fleet-related operations include:
 \item StopFleetActions
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_fleet(
+  FleetId = "string"
+)
 }
+}
+

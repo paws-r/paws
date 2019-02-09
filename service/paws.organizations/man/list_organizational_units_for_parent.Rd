@@ -4,11 +4,8 @@
 \alias{list_organizational_units_for_parent}
 \title{Lists the organizational units (OUs) in a parent organizational unit or root}
 \usage{
-list_organizational_units_for_parent(
-  ParentId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_organizational_units_for_parent(ParentId, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{ParentId}{[required] The unique identifier (ID) of the root or OU whose child OUs you want to list.
@@ -31,11 +28,20 @@ Always check the \code{NextToken} response parameter for a \code{null} value whe
 
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{list_organizational_units_for_parent(
+  ParentId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
+}
+}
+
 \examples{
 # The following example shows how to get a list of OUs in a specified
 # root:/n/n
-list_organizational_units_for_parent(
+\donttest{list_organizational_units_for_parent(
   ParentId = "r-examplerootid111"
-)
+)}
 
 }

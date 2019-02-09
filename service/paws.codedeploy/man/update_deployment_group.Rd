@@ -4,7 +4,53 @@
 \alias{update_deployment_group}
 \title{Changes information about a deployment group}
 \usage{
-update_deployment_group(
+update_deployment_group(applicationName, currentDeploymentGroupName,
+  newDeploymentGroupName = NULL, deploymentConfigName = NULL,
+  ec2TagFilters = NULL, onPremisesInstanceTagFilters = NULL,
+  autoScalingGroups = NULL, serviceRoleArn = NULL,
+  triggerConfigurations = NULL, alarmConfiguration = NULL,
+  autoRollbackConfiguration = NULL, deploymentStyle = NULL,
+  blueGreenDeploymentConfiguration = NULL, loadBalancerInfo = NULL,
+  ec2TagSet = NULL, onPremisesTagSet = NULL)
+}
+\arguments{
+\item{applicationName}{[required] The application name corresponding to the deployment group to update.}
+
+\item{currentDeploymentGroupName}{[required] The current name of the deployment group.}
+
+\item{newDeploymentGroupName}{The new name of the deployment group, if you want to change it.}
+
+\item{deploymentConfigName}{The replacement deployment configuration name to use, if you want to change it.}
+
+\item{ec2TagFilters}{The replacement set of Amazon EC2 tags on which to filter, if you want to change them. To keep the existing tags, enter their names. To remove tags, do not enter any tag names.}
+
+\item{onPremisesInstanceTagFilters}{The replacement set of on-premises instance tags on which to filter, if you want to change them. To keep the existing tags, enter their names. To remove tags, do not enter any tag names.}
+
+\item{autoScalingGroups}{The replacement list of Auto Scaling groups to be included in the deployment group, if you want to change them. To keep the Auto Scaling groups, enter their names. To remove Auto Scaling groups, do not enter any Auto Scaling group names.}
+
+\item{serviceRoleArn}{A replacement ARN for the service role, if you want to change it.}
+
+\item{triggerConfigurations}{Information about triggers to change when the deployment group is updated. For examples, see \href{http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-edit.html}{Modify Triggers in an AWS CodeDeploy Deployment Group} in the AWS CodeDeploy User Guide.}
+
+\item{alarmConfiguration}{Information to add or change about Amazon CloudWatch alarms when the deployment group is updated.}
+
+\item{autoRollbackConfiguration}{Information for an automatic rollback configuration that is added or changed when a deployment group is updated.}
+
+\item{deploymentStyle}{Information about the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer.}
+
+\item{blueGreenDeploymentConfiguration}{Information about blue/green deployment options for a deployment group.}
+
+\item{loadBalancerInfo}{Information about the load balancer used in a deployment.}
+
+\item{ec2TagSet}{Information about groups of tags applied to on-premises instances. The deployment group will include only EC2 instances identified by all the tag groups.}
+
+\item{onPremisesTagSet}{Information about an on-premises instance tag set. The deployment group will include only on-premises instances identified by all the tag groups.}
+}
+\description{
+Changes information about a deployment group.
+}
+\section{Accepted Parameters}{
+\preformatted{update_deployment_group(
   applicationName = "string",
   currentDeploymentGroupName = "string",
   newDeploymentGroupName = "string",
@@ -78,25 +124,6 @@ update_deployment_group(
       list(
         name = "string"
       )
-    ),
-    targetGroupPairInfoList = list(
-      list(
-        targetGroups = list(
-          list(
-            name = "string"
-          )
-        ),
-        prodTrafficRoute = list(
-          listenerArns = list(
-            "string"
-          )
-        ),
-        testTrafficRoute = list(
-          listenerArns = list(
-            "string"
-          )
-        )
-      )
     )
   ),
   ec2TagSet = list(
@@ -108,12 +135,6 @@ update_deployment_group(
           Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
         )
       )
-    )
-  ),
-  ecsServices = list(
-    list(
-      serviceName = "string",
-      clusterName = "string"
     )
   ),
   onPremisesTagSet = list(
@@ -129,44 +150,5 @@ update_deployment_group(
   )
 )
 }
-\arguments{
-\item{applicationName}{[required] The application name corresponding to the deployment group to update.}
-
-\item{currentDeploymentGroupName}{[required] The current name of the deployment group.}
-
-\item{newDeploymentGroupName}{The new name of the deployment group, if you want to change it.}
-
-\item{deploymentConfigName}{The replacement deployment configuration name to use, if you want to change it.}
-
-\item{ec2TagFilters}{The replacement set of Amazon EC2 tags on which to filter, if you want to change them. To keep the existing tags, enter their names. To remove tags, do not enter any tag names.}
-
-\item{onPremisesInstanceTagFilters}{The replacement set of on-premises instance tags on which to filter, if you want to change them. To keep the existing tags, enter their names. To remove tags, do not enter any tag names.}
-
-\item{autoScalingGroups}{The replacement list of Auto Scaling groups to be included in the deployment group, if you want to change them. To keep the Auto Scaling groups, enter their names. To remove Auto Scaling groups, do not enter any Auto Scaling group names.}
-
-\item{serviceRoleArn}{A replacement ARN for the service role, if you want to change it.}
-
-\item{triggerConfigurations}{Information about triggers to change when the deployment group is updated. For examples, see \href{http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-edit.html}{Modify Triggers in an AWS CodeDeploy Deployment Group} in the AWS CodeDeploy User Guide.}
-
-\item{alarmConfiguration}{Information to add or change about Amazon CloudWatch alarms when the deployment group is updated.}
-
-\item{autoRollbackConfiguration}{Information for an automatic rollback configuration that is added or changed when a deployment group is updated.}
-
-\item{deploymentStyle}{Information about the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer.}
-
-\item{blueGreenDeploymentConfiguration}{Information about blue/green deployment options for a deployment group.}
-
-\item{loadBalancerInfo}{Information about the load balancer used in a deployment.}
-
-\item{ec2TagSet}{Information about groups of tags applied to on-premises instances. The deployment group will include only EC2 instances identified by all the tag groups.}
-
-\item{ecsServices}{The target ECS services in the deployment group. This only applies to deployment groups that use the Amazon ECS compute platform. A target ECS service is specified as an Amazon ECS cluster and service name pair using the format \code{<clustername>:<servicename>}.}
-
-\item{onPremisesTagSet}{Information about an on-premises instance tag set. The deployment group will include only on-premises instances identified by all the tag groups.}
 }
-\description{
-Changes information about a deployment group.
-}
-\examples{
 
-}

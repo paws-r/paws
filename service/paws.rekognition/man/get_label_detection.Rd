@@ -4,12 +4,8 @@
 \alias{get_label_detection}
 \title{Gets the label detection results of a Amazon Rekognition Video analysis started by}
 \usage{
-get_label_detection(
-  JobId = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  SortBy = "NAME"|"TIMESTAMP"
-)
+get_label_detection(JobId, MaxResults = NULL, NextToken = NULL,
+  SortBy = NULL)
 }
 \arguments{
 \item{JobId}{[required] Job identifier for the label detection operation for which you want results returned. You get the job identifer from an initial call to \code{StartlabelDetection}.}
@@ -34,6 +30,13 @@ Use MaxResults parameter to limit the number of labels returned. If there are mo
 
 \code{GetLabelDetection} doesn't return a hierarchical taxonomy, or bounding box information, for detected labels. \code{GetLabelDetection} returns \code{null} for the \code{Parents} and \code{Instances} attributes of the object which is returned in the \code{Labels} array.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_label_detection(
+  JobId = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  SortBy = "NAME"|"TIMESTAMP"
+)
 }
+}
+

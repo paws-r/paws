@@ -6,13 +6,13 @@
 \alias{paws.cloudhsm-package}
 \title{paws.cloudhsm: Amazon CloudHSM}
 \description{
-This is documentation for **AWS CloudHSM Classic**. For more
-information, see [AWS CloudHSM Classic
-FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM
-Classic User
-Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and
-the [AWS CloudHSM Classic API
-Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+This is documentation for **AWS CloudHSM Classic**.
+    For more information, see [AWS CloudHSM Classic
+    FAQs](http://aws.amazon.com/cloudhsm/faqs-classic/), the [AWS CloudHSM
+    Classic User
+    Guide](http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and
+    the [AWS CloudHSM Classic API
+    Reference](http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

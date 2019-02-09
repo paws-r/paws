@@ -4,47 +4,12 @@
 \alias{create_fleet}
 \title{Creates a new fleet to run your game servers}
 \usage{
-create_fleet(
-  Name = "string",
-  Description = "string",
-  BuildId = "string",
-  ServerLaunchPath = "string",
-  ServerLaunchParameters = "string",
-  LogPaths = list(
-    "string"
-  ),
-  EC2InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge",
-  EC2InboundPermissions = list(
-    list(
-      FromPort = 123,
-      ToPort = 123,
-      IpRange = "string",
-      Protocol = "TCP"|"UDP"
-    )
-  ),
-  NewGameSessionProtectionPolicy = "NoProtection"|"FullProtection",
-  RuntimeConfiguration = list(
-    ServerProcesses = list(
-      list(
-        LaunchPath = "string",
-        Parameters = "string",
-        ConcurrentExecutions = 123
-      )
-    ),
-    MaxConcurrentGameSessionActivations = 123,
-    GameSessionActivationTimeoutSeconds = 123
-  ),
-  ResourceCreationLimitPolicy = list(
-    NewGameSessionsPerCreator = 123,
-    PolicyPeriodInMinutes = 123
-  ),
-  MetricGroups = list(
-    "string"
-  ),
-  PeerVpcAwsAccountId = "string",
-  PeerVpcId = "string",
-  FleetType = "ON_DEMAND"|"SPOT"
-)
+create_fleet(Name, Description = NULL, BuildId,
+  ServerLaunchPath = NULL, ServerLaunchParameters = NULL,
+  LogPaths = NULL, EC2InstanceType, EC2InboundPermissions = NULL,
+  NewGameSessionProtectionPolicy = NULL, RuntimeConfiguration = NULL,
+  ResourceCreationLimitPolicy = NULL, MetricGroups = NULL,
+  PeerVpcAwsAccountId = NULL, PeerVpcId = NULL, FleetType = NULL)
 }
 \arguments{
 \item{Name}{[required] Descriptive label that is associated with a fleet. Fleet names do not need to be unique.}
@@ -134,6 +99,48 @@ Fleet-related operations include:
 \item StopFleetActions
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_fleet(
+  Name = "string",
+  Description = "string",
+  BuildId = "string",
+  ServerLaunchPath = "string",
+  ServerLaunchParameters = "string",
+  LogPaths = list(
+    "string"
+  ),
+  EC2InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge",
+  EC2InboundPermissions = list(
+    list(
+      FromPort = 123,
+      ToPort = 123,
+      IpRange = "string",
+      Protocol = "TCP"|"UDP"
+    )
+  ),
+  NewGameSessionProtectionPolicy = "NoProtection"|"FullProtection",
+  RuntimeConfiguration = list(
+    ServerProcesses = list(
+      list(
+        LaunchPath = "string",
+        Parameters = "string",
+        ConcurrentExecutions = 123
+      )
+    ),
+    MaxConcurrentGameSessionActivations = 123,
+    GameSessionActivationTimeoutSeconds = 123
+  ),
+  ResourceCreationLimitPolicy = list(
+    NewGameSessionsPerCreator = 123,
+    PolicyPeriodInMinutes = 123
+  ),
+  MetricGroups = list(
+    "string"
+  ),
+  PeerVpcAwsAccountId = "string",
+  PeerVpcId = "string",
+  FleetType = "ON_DEMAND"|"SPOT"
+)
 }
+}
+

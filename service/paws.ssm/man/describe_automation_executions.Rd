@@ -4,18 +4,8 @@
 \alias{describe_automation_executions}
 \title{Provides details about all active and terminated Automation executions}
 \usage{
-describe_automation_executions(
-  Filters = list(
-    list(
-      Key = "DocumentNamePrefix"|"ExecutionStatus"|"ExecutionId"|"ParentExecutionId"|"CurrentAction"|"StartTimeBefore"|"StartTimeAfter"|"AutomationType",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_automation_executions(Filters = NULL, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{Filters}{Filters used to limit the scope of executions that are requested.}
@@ -27,6 +17,19 @@ describe_automation_executions(
 \description{
 Provides details about all active and terminated Automation executions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_automation_executions(
+  Filters = list(
+    list(
+      Key = "DocumentNamePrefix"|"ExecutionStatus"|"ExecutionId"|"ParentExecutionId"|"CurrentAction"|"StartTimeBefore"|"StartTimeAfter",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

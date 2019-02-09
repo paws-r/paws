@@ -2,20 +2,10 @@
 % Please edit documentation in R/paws.cloudtrail_operations.R
 \name{lookup_events}
 \alias{lookup_events}
-\title{Looks up \link{management events}(https://docs}
+\title{Looks up management events captured by CloudTrail}
 \usage{
-lookup_events(
-  LookupAttributes = list(
-    list(
-      AttributeKey = "EventId"|"EventName"|"ReadOnly"|"Username"|"ResourceType"|"ResourceName"|"EventSource"|"AccessKeyId",
-      AttributeValue = "string"
-    )
-  ),
-  StartTime = as.POSIXct("2015-01-01"),
-  EndTime = as.POSIXct("2015-01-01"),
-  MaxResults = 123,
-  NextToken = "string"
-)
+lookup_events(LookupAttributes = NULL, StartTime = NULL,
+  EndTime = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{LookupAttributes}{Contains a list of lookup attributes. Currently the list can contain only one item.}
@@ -49,6 +39,19 @@ The rate of lookup requests is limited to one per second per account. If this li
 
 Events that occurred during the selected time range will not be available for lookup if CloudTrail logging was not enabled when the events occurred.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{lookup_events(
+  LookupAttributes = list(
+    list(
+      AttributeKey = "EventId"|"EventName"|"ReadOnly"|"Username"|"ResourceType"|"ResourceName"|"EventSource"|"AccessKeyId",
+      AttributeValue = "string"
+    )
+  ),
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

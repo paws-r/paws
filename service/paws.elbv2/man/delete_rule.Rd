@@ -4,9 +4,7 @@
 \alias{delete_rule}
 \title{Deletes the specified rule}
 \usage{
-delete_rule(
-  RuleArn = "string"
-)
+delete_rule(RuleArn)
 }
 \arguments{
 \item{RuleArn}{[required] The Amazon Resource Name (ARN) of the rule.}
@@ -14,10 +12,17 @@ delete_rule(
 \description{
 Deletes the specified rule.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_rule(
+  RuleArn = "string"
+)
+}
+}
+
 \examples{
 # This example deletes the specified rule.
-delete_rule(
+\donttest{delete_rule(
   RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2/1291d13826f405c3"
-)
+)}
 
 }

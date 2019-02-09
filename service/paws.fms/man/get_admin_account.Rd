@@ -9,6 +9,8 @@ get_admin_account()
 \description{
 Returns the AWS Organizations master account that is associated with AWS Firewall Manager as the AWS Firewall Manager administrator.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_admin_account()
 }
+}
+

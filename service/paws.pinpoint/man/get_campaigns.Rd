@@ -4,11 +4,7 @@
 \alias{get_campaigns}
 \title{Returns information about your campaigns}
 \usage{
-get_campaigns(
-  ApplicationId = "string",
-  PageSize = "string",
-  Token = "string"
-)
+get_campaigns(ApplicationId, PageSize = NULL, Token = NULL)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -20,6 +16,12 @@ get_campaigns(
 \description{
 Returns information about your campaigns.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_campaigns(
+  ApplicationId = "string",
+  PageSize = "string",
+  Token = "string"
+)
 }
+}
+

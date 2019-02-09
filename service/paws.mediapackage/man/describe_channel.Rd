@@ -4,9 +4,7 @@
 \alias{describe_channel}
 \title{Gets details about a Channel}
 \usage{
-describe_channel(
-  Id = "string"
-)
+describe_channel(Id)
 }
 \arguments{
 \item{Id}{[required] The ID of a Channel.}
@@ -14,6 +12,10 @@ describe_channel(
 \description{
 Gets details about a Channel.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_channel(
+  Id = "string"
+)
 }
+}
+

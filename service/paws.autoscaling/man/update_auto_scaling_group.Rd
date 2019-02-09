@@ -4,62 +4,21 @@
 \alias{update_auto_scaling_group}
 \title{Updates the configuration for the specified Auto Scaling group}
 \usage{
-update_auto_scaling_group(
-  AutoScalingGroupName = "string",
-  LaunchConfigurationName = "string",
-  LaunchTemplate = list(
-    LaunchTemplateId = "string",
-    LaunchTemplateName = "string",
-    Version = "string"
-  ),
-  MixedInstancesPolicy = list(
-    LaunchTemplate = list(
-      LaunchTemplateSpecification = list(
-        LaunchTemplateId = "string",
-        LaunchTemplateName = "string",
-        Version = "string"
-      ),
-      Overrides = list(
-        list(
-          InstanceType = "string"
-        )
-      )
-    ),
-    InstancesDistribution = list(
-      OnDemandAllocationStrategy = "string",
-      OnDemandBaseCapacity = 123,
-      OnDemandPercentageAboveBaseCapacity = 123,
-      SpotAllocationStrategy = "string",
-      SpotInstancePools = 123,
-      SpotMaxPrice = "string"
-    )
-  ),
-  MinSize = 123,
-  MaxSize = 123,
-  DesiredCapacity = 123,
-  DefaultCooldown = 123,
-  AvailabilityZones = list(
-    "string"
-  ),
-  HealthCheckType = "string",
-  HealthCheckGracePeriod = 123,
-  PlacementGroup = "string",
-  VPCZoneIdentifier = "string",
-  TerminationPolicies = list(
-    "string"
-  ),
-  NewInstancesProtectedFromScaleIn = TRUE|FALSE,
-  ServiceLinkedRoleARN = "string"
-)
+update_auto_scaling_group(AutoScalingGroupName,
+  LaunchConfigurationName = NULL, LaunchTemplate = NULL,
+  MinSize = NULL, MaxSize = NULL, DesiredCapacity = NULL,
+  DefaultCooldown = NULL, AvailabilityZones = NULL,
+  HealthCheckType = NULL, HealthCheckGracePeriod = NULL,
+  PlacementGroup = NULL, VPCZoneIdentifier = NULL,
+  TerminationPolicies = NULL, NewInstancesProtectedFromScaleIn = NULL,
+  ServiceLinkedRoleARN = NULL)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{LaunchConfigurationName}{The name of the launch configuration. If you specify this parameter, you can't specify a launch template or a mixed instances policy.}
+\item{LaunchConfigurationName}{The name of the launch configuration. If you specify a launch configuration, you can't specify a launch template.}
 
-\item{LaunchTemplate}{The launch template and version to use to specify the updates. If you specify this parameter, you can't specify a launch configuration or a mixed instances policy.}
-
-\item{MixedInstancesPolicy}{The mixed instances policy to use to specify the updates. If you specify this parameter, you can't specify a launch configuration or a launch template.}
+\item{LaunchTemplate}{The launch template to use to specify the updates. If you specify a launch template, you can't specify a launch configuration.}
 
 \item{MinSize}{The minimum size of the Auto Scaling group.}
 
@@ -79,7 +38,7 @@ For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userg
 
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html}{Health Checks} in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
-\item{PlacementGroup}{The name of the placement group into which to launch your instances, if any. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement Groups} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+\item{PlacementGroup}{The name of the placement group into which you'll launch your instances, if any. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement Groups} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{VPCZoneIdentifier}{The ID of the subnet, if you are launching into a VPC. You can specify several subnets in a comma-separated list.
 
@@ -101,7 +60,7 @@ Updates the configuration for the specified Auto Scaling group.
 \details{
 The new settings take effect on any scaling activities after this call returns. Scaling activities that are currently in progress aren't affected.
 
-To update an Auto Scaling group with a launch configuration with \code{InstanceMonitoring} set to \code{false}, you must first disable the collection of group metrics. Otherwise, you get an error. If you have previously enabled the collection of group metrics, you can disable it using DisableMetricsCollection.
+To update an Auto Scaling group with a launch configuration with \code{InstanceMonitoring} set to \code{false}, you must first disable the collection of group metrics. Otherwise, you will get an error. If you have previously enabled the collection of group metrics, you can disable it using DisableMetricsCollection.
 
 Note the following:
 \itemize{
@@ -110,27 +69,56 @@ Note the following:
 \item All other optional parameters are left unchanged if not specified.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{update_auto_scaling_group(
+  AutoScalingGroupName = "string",
+  LaunchConfigurationName = "string",
+  LaunchTemplate = list(
+    LaunchTemplateId = "string",
+    LaunchTemplateName = "string",
+    Version = "string"
+  ),
+  MinSize = 123,
+  MaxSize = 123,
+  DesiredCapacity = 123,
+  DefaultCooldown = 123,
+  AvailabilityZones = list(
+    "string"
+  ),
+  HealthCheckType = "string",
+  HealthCheckGracePeriod = 123,
+  PlacementGroup = "string",
+  VPCZoneIdentifier = "string",
+  TerminationPolicies = list(
+    "string"
+  ),
+  NewInstancesProtectedFromScaleIn = TRUE|FALSE,
+  ServiceLinkedRoleARN = "string"
+)
+}
+}
+
 \examples{
 # This example updates the launch configuration of the specified Auto
 # Scaling group.
-update_auto_scaling_group(
+\donttest{update_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   LaunchConfigurationName = "new-launch-config"
-)
+)}
 
 # This example updates the minimum size and maximum size of the specified
 # Auto Scaling group.
-update_auto_scaling_group(
+\donttest{update_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   MaxSize = 3L,
   MinSize = 1L
-)
+)}
 
 # This example enables instance protection for the specified Auto Scaling
 # group.
-update_auto_scaling_group(
+\donttest{update_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   NewInstancesProtectedFromScaleIn = TRUE
-)
+)}
 
 }

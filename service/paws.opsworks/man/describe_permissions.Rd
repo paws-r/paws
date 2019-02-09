@@ -4,10 +4,7 @@
 \alias{describe_permissions}
 \title{Describes the permissions for a specified stack}
 \usage{
-describe_permissions(
-  IamUserArn = "string",
-  StackId = "string"
-)
+describe_permissions(IamUserArn = NULL, StackId = NULL)
 }
 \arguments{
 \item{IamUserArn}{The user's IAM ARN. This can also be a federated user's ARN. For more information about IAM ARNs, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
@@ -20,6 +17,11 @@ Describes the permissions for a specified stack.
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_permissions(
+  IamUserArn = "string",
+  StackId = "string"
+)
 }
+}
+

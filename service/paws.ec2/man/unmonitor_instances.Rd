@@ -4,12 +4,7 @@
 \alias{unmonitor_instances}
 \title{Disables detailed monitoring for a running instance}
 \usage{
-unmonitor_instances(
-  InstanceIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+unmonitor_instances(InstanceIds, DryRun = NULL)
 }
 \arguments{
 \item{InstanceIds}{[required] One or more instance IDs.}
@@ -19,6 +14,13 @@ unmonitor_instances(
 \description{
 Disables detailed monitoring for a running instance. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html}{Monitoring Your Instances and Volumes} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{unmonitor_instances(
+  InstanceIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
+}
+

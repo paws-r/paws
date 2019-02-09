@@ -4,9 +4,7 @@
 \alias{get_template}
 \title{Displays the template object (which includes the Subject line, HTML part and text part) for the template you specify}
 \usage{
-get_template(
-  TemplateName = "string"
-)
+get_template(TemplateName)
 }
 \arguments{
 \item{TemplateName}{[required] The name of the template you want to retrieve.}
@@ -17,6 +15,10 @@ Displays the template object (which includes the Subject line, HTML part and tex
 \details{
 You can execute this operation no more than once per second.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_template(
+  TemplateName = "string"
+)
 }
+}
+

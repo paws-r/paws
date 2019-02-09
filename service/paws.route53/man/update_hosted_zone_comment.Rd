@@ -4,10 +4,7 @@
 \alias{update_hosted_zone_comment}
 \title{Updates the comment for a specified hosted zone}
 \usage{
-update_hosted_zone_comment(
-  Id = "string",
-  Comment = "string"
-)
+update_hosted_zone_comment(Id, Comment = NULL)
 }
 \arguments{
 \item{Id}{[required] The ID for the hosted zone that you want to update the comment for.}
@@ -17,6 +14,11 @@ update_hosted_zone_comment(
 \description{
 Updates the comment for a specified hosted zone.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_hosted_zone_comment(
+  Id = "string",
+  Comment = "string"
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{abort_document_version_upload}
 \title{Aborts the upload of the specified document version that was previously initiated by InitiateDocumentVersionUpload}
 \usage{
-abort_document_version_upload(
-  AuthenticationToken = "string",
-  DocumentId = "string",
-  VersionId = "string"
-)
+abort_document_version_upload(AuthenticationToken = NULL, DocumentId,
+  VersionId)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
@@ -20,6 +17,12 @@ abort_document_version_upload(
 \description{
 Aborts the upload of the specified document version that was previously initiated by InitiateDocumentVersionUpload. The client should make this call only when it no longer intends to upload the document version, or fails to do so.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{abort_document_version_upload(
+  AuthenticationToken = "string",
+  DocumentId = "string",
+  VersionId = "string"
+)
 }
+}
+

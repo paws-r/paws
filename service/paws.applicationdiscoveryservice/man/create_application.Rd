@@ -4,10 +4,7 @@
 \alias{create_application}
 \title{Creates an application with the given name and description}
 \usage{
-create_application(
-  name = "string",
-  description = "string"
-)
+create_application(name, description = NULL)
 }
 \arguments{
 \item{name}{[required] Name of the application to be created.}
@@ -17,6 +14,11 @@ create_application(
 \description{
 Creates an application with the given name and description.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_application(
+  name = "string",
+  description = "string"
+)
 }
+}
+

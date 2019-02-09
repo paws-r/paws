@@ -2,9 +2,28 @@
 % Please edit documentation in R/paws.autoscalingplans_operations.R
 \name{describe_scaling_plans}
 \alias{describe_scaling_plans}
-\title{Describes one or more of your scaling plans}
+\title{Describes the specified scaling plans or all of your scaling plans}
 \usage{
-describe_scaling_plans(
+describe_scaling_plans(ScalingPlanNames = NULL,
+  ScalingPlanVersion = NULL, ApplicationSources = NULL,
+  MaxResults = NULL, NextToken = NULL)
+}
+\arguments{
+\item{ScalingPlanNames}{The names of the scaling plans (up to 10). If you specify application sources, you cannot specify scaling plan names.}
+
+\item{ScalingPlanVersion}{The version of the scaling plan. If you specify a scaling plan version, you must also specify a scaling plan name.}
+
+\item{ApplicationSources}{The sources for the applications (up to 10). If you specify scaling plan names, you cannot specify application sources.}
+
+\item{MaxResults}{The maximum number of scalable resources to return. This value can be between 1 and 50. The default value is 50.}
+
+\item{NextToken}{The token for the next set of results.}
+}
+\description{
+Describes the specified scaling plans or all of your scaling plans.
+}
+\section{Accepted Parameters}{
+\preformatted{describe_scaling_plans(
   ScalingPlanNames = list(
     "string"
   ),
@@ -26,20 +45,5 @@ describe_scaling_plans(
   NextToken = "string"
 )
 }
-\arguments{
-\item{ScalingPlanNames}{The names of the scaling plans (up to 10). If you specify application sources, you cannot specify scaling plan names.}
-
-\item{ScalingPlanVersion}{The version number of the scaling plan. If you specify a scaling plan version, you must also specify a scaling plan name.}
-
-\item{ApplicationSources}{The sources for the applications (up to 10). If you specify scaling plan names, you cannot specify application sources.}
-
-\item{MaxResults}{The maximum number of scalable resources to return. This value can be between 1 and 50. The default value is 50.}
-
-\item{NextToken}{The token for the next set of results.}
 }
-\description{
-Describes one or more of your scaling plans.
-}
-\examples{
 
-}

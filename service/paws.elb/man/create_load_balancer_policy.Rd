@@ -4,17 +4,8 @@
 \alias{create_load_balancer_policy}
 \title{Creates a policy with the specified attributes for the specified load balancer}
 \usage{
-create_load_balancer_policy(
-  LoadBalancerName = "string",
-  PolicyName = "string",
-  PolicyTypeName = "string",
-  PolicyAttributes = list(
-    list(
-      AttributeName = "string",
-      AttributeValue = "string"
-    )
-  )
-)
+create_load_balancer_policy(LoadBalancerName, PolicyName, PolicyTypeName,
+  PolicyAttributes = NULL)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
@@ -31,10 +22,25 @@ Creates a policy with the specified attributes for the specified load balancer.
 \details{
 Policies are settings that are saved for your load balancer and that can be applied to the listener or the application server, depending on the policy type.
 }
+\section{Accepted Parameters}{
+\preformatted{create_load_balancer_policy(
+  LoadBalancerName = "string",
+  PolicyName = "string",
+  PolicyTypeName = "string",
+  PolicyAttributes = list(
+    list(
+      AttributeName = "string",
+      AttributeValue = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # This example creates a policy that enables Proxy Protocol on the
 # specified load balancer.
-create_load_balancer_policy(
+\donttest{create_load_balancer_policy(
   LoadBalancerName = "my-load-balancer",
   PolicyAttributes = list(
     list(
@@ -44,10 +50,10 @@ create_load_balancer_policy(
   ),
   PolicyName = "my-ProxyProtocol-policy",
   PolicyTypeName = "ProxyProtocolPolicyType"
-)
+)}
 
 # This example creates a public key policy.
-create_load_balancer_policy(
+\donttest{create_load_balancer_policy(
   LoadBalancerName = "my-load-balancer",
   PolicyAttributes = list(
     list(
@@ -57,11 +63,11 @@ create_load_balancer_policy(
   ),
   PolicyName = "my-PublicKey-policy",
   PolicyTypeName = "PublicKeyPolicyType"
-)
+)}
 
 # This example creates a backend server authentication policy that enables
 # authentication on your backend instance using a public key policy.
-create_load_balancer_policy(
+\donttest{create_load_balancer_policy(
   LoadBalancerName = "my-load-balancer",
   PolicyAttributes = list(
     list(
@@ -71,6 +77,6 @@ create_load_balancer_policy(
   ),
   PolicyName = "my-authentication-policy",
   PolicyTypeName = "BackendServerAuthenticationPolicyType"
-)
+)}
 
 }

@@ -4,10 +4,7 @@
 \alias{get_reusable_delegation_set_limit}
 \title{Gets the maximum number of hosted zones that you can associate with the specified reusable delegation set}
 \usage{
-get_reusable_delegation_set_limit(
-  Type = "MAX_ZONES_BY_REUSABLE_DELEGATION_SET",
-  DelegationSetId = "string"
-)
+get_reusable_delegation_set_limit(Type, DelegationSetId)
 }
 \arguments{
 \item{Type}{[required] Specify \code{MAX_ZONES_BY_REUSABLE_DELEGATION_SET} to get the maximum number of hosted zones that you can associate with the specified reusable delegation set.}
@@ -20,6 +17,11 @@ Gets the maximum number of hosted zones that you can associate with the specifie
 \details{
 For the default limit, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html}{Limits} in the \emph{Amazon Route 53 Developer Guide}. To request a higher limit, \href{https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53}{open a case}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_reusable_delegation_set_limit(
+  Type = "MAX_ZONES_BY_REUSABLE_DELEGATION_SET",
+  DelegationSetId = "string"
+)
 }
+}
+

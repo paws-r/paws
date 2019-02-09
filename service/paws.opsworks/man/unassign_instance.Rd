@@ -4,9 +4,7 @@
 \alias{unassign_instance}
 \title{Unassigns a registered instance from all layers that are using the instance}
 \usage{
-unassign_instance(
-  InstanceId = "string"
-)
+unassign_instance(InstanceId)
 }
 \arguments{
 \item{InstanceId}{[required] The instance ID.}
@@ -17,6 +15,10 @@ Unassigns a registered instance from all layers that are using the instance. The
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack or an attached policy that explicitly grants permissions. For more information about user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{unassign_instance(
+  InstanceId = "string"
+)
 }
+}
+

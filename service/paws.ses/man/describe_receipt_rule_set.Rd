@@ -4,9 +4,7 @@
 \alias{describe_receipt_rule_set}
 \title{Returns the details of the specified receipt rule set}
 \usage{
-describe_receipt_rule_set(
-  RuleSetName = "string"
-)
+describe_receipt_rule_set(RuleSetName)
 }
 \arguments{
 \item{RuleSetName}{[required] The name of the receipt rule set to describe.}
@@ -19,11 +17,18 @@ For information about managing receipt rule sets, see the \href{http://docs.aws.
 
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_receipt_rule_set(
+  RuleSetName = "string"
+)
+}
+}
+
 \examples{
 # The following example returns the metadata and receipt rules of a
 # receipt rule set:
-describe_receipt_rule_set(
+\donttest{describe_receipt_rule_set(
   RuleSetName = "MyRuleSet"
-)
+)}
 
 }

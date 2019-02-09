@@ -9,6 +9,8 @@ get_indexing_configuration()
 \description{
 Gets the search configuration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_indexing_configuration()
 }
+}
+

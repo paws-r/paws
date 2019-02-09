@@ -4,26 +4,11 @@
 \alias{create_smb_file_share}
 \title{Creates a Server Message Block (SMB) file share on an existing file gateway}
 \usage{
-create_smb_file_share(
-  ClientToken = "string",
-  GatewayARN = "string",
-  KMSEncrypted = TRUE|FALSE,
-  KMSKey = "string",
-  Role = "string",
-  LocationARN = "string",
-  DefaultStorageClass = "string",
-  ObjectACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"|"aws-exec-read",
-  ReadOnly = TRUE|FALSE,
-  GuessMIMETypeEnabled = TRUE|FALSE,
-  RequesterPays = TRUE|FALSE,
-  ValidUserList = list(
-    "string"
-  ),
-  InvalidUserList = list(
-    "string"
-  ),
-  Authentication = "string"
-)
+create_smb_file_share(ClientToken, GatewayARN, KMSEncrypted = NULL,
+  KMSKey = NULL, Role, LocationARN, DefaultStorageClass = NULL,
+  ObjectACL = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL,
+  RequesterPays = NULL, ValidUserList = NULL, InvalidUserList = NULL,
+  Authentication = NULL)
 }
 \arguments{
 \item{ClientToken}{[required] A unique string value that you supply that is used by file gateway to ensure idempotent file share creation.}
@@ -64,6 +49,27 @@ File gateways require AWS Security Token Service (AWS STS) to be activated to en
 
 File gateways don't support creating hard or symbolic links on a file share.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_smb_file_share(
+  ClientToken = "string",
+  GatewayARN = "string",
+  KMSEncrypted = TRUE|FALSE,
+  KMSKey = "string",
+  Role = "string",
+  LocationARN = "string",
+  DefaultStorageClass = "string",
+  ObjectACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"|"aws-exec-read",
+  ReadOnly = TRUE|FALSE,
+  GuessMIMETypeEnabled = TRUE|FALSE,
+  RequesterPays = TRUE|FALSE,
+  ValidUserList = list(
+    "string"
+  ),
+  InvalidUserList = list(
+    "string"
+  ),
+  Authentication = "string"
+)
 }
+}
+

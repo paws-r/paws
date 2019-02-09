@@ -9,6 +9,8 @@ delete_registration_code()
 \description{
 Deletes a CA certificate registration code.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_registration_code()
 }
+}
+

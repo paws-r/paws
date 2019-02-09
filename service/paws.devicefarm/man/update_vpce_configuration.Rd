@@ -4,13 +4,9 @@
 \alias{update_vpce_configuration}
 \title{Updates information about an existing Amazon Virtual Private Cloud (VPC) endpoint configuration}
 \usage{
-update_vpce_configuration(
-  arn = "string",
-  vpceConfigurationName = "string",
-  vpceServiceName = "string",
-  serviceDnsName = "string",
-  vpceConfigurationDescription = "string"
-)
+update_vpce_configuration(arn, vpceConfigurationName = NULL,
+  vpceServiceName = NULL, serviceDnsName = NULL,
+  vpceConfigurationDescription = NULL)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of the VPC endpoint configuration you want to update.}
@@ -26,6 +22,14 @@ update_vpce_configuration(
 \description{
 Updates information about an existing Amazon Virtual Private Cloud (VPC) endpoint configuration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_vpce_configuration(
+  arn = "string",
+  vpceConfigurationName = "string",
+  vpceServiceName = "string",
+  serviceDnsName = "string",
+  vpceConfigurationDescription = "string"
+)
 }
+}
+

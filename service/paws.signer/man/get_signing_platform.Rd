@@ -4,9 +4,7 @@
 \alias{get_signing_platform}
 \title{Returns information on a specific signing platform}
 \usage{
-get_signing_platform(
-  platformId = "string"
-)
+get_signing_platform(platformId)
 }
 \arguments{
 \item{platformId}{[required] The ID of the target signing platform.}
@@ -14,6 +12,10 @@ get_signing_platform(
 \description{
 Returns information on a specific signing platform.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_signing_platform(
+  platformId = "string"
+)
 }
+}
+

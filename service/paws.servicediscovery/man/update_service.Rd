@@ -4,7 +4,29 @@
 \alias{update_service}
 \title{Submits a request to perform the following operations:}
 \usage{
-update_service(
+update_service(Id, Service)
+}
+\arguments{
+\item{Id}{[required] The ID of the service that you want to update.}
+
+\item{Service}{[required] A complex type that contains the new settings for the service.}
+}
+\description{
+Submits a request to perform the following operations:
+}
+\details{
+\itemize{
+\item Add or delete \code{DnsRecords} configurations
+\item Update the TTL setting for existing \code{DnsRecords} configurations
+\item Add, update, or delete \code{HealthCheckConfig} for a specified service
+}
+
+You must specify all \code{DnsRecords} configurations (and, optionally, \code{HealthCheckConfig}) that you want to appear in the updated service. Any current configurations that don't appear in an \code{UpdateService} request are deleted.
+
+When you update the TTL setting for a service, Amazon Route 53 also updates the corresponding settings in all the records and health checks that were created by using the specified service.
+}
+\section{Accepted Parameters}{
+\preformatted{update_service(
   Id = "string",
   Service = list(
     Description = "string",
@@ -24,25 +46,5 @@ update_service(
   )
 )
 }
-\arguments{
-\item{Id}{[required] The ID of the service that you want to update.}
-
-\item{Service}{[required] A complex type that contains the new settings for the service.}
-}
-\description{
-Submits a request to perform the following operations:
-}
-\details{
-\itemize{
-\item Add or delete \code{DnsRecords} configurations
-\item Update the TTL setting for existing \code{DnsRecords} configurations
-\item Add, update, or delete \code{HealthCheckConfig} for a specified service
 }
 
-For public and private DNS namespaces, you must specify all \code{DnsRecords} configurations (and, optionally, \code{HealthCheckConfig}) that you want to appear in the updated service. Any current configurations that don't appear in an \code{UpdateService} request are deleted.
-
-When you update the TTL setting for a service, AWS Cloud Map also updates the corresponding settings in all the records and health checks that were created by using the specified service.
-}
-\examples{
-
-}

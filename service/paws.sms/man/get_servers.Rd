@@ -2,32 +2,23 @@
 % Please edit documentation in R/paws.sms_operations.R
 \name{get_servers}
 \alias{get_servers}
-\title{Describes the servers in your server catalog}
+\title{The GetServers API returns a list of all servers in your server catalog}
 \usage{
-get_servers(
-  nextToken = "string",
-  maxResults = 123,
-  vmServerAddressList = list(
-    list(
-      vmManagerId = "string",
-      vmId = "string"
-    )
-  )
-)
+get_servers(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
-\item{nextToken}{The token for the next set of results.}
+\item{nextToken}{}
 
-\item{maxResults}{The maximum number of results to return in a single call. The default value is 50. To retrieve the remaining results, make another call with the returned \code{NextToken} value.}
-
-\item{vmServerAddressList}{List of \code{VmServerAddress} objects}
+\item{maxResults}{}
 }
 \description{
-Describes the servers in your server catalog.
+The GetServers API returns a list of all servers in your server catalog. For this call to succeed, you must previously have called ImportServerCatalog.
 }
-\details{
-Before you can describe your servers, you must import them using ImportServerCatalog.
+\section{Accepted Parameters}{
+\preformatted{get_servers(
+  nextToken = "string",
+  maxResults = 123
+)
 }
-\examples{
+}
 
-}

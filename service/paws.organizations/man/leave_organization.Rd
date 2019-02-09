@@ -20,6 +20,6 @@ This operation can be called only from a member account in the organization.
 \examples{
 # TThe following example shows how to remove your member account from an
 # organization:
-leave_organization()
+\donttest{leave_organization()}
 
 }

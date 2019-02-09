@@ -4,10 +4,7 @@
 \alias{describe_identity_id_format}
 \title{Describes the ID format settings for resources for the specified IAM user, IAM role, or root user}
 \usage{
-describe_identity_id_format(
-  PrincipalArn = "string",
-  Resource = "string"
-)
+describe_identity_id_format(PrincipalArn, Resource = NULL)
 }
 \arguments{
 \item{PrincipalArn}{[required] The ARN of the principal, which can be an IAM role, IAM user, or the root user.}
@@ -22,6 +19,11 @@ The following resource types support longer IDs: \code{bundle} | \code{conversio
 
 These settings apply to the principal specified in the request. They do not apply to the principal that makes the request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_identity_id_format(
+  PrincipalArn = "string",
+  Resource = "string"
+)
 }
+}
+

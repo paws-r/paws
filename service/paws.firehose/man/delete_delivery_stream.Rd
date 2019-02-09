@@ -4,9 +4,7 @@
 \alias{delete_delivery_stream}
 \title{Deletes a delivery stream and its data}
 \usage{
-delete_delivery_stream(
-  DeliveryStreamName = "string"
-)
+delete_delivery_stream(DeliveryStreamName)
 }
 \arguments{
 \item{DeliveryStreamName}{[required] The name of the delivery stream.}
@@ -21,6 +19,10 @@ To check the state of a delivery stream, use DescribeDeliveryStream.
 
 While the delivery stream is \code{DELETING} state, the service might continue to accept the records, but it doesn't make any guarantees with respect to delivering the data. Therefore, as a best practice, you should first stop any applications that are sending records before deleting a delivery stream.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_delivery_stream(
+  DeliveryStreamName = "string"
+)
 }
+}
+

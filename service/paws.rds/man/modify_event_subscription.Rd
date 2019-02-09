@@ -4,15 +4,8 @@
 \alias{modify_event_subscription}
 \title{Modifies an existing RDS event notification subscription}
 \usage{
-modify_event_subscription(
-  SubscriptionName = "string",
-  SnsTopicArn = "string",
-  SourceType = "string",
-  EventCategories = list(
-    "string"
-  ),
-  Enabled = TRUE|FALSE
-)
+modify_event_subscription(SubscriptionName, SnsTopicArn = NULL,
+  SourceType = NULL, EventCategories = NULL, Enabled = NULL)
 }
 \arguments{
 \item{SubscriptionName}{[required] The name of the RDS event notification subscription.}
@@ -33,6 +26,16 @@ Modifies an existing RDS event notification subscription. Note that you can't mo
 \details{
 You can see a list of the event categories for a given SourceType in the \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html}{Events} topic in the \emph{Amazon RDS User Guide} or by using the \strong{DescribeEventCategories} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_event_subscription(
+  SubscriptionName = "string",
+  SnsTopicArn = "string",
+  SourceType = "string",
+  EventCategories = list(
+    "string"
+  ),
+  Enabled = TRUE|FALSE
+)
 }
+}
+

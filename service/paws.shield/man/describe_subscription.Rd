@@ -9,6 +9,8 @@ describe_subscription()
 \description{
 Provides details about the AWS Shield Advanced subscription for an account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_subscription()
 }
+}
+

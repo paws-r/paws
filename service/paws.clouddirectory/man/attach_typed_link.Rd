@@ -4,7 +4,25 @@
 \alias{attach_typed_link}
 \title{Attaches a typed link to a specified source and target object}
 \usage{
-attach_typed_link(
+attach_typed_link(DirectoryArn, SourceObjectReference,
+  TargetObjectReference, TypedLinkFacet, Attributes)
+}
+\arguments{
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory where you want to attach the typed link.}
+
+\item{SourceObjectReference}{[required] Identifies the source object that the typed link will attach to.}
+
+\item{TargetObjectReference}{[required] Identifies the target object that the typed link will attach to.}
+
+\item{TypedLinkFacet}{[required] Identifies the typed link facet that is associated with the typed link.}
+
+\item{Attributes}{[required] A set of attributes that are associated with the typed link.}
+}
+\description{
+Attaches a typed link to a specified source and target object. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
+}
+\section{Accepted Parameters}{
+\preformatted{attach_typed_link(
   DirectoryArn = "string",
   SourceObjectReference = list(
     Selector = "string"
@@ -30,20 +48,5 @@ attach_typed_link(
   )
 )
 }
-\arguments{
-\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory where you want to attach the typed link.}
-
-\item{SourceObjectReference}{[required] Identifies the source object that the typed link will attach to.}
-
-\item{TargetObjectReference}{[required] Identifies the target object that the typed link will attach to.}
-
-\item{TypedLinkFacet}{[required] Identifies the typed link facet that is associated with the typed link.}
-
-\item{Attributes}{[required] A set of attributes that are associated with the typed link.}
 }
-\description{
-Attaches a typed link to a specified source and target object. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
-}
-\examples{
 
-}

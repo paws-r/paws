@@ -4,11 +4,8 @@
 \alias{create_skill_group}
 \title{Creates a skill group with a specified name and description}
 \usage{
-create_skill_group(
-  SkillGroupName = "string",
-  Description = "string",
-  ClientRequestToken = "string"
-)
+create_skill_group(SkillGroupName, Description = NULL,
+  ClientRequestToken = NULL)
 }
 \arguments{
 \item{SkillGroupName}{[required] The name for the skill group.}
@@ -20,6 +17,12 @@ create_skill_group(
 \description{
 Creates a skill group with a specified name and description.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_skill_group(
+  SkillGroupName = "string",
+  Description = "string",
+  ClientRequestToken = "string"
+)
 }
+}
+

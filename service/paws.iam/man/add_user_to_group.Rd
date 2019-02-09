@@ -4,29 +4,34 @@
 \alias{add_user_to_group}
 \title{Adds the specified user to the specified group}
 \usage{
-add_user_to_group(
-  GroupName = "string",
-  UserName = "string"
-)
+add_user_to_group(GroupName, UserName)
 }
 \arguments{
 \item{GroupName}{[required] The name of the group to update.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{UserName}{[required] The name of the user to add.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Adds the specified user to the specified group.
 }
+\section{Accepted Parameters}{
+\preformatted{add_user_to_group(
+  GroupName = "string",
+  UserName = "string"
+)
+}
+}
+
 \examples{
 # The following command adds an IAM user named Bob to the IAM group named
 # Admins:
-add_user_to_group(
+\donttest{add_user_to_group(
   GroupName = "Admins",
   UserName = "Bob"
-)
+)}
 
 }

@@ -4,28 +4,8 @@
 \alias{put_compliance_items}
 \title{Registers a compliance type and other compliance details on a designated resource}
 \usage{
-put_compliance_items(
-  ResourceId = "string",
-  ResourceType = "string",
-  ComplianceType = "string",
-  ExecutionSummary = list(
-    ExecutionTime = as.POSIXct("2015-01-01"),
-    ExecutionId = "string",
-    ExecutionType = "string"
-  ),
-  Items = list(
-    list(
-      Id = "string",
-      Title = "string",
-      Severity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
-      Status = "COMPLIANT"|"NON_COMPLIANT",
-      Details = list(
-        "string"
-      )
-    )
-  ),
-  ItemContentHash = "string"
-)
+put_compliance_items(ResourceId, ResourceType, ComplianceType,
+  ExecutionSummary, Items, ItemContentHash = NULL)
 }
 \arguments{
 \item{ResourceId}{[required] Specify an ID for this resource. For a managed instance, this is the instance ID.}
@@ -63,6 +43,29 @@ ComplianceType can be one of the following:
 \item InstalledTime: The time the association, patch, or custom compliance item was applied to the resource. Specify the time by using the following format: yyyy-MM-dd'T'HH:mm:ss'Z'
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_compliance_items(
+  ResourceId = "string",
+  ResourceType = "string",
+  ComplianceType = "string",
+  ExecutionSummary = list(
+    ExecutionTime = as.POSIXct("2015-01-01"),
+    ExecutionId = "string",
+    ExecutionType = "string"
+  ),
+  Items = list(
+    list(
+      Id = "string",
+      Title = "string",
+      Severity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+      Status = "COMPLIANT"|"NON_COMPLIANT",
+      Details = list(
+        "string"
+      )
+    )
+  ),
+  ItemContentHash = "string"
+)
 }
+}
+

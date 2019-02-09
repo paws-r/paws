@@ -4,10 +4,7 @@
 \alias{delete_xss_match_set}
 \title{Permanently deletes an XssMatchSet}
 \usage{
-delete_xss_match_set(
-  XssMatchSetId = "string",
-  ChangeToken = "string"
-)
+delete_xss_match_set(XssMatchSetId, ChangeToken)
 }
 \arguments{
 \item{XssMatchSetId}{[required] The \code{XssMatchSetId} of the XssMatchSet that you want to delete. \code{XssMatchSetId} is returned by CreateXssMatchSet and by ListXssMatchSets.}
@@ -27,12 +24,20 @@ To permanently delete an \code{XssMatchSet} from AWS WAF, perform the following 
 \item Submit a \code{DeleteXssMatchSet} request.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{delete_xss_match_set(
+  XssMatchSetId = "string",
+  ChangeToken = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes an XSS match set with the ID
 # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-delete_xss_match_set(
+\donttest{delete_xss_match_set(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   XssMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-)
+)}
 
 }

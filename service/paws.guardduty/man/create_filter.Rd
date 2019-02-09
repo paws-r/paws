@@ -4,7 +4,29 @@
 \alias{create_filter}
 \title{Creates a filter using the specified finding criteria}
 \usage{
-create_filter(
+create_filter(Action = NULL, ClientToken = NULL, Description = NULL,
+  DetectorId, FindingCriteria, Name, Rank = NULL)
+}
+\arguments{
+\item{Action}{Specifies the action that is to be applied to the findings that match the filter.}
+
+\item{ClientToken}{The idempotency token for the create request.}
+
+\item{Description}{The description of the filter.}
+
+\item{DetectorId}{[required] The unique ID of the detector that you want to update.}
+
+\item{FindingCriteria}{[required] Represents the criteria to be used in the filter for querying findings.}
+
+\item{Name}{[required] The name of the filter.}
+
+\item{Rank}{Specifies the position of the filter in the list of current filters. Also specifies the order in which this filter is applied to the findings.}
+}
+\description{
+Creates a filter using the specified finding criteria.
+}
+\section{Accepted Parameters}{
+\preformatted{create_filter(
   Action = "NOOP"|"ARCHIVE",
   ClientToken = "string",
   Description = "string",
@@ -29,24 +51,5 @@ create_filter(
   Rank = 123
 )
 }
-\arguments{
-\item{Action}{Specifies the action that is to be applied to the findings that match the filter.}
-
-\item{ClientToken}{The idempotency token for the create request.}
-
-\item{Description}{The description of the filter.}
-
-\item{DetectorId}{[required] The unique ID of the detector that you want to update.}
-
-\item{FindingCriteria}{[required] Represents the criteria to be used in the filter for querying findings.}
-
-\item{Name}{[required] The name of the filter.}
-
-\item{Rank}{Specifies the position of the filter in the list of current filters. Also specifies the order in which this filter is applied to the findings.}
 }
-\description{
-Creates a filter using the specified finding criteria.
-}
-\examples{
 
-}

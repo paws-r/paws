@@ -4,9 +4,7 @@
 \alias{list_receipt_rule_sets}
 \title{Lists the receipt rule sets that exist under your AWS account in the current AWS Region}
 \usage{
-list_receipt_rule_sets(
-  NextToken = "string"
-)
+list_receipt_rule_sets(NextToken = NULL)
 }
 \arguments{
 \item{NextToken}{A token returned from a previous call to \code{ListReceiptRuleSets} to indicate the position in the receipt rule set list.}
@@ -19,11 +17,18 @@ For information about managing receipt rule sets, see the \href{http://docs.aws.
 
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{list_receipt_rule_sets(
+  NextToken = "string"
+)
+}
+}
+
 \examples{
 # The following example lists the receipt rule sets that exist under an
 # AWS account:
-list_receipt_rule_sets(
+\donttest{list_receipt_rule_sets(
   NextToken = ""
-)
+)}
 
 }

@@ -9,6 +9,8 @@ delete_subscription()
 \description{
 Removes AWS Shield Advanced from an account. AWS Shield Advanced requires a 1-year subscription commitment. You cannot delete a subscription prior to the completion of that commitment.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_subscription()
 }
+}
+

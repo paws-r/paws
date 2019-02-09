@@ -4,9 +4,7 @@
 \alias{get_stack_policy}
 \title{Returns the stack policy for a specified stack}
 \usage{
-get_stack_policy(
-  StackName = "string"
-)
+get_stack_policy(StackName)
 }
 \arguments{
 \item{StackName}{[required] The name or unique stack ID that is associated with the stack whose policy you want to get.}
@@ -14,6 +12,10 @@ get_stack_policy(
 \description{
 Returns the stack policy for a specified stack. If a stack doesn't have a policy, a null value is returned.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_stack_policy(
+  StackName = "string"
+)
 }
+}
+

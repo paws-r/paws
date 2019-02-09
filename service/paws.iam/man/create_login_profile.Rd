@@ -4,16 +4,12 @@
 \alias{create_login_profile}
 \title{Creates a password for the specified user, giving the user the ability to access AWS services through the AWS Management Console}
 \usage{
-create_login_profile(
-  UserName = "string",
-  Password = "string",
-  PasswordResetRequired = TRUE|FALSE
-)
+create_login_profile(UserName, Password, PasswordResetRequired = NULL)
 }
 \arguments{
 \item{UserName}{[required] The name of the IAM user to create a password for. The user must already exist.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{Password}{[required] The new password for the user.
 
@@ -24,13 +20,22 @@ The \href{http://wikipedia.org/wiki/regex}{regex pattern} that is used to valida
 \description{
 Creates a password for the specified user, giving the user the ability to access AWS services through the AWS Management Console. For more information about managing passwords, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html}{Managing Passwords} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_login_profile(
+  UserName = "string",
+  Password = "string",
+  PasswordResetRequired = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # The following command changes IAM user Bob's password and sets the flag
 # that required Bob to change the password the next time he signs in.
-create_login_profile(
+\donttest{create_login_profile(
   Password = "h]6EszR}vJ*m",
   PasswordResetRequired = TRUE,
   UserName = "Bob"
-)
+)}
 
 }

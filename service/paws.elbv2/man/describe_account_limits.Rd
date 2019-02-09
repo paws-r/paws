@@ -4,10 +4,7 @@
 \alias{describe_account_limits}
 \title{Describes the current Elastic Load Balancing resource limits for your AWS account}
 \usage{
-describe_account_limits(
-  Marker = "string",
-  PageSize = 123
-)
+describe_account_limits(Marker = NULL, PageSize = NULL)
 }
 \arguments{
 \item{Marker}{The marker for the next set of results. (You received this marker from a previous call.)}
@@ -20,6 +17,11 @@ Describes the current Elastic Load Balancing resource limits for your AWS accoun
 \details{
 For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html}{Limits for Your Application Load Balancers} in the \emph{Application Load Balancer Guide} or \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html}{Limits for Your Network Load Balancers} in the \emph{Network Load Balancers Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_account_limits(
+  Marker = "string",
+  PageSize = 123
+)
 }
+}
+

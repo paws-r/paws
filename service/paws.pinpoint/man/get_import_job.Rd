@@ -4,10 +4,7 @@
 \alias{get_import_job}
 \title{Returns information about an import job}
 \usage{
-get_import_job(
-  ApplicationId = "string",
-  JobId = "string"
-)
+get_import_job(ApplicationId, JobId)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -17,6 +14,11 @@ get_import_job(
 \description{
 Returns information about an import job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_import_job(
+  ApplicationId = "string",
+  JobId = "string"
+)
 }
+}
+

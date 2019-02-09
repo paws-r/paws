@@ -4,10 +4,7 @@
 \alias{deprovision_byoip_cidr}
 \title{Releases the specified address range that you provisioned for use with your AWS resources through bring your own IP addresses (BYOIP) and deletes the corresponding address pool}
 \usage{
-deprovision_byoip_cidr(
-  Cidr = "string",
-  DryRun = TRUE|FALSE
-)
+deprovision_byoip_cidr(Cidr, DryRun = NULL)
 }
 \arguments{
 \item{Cidr}{[required] The public IPv4 address range, in CIDR notation. The prefix must be the same prefix that you specified when you provisioned the address range.}
@@ -20,6 +17,11 @@ Releases the specified address range that you provisioned for use with your AWS 
 \details{
 Before you can release an address range, you must stop advertising it using WithdrawByoipCidr and you must not have any IP addresses allocated from its address range.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{deprovision_byoip_cidr(
+  Cidr = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

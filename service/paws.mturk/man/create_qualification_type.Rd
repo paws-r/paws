@@ -2,20 +2,12 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{create_qualification_type}
 \alias{create_qualification_type}
-\title{The \code{CreateQualificationType} operation creates a new Qualification type, which is represented by a \code{QualificationType} data structure}
+\title{The CreateQualificationType operation creates a new Qualification type, which is represented by a QualificationType data structure}
 \usage{
-create_qualification_type(
-  Name = "string",
-  Keywords = "string",
-  Description = "string",
-  QualificationTypeStatus = "Active"|"Inactive",
-  RetryDelayInSeconds = 123,
-  Test = "string",
-  AnswerKey = "string",
-  TestDurationInSeconds = 123,
-  AutoGranted = TRUE|FALSE,
-  AutoGrantedValue = 123
-)
+create_qualification_type(Name, Keywords = NULL, Description,
+  QualificationTypeStatus, RetryDelayInSeconds = NULL, Test = NULL,
+  AnswerKey = NULL, TestDurationInSeconds = NULL, AutoGranted = NULL,
+  AutoGrantedValue = NULL)
 }
 \arguments{
 \item{Name}{[required] The name you give to the Qualification type. The type name is used to represent the Qualification to Workers, and to find the type using a Qualification type search. It must be unique across all of your Qualification types.}
@@ -55,6 +47,19 @@ Constraints: If the Test parameter is specified, this parameter cannot be true.}
 \description{
 The \code{CreateQualificationType} operation creates a new Qualification type, which is represented by a \code{QualificationType} data structure.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_qualification_type(
+  Name = "string",
+  Keywords = "string",
+  Description = "string",
+  QualificationTypeStatus = "Active"|"Inactive",
+  RetryDelayInSeconds = 123,
+  Test = "string",
+  AnswerKey = "string",
+  TestDurationInSeconds = 123,
+  AutoGranted = TRUE|FALSE,
+  AutoGrantedValue = 123
+)
 }
+}
+

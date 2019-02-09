@@ -4,21 +4,8 @@
 \alias{describe_nat_gateways}
 \title{Describes one or more of your NAT gateways}
 \usage{
-describe_nat_gateways(
-  Filter = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NatGatewayIds = list(
-    "string"
-  ),
-  NextToken = "string"
-)
+describe_nat_gateways(Filter = NULL, MaxResults = NULL,
+  NatGatewayIds = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Filter}{One or more filters.
@@ -42,9 +29,28 @@ Constraint: If the value specified is greater than 1000, we return only 1000 ite
 \description{
 Describes one or more of your NAT gateways.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_nat_gateways(
+  Filter = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NatGatewayIds = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
+
 \examples{
 # This example describes the NAT gateway for the specified VPC.
-describe_nat_gateways(
+\donttest{describe_nat_gateways(
   Filter = list(
     list(
       Name = "vpc-id",
@@ -53,6 +59,6 @@ describe_nat_gateways(
       )
     )
   )
-)
+)}
 
 }

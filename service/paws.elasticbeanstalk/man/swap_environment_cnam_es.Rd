@@ -4,12 +4,9 @@
 \alias{swap_environment_cnam_es}
 \title{Swaps the CNAMEs of two environments}
 \usage{
-swap_environment_cnam_es(
-  SourceEnvironmentId = "string",
-  SourceEnvironmentName = "string",
-  DestinationEnvironmentId = "string",
-  DestinationEnvironmentName = "string"
-)
+swap_environment_cnam_es(SourceEnvironmentId = NULL,
+  SourceEnvironmentName = NULL, DestinationEnvironmentId = NULL,
+  DestinationEnvironmentName = NULL)
 }
 \arguments{
 \item{SourceEnvironmentId}{The ID of the source environment.
@@ -31,12 +28,22 @@ Condition: You must specify at least the \code{DestinationEnvironmentID} or the 
 \description{
 Swaps the CNAMEs of two environments.
 }
+\section{Accepted Parameters}{
+\preformatted{swap_environment_cnam_es(
+  SourceEnvironmentId = "string",
+  SourceEnvironmentName = "string",
+  DestinationEnvironmentId = "string",
+  DestinationEnvironmentName = "string"
+)
+}
+}
+
 \examples{
 # The following operation swaps the assigned subdomains of two
 # environments:
-swap_environment_cnam_es(
+\donttest{swap_environment_cnam_es(
   DestinationEnvironmentName = "my-env-green",
   SourceEnvironmentName = "my-env-blue"
-)
+)}
 
 }

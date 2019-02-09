@@ -4,12 +4,8 @@
 \alias{update_chap_credentials}
 \title{Updates the Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target}
 \usage{
-update_chap_credentials(
-  TargetARN = "string",
-  SecretToAuthenticateInitiator = "string",
-  InitiatorName = "string",
-  SecretToAuthenticateTarget = "string"
-)
+update_chap_credentials(TargetARN, SecretToAuthenticateInitiator,
+  InitiatorName, SecretToAuthenticateTarget = NULL)
 }
 \arguments{
 \item{TargetARN}{[required] The Amazon Resource Name (ARN) of the iSCSI volume target. Use the DescribeStorediSCSIVolumes operation to return the TargetARN for specified VolumeARN.}
@@ -32,14 +28,24 @@ Updates the Challenge-Handshake Authentication Protocol (CHAP) credentials for a
 \details{
 When you update CHAP credentials, all existing connections on the target are closed and initiators must reconnect with the new credentials.
 }
+\section{Accepted Parameters}{
+\preformatted{update_chap_credentials(
+  TargetARN = "string",
+  SecretToAuthenticateInitiator = "string",
+  InitiatorName = "string",
+  SecretToAuthenticateTarget = "string"
+)
+}
+}
+
 \examples{
 # Updates the Challenge-Handshake Authentication Protocol (CHAP)
 # credentials for a specified iSCSI target.
-update_chap_credentials(
+\donttest{update_chap_credentials(
   InitiatorName = "iqn.1991-05.com.microsoft:computername.domain.example.com",
   SecretToAuthenticateInitiator = "111111111111",
   SecretToAuthenticateTarget = "222222222222",
   TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume"
-)
+)}
 
 }

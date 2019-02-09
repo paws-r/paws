@@ -4,10 +4,7 @@
 \alias{delete_campaign}
 \title{Deletes a campaign}
 \usage{
-delete_campaign(
-  ApplicationId = "string",
-  CampaignId = "string"
-)
+delete_campaign(ApplicationId, CampaignId)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -17,6 +14,11 @@ delete_campaign(
 \description{
 Deletes a campaign.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_campaign(
+  ApplicationId = "string",
+  CampaignId = "string"
+)
 }
+}
+

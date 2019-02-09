@@ -4,11 +4,7 @@
 \alias{disassociate_member_from_group}
 \title{Removes a member from a group}
 \usage{
-disassociate_member_from_group(
-  OrganizationId = "string",
-  GroupId = "string",
-  MemberId = "string"
-)
+disassociate_member_from_group(OrganizationId, GroupId, MemberId)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier for the organization under which the group exists.}
@@ -20,6 +16,12 @@ disassociate_member_from_group(
 \description{
 Removes a member from a group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_member_from_group(
+  OrganizationId = "string",
+  GroupId = "string",
+  MemberId = "string"
+)
 }
+}
+

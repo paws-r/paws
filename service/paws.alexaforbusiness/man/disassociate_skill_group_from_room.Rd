@@ -4,10 +4,8 @@
 \alias{disassociate_skill_group_from_room}
 \title{Disassociates a skill group from a specified room}
 \usage{
-disassociate_skill_group_from_room(
-  SkillGroupArn = "string",
-  RoomArn = "string"
-)
+disassociate_skill_group_from_room(SkillGroupArn = NULL,
+  RoomArn = NULL)
 }
 \arguments{
 \item{SkillGroupArn}{The ARN of the skill group to disassociate from a room. Required.}
@@ -17,6 +15,11 @@ disassociate_skill_group_from_room(
 \description{
 Disassociates a skill group from a specified room. This disables all skills in the skill group on all devices in the room.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_skill_group_from_room(
+  SkillGroupArn = "string",
+  RoomArn = "string"
+)
 }
+}
+

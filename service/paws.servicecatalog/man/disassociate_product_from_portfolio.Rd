@@ -4,11 +4,8 @@
 \alias{disassociate_product_from_portfolio}
 \title{Disassociates the specified product from the specified portfolio}
 \usage{
-disassociate_product_from_portfolio(
-  AcceptLanguage = "string",
-  ProductId = "string",
-  PortfolioId = "string"
-)
+disassociate_product_from_portfolio(AcceptLanguage = NULL, ProductId,
+  PortfolioId)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -25,6 +22,12 @@ disassociate_product_from_portfolio(
 \description{
 Disassociates the specified product from the specified portfolio.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_product_from_portfolio(
+  AcceptLanguage = "string",
+  ProductId = "string",
+  PortfolioId = "string"
+)
 }
+}
+

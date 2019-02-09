@@ -4,13 +4,8 @@
 \alias{list_jobs}
 \title{Retrieve a JSON array of up to twenty of your most recently created jobs}
 \usage{
-list_jobs(
-  MaxResults = 123,
-  NextToken = "string",
-  Order = "ASCENDING"|"DESCENDING",
-  Queue = "string",
-  Status = "SUBMITTED"|"PROGRESSING"|"COMPLETE"|"CANCELED"|"ERROR"
-)
+list_jobs(MaxResults = NULL, NextToken = NULL, Order = NULL,
+  Queue = NULL, Status = NULL)
 }
 \arguments{
 \item{MaxResults}{Optional. Number of jobs, up to twenty, that will be returned at one time.}
@@ -26,6 +21,14 @@ list_jobs(
 \description{
 Retrieve a JSON array of up to twenty of your most recently created jobs. This array includes in-process, completed, and errored jobs. This will return the jobs themselves, not just a list of the jobs. To retrieve the twenty next most recent jobs, use the nextToken string returned with the array.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_jobs(
+  MaxResults = 123,
+  NextToken = "string",
+  Order = "ASCENDING"|"DESCENDING",
+  Queue = "string",
+  Status = "SUBMITTED"|"PROGRESSING"|"COMPLETE"|"CANCELED"|"ERROR"
+)
 }
+}
+

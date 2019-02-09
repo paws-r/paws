@@ -4,11 +4,8 @@
 \alias{create_public_dns_namespace}
 \title{Creates a public namespace based on DNS, which will be visible on the internet}
 \usage{
-create_public_dns_namespace(
-  Name = "string",
-  CreatorRequestId = "string",
-  Description = "string"
-)
+create_public_dns_namespace(Name, CreatorRequestId = NULL,
+  Description = NULL)
 }
 \arguments{
 \item{Name}{[required] The name that you want to assign to this namespace.}
@@ -18,8 +15,14 @@ create_public_dns_namespace(
 \item{Description}{A description for the namespace.}
 }
 \description{
-Creates a public namespace based on DNS, which will be visible on the internet. The namespace defines your service naming scheme. For example, if you name your namespace \code{example.com} and name your service \code{backend}, the resulting DNS name for the service will be \code{backend.example.com}. For the current limit on the number of namespaces that you can create using the same AWS account, see \href{http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map Limits} in the \emph{AWS Cloud Map Developer Guide}.
+Creates a public namespace based on DNS, which will be visible on the internet. The namespace defines your service naming scheme. For example, if you name your namespace \code{example.com} and name your service \code{backend}, the resulting DNS name for the service will be \code{backend.example.com}. For the current limit on the number of namespaces that you can create using the same AWS account, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming}{Limits on Auto Naming} in the \emph{Route 53 Developer Guide}.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{create_public_dns_namespace(
+  Name = "string",
+  CreatorRequestId = "string",
+  Description = "string"
+)
+}
+}
 
-}

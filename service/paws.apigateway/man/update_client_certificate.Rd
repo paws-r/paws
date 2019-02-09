@@ -4,7 +4,18 @@
 \alias{update_client_certificate}
 \title{Changes information about an ClientCertificate resource}
 \usage{
-update_client_certificate(
+update_client_certificate(clientCertificateId, patchOperations = NULL)
+}
+\arguments{
+\item{clientCertificateId}{[required] [Required] The identifier of the ClientCertificate resource to be updated.}
+
+\item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
+}
+\description{
+Changes information about an ClientCertificate resource.
+}
+\section{Accepted Parameters}{
+\preformatted{update_client_certificate(
   clientCertificateId = "string",
   patchOperations = list(
     list(
@@ -16,14 +27,5 @@ update_client_certificate(
   )
 )
 }
-\arguments{
-\item{clientCertificateId}{[required] [Required] The identifier of the ClientCertificate resource to be updated.}
+}
 
-\item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
-}
-\description{
-Changes information about an ClientCertificate resource.
-}
-\examples{
-
-}

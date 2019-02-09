@@ -4,13 +4,7 @@
 \alias{update_conditional_forwarder}
 \title{Updates a conditional forwarder that has been set up for your AWS directory}
 \usage{
-update_conditional_forwarder(
-  DirectoryId = "string",
-  RemoteDomainName = "string",
-  DnsIpAddrs = list(
-    "string"
-  )
-)
+update_conditional_forwarder(DirectoryId, RemoteDomainName, DnsIpAddrs)
 }
 \arguments{
 \item{DirectoryId}{[required] The directory ID of the AWS directory for which to update the conditional forwarder.}
@@ -22,6 +16,14 @@ update_conditional_forwarder(
 \description{
 Updates a conditional forwarder that has been set up for your AWS directory.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_conditional_forwarder(
+  DirectoryId = "string",
+  RemoteDomainName = "string",
+  DnsIpAddrs = list(
+    "string"
+  )
+)
 }
+}
+

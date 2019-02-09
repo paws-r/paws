@@ -4,32 +4,10 @@
 \alias{create_stack_set}
 \title{Creates a stack set}
 \usage{
-create_stack_set(
-  StackSetName = "string",
-  Description = "string",
-  TemplateBody = "string",
-  TemplateURL = "string",
-  Parameters = list(
-    list(
-      ParameterKey = "string",
-      ParameterValue = "string",
-      UsePreviousValue = TRUE|FALSE,
-      ResolvedValue = "string"
-    )
-  ),
-  Capabilities = list(
-    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  AdministrationRoleARN = "string",
-  ExecutionRoleName = "string",
-  ClientRequestToken = "string"
-)
+create_stack_set(StackSetName, Description = NULL, TemplateBody = NULL,
+  TemplateURL = NULL, Parameters = NULL, Capabilities = NULL,
+  Tags = NULL, AdministrationRoleARN = NULL,
+  ExecutionRoleName = NULL, ClientRequestToken = NULL)
 }
 \arguments{
 \item{StackSetName}{[required] The name to associate with the stack set. The name must be unique in the region where you create your stack set.
@@ -48,37 +26,24 @@ Conditional: You must specify either the TemplateBody or the TemplateURL paramet
 
 \item{Parameters}{The input parameters for the stack set template.}
 
-\item{Capabilities}{In some cases, you must explicity acknowledge that your stack set template contains certain capabilities in order for AWS CloudFormation to create the stack set and related stack instances.
-\itemize{
-\item \code{CAPABILITY_IAM} and \code{CAPABILITY_NAMED_IAM}
+\item{Capabilities}{A list of values that you must specify before AWS CloudFormation can create certain stack sets. Some stack set templates might include resources that can affect permissions in your AWS account---for example, by creating new AWS Identity and Access Management (IAM) users. For those stack sets, you must explicitly acknowledge their capabilities by specifying this parameter.
 
-Some stack templates might include resources that can affect permissions in your AWS account; for example, by creating new AWS Identity and Access Management (IAM) users. For those stack sets, you must explicitly acknowledge this by specifying one of these capabilities.
-
-The following IAM resources require you to specify either the \code{CAPABILITY_IAM} or \code{CAPABILITY_NAMED_IAM} capability.
+The only valid values are CAPABILITY\_IAM and CAPABILITY\_NAMED\_IAM. The following resources require you to specify this parameter:
 \itemize{
-\item If you have IAM resources, you can specify either capability.
-\item If you have IAM resources with custom names, you \emph{must} specify \code{CAPABILITY_NAMED_IAM}.
-\item If you don't specify either of these capabilities, AWS CloudFormation returns an \code{InsufficientCapabilities} error.
+\item AWS::IAM::AccessKey
+\item AWS::IAM::Group
+\item AWS::IAM::InstanceProfile
+\item AWS::IAM::Policy
+\item AWS::IAM::Role
+\item AWS::IAM::User
+\item AWS::IAM::UserToGroupAddition
 }
 
-If your stack template contains these resources, we recommend that you review all permissions associated with them and edit their permissions if necessary.
-\itemize{
-\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html}{AWS::IAM::AccessKey}
-\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html}{AWS::IAM::Group}
-\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
-\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html}{AWS::IAM::Policy}
-\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
-\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html}{AWS::IAM::User}
-\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html}{AWS::IAM::UserToGroupAddition}
-}
+If your stack template contains these resources, we recommend that you review all permissions that are associated with them and edit their permissions if necessary.
 
-For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in AWS CloudFormation Templates}.
-\item \code{CAPABILITY_AUTO_EXPAND}
+If you have IAM resources, you can specify either capability. If you have IAM resources with custom names, you must specify CAPABILITY\_NAMED\_IAM. If you don't specify this parameter, this action returns an \code{InsufficientCapabilities} error.
 
-Some templates contain macros. If your stack template contains one or more macros, and you choose to create a stack directly from the processed template, without first reviewing the resulting changes in a change set, you must acknowledge this capability. For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using AWS CloudFormation Macros to Perform Custom Processing on Templates}.
-
-Stack sets do not currently support macros in stack templates. (This includes the \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html}{AWS::Include} and \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html}{AWS::Serverless} transforms, which are macros hosted by AWS CloudFormation.) Even if you specify this capability, if you include a macro in your template the stack set operation will fail.
-}}
+For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in AWS CloudFormation Templates.}}
 
 \item{Tags}{The key-value pairs to associate with this stack set and the stacks created from it. AWS CloudFormation also propagates these tags to supported resources that are created in the stacks. A maximum number of 50 tags can be specified.
 
@@ -99,6 +64,33 @@ If you don't specify an operation ID, the SDK generates one automatically.}
 \description{
 Creates a stack set.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_stack_set(
+  StackSetName = "string",
+  Description = "string",
+  TemplateBody = "string",
+  TemplateURL = "string",
+  Parameters = list(
+    list(
+      ParameterKey = "string",
+      ParameterValue = "string",
+      UsePreviousValue = TRUE|FALSE,
+      ResolvedValue = "string"
+    )
+  ),
+  Capabilities = list(
+    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  AdministrationRoleARN = "string",
+  ExecutionRoleName = "string",
+  ClientRequestToken = "string"
+)
 }
+}
+

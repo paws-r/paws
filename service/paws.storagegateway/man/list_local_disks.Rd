@@ -4,9 +4,7 @@
 \alias{list_local_disks}
 \title{Returns a list of the gateway's local disks}
 \usage{
-list_local_disks(
-  GatewayARN = "string"
-)
+list_local_disks(GatewayARN)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -17,12 +15,19 @@ Returns a list of the gateway's local disks. To specify which gateway to describ
 \details{
 The request returns a list of all disks, specifying which are configured as working storage, cache storage, or stored volume or not configured at all. The response includes a \code{DiskStatus} field. This field can have a value of present (the disk is available to use), missing (the disk is no longer connected to the gateway), or mismatch (the disk node is occupied by a disk that has incorrect metadata or the disk content is corrupted).
 }
+\section{Accepted Parameters}{
+\preformatted{list_local_disks(
+  GatewayARN = "string"
+)
+}
+}
+
 \examples{
 # The request returns a list of all disks, specifying which are configured
 # as working storage, cache storage, or stored volume or not configured at
 # all.
-list_local_disks(
+\donttest{list_local_disks(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
+)}
 
 }

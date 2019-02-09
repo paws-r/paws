@@ -4,16 +4,9 @@
 \alias{describe_scheduled_actions}
 \title{Describes the scheduled actions for the specified service namespace}
 \usage{
-describe_scheduled_actions(
-  ScheduledActionNames = list(
-    "string"
-  ),
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
-  ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property",
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_scheduled_actions(ScheduledActionNames = NULL, ServiceNamespace,
+  ResourceId = NULL, ScalableDimension = NULL, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{ScheduledActionNames}{The names of the scheduled actions to describe.}
@@ -62,6 +55,17 @@ You can filter the results using the \code{ResourceId}, \code{ScalableDimension}
 
 To create a scheduled action or update an existing one, see PutScheduledAction. If you are no longer using a scheduled action, you can delete it using DeleteScheduledAction.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_scheduled_actions(
+  ScheduledActionNames = list(
+    "string"
+  ),
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
+  ResourceId = "string",
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

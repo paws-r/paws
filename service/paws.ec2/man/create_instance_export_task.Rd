@@ -4,17 +4,8 @@
 \alias{create_instance_export_task}
 \title{Exports a running or stopped instance to an S3 bucket}
 \usage{
-create_instance_export_task(
-  Description = "string",
-  ExportToS3Task = list(
-    ContainerFormat = "ova",
-    DiskImageFormat = "VMDK"|"RAW"|"VHD",
-    S3Bucket = "string",
-    S3Prefix = "string"
-  ),
-  InstanceId = "string",
-  TargetEnvironment = "citrix"|"vmware"|"microsoft"
-)
+create_instance_export_task(Description = NULL, ExportToS3Task = NULL,
+  InstanceId, TargetEnvironment = NULL)
 }
 \arguments{
 \item{Description}{A description for the conversion task or the resource being exported. The maximum length is 255 bytes.}
@@ -31,6 +22,18 @@ Exports a running or stopped instance to an S3 bucket.
 \details{
 For information about the supported operating systems, image formats, and known limitations for the types of instances you can export, see \href{http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html}{Exporting an Instance as a VM Using VM Import/Export} in the \emph{VM Import/Export User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_instance_export_task(
+  Description = "string",
+  ExportToS3Task = list(
+    ContainerFormat = "ova",
+    DiskImageFormat = "VMDK"|"RAW"|"VHD",
+    S3Bucket = "string",
+    S3Prefix = "string"
+  ),
+  InstanceId = "string",
+  TargetEnvironment = "citrix"|"vmware"|"microsoft"
+)
 }
+}
+

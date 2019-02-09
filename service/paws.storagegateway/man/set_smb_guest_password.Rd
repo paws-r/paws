@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.storagegateway_operations.R
 \name{set_smb_guest_password}
 \alias{set_smb_guest_password}
-\title{Sets the password for the guest user \code{smbguest}}
+\title{Sets the password for the guest user smbguest}
 \usage{
-set_smb_guest_password(
-  GatewayARN = "string",
-  Password = "string"
-)
+set_smb_guest_password(GatewayARN, Password)
 }
 \arguments{
 \item{GatewayARN}{[required] The Amazon Resource Name (ARN) of the file gateway the SMB file share is associated with.}
@@ -17,6 +14,11 @@ set_smb_guest_password(
 \description{
 Sets the password for the guest user \code{smbguest}. The \code{smbguest} user is the user when the authentication method for the file share is set to \code{GuestAccess}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_smb_guest_password(
+  GatewayARN = "string",
+  Password = "string"
+)
 }
+}
+

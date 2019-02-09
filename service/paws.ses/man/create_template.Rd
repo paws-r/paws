@@ -4,14 +4,7 @@
 \alias{create_template}
 \title{Creates an email template}
 \usage{
-create_template(
-  Template = list(
-    TemplateName = "string",
-    SubjectPart = "string",
-    TextPart = "string",
-    HtmlPart = "string"
-  )
-)
+create_template(Template)
 }
 \arguments{
 \item{Template}{[required] The content of the email, composed of a subject line, an HTML part, and a text-only part.}
@@ -22,6 +15,15 @@ Creates an email template. Email templates enable you to send personalized email
 \details{
 You can execute this operation no more than once per second.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_template(
+  Template = list(
+    TemplateName = "string",
+    SubjectPart = "string",
+    TextPart = "string",
+    HtmlPart = "string"
+  )
+)
 }
+}
+

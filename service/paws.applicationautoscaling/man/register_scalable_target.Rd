@@ -4,14 +4,8 @@
 \alias{register_scalable_target}
 \title{Registers or updates a scalable target}
 \usage{
-register_scalable_target(
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
-  ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property",
-  MinCapacity = 123,
-  MaxCapacity = 123,
-  RoleARN = "string"
-)
+register_scalable_target(ServiceNamespace, ResourceId, ScalableDimension,
+  MinCapacity = NULL, MaxCapacity = NULL, RoleARN = NULL)
 }
 \arguments{
 \item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource or \code{custom-resource} for a resource provided by your own application or service. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces} in the \emph{Amazon Web Services General Reference}.}
@@ -58,28 +52,40 @@ Registers or updates a scalable target. A scalable target is a resource that App
 \details{
 After you register a scalable target, you can create and apply scaling policies using PutScalingPolicy. You can view the scaling policies for a service namespace using DescribeScalableTargets. If you no longer need a scalable target, you can deregister it using DeregisterScalableTarget.
 }
+\section{Accepted Parameters}{
+\preformatted{register_scalable_target(
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
+  ResourceId = "string",
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property",
+  MinCapacity = 123,
+  MaxCapacity = 123,
+  RoleARN = "string"
+)
+}
+}
+
 \examples{
 # This example registers a scalable target from an Amazon ECS service
 # called web-app that is running on the default cluster, with a minimum
 # desired count of 1 task and a maximum desired count of 10 tasks.
-register_scalable_target(
+\donttest{register_scalable_target(
   MaxCapacity = 10L,
   MinCapacity = 1L,
   ResourceId = "service/default/web-app",
   RoleARN = "arn:aws:iam::012345678910:role/ApplicationAutoscalingECSRole",
   ScalableDimension = "ecs:service:DesiredCount",
   ServiceNamespace = "ecs"
-)
+)}
 
 # This example registers a scalable target from an Amazon EC2 Spot fleet
 # with a minimum target capacity of 1 and a maximum of 10.
-register_scalable_target(
+\donttest{register_scalable_target(
   MaxCapacity = 10L,
   MinCapacity = 1L,
   ResourceId = "spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3",
   RoleARN = "arn:aws:iam::012345678910:role/ApplicationAutoscalingSpotRole",
   ScalableDimension = "ec2:spot-fleet-request:TargetCapacity",
   ServiceNamespace = "ec2"
-)
+)}
 
 }

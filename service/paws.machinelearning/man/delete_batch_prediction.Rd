@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{delete_batch_prediction}
 \alias{delete_batch_prediction}
-\title{Assigns the DELETED status to a \code{BatchPrediction}, rendering it unusable}
+\title{Assigns the DELETED status to a BatchPrediction, rendering it unusable}
 \usage{
-delete_batch_prediction(
-  BatchPredictionId = "string"
-)
+delete_batch_prediction(BatchPredictionId)
 }
 \arguments{
 \item{BatchPredictionId}{[required] A user-supplied ID that uniquely identifies the \code{BatchPrediction}.}
@@ -19,6 +17,10 @@ After using the \code{DeleteBatchPrediction} operation, you can use the GetBatch
 
 \strong{Caution:} The result of the \code{DeleteBatchPrediction} operation is irreversible.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_batch_prediction(
+  BatchPredictionId = "string"
+)
 }
+}
+

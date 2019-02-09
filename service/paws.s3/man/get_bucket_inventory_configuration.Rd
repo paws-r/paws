@@ -4,10 +4,7 @@
 \alias{get_bucket_inventory_configuration}
 \title{Returns an inventory configuration (identified by the inventory ID) from the bucket}
 \usage{
-get_bucket_inventory_configuration(
-  Bucket = "string",
-  Id = "string"
-)
+get_bucket_inventory_configuration(Bucket, Id)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket containing the inventory configuration to retrieve.}
@@ -17,6 +14,11 @@ get_bucket_inventory_configuration(
 \description{
 Returns an inventory configuration (identified by the inventory ID) from the bucket.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_bucket_inventory_configuration(
+  Bucket = "string",
+  Id = "string"
+)
 }
+}
+

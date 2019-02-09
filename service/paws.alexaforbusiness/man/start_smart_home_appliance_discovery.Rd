@@ -4,9 +4,7 @@
 \alias{start_smart_home_appliance_discovery}
 \title{Initiates the discovery of any smart home appliances associated with the room}
 \usage{
-start_smart_home_appliance_discovery(
-  RoomArn = "string"
-)
+start_smart_home_appliance_discovery(RoomArn)
 }
 \arguments{
 \item{RoomArn}{[required] The room where smart home appliance discovery was initiated.}
@@ -14,6 +12,10 @@ start_smart_home_appliance_discovery(
 \description{
 Initiates the discovery of any smart home appliances associated with the room.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_smart_home_appliance_discovery(
+  RoomArn = "string"
+)
 }
+}
+

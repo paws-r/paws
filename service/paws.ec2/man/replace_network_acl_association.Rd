@@ -4,11 +4,8 @@
 \alias{replace_network_acl_association}
 \title{Changes which network ACL a subnet is associated with}
 \usage{
-replace_network_acl_association(
-  AssociationId = "string",
-  DryRun = TRUE|FALSE,
-  NetworkAclId = "string"
-)
+replace_network_acl_association(AssociationId, DryRun = NULL,
+  NetworkAclId)
 }
 \arguments{
 \item{AssociationId}{[required] The ID of the current association between the original network ACL and the subnet.}
@@ -23,12 +20,21 @@ Changes which network ACL a subnet is associated with. By default when you creat
 \details{
 This is an idempotent operation.
 }
+\section{Accepted Parameters}{
+\preformatted{replace_network_acl_association(
+  AssociationId = "string",
+  DryRun = TRUE|FALSE,
+  NetworkAclId = "string"
+)
+}
+}
+
 \examples{
 # This example associates the specified network ACL with the subnet for
 # the specified network ACL association.
-replace_network_acl_association(
+\donttest{replace_network_acl_association(
   AssociationId = "aclassoc-e5b95c8c",
   NetworkAclId = "acl-5fb85d36"
-)
+)}
 
 }

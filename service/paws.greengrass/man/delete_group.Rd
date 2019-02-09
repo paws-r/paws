@@ -4,16 +4,18 @@
 \alias{delete_group}
 \title{Deletes a group}
 \usage{
-delete_group(
-  GroupId = "string"
-)
+delete_group(GroupId)
 }
 \arguments{
-\item{GroupId}{[required] The ID of the Greengrass group.}
+\item{GroupId}{[required] The ID of the AWS Greengrass group.}
 }
 \description{
 Deletes a group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_group(
+  GroupId = "string"
+)
 }
+}
+

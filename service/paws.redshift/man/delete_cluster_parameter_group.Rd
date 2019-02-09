@@ -4,9 +4,7 @@
 \alias{delete_cluster_parameter_group}
 \title{Deletes a specified Amazon Redshift parameter group}
 \usage{
-delete_cluster_parameter_group(
-  ParameterGroupName = "string"
-)
+delete_cluster_parameter_group(ParameterGroupName)
 }
 \arguments{
 \item{ParameterGroupName}{[required] The name of the parameter group to be deleted.
@@ -23,6 +21,10 @@ Deletes a specified Amazon Redshift parameter group.
 \details{
 You cannot delete a parameter group if it is associated with a cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_cluster_parameter_group(
+  ParameterGroupName = "string"
+)
 }
+}
+

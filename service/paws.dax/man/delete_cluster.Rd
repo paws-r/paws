@@ -4,9 +4,7 @@
 \alias{delete_cluster}
 \title{Deletes a previously provisioned DAX cluster}
 \usage{
-delete_cluster(
-  ClusterName = "string"
-)
+delete_cluster(ClusterName)
 }
 \arguments{
 \item{ClusterName}{[required] The name of the cluster to be deleted.}
@@ -14,6 +12,10 @@ delete_cluster(
 \description{
 Deletes a previously provisioned DAX cluster. \emph{DeleteCluster} deletes all associated nodes, node endpoints and the DAX cluster itself. When you receive a successful response from this action, DAX immediately begins deleting the cluster; you cannot cancel or revert this action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_cluster(
+  ClusterName = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{describe_origin_endpoint}
 \title{Gets details about an existing OriginEndpoint}
 \usage{
-describe_origin_endpoint(
-  Id = "string"
-)
+describe_origin_endpoint(Id)
 }
 \arguments{
 \item{Id}{[required] The ID of the OriginEndpoint.}
@@ -14,6 +12,10 @@ describe_origin_endpoint(
 \description{
 Gets details about an existing OriginEndpoint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_origin_endpoint(
+  Id = "string"
+)
 }
+}
+

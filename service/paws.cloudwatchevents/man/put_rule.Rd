@@ -4,14 +4,8 @@
 \alias{put_rule}
 \title{Creates or updates the specified rule}
 \usage{
-put_rule(
-  Name = "string",
-  ScheduleExpression = "string",
-  EventPattern = "string",
-  State = "ENABLED"|"DISABLED",
-  Description = "string",
-  RoleArn = "string"
-)
+put_rule(Name, ScheduleExpression = NULL, EventPattern = NULL,
+  State = NULL, Description = NULL, RoleArn = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the rule that you are creating or updating.}
@@ -37,13 +31,16 @@ When you create or update a rule, incoming events might not immediately start ma
 A rule must contain at least an EventPattern or ScheduleExpression. Rules with EventPatterns are triggered when a matching event is observed. Rules with ScheduleExpressions self-trigger based on the given schedule. A rule can have both an EventPattern and a ScheduleExpression, in which case the rule triggers on matching events as well as on a schedule.
 
 Most services in AWS treat : or / as the same character in Amazon Resource Names (ARNs). However, CloudWatch Events uses an exact match in event patterns and rules. Be sure to use the correct ARN characters when creating event patterns so that they match the ARN syntax in the event you want to match.
-
-In CloudWatch Events, it is possible to create rules that lead to infinite loops, where a rule is fired repeatedly. For example, a rule might detect that ACLs have changed on an S3 bucket, and trigger software to change them to the desired state. If the rule is not written carefully, the subsequent change to the ACLs fires the rule again, creating an infinite loop.
-
-To prevent this, write the rules so that the triggered actions do not re-fire the same rule. For example, your rule could fire only if ACLs are found to be in a bad state, instead of after any change.
-
-An infinite loop can quickly cause higher than expected charges. We recommend that you use budgeting, which alerts you when charges exceed your specified limit. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html}{Managing Your Costs with Budgets}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_rule(
+  Name = "string",
+  ScheduleExpression = "string",
+  EventPattern = "string",
+  State = "ENABLED"|"DISABLED",
+  Description = "string",
+  RoleArn = "string"
+)
 }
+}
+

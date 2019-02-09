@@ -4,11 +4,7 @@
 \alias{change_message_visibility}
 \title{Changes the visibility timeout of a specified message in a queue to a new value}
 \usage{
-change_message_visibility(
-  QueueUrl = "string",
-  ReceiptHandle = "string",
-  VisibilityTimeout = 123
-)
+change_message_visibility(QueueUrl, ReceiptHandle, VisibilityTimeout)
 }
 \arguments{
 \item{QueueUrl}{[required] The URL of the Amazon SQS queue whose message's visibility is changed.
@@ -35,6 +31,12 @@ If you attempt to set the \code{VisibilityTimeout} to a value greater than the m
 
 Unlike with a queue, when you change the visibility timeout for a specific message the timeout value is applied immediately but isn't saved in memory for that message. If you don't delete a message after it is received, the visibility timeout for the message reverts to the original timeout value (not to the value you set using the \code{ChangeMessageVisibility} action) the next time the message is received.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{change_message_visibility(
+  QueueUrl = "string",
+  ReceiptHandle = "string",
+  VisibilityTimeout = 123
+)
 }
+}
+

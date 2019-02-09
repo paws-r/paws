@@ -4,11 +4,8 @@
 \alias{list_hosted_zones_by_name}
 \title{Retrieves a list of your hosted zones in lexicographic order}
 \usage{
-list_hosted_zones_by_name(
-  DNSName = "string",
-  HostedZoneId = "string",
-  MaxItems = "string"
-)
+list_hosted_zones_by_name(DNSName = NULL, HostedZoneId = NULL,
+  MaxItems = NULL)
 }
 \arguments{
 \item{DNSName}{(Optional) For your first request to \code{ListHostedZonesByName}, include the \code{dnsname} parameter only if you want to specify the name of the first hosted zone in the response. If you don't include the \code{dnsname} parameter, Amazon Route 53 returns all of the hosted zones that were created by the current AWS account, in ASCII order. For subsequent requests, include both \code{dnsname} and \code{hostedzoneid} parameters. For \code{dnsname}, specify the value of \code{NextDNSName} from the previous response.}
@@ -29,7 +26,7 @@ Retrieves a list of your hosted zones in lexicographic order. The response inclu
 
 Note the trailing dot, which can change the sort order in some circumstances.
 
-If the domain name includes escape characters or Punycode, \code{ListHostedZonesByName} alphabetizes the domain name using the escaped or Punycoded value, which is the format that Amazon Route 53 saves in its database. For example, to create a hosted zone for exÃ¤mple.com, you specify ex\344mple.com for the domain name. \code{ListHostedZonesByName} alphabetizes it as:
+If the domain name includes escape characters or Punycode, \code{ListHostedZonesByName} alphabetizes the domain name using the escaped or Punycoded value, which is the format that Amazon Route 53 saves in its database. For example, to create a hosted zone for exämple.com, you specify ex\344mple.com for the domain name. \code{ListHostedZonesByName} alphabetizes it as:
 
 \code{com.ex\344mple.}
 
@@ -47,6 +44,12 @@ If \code{IsTruncated} is false, this response includes the last hosted zone that
 \item The \code{NextDNSName} and \code{NextHostedZoneId} elements in the response contain the domain name and the hosted zone ID of the next hosted zone that is associated with the current AWS account. If you want to list more hosted zones, make another call to \code{ListHostedZonesByName}, and specify the value of \code{NextDNSName} and \code{NextHostedZoneId} in the \code{dnsname} and \code{hostedzoneid} parameters, respectively.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_hosted_zones_by_name(
+  DNSName = "string",
+  HostedZoneId = "string",
+  MaxItems = "string"
+)
 }
+}
+

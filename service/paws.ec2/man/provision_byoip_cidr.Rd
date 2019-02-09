@@ -4,15 +4,8 @@
 \alias{provision_byoip_cidr}
 \title{Provisions an address range for use with your AWS resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool}
 \usage{
-provision_byoip_cidr(
-  Cidr = "string",
-  CidrAuthorizationContext = list(
-    Message = "string",
-    Signature = "string"
-  ),
-  Description = "string",
-  DryRun = TRUE|FALSE
-)
+provision_byoip_cidr(Cidr, CidrAuthorizationContext = NULL,
+  Description = NULL, DryRun = NULL)
 }
 \arguments{
 \item{Cidr}{[required] The public IPv4 address range, in CIDR notation. The most specific prefix that you can specify is /24. The address range cannot overlap with another address range that you've brought to this or another region.}
@@ -31,6 +24,16 @@ AWS verifies that you own the address range and are authorized to advertise it. 
 
 Provisioning an address range is an asynchronous operation, so the call returns immediately, but the address range is not ready to use until its status changes from \code{pending-provision} to \code{provisioned}. To monitor the status of an address range, use DescribeByoipCidrs. To allocate an Elastic IP address from your address pool, use AllocateAddress with either the specific address from the address pool or the ID of the address pool.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{provision_byoip_cidr(
+  Cidr = "string",
+  CidrAuthorizationContext = list(
+    Message = "string",
+    Signature = "string"
+  ),
+  Description = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

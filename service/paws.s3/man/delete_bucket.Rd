@@ -4,9 +4,7 @@
 \alias{delete_bucket}
 \title{Deletes the bucket}
 \usage{
-delete_bucket(
-  Bucket = "string"
-)
+delete_bucket(Bucket)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -14,10 +12,17 @@ delete_bucket(
 \description{
 Deletes the bucket. All objects (including all object versions and Delete Markers) in the bucket must be deleted before the bucket itself can be deleted.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_bucket(
+  Bucket = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes the specified bucket.
-delete_bucket(
+\donttest{delete_bucket(
   Bucket = "forrandall2"
-)
+)}
 
 }

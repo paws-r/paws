@@ -4,9 +4,7 @@
 \alias{describe_object}
 \title{Gets the headers for an object at the specified path}
 \usage{
-describe_object(
-  Path = "string"
-)
+describe_object(Path)
 }
 \arguments{
 \item{Path}{[required] The path (including the file name) where the object is stored in the container. Format: <folder name>/<folder name>/<file name>}
@@ -14,6 +12,10 @@ describe_object(
 \description{
 Gets the headers for an object at the specified path.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_object(
+  Path = "string"
+)
 }
+}
+

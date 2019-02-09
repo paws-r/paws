@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.snowball_operations.R
 \name{get_job_manifest}
 \alias{get_job_manifest}
-\title{Returns a link to an Amazon S3 presigned URL for the manifest file associated with the specified \code{JobId} value}
+\title{Returns a link to an Amazon S3 presigned URL for the manifest file associated with the specified JobId value}
 \usage{
-get_job_manifest(
-  JobId = "string"
-)
+get_job_manifest(JobId)
 }
 \arguments{
 \item{JobId}{[required] The ID for a job that you want to get the manifest file for, for example \code{JID123e4567-e89b-12d3-a456-426655440000}.}
@@ -21,6 +19,13 @@ As a best practice, we recommend that you don't save a copy of an \code{UnlockCo
 
 The credentials of a given job, including its manifest file and unlock code, expire 90 days after the job is created.
 }
+\section{Accepted Parameters}{
+\preformatted{get_job_manifest(
+  JobId = "string"
+)
+}
+}
+
 \examples{
 # Returns a link to an Amazon S3 presigned URL for the manifest file
 # associated with the specified JobId value. You can access the manifest
@@ -42,8 +47,8 @@ The credentials of a given job, including its manifest file and unlock code, exp
 # 
 # The credentials of a given job, including its
 # manifest file and unlock code, expire 90 days after the job is created.
-get_job_manifest(
+\donttest{get_job_manifest(
   JobId = "JID123e4567-e89b-12d3-a456-426655440000"
-)
+)}
 
 }

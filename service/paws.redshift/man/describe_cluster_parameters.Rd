@@ -4,12 +4,8 @@
 \alias{describe_cluster_parameters}
 \title{Returns a detailed list of parameters contained within the specified Amazon Redshift parameter group}
 \usage{
-describe_cluster_parameters(
-  ParameterGroupName = "string",
-  Source = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_cluster_parameters(ParameterGroupName, Source = NULL,
+  MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{ParameterGroupName}{[required] The name of a cluster parameter group for which to return details.}
@@ -36,6 +32,13 @@ You can specify \emph{source} filter to retrieve parameters of only specific typ
 
 For more information about parameters and parameter groups, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html}{Amazon Redshift Parameter Groups} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_cluster_parameters(
+  ParameterGroupName = "string",
+  Source = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

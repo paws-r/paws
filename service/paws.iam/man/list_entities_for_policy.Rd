@@ -4,14 +4,9 @@
 \alias{list_entities_for_policy}
 \title{Lists all IAM users, groups, and roles that the specified managed policy is attached to}
 \usage{
-list_entities_for_policy(
-  PolicyArn = "string",
-  EntityFilter = "User"|"Role"|"Group"|"LocalManagedPolicy"|"AWSManagedPolicy",
-  PathPrefix = "string",
-  PolicyUsageFilter = "PermissionsPolicy"|"PermissionsBoundary",
-  Marker = "string",
-  MaxItems = 123
-)
+list_entities_for_policy(PolicyArn, EntityFilter = NULL,
+  PathPrefix = NULL, PolicyUsageFilter = NULL, Marker = NULL,
+  MaxItems = NULL)
 }
 \arguments{
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy for which you want the versions.
@@ -24,19 +19,19 @@ For example, when \code{EntityFilter} is \code{Role}, only the roles that are at
 
 \item{PathPrefix}{The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all entities.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.}
 
 \item{PolicyUsageFilter}{The policy usage method to use for filtering the results.
 
-To list only permissions policies, setÂ \code{PolicyUsageFilter}Â toÂ \code{PermissionsPolicy}. To list only the policies used to set permissions boundaries, setÂ the value toÂ \code{PermissionsBoundary}.
+To list only permissions policies, set \code{PolicyUsageFilter} to \code{PermissionsPolicy}. To list only the policies used to set permissions boundaries, set the value to \code{PermissionsBoundary}.
 
 This parameter is optional. If it is not included, all policies are returned.}
 
 \item{Marker}{Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the \code{Marker} element in the response that you received to indicate where the next call should start.}
 
-\item{MaxItems}{Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the \code{IsTruncated} response element is \code{true}.
+\item{MaxItems}{(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the \code{IsTruncated} response element is \code{true}.
 
-If you do not include this parameter, the number of items defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the \code{IsTruncated} response element returns \code{true}, and \code{Marker} contains a value to include in the subsequent call that tells the service where to continue from.}
+If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the \code{IsTruncated} response element returns \code{true} and \code{Marker} contains a value to include in the subsequent call that tells the service where to continue from.}
 }
 \description{
 Lists all IAM users, groups, and roles that the specified managed policy is attached to.
@@ -46,6 +41,15 @@ You can use the optional \code{EntityFilter} parameter to limit the results to a
 
 You can paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_entities_for_policy(
+  PolicyArn = "string",
+  EntityFilter = "User"|"Role"|"Group"|"LocalManagedPolicy"|"AWSManagedPolicy",
+  PathPrefix = "string",
+  PolicyUsageFilter = "PermissionsPolicy"|"PermissionsBoundary",
+  Marker = "string",
+  MaxItems = 123
+)
 }
+}
+

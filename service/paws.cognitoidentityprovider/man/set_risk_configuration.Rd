@@ -4,7 +4,34 @@
 \alias{set_risk_configuration}
 \title{Configures actions on detected risks}
 \usage{
-set_risk_configuration(
+set_risk_configuration(UserPoolId, ClientId = NULL,
+  CompromisedCredentialsRiskConfiguration = NULL,
+  AccountTakeoverRiskConfiguration = NULL,
+  RiskExceptionConfiguration = NULL)
+}
+\arguments{
+\item{UserPoolId}{[required] The user pool ID.}
+
+\item{ClientId}{The app client ID. If \code{ClientId} is null, then the risk configuration is mapped to \code{userPoolId}. When the client ID is null, the same risk configuration is applied to all the clients in the userPool.
+
+Otherwise, \code{ClientId} is mapped to the client. When the client ID is not null, the user pool configuration is overridden and the risk configuration for the client is used instead.}
+
+\item{CompromisedCredentialsRiskConfiguration}{The compromised credentials risk configuration.}
+
+\item{AccountTakeoverRiskConfiguration}{The account takeover risk configuration.}
+
+\item{RiskExceptionConfiguration}{The configuration to override the risk decision.}
+}
+\description{
+Configures actions on detected risks. To delete the risk configuration for \code{UserPoolId} or \code{ClientId}, pass null values for all four configuration types.
+}
+\details{
+To enable Amazon Cognito advanced security features, update the user pool to include the \code{UserPoolAddOns} key\code{AdvancedSecurityMode}.
+
+See .
+}
+\section{Accepted Parameters}{
+\preformatted{set_risk_configuration(
   UserPoolId = "string",
   ClientId = "string",
   CompromisedCredentialsRiskConfiguration = list(
@@ -61,27 +88,5 @@ set_risk_configuration(
   )
 )
 }
-\arguments{
-\item{UserPoolId}{[required] The user pool ID.}
-
-\item{ClientId}{The app client ID. If \code{ClientId} is null, then the risk configuration is mapped to \code{userPoolId}. When the client ID is null, the same risk configuration is applied to all the clients in the userPool.
-
-Otherwise, \code{ClientId} is mapped to the client. When the client ID is not null, the user pool configuration is overridden and the risk configuration for the client is used instead.}
-
-\item{CompromisedCredentialsRiskConfiguration}{The compromised credentials risk configuration.}
-
-\item{AccountTakeoverRiskConfiguration}{The account takeover risk configuration.}
-
-\item{RiskExceptionConfiguration}{The configuration to override the risk decision.}
 }
-\description{
-Configures actions on detected risks. To delete the risk configuration for \code{UserPoolId} or \code{ClientId}, pass null values for all four configuration types.
-}
-\details{
-To enable Amazon Cognito advanced security features, update the user pool to include the \code{UserPoolAddOns} key\code{AdvancedSecurityMode}.
 
-See .
-}
-\examples{
-
-}

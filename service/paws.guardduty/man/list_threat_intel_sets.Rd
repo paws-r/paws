@@ -4,11 +4,7 @@
 \alias{list_threat_intel_sets}
 \title{Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID}
 \usage{
-list_threat_intel_sets(
-  DetectorId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_threat_intel_sets(DetectorId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{DetectorId}{[required] The detectorID that specifies the GuardDuty service whose ThreatIntelSets you want to list.}
@@ -20,6 +16,12 @@ list_threat_intel_sets(
 \description{
 Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_threat_intel_sets(
+  DetectorId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

@@ -4,16 +4,11 @@
 \alias{modify_replication_task}
 \title{Modifies the specified replication task}
 \usage{
-modify_replication_task(
-  ReplicationTaskArn = "string",
-  ReplicationTaskIdentifier = "string",
-  MigrationType = "full-load"|"cdc"|"full-load-and-cdc",
-  TableMappings = "string",
-  ReplicationTaskSettings = "string",
-  CdcStartTime = as.POSIXct("2015-01-01"),
-  CdcStartPosition = "string",
-  CdcStopPosition = "string"
-)
+modify_replication_task(ReplicationTaskArn,
+  ReplicationTaskIdentifier = NULL, MigrationType = NULL,
+  TableMappings = NULL, ReplicationTaskSettings = NULL,
+  CdcStartTime = NULL, CdcStartPosition = NULL,
+  CdcStopPosition = NULL)
 }
 \arguments{
 \item{ReplicationTaskArn}{[required] The Amazon Resource Name (ARN) of the replication task.}
@@ -63,8 +58,19 @@ Modifies the specified replication task.
 \details{
 You can't modify the task endpoints. The task must be stopped before you can modify it.
 
-For more information about AWS DMS tasks, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html}{Working with Migration Tasks} in the \emph{AWS Database Migration Service User Guide}.
+For more information about AWS DMS tasks, see the AWS DMS user guide at \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html}{Working with Migration Tasks}
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{modify_replication_task(
+  ReplicationTaskArn = "string",
+  ReplicationTaskIdentifier = "string",
+  MigrationType = "full-load"|"cdc"|"full-load-and-cdc",
+  TableMappings = "string",
+  ReplicationTaskSettings = "string",
+  CdcStartTime = as.POSIXct("2015-01-01"),
+  CdcStartPosition = "string",
+  CdcStopPosition = "string"
+)
+}
+}
 
-}

@@ -4,25 +4,9 @@
 \alias{update_fleet_port_settings}
 \title{Updates port settings for a fleet}
 \usage{
-update_fleet_port_settings(
-  FleetId = "string",
-  InboundPermissionAuthorizations = list(
-    list(
-      FromPort = 123,
-      ToPort = 123,
-      IpRange = "string",
-      Protocol = "TCP"|"UDP"
-    )
-  ),
-  InboundPermissionRevocations = list(
-    list(
-      FromPort = 123,
-      ToPort = 123,
-      IpRange = "string",
-      Protocol = "TCP"|"UDP"
-    )
-  )
-)
+update_fleet_port_settings(FleetId,
+  InboundPermissionAuthorizations = NULL,
+  InboundPermissionRevocations = NULL)
 }
 \arguments{
 \item{FleetId}{[required] Unique identifier for a fleet to update port settings for.}
@@ -58,6 +42,26 @@ Fleet-related operations include:
 \item StopFleetActions
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_fleet_port_settings(
+  FleetId = "string",
+  InboundPermissionAuthorizations = list(
+    list(
+      FromPort = 123,
+      ToPort = 123,
+      IpRange = "string",
+      Protocol = "TCP"|"UDP"
+    )
+  ),
+  InboundPermissionRevocations = list(
+    list(
+      FromPort = 123,
+      ToPort = 123,
+      IpRange = "string",
+      Protocol = "TCP"|"UDP"
+    )
+  )
+)
 }
+}
+

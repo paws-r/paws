@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.waf_operations.R
 \name{get_rule_group}
 \alias{get_rule_group}
-\title{Returns the RuleGroup that is specified by the \code{RuleGroupId} that you included in the \code{GetRuleGroup} request}
+\title{Returns the RuleGroup that is specified by the RuleGroupId that you included in the GetRuleGroup request}
 \usage{
-get_rule_group(
-  RuleGroupId = "string"
-)
+get_rule_group(RuleGroupId)
 }
 \arguments{
 \item{RuleGroupId}{[required] The \code{RuleGroupId} of the RuleGroup that you want to get. \code{RuleGroupId} is returned by CreateRuleGroup and by ListRuleGroups.}
@@ -17,6 +15,10 @@ Returns the RuleGroup that is specified by the \code{RuleGroupId} that you inclu
 \details{
 To view the rules in a rule group, use ListActivatedRulesInRuleGroup.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_rule_group(
+  RuleGroupId = "string"
+)
 }
+}
+

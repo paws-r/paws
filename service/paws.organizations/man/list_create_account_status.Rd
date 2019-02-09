@@ -4,13 +4,8 @@
 \alias{list_create_account_status}
 \title{Lists the account creation requests that match the specified status that is currently being tracked for the organization}
 \usage{
-list_create_account_status(
-  States = list(
-    "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
+list_create_account_status(States = NULL, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{States}{A list of one or more states that you want included in the response. If this parameter is not present, then all requests are included in the response.}
@@ -27,21 +22,32 @@ Always check the \code{NextToken} response parameter for a \code{null} value whe
 
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{list_create_account_status(
+  States = list(
+    "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
+}
+}
+
 \examples{
 # The following example shows a user requesting a list of only the
 # completed account creation requests made for the current organization:
-list_create_account_status(
+\donttest{list_create_account_status(
   States = list(
     "SUCCEEDED"
   )
-)
+)}
 
 # The following example shows a user requesting a list of only the
 # in-progress account creation requests made for the current organization:
-list_create_account_status(
+\donttest{list_create_account_status(
   States = list(
     "IN_PROGRESS"
   )
-)
+)}
 
 }

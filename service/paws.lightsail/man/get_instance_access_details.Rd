@@ -4,10 +4,7 @@
 \alias{get_instance_access_details}
 \title{Returns temporary SSH keys you can use to connect to a specific virtual private server, or \emph{instance}}
 \usage{
-get_instance_access_details(
-  instanceName = "string",
-  protocol = "ssh"|"rdp"
-)
+get_instance_access_details(instanceName, protocol = NULL)
 }
 \arguments{
 \item{instanceName}{[required] The name of the instance to access.}
@@ -17,9 +14,11 @@ get_instance_access_details(
 \description{
 Returns temporary SSH keys you can use to connect to a specific virtual private server, or \emph{instance}.
 }
-\details{
-The \code{get instance access details} operation supports tag-based access control via resource tags applied to the resource identified by instanceName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\section{Accepted Parameters}{
+\preformatted{get_instance_access_details(
+  instanceName = "string",
+  protocol = "ssh"|"rdp"
+)
 }
-\examples{
+}
 
-}

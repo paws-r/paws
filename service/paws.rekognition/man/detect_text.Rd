@@ -4,16 +4,7 @@
 \alias{detect_text}
 \title{Detects text in the input image and converts it into machine-readable text}
 \usage{
-detect_text(
-  Image = list(
-    Bytes = raw,
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  )
-)
+detect_text(Image)
 }
 \arguments{
 \item{Image}{[required] The input image as base64-encoded bytes or an Amazon S3 object. If you use the AWS CLI to call Amazon Rekognition operations, you can't pass image bytes.}
@@ -36,6 +27,17 @@ To be detected, text must be within +/- 90 degrees orientation of the horizontal
 
 For more information, see DetectText in the Amazon Rekognition Developer Guide.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{detect_text(
+  Image = list(
+    Bytes = raw,
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  )
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{stop_stream_processor}
 \title{Stops a running stream processor that was created by}
 \usage{
-stop_stream_processor(
-  Name = "string"
-)
+stop_stream_processor(Name)
 }
 \arguments{
 \item{Name}{[required] The name of a stream processor created by .}
@@ -14,6 +12,10 @@ stop_stream_processor(
 \description{
 Stops a running stream processor that was created by .
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_stream_processor(
+  Name = "string"
+)
 }
+}
+

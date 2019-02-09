@@ -4,16 +4,8 @@
 \alias{create_db_snapshot}
 \title{Creates a DBSnapshot}
 \usage{
-create_db_snapshot(
-  DBSnapshotIdentifier = "string",
-  DBInstanceIdentifier = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_db_snapshot(DBSnapshotIdentifier, DBInstanceIdentifier,
+  Tags = NULL)
 }
 \arguments{
 \item{DBSnapshotIdentifier}{[required] The identifier for the DB snapshot.
@@ -40,6 +32,17 @@ Constraints:
 \description{
 Creates a DBSnapshot. The source DBInstance must be in "available" state.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_db_snapshot(
+  DBSnapshotIdentifier = "string",
+  DBInstanceIdentifier = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

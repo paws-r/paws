@@ -4,10 +4,7 @@
 \alias{get_bundles}
 \title{Returns the list of bundles that are available for purchase}
 \usage{
-get_bundles(
-  includeInactive = TRUE|FALSE,
-  pageToken = "string"
-)
+get_bundles(includeInactive = NULL, pageToken = NULL)
 }
 \arguments{
 \item{includeInactive}{A Boolean value that indicates whether to include inactive bundle results in your request.}
@@ -17,6 +14,11 @@ get_bundles(
 \description{
 Returns the list of bundles that are available for purchase. A bundle describes the specs for your virtual private server (or \emph{instance}).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_bundles(
+  includeInactive = TRUE|FALSE,
+  pageToken = "string"
+)
 }
+}
+

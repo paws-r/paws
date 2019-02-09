@@ -4,19 +4,16 @@
 \alias{remove_role_from_instance_profile}
 \title{Removes the specified IAM role from the specified EC2 instance profile}
 \usage{
-remove_role_from_instance_profile(
-  InstanceProfileName = "string",
-  RoleName = "string"
-)
+remove_role_from_instance_profile(InstanceProfileName, RoleName)
 }
 \arguments{
 \item{InstanceProfileName}{[required] The name of the instance profile to update.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{RoleName}{[required] The name of the role to remove.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Removes the specified IAM role from the specified EC2 instance profile.
@@ -26,12 +23,20 @@ Make sure that you do not have any Amazon EC2 instances running with the role yo
 
 For more information about IAM roles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html}{Working with Roles}. For more information about instance profiles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}.
 }
+\section{Accepted Parameters}{
+\preformatted{remove_role_from_instance_profile(
+  InstanceProfileName = "string",
+  RoleName = "string"
+)
+}
+}
+
 \examples{
 # The following command removes the role named Test-Role from the instance
 # profile named ExampleInstanceProfile.
-remove_role_from_instance_profile(
+\donttest{remove_role_from_instance_profile(
   InstanceProfileName = "ExampleInstanceProfile",
   RoleName = "Test-Role"
-)
+)}
 
 }

@@ -4,7 +4,20 @@
 \alias{put_bucket_tagging}
 \title{Sets the tags for a bucket}
 \usage{
-put_bucket_tagging(
+put_bucket_tagging(Bucket, ContentMD5 = NULL, Tagging)
+}
+\arguments{
+\item{Bucket}{[required]}
+
+\item{ContentMD5}{}
+
+\item{Tagging}{[required]}
+}
+\description{
+Sets the tags for a bucket.
+}
+\section{Accepted Parameters}{
+\preformatted{put_bucket_tagging(
   Bucket = "string",
   ContentMD5 = "string",
   Tagging = list(
@@ -17,20 +30,12 @@ put_bucket_tagging(
   )
 )
 }
-\arguments{
-\item{Bucket}{[required]}
-
-\item{ContentMD5}{}
-
-\item{Tagging}{[required]}
 }
-\description{
-Sets the tags for a bucket.
-}
+
 \examples{
 # The following example sets tags on a bucket. Any existing tags are
 # replaced.
-put_bucket_tagging(
+\donttest{put_bucket_tagging(
   Bucket = "examplebucket",
   Tagging = list(
     TagSet = list(
@@ -44,6 +49,6 @@ put_bucket_tagging(
       )
     )
   )
-)
+)}
 
 }

@@ -4,10 +4,7 @@
 \alias{import_key_pair}
 \title{Imports a public SSH key from a specific key pair}
 \usage{
-import_key_pair(
-  keyPairName = "string",
-  publicKeyBase64 = "string"
-)
+import_key_pair(keyPairName, publicKeyBase64)
 }
 \arguments{
 \item{keyPairName}{[required] The name of the key pair for which you want to import the public key.}
@@ -17,6 +14,11 @@ import_key_pair(
 \description{
 Imports a public SSH key from a specific key pair.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{import_key_pair(
+  keyPairName = "string",
+  publicKeyBase64 = "string"
+)
 }
+}
+

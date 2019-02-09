@@ -4,18 +4,8 @@
 \alias{describe_connections}
 \title{Describes the status of the connections that have been made between the replication instance and an endpoint}
 \usage{
-describe_connections(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_connections(Filters = NULL, MaxRecords = NULL,
+  Marker = NULL)
 }
 \arguments{
 \item{Filters}{The filters applied to the connection.
@@ -33,11 +23,27 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Describes the status of the connections that have been made between the replication instance and an endpoint. Connections are created when you test an endpoint.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_connections(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
+}
+}
+
 \examples{
 # Describes the status of the connections that have been made between the
 # replication instance and an endpoint. Connections are created when you
 # test an endpoint.
-describe_connections(
+\donttest{describe_connections(
   Filters = list(
     list(
       Name = "string",
@@ -49,6 +55,6 @@ describe_connections(
   ),
   Marker = "",
   MaxRecords = 123L
-)
+)}
 
 }

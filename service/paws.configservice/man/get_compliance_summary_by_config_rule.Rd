@@ -9,6 +9,3 @@ get_compliance_summary_by_config_rule()
 \description{
 Returns the number of AWS Config rules that are compliant and noncompliant, up to a maximum of 25 for each.
 }
-\examples{
-
-}

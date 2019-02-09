@@ -4,16 +4,8 @@
 \alias{describe_job_flows}
 \title{This API is deprecated and will eventually be removed}
 \usage{
-describe_job_flows(
-  CreatedAfter = as.POSIXct("2015-01-01"),
-  CreatedBefore = as.POSIXct("2015-01-01"),
-  JobFlowIds = list(
-    "string"
-  ),
-  JobFlowStates = list(
-    "STARTING"|"BOOTSTRAPPING"|"RUNNING"|"WAITING"|"SHUTTING_DOWN"|"TERMINATED"|"COMPLETED"|"FAILED"
-  )
-)
+describe_job_flows(CreatedAfter = NULL, CreatedBefore = NULL,
+  JobFlowIds = NULL, JobFlowStates = NULL)
 }
 \arguments{
 \item{CreatedAfter}{Return only job flows created after this date and time.}
@@ -40,6 +32,17 @@ If no parameters are supplied, then job flows matching either of the following c
 
 Amazon EMR can return a maximum of 512 job flow descriptions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_job_flows(
+  CreatedAfter = as.POSIXct("2015-01-01"),
+  CreatedBefore = as.POSIXct("2015-01-01"),
+  JobFlowIds = list(
+    "string"
+  ),
+  JobFlowStates = list(
+    "STARTING"|"BOOTSTRAPPING"|"RUNNING"|"WAITING"|"SHUTTING_DOWN"|"TERMINATED"|"COMPLETED"|"FAILED"
+  )
+)
 }
+}
+

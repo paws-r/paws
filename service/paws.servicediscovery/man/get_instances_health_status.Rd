@@ -2,27 +2,21 @@
 % Please edit documentation in R/paws.servicediscovery_operations.R
 \name{get_instances_health_status}
 \alias{get_instances_health_status}
-\title{Gets the current health status (\code{Healthy}, \code{Unhealthy}, or \code{Unknown}) of one or more instances that are associated with a specified service}
+\title{Gets the current health status (Healthy, Unhealthy, or Unknown) of one or more instances that are associated with a specified service}
 \usage{
-get_instances_health_status(
-  ServiceId = "string",
-  Instances = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+get_instances_health_status(ServiceId, Instances = NULL,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ServiceId}{[required] The ID of the service that the instance is associated with.}
 
 \item{Instances}{An array that contains the IDs of all the instances that you want to get the health status for.
 
-If you omit \code{Instances}, AWS Cloud Map returns the health status for all the instances that are associated with the specified service.
+If you omit \code{Instances}, Amazon Route 53 returns the health status for all the instances that are associated with the specified service.
 
 To get the IDs for the instances that you've registered by using a specified service, submit a ListInstances request.}
 
-\item{MaxResults}{The maximum number of instances that you want AWS Cloud Map to return in the response to a \code{GetInstancesHealthStatus} request. If you don't specify a value for \code{MaxResults}, AWS Cloud Map returns up to 100 instances.}
+\item{MaxResults}{The maximum number of instances that you want Route 53 to return in the response to a \code{GetInstancesHealthStatus} request. If you don't specify a value for \code{MaxResults}, Route 53 returns up to 100 instances.}
 
 \item{NextToken}{For the first \code{GetInstancesHealthStatus} request, omit this value.
 
@@ -34,6 +28,15 @@ Gets the current health status (\code{Healthy}, \code{Unhealthy}, or \code{Unkno
 \details{
 There is a brief delay between when you register an instance and when the health status for the instance is available.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_instances_health_status(
+  ServiceId = "string",
+  Instances = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

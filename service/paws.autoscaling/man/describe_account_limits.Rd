@@ -14,6 +14,6 @@ For information about requesting an increase in these limits, see \href{http://d
 }
 \examples{
 # This example describes the Auto Scaling limits for your AWS account.
-describe_account_limits()
+\donttest{describe_account_limits()}
 
 }

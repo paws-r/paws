@@ -4,12 +4,8 @@
 \alias{publish_schema}
 \title{Publishes a development schema with a major version and a recommended minor version}
 \usage{
-publish_schema(
-  DevelopmentSchemaArn = "string",
-  Version = "string",
-  MinorVersion = "string",
-  Name = "string"
-)
+publish_schema(DevelopmentSchemaArn, Version, MinorVersion = NULL,
+  Name = NULL)
 }
 \arguments{
 \item{DevelopmentSchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the development schema. For more information, see arns.}
@@ -23,6 +19,13 @@ publish_schema(
 \description{
 Publishes a development schema with a major version and a recommended minor version.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{publish_schema(
+  DevelopmentSchemaArn = "string",
+  Version = "string",
+  MinorVersion = "string",
+  Name = "string"
+)
 }
+}
+

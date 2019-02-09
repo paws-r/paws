@@ -4,9 +4,7 @@
 \alias{delete_configuration_recorder}
 \title{Deletes the configuration recorder}
 \usage{
-delete_configuration_recorder(
-  ConfigurationRecorderName = "string"
-)
+delete_configuration_recorder(ConfigurationRecorderName)
 }
 \arguments{
 \item{ConfigurationRecorderName}{[required] The name of the configuration recorder to be deleted. You can retrieve the name of your configuration recorder by using the \code{DescribeConfigurationRecorders} action.}
@@ -19,6 +17,10 @@ After the configuration recorder is deleted, AWS Config will not record resource
 
 This action does not delete the configuration information that was previously recorded. You will be able to access the previously recorded information by using the \code{GetResourceConfigHistory} action, but you will not be able to access this information in the AWS Config console until you create a new configuration recorder.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_configuration_recorder(
+  ConfigurationRecorderName = "string"
+)
 }
+}
+

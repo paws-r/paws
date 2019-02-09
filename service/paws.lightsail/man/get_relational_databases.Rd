@@ -4,16 +4,18 @@
 \alias{get_relational_databases}
 \title{Returns information about all of your databases in Amazon Lightsail}
 \usage{
-get_relational_databases(
-  pageToken = "string"
-)
+get_relational_databases(pageToken = NULL)
 }
 \arguments{
-\item{pageToken}{A token used for advancing to a specific page of results for your \code{get relational database} request.}
+\item{pageToken}{A token used for advancing to a specific page of results for your get relational database request.}
 }
 \description{
 Returns information about all of your databases in Amazon Lightsail.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_relational_databases(
+  pageToken = "string"
+)
 }
+}
+

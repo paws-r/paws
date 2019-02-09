@@ -4,13 +4,8 @@
 \alias{describe_image_builders}
 \title{Retrieves a list that describes one or more specified image builders, if the image builder names are provided}
 \usage{
-describe_image_builders(
-  Names = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_image_builders(Names = NULL, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{Names}{The names of the image builders to describe.}
@@ -22,6 +17,14 @@ describe_image_builders(
 \description{
 Retrieves a list that describes one or more specified image builders, if the image builder names are provided. Otherwise, all image builders in the account are described.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_image_builders(
+  Names = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

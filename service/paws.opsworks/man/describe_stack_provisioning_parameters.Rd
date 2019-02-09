@@ -4,9 +4,7 @@
 \alias{describe_stack_provisioning_parameters}
 \title{Requests a description of a stack's provisioning parameters}
 \usage{
-describe_stack_provisioning_parameters(
-  StackId = "string"
-)
+describe_stack_provisioning_parameters(StackId)
 }
 \arguments{
 \item{StackId}{[required] The stack ID.}
@@ -17,6 +15,10 @@ Requests a description of a stack's provisioning parameters.
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack or an attached policy that explicitly grants permissions. For more information about user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_stack_provisioning_parameters(
+  StackId = "string"
+)
 }
+}
+

@@ -4,39 +4,17 @@
 \alias{restore_from_cluster_snapshot}
 \title{Creates a new cluster from a snapshot}
 \usage{
-restore_from_cluster_snapshot(
-  ClusterIdentifier = "string",
-  SnapshotIdentifier = "string",
-  SnapshotClusterIdentifier = "string",
-  Port = 123,
-  AvailabilityZone = "string",
-  AllowVersionUpgrade = TRUE|FALSE,
-  ClusterSubnetGroupName = "string",
-  PubliclyAccessible = TRUE|FALSE,
-  OwnerAccount = "string",
-  HsmClientCertificateIdentifier = "string",
-  HsmConfigurationIdentifier = "string",
-  ElasticIp = "string",
-  ClusterParameterGroupName = "string",
-  ClusterSecurityGroups = list(
-    "string"
-  ),
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  PreferredMaintenanceWindow = "string",
-  AutomatedSnapshotRetentionPeriod = 123,
-  ManualSnapshotRetentionPeriod = 123,
-  KmsKeyId = "string",
-  NodeType = "string",
-  EnhancedVpcRouting = TRUE|FALSE,
-  AdditionalInfo = "string",
-  IamRoles = list(
-    "string"
-  ),
-  MaintenanceTrackName = "string",
-  SnapshotScheduleIdentifier = "string"
-)
+restore_from_cluster_snapshot(ClusterIdentifier, SnapshotIdentifier,
+  SnapshotClusterIdentifier = NULL, Port = NULL,
+  AvailabilityZone = NULL, AllowVersionUpgrade = NULL,
+  ClusterSubnetGroupName = NULL, PubliclyAccessible = NULL,
+  OwnerAccount = NULL, HsmClientCertificateIdentifier = NULL,
+  HsmConfigurationIdentifier = NULL, ElasticIp = NULL,
+  ClusterParameterGroupName = NULL, ClusterSecurityGroups = NULL,
+  VpcSecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL,
+  AutomatedSnapshotRetentionPeriod = NULL, KmsKeyId = NULL,
+  NodeType = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL,
+  IamRoles = NULL, MaintenanceTrackName = NULL)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The identifier of the cluster that will be created from restoring the snapshot.
@@ -125,8 +103,6 @@ Default: The value selected for the cluster from which the snapshot was taken.
 
 Constraints: Must be a value from 0 to 35.}
 
-\item{ManualSnapshotRetentionPeriod}{}
-
 \item{KmsKeyId}{The AWS Key Management Service (KMS) key ID of the encryption key that you want to use to encrypt data in the cluster that you restore from a shared snapshot.}
 
 \item{NodeType}{The node type that the restored cluster will be provisioned with.
@@ -146,8 +122,6 @@ Default: false}
 A cluster can have up to 10 IAM roles associated at any time.}
 
 \item{MaintenanceTrackName}{The name of the maintenance track for the restored cluster. When you take a snapshot, the snapshot inherits the \code{MaintenanceTrack} value from the cluster. The snapshot might be on a different track than the cluster that was the source for the snapshot. For example, suppose that you take a snapshot of a cluster that is on the current track and then change the cluster to be on the trailing track. In this case, the snapshot and the source cluster are on different tracks.}
-
-\item{SnapshotScheduleIdentifier}{A unique identifier for the snapshot schedule.}
 }
 \description{
 Creates a new cluster from a snapshot. By default, Amazon Redshift creates the resulting cluster with the same configuration as the original cluster from which the snapshot was created, except that the new cluster is created with the default cluster security and parameter groups. After Amazon Redshift creates the cluster, you can use the ModifyCluster API to associate a different security group and different parameter group with the restored cluster. If you are using a DS node type, you can also choose to change to another DS node type of the same size during restore.
@@ -157,6 +131,38 @@ If you restore a cluster into a VPC, you must provide a cluster subnet group whe
 
 For more information about working with snapshots, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html}{Amazon Redshift Snapshots} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{restore_from_cluster_snapshot(
+  ClusterIdentifier = "string",
+  SnapshotIdentifier = "string",
+  SnapshotClusterIdentifier = "string",
+  Port = 123,
+  AvailabilityZone = "string",
+  AllowVersionUpgrade = TRUE|FALSE,
+  ClusterSubnetGroupName = "string",
+  PubliclyAccessible = TRUE|FALSE,
+  OwnerAccount = "string",
+  HsmClientCertificateIdentifier = "string",
+  HsmConfigurationIdentifier = "string",
+  ElasticIp = "string",
+  ClusterParameterGroupName = "string",
+  ClusterSecurityGroups = list(
+    "string"
+  ),
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  PreferredMaintenanceWindow = "string",
+  AutomatedSnapshotRetentionPeriod = 123,
+  KmsKeyId = "string",
+  NodeType = "string",
+  EnhancedVpcRouting = TRUE|FALSE,
+  AdditionalInfo = "string",
+  IamRoles = list(
+    "string"
+  ),
+  MaintenanceTrackName = "string"
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{list_users}
 \title{Returns a list of all ActiveMQ users}
 \usage{
-list_users(
-  BrokerId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_users(BrokerId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{BrokerId}{[required] The unique ID that Amazon MQ generates for the broker.}
@@ -20,6 +16,12 @@ list_users(
 \description{
 Returns a list of all ActiveMQ users.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_users(
+  BrokerId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

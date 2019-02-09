@@ -12,6 +12,6 @@ Creates a bucket in Amazon S3 to store application versions, logs, and other fil
 \examples{
 # The following operation creates a new environment for version v1 of a
 # java application named my-app:
-create_storage_location()
+\donttest{create_storage_location()}
 
 }

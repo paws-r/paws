@@ -4,12 +4,7 @@
 \alias{add_tags_to_stream}
 \title{Adds or updates tags for the specified Kinesis data stream}
 \usage{
-add_tags_to_stream(
-  StreamName = "string",
-  Tags = list(
-    "string"
-  )
-)
+add_tags_to_stream(StreamName, Tags)
 }
 \arguments{
 \item{StreamName}{[required] The name of the stream.}
@@ -24,6 +19,13 @@ If tags have already been assigned to the stream, \code{AddTagsToStream} overwri
 
 AddTagsToStream has a limit of five transactions per second per account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_tags_to_stream(
+  StreamName = "string",
+  Tags = list(
+    "string"
+  )
+)
 }
+}
+

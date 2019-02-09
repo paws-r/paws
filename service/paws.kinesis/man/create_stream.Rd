@@ -4,10 +4,7 @@
 \alias{create_stream}
 \title{Creates a Kinesis data stream}
 \usage{
-create_stream(
-  StreamName = "string",
-  ShardCount = 123
-)
+create_stream(StreamName, ShardCount)
 }
 \arguments{
 \item{StreamName}{[required] A name to identify the stream. The stream name is scoped to the AWS account used by the application that creates the stream. It is also scoped by AWS Region. That is, two streams in two different AWS accounts can have the same name. Two streams in the same AWS account but in two different Regions can also have the same name.}
@@ -38,6 +35,11 @@ You can use \code{DescribeStream} to check the stream status, which is returned 
 
 CreateStream has a limit of five transactions per second per account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_stream(
+  StreamName = "string",
+  ShardCount = 123
+)
 }
+}
+

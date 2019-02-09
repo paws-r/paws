@@ -4,10 +4,7 @@
 \alias{associate_virtual_interface}
 \title{Associates a virtual interface with a specified link aggregation group (LAG) or connection}
 \usage{
-associate_virtual_interface(
-  virtualInterfaceId = "string",
-  connectionId = "string"
-)
+associate_virtual_interface(virtualInterfaceId, connectionId)
 }
 \arguments{
 \item{virtualInterfaceId}{[required] The ID of the virtual interface.}
@@ -22,6 +19,11 @@ Virtual interfaces associated with a hosted connection cannot be associated with
 
 To reassociate a virtual interface to a new connection or LAG, the requester must own either the virtual interface itself or the connection to which the virtual interface is currently associated. Additionally, the requester must own the connection or LAG for the association.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_virtual_interface(
+  virtualInterfaceId = "string",
+  connectionId = "string"
+)
 }
+}
+

@@ -4,7 +4,54 @@
 \alias{create_deployment_group}
 \title{Creates a deployment group to which application revisions will be deployed}
 \usage{
-create_deployment_group(
+create_deployment_group(applicationName, deploymentGroupName,
+  deploymentConfigName = NULL, ec2TagFilters = NULL,
+  onPremisesInstanceTagFilters = NULL, autoScalingGroups = NULL,
+  serviceRoleArn, triggerConfigurations = NULL,
+  alarmConfiguration = NULL, autoRollbackConfiguration = NULL,
+  deploymentStyle = NULL, blueGreenDeploymentConfiguration = NULL,
+  loadBalancerInfo = NULL, ec2TagSet = NULL, onPremisesTagSet = NULL)
+}
+\arguments{
+\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
+
+\item{deploymentGroupName}{[required] The name of a new deployment group for the specified application.}
+
+\item{deploymentConfigName}{If specified, the deployment configuration name can be either one of the predefined configurations provided with AWS CodeDeploy or a custom deployment configuration that you create by calling the create deployment configuration operation.
+
+CodeDeployDefault.OneAtATime is the default deployment configuration. It is used if a configuration isn't specified for the deployment or the deployment group.
+
+For more information about the predefined deployment configurations in AWS CodeDeploy, see \href{http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html}{Working with Deployment Groups in AWS CodeDeploy} in the AWS CodeDeploy User Guide.}
+
+\item{ec2TagFilters}{The Amazon EC2 tags on which to filter. The deployment group will include EC2 instances with any of the specified tags. Cannot be used in the same call as ec2TagSet.}
+
+\item{onPremisesInstanceTagFilters}{The on-premises instance tags on which to filter. The deployment group will include on-premises instances with any of the specified tags. Cannot be used in the same call as OnPremisesTagSet.}
+
+\item{autoScalingGroups}{A list of associated Auto Scaling groups.}
+
+\item{serviceRoleArn}{[required] A service role ARN that allows AWS CodeDeploy to act on the user's behalf when interacting with AWS services.}
+
+\item{triggerConfigurations}{Information about triggers to create when the deployment group is created. For examples, see \href{http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html}{Create a Trigger for an AWS CodeDeploy Event} in the AWS CodeDeploy User Guide.}
+
+\item{alarmConfiguration}{Information to add about Amazon CloudWatch alarms when the deployment group is created.}
+
+\item{autoRollbackConfiguration}{Configuration information for an automatic rollback that is added when a deployment group is created.}
+
+\item{deploymentStyle}{Information about the type of deployment, in-place or blue/green, that you want to run and whether to route deployment traffic behind a load balancer.}
+
+\item{blueGreenDeploymentConfiguration}{Information about blue/green deployment options for a deployment group.}
+
+\item{loadBalancerInfo}{Information about the load balancer used in a deployment.}
+
+\item{ec2TagSet}{Information about groups of tags applied to EC2 instances. The deployment group will include only EC2 instances identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.}
+
+\item{onPremisesTagSet}{Information about groups of tags applied to on-premises instances. The deployment group will include only on-premises instances identified by all the tag groups. Cannot be used in the same call as onPremisesInstanceTagFilters.}
+}
+\description{
+Creates a deployment group to which application revisions will be deployed.
+}
+\section{Accepted Parameters}{
+\preformatted{create_deployment_group(
   applicationName = "string",
   deploymentGroupName = "string",
   deploymentConfigName = "string",
@@ -77,25 +124,6 @@ create_deployment_group(
       list(
         name = "string"
       )
-    ),
-    targetGroupPairInfoList = list(
-      list(
-        targetGroups = list(
-          list(
-            name = "string"
-          )
-        ),
-        prodTrafficRoute = list(
-          listenerArns = list(
-            "string"
-          )
-        ),
-        testTrafficRoute = list(
-          listenerArns = list(
-            "string"
-          )
-        )
-      )
     )
   ),
   ec2TagSet = list(
@@ -107,12 +135,6 @@ create_deployment_group(
           Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
         )
       )
-    )
-  ),
-  ecsServices = list(
-    list(
-      serviceName = "string",
-      clusterName = "string"
     )
   ),
   onPremisesTagSet = list(
@@ -128,46 +150,5 @@ create_deployment_group(
   )
 )
 }
-\arguments{
-\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
-
-\item{deploymentGroupName}{[required] The name of a new deployment group for the specified application.}
-
-\item{deploymentConfigName}{If specified, the deployment configuration name can be either one of the predefined configurations provided with AWS CodeDeploy or a custom deployment configuration that you create by calling the create deployment configuration operation.
-
-CodeDeployDefault.OneAtATime is the default deployment configuration. It is used if a configuration isn't specified for the deployment or the deployment group.
-
-For more information about the predefined deployment configurations in AWS CodeDeploy, see \href{http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html}{Working with Deployment Groups in AWS CodeDeploy} in the AWS CodeDeploy User Guide.}
-
-\item{ec2TagFilters}{The Amazon EC2 tags on which to filter. The deployment group will include EC2 instances with any of the specified tags. Cannot be used in the same call as ec2TagSet.}
-
-\item{onPremisesInstanceTagFilters}{The on-premises instance tags on which to filter. The deployment group will include on-premises instances with any of the specified tags. Cannot be used in the same call as OnPremisesTagSet.}
-
-\item{autoScalingGroups}{A list of associated Auto Scaling groups.}
-
-\item{serviceRoleArn}{[required] A service role ARN that allows AWS CodeDeploy to act on the user's behalf when interacting with AWS services.}
-
-\item{triggerConfigurations}{Information about triggers to create when the deployment group is created. For examples, see \href{http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html}{Create a Trigger for an AWS CodeDeploy Event} in the AWS CodeDeploy User Guide.}
-
-\item{alarmConfiguration}{Information to add about Amazon CloudWatch alarms when the deployment group is created.}
-
-\item{autoRollbackConfiguration}{Configuration information for an automatic rollback that is added when a deployment group is created.}
-
-\item{deploymentStyle}{Information about the type of deployment, in-place or blue/green, that you want to run and whether to route deployment traffic behind a load balancer.}
-
-\item{blueGreenDeploymentConfiguration}{Information about blue/green deployment options for a deployment group.}
-
-\item{loadBalancerInfo}{Information about the load balancer used in a deployment.}
-
-\item{ec2TagSet}{Information about groups of tags applied to EC2 instances. The deployment group will include only EC2 instances identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.}
-
-\item{ecsServices}{The target ECS services in the deployment group. This only applies to deployment groups that use the Amazon ECS compute platform. A target ECS service is specified as an Amazon ECS cluster and service name pair using the format \code{<clustername>:<servicename>}.}
-
-\item{onPremisesTagSet}{Information about groups of tags applied to on-premises instances. The deployment group will include only on-premises instances identified by all the tag groups. Cannot be used in the same call as onPremisesInstanceTagFilters.}
 }
-\description{
-Creates a deployment group to which application revisions will be deployed.
-}
-\examples{
 
-}

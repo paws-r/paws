@@ -4,22 +4,17 @@
 \alias{get_account_authorization_details}
 \title{Retrieves information about all IAM users, groups, roles, and policies in your AWS account, including their relationships to one another}
 \usage{
-get_account_authorization_details(
-  Filter = list(
-    "User"|"Role"|"Group"|"LocalManagedPolicy"|"AWSManagedPolicy"
-  ),
-  MaxItems = 123,
-  Marker = "string"
-)
+get_account_authorization_details(Filter = NULL, MaxItems = NULL,
+  Marker = NULL)
 }
 \arguments{
 \item{Filter}{A list of entity types used to filter the results. Only the entities that match the types you specify are included in the output. Use the value \code{LocalManagedPolicy} to include customer managed policies.
 
 The format for this parameter is a comma-separated (if more than one) list of strings. Each string value in the list must be one of the valid values listed below.}
 
-\item{MaxItems}{Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the \code{IsTruncated} response element is \code{true}.
+\item{MaxItems}{(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the \code{IsTruncated} response element is \code{true}.
 
-If you do not include this parameter, the number of items defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the \code{IsTruncated} response element returns \code{true}, and \code{Marker} contains a value to include in the subsequent call that tells the service where to continue from.}
+If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the \code{IsTruncated} response element returns \code{true} and \code{Marker} contains a value to include in the subsequent call that tells the service where to continue from.}
 
 \item{Marker}{Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the \code{Marker} element in the response that you received to indicate where the next call should start.}
 }
@@ -31,6 +26,14 @@ Policies returned by this API are URL-encoded compliant with \href{https://tools
 
 You can optionally filter the results using the \code{Filter} parameter. You can paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_account_authorization_details(
+  Filter = list(
+    "User"|"Role"|"Group"|"LocalManagedPolicy"|"AWSManagedPolicy"
+  ),
+  MaxItems = 123,
+  Marker = "string"
+)
 }
+}
+

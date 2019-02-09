@@ -4,10 +4,7 @@
 \alias{delete_bucket_analytics_configuration}
 \title{Deletes an analytics configuration for the bucket (specified by the analytics configuration ID)}
 \usage{
-delete_bucket_analytics_configuration(
-  Bucket = "string",
-  Id = "string"
-)
+delete_bucket_analytics_configuration(Bucket, Id)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket from which an analytics configuration is deleted.}
@@ -17,6 +14,11 @@ delete_bucket_analytics_configuration(
 \description{
 Deletes an analytics configuration for the bucket (specified by the analytics configuration ID).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_bucket_analytics_configuration(
+  Bucket = "string",
+  Id = "string"
+)
 }
+}
+

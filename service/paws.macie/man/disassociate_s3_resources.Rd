@@ -4,15 +4,7 @@
 \alias{disassociate_s3_resources}
 \title{Removes specified S3 resources from being monitored by Amazon Macie}
 \usage{
-disassociate_s3_resources(
-  memberAccountId = "string",
-  associatedS3Resources = list(
-    list(
-      bucketName = "string",
-      prefix = "string"
-    )
-  )
-)
+disassociate_s3_resources(memberAccountId = NULL, associatedS3Resources)
 }
 \arguments{
 \item{memberAccountId}{The ID of the Amazon Macie member account whose resources you want to remove from being monitored by Amazon Macie.}
@@ -22,6 +14,16 @@ disassociate_s3_resources(
 \description{
 Removes specified S3 resources from being monitored by Amazon Macie. If memberAccountId isn't specified, the action removes specified S3 resources from Macie for the current master account. If memberAccountId is specified, the action removes specified S3 resources from Macie for the specified member account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_s3_resources(
+  memberAccountId = "string",
+  associatedS3Resources = list(
+    list(
+      bucketName = "string",
+      prefix = "string"
+    )
+  )
+)
 }
+}
+

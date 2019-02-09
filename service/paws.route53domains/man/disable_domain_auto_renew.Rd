@@ -4,9 +4,7 @@
 \alias{disable_domain_auto_renew}
 \title{This operation disables automatic renewal of domain registration for the specified domain}
 \usage{
-disable_domain_auto_renew(
-  DomainName = "string"
-)
+disable_domain_auto_renew(DomainName)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to disable automatic renewal for.}
@@ -14,6 +12,10 @@ disable_domain_auto_renew(
 \description{
 This operation disables automatic renewal of domain registration for the specified domain.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disable_domain_auto_renew(
+  DomainName = "string"
+)
 }
+}
+

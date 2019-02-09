@@ -4,9 +4,7 @@
 \alias{create_dataset_content}
 \title{Creates the content of a data set by applying a SQL action}
 \usage{
-create_dataset_content(
-  datasetName = "string"
-)
+create_dataset_content(datasetName)
 }
 \arguments{
 \item{datasetName}{[required] The name of the data set.}
@@ -14,6 +12,10 @@ create_dataset_content(
 \description{
 Creates the content of a data set by applying a SQL action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_dataset_content(
+  datasetName = "string"
+)
 }
+}
+

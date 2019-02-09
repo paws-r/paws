@@ -4,13 +4,8 @@
 \alias{get_folder_path}
 \title{Retrieves the path information (the hierarchy from the root folder) for the specified folder}
 \usage{
-get_folder_path(
-  AuthenticationToken = "string",
-  FolderId = "string",
-  Limit = 123,
-  Fields = "string",
-  Marker = "string"
-)
+get_folder_path(AuthenticationToken = NULL, FolderId, Limit = NULL,
+  Fields = NULL, Marker = NULL)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
@@ -29,6 +24,14 @@ Retrieves the path information (the hierarchy from the root folder) for the spec
 \details{
 By default, Amazon WorkDocs returns a maximum of 100 levels upwards from the requested folder and only includes the IDs of the parent folders in the path. You can limit the maximum number of levels. You can also request the parent folder names.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_folder_path(
+  AuthenticationToken = "string",
+  FolderId = "string",
+  Limit = 123,
+  Fields = "string",
+  Marker = "string"
+)
 }
+}
+

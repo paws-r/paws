@@ -4,19 +4,7 @@
 \alias{bundle_instance}
 \title{Bundles an Amazon instance store-backed Windows instance}
 \usage{
-bundle_instance(
-  InstanceId = "string",
-  Storage = list(
-    S3 = list(
-      AWSAccessKeyId = "string",
-      Bucket = "string",
-      Prefix = "string",
-      UploadPolicy = raw,
-      UploadPolicySignature = "string"
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
+bundle_instance(InstanceId, Storage, DryRun = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The ID of the instance to bundle.
@@ -39,6 +27,20 @@ During bundling, only the root device volume (C:\) is bundled. Data on other ins
 
 This action is not applicable for Linux/Unix instances or Windows instances that are backed by Amazon EBS.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{bundle_instance(
+  InstanceId = "string",
+  Storage = list(
+    S3 = list(
+      AWSAccessKeyId = "string",
+      Bucket = "string",
+      Prefix = "string",
+      UploadPolicy = raw,
+      UploadPolicySignature = "string"
+    )
+  ),
+  DryRun = TRUE|FALSE
+)
 }
+}
+

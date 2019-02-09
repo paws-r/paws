@@ -4,11 +4,8 @@
 \alias{describe_destinations}
 \title{Lists all your destinations}
 \usage{
-describe_destinations(
-  DestinationNamePrefix = "string",
-  nextToken = "string",
-  limit = 123
-)
+describe_destinations(DestinationNamePrefix = NULL, nextToken = NULL,
+  limit = NULL)
 }
 \arguments{
 \item{DestinationNamePrefix}{The prefix to match. If you don't specify a value, no prefix filter is applied.}
@@ -20,6 +17,12 @@ describe_destinations(
 \description{
 Lists all your destinations. The results are ASCII-sorted by destination name.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_destinations(
+  DestinationNamePrefix = "string",
+  nextToken = "string",
+  limit = 123
+)
 }
+}
+

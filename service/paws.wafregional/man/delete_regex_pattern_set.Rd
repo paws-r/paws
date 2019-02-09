@@ -4,10 +4,7 @@
 \alias{delete_regex_pattern_set}
 \title{Permanently deletes a RegexPatternSet}
 \usage{
-delete_regex_pattern_set(
-  RegexPatternSetId = "string",
-  ChangeToken = "string"
-)
+delete_regex_pattern_set(RegexPatternSetId, ChangeToken)
 }
 \arguments{
 \item{RegexPatternSetId}{[required] The \code{RegexPatternSetId} of the RegexPatternSet that you want to delete. \code{RegexPatternSetId} is returned by CreateRegexPatternSet and by ListRegexPatternSets.}
@@ -17,6 +14,11 @@ delete_regex_pattern_set(
 \description{
 Permanently deletes a RegexPatternSet. You can't delete a \code{RegexPatternSet} if it's still used in any \code{RegexMatchSet} or if the \code{RegexPatternSet} is not empty.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_regex_pattern_set(
+  RegexPatternSetId = "string",
+  ChangeToken = "string"
+)
 }
+}
+

@@ -4,12 +4,7 @@
 \alias{create_queue}
 \title{Creates a new standard or FIFO queue}
 \usage{
-create_queue(
-  QueueName = "string",
-  Attributes = list(
-    "string"
-  )
-)
+create_queue(QueueName, Attributes = NULL)
 }
 \arguments{
 \item{QueueName}{[required] The name of the new queue. The following limits apply to this name:
@@ -95,6 +90,13 @@ Some actions take lists of parameters. These lists are specified using the \code
 
 Cross-account permissions don't apply to this action. For more information, see see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name} in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_queue(
+  QueueName = "string",
+  Attributes = list(
+    "string"
+  )
+)
 }
+}
+

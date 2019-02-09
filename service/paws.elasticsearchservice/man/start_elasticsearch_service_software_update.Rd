@@ -4,9 +4,7 @@
 \alias{start_elasticsearch_service_software_update}
 \title{Schedules a service software update for an Amazon ES domain}
 \usage{
-start_elasticsearch_service_software_update(
-  DomainName = "string"
-)
+start_elasticsearch_service_software_update(DomainName)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to update to the latest service software.}
@@ -14,6 +12,10 @@ start_elasticsearch_service_software_update(
 \description{
 Schedules a service software update for an Amazon ES domain.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_elasticsearch_service_software_update(
+  DomainName = "string"
+)
 }
+}
+

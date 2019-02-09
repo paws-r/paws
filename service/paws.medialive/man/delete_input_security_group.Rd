@@ -4,9 +4,7 @@
 \alias{delete_input_security_group}
 \title{Deletes an Input Security Group}
 \usage{
-delete_input_security_group(
-  InputSecurityGroupId = "string"
-)
+delete_input_security_group(InputSecurityGroupId)
 }
 \arguments{
 \item{InputSecurityGroupId}{[required] The Input Security Group to delete}
@@ -14,6 +12,10 @@ delete_input_security_group(
 \description{
 Deletes an Input Security Group
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_input_security_group(
+  InputSecurityGroupId = "string"
+)
 }
+}
+

@@ -6,13 +6,13 @@
 \alias{paws.cloudformation-package}
 \title{paws.cloudformation: AWS CloudFormation}
 \description{
-AWS CloudFormation allows you to create and manage AWS
-infrastructure deployments predictably and repeatedly. You can use AWS
-CloudFormation to leverage AWS products, such as Amazon Elastic
-Compute Cloud, Amazon Elastic Block Store, Amazon Simple Notification
-Service, Elastic Load Balancing, and Auto Scaling to build
-highly-reliable, highly scalable, cost-effective applications without
-creating or configuring the underlying AWS infrastructure.
+AWS CloudFormation allows you to create and manage
+    AWS infrastructure deployments predictably and repeatedly. You can use
+    AWS CloudFormation to leverage AWS products, such as Amazon Elastic
+    Compute Cloud, Amazon Elastic Block Store, Amazon Simple Notification
+    Service, Elastic Load Balancing, and Auto Scaling to build
+    highly-reliable, highly scalable, cost-effective applications without
+    creating or configuring the underlying AWS infrastructure.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

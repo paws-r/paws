@@ -4,14 +4,8 @@
 \alias{get_compliance_details_by_resource}
 \title{Returns the evaluation results for the specified AWS resource}
 \usage{
-get_compliance_details_by_resource(
-  ResourceType = "string",
-  ResourceId = "string",
-  ComplianceTypes = list(
-    "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA"
-  ),
-  NextToken = "string"
-)
+get_compliance_details_by_resource(ResourceType, ResourceId,
+  ComplianceTypes = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ResourceType}{[required] The type of the AWS resource for which you want compliance information.}
@@ -27,6 +21,15 @@ The allowed values are \code{COMPLIANT}, \code{NON_COMPLIANT}, and \code{NOT_APP
 \description{
 Returns the evaluation results for the specified AWS resource. The results indicate which AWS Config rules were used to evaluate the resource, when each rule was last used, and whether the resource complies with each rule.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_compliance_details_by_resource(
+  ResourceType = "string",
+  ResourceId = "string",
+  ComplianceTypes = list(
+    "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA"
+  ),
+  NextToken = "string"
+)
 }
+}
+

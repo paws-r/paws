@@ -4,10 +4,7 @@
 \alias{list_streams}
 \title{Lists your Kinesis data streams}
 \usage{
-list_streams(
-  Limit = 123,
-  ExclusiveStartStreamName = "string"
-)
+list_streams(Limit = NULL, ExclusiveStartStreamName = NULL)
 }
 \arguments{
 \item{Limit}{The maximum number of streams to list.}
@@ -24,6 +21,11 @@ You can detect if there are more streams available to list by using the \code{Ha
 
 ListStreams has a limit of five transactions per second per account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_streams(
+  Limit = 123,
+  ExclusiveStartStreamName = "string"
+)
 }
+}
+

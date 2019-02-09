@@ -4,10 +4,7 @@
 \alias{create_sql_injection_match_set}
 \title{Creates a SqlInjectionMatchSet, which you use to allow, block, or count requests that contain snippets of SQL code in a specified part of web requests}
 \usage{
-create_sql_injection_match_set(
-  Name = "string",
-  ChangeToken = "string"
-)
+create_sql_injection_match_set(Name, ChangeToken)
 }
 \arguments{
 \item{Name}{[required] A friendly name or description for the SqlInjectionMatchSet that you're creating. You can't change \code{Name} after you create the \code{SqlInjectionMatchSet}.}
@@ -28,12 +25,20 @@ To create and configure a \code{SqlInjectionMatchSet}, perform the following ste
 
 For more information about how to use the AWS WAF API to allow or block HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_sql_injection_match_set(
+  Name = "string",
+  ChangeToken = "string"
+)
+}
+}
+
 \examples{
 # The following example creates a SQL injection match set named
 # MySQLInjectionMatchSet.
-create_sql_injection_match_set(
+\donttest{create_sql_injection_match_set(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   Name = "MySQLInjectionMatchSet"
-)
+)}
 
 }

@@ -4,15 +4,8 @@
 \alias{modify_subnet_attribute}
 \title{Modifies a subnet attribute}
 \usage{
-modify_subnet_attribute(
-  AssignIpv6AddressOnCreation = list(
-    Value = TRUE|FALSE
-  ),
-  MapPublicIpOnLaunch = list(
-    Value = TRUE|FALSE
-  ),
-  SubnetId = "string"
-)
+modify_subnet_attribute(AssignIpv6AddressOnCreation = NULL,
+  MapPublicIpOnLaunch = NULL, SubnetId)
 }
 \arguments{
 \item{AssignIpv6AddressOnCreation}{Specify \code{true} to indicate that network interfaces created in the specified subnet should be assigned an IPv6 address. This includes a network interface that's created when launching an instance into the subnet (the instance therefore receives an IPv6 address).
@@ -26,14 +19,27 @@ If you enable the IPv6 addressing feature for your subnet, your network interfac
 \description{
 Modifies a subnet attribute. You can only modify one attribute at a time.
 }
+\section{Accepted Parameters}{
+\preformatted{modify_subnet_attribute(
+  AssignIpv6AddressOnCreation = list(
+    Value = TRUE|FALSE
+  ),
+  MapPublicIpOnLaunch = list(
+    Value = TRUE|FALSE
+  ),
+  SubnetId = "string"
+)
+}
+}
+
 \examples{
 # This example modifies the specified subnet so that all instances
 # launched into this subnet are assigned a public IP address.
-modify_subnet_attribute(
+\donttest{modify_subnet_attribute(
   MapPublicIpOnLaunch = list(
     Value = TRUE
   ),
   SubnetId = "subnet-1a2b3c4d"
-)
+)}
 
 }

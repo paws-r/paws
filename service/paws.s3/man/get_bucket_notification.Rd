@@ -4,9 +4,7 @@
 \alias{get_bucket_notification}
 \title{Deprecated, see the GetBucketNotificationConfiguration operation}
 \usage{
-get_bucket_notification(
-  Bucket = "string"
-)
+get_bucket_notification(Bucket)
 }
 \arguments{
 \item{Bucket}{[required] Name of the bucket to get the notification configuration for.}
@@ -14,17 +12,24 @@ get_bucket_notification(
 \description{
 Deprecated, see the GetBucketNotificationConfiguration operation.
 }
+\section{Accepted Parameters}{
+\preformatted{get_bucket_notification(
+  Bucket = "string"
+)
+}
+}
+
 \examples{
 # The following example returns notification configuration set on a
 # bucket.
-get_bucket_notification(
+\donttest{get_bucket_notification(
   Bucket = "examplebucket"
-)
+)}
 
 # The following example returns notification configuration set on a
 # bucket.
-get_bucket_notification(
+\donttest{get_bucket_notification(
   Bucket = "examplebucket"
-)
+)}
 
 }

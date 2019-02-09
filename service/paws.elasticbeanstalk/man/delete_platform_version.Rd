@@ -4,9 +4,7 @@
 \alias{delete_platform_version}
 \title{Deletes the specified version of a custom platform}
 \usage{
-delete_platform_version(
-  PlatformArn = "string"
-)
+delete_platform_version(PlatformArn = NULL)
 }
 \arguments{
 \item{PlatformArn}{The ARN of the version of the custom platform.}
@@ -14,6 +12,10 @@ delete_platform_version(
 \description{
 Deletes the specified version of a custom platform.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_platform_version(
+  PlatformArn = "string"
+)
 }
+}
+

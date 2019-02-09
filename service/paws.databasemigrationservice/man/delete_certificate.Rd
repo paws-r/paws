@@ -4,9 +4,7 @@
 \alias{delete_certificate}
 \title{Deletes the specified certificate}
 \usage{
-delete_certificate(
-  CertificateArn = "string"
-)
+delete_certificate(CertificateArn)
 }
 \arguments{
 \item{CertificateArn}{[required] The Amazon Resource Name (ARN) of the deleted certificate.}
@@ -14,10 +12,17 @@ delete_certificate(
 \description{
 Deletes the specified certificate.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_certificate(
+  CertificateArn = "string"
+)
+}
+}
+
 \examples{
 # Deletes the specified certificate.
-delete_certificate(
+\donttest{delete_certificate(
   CertificateArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUSM457DE6XFJCJQ"
-)
+)}
 
 }

@@ -6,13 +6,14 @@
 \alias{paws.macie-package}
 \title{paws.macie: Amazon Macie}
 \description{
-Amazon Macie is a security service that uses machine learning
-to automatically discover, classify, and protect sensitive data in
-AWS. Macie recognizes sensitive data such as personally identifiable
-information (PII) or intellectual property, and provides you with
-dashboards and alerts that give visibility into how this data is being
-accessed or moved. For more information, see the [Macie User
-Guide](https://docs.aws.amazon.com/macie/latest/userguide/what-is-macie.html).
+Amazon Macie is a security service that uses
+    machine learning to automatically discover, classify, and protect
+    sensitive data in AWS. Macie recognizes sensitive data such as
+    personally identifiable information (PII) or intellectual property,
+    and provides you with dashboards and alerts that give visibility into
+    how this data is being accessed or moved. For more information, see
+    the [Macie User
+    Guide](https://docs.aws.amazon.com/macie/latest/userguide/what-is-macie.html).
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

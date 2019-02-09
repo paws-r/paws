@@ -4,34 +4,11 @@
 \alias{create_job}
 \title{Creates a new job definition}
 \usage{
-create_job(
-  Name = "string",
-  Description = "string",
-  LogUri = "string",
-  Role = "string",
-  ExecutionProperty = list(
-    MaxConcurrentRuns = 123
-  ),
-  Command = list(
-    Name = "string",
-    ScriptLocation = "string"
-  ),
-  DefaultArguments = list(
-    "string"
-  ),
-  Connections = list(
-    Connections = list(
-      "string"
-    )
-  ),
-  MaxRetries = 123,
-  AllocatedCapacity = 123,
-  Timeout = 123,
-  NotificationProperty = list(
-    NotifyDelayAfter = 123
-  ),
-  SecurityConfiguration = "string"
-)
+create_job(Name, Description = NULL, LogUri = NULL, Role,
+  ExecutionProperty = NULL, Command, DefaultArguments = NULL,
+  Connections = NULL, MaxRetries = NULL, AllocatedCapacity = NULL,
+  Timeout = NULL, NotificationProperty = NULL,
+  SecurityConfiguration = NULL)
 }
 \arguments{
 \item{Name}{[required] The name you assign to this job definition. It must be unique in your account.}
@@ -69,6 +46,35 @@ For information about the key-value pairs that AWS Glue consumes to set up your 
 \description{
 Creates a new job definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_job(
+  Name = "string",
+  Description = "string",
+  LogUri = "string",
+  Role = "string",
+  ExecutionProperty = list(
+    MaxConcurrentRuns = 123
+  ),
+  Command = list(
+    Name = "string",
+    ScriptLocation = "string"
+  ),
+  DefaultArguments = list(
+    "string"
+  ),
+  Connections = list(
+    Connections = list(
+      "string"
+    )
+  ),
+  MaxRetries = 123,
+  AllocatedCapacity = 123,
+  Timeout = 123,
+  NotificationProperty = list(
+    NotifyDelayAfter = 123
+  ),
+  SecurityConfiguration = "string"
+)
 }
+}
+

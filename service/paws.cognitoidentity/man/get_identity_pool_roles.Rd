@@ -4,9 +4,7 @@
 \alias{get_identity_pool_roles}
 \title{Gets the roles for an identity pool}
 \usage{
-get_identity_pool_roles(
-  IdentityPoolId = "string"
-)
+get_identity_pool_roles(IdentityPoolId)
 }
 \arguments{
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
@@ -17,6 +15,10 @@ Gets the roles for an identity pool.
 \details{
 You must use AWS Developer credentials to call this API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_identity_pool_roles(
+  IdentityPoolId = "string"
+)
 }
+}
+

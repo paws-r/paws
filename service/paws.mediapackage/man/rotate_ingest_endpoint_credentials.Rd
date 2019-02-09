@@ -4,10 +4,7 @@
 \alias{rotate_ingest_endpoint_credentials}
 \title{Rotate the IngestEndpoint's username and password, as specified by the IngestEndpoint's id}
 \usage{
-rotate_ingest_endpoint_credentials(
-  Id = "string",
-  IngestEndpointId = "string"
-)
+rotate_ingest_endpoint_credentials(Id, IngestEndpointId)
 }
 \arguments{
 \item{Id}{[required] The ID of the channel the IngestEndpoint is on.}
@@ -17,6 +14,11 @@ rotate_ingest_endpoint_credentials(
 \description{
 Rotate the IngestEndpoint's username and password, as specified by the IngestEndpoint's id.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{rotate_ingest_endpoint_credentials(
+  Id = "string",
+  IngestEndpointId = "string"
+)
 }
+}
+

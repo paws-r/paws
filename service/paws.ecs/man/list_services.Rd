@@ -4,13 +4,8 @@
 \alias{list_services}
 \title{Lists the services that are running in a specified cluster}
 \usage{
-list_services(
-  cluster = "string",
-  nextToken = "string",
-  maxResults = 123,
-  launchType = "EC2"|"FARGATE",
-  schedulingStrategy = "REPLICA"|"DAEMON"
-)
+list_services(cluster = NULL, nextToken = NULL, maxResults = NULL,
+  launchType = NULL, schedulingStrategy = NULL)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that hosts the services to list. If you do not specify a cluster, the default cluster is assumed.}
@@ -19,7 +14,7 @@ list_services(
 
 This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.}
 
-\item{maxResults}{The maximum number of service results returned by \code{ListServices} in paginated output. When this parameter is used, \code{ListServices} only returns \code{maxResults} results in a single page along with a \code{nextToken} response element. The remaining results of the initial request can be seen by sending another \code{ListServices} request with the returned \code{nextToken} value. This value can be between 1 and 100. If this parameter is not used, then \code{ListServices} returns up to 10 results and a \code{nextToken} value if applicable.}
+\item{maxResults}{The maximum number of service results returned by \code{ListServices} in paginated output. When this parameter is used, \code{ListServices} only returns \code{maxResults} results in a single page along with a \code{nextToken} response element. The remaining results of the initial request can be seen by sending another \code{ListServices} request with the returned \code{nextToken} value. This value can be between 1 and 10. If this parameter is not used, then \code{ListServices} returns up to 10 results and a \code{nextToken} value if applicable.}
 
 \item{launchType}{The launch type for the services to list.}
 
@@ -28,9 +23,20 @@ This token should be treated as an opaque identifier that is only used to retrie
 \description{
 Lists the services that are running in a specified cluster.
 }
+\section{Accepted Parameters}{
+\preformatted{list_services(
+  cluster = "string",
+  nextToken = "string",
+  maxResults = 123,
+  launchType = "EC2"|"FARGATE",
+  schedulingStrategy = "REPLICA"|"DAEMON"
+)
+}
+}
+
 \examples{
 # This example lists the services running in the default cluster for an
 # account.
-list_services()
+\donttest{list_services()}
 
 }

@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.fms_operations.R
 \name{list_policies}
 \alias{list_policies}
-\title{Returns an array of \code{PolicySummary} objects in the response}
+\title{Returns an array of PolicySummary objects in the response}
 \usage{
-list_policies(
-  NextToken = "string",
-  MaxResults = 123
-)
+list_policies(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{If you specify a value for \code{MaxResults} and you have more \code{PolicySummary} objects than the number that you specify for \code{MaxResults}, AWS Firewall Manager returns a \code{NextToken} value in the response that allows you to list another group of \code{PolicySummary} objects. For the second and subsequent \code{ListPolicies} requests, specify the value of \code{NextToken} from the previous response to get information about another batch of \code{PolicySummary} objects.}
@@ -17,6 +14,11 @@ list_policies(
 \description{
 Returns an array of \code{PolicySummary} objects in the response.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_policies(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

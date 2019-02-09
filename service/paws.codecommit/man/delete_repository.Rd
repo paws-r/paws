@@ -4,9 +4,7 @@
 \alias{delete_repository}
 \title{Deletes a repository}
 \usage{
-delete_repository(
-  repositoryName = "string"
-)
+delete_repository(repositoryName)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository to delete.}
@@ -17,6 +15,10 @@ Deletes a repository. If a specified repository was already deleted, a null repo
 \details{
 Deleting a repository also deletes all associated objects and metadata. After a repository is deleted, all future push calls to the deleted repository will fail.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_repository(
+  repositoryName = "string"
+)
 }
+}
+

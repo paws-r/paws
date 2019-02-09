@@ -20,6 +20,8 @@ VPC peering connection operations include:
 \item DeleteVpcPeeringConnection
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_vpc_peering_authorizations()
 }
+}
+

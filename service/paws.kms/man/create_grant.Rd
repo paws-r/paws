@@ -4,26 +4,8 @@
 \alias{create_grant}
 \title{Adds a grant to a customer master key (CMK)}
 \usage{
-create_grant(
-  KeyId = "string",
-  GranteePrincipal = "string",
-  RetiringPrincipal = "string",
-  Operations = list(
-    "Decrypt"|"Encrypt"|"GenerateDataKey"|"GenerateDataKeyWithoutPlaintext"|"ReEncryptFrom"|"ReEncryptTo"|"CreateGrant"|"RetireGrant"|"DescribeKey"
-  ),
-  Constraints = list(
-    EncryptionContextSubset = list(
-      "string"
-    ),
-    EncryptionContextEquals = list(
-      "string"
-    )
-  ),
-  GrantTokens = list(
-    "string"
-  ),
-  Name = "string"
-)
+create_grant(KeyId, GranteePrincipal, RetiringPrincipal = NULL,
+  Operations, Constraints = NULL, GrantTokens = NULL, Name = NULL)
 }
 \arguments{
 \item{KeyId}{[required] The unique identifier for the customer master key (CMK) that the grant applies to.
@@ -54,7 +36,7 @@ To specify the principal, use the \href{http://docs.aws.amazon.com/general/lates
 
 For more information, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token}{Grant Tokens} in the \emph{AWS Key Management Service Developer Guide}.}
 
-\item{Name}{A friendly name for identifying the grant. Use this value to prevent unintended creation of duplicate grants when retrying this request.
+\item{Name}{A friendly name for identifying the grant. Use this value to prevent the unintended creation of duplicate grants when retrying this request.
 
 When this value is absent, all \code{CreateGrant} requests result in a new grant with a unique \code{GrantId} even if all the supplied parameters are identical. This can result in unintended duplicates when you retry the \code{CreateGrant} request.
 
@@ -68,16 +50,40 @@ To perform this operation on a CMK in a different AWS account, specify the key A
 
 The result of this operation varies with the key state of the CMK. For details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key} in the \emph{AWS Key Management Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_grant(
+  KeyId = "string",
+  GranteePrincipal = "string",
+  RetiringPrincipal = "string",
+  Operations = list(
+    "Decrypt"|"Encrypt"|"GenerateDataKey"|"GenerateDataKeyWithoutPlaintext"|"ReEncryptFrom"|"ReEncryptTo"|"CreateGrant"|"RetireGrant"|"DescribeKey"
+  ),
+  Constraints = list(
+    EncryptionContextSubset = list(
+      "string"
+    ),
+    EncryptionContextEquals = list(
+      "string"
+    )
+  ),
+  GrantTokens = list(
+    "string"
+  ),
+  Name = "string"
+)
+}
+}
+
 \examples{
 # The following example creates a grant that allows the specified IAM role
 # to encrypt data with the specified customer master key (CMK).
-create_grant(
+\donttest{create_grant(
   GranteePrincipal = "arn:aws:iam::111122223333:role/ExampleRole",
   KeyId = "arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab",
   Operations = list(
     "Encrypt",
     "Decrypt"
   )
-)
+)}
 
 }

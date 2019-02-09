@@ -4,10 +4,7 @@
 \alias{list_rules}
 \title{Returns an array of RuleSummary objects}
 \usage{
-list_rules(
-  NextMarker = "string",
-  Limit = 123
-)
+list_rules(NextMarker = NULL, Limit = NULL)
 }
 \arguments{
 \item{NextMarker}{If you specify a value for \code{Limit} and you have more \code{Rules} than the value of \code{Limit}, AWS WAF returns a \code{NextMarker} value in the response that allows you to list another group of \code{Rules}. For the second and subsequent \code{ListRules} requests, specify the value of \code{NextMarker} from the previous response to get information about another batch of \code{Rules}.}
@@ -17,10 +14,18 @@ list_rules(
 \description{
 Returns an array of RuleSummary objects.
 }
+\section{Accepted Parameters}{
+\preformatted{list_rules(
+  NextMarker = "string",
+  Limit = 123
+)
+}
+}
+
 \examples{
 # The following example returns an array of up to 100 rules.
-list_rules(
+\donttest{list_rules(
   Limit = 100L
-)
+)}
 
 }

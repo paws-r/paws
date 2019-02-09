@@ -4,12 +4,7 @@
 \alias{untag_project}
 \title{Removes tags from a project}
 \usage{
-untag_project(
-  id = "string",
-  tags = list(
-    "string"
-  )
-)
+untag_project(id, tags)
 }
 \arguments{
 \item{id}{[required] The ID of the project to remove tags from.}
@@ -19,6 +14,13 @@ untag_project(
 \description{
 Removes tags from a project.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{untag_project(
+  id = "string",
+  tags = list(
+    "string"
+  )
+)
 }
+}
+

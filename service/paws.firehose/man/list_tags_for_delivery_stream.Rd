@@ -4,11 +4,8 @@
 \alias{list_tags_for_delivery_stream}
 \title{Lists the tags for the specified delivery stream}
 \usage{
-list_tags_for_delivery_stream(
-  DeliveryStreamName = "string",
-  ExclusiveStartTagKey = "string",
-  Limit = 123
-)
+list_tags_for_delivery_stream(DeliveryStreamName,
+  ExclusiveStartTagKey = NULL, Limit = NULL)
 }
 \arguments{
 \item{DeliveryStreamName}{[required] The name of the delivery stream whose tags you want to list.}
@@ -20,6 +17,12 @@ list_tags_for_delivery_stream(
 \description{
 Lists the tags for the specified delivery stream. This operation has a limit of five transactions per second per account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_delivery_stream(
+  DeliveryStreamName = "string",
+  ExclusiveStartTagKey = "string",
+  Limit = 123
+)
 }
+}
+

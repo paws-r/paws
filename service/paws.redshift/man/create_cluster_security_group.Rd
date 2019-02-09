@@ -4,16 +4,8 @@
 \alias{create_cluster_security_group}
 \title{Creates a new Amazon Redshift security group}
 \usage{
-create_cluster_security_group(
-  ClusterSecurityGroupName = "string",
-  Description = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_cluster_security_group(ClusterSecurityGroupName, Description,
+  Tags = NULL)
 }
 \arguments{
 \item{ClusterSecurityGroupName}{[required] The name for the security group. Amazon Redshift stores the value as a lowercase string.
@@ -37,6 +29,17 @@ Creates a new Amazon Redshift security group. You use security groups to control
 \details{
 For information about managing security groups, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html}{Amazon Redshift Cluster Security Groups} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_cluster_security_group(
+  ClusterSecurityGroupName = "string",
+  Description = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

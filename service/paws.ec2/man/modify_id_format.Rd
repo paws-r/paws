@@ -4,10 +4,7 @@
 \alias{modify_id_format}
 \title{Modifies the ID format for the specified resource on a per-region basis}
 \usage{
-modify_id_format(
-  Resource = "string",
-  UseLongIds = TRUE|FALSE
-)
+modify_id_format(Resource, UseLongIds)
 }
 \arguments{
 \item{Resource}{[required] The type of resource: \code{bundle} | \code{conversion-task} | \code{customer-gateway} | \code{dhcp-options} | \code{elastic-ip-allocation} | \code{elastic-ip-association} | \code{export-task} | \code{flow-log} | \code{image} | \code{import-task} | \code{internet-gateway} | \code{network-acl} | \code{network-acl-association} | \code{network-interface} | \code{network-interface-attachment} | \code{prefix-list} | \code{route-table} | \code{route-table-association} | \code{security-group} | \code{subnet} | \code{subnet-cidr-block-association} | \code{vpc} | \code{vpc-cidr-block-association} | \code{vpc-endpoint} | \code{vpc-peering-connection} | \code{vpn-connection} | \code{vpn-gateway}.
@@ -26,6 +23,11 @@ This setting applies to the IAM user who makes the request; it does not apply to
 
 Resources created with longer IDs are visible to all IAM roles and users, regardless of these settings and provided that they have permission to use the relevant \code{Describe} command for the resource type.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_id_format(
+  Resource = "string",
+  UseLongIds = TRUE|FALSE
+)
 }
+}
+

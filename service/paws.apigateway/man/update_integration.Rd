@@ -4,19 +4,8 @@
 \alias{update_integration}
 \title{Represents an update integration}
 \usage{
-update_integration(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string",
-  patchOperations = list(
-    list(
-      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-      path = "string",
-      value = "string",
-      from = "string"
-    )
-  )
-)
+update_integration(restApiId, resourceId, httpMethod,
+  patchOperations = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -30,6 +19,20 @@ update_integration(
 \description{
 Represents an update integration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_integration(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string",
+  patchOperations = list(
+    list(
+      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
+      path = "string",
+      value = "string",
+      from = "string"
+    )
+  )
+)
 }
+}
+

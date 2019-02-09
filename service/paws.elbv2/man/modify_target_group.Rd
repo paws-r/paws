@@ -4,12 +4,43 @@
 \alias{modify_target_group}
 \title{Modifies the health checks used when evaluating the health state of the targets in the specified target group}
 \usage{
-modify_target_group(
+modify_target_group(TargetGroupArn, HealthCheckProtocol = NULL,
+  HealthCheckPort = NULL, HealthCheckPath = NULL,
+  HealthCheckIntervalSeconds = NULL, HealthCheckTimeoutSeconds = NULL,
+  HealthyThresholdCount = NULL, UnhealthyThresholdCount = NULL,
+  Matcher = NULL)
+}
+\arguments{
+\item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
+
+\item{HealthCheckProtocol}{The protocol the load balancer uses when performing health checks on targets. The TCP protocol is supported only if the protocol of the target group is TCP.}
+
+\item{HealthCheckPort}{The port the load balancer uses when performing health checks on targets.}
+
+\item{HealthCheckPath}{[HTTP/HTTPS health checks] The ping path that is the destination for the health check request.}
+
+\item{HealthCheckIntervalSeconds}{The approximate amount of time, in seconds, between health checks of an individual target. For Application Load Balancers, the range is 5--300 seconds. For Network Load Balancers, the supported values are 10 or 30 seconds.}
+
+\item{HealthCheckTimeoutSeconds}{[HTTP/HTTPS health checks] The amount of time, in seconds, during which no response means a failed health check.}
+
+\item{HealthyThresholdCount}{The number of consecutive health checks successes required before considering an unhealthy target healthy.}
+
+\item{UnhealthyThresholdCount}{The number of consecutive health check failures required before considering the target unhealthy. For Network Load Balancers, this value must be the same as the healthy threshold count.}
+
+\item{Matcher}{[HTTP/HTTPS health checks] The HTTP codes to use when checking for a successful response from a target.}
+}
+\description{
+Modifies the health checks used when evaluating the health state of the targets in the specified target group.
+}
+\details{
+To monitor the health of the targets, use DescribeTargetHealth.
+}
+\section{Accepted Parameters}{
+\preformatted{modify_target_group(
   TargetGroupArn = "string",
   HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP",
   HealthCheckPort = "string",
   HealthCheckPath = "string",
-  HealthCheckEnabled = TRUE|FALSE,
   HealthCheckIntervalSeconds = 123,
   HealthCheckTimeoutSeconds = 123,
   HealthyThresholdCount = 123,
@@ -19,48 +50,15 @@ modify_target_group(
   )
 )
 }
-\arguments{
-\item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
-
-\item{HealthCheckProtocol}{The protocol the load balancer uses when performing health checks on targets. The TCP protocol is supported only if the protocol of the target group is TCP.
-
-If the protocol of the target group is TCP, you can't modify this setting.}
-
-\item{HealthCheckPort}{The port the load balancer uses when performing health checks on targets.}
-
-\item{HealthCheckPath}{[HTTP/HTTPS health checks] The ping path that is the destination for the health check request.}
-
-\item{HealthCheckEnabled}{Indicates whether health checks are enabled.}
-
-\item{HealthCheckIntervalSeconds}{The approximate amount of time, in seconds, between health checks of an individual target. For Application Load Balancers, the range is 5--300 seconds. For Network Load Balancers, the supported values are 10 or 30 seconds.
-
-If the protocol of the target group is TCP, you can't modify this setting.}
-
-\item{HealthCheckTimeoutSeconds}{[HTTP/HTTPS health checks] The amount of time, in seconds, during which no response means a failed health check.
-
-If the protocol of the target group is TCP, you can't modify this setting.}
-
-\item{HealthyThresholdCount}{The number of consecutive health checks successes required before considering an unhealthy target healthy.}
-
-\item{UnhealthyThresholdCount}{The number of consecutive health check failures required before considering the target unhealthy. For Network Load Balancers, this value must be the same as the healthy threshold count.}
-
-\item{Matcher}{[HTTP/HTTPS health checks] The HTTP codes to use when checking for a successful response from a target.
-
-If the protocol of the target group is TCP, you can't modify this setting.}
 }
-\description{
-Modifies the health checks used when evaluating the health state of the targets in the specified target group.
-}
-\details{
-To monitor the health of the targets, use DescribeTargetHealth.
-}
+
 \examples{
 # This example changes the configuration of the health checks used to
 # evaluate the health of the targets for the specified target group.
-modify_target_group(
+\donttest{modify_target_group(
   HealthCheckPort = "443",
   HealthCheckProtocol = "HTTPS",
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-https-targets/2453ed029918f21f"
-)
+)}
 
 }

@@ -4,10 +4,7 @@
 \alias{list_deployment_groups}
 \title{Lists the deployment groups for an application registered with the applicable IAM user or AWS account}
 \usage{
-list_deployment_groups(
-  applicationName = "string",
-  nextToken = "string"
-)
+list_deployment_groups(applicationName, nextToken = NULL)
 }
 \arguments{
 \item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
@@ -17,6 +14,11 @@ list_deployment_groups(
 \description{
 Lists the deployment groups for an application registered with the applicable IAM user or AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_deployment_groups(
+  applicationName = "string",
+  nextToken = "string"
+)
 }
+}
+

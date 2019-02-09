@@ -6,12 +6,12 @@
 \alias{paws.iotjobsdataplane-package}
 \title{paws.iotjobsdataplane: AWS IoT Jobs Data Plane}
 \description{
-AWS IoT Jobs is a service that allows you to define a set of
-jobs --- remote operations that are sent to and executed on one or
-more devices connected to AWS IoT. For example, you can define a job
-that instructs a set of devices to download and install application or
-firmware updates, reboot, rotate certificates, or perform remote
-troubleshooting operations.
+AWS IoT Jobs is a service that allows you to define
+    a set of jobs --- remote operations that are sent to and executed on
+    one or more devices connected to AWS IoT. For example, you can define
+    a job that instructs a set of devices to download and install
+    application or firmware updates, reboot, rotate certificates, or
+    perform remote troubleshooting operations.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

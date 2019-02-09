@@ -4,11 +4,8 @@
 \alias{get_logger_definition_version}
 \title{Retrieves information about a logger definition version}
 \usage{
-get_logger_definition_version(
-  LoggerDefinitionId = "string",
-  LoggerDefinitionVersionId = "string",
-  NextToken = "string"
-)
+get_logger_definition_version(LoggerDefinitionId,
+  LoggerDefinitionVersionId, NextToken = NULL)
 }
 \arguments{
 \item{LoggerDefinitionId}{[required] The ID of the logger definition.}
@@ -20,6 +17,12 @@ get_logger_definition_version(
 \description{
 Retrieves information about a logger definition version.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_logger_definition_version(
+  LoggerDefinitionId = "string",
+  LoggerDefinitionVersionId = "string",
+  NextToken = "string"
+)
 }
+}
+

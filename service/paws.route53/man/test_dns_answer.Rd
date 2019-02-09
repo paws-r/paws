@@ -4,14 +4,8 @@
 \alias{test_dns_answer}
 \title{Gets the value that Amazon Route 53 returns in response to a DNS request for a specified record name and type}
 \usage{
-test_dns_answer(
-  HostedZoneId = "string",
-  RecordName = "string",
-  RecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
-  ResolverIP = "string",
-  EDNS0ClientSubnetIP = "string",
-  EDNS0ClientSubnetMask = "string"
-)
+test_dns_answer(HostedZoneId, RecordName, RecordType, ResolverIP = NULL,
+  EDNS0ClientSubnetIP = NULL, EDNS0ClientSubnetMask = NULL)
 }
 \arguments{
 \item{HostedZoneId}{[required] The ID of the hosted zone that you want Amazon Route 53 to simulate a query for.}
@@ -35,6 +29,15 @@ The range of valid values depends on whether \code{edns0clientsubnetip} is an IP
 \description{
 Gets the value that Amazon Route 53 returns in response to a DNS request for a specified record name and type. You can optionally specify the IP address of a DNS resolver, an EDNS0 client subnet IP address, and a subnet mask.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{test_dns_answer(
+  HostedZoneId = "string",
+  RecordName = "string",
+  RecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
+  ResolverIP = "string",
+  EDNS0ClientSubnetIP = "string",
+  EDNS0ClientSubnetMask = "string"
+)
 }
+}
+

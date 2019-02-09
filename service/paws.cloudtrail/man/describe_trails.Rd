@@ -4,12 +4,7 @@
 \alias{describe_trails}
 \title{Retrieves settings for the trail associated with the current region for your account}
 \usage{
-describe_trails(
-  trailNameList = list(
-    "string"
-  ),
-  includeShadowTrails = TRUE|FALSE
-)
+describe_trails(trailNameList = NULL, includeShadowTrails = NULL)
 }
 \arguments{
 \item{trailNameList}{Specifies a list of trail names, trail ARNs, or both, of the trails to describe. The format of a trail ARN is:
@@ -24,11 +19,18 @@ If an empty list is specified, information for the trail in the current region i
 
 If one or more trail names are specified, information is returned only if the names match the names of trails belonging only to the current region. To return information about a trail in another region, you must specify its trail ARN.}
 
-\item{includeShadowTrails}{Specifies whether to include shadow trails in the response. A shadow trail is the replication in a region of a trail that was created in a different region, or in the case of an organization trail, the replication of an organization trail in member accounts. If you do not include shadow trails, organization trails in a member account and region replication trails will not be returned. The default is true.}
+\item{includeShadowTrails}{Specifies whether to include shadow trails in the response. A shadow trail is the replication in a region of a trail that was created in a different region. The default is true.}
 }
 \description{
 Retrieves settings for the trail associated with the current region for your account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_trails(
+  trailNameList = list(
+    "string"
+  ),
+  includeShadowTrails = TRUE|FALSE
+)
 }
+}
+

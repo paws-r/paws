@@ -4,11 +4,8 @@
 \alias{transfer_certificate}
 \title{Transfers the specified certificate to the specified AWS account}
 \usage{
-transfer_certificate(
-  certificateId = "string",
-  targetAwsAccount = "string",
-  transferMessage = "string"
-)
+transfer_certificate(certificateId, targetAwsAccount,
+  transferMessage = NULL)
 }
 \arguments{
 \item{certificateId}{[required] The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)}
@@ -29,6 +26,12 @@ The certificate being transferred must not be in the ACTIVE state. You can use t
 
 The certificate must not have any policies attached to it. You can use the DetachPrincipalPolicy API to detach them.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{transfer_certificate(
+  certificateId = "string",
+  targetAwsAccount = "string",
+  transferMessage = "string"
+)
 }
+}
+

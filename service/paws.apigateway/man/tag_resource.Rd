@@ -4,12 +4,7 @@
 \alias{tag_resource}
 \title{Adds or updates a tag on a given resource}
 \usage{
-tag_resource(
-  resourceArn = "string",
-  tags = list(
-    "string"
-  )
-)
+tag_resource(resourceArn, tags)
 }
 \arguments{
 \item{resourceArn}{[required] [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present, Stage is the only taggable resource.}
@@ -19,6 +14,13 @@ tag_resource(
 \description{
 Adds or updates a tag on a given resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag_resource(
+  resourceArn = "string",
+  tags = list(
+    "string"
+  )
+)
 }
+}
+

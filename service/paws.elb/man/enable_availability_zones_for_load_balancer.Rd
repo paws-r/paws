@@ -4,12 +4,8 @@
 \alias{enable_availability_zones_for_load_balancer}
 \title{Adds the specified Availability Zones to the set of Availability Zones for the specified load balancer in EC2-Classic or a default VPC}
 \usage{
-enable_availability_zones_for_load_balancer(
-  LoadBalancerName = "string",
-  AvailabilityZones = list(
-    "string"
-  )
-)
+enable_availability_zones_for_load_balancer(LoadBalancerName,
+  AvailabilityZones)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
@@ -24,14 +20,24 @@ For load balancers in a non-default VPC, use AttachLoadBalancerToSubnets.
 
 The load balancer evenly distributes requests across all its registered Availability Zones that contain instances. For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html}{Add or Remove Availability Zones} in the \emph{Classic Load Balancers Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{enable_availability_zones_for_load_balancer(
+  LoadBalancerName = "string",
+  AvailabilityZones = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example adds the specified Availability Zone to the specified load
 # balancer.
-enable_availability_zones_for_load_balancer(
+\donttest{enable_availability_zones_for_load_balancer(
   AvailabilityZones = list(
     "us-west-2b"
   ),
   LoadBalancerName = "my-load-balancer"
-)
+)}
 
 }

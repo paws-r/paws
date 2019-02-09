@@ -4,10 +4,7 @@
 \alias{list_runs}
 \title{Gets information about runs, given an AWS Device Farm project ARN}
 \usage{
-list_runs(
-  arn = "string",
-  nextToken = "string"
-)
+list_runs(arn, nextToken = NULL)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of the project for which you want to list runs.}
@@ -17,11 +14,19 @@ list_runs(
 \description{
 Gets information about runs, given an AWS Device Farm project ARN.
 }
+\section{Accepted Parameters}{
+\preformatted{list_runs(
+  arn = "string",
+  nextToken = "string"
+)
+}
+}
+
 \examples{
 # The following example returns information about a specific test run.
-list_runs(
+\donttest{list_runs(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b1d5-5ec6e6c6dd23/0fcac17b-6122-44d7-ae5a-12345EXAMPLE",
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
-)
+)}
 
 }

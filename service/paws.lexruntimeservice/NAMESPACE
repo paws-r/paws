@@ -2,3 +2,9 @@
 
 export(post_content)
 export(post_text)
+importFrom(paws.common,new_handlers)
+importFrom(paws.common,new_operation)
+importFrom(paws.common,new_request)
+importFrom(paws.common,new_service)
+importFrom(paws.common,populate)
+importFrom(paws.common,send_request)

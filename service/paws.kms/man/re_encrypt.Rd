@@ -4,19 +4,9 @@
 \alias{re_encrypt}
 \title{Encrypts data on the server side with a new customer master key (CMK) without exposing the plaintext of the data on the client side}
 \usage{
-re_encrypt(
-  CiphertextBlob = raw,
-  SourceEncryptionContext = list(
-    "string"
-  ),
-  DestinationKeyId = "string",
-  DestinationEncryptionContext = list(
-    "string"
-  ),
-  GrantTokens = list(
-    "string"
-  )
-)
+re_encrypt(CiphertextBlob, SourceEncryptionContext = NULL,
+  DestinationKeyId, DestinationEncryptionContext = NULL,
+  GrantTokens = NULL)
 }
 \arguments{
 \item{CiphertextBlob}{[required] Ciphertext of the data to reencrypt.}
@@ -25,7 +15,7 @@ re_encrypt(
 
 \item{DestinationKeyId}{[required] A unique identifier for the CMK that is used to reencrypt the data.
 
-To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with "alias/". To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
+To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
 
 For example:
 \itemize{
@@ -49,15 +39,32 @@ Encrypts data on the server side with a new customer master key (CMK) without ex
 \details{
 You can reencrypt data using CMKs in different AWS accounts.
 
-Unlike other operations, \code{ReEncrypt} is authorized twice, once as \code{ReEncryptFrom} on the source CMK and once as \code{ReEncryptTo} on the destination CMK. We recommend that you include the \code{"kms:ReEncrypt*"} permission in your \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html}{key policies} to permit reencryption from or to the CMK. This permission is automatically included in the key policy when you create a CMK through the console, but you must include it manually when you create a CMK programmatically or when you set a key policy with the PutKeyPolicy operation.
+Unlike other operations, \code{ReEncrypt} is authorized twice, once as \code{ReEncryptFrom} on the source CMK and once as \code{ReEncryptTo} on the destination CMK. We recommend that you include the \code{"kms:ReEncrypt*"} permission in your \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html}{key policies} to permit reencryption from or to the CMK. This permission is automatically included in the key policy when you create a CMK through the console. But you must include it manually when you create a CMK programmatically or when you set a key policy with the PutKeyPolicy operation.
 
 The result of this operation varies with the key state of the CMK. For details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key} in the \emph{AWS Key Management Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{re_encrypt(
+  CiphertextBlob = raw,
+  SourceEncryptionContext = list(
+    "string"
+  ),
+  DestinationKeyId = "string",
+  DestinationEncryptionContext = list(
+    "string"
+  ),
+  GrantTokens = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example reencrypts data with the specified CMK.
-re_encrypt(
+\donttest{re_encrypt(
   CiphertextBlob = "<binary data>",
   DestinationKeyId = "0987dcba-09fe-87dc-65ba-ab0987654321"
-)
+)}
 
 }

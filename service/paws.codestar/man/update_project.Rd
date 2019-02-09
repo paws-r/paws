@@ -4,11 +4,7 @@
 \alias{update_project}
 \title{Updates a project in AWS CodeStar}
 \usage{
-update_project(
-  id = "string",
-  name = "string",
-  description = "string"
-)
+update_project(id, name = NULL, description = NULL)
 }
 \arguments{
 \item{id}{[required] The ID of the project you want to update.}
@@ -20,6 +16,12 @@ update_project(
 \description{
 Updates a project in AWS CodeStar.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_project(
+  id = "string",
+  name = "string",
+  description = "string"
+)
 }
+}
+

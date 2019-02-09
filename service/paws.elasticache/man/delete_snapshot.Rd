@@ -4,9 +4,7 @@
 \alias{delete_snapshot}
 \title{Deletes an existing snapshot}
 \usage{
-delete_snapshot(
-  SnapshotName = "string"
-)
+delete_snapshot(SnapshotName)
 }
 \arguments{
 \item{SnapshotName}{[required] The name of the snapshot to be deleted.}
@@ -17,6 +15,10 @@ Deletes an existing snapshot. When you receive a successful response from this o
 \details{
 This operation is valid for Redis only.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_snapshot(
+  SnapshotName = "string"
+)
 }
+}
+

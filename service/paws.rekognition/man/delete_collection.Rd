@@ -4,9 +4,7 @@
 \alias{delete_collection}
 \title{Deletes the specified collection}
 \usage{
-delete_collection(
-  CollectionId = "string"
-)
+delete_collection(CollectionId)
 }
 \arguments{
 \item{CollectionId}{[required] ID of the collection to delete.}
@@ -17,10 +15,17 @@ Deletes the specified collection. Note that this operation removes all faces in 
 \details{
 This operation requires permissions to perform the \code{rekognition:DeleteCollection} action.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_collection(
+  CollectionId = "string"
+)
+}
+}
+
 \examples{
 # This operation deletes a Rekognition collection.
-delete_collection(
+\donttest{delete_collection(
   CollectionId = "myphotos"
-)
+)}
 
 }

@@ -4,12 +4,7 @@
 \alias{get_queue_attributes}
 \title{Gets attributes for the specified queue}
 \usage{
-get_queue_attributes(
-  QueueUrl = "string",
-  AttributeNames = list(
-    "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"
-  )
-)
+get_queue_attributes(QueueUrl, AttributeNames = NULL)
 }
 \arguments{
 \item{QueueUrl}{[required] The URL of the Amazon SQS queue whose attribute information is retrieved.
@@ -68,6 +63,13 @@ Some actions take lists of parameters. These lists are specified using the \code
 
 \code{&Attribute.2=second}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_queue_attributes(
+  QueueUrl = "string",
+  AttributeNames = list(
+    "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"
+  )
+)
 }
+}
+

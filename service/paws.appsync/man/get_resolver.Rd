@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.appsync_operations.R
 \name{get_resolver}
 \alias{get_resolver}
-\title{Retrieves a \code{Resolver} object}
+\title{Retrieves a Resolver object}
 \usage{
-get_resolver(
-  apiId = "string",
-  typeName = "string",
-  fieldName = "string"
-)
+get_resolver(apiId, typeName, fieldName)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
@@ -20,6 +16,12 @@ get_resolver(
 \description{
 Retrieves a \code{Resolver} object.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_resolver(
+  apiId = "string",
+  typeName = "string",
+  fieldName = "string"
+)
 }
+}
+

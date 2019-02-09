@@ -6,7 +6,8 @@
 \alias{paws.costandusagereportservice-package}
 \title{paws.costandusagereportservice: AWS Cost and Usage Report Service}
 \description{
-All public APIs for AWS Cost and Usage Report service
+All public APIs for AWS Cost and Usage Report
+    service
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

@@ -2,14 +2,9 @@
 % Please edit documentation in R/paws.cloudhsm_operations.R
 \name{remove_tags_from_resource}
 \alias{remove_tags_from_resource}
-\title{This is documentation for \strong{AWS CloudHSM Classic}}
+\title{This is documentation for AWS CLOUDHSM CLASSIC}
 \usage{
-remove_tags_from_resource(
-  ResourceArn = "string",
-  TagKeyList = list(
-    "string"
-  )
-)
+remove_tags_from_resource(ResourceArn, TagKeyList)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the AWS CloudHSM resource.}
@@ -28,6 +23,13 @@ Removes one or more tags from the specified AWS CloudHSM resource.
 
 To remove a tag, specify only the tag key to remove (not the value). To overwrite the value for an existing tag, use AddTagsToResource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_tags_from_resource(
+  ResourceArn = "string",
+  TagKeyList = list(
+    "string"
+  )
+)
 }
+}
+

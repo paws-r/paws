@@ -4,18 +4,7 @@
 \alias{detect_labels}
 \title{Detects instances of real-world entities within an image (JPEG or PNG) provided as input}
 \usage{
-detect_labels(
-  Image = list(
-    Bytes = raw,
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  MaxLabels = 123,
-  MinConfidence = 123.0
-)
+detect_labels(Image, MaxLabels = NULL, MinConfidence = NULL)
 }
 \arguments{
 \item{Image}{[required] The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.}
@@ -66,9 +55,25 @@ This is a stateless API operation. That is, the operation does not persist any d
 
 This operation requires permissions to perform the \code{rekognition:DetectLabels} action.
 }
+\section{Accepted Parameters}{
+\preformatted{detect_labels(
+  Image = list(
+    Bytes = raw,
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  MaxLabels = 123,
+  MinConfidence = 123.0
+)
+}
+}
+
 \examples{
 # This operation detects labels in the supplied image
-detect_labels(
+\donttest{detect_labels(
   Image = list(
     S3Object = list(
       Bucket = "mybucket",
@@ -77,6 +82,6 @@ detect_labels(
   ),
   MaxLabels = 123L,
   MinConfidence = 70L
-)
+)}
 
 }

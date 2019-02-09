@@ -4,13 +4,8 @@
 \alias{get_document_version}
 \title{Retrieves version metadata for the specified document}
 \usage{
-get_document_version(
-  AuthenticationToken = "string",
-  DocumentId = "string",
-  VersionId = "string",
-  Fields = "string",
-  IncludeCustomMetadata = TRUE|FALSE
-)
+get_document_version(AuthenticationToken = NULL, DocumentId, VersionId,
+  Fields = NULL, IncludeCustomMetadata = NULL)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
@@ -26,6 +21,14 @@ get_document_version(
 \description{
 Retrieves version metadata for the specified document.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_document_version(
+  AuthenticationToken = "string",
+  DocumentId = "string",
+  VersionId = "string",
+  Fields = "string",
+  IncludeCustomMetadata = TRUE|FALSE
+)
 }
+}
+

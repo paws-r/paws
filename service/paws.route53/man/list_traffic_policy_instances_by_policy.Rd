@@ -4,14 +4,10 @@
 \alias{list_traffic_policy_instances_by_policy}
 \title{Gets information about the traffic policy instances that you created by using a specify traffic policy version}
 \usage{
-list_traffic_policy_instances_by_policy(
-  TrafficPolicyId = "string",
-  TrafficPolicyVersion = 123,
-  HostedZoneIdMarker = "string",
-  TrafficPolicyInstanceNameMarker = "string",
-  TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
-  MaxItems = "string"
-)
+list_traffic_policy_instances_by_policy(TrafficPolicyId,
+  TrafficPolicyVersion, HostedZoneIdMarker = NULL,
+  TrafficPolicyInstanceNameMarker = NULL,
+  TrafficPolicyInstanceTypeMarker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{TrafficPolicyId}{[required] The ID of the traffic policy for which you want to list traffic policy instances.}
@@ -46,6 +42,15 @@ After you submit a \code{CreateTrafficPolicyInstance} or an \code{UpdateTrafficP
 
 Route 53 returns a maximum of 100 items in each response. If you have a lot of traffic policy instances, you can use the \code{MaxItems} parameter to list them in groups of up to 100.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_traffic_policy_instances_by_policy(
+  TrafficPolicyId = "string",
+  TrafficPolicyVersion = 123,
+  HostedZoneIdMarker = "string",
+  TrafficPolicyInstanceNameMarker = "string",
+  TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
+  MaxItems = "string"
+)
 }
+}
+

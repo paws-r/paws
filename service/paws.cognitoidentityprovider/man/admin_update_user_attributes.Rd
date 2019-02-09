@@ -4,16 +4,7 @@
 \alias{admin_update_user_attributes}
 \title{Updates the specified user's attributes, including developer attributes, as an administrator}
 \usage{
-admin_update_user_attributes(
-  UserPoolId = "string",
-  Username = "string",
-  UserAttributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  )
-)
+admin_update_user_attributes(UserPoolId, Username, UserAttributes)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool where you want to update user attributes.}
@@ -34,6 +25,17 @@ In addition to updating user attributes, this API can also be used to mark phone
 
 Requires developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{admin_update_user_attributes(
+  UserPoolId = "string",
+  Username = "string",
+  UserAttributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

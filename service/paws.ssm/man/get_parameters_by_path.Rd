@@ -4,22 +4,8 @@
 \alias{get_parameters_by_path}
 \title{Retrieve parameters in a specific hierarchy}
 \usage{
-get_parameters_by_path(
-  Path = "string",
-  Recursive = TRUE|FALSE,
-  ParameterFilters = list(
-    list(
-      Key = "string",
-      Option = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  WithDecryption = TRUE|FALSE,
-  MaxResults = 123,
-  NextToken = "string"
-)
+get_parameters_by_path(Path, Recursive = NULL, ParameterFilters = NULL,
+  WithDecryption = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Path}{[required] The hierarchy for the parameter. Hierarchies start with a forward slash (/) and end with the parameter name. A parameter name hierarchy can have a maximum of 15 levels. Here is an example of a hierarchy: \code{/Finance/Prod/IAD/WinServ2016/license33}}
@@ -46,6 +32,23 @@ Request results are returned on a best-effort basis. If you specify \code{MaxRes
 
 This API action doesn't support filtering by tags.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_parameters_by_path(
+  Path = "string",
+  Recursive = TRUE|FALSE,
+  ParameterFilters = list(
+    list(
+      Key = "string",
+      Option = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  WithDecryption = TRUE|FALSE,
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

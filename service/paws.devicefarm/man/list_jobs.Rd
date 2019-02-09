@@ -4,10 +4,7 @@
 \alias{list_jobs}
 \title{Gets information about jobs for a given test run}
 \usage{
-list_jobs(
-  arn = "string",
-  nextToken = "string"
-)
+list_jobs(arn, nextToken = NULL)
 }
 \arguments{
 \item{arn}{[required] The run's Amazon Resource Name (ARN).}
@@ -17,11 +14,19 @@ list_jobs(
 \description{
 Gets information about jobs for a given test run.
 }
+\section{Accepted Parameters}{
+\preformatted{list_jobs(
+  arn = "string",
+  nextToken = "string"
+)
+}
+}
+
 \examples{
 # The following example returns information about jobs in a specific
 # project.
-list_jobs(
+\donttest{list_jobs(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
-)
+)}
 
 }

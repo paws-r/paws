@@ -4,15 +4,7 @@
 \alias{delete_message_batch}
 \title{Deletes up to ten messages from the specified queue}
 \usage{
-delete_message_batch(
-  QueueUrl = "string",
-  Entries = list(
-    list(
-      Id = "string",
-      ReceiptHandle = "string"
-    )
-  )
-)
+delete_message_batch(QueueUrl, Entries)
 }
 \arguments{
 \item{QueueUrl}{[required] The URL of the Amazon SQS queue from which messages are deleted.
@@ -33,6 +25,16 @@ Some actions take lists of parameters. These lists are specified using the \code
 
 \code{&Attribute.2=second}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_message_batch(
+  QueueUrl = "string",
+  Entries = list(
+    list(
+      Id = "string",
+      ReceiptHandle = "string"
+    )
+  )
+)
 }
+}
+

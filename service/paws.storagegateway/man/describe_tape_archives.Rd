@@ -4,13 +4,7 @@
 \alias{describe_tape_archives}
 \title{Returns a description of specified virtual tapes in the virtual tape shelf (VTS)}
 \usage{
-describe_tape_archives(
-  TapeARNs = list(
-    "string"
-  ),
-  Marker = "string",
-  Limit = 123
-)
+describe_tape_archives(TapeARNs = NULL, Marker = NULL, Limit = NULL)
 }
 \arguments{
 \item{TapeARNs}{Specifies one or more unique Amazon Resource Names (ARNs) that represent the virtual tapes you want to describe.}
@@ -25,16 +19,27 @@ Returns a description of specified virtual tapes in the virtual tape shelf (VTS)
 \details{
 If a specific \code{TapeARN} is not specified, AWS Storage Gateway returns a description of all virtual tapes found in the VTS associated with your account.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_tape_archives(
+  TapeARNs = list(
+    "string"
+  ),
+  Marker = "string",
+  Limit = 123
+)
+}
+}
+
 \examples{
 # Returns a description of specified virtual tapes in the virtual tape
 # shelf (VTS).
-describe_tape_archives(
+\donttest{describe_tape_archives(
   Limit = 123L,
   Marker = "1",
   TapeARNs = list(
     "arn:aws:storagegateway:us-east-1:999999999999:tape/AM08A1AD",
     "arn:aws:storagegateway:us-east-1:999999999999:tape/AMZN01A2A4"
   )
-)
+)}
 
 }

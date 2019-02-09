@@ -2,16 +2,10 @@
 % Please edit documentation in R/paws.cloudformation_operations.R
 \name{continue_update_rollback}
 \alias{continue_update_rollback}
-\title{For a specified stack that is in the \code{UPDATE_ROLLBACK_FAILED} state, continues rolling it back to the \code{UPDATE_ROLLBACK_COMPLETE} state}
+\title{For a specified stack that is in the UPDATE_ROLLBACK_FAILED state, continues rolling it back to the UPDATE_ROLLBACK_COMPLETE state}
 \usage{
-continue_update_rollback(
-  StackName = "string",
-  RoleARN = "string",
-  ResourcesToSkip = list(
-    "string"
-  ),
-  ClientRequestToken = "string"
-)
+continue_update_rollback(StackName, RoleARN = NULL,
+  ResourcesToSkip = NULL, ClientRequestToken = NULL)
 }
 \arguments{
 \item{StackName}{[required] The name or the unique ID of the stack that you want to continue rolling back.
@@ -40,6 +34,15 @@ For a specified stack that is in the \code{UPDATE_ROLLBACK_FAILED} state, contin
 \details{
 A stack goes into the \code{UPDATE_ROLLBACK_FAILED} state when AWS CloudFormation cannot roll back all changes after a failed stack update. For example, you might have a stack that is rolling back to an old database instance that was deleted outside of AWS CloudFormation. Because AWS CloudFormation doesn't know the database was deleted, it assumes that the database instance still exists and attempts to roll back to it, causing the update rollback to fail.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{continue_update_rollback(
+  StackName = "string",
+  RoleARN = "string",
+  ResourcesToSkip = list(
+    "string"
+  ),
+  ClientRequestToken = "string"
+)
 }
+}
+

@@ -4,12 +4,7 @@
 \alias{list_tags_for_resources}
 \title{Lists tags for up to 10 health checks or hosted zones}
 \usage{
-list_tags_for_resources(
-  ResourceType = "healthcheck"|"hostedzone",
-  ResourceIds = list(
-    "string"
-  )
-)
+list_tags_for_resources(ResourceType, ResourceIds)
 }
 \arguments{
 \item{ResourceType}{[required] The type of the resources.
@@ -26,6 +21,13 @@ Lists tags for up to 10 health checks or hosted zones.
 \details{
 For information about using tags for cost allocation, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags} in the \emph{AWS Billing and Cost Management User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_resources(
+  ResourceType = "healthcheck"|"hostedzone",
+  ResourceIds = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,14 +4,9 @@
 \alias{modify_vpc_endpoint_connection_notification}
 \title{Modifies a connection notification for VPC endpoint or VPC endpoint service}
 \usage{
-modify_vpc_endpoint_connection_notification(
-  DryRun = TRUE|FALSE,
-  ConnectionNotificationId = "string",
-  ConnectionNotificationArn = "string",
-  ConnectionEvents = list(
-    "string"
-  )
-)
+modify_vpc_endpoint_connection_notification(DryRun = NULL,
+  ConnectionNotificationId, ConnectionNotificationArn = NULL,
+  ConnectionEvents = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -25,6 +20,15 @@ modify_vpc_endpoint_connection_notification(
 \description{
 Modifies a connection notification for VPC endpoint or VPC endpoint service. You can change the SNS topic for the notification, or the events for which to be notified.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_vpc_endpoint_connection_notification(
+  DryRun = TRUE|FALSE,
+  ConnectionNotificationId = "string",
+  ConnectionNotificationArn = "string",
+  ConnectionEvents = list(
+    "string"
+  )
+)
 }
+}
+

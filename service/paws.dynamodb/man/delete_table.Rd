@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.dynamodb_operations.R
 \name{delete_table}
 \alias{delete_table}
-\title{The \code{DeleteTable} operation deletes a table and all of its items}
+\title{The DeleteTable operation deletes a table and all of its items}
 \usage{
-delete_table(
-  TableName = "string"
-)
+delete_table(TableName)
 }
 \arguments{
 \item{TableName}{[required] The name of the table to delete.}
@@ -23,10 +21,17 @@ If you have DynamoDB Streams enabled on the table, then the corresponding stream
 
 Use the \code{DescribeTable} action to check the status of the table.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_table(
+  TableName = "string"
+)
+}
+}
+
 \examples{
 # This example deletes the Music table.
-delete_table(
+\donttest{delete_table(
   TableName = "Music"
-)
+)}
 
 }

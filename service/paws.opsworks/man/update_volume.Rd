@@ -4,11 +4,7 @@
 \alias{update_volume}
 \title{Updates an Amazon EBS volume's name or mount point}
 \usage{
-update_volume(
-  VolumeId = "string",
-  Name = "string",
-  MountPoint = "string"
-)
+update_volume(VolumeId, Name = NULL, MountPoint = NULL)
 }
 \arguments{
 \item{VolumeId}{[required] The volume ID.}
@@ -23,6 +19,12 @@ Updates an Amazon EBS volume's name or mount point. For more information, see \h
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_volume(
+  VolumeId = "string",
+  Name = "string",
+  MountPoint = "string"
+)
 }
+}
+

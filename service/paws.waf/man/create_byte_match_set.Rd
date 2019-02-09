@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.waf_operations.R
 \name{create_byte_match_set}
 \alias{create_byte_match_set}
-\title{Creates a \code{ByteMatchSet}}
+\title{Creates a ByteMatchSet}
 \usage{
-create_byte_match_set(
-  Name = "string",
-  ChangeToken = "string"
-)
+create_byte_match_set(Name, ChangeToken)
 }
 \arguments{
 \item{Name}{[required] A friendly name or description of the ByteMatchSet. You can't change \code{Name} after you create a \code{ByteMatchSet}.}
@@ -28,6 +25,11 @@ To create and configure a \code{ByteMatchSet}, perform the following steps:
 
 For more information about how to use the AWS WAF API to allow or block HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_byte_match_set(
+  Name = "string",
+  ChangeToken = "string"
+)
 }
+}
+

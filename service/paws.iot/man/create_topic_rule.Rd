@@ -4,7 +4,18 @@
 \alias{create_topic_rule}
 \title{Creates a rule}
 \usage{
-create_topic_rule(
+create_topic_rule(ruleName, topicRulePayload)
+}
+\arguments{
+\item{ruleName}{[required] The name of the rule.}
+
+\item{topicRulePayload}{[required] The rule payload.}
+}
+\description{
+Creates a rule. Creating rules is an administrator-level action. Any user who has permission to create rules will be able to access data processed by the rule.
+}
+\section{Accepted Parameters}{
+\preformatted{create_topic_rule(
   ruleName = "string",
   topicRulePayload = list(
     sql = "string",
@@ -90,11 +101,6 @@ create_topic_rule(
         iotAnalytics = list(
           channelArn = "string",
           channelName = "string",
-          roleArn = "string"
-        ),
-        iotEvents = list(
-          inputName = "string",
-          messageId = "string",
           roleArn = "string"
         ),
         stepFunctions = list(
@@ -188,11 +194,6 @@ create_topic_rule(
         channelName = "string",
         roleArn = "string"
       ),
-      iotEvents = list(
-        inputName = "string",
-        messageId = "string",
-        roleArn = "string"
-      ),
       stepFunctions = list(
         executionNamePrefix = "string",
         stateMachineName = "string",
@@ -202,14 +203,5 @@ create_topic_rule(
   )
 )
 }
-\arguments{
-\item{ruleName}{[required] The name of the rule.}
+}
 
-\item{topicRulePayload}{[required] The rule payload.}
-}
-\description{
-Creates a rule. Creating rules is an administrator-level action. Any user who has permission to create rules will be able to access data processed by the rule.
-}
-\examples{
-
-}

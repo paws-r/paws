@@ -4,7 +4,27 @@
 \alias{register_targets}
 \title{Registers the specified targets with the specified target group}
 \usage{
-register_targets(
+register_targets(TargetGroupArn, Targets)
+}
+\arguments{
+\item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
+
+\item{Targets}{[required] The targets.}
+}
+\description{
+Registers the specified targets with the specified target group.
+}
+\details{
+You can register targets by instance ID or by IP address. If the target is an EC2 instance, it must be in the \code{running} state when you register it.
+
+By default, the load balancer routes requests to registered targets using the protocol and port for the target group. Alternatively, you can override the port for a target when you register it. You can register each EC2 instance or IP address with the same target group multiple times using different ports.
+
+With a Network Load Balancer, you cannot register instances by instance ID if they have the following instance types: C1, CC1, CC2, CG1, CG2, CR1, CS1, G1, G2, HI1, HS1, M1, M2, M3, and T1. You can register instances of these types by IP address.
+
+To remove a target from a target group, use DeregisterTargets.
+}
+\section{Accepted Parameters}{
+\preformatted{register_targets(
   TargetGroupArn = "string",
   Targets = list(
     list(
@@ -15,29 +35,12 @@ register_targets(
   )
 )
 }
-\arguments{
-\item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
-
-\item{Targets}{[required] The targets.
-
-To register a target by instance ID, specify the instance ID. To register a target by IP address, specify the IP address. To register a Lambda function, specify the ARN of the Lambda function.}
 }
-\description{
-Registers the specified targets with the specified target group.
-}
-\details{
-If the target is an EC2 instance, it must be in the \code{running} state when you register it.
 
-By default, the load balancer routes requests to registered targets using the protocol and port for the target group. Alternatively, you can override the port for a target when you register it. You can register each EC2 instance or IP address with the same target group multiple times using different ports.
-
-With a Network Load Balancer, you cannot register instances by instance ID if they have the following instance types: C1, CC1, CC2, CG1, CG2, CR1, CS1, G1, G2, HI1, HS1, M1, M2, M3, and T1. You can register instances of these types by IP address.
-
-To remove a target from a target group, use DeregisterTargets.
-}
 \examples{
 # This example registers the specified instances with the specified target
 # group.
-register_targets(
+\donttest{register_targets(
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067",
   Targets = list(
     list(
@@ -47,12 +50,12 @@ register_targets(
       Id = "i-ceddcd4d"
     )
   )
-)
+)}
 
 # This example registers the specified instance with the specified target
 # group using multiple ports. This enables you to register ECS containers
 # on the same instance as targets in the target group.
-register_targets(
+\donttest{register_targets(
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-new-targets/3bb63f11dfb0faf9",
   Targets = list(
     list(
@@ -64,6 +67,6 @@ register_targets(
       Port = 766L
     )
   )
-)
+)}
 
 }

@@ -4,12 +4,8 @@
 \alias{get_attribute_values}
 \title{Returns a list of attribute values}
 \usage{
-get_attribute_values(
-  ServiceCode = "string",
-  AttributeName = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+get_attribute_values(ServiceCode, AttributeName, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{ServiceCode}{[required] The service code for the service whose attributes you want to retrieve. For example, if you want the retrieve an EC2 attribute, use \code{AmazonEC2}.}
@@ -23,13 +19,23 @@ get_attribute_values(
 \description{
 Returns a list of attribute values. Attibutes are similar to the details in a Price List API offer file. For a list of available attributes, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/reading-an-offer.html#pps-defs}{Offer File Definitions} in the \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html}{AWS Billing and Cost Management User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{get_attribute_values(
+  ServiceCode = "string",
+  AttributeName = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
+}
+}
+
 \examples{
 # This operation returns a list of values available for the given
 # attribute.
-get_attribute_values(
+\donttest{get_attribute_values(
   AttributeName = "volumeType",
   MaxResults = 2L,
   ServiceCode = "AmazonEC2"
-)
+)}
 
 }

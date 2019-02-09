@@ -4,9 +4,7 @@
 \alias{deregister_job_definition}
 \title{Deregisters an AWS Batch job definition}
 \usage{
-deregister_job_definition(
-  jobDefinition = "string"
-)
+deregister_job_definition(jobDefinition)
 }
 \arguments{
 \item{jobDefinition}{[required] The name and revision (\code{name:revision}) or full Amazon Resource Name (ARN) of the job definition to deregister.}
@@ -14,10 +12,17 @@ deregister_job_definition(
 \description{
 Deregisters an AWS Batch job definition.
 }
+\section{Accepted Parameters}{
+\preformatted{deregister_job_definition(
+  jobDefinition = "string"
+)
+}
+}
+
 \examples{
 # This example deregisters a job definition called sleep10.
-deregister_job_definition(
+\donttest{deregister_job_definition(
   jobDefinition = "sleep10"
-)
+)}
 
 }

@@ -4,10 +4,8 @@
 \alias{update_repository_description}
 \title{Sets or changes the comment or description for a repository}
 \usage{
-update_repository_description(
-  repositoryName = "string",
-  repositoryDescription = "string"
-)
+update_repository_description(repositoryName,
+  repositoryDescription = NULL)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository to set or change the comment or description for.}
@@ -20,6 +18,11 @@ Sets or changes the comment or description for a repository.
 \details{
 The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_repository_description(
+  repositoryName = "string",
+  repositoryDescription = "string"
+)
 }
+}
+

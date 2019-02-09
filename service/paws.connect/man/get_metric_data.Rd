@@ -2,37 +2,11 @@
 % Please edit documentation in R/paws.connect_operations.R
 \name{get_metric_data}
 \alias{get_metric_data}
-\title{The \code{GetMetricData} operation retrieves historical metrics data from your Amazon Connect instance}
+\title{The GetMetricData operation retrieves historical metrics data from your Amazon Connect instance}
 \usage{
-get_metric_data(
-  InstanceId = "string",
-  StartTime = as.POSIXct("2015-01-01"),
-  EndTime = as.POSIXct("2015-01-01"),
-  Filters = list(
-    Queues = list(
-      "string"
-    ),
-    Channels = list(
-      "VOICE"
-    )
-  ),
-  Groupings = list(
-    "QUEUE"|"CHANNEL"
-  ),
-  HistoricalMetrics = list(
-    list(
-      Name = "CONTACTS_QUEUED"|"CONTACTS_HANDLED"|"CONTACTS_ABANDONED"|"CONTACTS_CONSULTED"|"CONTACTS_AGENT_HUNG_UP_FIRST"|"CONTACTS_HANDLED_INCOMING"|"CONTACTS_HANDLED_OUTBOUND"|"CONTACTS_HOLD_ABANDONS"|"CONTACTS_TRANSFERRED_IN"|"CONTACTS_TRANSFERRED_OUT"|"CONTACTS_TRANSFERRED_IN_FROM_QUEUE"|"CONTACTS_TRANSFERRED_OUT_FROM_QUEUE"|"CONTACTS_MISSED"|"CALLBACK_CONTACTS_HANDLED"|"API_CONTACTS_HANDLED"|"OCCUPANCY"|"HANDLE_TIME"|"AFTER_CONTACT_WORK_TIME"|"QUEUED_TIME"|"ABANDON_TIME"|"QUEUE_ANSWER_TIME"|"HOLD_TIME"|"INTERACTION_TIME"|"INTERACTION_AND_HOLD_TIME"|"SERVICE_LEVEL",
-      Threshold = list(
-        Comparison = "LT",
-        ThresholdValue = 123.0
-      ),
-      Statistic = "SUM"|"MAX"|"AVG",
-      Unit = "SECONDS"|"COUNT"|"PERCENT"
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
+get_metric_data(InstanceId, StartTime, EndTime, Filters,
+  Groupings = NULL, HistoricalMetrics, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The identifier for your Amazon Connect instance. To find the ID of your instance, open the AWS console and select Amazon Connect. Select the alias of the instance in the Instance alias column. The instance ID is displayed in the Overview section of your instance settings. For example, the instance ID is the set of characters at the end of the instance ARN, after instance/, such as 10a4c4eb-f57e-4d4c-b602-bf39176ced07.}
@@ -59,7 +33,7 @@ If no \code{Grouping} is included in the request, a summary of \code{HistoricalM
 
 A \code{HistoricalMetric} object contains: \code{HistoricalMetricName}, \code{Statistic}, \code{Threshold}, and \code{Unit}.
 
-You must list each metric to retrieve data for in the request. For each historical metric you include in the request, you must include a \code{Unit} and a \code{Statistic}.
+For each historical metric you include in the request, you must include a \code{Unit} and a \code{Statistic}.
 
 The following historical metrics are available:
 
@@ -205,6 +179,36 @@ The \code{GetMetricData} operation retrieves historical metrics data from your A
 \details{
 If you are using an IAM account, it must have permission to the \code{connect:GetMetricData} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_metric_data(
+  InstanceId = "string",
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  Filters = list(
+    Queues = list(
+      "string"
+    ),
+    Channels = list(
+      "VOICE"
+    )
+  ),
+  Groupings = list(
+    "QUEUE"|"CHANNEL"
+  ),
+  HistoricalMetrics = list(
+    list(
+      Name = "CONTACTS_QUEUED"|"CONTACTS_HANDLED"|"CONTACTS_ABANDONED"|"CONTACTS_CONSULTED"|"CONTACTS_AGENT_HUNG_UP_FIRST"|"CONTACTS_HANDLED_INCOMING"|"CONTACTS_HANDLED_OUTBOUND"|"CONTACTS_HOLD_ABANDONS"|"CONTACTS_TRANSFERRED_IN"|"CONTACTS_TRANSFERRED_OUT"|"CONTACTS_TRANSFERRED_IN_FROM_QUEUE"|"CONTACTS_TRANSFERRED_OUT_FROM_QUEUE"|"CONTACTS_MISSED"|"CALLBACK_CONTACTS_HANDLED"|"API_CONTACTS_HANDLED"|"OCCUPANCY"|"HANDLE_TIME"|"AFTER_CONTACT_WORK_TIME"|"QUEUED_TIME"|"ABANDON_TIME"|"QUEUE_ANSWER_TIME"|"HOLD_TIME"|"INTERACTION_TIME"|"INTERACTION_AND_HOLD_TIME"|"SERVICE_LEVEL",
+      Threshold = list(
+        Comparison = "LT",
+        ThresholdValue = 123.0
+      ),
+      Statistic = "SUM"|"MAX"|"AVG",
+      Unit = "SECONDS"|"COUNT"|"PERCENT"
+    )
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

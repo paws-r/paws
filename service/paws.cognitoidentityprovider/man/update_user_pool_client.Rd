@@ -4,44 +4,14 @@
 \alias{update_user_pool_client}
 \title{Updates the specified user pool app client with the specified attributes}
 \usage{
-update_user_pool_client(
-  UserPoolId = "string",
-  ClientId = "string",
-  ClientName = "string",
-  RefreshTokenValidity = 123,
-  ReadAttributes = list(
-    "string"
-  ),
-  WriteAttributes = list(
-    "string"
-  ),
-  ExplicitAuthFlows = list(
-    "ADMIN_NO_SRP_AUTH"|"CUSTOM_AUTH_FLOW_ONLY"|"USER_PASSWORD_AUTH"
-  ),
-  SupportedIdentityProviders = list(
-    "string"
-  ),
-  CallbackURLs = list(
-    "string"
-  ),
-  LogoutURLs = list(
-    "string"
-  ),
-  DefaultRedirectURI = "string",
-  AllowedOAuthFlows = list(
-    "code"|"implicit"|"client_credentials"
-  ),
-  AllowedOAuthScopes = list(
-    "string"
-  ),
-  AllowedOAuthFlowsUserPoolClient = TRUE|FALSE,
-  AnalyticsConfiguration = list(
-    ApplicationId = "string",
-    RoleArn = "string",
-    ExternalId = "string",
-    UserDataShared = TRUE|FALSE
-  )
-)
+update_user_pool_client(UserPoolId, ClientId, ClientName = NULL,
+  RefreshTokenValidity = NULL, ReadAttributes = NULL,
+  WriteAttributes = NULL, ExplicitAuthFlows = NULL,
+  SupportedIdentityProviders = NULL, CallbackURLs = NULL,
+  LogoutURLs = NULL, DefaultRedirectURI = NULL,
+  AllowedOAuthFlows = NULL, AllowedOAuthScopes = NULL,
+  AllowedOAuthFlowsUserPoolClient = NULL,
+  AnalyticsConfiguration = NULL)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool where you want to update the user pool client.}
@@ -105,6 +75,45 @@ Set to \code{token} to specify that the client should get the access token (and,
 \description{
 Updates the specified user pool app client with the specified attributes. If you don't provide a value for an attribute, it will be set to the default value. You can get a list of the current user pool app client settings with .
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_user_pool_client(
+  UserPoolId = "string",
+  ClientId = "string",
+  ClientName = "string",
+  RefreshTokenValidity = 123,
+  ReadAttributes = list(
+    "string"
+  ),
+  WriteAttributes = list(
+    "string"
+  ),
+  ExplicitAuthFlows = list(
+    "ADMIN_NO_SRP_AUTH"|"CUSTOM_AUTH_FLOW_ONLY"|"USER_PASSWORD_AUTH"
+  ),
+  SupportedIdentityProviders = list(
+    "string"
+  ),
+  CallbackURLs = list(
+    "string"
+  ),
+  LogoutURLs = list(
+    "string"
+  ),
+  DefaultRedirectURI = "string",
+  AllowedOAuthFlows = list(
+    "code"|"implicit"|"client_credentials"
+  ),
+  AllowedOAuthScopes = list(
+    "string"
+  ),
+  AllowedOAuthFlowsUserPoolClient = TRUE|FALSE,
+  AnalyticsConfiguration = list(
+    ApplicationId = "string",
+    RoleArn = "string",
+    ExternalId = "string",
+    UserDataShared = TRUE|FALSE
+  )
+)
 }
+}
+

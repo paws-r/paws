@@ -4,11 +4,7 @@
 \alias{list_versions_by_function}
 \title{Lists all versions of a function}
 \usage{
-list_versions_by_function(
-  FunctionName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_versions_by_function(FunctionName, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the lambda function.
@@ -29,12 +25,21 @@ The length constraint applies only to the full ARN. If you specify only the func
 \description{
 Lists all versions of a function. For information about versioning, see \href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{AWS Lambda Function Versioning and Aliases}.
 }
+\section{Accepted Parameters}{
+\preformatted{list_versions_by_function(
+  FunctionName = "string",
+  Marker = "string",
+  MaxItems = 123
+)
+}
+}
+
 \examples{
 # This operation retrieves a Lambda function versions
-list_versions_by_function(
+\donttest{list_versions_by_function(
   FunctionName = "myFunction",
   Marker = "",
   MaxItems = 123L
-)
+)}
 
 }

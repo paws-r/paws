@@ -4,20 +4,9 @@
 \alias{create_fpga_image}
 \title{Creates an Amazon FPGA Image (AFI) from the specified design checkpoint (DCP)}
 \usage{
-create_fpga_image(
-  DryRun = TRUE|FALSE,
-  InputStorageLocation = list(
-    Bucket = "string",
-    Key = "string"
-  ),
-  LogsStorageLocation = list(
-    Bucket = "string",
-    Key = "string"
-  ),
-  Description = "string",
-  Name = "string",
-  ClientToken = "string"
-)
+create_fpga_image(DryRun = NULL, InputStorageLocation,
+  LogsStorageLocation = NULL, Description = NULL, Name = NULL,
+  ClientToken = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -40,6 +29,21 @@ The create operation is asynchronous. To verify that the AFI is ready for use, c
 
 An AFI contains the FPGA bitstream that is ready to download to an FPGA. You can securely deploy an AFI on one or more FPGA-accelerated instances. For more information, see the \href{https://github.com/aws/aws-fpga/}{AWS FPGA Hardware Development Kit}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_fpga_image(
+  DryRun = TRUE|FALSE,
+  InputStorageLocation = list(
+    Bucket = "string",
+    Key = "string"
+  ),
+  LogsStorageLocation = list(
+    Bucket = "string",
+    Key = "string"
+  ),
+  Description = "string",
+  Name = "string",
+  ClientToken = "string"
+)
 }
+}
+

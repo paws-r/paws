@@ -4,11 +4,7 @@
 \alias{list_placements}
 \title{Lists the placement(s) of a project}
 \usage{
-list_placements(
-  projectName = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+list_placements(projectName, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{projectName}{[required] The project containing the placements to be listed.}
@@ -20,6 +16,12 @@ list_placements(
 \description{
 Lists the placement(s) of a project.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_placements(
+  projectName = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

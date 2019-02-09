@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.appsync_operations.R
 \name{delete_data_source}
 \alias{delete_data_source}
-\title{Deletes a \code{DataSource} object}
+\title{Deletes a DataSource object}
 \usage{
-delete_data_source(
-  apiId = "string",
-  name = "string"
-)
+delete_data_source(apiId, name)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
@@ -17,6 +14,11 @@ delete_data_source(
 \description{
 Deletes a \code{DataSource} object.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_data_source(
+  apiId = "string",
+  name = "string"
+)
 }
+}
+

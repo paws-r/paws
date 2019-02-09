@@ -4,10 +4,8 @@
 \alias{describe_certificate_authority_audit_report}
 \title{Lists information about a specific audit report created by calling the CreateCertificateAuthorityAuditReport operation}
 \usage{
-describe_certificate_authority_audit_report(
-  CertificateAuthorityArn = "string",
-  AuditReportId = "string"
-)
+describe_certificate_authority_audit_report(CertificateAuthorityArn,
+  AuditReportId)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) of the private CA. This must be of the form:
@@ -19,6 +17,11 @@ describe_certificate_authority_audit_report(
 \description{
 Lists information about a specific audit report created by calling the CreateCertificateAuthorityAuditReport operation. Audit information is created every time the certificate authority (CA) private key is used. The private key is used when you call the IssueCertificate operation or the RevokeCertificate operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_certificate_authority_audit_report(
+  CertificateAuthorityArn = "string",
+  AuditReportId = "string"
+)
 }
+}
+

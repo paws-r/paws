@@ -4,19 +4,21 @@
 \alias{attach_policy}
 \title{Attaches a policy to the specified target}
 \usage{
-attach_policy(
-  policyName = "string",
-  target = "string"
-)
+attach_policy(policyName, target)
 }
 \arguments{
 \item{policyName}{[required] The name of the policy to attach.}
 
-\item{target}{[required] The \href{https://docs.aws.amazon.com/iot/latest/developerguide/iot-security-identity.html}{identity} to which the policy is attached.}
+\item{target}{[required] The identity to which the policy is attached.}
 }
 \description{
 Attaches a policy to the specified target.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{attach_policy(
+  policyName = "string",
+  target = "string"
+)
 }
+}
+

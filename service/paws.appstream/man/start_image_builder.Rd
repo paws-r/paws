@@ -4,10 +4,7 @@
 \alias{start_image_builder}
 \title{Starts the specified image builder}
 \usage{
-start_image_builder(
-  Name = "string",
-  AppstreamAgentVersion = "string"
-)
+start_image_builder(Name, AppstreamAgentVersion = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the image builder.}
@@ -17,6 +14,11 @@ start_image_builder(
 \description{
 Starts the specified image builder.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_image_builder(
+  Name = "string",
+  AppstreamAgentVersion = "string"
+)
 }
+}
+

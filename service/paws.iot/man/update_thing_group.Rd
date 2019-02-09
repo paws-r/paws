@@ -4,7 +4,21 @@
 \alias{update_thing_group}
 \title{Update a thing group}
 \usage{
-update_thing_group(
+update_thing_group(thingGroupName, thingGroupProperties,
+  expectedVersion = NULL)
+}
+\arguments{
+\item{thingGroupName}{[required] The thing group to update.}
+
+\item{thingGroupProperties}{[required] The thing group properties.}
+
+\item{expectedVersion}{The expected version of the thing group. If this does not match the version of the thing group being updated, the update will fail.}
+}
+\description{
+Update a thing group.
+}
+\section{Accepted Parameters}{
+\preformatted{update_thing_group(
   thingGroupName = "string",
   thingGroupProperties = list(
     thingGroupDescription = "string",
@@ -18,16 +32,5 @@ update_thing_group(
   expectedVersion = 123
 )
 }
-\arguments{
-\item{thingGroupName}{[required] The thing group to update.}
-
-\item{thingGroupProperties}{[required] The thing group properties.}
-
-\item{expectedVersion}{The expected version of the thing group. If this does not match the version of the thing group being updated, the update will fail.}
 }
-\description{
-Update a thing group.
-}
-\examples{
 
-}

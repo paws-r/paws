@@ -4,11 +4,7 @@
 \alias{delete_method}
 \title{Deletes an existing Method resource}
 \usage{
-delete_method(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string"
-)
+delete_method(restApiId, resourceId, httpMethod)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -20,6 +16,12 @@ delete_method(
 \description{
 Deletes an existing Method resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_method(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string"
+)
 }
+}
+

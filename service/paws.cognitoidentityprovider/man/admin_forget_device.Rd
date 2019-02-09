@@ -4,11 +4,7 @@
 \alias{admin_forget_device}
 \title{Forgets the device, as an administrator}
 \usage{
-admin_forget_device(
-  UserPoolId = "string",
-  Username = "string",
-  DeviceKey = "string"
-)
+admin_forget_device(UserPoolId, Username, DeviceKey)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
@@ -23,6 +19,12 @@ Forgets the device, as an administrator.
 \details{
 Requires developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{admin_forget_device(
+  UserPoolId = "string",
+  Username = "string",
+  DeviceKey = "string"
+)
 }
+}
+

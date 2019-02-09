@@ -4,18 +4,7 @@
 \alias{poll_for_jobs}
 \title{Returns information about any jobs for AWS CodePipeline to act upon}
 \usage{
-poll_for_jobs(
-  actionTypeId = list(
-    category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-    owner = "AWS"|"ThirdParty"|"Custom",
-    provider = "string",
-    version = "string"
-  ),
-  maxBatchSize = 123,
-  queryParam = list(
-    "string"
-  )
-)
+poll_for_jobs(actionTypeId, maxBatchSize = NULL, queryParam = NULL)
 }
 \arguments{
 \item{actionTypeId}{[required] Represents information about an action type.}
@@ -30,6 +19,19 @@ Returns information about any jobs for AWS CodePipeline to act upon. PollForJobs
 \details{
 When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. Additionally, this API returns any secret values defined for the action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{poll_for_jobs(
+  actionTypeId = list(
+    category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+    owner = "AWS"|"ThirdParty"|"Custom",
+    provider = "string",
+    version = "string"
+  ),
+  maxBatchSize = 123,
+  queryParam = list(
+    "string"
+  )
+)
 }
+}
+

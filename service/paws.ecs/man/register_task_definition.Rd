@@ -2,9 +2,80 @@
 % Please edit documentation in R/paws.ecs_operations.R
 \name{register_task_definition}
 \alias{register_task_definition}
-\title{Registers a new task definition from the supplied \code{family} and \code{containerDefinitions}}
+\title{Registers a new task definition from the supplied family and containerDefinitions}
 \usage{
-register_task_definition(
+register_task_definition(family, taskRoleArn = NULL,
+  executionRoleArn = NULL, networkMode = NULL, containerDefinitions,
+  volumes = NULL, placementConstraints = NULL,
+  requiresCompatibilities = NULL, cpu = NULL, memory = NULL)
+}
+\arguments{
+\item{family}{[required] You must specify a \code{family} for a task definition, which allows you to track multiple versions of the same task definition. The \code{family} is used as a name for your task definition. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.}
+
+\item{taskRoleArn}{The short name or full Amazon Resource Name (ARN) of the IAM role that containers in this task can assume. All containers in this task are granted the permissions that are specified in this role. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html}{IAM Roles for Tasks} in the \emph{Amazon Elastic Container Service Developer Guide}.}
+
+\item{executionRoleArn}{The Amazon Resource Name (ARN) of the task execution role that the Amazon ECS container agent and the Docker daemon can assume.}
+
+\item{networkMode}{The Docker networking mode to use for the containers in the task. The valid values are \code{none}, \code{bridge}, \code{awsvpc}, and \code{host}. The default Docker network mode is \code{bridge}. If using the Fargate launch type, the \code{awsvpc} network mode is required. If using the EC2 launch type, any network mode can be used. If the network mode is set to \code{none}, you can't specify port mappings in your container definitions, and the task's containers do not have external connectivity. The \code{host} and \code{awsvpc} network modes offer the highest networking performance for containers because they use the EC2 network stack instead of the virtualized network stack provided by the \code{bridge} mode.
+
+With the \code{host} and \code{awsvpc} network modes, exposed container ports are mapped directly to the corresponding host port (for the \code{host} network mode) or the attached elastic network interface port (for the \code{awsvpc} network mode), so you cannot take advantage of dynamic host port mappings.
+
+If the network mode is \code{awsvpc}, the task is allocated an Elastic Network Interface, and you must specify a NetworkConfiguration when you create a service or run a task with the task definition. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking} in the \emph{Amazon Elastic Container Service Developer Guide}.
+
+If the network mode is \code{host}, you can't run multiple instantiations of the same task on a single container instance when port mappings are used.
+
+Docker for Windows uses different network modes than Docker for Linux. When you register a task definition with Windows containers, you must not specify a network mode.
+
+For more information, see \href{https://docs.docker.com/engine/reference/run/#network-settings}{Network settings} in the \emph{Docker run reference}.}
+
+\item{containerDefinitions}{[required] A list of container definitions in JSON format that describe the different containers that make up your task.}
+
+\item{volumes}{A list of volume definitions in JSON format that containers in your task may use.}
+
+\item{placementConstraints}{An array of placement constraint objects to use for the task. You can specify a maximum of 10 constraints per task (this limit includes constraints in the task definition and those specified at run time).}
+
+\item{requiresCompatibilities}{The launch type required by the task. If no value is specified, it defaults to \code{EC2}.}
+
+\item{cpu}{The number of CPU units used by the task. It can be expressed as an integer using CPU units, for example \code{1024}, or as a string using vCPUs, for example \code{1 vCPU} or \code{1 vcpu}, in a task definition. String values are converted to an integer indicating the CPU units when the task definition is registered.
+
+Task-level CPU and memory parameters are ignored for Windows containers. We recommend specifying container-level resources for Windows containers.
+
+If using the EC2 launch type, this field is optional. Supported values are between \code{128} CPU units (\code{0.125} vCPUs) and \code{10240} CPU units (\code{10} vCPUs).
+
+If using the Fargate launch type, this field is required and you must use one of the following values, which determines your range of supported values for the \code{memory} parameter:
+\itemize{
+\item 256 (.25 vCPU) - Available \code{memory} values: 512 (0.5 GB), 1024 (1 GB), 2048 (2 GB)
+\item 512 (.5 vCPU) - Available \code{memory} values: 1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB)
+\item 1024 (1 vCPU) - Available \code{memory} values: 2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168 (7 GB), 8192 (8 GB)
+\item 2048 (2 vCPU) - Available \code{memory} values: Between 4096 (4 GB) and 16384 (16 GB) in increments of 1024 (1 GB)
+\item 4096 (4 vCPU) - Available \code{memory} values: Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024 (1 GB)
+}}
+
+\item{memory}{The amount of memory (in MiB) used by the task. It can be expressed as an integer using MiB, for example \code{1024}, or as a string using GB, for example \code{1GB} or \code{1 GB}, in a task definition. String values are converted to an integer indicating the MiB when the task definition is registered.
+
+Task-level CPU and memory parameters are ignored for Windows containers. We recommend specifying container-level resources for Windows containers.
+
+If using the EC2 launch type, this field is optional.
+
+If using the Fargate launch type, this field is required and you must use one of the following values, which determines your range of supported values for the \code{cpu} parameter:
+\itemize{
+\item 512 (0.5 GB), 1024 (1 GB), 2048 (2 GB) - Available \code{cpu} values: 256 (.25 vCPU)
+\item 1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB) - Available \code{cpu} values: 512 (.5 vCPU)
+\item 2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168 (7 GB), 8192 (8 GB) - Available \code{cpu} values: 1024 (1 vCPU)
+\item Between 4096 (4 GB) and 16384 (16 GB) in increments of 1024 (1 GB) - Available \code{cpu} values: 2048 (2 vCPU)
+\item Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024 (1 GB) - Available \code{cpu} values: 4096 (4 vCPU)
+}}
+}
+\description{
+Registers a new task definition from the supplied \code{family} and \code{containerDefinitions}. Optionally, you can add data volumes to your containers with the \code{volumes} parameter. For more information about task definition parameters and defaults, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html}{Amazon ECS Task Definitions} in the \emph{Amazon Elastic Container Service Developer Guide}.
+}
+\details{
+You can specify an IAM role for your task with the \code{taskRoleArn} parameter. When you specify an IAM role for a task, its containers can then use the latest versions of the AWS CLI or SDKs to make API requests to the AWS services that are specified in the IAM policy associated with the role. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html}{IAM Roles for Tasks} in the \emph{Amazon Elastic Container Service Developer Guide}.
+
+You can specify a Docker networking mode for the containers in your task definition with the \code{networkMode} parameter. The available network modes correspond to those described in \href{https://docs.docker.com/engine/reference/run/#/network-settings}{Network settings} in the Docker run reference. If you specify the \code{awsvpc} network mode, the task is allocated an elastic network interface, and you must specify a NetworkConfiguration when you create a service or run a task with the task definition. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking} in the \emph{Amazon Elastic Container Service Developer Guide}.
+}
+\section{Accepted Parameters}{
+\preformatted{register_task_definition(
   family = "string",
   taskRoleArn = "string",
   executionRoleArn = "string",
@@ -83,12 +154,6 @@ register_task_definition(
               "string"
             )
           )
-        )
-      ),
-      secrets = list(
-        list(
-          name = "string",
-          valueFrom = "string"
         )
       ),
       hostname = "string",
@@ -176,107 +241,14 @@ register_task_definition(
     "EC2"|"FARGATE"
   ),
   cpu = "string",
-  memory = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  pidMode = "host"|"task",
-  ipcMode = "host"|"task"|"none"
+  memory = "string"
 )
 }
-\arguments{
-\item{family}{[required] You must specify a \code{family} for a task definition, which allows you to track multiple versions of the same task definition. The \code{family} is used as a name for your task definition. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.}
-
-\item{taskRoleArn}{The short name or full Amazon Resource Name (ARN) of the IAM role that containers in this task can assume. All containers in this task are granted the permissions that are specified in this role. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html}{IAM Roles for Tasks} in the \emph{Amazon Elastic Container Service Developer Guide}.}
-
-\item{executionRoleArn}{The Amazon Resource Name (ARN) of the task execution role that the Amazon ECS container agent and the Docker daemon can assume.}
-
-\item{networkMode}{The Docker networking mode to use for the containers in the task. The valid values are \code{none}, \code{bridge}, \code{awsvpc}, and \code{host}. The default Docker network mode is \code{bridge}. If you are using the Fargate launch type, the \code{awsvpc} network mode is required. If you are using the EC2 launch type, any network mode can be used. If the network mode is set to \code{none}, you cannot specify port mappings in your container definitions, and the tasks containers do not have external connectivity. The \code{host} and \code{awsvpc} network modes offer the highest networking performance for containers because they use the EC2 network stack instead of the virtualized network stack provided by the \code{bridge} mode.
-
-With the \code{host} and \code{awsvpc} network modes, exposed container ports are mapped directly to the corresponding host port (for the \code{host} network mode) or the attached elastic network interface port (for the \code{awsvpc} network mode), so you cannot take advantage of dynamic host port mappings.
-
-If the network mode is \code{awsvpc}, the task is allocated an elastic network interface, and you must specify a NetworkConfiguration value when you create a service or run a task with the task definition. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking} in the \emph{Amazon Elastic Container Service Developer Guide}.
-
-Currently, only Amazon ECS-optimized AMIs, other Amazon Linux variants with the \code{ecs-init} package, or AWS Fargate infrastructure support the \code{awsvpc} network mode.
-
-If the network mode is \code{host}, you cannot run multiple instantiations of the same task on a single container instance when port mappings are used.
-
-Docker for Windows uses different network modes than Docker for Linux. When you register a task definition with Windows containers, you must not specify a network mode. If you use the console to register a task definition with Windows containers, you must choose the \code{<default>} network mode object.
-
-For more information, see \href{https://docs.docker.com/engine/reference/run/#network-settings}{Network settings} in the \emph{Docker run reference}.}
-
-\item{containerDefinitions}{[required] A list of container definitions in JSON format that describe the different containers that make up your task.}
-
-\item{volumes}{A list of volume definitions in JSON format that containers in your task may use.}
-
-\item{placementConstraints}{An array of placement constraint objects to use for the task. You can specify a maximum of 10 constraints per task (this limit includes constraints in the task definition and those specified at runtime).}
-
-\item{requiresCompatibilities}{The launch type required by the task. If no value is specified, it defaults to \code{EC2}.}
-
-\item{cpu}{The number of CPU units used by the task. It can be expressed as an integer using CPU units, for example \code{1024}, or as a string using vCPUs, for example \code{1 vCPU} or \code{1 vcpu}, in a task definition. String values are converted to an integer indicating the CPU units when the task definition is registered.
-
-Task-level CPU and memory parameters are ignored for Windows containers. We recommend specifying container-level resources for Windows containers.
-
-If you are using the EC2 launch type, this field is optional. Supported values are between \code{128} CPU units (\code{0.125} vCPUs) and \code{10240} CPU units (\code{10} vCPUs).
-
-If you are using the Fargate launch type, this field is required and you must use one of the following values, which determines your range of supported values for the \code{memory} parameter:
-\itemize{
-\item 256 (.25 vCPU) - Available \code{memory} values: 512 (0.5 GB), 1024 (1 GB), 2048 (2 GB)
-\item 512 (.5 vCPU) - Available \code{memory} values: 1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB)
-\item 1024 (1 vCPU) - Available \code{memory} values: 2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168 (7 GB), 8192 (8 GB)
-\item 2048 (2 vCPU) - Available \code{memory} values: Between 4096 (4 GB) and 16384 (16 GB) in increments of 1024 (1 GB)
-\item 4096 (4 vCPU) - Available \code{memory} values: Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024 (1 GB)
-}}
-
-\item{memory}{The amount of memory (in MiB) used by the task. It can be expressed as an integer using MiB, for example \code{1024}, or as a string using GB, for example \code{1GB} or \code{1 GB}, in a task definition. String values are converted to an integer indicating the MiB when the task definition is registered.
-
-Task-level CPU and memory parameters are ignored for Windows containers. We recommend specifying container-level resources for Windows containers.
-
-If using the EC2 launch type, this field is optional.
-
-If using the Fargate launch type, this field is required and you must use one of the following values, which determines your range of supported values for the \code{cpu} parameter:
-\itemize{
-\item 512 (0.5 GB), 1024 (1 GB), 2048 (2 GB) - Available \code{cpu} values: 256 (.25 vCPU)
-\item 1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB) - Available \code{cpu} values: 512 (.5 vCPU)
-\item 2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168 (7 GB), 8192 (8 GB) - Available \code{cpu} values: 1024 (1 vCPU)
-\item Between 4096 (4 GB) and 16384 (16 GB) in increments of 1024 (1 GB) - Available \code{cpu} values: 2048 (2 vCPU)
-\item Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024 (1 GB) - Available \code{cpu} values: 4096 (4 vCPU)
-}}
-
-\item{tags}{The metadata that you apply to the task definition to help you categorize and organize them. Each tag consists of a key and an optional value, both of which you define. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.}
-
-\item{pidMode}{The process namespace to use for the containers in the task. The valid values are \code{host} or \code{task}. If \code{host} is specified, then all containers within the tasks that specified the \code{host} PID mode on the same container instance share the same IPC resources with the host Amazon EC2 instance. If \code{task} is specified, all containers within the specified task share the same process namespace. If no value is specified, the default is a private namespace. For more information, see \href{https://docs.docker.com/engine/reference/run/#pid-settings---pid}{PID settings} in the \emph{Docker run reference}.
-
-If the \code{host} PID mode is used, be aware that there is a heightened risk of undesired process namespace expose. For more information, see \href{https://docs.docker.com/engine/security/security/}{Docker security}.
-
-This parameter is not supported for Windows containers or tasks using the Fargate launch type.}
-
-\item{ipcMode}{The IPC resource namespace to use for the containers in the task. The valid values are \code{host}, \code{task}, or \code{none}. If \code{host} is specified, then all containers within the tasks that specified the \code{host} IPC mode on the same container instance share the same IPC resources with the host Amazon EC2 instance. If \code{task} is specified, all containers within the specified task share the same IPC resources. If \code{none} is specified, then IPC resources within the containers of a task are private and not shared with other containers in a task or on the container instance. If no value is specified, then the IPC resource namespace sharing depends on the Docker daemon setting on the container instance. For more information, see \href{https://docs.docker.com/engine/reference/run/#ipc-settings---ipc}{IPC settings} in the \emph{Docker run reference}.
-
-If the \code{host} IPC mode is used, be aware that there is a heightened risk of undesired IPC namespace expose. For more information, see \href{https://docs.docker.com/engine/security/security/}{Docker security}.
-
-If you are setting namespaced kernel parameters using \code{systemControls} for the containers in the task, the following will apply to your IPC resource namespace. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html}{System Controls} in the \emph{Amazon Elastic Container Service Developer Guide}.
-\itemize{
-\item For tasks that use the \code{host} IPC mode, IPC namespace related \code{systemControls} are not supported.
-\item For tasks that use the \code{task} IPC mode, IPC namespace related \code{systemControls} will apply to all containers within a task.
 }
 
-This parameter is not supported for Windows containers or tasks using the Fargate launch type.}
-}
-\description{
-Registers a new task definition from the supplied \code{family} and \code{containerDefinitions}. Optionally, you can add data volumes to your containers with the \code{volumes} parameter. For more information about task definition parameters and defaults, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html}{Amazon ECS Task Definitions} in the \emph{Amazon Elastic Container Service Developer Guide}.
-}
-\details{
-You can specify an IAM role for your task with the \code{taskRoleArn} parameter. When you specify an IAM role for a task, its containers can then use the latest versions of the AWS CLI or SDKs to make API requests to the AWS services that are specified in the IAM policy associated with the role. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html}{IAM Roles for Tasks} in the \emph{Amazon Elastic Container Service Developer Guide}.
-
-You can specify a Docker networking mode for the containers in your task definition with the \code{networkMode} parameter. The available network modes correspond to those described in \href{https://docs.docker.com/engine/reference/run/#/network-settings}{Network settings} in the Docker run reference. If you specify the \code{awsvpc} network mode, the task is allocated an elastic network interface, and you must specify a NetworkConfiguration when you create a service or run a task with the task definition. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking} in the \emph{Amazon Elastic Container Service Developer Guide}.
-}
 \examples{
 # This example registers a task definition to the specified family.
-register_task_definition(
+\donttest{register_task_definition(
   containerDefinitions = list(
     list(
       name = "sleep",
@@ -293,6 +265,6 @@ register_task_definition(
   family = "sleep360",
   taskRoleArn = "",
   volumes = list()
-)
+)}
 
 }

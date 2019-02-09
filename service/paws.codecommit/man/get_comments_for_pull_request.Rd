@@ -4,14 +4,9 @@
 \alias{get_comments_for_pull_request}
 \title{Returns comments made on a pull request}
 \usage{
-get_comments_for_pull_request(
-  pullRequestId = "string",
-  repositoryName = "string",
-  beforeCommitId = "string",
-  afterCommitId = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+get_comments_for_pull_request(pullRequestId, repositoryName = NULL,
+  beforeCommitId = NULL, afterCommitId = NULL, nextToken = NULL,
+  maxResults = NULL)
 }
 \arguments{
 \item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use ListPullRequests.}
@@ -29,6 +24,15 @@ get_comments_for_pull_request(
 \description{
 Returns comments made on a pull request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_comments_for_pull_request(
+  pullRequestId = "string",
+  repositoryName = "string",
+  beforeCommitId = "string",
+  afterCommitId = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

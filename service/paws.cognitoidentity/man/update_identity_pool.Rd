@@ -4,28 +4,10 @@
 \alias{update_identity_pool}
 \title{Updates a user pool}
 \usage{
-update_identity_pool(
-  IdentityPoolId = "string",
-  IdentityPoolName = "string",
-  AllowUnauthenticatedIdentities = TRUE|FALSE,
-  SupportedLoginProviders = list(
-    "string"
-  ),
-  DeveloperProviderName = "string",
-  OpenIdConnectProviderARNs = list(
-    "string"
-  ),
-  CognitoIdentityProviders = list(
-    list(
-      ProviderName = "string",
-      ClientId = "string",
-      ServerSideTokenCheck = TRUE|FALSE
-    )
-  ),
-  SamlProviderARNs = list(
-    "string"
-  )
-)
+update_identity_pool(IdentityPoolId, IdentityPoolName,
+  AllowUnauthenticatedIdentities, SupportedLoginProviders = NULL,
+  DeveloperProviderName = NULL, OpenIdConnectProviderARNs = NULL,
+  CognitoIdentityProviders = NULL, SamlProviderARNs = NULL)
 }
 \arguments{
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
@@ -50,6 +32,29 @@ Updates a user pool.
 \details{
 You must use AWS Developer credentials to call this API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_identity_pool(
+  IdentityPoolId = "string",
+  IdentityPoolName = "string",
+  AllowUnauthenticatedIdentities = TRUE|FALSE,
+  SupportedLoginProviders = list(
+    "string"
+  ),
+  DeveloperProviderName = "string",
+  OpenIdConnectProviderARNs = list(
+    "string"
+  ),
+  CognitoIdentityProviders = list(
+    list(
+      ProviderName = "string",
+      ClientId = "string",
+      ServerSideTokenCheck = TRUE|FALSE
+    )
+  ),
+  SamlProviderARNs = list(
+    "string"
+  )
+)
 }
+}
+

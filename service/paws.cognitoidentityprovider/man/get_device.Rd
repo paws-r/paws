@@ -4,10 +4,7 @@
 \alias{get_device}
 \title{Gets the device}
 \usage{
-get_device(
-  DeviceKey = "string",
-  AccessToken = "string"
-)
+get_device(DeviceKey, AccessToken = NULL)
 }
 \arguments{
 \item{DeviceKey}{[required] The device key.}
@@ -17,6 +14,11 @@ get_device(
 \description{
 Gets the device.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_device(
+  DeviceKey = "string",
+  AccessToken = "string"
+)
 }
+}
+

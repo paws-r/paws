@@ -4,14 +4,7 @@
 \alias{describe_instance_health}
 \title{Describes the state of the specified instances with respect to the specified load balancer}
 \usage{
-describe_instance_health(
-  LoadBalancerName = "string",
-  Instances = list(
-    list(
-      InstanceId = "string"
-    )
-  )
-)
+describe_instance_health(LoadBalancerName, Instances = NULL)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
@@ -21,11 +14,23 @@ describe_instance_health(
 \description{
 Describes the state of the specified instances with respect to the specified load balancer. If no instances are specified, the call describes the state of all instances that are currently registered with the load balancer. If instances are specified, their state is returned even if they are no longer registered with the load balancer. The state of terminated instances is not returned.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_instance_health(
+  LoadBalancerName = "string",
+  Instances = list(
+    list(
+      InstanceId = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # This example describes the health of the instances for the specified
 # load balancer.
-describe_instance_health(
+\donttest{describe_instance_health(
   LoadBalancerName = "my-load-balancer"
-)
+)}
 
 }

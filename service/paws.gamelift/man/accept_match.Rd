@@ -4,13 +4,7 @@
 \alias{accept_match}
 \title{Registers a player's acceptance or rejection of a proposed FlexMatch match}
 \usage{
-accept_match(
-  TicketId = "string",
-  PlayerIds = list(
-    "string"
-  ),
-  AcceptanceType = "ACCEPT"|"REJECT"
-)
+accept_match(TicketId, PlayerIds, AcceptanceType)
 }
 \arguments{
 \item{TicketId}{[required] Unique identifier for a matchmaking ticket. The ticket must be in status \code{REQUIRES_ACCEPTANCE}; otherwise this request will fail.}
@@ -38,6 +32,14 @@ Matchmaking-related operations include:
 \item StartMatchBackfill
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{accept_match(
+  TicketId = "string",
+  PlayerIds = list(
+    "string"
+  ),
+  AcceptanceType = "ACCEPT"|"REJECT"
+)
 }
+}
+

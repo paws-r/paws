@@ -4,12 +4,8 @@
 \alias{describe_orderable_cluster_options}
 \title{Returns a list of orderable cluster options}
 \usage{
-describe_orderable_cluster_options(
-  ClusterVersion = "string",
-  NodeType = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_orderable_cluster_options(ClusterVersion = NULL,
+  NodeType = NULL, MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{ClusterVersion}{The version filter value. Specify this parameter to show only the available offerings matching the specified version.
@@ -29,8 +25,15 @@ Constraints: minimum 20, maximum 100.}
 \item{Marker}{An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeOrderableClusterOptions request exceed the value specified in \code{MaxRecords}, AWS returns a value in the \code{Marker} field of the response. You can retrieve the next set of response records by providing the returned marker value in the \code{Marker} parameter and retrying the request.}
 }
 \description{
-Returns a list of orderable cluster options. Before you create a new cluster you can use this operation to find what options are available, such as the EC2 Availability Zones (AZ) in the specific AWS Region that you can specify, and the node types you can request. The node types differ by available storage, memory, CPU and price. With the cost involved you might want to obtain a list of cluster options in the specific region and specify values when creating a cluster. For more information about managing clusters, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters} in the \emph{Amazon Redshift Cluster Management Guide}.
+Returns a list of orderable cluster options. Before you create a new cluster you can use this operation to find what options are available, such as the EC2 Availability Zones (AZ) in the specific AWS region that you can specify, and the node types you can request. The node types differ by available storage, memory, CPU and price. With the cost involved you might want to obtain a list of cluster options in the specific region and specify values when creating a cluster. For more information about managing clusters, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{describe_orderable_cluster_options(
+  ClusterVersion = "string",
+  NodeType = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
+}
+}
 
-}

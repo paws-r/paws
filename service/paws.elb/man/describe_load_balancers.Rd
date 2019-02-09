@@ -4,13 +4,8 @@
 \alias{describe_load_balancers}
 \title{Describes the specified the load balancers}
 \usage{
-describe_load_balancers(
-  LoadBalancerNames = list(
-    "string"
-  ),
-  Marker = "string",
-  PageSize = 123
-)
+describe_load_balancers(LoadBalancerNames = NULL, Marker = NULL,
+  PageSize = NULL)
 }
 \arguments{
 \item{LoadBalancerNames}{The names of the load balancers.}
@@ -22,12 +17,23 @@ describe_load_balancers(
 \description{
 Describes the specified the load balancers. If no load balancers are specified, the call describes all of your load balancers.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_load_balancers(
+  LoadBalancerNames = list(
+    "string"
+  ),
+  Marker = "string",
+  PageSize = 123
+)
+}
+}
+
 \examples{
 # This example describes the specified load balancer.
-describe_load_balancers(
+\donttest{describe_load_balancers(
   LoadBalancerNames = list(
     "my-load-balancer"
   )
-)
+)}
 
 }

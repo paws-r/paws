@@ -4,9 +4,7 @@
 \alias{delete_identity}
 \title{Deletes the specified identity (an email address or a domain) from the list of verified identities}
 \usage{
-delete_identity(
-  Identity = "string"
-)
+delete_identity(Identity)
 }
 \arguments{
 \item{Identity}{[required] The identity to be removed from the list of identities for the AWS Account.}
@@ -17,11 +15,18 @@ Deletes the specified identity (an email address or a domain) from the list of v
 \details{
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_identity(
+  Identity = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes an identity from the list of identities
 # that have been submitted for verification with Amazon SES:
-delete_identity(
+\donttest{delete_identity(
   Identity = "user@example.com"
-)
+)}
 
 }

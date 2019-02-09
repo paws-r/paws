@@ -4,7 +4,26 @@
 \alias{describe_capacity_reservations}
 \title{Describes one or more of your Capacity Reservations}
 \usage{
-describe_capacity_reservations(
+describe_capacity_reservations(CapacityReservationIds = NULL,
+  NextToken = NULL, MaxResults = NULL, Filters = NULL,
+  DryRun = NULL)
+}
+\arguments{
+\item{CapacityReservationIds}{The ID of the Capacity Reservation.}
+
+\item{NextToken}{The token to retrieve the next page of results.}
+
+\item{MaxResults}{The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the returned nextToken value.}
+
+\item{Filters}{One or more filters.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+}
+\description{
+Describes one or more of your Capacity Reservations. The results describe only the Capacity Reservations in the AWS Region that you're currently using.
+}
+\section{Accepted Parameters}{
+\preformatted{describe_capacity_reservations(
   CapacityReservationIds = list(
     "string"
   ),
@@ -21,20 +40,5 @@ describe_capacity_reservations(
   DryRun = TRUE|FALSE
 )
 }
-\arguments{
-\item{CapacityReservationIds}{The ID of the Capacity Reservation.}
-
-\item{NextToken}{The token to retrieve the next page of results.}
-
-\item{MaxResults}{The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the returned nextToken value.}
-
-\item{Filters}{One or more filters.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\description{
-Describes one or more of your Capacity Reservations. The results describe only the Capacity Reservations in the AWS Region that you're currently using.
-}
-\examples{
 
-}

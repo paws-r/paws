@@ -4,13 +4,8 @@
 \alias{enter_standby}
 \title{Moves the specified instances into the standby state}
 \usage{
-enter_standby(
-  InstanceIds = list(
-    "string"
-  ),
-  AutoScalingGroupName = "string",
-  ShouldDecrementDesiredCapacity = TRUE|FALSE
-)
+enter_standby(InstanceIds = NULL, AutoScalingGroupName,
+  ShouldDecrementDesiredCapacity)
 }
 \arguments{
 \item{InstanceIds}{The IDs of the instances. You can specify up to 20 instances.}
@@ -25,14 +20,25 @@ Moves the specified instances into the standby state.
 \details{
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html}{Temporarily Removing Instances from Your Auto Scaling Group} in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{enter_standby(
+  InstanceIds = list(
+    "string"
+  ),
+  AutoScalingGroupName = "string",
+  ShouldDecrementDesiredCapacity = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example puts the specified instance into standby mode.
-enter_standby(
+\donttest{enter_standby(
   AutoScalingGroupName = "my-auto-scaling-group",
   InstanceIds = list(
     "i-93633f9b"
   ),
   ShouldDecrementDesiredCapacity = TRUE
-)
+)}
 
 }

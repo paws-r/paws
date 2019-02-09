@@ -4,21 +4,11 @@
 \alias{head_object}
 \title{The HEAD operation retrieves metadata from an object without returning the object itself}
 \usage{
-head_object(
-  Bucket = "string",
-  IfMatch = "string",
-  IfModifiedSince = as.POSIXct("2015-01-01"),
-  IfNoneMatch = "string",
-  IfUnmodifiedSince = as.POSIXct("2015-01-01"),
-  Key = "string",
-  Range = "string",
-  VersionId = "string",
-  SSECustomerAlgorithm = "string",
-  SSECustomerKey = raw,
-  SSECustomerKeyMD5 = "string",
-  RequestPayer = "requester",
-  PartNumber = 123
-)
+head_object(Bucket, IfMatch = NULL, IfModifiedSince = NULL,
+  IfNoneMatch = NULL, IfUnmodifiedSince = NULL, Key, Range = NULL,
+  VersionId = NULL, SSECustomerAlgorithm = NULL,
+  SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL,
+  RequestPayer = NULL, PartNumber = NULL)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -39,7 +29,7 @@ head_object(
 
 \item{SSECustomerAlgorithm}{Specifies the algorithm to use to when encrypting the object (e.g., AES256).}
 
-\item{SSECustomerKey}{Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm header.}
+\item{SSECustomerKey}{Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header.}
 
 \item{SSECustomerKeyMD5}{Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.}
 
@@ -50,11 +40,30 @@ head_object(
 \description{
 The HEAD operation retrieves metadata from an object without returning the object itself. This operation is useful if you're only interested in an object's metadata. To use HEAD, you must have READ access to the object.
 }
+\section{Accepted Parameters}{
+\preformatted{head_object(
+  Bucket = "string",
+  IfMatch = "string",
+  IfModifiedSince = as.POSIXct("2015-01-01"),
+  IfNoneMatch = "string",
+  IfUnmodifiedSince = as.POSIXct("2015-01-01"),
+  Key = "string",
+  Range = "string",
+  VersionId = "string",
+  SSECustomerAlgorithm = "string",
+  SSECustomerKey = raw,
+  SSECustomerKeyMD5 = "string",
+  RequestPayer = "requester",
+  PartNumber = 123
+)
+}
+}
+
 \examples{
 # The following example retrieves an object metadata.
-head_object(
+\donttest{head_object(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
-)
+)}
 
 }

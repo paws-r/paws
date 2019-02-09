@@ -4,13 +4,8 @@
 \alias{describe_game_session_queues}
 \title{Retrieves the properties for one or more game session queues}
 \usage{
-describe_game_session_queues(
-  Names = list(
-    "string"
-  ),
-  Limit = 123,
-  NextToken = "string"
-)
+describe_game_session_queues(Names = NULL, Limit = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{Names}{List of queue names to retrieve information for. To request settings for all queues, leave this parameter empty.}
@@ -31,6 +26,14 @@ Queue-related operations include:
 \item DeleteGameSessionQueue
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_game_session_queues(
+  Names = list(
+    "string"
+  ),
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

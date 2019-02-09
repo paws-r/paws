@@ -4,12 +4,7 @@
 \alias{stop_fleet_actions}
 \title{Suspends activity on a fleet}
 \usage{
-stop_fleet_actions(
-  FleetId = "string",
-  Actions = list(
-    "AUTO_SCALING"
-  )
-)
+stop_fleet_actions(FleetId, Actions)
 }
 \arguments{
 \item{FleetId}{[required] Unique identifier for a fleet}
@@ -22,6 +17,13 @@ Suspends activity on a fleet. Currently, this operation is used to stop a fleet'
 \details{
 To stop fleet actions, specify the fleet ID and the type of actions to suspend. When auto-scaling fleet actions are stopped, Amazon GameLift no longer initiates scaling events except to maintain the fleet's desired instances setting (FleetCapacity. Changes to the fleet's capacity must be done manually using UpdateFleetCapacity.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_fleet_actions(
+  FleetId = "string",
+  Actions = list(
+    "AUTO_SCALING"
+  )
+)
 }
+}
+

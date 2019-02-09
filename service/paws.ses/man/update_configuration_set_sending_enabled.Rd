@@ -4,10 +4,7 @@
 \alias{update_configuration_set_sending_enabled}
 \title{Enables or disables email sending for messages sent using a specific configuration set in a given AWS Region}
 \usage{
-update_configuration_set_sending_enabled(
-  ConfigurationSetName = "string",
-  Enabled = TRUE|FALSE
-)
+update_configuration_set_sending_enabled(ConfigurationSetName, Enabled)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set that you want to update.}
@@ -20,11 +17,19 @@ Enables or disables email sending for messages sent using a specific configurati
 \details{
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{update_configuration_set_sending_enabled(
+  ConfigurationSetName = "string",
+  Enabled = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # Set the sending enabled flag for a specific configuration set.
-update_configuration_set_sending_enabled(
+\donttest{update_configuration_set_sending_enabled(
   ConfigurationSetName = "foo",
   Enabled = TRUE
-)
+)}
 
 }

@@ -4,20 +4,8 @@
 \alias{describe_spot_instance_requests}
 \title{Describes the specified Spot Instance requests}
 \usage{
-describe_spot_instance_requests(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  SpotInstanceRequestIds = list(
-    "string"
-  )
-)
+describe_spot_instance_requests(Filters = NULL, DryRun = NULL,
+  SpotInstanceRequestIds = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -75,12 +63,30 @@ You can use \code{DescribeSpotInstanceRequests} to find a running Spot Instance 
 
 Spot Instance requests are deleted four hours after they are canceled and their instances are terminated.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_spot_instance_requests(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE,
+  SpotInstanceRequestIds = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example describes the specified Spot Instance request.
-describe_spot_instance_requests(
+\donttest{describe_spot_instance_requests(
   SpotInstanceRequestIds = list(
     "sir-08b93456"
   )
-)
+)}
 
 }

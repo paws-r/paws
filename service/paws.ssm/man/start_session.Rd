@@ -4,15 +4,7 @@
 \alias{start_session}
 \title{Initiates a connection to a target (for example, an instance) for a Session Manager session}
 \usage{
-start_session(
-  Target = "string",
-  DocumentName = "string",
-  Parameters = list(
-    list(
-      "string"
-    )
-  )
-)
+start_session(Target, DocumentName = NULL, Parameters = NULL)
 }
 \arguments{
 \item{Target}{[required] The instance to connect to for the session.}
@@ -27,6 +19,16 @@ Initiates a connection to a target (for example, an instance) for a Session Mana
 \details{
 AWS CLI usage: \code{start-session} is an interactive command that requires the Session Manager plugin to be installed on the client machine making the call. For information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html}{Install the Session Manager Plugin for the AWS CLI} in the \emph{AWS Systems Manager User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_session(
+  Target = "string",
+  DocumentName = "string",
+  Parameters = list(
+    list(
+      "string"
+    )
+  )
+)
 }
+}
+

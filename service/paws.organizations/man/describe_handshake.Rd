@@ -4,9 +4,7 @@
 \alias{describe_handshake}
 \title{Retrieves information about a previously requested handshake}
 \usage{
-describe_handshake(
-  HandshakeId = "string"
-)
+describe_handshake(HandshakeId)
 }
 \arguments{
 \item{HandshakeId}{[required] The unique identifier (ID) of the handshake that you want information about. You can get the ID from the original call to InviteAccountToOrganization, or from a call to ListHandshakesForAccount or ListHandshakesForOrganization.
@@ -21,13 +19,20 @@ You can access handshakes that are ACCEPTED, DECLINED, or CANCELED for only 30 d
 
 This operation can be called from any account in the organization.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_handshake(
+  HandshakeId = "string"
+)
+}
+}
+
 \examples{
 # The following example shows you how to request details about a
 # handshake. The handshake ID comes either from the original call to
 # "InviteAccountToOrganization", or from a call to
 # "ListHandshakesForAccount" or "ListHandshakesForOrganization":
-describe_handshake(
+\donttest{describe_handshake(
   HandshakeId = "h-examplehandshakeid111"
-)
+)}
 
 }

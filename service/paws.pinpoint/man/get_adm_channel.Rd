@@ -4,9 +4,7 @@
 \alias{get_adm_channel}
 \title{Get an ADM channel}
 \usage{
-get_adm_channel(
-  ApplicationId = "string"
-)
+get_adm_channel(ApplicationId)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -14,6 +12,10 @@ get_adm_channel(
 \description{
 Get an ADM channel.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_adm_channel(
+  ApplicationId = "string"
+)
 }
+}
+

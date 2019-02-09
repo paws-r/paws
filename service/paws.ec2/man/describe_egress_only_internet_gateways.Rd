@@ -4,14 +4,9 @@
 \alias{describe_egress_only_internet_gateways}
 \title{Describes one or more of your egress-only internet gateways}
 \usage{
-describe_egress_only_internet_gateways(
-  DryRun = TRUE|FALSE,
-  EgressOnlyInternetGatewayIds = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_egress_only_internet_gateways(DryRun = NULL,
+  EgressOnlyInternetGatewayIds = NULL, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -25,6 +20,15 @@ describe_egress_only_internet_gateways(
 \description{
 Describes one or more of your egress-only internet gateways.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_egress_only_internet_gateways(
+  DryRun = TRUE|FALSE,
+  EgressOnlyInternetGatewayIds = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

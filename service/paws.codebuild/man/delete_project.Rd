@@ -4,9 +4,7 @@
 \alias{delete_project}
 \title{Deletes a build project}
 \usage{
-delete_project(
-  name = "string"
-)
+delete_project(name)
 }
 \arguments{
 \item{name}{[required] The name of the build project.}
@@ -14,6 +12,10 @@ delete_project(
 \description{
 Deletes a build project.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_project(
+  name = "string"
+)
 }
+}
+

@@ -4,22 +4,8 @@
 \alias{describe_volumes_modifications}
 \title{Reports the current modification status of EBS volumes}
 \usage{
-describe_volumes_modifications(
-  DryRun = TRUE|FALSE,
-  VolumeIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
+describe_volumes_modifications(DryRun = NULL, VolumeIds = NULL,
+  Filters = NULL, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -40,6 +26,23 @@ Current-generation EBS volumes support modification of attributes including type
 
 You can also use CloudWatch Events to check the status of a modification to an EBS volume. For information about CloudWatch Events, see the \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/}{Amazon CloudWatch Events User Guide}. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods}{Monitoring Volume Modifications"} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_volumes_modifications(
+  DryRun = TRUE|FALSE,
+  VolumeIds = list(
+    "string"
+  ),
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

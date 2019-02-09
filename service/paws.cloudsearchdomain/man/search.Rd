@@ -4,22 +4,10 @@
 \alias{search}
 \title{Retrieves a list of documents that match the specified search criteria}
 \usage{
-search(
-  cursor = "string",
-  expr = "string",
-  facet = "string",
-  filterQuery = "string",
-  highlight = "string",
-  partial = TRUE|FALSE,
-  query = "string",
-  queryOptions = "string",
-  queryParser = "simple"|"structured"|"lucene"|"dismax",
-  return = "string",
-  size = 123,
-  sort = "string",
-  start = 123,
-  stats = "string"
-)
+search(cursor = NULL, expr = NULL, facet = NULL,
+  filterQuery = NULL, highlight = NULL, partial = NULL, query,
+  queryOptions = NULL, queryParser = NULL, return = NULL,
+  size = NULL, sort = NULL, start = NULL, stats = NULL)
 }
 \arguments{
 \item{cursor}{Retrieves a cursor value you can use to page through large result sets. Use the \code{size} parameter to control the number of hits to include in each response. You can specify either the \code{cursor} or \code{start} parameter in a request; they are mutually exclusive. To get the first cursor, set the cursor value to \code{initial}. In subsequent requests, specify the cursor value returned in the hits section of the response.
@@ -48,7 +36,7 @@ For more information about specifying search criteria, see \href{http://docs.aws
 
 The options you can configure vary according to which parser you use:
 \itemize{
-\item \code{defaultOperator}: The default operator used to combine individual terms in the search string. For example: \code{defaultOperator: 'or'}. For the \code{dismax} parser, you specify a percentage that represents the percentage of terms in the search string (rounded down) that must match, rather than a default operator. A value of \code{0%} is the equivalent to OR, and a value of \code{100%} is equivalent to AND. The percentage must be specified as a value in the range 0-100 followed by the percent (%) symbol. For example, \code{defaultOperator: 50%}. Valid values: \code{and}, \code{or}, a percentage in the range 0%-100% (\code{dismax}). Default: \code{and} (\code{simple}, \code{structured}, \code{lucene}) or \code{100} (\code{dismax}). Valid for: \code{simple}, \code{structured}, \code{lucene}, and \code{dismax}.
+\item \code{defaultOperator}: The default operator used to combine individual terms in the search string. For example: \code{defaultOperator: 'or'}. For the \code{dismax} parser, you specify a percentage that represents the percentage of terms in the search string (rounded down) that must match, rather than a default operator. A value of \code{0\%} is the equivalent to OR, and a value of \code{100\%} is equivalent to AND. The percentage must be specified as a value in the range 0-100 followed by the percent (%) symbol. For example, \code{defaultOperator: 50\%}. Valid values: \code{and}, \code{or}, a percentage in the range 0%-100% (\code{dismax}). Default: \code{and} (\code{simple}, \code{structured}, \code{lucene}) or \code{100} (\code{dismax}). Valid for: \code{simple}, \code{structured}, \code{lucene}, and \code{dismax}.
 \item \code{fields}: An array of the fields to search when no fields are specified in a search. If no fields are specified in a search and this option is not specified, all text and text-array fields are searched. You can specify a weight for each field to control the relative importance of each field when Amazon CloudSearch calculates relevance scores. To specify a field weight, append a caret (\code{^}) symbol and the weight to the field name. For example, to boost the importance of the \code{title} field over the \code{description} field you could specify: \code{"fields":["title^5","description"]}. Valid values: The name of any configured field and an optional numeric value greater than zero. Default: All \code{text} and \code{text-array} fields. Valid for: \code{simple}, \code{structured}, \code{lucene}, and \code{dismax}.
 \item \code{operators}: An array of the operators or special characters you want to disable for the simple query parser. If you disable the \code{and}, \code{or}, or \code{not} operators, the corresponding operators (\code{+}, \code{|}, \code{-}) have no special meaning and are dropped from the search string. Similarly, disabling \code{prefix} disables the wildcard operator (\code{*}) and disabling \code{phrase} disables the ability to search for phrases by enclosing phrases in double quotes. Disabling precedence disables the ability to control order of precedence using parentheses. Disabling \code{near} disables the ability to use the ~ operator to perform a sloppy phrase search. Disabling the \code{fuzzy} operator disables the ability to use the ~ operator to perform a fuzzy search. \code{escape} disables the ability to use a backslash (\code{\}) to escape special characters within the search string. Disabling whitespace is an advanced option that prevents the parser from tokenizing 
 \item \code{phraseFields}: An array of the \code{text} or \code{text-array} fields you want to use for phrase searches. When the terms in the search string appear in close proximity within a field, the field scores higher. You can specify a weight for each field to boost that score. The \code{phraseSlop} option controls how much the matches can deviate from the search string and still be boosted. To specify a field weight, append a caret (\code{^}) symbol and the weight to the field name. For example, to boost phrase matches in the \code{title} field over the \code{abstract} field, you could specify: \code{"phraseFields":["title^3", "plot"]} Valid values: The name of any \code{text} or \code{text-array} field and an optional numeric value greater than zero. Default: No fields. If you don't specify any fields with \code{phraseFields}, proximity scoring is disabled even if \code{phraseSlop} is specified. Valid for: \code{dismax}.
@@ -100,6 +88,23 @@ For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/de
 
 The endpoint for submitting \code{Search} requests is domain-specific. You submit search requests to a domain's search endpoint. To get the search endpoint for your domain, use the Amazon CloudSearch configuration service \code{DescribeDomains} action. A domain's endpoints are also displayed on the domain dashboard in the Amazon CloudSearch console.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{search(
+  cursor = "string",
+  expr = "string",
+  facet = "string",
+  filterQuery = "string",
+  highlight = "string",
+  partial = TRUE|FALSE,
+  query = "string",
+  queryOptions = "string",
+  queryParser = "simple"|"structured"|"lucene"|"dismax",
+  return = "string",
+  size = 123,
+  sort = "string",
+  start = 123,
+  stats = "string"
+)
 }
+}
+

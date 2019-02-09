@@ -4,10 +4,7 @@
 \alias{associate_tag_option_with_resource}
 \title{Associate the specified TagOption with the specified portfolio or product}
 \usage{
-associate_tag_option_with_resource(
-  ResourceId = "string",
-  TagOptionId = "string"
-)
+associate_tag_option_with_resource(ResourceId, TagOptionId)
 }
 \arguments{
 \item{ResourceId}{[required] The resource identifier.}
@@ -17,6 +14,11 @@ associate_tag_option_with_resource(
 \description{
 Associate the specified TagOption with the specified portfolio or product.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_tag_option_with_resource(
+  ResourceId = "string",
+  TagOptionId = "string"
+)
 }
+}
+

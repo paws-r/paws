@@ -4,9 +4,7 @@
 \alias{get_distribution_config}
 \title{Get the configuration information about a distribution}
 \usage{
-get_distribution_config(
-  Id = "string"
-)
+get_distribution_config(Id)
 }
 \arguments{
 \item{Id}{[required] The distribution's ID.}
@@ -14,6 +12,10 @@ get_distribution_config(
 \description{
 Get the configuration information about a distribution.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_distribution_config(
+  Id = "string"
+)
 }
+}
+

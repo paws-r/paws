@@ -4,10 +4,7 @@
 \alias{get_traffic_policy}
 \title{Gets information about a specific traffic policy version}
 \usage{
-get_traffic_policy(
-  Id = "string",
-  Version = 123
-)
+get_traffic_policy(Id, Version)
 }
 \arguments{
 \item{Id}{[required] The ID of the traffic policy that you want to get information about.}
@@ -17,6 +14,11 @@ get_traffic_policy(
 \description{
 Gets information about a specific traffic policy version.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_traffic_policy(
+  Id = "string",
+  Version = 123
+)
 }
+}
+

@@ -4,12 +4,7 @@
 \alias{create_sample_findings}
 \title{Generates example findings of types specified by the list of finding types}
 \usage{
-create_sample_findings(
-  DetectorId = "string",
-  FindingTypes = list(
-    "string"
-  )
-)
+create_sample_findings(DetectorId, FindingTypes = NULL)
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the detector to create sample findings for.}
@@ -19,6 +14,13 @@ create_sample_findings(
 \description{
 Generates example findings of types specified by the list of finding types. If 'NULL' is specified for findingTypes, the API generates example findings of all supported finding types.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_sample_findings(
+  DetectorId = "string",
+  FindingTypes = list(
+    "string"
+  )
+)
 }
+}
+

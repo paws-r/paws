@@ -4,19 +4,11 @@
 \alias{create_route}
 \title{Creates a route in a route table within a VPC}
 \usage{
-create_route(
-  DestinationCidrBlock = "string",
-  DestinationIpv6CidrBlock = "string",
-  DryRun = TRUE|FALSE,
-  EgressOnlyInternetGatewayId = "string",
-  GatewayId = "string",
-  InstanceId = "string",
-  NatGatewayId = "string",
-  TransitGatewayId = "string",
-  NetworkInterfaceId = "string",
-  RouteTableId = "string",
-  VpcPeeringConnectionId = "string"
-)
+create_route(DestinationCidrBlock = NULL,
+  DestinationIpv6CidrBlock = NULL, DryRun = NULL,
+  EgressOnlyInternetGatewayId = NULL, GatewayId = NULL,
+  InstanceId = NULL, NatGatewayId = NULL, NetworkInterfaceId = NULL,
+  RouteTableId, VpcPeeringConnectionId = NULL)
 }
 \arguments{
 \item{DestinationCidrBlock}{The IPv4 CIDR address block used for the destination match. Routing decisions are based on the most specific match.}
@@ -32,8 +24,6 @@ create_route(
 \item{InstanceId}{The ID of a NAT instance in your VPC. The operation fails if you specify an instance ID unless exactly one network interface is attached.}
 
 \item{NatGatewayId}{[IPv4 traffic only] The ID of a NAT gateway.}
-
-\item{TransitGatewayId}{The ID of a transit gateway.}
 
 \item{NetworkInterfaceId}{The ID of a network interface.}
 
@@ -57,14 +47,30 @@ Both routes apply to the traffic destined for \code{192.0.2.3}. However, the sec
 
 For more information about route tables, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_route(
+  DestinationCidrBlock = "string",
+  DestinationIpv6CidrBlock = "string",
+  DryRun = TRUE|FALSE,
+  EgressOnlyInternetGatewayId = "string",
+  GatewayId = "string",
+  InstanceId = "string",
+  NatGatewayId = "string",
+  NetworkInterfaceId = "string",
+  RouteTableId = "string",
+  VpcPeeringConnectionId = "string"
+)
+}
+}
+
 \examples{
 # This example creates a route for the specified route table. The route
 # matches all traffic (0.0.0.0/0) and routes it to the specified Internet
 # gateway.
-create_route(
+\donttest{create_route(
   DestinationCidrBlock = "0.0.0.0/0",
   GatewayId = "igw-c0a643a9",
   RouteTableId = "rtb-22574640"
-)
+)}
 
 }

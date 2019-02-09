@@ -6,9 +6,9 @@
 \alias{paws.health-package}
 \title{paws.health: AWS Health APIs and Notifications}
 \description{
-The AWS Health API provides programmatic access to the AWS
-Health information that is presented in the [AWS Personal Health
-Dashboard](https://phd. aws. amazon. com/phd/home#/).
+The AWS Health API provides programmatic access to
+    the AWS Health information that is presented in the [AWS Personal
+    Health Dashboard](https://phd. aws. amazon. com/phd/home#/).
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

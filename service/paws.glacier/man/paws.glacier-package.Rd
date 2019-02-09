@@ -6,7 +6,8 @@
 \alias{paws.glacier-package}
 \title{paws.glacier: Amazon Glacier}
 \description{
-Amazon Glacier is a storage solution for \"cold data.\"
+Amazon Glacier is a storage solution for
+    \"cold data.\"
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

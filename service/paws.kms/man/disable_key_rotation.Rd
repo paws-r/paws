@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.kms_operations.R
 \name{disable_key_rotation}
 \alias{disable_key_rotation}
-\title{Disables \link{automatic rotation of the key material}(http://docs}
+\title{Disables automatic rotation of the key material for the specified customer master key (CMK)}
 \usage{
-disable_key_rotation(
-  KeyId = "string"
-)
+disable_key_rotation(KeyId)
 }
 \arguments{
 \item{KeyId}{[required] A unique identifier for the customer master key (CMK).
@@ -27,11 +25,18 @@ Disables \href{http://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.
 \details{
 The result of this operation varies with the key state of the CMK. For details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key} in the \emph{AWS Key Management Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{disable_key_rotation(
+  KeyId = "string"
+)
+}
+}
+
 \examples{
 # The following example disables automatic annual rotation of the key
 # material for the specified CMK.
-disable_key_rotation(
+\donttest{disable_key_rotation(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
+)}
 
 }

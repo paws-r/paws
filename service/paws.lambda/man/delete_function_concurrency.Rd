@@ -4,12 +4,10 @@
 \alias{delete_function_concurrency}
 \title{Removes concurrent execution limits from this function}
 \usage{
-delete_function_concurrency(
-  FunctionName = "string"
-)
+delete_function_concurrency(FunctionName)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function.
+\item{FunctionName}{[required] The name of the lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -23,6 +21,10 @@ The length constraint applies only to the full ARN. If you specify only the func
 \description{
 Removes concurrent execution limits from this function. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html}{Managing Concurrency}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_function_concurrency(
+  FunctionName = "string"
+)
 }
+}
+

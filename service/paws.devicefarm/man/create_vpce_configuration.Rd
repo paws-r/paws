@@ -4,12 +4,8 @@
 \alias{create_vpce_configuration}
 \title{Creates a configuration record in Device Farm for your Amazon Virtual Private Cloud (VPC) endpoint}
 \usage{
-create_vpce_configuration(
-  vpceConfigurationName = "string",
-  vpceServiceName = "string",
-  serviceDnsName = "string",
-  vpceConfigurationDescription = "string"
-)
+create_vpce_configuration(vpceConfigurationName, vpceServiceName,
+  serviceDnsName, vpceConfigurationDescription = NULL)
 }
 \arguments{
 \item{vpceConfigurationName}{[required] The friendly name you give to your VPC endpoint configuration, to manage your configurations more easily.}
@@ -23,6 +19,13 @@ create_vpce_configuration(
 \description{
 Creates a configuration record in Device Farm for your Amazon Virtual Private Cloud (VPC) endpoint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_vpce_configuration(
+  vpceConfigurationName = "string",
+  vpceServiceName = "string",
+  serviceDnsName = "string",
+  vpceConfigurationDescription = "string"
+)
 }
+}
+

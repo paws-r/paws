@@ -4,10 +4,7 @@
 \alias{associate_skill_with_skill_group}
 \title{Associates a skill with a skill group}
 \usage{
-associate_skill_with_skill_group(
-  SkillGroupArn = "string",
-  SkillId = "string"
-)
+associate_skill_with_skill_group(SkillGroupArn = NULL, SkillId)
 }
 \arguments{
 \item{SkillGroupArn}{The ARN of the skill group to associate the skill to. Required.}
@@ -17,6 +14,11 @@ associate_skill_with_skill_group(
 \description{
 Associates a skill with a skill group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_skill_with_skill_group(
+  SkillGroupArn = "string",
+  SkillId = "string"
+)
 }
+}
+

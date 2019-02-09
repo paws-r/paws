@@ -4,11 +4,8 @@
 \alias{get_device_definition_version}
 \title{Retrieves information about a device definition version}
 \usage{
-get_device_definition_version(
-  DeviceDefinitionId = "string",
-  DeviceDefinitionVersionId = "string",
-  NextToken = "string"
-)
+get_device_definition_version(DeviceDefinitionId,
+  DeviceDefinitionVersionId, NextToken = NULL)
 }
 \arguments{
 \item{DeviceDefinitionId}{[required] The ID of the device definition.}
@@ -20,6 +17,12 @@ get_device_definition_version(
 \description{
 Retrieves information about a device definition version.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_device_definition_version(
+  DeviceDefinitionId = "string",
+  DeviceDefinitionVersionId = "string",
+  NextToken = "string"
+)
 }
+}
+

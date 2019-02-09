@@ -4,10 +4,7 @@
 \alias{set_identity_feedback_forwarding_enabled}
 \title{Given an identity (an email address or a domain), enables or disables whether Amazon SES forwards bounce and complaint notifications as email}
 \usage{
-set_identity_feedback_forwarding_enabled(
-  Identity = "string",
-  ForwardingEnabled = TRUE|FALSE
-)
+set_identity_feedback_forwarding_enabled(Identity, ForwardingEnabled)
 }
 \arguments{
 \item{Identity}{[required] The identity for which to set bounce and complaint notification forwarding. Examples: \code{user@example.com}, \code{example.com}.}
@@ -24,12 +21,20 @@ You can execute this operation no more than once per second.
 
 For more information about using notifications with Amazon SES, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html}{Amazon SES Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{set_identity_feedback_forwarding_enabled(
+  Identity = "string",
+  ForwardingEnabled = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # The following example configures Amazon SES to forward an identity's
 # bounces and complaints via email:
-set_identity_feedback_forwarding_enabled(
+\donttest{set_identity_feedback_forwarding_enabled(
   ForwardingEnabled = TRUE,
   Identity = "user@example.com"
-)
+)}
 
 }

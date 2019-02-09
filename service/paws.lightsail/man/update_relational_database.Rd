@@ -4,17 +4,11 @@
 \alias{update_relational_database}
 \title{Allows the update of one or more attributes of a database in Amazon Lightsail}
 \usage{
-update_relational_database(
-  relationalDatabaseName = "string",
-  masterUserPassword = "string",
-  rotateMasterUserPassword = TRUE|FALSE,
-  preferredBackupWindow = "string",
-  preferredMaintenanceWindow = "string",
-  enableBackupRetention = TRUE|FALSE,
-  disableBackupRetention = TRUE|FALSE,
-  publiclyAccessible = TRUE|FALSE,
-  applyImmediately = TRUE|FALSE
-)
+update_relational_database(relationalDatabaseName,
+  masterUserPassword = NULL, rotateMasterUserPassword = NULL,
+  preferredBackupWindow = NULL, preferredMaintenanceWindow = NULL,
+  enableBackupRetention = NULL, disableBackupRetention = NULL,
+  publiclyAccessible = NULL, applyImmediately = NULL)
 }
 \arguments{
 \item{relationalDatabaseName}{[required] The name of your database to update.}
@@ -73,9 +67,19 @@ Allows the update of one or more attributes of a database in Amazon Lightsail.
 }
 \details{
 Updates are applied immediately, or in cases where the updates could result in an outage, are applied during the database's predefined maintenance window.
-
-The \code{update relational database} operation supports tag-based access control via resource tags applied to the resource identified by relationalDatabaseName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_relational_database(
+  relationalDatabaseName = "string",
+  masterUserPassword = "string",
+  rotateMasterUserPassword = TRUE|FALSE,
+  preferredBackupWindow = "string",
+  preferredMaintenanceWindow = "string",
+  enableBackupRetention = TRUE|FALSE,
+  disableBackupRetention = TRUE|FALSE,
+  publiclyAccessible = TRUE|FALSE,
+  applyImmediately = TRUE|FALSE
+)
 }
+}
+

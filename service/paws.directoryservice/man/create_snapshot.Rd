@@ -4,10 +4,7 @@
 \alias{create_snapshot}
 \title{Creates a snapshot of a Simple AD or Microsoft AD directory in the AWS cloud}
 \usage{
-create_snapshot(
-  DirectoryId = "string",
-  Name = "string"
-)
+create_snapshot(DirectoryId, Name = NULL)
 }
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory of which to take a snapshot.}
@@ -20,6 +17,11 @@ Creates a snapshot of a Simple AD or Microsoft AD directory in the AWS cloud.
 \details{
 You cannot take snapshots of AD Connector directories.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_snapshot(
+  DirectoryId = "string",
+  Name = "string"
+)
 }
+}
+

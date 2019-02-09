@@ -2,16 +2,10 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{list_assignments_for_hit}
 \alias{list_assignments_for_hit}
-\title{The \code{ListAssignmentsForHIT} operation retrieves completed assignments for a HIT}
+\title{The ListAssignmentsForHIT operation retrieves completed assignments for a HIT}
 \usage{
-list_assignments_for_hit(
-  HITId = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  AssignmentStatuses = list(
-    "Submitted"|"Approved"|"Rejected"
-  )
-)
+list_assignments_for_hit(HITId, NextToken = NULL, MaxResults = NULL,
+  AssignmentStatuses = NULL)
 }
 \arguments{
 \item{HITId}{[required] The ID of the HIT.}
@@ -34,6 +28,15 @@ Only the Requester who created the HIT can retrieve the assignments for that HIT
 
 Results are sorted and divided into numbered pages and the operation returns a single page of results. You can use the parameters of the operation to control sorting and pagination.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_assignments_for_hit(
+  HITId = "string",
+  NextToken = "string",
+  MaxResults = 123,
+  AssignmentStatuses = list(
+    "Submitted"|"Approved"|"Rejected"
+  )
+)
 }
+}
+

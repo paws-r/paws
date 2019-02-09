@@ -4,10 +4,7 @@
 \alias{remove_auto_scaling_policy}
 \title{Removes an automatic scaling policy from a specified instance group within an EMR cluster}
 \usage{
-remove_auto_scaling_policy(
-  ClusterId = "string",
-  InstanceGroupId = "string"
-)
+remove_auto_scaling_policy(ClusterId, InstanceGroupId)
 }
 \arguments{
 \item{ClusterId}{[required] Specifies the ID of a cluster. The instance group to which the automatic scaling policy is applied is within this cluster.}
@@ -17,6 +14,11 @@ remove_auto_scaling_policy(
 \description{
 Removes an automatic scaling policy from a specified instance group within an EMR cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_auto_scaling_policy(
+  ClusterId = "string",
+  InstanceGroupId = "string"
+)
 }
+}
+

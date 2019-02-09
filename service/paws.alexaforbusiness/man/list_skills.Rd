@@ -4,7 +4,25 @@
 \alias{list_skills}
 \title{Lists all enabled skills in a specific skill group}
 \usage{
-list_skills(
+list_skills(SkillGroupArn = NULL, EnablementType = NULL,
+  SkillType = NULL, NextToken = NULL, MaxResults = NULL)
+}
+\arguments{
+\item{SkillGroupArn}{The ARN of the skill group for which to list enabled skills. Required.}
+
+\item{EnablementType}{Whether the skill is enabled under the user's account, or if it requires linking to be used.}
+
+\item{SkillType}{Whether the skill is publicly available or is a private skill.}
+
+\item{NextToken}{An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by \code{MaxResults}. Required.}
+
+\item{MaxResults}{The maximum number of results to include in the response. If more results exist than the specified \code{MaxResults} value, a token is included in the response so that the remaining results can be retrieved. Required.}
+}
+\description{
+Lists all enabled skills in a specific skill group.
+}
+\section{Accepted Parameters}{
+\preformatted{list_skills(
   SkillGroupArn = "string",
   EnablementType = "ENABLED"|"PENDING",
   SkillType = "PUBLIC"|"PRIVATE"|"ALL",
@@ -12,20 +30,5 @@ list_skills(
   MaxResults = 123
 )
 }
-\arguments{
-\item{SkillGroupArn}{The ARN of the skill group for which to list enabled skills.}
-
-\item{EnablementType}{Whether the skill is enabled under the user's account, or if it requires linking to be used.}
-
-\item{SkillType}{Whether the skill is publicly available or is a private skill.}
-
-\item{NextToken}{An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by \code{MaxResults}.}
-
-\item{MaxResults}{The maximum number of results to include in the response. If more results exist than the specified \code{MaxResults} value, a token is included in the response so that the remaining results can be retrieved.}
 }
-\description{
-Lists all enabled skills in a specific skill group.
-}
-\examples{
 
-}

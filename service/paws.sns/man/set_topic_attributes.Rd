@@ -4,29 +4,26 @@
 \alias{set_topic_attributes}
 \title{Allows a topic owner to set an attribute of the topic to a new value}
 \usage{
-set_topic_attributes(
-  TopicArn = "string",
-  AttributeName = "string",
-  AttributeValue = "string"
-)
+set_topic_attributes(TopicArn, AttributeName, AttributeValue = NULL)
 }
 \arguments{
 \item{TopicArn}{[required] The ARN of the topic to modify.}
 
-\item{AttributeName}{[required] A map of attributes with their corresponding values.
+\item{AttributeName}{[required] The name of the attribute you want to set. Only a subset of the topic's attributes are mutable.
 
-The following lists the names, descriptions, and values of the special request parameters that the \code{SetTopicAttributes} action uses:
-\itemize{
-\item \code{DeliveryPolicy} -- The policy that defines how Amazon SNS retries failed deliveries to HTTP/S endpoints.
-\item \code{DisplayName} -- The display name to use for a topic with SMS subscriptions.
-\item \code{Policy} -- The policy that defines who can access your topic. By default, only the topic owner can publish or subscribe to the topic.
-}}
+Valid values: \code{Policy} | \code{DisplayName} | \code{DeliveryPolicy}}
 
 \item{AttributeValue}{The new value for the attribute.}
 }
 \description{
 Allows a topic owner to set an attribute of the topic to a new value.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_topic_attributes(
+  TopicArn = "string",
+  AttributeName = "string",
+  AttributeValue = "string"
+)
 }
+}
+

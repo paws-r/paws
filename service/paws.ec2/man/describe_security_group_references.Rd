@@ -4,12 +4,7 @@
 \alias{describe_security_group_references}
 \title{[EC2-VPC only] Describes the VPCs on the other side of a VPC peering connection that are referencing the security groups you've specified in this request}
 \usage{
-describe_security_group_references(
-  DryRun = TRUE|FALSE,
-  GroupId = list(
-    "string"
-  )
-)
+describe_security_group_references(DryRun = NULL, GroupId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -19,13 +14,23 @@ describe_security_group_references(
 \description{
 [EC2-VPC only] Describes the VPCs on the other side of a VPC peering connection that are referencing the security groups you've specified in this request.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_security_group_references(
+  DryRun = TRUE|FALSE,
+  GroupId = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example describes the security group references for the specified
 # security group.
-describe_security_group_references(
+\donttest{describe_security_group_references(
   GroupId = list(
     "sg-903004f8"
   )
-)
+)}
 
 }

@@ -4,15 +4,8 @@
 \alias{modify_event_subscription}
 \title{Modifies an existing AWS DMS event notification subscription}
 \usage{
-modify_event_subscription(
-  SubscriptionName = "string",
-  SnsTopicArn = "string",
-  SourceType = "string",
-  EventCategories = list(
-    "string"
-  ),
-  Enabled = TRUE|FALSE
-)
+modify_event_subscription(SubscriptionName, SnsTopicArn = NULL,
+  SourceType = NULL, EventCategories = NULL, Enabled = NULL)
 }
 \arguments{
 \item{SubscriptionName}{[required] The name of the AWS DMS event notification subscription to be modified.}
@@ -30,6 +23,16 @@ Valid values: replication-instance | migration-task}
 \description{
 Modifies an existing AWS DMS event notification subscription.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_event_subscription(
+  SubscriptionName = "string",
+  SnsTopicArn = "string",
+  SourceType = "string",
+  EventCategories = list(
+    "string"
+  ),
+  Enabled = TRUE|FALSE
+)
 }
+}
+

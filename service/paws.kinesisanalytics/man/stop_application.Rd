@@ -4,9 +4,7 @@
 \alias{stop_application}
 \title{Stops the application from processing input data}
 \usage{
-stop_application(
-  ApplicationName = "string"
-)
+stop_application(ApplicationName)
 }
 \arguments{
 \item{ApplicationName}{[required] Name of the running application to stop.}
@@ -17,6 +15,10 @@ Stops the application from processing input data. You can stop an application on
 \details{
 This operation requires permissions to perform the \code{kinesisanalytics:StopApplication} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_application(
+  ApplicationName = "string"
+)
 }
+}
+

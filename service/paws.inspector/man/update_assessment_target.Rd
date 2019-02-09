@@ -4,11 +4,8 @@
 \alias{update_assessment_target}
 \title{Updates the assessment target that is specified by the ARN of the assessment target}
 \usage{
-update_assessment_target(
-  assessmentTargetArn = "string",
-  assessmentTargetName = "string",
-  resourceGroupArn = "string"
-)
+update_assessment_target(assessmentTargetArn, assessmentTargetName,
+  resourceGroupArn = NULL)
 }
 \arguments{
 \item{assessmentTargetArn}{[required] The ARN of the assessment target that you want to update.}
@@ -23,13 +20,22 @@ Updates the assessment target that is specified by the ARN of the assessment tar
 \details{
 If resourceGroupArn is not specified, all EC2 instances in the current AWS account and region are included in the assessment target.
 }
+\section{Accepted Parameters}{
+\preformatted{update_assessment_target(
+  assessmentTargetArn = "string",
+  assessmentTargetName = "string",
+  resourceGroupArn = "string"
+)
+}
+}
+
 \examples{
 # Updates the assessment target that is specified by the ARN of the
 # assessment target.
-update_assessment_target(
+\donttest{update_assessment_target(
   assessmentTargetArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX",
   assessmentTargetName = "Example",
   resourceGroupArn = "arn:aws:inspector:us-west-2:123456789012:resourcegroup/0-yNbgL5Pt"
-)
+)}
 
 }

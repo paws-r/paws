@@ -4,12 +4,8 @@
 \alias{describe_provisioned_product_plan}
 \title{Gets information about the resource changes for the specified plan}
 \usage{
-describe_provisioned_product_plan(
-  AcceptLanguage = "string",
-  PlanId = "string",
-  PageSize = 123,
-  PageToken = "string"
-)
+describe_provisioned_product_plan(AcceptLanguage = NULL, PlanId,
+  PageSize = NULL, PageToken = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -28,6 +24,13 @@ describe_provisioned_product_plan(
 \description{
 Gets information about the resource changes for the specified plan.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_provisioned_product_plan(
+  AcceptLanguage = "string",
+  PlanId = "string",
+  PageSize = 123,
+  PageToken = "string"
+)
 }
+}
+

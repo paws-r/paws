@@ -4,46 +4,20 @@
 \alias{copy_object}
 \title{Creates a copy of an object that is already stored in Amazon S3}
 \usage{
-copy_object(
-  ACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"aws-exec-read"|"bucket-owner-read"|"bucket-owner-full-control",
-  Bucket = "string",
-  CacheControl = "string",
-  ContentDisposition = "string",
-  ContentEncoding = "string",
-  ContentLanguage = "string",
-  ContentType = "string",
-  CopySource = "string",
-  CopySourceIfMatch = "string",
-  CopySourceIfModifiedSince = as.POSIXct("2015-01-01"),
-  CopySourceIfNoneMatch = "string",
-  CopySourceIfUnmodifiedSince = as.POSIXct("2015-01-01"),
-  Expires = as.POSIXct("2015-01-01"),
-  GrantFullControl = "string",
-  GrantRead = "string",
-  GrantReadACP = "string",
-  GrantWriteACP = "string",
-  Key = "string",
-  Metadata = list(
-    "string"
-  ),
-  MetadataDirective = "COPY"|"REPLACE",
-  TaggingDirective = "COPY"|"REPLACE",
-  ServerSideEncryption = "AES256"|"aws:kms",
-  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER",
-  WebsiteRedirectLocation = "string",
-  SSECustomerAlgorithm = "string",
-  SSECustomerKey = raw,
-  SSECustomerKeyMD5 = "string",
-  SSEKMSKeyId = "string",
-  CopySourceSSECustomerAlgorithm = "string",
-  CopySourceSSECustomerKey = raw,
-  CopySourceSSECustomerKeyMD5 = "string",
-  RequestPayer = "requester",
-  Tagging = "string",
-  ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",
-  ObjectLockRetainUntilDate = as.POSIXct("2015-01-01"),
-  ObjectLockLegalHoldStatus = "ON"|"OFF"
-)
+copy_object(ACL = NULL, Bucket, CacheControl = NULL,
+  ContentDisposition = NULL, ContentEncoding = NULL,
+  ContentLanguage = NULL, ContentType = NULL, CopySource,
+  CopySourceIfMatch = NULL, CopySourceIfModifiedSince = NULL,
+  CopySourceIfNoneMatch = NULL, CopySourceIfUnmodifiedSince = NULL,
+  Expires = NULL, GrantFullControl = NULL, GrantRead = NULL,
+  GrantReadACP = NULL, GrantWriteACP = NULL, Key, Metadata = NULL,
+  MetadataDirective = NULL, TaggingDirective = NULL,
+  ServerSideEncryption = NULL, StorageClass = NULL,
+  WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL,
+  SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL,
+  SSEKMSKeyId = NULL, CopySourceSSECustomerAlgorithm = NULL,
+  CopySourceSSECustomerKey = NULL, CopySourceSSECustomerKeyMD5 = NULL,
+  RequestPayer = NULL, Tagging = NULL)
 }
 \arguments{
 \item{ACL}{The canned ACL to apply to the object.}
@@ -96,7 +70,7 @@ copy_object(
 
 \item{SSECustomerAlgorithm}{Specifies the algorithm to use to when encrypting the object (e.g., AES256).}
 
-\item{SSECustomerKey}{Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm header.}
+\item{SSECustomerKey}{Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header.}
 
 \item{SSECustomerKeyMD5}{Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.}
 
@@ -111,22 +85,57 @@ copy_object(
 \item{RequestPayer}{}
 
 \item{Tagging}{The tag-set for the object destination object this value must be used in conjunction with the TaggingDirective. The tag-set must be encoded as URL Query parameters}
-
-\item{ObjectLockMode}{The Object Lock mode that you want to apply to the copied object.}
-
-\item{ObjectLockRetainUntilDate}{The date and time when you want the copied object's Object Lock to expire.}
-
-\item{ObjectLockLegalHoldStatus}{Specifies whether you want to apply a Legal Hold to the copied object.}
 }
 \description{
 Creates a copy of an object that is already stored in Amazon S3.
 }
+\section{Accepted Parameters}{
+\preformatted{copy_object(
+  ACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"aws-exec-read"|"bucket-owner-read"|"bucket-owner-full-control",
+  Bucket = "string",
+  CacheControl = "string",
+  ContentDisposition = "string",
+  ContentEncoding = "string",
+  ContentLanguage = "string",
+  ContentType = "string",
+  CopySource = "string",
+  CopySourceIfMatch = "string",
+  CopySourceIfModifiedSince = as.POSIXct("2015-01-01"),
+  CopySourceIfNoneMatch = "string",
+  CopySourceIfUnmodifiedSince = as.POSIXct("2015-01-01"),
+  Expires = as.POSIXct("2015-01-01"),
+  GrantFullControl = "string",
+  GrantRead = "string",
+  GrantReadACP = "string",
+  GrantWriteACP = "string",
+  Key = "string",
+  Metadata = list(
+    "string"
+  ),
+  MetadataDirective = "COPY"|"REPLACE",
+  TaggingDirective = "COPY"|"REPLACE",
+  ServerSideEncryption = "AES256"|"aws:kms",
+  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA",
+  WebsiteRedirectLocation = "string",
+  SSECustomerAlgorithm = "string",
+  SSECustomerKey = raw,
+  SSECustomerKeyMD5 = "string",
+  SSEKMSKeyId = "string",
+  CopySourceSSECustomerAlgorithm = "string",
+  CopySourceSSECustomerKey = raw,
+  CopySourceSSECustomerKeyMD5 = "string",
+  RequestPayer = "requester",
+  Tagging = "string"
+)
+}
+}
+
 \examples{
 # The following example copies an object from one bucket to another.
-copy_object(
+\donttest{copy_object(
   Bucket = "destinationbucket",
   CopySource = "/sourcebucket/HappyFacejpg",
   Key = "HappyFaceCopyjpg"
-)
+)}
 
 }

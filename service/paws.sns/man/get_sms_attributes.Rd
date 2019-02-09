@@ -4,11 +4,7 @@
 \alias{get_sms_attributes}
 \title{Returns the settings for sending SMS messages from your account}
 \usage{
-get_sms_attributes(
-  attributes = list(
-    "string"
-  )
-)
+get_sms_attributes(attributes = NULL)
 }
 \arguments{
 \item{attributes}{A list of the individual attribute names, such as \code{MonthlySpendLimit}, for which you want values.
@@ -23,6 +19,12 @@ Returns the settings for sending SMS messages from your account.
 \details{
 These settings are set with the \code{SetSMSAttributes} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_sms_attributes(
+  attributes = list(
+    "string"
+  )
+)
 }
+}
+

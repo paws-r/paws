@@ -4,9 +4,7 @@
 \alias{describe_job}
 \title{Describes a job}
 \usage{
-describe_job(
-  jobId = "string"
-)
+describe_job(jobId)
 }
 \arguments{
 \item{jobId}{[required] The unique identifier you assigned to this job when it was created.}
@@ -14,6 +12,10 @@ describe_job(
 \description{
 Describes a job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_job(
+  jobId = "string"
+)
 }
+}
+

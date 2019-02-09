@@ -4,19 +4,8 @@
 \alias{search_faces_by_image}
 \title{For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces}
 \usage{
-search_faces_by_image(
-  CollectionId = "string",
-  Image = list(
-    Bytes = raw,
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  MaxFaces = 123,
-  FaceMatchThreshold = 123.0
-)
+search_faces_by_image(CollectionId, Image, MaxFaces = NULL,
+  FaceMatchThreshold = NULL)
 }
 \arguments{
 \item{CollectionId}{[required] ID of the collection to search.}
@@ -43,10 +32,27 @@ For an example, Searching for a Face Using an Image in the Amazon Rekognition De
 
 This operation requires permissions to perform the \code{rekognition:SearchFacesByImage} action.
 }
+\section{Accepted Parameters}{
+\preformatted{search_faces_by_image(
+  CollectionId = "string",
+  Image = list(
+    Bytes = raw,
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  MaxFaces = 123,
+  FaceMatchThreshold = 123.0
+)
+}
+}
+
 \examples{
 # This operation searches for faces in a Rekognition collection that match
 # the largest face in an S3 bucket stored image.
-search_faces_by_image(
+\donttest{search_faces_by_image(
   CollectionId = "myphotos",
   FaceMatchThreshold = 95L,
   Image = list(
@@ -56,6 +62,6 @@ search_faces_by_image(
     )
   ),
   MaxFaces = 5L
-)
+)}
 
 }

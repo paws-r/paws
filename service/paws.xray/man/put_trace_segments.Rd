@@ -4,11 +4,7 @@
 \alias{put_trace_segments}
 \title{Uploads segment documents to AWS X-Ray}
 \usage{
-put_trace_segments(
-  TraceSegmentDocuments = list(
-    "string"
-  )
-)
+put_trace_segments(TraceSegmentDocuments)
 }
 \arguments{
 \item{TraceSegmentDocuments}{[required] A string containing a JSON document defining one or more segments or subsegments.}
@@ -38,6 +34,12 @@ A \code{trace_id} consists of three numbers separated by hyphens. For example, 1
 \item A 96-bit identifier for the trace, globally unique, in 24 hexadecimal digits.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_trace_segments(
+  TraceSegmentDocuments = list(
+    "string"
+  )
+)
 }
+}
+

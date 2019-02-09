@@ -2,13 +2,10 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{create_additional_assignments_for_hit}
 \alias{create_additional_assignments_for_hit}
-\title{The \code{CreateAdditionalAssignmentsForHIT} operation increases the maximum number of assignments of an existing HIT}
+\title{The CreateAdditionalAssignmentsForHIT operation increases the maximum number of assignments of an existing HIT}
 \usage{
-create_additional_assignments_for_hit(
-  HITId = "string",
-  NumberOfAdditionalAssignments = 123,
-  UniqueRequestToken = "string"
-)
+create_additional_assignments_for_hit(HITId, NumberOfAdditionalAssignments,
+  UniqueRequestToken = NULL)
 }
 \arguments{
 \item{HITId}{[required] The ID of the HIT to extend.}
@@ -27,6 +24,12 @@ To extend the maximum number of assignments, specify the number of additional as
 \item HITs that were created before July 22, 2015 cannot be extended. Attempting to extend HITs that were created before July 22, 2015 will result in an \code{AWS.MechanicalTurk.HITTooOldForExtension} exception.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_additional_assignments_for_hit(
+  HITId = "string",
+  NumberOfAdditionalAssignments = 123,
+  UniqueRequestToken = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{get_permission_policy}
 \title{Returns the IAM policy attached to the RuleGroup}
 \usage{
-get_permission_policy(
-  ResourceArn = "string"
-)
+get_permission_policy(ResourceArn)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the RuleGroup for which you want to get the policy.}
@@ -14,6 +12,10 @@ get_permission_policy(
 \description{
 Returns the IAM policy attached to the RuleGroup.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_permission_policy(
+  ResourceArn = "string"
+)
 }
+}
+

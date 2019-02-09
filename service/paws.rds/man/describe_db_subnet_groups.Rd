@@ -4,19 +4,8 @@
 \alias{describe_db_subnet_groups}
 \title{Returns a list of DBSubnetGroup descriptions}
 \usage{
-describe_db_subnet_groups(
-  DBSubnetGroupName = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_db_subnet_groups(DBSubnetGroupName = NULL, Filters = NULL,
+  MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{DBSubnetGroupName}{The name of the DB subnet group to return details for.}
@@ -37,6 +26,20 @@ Returns a list of DBSubnetGroup descriptions. If a DBSubnetGroupName is specifie
 \details{
 For an overview of CIDR ranges, go to the \href{http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing}{Wikipedia Tutorial}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_db_subnet_groups(
+  DBSubnetGroupName = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

@@ -4,25 +4,12 @@
 \alias{start_transcription_job}
 \title{Starts an asynchronous job to transcribe speech to text}
 \usage{
-start_transcription_job(
-  TranscriptionJobName = "string",
-  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT",
-  MediaSampleRateHertz = 123,
-  MediaFormat = "mp3"|"mp4"|"wav"|"flac",
-  Media = list(
-    MediaFileUri = "string"
-  ),
-  OutputBucketName = "string",
-  Settings = list(
-    VocabularyName = "string",
-    ShowSpeakerLabels = TRUE|FALSE,
-    MaxSpeakerLabels = 123,
-    ChannelIdentification = TRUE|FALSE
-  )
-)
+start_transcription_job(TranscriptionJobName, LanguageCode,
+  MediaSampleRateHertz = NULL, MediaFormat, Media,
+  OutputBucketName = NULL, Settings = NULL)
 }
 \arguments{
-\item{TranscriptionJobName}{[required] The name of the job. Note that you can't use the strings "." or ".." by themselves as the job name. The name must also be unique within an AWS account.}
+\item{TranscriptionJobName}{[required] The name of the job. You can't use the strings "." or ".." in the job name. The name must be unique within an AWS account.}
 
 \item{LanguageCode}{[required] The language code for the language used in the input media file.}
 
@@ -41,8 +28,25 @@ If you don't set the \code{OutputBucketName}, Amazon Transcribe generates a pre-
 \item{Settings}{A \code{Settings} object that provides optional settings for a transcription job.}
 }
 \description{
-Starts an asynchronous job to transcribe speech to text.
+Starts an asynchronous job to transcribe speech to text. Note that en-AU, en-UK, and fr-CA languages are in preview and are only available to whitelisted customers.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{start_transcription_job(
+  TranscriptionJobName = "string",
+  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-UK",
+  MediaSampleRateHertz = 123,
+  MediaFormat = "mp3"|"mp4"|"wav"|"flac",
+  Media = list(
+    MediaFileUri = "string"
+  ),
+  OutputBucketName = "string",
+  Settings = list(
+    VocabularyName = "string",
+    ShowSpeakerLabels = TRUE|FALSE,
+    MaxSpeakerLabels = 123,
+    ChannelIdentification = TRUE|FALSE
+  )
+)
+}
+}
 
-}

@@ -4,13 +4,7 @@
 \alias{start_workspaces}
 \title{Starts the specified WorkSpaces}
 \usage{
-start_workspaces(
-  StartWorkspaceRequests = list(
-    list(
-      WorkspaceId = "string"
-    )
-  )
-)
+start_workspaces(StartWorkspaceRequests)
 }
 \arguments{
 \item{StartWorkspaceRequests}{[required] The WorkSpaces to start. You can specify up to 25 WorkSpaces.}
@@ -21,6 +15,14 @@ Starts the specified WorkSpaces.
 \details{
 You cannot start a WorkSpace unless it has a running mode of \code{AutoStop} and a state of \code{STOPPED}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_workspaces(
+  StartWorkspaceRequests = list(
+    list(
+      WorkspaceId = "string"
+    )
+  )
+)
 }
+}
+

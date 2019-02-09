@@ -4,13 +4,7 @@
 \alias{initiate_vault_lock}
 \title{This operation initiates the vault locking process by doing the following:}
 \usage{
-initiate_vault_lock(
-  accountId = "string",
-  vaultName = "string",
-  policy = list(
-    Policy = "string"
-  )
-)
+initiate_vault_lock(accountId, vaultName, policy = NULL)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.}
@@ -39,15 +33,26 @@ You can abort the vault locking process by calling AbortVaultLock. You can get t
 
 If this operation is called when the vault lock is in the \code{InProgress} state, the operation returns an \code{AccessDeniedException} error. When the vault lock is in the \code{InProgress} state you must call AbortVaultLock before you can initiate a new vault lock policy.
 }
+\section{Accepted Parameters}{
+\preformatted{initiate_vault_lock(
+  accountId = "string",
+  vaultName = "string",
+  policy = list(
+    Policy = "string"
+  )
+)
+}
+}
+
 \examples{
 # The example initiates the vault locking process for the vault named
 # my-vault.
-initiate_vault_lock(
+\donttest{initiate_vault_lock(
   accountId = "-",
   policy = list(
     Policy = "{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":[{\\"Sid\\":\\"Define-vault-lock\\",\\"Effect\\":\\"Deny\\",\\"Principal\\":{\\"AWS\\":\\"arn:aws:iam::999999999999:root\\"},\\"Action\\":\\"glacier:DeleteArchive\\",\\"Resource\\":\\"arn:aws:glacier:us-west-2:999999999999:vaults/examplevault\\",\\"Condition\\":{\\"NumericLessThanEquals\\":{\\"glacier:ArchiveAgeinDays\\":\\"365\\"}}}]}"
   ),
   vaultName = "my-vault"
-)
+)}
 
 }

@@ -4,10 +4,7 @@
 \alias{apply_schema}
 \title{Copies the input published schema, at the specified version, into the Directory with the same name and version as that of the published schema}
 \usage{
-apply_schema(
-  PublishedSchemaArn = "string",
-  DirectoryArn = "string"
-)
+apply_schema(PublishedSchemaArn, DirectoryArn)
 }
 \arguments{
 \item{PublishedSchemaArn}{[required] Published schema Amazon Resource Name (ARN) that needs to be copied. For more information, see arns.}
@@ -17,6 +14,11 @@ apply_schema(
 \description{
 Copies the input published schema, at the specified version, into the Directory with the same name and version as that of the published schema.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{apply_schema(
+  PublishedSchemaArn = "string",
+  DirectoryArn = "string"
+)
 }
+}
+

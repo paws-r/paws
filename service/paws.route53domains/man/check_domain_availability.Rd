@@ -4,10 +4,7 @@
 \alias{check_domain_availability}
 \title{This operation checks the availability of one domain name}
 \usage{
-check_domain_availability(
-  DomainName = "string",
-  IdnLangCode = "string"
-)
+check_domain_availability(DomainName, IdnLangCode = NULL)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to get availability for.
@@ -19,6 +16,11 @@ Constraints: The domain name can contain only the letters a through z, the numbe
 \description{
 This operation checks the availability of one domain name. Note that if the availability status of a domain is pending, you must submit another request to determine the availability of the domain name.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{check_domain_availability(
+  DomainName = "string",
+  IdnLangCode = "string"
+)
 }
+}
+

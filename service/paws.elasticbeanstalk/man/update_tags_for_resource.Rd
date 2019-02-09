@@ -4,18 +4,8 @@
 \alias{update_tags_for_resource}
 \title{Update the list of tags applied to an AWS Elastic Beanstalk resource}
 \usage{
-update_tags_for_resource(
-  ResourceArn = "string",
-  TagsToAdd = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  TagsToRemove = list(
-    "string"
-  )
-)
+update_tags_for_resource(ResourceArn, TagsToAdd = NULL,
+  TagsToRemove = NULL)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resouce to be updated.
@@ -48,6 +38,19 @@ elasticbeanstalk:RemoveTags
 
 For details about creating a custom user policy, see \href{http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#AWSHowTo.iam.policies}{Creating a Custom User Policy}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_tags_for_resource(
+  ResourceArn = "string",
+  TagsToAdd = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  TagsToRemove = list(
+    "string"
+  )
+)
 }
+}
+

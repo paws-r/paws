@@ -4,11 +4,7 @@
 \alias{describe_assessment_templates}
 \title{Describes the assessment templates that are specified by the ARNs of the assessment templates}
 \usage{
-describe_assessment_templates(
-  assessmentTemplateArns = list(
-    "string"
-  )
-)
+describe_assessment_templates(assessmentTemplateArns)
 }
 \arguments{
 \item{assessmentTemplateArns}{[required]}
@@ -16,13 +12,22 @@ describe_assessment_templates(
 \description{
 Describes the assessment templates that are specified by the ARNs of the assessment templates.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_assessment_templates(
+  assessmentTemplateArns = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # Describes the assessment templates that are specified by the ARNs of the
 # assessment templates.
-describe_assessment_templates(
+\donttest{describe_assessment_templates(
   assessmentTemplateArns = list(
     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw"
   )
-)
+)}
 
 }

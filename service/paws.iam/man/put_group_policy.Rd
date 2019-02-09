@@ -4,20 +4,16 @@
 \alias{put_group_policy}
 \title{Adds or updates an inline policy document that is embedded in the specified IAM group}
 \usage{
-put_group_policy(
-  GroupName = "string",
-  PolicyName = "string",
-  PolicyDocument = "string"
-)
+put_group_policy(GroupName, PolicyName, PolicyDocument)
 }
 \arguments{
 \item{GroupName}{[required] The name of the group to associate the policy with.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{PolicyName}{[required] The name of the policy document.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{PolicyDocument}{[required] The policy document.
 
@@ -38,13 +34,22 @@ For information about limits on the number of inline policies that you can embed
 
 Because policy documents can be large, you should use POST rather than GET when calling \code{PutGroupPolicy}. For general information about using the Query API with IAM, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html}{Making Query Requests} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{put_group_policy(
+  GroupName = "string",
+  PolicyName = "string",
+  PolicyDocument = "string"
+)
+}
+}
+
 \examples{
 # The following command adds a policy named AllPerms to the IAM group
 # named Admins.
-put_group_policy(
+\donttest{put_group_policy(
   GroupName = "Admins",
   PolicyDocument = "{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{\\"Effect\\":\\"Allow\\",\\"Action\\":\\"*\\",\\"Resource\\":\\"*\\"}}",
   PolicyName = "AllPerms"
-)
+)}
 
 }

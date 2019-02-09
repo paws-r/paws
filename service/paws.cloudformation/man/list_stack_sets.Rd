@@ -4,11 +4,7 @@
 \alias{list_stack_sets}
 \title{Returns summary information about stack sets that are associated with the user}
 \usage{
-list_stack_sets(
-  NextToken = "string",
-  MaxResults = 123,
-  Status = "ACTIVE"|"DELETED"
-)
+list_stack_sets(NextToken = NULL, MaxResults = NULL, Status = NULL)
 }
 \arguments{
 \item{NextToken}{If the previous paginated request didn't return all of the remaining results, the response object's \code{NextToken} parameter value is set to a token. To retrieve the next set of results, call \code{ListStackSets} again and assign that token to the request object's \code{NextToken} parameter. If there are no remaining results, the previous response object's \code{NextToken} parameter is set to \code{null}.}
@@ -20,6 +16,12 @@ list_stack_sets(
 \description{
 Returns summary information about stack sets that are associated with the user.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_stack_sets(
+  NextToken = "string",
+  MaxResults = 123,
+  Status = "ACTIVE"|"DELETED"
+)
 }
+}
+

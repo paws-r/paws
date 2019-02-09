@@ -4,11 +4,7 @@
 \alias{test_invoke_authorizer}
 \title{Tests a custom authorization behavior by invoking a specified custom authorizer}
 \usage{
-test_invoke_authorizer(
-  authorizerName = "string",
-  token = "string",
-  tokenSignature = "string"
-)
+test_invoke_authorizer(authorizerName, token, tokenSignature)
 }
 \arguments{
 \item{authorizerName}{[required] The custom authorizer name.}
@@ -20,6 +16,12 @@ test_invoke_authorizer(
 \description{
 Tests a custom authorization behavior by invoking a specified custom authorizer. Use this to test and debug the custom authorization behavior of devices that connect to the AWS IoT device gateway.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{test_invoke_authorizer(
+  authorizerName = "string",
+  token = "string",
+  tokenSignature = "string"
+)
 }
+}
+

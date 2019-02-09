@@ -4,15 +4,7 @@
 \alias{add_attachments_to_set}
 \title{Adds one or more attachments to an attachment set}
 \usage{
-add_attachments_to_set(
-  attachmentSetId = "string",
-  attachments = list(
-    list(
-      fileName = "string",
-      data = raw
-    )
-  )
-)
+add_attachments_to_set(attachmentSetId = NULL, attachments)
 }
 \arguments{
 \item{attachmentSetId}{The ID of the attachment set. If an \code{attachmentSetId} is not specified, a new attachment set is created, and the ID of the set is returned in the response. If an \code{attachmentSetId} is specified, the attachments are added to the specified set, if it exists.}
@@ -25,6 +17,16 @@ Adds one or more attachments to an attachment set. If an \code{attachmentSetId} 
 \details{
 An attachment set is a temporary container for attachments that are to be added to a case or case communication. The set is available for one hour after it is created; the \code{expiryTime} returned in the response indicates when the set expires. The maximum number of attachments in a set is 3, and the maximum size of any attachment in the set is 5 MB.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_attachments_to_set(
+  attachmentSetId = "string",
+  attachments = list(
+    list(
+      fileName = "string",
+      data = raw
+    )
+  )
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{list_field_level_encryption_configs}
 \title{List all field-level encryption configurations that have been created in CloudFront for this account}
 \usage{
-list_field_level_encryption_configs(
-  Marker = "string",
-  MaxItems = "string"
-)
+list_field_level_encryption_configs(Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{Marker}{Use this when paginating results to indicate where to begin in your list of configurations. The results include configurations in the list that occur after the marker. To get the next page of results, set the \code{Marker} to the value of the \code{NextMarker} from the current page's response (which is also the ID of the last configuration on that page).}
@@ -17,6 +14,11 @@ list_field_level_encryption_configs(
 \description{
 List all field-level encryption configurations that have been created in CloudFront for this account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_field_level_encryption_configs(
+  Marker = "string",
+  MaxItems = "string"
+)
 }
+}
+

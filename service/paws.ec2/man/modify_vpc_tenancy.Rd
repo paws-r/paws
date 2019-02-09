@@ -4,11 +4,7 @@
 \alias{modify_vpc_tenancy}
 \title{Modifies the instance tenancy attribute of the specified VPC}
 \usage{
-modify_vpc_tenancy(
-  VpcId = "string",
-  InstanceTenancy = "default",
-  DryRun = TRUE|FALSE
-)
+modify_vpc_tenancy(VpcId, InstanceTenancy, DryRun = NULL)
 }
 \arguments{
 \item{VpcId}{[required] The ID of the VPC.}
@@ -25,6 +21,12 @@ After you modify the tenancy of the VPC, any new instances that you launch into 
 
 For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html}{Dedicated Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_vpc_tenancy(
+  VpcId = "string",
+  InstanceTenancy = "default",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

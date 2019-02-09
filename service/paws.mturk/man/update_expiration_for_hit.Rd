@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{update_expiration_for_hit}
 \alias{update_expiration_for_hit}
-\title{The \code{UpdateExpirationForHIT} operation allows you update the expiration time of a HIT}
+\title{The UpdateExpirationForHIT operation allows you update the expiration time of a HIT}
 \usage{
-update_expiration_for_hit(
-  HITId = "string",
-  ExpireAt = as.POSIXct("2015-01-01")
-)
+update_expiration_for_hit(HITId, ExpireAt)
 }
 \arguments{
 \item{HITId}{[required] The HIT to update.}
@@ -17,6 +14,11 @@ update_expiration_for_hit(
 \description{
 The \code{UpdateExpirationForHIT} operation allows you update the expiration time of a HIT. If you update it to a time in the past, the HIT will be immediately expired.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_expiration_for_hit(
+  HITId = "string",
+  ExpireAt = as.POSIXct("2015-01-01")
+)
 }
+}
+

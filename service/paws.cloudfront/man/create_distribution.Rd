@@ -4,7 +4,21 @@
 \alias{create_distribution}
 \title{Creates a new web distribution}
 \usage{
-create_distribution(
+create_distribution(DistributionConfig)
+}
+\arguments{
+\item{DistributionConfig}{[required] The distribution's configuration information.}
+}
+\description{
+Creates a new web distribution. You create a CloudFront distribution to tell CloudFront where you want content to be delivered from, and the details about how to track and manage content delivery. Send a \code{POST} request to the \code{/CloudFront API version/distributionCloudFront API version/distribution}/\code{distribution ID} resource.
+}
+\details{
+When you update a distribution, there are more required fields than when you create a distribution. When you update your distribution by using UpdateDistribution, follow the steps included in the documentation to get the current configuration and then make your updates. This helps to make sure that you include all of the required fields. To view a summary, see \href{http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html}{Required Fields for Create Distribution and Update Distribution} in the \emph{Amazon CloudFront Developer Guide}.
+
+If you are using Adobe Flash Media Server's RTMP protocol, you set up a different kind of CloudFront distribution. For more information, see CreateStreamingDistribution.
+}
+\section{Accepted Parameters}{
+\preformatted{create_distribution(
   DistributionConfig = list(
     CallerReference = "string",
     Aliases = list(
@@ -45,30 +59,6 @@ create_distribution(
             ),
             OriginReadTimeout = 123,
             OriginKeepaliveTimeout = 123
-          )
-        )
-      )
-    ),
-    OriginGroups = list(
-      Quantity = 123,
-      Items = list(
-        list(
-          Id = "string",
-          FailoverCriteria = list(
-            StatusCodes = list(
-              Quantity = 123,
-              Items = list(
-                123
-              )
-            )
-          ),
-          Members = list(
-            Quantity = 123,
-            Items = list(
-              list(
-                OriginId = "string"
-              )
-            )
           )
         )
       )
@@ -249,17 +239,5 @@ create_distribution(
   )
 )
 }
-\arguments{
-\item{DistributionConfig}{[required] The distribution's configuration information.}
 }
-\description{
-Creates a new web distribution. You create a CloudFront distribution to tell CloudFront where you want content to be delivered from, and the details about how to track and manage content delivery. Send a \code{POST} request to the \code{/CloudFront API version/distributionCloudFront API version/distribution}/\code{distribution ID} resource.
-}
-\details{
-When you update a distribution, there are more required fields than when you create a distribution. When you update your distribution by using UpdateDistribution, follow the steps included in the documentation to get the current configuration and then make your updates. This helps to make sure that you include all of the required fields. To view a summary, see \href{http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html}{Required Fields for Create Distribution and Update Distribution} in the \emph{Amazon CloudFront Developer Guide}.
 
-If you are using Adobe Flash Media Server's RTMP protocol, you set up a different kind of CloudFront distribution. For more information, see CreateStreamingDistribution.
-}
-\examples{
-
-}

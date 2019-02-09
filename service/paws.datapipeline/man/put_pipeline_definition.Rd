@@ -4,7 +4,34 @@
 \alias{put_pipeline_definition}
 \title{Adds tasks, schedules, and preconditions to the specified pipeline}
 \usage{
-put_pipeline_definition(
+put_pipeline_definition(pipelineId, pipelineObjects,
+  parameterObjects = NULL, parameterValues = NULL)
+}
+\arguments{
+\item{pipelineId}{[required] The ID of the pipeline.}
+
+\item{pipelineObjects}{[required] The objects that define the pipeline. These objects overwrite the existing pipeline definition.}
+
+\item{parameterObjects}{The parameter objects used with the pipeline.}
+
+\item{parameterValues}{The parameter values used with the pipeline.}
+}
+\description{
+Adds tasks, schedules, and preconditions to the specified pipeline. You can use \code{PutPipelineDefinition} to populate a new pipeline.
+}
+\details{
+\code{PutPipelineDefinition} also validates the configuration as it adds it to the pipeline. Changes to the pipeline are saved unless one of the following three validation errors exists in the pipeline.
+\enumerate{
+\item An object is missing a name or identifier field.
+\item A string or reference field is empty.
+\item The number of objects in the pipeline exceeds the maximum allowed objects.
+\item The pipeline is in a FINISHED state.
+}
+
+Pipeline object definitions are passed to the \code{PutPipelineDefinition} action and returned by the GetPipelineDefinition action.
+}
+\section{Accepted Parameters}{
+\preformatted{put_pipeline_definition(
   pipelineId = "string",
   pipelineObjects = list(
     list(
@@ -38,29 +65,5 @@ put_pipeline_definition(
   )
 )
 }
-\arguments{
-\item{pipelineId}{[required] The ID of the pipeline.}
-
-\item{pipelineObjects}{[required] The objects that define the pipeline. These objects overwrite the existing pipeline definition.}
-
-\item{parameterObjects}{The parameter objects used with the pipeline.}
-
-\item{parameterValues}{The parameter values used with the pipeline.}
-}
-\description{
-Adds tasks, schedules, and preconditions to the specified pipeline. You can use \code{PutPipelineDefinition} to populate a new pipeline.
-}
-\details{
-\code{PutPipelineDefinition} also validates the configuration as it adds it to the pipeline. Changes to the pipeline are saved unless one of the following three validation errors exists in the pipeline.
-\enumerate{
-\item An object is missing a name or identifier field.
-\item A string or reference field is empty.
-\item The number of objects in the pipeline exceeds the maximum allowed objects.
-\item The pipeline is in a FINISHED state.
 }
 
-Pipeline object definitions are passed to the \code{PutPipelineDefinition} action and returned by the GetPipelineDefinition action.
-}
-\examples{
-
-}

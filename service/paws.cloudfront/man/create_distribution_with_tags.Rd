@@ -4,7 +4,16 @@
 \alias{create_distribution_with_tags}
 \title{Create a new distribution with tags}
 \usage{
-create_distribution_with_tags(
+create_distribution_with_tags(DistributionConfigWithTags)
+}
+\arguments{
+\item{DistributionConfigWithTags}{[required] The distribution's configuration information.}
+}
+\description{
+Create a new distribution with tags.
+}
+\section{Accepted Parameters}{
+\preformatted{create_distribution_with_tags(
   DistributionConfigWithTags = list(
     DistributionConfig = list(
       CallerReference = "string",
@@ -46,30 +55,6 @@ create_distribution_with_tags(
               ),
               OriginReadTimeout = 123,
               OriginKeepaliveTimeout = 123
-            )
-          )
-        )
-      ),
-      OriginGroups = list(
-        Quantity = 123,
-        Items = list(
-          list(
-            Id = "string",
-            FailoverCriteria = list(
-              StatusCodes = list(
-                Quantity = 123,
-                Items = list(
-                  123
-                )
-              )
-            ),
-            Members = list(
-              Quantity = 123,
-              Items = list(
-                list(
-                  OriginId = "string"
-                )
-              )
             )
           )
         )
@@ -259,12 +244,5 @@ create_distribution_with_tags(
   )
 )
 }
-\arguments{
-\item{DistributionConfigWithTags}{[required] The distribution's configuration information.}
 }
-\description{
-Create a new distribution with tags.
-}
-\examples{
 
-}

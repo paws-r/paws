@@ -4,10 +4,7 @@
 \alias{delete_facet}
 \title{Deletes a given Facet}
 \usage{
-delete_facet(
-  SchemaArn = "string",
-  Name = "string"
-)
+delete_facet(SchemaArn, Name)
 }
 \arguments{
 \item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the Facet. For more information, see arns.}
@@ -17,6 +14,11 @@ delete_facet(
 \description{
 Deletes a given Facet. All attributes and Rules that are associated with the facet will be deleted. Only development schema facets are allowed deletion.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_facet(
+  SchemaArn = "string",
+  Name = "string"
+)
 }
+}
+

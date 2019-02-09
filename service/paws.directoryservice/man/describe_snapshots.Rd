@@ -4,14 +4,8 @@
 \alias{describe_snapshots}
 \title{Obtains information about the directory snapshots that belong to this account}
 \usage{
-describe_snapshots(
-  DirectoryId = "string",
-  SnapshotIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  Limit = 123
-)
+describe_snapshots(DirectoryId = NULL, SnapshotIds = NULL,
+  NextToken = NULL, Limit = NULL)
 }
 \arguments{
 \item{DirectoryId}{The identifier of the directory for which to retrieve snapshot information.}
@@ -30,6 +24,15 @@ This operation supports pagination with the use of the \emph{NextToken} request 
 
 You can also specify a maximum number of return results with the \emph{Limit} parameter.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_snapshots(
+  DirectoryId = "string",
+  SnapshotIds = list(
+    "string"
+  ),
+  NextToken = "string",
+  Limit = 123
+)
 }
+}
+

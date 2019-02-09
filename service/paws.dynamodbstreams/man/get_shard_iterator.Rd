@@ -4,12 +4,8 @@
 \alias{get_shard_iterator}
 \title{Returns a shard iterator}
 \usage{
-get_shard_iterator(
-  StreamArn = "string",
-  ShardId = "string",
-  ShardIteratorType = "TRIM_HORIZON"|"LATEST"|"AT_SEQUENCE_NUMBER"|"AFTER_SEQUENCE_NUMBER",
-  SequenceNumber = "string"
-)
+get_shard_iterator(StreamArn, ShardId, ShardIteratorType,
+  SequenceNumber = NULL)
 }
 \arguments{
 \item{StreamArn}{[required] The Amazon Resource Name (ARN) for the stream.}
@@ -32,13 +28,23 @@ Returns a shard iterator. A shard iterator provides information about how to ret
 \details{
 A shard iterator expires 15 minutes after it is returned to the requester.
 }
+\section{Accepted Parameters}{
+\preformatted{get_shard_iterator(
+  StreamArn = "string",
+  ShardId = "string",
+  ShardIteratorType = "TRIM_HORIZON"|"LATEST"|"AT_SEQUENCE_NUMBER"|"AFTER_SEQUENCE_NUMBER",
+  SequenceNumber = "string"
+)
+}
+}
+
 \examples{
 # The following example returns a shard iterator for the provided stream
 # ARN and shard ID.
-get_shard_iterator(
+\donttest{get_shard_iterator(
   ShardId = "00000001414576573621-f55eea83",
   ShardIteratorType = "TRIM_HORIZON",
   StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:10.252"
-)
+)}
 
 }

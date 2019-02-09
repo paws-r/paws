@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.glacier_operations.R
 \name{get_vault_notifications}
 \alias{get_vault_notifications}
-\title{This operation retrieves the \code{notification-configuration} subresource of the specified vault}
+\title{This operation retrieves the notification-configuration subresource of the specified vault}
 \usage{
-get_vault_notifications(
-  accountId = "string",
-  vaultName = "string"
-)
+get_vault_notifications(accountId, vaultName)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
@@ -24,12 +21,20 @@ An AWS account has full permission to perform all operations (actions). However,
 
 For conceptual information and underlying REST API, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html}{Configuring Vault Notifications in Amazon Glacier} and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-get.html}{Get Vault Notification Configuration} in the \emph{Amazon Glacier Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{get_vault_notifications(
+  accountId = "string",
+  vaultName = "string"
+)
+}
+}
+
 \examples{
 # The example retrieves the notification-configuration for the vault named
 # my-vault.
-get_vault_notifications(
+\donttest{get_vault_notifications(
   accountId = "-",
   vaultName = "my-vault"
-)
+)}
 
 }

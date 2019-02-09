@@ -4,10 +4,7 @@
 \alias{list_pipelines}
 \title{The ListPipelines operation gets a list of the pipelines associated with the current AWS account}
 \usage{
-list_pipelines(
-  Ascending = "string",
-  PageToken = "string"
-)
+list_pipelines(Ascending = NULL, PageToken = NULL)
 }
 \arguments{
 \item{Ascending}{To list pipelines in chronological order by the date and time that they were created, enter \code{true}. To list pipelines in reverse chronological order, enter \code{false}.}
@@ -17,6 +14,11 @@ list_pipelines(
 \description{
 The ListPipelines operation gets a list of the pipelines associated with the current AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_pipelines(
+  Ascending = "string",
+  PageToken = "string"
+)
 }
+}
+

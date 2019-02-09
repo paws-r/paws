@@ -4,20 +4,8 @@
 \alias{complete_multipart_upload}
 \title{Completes a multipart upload by assembling previously uploaded parts}
 \usage{
-complete_multipart_upload(
-  Bucket = "string",
-  Key = "string",
-  MultipartUpload = list(
-    Parts = list(
-      list(
-        ETag = "string",
-        PartNumber = 123
-      )
-    )
-  ),
-  UploadId = "string",
-  RequestPayer = "requester"
-)
+complete_multipart_upload(Bucket, Key, MultipartUpload = NULL, UploadId,
+  RequestPayer = NULL)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -33,9 +21,27 @@ complete_multipart_upload(
 \description{
 Completes a multipart upload by assembling previously uploaded parts.
 }
+\section{Accepted Parameters}{
+\preformatted{complete_multipart_upload(
+  Bucket = "string",
+  Key = "string",
+  MultipartUpload = list(
+    Parts = list(
+      list(
+        ETag = "string",
+        PartNumber = 123
+      )
+    )
+  ),
+  UploadId = "string",
+  RequestPayer = "requester"
+)
+}
+}
+
 \examples{
 # The following example completes a multipart upload.
-complete_multipart_upload(
+\donttest{complete_multipart_upload(
   Bucket = "examplebucket",
   Key = "bigobject",
   MultipartUpload = list(
@@ -51,6 +57,6 @@ complete_multipart_upload(
     )
   ),
   UploadId = "7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP3WA60CEg--"
-)
+)}
 
 }

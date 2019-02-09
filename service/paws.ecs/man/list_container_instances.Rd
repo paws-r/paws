@@ -4,13 +4,8 @@
 \alias{list_container_instances}
 \title{Returns a list of container instances in a specified cluster}
 \usage{
-list_container_instances(
-  cluster = "string",
-  filter = "string",
-  nextToken = "string",
-  maxResults = 123,
-  status = "ACTIVE"|"DRAINING"
-)
+list_container_instances(cluster = NULL, filter = NULL,
+  nextToken = NULL, maxResults = NULL, status = NULL)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instances to list. If you do not specify a cluster, the default cluster is assumed.}
@@ -28,11 +23,22 @@ This token should be treated as an opaque identifier that is only used to retrie
 \description{
 Returns a list of container instances in a specified cluster. You can filter the results of a \code{ListContainerInstances} operation with cluster query language statements inside the \code{filter} parameter. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html}{Cluster Query Language} in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{list_container_instances(
+  cluster = "string",
+  filter = "string",
+  nextToken = "string",
+  maxResults = 123,
+  status = "ACTIVE"|"DRAINING"
+)
+}
+}
+
 \examples{
 # This example lists all of your available container instances in the
 # specified cluster in your default region.
-list_container_instances(
+\donttest{list_container_instances(
   cluster = "default"
-)
+)}
 
 }

@@ -4,9 +4,7 @@
 \alias{delete_compute_environment}
 \title{Deletes an AWS Batch compute environment}
 \usage{
-delete_compute_environment(
-  computeEnvironment = "string"
-)
+delete_compute_environment(computeEnvironment)
 }
 \arguments{
 \item{computeEnvironment}{[required] The name or Amazon Resource Name (ARN) of the compute environment to delete.}
@@ -17,10 +15,17 @@ Deletes an AWS Batch compute environment.
 \details{
 Before you can delete a compute environment, you must set its state to \code{DISABLED} with the UpdateComputeEnvironment API operation and disassociate it from any job queues with the UpdateJobQueue API operation.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_compute_environment(
+  computeEnvironment = "string"
+)
+}
+}
+
 \examples{
 # This example deletes the P2OnDemand compute environment.
-delete_compute_environment(
+\donttest{delete_compute_environment(
   computeEnvironment = "P2OnDemand"
-)
+)}
 
 }

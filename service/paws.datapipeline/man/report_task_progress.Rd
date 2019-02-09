@@ -2,18 +2,9 @@
 % Please edit documentation in R/paws.datapipeline_operations.R
 \name{report_task_progress}
 \alias{report_task_progress}
-\title{Task runners call \code{ReportTaskProgress} when assigned a task to acknowledge that it has the task}
+\title{Task runners call ReportTaskProgress when assigned a task to acknowledge that it has the task}
 \usage{
-report_task_progress(
-  taskId = "string",
-  fields = list(
-    list(
-      key = "string",
-      stringValue = "string",
-      refValue = "string"
-    )
-  )
-)
+report_task_progress(taskId, fields = NULL)
 }
 \arguments{
 \item{taskId}{[required] The ID of the task assigned to the task runner. This value is provided in the response for PollForTask.}
@@ -26,6 +17,17 @@ Task runners call \code{ReportTaskProgress} when assigned a task to acknowledge 
 \details{
 If a task runner does not report its status after 5 minutes, AWS Data Pipeline assumes that the task runner is unable to process the task and reassigns the task in a subsequent response to PollForTask. Task runners should call \code{ReportTaskProgress} every 60 seconds.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{report_task_progress(
+  taskId = "string",
+  fields = list(
+    list(
+      key = "string",
+      stringValue = "string",
+      refValue = "string"
+    )
+  )
+)
 }
+}
+

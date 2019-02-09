@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{get_hit}
 \alias{get_hit}
-\title{The \code{GetHIT} operation retrieves the details of the specified HIT}
+\title{The GetHIT operation retrieves the details of the specified HIT}
 \usage{
-get_hit(
-  HITId = "string"
-)
+get_hit(HITId)
 }
 \arguments{
 \item{HITId}{[required] The ID of the HIT to be retrieved.}
@@ -14,6 +12,10 @@ get_hit(
 \description{
 The \code{GetHIT} operation retrieves the details of the specified HIT.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_hit(
+  HITId = "string"
+)
 }
+}
+

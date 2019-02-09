@@ -2,13 +2,15 @@
 % Please edit documentation in R/paws.sms_operations.R
 \name{delete_server_catalog}
 \alias{delete_server_catalog}
-\title{Deletes all servers from your server catalog}
+\title{The DeleteServerCatalog API clears all servers from your server catalog}
 \usage{
 delete_server_catalog()
 }
 \description{
-Deletes all servers from your server catalog.
+The DeleteServerCatalog API clears all servers from your server catalog. This means that these servers will no longer be accessible to the Server Migration Service.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{delete_server_catalog()
+}
+}
 
-}

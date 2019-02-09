@@ -4,13 +4,9 @@
 \alias{complete_lifecycle_action}
 \title{Completes the lifecycle action for the specified token or instance with the specified result}
 \usage{
-complete_lifecycle_action(
-  LifecycleHookName = "string",
-  AutoScalingGroupName = "string",
-  LifecycleActionToken = "string",
-  LifecycleActionResult = "string",
-  InstanceId = "string"
-)
+complete_lifecycle_action(LifecycleHookName, AutoScalingGroupName,
+  LifecycleActionToken = NULL, LifecycleActionResult,
+  InstanceId = NULL)
 }
 \arguments{
 \item{LifecycleHookName}{[required] The name of the lifecycle hook.}
@@ -38,14 +34,25 @@ This step is a part of the procedure for adding a lifecycle hook to an Auto Scal
 
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html}{Auto Scaling Lifecycle} in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{complete_lifecycle_action(
+  LifecycleHookName = "string",
+  AutoScalingGroupName = "string",
+  LifecycleActionToken = "string",
+  LifecycleActionResult = "string",
+  InstanceId = "string"
+)
+}
+}
+
 \examples{
 # This example notifies Auto Scaling that the specified lifecycle action
 # is complete so that it can finish launching or terminating the instance.
-complete_lifecycle_action(
+\donttest{complete_lifecycle_action(
   AutoScalingGroupName = "my-auto-scaling-group",
   LifecycleActionResult = "CONTINUE",
   LifecycleActionToken = "bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635",
   LifecycleHookName = "my-lifecycle-hook"
-)
+)}
 
 }

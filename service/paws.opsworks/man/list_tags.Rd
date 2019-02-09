@@ -4,11 +4,7 @@
 \alias{list_tags}
 \title{Returns a list of tags that are applied to the specified stack or layer}
 \usage{
-list_tags(
-  ResourceArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_tags(ResourceArn, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ResourceArn}{[required] The stack or layer's Amazon Resource Number (ARN).}
@@ -20,6 +16,12 @@ list_tags(
 \description{
 Returns a list of tags that are applied to the specified stack or layer.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags(
+  ResourceArn = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

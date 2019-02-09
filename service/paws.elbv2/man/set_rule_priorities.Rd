@@ -4,14 +4,7 @@
 \alias{set_rule_priorities}
 \title{Sets the priorities of the specified rules}
 \usage{
-set_rule_priorities(
-  RulePriorities = list(
-    list(
-      RuleArn = "string",
-      Priority = 123
-    )
-  )
-)
+set_rule_priorities(RulePriorities)
 }
 \arguments{
 \item{RulePriorities}{[required] The rule priorities.}
@@ -22,15 +15,27 @@ Sets the priorities of the specified rules.
 \details{
 You can reorder the rules as long as there are no priority conflicts in the new order. Any existing rules that you do not specify retain their current priority.
 }
+\section{Accepted Parameters}{
+\preformatted{set_rule_priorities(
+  RulePriorities = list(
+    list(
+      RuleArn = "string",
+      Priority = 123
+    )
+  )
+)
+}
+}
+
 \examples{
 # This example sets the priority of the specified rule.
-set_rule_priorities(
+\donttest{set_rule_priorities(
   RulePriorities = list(
     list(
       Priority = 5L,
       RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2/1291d13826f405c3"
     )
   )
-)
+)}
 
 }

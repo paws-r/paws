@@ -4,11 +4,8 @@
 \alias{update_file_system}
 \title{Updates the throughput mode or the amount of provisioned throughput of an existing file system}
 \usage{
-update_file_system(
-  FileSystemId = "string",
-  ThroughputMode = "bursting"|"provisioned",
-  ProvisionedThroughputInMibps = 123.0
-)
+update_file_system(FileSystemId, ThroughputMode = NULL,
+  ProvisionedThroughputInMibps = NULL)
 }
 \arguments{
 \item{FileSystemId}{[required] The ID of the file system that you want to update.}
@@ -20,6 +17,12 @@ update_file_system(
 \description{
 Updates the throughput mode or the amount of provisioned throughput of an existing file system.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_file_system(
+  FileSystemId = "string",
+  ThroughputMode = "bursting"|"provisioned",
+  ProvisionedThroughputInMibps = 123.0
+)
 }
+}
+

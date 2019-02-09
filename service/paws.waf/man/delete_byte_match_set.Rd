@@ -4,10 +4,7 @@
 \alias{delete_byte_match_set}
 \title{Permanently deletes a ByteMatchSet}
 \usage{
-delete_byte_match_set(
-  ByteMatchSetId = "string",
-  ChangeToken = "string"
-)
+delete_byte_match_set(ByteMatchSetId, ChangeToken)
 }
 \arguments{
 \item{ByteMatchSetId}{[required] The \code{ByteMatchSetId} of the ByteMatchSet that you want to delete. \code{ByteMatchSetId} is returned by CreateByteMatchSet and by ListByteMatchSets.}
@@ -27,12 +24,20 @@ To permanently delete a \code{ByteMatchSet}, perform the following steps:
 \item Submit a \code{DeleteByteMatchSet} request.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{delete_byte_match_set(
+  ByteMatchSetId = "string",
+  ChangeToken = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes a byte match set with the ID
 # exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.
-delete_byte_match_set(
+\donttest{delete_byte_match_set(
   ByteMatchSetId = "exampleIDs3t-46da-4fdb-b8d5-abc321j569j5",
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
-)
+)}
 
 }

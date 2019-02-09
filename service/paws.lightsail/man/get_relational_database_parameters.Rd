@@ -4,15 +4,13 @@
 \alias{get_relational_database_parameters}
 \title{Returns all of the runtime parameters offered by the underlying database software, or engine, for a specific database in Amazon Lightsail}
 \usage{
-get_relational_database_parameters(
-  relationalDatabaseName = "string",
-  pageToken = "string"
-)
+get_relational_database_parameters(relationalDatabaseName,
+  pageToken = NULL)
 }
 \arguments{
 \item{relationalDatabaseName}{[required] The name of your database for which to get parameters.}
 
-\item{pageToken}{A token used for advancing to a specific page of results for your \code{get relational database parameters} request.}
+\item{pageToken}{A token used for advancing to a specific page of results for your get relational database parameters request.}
 }
 \description{
 Returns all of the runtime parameters offered by the underlying database software, or engine, for a specific database in Amazon Lightsail.
@@ -20,6 +18,11 @@ Returns all of the runtime parameters offered by the underlying database softwar
 \details{
 In addition to the parameter names and values, this operation returns other information about each parameter. This information includes whether changes require a reboot, whether the parameter is modifiable, the allowed values, and the data types.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_relational_database_parameters(
+  relationalDatabaseName = "string",
+  pageToken = "string"
+)
 }
+}
+

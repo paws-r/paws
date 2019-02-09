@@ -4,12 +4,7 @@
 \alias{tag}
 \title{Adds specified tags to a resource with the specified ARN}
 \usage{
-tag(
-  Arn = "string",
-  Tags = list(
-    "string"
-  )
-)
+tag(Arn, Tags)
 }
 \arguments{
 \item{Arn}{[required] The ARN of the resource to which to add tags.}
@@ -19,6 +14,13 @@ tag(
 \description{
 Adds specified tags to a resource with the specified ARN. Existing tags on a resource are not changed if they are not specified in the request parameters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag(
+  Arn = "string",
+  Tags = list(
+    "string"
+  )
+)
 }
+}
+

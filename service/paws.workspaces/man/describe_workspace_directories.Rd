@@ -4,21 +4,23 @@
 \alias{describe_workspace_directories}
 \title{Describes the available AWS Directory Service directories that are registered with Amazon WorkSpaces}
 \usage{
-describe_workspace_directories(
+describe_workspace_directories(DirectoryIds = NULL, NextToken = NULL)
+}
+\arguments{
+\item{DirectoryIds}{The identifiers of the directories. If the value is null, all directories are retrieved.}
+
+\item{NextToken}{The token for the next set of results. (You received this token from a previous call.)}
+}
+\description{
+Describes the available AWS Directory Service directories that are registered with Amazon WorkSpaces.
+}
+\section{Accepted Parameters}{
+\preformatted{describe_workspace_directories(
   DirectoryIds = list(
     "string"
   ),
   NextToken = "string"
 )
 }
-\arguments{
-\item{DirectoryIds}{The identifiers of the directories. If the value is null, all directories are retrieved.}
+}
 
-\item{NextToken}{If you received a \code{NextToken} from a previous call that was paginated, provide this token to receive the next set of results.}
-}
-\description{
-Describes the available AWS Directory Service directories that are registered with Amazon WorkSpaces.
-}
-\examples{
-
-}

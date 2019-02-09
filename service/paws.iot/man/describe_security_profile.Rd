@@ -4,9 +4,7 @@
 \alias{describe_security_profile}
 \title{Gets information about a Device Defender security profile}
 \usage{
-describe_security_profile(
-  securityProfileName = "string"
-)
+describe_security_profile(securityProfileName)
 }
 \arguments{
 \item{securityProfileName}{[required] The name of the security profile whose information you want to get.}
@@ -14,6 +12,10 @@ describe_security_profile(
 \description{
 Gets information about a Device Defender security profile.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_security_profile(
+  securityProfileName = "string"
+)
 }
+}
+

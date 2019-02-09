@@ -4,11 +4,7 @@
 \alias{batch_get_deployments}
 \title{Gets information about one or more deployments}
 \usage{
-batch_get_deployments(
-  deploymentIds = list(
-    "string"
-  )
-)
+batch_get_deployments(deploymentIds)
 }
 \arguments{
 \item{deploymentIds}{[required] A list of deployment IDs, separated by spaces.}
@@ -16,6 +12,12 @@ batch_get_deployments(
 \description{
 Gets information about one or more deployments.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_get_deployments(
+  deploymentIds = list(
+    "string"
+  )
+)
 }
+}
+

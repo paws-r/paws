@@ -4,9 +4,7 @@
 \alias{update_gateway_software_now}
 \title{Updates the gateway virtual machine (VM) software}
 \usage{
-update_gateway_software_now(
-  GatewayARN = "string"
-)
+update_gateway_software_now(GatewayARN)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -19,11 +17,18 @@ When you make this request, you get a \code{200 OK} success response immediately
 
 A software update forces a system restart of your gateway. You can minimize the chance of any disruption to your applications by increasing your iSCSI Initiators' timeouts. For more information about increasing iSCSI Initiator timeouts for Windows and Linux, see \href{http://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorWindowsClient.html#CustomizeWindowsiSCSISettings}{Customizing Your Windows iSCSI Settings} and \href{http://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorRedHatClient.html#CustomizeLinuxiSCSISettings}{Customizing Your Linux iSCSI Settings}, respectively.
 }
+\section{Accepted Parameters}{
+\preformatted{update_gateway_software_now(
+  GatewayARN = "string"
+)
+}
+}
+
 \examples{
 # Updates the gateway virtual machine (VM) software. The request
 # immediately triggers the software update.
-update_gateway_software_now(
+\donttest{update_gateway_software_now(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
+)}
 
 }

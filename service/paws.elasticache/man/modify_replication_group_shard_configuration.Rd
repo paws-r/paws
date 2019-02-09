@@ -4,25 +4,9 @@
 \alias{modify_replication_group_shard_configuration}
 \title{Modifies a replication group's shards (node groups) by allowing you to add shards, remove shards, or rebalance the keyspaces among exisiting shards}
 \usage{
-modify_replication_group_shard_configuration(
-  ReplicationGroupId = "string",
-  NodeGroupCount = 123,
-  ApplyImmediately = TRUE|FALSE,
-  ReshardingConfiguration = list(
-    list(
-      NodeGroupId = "string",
-      PreferredAvailabilityZones = list(
-        "string"
-      )
-    )
-  ),
-  NodeGroupsToRemove = list(
-    "string"
-  ),
-  NodeGroupsToRetain = list(
-    "string"
-  )
-)
+modify_replication_group_shard_configuration(ReplicationGroupId,
+  NodeGroupCount, ApplyImmediately, ReshardingConfiguration = NULL,
+  NodeGroupsToRemove = NULL, NodeGroupsToRetain = NULL)
 }
 \arguments{
 \item{ReplicationGroupId}{[required] The name of the Redis (cluster mode enabled) cluster (replication group) on which the shards are to be configured.}
@@ -48,6 +32,26 @@ ElastiCache for Redis will attempt to remove all node groups except those listed
 \description{
 Modifies a replication group's shards (node groups) by allowing you to add shards, remove shards, or rebalance the keyspaces among exisiting shards.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_replication_group_shard_configuration(
+  ReplicationGroupId = "string",
+  NodeGroupCount = 123,
+  ApplyImmediately = TRUE|FALSE,
+  ReshardingConfiguration = list(
+    list(
+      NodeGroupId = "string",
+      PreferredAvailabilityZones = list(
+        "string"
+      )
+    )
+  ),
+  NodeGroupsToRemove = list(
+    "string"
+  ),
+  NodeGroupsToRetain = list(
+    "string"
+  )
+)
 }
+}
+

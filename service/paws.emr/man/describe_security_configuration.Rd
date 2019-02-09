@@ -4,9 +4,7 @@
 \alias{describe_security_configuration}
 \title{Provides the details of a security configuration by returning the configuration JSON}
 \usage{
-describe_security_configuration(
-  Name = "string"
-)
+describe_security_configuration(Name)
 }
 \arguments{
 \item{Name}{[required] The name of the security configuration.}
@@ -14,6 +12,10 @@ describe_security_configuration(
 \description{
 Provides the details of a security configuration by returning the configuration JSON.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_security_configuration(
+  Name = "string"
+)
 }
+}
+

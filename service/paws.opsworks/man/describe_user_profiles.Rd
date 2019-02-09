@@ -4,11 +4,7 @@
 \alias{describe_user_profiles}
 \title{Describe specified users}
 \usage{
-describe_user_profiles(
-  IamUserArns = list(
-    "string"
-  )
-)
+describe_user_profiles(IamUserArns = NULL)
 }
 \arguments{
 \item{IamUserArns}{An array of IAM or federated user ARNs that identify the users to be described.}
@@ -19,6 +15,12 @@ Describe specified users.
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information about user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_user_profiles(
+  IamUserArns = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,12 +4,8 @@
 \alias{update_secret_version_stage}
 \title{Modifies the staging labels attached to a version of a secret}
 \usage{
-update_secret_version_stage(
-  SecretId = "string",
-  VersionStage = "string",
-  RemoveFromVersionId = "string",
-  MoveToVersionId = "string"
-)
+update_secret_version_stage(SecretId, VersionStage,
+  RemoveFromVersionId = NULL, MoveToVersionId = NULL)
 }
 \arguments{
 \item{SecretId}{[required] Specifies the secret with the version whose list of staging labels you want to modify. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
@@ -48,36 +44,46 @@ To run this command, you must have the following permissions:
 \item To get the list of staging labels that are currently associated with a version of a secret, use \code{DescribeSecret DescribeSecret} and examine the \code{SecretVersionsToStages} response value.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{update_secret_version_stage(
+  SecretId = "string",
+  VersionStage = "string",
+  RemoveFromVersionId = "string",
+  MoveToVersionId = "string"
+)
+}
+}
+
 \examples{
 # The following example shows you how to add a staging label to a version
 # of a secret. You can review the results by running the operation
 # ListSecretVersionIds and viewing the VersionStages response field for
 # the affected version.
-update_secret_version_stage(
+\donttest{update_secret_version_stage(
   MoveToVersionId = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
   SecretId = "MyTestDatabaseSecret",
   VersionStage = "STAGINGLABEL1"
-)
+)}
 
 # The following example shows you how to delete a staging label that is
 # attached to a version of a secret. You can review the results by running
 # the operation ListSecretVersionIds and viewing the VersionStages
 # response field for the affected version.
-update_secret_version_stage(
+\donttest{update_secret_version_stage(
   RemoveFromVersionId = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
   SecretId = "MyTestDatabaseSecret",
   VersionStage = "STAGINGLABEL1"
-)
+)}
 
 # The following example shows you how to move a staging label that is
 # attached to one version of a secret to a different version. You can
 # review the results by running the operation ListSecretVersionIds and
 # viewing the VersionStages response field for the affected version.
-update_secret_version_stage(
+\donttest{update_secret_version_stage(
   MoveToVersionId = "EXAMPLE2-90ab-cdef-fedc-ba987SECRET2",
   RemoveFromVersionId = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
   SecretId = "MyTestDatabaseSecret",
   VersionStage = "AWSCURRENT"
-)
+)}
 
 }

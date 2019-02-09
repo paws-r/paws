@@ -4,9 +4,7 @@
 \alias{start_gateway}
 \title{Starts a gateway that you previously shut down (see ShutdownGateway)}
 \usage{
-start_gateway(
-  GatewayARN = "string"
-)
+start_gateway(GatewayARN)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -19,10 +17,17 @@ When you make a request, you will get a 200 OK success response immediately. How
 
 To specify which gateway to start, use the Amazon Resource Name (ARN) of the gateway in your request.
 }
+\section{Accepted Parameters}{
+\preformatted{start_gateway(
+  GatewayARN = "string"
+)
+}
+}
+
 \examples{
 # Starts a gateway service that was previously shut down.
-start_gateway(
+\donttest{start_gateway(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B"
-)
+)}
 
 }

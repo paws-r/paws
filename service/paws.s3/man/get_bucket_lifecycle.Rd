@@ -4,9 +4,7 @@
 \alias{get_bucket_lifecycle}
 \title{Deprecated, see the GetBucketLifecycleConfiguration operation}
 \usage{
-get_bucket_lifecycle(
-  Bucket = "string"
-)
+get_bucket_lifecycle(Bucket)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -14,10 +12,17 @@ get_bucket_lifecycle(
 \description{
 Deprecated, see the GetBucketLifecycleConfiguration operation.
 }
+\section{Accepted Parameters}{
+\preformatted{get_bucket_lifecycle(
+  Bucket = "string"
+)
+}
+}
+
 \examples{
 # The following example gets ACL on the specified bucket.
-get_bucket_lifecycle(
+\donttest{get_bucket_lifecycle(
   Bucket = "acl1"
-)
+)}
 
 }

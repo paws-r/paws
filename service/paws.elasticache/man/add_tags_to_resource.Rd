@@ -4,15 +4,7 @@
 \alias{add_tags_to_resource}
 \title{Adds up to 50 cost allocation tags to the named resource}
 \usage{
-add_tags_to_resource(
-  ResourceName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+add_tags_to_resource(ResourceName, Tags)
 }
 \arguments{
 \item{ResourceName}{[required] The Amazon Resource Name (ARN) of the resource to which the tags are to be added, for example \code{arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster} or \code{arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot}. ElastiCache resources are \emph{cluster} and \emph{snapshot}.
@@ -27,6 +19,16 @@ Adds up to 50 cost allocation tags to the named resource. A cost allocation tag 
 \details{
 When you apply tags to your ElastiCache resources, AWS generates a cost allocation report as a comma-separated value (CSV) file with your usage and costs aggregated by your tags. You can apply tags that represent business categories (such as cost centers, application names, or owners) to organize your costs across multiple services. For more information, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html}{Using Cost Allocation Tags in Amazon ElastiCache} in the \emph{ElastiCache User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_tags_to_resource(
+  ResourceName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

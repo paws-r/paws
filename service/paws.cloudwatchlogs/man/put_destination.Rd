@@ -4,11 +4,7 @@
 \alias{put_destination}
 \title{Creates or updates a destination}
 \usage{
-put_destination(
-  destinationName = "string",
-  targetArn = "string",
-  roleArn = "string"
-)
+put_destination(destinationName, targetArn, roleArn)
 }
 \arguments{
 \item{destinationName}{[required] A name for the destination.}
@@ -23,6 +19,12 @@ Creates or updates a destination. A destination encapsulates a physical resource
 \details{
 Through an access policy, a destination controls what is written to its Kinesis stream. By default, \code{PutDestination} does not set any access policy with the destination, which means a cross-account user cannot call PutSubscriptionFilter against this destination. To enable this, the destination owner must call PutDestinationPolicy after \code{PutDestination}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_destination(
+  destinationName = "string",
+  targetArn = "string",
+  roleArn = "string"
+)
 }
+}
+

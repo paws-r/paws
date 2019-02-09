@@ -4,11 +4,7 @@
 \alias{describe_tags}
 \title{Returns the tags associated with a file system}
 \usage{
-describe_tags(
-  MaxItems = 123,
-  Marker = "string",
-  FileSystemId = "string"
-)
+describe_tags(MaxItems = NULL, Marker = NULL, FileSystemId)
 }
 \arguments{
 \item{MaxItems}{(Optional) Maximum number of file system tags to return in the response. It must be an integer with a value greater than zero.}
@@ -23,10 +19,19 @@ Returns the tags associated with a file system. The order of tags returned in th
 \details{
 This operation requires permissions for the \code{elasticfilesystem:DescribeTags} action.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_tags(
+  MaxItems = 123,
+  Marker = "string",
+  FileSystemId = "string"
+)
+}
+}
+
 \examples{
 # This operation describes all of a file system's tags.
-describe_tags(
+\donttest{describe_tags(
   FileSystemId = "fs-01234567"
-)
+)}
 
 }

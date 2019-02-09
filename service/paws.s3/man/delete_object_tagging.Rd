@@ -4,11 +4,7 @@
 \alias{delete_object_tagging}
 \title{Removes the tag-set from an existing object}
 \usage{
-delete_object_tagging(
-  Bucket = "string",
-  Key = "string",
-  VersionId = "string"
-)
+delete_object_tagging(Bucket, Key, VersionId = NULL)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -20,22 +16,31 @@ delete_object_tagging(
 \description{
 Removes the tag-set from an existing object.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_object_tagging(
+  Bucket = "string",
+  Key = "string",
+  VersionId = "string"
+)
+}
+}
+
 \examples{
 # The following example removes tag set associated with the specified
 # object version. The request specifies both the object key and object
 # version.
-delete_object_tagging(
+\donttest{delete_object_tagging(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg",
   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
-)
+)}
 
 # The following example removes tag set associated with the specified
 # object. If the bucket is versioning enabled, the operation removes tag
 # set from the latest object version.
-delete_object_tagging(
+\donttest{delete_object_tagging(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
-)
+)}
 
 }

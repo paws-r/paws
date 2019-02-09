@@ -4,9 +4,7 @@
 \alias{describe_certificate_authority}
 \title{Lists information about your private certificate authority (CA)}
 \usage{
-describe_certificate_authority(
-  CertificateAuthorityArn = "string"
-)
+describe_certificate_authority(CertificateAuthorityArn)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called CreateCertificateAuthority. This must be of the form:
@@ -27,6 +25,10 @@ Lists information about your private certificate authority (CA). You specify the
 \item \code{DELETED} - Your private CA is within the restoration period, after which it will be permanently deleted. The length of time remaining in the CA's restoration period will also be included in this operation's output.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_certificate_authority(
+  CertificateAuthorityArn = "string"
+)
 }
+}
+

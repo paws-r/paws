@@ -4,11 +4,8 @@
 \alias{replace_route_table_association}
 \title{Changes the route table associated with a given subnet in a VPC}
 \usage{
-replace_route_table_association(
-  AssociationId = "string",
-  DryRun = TRUE|FALSE,
-  RouteTableId = "string"
-)
+replace_route_table_association(AssociationId, DryRun = NULL,
+  RouteTableId)
 }
 \arguments{
 \item{AssociationId}{[required] The association ID.}
@@ -23,12 +20,21 @@ Changes the route table associated with a given subnet in a VPC. After the opera
 \details{
 You can also use ReplaceRouteTableAssociation to change which table is the main route table in the VPC. You just specify the main route table's association ID and the route table to be the new main route table.
 }
+\section{Accepted Parameters}{
+\preformatted{replace_route_table_association(
+  AssociationId = "string",
+  DryRun = TRUE|FALSE,
+  RouteTableId = "string"
+)
+}
+}
+
 \examples{
 # This example associates the specified route table with the subnet for
 # the specified route table association.
-replace_route_table_association(
+\donttest{replace_route_table_association(
   AssociationId = "rtbassoc-781d0d1a",
   RouteTableId = "rtb-22574640"
-)
+)}
 
 }

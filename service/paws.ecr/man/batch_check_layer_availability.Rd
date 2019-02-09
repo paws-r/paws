@@ -4,13 +4,8 @@
 \alias{batch_check_layer_availability}
 \title{Check the availability of multiple image layers in a specified registry and repository}
 \usage{
-batch_check_layer_availability(
-  registryId = "string",
-  repositoryName = "string",
-  layerDigests = list(
-    "string"
-  )
-)
+batch_check_layer_availability(registryId = NULL, repositoryName,
+  layerDigests)
 }
 \arguments{
 \item{registryId}{The AWS account ID associated with the registry that contains the image layers to check. If you do not specify a registry, the default registry is assumed.}
@@ -25,6 +20,14 @@ Check the availability of multiple image layers in a specified registry and repo
 \details{
 This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers for pulling and pushing images. In most cases, you should use the \code{docker} CLI to pull, tag, and push images.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_check_layer_availability(
+  registryId = "string",
+  repositoryName = "string",
+  layerDigests = list(
+    "string"
+  )
+)
 }
+}
+

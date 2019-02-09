@@ -4,7 +4,18 @@
 \alias{send_users_messages}
 \title{Used to send a message to a list of users}
 \usage{
-send_users_messages(
+send_users_messages(ApplicationId, SendUsersMessageRequest)
+}
+\arguments{
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+
+\item{SendUsersMessageRequest}{[required]}
+}
+\description{
+Used to send a message to a list of users.
+}
+\section{Accepted Parameters}{
+\preformatted{send_users_messages(
   ApplicationId = "string",
   SendUsersMessageRequest = list(
     Context = list(
@@ -105,36 +116,6 @@ send_users_messages(
         Title = "string",
         Url = "string"
       ),
-      EmailMessage = list(
-        Body = "string",
-        FeedbackForwardingAddress = "string",
-        FromAddress = "string",
-        RawEmail = list(
-          Data = raw
-        ),
-        ReplyToAddresses = list(
-          "string"
-        ),
-        SimpleEmail = list(
-          HtmlPart = list(
-            Charset = "string",
-            Data = "string"
-          ),
-          Subject = list(
-            Charset = "string",
-            Data = "string"
-          ),
-          TextPart = list(
-            Charset = "string",
-            Data = "string"
-          )
-        ),
-        Substitutions = list(
-          list(
-            "string"
-          )
-        )
-      ),
       GCMMessage = list(
         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
         Body = "string",
@@ -171,17 +152,6 @@ send_users_messages(
             "string"
           )
         )
-      ),
-      VoiceMessage = list(
-        Body = "string",
-        LanguageCode = "string",
-        OriginationNumber = "string",
-        Substitutions = list(
-          list(
-            "string"
-          )
-        ),
-        VoiceId = "string"
       )
     ),
     TraceId = "string",
@@ -203,14 +173,5 @@ send_users_messages(
   )
 )
 }
-\arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+}
 
-\item{SendUsersMessageRequest}{[required]}
-}
-\description{
-Used to send a message to a list of users.
-}
-\examples{
-
-}

@@ -4,9 +4,7 @@
 \alias{describe_connections}
 \title{Displays the specified connection or all connections in this Region}
 \usage{
-describe_connections(
-  connectionId = "string"
-)
+describe_connections(connectionId = NULL)
 }
 \arguments{
 \item{connectionId}{The ID of the connection.}
@@ -14,6 +12,10 @@ describe_connections(
 \description{
 Displays the specified connection or all connections in this Region.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_connections(
+  connectionId = "string"
+)
 }
+}
+

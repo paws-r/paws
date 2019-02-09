@@ -4,11 +4,7 @@
 \alias{describe_matchmaking}
 \title{Retrieves one or more matchmaking tickets}
 \usage{
-describe_matchmaking(
-  TicketIds = list(
-    "string"
-  )
-)
+describe_matchmaking(TicketIds)
 }
 \arguments{
 \item{TicketIds}{[required] Unique identifier for a matchmaking ticket. You can include up to 10 ID values.}
@@ -30,6 +26,12 @@ Matchmaking-related operations include:
 \item StartMatchBackfill
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_matchmaking(
+  TicketIds = list(
+    "string"
+  )
+)
 }
+}
+

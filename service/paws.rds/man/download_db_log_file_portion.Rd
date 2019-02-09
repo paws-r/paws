@@ -4,12 +4,8 @@
 \alias{download_db_log_file_portion}
 \title{Downloads all or a portion of the specified log file, up to 1 MB in size}
 \usage{
-download_db_log_file_portion(
-  DBInstanceIdentifier = "string",
-  LogFileName = "string",
-  Marker = "string",
-  NumberOfLines = 123
-)
+download_db_log_file_portion(DBInstanceIdentifier, LogFileName,
+  Marker = NULL, NumberOfLines = NULL)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The customer-assigned name of the DB instance that contains the log files you want to list.
@@ -36,6 +32,13 @@ If the NumberOfLines parameter is specified, then the block of lines returned ca
 \description{
 Downloads all or a portion of the specified log file, up to 1 MB in size.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{download_db_log_file_portion(
+  DBInstanceIdentifier = "string",
+  LogFileName = "string",
+  Marker = "string",
+  NumberOfLines = 123
+)
 }
+}
+

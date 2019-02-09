@@ -4,7 +4,16 @@
 \alias{put_events}
 \title{Sends custom events to Amazon CloudWatch Events so that they can be matched to rules}
 \usage{
-put_events(
+put_events(Entries)
+}
+\arguments{
+\item{Entries}{[required] The entry that defines an event in your system. You can specify several parameters for the entry such as the source and type of the event, resources associated with the event, and so on.}
+}
+\description{
+Sends custom events to Amazon CloudWatch Events so that they can be matched to rules.
+}
+\section{Accepted Parameters}{
+\preformatted{put_events(
   Entries = list(
     list(
       Time = as.POSIXct("2015-01-01"),
@@ -18,12 +27,5 @@ put_events(
   )
 )
 }
-\arguments{
-\item{Entries}{[required] The entry that defines an event in your system. You can specify several parameters for the entry such as the source and type of the event, resources associated with the event, and so on.}
 }
-\description{
-Sends custom events to Amazon CloudWatch Events so that they can be matched to rules.
-}
-\examples{
 
-}

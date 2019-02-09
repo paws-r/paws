@@ -4,18 +4,8 @@
 \alias{update_alias}
 \title{Using this API you can update the function version to which the alias points and the alias description}
 \usage{
-update_alias(
-  FunctionName = "string",
-  Name = "string",
-  FunctionVersion = "string",
-  Description = "string",
-  RoutingConfig = list(
-    AdditionalVersionWeights = list(
-      123.0
-    )
-  ),
-  RevisionId = "string"
-)
+update_alias(FunctionName, Name, FunctionVersion = NULL,
+  Description = NULL, RoutingConfig = NULL, RevisionId = NULL)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the lambda function.
@@ -45,13 +35,29 @@ Using this API you can update the function version to which the alias points and
 \details{
 This requires permission for the lambda:UpdateAlias action.
 }
+\section{Accepted Parameters}{
+\preformatted{update_alias(
+  FunctionName = "string",
+  Name = "string",
+  FunctionVersion = "string",
+  Description = "string",
+  RoutingConfig = list(
+    AdditionalVersionWeights = list(
+      123.0
+    )
+  ),
+  RevisionId = "string"
+)
+}
+}
+
 \examples{
 # This operation updates a Lambda function alias
-update_alias(
+\donttest{update_alias(
   Description = "",
   FunctionName = "myFunction",
   FunctionVersion = "1",
   Name = "functionAlias"
-)
+)}
 
 }

@@ -4,10 +4,7 @@
 \alias{list_projects}
 \title{Lists all projects in AWS CodeStar associated with your AWS account}
 \usage{
-list_projects(
-  nextToken = "string",
-  maxResults = 123
-)
+list_projects(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{nextToken}{The continuation token to be used to return the next set of results, if the results cannot be returned in one response.}
@@ -17,6 +14,11 @@ list_projects(
 \description{
 Lists all projects in AWS CodeStar associated with your AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_projects(
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

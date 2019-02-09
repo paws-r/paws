@@ -4,9 +4,7 @@
 \alias{get_contact}
 \title{Gets the contact details by the contact ARN}
 \usage{
-get_contact(
-  ContactArn = "string"
-)
+get_contact(ContactArn)
 }
 \arguments{
 \item{ContactArn}{[required] The ARN of the contact for which to request details.}
@@ -14,6 +12,10 @@ get_contact(
 \description{
 Gets the contact details by the contact ARN.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_contact(
+  ContactArn = "string"
+)
 }
+}
+

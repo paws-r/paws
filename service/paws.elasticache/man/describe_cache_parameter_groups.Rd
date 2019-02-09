@@ -4,11 +4,8 @@
 \alias{describe_cache_parameter_groups}
 \title{Returns a list of cache parameter group descriptions}
 \usage{
-describe_cache_parameter_groups(
-  CacheParameterGroupName = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_cache_parameter_groups(CacheParameterGroupName = NULL,
+  MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{CacheParameterGroupName}{The name of a specific cache parameter group to return details for.}
@@ -24,6 +21,12 @@ Constraints: minimum 20; maximum 100.}
 \description{
 Returns a list of cache parameter group descriptions. If a cache parameter group name is specified, the list contains only the descriptions for that group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_cache_parameter_groups(
+  CacheParameterGroupName = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

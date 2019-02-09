@@ -4,18 +4,7 @@
 \alias{update_domain_nameservers}
 \title{This operation replaces the current set of name servers for the domain with the specified set of name servers}
 \usage{
-update_domain_nameservers(
-  DomainName = "string",
-  FIAuthKey = "string",
-  Nameservers = list(
-    list(
-      Name = "string",
-      GlueIps = list(
-        "string"
-      )
-    )
-  )
-)
+update_domain_nameservers(DomainName, FIAuthKey = NULL, Nameservers)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to change name servers for.}
@@ -30,6 +19,19 @@ This operation replaces the current set of name servers for the domain with the 
 \details{
 If successful, this operation returns an operation ID that you can use to track the progress and completion of the action. If the request is not completed successfully, the domain registrant will be notified by email.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_domain_nameservers(
+  DomainName = "string",
+  FIAuthKey = "string",
+  Nameservers = list(
+    list(
+      Name = "string",
+      GlueIps = list(
+        "string"
+      )
+    )
+  )
+)
 }
+}
+

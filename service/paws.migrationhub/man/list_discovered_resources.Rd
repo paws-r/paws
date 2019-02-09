@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.migrationhub_operations.R
 \name{list_discovered_resources}
 \alias{list_discovered_resources}
-\title{Lists discovered resources associated with the given \code{MigrationTask}}
+\title{Lists discovered resources associated with the given MigrationTask}
 \usage{
-list_discovered_resources(
-  ProgressUpdateStream = "string",
-  MigrationTaskName = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_discovered_resources(ProgressUpdateStream, MigrationTaskName,
+  NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
@@ -23,6 +19,13 @@ list_discovered_resources(
 \description{
 Lists discovered resources associated with the given \code{MigrationTask}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_discovered_resources(
+  ProgressUpdateStream = "string",
+  MigrationTaskName = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{delete_scheduled_action}
 \title{Deletes the specified scheduled action}
 \usage{
-delete_scheduled_action(
-  AutoScalingGroupName = "string",
-  ScheduledActionName = "string"
-)
+delete_scheduled_action(AutoScalingGroupName, ScheduledActionName)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -17,12 +14,20 @@ delete_scheduled_action(
 \description{
 Deletes the specified scheduled action.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_scheduled_action(
+  AutoScalingGroupName = "string",
+  ScheduledActionName = "string"
+)
+}
+}
+
 \examples{
 # This example deletes the specified scheduled action from the specified
 # Auto Scaling group.
-delete_scheduled_action(
+\donttest{delete_scheduled_action(
   AutoScalingGroupName = "my-auto-scaling-group",
   ScheduledActionName = "my-scheduled-action"
-)
+)}
 
 }

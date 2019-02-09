@@ -4,12 +4,8 @@
 \alias{update_upload}
 \title{Update an uploaded test specification (test spec)}
 \usage{
-update_upload(
-  arn = "string",
-  name = "string",
-  contentType = "string",
-  editContent = TRUE|FALSE
-)
+update_upload(arn, name = NULL, contentType = NULL,
+  editContent = NULL)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of the uploaded test spec.}
@@ -23,6 +19,13 @@ update_upload(
 \description{
 Update an uploaded test specification (test spec).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_upload(
+  arn = "string",
+  name = "string",
+  contentType = "string",
+  editContent = TRUE|FALSE
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{describe_cluster}
 \title{Returns descriptive information about an Amazon EKS cluster}
 \usage{
-describe_cluster(
-  name = "string"
-)
+describe_cluster(name)
 }
 \arguments{
 \item{name}{[required] The name of the cluster to describe.}
@@ -19,11 +17,18 @@ The API server endpoint and certificate authority data returned by this operatio
 
 The API server endpoint and certificate authority data are not available until the cluster reaches the \code{ACTIVE} state.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_cluster(
+  name = "string"
+)
+}
+}
+
 \examples{
 # This example command provides a description of the specified cluster in
 # your default region.
-describe_cluster(
+\donttest{describe_cluster(
   name = "devel"
-)
+)}
 
 }

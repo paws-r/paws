@@ -4,11 +4,7 @@
 \alias{describe_assessment_targets}
 \title{Describes the assessment targets that are specified by the ARNs of the assessment targets}
 \usage{
-describe_assessment_targets(
-  assessmentTargetArns = list(
-    "string"
-  )
-)
+describe_assessment_targets(assessmentTargetArns)
 }
 \arguments{
 \item{assessmentTargetArns}{[required] The ARNs that specifies the assessment targets that you want to describe.}
@@ -16,13 +12,22 @@ describe_assessment_targets(
 \description{
 Describes the assessment targets that are specified by the ARNs of the assessment targets.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_assessment_targets(
+  assessmentTargetArns = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # Describes the assessment targets that are specified by the ARNs of the
 # assessment targets.
-describe_assessment_targets(
+\donttest{describe_assessment_targets(
   assessmentTargetArns = list(
     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq"
   )
-)
+)}
 
 }

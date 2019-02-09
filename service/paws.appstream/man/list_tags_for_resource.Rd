@@ -4,9 +4,7 @@
 \alias{list_tags_for_resource}
 \title{Retrieves a list of all tags for the specified AppStream 2}
 \usage{
-list_tags_for_resource(
-  ResourceArn = "string"
-)
+list_tags_for_resource(ResourceArn)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
@@ -17,6 +15,10 @@ Retrieves a list of all tags for the specified AppStream 2.0 resource. You can t
 \details{
 For more information about tags, see \href{http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources} in the \emph{Amazon AppStream 2.0 Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_resource(
+  ResourceArn = "string"
+)
 }
+}
+

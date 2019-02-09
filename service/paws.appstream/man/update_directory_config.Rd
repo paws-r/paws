@@ -4,16 +4,9 @@
 \alias{update_directory_config}
 \title{Updates the specified Directory Config object in AppStream 2}
 \usage{
-update_directory_config(
-  DirectoryName = "string",
-  OrganizationalUnitDistinguishedNames = list(
-    "string"
-  ),
-  ServiceAccountCredentials = list(
-    AccountName = "string",
-    AccountPassword = "string"
-  )
-)
+update_directory_config(DirectoryName,
+  OrganizationalUnitDistinguishedNames = NULL,
+  ServiceAccountCredentials = NULL)
 }
 \arguments{
 \item{DirectoryName}{[required] The name of the Directory Config object.}
@@ -25,6 +18,17 @@ update_directory_config(
 \description{
 Updates the specified Directory Config object in AppStream 2.0. This object includes the information required to join streaming instances to an Active Directory domain.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_directory_config(
+  DirectoryName = "string",
+  OrganizationalUnitDistinguishedNames = list(
+    "string"
+  ),
+  ServiceAccountCredentials = list(
+    AccountName = "string",
+    AccountPassword = "string"
+  )
+)
 }
+}
+

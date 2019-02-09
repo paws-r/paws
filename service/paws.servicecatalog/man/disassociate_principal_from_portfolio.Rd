@@ -4,11 +4,8 @@
 \alias{disassociate_principal_from_portfolio}
 \title{Disassociates a previously associated principal ARN from a specified portfolio}
 \usage{
-disassociate_principal_from_portfolio(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  PrincipalARN = "string"
-)
+disassociate_principal_from_portfolio(AcceptLanguage = NULL, PortfolioId,
+  PrincipalARN)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -25,6 +22,12 @@ disassociate_principal_from_portfolio(
 \description{
 Disassociates a previously associated principal ARN from a specified portfolio.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_principal_from_portfolio(
+  AcceptLanguage = "string",
+  PortfolioId = "string",
+  PrincipalARN = "string"
+)
 }
+}
+

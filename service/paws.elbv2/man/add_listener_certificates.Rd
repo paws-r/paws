@@ -4,7 +4,23 @@
 \alias{add_listener_certificates}
 \title{Adds the specified certificate to the specified secure listener}
 \usage{
-add_listener_certificates(
+add_listener_certificates(ListenerArn, Certificates)
+}
+\arguments{
+\item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
+
+\item{Certificates}{[required] The certificate to add. You can specify one certificate per call.}
+}
+\description{
+Adds the specified certificate to the specified secure listener.
+}
+\details{
+If the certificate was already added, the call is successful but the certificate is not added again.
+
+To list the certificates for your listener, use DescribeListenerCertificates. To remove certificates from your listener, use RemoveListenerCertificates.
+}
+\section{Accepted Parameters}{
+\preformatted{add_listener_certificates(
   ListenerArn = "string",
   Certificates = list(
     list(
@@ -14,19 +30,5 @@ add_listener_certificates(
   )
 )
 }
-\arguments{
-\item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
+}
 
-\item{Certificates}{[required] The certificate to add. You can specify one certificate per call. Set \code{CertificateArn} to the certificate ARN but do not set \code{IsDefault}.}
-}
-\description{
-Adds the specified certificate to the specified secure listener.
-}
-\details{
-If the certificate was already added, the call is successful but the certificate is not added again.
-
-To list the certificates for your listener, use DescribeListenerCertificates. To remove certificates from your listener, use RemoveListenerCertificates. To specify the default SSL server certificate, use ModifyListener.
-}
-\examples{
-
-}

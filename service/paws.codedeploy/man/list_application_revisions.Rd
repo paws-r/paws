@@ -4,15 +4,9 @@
 \alias{list_application_revisions}
 \title{Lists information about revisions for an application}
 \usage{
-list_application_revisions(
-  applicationName = "string",
-  sortBy = "registerTime"|"firstUsedTime"|"lastUsedTime",
-  sortOrder = "ascending"|"descending",
-  s3Bucket = "string",
-  s3KeyPrefix = "string",
-  deployed = "include"|"exclude"|"ignore",
-  nextToken = "string"
-)
+list_application_revisions(applicationName, sortBy = NULL,
+  sortOrder = NULL, s3Bucket = NULL, s3KeyPrefix = NULL,
+  deployed = NULL, nextToken = NULL)
 }
 \arguments{
 \item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
@@ -38,7 +32,7 @@ If set to null, the results will be sorted in an arbitrary order.}
 
 \item{s3Bucket}{An Amazon S3 bucket name to limit the search for revisions.
 
-If set to null, all of the user's buckets are searched.}
+If set to null, all of the user's buckets will be searched.}
 
 \item{s3KeyPrefix}{A key prefix for the set of Amazon S3 objects to limit the search for revisions.}
 
@@ -49,11 +43,21 @@ If set to null, all of the user's buckets are searched.}
 \item ignore: List all revisions.
 }}
 
-\item{nextToken}{An identifier returned from the previous \code{ListApplicationRevisions} call. It can be used to return the next set of applications in the list.}
+\item{nextToken}{An identifier returned from the previous list application revisions call. It can be used to return the next set of applications in the list.}
 }
 \description{
 Lists information about revisions for an application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_application_revisions(
+  applicationName = "string",
+  sortBy = "registerTime"|"firstUsedTime"|"lastUsedTime",
+  sortOrder = "ascending"|"descending",
+  s3Bucket = "string",
+  s3KeyPrefix = "string",
+  deployed = "include"|"exclude"|"ignore",
+  nextToken = "string"
+)
 }
+}
+

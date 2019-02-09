@@ -4,10 +4,7 @@
 \alias{create_project}
 \title{Creates a new project}
 \usage{
-create_project(
-  name = "string",
-  defaultJobTimeoutMinutes = 123
-)
+create_project(name, defaultJobTimeoutMinutes = NULL)
 }
 \arguments{
 \item{name}{[required] The project's name.}
@@ -17,10 +14,18 @@ create_project(
 \description{
 Creates a new project.
 }
+\section{Accepted Parameters}{
+\preformatted{create_project(
+  name = "string",
+  defaultJobTimeoutMinutes = 123
+)
+}
+}
+
 \examples{
 # The following example creates a new project named MyProject.
-create_project(
+\donttest{create_project(
   name = "MyProject"
-)
+)}
 
 }

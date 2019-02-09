@@ -4,9 +4,7 @@
 \alias{get_hostname_suggestion}
 \title{Gets a generated host name for the specified layer, based on the current host name theme}
 \usage{
-get_hostname_suggestion(
-  LayerId = "string"
-)
+get_hostname_suggestion(LayerId)
 }
 \arguments{
 \item{LayerId}{[required] The layer ID.}
@@ -17,6 +15,10 @@ Gets a generated host name for the specified layer, based on the current host na
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_hostname_suggestion(
+  LayerId = "string"
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{describe_configuration_recorders}
 \title{Returns the details for the specified configuration recorders}
 \usage{
-describe_configuration_recorders(
-  ConfigurationRecorderNames = list(
-    "string"
-  )
-)
+describe_configuration_recorders(ConfigurationRecorderNames = NULL)
 }
 \arguments{
 \item{ConfigurationRecorderNames}{A list of configuration recorder names.}
@@ -19,6 +15,12 @@ Returns the details for the specified configuration recorders. If the configurat
 \details{
 Currently, you can specify only one configuration recorder per region in your account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_configuration_recorders(
+  ConfigurationRecorderNames = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,13 +4,8 @@
 \alias{describe_job_queues}
 \title{Describes one or more of your job queues}
 \usage{
-describe_job_queues(
-  jobQueues = list(
-    "string"
-  ),
-  maxResults = 123,
-  nextToken = "string"
-)
+describe_job_queues(jobQueues = NULL, maxResults = NULL,
+  nextToken = NULL)
 }
 \arguments{
 \item{jobQueues}{A list of up to 100 queue names or full queue Amazon Resource Name (ARN) entries.}
@@ -24,12 +19,23 @@ This token should be treated as an opaque identifier that is only used to retrie
 \description{
 Describes one or more of your job queues.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_job_queues(
+  jobQueues = list(
+    "string"
+  ),
+  maxResults = 123,
+  nextToken = "string"
+)
+}
+}
+
 \examples{
 # This example describes the HighPriority job queue.
-describe_job_queues(
+\donttest{describe_job_queues(
   jobQueues = list(
     "HighPriority"
   )
-)
+)}
 
 }

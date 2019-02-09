@@ -4,16 +4,9 @@
 \alias{list_object_parents}
 \title{Lists parent objects that are associated with a given object in pagination fashion}
 \usage{
-list_object_parents(
-  DirectoryArn = "string",
-  ObjectReference = list(
-    Selector = "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123,
-  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL",
-  IncludeAllLinksToEachParent = TRUE|FALSE
-)
+list_object_parents(DirectoryArn, ObjectReference, NextToken = NULL,
+  MaxResults = NULL, ConsistencyLevel = NULL,
+  IncludeAllLinksToEachParent = NULL)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.}
@@ -31,6 +24,17 @@ list_object_parents(
 \description{
 Lists parent objects that are associated with a given object in pagination fashion.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_object_parents(
+  DirectoryArn = "string",
+  ObjectReference = list(
+    Selector = "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123,
+  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL",
+  IncludeAllLinksToEachParent = TRUE|FALSE
+)
 }
+}
+

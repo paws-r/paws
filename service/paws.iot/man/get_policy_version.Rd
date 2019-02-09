@@ -4,10 +4,7 @@
 \alias{get_policy_version}
 \title{Gets information about the specified policy version}
 \usage{
-get_policy_version(
-  policyName = "string",
-  policyVersionId = "string"
-)
+get_policy_version(policyName, policyVersionId)
 }
 \arguments{
 \item{policyName}{[required] The name of the policy.}
@@ -17,6 +14,11 @@ get_policy_version(
 \description{
 Gets information about the specified policy version.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_policy_version(
+  policyName = "string",
+  policyVersionId = "string"
+)
 }
+}
+

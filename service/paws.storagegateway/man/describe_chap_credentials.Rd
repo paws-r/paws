@@ -4,9 +4,7 @@
 \alias{describe_chap_credentials}
 \title{Returns an array of Challenge-Handshake Authentication Protocol (CHAP) credentials information for a specified iSCSI target, one for each target-initiator pair}
 \usage{
-describe_chap_credentials(
-  TargetARN = "string"
-)
+describe_chap_credentials(TargetARN)
 }
 \arguments{
 \item{TargetARN}{[required] The Amazon Resource Name (ARN) of the iSCSI volume target. Use the DescribeStorediSCSIVolumes operation to return to retrieve the TargetARN for specified VolumeARN.}
@@ -14,12 +12,19 @@ describe_chap_credentials(
 \description{
 Returns an array of Challenge-Handshake Authentication Protocol (CHAP) credentials information for a specified iSCSI target, one for each target-initiator pair.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_chap_credentials(
+  TargetARN = "string"
+)
+}
+}
+
 \examples{
 # Returns an array of Challenge-Handshake Authentication Protocol (CHAP)
 # credentials information for a specified iSCSI target, one for each
 # target-initiator pair.
-describe_chap_credentials(
+\donttest{describe_chap_credentials(
   TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume"
-)
+)}
 
 }

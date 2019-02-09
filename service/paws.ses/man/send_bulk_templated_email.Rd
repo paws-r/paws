@@ -4,47 +4,10 @@
 \alias{send_bulk_templated_email}
 \title{Composes an email message to multiple destinations}
 \usage{
-send_bulk_templated_email(
-  Source = "string",
-  SourceArn = "string",
-  ReplyToAddresses = list(
-    "string"
-  ),
-  ReturnPath = "string",
-  ReturnPathArn = "string",
-  ConfigurationSetName = "string",
-  DefaultTags = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  Template = "string",
-  TemplateArn = "string",
-  DefaultTemplateData = "string",
-  Destinations = list(
-    list(
-      Destination = list(
-        ToAddresses = list(
-          "string"
-        ),
-        CcAddresses = list(
-          "string"
-        ),
-        BccAddresses = list(
-          "string"
-        )
-      ),
-      ReplacementTags = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      ReplacementTemplateData = "string"
-    )
-  )
-)
+send_bulk_templated_email(Source, SourceArn = NULL,
+  ReplyToAddresses = NULL, ReturnPath = NULL, ReturnPathArn = NULL,
+  ConfigurationSetName = NULL, DefaultTags = NULL, Template,
+  TemplateArn = NULL, DefaultTemplateData = NULL, Destinations)
 }
 \arguments{
 \item{Source}{[required] The email address that is sending the email. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. For information about verifying identities, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html}{Amazon SES Developer Guide}.
@@ -98,6 +61,48 @@ In order to send email using the \code{SendBulkTemplatedEmail} operation, your c
 \item The number of destinations you can contact in a single call to the API may be limited by your account's maximum sending rate.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{send_bulk_templated_email(
+  Source = "string",
+  SourceArn = "string",
+  ReplyToAddresses = list(
+    "string"
+  ),
+  ReturnPath = "string",
+  ReturnPathArn = "string",
+  ConfigurationSetName = "string",
+  DefaultTags = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  Template = "string",
+  TemplateArn = "string",
+  DefaultTemplateData = "string",
+  Destinations = list(
+    list(
+      Destination = list(
+        ToAddresses = list(
+          "string"
+        ),
+        CcAddresses = list(
+          "string"
+        ),
+        BccAddresses = list(
+          "string"
+        )
+      ),
+      ReplacementTags = list(
+        list(
+          Name = "string",
+          Value = "string"
+        )
+      ),
+      ReplacementTemplateData = "string"
+    )
+  )
+)
 }
+}
+

@@ -4,14 +4,7 @@
 \alias{untag_resource}
 \title{Remove tags from a CloudFront resource}
 \usage{
-untag_resource(
-  Resource = "string",
-  TagKeys = list(
-    Items = list(
-      "string"
-    )
-  )
-)
+untag_resource(Resource, TagKeys)
 }
 \arguments{
 \item{Resource}{[required] An ARN of a CloudFront resource.}
@@ -21,6 +14,15 @@ untag_resource(
 \description{
 Remove tags from a CloudFront resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{untag_resource(
+  Resource = "string",
+  TagKeys = list(
+    Items = list(
+      "string"
+    )
+  )
+)
 }
+}
+

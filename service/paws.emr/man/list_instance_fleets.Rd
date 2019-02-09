@@ -4,10 +4,7 @@
 \alias{list_instance_fleets}
 \title{Lists all available details about the instance fleets in a cluster}
 \usage{
-list_instance_fleets(
-  ClusterId = "string",
-  Marker = "string"
-)
+list_instance_fleets(ClusterId, Marker = NULL)
 }
 \arguments{
 \item{ClusterId}{[required] The unique identifier of the cluster.}
@@ -20,6 +17,11 @@ Lists all available details about the instance fleets in a cluster.
 \details{
 The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_instance_fleets(
+  ClusterId = "string",
+  Marker = "string"
+)
 }
+}
+

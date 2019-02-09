@@ -4,12 +4,8 @@
 \alias{get_segment_versions}
 \title{Returns information about your segment versions}
 \usage{
-get_segment_versions(
-  ApplicationId = "string",
-  PageSize = "string",
-  SegmentId = "string",
-  Token = "string"
-)
+get_segment_versions(ApplicationId, PageSize = NULL, SegmentId,
+  Token = NULL)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -23,6 +19,13 @@ get_segment_versions(
 \description{
 Returns information about your segment versions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_segment_versions(
+  ApplicationId = "string",
+  PageSize = "string",
+  SegmentId = "string",
+  Token = "string"
+)
 }
+}
+

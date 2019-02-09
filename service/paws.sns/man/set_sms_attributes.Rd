@@ -4,11 +4,7 @@
 \alias{set_sms_attributes}
 \title{Use this request to set the default settings for sending SMS messages and receiving daily SMS usage reports}
 \usage{
-set_sms_attributes(
-  attributes = list(
-    "string"
-  )
-)
+set_sms_attributes(attributes)
 }
 \arguments{
 \item{attributes}{[required] The default settings for sending SMS messages from your account. You can set values for the following attribute names:
@@ -53,6 +49,12 @@ Use this request to set the default settings for sending SMS messages and receiv
 \details{
 You can override some of these settings for a single message when you use the \code{Publish} action with the \code{MessageAttributes.entry.N} parameter. For more information, see \href{http://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html}{Sending an SMS Message} in the \emph{Amazon SNS Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_sms_attributes(
+  attributes = list(
+    "string"
+  )
+)
 }
+}
+

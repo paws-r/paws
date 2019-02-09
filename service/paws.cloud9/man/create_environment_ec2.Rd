@@ -4,15 +4,9 @@
 \alias{create_environment_ec2}
 \title{Creates an AWS Cloud9 development environment, launches an Amazon Elastic Compute Cloud (Amazon EC2) instance, and then connects from the instance to the environment}
 \usage{
-create_environment_ec2(
-  name = "string",
-  description = "string",
-  clientRequestToken = "string",
-  instanceType = "string",
-  subnetId = "string",
-  automaticStopTimeMinutes = 123,
-  ownerArn = "string"
-)
+create_environment_ec2(name, description = NULL,
+  clientRequestToken = NULL, instanceType, subnetId = NULL,
+  automaticStopTimeMinutes = NULL, ownerArn = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the environment to create.
@@ -36,15 +30,28 @@ For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIRefe
 \description{
 Creates an AWS Cloud9 development environment, launches an Amazon Elastic Compute Cloud (Amazon EC2) instance, and then connects from the instance to the environment.
 }
+\section{Accepted Parameters}{
+\preformatted{create_environment_ec2(
+  name = "string",
+  description = "string",
+  clientRequestToken = "string",
+  instanceType = "string",
+  subnetId = "string",
+  automaticStopTimeMinutes = 123,
+  ownerArn = "string"
+)
+}
+}
+
 \examples{
 # 
-create_environment_ec2(
+\donttest{create_environment_ec2(
   name = "my-demo-environment",
   automaticStopTimeMinutes = 60L,
   description = "This is my demonstration environment.",
   instanceType = "t2.micro",
   ownerArn = "arn:aws:iam::123456789012:user/MyDemoUser",
   subnetId = "subnet-1fab8aEX"
-)
+)}
 
 }

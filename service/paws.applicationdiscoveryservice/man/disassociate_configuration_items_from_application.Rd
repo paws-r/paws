@@ -4,12 +4,9 @@
 \alias{disassociate_configuration_items_from_application}
 \title{Disassociates one or more configuration items from an application}
 \usage{
-disassociate_configuration_items_from_application(
-  applicationConfigurationId = "string",
-  configurationIds = list(
-    "string"
-  )
-)
+
+  disassociate_configuration_items_from_application(applicationConfigurationId,
+  configurationIds)
 }
 \arguments{
 \item{applicationConfigurationId}{[required] Configuration ID of an application from which each item is disassociated.}
@@ -19,6 +16,13 @@ disassociate_configuration_items_from_application(
 \description{
 Disassociates one or more configuration items from an application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_configuration_items_from_application(
+  applicationConfigurationId = "string",
+  configurationIds = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,7 +4,25 @@
 \alias{reset_cluster_parameter_group}
 \title{Sets one or more parameters of the specified parameter group to their default values and sets the source values of the parameters to "engine-default"}
 \usage{
-reset_cluster_parameter_group(
+reset_cluster_parameter_group(ParameterGroupName,
+  ResetAllParameters = NULL, Parameters = NULL)
+}
+\arguments{
+\item{ParameterGroupName}{[required] The name of the cluster parameter group to be reset.}
+
+\item{ResetAllParameters}{If \code{true}, all parameters in the specified parameter group will be reset to their default values.
+
+Default: \code{true}}
+
+\item{Parameters}{An array of names of parameters to be reset. If \emph{ResetAllParameters} option is not used, then at least one parameter name must be supplied.
+
+Constraints: A maximum of 20 parameters can be reset in a single request.}
+}
+\description{
+Sets one or more parameters of the specified parameter group to their default values and sets the source values of the parameters to "engine-default". To reset the entire parameter group specify the \emph{ResetAllParameters} parameter. For parameter changes to take effect you must reboot any associated clusters.
+}
+\section{Accepted Parameters}{
+\preformatted{reset_cluster_parameter_group(
   ParameterGroupName = "string",
   ResetAllParameters = TRUE|FALSE,
   Parameters = list(
@@ -22,20 +40,5 @@ reset_cluster_parameter_group(
   )
 )
 }
-\arguments{
-\item{ParameterGroupName}{[required] The name of the cluster parameter group to be reset.}
-
-\item{ResetAllParameters}{If \code{true}, all parameters in the specified parameter group will be reset to their default values.
-
-Default: \code{true}}
-
-\item{Parameters}{An array of names of parameters to be reset. If \emph{ResetAllParameters} option is not used, then at least one parameter name must be supplied.
-
-Constraints: A maximum of 20 parameters can be reset in a single request.}
 }
-\description{
-Sets one or more parameters of the specified parameter group to their default values and sets the source values of the parameters to "engine-default". To reset the entire parameter group specify the \emph{ResetAllParameters} parameter. For parameter changes to take effect you must reboot any associated clusters.
-}
-\examples{
 
-}

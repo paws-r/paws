@@ -4,11 +4,8 @@
 \alias{list_activated_rules_in_rule_group}
 \title{Returns an array of ActivatedRule objects}
 \usage{
-list_activated_rules_in_rule_group(
-  RuleGroupId = "string",
-  NextMarker = "string",
-  Limit = 123
-)
+list_activated_rules_in_rule_group(RuleGroupId = NULL,
+  NextMarker = NULL, Limit = NULL)
 }
 \arguments{
 \item{RuleGroupId}{The \code{RuleGroupId} of the RuleGroup for which you want to get a list of ActivatedRule objects.}
@@ -20,6 +17,12 @@ list_activated_rules_in_rule_group(
 \description{
 Returns an array of ActivatedRule objects.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_activated_rules_in_rule_group(
+  RuleGroupId = "string",
+  NextMarker = "string",
+  Limit = 123
+)
 }
+}
+

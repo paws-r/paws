@@ -4,7 +4,20 @@
 \alias{update_stage}
 \title{Changes information about a Stage resource}
 \usage{
-update_stage(
+update_stage(restApiId, stageName, patchOperations = NULL)
+}
+\arguments{
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+
+\item{stageName}{[required] [Required] The name of the Stage resource to change information about.}
+
+\item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
+}
+\description{
+Changes information about a Stage resource.
+}
+\section{Accepted Parameters}{
+\preformatted{update_stage(
   restApiId = "string",
   stageName = "string",
   patchOperations = list(
@@ -17,16 +30,5 @@ update_stage(
   )
 )
 }
-\arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
-
-\item{stageName}{[required] [Required] The name of the Stage resource to change information about.}
-
-\item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
 }
-\description{
-Changes information about a Stage resource.
-}
-\examples{
 
-}

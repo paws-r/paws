@@ -4,11 +4,8 @@
 \alias{describe_notification_subscriptions}
 \title{Lists the specified notification subscriptions}
 \usage{
-describe_notification_subscriptions(
-  OrganizationId = "string",
-  Marker = "string",
-  Limit = 123
-)
+describe_notification_subscriptions(OrganizationId, Marker = NULL,
+  Limit = NULL)
 }
 \arguments{
 \item{OrganizationId}{[required] The ID of the organization.}
@@ -20,6 +17,12 @@ describe_notification_subscriptions(
 \description{
 Lists the specified notification subscriptions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_notification_subscriptions(
+  OrganizationId = "string",
+  Marker = "string",
+  Limit = 123
+)
 }
+}
+

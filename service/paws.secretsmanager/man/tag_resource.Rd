@@ -4,15 +4,7 @@
 \alias{tag_resource}
 \title{Attaches one or more tags, each consisting of a key name and a value, to the specified secret}
 \usage{
-tag_resource(
-  SecretId = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+tag_resource(SecretId, Tags)
 }
 \arguments{
 \item{SecretId}{[required] The identifier for the secret that you want to attach tags to. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
@@ -21,7 +13,7 @@ If you specify an ARN, we generally recommend that you specify a complete ARN. Y
 
 \item{Tags}{[required] The tags to attach to the secret. Each element in the list consists of a \code{Key} and a \code{Value}.
 
-This parameter to the API requires a JSON text string argument. For information on how to format a JSON parameter for the various command line tool environments, see \href{http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json}{Using JSON for Parameters} in the \emph{AWS CLI User Guide}. For the AWS CLI, you can also use the syntax: \code{--Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"[,â€¦]}}
+This parameter to the API requires a JSON text string argument. For information on how to format a JSON parameter for the various command line tool environments, see \href{http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json}{Using JSON for Parameters} in the \emph{AWS CLI User Guide}. For the AWS CLI, you can also use the syntax: \code{--Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"[,…]}}
 }
 \description{
 Attaches one or more tags, each consisting of a key name and a value, to the specified secret. Tags are part of the secret's overall metadata, and are not associated with any specific version of the secret. This operation only appends tags to the existing list of tags. To remove tags, you must use UntagResource.
@@ -52,11 +44,24 @@ To run this command, you must have the following permissions:
 \item To view the list of tags attached to a secret, use DescribeSecret.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{tag_resource(
+  SecretId = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following example shows how to attach two tags each with a Key and
 # Value to a secret. There is no output from this API. To see the result,
 # use the DescribeSecret operation.
-tag_resource(
+\donttest{tag_resource(
   SecretId = "MyExampleSecret",
   Tags = list(
     list(
@@ -68,6 +73,6 @@ tag_resource(
       Value = "AnotherValue"
     )
   )
-)
+)}
 
 }

@@ -6,13 +6,13 @@
 \alias{paws.sts-package}
 \title{paws.sts: AWS Security Token Service}
 \description{
-The AWS Security Token Service (STS) is a web service that
-enables you to request temporary, limited-privilege credentials for
-AWS Identity and Access Management (IAM) users or for users that you
-authenticate (federated users). This guide provides descriptions of
-the STS API. For more detailed information about using this service,
-go to [Temporary Security
-Credentials](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html).
+The AWS Security Token Service (STS) is a web
+    service that enables you to request temporary, limited-privilege
+    credentials for AWS Identity and Access Management (IAM) users or for
+    users that you authenticate (federated users). This guide provides
+    descriptions of the STS API. For more detailed information about using
+    this service, go to [Temporary Security
+    Credentials](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html).
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

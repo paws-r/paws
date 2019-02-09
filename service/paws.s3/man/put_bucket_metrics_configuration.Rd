@@ -4,7 +4,20 @@
 \alias{put_bucket_metrics_configuration}
 \title{Sets a metrics configuration (specified by the metrics configuration ID) for the bucket}
 \usage{
-put_bucket_metrics_configuration(
+put_bucket_metrics_configuration(Bucket, Id, MetricsConfiguration)
+}
+\arguments{
+\item{Bucket}{[required] The name of the bucket for which the metrics configuration is set.}
+
+\item{Id}{[required] The ID used to identify the metrics configuration.}
+
+\item{MetricsConfiguration}{[required] Specifies the metrics configuration.}
+}
+\description{
+Sets a metrics configuration (specified by the metrics configuration ID) for the bucket.
+}
+\section{Accepted Parameters}{
+\preformatted{put_bucket_metrics_configuration(
   Bucket = "string",
   Id = "string",
   MetricsConfiguration = list(
@@ -28,16 +41,5 @@ put_bucket_metrics_configuration(
   )
 )
 }
-\arguments{
-\item{Bucket}{[required] The name of the bucket for which the metrics configuration is set.}
-
-\item{Id}{[required] The ID used to identify the metrics configuration.}
-
-\item{MetricsConfiguration}{[required] Specifies the metrics configuration.}
 }
-\description{
-Sets a metrics configuration (specified by the metrics configuration ID) for the bucket.
-}
-\examples{
 
-}

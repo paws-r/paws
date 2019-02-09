@@ -4,14 +4,9 @@
 \alias{describe_game_session_details}
 \title{Retrieves properties, including the protection policy in force, for one or more game sessions}
 \usage{
-describe_game_session_details(
-  FleetId = "string",
-  GameSessionId = "string",
-  AliasId = "string",
-  StatusFilter = "string",
-  Limit = 123,
-  NextToken = "string"
-)
+describe_game_session_details(FleetId = NULL, GameSessionId = NULL,
+  AliasId = NULL, StatusFilter = NULL, Limit = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{FleetId}{Unique identifier for a fleet to retrieve all game sessions active on the fleet.}
@@ -46,6 +41,15 @@ Game-session-related operations include:
 \item StopGameSessionPlacement
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_game_session_details(
+  FleetId = "string",
+  GameSessionId = "string",
+  AliasId = "string",
+  StatusFilter = "string",
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

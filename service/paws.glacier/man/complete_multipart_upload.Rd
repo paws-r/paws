@@ -4,13 +4,8 @@
 \alias{complete_multipart_upload}
 \title{You call this operation to inform Amazon Glacier that all the archive parts have been uploaded and that Amazon Glacier can now assemble the archive from the uploaded parts}
 \usage{
-complete_multipart_upload(
-  accountId = "string",
-  vaultName = "string",
-  uploadId = "string",
-  archiveSize = "string",
-  checksum = "string"
-)
+complete_multipart_upload(accountId, vaultName, uploadId,
+  archiveSize = NULL, checksum = NULL)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
@@ -37,14 +32,25 @@ An AWS account has full permission to perform all operations (actions). However,
 
 For conceptual information and underlying REST API, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html}{Uploading Large Archives in Parts (Multipart Upload)} and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-complete-upload.html}{Complete Multipart Upload} in the \emph{Amazon Glacier Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{complete_multipart_upload(
+  accountId = "string",
+  vaultName = "string",
+  uploadId = "string",
+  archiveSize = "string",
+  checksum = "string"
+)
+}
+}
+
 \examples{
 # The example completes a multipart upload for a 3 MiB archive.
-complete_multipart_upload(
+\donttest{complete_multipart_upload(
   accountId = "-",
   archiveSize = "3145728",
   checksum = "9628195fcdbcbbe76cdde456d4646fa7de5f219fb39823836d81f0cc0e18aa67",
   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV6NtcV5zpsJ",
   vaultName = "my-vault"
-)
+)}
 
 }

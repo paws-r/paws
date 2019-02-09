@@ -4,9 +4,7 @@
 \alias{delete_key_pair}
 \title{Deletes a specific SSH key pair}
 \usage{
-delete_key_pair(
-  keyPairName = "string"
-)
+delete_key_pair(keyPairName)
 }
 \arguments{
 \item{keyPairName}{[required] The name of the key pair to delete.}
@@ -14,9 +12,10 @@ delete_key_pair(
 \description{
 Deletes a specific SSH key pair.
 }
-\details{
-The \code{delete key pair} operation supports tag-based access control via resource tags applied to the resource identified by keyPairName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\section{Accepted Parameters}{
+\preformatted{delete_key_pair(
+  keyPairName = "string"
+)
 }
-\examples{
+}
 
-}

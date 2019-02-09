@@ -4,9 +4,7 @@
 \alias{cancel_elasticsearch_service_software_update}
 \title{Cancels a scheduled service software update for an Amazon ES domain}
 \usage{
-cancel_elasticsearch_service_software_update(
-  DomainName = "string"
-)
+cancel_elasticsearch_service_software_update(DomainName)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to stop the latest service software update on.}
@@ -14,6 +12,10 @@ cancel_elasticsearch_service_software_update(
 \description{
 Cancels a scheduled service software update for an Amazon ES domain. You can only perform this operation before the \code{AutomatedUpdateDate} and when the \code{UpdateStatus} is in the \code{PENDING_UPDATE} state.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{cancel_elasticsearch_service_software_update(
+  DomainName = "string"
+)
 }
+}
+

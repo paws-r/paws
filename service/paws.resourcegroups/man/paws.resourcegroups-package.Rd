@@ -6,19 +6,19 @@
 \alias{paws.resourcegroups-package}
 \title{paws.resourcegroups: AWS Resource Groups}
 \description{
-AWS Resource Groups lets you organize AWS resources such as
-Amazon EC2 instances, Amazon Relational Database Service databases,
-and Amazon S3 buckets into groups using criteria that you define as
-tags. A resource group is a collection of resources that match the
-resource types specified in a query, and share one or more tags or
-portions of tags. You can create a group of resources based on their
-roles in your cloud infrastructure, lifecycle stages, regions,
-application layers, or virtually any criteria. Resource groups enable
-you to automate management tasks, such as those in AWS Systems Manager
-Automation documents, on tag-related resources in AWS Systems Manager.
-Groups of tagged resources also let you quickly view a custom console
-in AWS Systems Manager that shows AWS Config compliance and other
-monitoring data about member resources.
+AWS Resource Groups lets you organize AWS resources
+    such as Amazon EC2 instances, Amazon Relational Database Service
+    databases, and Amazon S3 buckets into groups using criteria that you
+    define as tags. A resource group is a collection of resources that
+    match the resource types specified in a query, and share one or more
+    tags or portions of tags. You can create a group of resources based on
+    their roles in your cloud infrastructure, lifecycle stages, regions,
+    application layers, or virtually any criteria. Resource groups enable
+    you to automate management tasks, such as those in AWS Systems Manager
+    Automation documents, on tag-related resources in AWS Systems Manager.
+    Groups of tagged resources also let you quickly view a custom console
+    in AWS Systems Manager that shows AWS Config compliance and other
+    monitoring data about member resources.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

@@ -4,16 +4,7 @@
 \alias{create_endpoint}
 \title{Creates an endpoint using the endpoint configuration specified in the request}
 \usage{
-create_endpoint(
-  EndpointName = "string",
-  EndpointConfigName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_endpoint(EndpointName, EndpointConfigName, Tags = NULL)
 }
 \arguments{
 \item{EndpointName}{[required] The name of the endpoint. The name must be unique within an AWS Region in your AWS account.}
@@ -38,6 +29,17 @@ For an example, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/ex1.htm
 
 If any of the models hosted at this endpoint get model data from an Amazon S3 location, Amazon SageMaker uses AWS Security Token Service to download model artifacts from the S3 path you provided. AWS STS is activated in your IAM user account by default. If you previously deactivated AWS STS for a region, you need to reactivate AWS STS for that region. For more information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and Deactivating AWS STS i an AWS Region} in the \emph{AWS Identity and Access Management User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_endpoint(
+  EndpointName = "string",
+  EndpointConfigName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

@@ -4,22 +4,9 @@
 \alias{update_maintenance_window_target}
 \title{Modifies the target of an existing Maintenance Window}
 \usage{
-update_maintenance_window_target(
-  WindowId = "string",
-  WindowTargetId = "string",
-  Targets = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  OwnerInformation = "string",
-  Name = "string",
-  Description = "string",
-  Replace = TRUE|FALSE
-)
+update_maintenance_window_target(WindowId, WindowTargetId,
+  Targets = NULL, OwnerInformation = NULL, Name = NULL,
+  Description = NULL, Replace = NULL)
 }
 \arguments{
 \item{WindowId}{[required] The Maintenance Window ID with which to modify the target.}
@@ -54,6 +41,23 @@ Description.
 
 If a parameter is null, then the corresponding field is not modified.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_maintenance_window_target(
+  WindowId = "string",
+  WindowTargetId = "string",
+  Targets = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  OwnerInformation = "string",
+  Name = "string",
+  Description = "string",
+  Replace = TRUE|FALSE
+)
 }
+}
+

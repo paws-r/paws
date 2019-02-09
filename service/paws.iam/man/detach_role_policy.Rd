@@ -4,15 +4,12 @@
 \alias{detach_role_policy}
 \title{Removes the specified managed policy from the specified role}
 \usage{
-detach_role_policy(
-  RoleName = "string",
-  PolicyArn = "string"
-)
+detach_role_policy(RoleName, PolicyArn)
 }
 \arguments{
 \item{RoleName}{[required] The name (friendly name, not ARN) of the IAM role to detach the policy from.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy you want to detach.
 
@@ -24,6 +21,11 @@ Removes the specified managed policy from the specified role.
 \details{
 A role can also have inline policies embedded with it. To delete an inline policy, use the DeleteRolePolicy API. For information about policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies} in the \emph{IAM User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{detach_role_policy(
+  RoleName = "string",
+  PolicyArn = "string"
+)
 }
+}
+

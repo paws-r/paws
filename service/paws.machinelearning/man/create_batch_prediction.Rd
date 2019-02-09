@@ -4,13 +4,8 @@
 \alias{create_batch_prediction}
 \title{Generates predictions for a group of observations}
 \usage{
-create_batch_prediction(
-  BatchPredictionId = "string",
-  BatchPredictionName = "string",
-  MLModelId = "string",
-  BatchPredictionDataSourceId = "string",
-  OutputUri = "string"
-)
+create_batch_prediction(BatchPredictionId, BatchPredictionName = NULL,
+  MLModelId, BatchPredictionDataSourceId, OutputUri)
 }
 \arguments{
 \item{BatchPredictionId}{[required] A user-supplied ID that uniquely identifies the \code{BatchPrediction}.}
@@ -33,6 +28,14 @@ Generates predictions for a group of observations. The observations to process e
 
 You can poll for status updates by using the GetBatchPrediction operation and checking the \code{Status} parameter of the result. After the \code{COMPLETED} status appears, the results are available in the location specified by the \code{OutputUri} parameter.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_batch_prediction(
+  BatchPredictionId = "string",
+  BatchPredictionName = "string",
+  MLModelId = "string",
+  BatchPredictionDataSourceId = "string",
+  OutputUri = "string"
+)
 }
+}
+

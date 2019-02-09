@@ -2,13 +2,10 @@
 % Please edit documentation in R/paws.firehose_operations.R
 \name{list_delivery_streams}
 \alias{list_delivery_streams}
-\title{Lists your delivery streams in alphabetical order of their names}
+\title{Lists your delivery streams}
 \usage{
-list_delivery_streams(
-  Limit = 123,
-  DeliveryStreamType = "DirectPut"|"KinesisStreamAsSource",
-  ExclusiveStartDeliveryStreamName = "string"
-)
+list_delivery_streams(Limit = NULL, DeliveryStreamType = NULL,
+  ExclusiveStartDeliveryStreamName = NULL)
 }
 \arguments{
 \item{Limit}{The maximum number of delivery streams to list. The default value is 10.}
@@ -21,14 +18,20 @@ list_delivery_streams(
 
 This parameter is optional. If this parameter is omitted, delivery streams of all types are returned.}
 
-\item{ExclusiveStartDeliveryStreamName}{The list of delivery streams returned by this call to \code{ListDeliveryStreams} will start with the delivery stream whose name comes alphabetically immediately after the name you specify in \code{ExclusiveStartDeliveryStreamName}.}
+\item{ExclusiveStartDeliveryStreamName}{The name of the delivery stream to start the list with.}
 }
 \description{
-Lists your delivery streams in alphabetical order of their names.
+Lists your delivery streams.
 }
 \details{
-The number of delivery streams might be too large to return using a single call to \code{ListDeliveryStreams}. You can limit the number of delivery streams returned, using the \code{Limit} parameter. To determine whether there are more delivery streams to list, check the value of \code{HasMoreDeliveryStreams} in the output. If there are more delivery streams to list, you can request them by calling this operation again and setting the \code{ExclusiveStartDeliveryStreamName} parameter to the name of the last delivery stream returned in the last call.
+The number of delivery streams might be too large to return using a single call to \code{ListDeliveryStreams}. You can limit the number of delivery streams returned, using the \strong{Limit} parameter. To determine whether there are more delivery streams to list, check the value of \code{HasMoreDeliveryStreams} in the output. If there are more delivery streams to list, you can request them by specifying the name of the last delivery stream returned in the call in the \code{ExclusiveStartDeliveryStreamName} parameter of a subsequent call.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{list_delivery_streams(
+  Limit = 123,
+  DeliveryStreamType = "DirectPut"|"KinesisStreamAsSource",
+  ExclusiveStartDeliveryStreamName = "string"
+)
+}
+}
 
-}

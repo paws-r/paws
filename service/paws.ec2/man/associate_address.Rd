@@ -4,15 +4,9 @@
 \alias{associate_address}
 \title{Associates an Elastic IP address with an instance or a network interface}
 \usage{
-associate_address(
-  AllocationId = "string",
-  InstanceId = "string",
-  PublicIp = "string",
-  AllowReassociation = TRUE|FALSE,
-  DryRun = TRUE|FALSE,
-  NetworkInterfaceId = "string",
-  PrivateIpAddress = "string"
-)
+associate_address(AllocationId = NULL, InstanceId = NULL,
+  PublicIp = NULL, AllowReassociation = NULL, DryRun = NULL,
+  NetworkInterfaceId = NULL, PrivateIpAddress = NULL)
 }
 \arguments{
 \item{AllocationId}{[EC2-VPC] The allocation ID. This is required for EC2-VPC.}
@@ -41,26 +35,39 @@ An Elastic IP address is for use in either the EC2-Classic platform or in a VPC.
 
 This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error, and you may be charged for each time the Elastic IP address is remapped to the same instance. For more information, see the \emph{Elastic IP Addresses} section of \href{http://aws.amazon.com/ec2/pricing/}{Amazon EC2 Pricing}.
 }
+\section{Accepted Parameters}{
+\preformatted{associate_address(
+  AllocationId = "string",
+  InstanceId = "string",
+  PublicIp = "string",
+  AllowReassociation = TRUE|FALSE,
+  DryRun = TRUE|FALSE,
+  NetworkInterfaceId = "string",
+  PrivateIpAddress = "string"
+)
+}
+}
+
 \examples{
 # This example associates the specified Elastic IP address with the
 # specified instance in a VPC.
-associate_address(
+\donttest{associate_address(
   AllocationId = "eipalloc-64d5890a",
   InstanceId = "i-0b263919b6498b123"
-)
+)}
 
 # This example associates the specified Elastic IP address with the
 # specified network interface.
-associate_address(
+\donttest{associate_address(
   AllocationId = "eipalloc-64d5890a",
   NetworkInterfaceId = "eni-1a2b3c4d"
-)
+)}
 
 # This example associates an Elastic IP address with an instance in
 # EC2-Classic.
-associate_address(
+\donttest{associate_address(
   InstanceId = "i-07ffe74c7330ebf53",
   PublicIp = "198.51.100.0"
-)
+)}
 
 }

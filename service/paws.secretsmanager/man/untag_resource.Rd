@@ -4,12 +4,7 @@
 \alias{untag_resource}
 \title{Removes one or more tags from the specified secret}
 \usage{
-untag_resource(
-  SecretId = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+untag_resource(SecretId, TagKeys)
 }
 \arguments{
 \item{SecretId}{[required] The identifier for the secret that you want to remove tags from. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
@@ -41,17 +36,27 @@ To run this command, you must have the following permissions:
 \item To view the list of tags attached to a secret, use DescribeSecret.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{untag_resource(
+  SecretId = "string",
+  TagKeys = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example shows how to remove two tags from a secret's
 # metadata. For each, both the tag and the associated value are removed.
 # There is no output from this API. To see the result, use the
 # DescribeSecret operation.
-untag_resource(
+\donttest{untag_resource(
   SecretId = "MyTestDatabaseSecret",
   TagKeys = list(
     "FirstTag",
     "SecondTag"
   )
-)
+)}
 
 }

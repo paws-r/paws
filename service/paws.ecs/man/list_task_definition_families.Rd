@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.ecs_operations.R
 \name{list_task_definition_families}
 \alias{list_task_definition_families}
-\title{Returns a list of task definition families that are registered to your account (which may include task definition families that no longer have any \code{ACTIVE} task definition revisions)}
+\title{Returns a list of task definition families that are registered to your account (which may include task definition families that no longer have any ACTIVE task definition revisions)}
 \usage{
-list_task_definition_families(
-  familyPrefix = "string",
-  status = "ACTIVE"|"INACTIVE"|"ALL",
-  nextToken = "string",
-  maxResults = 123
-)
+list_task_definition_families(familyPrefix = NULL, status = NULL,
+  nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{familyPrefix}{The \code{familyPrefix} is a string that is used to filter the results of \code{ListTaskDefinitionFamilies}. If you specify a \code{familyPrefix}, only task definition family names that begin with the \code{familyPrefix} string are returned.}
@@ -28,13 +24,23 @@ Returns a list of task definition families that are registered to your account (
 \details{
 You can filter out task definition families that do not contain any \code{ACTIVE} task definition revisions by setting the \code{status} parameter to \code{ACTIVE}. You can also filter the results with the \code{familyPrefix} parameter.
 }
+\section{Accepted Parameters}{
+\preformatted{list_task_definition_families(
+  familyPrefix = "string",
+  status = "ACTIVE"|"INACTIVE"|"ALL",
+  nextToken = "string",
+  maxResults = 123
+)
+}
+}
+
 \examples{
 # This example lists all of your registered task definition families.
-list_task_definition_families()
+\donttest{list_task_definition_families()}
 
 # This example lists the task definition revisions that start with "hpcc".
-list_task_definition_families(
+\donttest{list_task_definition_families(
   familyPrefix = "hpcc"
-)
+)}
 
 }

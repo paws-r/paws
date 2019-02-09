@@ -4,9 +4,7 @@
 \alias{describe_load_balancer_attributes}
 \title{Describes the attributes for the specified load balancer}
 \usage{
-describe_load_balancer_attributes(
-  LoadBalancerName = "string"
-)
+describe_load_balancer_attributes(LoadBalancerName)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
@@ -14,10 +12,17 @@ describe_load_balancer_attributes(
 \description{
 Describes the attributes for the specified load balancer.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_load_balancer_attributes(
+  LoadBalancerName = "string"
+)
+}
+}
+
 \examples{
 # This example describes the attributes of the specified load balancer.
-describe_load_balancer_attributes(
+\donttest{describe_load_balancer_attributes(
   LoadBalancerName = "my-load-balancer"
-)
+)}
 
 }

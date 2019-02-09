@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.cloudhsm_operations.R
 \name{list_available_zones}
 \alias{list_available_zones}
-\title{This is documentation for \strong{AWS CloudHSM Classic}}
+\title{This is documentation for AWS CLOUDHSM CLASSIC}
 \usage{
 list_available_zones()
 }
@@ -14,6 +14,8 @@ This is documentation for \strong{AWS CloudHSM Classic}. For more information, s
 
 Lists the Availability Zones that have available AWS CloudHSM capacity.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_available_zones()
 }
+}
+

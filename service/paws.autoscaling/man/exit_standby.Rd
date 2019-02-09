@@ -4,12 +4,7 @@
 \alias{exit_standby}
 \title{Moves the specified instances out of the standby state}
 \usage{
-exit_standby(
-  InstanceIds = list(
-    "string"
-  ),
-  AutoScalingGroupName = "string"
-)
+exit_standby(InstanceIds = NULL, AutoScalingGroupName)
 }
 \arguments{
 \item{InstanceIds}{The IDs of the instances. You can specify up to 20 instances.}
@@ -22,13 +17,23 @@ Moves the specified instances out of the standby state.
 \details{
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html}{Temporarily Removing Instances from Your Auto Scaling Group} in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{exit_standby(
+  InstanceIds = list(
+    "string"
+  ),
+  AutoScalingGroupName = "string"
+)
+}
+}
+
 \examples{
 # This example moves the specified instance out of standby mode.
-exit_standby(
+\donttest{exit_standby(
   AutoScalingGroupName = "my-auto-scaling-group",
   InstanceIds = list(
     "i-93633f9b"
   )
-)
+)}
 
 }

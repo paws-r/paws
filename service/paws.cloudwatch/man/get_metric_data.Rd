@@ -2,38 +2,10 @@
 % Please edit documentation in R/paws.cloudwatch_operations.R
 \name{get_metric_data}
 \alias{get_metric_data}
-\title{You can use the \code{GetMetricData} API to retrieve as many as 100 different metrics in a single request, with a total of as many as 100,800 datapoints}
+\title{You can use the GetMetricData API to retrieve as many as 100 different metrics in a single request, with a total of as many as 100,800 datapoints}
 \usage{
-get_metric_data(
-  MetricDataQueries = list(
-    list(
-      Id = "string",
-      MetricStat = list(
-        Metric = list(
-          Namespace = "string",
-          MetricName = "string",
-          Dimensions = list(
-            list(
-              Name = "string",
-              Value = "string"
-            )
-          )
-        ),
-        Period = 123,
-        Stat = "string",
-        Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
-      ),
-      Expression = "string",
-      Label = "string",
-      ReturnData = TRUE|FALSE
-    )
-  ),
-  StartTime = as.POSIXct("2015-01-01"),
-  EndTime = as.POSIXct("2015-01-01"),
-  NextToken = "string",
-  ScanBy = "TimestampDescending"|"TimestampAscending",
-  MaxDatapoints = 123
-)
+get_metric_data(MetricDataQueries, StartTime, EndTime, NextToken = NULL,
+  ScanBy = NULL, MaxDatapoints = NULL)
 }
 \arguments{
 \item{MetricDataQueries}{[required] The metric queries to be returned. A single \code{GetMetricData} call can include as many as 100 \code{MetricDataQuery} structures. Each of these structures can specify either a metric to retrieve, or a math expression to perform on retrieved data.}
@@ -68,6 +40,37 @@ Amazon CloudWatch retains metric data as follows:
 
 Data points that are initially published with a shorter period are aggregated together for long-term storage. For example, if you collect data using a period of 1 minute, the data remains available for 15 days with 1-minute resolution. After 15 days, this data is still available, but is aggregated and retrievable only with a resolution of 5 minutes. After 63 days, the data is further aggregated and is available with a resolution of 1 hour.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_metric_data(
+  MetricDataQueries = list(
+    list(
+      Id = "string",
+      MetricStat = list(
+        Metric = list(
+          Namespace = "string",
+          MetricName = "string",
+          Dimensions = list(
+            list(
+              Name = "string",
+              Value = "string"
+            )
+          )
+        ),
+        Period = 123,
+        Stat = "string",
+        Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
+      ),
+      Expression = "string",
+      Label = "string",
+      ReturnData = TRUE|FALSE
+    )
+  ),
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  NextToken = "string",
+  ScanBy = "TimestampDescending"|"TimestampAscending",
+  MaxDatapoints = 123
+)
 }
+}
+

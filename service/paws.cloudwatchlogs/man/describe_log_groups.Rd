@@ -4,11 +4,8 @@
 \alias{describe_log_groups}
 \title{Lists the specified log groups}
 \usage{
-describe_log_groups(
-  logGroupNamePrefix = "string",
-  nextToken = "string",
-  limit = 123
-)
+describe_log_groups(logGroupNamePrefix = NULL, nextToken = NULL,
+  limit = NULL)
 }
 \arguments{
 \item{logGroupNamePrefix}{The prefix to match.}
@@ -20,6 +17,12 @@ describe_log_groups(
 \description{
 Lists the specified log groups. You can list all your log groups or filter the results by prefix. The results are ASCII-sorted by log group name.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_log_groups(
+  logGroupNamePrefix = "string",
+  nextToken = "string",
+  limit = 123
+)
 }
+}
+

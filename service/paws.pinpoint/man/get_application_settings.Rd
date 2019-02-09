@@ -4,9 +4,7 @@
 \alias{get_application_settings}
 \title{Used to request the settings for an app}
 \usage{
-get_application_settings(
-  ApplicationId = "string"
-)
+get_application_settings(ApplicationId)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -14,6 +12,10 @@ get_application_settings(
 \description{
 Used to request the settings for an app.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_application_settings(
+  ApplicationId = "string"
+)
 }
+}
+

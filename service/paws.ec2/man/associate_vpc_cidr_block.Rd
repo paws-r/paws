@@ -4,11 +4,8 @@
 \alias{associate_vpc_cidr_block}
 \title{Associates a CIDR block with your VPC}
 \usage{
-associate_vpc_cidr_block(
-  AmazonProvidedIpv6CidrBlock = TRUE|FALSE,
-  CidrBlock = "string",
-  VpcId = "string"
-)
+associate_vpc_cidr_block(AmazonProvidedIpv6CidrBlock = NULL,
+  CidrBlock = NULL, VpcId)
 }
 \arguments{
 \item{AmazonProvidedIpv6CidrBlock}{Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length for the VPC. You cannot specify the range of IPv6 addresses, or the size of the CIDR block.}
@@ -23,6 +20,12 @@ Associates a CIDR block with your VPC. You can associate a secondary IPv4 CIDR b
 \details{
 For more information about associating CIDR blocks with your VPC and applicable restrictions, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html#VPC_Sizing}{VPC and Subnet Sizing} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_vpc_cidr_block(
+  AmazonProvidedIpv6CidrBlock = TRUE|FALSE,
+  CidrBlock = "string",
+  VpcId = "string"
+)
 }
+}
+

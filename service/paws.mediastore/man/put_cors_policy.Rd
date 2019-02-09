@@ -4,7 +4,21 @@
 \alias{put_cors_policy}
 \title{Sets the cross-origin resource sharing (CORS) configuration on a container so that the container can service cross-origin requests}
 \usage{
-put_cors_policy(
+put_cors_policy(ContainerName, CorsPolicy)
+}
+\arguments{
+\item{ContainerName}{[required] The name of the container that you want to assign the CORS policy to.}
+
+\item{CorsPolicy}{[required] The CORS policy to apply to the container.}
+}
+\description{
+Sets the cross-origin resource sharing (CORS) configuration on a container so that the container can service cross-origin requests. For example, you might want to enable a request whose origin is http://www.example.com to access your AWS Elemental MediaStore container at my.example.container.com by using the browser's XMLHttpRequest capability.
+}
+\details{
+To enable CORS on a container, you attach a CORS policy to the container. In the CORS policy, you configure rules that identify origins and the HTTP methods that can be executed on your container. The policy can contain up to 398,000 characters. You can add up to 100 rules to a CORS policy. If more than one rule applies, the service uses the first applicable rule listed.
+}
+\section{Accepted Parameters}{
+\preformatted{put_cors_policy(
   ContainerName = "string",
   CorsPolicy = list(
     list(
@@ -25,17 +39,5 @@ put_cors_policy(
   )
 )
 }
-\arguments{
-\item{ContainerName}{[required] The name of the container that you want to assign the CORS policy to.}
+}
 
-\item{CorsPolicy}{[required] The CORS policy to apply to the container.}
-}
-\description{
-Sets the cross-origin resource sharing (CORS) configuration on a container so that the container can service cross-origin requests. For example, you might want to enable a request whose origin is http://www.example.com to access your AWS Elemental MediaStore container at my.example.container.com by using the browser's XMLHttpRequest capability.
-}
-\details{
-To enable CORS on a container, you attach a CORS policy to the container. In the CORS policy, you configure rules that identify origins and the HTTP methods that can be executed on your container. The policy can contain up to 398,000 characters. You can add up to 100 rules to a CORS policy. If more than one rule applies, the service uses the first applicable rule listed.
-}
-\examples{
-
-}

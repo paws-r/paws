@@ -4,11 +4,7 @@
 \alias{detach_vpn_gateway}
 \title{Detaches a virtual private gateway from a VPC}
 \usage{
-detach_vpn_gateway(
-  VpcId = "string",
-  VpnGatewayId = "string",
-  DryRun = TRUE|FALSE
-)
+detach_vpn_gateway(VpcId, VpnGatewayId, DryRun = NULL)
 }
 \arguments{
 \item{VpcId}{[required] The ID of the VPC.}
@@ -23,6 +19,12 @@ Detaches a virtual private gateway from a VPC. You do this if you're planning to
 \details{
 You must wait for the attachment's state to switch to \code{detached} before you can delete the VPC or attach a different VPC to the virtual private gateway.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{detach_vpn_gateway(
+  VpcId = "string",
+  VpnGatewayId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

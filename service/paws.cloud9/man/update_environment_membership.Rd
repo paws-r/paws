@@ -4,11 +4,7 @@
 \alias{update_environment_membership}
 \title{Changes the settings of an existing environment member for an AWS Cloud9 development environment}
 \usage{
-update_environment_membership(
-  environmentId = "string",
-  userArn = "string",
-  permissions = "read-write"|"read-only"
-)
+update_environment_membership(environmentId, userArn, permissions)
 }
 \arguments{
 \item{environmentId}{[required] The ID of the environment for the environment member whose settings you want to change.}
@@ -24,12 +20,21 @@ update_environment_membership(
 \description{
 Changes the settings of an existing environment member for an AWS Cloud9 development environment.
 }
+\section{Accepted Parameters}{
+\preformatted{update_environment_membership(
+  environmentId = "string",
+  userArn = "string",
+  permissions = "read-write"|"read-only"
+)
+}
+}
+
 \examples{
 # 
-update_environment_membership(
+\donttest{update_environment_membership(
   environmentId = "8d9967e2f0624182b74e7690ad69ebEX",
   permissions = "read-only",
   userArn = "arn:aws:iam::123456789012:user/AnotherDemoUser"
-)
+)}
 
 }

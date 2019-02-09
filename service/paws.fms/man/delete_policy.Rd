@@ -4,9 +4,7 @@
 \alias{delete_policy}
 \title{Permanently deletes an AWS Firewall Manager policy}
 \usage{
-delete_policy(
-  PolicyId = "string"
-)
+delete_policy(PolicyId)
 }
 \arguments{
 \item{PolicyId}{[required] The ID of the policy that you want to delete. \code{PolicyId} is returned by \code{PutPolicy} and by \code{ListPolicies}.}
@@ -14,6 +12,10 @@ delete_policy(
 \description{
 Permanently deletes an AWS Firewall Manager policy.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_policy(
+  PolicyId = "string"
+)
 }
+}
+

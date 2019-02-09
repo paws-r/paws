@@ -4,11 +4,7 @@
 \alias{split_shard}
 \title{Splits a shard into two new shards in the Kinesis data stream, to increase the stream's capacity to ingest and transport data}
 \usage{
-split_shard(
-  StreamName = "string",
-  ShardToSplit = "string",
-  NewStartingHashKey = "string"
-)
+split_shard(StreamName, ShardToSplit, NewStartingHashKey)
 }
 \arguments{
 \item{StreamName}{[required] The name of the stream for the shard split.}
@@ -39,6 +35,12 @@ If you try to operate on too many streams simultaneously using CreateStream, Del
 
 \code{SplitShard} has a limit of five transactions per second per account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{split_shard(
+  StreamName = "string",
+  ShardToSplit = "string",
+  NewStartingHashKey = "string"
+)
 }
+}
+

@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.lexmodelbuildingservice_operations.R
 \name{delete_bot}
 \alias{delete_bot}
-\title{Deletes all versions of the bot, including the \code{$LATEST} version}
+\title{Deletes all versions of the bot, including the $LATEST version}
 \usage{
-delete_bot(
-  name = "string"
-)
+delete_bot(name)
 }
 \arguments{
 \item{name}{[required] The name of the bot. The name is case sensitive.}
@@ -19,6 +17,10 @@ If a bot has an alias, you can't delete it. Instead, the \code{DeleteBot} operat
 
 This operation requires permissions for the \code{lex:DeleteBot} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_bot(
+  name = "string"
+)
 }
+}
+

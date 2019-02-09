@@ -4,7 +4,18 @@
 \alias{update_domain_name}
 \title{Changes information about the DomainName resource}
 \usage{
-update_domain_name(
+update_domain_name(domainName, patchOperations = NULL)
+}
+\arguments{
+\item{domainName}{[required] [Required] The name of the DomainName resource to be changed.}
+
+\item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
+}
+\description{
+Changes information about the DomainName resource.
+}
+\section{Accepted Parameters}{
+\preformatted{update_domain_name(
   domainName = "string",
   patchOperations = list(
     list(
@@ -16,14 +27,5 @@ update_domain_name(
   )
 )
 }
-\arguments{
-\item{domainName}{[required] [Required] The name of the DomainName resource to be changed.}
+}
 
-\item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
-}
-\description{
-Changes information about the DomainName resource.
-}
-\examples{
-
-}

@@ -4,19 +4,15 @@
 \alias{record_lifecycle_action_heartbeat}
 \title{Records a heartbeat for the lifecycle action associated with the specified token or instance}
 \usage{
-record_lifecycle_action_heartbeat(
-  LifecycleHookName = "string",
-  AutoScalingGroupName = "string",
-  LifecycleActionToken = "string",
-  InstanceId = "string"
-)
+record_lifecycle_action_heartbeat(LifecycleHookName, AutoScalingGroupName,
+  LifecycleActionToken = NULL, InstanceId = NULL)
 }
 \arguments{
 \item{LifecycleHookName}{[required] The name of the lifecycle hook.}
 
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{LifecycleActionToken}{A token that uniquely identifies a specific lifecycle action associated with an instance. Amazon EC2 Auto Scaling sends this token to the notification target that you specified when you created the lifecycle hook.}
+\item{LifecycleActionToken}{A token that uniquely identifies a specific lifecycle action associated with an instance. Amazon EC2 Auto Scaling sends this token to the notification target you specified when you created the lifecycle hook.}
 
 \item{InstanceId}{The ID of the instance.}
 }
@@ -35,13 +31,23 @@ This step is a part of the procedure for adding a lifecycle hook to an Auto Scal
 
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html}{Auto Scaling Lifecycle} in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{record_lifecycle_action_heartbeat(
+  LifecycleHookName = "string",
+  AutoScalingGroupName = "string",
+  LifecycleActionToken = "string",
+  InstanceId = "string"
+)
+}
+}
+
 \examples{
 # This example records a lifecycle action heartbeat to keep the instance
 # in a pending state.
-record_lifecycle_action_heartbeat(
+\donttest{record_lifecycle_action_heartbeat(
   AutoScalingGroupName = "my-auto-scaling-group",
   LifecycleActionToken = "bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635",
   LifecycleHookName = "my-lifecycle-hook"
-)
+)}
 
 }

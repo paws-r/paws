@@ -4,23 +4,9 @@
 \alias{modify_network_interface_attribute}
 \title{Modifies the specified network interface attribute}
 \usage{
-modify_network_interface_attribute(
-  Attachment = list(
-    AttachmentId = "string",
-    DeleteOnTermination = TRUE|FALSE
-  ),
-  Description = list(
-    Value = "string"
-  ),
-  DryRun = TRUE|FALSE,
-  Groups = list(
-    "string"
-  ),
-  NetworkInterfaceId = "string",
-  SourceDestCheck = list(
-    Value = TRUE|FALSE
-  )
-)
+modify_network_interface_attribute(Attachment = NULL,
+  Description = NULL, DryRun = NULL, Groups = NULL,
+  NetworkInterfaceId, SourceDestCheck = NULL)
 }
 \arguments{
 \item{Attachment}{Information about the interface attachment. If modifying the 'delete on termination' attribute, you must specify the ID of the interface attachment.}
@@ -38,43 +24,64 @@ modify_network_interface_attribute(
 \description{
 Modifies the specified network interface attribute. You can specify only one attribute at a time.
 }
+\section{Accepted Parameters}{
+\preformatted{modify_network_interface_attribute(
+  Attachment = list(
+    AttachmentId = "string",
+    DeleteOnTermination = TRUE|FALSE
+  ),
+  Description = list(
+    Value = "string"
+  ),
+  DryRun = TRUE|FALSE,
+  Groups = list(
+    "string"
+  ),
+  NetworkInterfaceId = "string",
+  SourceDestCheck = list(
+    Value = TRUE|FALSE
+  )
+)
+}
+}
+
 \examples{
 # This example modifies the attachment attribute of the specified network
 # interface.
-modify_network_interface_attribute(
+\donttest{modify_network_interface_attribute(
   Attachment = list(
     AttachmentId = "eni-attach-43348162",
     DeleteOnTermination = FALSE
   ),
   NetworkInterfaceId = "eni-686ea200"
-)
+)}
 
 # This example modifies the description attribute of the specified network
 # interface.
-modify_network_interface_attribute(
+\donttest{modify_network_interface_attribute(
   Description = list(
     Value = "My description"
   ),
   NetworkInterfaceId = "eni-686ea200"
-)
+)}
 
 # This example command modifies the groupSet attribute of the specified
 # network interface.
-modify_network_interface_attribute(
+\donttest{modify_network_interface_attribute(
   Groups = list(
     "sg-903004f8",
     "sg-1a2b3c4d"
   ),
   NetworkInterfaceId = "eni-686ea200"
-)
+)}
 
 # This example command modifies the sourceDestCheck attribute of the
 # specified network interface.
-modify_network_interface_attribute(
+\donttest{modify_network_interface_attribute(
   NetworkInterfaceId = "eni-686ea200",
   SourceDestCheck = list(
     Value = FALSE
   )
-)
+)}
 
 }

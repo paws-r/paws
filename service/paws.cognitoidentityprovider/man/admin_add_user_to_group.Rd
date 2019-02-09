@@ -4,11 +4,7 @@
 \alias{admin_add_user_to_group}
 \title{Adds the specified user to the specified group}
 \usage{
-admin_add_user_to_group(
-  UserPoolId = "string",
-  Username = "string",
-  GroupName = "string"
-)
+admin_add_user_to_group(UserPoolId, Username, GroupName)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
@@ -23,6 +19,12 @@ Adds the specified user to the specified group.
 \details{
 Requires developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{admin_add_user_to_group(
+  UserPoolId = "string",
+  Username = "string",
+  GroupName = "string"
+)
 }
+}
+

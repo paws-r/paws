@@ -4,11 +4,7 @@
 \alias{notify_application_state}
 \title{Sets the migration state of an application}
 \usage{
-notify_application_state(
-  ApplicationId = "string",
-  Status = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED",
-  DryRun = TRUE|FALSE
-)
+notify_application_state(ApplicationId, Status, DryRun = NULL)
 }
 \arguments{
 \item{ApplicationId}{[required] The configurationId in ADS that uniquely identifies the grouped application.}
@@ -20,6 +16,12 @@ notify_application_state(
 \description{
 Sets the migration state of an application. For a given application identified by the value passed to \code{ApplicationId}, its status is set or updated by passing one of three values to \code{Status}: \code{NOT_STARTED | IN_PROGRESS | COMPLETED}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{notify_application_state(
+  ApplicationId = "string",
+  Status = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

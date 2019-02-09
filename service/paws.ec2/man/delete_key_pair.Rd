@@ -4,10 +4,7 @@
 \alias{delete_key_pair}
 \title{Deletes the specified key pair, by removing the public key from Amazon EC2}
 \usage{
-delete_key_pair(
-  KeyName = "string",
-  DryRun = TRUE|FALSE
-)
+delete_key_pair(KeyName, DryRun = NULL)
 }
 \arguments{
 \item{KeyName}{[required] The name of the key pair.}
@@ -17,10 +14,18 @@ delete_key_pair(
 \description{
 Deletes the specified key pair, by removing the public key from Amazon EC2.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_key_pair(
+  KeyName = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example deletes the specified key pair.
-delete_key_pair(
+\donttest{delete_key_pair(
   KeyName = "my-key-pair"
-)
+)}
 
 }

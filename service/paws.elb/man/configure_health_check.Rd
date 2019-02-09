@@ -4,16 +4,7 @@
 \alias{configure_health_check}
 \title{Specifies the health check settings to use when evaluating the health state of your EC2 instances}
 \usage{
-configure_health_check(
-  LoadBalancerName = "string",
-  HealthCheck = list(
-    Target = "string",
-    Interval = 123,
-    Timeout = 123,
-    UnhealthyThreshold = 123,
-    HealthyThreshold = 123
-  )
-)
+configure_health_check(LoadBalancerName, HealthCheck)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
@@ -26,10 +17,24 @@ Specifies the health check settings to use when evaluating the health state of y
 \details{
 For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-healthchecks.html}{Configure Health Checks for Your Load Balancer} in the \emph{Classic Load Balancers Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{configure_health_check(
+  LoadBalancerName = "string",
+  HealthCheck = list(
+    Target = "string",
+    Interval = 123,
+    Timeout = 123,
+    UnhealthyThreshold = 123,
+    HealthyThreshold = 123
+  )
+)
+}
+}
+
 \examples{
 # This example specifies the health check settings used to evaluate the
 # health of your backend EC2 instances.
-configure_health_check(
+\donttest{configure_health_check(
   HealthCheck = list(
     HealthyThreshold = 2L,
     Interval = 30L,
@@ -38,6 +43,6 @@ configure_health_check(
     UnhealthyThreshold = 2L
   ),
   LoadBalancerName = "my-load-balancer"
-)
+)}
 
 }

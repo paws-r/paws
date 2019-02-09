@@ -4,15 +4,9 @@
 \alias{get_differences}
 \title{Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID or other fully qualified reference)}
 \usage{
-get_differences(
-  repositoryName = "string",
-  beforeCommitSpecifier = "string",
-  afterCommitSpecifier = "string",
-  beforePath = "string",
-  afterPath = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+get_differences(repositoryName, beforeCommitSpecifier = NULL,
+  afterCommitSpecifier, beforePath = NULL, afterPath = NULL,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository where you want to get differences.}
@@ -32,6 +26,16 @@ get_differences(
 \description{
 Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID or other fully qualified reference). Results can be limited to a specified path.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_differences(
+  repositoryName = "string",
+  beforeCommitSpecifier = "string",
+  afterCommitSpecifier = "string",
+  beforePath = "string",
+  afterPath = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

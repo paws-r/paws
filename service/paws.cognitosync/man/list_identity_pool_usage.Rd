@@ -4,10 +4,7 @@
 \alias{list_identity_pool_usage}
 \title{Gets a list of identity pools registered with Cognito}
 \usage{
-list_identity_pool_usage(
-  NextToken = "string",
-  MaxResults = 123
-)
+list_identity_pool_usage(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{A pagination token for obtaining the next page of results.}
@@ -20,6 +17,11 @@ Gets a list of identity pools registered with Cognito.
 \details{
 ListIdentityPoolUsage can only be called with developer credentials. You cannot make this API call with the temporary user credentials provided by Cognito Identity.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_identity_pool_usage(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

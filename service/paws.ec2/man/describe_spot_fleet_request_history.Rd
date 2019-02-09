@@ -4,14 +4,8 @@
 \alias{describe_spot_fleet_request_history}
 \title{Describes the events for the specified Spot Fleet request during the specified time}
 \usage{
-describe_spot_fleet_request_history(
-  DryRun = TRUE|FALSE,
-  EventType = "instanceChange"|"fleetRequestChange"|"error",
-  MaxResults = 123,
-  NextToken = "string",
-  SpotFleetRequestId = "string",
-  StartTime = as.POSIXct("2015-01-01")
-)
+describe_spot_fleet_request_history(DryRun = NULL, EventType = NULL,
+  MaxResults = NULL, NextToken = NULL, SpotFleetRequestId, StartTime)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -32,12 +26,24 @@ Describes the events for the specified Spot Fleet request during the specified t
 \details{
 Spot Fleet events are delayed by up to 30 seconds before they can be described. This ensures that you can query by the last evaluated time and not miss a recorded event. Spot Fleet events are available for 48 hours.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_spot_fleet_request_history(
+  DryRun = TRUE|FALSE,
+  EventType = "instanceChange"|"fleetRequestChange"|"error",
+  MaxResults = 123,
+  NextToken = "string",
+  SpotFleetRequestId = "string",
+  StartTime = as.POSIXct("2015-01-01")
+)
+}
+}
+
 \examples{
 # This example returns the history for the specified Spot fleet starting
 # at the specified time.
-describe_spot_fleet_request_history(
+\donttest{describe_spot_fleet_request_history(
   SpotFleetRequestId = "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE",
   StartTime = "2015-05-26T00:00:00Z"
-)
+)}
 
 }

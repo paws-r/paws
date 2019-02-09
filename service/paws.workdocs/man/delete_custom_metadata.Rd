@@ -4,15 +4,8 @@
 \alias{delete_custom_metadata}
 \title{Deletes custom metadata from the specified resource}
 \usage{
-delete_custom_metadata(
-  AuthenticationToken = "string",
-  ResourceId = "string",
-  VersionId = "string",
-  Keys = list(
-    "string"
-  ),
-  DeleteAll = TRUE|FALSE
-)
+delete_custom_metadata(AuthenticationToken = NULL, ResourceId,
+  VersionId = NULL, Keys = NULL, DeleteAll = NULL)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
@@ -28,6 +21,16 @@ delete_custom_metadata(
 \description{
 Deletes custom metadata from the specified resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_custom_metadata(
+  AuthenticationToken = "string",
+  ResourceId = "string",
+  VersionId = "string",
+  Keys = list(
+    "string"
+  ),
+  DeleteAll = TRUE|FALSE
+)
 }
+}
+

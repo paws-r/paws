@@ -4,22 +4,8 @@
 \alias{describe_reserved_instances}
 \title{Describes one or more of the Reserved Instances that you purchased}
 \usage{
-describe_reserved_instances(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  OfferingClass = "standard"|"convertible",
-  ReservedInstancesIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE,
-  OfferingType = "Heavy Utilization"|"Medium Utilization"|"Light Utilization"|"No Upfront"|"Partial Upfront"|"All Upfront"
-)
+describe_reserved_instances(Filters = NULL, OfferingClass = NULL,
+  ReservedInstancesIds = NULL, DryRun = NULL, OfferingType = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -55,6 +41,23 @@ Describes one or more of the Reserved Instances that you purchased.
 \details{
 For more information about Reserved Instances, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html}{Reserved Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_reserved_instances(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  OfferingClass = "standard"|"convertible",
+  ReservedInstancesIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE,
+  OfferingType = "Heavy Utilization"|"Medium Utilization"|"Light Utilization"|"No Upfront"|"Partial Upfront"|"All Upfront"
+)
 }
+}
+

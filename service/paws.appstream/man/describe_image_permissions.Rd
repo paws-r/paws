@@ -4,14 +4,8 @@
 \alias{describe_image_permissions}
 \title{Retrieves a list that describes the permissions for shared AWS account IDs on a private image that you own}
 \usage{
-describe_image_permissions(
-  Name = "string",
-  MaxResults = 123,
-  SharedAwsAccountIds = list(
-    "string"
-  ),
-  NextToken = "string"
-)
+describe_image_permissions(Name, MaxResults = NULL,
+  SharedAwsAccountIds = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the private image for which to describe permissions. The image must be one that you own.}
@@ -25,6 +19,15 @@ describe_image_permissions(
 \description{
 Retrieves a list that describes the permissions for shared AWS account IDs on a private image that you own.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_image_permissions(
+  Name = "string",
+  MaxResults = 123,
+  SharedAwsAccountIds = list(
+    "string"
+  ),
+  NextToken = "string"
+)
 }
+}
+

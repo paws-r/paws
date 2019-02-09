@@ -4,15 +4,11 @@
 \alias{remove_permission}
 \title{Removes permissions from a function}
 \usage{
-remove_permission(
-  FunctionName = "string",
-  StatementId = "string",
-  Qualifier = "string",
-  RevisionId = "string"
-)
+remove_permission(FunctionName, StatementId, Qualifier = NULL,
+  RevisionId = NULL)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function.
+\item{FunctionName}{[required] The name of the lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -37,12 +33,22 @@ Permissions apply to the Amazon Resource Name (ARN) used to invoke the function,
 
 You need permission for the \code{lambda:RemovePermission} action.
 }
+\section{Accepted Parameters}{
+\preformatted{remove_permission(
+  FunctionName = "string",
+  StatementId = "string",
+  Qualifier = "string",
+  RevisionId = "string"
+)
+}
+}
+
 \examples{
 # This operation removes a Lambda function's permissions
-remove_permission(
+\donttest{remove_permission(
   FunctionName = "myFunction",
   Qualifier = "1",
   StatementId = "role-statement-id"
-)
+)}
 
 }

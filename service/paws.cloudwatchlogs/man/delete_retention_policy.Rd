@@ -4,9 +4,7 @@
 \alias{delete_retention_policy}
 \title{Deletes the specified retention policy}
 \usage{
-delete_retention_policy(
-  logGroupName = "string"
-)
+delete_retention_policy(logGroupName)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -17,6 +15,10 @@ Deletes the specified retention policy.
 \details{
 Log events do not expire if they belong to log groups without a retention policy.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_retention_policy(
+  logGroupName = "string"
+)
 }
+}
+

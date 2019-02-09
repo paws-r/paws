@@ -4,12 +4,7 @@
 \alias{terminate_instances}
 \title{Shuts down one or more instances}
 \usage{
-terminate_instances(
-  InstanceIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+terminate_instances(InstanceIds, DryRun = NULL)
 }
 \arguments{
 \item{InstanceIds}{[required] One or more instance IDs.
@@ -32,12 +27,22 @@ You can stop, start, and terminate EBS-backed instances. You can only terminate 
 
 For more information about troubleshooting, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesShuttingDown.html}{Troubleshooting Terminating Your Instance} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{terminate_instances(
+  InstanceIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example terminates the specified EC2 instance.
-terminate_instances(
+\donttest{terminate_instances(
   InstanceIds = list(
     "i-1234567890abcdef0"
   )
-)
+)}
 
 }

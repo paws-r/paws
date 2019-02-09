@@ -4,12 +4,8 @@
 \alias{create_vpn_gateway}
 \title{Creates a virtual private gateway}
 \usage{
-create_vpn_gateway(
-  AvailabilityZone = "string",
-  Type = "ipsec.1",
-  AmazonSideAsn = 123,
-  DryRun = TRUE|FALSE
-)
+create_vpn_gateway(AvailabilityZone = NULL, Type, AmazonSideAsn = NULL,
+  DryRun = NULL)
 }
 \arguments{
 \item{AvailabilityZone}{The Availability Zone for the virtual private gateway.}
@@ -28,6 +24,13 @@ Creates a virtual private gateway. A virtual private gateway is the endpoint on 
 \details{
 For more information about virtual private gateways, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html}{AWS Managed VPN Connections} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_vpn_gateway(
+  AvailabilityZone = "string",
+  Type = "ipsec.1",
+  AmazonSideAsn = 123,
+  DryRun = TRUE|FALSE
+)
 }
+}
+

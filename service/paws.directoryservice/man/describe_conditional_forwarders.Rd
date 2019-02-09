@@ -4,12 +4,7 @@
 \alias{describe_conditional_forwarders}
 \title{Obtains information about the conditional forwarders for this account}
 \usage{
-describe_conditional_forwarders(
-  DirectoryId = "string",
-  RemoteDomainNames = list(
-    "string"
-  )
-)
+describe_conditional_forwarders(DirectoryId, RemoteDomainNames = NULL)
 }
 \arguments{
 \item{DirectoryId}{[required] The directory ID for which to get the list of associated conditional forwarders.}
@@ -22,6 +17,13 @@ Obtains information about the conditional forwarders for this account.
 \details{
 If no input parameters are provided for RemoteDomainNames, this request describes all conditional forwarders for the specified directory ID.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_conditional_forwarders(
+  DirectoryId = "string",
+  RemoteDomainNames = list(
+    "string"
+  )
+)
 }
+}
+

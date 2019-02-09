@@ -4,11 +4,8 @@
 \alias{list_builds_for_project}
 \title{Gets a list of build IDs for the specified build project, with each build ID representing a single build}
 \usage{
-list_builds_for_project(
-  projectName = "string",
-  sortOrder = "ASCENDING"|"DESCENDING",
-  nextToken = "string"
-)
+list_builds_for_project(projectName, sortOrder = NULL,
+  nextToken = NULL)
 }
 \arguments{
 \item{projectName}{[required] The name of the AWS CodeBuild project.}
@@ -24,6 +21,12 @@ list_builds_for_project(
 \description{
 Gets a list of build IDs for the specified build project, with each build ID representing a single build.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_builds_for_project(
+  projectName = "string",
+  sortOrder = "ASCENDING"|"DESCENDING",
+  nextToken = "string"
+)
 }
+}
+

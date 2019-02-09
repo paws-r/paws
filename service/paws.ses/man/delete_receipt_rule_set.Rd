@@ -4,9 +4,7 @@
 \alias{delete_receipt_rule_set}
 \title{Deletes the specified receipt rule set and all of the receipt rules it contains}
 \usage{
-delete_receipt_rule_set(
-  RuleSetName = "string"
-)
+delete_receipt_rule_set(RuleSetName)
 }
 \arguments{
 \item{RuleSetName}{[required] The name of the receipt rule set to delete.}
@@ -21,10 +19,17 @@ For information about managing receipt rule sets, see the \href{http://docs.aws.
 
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_receipt_rule_set(
+  RuleSetName = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes a receipt rule set:
-delete_receipt_rule_set(
+\donttest{delete_receipt_rule_set(
   RuleSetName = "MyRuleSet"
-)
+)}
 
 }

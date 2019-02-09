@@ -4,15 +4,9 @@
 \alias{list_multipart_uploads}
 \title{This operation lists in-progress multipart uploads}
 \usage{
-list_multipart_uploads(
-  Bucket = "string",
-  Delimiter = "string",
-  EncodingType = "url",
-  KeyMarker = "string",
-  MaxUploads = 123,
-  Prefix = "string",
-  UploadIdMarker = "string"
-)
+list_multipart_uploads(Bucket, Delimiter = NULL, EncodingType = NULL,
+  KeyMarker = NULL, MaxUploads = NULL, Prefix = NULL,
+  UploadIdMarker = NULL)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -32,20 +26,33 @@ list_multipart_uploads(
 \description{
 This operation lists in-progress multipart uploads.
 }
+\section{Accepted Parameters}{
+\preformatted{list_multipart_uploads(
+  Bucket = "string",
+  Delimiter = "string",
+  EncodingType = "url",
+  KeyMarker = "string",
+  MaxUploads = 123,
+  Prefix = "string",
+  UploadIdMarker = "string"
+)
+}
+}
+
 \examples{
 # The following example lists in-progress multipart uploads on a specific
 # bucket.
-list_multipart_uploads(
+\donttest{list_multipart_uploads(
   Bucket = "examplebucket"
-)
+)}
 
 # The following example specifies the upload-id-marker and key-marker from
 # previous truncated response to retrieve next setup of multipart uploads.
-list_multipart_uploads(
+\donttest{list_multipart_uploads(
   Bucket = "examplebucket",
   KeyMarker = "nextkeyfrompreviousresponse",
   MaxUploads = "2",
   UploadIdMarker = "valuefrompreviousresponse"
-)
+)}
 
 }

@@ -4,13 +4,7 @@
 \alias{describe_index_fields}
 \title{Gets information about the index fields configured for the search domain}
 \usage{
-describe_index_fields(
-  DomainName = "string",
-  FieldNames = list(
-    "string"
-  ),
-  Deployed = TRUE|FALSE
-)
+describe_index_fields(DomainName, FieldNames = NULL, Deployed = NULL)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain you want to describe.}
@@ -22,6 +16,14 @@ describe_index_fields(
 \description{
 Gets information about the index fields configured for the search domain. Can be limited to specific fields by name. By default, shows all fields and includes any pending changes to the configuration. Set the \code{Deployed} option to \code{true} to show the active configuration and exclude pending changes. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html}{Getting Domain Information} in the \emph{Amazon CloudSearch Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_index_fields(
+  DomainName = "string",
+  FieldNames = list(
+    "string"
+  ),
+  Deployed = TRUE|FALSE
+)
 }
+}
+

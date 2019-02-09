@@ -4,10 +4,7 @@
 \alias{describe_pending_aggregation_requests}
 \title{Returns a list of all pending aggregation requests}
 \usage{
-describe_pending_aggregation_requests(
-  Limit = 123,
-  NextToken = "string"
-)
+describe_pending_aggregation_requests(Limit = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Limit}{The maximum number of evaluation results returned on each page. The default is maximum. If you specify 0, AWS Config uses the default.}
@@ -17,6 +14,11 @@ describe_pending_aggregation_requests(
 \description{
 Returns a list of all pending aggregation requests.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_pending_aggregation_requests(
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

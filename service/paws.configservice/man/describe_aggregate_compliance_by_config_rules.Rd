@@ -4,17 +4,8 @@
 \alias{describe_aggregate_compliance_by_config_rules}
 \title{Returns a list of compliant and noncompliant rules with the number of resources for compliant and noncompliant rules}
 \usage{
-describe_aggregate_compliance_by_config_rules(
-  ConfigurationAggregatorName = "string",
-  Filters = list(
-    ConfigRuleName = "string",
-    ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
-    AccountId = "string",
-    AwsRegion = "string"
-  ),
-  Limit = 123,
-  NextToken = "string"
-)
+describe_aggregate_compliance_by_config_rules(ConfigurationAggregatorName,
+  Filters = NULL, Limit = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ConfigurationAggregatorName}{[required] The name of the configuration aggregator.}
@@ -31,6 +22,18 @@ Returns a list of compliant and noncompliant rules with the number of resources 
 \details{
 The results can return an empty result page, but if you have a nextToken, the results are displayed on the next page.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_aggregate_compliance_by_config_rules(
+  ConfigurationAggregatorName = "string",
+  Filters = list(
+    ConfigRuleName = "string",
+    ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
+    AccountId = "string",
+    AwsRegion = "string"
+  ),
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

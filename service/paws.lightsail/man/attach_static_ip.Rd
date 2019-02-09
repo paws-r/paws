@@ -4,10 +4,7 @@
 \alias{attach_static_ip}
 \title{Attaches a static IP address to a specific Amazon Lightsail instance}
 \usage{
-attach_static_ip(
-  staticIpName = "string",
-  instanceName = "string"
-)
+attach_static_ip(staticIpName, instanceName)
 }
 \arguments{
 \item{staticIpName}{[required] The name of the static IP.}
@@ -17,6 +14,11 @@ attach_static_ip(
 \description{
 Attaches a static IP address to a specific Amazon Lightsail instance.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{attach_static_ip(
+  staticIpName = "string",
+  instanceName = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{remove_account_from_organization}
 \title{Removes the specified account from the organization}
 \usage{
-remove_account_from_organization(
-  AccountId = "string"
-)
+remove_account_from_organization(AccountId)
 }
 \arguments{
 \item{AccountId}{[required] The unique identifier (ID) of the member account that you want to remove from the organization.
@@ -23,11 +21,18 @@ This operation can be called only from the organization's master account. Member
 
 You can remove an account from your organization only if the account is configured with the information required to operate as a standalone account. When you create an account in an organization using the AWS Organizations console, API, or CLI commands, the information required of standalone accounts is \emph{not} automatically collected. For an account that you want to make standalone, you must accept the End User License Agreement (EULA), choose a support plan, provide and verify the required contact information, and provide a current payment method. AWS uses the payment method to charge for any billable (not free tier) AWS activity that occurs while the account is not attached to an organization. To remove an account that does not yet have this information, you must sign in as the member account and follow the steps at \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info}{To leave an organization when all required account information has not yet been provided} in the \emph{AWS Organizations User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{remove_account_from_organization(
+  AccountId = "string"
+)
+}
+}
+
 \examples{
 # The following example shows you how to remove an account from an
 # organization:
-remove_account_from_organization(
+\donttest{remove_account_from_organization(
   AccountId = "333333333333"
-)
+)}
 
 }

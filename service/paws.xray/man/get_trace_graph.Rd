@@ -4,12 +4,7 @@
 \alias{get_trace_graph}
 \title{Retrieves a service graph for one or more specific trace IDs}
 \usage{
-get_trace_graph(
-  TraceIds = list(
-    "string"
-  ),
-  NextToken = "string"
-)
+get_trace_graph(TraceIds, NextToken = NULL)
 }
 \arguments{
 \item{TraceIds}{[required] Trace IDs of requests for which to generate a service graph.}
@@ -19,6 +14,13 @@ get_trace_graph(
 \description{
 Retrieves a service graph for one or more specific trace IDs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_trace_graph(
+  TraceIds = list(
+    "string"
+  ),
+  NextToken = "string"
+)
 }
+}
+

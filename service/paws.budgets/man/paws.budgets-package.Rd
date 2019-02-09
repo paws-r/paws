@@ -6,10 +6,16 @@
 \alias{paws.budgets-package}
 \title{paws.budgets: AWS Budgets}
 \description{
-The AWS Budgets API enables you to use AWS Budgets to plan
-your service usage, service costs, and instance reservations. The API
-reference provides descriptions, syntax, and usage examples for each
-of the actions and data types for AWS Budgets.
+Budgets enable you to plan your service usage,
+    service costs, and your RI utilization.  You can also track how close
+    your plan is to your budgeted amount or to the free tier limits.
+    Budgets provide you with a quick way to see your usage-to-date and
+    current estimated charges from AWS and to see how much your predicted
+    usage accrues in charges by the end of the month.  Budgets also
+    compare current estimates and charges to the amount that you indicated
+    you want to use or spend and lets you see how much of your budget has
+    been used.  AWS updates your budget status several times a day.
+    Budgets track your unblended costs, subscriptions, and refunds.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

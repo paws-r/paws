@@ -4,9 +4,7 @@
 \alias{set_active_receipt_rule_set}
 \title{Sets the specified receipt rule set as the active receipt rule set}
 \usage{
-set_active_receipt_rule_set(
-  RuleSetName = "string"
-)
+set_active_receipt_rule_set(RuleSetName = NULL)
 }
 \arguments{
 \item{RuleSetName}{The name of the receipt rule set to make active. Setting this value to null disables all email receiving.}
@@ -21,10 +19,17 @@ For information about managing receipt rule sets, see the \href{http://docs.aws.
 
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{set_active_receipt_rule_set(
+  RuleSetName = "string"
+)
+}
+}
+
 \examples{
 # The following example sets the active receipt rule set:
-set_active_receipt_rule_set(
+\donttest{set_active_receipt_rule_set(
   RuleSetName = "RuleSetToActivate"
-)
+)}
 
 }

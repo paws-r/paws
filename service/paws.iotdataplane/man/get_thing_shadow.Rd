@@ -4,9 +4,7 @@
 \alias{get_thing_shadow}
 \title{Gets the thing shadow for the specified thing}
 \usage{
-get_thing_shadow(
-  thingName = "string"
-)
+get_thing_shadow(thingName)
 }
 \arguments{
 \item{thingName}{[required] The name of the thing.}
@@ -17,6 +15,10 @@ Gets the thing shadow for the specified thing.
 \details{
 For more information, see \href{http://docs.aws.amazon.com/iot/latest/developerguide/API_GetThingShadow.html}{GetThingShadow} in the \emph{AWS IoT Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_thing_shadow(
+  thingName = "string"
+)
 }
+}
+

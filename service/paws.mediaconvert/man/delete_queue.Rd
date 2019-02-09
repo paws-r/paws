@@ -4,16 +4,18 @@
 \alias{delete_queue}
 \title{Permanently delete a queue you have created}
 \usage{
-delete_queue(
-  Name = "string"
-)
+delete_queue(Name)
 }
 \arguments{
-\item{Name}{[required] The name of the queue that you want to delete.}
+\item{Name}{[required] The name of the queue to be deleted.}
 }
 \description{
 Permanently delete a queue you have created.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_queue(
+  Name = "string"
+)
 }
+}
+

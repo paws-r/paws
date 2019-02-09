@@ -2,18 +2,10 @@
 % Please edit documentation in R/paws.ec2_operations.R
 \name{modify_vpc_endpoint_service_permissions}
 \alias{modify_vpc_endpoint_service_permissions}
-\title{Modifies the permissions for your \link{VPC endpoint service}(http://docs}
+\title{Modifies the permissions for your VPC endpoint service}
 \usage{
-modify_vpc_endpoint_service_permissions(
-  DryRun = TRUE|FALSE,
-  ServiceId = "string",
-  AddAllowedPrincipals = list(
-    "string"
-  ),
-  RemoveAllowedPrincipals = list(
-    "string"
-  )
-)
+modify_vpc_endpoint_service_permissions(DryRun = NULL, ServiceId,
+  AddAllowedPrincipals = NULL, RemoveAllowedPrincipals = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -30,6 +22,17 @@ Modifies the permissions for your \href{http://docs.aws.amazon.com/AmazonVPC/lat
 \details{
 If you grant permissions to all principals, the service is public. Any users who know the name of a public service can send a request to attach an endpoint. If the service does not require manual approval, attachments are automatically approved.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_vpc_endpoint_service_permissions(
+  DryRun = TRUE|FALSE,
+  ServiceId = "string",
+  AddAllowedPrincipals = list(
+    "string"
+  ),
+  RemoveAllowedPrincipals = list(
+    "string"
+  )
+)
 }
+}
+

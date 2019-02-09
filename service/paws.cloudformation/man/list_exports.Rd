@@ -4,9 +4,7 @@
 \alias{list_exports}
 \title{Lists all exported output values in the account and region in which you call this action}
 \usage{
-list_exports(
-  NextToken = "string"
-)
+list_exports(NextToken = NULL)
 }
 \arguments{
 \item{NextToken}{A string (provided by the ListExports response output) that identifies the next page of exported output values that you asked to retrieve.}
@@ -17,6 +15,10 @@ Lists all exported output values in the account and region in which you call thi
 \details{
 For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html}{AWS CloudFormation Export Stack Output Values}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_exports(
+  NextToken = "string"
+)
 }
+}
+

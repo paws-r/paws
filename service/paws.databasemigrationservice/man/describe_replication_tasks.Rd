@@ -4,18 +4,8 @@
 \alias{describe_replication_tasks}
 \title{Returns information about replication tasks for your account in the current region}
 \usage{
-describe_replication_tasks(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_replication_tasks(Filters = NULL, MaxRecords = NULL,
+  Marker = NULL)
 }
 \arguments{
 \item{Filters}{Filters applied to the describe action.
@@ -33,10 +23,26 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Returns information about replication tasks for your account in the current region.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_replication_tasks(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
+}
+}
+
 \examples{
 # Returns information about replication tasks for your account in the
 # current region.
-describe_replication_tasks(
+\donttest{describe_replication_tasks(
   Filters = list(
     list(
       Name = "string",
@@ -48,6 +54,6 @@ describe_replication_tasks(
   ),
   Marker = "",
   MaxRecords = 123L
-)
+)}
 
 }

@@ -4,32 +4,8 @@
 \alias{start_match_backfill}
 \title{Finds new players to fill open slots in an existing game session}
 \usage{
-start_match_backfill(
-  TicketId = "string",
-  ConfigurationName = "string",
-  GameSessionArn = "string",
-  Players = list(
-    list(
-      PlayerId = "string",
-      PlayerAttributes = list(
-        list(
-          S = "string",
-          N = 123.0,
-          SL = list(
-            "string"
-          ),
-          SDM = list(
-            123.0
-          )
-        )
-      ),
-      Team = "string",
-      LatencyInMs = list(
-        123
-      )
-    )
-  )
-)
+start_match_backfill(TicketId = NULL, ConfigurationName, GameSessionArn,
+  Players)
 }
 \arguments{
 \item{TicketId}{Unique identifier for a matchmaking ticket. If no ticket ID is specified here, Amazon GameLift will generate one in the form of a UUID. Use this identifier to track the match backfill ticket status and retrieve match results.}
@@ -61,6 +37,33 @@ Matchmaking-related operations include:
 \item StartMatchBackfill
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_match_backfill(
+  TicketId = "string",
+  ConfigurationName = "string",
+  GameSessionArn = "string",
+  Players = list(
+    list(
+      PlayerId = "string",
+      PlayerAttributes = list(
+        list(
+          S = "string",
+          N = 123.0,
+          SL = list(
+            "string"
+          ),
+          SDM = list(
+            123.0
+          )
+        )
+      ),
+      Team = "string",
+      LatencyInMs = list(
+        123
+      )
+    )
+  )
+)
 }
+}
+

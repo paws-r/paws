@@ -4,13 +4,7 @@
 \alias{update_datastore}
 \title{Updates the settings of a data store}
 \usage{
-update_datastore(
-  datastoreName = "string",
-  retentionPeriod = list(
-    unlimited = TRUE|FALSE,
-    numberOfDays = 123
-  )
-)
+update_datastore(datastoreName, retentionPeriod = NULL)
 }
 \arguments{
 \item{datastoreName}{[required] The name of the data store to be updated.}
@@ -20,6 +14,14 @@ update_datastore(
 \description{
 Updates the settings of a data store.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_datastore(
+  datastoreName = "string",
+  retentionPeriod = list(
+    unlimited = TRUE|FALSE,
+    numberOfDays = 123
+  )
+)
 }
+}
+

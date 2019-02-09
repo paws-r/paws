@@ -4,7 +4,20 @@
 \alias{update_connection}
 \title{Updates a connection definition in the Data Catalog}
 \usage{
-update_connection(
+update_connection(CatalogId = NULL, Name, ConnectionInput)
+}
+\arguments{
+\item{CatalogId}{The ID of the Data Catalog in which the connection resides. If none is supplied, the AWS account ID is used by default.}
+
+\item{Name}{[required] The name of the connection definition to update.}
+
+\item{ConnectionInput}{[required] A \code{ConnectionInput} object that redefines the connection in question.}
+}
+\description{
+Updates a connection definition in the Data Catalog.
+}
+\section{Accepted Parameters}{
+\preformatted{update_connection(
   CatalogId = "string",
   Name = "string",
   ConnectionInput = list(
@@ -27,16 +40,5 @@ update_connection(
   )
 )
 }
-\arguments{
-\item{CatalogId}{The ID of the Data Catalog in which the connection resides. If none is supplied, the AWS account ID is used by default.}
-
-\item{Name}{[required] The name of the connection definition to update.}
-
-\item{ConnectionInput}{[required] A \code{ConnectionInput} object that redefines the connection in question.}
 }
-\description{
-Updates a connection definition in the Data Catalog.
-}
-\examples{
 
-}

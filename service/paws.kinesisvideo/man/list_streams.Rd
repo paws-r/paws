@@ -2,16 +2,10 @@
 % Please edit documentation in R/paws.kinesisvideo_operations.R
 \name{list_streams}
 \alias{list_streams}
-\title{Returns an array of \code{StreamInfo} objects}
+\title{Returns an array of StreamInfo objects}
 \usage{
-list_streams(
-  MaxResults = 123,
-  NextToken = "string",
-  StreamNameCondition = list(
-    ComparisonOperator = "BEGINS_WITH",
-    ComparisonValue = "string"
-  )
-)
+list_streams(MaxResults = NULL, NextToken = NULL,
+  StreamNameCondition = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of streams to return in the response. The default is 10,000.}
@@ -23,6 +17,15 @@ list_streams(
 \description{
 Returns an array of \code{StreamInfo} objects. Each object describes a stream. To retrieve only streams that satisfy a specific condition, you can specify a \code{StreamNameCondition}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_streams(
+  MaxResults = 123,
+  NextToken = "string",
+  StreamNameCondition = list(
+    ComparisonOperator = "BEGINS_WITH",
+    ComparisonValue = "string"
+  )
+)
 }
+}
+

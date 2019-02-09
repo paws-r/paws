@@ -2,30 +2,10 @@
 % Please edit documentation in R/paws.connect_operations.R
 \name{get_current_metric_data}
 \alias{get_current_metric_data}
-\title{The \code{GetCurrentMetricData} operation retrieves current metric data from your Amazon Connect instance}
+\title{The GetCurrentMetricData operation retrieves current metric data from your Amazon Connect instance}
 \usage{
-get_current_metric_data(
-  InstanceId = "string",
-  Filters = list(
-    Queues = list(
-      "string"
-    ),
-    Channels = list(
-      "VOICE"
-    )
-  ),
-  Groupings = list(
-    "QUEUE"|"CHANNEL"
-  ),
-  CurrentMetrics = list(
-    list(
-      Name = "AGENTS_ONLINE"|"AGENTS_AVAILABLE"|"AGENTS_ON_CALL"|"AGENTS_NON_PRODUCTIVE"|"AGENTS_AFTER_CONTACT_WORK"|"AGENTS_ERROR"|"AGENTS_STAFFED"|"CONTACTS_IN_QUEUE"|"OLDEST_CONTACT_AGE"|"CONTACTS_SCHEDULED",
-      Unit = "SECONDS"|"COUNT"|"PERCENT"
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
+get_current_metric_data(InstanceId, Filters, Groupings = NULL,
+  CurrentMetrics, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The identifier for your Amazon Connect instance. To find the ID of your instance, open the AWS console and select Amazon Connect. Select the alias of the instance in the Instance alias column. The instance ID is displayed in the Overview section of your instance settings. For example, the instance ID is the set of characters at the end of the instance ARN, after instance/, such as 10a4c4eb-f57e-4d4c-b602-bf39176ced07.}
@@ -38,7 +18,7 @@ To find the ARN for a queue, open the queue you want to use in the Amazon Connec
 
 If no \code{Grouping} is included in the request, a summary of \code{CurrentMetrics} is returned.}
 
-\item{CurrentMetrics}{[required] A list of \code{CurrentMetric} objects for the metrics to retrieve. Each \code{CurrentMetric} includes a name of a metric to retrieve and the unit to use for it. You must list each metric to retrieve data for in the request.
+\item{CurrentMetrics}{[required] A list of \code{CurrentMetric} objects for the metrics to retrieve. Each \code{CurrentMetric} includes a name of a metric to retrieve and the unit to use for it.
 
 The following metrics are available:
 
@@ -94,6 +74,29 @@ The \code{GetCurrentMetricData} operation retrieves current metric data from you
 \details{
 If you are using an IAM account, it must have permission to the \code{connect:GetCurrentMetricData} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_current_metric_data(
+  InstanceId = "string",
+  Filters = list(
+    Queues = list(
+      "string"
+    ),
+    Channels = list(
+      "VOICE"
+    )
+  ),
+  Groupings = list(
+    "QUEUE"|"CHANNEL"
+  ),
+  CurrentMetrics = list(
+    list(
+      Name = "AGENTS_ONLINE"|"AGENTS_AVAILABLE"|"AGENTS_ON_CALL"|"AGENTS_NON_PRODUCTIVE"|"AGENTS_AFTER_CONTACT_WORK"|"AGENTS_ERROR"|"AGENTS_STAFFED"|"CONTACTS_IN_QUEUE"|"OLDEST_CONTACT_AGE"|"CONTACTS_SCHEDULED",
+      Unit = "SECONDS"|"COUNT"|"PERCENT"
+    )
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

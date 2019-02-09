@@ -4,12 +4,8 @@
 \alias{get_person_tracking}
 \title{Gets the path tracking results of a Amazon Rekognition Video analysis started by}
 \usage{
-get_person_tracking(
-  JobId = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  SortBy = "INDEX"|"TIMESTAMP"
-)
+get_person_tracking(JobId, MaxResults = NULL, NextToken = NULL,
+  SortBy = NULL)
 }
 \arguments{
 \item{JobId}{[required] The identifier for a job that tracks persons in a video. You get the \code{JobId} from a call to \code{StartPersonTracking}.}
@@ -38,6 +34,13 @@ By default, the array is sorted by the time(s) a person's path is tracked in the
 
 Use the \code{MaxResults} parameter to limit the number of items returned. If there are more results than specified in \code{MaxResults}, the value of \code{NextToken} in the operation response contains a pagination token for getting the next set of results. To get the next page of results, call \code{GetPersonTracking} and populate the \code{NextToken} request parameter with the token value returned from the previous call to \code{GetPersonTracking}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_person_tracking(
+  JobId = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  SortBy = "INDEX"|"TIMESTAMP"
+)
 }
+}
+

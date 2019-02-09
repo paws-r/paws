@@ -4,14 +4,8 @@
 \alias{describe_volumes}
 \title{Describes an instance's Amazon EBS volumes}
 \usage{
-describe_volumes(
-  InstanceId = "string",
-  StackId = "string",
-  RaidArrayId = "string",
-  VolumeIds = list(
-    "string"
-  )
-)
+describe_volumes(InstanceId = NULL, StackId = NULL,
+  RaidArrayId = NULL, VolumeIds = NULL)
 }
 \arguments{
 \item{InstanceId}{The instance ID. If you use this parameter, \code{DescribeVolumes} returns descriptions of the volumes associated with the specified instance.}
@@ -30,6 +24,15 @@ This call accepts only one resource-identifying parameter.
 
 \strong{Required Permissions}: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_volumes(
+  InstanceId = "string",
+  StackId = "string",
+  RaidArrayId = "string",
+  VolumeIds = list(
+    "string"
+  )
+)
 }
+}
+

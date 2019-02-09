@@ -4,22 +4,8 @@
 \alias{describe_instance_credit_specifications}
 \title{Describes the credit option for CPU usage of one or more of your T2 or T3 instances}
 \usage{
-describe_instance_credit_specifications(
-  DryRun = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  InstanceIds = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_instance_credit_specifications(DryRun = NULL, Filters = NULL,
+  InstanceIds = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -53,6 +39,23 @@ If an Availability Zone is experiencing a service disruption and you specify ins
 
 For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html}{Burstable Performance Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_instance_credit_specifications(
+  DryRun = TRUE|FALSE,
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  InstanceIds = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

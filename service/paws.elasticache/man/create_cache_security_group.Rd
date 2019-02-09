@@ -4,10 +4,7 @@
 \alias{create_cache_security_group}
 \title{Creates a new cache security group}
 \usage{
-create_cache_security_group(
-  CacheSecurityGroupName = "string",
-  Description = "string"
-)
+create_cache_security_group(CacheSecurityGroupName, Description)
 }
 \arguments{
 \item{CacheSecurityGroupName}{[required] A name for the cache security group. This value is stored as a lowercase string.
@@ -24,6 +21,11 @@ Creates a new cache security group. Use a cache security group to control access
 \details{
 Cache security groups are only used when you are creating a cluster outside of an Amazon Virtual Private Cloud (Amazon VPC). If you are creating a cluster inside of a VPC, use a cache subnet group instead. For more information, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CreateCacheSubnetGroup.html}{CreateCacheSubnetGroup}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_cache_security_group(
+  CacheSecurityGroupName = "string",
+  Description = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{get_default_patch_baseline}
 \title{Retrieves the default patch baseline}
 \usage{
-get_default_patch_baseline(
-  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"
-)
+get_default_patch_baseline(OperatingSystem = NULL)
 }
 \arguments{
 \item{OperatingSystem}{Returns the default patch baseline for the specified operating system.}
@@ -17,6 +15,10 @@ Retrieves the default patch baseline. Note that Systems Manager supports creatin
 \details{
 If you do not specify an operating system value, the default patch baseline for Windows is returned.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_default_patch_baseline(
+  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"
+)
 }
+}
+

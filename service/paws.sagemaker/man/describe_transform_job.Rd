@@ -4,9 +4,7 @@
 \alias{describe_transform_job}
 \title{Returns information about a transform job}
 \usage{
-describe_transform_job(
-  TransformJobName = "string"
-)
+describe_transform_job(TransformJobName)
 }
 \arguments{
 \item{TransformJobName}{[required] The name of the transform job that you want to view details of.}
@@ -14,6 +12,10 @@ describe_transform_job(
 \description{
 Returns information about a transform job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_transform_job(
+  TransformJobName = "string"
+)
 }
+}
+

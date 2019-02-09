@@ -4,11 +4,8 @@
 \alias{list_bulk_deployment_detailed_reports}
 \title{Gets a paginated list of the deployments that have been started in a bulk deployment operation, and their current deployment status}
 \usage{
-list_bulk_deployment_detailed_reports(
-  BulkDeploymentId = "string",
-  MaxResults = "string",
-  NextToken = "string"
-)
+list_bulk_deployment_detailed_reports(BulkDeploymentId,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{BulkDeploymentId}{[required] The ID of the bulk deployment.}
@@ -20,6 +17,12 @@ list_bulk_deployment_detailed_reports(
 \description{
 Gets a paginated list of the deployments that have been started in a bulk deployment operation, and their current deployment status.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_bulk_deployment_detailed_reports(
+  BulkDeploymentId = "string",
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

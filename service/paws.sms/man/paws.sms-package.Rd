@@ -6,12 +6,8 @@
 \alias{paws.sms-package}
 \title{paws.sms: AWS Server Migration Service}
 \description{
-This is the *AWS Sever Migration Service API Reference*. It
-provides descriptions, syntax, and usage examples for each of the
-actions and data types for the AWS Sever Migration Service (AWS SMS).
-The topic for each action shows the Query API request parameters and
-the XML response. You can also view the XML request elements in the
-WSDL.
+Amazon Server Migration Service automates the
+    process of migrating servers to EC2.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

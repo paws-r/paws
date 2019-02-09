@@ -4,9 +4,7 @@
 \alias{delete_upload}
 \title{Deletes an upload given the upload ARN}
 \usage{
-delete_upload(
-  arn = "string"
-)
+delete_upload(arn)
 }
 \arguments{
 \item{arn}{[required] Represents the Amazon Resource Name (ARN) of the Device Farm upload you wish to delete.}
@@ -14,10 +12,17 @@ delete_upload(
 \description{
 Deletes an upload given the upload ARN.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_upload(
+  arn = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes a specific upload.
-delete_upload(
+\donttest{delete_upload(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:upload:EXAMPLE-GUID-123-456"
-)
+)}
 
 }

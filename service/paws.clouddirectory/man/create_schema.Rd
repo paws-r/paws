@@ -4,9 +4,7 @@
 \alias{create_schema}
 \title{Creates a new schema in a development state}
 \usage{
-create_schema(
-  Name = "string"
-)
+create_schema(Name)
 }
 \arguments{
 \item{Name}{[required] The name that is associated with the schema. This is unique to each account and in each region.}
@@ -21,6 +19,10 @@ Creates a new schema in a development state. A schema can exist in three phases:
 \item \emph{Applied:} Applied schemas are mutable in a way that allows you to add new schema facets. You can also add new, nonrequired attributes to existing schema facets. You can apply only published schemas to directories.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_schema(
+  Name = "string"
+)
 }
+}
+

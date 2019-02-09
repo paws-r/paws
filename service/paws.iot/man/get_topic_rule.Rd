@@ -4,9 +4,7 @@
 \alias{get_topic_rule}
 \title{Gets information about the rule}
 \usage{
-get_topic_rule(
-  ruleName = "string"
-)
+get_topic_rule(ruleName)
 }
 \arguments{
 \item{ruleName}{[required] The name of the rule.}
@@ -14,6 +12,10 @@ get_topic_rule(
 \description{
 Gets information about the rule.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_topic_rule(
+  ruleName = "string"
+)
 }
+}
+

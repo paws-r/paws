@@ -4,14 +4,8 @@
 \alias{list_parts}
 \title{Lists the parts that have been uploaded for a specific multipart upload}
 \usage{
-list_parts(
-  Bucket = "string",
-  Key = "string",
-  MaxParts = 123,
-  PartNumberMarker = 123,
-  UploadId = "string",
-  RequestPayer = "requester"
-)
+list_parts(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL,
+  UploadId, RequestPayer = NULL)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -29,13 +23,25 @@ list_parts(
 \description{
 Lists the parts that have been uploaded for a specific multipart upload.
 }
+\section{Accepted Parameters}{
+\preformatted{list_parts(
+  Bucket = "string",
+  Key = "string",
+  MaxParts = 123,
+  PartNumberMarker = 123,
+  UploadId = "string",
+  RequestPayer = "requester"
+)
+}
+}
+
 \examples{
 # The following example lists parts uploaded for a specific multipart
 # upload.
-list_parts(
+\donttest{list_parts(
   Bucket = "examplebucket",
   Key = "bigobject",
   UploadId = "example7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP3WA60CEg--"
-)
+)}
 
 }

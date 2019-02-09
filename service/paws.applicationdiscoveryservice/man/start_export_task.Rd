@@ -4,22 +4,8 @@
 \alias{start_export_task}
 \title{Begins the export of discovered data to an S3 bucket}
 \usage{
-start_export_task(
-  exportDataFormat = list(
-    "CSV"|"GRAPHML"
-  ),
-  filters = list(
-    list(
-      name = "string",
-      values = list(
-        "string"
-      ),
-      condition = "string"
-    )
-  ),
-  startTime = as.POSIXct("2015-01-01"),
-  endTime = as.POSIXct("2015-01-01")
-)
+start_export_task(exportDataFormat = NULL, filters = NULL,
+  startTime = NULL, endTime = NULL)
 }
 \arguments{
 \item{exportDataFormat}{The file format for the returned export data. Default value is \code{CSV}. \strong{Note:} \emph{The} \code{GRAPHML} \emph{option has been deprecated.}}
@@ -38,6 +24,23 @@ If you specify \code{agentIds} in a filter, the task exports up to 72 hours of d
 
 If you do not include an \code{agentIds} filter, summary data is exported that includes both AWS Agentless Discovery Connector data and summary data from AWS Discovery Agents. Export of summary data is limited to two exports per day.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_export_task(
+  exportDataFormat = list(
+    "CSV"|"GRAPHML"
+  ),
+  filters = list(
+    list(
+      name = "string",
+      values = list(
+        "string"
+      ),
+      condition = "string"
+    )
+  ),
+  startTime = as.POSIXct("2015-01-01"),
+  endTime = as.POSIXct("2015-01-01")
+)
 }
+}
+

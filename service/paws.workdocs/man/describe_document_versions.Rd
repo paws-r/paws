@@ -4,14 +4,8 @@
 \alias{describe_document_versions}
 \title{Retrieves the document versions for the specified document}
 \usage{
-describe_document_versions(
-  AuthenticationToken = "string",
-  DocumentId = "string",
-  Marker = "string",
-  Limit = 123,
-  Include = "string",
-  Fields = "string"
-)
+describe_document_versions(AuthenticationToken = NULL, DocumentId,
+  Marker = NULL, Limit = NULL, Include = NULL, Fields = NULL)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
@@ -32,6 +26,15 @@ Retrieves the document versions for the specified document.
 \details{
 By default, only active versions are returned.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_document_versions(
+  AuthenticationToken = "string",
+  DocumentId = "string",
+  Marker = "string",
+  Limit = 123,
+  Include = "string",
+  Fields = "string"
+)
 }
+}
+

@@ -4,18 +4,8 @@
 \alias{post_comment_for_compared_commit}
 \title{Posts a comment on the comparison between two commits}
 \usage{
-post_comment_for_compared_commit(
-  repositoryName = "string",
-  beforeCommitId = "string",
-  afterCommitId = "string",
-  location = list(
-    filePath = "string",
-    filePosition = 123,
-    relativeFileVersion = "BEFORE"|"AFTER"
-  ),
-  content = "string",
-  clientRequestToken = "string"
-)
+post_comment_for_compared_commit(repositoryName, beforeCommitId = NULL,
+  afterCommitId, location = NULL, content, clientRequestToken = NULL)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository where you want to post a comment on the comparison between commits.}
@@ -33,6 +23,19 @@ post_comment_for_compared_commit(
 \description{
 Posts a comment on the comparison between two commits.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{post_comment_for_compared_commit(
+  repositoryName = "string",
+  beforeCommitId = "string",
+  afterCommitId = "string",
+  location = list(
+    filePath = "string",
+    filePosition = 123,
+    relativeFileVersion = "BEFORE"|"AFTER"
+  ),
+  content = "string",
+  clientRequestToken = "string"
+)
 }
+}
+

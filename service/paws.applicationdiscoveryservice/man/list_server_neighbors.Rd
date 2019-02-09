@@ -4,15 +4,9 @@
 \alias{list_server_neighbors}
 \title{Retrieves a list of servers that are one network hop away from a specified server}
 \usage{
-list_server_neighbors(
-  configurationId = "string",
-  portInformationNeeded = TRUE|FALSE,
-  neighborConfigurationIds = list(
-    "string"
-  ),
-  maxResults = 123,
-  nextToken = "string"
-)
+list_server_neighbors(configurationId, portInformationNeeded = NULL,
+  neighborConfigurationIds = NULL, maxResults = NULL,
+  nextToken = NULL)
 }
 \arguments{
 \item{configurationId}{[required] Configuration ID of the server for which neighbors are being listed.}
@@ -28,6 +22,16 @@ list_server_neighbors(
 \description{
 Retrieves a list of servers that are one network hop away from a specified server.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_server_neighbors(
+  configurationId = "string",
+  portInformationNeeded = TRUE|FALSE,
+  neighborConfigurationIds = list(
+    "string"
+  ),
+  maxResults = 123,
+  nextToken = "string"
+)
 }
+}
+

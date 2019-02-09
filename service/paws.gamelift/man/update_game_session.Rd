@@ -4,13 +4,9 @@
 \alias{update_game_session}
 \title{Updates game session properties}
 \usage{
-update_game_session(
-  GameSessionId = "string",
-  MaximumPlayerSessionCount = 123,
-  Name = "string",
-  PlayerSessionCreationPolicy = "ACCEPT_ALL"|"DENY_ALL",
-  ProtectionPolicy = "NoProtection"|"FullProtection"
-)
+update_game_session(GameSessionId, MaximumPlayerSessionCount = NULL,
+  Name = NULL, PlayerSessionCreationPolicy = NULL,
+  ProtectionPolicy = NULL)
 }
 \arguments{
 \item{GameSessionId}{[required] Unique identifier for the game session to update.}
@@ -45,6 +41,14 @@ Game-session-related operations include:
 \item StopGameSessionPlacement
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_game_session(
+  GameSessionId = "string",
+  MaximumPlayerSessionCount = 123,
+  Name = "string",
+  PlayerSessionCreationPolicy = "ACCEPT_ALL"|"DENY_ALL",
+  ProtectionPolicy = "NoProtection"|"FullProtection"
+)
 }
+}
+

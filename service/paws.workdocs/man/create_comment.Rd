@@ -4,16 +4,9 @@
 \alias{create_comment}
 \title{Adds a new comment to the specified document version}
 \usage{
-create_comment(
-  AuthenticationToken = "string",
-  DocumentId = "string",
-  VersionId = "string",
-  ParentId = "string",
-  ThreadId = "string",
-  Text = "string",
-  Visibility = "PUBLIC"|"PRIVATE",
-  NotifyCollaborators = TRUE|FALSE
-)
+create_comment(AuthenticationToken = NULL, DocumentId, VersionId,
+  ParentId = NULL, ThreadId = NULL, Text, Visibility = NULL,
+  NotifyCollaborators = NULL)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
@@ -35,6 +28,17 @@ create_comment(
 \description{
 Adds a new comment to the specified document version.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_comment(
+  AuthenticationToken = "string",
+  DocumentId = "string",
+  VersionId = "string",
+  ParentId = "string",
+  ThreadId = "string",
+  Text = "string",
+  Visibility = "PUBLIC"|"PRIVATE",
+  NotifyCollaborators = TRUE|FALSE
+)
 }
+}
+

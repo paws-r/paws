@@ -9,6 +9,3 @@ delete_organization()
 \description{
 Deletes the organization. You can delete an organization only by using credentials from the master account. The organization must be empty of member accounts.
 }
-\examples{
-
-}

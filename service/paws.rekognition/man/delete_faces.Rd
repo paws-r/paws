@@ -4,12 +4,7 @@
 \alias{delete_faces}
 \title{Deletes faces from a collection}
 \usage{
-delete_faces(
-  CollectionId = "string",
-  FaceIds = list(
-    "string"
-  )
-)
+delete_faces(CollectionId, FaceIds)
 }
 \arguments{
 \item{CollectionId}{[required] Collection from which to remove the specific faces.}
@@ -22,13 +17,23 @@ Deletes faces from a collection. You specify a collection ID and an array of fac
 \details{
 This operation requires permissions to perform the \code{rekognition:DeleteFaces} action.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_faces(
+  CollectionId = "string",
+  FaceIds = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This operation deletes one or more faces from a Rekognition collection.
-delete_faces(
+\donttest{delete_faces(
   CollectionId = "myphotos",
   FaceIds = list(
     "ff43d742-0c13-5d16-a3e8-03d3f58e980b"
   )
-)
+)}
 
 }

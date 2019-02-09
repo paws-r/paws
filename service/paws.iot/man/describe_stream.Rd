@@ -4,9 +4,7 @@
 \alias{describe_stream}
 \title{Gets information about a stream}
 \usage{
-describe_stream(
-  streamId = "string"
-)
+describe_stream(streamId)
 }
 \arguments{
 \item{streamId}{[required] The stream ID.}
@@ -14,6 +12,10 @@ describe_stream(
 \description{
 Gets information about a stream.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_stream(
+  streamId = "string"
+)
 }
+}
+

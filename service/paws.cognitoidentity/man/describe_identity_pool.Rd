@@ -4,9 +4,7 @@
 \alias{describe_identity_pool}
 \title{Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users}
 \usage{
-describe_identity_pool(
-  IdentityPoolId = "string"
-)
+describe_identity_pool(IdentityPoolId)
 }
 \arguments{
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
@@ -17,6 +15,10 @@ Gets details about a particular identity pool, including the pool name, ID descr
 \details{
 You must use AWS Developer credentials to call this API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_identity_pool(
+  IdentityPoolId = "string"
+)
 }
+}
+

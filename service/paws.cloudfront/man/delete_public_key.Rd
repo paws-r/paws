@@ -4,10 +4,7 @@
 \alias{delete_public_key}
 \title{Remove a public key you previously added to CloudFront}
 \usage{
-delete_public_key(
-  Id = "string",
-  IfMatch = "string"
-)
+delete_public_key(Id, IfMatch = NULL)
 }
 \arguments{
 \item{Id}{[required] The ID of the public key you want to remove from CloudFront.}
@@ -17,6 +14,11 @@ delete_public_key(
 \description{
 Remove a public key you previously added to CloudFront.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_public_key(
+  Id = "string",
+  IfMatch = "string"
+)
 }
+}
+

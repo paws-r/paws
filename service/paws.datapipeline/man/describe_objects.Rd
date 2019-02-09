@@ -4,14 +4,8 @@
 \alias{describe_objects}
 \title{Gets the object definitions for a set of objects associated with the pipeline}
 \usage{
-describe_objects(
-  pipelineId = "string",
-  objectIds = list(
-    "string"
-  ),
-  evaluateExpressions = TRUE|FALSE,
-  marker = "string"
-)
+describe_objects(pipelineId, objectIds, evaluateExpressions = NULL,
+  marker = NULL)
 }
 \arguments{
 \item{pipelineId}{[required] The ID of the pipeline that contains the object definitions.}
@@ -25,6 +19,15 @@ describe_objects(
 \description{
 Gets the object definitions for a set of objects associated with the pipeline. Object definitions are composed of a set of fields that define the properties of the object.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_objects(
+  pipelineId = "string",
+  objectIds = list(
+    "string"
+  ),
+  evaluateExpressions = TRUE|FALSE,
+  marker = "string"
+)
 }
+}
+

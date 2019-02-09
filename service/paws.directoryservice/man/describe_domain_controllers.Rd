@@ -4,14 +4,8 @@
 \alias{describe_domain_controllers}
 \title{Provides information about any domain controllers in your directory}
 \usage{
-describe_domain_controllers(
-  DirectoryId = "string",
-  DomainControllerIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  Limit = 123
-)
+describe_domain_controllers(DirectoryId, DomainControllerIds = NULL,
+  NextToken = NULL, Limit = NULL)
 }
 \arguments{
 \item{DirectoryId}{[required] Identifier of the directory for which to retrieve the domain controller information.}
@@ -25,6 +19,15 @@ describe_domain_controllers(
 \description{
 Provides information about any domain controllers in your directory.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_domain_controllers(
+  DirectoryId = "string",
+  DomainControllerIds = list(
+    "string"
+  ),
+  NextToken = "string",
+  Limit = 123
+)
 }
+}
+

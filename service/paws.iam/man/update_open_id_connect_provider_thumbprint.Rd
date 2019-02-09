@@ -4,12 +4,8 @@
 \alias{update_open_id_connect_provider_thumbprint}
 \title{Replaces the existing list of server certificate thumbprints associated with an OpenID Connect (OIDC) provider resource object with a new list of thumbprints}
 \usage{
-update_open_id_connect_provider_thumbprint(
-  OpenIDConnectProviderArn = "string",
-  ThumbprintList = list(
-    "string"
-  )
-)
+update_open_id_connect_provider_thumbprint(OpenIDConnectProviderArn,
+  ThumbprintList)
 }
 \arguments{
 \item{OpenIDConnectProviderArn}{[required] The Amazon Resource Name (ARN) of the IAM OIDC provider resource object for which you want to update the thumbprint. You can get a list of OIDC provider ARNs by using the ListOpenIDConnectProviders operation.
@@ -26,8 +22,15 @@ The list that you pass with this operation completely replaces the existing list
 
 Typically, you need to update a thumbprint only when the identity provider's certificate changes, which occurs rarely. However, if the provider's certificate \emph{does} change, any attempt to assume an IAM role that specifies the OIDC provider as a principal fails until the certificate thumbprint is updated.
 
-Trust for the OIDC provider is derived from the provider's certificate and is validated by the thumbprint. Therefore, it is best to limit access to the \code{UpdateOpenIDConnectProviderThumbprint} operation to highly privileged users.
+Because trust for the OIDC provider is derived from the provider's certificate and is validated by the thumbprint, it is best to limit access to the \code{UpdateOpenIDConnectProviderThumbprint} operation to highly privileged users.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{update_open_id_connect_provider_thumbprint(
+  OpenIDConnectProviderArn = "string",
+  ThumbprintList = list(
+    "string"
+  )
+)
+}
+}
 
-}

@@ -4,17 +4,8 @@
 \alias{create_db_cluster_parameter_group}
 \title{Creates a new DB cluster parameter group}
 \usage{
-create_db_cluster_parameter_group(
-  DBClusterParameterGroupName = "string",
-  DBParameterGroupFamily = "string",
-  Description = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_db_cluster_parameter_group(DBClusterParameterGroupName,
+  DBParameterGroupFamily, Description, Tags = NULL)
 }
 \arguments{
 \item{DBClusterParameterGroupName}{[required] The name of the DB cluster parameter group.
@@ -42,6 +33,18 @@ A DB cluster parameter group is initially created with the default parameters fo
 
 After you create a DB cluster parameter group, you should wait at least 5 minutes before creating your first DB cluster that uses that DB cluster parameter group as the default parameter group. This allows Amazon Neptune to fully complete the create action before the DB cluster parameter group is used as the default for a new DB cluster. This is especially important for parameters that are critical when creating the default database for a DB cluster, such as the character set for the default database defined by the \code{character_set_database} parameter. You can use the \emph{Parameter Groups} option of the \href{https://console.aws.amazon.com/rds/}{Amazon Neptune console} or the DescribeDBClusterParameters command to verify that your DB cluster parameter group has been created or modified.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_db_cluster_parameter_group(
+  DBClusterParameterGroupName = "string",
+  DBParameterGroupFamily = "string",
+  Description = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

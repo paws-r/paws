@@ -4,16 +4,18 @@
 \alias{get_group}
 \title{Retrieves information about a group}
 \usage{
-get_group(
-  GroupId = "string"
-)
+get_group(GroupId)
 }
 \arguments{
-\item{GroupId}{[required] The ID of the Greengrass group.}
+\item{GroupId}{[required] The ID of the AWS Greengrass group.}
 }
 \description{
 Retrieves information about a group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_group(
+  GroupId = "string"
+)
 }
+}
+

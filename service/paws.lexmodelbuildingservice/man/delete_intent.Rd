@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.lexmodelbuildingservice_operations.R
 \name{delete_intent}
 \alias{delete_intent}
-\title{Deletes all versions of the intent, including the \code{$LATEST} version}
+\title{Deletes all versions of the intent, including the $LATEST version}
 \usage{
-delete_intent(
-  name = "string"
-)
+delete_intent(name)
 }
 \arguments{
 \item{name}{[required] The name of the intent. The name is case sensitive.}
@@ -21,6 +19,10 @@ If you get the \code{ResourceInUseException} exception, it provides an example r
 
 This operation requires permission for the \code{lex:DeleteIntent} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_intent(
+  name = "string"
+)
 }
+}
+

@@ -4,23 +4,9 @@
 \alias{describe_orderable_db_instance_options}
 \title{Returns a list of orderable DB instance options for the specified engine}
 \usage{
-describe_orderable_db_instance_options(
-  Engine = "string",
-  EngineVersion = "string",
-  DBInstanceClass = "string",
-  LicenseModel = "string",
-  Vpc = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_orderable_db_instance_options(Engine, EngineVersion = NULL,
+  DBInstanceClass = NULL, LicenseModel = NULL, Vpc = NULL,
+  Filters = NULL, MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{Engine}{[required] The name of the engine to retrieve DB instance options for.}
@@ -46,6 +32,24 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Returns a list of orderable DB instance options for the specified engine.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_orderable_db_instance_options(
+  Engine = "string",
+  EngineVersion = "string",
+  DBInstanceClass = "string",
+  LicenseModel = "string",
+  Vpc = TRUE|FALSE,
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

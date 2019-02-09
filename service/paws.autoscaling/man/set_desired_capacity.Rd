@@ -4,11 +4,8 @@
 \alias{set_desired_capacity}
 \title{Sets the size of the specified Auto Scaling group}
 \usage{
-set_desired_capacity(
-  AutoScalingGroupName = "string",
-  DesiredCapacity = 123,
-  HonorCooldown = TRUE|FALSE
-)
+set_desired_capacity(AutoScalingGroupName, DesiredCapacity,
+  HonorCooldown = NULL)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -23,13 +20,22 @@ Sets the size of the specified Auto Scaling group.
 \details{
 For more information about desired capacity, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/WhatIsAutoScaling.html}{What Is Amazon EC2 Auto Scaling?} in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{set_desired_capacity(
+  AutoScalingGroupName = "string",
+  DesiredCapacity = 123,
+  HonorCooldown = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example sets the desired capacity for the specified Auto Scaling
 # group.
-set_desired_capacity(
+\donttest{set_desired_capacity(
   AutoScalingGroupName = "my-auto-scaling-group",
   DesiredCapacity = 2L,
   HonorCooldown = TRUE
-)
+)}
 
 }

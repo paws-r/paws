@@ -4,11 +4,7 @@
 \alias{update_configuration}
 \title{Updates the specified configuration}
 \usage{
-update_configuration(
-  ConfigurationId = "string",
-  Data = "string",
-  Description = "string"
-)
+update_configuration(ConfigurationId, Data = NULL, Description = NULL)
 }
 \arguments{
 \item{ConfigurationId}{[required] The unique ID that Amazon MQ generates for the configuration.}
@@ -20,6 +16,12 @@ update_configuration(
 \description{
 Updates the specified configuration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_configuration(
+  ConfigurationId = "string",
+  Data = "string",
+  Description = "string"
+)
 }
+}
+

@@ -4,13 +4,8 @@
 \alias{update_auth_event_feedback}
 \title{Provides the feedback for an authentication event whether it was from a valid user or not}
 \usage{
-update_auth_event_feedback(
-  UserPoolId = "string",
-  Username = "string",
-  EventId = "string",
-  FeedbackToken = "string",
-  FeedbackValue = "Valid"|"Invalid"
-)
+update_auth_event_feedback(UserPoolId, Username, EventId, FeedbackToken,
+  FeedbackValue)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
@@ -26,6 +21,14 @@ update_auth_event_feedback(
 \description{
 Provides the feedback for an authentication event whether it was from a valid user or not. This feedback is used for improving the risk evaluation decision for the user pool as part of Amazon Cognito advanced security.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_auth_event_feedback(
+  UserPoolId = "string",
+  Username = "string",
+  EventId = "string",
+  FeedbackToken = "string",
+  FeedbackValue = "Valid"|"Invalid"
+)
 }
+}
+

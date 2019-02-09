@@ -4,11 +4,7 @@
 \alias{confirm_product_instance}
 \title{Determines whether a product code is associated with an instance}
 \usage{
-confirm_product_instance(
-  InstanceId = "string",
-  ProductCode = "string",
-  DryRun = TRUE|FALSE
-)
+confirm_product_instance(InstanceId, ProductCode, DryRun = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The ID of the instance.}
@@ -20,12 +16,21 @@ confirm_product_instance(
 \description{
 Determines whether a product code is associated with an instance. This action can only be used by the owner of the product code. It is useful when a product code owner must verify whether another user's instance is eligible for support.
 }
+\section{Accepted Parameters}{
+\preformatted{confirm_product_instance(
+  InstanceId = "string",
+  ProductCode = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example determines whether the specified product code is associated
 # with the specified instance.
-confirm_product_instance(
+\donttest{confirm_product_instance(
   InstanceId = "i-1234567890abcdef0",
   ProductCode = "774F4FF8"
-)
+)}
 
 }

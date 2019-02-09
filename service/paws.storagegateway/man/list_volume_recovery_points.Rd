@@ -4,9 +4,7 @@
 \alias{list_volume_recovery_points}
 \title{Lists the recovery points for a specified gateway}
 \usage{
-list_volume_recovery_points(
-  GatewayARN = "string"
-)
+list_volume_recovery_points(GatewayARN)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -17,11 +15,18 @@ Lists the recovery points for a specified gateway. This operation is only suppor
 \details{
 Each cache volume has one recovery point. A volume recovery point is a point in time at which all data of the volume is consistent and from which you can create a snapshot or clone a new cached volume from a source volume. To create a snapshot from a volume recovery point use the CreateSnapshotFromVolumeRecoveryPoint operation.
 }
+\section{Accepted Parameters}{
+\preformatted{list_volume_recovery_points(
+  GatewayARN = "string"
+)
+}
+}
+
 \examples{
 # Lists the recovery points for a specified gateway in which all data of
 # the volume is consistent and can be used to create a snapshot.
-list_volume_recovery_points(
+\donttest{list_volume_recovery_points(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
+)}
 
 }
