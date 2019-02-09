@@ -62,6 +62,9 @@ test_that("postprocess", {
 })
 
 test_that("html_to_markdown", {
+  text <- NULL
+  expect_equal(html_to_markdown(text), "")
+
   text <- ""
   expect_equal(html_to_markdown(text), text)
 
